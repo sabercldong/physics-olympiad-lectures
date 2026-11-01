@@ -1,0 +1,52 @@
+\section{练习}
+
+\begin{question}\begin{drill}[有限磁区中的下落线框]\label{em3:drill:1}
+矩形框质量 $m$、总电阻 $R$，横边长 $l$、竖边长 $d$。磁区竖直高度 $H>d$，上边界下方为向里磁场 $B$。框下边从边界上方高度 $h$ 自由下落。求从释放至下边到磁区下边界的磁力规律，并说明“部分进入时达到最大速度”的含义。
+\end{drill}
+\fig{fig:em3:drill:1:s}{下边从距上磁界 $h$ 处释放；$d$ 为竖边长，$H$ 为磁区高度}{\begin{tikzpicture}
+
+\fill[blue!7](-.6,-3.4)rectangle(3.1,0);\draw[guide](-.8,0)--(3.3,0) (-.8,-3.4)--(3.3,-3.4);\draw[world](0,.8)rectangle(2,2.1);\draw[dim](2.5,0)--(2.5,.8)node[midway,right]{$h$};\draw[dim](-.5,.8)--(-.5,2.1)node[midway,left]{$d$};\draw[dim](0,2.6)--(2,2.6)node[midway,above]{$l$};\draw[dim](3.9,-3.4)--(3.9,0)node[midway,right]{$H>d$};\node at(1,-1.7){$\otimes B$};\draw[flow](1,.6)--(1,-.5)node[right]{$v$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:1}
+\begin{question}\begin{drill}[缓慢收缩的柔软圆环]\label{em3:drill:2}
+单位长度电阻 $\lambda$ 的软导线形成圆环，初半径 $a_0$，交叠接触点始终导电。向外拉出导线的恒力为 $F$，磁场 $B$ 垂直圆面。忽略惯性且圆环保持圆形，求缩到半径 $a_f>0$ 的时间，并讨论取 $a_f\to0$ 的限制。
+\end{drill}
+\fig{fig:em3:drill:2:s}{拉端沿接触处的切线抽出导线，圆周长的减少量等于被抽出的长度}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$a$};\draw[world,very thick](1.5,.15)--(1.5,-2.6);\fill(1.5,0)circle(2pt)node[right]at(1.65,.2){导电接触处};\draw[force](1.5,-2.6)--(1.5,-3.7)node[right]{$F$};\node at(-.4,.6){$\odot B$};\draw[flow](0,1.5)--(0,.9)node[left]{$\dot a<0$};\node at(-.7,-2.6){$\dot x=-2\pi\dot a>0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:2}
+\begin{question}\begin{drill}[辐条轮的发电阻力与悬物终速]\label{em3:drill:3}
+两个半径 $a_1,a_2$ 的导电轮外缘无滑动接触，每轮有四根均匀辐条，每根电阻分别为 $R_1,R_2$。均匀磁场 $B$ 垂直轮面，轮心用外电阻 $R$ 连接。第一轮同轴小轴半径 $a_0$，悬挂质量 $m$ 的物体。忽略机械摩擦与轮缘电阻，求稳定下落速度。
+\end{drill}
+\fig{fig:em3:drill:3:s}{题设：辐条轮的发电阻力与悬物终速}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.3);\draw[world](2.2,0)circle(.9);\foreach\t in{0,90,180,270}{\draw[world](0,0)--(\t:1.3);\draw[world](2.2,0)--++(\t:.9);}\draw[world](0,0)--(0,-2)--(.7,-2) (1.5,-2)--(2.2,-2)--(2.2,0);\node[below]at(1.1,-2){$R$};\draw[world](0,0)circle(.35);\draw[world](-.35,0)--(-.35,-2.5);\node[below]at(-.35,-2.5){$m$};\node at(1.2,1.8){$\otimes B$};\draw[world](.7,-2.15)rectangle(1.5,-1.85);\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:3}
+\begin{question}\begin{drill}[局部磁区中的圆盘涡流估算]\label{em3:drill:4}
+电阻率 $\rho$、厚度 $\delta$ 的大金属圆盘以角速度 $\omega$ 转动。距轴 $r$ 处有边长 $a\ll r$ 的正方形磁区，磁场垂直盘面、大小 $B$。采用局部回路近似：有效切割长度与回流尺度均取 $a$、通流截面取 $a\delta$。估计制动力矩，并说明该近似不能决定什么。
+\end{drill}
+\fig{fig:em3:drill:4:s}{题设：局部磁区中的圆盘涡流估算}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(2);\fill(0,0)circle(1.5pt)node[below]{$O$};\fill[gray!20](1.1,-.3)rectangle(1.7,.3);\draw[world](1.1,-.3)rectangle(1.7,.3);\draw[dim](0,.5)--(1.4,.5)node[midway,above]{$r$};\draw[flow](1.4,.8)--(1.4,1.6)node[above]{$v=\omega r$};\node at(-1,1){$\otimes B$};\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:4}
+\begin{question}\begin{drill}[两次制动实验反求电阻与空气阻力]\label{em3:drill:5}
+导棒质量 $m=0.10\,\mathrm{kg}$、长度 $l=0.50\,\mathrm m$，受空气线性阻力 $-bv$ 与电磁阻力，在水平轨道上自由减速。在 $B_1=0.20\,\mathrm T$ 时测得速度时间常量 $\tau_1=2.0\,\mathrm s$，在 $B_2=0.40\,\mathrm T$ 时测得 $\tau_2=0.80\,\mathrm s$。两次总电阻 $R$ 相同。求 $R,b$，再求第二次实验中初动能最终转为电阻热的比例。
+\end{drill}
+\fig{fig:em3:drill:5:s}{题设：两次制动实验反求电阻与空气阻力}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[flow](3.3,1)--(4.4,1)node[above]{$v$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\node at(2,2.7){两次实验仅改变 $B$};\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:5}
+\begin{question}\begin{drill}[有机械负载的导棒电动机]\label{em3:drill:6}
+导棒电动机由电动势 $E$、总电阻 $R$ 的回路驱动，棒长 $l$，磁场 $B$，无其他摩擦。对棒施加恒定反向负载 $F$。求可持续正向匀速运动时的速度、负载机械功率、效率，及最大输出功率的负载；说明负载过大时的限制。
+\end{drill}
+\fig{fig:em3:drill:6:s}{题设：有机械负载的导棒电动机}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[flow](3.3,1)--(4.4,1)node[above]{$v$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\draw[white,line width=3pt](0,1.55)--(0,1.85);\draw[world](-.3,1.8)--(.3,1.8) (-.18,1.6)--(.18,1.6);\node[left]at(-.35,1.75){$E$};\draw[force](3,1.5)--(1.9,1.5)node[midway,above,fill=white]{$F$};\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:6}
+\begin{question}\begin{drill}[闭合线框穿过有限宽磁区的三种结局]\label{em3:drill:7}
+矩形刚性线框质量 $m$、电阻 $R$，沿运动方向宽 $a$，横向边长 $l$。无摩擦水平运动，前边刚到匀强磁区左边界时速度 $v_0>0$。磁区宽 $d\ge a$，磁场垂直线框平面，忽略自感。求完整穿出条件和穿出速度，区分进入时停滞、退出时停滞及完全穿过三种情况；能穿过时求所用时间。图示为进入过程。
+\end{drill}
+\fig{fig:em3:drill:7:s}{题设：闭合线框穿过有限宽磁区的三种结局}{\begin{tikzpicture}[scale=.88]\fill[gray!12](0,-.4)rectangle(4,2.5);\draw[guide](0,-.4)--(0,2.5) (4,-.4)--(4,2.5);\draw[world,thick](-1,0)rectangle(1,2);\node at(2.7,2){$\otimes B$};\draw[dim](-1,-.8)--(1,-.8)node[midway,below]{$a$};\draw[dim](0,3)--(4,3)node[midway,above]{$d$};\draw[flow](1.2,1)--(2.3,1)node[above]{$v$};\node[left]at(-1,1){$l$};\end{tikzpicture}}
+\end{question}
+\answerlink{em3:drill:7}

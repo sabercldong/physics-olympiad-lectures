@@ -1,0 +1,409 @@
+\section{从视深问题到近轴成像}
+
+\subsection{近轴近似及其适用范围}
+
+本讲将第一讲的小角度方法用于球面成像。以弧度计，一阶计算取 $\sin\theta\simeq\tan\theta\simeq\theta$、$\cos\theta\simeq1$，折射定律成为 $n_1i\simeq n_2r$。图中离轴高度与角度为说明方向而适当放大，是否可作一阶计算仍须由实际尺寸判断。
+
+\subsection{入射高度、法线转角与孔径}
+
+近轴公式把同一物点发出的近轴光线近似归到同一像点。近轴条件不能只看物体是否在主轴上，还要看光线在球面上的入射高度及其与法线、主轴的夹角。
+
+图\ref{fig:paraxial-geometry}中，球面顶点为 $O$，球心为 $C$，折射点为 $P$，高度为 $y$。设 $OC=R>0$，球面法线沿 $CP$，其与轴的夹角大小满足
+\[
+ \sin\varphi=\frac yR,\qquad
+ x_P=R-\sqrt{R^2-y^2}
+=\frac{R^2-(R^2-y^2)}{R+\sqrt{R^2-y^2}}
+=\frac{y^2}{R+\sqrt{R^2-y^2}}
+\simeq\frac{y^2}{2R}.
+\]
+\fig{fig:paraxial-geometry}{球面入射高度决定法线转角；弧面到顶点平面的轴向差为二阶小量}{
+\begin{tikzpicture}[x=1.2cm,y=1.2cm]
+\draw[axisline] (-2.3,0)--(3.3,0);
+\draw[world] (2,0) ++(145:2) arc(145:215:2);
+\coordinate (O) at (0,0);\coordinate (C) at (2,0);\coordinate (P) at (.120615,.684040);
+\draw[normal] (P)--(C);\draw[aux] (P)--(.120615,0);
+\draw[ray] (-2,.15)--(P);
+\node[below left] at (O){$O$};\node[below] at (C){$C$};\node[above left] at (P){$P$};
+\draw[dim] (0,-.6)--(2,-.6) node[midway,below]{$R$};
+\node[right] at (.18,.35){$y$};\draw (1.5,0) arc(180:160:.5);\node at (1.4,.5){$\varphi$};
+\end{tikzpicture}}
+当 $|y|/R\ll1$ 时，$\varphi\simeq y/R$；把三角函数换成角度的一阶量，并把折射高度移到顶点平面，才会得到线性的球面成像关系。若 $|y|/u$、$|y|/v$ 也很小，不同高度的光线在一阶近似中具有共同的像点。增加孔径后，被舍去的高阶项增大，不能仍以同一个近轴像距断言所有光线准确相交。
+
+焦点附近的物像距离变化可能很敏感，即使角度误差较小，也不保证像距的相对误差同样小。下面先确定物像的实际位置与符号，再使用近轴公式。
+
+\subsection{平面折射：视深与视高}
+
+图\ref{fig:o2depth}中，\(S\) 位于折射率 \(n_1\) 的介质内，距界面 \(h_0\)；观察者位于 \(n_2\) 介质，沿法线观察。光线在界面点 \(B\) 折射后进入眼睛，反向延长线与法线交于虚像 \(S'\)。若 \(OB=a\)，则
+\[
+ i\simeq\frac{a}{h_0},\quad r\simeq\frac{a}{h},\quad
+ n_1\frac{a}{h_0}=n_2\frac{a}{h},
+ \qquad \boxed{h=\frac{n_2}{n_1}h_0}.
+\]
+因此从空气看水中物体，视深约为 \(h_0/n\)；从水中看空气中的物体，视高约为 \(nh_0\)。两式都要求沿界面法线附近观察，斜视时不能直接套用。
+\fig{fig:o2depth}{平面折射与反向延长线；虚像处没有光线实际会聚}{
+\begin{tikzpicture}[scale=.92]
+\fill[gray!10] (-3,-3.3) rectangle (3,0);
+\draw[world] (-3,0)--(3,0) node[right] {界面};
+\draw[normal] (0,-3.2)--(0,2);
+\coordinate (S) at (0,-3); \coordinate (I) at (0,-2);
+\coordinate (B) at (1,0);
+\draw[ray] (S)--(B);\draw[ray] (B)--(2,2);
+\draw[virtual] (I)--(B);
+\fill (S) circle(1.4pt) node[left] {$S$};
+\fill (I) circle(1.4pt) node[left] {$S'$};
+\node[above left] at (0,0) {$O$};\node[below right] at (B) {$B$};
+\draw[dim] (-1.5,-3)--(-1.5,0) node[midway,left] {$h_0$};
+\draw[dim] (-.7,-2)--(-.7,0) node[midway,left] {$h$};
+\draw[dim] (0,.35)--(1,.35) node[midway,above] {$a$};
+\node at (-2.3,1) {$n_2$};\node at (-2.3,-2) {$n_1$};
+\node[right] at (2,1.8) {入眼};
+\end{tikzpicture}}
+
+图\ref{fig:o2depth}中 $S'$ 是出射束的反向延长线交点。眼睛按到达方向追溯光的位置，因此看到虚像；放屏在 $S'$ 处却不能承接由这些出射光形成的实像，因为光没有在那里实际会聚。
+
+离开法线方向后，准确几何关系应写成 $h=a/\tan r$、$h_0=a/\tan i$，所以 $h/h_0=\tan i/\tan r$，再配合折射定律求角度。不同离轴光线可能给出不同的轴上反向交点，简单的统一视深便不再适用。近法向公式之所以简洁，正是因为两正切都可由对应的小角代替。
+
+图\ref{o2:apparent-depth}把斜视的限制量化。以水向空气传播、$n_1/n_2=1.50$ 为例，若出射光与法线夹角为 $r$，由折射定律和几何关系有
+\[
+\frac h{h_0}=\frac{\tan i}{\tan r}
+=\frac{n_2\cos r}{n_1\sqrt{1-(n_2/n_1)^2\sin^2r}}.
+\]
+\fig{o2:apparent-depth}{斜视时单条出射线的轴上反向交点随角度改变；近法向时才趋于统一视深}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.9,0)node[right]{$r$};\draw[axis](0,-.15)--(0,2.2)node[above]{$h/h_0$};\draw[world,blue,domain=0:90,samples=100]plot({\x/20},{2*cos(\x)/(1.5*sqrt(1-sin(\x)^2/2.25))});\draw[guide](0,1.33333)--(4.5,1.33333);\node[left]at(0,1.33333){$2/3$};\foreach\x/\v in {1.5/30,3/60,4.5/90}{\draw(\x,0)--++(0,-.08)node[below]{$\v^\circ$};}\node at(2.8,2.1){$n_1/n_2=1.50$};
+
+\end{tikzpicture}}
+这里每一个 $h$ 都来自某一条出射线与轴的反向交点，并不意味着斜视的一束有限孔径光仍能形成同一个轴上点像。法向附近 $r\to0$ 时，曲线才回到 $h/h_0=n_2/n_1$；因此视深公式的使用同时包含小角度和近法向观察两个条件。
+
+
+\subsection{实物、虚物、实像与虚像}
+
+判断物像的虚实，要分别考察光具作用前后的光束。
+入射光束若发散，其反向延长线交点是实物点；若会聚，其继续传播本将到达的点是虚物点。这里判断的是光具作用前的方向关系，虚物常由前一级光具产生。
+
+再看作用后的光束：实际会聚的交点是实像，发散束反向延长线的交点是虚像。出射束平行则对应像在无穷远，有限位置的屏不能承接清晰点像。物的虚实和像的虚实分别来自作用前、作用后的两次判断，不能用一个标签同时代替。
+“实物、虚物”描述的是入射光束的性质，不要求相应位置一定放有发光物体。连用多个界面时，先判断前一级出射光束是否在到达下一级之前已经交叉，再确定下一级的物距。
+
+\input{knowledge-virtual-classification}
+
+\subsection{折射公式的符号约定}
+
+每次折射均以该次入射光的主轴方向为正向，顶点记为 \(O\)。采用以下约定：
+\[
+\begin{array}{c|c|c}
+ &\text{正值}&\text{负值}\\ \hline
+u&\text{实物，位于入射侧}&\text{虚物，位于出射侧}\\
+v&\text{实像，位于出射侧}&\text{虚像，位于入射侧}\\
+R_{\!s}&\text{球心在出射侧}&\text{球心在入射侧}
+\end{array}
+\]
+用 \(R_{\!s}\) 表示带符号曲率半径，用 \(R>0\) 表示半径大小。本讲统一使用
+\begin{equation}
+ \boxed{\frac{n_1}{u}+\frac{n_2}{v}=\frac{n_2-n_1}{R_{\!s}}}.
+ \label{eq:o2sphere}
+\end{equation}
+左侧的实物物距取正，而坐标轴正向上的实物坐标为 \(-u\)；不要把“物距为正”误解为“物点坐标为正”。
+
+若改用统一坐标 \(s=x_{\text{物}},s'=x_{\text{像}}\)，则 \(s=-u,s'=v\)，公式等价于
+\[
+ \frac{n_2}{s'}-\frac{n_1}{s}=\frac{n_2-n_1}{R_{\!s}}.
+\]
+后式适合检查正负号，前式便于按实物、虚物逐级计算。两种形式可以互相转换，不能混用一式的符号与另一式的定义。
+
+沿多个面传播时，还应暂时保留物像的绝对坐标，再相对下一面的顶点重新量距。后面的图\ref{fig:o2chain}将把这一操作与虚物的会聚光束对应起来。
+
+曲率号则独立判断。把光从另一面反向入射，同一个球心相对传播方向的位置会改变，不能沿用前一次的半径号。图上先标入射箭头、再标球心在哪一侧，最后换成带符号量，能把几何判断与代数计算明确对应起来。
+
+成像计算可作三次物理核对。先由实际入射束是发散还是会聚确定实物、虚物，再由出射束是否相交判断像距符号，最后由离轴点是否越过主轴判断横向放大率符号。像距的正负说明像在本次出射侧还是入射侧，放大率的正负说明正倒，两种符号不能互相代替。令 $R\to\infty$ 时还应退回平面折射；令两侧折射率相同时，界面不应再产生折射光焦度。这两项极限检查可以发现介质顺序或曲率符号的误用。
+
+\subsection{用有向倾角推导球面折射公式}
+
+带符号距离的作用可以直接从一阶光线方程看出。图\ref{o2:refract-slopes}中，入射主轴向右，物点坐标 $-u$，像点坐标 $v$。把传播方向相对 $+x$ 的有向小倾角分别记为 $\alpha_1,\alpha_2$，把指向出射侧的法线倾角记为 $\nu$。在高度 $y$ 处，略去二阶面形位移后有
+\[
+\alpha_1=\frac yu,\qquad \alpha_2=-\frac yv,\qquad
+\nu=-\frac y{R_s}.
+\]
+\fig{o2:refract-slopes}{一阶作图把折射点移到顶点平面；有向倾角区分上倾、下倾，虚线为当地法线}{\begin{tikzpicture}
+
+\draw[axis](-3.5,0)--(7,0)node[right]{$+x$};\draw[world](0,-1)--(0,1.4);\coordinate(P)at(0,.9);\draw[ray,blue](-3,0)--(P);\draw[ray,red](P)--(6,0);\draw[normal](P)--(2,0);\draw[guide](P)--(4,.9);\draw[dim](-.55,0)--(-.55,.9)node[midway,left]{$y$};
+\node[above]at(P){$P$};\node[below left]at(0,0){$O$};\node[below]at(-3,0){$Q$};\node[below]at(2,0){$C$};\node[below]at(6,0){$Q'$};\node[above]at(-1.9,.5){$\alpha_1>0$};\node[above]at(4.5,.35){$\alpha_2<0$};\node[below]at(1.3,.3){$\nu<0$};\node at(-2,1.6){$n_1$};\node at(3.5,1.6){$n_2$};
+
+\end{tikzpicture}}
+从同一有向法线量角，近轴折射定律写为 $n_1(\alpha_1-\nu)=n_2(\alpha_2-\nu)$。代入图中的三个斜率，消去 $y\ne0$，得到
+\[
+\frac{n_1}{u}+\frac{n_2}{v}=\frac{n_2-n_1}{R_s}.
+\]
+虚物、虚像或球心转到另一侧时，相应斜率自动随 $u,v,R_s$ 的符号改变；不用为每个构形重新改变公式。高度被消去，正是近轴束共有像点的原因。中心轴线本身不能单独决定像距，应取邻近的非零高度光线后再令孔径趋小。
+
+物点从实侧进入虚侧时，需要改变的是图中的入射束，不能只在原来发散的箭头旁把 $u$ 改成负数。介质相同的极限使右侧为零，此时 $v=-u$，光沿原方向延续；平面极限 $R_s\to\infty$ 给出 $v=-n_2u/n_1$，与前述视深关系相容。
+
+
+\subsection{焦点、横向放大率与多界面衔接}
+
+令 \(u\to\infty\)，得到像方焦距
+\[
+ f'=\frac{n_2R_{\!s}}{n_2-n_1};
+\]
+令 \(v\to\infty\)，得到物方焦距
+\[
+ f=\frac{n_1R_{\!s}}{n_2-n_1}.
+\]
+二者的数值一般不同。轴上平行光进入不同介质后，不能只用一个“焦距”代替物方、像方焦距。
+
+\fig{o2:focal-pair}{同一折射面的两种实验分别定义像方焦点和物方焦点；图示会聚界面的一阶作图}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw[axisline](-2.5,0)--(3.7,0);\draw[world](0,-.8)--(0,1.25);\draw[ray,blue](-2.3,.7)--(0,.7);\draw[ray,red](0,.7)--(3,0);\draw[ray,blue](-2.3,-.7)--(0,-.7);\draw[ray,red](0,-.7)--(3,0);\fill(3,0)circle(1.5pt)node[below]{$F'$};\node[below left]at(0,0){$O$};\draw[dim](0,-1.2)--(3,-1.2)node[midway,below]{$f'=n_2R_s/(n_2-n_1)$};\node at(.5,1.7){平行入射，像在 $F'$};\end{scope}
+\begin{scope}[xshift=5.7cm,scale=.8]
+\draw[axisline](-2.5,0)--(3.2,0);\draw[world](0,-.8)--(0,1.25);\draw[ray,blue](-2,0)--(0,.7);\draw[ray,red](0,.7)--(3,.7);\draw[ray,blue](-2,0)--(0,-.7);\draw[ray,red](0,-.7)--(3,-.7);\fill(-2,0)circle(1.5pt)node[below]{$F$};\node[below right]at(0,0){$O$};\draw[dim](-2,-1.2)--(0,-1.2)node[midway,below]{$f=n_1R_s/(n_2-n_1)$};\node at(.5,1.7){物在 $F$，平行出射};\end{scope}
+
+\end{tikzpicture}}
+图\ref{o2:focal-pair}的左图取 $1/u=0$，右图取 $1/v=0$。两侧介质不同使 $f'/f=n_2/n_1$，并非同一条距离的两种写法。传播反向时，要同时交换介质和重新指定坐标方向，然后判断焦点是实际会聚还是由延长线确定。
+
+
+对垂直主轴的小物，横向放大率为
+\begin{equation}
+ \boxed{\beta=\frac{h'}{h}=-\frac{n_1v}{n_2u}}.
+ \label{eq:o2beta}
+\end{equation}
+\(\beta>0\) 表示正立，\(\beta<0\) 表示倒立，\(|\beta|\) 才是宽度放大倍数。对于柱面折射，这一关系用于有曲率的截面；沿圆柱轴线方向的放大情况须另行讨论。
+
+放大率可以由过顶点的光线推导。图\ref{o2:beta-ray}中，顶点法线沿轴，入射、出射倾角近似为 $-h/u,h'/v$。近轴折射给出 $-n_1h/u=n_2h'/v$，于是得到式\eqref{eq:o2beta}。折射率因子来自顶点处方向改变；它不能用镜面或薄透镜在相同外介质中的公式直接替换。
+\fig{o2:beta-ray}{过顶点的光线连接物高与像高；向下的像箭头对应负放大率}{\begin{tikzpicture}
+
+\draw[axisline](-3.5,0)--(5.3,0);\draw[world](0,-1.5)--(0,1.5);\draw[axis,blue](-3,0)--(-3,.8)node[above]{$A$};\draw[axis,red](4.5,0)--(4.5,-.8)node[below]{$A'$};\draw[ray](-3,.8)--(0,0);\draw[ray](0,0)--(4.5,-.8);\node[below left]at(0,0){$O$};\node[left]at(-3,.4){$h$};\node[right]at(4.5,-.4){$h'<0$};\node at(-1.7,1.5){$n_1$};\node at(2.5,1.5){$n_2$};\draw[dim](-3,-1.6)--(0,-1.6)node[midway,below]{$u$};\draw[dim](0,-1.6)--(4.5,-1.6)node[midway,below]{$v$};
+
+\end{tikzpicture}}
+
+两个折射面顶点间隔为 \(t\)，沿同一正向传播时，
+\[
+ u_2=t-v_1.
+\]
+图\ref{fig:o2chain}中，第一个面若单独存在，光束将在 \(I_1\) 会聚；第二个面位于会聚点之前，所以 \(u_2<0\)，\(I_1\) 是第二个面的虚物。经第二面折射后，实际像点为 \(I_2\)，应由第二次成像另求。先画出这些点的相对位置，再确定物距符号。
+\fig{fig:o2chain}{前一级的实像位置在后一级之后，因而成为后一级的虚物}{
+\begin{tikzpicture}
+\draw[axis] (-1,0)--(7,0) node[right] {$x$};
+\draw[world] (0,-1.3)--(0,1.3) node[above] {面1};
+\draw[world] (2.5,-1.3)--(2.5,1.3) node[above] {面2};
+\draw[ray] (0,1)--(2.5,.5);
+\draw[virtual] (2.5,.5)--(5,0);
+\draw[ray] (2.5,.5)--(6.5,0);\draw[ray](0,-1)--(2.5,-.5);\draw[virtual](2.5,-.5)--(5,0);\draw[ray](2.5,-.5)--(6.5,0);
+\fill (5,0) circle(1.4pt) node[below] {$I_1$};
+\fill (6.5,0) circle(1.4pt) node[below right] {$I_2$};
+\node[below left] at (0,0) {$O_1$};
+\node[below left] at (2.5,0) {$O_2$};
+\draw[dim] (0,-.7)--(2.5,-.7) node[midway,below] {$t$};
+\draw[dim] (0,-1.5)--(5,-1.5) node[midway,below] {$v_1$};
+\node at (4.7,1.3) {$u_2=t-v_1<0$};
+\end{tikzpicture}}
+
+\section{球面反射与球面镜成像}
+
+\subsection{球面镜公式的近轴推导}
+
+图\ref{fig:o2mirrorderive}中，实物点为 \(Q\)，反射点为 \(P\)，球心为 \(C\)，实像点为 \(Q'\)。取入射光、法线、反射光相对主轴的倾角大小分别为 \(\alpha,\varphi,\gamma\)。反射定律给出
+\[
+ \alpha+\gamma=2\varphi.
+\]
+设 \(P\) 的高度为 \(y\)，略去球面相对顶点平面的二阶位移，则
+\[
+ \alpha\simeq\frac yu,\qquad
+ \gamma\simeq\frac yv,\qquad
+ \varphi\simeq\frac yR.
+\]
+消去 \(y\)，得到
+\[
+ \frac1u+\frac1v=\frac2R=\frac1f.
+\]
+配合实物、实像为正的约定，此式可延续到虚物与虚像。镜面放大率 \(\beta=-v/u\) 的负号则记录物像两端的正倒关系。
+\fig{fig:o2mirrorderive}{在法线 \(CP\) 处应用反射定律；图中离轴高度放大示意}{
+\begin{tikzpicture}
+\draw[axis] (-4.5,0)--(.7,0);
+\draw[world] (-.16697,-.8) arc[start angle=-23.578,end angle=23.578,radius=2];
+\coordinate (P) at (-.00812,.18);
+\draw[ray] (-4,0)--(P);\draw[ray] (P)--(-1.3333,0);
+\draw[normal] (-2,0)--(P);
+\node[above right] at (P) {$P$};
+\node[below] at (-4,0) {$Q$};\node[below] at (-2,0) {$C$};
+\node[below] at (-1.3333,0) {$Q'$};\node[below right] at (0,0) {$O$};
+\draw[dim] (-4,-.75)--(0,-.75) node[midway,below] {$u$};
+\draw[dim] (-1.3333,-1.35)--(0,-1.35) node[midway,below] {$v$};
+\node[draw,align=center] at (-2,1.1) {\(\alpha+\gamma=2\varphi\)\\\(y/u+y/v=2y/R\)};
+\end{tikzpicture}}
+
+图\ref{fig:o2mirrorderive}中，$\varphi$ 由球面法线决定，并不等于入射光对主轴的倾角。先由反射定律写 $\alpha+\gamma=2\varphi$，再把每个角换成对应的高度与轴向距离之比，才会得到同一物、像关系。若把法线误当作处处平行于主轴，右侧的聚焦项就会整个丢失。
+
+焦距等于半径一半只属于球面镜的近轴关系。图中把 $P$ 的轴向位置移到 $O$ 的平面，是略去二阶高度项；大孔径光线的真实反射点不同，反射后未必通过同一位置。用光线追迹复核时，应以这个精度范围为准，不能把示意图的放大高度当成精确大孔径计算。
+
+\subsection{球面镜的物像关系}
+
+对球面镜，取实物 \(u>0\)、虚物 \(u<0\)、实像 \(v>0\)、虚像 \(v<0\)，则
+\[
+ \boxed{\frac1u+\frac1v=\frac1f},\qquad
+ \boxed{\beta=-\frac vu}.
+\]
+反射使光的传播方向翻转，因此镜面实像位于入射侧；折射面实像则位于出射侧。两式形式相近，几何位置的判断不同。
+
+凹镜对实物的成像可按 \(u\) 分区：\(u>2f\) 时，在 \(f<v<2f\) 成倒立缩小实像；\(u=2f\) 时，\(v=2f\)，倒立等大；\(f<u<2f\) 时，\(v>2f\)，倒立放大；\(u=f\) 时出射光平行；\(0<u<f\) 时 \(v<0\)，为正立放大虚像。凸镜对任意实物均有 \(f<v<0\)，形成正立缩小虚像。
+
+遇到虚物时，先画出入射会聚点，确定 \(u<0\)，由公式求 \(v\)，再用 \(\beta\) 判正倒。完整分类及其作图依据如下。
+
+分类可以由同一个函数检验：$v=fu/(u-f)$，$\beta=-f/(u-f)$。焦点处的分母变号，反映出射束从会聚变成发散；物体经过两倍焦距时，$\beta=-1$，反映像从缩小变成放大。焦点与两倍焦距因此对应不同的性质分界，不应只凭记忆把它们互换。
+
+在不跨越焦点的支路上，固定 $f$，对 $v=fu/(u-f)$ 使用商法则：
+\[
+\frac{\dd v}{\dd u}
+=\frac{f(u-f)-fu}{(u-f)^2}
+=-\frac{f^2}{(u-f)^2}<0.
+\]
+这一负号可以检查物像位置变化的趋势；但把代数像距的变化转成实际空间方向时，还须保留反射后的传播方向。像距正负负责前后位置，放大率正负负责正倒关系，两个结论应分别回到图上核对。
+
+\subsection{实物与虚物的完整分类}
+
+表中 \(F=|f|>0\)，像距 \(v\) 与放大率 \(\beta\) 均保留符号。\(v>0\) 的实像位于镜前，\(v<0\) 的虚像位于镜后。
+
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+镜面及物距 & 像距范围 & \(\beta\) & 像的性质\\
+\midrule
+凹镜，\(u>2F\) & \(F<v<2F\) & \(-1<\beta<0\) & 倒立缩小实像\\
+凹镜，\(u=2F\) & \(v=2F\) & \(\beta=-1\) & 倒立等大实像\\
+凹镜，\(F<u<2F\) & \(v>2F\) & \(\beta<-1\) & 倒立放大实像\\
+凹镜，\(u=F\) & 无穷远 & 无有限值 & 出射平行\\
+凹镜，\(0<u<F\) & \(v<0\) & \(\beta>1\) & 正立放大虚像\\
+凹镜，\(u<0\) & \(0<v<F\) & \(0<\beta<1\) & 正立缩小实像\\
+凸镜，\(u>0\) & \(-F<v<0\) & \(0<\beta<1\) & 正立缩小虚像\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+凸镜若接收入射会聚光束，虚物距可写为 \(u=-a\)，其中 \(a>0\)。代入 \(f=-F\)，可直接得到
+\[
+ v=\frac{Fa}{F-a},\qquad \beta=\frac{F}{F-a}.
+\]
+因此还须区分以下几种情况：
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+虚物位置 & 像距范围 & \(\beta\) & 像的性质\\
+\midrule
+\(a>2F\) & \(-2F<v<-F\) & \(-1<\beta<0\) & 倒立缩小虚像\\
+\(a=2F\) & \(v=-2F\) & \(\beta=-1\) & 倒立等大虚像\\
+\(F<a<2F\) & \(v<-2F\) & \(\beta<-1\) & 倒立放大虚像\\
+\(a=F\) & 无穷远 & 无有限值 & 出射平行\\
+\(0<a<F\) & \(v>0\) & \(\beta>1\) & 正立放大实像\\
+\bottomrule
+\end{tabular}
+\end{center}
+“凸镜总成虚像”只适用于实物。图\ref{fig:o2virtualmirror}中，会聚光在到达镜后点 \(V\) 前被凸镜反射，反射后在镜前实际会聚，正对应 \(0<a<F\) 的最后一行。
+\fig{fig:o2virtualmirror}{凸镜对虚物可以成实像；虚线是入射光若未被反射时的继续路径}{
+\begin{tikzpicture}
+\draw[axis] (-4.2,0)--(2.5,0);
+\draw[world] (.16697,-.8) arc[start angle=203.578,end angle=156.422,radius=2];
+\draw[ray] (-2.8,.379476)--(.0016,.08);
+\draw[ray] (.0016,.08)--(-3,0);
+\draw[virtual] (.0016,.08)--(.75,0);
+\draw[ray] (-2.8,-.379476)--(.0016,-.08);
+\draw[ray] (.0016,-.08)--(-3,0);
+\draw[virtual] (.0016,-.08)--(.75,0);
+\fill (-3,0) circle(1.3pt) node[below] {$I$};
+\fill (.75,0) circle(1.3pt) node[below] {$V$};
+\node[above left] at (0,0) {$O$};
+\draw[dim] (0,-1.5)--(.75,-1.5) node[midway,below] {$a$};
+\node[above] at (1.6,.8) {\(a<F\)};
+\end{tikzpicture}}
+
+\fig{o2:mirror-branches}{带符号物像函数把各类光束放在同一图上；虚物也须代入相应支路}{\begin{tikzpicture}
+
+\foreach\off/\sgn/\title in {0/1/凹镜,5.3/-1/凸镜}{\begin{scope}[xshift=\off cm,x=.5cm,y=.5cm]
+\draw[axis](-3.8,0)--(4.8,0)node[right]{$u/F$};\draw[axis](0,-3.5)--(0,3.6)node[above]{$v/F$};\draw[guide](\sgn,-3.2)--(\sgn,3.2);\draw[guide](-3.5,\sgn)--(4.3,\sgn);\node at(1.2,5.6){\title：$f/F=\sgn$};\node[above]at(\sgn,0){$\sgn$};\node[left]at(0,\sgn){$\sgn$};
+\begin{scope}\clip(-3.5,-3.2)rectangle(4.3,3.2);
+\ifnum\sgn=1\draw[world,blue,domain=-3.5:.73,samples=90]plot(\x,{\x/(\x-1)});\draw[world,blue,domain=1.35:4.3,samples=90]plot(\x,{\x/(\x-1)});
+\else\draw[world,red,domain=-3.5:-1.35,samples=90]plot(\x,{-\x/(\x+1)});\draw[world,red,domain=-.73:4.3,samples=100]plot(\x,{-\x/(\x+1)});\fi\end{scope}\end{scope}}
+
+\end{tikzpicture}}
+图\ref{o2:mirror-branches}的横轴正、负区分别表示实物和虚物；纵轴正、负区分别表示镜前实像和镜后虚像。越过竖直渐近线时，出射束经过平行状态，由会聚转为发散或反向改变。$u=2f$ 只是 $\beta=-1$ 的尺寸分界，并不是像的虚实分界。分类表由这些支路读出，再用 $\beta=-v/u$ 判断正倒，能避免“凹镜必成实像”“凸镜必成虚像”这类省略物条件的结论。
+
+
+\subsection{作图时怎样选择辅助光线}
+
+近轴作图可选：平行主轴的入射光经凹镜反射后通过焦点；通过焦点的入射光反射后平行主轴；沿球心法线入射的光原路返回。凸镜相应使用焦点或球心的反向延长线。作图时应先确定光线实际传播的半直线，再画延长线。
+
+图\ref{fig:o2three}用前两条光线确定物体上端 \(A\) 的像 \(A'\)。其交点在轴下，说明像倒立；交点在镜前，说明像为实像。这两个判断分别对应 \(\beta<0\) 与 \(v>0\)。
+
+两条独立辅助光线已经能够确定近轴像点，第三条用于复核。如果画出的第三条不通过同一像点，应先检查焦点一侧、实际传播箭头和曲面法线，而不应把交点随意移到三条线之间。物点恰落在某条特殊光线上时，该光线与另一条可能重合，此时要改选具有独立方向的辅助光线。
+
+有限口径还会截断部分光束。辅助线可以延长用于确定几何位置，但真实光线只有落在有效镜面上的那一段才能传播。放大率给出像的尺寸关系，并不自动保证整个物体都能通过孔径成像；通光与遮挡应在确定像位置之后另行检查。
+\fig{fig:o2three}{凹镜的两条辅助光线；球面处小轴向位移在一阶作图中略去}{
+\begin{tikzpicture}
+\draw[axisline] (-3.8,0)--(.7,0);
+\draw[world] (-.16697,-.8) arc[start angle=-23.578,end angle=23.578,radius=2];
+\draw[axis,thick] (-3,0)--(-3,.3) node[above] {$A$};
+\draw[axis,thick] (-1.5,0)--(-1.5,-.15) node[below] {$A'$};
+\draw[ray] (-3,.3)--(-.02263,.3);
+\draw[ray] (-.02263,.3)--(-1.5,-.15);
+\draw[ray] (-3,.3)--(-.00563,-.15);
+\draw[ray] (-.00563,-.15)--(-1.5,-.15);
+\node[below] at (-2,0) {$C$};
+\node[below] at (-1,-.35) {$F$};\node[below right] at (0,0) {$O$};
+\draw[dim] (-3,-.95)--(0,-.95) node[midway,below] {$u$};
+\end{tikzpicture}}
+
+\section{成像变化与可逆性}
+
+\subsection{先规定测量，再决定公式}
+
+单球面折射的 \(n_1/u+n_2/v=(n_2-n_1)/R_s\) 是一阶近轴关系，\(u,v\) 从顶点量取。反向追迹时介质互换，传播方向反转，曲率半径也要重定符号。横向放大率
+\(\beta=-n_1v/(n_2u)\) 中的折射率因子不能遗漏。
+
+对固定元件，把物距微增量记为 \(\dd u\)，固定介质和曲率后，等式右端为常量。
+利用 $\dd(u^{-1})=-u^{-2}\dd u$ 与 $\dd(v^{-1})=-v^{-2}\dd v$，先写成
+\[
+ -\frac{n_1}{u^2}\dd u-\frac{n_2}{v^2}\dd v=0.
+\]
+移项后除以 $\dd u$，得到
+\[
+ \frac{\dd v}{\dd u}=-\frac{n_1v^2}{n_2u^2}.
+\]
+若改用同一条向右坐标轴，实物位置为 \(x=-u\)，实像位置为 \(x'=v\)，则
+\(\dd x'/\dd x=n_1v^2/(n_2u^2)\)。两种导数的符号差来自坐标定义；像速必须先说明所用坐标。
+
+进一步用式\eqref{eq:o2beta}消去距离比，可把同向坐标下的轴向位移放大率写为
+\[
+\frac{\dd x'}{\dd x}=\frac{n_1v^2}{n_2u^2}
+=\frac{n_2}{n_1}\beta^2.
+\]
+它与横向放大率不同：横向量包含正倒号，轴向关系在这里为正，且多出介质因子。若物体以速度 $V$ 沿主轴运动，固定界面的像速为 $V'=(\dd x'/\dd x)V$；改变传播方向或改用镜前实距时，应先重写坐标关系，不能直接搬用导数的正负号。
+
+
+\section{色散与光学模型的适用范围}
+
+\subsection{波长、色散与反射望远镜}
+
+棱镜使不同波长的光沿不同方向传播，是折射率随波长变化的结果。白光分解后，再把各色光适当重合，可以恢复近似白光。这说明白光包含不同波长的成分，并不意味着棱镜为光赋予了原先没有的颜色。
+
+折射成像公式中的 \(n\) 若随波长改变，不同颜色便可能有不同的像距，产生色差。理想镜面反射的几何聚焦关系不含介质折射率，所以反射望远镜可以避免主镜的折射色差；它仍需处理球差、彗差等几何像差，不能把“无折射色差”理解为“没有任何像差”。
+
+\fig{fig:o2review}{反射主镜的轴上近似光路；两条入射光具有同一几何焦点}{
+\begin{tikzpicture}
+\draw[axisline] (-3.5,0)--(.4,0);
+\draw[world] (-.25501,-1.1) arc[start angle=-26.104,end angle=26.104,radius=2.5];
+\draw[ray] (-3.3,.2)--(-.00801,.2);
+\draw[ray] (-.00801,.2)--(-2.4,-.18519);
+\draw[ray] (-3.3,-.2)--(-.00801,-.2);
+\draw[ray] (-.00801,-.2)--(-2.4,.18519);
+\fill (-1.25,0) circle(1.3pt);
+\node[below,yshift=-8pt] at (-1.25,0) {$F$};
+\node[below right] at (0,0) {$O$};
+\node[above] at (-2.4,1.1) {近轴平行光};
+\end{tikzpicture}}
+图\ref{fig:o2review}把反射望远镜的主要聚焦作用简化为凹面主镜。真正的仪器还要通过次镜或其他光学部件把光引到合适的观测位置，这些部件的物像衔接仍可按本讲的逐级成像思路分析。
+
+\subsection{光的微粒图景与波动描述}
+
+把光视为沿轨迹运动的经典微粒，可以用轨迹描述部分几何光学现象，却不能只凭轨迹推出稳定干涉与衍射的强度分布。光电效应中用到的光子能量量子化，也不能等同于经典微粒沿确定轨迹运动的假设。
+
+几何光学用光线研究传播和成像；干涉、衍射、偏振需要波动描述，光电效应则要计算光子的能量交换。处理具体问题时，应先确定所用模型的条件，再把图中的距离、角度或路径写入方程。
+
+三种描述之间需要按所研究的尺度衔接。孔径远大于波长、主要关心像的位置时，光线模型通常有效；需要分辨两个邻近物点或计算小孔的明暗分布时，孔径衍射就成为必要内容；测量金属逸出电子的最大动能时，又应使用单次吸收的光子能量。它们对同一装置所回答的问题不同，不能仅凭一个实验出现粒子或波的特征，就把其他过程的条件一并忽略。

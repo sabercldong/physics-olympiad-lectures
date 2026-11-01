@@ -1,0 +1,11 @@
+\documentclass[11pt,border=4pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=fandol]{ctex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[world](0,0)--(6,0);\draw[world](.2,0)rectangle(1.5,.6);\draw[very thick](5,-.3)--(5,1.1)node[above]{停车线};\draw[dim](1.5,-.5)--(5,-.5)node[midway,below]{$18\,\mathrm m$};\draw[flow](1.6,.6)--(2.8,.6)node[right]{$8\,\mathrm{m/s}$};\end{tikzpicture}
+\end{document}

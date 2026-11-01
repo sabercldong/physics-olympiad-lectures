@@ -1,0 +1,11 @@
+\documentclass[11pt,border=4pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=fandol]{ctex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[flow](0,2.6)--(2,0)node[midway,right]{$\bm w$};\draw[guide](0,2.6)--(0,0);\node at(.3,1.9){$\zeta$};\draw[flow,blue](2,-.7)--(3.5,-.7)node[right]{$\bm u$};\end{tikzpicture}
+\end{document}

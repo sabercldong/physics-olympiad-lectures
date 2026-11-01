@@ -1,0 +1,128 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{k1p9}\textbf{用共线光线写出人的位置与影端位置的比例}\par\nobreak
+以图\ref{k1p9q}光源正下方为原点，人的位置为 $x$，影端位置为 $X$，影长为 $\ell=X-x$。人的身高 $l$、路灯高度 $h$满足 $0<l<h$。由光源、头顶与影端共线形成的相似三角形，
+\[\frac l{X-x}=\frac hX,
+\qquad lX=h(X-x),\qquad (h-l)X=hx.\]
+所以 $X=hx/(h-l)$、$\ell=lx/(h-l)$。对时间求导，题设 $\dot x=v$为常量，得到
+\[\boxed{\dot X=\frac h{h-l}v},\qquad
+\boxed{\dot\ell=\frac l{h-l}v}.\]
+\fig{k1p9s}{路灯与太阳形成的影子：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(6.5,0) (0,0)--(0,3);\draw[world](2,0)--(2,1.5) (2.8,0)--(2.8,1.5);\draw[guide](0,3)--(4,0) (0,3)--(5.6,0);\draw[dim](2,-.5)--(2.8,-.5)node[midway,below]{$\Delta x$};\draw[dim,blue](4,-1.2)--(5.6,-1.2)node[midway,below]{$\Delta X=\dfrac h{h-l}\Delta x$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两次位置并区分点光源与平行光}\par\nobreak
+图\ref{k1p9s}将人的两次位置与两次影端位置对应起来，位移比始终为 $h/(h-l)$，故影端也匀速，且比人走得快。$l\to0$时影端与人的位置合并；$h\downarrow l$时投影退化，影端迅速远离。这些极限分别检查比例的大小及其适用边界。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用平行光几何计算太阳下的影子}\par\nobreak
+太阳光近似平行时，改用图\ref{k1p9sun}中的固定光线倾角 $\gamma$。人的身高不变，而每个影子都满足
+\[\tan\gamma=\frac l\ell,\qquad
+\ell=l\cot\gamma,\qquad X=x+l\cot\gamma.\]
+因此 $\boxed{\dot\ell=0,\ \dot X=v}$。有限高度路灯的投影比例与平行光条件不同，两者应分别从相应几何式求导。
+\fig{k1p9sun}{平行阳光下，身高不变使影长保持不变}{\begin{tikzpicture}
+\draw[world](0,0)--(6.2,0);\draw[world](1.2,0)--(1.2,1.5) (3.4,0)--(3.4,1.5);
+\draw[ray,blue](.7,2)--(2.7,0);\draw[ray,blue](2.9,2)--(4.9,0);
+\draw[dim](1.2,-.5)--(2.7,-.5)node[midway,below]{$\ell$};
+\draw[dim](3.4,-.5)--(4.9,-.5)node[midway,below]{$\ell$};
+\draw(2.2,0)arc(180:135:.5);\node at(2.02,.25){$\gamma$};
+\node[below]at(1.2,0){$x_1$};\node[below]at(3.4,0){$x_2$};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查光线倾角随时间变化时的适用条件}\par\nobreak
+图\ref{k1p9sun}的等影长结论依赖 $\gamma$在行走期间保持不变。若观察时间足够长，需要计入太阳方向的变化，就保留 $\gamma(t)$再求导：
+\[\dot\ell=-l\csc^2\gamma\,\dot\gamma,\qquad
+\dot X=v-l\csc^2\gamma\,\dot\gamma.\]
+太阳升高时 $\dot\gamma>0$，影子缩短；只有忽略这一变化时，才恢复本题影端与人同速的结果。
+
+角速度在此按弧度每时间计，且上述关系仍要求地面水平、身高不变。
+\end{drillsolution}
+
+\begin{drillsolution}{k1p10}\textbf{联立两圆方程后对同一时间求导}\par\nobreak
+取图\ref{k1p10q}中 $O_1=(0,0)$、$O_2=(d,0)$，交点 $P=(x,y)$在上方，所以 $y>0$。两圆方程为
+\[x^2+y^2=R^2,\qquad (x-d)^2+y^2=R^2.\]
+作差得 $2dx=d^2$。在 $0<d<2R$的题设区间内，可以除以 $2d$，再代回第一式，得到
+\[x=\frac d2,\qquad y=\sqrt{R^2-\frac{d^2}4}.\]
+由 $\dot d=v$先得 $v_x=v/2$；对固定左圆的约束求导，则
+\[xv_x+yv_y=0,\qquad
+v_y=-\frac{xv_x}{y}=-\frac{dv}{4y}.\]
+所以两分量为 $\boxed{v_x=v/2,\ v_y=-dv/(4y)}$，合速率应把分量平方后相加：
+\[u_P^2=\frac{v^2}{4}+\frac{d^2v^2}{16y^2}
+ =\frac{v^2(4y^2+d^2)}{16y^2}
+ =\frac{v^2R^2}{4y^2},\qquad
+\boxed{u_P=\frac{|v|R}{\sqrt{4R^2-d^2}}}.\]
+\fig{k1p10s}{交点切向速度与相切前的剩余圆弧}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\draw[guide](0,0)--(.9,1.2)--(.9,0);\node[below]at(.9,0){$d/2$};\node[left]at(0,0){$O_1$};\node[above]at(.9,1.2){$P$};\draw[flow,blue](.9,1.2)--(2.1,.3)node[right]{$\bm v_P$};\node[right]at(.9,.6){$y$};\draw(0,.5)arc(90:53.1301:.5)node[midway,above right]{$\theta$};\draw[red,very thick](.9,1.2)arc(53.1301:0:1.5);\fill(1.5,0)circle(1.2pt)node[below right]{$Q$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用两个圆的相对法向速度核验}\par\nobreak
+图\ref{k1p10s}中 $O_1P$与速度垂直，正是已用的一阶圆约束的几何意义。对右圆则应使用相对速度 $(v_x-v,v_y)$；代入 $(x-d)(v_x-v)+yv_y=0$同样成立。$v>0$时交点向右下运动，$v<0$时方向反转；这些速度属于几何交点，不是某个圆环物质点的速度。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查交点分支的端点与剩余路径}\par\nobreak
+两端还需区别处理：$d=0$时两圆重合，交点不唯一；$d\uparrow2R$时上、下交点合并，根式分支不再光滑。速率发散反映几何位置对参数的敏感，不表示有一个物质点被加速到无限快。
+
+发散也不等于这段路径长度无限。特取 $v>0$，在图\ref{k1p10s}中记 $\theta$为 $O_1P$从竖直方向转过的角，则 $d=2R\sin\theta$、$\dd s=R\dd\theta$。从当前 $P$到相切位置 $Q$的剩余圆弧为
+\[s_{PQ}=\int_\theta^{\pi/2}R\dd\phi
+ =R\left[\frac\pi2-\arcsin\frac d{2R}\right].\]
+当 $d\uparrow2R$时该长度趋零。几何交点可以在有限时间沿有限弧段到达分支终点；此时应结束当前交点模型，不能把发散公式继续延伸到两圆已经分离之后。
+\end{drillsolution}
+
+\begin{drillsolution}{k1p11}\textbf{对斜绳长度求导并保留收绳负号}\par\nobreak
+图\ref{k1p11q}的滑轮固定，斜绳长度记为 $\ell$，收绳使 $\dot\ell=-v$。取水平距离 $x$ 为物体到滑轮正下方的距离，固定高度差为 $H$，则 $\ell=\sqrt{x^2+H^2}$，物体向右速度 $u=-\dot x$。
+\[\dot\ell=\frac1{2\sqrt{x^2+H^2}}\,(2x\dot x)
+ =\frac{x\dot x}{\ell}=-u\cos\alpha=-v,
+ \qquad\boxed{u=\frac v{\cos\alpha}}.\]
+\fig{k1p11s}{斜绳牵引的水平速度：解答过程}{\begin{tikzpicture}\coordinate(B)at(0,0);\draw[guide](B)--(3,2);\draw[flow,blue](B)--(3,0)node[right]{$u$};\draw[flow,red](B)--(2.08,1.39)node[above]{$u\cos\alpha=v$};\draw[guide](3,0)--(2.08,1.39);\node[left]at(B){$B$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用沿绳投影检查速度比与奇异端点}\par\nobreak
+图\ref{k1p11s}把物体速度投影到绳方向，沿绳分量才等于收绳速度，水平速度一般较大。取 $\alpha=0$ 得 $u=v$；当绳接近竖直，几何关系趋于奇异，持续以恒定速度收绳的理想约束不能无条件延续至 $x=0$ 之后。此处求的是速度关系，不表示外力或功率仍然有限。
+
+在一小段时间内物体向右移动 $u\dd t$，它沿当前绳向的投影才是斜段缩短的一阶量 $u\cos\alpha\dd t$。垂直绳向的位移只在更高阶影响长度，因此不能把物体沿水平移动的全部长度都算作收绳量。所得关系还说明 $u\ge v$，等号仅在绳水平时成立，这与图中的投影长度关系完全一致。\end{drillsolution}
+
+\begin{drillsolution}{k1p12}\textbf{同时对分量和转动基矢求导}\par\nobreak
+图\ref{k1p12q}的基矢随质点方位转动，不能当作常矢量。由 $\bm e_\rho=(\cos\theta,\sin\theta)$、$\bm e_\theta=(-\sin\theta,\cos\theta)$，逐分量求导得 $\dot{\bm e}_\rho=\omega\bm e_\theta$、$\dot{\bm e}_\theta=-\omega\bm e_\rho$。因此
+\[\begin{aligned}\bm a&=\dot v_\rho\bm e_\rho+v_\rho\omega\bm e_\theta+(\dot\rho\omega+\rho\dot\omega)\bm e_\theta-\rho\omega^2\bm e_\rho\\&=\boxed{(\ddot\rho-\rho\omega^2)\bm e_\rho+(2\dot\rho\omega+\rho\dot\omega)\bm e_\theta}.\end{aligned}\]
+\fig{k1p12s}{极坐标速度的矢量求导：解答过程}{\begin{tikzpicture}\draw[axis](-1.8,0)--(3.1,0)node[right]{$\bm e_\rho$};\draw[axis](0,0)--(0,2)node[above]{$\bm e_\theta$};\node[below left]at(0,0){$P$};\draw[flow,red](0,0)--(-1.4,0)node[midway,above]{$-\rho\omega^2$};\draw[flow,green!50!black](0,0)--(1.5,0)node[midway,below]{$\ddot\rho$};\draw[flow,blue](.15,0)--(.15,1.4)node[right]{$2\dot\rho\omega+\rho\dot\omega$};\node at(.7,-.8){各项方向按其符号确定};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{辨认横向两项来源并检查圆周退化情形}\par\nobreak
+图\ref{k1p12s}标出横向分量中的两项：一项由径向速度的方向转动产生，另一项来自 $\rho\omega$ 的大小变化；其中又有一个 $\dot\rho\omega$，故总系数为2。若 $\rho=R$ 恒定，便得到 $a_\rho=-R\omega^2$、$a_\theta=R\dot\omega$；若 $\omega=0$，则恢复沿固定射线的直线运动。
+
+径向项中 $\ddot\rho$表示径向分速度大小的变化，$-\rho\omega^2$则由横向速度方向转动产生；它们可能抵消。横向项也不等于一般轨迹的切向加速度，因为 $\bm e_\theta$未必沿实际速度。先在图中辨认径向、横向，再与第五讲的切向、法向比较，可避免把两套基矢中的同名“分量”混用。
+
+% thirty-k1-straightpolar
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用匀速直线运动独立核验各项抵消}\par\nobreak
+一个重要检验是：物体沿不经过极点的直线匀速运动时，极坐标基矢仍会转动，但总加速度必须为零。取
+$P=(a,ut)$，其中 $a,u>0$，则
+\[\rho=\sqrt{a^2+u^2t^2},\qquad
+\theta=\arctan\frac{ut}{a}.\]
+由根式与反正切的导数，依次得到
+\[\dot\rho=\frac{u^2t}{\rho},\qquad
+\ddot\rho=\frac{u^2}{\rho}-\frac{u^4t^2}{\rho^3}
+ =\frac{a^2u^2}{\rho^3},\]
+反正切的内层为 $ut/a$，所以 $\dot\theta=[1+(ut/a)^2]^{-1}(u/a)=au/(a^2+u^2t^2)$。用 $\rho^2=a^2+u^2t^2$ 并再按链式法则求导，得到
+\[\omega=\frac{au}{\rho^2},\qquad
+\dot\omega=-\frac{2au\dot\rho}{\rho^3}
+ =-\frac{2au^3t}{\rho^4}.\]
+把它们逐项代入所证的公式：
+\begin{align*}
+a_\rho&=\frac{a^2u^2}{\rho^3}
+ -\rho\frac{a^2u^2}{\rho^4}=0,\\
+a_\theta&=2\frac{u^2t}{\rho}\frac{au}{\rho^2}
+ -\rho\frac{2au^3t}{\rho^4}=0.
+\end{align*}
+\fig{k1p12straight}{沿直线匀速运动时，径向和横向的各项分别抵消}{\begin{tikzpicture}
+\draw[axis](0,0)--(3.6,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{$y$};
+\draw[world](1.4,-.25)--(1.4,2.7);\coordinate(P)at(1.4,1.7);
+\draw[guide](0,0)--(P)node[midway,above left]{$\rho$};
+\draw[flow,blue](P)--++(0,.85)node[above,xshift=5pt,yshift=4pt]{$\bm v=(0,u)$};
+\draw[flow,red](P)--++(.6,.7286)node[right]{$\bm e_\rho$};
+\fill(P)circle(1.4pt)node[below right]{$P$};\node[below]at(1.4,0){$a$};\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+图\ref{k1p12straight}中 $\rho$和 $\theta$都在改变，却没有真实加速度。这说明公式中出现 $-\rho\omega^2$，并不等于物体一定存在非零的向心加速度；必须先把同一基矢上的全部项合并。只有固定半径的圆周运动，径向基矢才恰好就是外法向。
+\end{drillsolution}

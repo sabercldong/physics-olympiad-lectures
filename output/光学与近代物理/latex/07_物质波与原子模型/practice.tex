@@ -1,0 +1,69 @@
+\section{练习}
+
+\begin{question}
+\begin{drill}[同一加速电压下的两种物质波]\label{d:71}
+电子和质子均从静止出发，经同一 \(100\,\mathrm V\) 电势差加速，分别忽略辐射损失，均可用非相对论近似。已知电子波长为 \(0.123\,\mathrm{nm}\)，\(m_p/m_e=1836\)。求两者的动能关系、动量比和质子波长。
+\end{drill}
+\fig{fig:d71q}{两次独立实验分别选取电极极性，使电子和质子均获得动能 $eU$}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,-.5)--(0,.5) (4,-.5)--(4,.5);
+\node[above]at(0,.5){$0$};\node[above]at(4,.5){$+U$};
+\draw[axis,thick](.5,0)--(3.5,0)node[midway,above]{$e^-$};
+\node[left]at(-.5,0){电子实验};
+\end{scope}
+\begin{scope}[yshift=-2.2cm]
+\draw[world](0,-.5)--(0,.5) (4,-.5)--(4,.5);
+\node[above]at(0,.5){$+U$};\node[above]at(4,.5){$0$};
+\draw[axis,thick](.5,0)--(3.5,0)node[midway,above]{$p^+$};
+\node[left]at(-.5,0){质子实验};
+\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[光子吸收、电离与碰撞激发]\label{d:72}
+氢原子初始在 \(n=2\)，能级 \(E_n=-13.6/n^2\,\mathrm{eV}\)。忽略线宽和原子反冲。（1）能量 \(2.00\,\mathrm{eV}\) 的单个光子能否被吸收而使它进入某一更高束缚能级？（2）能量 \(4.00\,\mathrm{eV}\) 的光子能否电离它，光电子动能多少？（3）若用动能 \(2.00\,\mathrm{eV}\) 的电子碰撞，是否在能量上允许激发到 \(n=3\)？
+\end{drill}
+\fig{fig:d72q}{练习：光子吸收、电离与碰撞激发}{
+\begin{tikzpicture}
+\foreach \y/\lab in {0/{n=2},1.889/{n=3},2.55/{n=4},3.4/{E=0}}{
+\draw[world](0,\y)--(5,\y);\node[left]at(0,\y){$\lab$};}
+\draw[axis](1,0)--(1,2);\node[right,fill=white,inner sep=1pt]at(1.1,.9){$2.00\,\mathrm{eV}$};
+\draw[axis](3,0)--(3,4)node[right]{$4.00\,\mathrm{eV}$};
+\node[above]at(2.5,4.4){光子能量与能级间隔须分别比较};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[氢同位素的谱线位置]\label{d:73}
+两种类氢原子核电荷相同，核质量分别为 \(M\) 与 \(2M\)，且 \(M=1836m_e\)。比较相同量子数跃迁的波长，求 \((\lambda_M-\lambda_{2M})/\lambda_M\)。只保留玻尔模型的约化质量修正，忽略原子整体反冲。
+\end{drill}
+\fig{fig:d73q}{两列只标记同一对量子数，竖直间距不作实际能量比较}{
+\begin{tikzpicture}
+\node at(0,1){核质量 \(M\)};\node at(4,1){核质量 \(2M\)};
+\foreach \x in {0,4}{
+\draw[world](\x-1,0)--(\x+1,0) (\x-1,-1.5)--(\x+1,-1.5);
+\draw[axis](\x,0)--(\x,-1.5);}
+\node[below]at(0,-1.8){同一 \(i\to j\)};\node[below]at(4,-1.8){同一 \(i\to j\)};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[等质量碰撞的可用内部能量]\label{d:74}
+质子以动能 \(30.0\,\mathrm{eV}\) 撞击静止基态氢原子。两者质量均近似为 \(M\)，用非相对论模型，忽略激发造成的相对静质量变化。求质心系相对运动动能，判断在能量上能否激发到 \(n=3\)，并求相应实验室最小入射动能。取氢能级 \(E_n=-13.6/n^2\,\mathrm{eV}\)。
+\end{drill}
+\fig{fig:d74q}{练习：等质量碰撞的可用内部能量}{
+\begin{tikzpicture}
+\draw[axisline](-1,0)--(6,0);
+\fill(0,0)circle(2pt)node[below]{质子 \(M\)};
+\fill(4,0)circle(2pt)node[below]{氢原子 \(M\)};
+\draw[axis](.4,.6)--(2.4,.6)node[midway,above]{$K=30.0\,\mathrm{eV}$};
+\node[above]at(4,.3){静止};
+\end{tikzpicture}}
+\end{question}
+

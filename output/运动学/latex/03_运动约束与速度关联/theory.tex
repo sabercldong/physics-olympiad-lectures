@@ -1,0 +1,285 @@
+\section{从几何关系建立运动约束}
+\subsection{独立坐标与自由度}
+运动约束把原本可以独立变化的坐标联系起来。一个平面质点通常需要两个坐标；若它始终沿给定直线运动，只需一个坐标。刚性细杆的两个端点不能各自任意移动，因为端点间距离固定。判断自由度时，应先列坐标，再列彼此独立的约束；重复写出同一几何关系不会额外减少自由度。
+
+例如长为 $L$ 的杆两端分别沿水平、竖直导轨运动，若端点到交点的距离为 $x,y>0$，就有 $x^2+y^2=L^2$。一个坐标确定后，另一个坐标在给定象限内随之确定。直接求导得 $x\dot x+y\dot y=0$，说明两端沿杆方向的速度投影相同。式中 $\dot x,\dot y$ 带正负，不能把所有速率都当正数代入。
+\fig{k3t-rod}{定长约束先确定位置，再联系速度}{\begin{tikzpicture}\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[axis](0,0)--(0,3.2)node[above]{$y$};\draw[world](0,2.5)node[left]{$A$}--(3.3,0)node[below]{$B$}node[midway,above right]{$L$};\draw[flow,blue](0,2.5)--(0,1.5)node[left]{$\dot y<0$};\draw[flow,red](3.3,0)--(4.3,0)node[above]{$\dot x>0$};\end{tikzpicture}}
+
+图\ref{k3t-rod}的杆长在任意时刻不变，所以端点坐标先满足平方和条件。对同一时间求导后，两个速度项分别乘以各自位置坐标；图中哪一段接近零，会直接决定分式速度关系的适用范围，不能略去该几何边界。
+
+
+设某机构用坐标 $q_1,q_2$描述，约束为 $F(q_1,q_2,t)=0$。微分给出 $F_{q_1}\dot q_1+F_{q_2}\dot q_2=-F_t$。若给定 $\dot q_1$，一般可由它解出 $\dot q_2$；但当 $F_{q_2}=0$时，这一消元方式失效。应回到未相除的方程，判断它是没有有限解，还是不能由当前条件唯一确定，而不能统一说“速度无穷大”。机构死点和相切位置常使这类退化出现。
+
+
+\subsection{绳长方程中的每一段}
+轻绳不可伸长且始终绷紧时，各活动直线段与包绕弧段之和恒定。固定半径滑轮的包绕角若不变，弧长可并入常量；若切点和包角随运动改变，就不能未经说明删去弧长。理想点滑轮模型把滑轮尺寸忽略，绳长可直接写成若干点间距离之和。
+
+设滑轮两侧绳段的单位方向从活动端指向固定端，活动端速度在各绳段上的投影才是该段缩短率。沿绳拖动的速度、物体对地速率和物体沿轨道的速度通常不同。先标方向再求导，既能处理斜绳，也能处理活动滑轮；“一动二倍”只适用于两段都平行且同向改变长度的特定结构。
+
+\input{knowledge-moving-pulley}
+
+\subsection{活动滑轮的平均关系}
+滑轮中心和两侧绳端都沿竖直方向运动时，可在同一向上坐标轴上分别记为 $y_P,y_1,y_2$。若两侧绳段竖直、包绕弧长恒定，绳长为 $(y_P-y_1)+(y_P-y_2)+C$。因此 $2y_P-y_1-y_2$为常量；选同一初始构形计位移，便有 $\Delta y_P=(\Delta y_1+\Delta y_2)/2$。
+\fig{k3t-pulleymean}{两侧绳端与滑轮中心的竖直坐标}{\begin{tikzpicture}\draw[world](0,1.8)circle(.45);\draw[very thick](-.45,-.5)--(-.45,1.8)arc(180:0:.45)--(.45,-.9);\fill(0,1.8)circle(1.4pt)node[right]{$P$};\node[draw]at(-.45,-.7){$1$};\node[draw]at(.45,-1.1){$2$};\draw[axis](2,-1.2)--(2,2.6)node[above]{$y$};\draw[guide](0,1.8)--(2,1.8) (-.45,-.5)--(2,-.5) (.45,-.9)--(2,-.9);\node[right]at(2,1.8){$y_P$};\node[right]at(2,-.5){$y_1$};\node[right]at(2,-.9){$y_2$};\end{tikzpicture}}
+对时间逐次求导，得 $v_P=(v_1+v_2)/2$、$a_P=(a_1+a_2)/2$。图\ref{k3t-pulleymean}中的三个量均以同一竖直正向计，某端下降时对应速度为负。若滑轮中心固定，两端速度大小相等方向相反；若一端固定，另一端位移是滑轮中心位移的两倍。只有保持两段平行且包角不变，这个固定平均关系才可直接用于位移、速度与加速度；斜绳必须恢复完整的长度方程。
+
+\subsection{接触约束只先限制法向运动}
+物体保持接触时，在接触点处两者的相对法向速度为零。光滑接触允许切向滑动，因此一个光滑接触通常只给一个标量方程。若额外要求无滑动，才把切向相对速度也置零。两个接触点同时无滑动是否可能，还须检查方程有无共同解，不能把所有接触一概当成无滑动。
+
+\fig{k3deep:contact}{接触法向速度相同，切向相对运动仍可存在}{\begin{tikzpicture}
+\draw[world](0,3)--(5,.5);\draw[guide](2,.2)--(2,3.8);
+\fill(2,2)circle(1.5pt)node[below left]{$P=M$};
+\draw[flow,blue](2,2)--(3.3,2)node[right]{$\bm v_M=(U,0)$};
+\draw[flow,red](2,2)--(2,2.65)node[above left]{$\bm v_P=(0,U\tan\theta)$};
+\draw[flow](4.5,.75)--(5,1.75)node[right]{$\bm n$};
+\draw[flow,green!50!black](3.3,2)--(2,2.65)node[midway,above,sloped]{$\bm v_P-\bm v_M$};
+\draw[guide](0,0)--(5,0);\node at(4.1,.35){$\theta$};
+\node[below]at(2,-.4){$P$：竖直导杆端点；$M$：此刻接触的斜面材料点};
+\end{tikzpicture}}
+图\ref{k3deep:contact}取向右匀速平移的斜面与只能竖直运动的导杆。法向单位矢量为 $\bm n=(\sin\theta,\cos\theta)$。保持接触要求
+\[(\bm v_P-\bm v_M)\cdot\bm n=0
+\quad\Longrightarrow\quad v_P\cos\theta=U\sin\theta.
+\]
+故杆端向上速度为 $U\tan\theta$。绿色速度差沿斜面切线，表示杆端正相对斜面滑动；它并未破坏接触。图中 $P,M$ 只在这一瞬间重合，下一瞬间与杆端接触的是另一个材料点。
+
+曲面与细杆的交点可能沿着杆改变身份。求这个几何点的速度，应对交点坐标求导；求杆上某个物质点的速度，应使用刚体运动关系。两者有同一瞬时位置，不意味着下一瞬间仍是同一个点。这一区分贯穿交叉杆、光斑、轮廓接触和绳切点等模型。
+
+\subsection{几何交点的速度由两条曲线共同决定}
+两条平移直线可写成 $a_1x+b_1y=c_1(t)$、$a_2x+b_2y=c_2(t)$。交点速度满足
+\[a_1\dot x+b_1\dot y=\dot c_1,\qquad
+a_2\dot x+b_2\dot y=\dot c_2.\]
+若行列式 $D=a_1b_2-a_2b_1\ne0$，则
+\[\dot x=\frac{\dot c_1b_2-\dot c_2b_1}{D},\qquad
+\dot y=\frac{a_1\dot c_2-a_2\dot c_1}{D}.\]
+直线越接近平行，$D$越小，交点可以移动得很快。这并不说明两根杆上的物质点也在同样高速移动，而是说明两条近乎平行的几何条件对交点位置非常敏感。若 $D=0$，可能没有交点，也可能整条重合，不能继续使用除以 $D$的公式。
+
+图\ref{k3k-intersection}中，一条直线仅作小幅竖直平移，交点沿另一条固定直线便发生较大移动。应先确定追踪的是 $P$还是杆上的标记点，再选择交点坐标微分或刚体速度公式。用错身份往往比代数求导更难发现。
+\fig{k3k-intersection}{近乎平行的两条线使交点对平移敏感}{\begin{tikzpicture}
+\draw[world](0,0)--(5,1.5);
+\draw[blue,world](0,.6)--(5,1.1);\draw[red,world](0,1)--(5,1.5);
+\fill(3,.9)circle(1.5pt)node[below]{$P_1$};\fill(5,1.5)circle(1.5pt)node[above]{$P_2$};
+\draw[flow](.4,.64)--(.4,1.04)node[left]{$\Delta y$};
+\draw[flow](3.3,.75)--(4.5,1.11)node[midway,below]{$\Delta\bm r_P$};
+\end{tikzpicture}}
+
+
+\subsection{弹性连接与刚性连接的差别}
+不可伸长绳和刚杆把几何长度固定，弹簧或弹性绳则允许长度改变。弹簧伸长量连续并不表示其两端速度相等，后者之差沿弹簧方向的投影正是伸长速率。常用理想线性弹簧满足 $F=k\Delta l$，若位置没有瞬间跃变，形变量与弹力也不会仅因外部连接改变而立刻跳到新的平衡值；但随后加速度可以立即改变。
+
+\fig{k3deep:spring}{弹簧形变量与形变速率是不同的物理量}{\begin{tikzpicture}
+\draw[world](0,1)--(.5,1)--(.7,1.3)--(1.1,.7)--(1.5,1.3)--(1.9,.7)--(2.3,1.3)--(2.7,.7)--(2.9,1)--(3.4,1);
+\fill(0,1)circle(1.5pt)node[left]{$A$};\fill(3.4,1)circle(1.5pt)node[right]{$B$};
+\draw[flow,blue](0,1.8)--(.8,1.8)node[above]{$v_A$};\draw[flow,blue](3.4,1.8)--(4.8,1.8)node[above]{$v_B$};
+\draw[dim](0,.1)--(3.4,.1)node[midway,below]{$\ell=x_B-x_A$};
+\begin{scope}[xshift=6.2cm]
+\draw[axis](0,0)--(3.3,0)node[right]{$t$};\draw[axis](0,0)--(0,2.4)node[above]{$\ell$};
+\draw[world](0,.7)--(1.4,.7);\draw[blue,world]plot[domain=1.4:3,samples=40](\x,{.7+.4*(\x-1.4)^2});\draw[guide](1.4,0)--(1.4,.7);\node[below]at(1.4,0){$t_0$};\node[above]at(1.6,2){长度与斜率连续};
+\end{scope}
+\end{tikzpicture}}
+在图\ref{k3deep:spring}的共线情形，$\dot\ell=v_B-v_A$。同一个瞬时长度可以对应不同的伸长速率，因此单靠 $F=k(\ell-\ell_0)$ 不能推出两端同速。右图示意在 $t_0$ 解除其他连接且没有冲量时，长度与长度变化率均连续，而加速度可以立即改变；曲线从水平直线平滑接入弯曲部分。只含形变量的弹簧力在这一瞬间仍由原有长度决定。对刚杆或绷紧的不可伸长绳，才额外要求 $\dot\ell=0$。
+
+这一判断依赖弹簧模型的适用条件。真实弹簧有质量，形变扰动传播需要时间；若另加黏性阻尼，力也可能含相对速度项。运动学分析应先识别哪些量被几何约束固定，哪些量需要由动力学决定，不能把“弹性连接”也当作定长连接。
+
+\subsection{比例关系必须在全程成立}
+若两个坐标始终满足 $x_2=kx_1+C$，且 $k,C$恒定，对时间求导便有 $v_2=kv_1$、$a_2=ka_1$。这适用于由相似形或固定传动比产生的等比例运动。但某一瞬间恰有 $x_2=kx_1$，不足以推出速度也成比例；两个函数在一个点相交，不代表斜率相同。
+
+若比例系数随时间变化，正确关系为 $v_2=kv_1+\dot kx_1$，加速度还含 $2\dot kv_1+\ddot kx_1$。多组铰接菱形的水平投影有共同的 $\cos\theta$因子，比例系数为固定边长比，因此可以直接比较水平速度；上顶点另有竖直分量，不能把水平比例扩展为总速率比例。
+
+\section{投影法与微分法的联系}
+\subsection{定长杆两端的沿杆投影}
+令杆端相对位矢为 $\bm r_{B/A}=L\bm e$，对 $\bm r_{B/A}^2=L^2$ 求导，得 $(\bm v_B-\bm v_A)\cdot\bm e=0$。因此杆两端沿杆的速度投影相等，垂直杆的相对速度则对应杆的转动。图\ref{k3t-proj}中的两条蓝色投影长度相同，是约束方程的几何表示，而非速度矢量相同。
+\fig{k3t-proj}{相等的是沿杆分量}{\begin{tikzpicture}\coordinate(A)at(0,0);\coordinate(B)at(4,1.6);\draw[world](A)--(B);\node[below]at(A){$A$};\node[above]at(B){$B$};\draw[flow,blue](A)--(1.2,.48)node[midway,below]{$v_{A\parallel}$};\draw[flow,blue](B)--(5.2,2.08)node[midway,above]{$v_{B\parallel}$};\draw[flow](A)--(.8,1.48)node[above]{$\bm v_A$};\draw[flow](B)--(5.6,1.08)node[right]{$\bm v_B$};\end{tikzpicture}}
+
+这一投影关系只直接限制速度。求加速度时，还须计入杆方向的改变，下面从相对位矢继续求导。
+
+\subsection{参数选择与奇异位置}
+选择一个角作参数，常比同时处理多个坐标简洁。例如 $x=L\sin\theta,y=L\cos\theta$，先求 $\dot\theta$，再代回各点坐标导数，就能得到杆上任一点的速度。应保留角度所在区间；同一个三角函数值可能对应不同运动分支。
+
+当分母出现 $\sin\theta$ 或 $\cos\theta$，须单独检查它趋零的构形。有的速度发散只是几何交点的放大效应；若求的是有质量的真实物体，则通常意味着保持给定驱动速度需要越来越大的作用，理想运动难以持续至奇异点。推导没有授权在分母为零处直接使用公式。
+
+\subsection{刚杆二阶约束中的速度平方项}
+图\ref{k3t-rod-coach}中，定长杆 $AB$的单位方向为 $\bm e$，相对速度 $\bm u=\bm v_B-\bm v_A$必垂直杆。由 $(\bm r_B-\bm r_A)^2=l^2$先求一次导数，再求一次导数，分别得到
+\[(\bm r_B-\bm r_A)\cdot\bm u=0,\qquad
+u^2+(\bm r_B-\bm r_A)\cdot(\bm a_B-\bm a_A)=0.\]
+所以 $(\bm a_B-\bm a_A)\cdot\bm e=-u^2/l$。速度的沿杆投影相等，加速度的沿杆投影却通常不相等。第二式中的 $u^2$正来自连线方向正在转动；把第一式中的速度简单替换成加速度，会漏掉这个项。
+\fig{k3t-rod-coach}{定长杆的相对速度垂直杆，相对加速度具有沿杆内向分量}{\begin{tikzpicture}
+\coordinate(A)at(0,0);\coordinate(B)at(3.4,1.7);
+\draw[very thick](A)--(B)node[midway,below right]{$l$};
+\fill(A)circle(1.5pt)node[below left]{$A$};\fill(B)circle(1.5pt)node[right]{$B$};
+\draw[flow,blue](B)--(2.7,3.1)node[above]{$\bm u$};
+\draw[flow,red](B)--(2.1,1.05)node[midway,below=4pt,sloped]{$-u^2\bm e/l$};
+\draw[flow](.5,-.4)--(1.7,.2)node[midway,below]{$\bm e$};
+\end{tikzpicture}}
+若杆的有符号角速度为 $\omega$，则 $u=l|\omega|$，沿杆相对加速度为 $-l\omega^2$。还可能有角加速度产生的垂杆分量，二者共同构成完整相对加速度。本讲用这一式检查二阶导数，第五讲再把它写成刚体加速度的统一形式；两种方法描述的是同一个几何事实。
+
+\subsection{匀速驱动下的滑杆加速度}
+对长为 $L$、两端沿互相垂直轨道运动的滑杆，取两端到轨道交点的距离为 $x,y>0$。位置约束是 $x^2+y^2=L^2$。若水平端匀速远离交点，$\dot x=u>0$、$\ddot x=0$，由一阶约束有 $\dot y=-xu/y$。将这组分量代入前面已推得的刚杆二阶约束，得到
+\[y\ddot y=-(u^2+\dot y^2)
+ =-u^2\left(1+\frac{x^2}{y^2}\right)
+ =-\frac{u^2L^2}{y^2},\qquad
+\ddot y=-\frac{u^2L^2}{y^3}.\]
+竖直端向下的加速度大小随 $y$变小而增大。这不是外加了一个新的力学条件，而是水平匀速驱动与刚杆约束共同要求的运动学结果。在接近水平的死点，理想模型的发散也表明有限驱动能力不能使该运动规律无限持续。
+
+
+\subsection{两端距离导数的一般写法}
+对任意两点 $A,B$，令 $\bm R=\bm r_B-\bm r_A$、$\ell=|\bm R|$、$\bm e=\bm R/\ell$。由 $\ell^2=\bm R\cdot\bm R$，得 $\dot\ell=\bm e\cdot(\bm v_B-\bm v_A)$。这统一了定长杆、斜绳和最近距离的投影：定长时导数为零，绳段增长时导数为正，最近距离内部驻点也要求该点积为零。
+
+\fig{k3deep:length}{距离变化由相对速度沿连线的分量决定}{\begin{tikzpicture}
+\coordinate(A)at(0,0);\coordinate(B)at(3.3,0);\coordinate(C)at(4.1,1.3);
+\draw[world](A)--(B)node[midway,below]{$\ell$};\draw[guide](A)--(C)node[midway,above,sloped]{$\ell+\Delta\ell$};
+\fill(A)circle(1.4pt)node[left]{$A$};\fill(B)circle(1.4pt)node[below]{$B$};\fill(C)circle(1.4pt)node[above]{$B'$};
+\draw[flow,blue](B)--(C)node[midway,right]{$\bm u\Delta t$};\draw[guide](C)--(4.1,0);
+\draw[dim](3.3,-.55)--(4.1,-.55)node[midway,below]{$u_\parallel\Delta t$};
+\node at(2,2.2){在随 $A$ 平动的坐标中比较相邻构形};
+\end{tikzpicture}}
+图\ref{k3deep:length}将相对位移分为沿连线和垂直连线两部分。由三角形
+\[\ell(t+\Delta t)^2=\ell^2+2\ell u_\parallel\Delta t+O(\Delta t^2)
+\]
+的一阶项可读出 $\dot\ell=u_\parallel$；横向移动不直接进入一阶长度变化，却会转动连线方向。求二阶关系时不能冻结这条连线，横向速度的贡献必须保留。
+
+记相对速度为 $\bm u=\bm v_B-\bm v_A$。先对连线单位矢量使用商法则，再对 $\dot\ell=\bm e\cdot\bm u$使用乘积法则：
+\begin{align*}
+ \dot{\bm e}&=\frac{\dot{\bm R}}\ell-\frac{\bm R\dot\ell}{\ell^2}
+ =\frac{\bm u-\bm e\dot\ell}{\ell},\\
+ \ddot\ell&=\dot{\bm e}\cdot\bm u+\bm e\cdot\dot{\bm u}
+ =\frac{|\bm u|^2-\dot\ell^2}{\ell}
+   +\bm e\cdot(\bm a_B-\bm a_A).
+\end{align*}
+其中用了 $\bm e\cdot\bm u=\dot\ell$，故 $|\bm u|^2-\dot\ell^2$是垂直连线的相对速度分量的平方。令 $\dot\ell=\ddot\ell=0$便恢复刚杆结果；长度可变时，这个更一般的式子还能区分伸缩与转向各自对距离加速度的贡献。公式需 $\ell>0$，两点重合时应回到具体坐标分析。
+
+\section{滚动与连续形变}
+\subsection{圆轮滚动应在同一参考系中计角}
+圆轮与固定表面无滑动时，接触处轮上物质点的瞬时速度为零。平地滚动给出圆心速度与自转角速度的关系，但绕另一圆滚动时，圆心方向也在改变，不能仅按接触弧长比认定轮上标记相对地面的转角。
+
+取逆时针为正，以 $\Omega$表示小圆圆心绕大圆圆心的公转角速度，$\omega$表示小圆相对地面的自转角速度。半径 $r$的小圆沿固定半径 $R$的大圆外侧滚动时，中心轨道半径为 $R+r$。接触点相对小圆心的位矢为 $-r\bm e_r$，沿公转切向的速度条件为
+\[
+ (R+r)\Omega-r\omega=0,\qquad \omega=\frac{R+r}{r}\Omega.
+\]
+在大圆内侧滚动时，要求 $R>r$，中心轨道半径为 $R-r$，接触位矢改为 $+r\bm e_r$，因而
+\[
+ (R-r)\Omega+r\omega=0,\qquad \omega=-\frac{R-r}{r}\Omega.
+\]
+外滚时自转与公转同向，内滚时反向。这些都是对地角速度；相对连心线的姿态角变化率还要取 $\omega-\Omega$。只有半径恒定且全程无滑动，才能把瞬时关系积分为固定转角比。
+
+\subsection{对滚动角度作一周累积}
+设圆心逆时针公转一周，累积公转角 $\Delta\theta=2\pi$。将前面的有符号滚动关系积分，外滚得到 $\Delta\phi=(R+r)\Delta\theta/r$，对地自转圈数为 $R/r+1$；内滚得到 $\Delta\phi=-(R-r)\Delta\theta/r$，对地自转圈数为 $-(R/r-1)$。负号记录内滚自转的反向，不能在累积之前只取角速度大小。
+
+若要观察轮上标记相对连心线的转动，应计算 $\Delta\phi-\Delta\theta$。外滚时它等于 $2\pi R/r$，内滚时等于 $-2\pi R/r$。这样，对地圈数中外滚的“多一圈”和内滚的“少一圈”都有了明确的参照解释，而不必重新计算接触速度。
+
+\fig{k3k-orbit}{内外滚动必须把圆心平动与接触点相对圆心的速度相加}{\begin{tikzpicture}
+\begin{scope}
+\draw[world](0,0)circle(1.2);\draw[guide](0,0)circle(1.65);\draw[blue,world](1.65,0)circle(.45);
+\fill(1.2,0)circle(1.4pt)node[below left]{$C$};\fill(1.65,0)circle(1pt)node[below right]{$P$};
+\draw[flow,blue](1.65,0)--(1.65,1.3)node[right]{$v_P$};\draw[flow,red](1.2,0)--(1.2,-1.3)node[left]{$v_{C/P}$};
+\draw[dim](0,-1.8)--(1.65,-1.8)node[midway,below]{$R+r$};\node at(.5,2.2){外滚：两项相消};
+\end{scope}
+\begin{scope}[xshift=6.1cm]
+\draw[world](0,0)circle(1.65);\draw[guide](0,0)circle(1.2);\draw[blue,world](1.2,0)circle(.45);
+\fill(1.65,0)circle(1.4pt)node[below right]{$C$};\fill(1.2,0)circle(1pt)node[below left]{$P$};
+\draw[flow,blue](1.2,0)--(1.2,1.3)node[left]{$v_P$};\draw[flow,red](1.65,0)--(1.65,-1.3)node[right]{$v_{C/P}$};
+\draw[dim](0,-2)--(1.2,-2)node[midway,below]{$R-r$};\node at(.3,2.2){内滚：自转方向反转};
+\end{scope}
+\end{tikzpicture}}
+图\ref{k3k-orbit}中蓝圆与黑圆的接触处速度条件相同，改变的是圆心位置与两转动的方向。若大圆也转动，应把其接触点对地速度保留在方程一侧，不能仍令接触点对地速度为零。
+
+
+\subsection{多重滚动先联立接触速度}
+夹在两个同心圆环之间的滚子通常同时自转和公转。
+设内、外环接触半径分别为 $R_i,R_o$，滚子半径为
+$r=(R_o-R_i)/2$，滚子圆心 $C$ 绕共同圆心 $O$ 运动，
+$OC=R_c=(R_i+R_o)/2$。各角速度都相对地面测量，以逆时针为正。
+
+\fig{k3:double-contact}{在同一瞬时位置比较两个接触点速度：内侧自转速度与圆心速度相减，外侧相加}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.5);\draw[world](0,0)circle(3.3);
+\draw[blue,thick](2.4,0)circle(.9);
+\draw[guide](0,0)--(3.3,0);
+\fill(0,0)circle(2pt)node[below left]{$O$};
+\fill(1.5,0)circle(2pt)node[below left]{$A$};
+\fill(2.4,0)circle(2pt)node[below]{$C$};
+\fill(3.3,0)circle(2pt)node[below right]{$B$};
+\draw[flow,blue](2.4,0)--(2.4,1.5)node[above]{$V_C$};
+\draw[flow](1.5,0)--(1.5,1.1)node[above left]{$R_i\omega_i$};
+\draw[flow](3.3,0)--(3.3,1.8)node[above right]{$R_o\omega_o$};
+\draw[flow](2.95,0)arc(0:140:.55);\node at(2.35,-.6){$\omega_s$};
+\node at(2.85,-.22){$r$};
+\node at(-1.05,.65){$R_i$};\node at(-2.2,1.35){$R_o$};
+\end{tikzpicture}}
+
+图\ref{k3:double-contact}将 $C$ 放在 $O$ 的右侧，切向正向就是向上。
+滚子逆时针自转时，内接触点 $A$ 相对 $C$ 向下，外接触点 $B$ 相对 $C$ 向上。
+无滑动要求每个接触处的两个物体具有相同速度，因此分别有
+\[
+ V_C-r\omega_s=R_i\omega_i,\qquad
+ V_C+r\omega_s=R_o\omega_o.
+\]
+这里相等的是两个接触点各自的速度，不能令它们都等于圆心速度。
+两式相加消去自转，相减消去平动，得到
+\[
+ V_C=\frac{R_i\omega_i+R_o\omega_o}{2},\qquad
+ \omega_s=\frac{R_o\omega_o-R_i\omega_i}{2r},\qquad
+ \Omega_C=\frac{V_C}{R_c}.
+\]
+例如内环固定时，代入 $\omega_i=0$ 就能同时求出滚子的自转与公转；
+若计算给出负值，表示对应转动与约定正向相反，不应先把各角速度都取绝对值。
+经过一段时间后，相对地面的自转圈数是
+$\int\omega_s\dd t/(2\pi)$，圆心公转圈数是
+$\int\Omega_C\dd t/(2\pi)$；相对随圆心转动的径向方向，姿态变化则为
+$\int(\omega_s-\Omega_C)\dd t$。题目中的“转几圈”必须先明确是哪一个量。
+
+\subsection{连续形变要追踪材料位置}
+一根左端固定、长度为 $L(t)$的均匀伸长细线，可用材料分数 $z\in[0,1]$标记同一小段的位置。没有沿线爬行时，材料点对地坐标是 $x=zL(t)$，故其速度为 $z\dot L$。不同位置的材料速度不同；将自由端速度当作整根线的平移速度，会使固定端也被错误地带动。
+
+\fig{k3deep:material}{均匀伸长保持材料分数，材料点的地面速度随位置增加}{\begin{tikzpicture}
+\foreach \y/\len/\txt in {1.7/4/$t$,0/6/$t+\Delta t$}{
+\draw[world](0,\y)--(\len,\y);\node[left]at(0,\y){\txt};
+\foreach \z in {0,.25,.5,.75,1}{\fill({\z*\len},\y)circle(1.3pt);}}
+\foreach \z in {.25,.5,.75,1}{\draw[guide]({4*\z},1.7)--({6*\z},0);}
+\node[above]at(2,1.7){同一材料点 $z=1/2$};\node[below]at(3,0){$x=L/2$};
+\draw[flow,blue](3,-.8)--(4.3,-.8)node[right]{$\dot L/2$};
+\draw[flow,red](3,-1.5)--(2,-1.5)node[left]{$u$（相对材料）};
+\node[below]at(0,-.1){固定端};\node[below]at(6,0){自由端};
+\end{tikzpicture}}
+图\ref{k3deep:material}中，黑点代表始终相同的材料小段：中点从 $L(t)/2$ 移到 $L(t+\Delta t)/2$，所以速度为自由端的一半。虫若同时在材料上爬行，就会穿过这些黑点；应在虫此刻所在位置加上当地材料速度，而不能使用一个全线相同的牵连速度。
+
+若虫相对当地材料向左爬行，速率为 $u>0$，它对地速度满足 $\dot x=(x/L)\dot L-u$。令随虫变化的材料分数为 $z(t)=x(t)/L(t)$，代入商的求导公式，两项伸长贡献抵消：
+\[\dot z=\frac{\dot xL-x\dot L}{L^2}
+ =\frac{[(x/L)\dot L-u]L-x\dot L}{L^2}
+ =-\frac{u}{L(t)},\qquad
+z(t)=z_0-\int_0^t\frac{u\,\dd\tau}{L(\tau)}.\]
+是否能到达固定端，取决于这个积分能否在有限时刻达到 $z_0$。例如自由端以恒定速率 $w$拉长时，$L=L_0+wt$，材料速度为 $wx/L$；固定端速度仍为零，自由端速度才为 $w$。若伸长不均匀，仅知道总长 $L(t)$还不能确定材料速度场，必须先由形变规律求出各位置的材料速度，才能与爬行速度合成。
+
+\subsection{伸长规律改变后，能否到达要重新积分}
+由材料坐标的运动关系，到达左端的时刻 $T$应满足 $\int_0^T\dd\tau/L(\tau)=z_0/u$。下面比较不同伸长规律的积分，并求出满足条件时的到达时间。
+
+设 $L(t)=L_0(1+t/\tau_0)^p$，$p>0$。令 $\xi=1+\tau/\tau_0$，则 $\dd\tau=\tau_0\dd\xi$；原来的上下限 $0,t$依次变为 $1,1+t/\tau_0$。当 $p\ne1$时，
+\begin{align*}
+ \int_0^t\frac{\dd\tau}{L(\tau)}
+ &=\frac{\tau_0}{L_0}\int_1^{1+t/\tau_0}\xi^{-p}\dd\xi
+ =\frac{\tau_0}{L_0}\left[\frac{\xi^{1-p}}{1-p}\right]_1^{1+t/\tau_0}\\
+ &=\frac{\tau_0}{L_0(1-p)}\left[(1+t/\tau_0)^{1-p}-1\right].
+\end{align*}
+$p=1$时原函数为 $\ln\xi$，故同一换元给出 $(\tau_0/L_0)[\ln\xi]_1^{1+t/\tau_0}=(\tau_0/L_0)\ln(1+t/\tau_0)$。因此 $0<p\le1$时积分无界，任意有限的初始比例都能在有限时刻耗尽；$p>1$时积分总上界只有 $\tau_0/[L_0(p-1)]$。此时若
+\[\frac{z_0}{u}<\frac{\tau_0}{L_0(p-1)},\]
+才可有限到达；等号只在 $t\to\infty$达到，反向不等式则永不到达。原有匀速拉长问题属于 $p=1$，其对数虽增长很慢，却没有有限上界。
+
+为求具体时间，令无量纲参数 $A=z_0L_0/(u\tau_0)$。当 $p\ne1$时，将积分值置为 $z_0/u$，移项得 $(1+T/\tau_0)^{1-p}=1+(1-p)A$，从而
+\[
+ T=\tau_0\left\{[1+(1-p)A]^{1/(1-p)}-1\right\}.
+\]
+右侧括号的底数必须为正，$p>1$时恰好给出上述有限到达条件。$p=1$时则由 $\ln(1+T/\tau_0)=A$得到 $T=\tau_0(\e^A-1)$。固定其余参数令 $p\to1$，利用 $\ln(1+\varepsilon A)/\varepsilon\to A$，前一式也趋向后一式，说明两种表达在临界指数处连续衔接。
+
+图\ref{k3k-stretchtest}把“不断增长”与“具有有限上限”区分开。到达条件是累积曲线与目标水平线的交点，而不是某一瞬间地面速度的正负。这也解释了为什么虫起初可能向右，却仍能最后到达左端。
+\fig{k3k-stretchtest}{长度倒数的累积量决定固定端的可达性}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.6,0)node[right]{$t$};\draw[axis](0,0)--(0,3)node[above]{$\int_0^t\dd\tau/L$};
+\draw[blue,world]plot[domain=0:5,samples=70]({\x},{1.3*ln(1+\x)});
+\draw[red,world]plot[domain=0:5,samples=70]({\x},{1.4*\x/(1+\x)});
+\draw[guide](0,1.4)--(5.1,1.4)node[right]{有限上界};
+\draw[green!50!black,dashed](0,.9)--(5.1,.9)node[right]{$z_0/u$};
+\node[above,blue]at(3.5,2.05){$p=1$};\node[below,red]at(3.6,.65){$p>1$};
+\end{tikzpicture}}
+
+\subsection{用独立方法复核约束}
+同一道约束题可以先用长度微分求解，再用速度投影检查方向。两种写法若不一致，应先核对单位矢量朝向、哪段在增长、哪个角与水平或竖直相量，而不是改动代数符号去迎合答案。结果还应代入静止驱动、对称构形和接近端点等情形，检查是否回到直观可判断的运动。
+
+约束只给允许的运动，不自动保证这种运动能由给定作用力实现。轻绳可能松弛，接触可能脱离，无滑动可能需要足够摩擦；运动学解应标明在这些条件保持的区间有效。这样既保留理想模型的简洁，也防止把奇异点附近的公式当作不受限制的实际运动。
+

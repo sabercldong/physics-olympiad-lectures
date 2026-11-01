@@ -1,0 +1,94 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{t1-10}\textbf{用自由膨胀的位移场同时确定内外半径}\par\nobreak
+自由、均匀加热时，圆环各点相对于中心 $O$ 的距离按同一比例变化。图\ref{fig:t1-10s}的虚线为初始边界、蓝线为加热后的边界，故
+\[a'=a(1+\alpha\Delta T),\qquad b'=b(1+\alpha\Delta T).\]
+孔的边界也是金属上的材料点，因而内半径同样增加。可以想象先用同种材料填孔，整体膨胀后再取出填充部分；这一操作不会改变原圆环边界的位置。\fig{fig:t1-10s}{金属环孔的变化：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[guide] (0,0) circle(.7) (0,0) circle(1.5);\draw[world,blue] (0,0) circle(.84) (0,0) circle(1.8);\fill (0,0) circle(.03);\node[below left] at (0,0){$O$};\draw[flow] (1.5,0)--(1.8,0);\node[align=left] at (4,0){$a\to a(1+\alpha\Delta T)$\\$b\to b(1+\alpha\Delta T)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先对内外半径平方，再统一舍去二阶量}\par\nobreak
+分别写两种面积，得到
+\[A_h'=\pi a^2(1+\alpha\Delta T)^2,\qquad
+A_m'=\pi(b^2-a^2)(1+\alpha\Delta T)^2.\]
+扣除初面积并舍去二阶小量，
+\[\boxed{\Delta A_h=2\alpha\Delta T\,\pi a^2,\qquad
+\Delta A_m=2\alpha\Delta T\,\pi(b^2-a^2)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较相对变化与绝对增量并核对约束条件}\par\nobreak
+孔面积与材料面积的相对变化相同，都是 $2\alpha\Delta T$；它们的绝对增量则由各自初面积决定。若外缘被夹紧，图示整体缩放不再成立，不能据本题结论判断孔的变化。
+\end{drillsolution}
+\begin{drillsolution}{t1-11}\textbf{隔离高于槽面的液柱并对圆周张力取竖直分量}\par\nobreak
+取图\ref{fig:t1-11s}中每根管内高于槽面的液柱为研究对象。将液柱底部压力与自由表面处的均匀大气压部分合并后，均匀$p_0$的合力抵消，剩下的向上作用是接触线处表面张力的竖直合力。对半径为 $r$ 的管，接触线长度为 $2\pi r$，且液体内接触角为 $60^\circ$，故
+\[
+F_z=\int_0^{2\pi}\sigma\cos60^\circ\,r\,\dd\varphi
+=\sigma r\cos60^\circ[\varphi]_0^{2\pi}
+=2\pi r\sigma\cos60^\circ.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把圆周张力与液柱重力平衡，求细管高度}\par\nobreak
+忽略弯月面的体积，液柱重力为 $\rho g\pi r^2h_r$。两者平衡给出所求的高度。\fig{fig:t1-11s}{把两根液柱分别隔离；圆周张力随半径一次变化，单位高度重力随半径平方变化}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(.8,2);\fill[blue!8](0,0)rectangle(.8,2);\draw[force](.4,2)--(.4,3.1)node[above]{$\pi r\sigma$};\draw[force](.4,1)--(.4,-.8)node[below]{$\rho g\pi r^2h_r$};\node at(.4,-1.6){半径$r$};
+\begin{scope}[xshift=5.5cm]\draw[world](0,0)rectangle(1.6,1);\fill[blue!8](0,0)rectangle(1.6,1);\draw[force](.8,1)--(.8,2.5)node[above]{$2\pi r\sigma$};\draw[force](.8,.5)--(.8,-.8)node[below]{$4\rho g\pi r^2h_{2r}$};\node at(.8,-1.6){半径$2r$};\end{scope}
+
+\end{tikzpicture}}
+
+\[\boxed{h_r=\frac{2\sigma\cos60^\circ}{\rho gr}=\frac{\sigma}{\rho gr}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对粗管重新计周长和面积，求高度比并检查润湿方向}\par\nobreak
+把半径换成 $2r$，同样列式，得
+\[\boxed{h_{2r}=\frac{\sigma}{2\rho gr},\qquad h_r:h_{2r}=2:1}.\]
+图中细管的液面更高，弯月面更弯曲。半径加倍时，张力只增大到2倍，单位高度液柱重力却增大到4倍，故平衡高度减半。接触角从液体一侧量取，$\cos60^\circ>0$，两管都应上升；若把图中弯月面画成不润湿的凸面，便与题给角度和所得正高度不符。
+\end{drillsolution}
+\begin{drillsolution}{t1-12}\textbf{对整个封闭系统列总物质的量守恒}\par\nobreak
+阀门打开后，两室达到同一末温和公共末压。图\ref{fig:t1-12q}中两室始终刚性，总体积为 $3V$；流动只是在内部重新分配分子，总物质的量保持不变。初态分别有
+\[n_{1i}=\frac{3p_0V}{RT_0},\qquad n_{2i}=\frac{2p_0V}{RT_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在公共末温和总体积下求公共末压}\par\nobreak
+末态整个系统为 $n_f=p_f(3V)/(RT_0)$。令 $n_f=n_{1i}+n_{2i}$，得
+\[\boxed{p_f=\frac{3p_0V+p_0(2V)}{3V}=\frac53p_0}.\]
+这相当于按体积加权平均初压，不能将两压强作等权平均。\fig{fig:t1-12s}{阀门两侧的气体重新分配，总量与总体积保持不变}{\begin{tikzpicture}[scale=.8]
+\foreach \yy/\pa/\pb/\lab in {0/{3p_0}/{p_0}/初态,-3/{5p_0/3}/{5p_0/3}/末态}{\begin{scope}[yshift=\yy cm]
+\draw[thick](0,0)rectangle(2,1.6);\draw[thick](3,0)rectangle(7,1.6);\draw[thick](2,.8)--(3,.8);
+\node at(1,1.1){$V,\ \pa$};\node at(5,1.1){$2V,\ \pb$};\node[left]at(-.3,.8){\lab};\node at(1,.4){$T_0$};\node at(5,.4){$T_0$};\end{scope}}
+\draw[->,blue,thick](2.15,.8)--(2.85,.8);\node[above]at(2.5,1.8){净流出第一室};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对第一室单独比较初末物质的量并核对流向}\par\nobreak
+图\ref{fig:t1-12s}中第一室末态仍占体积 $V$，所以 $n_{1f}=5p_0V/(3RT_0)$。由第一室净流出的量为
+\[\boxed{\Delta n_1=n_{1i}-n_{1f}=\frac{4p_0V}{3RT_0}}.\]
+第一室压强由 $3p_0$ 降至 $5p_0/3$，第二室由 $p_0$ 升至 $5p_0/3$，方向与净流动一致。还可核验第二室增加的气体量恰为 $\Delta n_1$，而末态物质的量之比为 $1:2$，与两个容器的体积比相同。
+\end{drillsolution}
+\begin{drillsolution}{t1-13}\textbf{由自由平衡压强确定接触挡板的温度}\par\nobreak
+初态活塞自由平衡。气体向上推力、大气向下压力和活塞重力满足
+\[p_*S=p_0S+mg,\qquad p_*=p_0+\frac{mg}{S}.\]
+
+
+
+在碰到上挡板前，活塞缓慢上升，负载不变，故气体保持压强 $p_*$。由 $V\propto h$ 和等压关系，气柱高从 $h_0$ 增至 $2h_0$ 时温度为 $2T_0$。题给末温 $3T_0$ 更高，因此后半段必须使用挡板固定体积的条件。\fig{fig:t1-13s}{上挡板向下压住活塞，气体推力须同时平衡外压、重力和挡板反力}{\begin{tikzpicture}
+
+\draw[world](0,.6)--(2,.6);\fill[pattern=north east lines](0,.4)rectangle(2,.6);\draw[force](.4,-.4)--(.4,.35);\node[left]at(.4,-.1){$p_fS$};\draw[force](1,1.6)--(1,.65)node[midway,left]{$p_0S+mg$};\draw[force,blue](1.8,1.6)--(1.8,.65)node[midway,right]{$N$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保持接触后的体积不变，求末压}\par\nobreak
+从刚接触态到末态，$V=2Sh_0$ 不变，有
+\[\boxed{p_f=p_*\frac{3T_0}{2T_0}=\frac32\left(p_0+\frac{mg}{S}\right)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对末态活塞列受力平衡并检查挡板反力}\par\nobreak
+再按图\ref{fig:t1-13s}的末态受力图求支持力。上挡板必须向下压住活塞，故
+\[p_fS=p_0S+mg+N,\qquad
+\boxed{N=\frac12(p_0S+mg)},\]
+方向竖直向下。刚接触时 $N=0$，此后随温度升高而增加；末态 $N>0$，验证了活塞保持接触的假设。若把全过程当作等压，会得到气柱高 $3h_0$，直接越过题图中的上挡板。
+\end{drillsolution}

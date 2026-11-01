@@ -1,0 +1,6 @@
+\fig{fv:s4:stability}{势能的局部形状决定扰动后的力方向}{\begin{tikzpicture}[x=1cm,y=.7cm]
+\foreach \a in {0,4.5}{\begin{scope}[xshift=\a cm]\draw[->](-1.8,0)--(1.9,0)node[right]{$q-q_0$};\draw[->](0,-.3)--(0,2.5)node[above]{$U$};\end{scope}}
+\draw[blue,thick,domain=-1.4:1.4]plot(\x,{.2+.8*\x*\x});\draw[red,thick,domain=-1.4:1.4]plot({4.5+\x},{2-.8*\x*\x});
+\draw[->,blue,thick](1,.5)--(.3,.5);\draw[->,red,thick](5.5,.5)--(6.2,.5);
+\node at(0,-.7){回复};\node at(4.5,-.7){偏离};\end{tikzpicture}}
+图\ref{fv:s4:stability}中的箭头表示 $Q=-\dd U/\dd q$的方向：位于最低点右侧时力向左，位于最高点右侧时力继续向右。只有再把动能写为 $J\dot q^2/2$，才能由 $J\ddot\eta+U''(q_0)\eta=0$得到频率。若二阶导数为零，曲线的最低阶非零高次项仍可决定稳定性，但不能继续代入线性频率公式宣称存在普通简谐振动。

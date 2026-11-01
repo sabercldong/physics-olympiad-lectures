@@ -1,0 +1,92 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em6:drill:1}\textbf{用实际重力臂写出非线性转动方程}\par\nobreak
+图\ref{fig:em6:drill:1:s}重力对悬轴的回复力矩为$-Gh\sin\theta$，所以$J\ddot\theta=-Gh\sin\theta$。小角度时$\sin\theta\simeq\theta$，有$\ddot\theta+(Gh/J)\theta=0$。
+\fig{fig:em6:drill:1:p}{重力臂为h乘摆角正弦，力矩曲线在原点附近才近似直线}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(C)at(1,1);\draw[world](O)--(C);\draw[world](C)ellipse(.45 and .65);\fill(O)circle(.05)node[above]{$O$};\fill(C)circle(.05)node[right]{$C$};
+\draw[guide](O)--(0,.4);\draw[force](C)--(1,-.4)node[right]{$G$};\draw[dim](0,-.8)--(1,-.8)node[midway,below]{$h\sin\theta$};\node[left]at(.5,2){$h$};
+\begin{scope}[xshift=6cm,yshift=1.5cm]\draw[axis](-2.8,0)--(3,0)node[right]{$\theta$};\draw[axis](0,-2)--(0,2)node[above]{$\tau/(Gh)$};
+\draw[blue,thick,domain=-60:60,samples=80]plot({2.5*rad(\x)},{-1.5*sin(\x)});\draw[red,dashed](-2.618,1.571)--(2.618,-1.571);
+\node at(1.6,1.6){$-\sin\theta$};\node at(-1.8,-1.4){$-\theta$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{小角度线性化并核对系数量纲}\par\nobreak
+回复力矩符号来自重力使摆角减小：$\theta>0$时角加速度为负。将方程除以$J$后，与$\ddot\theta+\omega^2\theta=0$逐项比较，系数$Gh/J$具有$\mathrm{s^{-2}}$量纲。周期由$2\pi/\omega$得到，而不是直接把这个系数当频率。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由简谐方程求周期并检查稳定姿态}\par\nobreak
+按图\ref{fig:em6:drill:1:p}，在线性化范围内记$\omega=\sqrt{Gh/J}$。试取$\theta=e^{\lambda t}$，依次求导得$\dot\theta=\lambda e^{\lambda t}$、$\ddot\theta=\lambda^2e^{\lambda t}$。代入微分方程得到$(\lambda^2+\omega^2)e^{\lambda t}=0$，所以特征根为$\lambda=\pm i\omega$，实通解为
+\[
+ \theta(t)=A\cos\omega t+B\sin\omega t,
+ \qquad \dot\theta(t)=-A\omega\sin\omega t+B\omega\cos\omega t.
+\]
+三角函数求导时的$\omega$来自相位$\omega t$的时间导数。题目没有指定初始摆角和角速度，可分别记作$\theta_0,w_0$；代入$t=0$给$A=\theta_0$、$B=w_0/\omega$，故
+\[
+ \theta(t)=\theta_0\cos\omega t+\frac{w_0}{\omega}\sin\omega t.
+\]
+相位增加$2\pi$后，角位移和角速度同时复原，因此$\omega T=2\pi$，周期
+\[\boxed{T=2\pi\sqrt{J/(Gh)}}.\]
+要求$h>0$、转轴无显著摩擦且振幅足够小。若悬点在质心以下，该姿态不稳定；若$h=0$，重力没有回复力矩，公式不能给出有限周期。\end{drillsolution}
+\begin{drillsolution}{em6:drill:2}\textbf{先将同轴两盘惯量相加}\par\nobreak
+图\ref{fig:em6:drill:2:s}组合惯量
+\[I=mr^2/2+(2m)(2r)^2/2=\boxed{9mr^2/2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两个绕绳半径分别列物体平动式}\par\nobreak
+大半径一侧下降，取顺时针角加速度大小$\alpha$，小重物向上加速度$r\alpha$，大侧重物向下加速度$2r\alpha$。因此$T_s-mg=mr\alpha$、$mg-T_b=2mr\alpha$。
+\fig{fig:em6:drill:2:p}{两侧张力乘各自力臂，重物的线加速度也分别乘各自绕绳半径}{\begin{tikzpicture}
+
+\draw[world](0,1.5)circle(1.2);\draw[world](0,1.5)circle(.6);\fill(0,1.5)circle(.04)node[above]{$O$};
+\draw[force](-.6,1.5)--(-.6,-.1)node[below]{$T_s$};\draw[force](1.2,1.5)--(1.2,-.4)node[below]{$T_b$};
+\draw[guide](-.6,1.5)--(0,1.5)node[midway,above]{$r$};\draw[guide](0,1.5)--(1.2,1.5)node[midway,above]{$2r$};
+\node[align=left]at(4,2){$a_s=r\alpha$向上\\$a_b=2r\alpha$向下\\$2rT_b-rT_s=I\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选择同一顺时针正方向累加转矩}\par\nobreak
+小盘左侧张力使圆盘逆时针，故其力矩记$-rT_s$；大盘右侧张力使圆盘顺时针，记$+2rT_b$。两条绳不滑动只要求各自线加速度等于各自半径乘$\alpha$，不会让两重物加速度相等。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力求角加速度后再回代}\par\nobreak
+按图\ref{fig:em6:drill:2:p}转矩式$2rT_b-rT_s=I\alpha$，代入张力后得$mgr=(I+5mr^2)\alpha=(19/2)mr^2\alpha$。所以
+\[\boxed{\alpha=2g/(19r)},\]
+
+\[\boxed{T_s=21mg/19,\ T_b=15mg/19}.\]
+两边质量虽相等，力臂不同，所以仍可加速；两重物线加速度也不同，不能按普通等半径阿特伍德装置处理。\end{drillsolution}
+\begin{drillsolution}{em6:drill:3}\textbf{沿半圆细线的均匀质量微元积分质心}\par\nobreak
+按图\ref{fig:em6:drill:3:s}取圆心为原点，圆弧参数$-\pi/2\le\phi\le\pi/2$，向下坐标$y=R\cos\phi$。半圆弧长为$\pi R$，所以线密度$\lambda=m/(\pi R)$；对应角宽$\dd\phi$的弧长是$R\dd\phi$，质量微元$\dd m=\lambda R\dd\phi=(m/\pi)\dd\phi$。左右对称使质心横坐标为零，质心下移距离为
+\[d=m^{-1}\int y\dd m=(R/\pi)\int_{-\pi/2}^{\pi/2}\cos\phi\dd\phi=2R/\pi.\]
+
+\fig{fig:em6:drill:3:p}{先沿未偏转圆弧求质心，再用质心重力矩求小振动周期}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:360:2);\draw[axis](0,.3)--(0,-2.5)node[below]{$y\text{（向下）}$};\node[above]at(0,0){$O$};
+\draw[guide](0,0)--(1.414214,-1.414214);\draw[red,very thick](1.285575,-1.532089)arc(-50:-40:2);\node[right]at(1.6,-1.4){$\dd m$};
+\draw(0,-.7)arc(-90:-45:.7);\node at(.35,-.9){$\phi$};\fill(0,-1.27324)circle(.05)node[left]{$C$};\node at(0,1){$\dd m=(m/\pi)\dd\phi$};
+\begin{scope}[xshift=6cm]\begin{scope}[rotate=25]\draw[world](-2,0)arc(180:360:2);\draw[guide](-2,0)--(0,0)--(2,0);\draw[guide](0,0)--(0,-1.27324);\end{scope}
+\fill(0,0)circle(.05)node[above]{$O$};\draw[guide](0,0)--(0,-2);\fill(.538094,-1.153941)circle(.05)node[right]{$C$};
+\draw[force](.538094,-1.153941)--(.538094,-2.5)node[right]{$mg$};\node at(0,1){$\tau_O=-mgd\sin\theta$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对积分系数与复摆分母}\par\nobreak
+质心积分的原函数为$\sin\phi$，因为$\dd(\sin\phi)/\dd\phi=\cos\phi$。按完整半圆的两个端点代入，
+\[
+ \int_{-\pi/2}^{\pi/2}\cos\phi\dd\phi
+ =[\sin\phi]_{-\pi/2}^{\pi/2}
+ =\sin\frac\pi2-\sin\left(-\frac\pi2\right)=1-(-1)=2,
+\]
+故$d=2R/\pi$。复摆分母为$mgd=2mgR/\pi$，将$I_O=mR^2$代入，$I_O/(mgd)=\pi R/(2g)$，质量在比值中消去。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恒定轴距求惯量并代入周期}\par\nobreak
+图\ref{fig:em6:drill:3:p}全部质元到圆心轴距离都为$R$，所以$I_O=mR^2$。代入复摆式
+\[\boxed{T=2\pi\sqrt{\pi R/(2g)}}.\]
+若把半圆细线框当成半圆薄板，质量微元分布与质心位置都改变，不能套用相同结果。\end{drillsolution}

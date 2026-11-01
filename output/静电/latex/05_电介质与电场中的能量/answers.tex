@@ -1,0 +1,201 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e5:drill:1}\textbf{分别按共同电压和共同电位移建立电容}\par\nobreak
+图\ref{fig:e5:drill:1:s} 左图按面积并联，$C_A=(1+\kappa)C_0/2$；右图按厚度串联，$C_T=2\kappa C_0/(1+\kappa)$。
+\typeout{ECFIG:fig:e5:drill:1:p}\fig{fig:e5:drill:1:p}{左侧两个半面积电容并联，右侧两个半厚度电容串联}{\begin{tikzpicture}
+
+\draw(0,0)--(0,2)to[C,l={$C_0/2$}](4,2)--(4,0)to[C,l_={$\kappa C_0/2$}](0,0);\node[left]at(0,1){$A$};\node[right]at(4,1){$B$};\node at(2,3){半面积};\begin{scope}[xshift=7cm]\draw(0,1)to[C,l={$2C_0$}](3,1)to[C,l={$2\kappa C_0$}](6,1);\node[left]at(0,1){$A$};\node[right]at(6,1){$B$};\node at(3,3){半厚度：中间界面无自由电荷};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{通分比较并检查介质体积分数的含义}\par\nobreak
+按 图\ref{fig:e5:drill:1:p} 通分，
+\[
+ C_A-C_T=C_0\frac{(\kappa-1)^2}{2(\kappa+1)}\ge0.
+\]
+仅 $\kappa=1$ 相等。两种情况下介质体积相同，却因场的约束不同而电容不同；不能只按介质所占体积分数平均介电常数。\end{drillsolution}
+\begin{drillsolution}{e5:drill:2}\textbf{对整个并联极板组保留断电后的总电量}\par\nobreak
+图\ref{fig:e5:drill:2:s} 合并极板组净量为 $(C_1+C_2)U_0$，保持不变。末态共同电压
+\[
+ U_f=\frac{C_1+C_2}{\kappa C_1+C_2}U_0<U_0.
+\]
+\typeout{ECFIG:fig:e5:drill:2:p}\fig{fig:e5:drill:2:p}{第一支容量增加，正电荷从第二支沿上导线转入第一支}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$\kappa C_1$}](0,3)--(5,3)to[C,l={$C_2$}](5,0)--(0,0);\draw[flow](4,3.2)--(1,3.2)node[midway,above]{$\Delta Q_1=-\Delta Q_2$};\node at(2.5,-.7){共同电压 $U_f<U_0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算各支电量变化和实际转移方向}\par\nobreak
+图\ref{fig:e5:drill:2:p} 第一只增加
+$\Delta Q_1=\kappa C_1U_f-C_1U_0=C_1C_2(\kappa-1)U_0/(\kappa C_1+C_2)$，
+第二只减少相同量。它与接恒压源的情况不同：此处电源不能补充电荷，只有两电容之间转移。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总电容增大检查能量趋势}\par\nobreak
+末场能由总固定电量与总电容决定，因总电容增大而降低。\end{drillsolution}
+\begin{drillsolution}{e5:drill:3}\textbf{把每层击穿场换成允许的共同电位移}\par\nobreak
+图\ref{fig:e5:drill:3:s} 各层 $E_i=D/\varepsilon_i$，所以分别限制 $D\le\varepsilon_1E_{b1}$、$D\le\varepsilon_2E_{b2}$。取较小者 $D_{\max}$。
+\typeout{ECFIG:fig:e5:drill:3:p}\fig{fig:e5:drill:3:p}{同一电位移产生两种局部场，必须逐层限制}{\begin{tikzpicture}
+
+\fill[blue!10](0,1.3)rectangle(5,3);\fill[orange!10](0,0)rectangle(5,1.3);\draw[world](0,0)--(5,0)(0,3)--(5,3);\draw[guide](0,1.3)--(5,1.3);\node at(1.4,2.2){$\varepsilon_1,E_{b1}$};\node at(1.4,.6){$\varepsilon_2,E_{b2}$};\draw[dim](-.6,1.3)--(-.6,3)node[midway,left]{$d_1$};\draw[dim](-.6,0)--(-.6,1.3)node[midway,left]{$d_2$};
+\draw[flow](3.7,2.8)--(3.7,1.55)node[midway,right]{$D/\varepsilon_1$};\draw[flow](3.7,1.1)--(3.7,.2)node[midway,right]{$D/\varepsilon_2$};\node at(2.5,3.8){$D=\sigma_f$，界面无自由电荷};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐层积分电压并选择较严限制}\par\nobreak
+在图\ref{fig:e5:drill:3:p}的每层内，电场均为常量；分别从各层入口起取局部坐标 $s$：
+\[
+U_i=\int_0^{d_i}\frac D{\varepsilon_i}\,\dd s
+=\frac D{\varepsilon_i}[s]_0^{d_i}
+=\frac{Dd_i}{\varepsilon_i}.
+\]
+两层电压相加，再代入 $D_{\max}$，得
+\[
+U_{\max}=\min(\varepsilon_1E_{b1},\varepsilon_2E_{b2})
+ \left(\frac{d_1}{\varepsilon_1}+\frac{d_2}{\varepsilon_2}\right).
+\]
+首先击穿哪层由 $\varepsilon_iE_{bi}$ 判断，不只由 $E_{bi}$ 的大小判断。即使高介电常数层较厚，薄低介电常数层仍可能承担更大场强。\end{drillsolution}
+\begin{drillsolution}{e5:drill:4}\textbf{在两个径向分区分别积分势差}\par\nobreak
+图\ref{fig:e5:drill:4:s} 球对称使 $D=Q/(4\pi r^2)$，图中 $a<r<c$ 为介质，$c<r<b$ 为真空，因而
+\begin{align*}
+U&=\frac Q{4\pi\varepsilon_0}
+\left[\frac1\kappa\int_a^c r^{-2}\,\dd r+\int_c^b r^{-2}\,\dd r\right]\\
+&=\frac Q{4\pi\varepsilon_0}
+\left[\frac1\kappa\left[-\frac1r\right]_a^c
++\left[-\frac1r\right]_c^b\right]\\
+&=\frac Q{4\pi\varepsilon_0}
+\left[\frac1\kappa\left(\frac1a-\frac1c\right)+\frac1c-\frac1b\right].
+\end{align*}
+电容为 $Q/U$。
+\typeout{ECFIG:fig:e5:drill:4:p}\fig{fig:e5:drill:4:p}{介质内端外法向向心，外端外法向离心}{\begin{tikzpicture}
+
+\fill[blue!13](0,0)circle(1.3);\fill[gray!15](0,0)circle(.65);\draw[world](0,0)circle(.65);\draw[guide](0,0)circle(1.3);\draw[world](0,0)circle(2);\draw[dim](0,0)--(.46,.46)node[midway,above left]{$a$};\draw[dim](0,0)--(-.92,.92)node[pos=.8,above right]{$c$};\draw[dim](0,0)--(1.41,-1.41)node[pos=.85,above right]{$b$};\node at(-.95,-.2){$\kappa$};\draw(-1.6,-.6)--(-2.7,-1.2)node[left]{真空};
+\draw[axis](.65,0)--(.2,0);\node at(.8,-.4){$\bm n_a$};\draw[axis](1.3,0)--(1.85,0)node[above]{$\bm n_c$};\node[right]at(2.7,.8){$Q_{b,a}<0$};\node[right]at(2.7,-.2){$Q_{b,c}>0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按介质两端外法向求束缚密度}\par\nobreak
+在 图\ref{fig:e5:drill:4:p} 介质外表面法向沿径向，$P=(1-1/\kappa)D$，故 $\sigma_b(c)=(1-1/\kappa)Q/(4\pi c^2)$。介质内表面法向相反，$\sigma_b(a)=-(1-1/\kappa)Q/(4\pi a^2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以球面面积与体散度核对总电荷}\par\nobreak
+两面束缚电量相消，介质总量仍中性；体内 $r^2P$ 恒定，$\rho_b=0$。\end{drillsolution}
+\begin{drillsolution}{e5:drill:5}\textbf{把插入区与未插入区分别建模}\par\nobreak
+图\ref{fig:e5:drill:5:s} 未插入区面积 $b(L-x)$、有效隙宽 $d$，插入区面积 $bx$、有效真空厚 $d-t$。两区并联，
+\[
+ C(x)=\varepsilon_0b\left[\frac{L-x}d+\frac x{d-t}\right].
+\]
+\typeout{ECFIG:fig:e5:drill:5:p}\fig{fig:e5:drill:5:p}{插入区两真空层串联，再与未插入区并联}{\begin{tikzpicture}
+
+\draw[world](0,0)--(5,0)(0,2.4)--(5,2.4);\fill[gray!25](-1,.8)rectangle(2,1.6);\draw[world](-1,.8)rectangle(2,1.6);\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$x$};\draw[dim](0,3)--(5,3)node[midway,above]{$L$};\draw[dim](5.6,0)--(5.6,2.4)node[midway,right]{$d$};\draw[dim](-1.6,.8)--(-1.6,1.6)node[midway,left]{$t$};\node at(.5,1.2){金属};\node at(3.7,1.2){真空};
+\draw[force](-.7,1.9)--(1,1.9)node[midway,above]{$F$};\node at(2.5,-1.4){插入区有效隙宽 $d-t$，未插入区为 $d$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电容对插入深度的导数求力}\par\nobreak
+沿图\ref{fig:e5:drill:5:p}的插入方向增加 $x$，保持 $d,t,L,b$ 不变：
+\[
+C'(x)=\varepsilon_0b\left[-\frac1d+\frac1{d-t}\right]
+=\varepsilon_0b\frac{d-(d-t)}{d(d-t)}
+=\frac{\varepsilon_0bt}{d(d-t)}.
+\]
+代入恒压场力公式得
+\[
+ F=\frac{U^2}2C^\prime(x)
+ =\frac{\varepsilon_0bU^2t}{2d(d-t)}>0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查厚度极限与模型边界}\par\nobreak
+它吸入金属片。$t\to0$ 力趋零；$t\to d$ 时理想式发散，实际受边缘场、击穿、接触等限制，模型不能一直外推。\end{drillsolution}
+\begin{drillsolution}{e5:drill:6}\textbf{断电时把场能减少计入介质动能}\par\nobreak
+图\ref{fig:e5:drill:6:s} 定量过程没有电源功，场能减少变为动能，
+\[
+ \frac12Mv_Q^2=\frac{Q^2}{2C_0}\left(1-\frac1\kappa\right),\quad
+ v_Q=\frac{|Q|}{\sqrt{MC_0}}\sqrt{1-\frac1\kappa}.
+\]
+\typeout{ECFIG:fig:e5:drill:6:p}\fig{fig:e5:drill:6:p}{完全进入的瞬间仍在运动，接源支路决定额外输入能量}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\fill[blue!13](0,0)rectangle(4,2);\draw[world](0,0)--(4,0)(0,2)--(4,2);\node at(2,1){$M,\kappa$};\draw[flow](.6,2.7)--(2.5,2.7)node[right]{$v$};\node at(2,3.5){断电：$Q$ 固定};\end{scope}\begin{scope}[xshift=7cm]\fill[blue!13](0,0)rectangle(4,2);\draw[world](0,0)--(4,0)(0,2)--(4,2);\node at(2,1){$M,\kappa$};\draw[flow](.6,2.7)--(2.5,2.7)node[right]{$v$};\node at(2,3.5){接源：$U$ 固定};\draw(4,2)--(5,2)to[battery1,l={$U$}](5,0)--(4,0);\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接源时先扣除场能增量再求动能}\par\nobreak
+在 图\ref{fig:e5:drill:6:p} 定压过程电源功为 $(\kappa-1)C_0U^2$，场能只增加其一半，所以
+\[
+ \frac12Mv_U^2=\frac12(\kappa-1)C_0U^2,\quad
+ v_U=|U|\sqrt{\frac{(\kappa-1)C_0}{M}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较相同初态并说明速度对应的瞬间}\par\nobreak
+若以相同初态 $Q=C_0U$ 比较，$v_U=\sqrt\kappa\,v_Q$，额外动能来自电源。结果以无损、准静电电路近似为前提；完全进入后若仍有惯性，介质会继续运动，不能把此瞬时速度当作最终静止。\end{drillsolution}
+\begin{drillsolution}{e5:drill:7}\textbf{在同一法线约定下写两种边界条件}\par\nobreak
+图\ref{fig:e5:drill:7:s} 切向场连续，$E_1\sin\theta_1=E_2\sin\theta_2$；法向电位移连续，$\varepsilon_1E_1\cos\theta_1=\varepsilon_2E_2\cos\theta_2$。
+\typeout{ECFIG:fig:e5:drill:7:p}\fig{fig:e5:drill:7:p}{切向分量相同，法向分量按介电常数反比改变}{\begin{tikzpicture}
+
+\fill[blue!10](-3,-2)rectangle(3,0);\draw[world](-3,0)--(3,0);\draw[guide](0,-2.2)--(0,2.3);\draw[flow](-1.2,2)--(-.05,.083);\draw[flow](0,0)--(2,-1.4);\draw(0,.7)arc(90:121:.7);\node at(-.35,.95){$\theta_1$};\draw(0,-.7)arc(-90:-35:.7);\node at(.55,-.92){$\theta_2$};\node at(-2,1){$\varepsilon_1$};\node at(-2,-1){$\varepsilon_2$};\node[right]at(.1,2){法线};
+
+\begin{scope}[xshift=5cm]\draw[flow](0,1)--(1.8,1)node[right]{$E_{1t}$};\draw[flow](0,-1)--(1.8,-1)node[right]{$E_{2t}$};\draw[flow](0,1)--(0,-.4)node[midway,left]{$E_{1n}$};\draw[flow](2.8,-.4)--(2.8,-1.1)node[midway,right]{$E_{2n}$};\node at(1,2){$E_{1t}=E_{2t}$};\node at(1,-2){图示 $\varepsilon_2>\varepsilon_1$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以切向和法向分量之比求角度关系}\par\nobreak
+由 图\ref{fig:e5:drill:7:p} 两式相除，$\tan\theta_2/\tan\theta_1=\varepsilon_2/\varepsilon_1$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由分量变化判断折转方向}\par\nobreak
+进入较高介电常数侧，法向 $E$ 更小、切向不变，故相对法线的夹角变大。这个关系来自静电边界条件，不是光线折射定律，不能使用折射率正弦公式。\end{drillsolution}
+\begin{drillsolution}{e5:drill:8}\textbf{从完全填充时确定断电保存的初电量}\par\nobreak
+图\ref{fig:e5:drill:8:s} 断电时初电量 $Q=\kappa C_0U_0$，初能 $W_i=\kappa C_0U_0^2/2$，末能 $W_f=Q^2/(2C_0)=\kappa^2C_0U_0^2/2$。所以外功
+$W_Q=\kappa(\kappa-1)C_0U_0^2/2>0$。
+\typeout{ECFIG:fig:e5:drill:8:p}\fig{fig:e5:drill:8:p}{拉出时外力向外、场力向内；定压时电荷回送电源}{\begin{tikzpicture}
+
+\draw[world](0,0)--(5,0)(0,2.4)--(5,2.4);\fill[blue!12](-1,0)rectangle(2.5,2.4);\draw[guide](2.5,0)--(2.5,2.4);\node at(.7,1.2){$\kappa$};\draw[force](0,1.2)--(-2,1.2)node[left]{$F_{\text{外}}$};\draw[force](1.5,1.2)--(3.5,1.2)node[right]{$F_{\text{场}}$};\draw(5,2.4)--(6.2,2.4)to[battery1,l={$U_0$}](6.2,0)--(5,0);\draw[flow](4.5,2.65)--(5.8,2.65);\node at(2.5,3.4){接源情况：正电荷沿上导线回源};\node at(2.5,-.7){断电情况删去右侧电源支路，保持初电量};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{定压拉出时同时计入电源吸收的能量}\par\nobreak
+图\ref{fig:e5:drill:8:p} 定压时，场能变化 $\Delta W=-(\kappa-1)C_0U_0^2/2$，电源取得电荷，作功 $W_s=-(\kappa-1)C_0U_0^2$。由 $\Delta W=W_s+W_{\text{外}}$ 得
+$W_U=(\kappa-1)C_0U_0^2/2>0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对外功符号与能量去向}\par\nobreak
+两种拉出都需正外功，虽然场能变化符号相反；定压过程一部分外功与场能减少共同回送电源。\end{drillsolution}
+\begin{drillsolution}{e5:drill:9}\textbf{按球对称逐段求场和极化}\par\nobreak
+图\ref{fig:e5:drill:9:s} 各半径 $D=q/(4\pi r^2)$，所以真空内、外两区均为 $kq/r^2$，介质壳内为 $kq/(\kappa r^2)$，方向随 $q$ 号改变。介质极化 $P=(1-1/\kappa)q/(4\pi r^2)$，内表面法向向心、外表面向外。
+\typeout{ECFIG:fig:e5:drill:9:p}\fig{fig:e5:drill:9:p}{球壳内外端面带等量异号束缚电荷（图示 $q>0$）}{\begin{tikzpicture}
+
+\fill[blue!12](0,0)circle(2);\fill[white](0,0)circle(1.1);\draw[world](0,0)circle(1.1);\draw[world](0,0)circle(2);\fill(0,0)circle(2pt)node[below left]{$q$};\draw[dim](0,0)--(-.78,.78)node[midway,above right]{$a$};\draw[dim](0,0)--(1.41,-1.41)node[pos=.8,above right]{$b$};\node at(-1.55,-.4){$\kappa$};
+\draw[axis](1.1,0)--(.55,0)node[above]{$\bm n_a$};\draw[axis](2,0)--(2.65,0)node[above]{$\bm n_b$};\node[right]at(3.1,.8){内面 $-(1-1/\kappa)q$};\node[right]at(3.1,-.3){外面 $+(1-1/\kappa)q$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两端球面面积求束缚总量}\par\nobreak
+由 图\ref{fig:e5:drill:9:p} 两面束缚总量为 $Q_{b,a}=-(1-1/\kappa)q$、$Q_{b,b}=+(1-1/\kappa)q$，体束缚密度零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只叠加束缚电荷在球心的电势}\par\nobreak
+两均匀球面在球心的电势相加，
+\[
+ V_{\text{反}}=kq(1/\kappa-1)(1/a-1/b).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释线性建立的反作用能与极限}\par\nobreak
+若中心电量从零逐渐建立，用 $\xi$ 表示中间电量，令
+\[
+A=k(1/\kappa-1)(1/a-1/b),\qquad V_{\text{反}}(\xi)=A\xi.
+\]
+再加入 $\dd\xi$ 时，已有极化电荷对它的反作用势为 $A\xi$，因此
+\[
+W_{\text{反}}=\int_0^q A\xi\,\dd\xi
+=A\left[\frac{\xi^2}{2}\right]_0^q
+=\frac12Aq^2=\frac12qV_{\text{反}}(q).
+\]
+对于 $\kappa>1$，$A<0$，这个能量为负；这里不包含点电荷自身发散能。壳厚趋零或 $\kappa\to1$ 时反作用势趋零。\end{drillsolution}

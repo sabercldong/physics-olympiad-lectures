@@ -1,0 +1,766 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,bm}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}
+\usepackage[margin=16mm]{geometry}
+\begin{document}
+% eq-001
+\[
+\text{第3秒末：}\ t=3\,\mathrm s
+\]
+
+% eq-002
+\[
+\text{第3秒内：}\ 2\le t\le3\,\mathrm s
+\]
+
+% eq-003
+\[
+\text{前3秒：}\ 0\le t\le3\,\mathrm s
+\]
+
+% eq-004
+\[
+\boldsymbol r=x\boldsymbol e_x+y\boldsymbol e_y
+\]
+
+% eq-005
+\[
+\boldsymbol e_\rho=(\cos\theta,\sin\theta)
+\]
+
+% eq-006
+\[
+\boldsymbol e_\theta=(-\sin\theta,\cos\theta)
+\]
+
+% eq-007
+\[
+\boldsymbol r=\boldsymbol r(t),\qquad x=x(t),\quad y=y(t)
+\]
+
+% eq-008
+\[
+x=A\cos\omega t,\qquad y=B\sin\omega t
+\]
+
+% eq-009
+\[
+\frac{x^2}{A^2}+\frac{y^2}{B^2}=1
+\]
+
+% eq-010
+\[
+\boldsymbol r=\boldsymbol R(q)
+\]
+
+% eq-011
+\[
+\boldsymbol v=\boldsymbol R^{\prime}(q)\dot q
+\]
+
+% eq-012
+\[
+\boldsymbol a=\boldsymbol R^{\prime\prime}(q)\dot q^{\,2} +\boldsymbol R^{\prime}(q)\ddot q
+\]
+
+% eq-013
+\[
+x(t)=x(t_0)+\int_{t_0}^t v_x(\tau)\,\mathrm d\tau
+\]
+
+% eq-014
+\[
+\Delta\boldsymbol r=\boldsymbol r_2-\boldsymbol r_1
+\]
+
+% eq-015
+\[
+s=\int_{t_1}^{t_2}|\boldsymbol v|\,\mathrm dt
+\]
+
+% eq-016
+\[
+\bigl||\boldsymbol r_2|-|\boldsymbol r_1|\bigr|\le|\Delta\boldsymbol r|\le s
+\]
+
+% eq-017
+\[
+\Delta x=\sum_i\Delta x_i,\qquad s=\sum_i|\Delta x_i|
+\]
+
+% eq-018
+\[
+\overline{\boldsymbol v}=\frac{\Delta\boldsymbol r}{\Delta t}
+\]
+
+% eq-019
+\[
+\overline u=\frac{s}{\Delta t}\ge|\overline{\boldsymbol v}|
+\]
+
+% eq-020
+\[
+\boldsymbol v=\lim_{\Delta t\to0} \frac{\Delta\boldsymbol r}{\Delta t}=\frac{\mathrm d\boldsymbol r}{\mathrm dt}
+\]
+
+% eq-021
+\[
+u=|\boldsymbol v|=\frac{\mathrm ds}{\mathrm dt}
+\]
+
+% eq-022
+\[
+\overline u=\frac{\sum s_i}{\sum t_i},\qquad t_i=\frac{s_i}{v_i}
+\]
+
+% eq-023
+\[
+t_1=t_2\quad\Longrightarrow\quad\overline u=\frac{v_1+v_2}{2}
+\]
+
+% eq-024
+\[
+s_1=s_2\quad\Longrightarrow\quad\overline u=\frac{2v_1v_2}{v_1+v_2}
+\]
+
+% eq-025
+\[
+\frac{v_1+v_2}{2}-\frac{2v_1v_2}{v_1+v_2} =\frac{(v_1-v_2)^2}{2(v_1+v_2)}\ge0
+\]
+
+% eq-026
+\[
+\Delta\boldsymbol v=\boldsymbol v_2-\boldsymbol v_1
+\]
+
+% eq-027
+\[
+\boldsymbol a=\frac{\mathrm d\boldsymbol v}{\mathrm dt}
+\]
+
+% eq-028
+\[
+u^2=\boldsymbol v\cdot\boldsymbol v
+\]
+
+% eq-029
+\[
+2u\dot u=2\boldsymbol v\cdot\boldsymbol a
+\]
+
+% eq-030
+\[
+\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\qquad(u>0)
+\]
+
+% eq-031
+\[
+v(t_*)=0,\qquad a(t_*)\ne0
+\]
+
+% eq-032
+\[
+v(t_*+\delta t)=a(t_*)\delta t+o(\delta t)
+\]
+
+% eq-033
+\[
+\delta t<0\text{与}\delta t>0:\quad v\text{异号}
+\]
+
+% eq-034
+\[
+v(t)=c(t-t_*)^2\quad(c>0)
+\]
+
+% eq-035
+\[
+x(t)=x_*+\frac c3(t-t_*)^3
+\]
+
+% eq-036
+\[
+v(t_*)=0,\qquad a(t_*)=0
+\]
+
+% eq-037
+\[
+x=x(t):\quad v=\frac{\mathrm dx}{\mathrm dt},\qquad a=\frac{\mathrm d^2x}{\mathrm dt^2}
+\]
+
+% eq-038
+\[
+a=\frac{\mathrm dv}{\mathrm dt}
+\]
+
+% eq-039
+\[
+x(t)=x_0+\int_{t_0}^t v(\tau)\,\mathrm d\tau
+\]
+
+% eq-040
+\[
+x(t_0)=x_0,\qquad v(t_0)=v_0
+\]
+
+% eq-041
+\[
+v(t)=v_0+\int_{t_0}^t a(\tau)\,\mathrm d\tau
+\]
+
+% eq-042
+\[
+\mathrm dt=\frac{\mathrm dx}{v(x)}
+\]
+
+% eq-043
+\[
+t-t_0=\int_{x_0}^x\frac{\mathrm d\xi}{v(\xi)}
+\]
+
+% eq-044
+\[
+t_2-t_1=\int_{x_1}^{x_2}\frac{\mathrm dx}{v(x)}
+\]
+
+% eq-045
+\[
+u\sim C|x_*-x|^p,\qquad C>0
+\]
+
+% eq-046
+\[
+\Delta t\sim\frac1C\int_0^\varepsilon \xi^{-p}\,\mathrm d\xi
+\]
+
+% eq-047
+\[
+p<1:\quad\Delta t<\infty
+\]
+
+% eq-048
+\[
+p\ge1:\quad\Delta t\to\infty
+\]
+
+% eq-049
+\[
+x\text{-}t:\quad v=\frac{\mathrm dx}{\mathrm dt}; \qquad v\text{-}t:\quad a=\frac{\mathrm dv}{\mathrm dt}
+\]
+
+% eq-050
+\[
+\Delta x=\int v\,\mathrm dt,\qquad s=\int |v|\,\mathrm dt
+\]
+
+% eq-051
+\[
+\boxed{\Delta x=S_+-S_-},\qquad\boxed{s=S_++S_-}
+\]
+
+% eq-052
+\[
+v=v_0-at,\qquad t_*=\frac{v_0}{a}
+\]
+
+% eq-053
+\[
+x=v_0t-\frac12at^2,\qquad x_*=\frac{v_0^2}{2a}
+\]
+
+% eq-054
+\[
+\tau=t-t_1,\qquad v=v_1+a_2\tau
+\]
+
+% eq-055
+\[
+x=x_1+v_1\tau+\frac12a_2\tau^2
+\]
+
+% eq-056
+\[
+F(x,y,t)=0
+\]
+
+% eq-057
+\[
+F_x\dot x+F_y\dot y+F_t=0
+\]
+
+% eq-058
+\[
+x^2+y^2=R^2\quad\Longrightarrow\quad xv_x+yv_y=0
+\]
+
+% eq-059
+\[
+v_x^2+v_y^2+xa_x+ya_y=0
+\]
+
+% eq-060
+\[
+(\boldsymbol v_P-\boldsymbol V_{\rm boundary})\cdot\boldsymbol n=0
+\]
+
+% eq-061
+\[
+\boldsymbol e_\theta=(-\sin\theta,\cos\theta),\qquad\omega=\dot\theta
+\]
+
+% eq-062
+\[
+\dot{\boldsymbol e}_\rho=\omega\boldsymbol e_\theta,\qquad \dot{\boldsymbol e}_\theta=-\omega\boldsymbol e_\rho
+\]
+
+% eq-063
+\[
+\boldsymbol r=\rho\boldsymbol e_\rho
+\]
+
+% eq-064
+\[
+\boxed{\boldsymbol v=\dot\rho\boldsymbol e_\rho+\rho\omega\boldsymbol e_\theta}
+\]
+
+% eq-065
+\[
+u=\sqrt{\dot\rho^{\,2}+\rho^2\omega^2}
+\]
+
+% eq-066
+\[
+\frac{\mathrm d}{\mathrm dt}(\dot\rho\boldsymbol e_\rho) =\ddot\rho\boldsymbol e_\rho+\dot\rho\omega\boldsymbol e_\theta
+\]
+
+% eq-067
+\[
+\frac{\mathrm d}{\mathrm dt}(\rho\omega\boldsymbol e_\theta) =(\dot\rho\omega+\rho\dot\omega)\boldsymbol e_\theta-\rho\omega^2\boldsymbol e_\rho
+\]
+
+% eq-068
+\[
+\boxed{a_\rho=\ddot\rho-\rho\omega^2}
+\]
+
+% eq-069
+\[
+\boxed{a_\theta=2\dot\rho\omega+\rho\dot\omega}
+\]
+
+% eq-070
+\[
+\rho=R:\ a_\rho=-R\omega^2,\quad a_\theta=R\dot\omega
+\]
+
+% eq-071
+\[
+\begin{aligned} \boldsymbol r(t+\delta t)-\boldsymbol r(t) &=\boldsymbol v(t)\delta t\\ &\quad+\tfrac12\boldsymbol a(t)(\delta t)^2+o((\delta t)^2) \end{aligned}
+\]
+
+% eq-072
+\[
+\delta t=\frac TN,\qquad \text{总误差}\le NC(\delta t)^2=\frac{CT^2}{N}\to0
+\]
+
+% eq-073
+\[
+\Delta x=\int v(t)\,\mathrm dt,\qquad \Delta t=\int\frac{\mathrm dh}{v(h)}
+\]
+
+% eq-074
+\[
+\boldsymbol v=\omega(-A\sin\omega t,\ B\cos\omega t)
+\]
+
+% eq-075
+\[
+\boldsymbol a=-\omega^2(x,y)
+\]
+
+% eq-076
+\[
+u^2=\omega^2(A^2\sin^2\omega t+B^2\cos^2\omega t)
+\]
+
+% eq-077
+\[
+\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\qquad(u\ne0)
+\]
+
+% eq-078
+\[
+t_1=\frac{s}{2v_1},\quad t_2=\frac{s}{2v_2},\qquad\frac{s}{v}=\frac{s}{2v_1}+\frac{s}{2v_2}
+\]
+
+% eq-079
+\[
+\boxed{v_2=\frac{vv_1}{2v_1-v}},\qquad t_2>0\ \Longrightarrow\ \boxed{0<v<2v_1}
+\]
+
+% eq-080
+\[
+\text{路程占比为}\lambda,1-\lambda\text{时：}\quad\frac1{\overline v}=\frac{\lambda}{v_1}+\frac{1-\lambda}{v_2}
+\]
+
+% eq-081
+\[
+\overline{\boldsymbol v}=\boldsymbol0,\qquad\overline u=\frac{400}{40}=10\,\mathrm{m/s}
+\]
+
+% eq-082
+\[
+\int_0^{40}u(t)\,\mathrm dt=400\,\mathrm m
+\]
+
+% eq-083
+\[
+\int_0^{t_{50}}u(t)\,\mathrm dt=50\,\mathrm m
+\]
+
+% eq-084
+\[
+S_+=3\times1+\tfrac12\times2\times3=6\,\mathrm m
+\]
+
+% eq-085
+\[
+S_-=\tfrac12\times3\times3=4.5\,\mathrm m
+\]
+
+% eq-086
+\[
+\Delta x_3=s_3=6\,\mathrm m
+\]
+
+% eq-087
+\[
+\boxed{\Delta x_6=1.5\,\mathrm m},\qquad \boxed{s_6=10.5\,\mathrm m}
+\]
+
+% eq-088
+\[
+\overline v_6=\frac{1.5}{6}=0.25\,\mathrm{m/s},\qquad\overline u_6=\frac{10.5}{6}=1.75\,\mathrm{m/s}
+\]
+
+% eq-089
+\[
+x(t)=\begin{cases} v_0t,&0\le t\le T,\\ v_0T,&T\le t\le2T,\\ v_0T-v_0(t-2T),&2T\le t\le3T. \end{cases}
+\]
+
+% eq-090
+\[
+x(3T)=0,\qquad\Delta x=0,\qquad s=2v_0T
+\]
+
+% eq-091
+\[
+T=\frac{v_0}{a},\qquad s=\frac{v_0^2}{2a}=\frac{v_0T}{2}
+\]
+
+% eq-092
+\[
+\Delta x_{\rm approach}=s+s=2s,\qquad D_{\min}=d-2s
+\]
+
+% eq-093
+\[
+\boxed{d>2s}\quad\text{严格不接触};\qquad d=2s\quad\text{临界接触}
+\]
+
+% eq-094
+\[
+D(t)=\begin{cases}d-\frac12at^2,&0\le t\le T,\\d-s-v_0(t-T)+\frac12a(t-T)^2,&T\le t\le2T.\end{cases}
+\]
+
+% eq-095
+\[
+\begin{aligned} \dot D&=-at\le0,&&0\le t\le T,\\ \dot D&=-v_0+a(t-T)\le0,&&T\le t\le2T \end{aligned}
+\]
+
+% eq-096
+\[
+D(T)=d-s,\qquad D(2T)=d-2s
+\]
+
+% eq-097
+\[
+s_{\rm rear}=v_0\tau+s,\qquad s_{\rm front}=s,\qquad\Delta x_{\rm approach}=v_0\tau
+\]
+
+% eq-098
+\[
+\boxed{d>v_0\tau}\quad\text{严格不接触};\qquad\tau=T\ \Longrightarrow\ v_0T=2s
+\]
+
+% eq-099
+\[
+T=60\,\mathrm{min},\quad\tau=10\,\mathrm{min},\quad u=1\,\mathrm{km/min}
+\]
+
+% eq-100
+\[
+x_A=u(t-k\tau),\qquad x_B=uT-u(t-t_b)
+\]
+
+% eq-101
+\[
+t=\frac{T+t_b+k\tau}{2}
+\]
+
+% eq-102
+\[
+k\tau<t<k\tau+T,\qquad t_b<t<t_b+T
+\]
+
+% eq-103
+\[
+\boxed{t_b-T<k\tau<t_b+T},\qquad k\ge0
+\]
+
+% eq-104
+\[
+m-6<k<m+6,\qquad k\in\mathbb Z_{\ge0}
+\]
+
+% eq-105
+\[
+k=\max(0,m-5),\ldots,m+5
+\]
+
+% eq-106
+\[
+N=\begin{cases}m+6,&0\le m<5,\\11,&m\ge5.\end{cases}
+\]
+
+% eq-107
+\[
+\boxed{N_{\max}=11},\qquad \boxed{t_b=50\,\mathrm{min}}
+\]
+
+% eq-108
+\[
+t_k=55+5k\ \mathrm{min},\qquad k=0,\ldots,10
+\]
+
+% eq-109
+\[
+y=\frac{x+v_At}{\sqrt3},\qquad y=-\sqrt3(x-v_Bt)
+\]
+
+% eq-110
+\[
+v_y=\frac{v_x+v_A}{\sqrt3}=\sqrt3(v_B-v_x)
+\]
+
+% eq-111
+\[
+\boxed{v_x=\frac{3v_B-v_A}{4}},\qquad\boxed{v_y=\frac{\sqrt3(v_A+v_B)}4}
+\]
+
+% eq-112
+\[
+v_A<3v_B:\ v_x>0;\quad v_A=3v_B:\ v_x=0
+\]
+
+% eq-113
+\[
+|\boldsymbol v_C|^2 =\frac{(3v_B-v_A)^2+3(v_A+v_B)^2}{16}
+\]
+
+% eq-114
+\[
+\boxed{|\boldsymbol v_C|=\frac12\sqrt{v_A^2+3v_B^2}}
+\]
+
+% eq-115
+\[
+v_A=0:\quad (v_x,v_y)=\left(\frac{3v_B}4,\frac{\sqrt3v_B}4\right)
+\]
+
+% eq-116
+\[
+v_B=0:\quad (v_x,v_y)=\left(-\frac{v_A}4,\frac{\sqrt3v_A}4\right)
+\]
+
+% eq-117
+\[
+v(h)=\frac{l v_0}{l+h},\qquad \mathrm dt=\frac{l+h}{l v_0}\,\mathrm dh
+\]
+
+% eq-118
+\[
+t=\int_0^l\frac{l+h}{l v_0}\,\mathrm dh =\frac{3l}{2v_0}=\boxed{15\,\mathrm s}
+\]
+
+% eq-119
+\[
+t=\frac{0.5+1}{2}\times20=\boxed{15\,\mathrm s}
+\]
+
+% eq-120
+\[
+v_0t=h+\frac{h^2}{2l},\qquad (h+l)^2=l^2+2l v_0t
+\]
+
+% eq-121
+\[
+\boxed{h(t)=l\left(\sqrt{1+\frac{2v_0t}{l}}-1\right)}
+\]
+
+% eq-122
+\[
+\dot h=\frac{v_0}{\sqrt{1+2v_0t/l}} =\frac{l v_0}{l+h}>0
+\]
+
+% eq-123
+\[
+\ddot h=-\frac{v_0^2}{l} \left(1+\frac{2v_0t}{l}\right)^{-3/2}<0
+\]
+
+% eq-124
+\[
+\boldsymbol r=\boldsymbol r(t),\quad \boldsymbol v=\dot{\boldsymbol r},\quad \boldsymbol a=\dot{\boldsymbol v}
+\]
+
+% eq-125
+\[
+\overline{\boldsymbol v}=\frac{\Delta\boldsymbol r}{\Delta t}, \qquad\overline u=\frac s{\Delta t}
+\]
+
+% eq-126
+\[
+\Delta x=\int v\,\mathrm dt,\qquad s=\int|v|\,\mathrm dt
+\]
+
+% eq-127
+\[
+\Delta t=\int\frac{\mathrm dx}{v(x)}
+\]
+
+% eq-128
+\[
+\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\quad(u>0)
+\]
+
+% eq-129
+\[
+a_\rho=\ddot\rho-\rho\omega^2,\qquad a_\theta=2\dot\rho\omega+\rho\dot\omega
+\]
+
+% eq-130
+\[
+\boldsymbol v=\dot\rho\boldsymbol e_\rho+ \rho\omega\boldsymbol e_\theta,\qquad\omega=\dot\theta
+\]
+
+% eq-131
+\[
+x=\frac d2,\qquad x^2+y^2=R^2
+\]
+
+% eq-132
+\[
+\dot{\boldsymbol e}_\rho=\omega\boldsymbol e_\theta, \qquad\dot{\boldsymbol e}_\theta=-\omega\boldsymbol e_\rho
+\]
+
+% eq-133
+\[
+\frac{l}{X-x}=\frac hX\quad\Longrightarrow\quad X=\frac h{h-l}x
+\]
+
+% eq-134
+\[
+\boxed{\dot X=\frac h{h-l}v},\qquad \boxed{\dot\ell=\frac{l}{h-l}v}
+\]
+
+% eq-135
+\[
+\ell=l\cot\gamma,\qquad \boxed{\dot\ell=0,\quad\dot X=v}
+\]
+
+% eq-136
+\[
+\dot X=v-l\csc^2\gamma\,\dot\gamma
+\]
+
+% eq-137
+\[
+x^2+y^2=R^2,\qquad(x-d)^2+y^2=R^2
+\]
+
+% eq-138
+\[
+x=\frac d2,\qquad y=\sqrt{R^2-\frac{d^2}4}
+\]
+
+% eq-139
+\[
+v_x=\frac v2,\qquad xv_x+yv_y=0
+\]
+
+% eq-140
+\[
+v_y=-\frac{dv}{4y},\qquad \boxed{u_P=\frac{|v|R}{\sqrt{4R^2-d^2}}}
+\]
+
+% eq-141
+\[
+s_{PQ}=R\arccos\frac d{2R}
+\]
+
+% eq-142
+\[
+\Delta t=\frac{2R-d}{v}\qquad(v>0)
+\]
+
+% eq-143
+\[
+\ell=\sqrt{x^2+H^2},\qquad u=-\dot x,\qquad \dot\ell=-v
+\]
+
+% eq-144
+\[
+\dot\ell=\frac{x\dot x}{\ell} =-u\cos\alpha=-v
+\]
+
+% eq-145
+\[
+\boxed{u=\frac v{\cos\alpha}}
+\]
+
+% eq-146
+\[
+u\cos\alpha\,\mathrm dt=v\,\mathrm dt
+\]
+
+% eq-147
+\[
+\boldsymbol e_\rho=(\cos\theta,\sin\theta),\qquad \boldsymbol e_\theta=(-\sin\theta,\cos\theta)
+\]
+
+% eq-148
+\[
+\boxed{a_\rho=\ddot\rho-\rho\omega^2},\qquad \boxed{a_\theta=2\dot\rho\omega+\rho\dot\omega}
+\]
+
+% eq-149
+\[
+\rho=\sqrt{a^2+u^2t^2},\quad \theta=\arctan\frac{ut}{a},\quad\omega=\frac{au}{\rho^2}
+\]
+
+% eq-150
+\[
+\dot\rho=\frac{u^2t}{\rho},\quad \ddot\rho=\frac{a^2u^2}{\rho^3},\quad \dot\omega=-\frac{2au^3t}{\rho^4}
+\]
+
+% eq-151
+\[
+a_\rho=\frac{a^2u^2}{\rho^3} -\rho\frac{a^2u^2}{\rho^4}=0
+\]
+
+% eq-152
+\[
+a_\theta=2\frac{u^2t}{\rho}\frac{au}{\rho^2} -\rho\frac{2au^3t}{\rho^4}=0
+\]
+\end{document}

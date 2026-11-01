@@ -1,0 +1,62 @@
+\begin{drillsolution}{w2:drill:4}\textbf{追踪同一材料微段并建立质量守恒}\par\nobreak
+图\ref{fig:w2:drill:4:s}的$x$为平衡坐标，实际位置是$X(x,t)=x+\xi(x,t)$。
+\fig{fig:w2:drill:4:element}{微段两端可以有不同位移；图示压缩时实际长度缩短}{
+\begin{tikzpicture}[scale=1.05]
+\draw[world](0,0)--(5,0);
+\draw[world](1,-.15)--(1,.15) (3.5,-.15)--(3.5,.15);
+\node[above]at(1,.2){$x$};\node[above]at(3.5,.2){$x+\dd x$};
+\draw[dim](1,.8)--(3.5,.8)node[midway,above]{$\dd x$};
+\node[left]at(0,0){平衡};
+\draw[world](0,-1.4)--(5,-1.4);
+\draw[world](1.5,-1.55)--(1.5,-1.25) (3.1,-1.55)--(3.1,-1.25);
+\draw[flow,blue](1,-.6)--(1.5,-.6)node[midway,below]{$\xi(x)$};
+\draw[flow,blue](3.5,-.6)--(3.1,-.6)node[midway,below]{$\xi(x+\dd x)$};
+\draw[guide](1,0)--(1.5,-1.4) (3.5,0)--(3.1,-1.4);
+\node[left]at(0,-1.4){实际};
+\draw[dim](1.5,-2)--(3.1,-2);
+\node[below]at(2.3,-2){$\dd X=(1+\partial_x\xi)\dd x$};
+\end{tikzpicture}}
+
+图\ref{fig:w2:drill:4:element}中两端属于同一块材料，形变前后质量不变。设$\mu$为按实际长度计的线密度，则微分极限下
+\[
+ \dd X=\frac{\partial X}{\partial x}\dd x
+       =(1+\partial_x\xi)\dd x,\qquad
+ \mu\,\dd X=\mu_0\,\dd x,
+\]
+\[
+ \mu=\frac{\mu_0}{1+\partial_x\xi}.
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{在小应变条件下展开密度}
+题设$|\partial_x\xi|\le Ak\ll1$保证长度映射为正，并允许使用$(1+\varepsilon)^{-1}=1-\varepsilon+O(\varepsilon^2)$。因此一阶密度变化为
+\[
+ \delta\mu=\mu-\mu_0=-\mu_0\partial_x\xi.
+\]
+图中的压缩对应$\partial_x\xi<0$，由此得到$\delta\mu>0$，可先独立核对符号。
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{代入行波并用压缩图核对相位}
+令$\psi=\omega t-kx$。对位移求空间导数后，
+\[
+ \partial_x\xi=(-A\sin\psi)\frac{\partial\psi}{\partial x}
+ =(-A\sin\psi)(-k)=Ak\sin\psi,\qquad
+ \boxed{\delta\mu=-\mu_0Ak\sin\psi}.
+\]
+\fig{fig:w2:drill:4:p}{固定$t=0$时的位移和密度；同一竖虚线连接位移过零与最强压缩}{
+\begin{tikzpicture}[x=1.25cm,y=.7cm]
+\draw[axis](0,0)--(4.7,0)node[right]{$kx$};
+\node[left]at(0,1){$\xi/A$};
+\draw[world,blue,domain=0:4.4,samples=100]plot(\x,{cos(90*\x)});
+\fill(1,0)circle(2pt);
+\node[below]at(2,0){$\pi$};\node[below]at(4,0){$2\pi$};
+\begin{scope}[yshift=-3cm]
+\draw[axis](0,0)--(4.7,0)node[right]{$kx$};
+\node[left]at(0,1){$\delta\mu/(\mu_0Ak)$};
+\draw[world,red,domain=0:4.4,samples=100]plot(\x,{sin(90*\x)});
+\fill(1,1)circle(2pt)node[above right]{最强压缩};
+\node[below]at(1,0){$\pi/2$};
+\node[below]at(2,0){$\pi$};\node[below]at(4,0){$2\pi$};
+\end{scope}
+\draw[guide](1,0)--(1,-2);
+\end{tikzpicture}}
+图\ref{fig:w2:drill:4:p}中压缩最强处满足$\sin\psi=-1$，位移恰为零；位移极大处$\sin\psi=0$，密度扰动为零。两者相差四分之一周期。密度峰值反映相邻材料点挤近，不能把位移波峰直接当成压缩峰。
+\end{drillsolution}

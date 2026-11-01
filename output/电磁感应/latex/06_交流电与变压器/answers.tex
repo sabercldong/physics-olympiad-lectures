@@ -1,0 +1,189 @@
+\LectureAnswerSection
+
+\input{solution-star-delta}
+
+\begin{drillsolution}{em6:drill:2}\textbf{对正半周电压积分，再除以完整周期求平均值}\par\nobreak
+图\ref{fig:em6:drill:2:s}只有 $0\le\varphi\le\pi$ 有输出。周期平均电压为 $\bar U=\frac{U_m}{2\pi}\int_0^\pi\sin\varphi\dd\varphi
+=\frac{U_m}{2\pi}[-\cos\varphi]_0^\pi
+=\frac{U_m[1-(-1)]}{2\pi}=\frac{U_m}{\pi}$。
+\fig{fig:em6:drill:2:p}{平方波形只占正半周，蓝色面积除以 $2\pi$ 得 $U^2/U_m^2=1/4$}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-.2)--(0,1.7)node[above]{$u_o^2/U_m^2$};\fill[blue!15](0,0)--plot[domain=0:3.141593,samples=90](\x,{(sin(\x r))^2})--cycle;\draw[world,blue,domain=0:3.141593,samples=90]plot(\x,{(sin(\x r))^2});\draw[world](3.141593,0)--(6.283185,0);\draw[guide,red](0,.25)--(6.3,.25);\node[left]at(0,.25){$1/4$};\node[below]at(3.141593,0){$\pi$};\node[below]at(6.283185,0){$2\pi$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对实际平方波形积分求有效值}\par\nobreak
+图\ref{fig:em6:drill:2:p}求热效应应对平方积分，不能用正半周的长度作归一化周期。用 $\sin^2\varphi=(1-\cos2\varphi)/2$，有 $\int_0^\pi\sin^2\varphi\dd\varphi=[\varphi/2-\sin2\varphi/4]_0^\pi=\pi/2$。因此，$U^2=(2\pi)^{-1}\int_0^\pi U_m^2\sin^2\varphi\dd\varphi=U_m^2/4$，故 $U=U_m/2$，$P=U_m^2/(4R)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用负半周无发热检查有效值与平均值的区别}\par\nobreak
+若用正弦的峰值除以 $\sqrt2$，会把负半周不存在的发热也计入。平均电压平方除以电阻同样不是平均功率。\end{drillsolution}
+\begin{drillsolution}{em6:drill:3}\textbf{以共同电压为参考分别写三支路电流相量}\par\nobreak
+图\ref{fig:em6:drill:3:s}各支路同电压，以电压相量为实轴，$I_R=U/R$，$\underline I_L=-\mathrm jU/(\omega L)$，$\underline I_C=\mathrm j\omega CU$。相加得到
+\[\underline I=\frac UR+\mathrm jU\left(\omega C-\frac1{\omega L}\right).\]
+\fig{fig:em6:drill:3:p}{谐振时两个电抗电流相量相消，电源仍供给电阻支路电流}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(3.1,0)node[right]{同相方向};\draw[axis](0,-2.5)--(0,2.6)node[above]{超前方向};\draw[force](0,0)--(2,0)node[below]{$\underline I=I_R=U/R$};
+\draw[flow,red](0,0)--(0,1.8)node[right]{$\underline I_C=\mathrm jU\sqrt{C/L}$};\draw[flow,blue](0,0)--(0,-1.8)node[right]{$\underline I_L=-\mathrm jU\sqrt{C/L}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令总无功电流为零求谐振频率与电源功率}\par\nobreak
+图\ref{fig:em6:drill:3:p}谐振时总电流与源电压同相，图中竖直的无功分量为零，故 $\omega C-1/(\omega L)=0$。两边乘正量 $\omega L$ 得 $\omega^2LC=1$，所以 $\omega_0=1/\sqrt{LC}$，总电流 $U/R$，总有功功率 $U^2/R$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分支路储能电流与源电流，并限定理想模型}\par\nobreak
+支路电感、电容电流大小仍为 $U\sqrt{C/L}$，可以远大于源电流；它们交换储能而不消耗平均有功功率。实际线圈电阻会改变谐振条件和最小输入电流，不能一概写成零。\end{drillsolution}
+\begin{drillsolution}{em6:drill:4}\textbf{先由总充电电流确定均匀位移电流密度}\par\nobreak
+图\ref{fig:em6:drill:4:s}均匀极板电荷 $Q$ 给出 $E=Q/(\varepsilon_0\pi a^2)$，故 $\varepsilon_0\dot E=I/(\pi a^2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对内区环路只积分所包围的部分位移电流}\par\nobreak
+半径 $s<a$ 的圆面只包围全部均匀位移电流密度的一部分，对面积积分得 $I_d=2\pi\varepsilon_0\dot E\int_0^s r\dd r
+=2\pi\varepsilon_0\dot E[r^2/2]_0^s
+=\varepsilon_0\dot E\pi s^2$。代入电场变化率，曲面包围位移电流 $I_d=I s^2/a^2$，由 $B(2\pi s)=\mu_0I_d$ 得 $B=\mu_0Is/(2\pi a^2)$。
+\fig{fig:em6:drill:4:p}{均匀位移电流给出内部线性场，边界外由包围的总电流给出 $1/s$ 场}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5,0)node[right]{$s/a$};\draw[axis](0,-.2)--(0,2.8)node[above]{$B/[\mu_0I/(2\pi a)]$};\draw[world,blue](0,0)--(1.5,2);\draw[world,red,domain=1.5:4.5,samples=70]plot(\x,{3/\x});\draw[guide](1.5,0)--(1.5,2)--(0,2);\node[below]at(1.5,0){$1$};\node[left]at(0,2){$1$};\node at(3.4,2.6){$B_{\max}=B(a)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对外区使用全部位移电流并核对边界和方向}\par\nobreak
+图\ref{fig:em6:drill:4:p}外区圆周包围全部位移电流，所以 $s>a$ 时 $B=\mu_0I/(2\pi s)$，两式在 $s=a$ 连续。磁场方向由电场增长方向的右手定则确定。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从电路频率求对应真空波长并说明场模型区别}\par\nobreak
+LC振荡频率为 $f=1/(2\pi\sqrt{LC})$，对应真空波长 $\lambda=c/f=2\pi c\sqrt{LC}$。这只表示相同频率的自由空间波长；集中电路内的场不等于一列处处均匀的平面传播波。\end{drillsolution}
+\begin{drillsolution}{em6:drill:5}\textbf{把有功输出与两项实际损耗分开求效率}\par\nobreak
+由图\ref{fig:em6:drill:5:s}近似稳压条件，输出 $P_o=UI$，输入为 $UI+P_0+r_eI^2$，故 $\eta=UI/(UI+P_0+r_eI^2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以每单位输出的损耗最小化求最佳电流}\par\nobreak
+对 $I>0$，最大效率等价于使 $(P_0+r_eI^2)/(UI)=P_0/(UI)+r_eI/U$ 最小。其导数为 $-P_0/(UI^2)+r_e/U$，零点给出 $I_*=\sqrt{P_0/r_e}$。
+\fig{fig:em6:drill:5:p}{损耗模型给出的效率曲线；横轴采用对数刻度，最佳点的铁损与铜损相等}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.6,0)node[right]{$I/I_*$};\draw[axis](0,-.2)--(0,2.8)node[above]{$\eta$};
+\draw[world,blue,domain=-7:7,samples=160]plot({.45*(\x+7)},{2.4/(1+(exp(-\x)+exp(\x))/110)});
+\foreach\z/\lab in {-4.605/0.01,-2.303/0.1,0/1,2.303/10,4.605/100}{\draw({.45*(\z+7)},0)--++(0,-.08)node[below]{$\lab$};}
+\draw[guide](3.15,0)--(3.15,{2.4*55/56});\fill(3.15,{2.4*55/56})circle(2pt);\node at(3.2,3.2){$I_*=10\,\mathrm A,\quad\eta_{\max}=98.21\%$};\node[left]at(0,2.4){$1$};\node at(3.2,-.8){对数刻度；大电流端仅为损耗模型的数学延伸};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入铁损与铜损相等的条件并核算效率}\par\nobreak
+图\ref{fig:em6:drill:5:p}在该点铁损与铜损相等，数值 $I_*=10\,\mathrm A$，输出2200W，总损耗40W，所以 $\eta_{\max}=2200/2240\simeq98.21\%$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查轻载、大电流及近似稳压条件的范围}\par\nobreak
+$I\to0$ 时输出趋零而铁损仍在，效率趋零；大电流时铜损按平方增长，比线性输出增加更快，效率也下降。
+
+这是一种损耗模型下的最佳负载，不自动等于额定电流。如果电流明显影响次级电压，或铁损随电压频率改变，必须重新写出 $U(I)$ 和损耗函数。即使数学最佳点很高，也不能越过绕组温升和额定电流限制。\end{drillsolution}
+\begin{drillsolution}{em6:drill:6}\textbf{用波前新增线段的电荷与磁通分别建立连接关系}\par\nobreak
+图\ref{fig:em6:drill:6:s}在短时间 $\dd t$ 内波前推进 $\dd x=v\dd t$。新段所需电荷为 $C' U\dd x$，输入电荷 $I\dd t$，所以 $I=C'Uv$。另一方面，图\ref{fig:em6:drill:6:p}中新建立的磁通为 $\dd\Phi=L'I\dd x$，推进时间为 $\dd t$，因此波前对应的感应压差为 $U=\dd\Phi/\dd t=L'vI$。这也可由微段方程跨过阶跃波前积分得到。联立得到
+\[v=\frac1{\sqrt{L'C'}},\qquad Z_0=\frac UI=\sqrt{\frac{L'}{C'}}.\]
+\fig{fig:em6:drill:6:p}{波前在 $\dd t$ 内前进 $\dd x$，新增线段同时建立电场与磁场储能}{\begin{tikzpicture}
+
+\fill[blue!10](0,0)rectangle(3,2.2);\fill[red!15](3,0)rectangle(4.2,2.2);\draw[world](0,0)--(6,0) (0,2.2)--(6,2.2);\draw[guide](3,-.2)--(3,2.6) (4.2,-.2)--(4.2,2.6);
+\node at(1.5,2.9){原已建立 $U,I$};\node at(5.2,2.9){前方 $u=i=0$};\draw[flow,red](.3,2.2)--(1.3,2.2)node[midway,above]{$I$};\draw[flow,red](1.3,0)--(.3,0);
+\draw[flow,blue](1.5,1.7)--(1.5,.6)node[right]{$E$};\node at(2.3,1.1){$\otimes B$};\draw[flow](4.2,1.1)--(5.4,1.1)node[above]{$v$};
+\draw[dim](3,-.6)--(4.2,-.6)node[midway,below]{$\dd x=v\dd t$};\node at(3.6,3.7){新增电荷 $C'U\dd x$，新增磁通 $L'I\dd x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两种场能同时计入，核对行波传送功率}\par\nobreak
+图\ref{fig:em6:drill:6:p}每单位长度的电场和磁场储能分别为 $C'U^2/2,L'I^2/2$；利用 $I=U/Z_0$ 两者相等，总量 $w=C'U^2$。前进速度乘储能密度 $vw=vC'U^2=UI$，恰为电源送入功率。$Z_0$ 因而连接行波的电压电流，不表示线路消耗了 $I^2Z_0$ 的热。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由径向电场积分求单位长度电容}\par\nobreak
+再讨论均匀介质的同轴线。设单位长度内导体电荷为 $\lambda_q$，柱面高斯定律给出 $E_r=\lambda_q/(2\pi\varepsilon r)$，积分端压为 $U=\frac{\lambda_q}{2\pi\varepsilon}\int_a^b\frac{\dd r}{r}
+=\frac{\lambda_q}{2\pi\varepsilon}[\ln r]_a^b
+=\frac{\lambda_q}{2\pi\varepsilon}\ln(b/a)$，从而 $C'=\lambda_q/U=2\pi\varepsilon/\ln(b/a)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{配合同一边界下的外部自感求同轴波速与阻抗}\par\nobreak
+同轴线中忽略内部自感，安培环路给出 $B(r)=\mu I/(2\pi r)$。
+取单位长度径向张面，磁通为
+\[
+ \Phi'=\int_a^b B(r)\dd r
+ =\frac{\mu I}{2\pi}[\ln r]_a^b
+ =\frac{\mu I}{2\pi}\ln(b/a),
+ \qquad L'=\Phi'/I=\frac{\mu}{2\pi}\ln(b/a).
+\]两个参数分别来自磁场和电场储能，使用相同介质与边界，因而 $v=1/\sqrt{\mu\varepsilon}$，$Z_0=\sqrt{\mu/\varepsilon}\ln(b/a)/(2\pi)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分无损行波阻抗与发热电阻及反射后的变化}\par\nobreak
+几何比例改变特性阻抗而不改变给定均匀介质中的波速。反射到来以前，源端看到的比值为 $Z_0$；有限线路末端开路或短路会在传播延迟后改变源端响应。\end{drillsolution}
+\begin{drillsolution}{em6:drill:7}\textbf{按同心圆环积分非均匀的位移电流密度}\par\nobreak
+图\ref{fig:em6:drill:7:s}中环路正向取逆时针，所包围位移电流不是均匀面密度。对 $r<a$，
+\begin{align*}I_d(r)&=\varepsilon_0\dot E_0\int_0^r(1-s^2/a^2)2\pi s\dd s\\&=2\pi\varepsilon_0\dot E_0\left[\frac{s^2}{2}-\frac{s^4}{4a^2}\right]_0^r
+\\&=\pi\varepsilon_0\dot E_0\left(r^2-\frac{r^4}{2a^2}\right).\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用局部包围电流和总位移电流求内外场}\par\nobreak
+由 $B_\varphi2\pi r=\mu_0I_d(r)$，$B_{\rm in}=\mu_0\varepsilon_0\dot E_0[r/2-r^3/(4a^2)]$。对外区包围全部位移电流 $\pi\varepsilon_0\dot E_0a^2/2$，故 $B_{\rm out}=\mu_0\varepsilon_0\dot E_0a^2/(4r)$。
+\fig{fig:em6:drill:7:p}{给定非均匀电场所对应的包围位移电流与磁场曲线，内部极值需由积分后的场函数求出}{\begin{tikzpicture}
+
+
+\draw[world](0,0)circle(1.5);\draw[guide](0,0)circle(.9);\node at(0,0){$\odot\dot E_z>0$};\draw[flow,blue](.636,.636)arc(45:150:.9);\draw[dim](0,-.2)--(1.5,-.2)node[midway,below]{$a$};\node at(0,-2.2){$E_z=E_0(t)(1-r^2/a^2)$};
+\begin{scope}[xshift=4cm]\draw[axis](-.2,0)--(4.3,0)node[right]{$r/a$};\draw[axis](0,-.2)--(0,3.1)node[above]{$B/(\mu_0\varepsilon_0\dot E_0a)$};
+\draw[world,blue,domain=0:1,samples=60]plot({1.5*\x},{8*(\x/2-(\x)^3/4)});\draw[world,red,domain=1:2.5,samples=70]plot({1.5*\x},{2/\x});\draw[guide](1.5,0)--(1.5,2);\node[below]at(1.5,0){$1$};\fill({1.5*sqrt(2/3)},{8*sqrt(2/3)/3})circle(2pt);\node at(2.4,2.8){$r_{\max}/a=\sqrt{2/3}$};\node[left]at(0,2){$1/4$};\end{scope}
+
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{连接边界后求内部导数并判定全局极值}\par\nobreak
+图\ref{fig:em6:drill:7:p}两式在 $r=a$ 同为 $\mu_0\varepsilon_0\dot E_0a/4$，边界连续。内部求导得 $\dd B/\dd r=\mu_0\varepsilon_0\dot E_0[1/2-3r^2/(4a^2)]$，零点 $r_*=a\sqrt{2/3}$；导数由正变负，外区又持续下降，故全局最大在此处，$B_{\max}=\mu_0\varepsilon_0\dot E_0a\sqrt{2/3}/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查轴线极限并说明局部值乘面积为何失效}\par\nobreak
+中心 $r\to0$ 时磁场线性趋零，避免出现虚假的轴线奇点。若错误把局部电场变化率直接乘圆面积，会忽略各半径的不同权重，既错过内部极值，也会算错外区所包围总位移电流。\end{drillsolution}
+\begin{drillsolution}{em6:drill:8}\textbf{先固定有功电流并分别求原、目标无功分量}\par\nobreak
+图\ref{fig:em6:drill:8:s}补偿不改变负载的有功电流 $I_P=P/U=10\,\mathrm A$。原相角满足 $\tan\phi_1=\sqrt{1-0.6^2}/0.6=4/3$，原无功电流为 $I_{Q1}=I_P\tan\phi_1=13.333\,\mathrm A$。目标 $\tan\phi_2=\sqrt{1-0.9^2}/0.9\simeq0.48432$，故所需净无功电流为4.843A。
+\fig{fig:em6:drill:8:p}{补偿前后同相电流均为 $10\mathrm A$，电容只改变净无功分量；图中电流为有效值相量}{\begin{tikzpicture}
+
+\begin{scope}[scale=.25]\draw[axis](-1,0)--(16,0)node[right]{同相分量};\draw[axis](0,-16)--(0,4)node[above]{超前分量};
+\draw[force,blue](0,0)--(10,-13.333333);\draw[force](0,0)--(10,-4.843221);\draw[flow,red](10,-13.333333)--(10,-4.843221);\draw[guide](10,0)--(10,-13.333333)--(0,-13.333333) (0,-4.843221)--(10,-4.843221);
+\node[above]at(10,0){$10\,\mathrm A$};\node[left]at(0,-13.333333){$-13.333\,\mathrm A$};\node[left]at(0,-4.843221){$-4.843\,\mathrm A$};\node[blue]at(4,-11){$\underline I_1$};\node at(6,-1.5){$\underline I_2$};\node[red,right]at(11,-9){$I_C=8.490\,\mathrm A$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只取无功分量之差求电容电流及电容}\par\nobreak
+由图\ref{fig:em6:drill:8:p}的相量，电容提供超前电流 $I_C=I_{Q1}-I_{Q2}\simeq8.490\,\mathrm A$。$I_C=2\pi fCU$，所以 $C\simeq122.84\,\mu\mathrm F$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两次总功率因数求源电流和线路损耗比}\par\nobreak
+源电流从 $I_1=P/(0.6U)=16.667\,\mathrm A$ 降至 $I_2=P/(0.9U)=11.111\,\mathrm A$，线路热损比为 $(I_2/I_1)^2=4/9$，降低约55.6\%。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释节省的电流来自何处并检查过度补偿趋势}\par\nobreak
+负载仍消耗2.2kW，理想电容只在周期内交换能量，节省的是输送相同有功功率所需的总电流。不能把电容电流的大小直接从原源电流大小相减。若过度补偿，净电流转为超前，继续增加电容又会提高线路电流与损耗，故补偿并非越大越好。\end{drillsolution}
+\begin{drillsolution}{em6:drill:9}\textbf{以受端实际电压写恒功率电流并消元}\par\nobreak
+图\ref{fig:em6:drill:9:s}功率因数为1，所以电压电流相量同向，可用实数关系 $U_s=U+IR_\ell$，$P=UI$。消去电流，得到 $U^2-U_sU+PR_\ell=0$。因此
+\[U_\pm=\frac{U_s\pm\sqrt{U_s^2-4PR_\ell}}{2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由判别式确定稳态存在范围及极限工作点}\par\nobreak
+在题设 $P>0$ 下，实数稳态要求 $0<P\le U_s^2/(4R_\ell)$。极限功率处两解合并，受端 $U=U_s/2$、电流 $U_s/(2R_\ell)$。
+\fig{fig:em6:drill:9:p}{给定功率的水平线一般与静态功率曲线相交两次；图示 $P/P_{\max}=0.64$}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(7.8,0)node[right]{$U/U_s$};\draw[axis](0,-.2)--(0,3.2)node[above]{$P/P_{\max}$};\draw[world,blue,domain=0:7,samples=100]plot(\x,{2.5*4*(\x/7)*(1-\x/7)});
+\draw[guide](0,1.6)--(7,1.6);\draw[guide](1.4,0)--(1.4,1.6) (5.6,0)--(5.6,1.6) (3.5,0)--(3.5,2.5);\fill(1.4,1.6)circle(2pt);\fill(5.6,1.6)circle(2pt);\node[left]at(0,2.5){$1$};\node[left]at(0,1.6){$0.64$};\node[below]at(1.4,0){$U_-/U_s$};\node[below]at(3.5,0){$1/2$};\node[below]at(5.6,0){$U_+/U_s$};\node[below]at(7,0){$1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用静态功率曲线比较高、低压两支}\par\nobreak
+按图\ref{fig:em6:drill:9:p}以负载电压写 $P=U(U_s-U)/R_\ell$，是开口向下抛物线。高压支 $U_+$ 在轻载时接近 $U_s$，电流较小；低压支 $U_-$ 在轻载时接近零，却有接近短路的较大电流，损耗很大。两个正根不能随意删去一个，但通常正常运行取高压支，动态稳定性还需结合负载调节和电网储能模型，静态方程本身不能单独证明。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求线路效率并区分静态解与动态稳定性}\par\nobreak
+输入功率 $U_sI$，效率 $\eta=P/(U_sI)=U/U_s$。最大传输功率处效率50\%，高压轻载支效率接近1。若给定 $P$ 超过判别式允许值，增大电流并不能维持原功率与稳态电压，应提高送端电压、降低线路电阻或减载。该结论把压降、功率和稳态存在条件联系起来，不能只按 $P/U_s$ 估计受端电流。\end{drillsolution}

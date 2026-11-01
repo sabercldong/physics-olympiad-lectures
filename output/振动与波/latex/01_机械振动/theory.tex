@@ -1,0 +1,238 @@
+\section{回复力与平衡位置}
+振动描述物体在一定位置附近的往复运动。周期性只是运动结果，判断能否作简谐振动必须从受力或势能出发。平衡位置是振动方向上的合力为零的位置；它不一定是弹簧原长的位置，也不一定对应每一个力为零。回复力指沿振动坐标、使物体趋向平衡位置的合力，不能在真实受力之外再添加一个“回复力”。
+
+把平衡位置记为$x=0$，若在所讨论的整个区间有
+\[
+ F_x=-Kx,\qquad m\ddot x+Kx=0,\qquad K>0,
+\]
+则物体作简谐振动。负号表明力和位移方向相反，$K$是对该坐标而言的有效劲度系数，未必等于装置中某一根弹簧的劲度。若实际关系含$x^2,x^3$等项，只能在这些项足够小时作线性近似。回复力始终指向平衡位置还不够，例如大小恒定的回复力不会给出正弦运动。
+
+竖直弹簧振子最能说明坐标选择的作用。设向下为正，总伸长为$z$，则$m\ddot z=mg-kz$。静止伸长$z_0=mg/k$，令$x=z-z_0$，代入后得到$m\ddot x=-kx$。重力改变平衡位置，却不改变理想线性弹簧振子的角频率。这里同时要求弹簧保持弹性、物体不脱离支承、阻力可忽略；若这些条件在运动中改变，方程也必须分段。
+
+\fig{fig:w1:equilibrium}{用同一个弹簧连接点比较自然长、静平衡与运动中的位置}{\begin{tikzpicture}
+
+\draw[world](-.5,4)--(6.7,4);\foreach \xx/\end/\lab in {0/2.6/自然长,3/1.6/静平衡,6/.9/运动中}{\draw[spring](\xx,4)--(\xx,\end);\node at(\xx,4.6){\lab};}
+\draw[guide](-.3,2.6)--(6.5,2.6);\draw[guide](-.3,1.6)--(6.5,1.6);
+\draw[world](2.7,1.1)rectangle(3.3,1.6);\node at(3,1.35){$m$};\draw[world](5.7,.4)rectangle(6.3,.9);
+\draw[force](6,.65)--(6,2.2)node[right]{$kz$};\draw[force](6,.65)--(6,-.55)node[right]{$mg$};
+\draw[dim](-.8,1.6)--(-.8,2.6)node[midway,left]{$z_0$};\draw[dim](6.8,.9)--(6.8,1.6)node[midway,right]{$x$};\draw[dim](7.6,.9)--(7.6,2.6)node[midway,right]{$z$};
+\node at(3,-.7){$z=z_0+x,\quad mg=kz_0,\quad F_{\text{合}}=-kx$};
+\end{tikzpicture}}
+
+图\ref{fig:w1:equilibrium}把自然长位置和平衡位置分开：静伸长满足$kz_0=mg$，以平衡位置为零点的位移 $x$才满足 $F=-kx$。若仍从自然长量位移，重力常量项就必须保留，不能把两种坐标的弹力表达式混用。
+
+
+\section{运动方程、初始条件与相位}
+先求解$\ddot x+\omega^2x=0$，其中$\omega=\sqrt{K/m}$。试取指数形式$x=e^{\lambda t}$，则$\dot x=\lambda e^{\lambda t}$、$\ddot x=\lambda^2e^{\lambda t}$；代入并约去不为零的指数因子，得到特征方程$\lambda^2+\omega^2=0$，两根为$\lambda=\pm\mathrm i\omega$。由$e^{\mathrm i\omega t}=\cos\omega t+\mathrm i\sin\omega t$，实数运动的通解可写为
+\[
+x=C\cos\omega t+D\sin\omega t.
+\]
+将常数取成$C=A\cos\varphi$、$D=-A\sin\varphi$，由余弦和角公式合并为$x=A\cos(\omega t+\varphi)$。相位增加$2\pi$时位置和速度同时复原，故$T=2\pi/\omega$。求导时令$\psi=\omega t+\varphi$，先求外层三角函数再乘$\dd\psi/\dd t=\omega$：
+\[
+v=\frac{\dd x}{\dd\psi}\frac{\dd\psi}{\dd t}
+=(-A\sin\psi)\omega,\qquad
+a=\frac{\dd(-A\omega\sin\psi)}{\dd\psi}\frac{\dd\psi}{\dd t}
+=(-A\omega\cos\psi)\omega.
+\]
+于是
+\[
+v=-A\omega\sin(\omega t+\varphi),\qquad
+a=-A\omega^2\cos(\omega t+\varphi)=-\omega^2x.
+\]
+把解代回方程，位移、速度、加速度三者的关系便得到验证。振幅$A$取非负值；相位$\omega t+\varphi$说明振子处于一个周期的什么阶段。同一位移在一周期内通常经过两次，速度符号不同，所以只由$x_0$求出的余弦值不能唯一确定初相。
+
+已知$x_0,v_0$时，
+\[
+A^2=x_0^2+\frac{v_0^2}{\omega^2},\quad
+\cos\varphi=\frac{x_0}{A},\quad
+\sin\varphi=-\frac{v_0}{A\omega}.
+\]
+应同时用正弦、余弦选择象限。若$A=0$，物体始终静止，初相没有独立物理意义。计算从一个位置到另一个位置的时间，应先在参考圆上标出运动方向，再取最小的非负相位增量$\Delta\psi$，用$\Delta t=\Delta\psi/\omega$。不能把位移差除以平均速率来代替相位分析。
+
+\fig{fig:w1:circle}{余弦投影时相位逆时针增加，上下两点投影相同而速度相反}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\draw[axis](-2.5,0)--(2.8,0)node[right]{$x$};\fill(0,0)circle(.04)node[below left]{$O$};
+\coordinate(P)at(1,1.732051);\coordinate(Q)at(1,-1.732051);\fill(P)circle(.05)node[above]{$P_1$};\fill(Q)circle(.05)node[below]{$P_2$};\draw[guide](P)--(Q);
+\draw[world](0,0)--(P)node[pos=.65,left]{$A$};\draw(.6,0)arc(0:60:.6);\node at(.78,.75){$\psi$};\draw[flow](1.9,.2)arc(6:45:1.91);
+\draw[flow](1,2.65)--(-.1,2.65)node[midway,above]{$P_1:\ v<0$};\draw[flow](1,-2.65)--(2.1,-2.65)node[midway,below]{$P_2:\ v>0$};\node[below right]at(1,0){$A/2$};
+\end{tikzpicture}}
+
+图\ref{fig:w1:circle}中参考圆半径给振幅，转角给相位，投影点的位置给位移。上、下半圆的两点可以投影到同一位置，却有相反速度，因此用初态定相位时还必须看投影的运动方向。参考圆是计算工具，振子并未沿圆运动。
+
+\subsection{从初态到完整运动的确定}
+前面的特征方程给出两个独立实解$\cos\omega t$与$\sin\omega t$，所以$x=C\cos\omega t+D\sin\omega t$。逐项求导为$\dot x=-\omega C\sin\omega t+\omega D\cos\omega t$。在$t=0$分别代入位置与速度初值，有$x_0=C$、$v_0=\omega D$，因而$C=x_0,D=v_0/\omega$。这一形式在初态不是端点或平衡位置时很方便，因为无需一开始就选择初相。需要振幅和相位时，再与$A\cos(\omega t+\varphi)$比较：$C=A\cos\varphi,D=-A\sin\varphi$。
+
+给定初态后，运动在理想模型中是唯一的。只规定振幅却不规定初态，仍有一整族相位不同的运动；只规定某时刻速度大小而不规定方向，也不能确定是哪一条时间支路。画参考圆时应写明采用余弦投影，正转方向代表相位增加。不能在同一解答里先用余弦定义角，再用正弦投影公式而不转换。
+
+例如从$x=A/2$向右开始，接下来到右端点的相位增量为$\pi/3$；从同一位置向左开始，下一次到右端点却要走$5\pi/3$。两个时刻的位移相同，未来到达时间相差很大。解决这类歧义，应把“位置条件”和“运动方向条件”分开写入方程，求出相位后再选择最短正时间。
+
+相空间也能表达同一关系：$x^2/A^2+v^2/(A^2\omega^2)=1$是一条椭圆。横轴是位移，纵轴是速度，运动方向由加速度$a=-\omega^2x$决定。它不是质点在真实空间的轨迹，而是状态随时间演化的表示。使用图像时先说明两个坐标轴的物理量，可避免把参考圆、空间轨迹和振动图相互混淆。
+
+\input{knowledge-oscillator-state}
+
+\subsection{位移区间、相位区间与停留时间}
+振子的速度随位置改变，相同长度的路程所需时间并不相等。若质点正向左运动，由$x_1$到$x_2$，其中$A\ge x_1>x_2\ge-A$，可在参考圆上取$0\le\psi\le\pi$。由$x=A\cos\psi$，起、末相位分别为$\arccos(x_1/A)$、$\arccos(x_2/A)$，所以
+\[
+\Delta t=\frac1\omega\left[\arccos\frac{x_2}{A}-\arccos\frac{x_1}{A}\right].
+\]
+图\ref{fig:w1:interval}的同一水平投影可对应上、下两个圆周点，因此先确定速度方向，再选择相位区间；若转向后才到达终点，则还要加上到端点的相位，不能直接用两个反余弦相减。
+\fig{fig:w1:interval}{向左运动支上的两个位置与相位增量}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.6);\draw[axis](-2,0)--(2.4,0)node[right]{$x$};\draw[guide](1.2,0)--(1.2,1.0583);\draw[guide](-.4,0)--(-.4,1.5492);\draw[world](0,0)--(1.2,1.0583);\draw[world](0,0)--(-.4,1.5492);\draw[flow](1.2,1.0583)arc(41.41:104.48:1.6);\node[below]at(1.2,0){$x_1$};\node[below]at(-.4,0){$x_2$};\node at(.8,1.9){$\Delta\psi$};\end{tikzpicture}}
+例如在一个周期内统计$|x|<b$的总时间，$0<b<A$。向左的一次穿越从$+b$到$-b$，相位差为$\arccos(-b/A)-\arccos(b/A)=2\arcsin(b/A)$；向右还有完全相同的一次。因此总停留时间
+\[
+\Delta t_{\rm middle}=\frac4\omega\arcsin\frac bA,\qquad
+\frac{\Delta t_{\rm middle}}T=\frac2\pi\arcsin\frac bA.
+\]
+当$b=A/2$时，中间一半长度区间只占全周期的$1/3$，其余$2/3$时间在两端。这是端点附近速度小的定量表现，并非“距离占一半，时间也占一半”。检查$b\to0$和$b\to A$，时间分别趋零与$T$，说明区间边界处理一致。
+
+若从速度式积分，向左支路有$\dd t=-\dd x/[\omega\sqrt{A^2-x^2}]$，所以
+\[
+\Delta t=\frac1\omega\int_{x_2}^{x_1}\frac{\dd x}{\sqrt{A^2-x^2}}.
+\]
+作换元$x=A\sin u$，取$-\pi/2\le u\le\pi/2$，则$\dd x=A\cos u\,\dd u$且根号为$A\cos u$；上下限相应变为$u_i=\arcsin(x_i/A)$。因此
+\[
+\Delta t=\frac1\omega\int_{u_2}^{u_1}\dd u
+=\frac1\omega\left[\arcsin\frac{x_1}{A}-\arcsin\frac{x_2}{A}\right].
+\]
+再用$\arcsin z=\pi/2-\arccos z$便恢复前面的相位式。根号来自能量式，负号来自向左支路；端点处分母为零，但换元后的积分仍有限。这种方法与参考圆结果一致，参考圆还可帮助核对转向前后的支路。
+
+\section{能量与有效参数}
+振子的速度随位置改变，能量式可以从运动方程直接得到。在一段单调运动中，链式求导给出$\ddot x=\dd v/\dd t=(\dd v/\dd x)(\dd x/\dd t)=v\,\dd v/\dd x$，所以$m v\dd v=-Kx\dd x$。从初态$(x_0,v_0)$积分到任一状态$(x,v)$，分别以$w,\xi$作积分变量：
+\[
+m\int_{v_0}^{v}w\,\dd w=-K\int_{x_0}^{x}\xi\,\dd\xi,
+\qquad m\left[\frac{w^2}{2}\right]_{v_0}^{v}
+=-K\left[\frac{\xi^2}{2}\right]_{x_0}^{x}.
+\]
+代入上下限并移项，有
+\[
+\frac m2(v^2-v_0^2)=-\frac K2(x^2-x_0^2),\qquad
+\frac12mv^2+\frac12Kx^2=E.
+\]
+转向处虽不能把$x$作为局部单调参数，能量关系仍由两侧连续性成立。把端点$x=\pm A,v=0$代入，得$E=KA^2/2$，继而$v^2=\omega^2(A^2-x^2)$。根号只给速率；向左运动须取负根，向右取正根。平衡位置速率最大而加速度为零，端点速率为零而加速度大小最大，这是能量分配与回复力共同决定的。
+
+\fig{fig:w1:energy-curves}{位置只决定动能大小；同一动能仍可对应两个速度方向}{\begin{tikzpicture}
+
+\draw[axis](-2.6,0)--(2.9,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{能量};
+\draw[blue,thick,domain=-2:2,samples=80]plot(\x,{.6*\x*\x});\draw[red,dashed,thick,domain=-2:2,samples=80]plot(\x,{2.4-.6*\x*\x});
+\draw[guide](-2.3,2.4)--(2.3,2.4)node[right]{$E$};\node[below]at(-2,0){$-A$};\node[below]at(2,0){$A$};
+\node[right]at(1.7,1.734){$U=Kx^2/2$};\node[right]at(1.7,.666){$K_{\text{动}}=E-U$};
+\end{tikzpicture}}
+
+图\ref{fig:w1:energy-curves}中势能与动能相加恒为$E$，但能量不能区分往返支路，仍要补上速度方向。若复杂装置只有一个独立坐标$q$，应先写每个物体的速度和每根弹簧的形变，再合成系统能量。例如$v_i=b_i\dot q$、$\Delta\ell_j=a_jq$时，
+\[
+K=\frac12\Bigl(\sum_i m_ib_i^2\Bigr)\dot q^2,
+\quad U=\frac12\Bigl(\sum_j k_ja_j^2\Bigr)q^2.
+\]
+于是$M_{\rm eff}=\sum m_ib_i^2$、$K_{\rm eff}=\sum k_ja_j^2$。转动物体还要加$I_i\dot\theta_i^2/2$。几何传动比进入的是平方，不能仅数绳段便断定质量或劲度翻倍。由$\dd(K+U)/\dd t=0$可得$\dot q(M_{\rm eff}\ddot q+K_{\rm eff}q)=0$，在运动区间约去$\dot q$后，再由连续性延伸到转向瞬间，得到完整运动方程。
+
+\fig{fig:w1:movable-pulley}{以负载下移q为坐标，动滑轮使弹簧伸长增量为2q}{\begin{tikzpicture}
+
+\draw[world](-.4,4)--(2.5,4);\draw[spring](2,4)--(2,3);\draw[world](1,1.6)circle(1);
+\draw[world](0,4)--(0,1.6)arc(180:360:1)--(2,3);\draw[world](1,1.6)--(1,.1);\draw[world](.6,-.6)rectangle(1.4,.1);\node at(1,-.25){$m$};
+\draw[flow](3.3,.3)--(3.3,-.3)node[right]{$q$};\draw[flow](3.3,3.5)--(3.3,2.3)node[right]{$2q$};\node[right]at(2.2,3.6){$k$};
+\node[align=left]at(6.7,1.5){负载：$v=\dot q$\\弹簧：$\Delta\ell=2q$\\$K_{\rm eff}=4k$};
+\end{tikzpicture}}
+例如图\ref{fig:w1:movable-pulley}中，绳轮均无质量且无摩擦，负载相对静平衡下移$q$。两支承绳段合计增加$2q$，弹簧下端必须下移$2q$。于是动能为$m\dot q^2/2$，弹簧相对平衡的二次势能为$k(2q)^2/2$，得到$\omega=\sqrt{4k/m}$。重力与静态弹力的一次项在平衡处相消。若改以弹簧端位移$Q=2q$为坐标，则有效质量变为$m/4$、有效劲度为$k$，频率完全相同。
+
+
+这些有效参数应对应同一坐标。若改用$Q=cq$，则$M_Q=M_{\rm eff}/c^2$、$K_Q=K_{\rm eff}/c^2$，比值及周期不变。若速度传动比随$q$改变，动能系数一般也随位置改变；只有在平衡位置附近取其最低阶，并同时把势能展开到二次，才可直接套用小振动频率。
+
+对质量可忽略的弹簧和连接件，图\ref{fig:w1:springs}中的串联连接点净力为零，两弹簧受力相同，形变量相加，故$1/k_{\rm eq}=1/k_1+1/k_2$；并联弹簧形变量相同，力相加，故$k_{\rm eq}=k_1+k_2$。使用前必须先核对实际约束，不能仅凭装置外观命名。
+
+\fig{fig:w1:springs}{串联相加的是形变量，并联相加的是对同一物体的弹力}{\begin{tikzpicture}
+
+\draw[world](0,-.2)--(0,1);\draw[spring](0,.4)--(1.7,.4);\fill(1.7,.4)circle(.04);\draw[spring](1.7,.4)--(3.4,.4);\draw[force](3.4,.4)--(4.4,.4)node[right]{$F$};
+\node at(.85,1){$k_1$};\node at(2.55,1){$k_2$};\node at(2,-.7){$\Delta\ell=F/k_1+F/k_2$};
+\begin{scope}[xshift=6.4cm]\draw[world](0,-.3)--(0,1.3);\draw[spring](0,.1)--(2.2,.1);\draw[spring](0,1)--(2.2,1);\draw[world](2.2,-.2)--(2.2,1.3);\draw[force](2.2,.55)--(3.5,.55)node[right]{$F$};
+\node[above]at(1.1,1){$k_1$};\node[below]at(1.1,.1){$k_2$};\node at(1.5,-.7){$F=(k_1+k_2)\Delta\ell$};\end{scope}
+\end{tikzpicture}}
+
+\subsection{平衡势能、重力做功与有效质量}
+竖直振子若以原长位置向下的坐标$z$计算，总势能为$U=kz^2/2-mgz$。配方得$U=k(z-mg/k)^2/2-m^2g^2/(2k)$。后一项为与位置无关的常数，不影响运动。因而相对平衡位置用$kx^2/2$表示势能，实际已经合并了重力势能与弹性势能，不能随后再加一次$mgx$。这解释了“重力只改变平衡位置”在能量表达中的具体含义。
+
+两物块用一根弹簧相连、在光滑水平面自由运动时，“参与振动的质量”尤其不能取两质量之和。图\ref{fig:w1:relative}取$x$向右，弹簧原长为$\ell_0$，相对伸长$q=x_2-x_1-\ell_0$。记$M=m_1+m_2$，则质心速度和伸长速率分别满足
+\[
+m_1v_1+m_2v_2=MV_C,\qquad v_2-v_1=\dot q.
+\]
+由第二式$v_2=v_1+\dot q$代入第一式，逐步得到
+\[
+v_1=V_C-\frac{m_2}{M}\dot q,\qquad
+v_2=V_C+\frac{m_1}{M}\dot q.
+\]
+\fig{fig:w1:relative}{质心平移与弹簧相对伸长的两个运动部分}{\begin{tikzpicture}[scale=.88]\draw[world](-.3,0)--(5.8,0);\draw[world](.3,.1)rectangle(1.2,.8);\draw[world](4.1,.1)rectangle(5,.8);\draw[spring](1.2,.45)--(4.1,.45);\node at(.75,.45){$m_1$};\node at(4.55,.45){$m_2$};\draw[flow](.75,1.2)--(1.65,1.2)node[right]{$v_1$};\draw[flow](4.55,1.2)--(5.45,1.2)node[right]{$v_2$};\draw[dim](.75,-.55)--(4.55,-.55)node[midway,below]{$x_2-x_1=\ell_0+q$};\fill(2.65,.45)circle(2pt)node[above]{$C$};\draw[axis](0,-1.2)--(5.5,-1.2)node[right]{$x$};\end{tikzpicture}}
+图中$C$的运动描述整体平移，$q$的变化描述两端相互靠近或远离。将两个速度代入动能，交叉项系数为$-m_1m_2/M+m_2m_1/M=0$；相对运动二次项的系数则为
+\[
+m_1\frac{m_2^2}{M^2}+m_2\frac{m_1^2}{M^2}
+=\frac{m_1m_2(m_1+m_2)}{M^2}=\frac{m_1m_2}{M}.
+\]
+因此$K=MV_C^2/2+\mu_r\dot q^2/2$，其中$\mu_r=m_1m_2/M$称为约化质量。水平外力为零使$V_C$恒定，平移能量不与弹簧交换；内部运动满足$\mu_r\ddot q+kq=0$，故周期为$2\pi\sqrt{\mu_r/k}$。
+
+还可直接检查弹簧力：$m_1\ddot x_1=kq$、$m_2\ddot x_2=-kq$，相减得$\ddot q=-k(1/m_1+1/m_2)q$，与能量法一致。两质量相等时$\mu_r=m/2$，两端同时移动使相对伸长变化更快；$m_2\to\infty$时$\mu_r\to m_1$，才趋近固定端振子。把有限质量物块真正固定会引入外部约束，应重新建模，而不能仍要求系统动量守恒。
+
+用能量识别频率时，还应区分系统是否有耗散。若摩擦在一周期做负功，总能量不守恒，即使每一段方程含正弦解，也不能沿用同一条能量椭圆。若平衡位置突然改变而位置速度连续，新振幅应以新的中心重新计算。振幅变化可能来自初态重定义，也可能来自能量损失，物理原因并不相同。
+
+
+\section{小振动与单摆}
+对可转动系统，坐标应选转角而非任意水平位移。单摆的切向方程为$ml\ddot\theta=-mg\sin\theta$。当$|\theta|\ll1$且用弧度表示时，$\sin\theta\simeq\theta$，于是
+\[
+\ddot\theta+\frac gl\theta=0,\qquad T\simeq2\pi\sqrt{\frac lg}.
+\]
+这里忽略的是非线性项，而不是向心加速度。绳张力一般不等于$mg\cos\theta$，径向方程仍包含$mv^2/l$；它只是不进入切向运动方程。摆长是悬点至质点的距离，圆弧槽的小振动则由局部曲率半径决定。
+
+\fig{fig:w1:pendulum}{小摆近似线性化的是切向重力，径向向心加速度仍然存在}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(P)at(1.5,.401924);\fill(O)circle(.05)node[above]{$O$};\draw[world](O)--(P)node[midway,right]{$\ell$};\draw[guide](O)--(0,0);\fill(P)circle(.09);
+\draw(0,2.2)arc(-90:-60:.8);\node at(.25,1.9){$\theta$};\draw[force](P)--(.95,1.35455)node[left]{$T$};\draw[force](P)--(1.5,-.8)node[right]{$mg$};
+\draw[flow](P)--(.633975,-.098076)node[left]{$v$};\node[align=left]at(5,1.6){切向：$m\ell\ddot\theta=-mg\sin\theta$\\径向：$T-mg\cos\theta=mv^2/\ell$};
+\end{tikzpicture}}
+
+图\ref{fig:w1:pendulum}把切向与径向分开：周期来自切向线性化，张力则要由径向方程另求。更普遍地，若势能在平衡位置$q_0$附近可展开为$U(q)=U(q_0)+\frac12U''(q_0)(q-q_0)^2+\cdots$，则稳定条件是$U''(q_0)>0$，小振动角频率为$\sqrt{U''(q_0)/M_{\rm eff}}$。若二阶项为零，必须继续检查高阶项；不能直接称为随遇平衡。
+
+\subsection{近似精度与周期的适用范围}
+单摆中$\sin\theta=\theta-\theta^3/6+\cdots$，将三次项相对一次项比较，可用$\theta_{\max}^2/6$估计回复力线性化的相对误差量级。这里$\theta$必须用弧度。若题设摆角不小，周期会随振幅增加，不能用“小振动”三个字代替定量检查。圆弧槽也应以最大弧长与曲率半径的比值作为小参数。
+
+当一个振动系统包含刚体转动时，动能中的惯性参数是转动惯量$I$。设回复力矩$M=-\kappa\theta$，则$I\ddot\theta+\kappa\theta=0$，周期为$2\pi\sqrt{I/\kappa}$。复摆中$\kappa=mgd$，$d$为悬点到质心距离，因此$T=2\pi\sqrt{I/(mgd)}$。不能把杆长直接代入单摆公式，除非已证明质量可集中在某一点。
+
+判断周期是否与振幅无关时，要先确认运动方程的线性和约束的持续性。线性回复力可以给出严格等时性；几何非线性的小摆只在一阶近似下等时。振子越过接触边界后，虽然接触区间内仍有同样的$\omega$，其完整往返时间却一般依赖释放高度。等效方法的目的，是把这些条件显式保留在可计算的模型中。
+
+
+\section{接触、摩擦与分段运动}
+理想简谐方程只在约束不变的区间成立。小球放在弹簧托盘上，托盘只能推而不能拉；若求出的支持力变负，说明小球已经脱离。存在库仑摩擦时，摩擦方向由速度决定，向右、向左两个阶段的平衡位置不同，每段仍可能是简谐形式，但整个运动不是等振幅的简谐运动。转向处速度为零，还须比较弹力和最大静摩擦力，决定是否能够再次启动。
+
+处理阶段变化时，先确定切换条件，再把前一段末态的位移和速度作为下一段初始条件。接触与脱离通常连续传递位置、速度；碰撞则要先用冲量或恢复系数决定速度变化。周期、接触时间、全过程时间是不同的量，不能把一段运动默认延长为完整周期。
+
+\subsection{支持力限制与干摩擦的阶段连接}
+托盘承托小球时，先讨论二者共同运动是否成立。以共同平衡位置为$x=0$、向上为正，若共同运动的角频率为$\omega$，则小球的竖直方程为$N-mg=m\ddot x=-m\omega^2x$，所以$N=m(g-\omega^2x)$。图\ref{fig:w1:unilateral}中的支持力只能向上，因而共同运动只在$x\le g/\omega^2$内可能。振幅$A<g/\omega^2$时全程满足；$A>g/\omega^2$时，小球在上行途中到达此边界便脱离，速度由$v^2=\omega^2A^2-g^2/\omega^2$确定。
+
+恰有$A=g/\omega^2$时，支持力只在最高点瞬时为零，速度也为零；这本身不意味着存在一段分离飞行。进入脱离阶段后，小球仅受重力，托盘的受力和振动中心也随载荷减少而改变。下一次接触必须由两者的位置相等且正在靠近共同确定，不能继续把小球的位置延拓成原正弦曲线。
+
+\fig{fig:w1:unilateral}{承托接触中的真实受力与共同运动边界}{\begin{tikzpicture}[scale=.88]\draw[world](.4,0)--(2.8,0);\draw[spring](1.6,0)--(1.6,1.2);\draw[world](.8,1.2)--(2.4,1.2);\fill(1.6,1.45)circle(5pt);\draw[force](1.6,1.45)--(1.6,2.5)node[above]{$N$};\draw[force](1.6,1.45)--(1.6,.5)node[right]{$mg$};\draw[axis](3.4,.2)--(3.4,3.1)node[above]{$x$};\draw[guide](2.7,.7)--(4,.7)node[right]{$0$};\draw[guide](2.7,2.3)--(4,2.3)node[right]{$g/\omega^2$};\end{tikzpicture}}
+干摩擦造成的分段中心可以用同样的坐标方法处理。水平振子从原长右侧$x=a>0$静止释放，设能够启动，动摩擦大小为$f_k$。向左运动时摩擦向右，故$m\ddot x=-kx+f_k=-k(x-c)$，其中$c=f_k/k$。令$y=x-c$，则$\ddot y+\omega^2y=0$、$\omega^2=k/m$，因此按前面的特征方程法有$y=C\cos\omega t+D\sin\omega t$。初态给出$C=y(0)=a-c$，而$\dot y(0)=\omega D=0$给$D=0$，于是$x=c+(a-c)\cos\omega t$。求导得到$\dot x=-(a-c)\omega\sin\omega t$；下一次速度为零对应$\omega t=\pi$，故下一转向位置为$x_1=c-(a-c)=2c-a$。若$a>2c$，左侧端点离原长的距离为$a-2c$，较原来减少$2f_k/k$。
+
+\fig{fig:w1:dry-friction}{示意取初端点$a=5c$，最大静摩擦为$1.2f_k$，振子在第二次转向时停住}{\begin{tikzpicture}
+
+\fill[gray!18](-1.2,-.4)rectangle(1.2,1.6);\draw[axis](-3.6,0)--(5.8,0)node[right]{$x/c$};
+\foreach \xx in {-3,1,5}{\fill(\xx,0)circle(.055);\node[below]at(\xx,0){$\xx$};}
+\draw[flow](5,1.4)--(-3,1.4)node[midway,above]{向左：中心$+c$};\draw[flow](-3,.7)--(1,.7)node[midway,above]{向右：中心$-c$};
+\node at(0,-1){灰区内静摩擦可平衡弹力};\node at(4,-1){$c=f_k/k$};
+\end{tikzpicture}}
+
+图\ref{fig:w1:dry-friction}将端点的推进与最终停止分开。这一结论以该半程确实运动到转向点为前提。到达$x_1$后，先检查$|kx_1|\le f_{s,\max}$：满足时静摩擦可以平衡弹力，振子停住；不满足时才反向启动，使用相反的摩擦方向和新的中心。只有连续跨越两侧的阶段才可说每整周期振幅减少$4f_k/k$，不能用这个数越过最终停止阶段。这里的每段角频率相同，分段中心、机械能和后续是否还能振动却不同。
+
+\section{参数改变与振动测量}
+实验中测量周期，宜记录若干完整振动的总时间再除以次数，减少起止反应误差。计数必须选同一运动方向经过同一位置的事件；若把每次过平衡位置都记作一次完整振动，会使周期少算一半。由位移图读出振幅和周期后，还要由初始斜率判定速度方向，不能仅由图像某一高度确定初相。
+
+竖直弹簧可由静伸长测得$k/m=g/\delta_0$，从而预测$T=2\pi\sqrt{\delta_0/g}$。这个预测要求静态和振动中使用同一段线性弹性范围。如果静伸长与周期测量明显不符，应检查弹簧质量、阻力、连接件质量和支承是否运动，不能先通过改变相位来弥补，因为相位不改变周期。质量分布在弹簧内时，弹簧不同部分速度不同，参与动能的有效质量也不是简单等于整个弹簧质量。
+
+突然增加恒力会平移平衡位置。若旧平衡点为零，新增向右恒力$F_0$，新平衡为$x_e=F_0/k$；切换瞬间旧位置$x_i$与速度$v_i$连续，新振幅为$\sqrt{(x_i-x_e)^2+v_i^2/\omega^2}$。若原来在旧平衡位置静止，则新振幅是$|F_0|/k$。这是改变初态相对新中心的位置，并非周期改变。若突然改变劲度，则新角频率和新能量关系也同时改变，必须重新计算。
+
+\fig{fig:w1:shifted-center}{突然加恒力后运动中心移到$x_e$，初态相对新中心的偏离决定新振幅}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(7.1,0)node[right]{$\omega t$};\draw[axis](0,0)--(0,3)node[above]{$x$};
+\draw[blue,thick,domain=0:360,samples=100]plot({\x/60},{1.2*(1-cos(\x))});\draw[guide](0,1.2)--(7.6,1.2);\node[above]at(5.8,1.2){$x_e=F_0/k$};
+\node[left]at(0,2.4){$2x_e$};\node[below]at(3,0){$\pi$};\node[below]at(6,0){$2\pi$};\draw[guide](3,2.4)--(7.6,2.4);\draw[dim](7.6,1.2)--(7.6,2.4)node[midway,right]{$A_{\text{新}}=x_e$};
+\end{tikzpicture}}
+图\ref{fig:w1:shifted-center}取$F_0>0$、旧平衡位置静止的初态。切换后$m\ddot x=-kx+F_0=-k(x-x_e)$，令$y=x-x_e$后得到$\ddot y+\omega^2y=0$。通解$y=C\cos\omega t+D\sin\omega t$的初值为$y(0)=-x_e$、$\dot y(0)=0$，所以$C=-x_e,D=0$，恢复原坐标得$x=x_e(1-\cos\omega t)$。第一个端点在旧坐标$2x_e$处；振幅却是相对新中心的$x_e$，并非$2x_e$。曲线的周期仍为$2\pi/\omega$。若外力随后撤去，就须以撤力瞬间的$x,v$再建立下一段初态。
+
+
+真实振动受到小阻力时，振幅会缓慢衰减。用相邻多个周期比较振幅，可以区分能量损耗和单次初态误差。若阻力与速度近似成正比，线性方程还含$\dot x$项；干摩擦则是按速度符号切换的恒力，两者的衰减规律不同。本讲分段干摩擦不能改写成一个等效的常数阻尼系数后直接使用。把理想模型的结论与偏离模型的迹象联系起来，有助于判断哪些计算精度具有物理意义。
+

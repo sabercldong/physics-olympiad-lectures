@@ -1,0 +1,77 @@
+\section{练习}
+
+\begin{question}\begin{drill}[半圆导线的磁力]\label{mg2:drill:1}
+半径 $R$ 的上半圆细导线通有从左端 $A$ 到右端 $B$ 的电流 $I$，均匀场向纸外。求合力，并用直接微元积分检查。
+\end{drill}
+\fig{fig:mg2:drill:1:s}{题设：半圆导线的磁力}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.5,0)node[left]{$A$}arc(180:0:1.5)node[right]{$B$};\node at(0,2.2){$\odot B$};\draw[flow](150:1.5)arc(150:65:1.5)node[above]{$I$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:1}
+\begin{question}\begin{drill}[柔软导线的平面平衡形状]\label{mg2:drill:2}
+忽略重力的柔软导线长 $s$，两端固定，通恒流 $I$，外场 $B$ 垂直其所在平面。若张力处处为正且没有其他分布力，证明平衡导线为圆弧，并写出弦长 $2a$ 与张力的关系。
+\end{drill}
+\fig{fig:mg2:drill:2:s}{示意一种可能的平衡构型，端点固定；电流与磁场的方向使分布磁力朝弧外}{\begin{tikzpicture}
+
+\draw[world](-2,0)node[left]{$A$}to[bend left=60](2,0)node[right]{$B$};\draw[dim](-2,-.6)--(2,-.6)node[midway,below]{$2a$};
+\node at(0,2.3){$\otimes B$};\draw[flow](-1.45,.6)to[bend left=25](.2,1.1)node[above]{$I$};\node at(0,-1.4){总弧长 $s$，张力为正；形状需由局部平衡求出};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:2}
+\begin{question}\begin{drill}[倾斜线圈的磁力偶]\label{mg2:drill:3}
+矩形线圈匝数 $N$、电流 $I$、边长 $a,b$，其磁矩与匀强场 $B$ 成角 $\theta$。求合力和力矩，并说明 $\theta=0,\pi/2,\pi$ 三种状态。
+\end{drill}
+\fig{fig:mg2:drill:3:s}{左图给出矩形与电流，右图为其侧视图，法线与线圈平面垂直}{\begin{tikzpicture}
+
+\draw[world](-1.3,-.8)rectangle(1.3,.8);\draw[flow](1.3,-.5)--(1.3,.5)node[right]{$I$};\draw[dim](-1.3,-1.3)--(1.3,-1.3)node[midway,below]{$a$};\draw[dim](-1.9,-.8)--(-1.9,.8)node[midway,left]{$b$};\node at(0,1.6){$N$ 匝，同向电流};
+\begin{scope}[xshift=5.5cm]
+\draw[very thick](-.9,.9)--(.9,-.9);\draw[->,red,thick](0,0)--(1.6,1.6)node[above]{$\bm n,\bm m$};\draw[->,blue,thick](0,0)--(2.7,0)node[right]{$\bm B$};\draw[dim](.65,0)arc(0:45:.65)node[midway,right]{$\theta$};
+\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:3}
+\begin{question}\begin{drill}[均匀带电实心球的磁矩]\label{mg2:drill:4}
+半径 $R$、总电荷 $Q$ 的绝缘实心球均匀带电，以角速度 $\omega$ 刚性转动。求磁矩。给定均匀球壳的 $\int r_\perp^2\dd q=2r^2\dd q/3$，请对径向分布完成积分。
+\end{drill}
+\fig{fig:mg2:drill:4:s}{题设：均匀带电实心球的磁矩}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\draw[guide](0,0)ellipse(1.5 and .4);\draw[axis](0,-2)--(0,2.2)node[above]{$\omega$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$R$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:4}
+\begin{question}\begin{drill}[恒流弹性圆环的半径]\label{mg2:drill:5}
+自然半径 $R_0$ 的细弹性圆环杨氏模量 $Y$、截面积 $A$，通有由电源维持的恒流 $I$。外场 $B$ 垂直环面，方向使磁力向外。忽略自场与重力，采用线弹性关系，求平衡半径与适用条件。
+\end{drill}
+\fig{fig:mg2:drill:5:s}{题设：恒流弹性圆环的半径}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$R$};\draw[flow](1.5*.707,1.5*.707)arc(45:115:1.5);\node at(2.3,1){$\odot B$};\node at(0,2.2){恒流 $I$，自然半径 $R_0$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:5}
+\begin{question}\begin{drill}[两平行导线的每单位长度作用力]\label{mg2:drill:6}
+两条相距 $d$ 的无限长导线电流分别为 $I_1,I_2$，同向。求每单位长度的作用力；若电流都加倍，线距加倍，作用力密度怎样变化？
+\end{drill}
+\fig{fig:mg2:drill:6:s}{题设：两平行导线的每单位长度作用力}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.4,0)circle(.13);\node at(-1.4,0){$\cdot$};\node[below]at(-1.4,-0.2){$I_1$};\draw[world](1.4,0)circle(.13);\node at(1.4,0){$\cdot$};\node[below]at(1.4,-0.2){$I_2$};\draw[dim](-1.4,-1)--(1.4,-1)node[midway,below]{$d$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:6}
+\begin{question}\begin{drill}[小线圈在轴向梯度场中的力]\label{mg2:drill:7}
+小线圈磁矩 $m_B$ 被约束沿 $+z$，其尺寸远小于外场变化尺度。轴向场为 $B(z)=B_0+\beta z$。求线圈沿轴的力，并求从 $z_1$ 到 $z_2$ 时磁力所作机械功。
+\end{drill}
+\fig{fig:mg2:drill:7:s}{题设：小线圈在轴向梯度场中的力}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-1)--(0,2.8)node[above]{$z$};\draw[world](0,0)ellipse(1 and .3);\draw[flow](0,0)--(0,1.3)node[right]{$m_B$};\node at(2,1){$B_0+\beta z$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:7}
+\begin{question}\begin{drill}[电荷与质量同比分布时的磁矩]\label{mg2:drill:8}
+同一轴对称刚体中每处电荷与质量的比值均为 $Q/M$，绕固定的对称轴以角速度 $\omega$ 转动。证明 $\bm m_B=Q\bm L/(2M)$。分别用薄圆环和薄圆盘的结果检查。
+\end{drill}
+\fig{fig:mg2:drill:8:s}{轴对称刚体中的同一质量微元和电荷微元，距转轴的共同距离是 $r_\perp$}{\begin{tikzpicture}
+
+\draw[world](0,0)ellipse(1.8 and 2.1);\draw[guide](0,.7)ellipse(1.55 and .35);\draw[axis](0,-2.6)--(0,2.7)node[above]{$\omega\bm n$};
+\fill(1.55,.7)circle(2pt)node[right,align=center]{$\dd q=(Q/M)\dd M$\\同一体元};\draw[dim](0,.7)--(1.55,.7)node[midway,above]{$r_\perp$};\draw[flow](1.096, .947)arc(45:120:1.55 and .35);
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg2:drill:8}

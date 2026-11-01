@@ -1,0 +1,39 @@
+\section{练习}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[可逆绝热膨胀与功]\label{t3-10}
+1mol单原子理想气体从 $T_0,V_0$ 可逆绝热膨胀到 $2V_0$，求末温、功及熵变。见图\ref{fig:t3-10q}。
+\end{drill}
+\fig{fig:t3-10q}{题设：单原子理想气体沿可逆绝热线膨胀，$p_A=RT_0/V_0$}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$V/V_0$};\draw[axis](0,0)--(0,3.7)node[above]{$p/p_A$};\draw[flow,blue,domain=2:4,samples=100]plot(\x,{3*(2/\x)^(5/3)});\fill(2,3)circle(.05)node[above]{$A$};\fill(4,.9449408)circle(.05)node[right]{$B$};\node[below]at(2,0){$1$};\node[below]at(4,0){$2$};\node[left]at(0,3){$1$};\node[left]at(0,.9449408){$2^{-5/3}$};
+\end{tikzpicture}}
+\hyperref[sol:t3-10]{详解见第\pageref{sol:t3-10}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[真空容器的绝热充气]\label{t3-11}
+体积 $V$ 的绝热刚性容器初为真空，从恒压恒温气库 $p_s,T_s$ 充入单原子理想气体，直到容器压强为 $p_s$，随后关阀。忽略入口动能和壁热容，求末温与末气体量。见图\ref{fig:t3-11q}。
+\end{drill}
+\fig{fig:t3-11q}{真空刚性容器通过阀门接收气库气体；停止时公共压强为$p_s$}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(2.5,2.5) (6,-.4)rectangle(9.5,2.9);\draw[guide,rounded corners](-.2,-.2)rectangle(2.7,2.7);\node[align=center]at(1.25,1.25){真空容器\\体积$V$};\node[align=center]at(7.75,1.25){恒定气库\\$p_s,T_s$};\draw[world](2.5,1.25)--(6,1.25);\draw[world](3.9,1.05)--(4.3,1.45)--(4.3,1.05)--(3.9,1.45)--cycle;\node[above]at(4.1,1.7){阀门};\draw[flow](5.5,2.3)--(3.2,2.3)node[midway,above]{流入};
+
+\end{tikzpicture}}
+\hyperref[sol:t3-11]{详解见第\pageref{sol:t3-11}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[卡诺制冷与热泵]\label{t3-12}
+可逆卡诺机在270K与300K热源间逆向运行，从低温端每周取走900J，求输入功、排向高温端的热量、制冷系数与供热系数。见图\ref{fig:t3-12q}。
+\end{drill}
+\fig{fig:t3-12q}{卡诺制冷与热泵：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2) rectangle (2,3) (0,-1) rectangle (2,0);\draw[world] (0,.5) rectangle (2,1.5);\node at (1,2.5){300K};\node at (1,-.5){270K};\node at (1,1){制冷机};\draw[flow] (1,0)--(1,.5);\draw[flow] (1,1.5)--(1,2);\draw[flow] (4,1)--(2,1) node[midway,above]{$W_{\text{入}}$};
+\end{tikzpicture}}
+\hyperref[sol:t3-12]{详解见第\pageref{sol:t3-12}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[自由膨胀的熵检验]\label{t3-13}
+1mol理想气体在绝热刚性容器内向等体积真空自由膨胀，始末平衡体积比为2。求 $Q,W,\Delta U,\Delta S$，并说明能否只用该容器自发恢复初态。见图\ref{fig:t3-13q}。
+\end{drill}
+\fig{fig:t3-13q}{自由膨胀的熵检验：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (5,2);\draw[world,very thick] (2.5,0)--(2.5,2);\node at (1.25,1){气体 $V$};\node at (3.75,1){真空 $V$};\draw[flow](2.5,2)--(2.5,3)node[above]{撤去隔板};
+\end{tikzpicture}}
+\hyperref[sol:t3-13]{详解见第\pageref{sol:t3-13}页}。
+\end{minipage}

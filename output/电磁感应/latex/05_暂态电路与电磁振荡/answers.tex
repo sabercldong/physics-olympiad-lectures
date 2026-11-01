@@ -1,0 +1,264 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em5:drill:1}\textbf{按电容初态解一阶充电方程}\par\nobreak
+图\ref{fig:em5:drill:1:s}取充入电容正极板的电量为 $q$，初态 $q(0)=0$。回路为 $R\dot q+q/C=E$，令 $Q_\infty=CE,\tau=RC$，则 $\dd q/(Q_\infty-q)=\dd t/\tau$。按初末状态积分，
+\[
+\int_0^{q(t)}\frac{\dd z}{Q_\infty-z}
+=\int_0^t\frac{\dd s}{\tau},\qquad
+[-\ln(Q_\infty-z)]_0^{q(t)}=\frac t\tau.
+\]
+原函数的负号来自内层 $Q_\infty-z$ 的导数 $-1$，所以 $-\ln[(Q_\infty-q)/Q_\infty]=t/\tau$，从而
+\[q=CE(1-\e^{-t/\tau}),\qquad i=\dot q=\frac ER\e^{-t/\tau}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先积分输送电量求电源功}\par\nobreak
+电源始终以电动势 $E$ 输送电荷，总输送电量为 $q(\infty)-q(0)=CE$，故做功 $W_s=E\Delta q=CE^2$。
+\fig{fig:em5:drill:1:p}{归一化充电电流指数衰减；平方电流积分给出与电阻大小无关的总热}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.1,0)node[right]{$t/(RC)$};\draw[axis](0,-.2)--(0,2.6)node[above]{$i/(E/R)$};
+\fill[blue!12](0,0)--(0,2)--plot[domain=0:4.5,samples=70](\x,{2*exp(-\x)})--(4.5,0)--cycle;\draw[world,blue,domain=0:4.5,samples=70]plot(\x,{2*exp(-\x)});\node[left]at(0,2){$1$};\node at(2.6,1.6){$\int i\dd t=CE$};\node at(2.6,.9){$\int Ri^2\dd t=CE^2/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求末态电能与全过程电阻热}\par\nobreak
+图\ref{fig:em5:drill:1:p}的电流按指数下降，最终电容电压为 $E$，储能 $W_C=q(\infty)^2/(2C)=CE^2/2$。电阻热直接积分为
+\[Q_J=\frac{E^2}{R}\int_0^\infty\e^{-2t/\tau}\dd t
+=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^\infty
+=\frac{E^2}{R}\frac\tau2=\frac12CE^2.\]
+所以 $W_s=W_C+Q_J$，全过程能量闭合。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时检查峰值与持续时间的零电阻极限}\par\nobreak
+$R\to0^+$ 时初始电流按 $1/R$ 增大、持续时间按 $R$ 缩短，二者在平方积分中留下有限热；不能把有耗散模型的极限等同于一开始就无电阻、无寄生参数的理想切换。\end{drillsolution}
+\begin{drillsolution}{em5:drill:2}\textbf{按放电正向列方程并由两项初态定系数}\par\nobreak
+按图\ref{fig:em5:drill:2:s}正向 $i=-\dot q$，回路给出 $L\dot i=q/C$，因此 $\ddot q+\omega_0^2q=0$，$\omega_0=1/\sqrt{LC}$。设 $q=\e^{st}$，代入得 $s^2+\omega_0^2=0$，由共轭根 $\pm\mathrm j\omega_0$ 合成实一般解 $q=A\cos\omega_0t+D\sin\omega_0t$，求导后 $i=A\omega_0\sin\omega_0t-D\omega_0\cos\omega_0t$。由 $q(0)=Q_0$ 得 $A=Q_0$，由 $i(0)=I_0$ 得 $D=-I_0/\omega_0$，于是
+\[q=Q_0\cos\omega_0t-\frac{I_0}{\omega_0}\sin\omega_0t,\quad i=Q_0\omega_0\sin\omega_0t+I_0\cos\omega_0t.\]
+\fig{fig:em5:drill:2:p}{能量椭圆上用初始状态点同时确定电荷和电流的符号，轨道沿逆时针运行}{\begin{tikzpicture}
+
+\draw[axis](-2.7,0)--(2.8,0)node[right]{$q$};\draw[axis](0,-2)--(0,2.1)node[above]{$i$};\draw[world,blue](0,0)ellipse(2 and 1.3);
+\draw[flow,blue](1.732,.65)arc(30:65:2 and 1.3);\fill(1.732,.65)circle(2pt);\draw[guide](1.732,0)--(1.732,.65)--(0,.65);\node[below]at(1.732,0){$Q_0$};\node[left]at(0,.65){$I_0$};\node[left]at(0,1.3){$I_{\max}$};\node at(0,-2.6){图示第一象限初态；一般初态须按有向坐标选象限};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用能量椭圆求最大电流并确定周期}\par\nobreak
+图\ref{fig:em5:drill:2:p}的相平面椭圆为 $q^2/C+Li^2=Q_0^2/C+LI_0^2$，最大电流时电容电荷为零，将 $q=0$ 代入椭圆式后除以 $L$，即得 $I_{\max}^2=I_0^2+Q_0^2/(LC)$。振荡角频率为 $\omega_0$，所以 $T=2\pi\sqrt{LC}$，$I_{\max}=\sqrt{I_0^2+Q_0^2/(LC)}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以初始电荷和电流共同确定初相位象限}\par\nobreak
+若 $A=\sqrt{Q_0^2+(I_0/\omega_0)^2}>0$，写 $q=A\cos(\omega_0t+\phi)$，应同时满足 $A\cos\phi=Q_0,A\omega_0\sin\phi=I_0$，用两式确定象限，不能只取反正切主值。若 $Q_0=I_0=0$，回路始终处于零状态，振幅为零，初相位没有可辨认的物理意义。\end{drillsolution}
+\begin{drillsolution}{em5:drill:3}\textbf{分别辨认切换前后串联电阻并求连续初流}\par\nobreak
+图\ref{fig:em5:drill:3:s}的连接关系明确给出切换前后不同的串联电阻。初流 $I_0=E/(r+R_1+R_2)$。切换后 $L\dot i+(R_2+R_3)i=0$，电流连续，令 $R_s=R_2+R_3$，分离并积分得
+\[
+\int_{I_0}^{i(t)}\frac{\dd z}{z}=-\frac{R_s}{L}\int_0^t\dd s,
+\qquad \ln\frac{i}{I_0}=-\frac{R_st}{L}.
+\]
+再用 $-L\dot i=-L I_0(-R_s/L)\e^{-R_st/L}$，所以
+\[i=I_0\e^{-(R_2+R_3)t/L},\quad\varepsilon_L=(R_2+R_3)I_0\e^{-(R_2+R_3)t/L}.\]
+\fig{fig:em5:drill:3:p}{无源续流中自感电动势沿原电流方向，其大小随电流同步衰减}{\begin{tikzpicture}
+\draw[world](4.5,2.4)--(4.5,1.95);\draw[world](4.5,0.35)arc(-90:90:.2);\draw[world](4.5,0.75)arc(-90:90:.2);\draw[world](4.5,1.15)arc(-90:90:.2);\draw[world](4.5,1.5500000000000003)arc(-90:90:.2);\draw[world](4.5,.35)--(4.5,0);
+\draw[world](0,0)--(4.5,0) (0,0)--(0,2.4)--(.8,2.4) (1.5,2.4)--(2.4,2.4) (3.1,2.4)--(4.5,2.4);\draw[world](.8,2.2)rectangle(1.5,2.6)(2.4,2.2)rectangle(3.1,2.6);\node[above]at(1.15,2.65){$R_2$};\node[above]at(2.75,2.65){$R_3$};\node[right]at(4.9,1.1){$L$};\draw[flow,red](4.5,3.2)--(4.5,2.5)node[midway,right]{$i$};
+
+\node at(2.2,-.7){$\varepsilon_L=-L\dot i=(R_2+R_3)i>0$};\node at(2.2,-1.4){$\tau=L/(R_2+R_3)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从单调衰减确定电动势最大时刻及方向}\par\nobreak
+图\ref{fig:em5:drill:3:p}中自感电动势与续流方向一致，其大小为 $(R_2+R_3)I_0\e^{-(R_2+R_3)t/L}$，指数因子从1单调减小，故最大值在 $0^+$，为 $E(R_2+R_3)/(r+R_1+R_2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分两电阻热并用初始磁能检查}\par\nobreak
+由同一续流电流直接积分，$Q_J=R_sI_0^2[-L\e^{-2R_st/L}/(2R_s)]_0^\infty=LI_0^2/2$，也等于切换前磁能；两电阻分热比例为 $R_2:R_3$，因为它们始终流过相同电流。\end{drillsolution}
+\begin{drillsolution}{em5:drill:4}\textbf{统一沿斜面位移、电流和磁力的参考方向}\par\nobreak
+图\ref{fig:em5:drill:4:s}把轨面展开为平面图，向右对应沿斜面下滑的正 $x$ 方向。磁场向轨面内，统一取棒中向上的电流 $J$ 为正，磁力便沿斜面向上，即 $F_B=-kJ$。三种回路初态均与 $x(0)=v(0)=0$ 相容。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{电阻回路求终速、位移和热量去向}\par\nobreak
+接电阻时 $J=kv/R$，所以 $m\dot v=F-k^2v/R$。令 $\tau=mR/k^2,v_\infty=FR/k^2$，分离速度方程，
+\[
+\int_0^{v(t)}\frac{\dd z}{v_\infty-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad -\ln\frac{v_\infty-v}{v_\infty}=\frac t\tau.
+\]
+再从 $x(0)=0$ 对速度积分，$x=v_\infty[s+\tau\e^{-s/\tau}]_0^t$，解得
+\[v=v_\infty(1-\e^{-t/\tau}),\qquad
+x=v_\infty[t-\tau(1-\e^{-t/\tau})].\]
+任意时刻重力功满足 $Fx=mv^2/2+Q_R$，其中 $Q_R=\int_0^t RJ^2\dd t\ge0$；末速有限，但棒仍持续下滑和发热。
+
+\fig{fig:em5:drill:4:p}{同一时间、速度尺度下的一组参数示例：电阻趋于终速，电容匀加速，电感使速度周期反向}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$s=t/\tau$};\draw[axis](0,-1.5)--(0,3.7)node[above]{$v/v_\infty$};
+\draw[world,blue,domain=0:6.28,samples=90]plot(\x,{1-exp(-\x)});\draw[world,red](0,0)--(6.28,3.14);\draw[world,domain=0:6.28,samples=100]plot(\x,{sin(\x r)});
+\node[blue]at(4.9,1.4){接 $R$};\node[red]at(5.1,3){接 $C$};\node at(4.9,-1.4){接 $L$};\draw[guide](0,1)--(6.3,1);\node[left]at(0,1){$1$};\node[left]at(0,-1){$-1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由电容电荷反馈求恒定加速度与两种储能}\par\nobreak
+接未充电电容时，正电流充入与上轨相连的极板。回路无电阻且忽略自感，故 $q/C=kv$、$J=\dot q=Ck\dot v$。代入机械方程得 $(m+Ck^2)\dot v=F$，以 $a=F/(m+Ck^2)$ 记常加速度，从零初态连续积分，
+$v(t)=\int_0^t a\,\dd s=at$，
+$x(t)=\int_0^t as\,\dd s=[as^2/2]_0^t$，因此
+\[v=\frac{Ft}{m+Ck^2},\qquad x=\frac{Ft^2}{2(m+Ck^2)}.\]
+电容场能 $q^2/(2C)=Ck^2v^2/2$，于是 $Fx=(m+Ck^2)v^2/2$，没有电阻热，也不存在电阻模型的终速。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总磁链求回复作用与往返振荡}\par\nobreak
+接零电阻电感时，同一参考方向的回路方程为 $L\dot J=kv=k\dot x$。从两项零初态积分，
+$L\int_0^{J(t)}\dd z=k\int_0^{x(t)}\dd y$，得 $LJ=kx$；电流参考的正法向向纸外，外磁通为 $-kx$，这也满足总磁链 $LJ-kx=0$。机械方程为 $m\ddot x=F-k^2x/L$。令 $\Omega=k/\sqrt{mL}$，平衡位置 $x_e=FL/k^2$，令 $y=x-x_e$，其方程 $\ddot y+\Omega^2y=0$ 的特征根为 $\pm\mathrm j\Omega$。写 $y=A\cos\Omega t+D\sin\Omega t$，由 $y(0)=-x_e,\dot y(0)=0$ 得 $A=-x_e,D=0$；再求导 $v=x_e\Omega\sin\Omega t$，利用 $x_e\Omega=F/(m\Omega)$，得
+\[x=x_e(1-\cos\Omega t),\qquad
+v=\frac{F}{m\Omega}\sin\Omega t,\qquad J=\frac{kx}{L}.\]
+此时 $Fx=mv^2/2+LJ^2/2$，重力功与动能、磁场能交换，棒还会沿斜面向上返回。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在共同标度下比较三种运动并限定图示参数}\par\nobreak
+图\ref{fig:em5:drill:4:p}为便于共用坐标，选取 $Ck^2=m,L=mR^2/k^2$，使 $\Omega\tau=1$。三条曲线依次为 $v_R/v_\infty=1-\e^{-s}$、$v_C/v_\infty=s/2$、$v_L/v_\infty=\sin s$，$s=t/\tau$。这组参数只用于直观比较耗散、额外储能惯性与回复作用；一般参数下应使用上面的各自表达式。
+\end{drillsolution}
+\begin{drillsolution}{em5:drill:5}\textbf{由特征根和两项初态确定电荷的正弦与余弦系数}\par\nobreak
+图\ref{fig:em5:drill:5:s}中取 $i=-\dot q$，方程为 $L\ddot q+R\dot q+q/C=0$。令 $\alpha=R/(2L)$、$\omega_d=\sqrt{1/(LC)-\alpha^2}$，设 $q=\e^{st}$ 后，特征方程为 $s^2+2\alpha s+1/(LC)=0$；配方得 $(s+\alpha)^2+\omega_d^2=0$，所以特征根 $-\alpha\pm\mathrm j\omega_d$ 给出 $q=\e^{-\alpha t}(A\cos\omega_dt+B\sin\omega_dt)$。初电荷决定 $A=Q_0$，初电流为零要求 $-\alpha A+\omega_dB=0$，所以
+\[q=Q_0\e^{-\alpha t}\left(\cos\omega_dt+\frac\alpha{\omega_d}\sin\omega_dt\right).\]
+\fig{fig:em5:drill:5:p}{同一欠阻尼解中的电荷与总能量；电荷会反号，能量始终非负并单调下降}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(7.8,0)node[right]{$\omega_0t$};\draw[axis](0,-1.3)--(0,2.7)node[above]{$q/Q_0,\ W/W_0$};
+\draw[world,blue,domain=0:7.2,samples=160]plot(\x,{2*exp(-.2*\x)*(cos(sqrt(.96)*\x r)+.2/sqrt(.96)*sin(sqrt(.96)*\x r))});
+\draw[world,red,domain=0:7.2,samples=160]plot(\x,{2*exp(-.4*\x)*((cos(sqrt(.96)*\x r)+.2/sqrt(.96)*sin(sqrt(.96)*\x r))^2+(sin(sqrt(.96)*\x r))^2/.96)});
+\node[left]at(0,2){$1$};\node[red]at(4.5,1.4){$W/W_0$};\node[blue]at(4.5,-1.2){$q/Q_0$};\node at(3.9,3.8){示例 $\alpha/\omega_0=0.2,\quad W_0=Q_0^2/(2C)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将电荷和电流共同代入能量并证明单调耗散}\par\nobreak
+图\ref{fig:em5:drill:5:p}同时画出电荷和由两项储能相加得到的总能量。电荷振幅衰减，初始切线为水平；漏掉正弦项就会违反零初电流。使用乘积法则求得
+\begin{align*}
+\dot q={}&-\alpha Q_0\e^{-\alpha t}
+\left(\cos\omega_dt+\frac\alpha{\omega_d}\sin\omega_dt\right)\\
+&+Q_0\e^{-\alpha t}
+(-\omega_d\sin\omega_dt+\alpha\cos\omega_dt)\\
+={}&-Q_0\e^{-\alpha t}
+\left(\frac{\alpha^2}{\omega_d}+\omega_d\right)\sin\omega_dt\\
+={}&-\frac{Q_0}{LC\omega_d}\e^{-\alpha t}\sin\omega_dt.
+\end{align*}
+能量逐项求导，并用 $i=-\dot q$、$L\dot i=q/C-Ri$，
+\[
+\dot W=\frac qC\dot q+Li\dot i
+=-\frac qCi+i\left(\frac qC-Ri\right)=-Ri^2\le0.
+\]最终总热为 $Q_0^2/(2C)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分衰减波形、振荡因子周期与无阻尼周期}\par\nobreak
+电荷波形整体并不严格重复；其中正弦振荡因子的周期为 $2\pi/\omega_d$，不能不加条件地用理想 LC 周期替代。\end{drillsolution}
+\begin{drillsolution}{em5:drill:6}\textbf{由共同端压与节点守恒求总电感电流的衰减}\par\nobreak
+图\ref{fig:em5:drill:6:s}的共同电压 $u=V_A-V_B$ 满足 $L_1\dot i_1=L_2\dot i_2=u$。电阻向下电流为 $u/R$，节点方程 $i_1+i_2+u/R=0$。令 $I=i_1+i_2$，则 $\dot I=u(1/L_1+1/L_2)=-RI/L_e$，其中 $L_e=L_1L_2/(L_1+L_2)$。当初始和 $I_s=I_{10}+I_{20}\ne0$ 时，
+\[
+\int_{I_s}^{I(t)}\frac{\dd z}{z}
+=-\frac R{L_e}\int_0^t\dd s,\qquad
+\ln\left|\frac{I}{I_s}\right|=-\frac{Rt}{L_e},
+\]
+所以 $I=I_s\e^{-Rt/L_e}$。若 $I_s=0$，原方程给出恒零解。
+\fig{fig:em5:drill:6:p}{末态存在不经过电阻的环流，图取 $D>0$；若 $D<0$ 则两个实际电流方向均反转}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,2.4)--(0,2.8)--(6,2.8)--(6,1.5) (0,0)--(0,-.4)--(6,-.4)--(6,.8) (3,2.4)--(3,2.8) (3,0)--(3,-.4);\draw[world](5.8,.8)rectangle(6.2,1.5);\node[right]at(6.3,1.15){$R,\ i_R=0$};\node[left]at(0,1.1){$L_1$};\node[left]at(3,1.1){$L_2$};
+\draw[flow,red](-.6,2.4)--(-.6,1.6)node[left]{$D/(L_1+L_2)$};\draw[flow,blue](3.7,.5)--(3.7,1.3)node[right]{$D/(L_1+L_2)$};\draw[flow,red](2.6,2.8)--(1,2.8);\draw[flow,red](.7,-.4)--(2.3,-.4);
+\node at(3,3.6){$u=0,\quad i_{1\infty}=-i_{2\infty}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用磁链差不变量还原各支路电流与末态}\par\nobreak
+图\ref{fig:em5:drill:6:p}中差组合 $D=L_1i_1-L_2i_2=L_1I_{10}-L_2I_{20}$ 恒定。联立和与差，$i_1=(D+L_2I)/(L_1+L_2)$，$i_2=(L_1I-D)/(L_1+L_2)$。最终电阻电流为零，但两电感中留下 $\pm D/(L_1+L_2)$ 的环流。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把储能分为可耗散部分与保留的环流部分}\par\nobreak
+展开两只电感能量，可得 $W_B=L_eI^2/2+D^2/[2(L_1+L_2)]$。第二项不衰减，最终能量即 $D^2/[2(L_1+L_2)]$；第一项全部变为热，$Q_J=L_e(I_{10}+I_{20})^2/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以纯环流和零磁链差两种初态检查极限}\par\nobreak
+若初始两电流等大反向，则 $I=0$、端压为零，从开始就没有电阻热；若 $D=0$，则所有初始磁能都可耗散。两种极限直接检验了对称、反对称组合的物理含义。\end{drillsolution}
+\begin{drillsolution}{em5:drill:7}\textbf{沿初始电感电流确定电容充电方向并列方程}\par\nobreak
+按图\ref{fig:em5:drill:7:s}电流充入寄生电容正极板的方向计 $i=C_p\dot u$，电感关系为 $L\dot i=-u$。消去电流得到 $\ddot u+u/(LC_p)=0$，初值 $u(0)=0,\dot u(0)=I_0/C_p$。试取指数解得 $s^2+1/(LC_p)=0$。令 $\omega=1/\sqrt{LC_p}$，实通解为 $u=A\cos\omega t+D\sin\omega t$；初压给出 $A=0$，初始导数给出 $\omega D=I_0/C_p$，所以 $D=I_0\sqrt{L/C_p}$。再由 $i=C_pD\omega\cos\omega t$ 还原电流，得
+\[u=I_0\sqrt{L/C_p}\sin(t/\sqrt{LC_p}),\qquad i=I_0\cos(t/\sqrt{LC_p}).\]
+\fig{fig:em5:drill:7:p}{首次上升到阈值即改变电路；图示 $U_b/U_{\max}=0.65$ 的击穿前过程}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(2.4,0)node[right]{$t/\sqrt{LC_p}$};\draw[axis](0,-.2)--(0,1.55)node[above]{$u/U_{\max}$};
+\draw[world,blue,domain=0:.707584,samples=50]plot(\x,{sin(\x r)});\draw[guide,blue,domain=.707584:1.570796,samples=50]plot(\x,{sin(\x r)});
+\draw[guide](0,.65)--(1.9,.65)node[right]{$U_b/U_{\max}$};\draw[guide](0,1)--(1.57,1);\node[left]at(0,1){$1$};\draw[guide](.707584,0)--(.707584,.65);\fill(.707584,.65)circle(2pt);\node[below]at(.707584,0){$\arcsin0.65$};\node at(1.2,-.8){虚线为无击穿模型的延拓};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只在首次上升支路比较阈值并求到达时间}\par\nobreak
+由图\ref{fig:em5:drill:7:p}的第一个上升四分之一周期，最大电压 $U_{\max}=I_0\sqrt{L/C_p}$。若 $U_b>U_{\max}$，本模型内不会到达阈值；若 $0<U_b\le U_{\max}$，首次到达时刻为 $t_b=\sqrt{LC_p}\arcsin(U_b/U_{\max})$。首次到达以后放电通道形成，不能再沿同一个无损正弦解外推。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以磁能到电能的转换检查最大电压}\par\nobreak
+最大值时电流为零，$C_pU_{\max}^2/2=LI_0^2/2$，能量检验成立。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明阈值事件后的模型变化及集中参数范围}\par\nobreak
+增大寄生或附加电容降低峰值，但也改变振荡频率。真实触点存在电弧、电阻、击穿延迟和分布参数，本题只给出进入击穿前的集中参数判据；“断路所以电流立即消失”会漏掉这一重要过程。\end{drillsolution}
+\begin{drillsolution}{em5:drill:8}\textbf{用重根通解和零初流求电荷与放电电流}\par\nobreak
+由图\ref{fig:em5:drill:8:s}的放电方向，$i=-\dot q$，$L\ddot q+R\dot q+q/C=0$。令 $\alpha=R/(2L)=1/\sqrt{LC}$，特征方程为 $(s+\alpha)^2=0$，令 $q=y\e^{-\alpha t}$，两次求导为
+$\dot q=(\dot y-\alpha y)\e^{-\alpha t}$、
+$\ddot q=(\ddot y-2\alpha\dot y+\alpha^2y)\e^{-\alpha t}$。
+代入方程后$\ddot y=0$。记$A=y(0),B=\dot y(0)$，先积加速度、再积速度：
+\[
+\dot y(t)-B=\int_0^t0\,\dd s=0,\qquad
+y(t)-A=\int_0^tB\,\dd s=B[s]_0^t=Bt.
+\]
+因此$\dot y=B,y=A+Bt$，所以 $q=(A+Bt)\e^{-\alpha t}$。初电荷给出 $A=Q_0$，用乘积法则得 $\dot q=[B-\alpha(A+Bt)]\e^{-\alpha t}$，初流为零要求 $\dot q(0)=B-\alpha Q_0=0$，即 $B=\alpha Q_0$，于是
+\[q=Q_0(1+\alpha t)\e^{-\alpha t},\qquad i=Q_0\alpha^2t\e^{-\alpha t}.\]
+\fig{fig:em5:drill:8:p}{临界电荷单调衰减，电流在 $\alpha t=1$ 达峰；该时刻的能量仍分布于电容、电感与已放热三部分}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.6,0)node[right]{$\alpha t$};\draw[axis](0,-.2)--(0,2.7)node[above]{$q/Q_0,\ i/(Q_0\alpha)$};
+\draw[world,blue,domain=0:5,samples=80]plot(\x,{2*(1+\x)*exp(-\x)});\draw[world,red,domain=0:5,samples=80]plot(\x,{2*\x*exp(-\x)});\draw[guide](1,0)--(1,{2/exp(1)});\fill(1,{2/exp(1)})circle(2pt);\node[left]at(0,2){$1$};\node[below]at(1,0){$1$};\node[blue]at(3,1.4){电荷};\node[red]at(3,.6){电流};
+\fill[blue!20](7,0)rectangle(8,{2.4*4/exp(2)});\fill[red!20](7,{2.4*4/exp(2)})rectangle(8,{2.4*5/exp(2)});\fill[gray!20](7,{2.4*5/exp(2)})rectangle(8,2.4);\draw[world](7,0)rectangle(8,2.4);
+\node[right]at(8.2,{2.4*2/exp(2)}){$W_E/W_0=4/\e^2$};\node[right]at(8.2,{2.4*4.5/exp(2)}){$W_B/W_0=1/\e^2$};\node[right]at(8.2,{1.2*(1+5/exp(2))}){$Q/W_0=1-5/\e^2$};\node at(7.5,3){电流峰值时};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对电流求导确定唯一峰值及其时刻}\par\nobreak
+图\ref{fig:em5:drill:8:p}电流从零增加再衰减，$\dot i=Q_0\alpha^2(1-\alpha t)\e^{-\alpha t}$，故峰值在 $t_*=1/\alpha=\sqrt{LC}$，$I_{\max}=Q_0\alpha/\e$。不存在电流反向，电荷也始终保持原号。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扣除峰值时的两种剩余储能求已放热比例}\par\nobreak
+令 $x=\alpha t$，由 $L\alpha^2=1/C$，剩余电磁能为 $W(t)=Q_0^2\e^{-2x}[(1+x)^2+x^2]/(2C)$。在 $x=1$ 时，其与初能 $W_0=Q_0^2/(2C)$ 之比为 $5/\e^2$，所以已放热比例 $1-5/\e^2\simeq0.3233$。此时电流最大并不意味着电能已全转为磁能；相当部分仍在电容中，而且电阻已经持续耗能。\end{drillsolution}
+\begin{drillsolution}{em5:drill:9}\textbf{从下阈值出发解充电过程并求上阈值事件}\par\nobreak
+图\ref{fig:em5:drill:9:s}每次充电都从同一电压 $U_l$ 出发，$RC\dot u+u=E$，从下阈值到当前电压分离积分，
+\[
+\int_{U_l}^{u(t)}\frac{\dd z}{E-z}=\int_0^t\frac{\dd s}{RC},
+\qquad -\ln\frac{E-u(t)}{E-U_l}=\frac t{RC},
+\]
+因此 $u=E-(E-U_l)\e^{-t/(RC)}$。令 $u(T)=U_h$，得
+\[T=RC\ln\frac{E-U_l}{E-U_h}.\]
+这是阈值到达时间，不能把 $RC$ 本身当成整个周期。$U_h\to E$ 时需要无限长时间才到达，故阈值必须严格低于电源电压。
+\fig{fig:em5:drill:9:p}{阈值复位的重复电压；图示 $U_l/E=0.2,U_h/E=0.8$，充电时段 $T=RC\ln4$}{\begin{tikzpicture}
+\begin{scope}[xscale=1.5,yscale=2]
+
+\draw[axis](-.2,0)--(4.1,0)node[right]{$t$};\draw[axis](0,-.2)--(0,1.5)node[above]{$u/E$};
+\draw[world,blue,domain=0:1.386294,samples=50]plot(\x,{1-.8*exp(-\x)});\draw[world,blue](1.386294,.8)--(1.386294,.2);\draw[world,blue,domain=1.386294:2.772589,samples=50]plot(\x,{1-.8*exp(-(\x-1.386294))});\draw[world,blue](2.772589,.8)--(2.772589,.2);\draw[world,blue,domain=2.772589:3.6,samples=40]plot(\x,{1-.8*exp(-(\x-2.772589))});
+\draw[guide](0,.2)--(3.6,.2)node[right]{$U_l/E$};\draw[guide](0,.8)--(3.6,.8)node[right]{$U_h/E$};\draw[guide](0,1)--(3.6,1)node[right]{$1$};\node[below]at(1.386294,0){$T$};\node[below]at(2.772589,0){$2T$};
+
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按完整周期计算电源输送的电荷和功}\par\nobreak
+图\ref{fig:em5:drill:9:p}中快速下降阶段使状态返回 $U_l$，每周期电源净送出电荷 $C(U_h-U_l)$，做功 $W_s=EC(U_h-U_l)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求充电与复位两支路的热量}\par\nobreak
+充电电阻热为源功减电能增加，$Q_c=EC(U_h-U_l)-C(U_h^2-U_l^2)/2$；复位支路热为 $Q_d=C(U_h^2-U_l^2)/2$。二者相加 $Q_{\text{周}}=EC(U_h-U_l)$，因为电容经过完整周期没有净储能变化。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用每周期净储能不变解释平均功率}\par\nobreak
+平均源功率及总耗散均为 $EC(U_h-U_l)/T$。快速复位时间趋零并不使它的热量消失，只会形成很高的瞬时功率。若复位能量可回收而非耗散，则上述 $Q_d$ 应改列为回收功，不能继续称全部源功为电阻热。\end{drillsolution}

@@ -1,0 +1,406 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[螺线管自感与储能的两种计算]\label{em4:example:1}
+长螺线管长 $\ell$、截面积 $S$、匝数 $N$，内部为磁导率 $\mu$ 的线性介质。电流从零建立到 $I$。求自感及磁场能，并用体积分检查。
+\end{example}
+\fig{fig:em4:example:1:s}{长螺线管的纵截面和截面积；上下绕线电流共同产生向右的内场}{\begin{tikzpicture}
+
+
+\draw[world](0,0)rectangle(4,1.4);
+\foreach \x in {.3,.8,1.3,1.8,2.3,2.8,3.3,3.8}{\node at(\x,1.4){$\odot$};\node at(\x,0){$\otimes$};}
+\draw[flow,blue](.3,.7)--(3.7,.7)node[midway,above]{$\bm B$};
+\draw[dim](0,-.55)--(4,-.55)node[midway,below]{$\ell$};\node at(2,2){$N$ 匝};
+\draw[axis](3,2.55)--(4.2,2.55)node[right]{$+x$};
+\begin{scope}[xshift=6cm]\fill[blue!10](0,.7)circle(.8);\draw[world](0,.7)circle(.8);
+\node at(0,.7){$\odot B$};\draw[flow,red](.566,1.266)arc(45:145:.8);\node at(0,-.6){截面积 $S$};\end{scope}
+
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由单位长度匝数求内场，再求磁链}\par\nobreak
+根据图\ref{fig:em4:example:1:s}，忽略两端漏磁，$B=\mu NI/\ell$。磁链为 $NBS=\mu N^2SI/\ell$，故 $L=\mu N^2S/\ell$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿电流建立过程积分电源功}\par\nobreak
+电源向理想电感输入的功为
+\[W=\int_0^I Li\dd i=L\left[\frac{i^2}{2}\right]_0^I
+=\frac{\mu N^2SI^2}{2\ell}.\]
+\fig{fig:em4:example:1:p}{磁场占据体积 $S\ell$；建立电流所做功也等于磁链—电流图中的蓝色面积}{\begin{tikzpicture}
+
+\fill[blue!12](0,0)rectangle(3.5,1.6);\draw[world](0,0)rectangle(3.5,1.6);
+\draw[flow,blue](.4,1.1)--(3.1,1.1)node[midway,above]{$B$};\node at(1.75,.4){$w_B=B^2/(2\mu)$};\draw[dim](0,-.5)--(3.5,-.5)node[midway,below]{$\ell$};\node at(1.75,2.1){截面积 $S$};
+\begin{scope}[xshift=5cm]\draw[axis](-.2,0)--(3.5,0)node[right]{$\Psi$};\draw[axis](0,-.2)--(0,2.5)node[above]{$i$};
+\fill[blue!15](0,0)--(3,2)--(3,0)--cycle;\draw[world](0,0)--(3,2);\draw[guide](0,2)--(3,2);
+\node[left]at(0,2){$I$};\node[below]at(3,0){$LI$};\node at(2,.65){$W_B$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对线圈内部的场能密度作体积分核验}\par\nobreak
+图\ref{fig:em4:example:1:p}中的场能主要位于柱体 $S\ell$ 内。按能量密度积分，$\int B^2/(2\mu)\dd V=B^2S\ell/(2\mu)$，代入磁场与上式一致。若电流加倍，磁场加倍而能量为原来的四倍；若线圈不够长，上述均匀场假设不成立，需要计入外部磁场能。\end{solution}
+\begin{question}\begin{example}[双线绕组的串联和并联]\label{em4:example:2}
+两根绝缘导线并排绕成相同绕组，每组自感 $L$，互感 $M=kL$，同名端如图，电阻忽略。求顺向串联、反向串联以及同名端相接并联时的等效电感。
+\end{example}
+\fig{fig:em4:example:2:s}{相同绕组的同名端与电流参考；$M=kL$，磁耦合不等于电连接}{\begin{tikzpicture}
+
+
+\foreach \x/\j in {0/1,3.5/2}{
+\draw[world](\x,2.4)--(\x,1.95);\foreach \n in {0,...,3}{\draw[world](\x,{.35+.4*\n})arc(-90:90:.2);}\draw[world](\x,.35)--(\x,0);
+\fill({\x-.25},2.15)circle(2pt);\node[left]at(\x,1.1){$L$};\draw[flow,red](\x,3.1)--(\x,2.5)node[midway,right]{$i_{\j}$};
+\node[right]at({\x+.3},2.35){$+$};\node[right]at({\x+.3},0){$-$};}
+\draw[<->](.8,1.1)--(2.8,1.1)node[midway,above]{$M>0$};
+
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{同向串联时两参考电流同号}\par\nobreak
+图\ref{fig:em4:example:2:s}中流入同名端的电流产生相助磁链。顺向串联时 $i_1=i_2=i$，两端电压相加为 $u=2(L+M)\dot i$，故 $L_+=2L(1+k)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向串联时同时处理电流和端口电压的符号}\par\nobreak
+反向串联时 $i_1=i,i_2=-i$，沿串联电流的端口电压为 $u_1-u_2$，其中 $u_1=(L-M)\dot i,u_2=-(L-M)\dot i$，所以 $u=2(L-M)\dot i$，得 $L_-=2L(1-k)$。
+\fig{em4:e2:series}{同名端的实际串联接线决定两互感电压相加或相减}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](2.5,2.4)--(2.5,1.95);\draw[world](2.5,0.35)arc(-90:90:.2);\draw[world](2.5,0.75)arc(-90:90:.2);\draw[world](2.5,1.15)arc(-90:90:.2);\draw[world](2.5,1.5500000000000003)arc(-90:90:.2);\draw[world](2.5,.35)--(2.5,0);\fill(2.28,2.15)circle(2pt);\node at(1.25,3.55){顺向串联};\draw[flow,red](0,3.1)--(0,2.45)node[midway,left]{$i$};\draw[world](0,0)--(1.3,0)--(1.3,2.4)--(2.5,2.4);\draw[flow,red](2.5,3.1)--(2.5,2.45)node[midway,right]{$i$};\node at(1.25,-1){$L_+=2(L+M)$};\end{scope}\begin{scope}[xshift=5cm]\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](2.5,2.4)--(2.5,1.95);\draw[world](2.5,0.35)arc(-90:90:.2);\draw[world](2.5,0.75)arc(-90:90:.2);\draw[world](2.5,1.15)arc(-90:90:.2);\draw[world](2.5,1.5500000000000003)arc(-90:90:.2);\draw[world](2.5,.35)--(2.5,0);\fill(2.28,2.15)circle(2pt);\node at(1.25,3.55){反向串联};\draw[flow,red](0,3.1)--(0,2.45)node[midway,left]{$i$};\draw[world](0,0)--(0,-.4)--(2.5,-.4)--(2.5,0);\draw[flow,red](2.5,2.45)--(2.5,3.1)node[midway,right]{$i$};\node at(1.25,-1){$L_-=2(L-M)$};\end{scope}
+\end{tikzpicture}}
+图\ref{em4:e2:series}左图电流先流入第一绕组圆点端，再流入第二绕组圆点端；右图则从第二绕组的非圆点端流入。两者互感大小相同，端口取向不同才使等效电感不同。
+
+
+\fig{fig:em4:example:2:p}{同名端并联与对称零初态下的分流；总电流 $I=i_1+i_2$}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);\fill(2.78,2.15)circle(2pt);
+\draw[world](0,2.4)--(0,2.8)--(3,2.8)--(3,2.4) (0,0)--(0,-.4)--(3,-.4)--(3,0);
+\draw[flow,red](1.5,3.6)--(1.5,2.85)node[midway,right]{$I$};\draw[flow,blue](-.65,2.6)--(-.65,1.8)node[left]{$i_1=I/2$};\draw[flow,blue](3.8,2.6)--(3.8,1.8)node[right]{$i_2=I/2$};
+\node at(1.5,1.2){$M=kL$};\fill(1.5,-.4)circle(2pt);\node at(1.5,-1){$L_p=(L+M)/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由共同端压和对称初态求并联等效电感}\par\nobreak
+图\ref{fig:em4:example:2:p}的并联电路端电压相同，有 $u=L\dot i_1+M\dot i_2=M\dot i_1+L\dot i_2$。两端电压相减得 $(L-M)(\dot i_1-\dot i_2)=0$。在 $k<1$ 时 $L-M\ne0$，故 $i_1-i_2$ 是常量；对称零初态使这一常量为零。因此 $i_1=i_2=I/2$，从而 $u=(L+M)\dot I/2$，$L_p=L(1+k)/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查完全耦合极限并限定对称状态}\par\nobreak
+在完全耦合的对称工作状态下取极限，$L_+=4L,L_-=0,L_p=L$。反向串联的零值只表示理想磁通完全抵消，不能抹去真实导线的电阻与漏感。\end{solution}
+\begin{question}\begin{example}[持久电流给出的电阻率上限]\label{em4:example:3}
+细导线半径 $a=1\,\mathrm{mm}$，绕成半径 $b=0.10\,\mathrm m$ 的单匝圆环。初始电流 $100\,\mathrm A$，一年后减小量不足 $10^{-6}\,\mathrm A$。用细圆环近似 $L\simeq\mu_0b[\ln(8b/a)-2]$，估计 $L$ 及电阻率上限。
+\end{example}
+\fig{fig:em4:example:3:s}{细导线圆环的环半径 $b$ 与导线截面半径 $a$ 是不同的长度}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$b$};\draw[flow](1.061,1.061)arc(45:125:1.5)node[above]{$I_0$};
+\draw[guide](1.5,0)--(3.4,.8);\fill[gray!15](4,.8)circle(.6);\draw[world](4,.8)circle(.6);\draw[dim](4,.8)--(4.6,.8)node[midway,above]{$a$};\node at(4,-.3){导线截面放大};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{辨认两种半径并估计圆环自感}\par\nobreak
+图\ref{fig:em4:example:3:s}中 $b/a=100$，可采用细线近似，得到 $L\simeq4\pi\times10^{-7}\times0.10[\ln800-2]=5.89\times10^{-7}\,\mathrm H$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解无源回路的衰减方程}\par\nobreak
+闭合环满足 $L\dot i+Ri=0$，把方程两侧除以非零电流，$\dd i/i=-(R/L)\dd t$，以初末状态作定积分，
+$\int_{I_0}^{i(T)}\dd z/z=-(R/L)\int_0^T\dd t$，得到 $\ln[i(T)/I_0]=-RT/L$，故 $i(T)=I_0\e^{-RT/L}$。
+\fig{fig:em4:example:3:p}{将极小衰减改用对数坐标表示；一年后的实测点须落在上限以下}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.9,0)node[right]{$t/T$};\draw[axis](0,-.2)--(0,2.8)node[above]{$-\ln(i/I_0)/\delta$};
+\draw[guide](0,2)--(4,2)--(4,0);\node[left]at(0,2){$1$};\node[below]at(4,0){$1$};
+\draw[world,blue](0,0)--(4,1.2);\fill(4,1.2)circle(2pt);\node[right]at(4,1.2){$RT/(L\delta)<1$};\node at(2,-.95){$\delta=-\ln(1-10^{-8})$};\node at(2,4.1){蓝线示一条满足上限的衰减过程};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把相对衰减的实验上限换成电阻上限}\par\nobreak
+图\ref{fig:em4:example:3:p}用归一化对数显示极小衰减；蓝线仅示一条允许的衰减，实验没有测定其中的具体斜率。实验界限是 $(I_0-i(T))/I_0<10^{-8}$，先移项得到 $\e^{-RT/L}>1-10^{-8}$，两侧取对数，再乘负号时不等号反向，得 $RT/L<-\ln(1-10^{-8})\simeq10^{-8}$。取一年 $T=3.156\times10^7\,\mathrm s$，有 $R<1.87\times10^{-22}\,\Omega$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用导线长度和截面积换算电阻率上限}\par\nobreak
+由 $R=\rho\,2\pi b/(\pi a^2)=2\rho b/a^2$，得到 $\rho<9.4\times10^{-28}\,\Omega\,\mathrm m$。这是模型下的上限估计，测不出衰减并不等于实验上证明电阻恰为零。\end{solution}
+\begin{question}\begin{example}[超导方框进入磁区]\label{em4:example:4}
+质量 $m$、自感 $L$ 的超导矩形框，垂直运动方向的边长为 $l$，沿运动方向长 $d$。初始电流为零，以速度 $v_0$ 向右进入磁场 $B$。磁场从 $x=0$ 起向纸里，忽略自感随位置改变。求部分进入阶段的电流与运动，并判断能否完全进入。
+\end{example}
+\fig{fig:em4:example:4:s}{初态前边刚到 $x=0$，框长 $d$，垂直运动方向的边长为 $l$}{\begin{tikzpicture}
+
+\fill[blue!8](0,-.4)rectangle(3.8,2.4);\draw[guide](0,-.6)--(0,2.7);\node[above]at(0,2.7){$x=0$};
+\draw[world](-2,0)rectangle(0,2);\draw[dim](-2,-.5)--(0,-.5)node[midway,below]{$d$};\draw[dim](-2.6,0)--(-2.6,2)node[midway,left]{$l$};
+\draw[flow](.3,1)--(1.6,1)node[midway,above]{$v_0$};\node at(2.8,2){$\otimes B$};\node at(-1,2.5){$i(0)=0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用初始总磁链确定电流符号与水平磁力}\par\nobreak
+图\ref{fig:em4:example:4:s}中令前边进入深度为 $x$，外磁通按向里为正取 $Blx$。总磁链初始为零，因此 $Li+Blx=0$，即 $i=-Blx/L$，实际电流逆时针。前边受阻力 $F_x=-B^2l^2x/L$。
+\fig{fig:em4:example:4:p}{部分进入时前边电流实际向上，磁力向左；向里为正的参考电流为负}{\begin{tikzpicture}
+
+\fill[blue!8](0,-.35)rectangle(3.5,2.4);\draw[guide](0,-.65)--(0,2.6);\draw[world](-.8,0)rectangle(1.2,2);
+\draw[flow,red](1.2,.25)--(1.2,.85)node[right]{$|i|$};\draw[force,blue](1.2,1.4)--(-.25,1.4)node[midway,above]{$F_x<0$};
+\draw[flow](1.7,.5)--(2.8,.5)node[midway,above]{$v(t)$};\node at(2.8,2){$\otimes B$};\draw[dim](0,-.65)--(1.2,-.65)node[midway,below]{$x$};\node at(-1.5,2.5){$0<x<d$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在部分进入区间求运动并核对能量}\par\nobreak
+图\ref{fig:em4:example:4:p}把机械能向磁能的转移画出。由 $m\ddot x=-(B^2l^2/L)x$，令 $\Omega=Bl/\sqrt{mL}$，试取 $x=\e^{st}$ 得特征方程 $s^2+\Omega^2=0$，共轭根 $\pm\mathrm j\Omega$ 给出一般实解 $x=A\cos\Omega t+D\sin\Omega t$。求导为 $\dot x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。$x(0)=0$ 给出 $A=0$，$\dot x(0)=v_0$ 给出 $D=v_0/\Omega$，于是
+\[x=\frac{v_0}{\Omega}\sin\Omega t,\quad v=v_0\cos\Omega t,\quad \frac12mv^2+\frac{B^2l^2x^2}{2L}=\frac12mv_0^2.\]
+\fig{em4:e4:energy}{部分进入阶段的能量交换；横坐标到 $x=d$ 时即须终止这一模型}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(3.9,0)node[right]{$x/(v_0/\Omega)$};\draw[axis](0,-.2)--(0,2.6)node[above]{$W/K_0$};
+\draw[blue,thick,domain=0:3,samples=60]plot(\x,{2*(\x/3)^2});\draw[red,thick,domain=0:3,samples=60]plot(\x,{2*(1-(\x/3)^2)});
+\node[below]at(3,0){$1$};\node[left]at(0,2){$1$};\draw[guide](3,0)--(3,2)--(0,2);
+\node[right]at(3,2){$W_B$};\node[right]at(3,.2){$K$};\node at(1.7,-1){$K_0=mv_0^2/2$};
+
+\end{tikzpicture}}
+图\ref{em4:e4:energy}用 $x$ 而非时间表示能量，蓝线为 $W_B/K_0=(\Omega x/v_0)^2$，红线为其补量。若 $d<v_0/\Omega$，尚未走到图中的零动能点便已全进入，后续应改用净水平磁力为零的模型。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将最大进入深度与框长比较并切换模型}\par\nobreak
+把振荡解在第一个速度为零的时刻 $t_*=\pi/(2\Omega)$ 取值，最大进入深度为 $x_{\max}=v_0/\Omega$。若 $v_0/\Omega<d$，框在部分进入阶段就反向；若 $v_0/\Omega>d$，可完全进入，进入后外磁通恒定、电流恒定、净水平磁力为零。等号是恰到全进入边界且速度为零的临界状态。过程振荡式仅用于 $0\le x\le d$，不能继续套到离开或完全进入阶段。\end{solution}
+\begin{question}\begin{example}[小气隙怎样改变电磁铁自感]\label{em4:example:5}
+闭合磁芯平均长度 $\ell$、截面积 $S$，线性磁导率 $\mu$，有一宽度 $g$ 的空气隙，绕组 $N$ 匝。忽略漏磁与边缘效应，磁芯长度近似不随小气隙变化。求自感以及磁芯、气隙各自储能；求气隙能超过总能量一半的条件。
+\end{example}
+\fig{fig:em4:example:5:s}{题设：小气隙怎样改变电磁铁自感}{\begin{tikzpicture}[scale=.88]\path[fill=gray!18,even odd rule](0,0)rectangle(4,3) (.6,.6)rectangle(3.4,2.4);\draw[world](0,0)rectangle(4,3) (.6,.6)rectangle(3.4,2.4);\fill[white](1.8,2.35)rectangle(2.2,3.05);\draw[world](1.8,2.4)--(1.8,3) (2.2,2.4)--(2.2,3);\draw[dim](1.8,3.4)--(2.2,3.4)node[midway,above]{$g$};\foreach\y in{1,1.2,1.4,1.6,1.8,2}{\draw[world](-.2,\y)--(.8,\y);}\node[left]at(-.3,1.5){$N,i$};\draw[flow](1,.3)--(2.8,.3)node[midway,above]{$\Phi$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由磁通连续和安培环路求自感}\par\nobreak
+由图\ref{fig:em4:example:5:s}磁通连续，各截面同一磁通 $\Phi$，故两处磁感应强度相同，记为 $B$。安培环路给出 $B\ell/\mu+Bg/\mu_0=Ni$。令 $D=\ell/\mu+g/\mu_0$，则 $B=Ni/D$，磁链 $\Psi=NBS=N^2Si/D$，所以 $L=N^2S/D$。
+\fig{fig:em4:example:5:p}{同一磁通串行通过磁芯和气隙；储能与两段磁阻成正比}{\begin{tikzpicture}
+
+\node at(2.5,2.2){$\Phi\ \longrightarrow$};
+\draw[world](0,0)rectangle(2,1);\draw[world](3,0)rectangle(5,1);\draw[world](-.5,.5)--(0,.5) (2,.5)--(3,.5) (5,.5)--(5.5,.5);
+\node at(1,.5){$\ell/(\mu S)$};\node at(4,.5){$g/(\mu_0S)$};\node at(1,-.5){磁芯磁阻};\node at(4,-.5){气隙磁阻};
+\node at(2.5,-1.5){$W_c/W_g=[\ell/\mu]/[g/\mu_0]$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别积分磁芯与气隙储能并检查总和}\par\nobreak
+图\ref{fig:em4:example:5:p}把总能量分成两个不重叠区域，$W_c=B^2S\ell/(2\mu)$，$W_g=B^2Sg/(2\mu_0)$。相加得 $W_c+W_g=B^2SD/2=N^2Si^2/(2D)=Li^2/2$，与磁链法一致。气隙能占比为
+\[\frac{W_g}{W_c+W_g}=\frac{g/\mu_0}{\ell/\mu+g/\mu_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由储能比例判断气隙主导条件及近似范围}\par\nobreak
+因此超过一半要求 $g>\ell\mu_0/\mu$。例如相对磁导率1000、磁芯长0.20m，只需气隙大于0.20mm就可能使气隙能占多数。数值估计还要求间隙远小于横截面尺度，才能忽略磁通扩展。气隙增大使自感下降，而非因磁场“空间更多”就一定提高自感。\end{solution}
+\begin{question}\begin{example}[电磁铁的气隙吸力与控制条件]\label{em4:example:6}
+理想高磁导率磁芯的磁能主要在一个均匀气隙中，面积 $S$，宽度 $g$ 可变，绕组 $N$ 匝，忽略边缘效应。分别在保持电流 $I$ 和保持磁链 $\Psi_0$ 时，求使气隙闭合的吸力；计算气隙由 $g_1$ 缩至 $g_2<g_1$ 时磁力做功，并说明两种能量变化。
+\end{example}
+\fig{fig:em4:example:6:s}{题设：电磁铁的气隙吸力与控制条件}{\begin{tikzpicture}[scale=.88]\path[fill=gray!18,even odd rule](0,0)rectangle(4,3) (.6,.6)rectangle(3.4,2.4);\draw[world](0,0)rectangle(4,3) (.6,.6)rectangle(3.4,2.4);\fill[white](1.8,2.35)rectangle(2.2,3.05);\draw[world](1.8,2.4)--(1.8,3) (2.2,2.4)--(2.2,3);\draw[dim](1.8,3.4)--(2.2,3.4)node[midway,above]{$g$};\foreach\y in{1,1.2,1.4,1.6,1.8,2}{\draw[world](-.2,\y)--(.8,\y);}\node[left]at(-.3,1.5){$N,i$};\draw[flow](1,.3)--(2.8,.3)node[midway,above]{$\Phi$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{取气隙增大为正并求固定电流下的吸力}\par\nobreak
+图\ref{fig:em4:example:6:s}取气隙增大为 $g$ 正方向。高磁导极限下 $L(g)=\mu_0N^2S/g=A/g$，其中 $A=\mu_0N^2S$。固定电流时，先对 $L=Ag^{-1}$ 求导，$L'(g)=-Ag^{-2}$，所以磁力的有向值 $F_g=I^2L'(g)/2=-AI^2/(2g^2)$，故吸力大小 $AI^2/(2g^2)=B^2S/(2\mu_0)$。
+\fig{fig:em4:example:6:p}{气隙两极面相吸；同一初态出发，固定电流时吸力随气隙缩小而增大，固定磁链时恒定}{\begin{tikzpicture}
+
+\fill[gray!20](-.7,0)rectangle(0,2);\fill[gray!20](1.2,0)rectangle(1.9,2);\draw[world](-.7,0)rectangle(0,2)(1.2,0)rectangle(1.9,2);
+\draw[flow,blue](1.1,1.5)--(.1,1.5)node[midway,above]{$B$};\draw[force,red](1.2,.6)--(.75,.6);\draw[force,red](0,.6)--(.45,.6);\node[red]at(.6,-.2){$F_g<0$};
+\draw[dim](0,2.4)--(1.2,2.4)node[midway,above]{$g$};\draw[axis](1.2,-.6)--(2.2,-.6)node[right]{$+g$};
+\begin{scope}[xshift=4.5cm]
+\draw[axis](-.2,0)--(4.8,0)node[right]{$g/g_1$};\draw[axis](0,-.2)--(0,4.5)node[above]{$|F_g|/F_1$};
+\draw[blue,thick,domain=1:3.5,samples=70]plot(\x,{4/(\x)^2});\draw[red,thick](1,1)--(3.5,1);\draw[guide](2,0)--(2,1)--(0,1);
+\node[below]at(2,0){$1$};\node[left]at(0,1){$1$};\node[right]at(2.5,2.5){固定 $I$};\node[right]at(3.5,1){固定 $\Psi$};\fill(2,1)circle(2pt);\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分固定电流下的磁力功并计入电源功}\par\nobreak
+图\ref{fig:em4:example:6:p}左图的两个极面相吸，右图以同一初态 $g_1,I_1$ 为基准，$F_1=AI_1^2/(2g_1^2)$。固定电流对应曲线 $(g_1/g)^2$，固定初始磁链则对应水平线。固定电流的磁力功为
+\[
+W_{\rm mech}=-\frac{AI^2}{2}\int_{g_1}^{g_2}g^{-2}\dd g
+=\frac{AI^2}{2}[g^{-1}]_{g_1}^{g_2}
+=\frac{AI^2}{2}\left(\frac1{g_2}-\frac1{g_1}\right).
+\]
+上限虽比下限小，但力也为负，故机械功为正。磁能增加相同数值，电源做功则为它的两倍，其中另一半转成机械功。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定磁链时从减少的场能求恒定吸力}\par\nobreak
+固定磁链时，$W_B=\Psi_0^2/(2L)=\Psi_0^2g/(2A)$，因此 $F_g=-\Psi_0^2/(2A)$ 为恒定吸力，磁力做功 $\Psi_0^2(g_1-g_2)/(2A)$，等于磁能减少量。此时电流 $I(g)=\Psi_0g/A$ 随气隙减小而减小，气隙磁感应强度 $B=\Psi_0/(NS)$ 不变。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分同一瞬间的力公式与沿途状态变化}\par\nobreak
+两种控制条件下相同瞬间的力都能写成 $B^2S/(2\mu_0)$，但随位置的变化不同，不能因此认为全过程相同。\end{solution}
+\begin{question}\begin{example}[均匀电流圆柱导体的内部自感]\label{em4:example:7}
+实心圆柱导体半径 $a$，电流 $I$ 在截面均匀分布，磁导率 $\mu$。外侧同轴回流导体内半径 $b$，两导体间介质磁导率 $\mu_0$。忽略端部和外导体内部场。求单位长度内部自感和总自感，并解释内部项为何与 $a$ 无关。
+\end{example}
+\fig{fig:em4:example:7:s}{内导体电流均匀分布，外回流薄层的内部磁场忽略；两区域磁导率分别给定}{\begin{tikzpicture}
+
+\fill[gray!15](0,0)circle(1);\draw[world](0,0)circle(1)(0,0)circle(2);
+\foreach \x/\y in {-.45/-.45,-.45/.45,.45/-.45,.45/.45,0/0}{\node at(\x,\y){$\odot$};}
+\draw[dim](0,-.1)--(1,-.1)node[midway,below]{$a$};\draw[dim](0,0)--(0,-2)node[midway,left]{$b$};
+\node at(1.45,.8){$\mu_0$};\node at(-.55,1.4){$\mu$};\draw[guide](-.55,1.2)--(-.4,.7);\node at(3.3,0){外导体 $\otimes I$};\node at(0,2.6){内导体总电流 $I$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按均匀电流密度求内部包围电流和磁场}\par\nobreak
+图\ref{fig:em4:example:7:s}中取内部半径 $s<a$，包围电流 $I_s=I s^2/a^2$，安培定律给出 $B(s)=\mu I_s/(2\pi s)=\mu Is/(2\pi a^2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以圆柱壳为体积元积分内部场能}\par\nobreak
+单位长度薄壳体积 $2\pi s\dd s$，所以
+\begin{align*}W'_{\rm in}&=\int_0^a\frac{1}{2\mu}\left(\frac{\mu Is}{2\pi a^2}\right)^2 2\pi s\dd s\\&=\frac{\mu I^2}{4\pi a^4}\int_0^as^3\dd s
+=\frac{\mu I^2}{4\pi a^4}\left[\frac{s^4}{4}\right]_0^a
+=\frac{\mu I^2}{16\pi}.\end{align*}
+\fig{fig:em4:example:7:p}{内场线性增长、外场按 $1/s$ 衰减；图取 $\mu=2\mu_0$，界面处 $B$ 跳变}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0)node[right]{$s/a$};\draw[axis](0,-.2)--(0,3.5)node[above]{$B/[\mu_0I/(2\pi a)]$};
+\draw[world,blue](0,0)--(1.5,3);\draw[world,red,domain=1.5:3.9,samples=60]plot(\x,{2.25/\x});
+\draw[guide](1.5,0)--(1.5,3);\draw[guide](0,3)--(1.5,3) (0,1.5)--(1.5,1.5);
+\node[left]at(0,3){$\mu/\mu_0=2$};\node[left]at(0,1.5){$1$};\node[below]at(1.5,0){$1$};\node[below]at(3.9,0){$b/a$};
+\draw[guide](3.9,0)--(3.9,{2.25/3.9});\draw[world](3.9,0)--(4.4,0);\node at(3.2,3.8){$H(a^-)=H(a^+)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较储能系数并加入不重叠的外部区域}\par\nobreak
+图\ref{fig:em4:example:7:p}将磁导率不同造成的界面跳变与内部场的线性增长分别画出。内部场能积分仍独立进行；比较 $W'_{\rm in}=L'_{\rm in}I^2/2$，得到 $L'_{\rm in}=\mu/(8\pi)$。外部 $a<s<b$ 的场为 $\mu_0I/(2\pi s)$，外部单位长度场能为
+$W'_{\rm out}=\mu_0I^2(4\pi)^{-1}\int_a^b\dd s/s
+=\mu_0I^2(4\pi)^{-1}[\ln s]_a^b$，
+再用 $L'_{\rm out}=2W'_{\rm out}/I^2$ 得
+$L'_{\rm out}=\mu_0\ln(b/a)/(2\pi)$，故总自感为两者之和。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用场强与体积的尺度变化检查半径无关性}\par\nobreak
+内部项不含半径，是因为导体变粗使给定归一化半径处的场按 $a^{-1}$ 减弱，而体积按 $a^2$ 增大，平方场强与体积恰相抵消。这个结论依赖均匀电流分布；高频集肤时内部场分布改变，不能继续把相同内部项加到高频模型中。\end{solution}
+\begin{question}\begin{example}[同轴圆环互感与移动感应电动势]\label{em4:example:8}
+半径 $b$ 的大圆环通恒定电流 $I$，小圆环半径 $a\ll b$，两者同轴，轴向距离 $z>0$。小环以速度 $v$ 沿增大 $z$ 的方向运动，总电阻 $R$，自身感应可忽略。求互感、感应电流及机械阻力，找出感应电动势最大的轴向位置。
+\end{example}
+\fig{fig:em4:example:8:s}{两圆环所在平面均垂直共同轴，正电流均按 $+z$ 法向右手定则取向}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(5.2,0)node[right]{$+z$};\draw[world](0,0)ellipse(.32 and 1.2);\draw[world](3.8,0)ellipse(.18 and .6);
+\draw[flow,blue](.3,.55)--(2.2,.55)node[midway,above]{$B_z>0$};\draw[flow,red](0,1.2)arc(90:200:.32 and 1.2)node[left]{$I$};
+\draw[dim](0,-1.6)--(3.8,-1.6)node[midway,below]{$z$};\draw[dim](-.8,0)--(-.8,1.2)node[midway,left]{$b$};\draw[dim](4.4,0)--(4.4,.6)node[midway,right]{$a$};\node at(1.9,-2.4){两环正法向均沿 $+z$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用小环处的近似均匀轴向场求互感}\par\nobreak
+图\ref{fig:em4:example:8:s}中小环尺寸足够小，可用其圆心处大环轴向磁场近似整个小环的场。该场为 $B_z=\mu_0Ib^2/[2(b^2+z^2)^{3/2}]$，因此小环外磁通为 $\pi a^2B_z=MI$。令 $K=\mu_0\pi a^2b^2/2$，有 $M=K(b^2+z^2)^{-3/2}$；链式求导
+\[
+M'=K\left(-\frac32\right)(b^2+z^2)^{-5/2}(2z)
+=-3Kz(b^2+z^2)^{-5/2}.
+\]
+因此
+\[M(z)=\frac{\mu_0\pi a^2b^2}{2(b^2+z^2)^{3/2}},\quad M'(z)=-\frac{3\mu_0\pi a^2b^2z}{2(b^2+z^2)^{5/2}}.\]
+\fig{fig:em4:example:8:p}{小环远离时互感减小，实际感应电流维持正向磁通，磁力阻碍远离}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(5.2,0)node[right]{$+z$};\draw[world](0,0)ellipse(.32 and 1.2);\draw[world](3.8,0)ellipse(.18 and .6);
+\draw[flow,blue](.3,.55)--(2.2,.55)node[midway,above]{$B_z>0$};\draw[flow,red](0,1.2)arc(90:200:.32 and 1.2)node[left]{$I$};
+\draw[dim](0,-1.6)--(3.8,-1.6)node[midway,below]{$z$};\draw[dim](-.8,0)--(-.8,1.2)node[midway,left]{$b$};\draw[dim](4.4,0)--(4.4,.6)node[midway,right]{$a$};\node at(1.9,-2.4){两环正法向均沿 $+z$};
+
+\draw[flow](3.8,1.1)--(5.1,1.1)node[midway,above]{$v$};\draw[force,blue](3.8,1.9)--(2.5,1.9)node[midway,above]{$F_z$};\draw[flow,red](3.8,.6)arc(90:200:.18 and .6)node[left]{$i>0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按互感的空间变化确定感应电流与阻力}\par\nobreak
+图\ref{fig:em4:example:8:p}小环离开时 $M$ 减小，电动势 $e=-IvM'>0$，电流 $i=-IvM'/R$。固定初级电流下的机械力 $F_z=IiM'=-I^2v(M')^2/R<0$，始终阻碍离开。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用机械损耗与焦耳热核对阻力}\par\nobreak
+机械损耗率 $-F_zv=i^2R$，与小环发热相等；初级电源还承担保持初级电流所需的磁链功率，其与交叉场能的交换不应遗漏在完整外源能量讨论中。
+
+\fig{em4:e8:emf-maximum}{互感随距离单调下降，但匀速运动产生的电动势在 $z=b/2$ 最大}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.6,0)node[right]{$z/b$};\draw[axis](0,-.2)--(0,2.6)node[above]{$M/M(0),\ e/e_{\max}$};
+\draw[world,blue,domain=0:4,samples=100]plot(\x,{2/(1+(\x/2)^2)^1.5});
+\draw[world,red,domain=0:4,samples=100]plot(\x,{2*((\x/2)/(1+(\x/2)^2)^2.5)/(.5/(1.25)^2.5)});
+\draw[guide](1,0)--(1,2);\node[below]at(1,0){$1/2$};\node[left]at(0,2){$1$};\node[blue]at(3.5,2.55){$M/M(0)$};\node[red]at(3.5,1.95){$e/e_{\max}$};
+
+\end{tikzpicture}}
+图\ref{em4:e8:emf-maximum}的两条曲线分别按各自最大值归一化。电动势取决于 $-M'(z)$，因此不能在互感曲线最高处直接寻找电动势最大值。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对磁通变化率求极值并检查中心位置}\par\nobreak
+电动势大小正比 $f(z)=z/(b^2+z^2)^{5/2}$。先将 $f=z(b^2+z^2)^{-5/2}$ 看作两因子乘积，
+\[
+f'=(b^2+z^2)^{-5/2}
++z\left(-\frac52\right)(b^2+z^2)^{-7/2}(2z)
+=\frac{b^2-4z^2}{(b^2+z^2)^{7/2}}.
+\]
+分母恒正，分子在 $z=b/2$ 两侧由正变负，故最大值在 $z=b/2$。在 $z=0$，互感最大而空间导数为零，沿轴匀速运动的瞬时电动势反而为零。互感大小与变化率的极值不能混同。\end{solution}
+\begin{question}\begin{example}[超导次级对初级自感的屏蔽]\label{em4:example:9}
+固定线圈自感 $L_1,L_2$、互感 $M$，$M^2<L_1L_2$。次级零电阻闭合，初始两电流为零。初级接电阻 $R$ 和恒压 $E$。求初级电流、次级电流及总磁能，解释次级反馈对建立过程的影响。
+\end{example}
+\fig{fig:em4:example:9:s}{初级为串联电源—电阻回路，次级为闭合超导回路；两电流参考均流入同名端}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);\fill(3.28,2.15)circle(2pt);
+\node[left]at(0,1.1){$L_1$};\node[left]at(3.5,1.1){$L_2$};\node at(1.8,1.2){$M>0$};
+\draw[flow,red](0,3.1)--(0,2.45)node[midway,left]{$i_1$};\draw[flow,red](3.5,3.1)--(3.5,2.45)node[midway,right]{$i_2$};
+
+\draw[world](3.5,2.4)--(5,2.4)--(5,0)--(3.5,0);
+\draw[world](0,2.4)--(-.8,2.4) (-1.6,2.4)--(-2.2,2.4)--(-2.2,1.55) (-2.2,.85)--(-2.2,0)--(0,0);
+\draw[world](-1.6,2.2)rectangle(-.8,2.6);\node[above]at(-1.2,2.65){$R$};\draw[world](-2.2,1.2)circle(.35);\node at(-2.2,1.35){$+$};\node at(-2.2,1){$-$};\node[left]at(-2.6,1.2){$E$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从超导次级的零初始磁链消去次级电流}\par\nobreak
+图\ref{fig:em4:example:9:s}参考电流都流入同名端。次级端电压为零，故 $\dd(Mi_1+L_2i_2)/\dd t=0$。初始总磁链为零，得到 $i_2=-Mi_1/L_2$。代入初级磁链，
+\[\Psi_1=L_1i_1+Mi_2=\left(L_1-\frac{M^2}{L_2}\right)i_1=L_ei_1.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以等效电感解初级回路并还原次级电流}\par\nobreak
+这里 $L_e>0$，由耦合能量约束保证。初级回路因此满足 $L_e\dot i_1+Ri_1=E$，令 $j=i_1-E/R$，得到 $\dot j=-(R/L_e)j$。由 $j(0)=-E/R$，
+\[
+\int_{-E/R}^{j(t)}\frac{\dd z}{z}=-\frac R{L_e}\int_0^t\dd s,
+\qquad j(t)=-\frac ER\e^{-Rt/L_e}.
+\]
+加回稳态电流后得到 $i_1=E(1-\e^{-Rt/L_e})/R$，$i_2=-Mi_1/L_2$。
+\fig{fig:em4:example:9:p}{闭合超导次级降低初级建立电流的时间常量；负次级电流与初级同步增长}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5,0)node[right]{$Rt/L_1$};\draw[axis](0,-.2)--(0,2.8)node[above]{$i_1/(E/R)$};
+\draw[blue,thick,domain=0:4.5,samples=80]plot(\x,{2*(1-exp(-2*\x))});\draw[red,thick,domain=0:4.5,samples=80]plot(\x,{2*(1-exp(-\x))});\draw[guide](0,2)--(4.5,2);\node[left]at(0,2){$1$};
+\node at(1.8,2.5){次级超导闭合};\node at(2.4,.9){次级开路};\node at(2.6,-.95){示例取 $M^2/(L_1L_2)=1/2$};\node at(2.6,-1.6){闭合时 $-i_2/[ME/(L_2R)]=i_1/(E/R)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算总磁能并比较次级开路的建立过程}\par\nobreak
+将这两电流代入完整磁能式，$W_B=L_1i_1^2/2+L_2i_2^2/2+Mi_1i_2=L_ei_1^2/2$，可见端口等效电感也正确描述该约束下的总储能。图\ref{fig:em4:example:9:p}显示，与次级开路时相比，时间常量从 $L_1/R$ 减为 $L_e/R$，初级电流建立更快；最终初级电流仍为 $E/R$，但次级保留反向持久电流。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查超导约束的适用时间与非零电阻极限}\par\nobreak
+若次级电阻不为零，足够长时间以后它的电流最终衰减至零，初级所见的动态不再由一个固定 $L_e$ 描述。超导极限与无限长时间极限不能随意交换。\end{solution}
+\begin{question}\begin{example}[快速建立初级电流后的次级发热]\label{em4:example:10}
+两个固定线圈互感 $M$，次级自感 $L_2$、电阻 $R$，初始电流均为零。初级电流在很短时间内从零升至 $I_0$，之后保持。上升时间远小于 $L_2/R$，用理想阶跃极限描述。求次级在快过程结束后的电流、随后衰减以及电阻总热。说明这一模型与“电感电流不能突变”的关系。
+\end{example}
+\fig{fig:em4:example:10:s}{初级电流由外源快速建立并保持，次级通过电阻闭合}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);\fill(3.28,2.15)circle(2pt);
+\node[left]at(0,1.1){$L_1$};\node[left]at(3.5,1.1){$L_2$};\node at(1.8,1.2){$M>0$};
+\draw[flow,red](0,3.1)--(0,2.45)node[midway,left]{$i_1$};\draw[flow,red](3.5,3.1)--(3.5,2.45)node[midway,right]{$i_2$};
+
+\draw[world](3.5,2.4)--(5.1,2.4)--(5.1,1.5) (5.1,.8)--(5.1,0)--(3.5,0);\draw[world](4.9,.8)rectangle(5.3,1.5);\node[right]at(5.4,1.15){$R$};
+\draw[world](0,2.4)--(-1.6,2.4)--(-1.6,1.55) (-1.6,.85)--(-1.6,0)--(0,0);\draw[world](-1.6,1.2)circle(.35);\draw[flow](-1.6,1)--(-1.6,1.4);\node[left]at(-2,1.2){受控电流源};\node at(1.7,-.7){$i_1:0\longrightarrow I_0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对快过程积分，保留电压冲激的磁链效应}\par\nobreak
+图\ref{fig:em4:example:10:s}次级回路为 $L_2\dot i_2+Ri_2=-M\dot i_1$。对初级很快上升的短时间积分，显式写为
+\[
+L_2[i_2(0^+)-i_2(0^-)]+R\int_{0^-}^{0^+}i_2\dd t
+=-M[i_1(0^+)-i_1(0^-)].
+\]
+快过程持续时间趋零而电流有限，电阻积分相对磁链变化可以忽略，得到 $L_2i_2(0^+)=-MI_0$，即 $i_2(0^+)=-MI_0/L_2$。
+\fig{fig:em4:example:10:p}{理想阶跃造成有限的次级电流跳变，之后按 $\tau=L_2/R$ 衰减}{\begin{tikzpicture}
+
+\draw[axis](-.7,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,1.7)node[above]{$i_1/I_0$};\draw[world,blue](-.5,0)--(0,0)--(0,1.2)--(4.3,1.2);\node[left]at(0,1.2){$1$};
+\begin{scope}[yshift=-3.3cm]\draw[axis](-.7,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,-1.7)--(0,.6)node[above]{$i_2/(MI_0/L_2)$};
+\draw[world,red](-.5,0)--(0,0)--(0,-1.2);\draw[world,red,domain=0:4.3,samples=70]plot(\x,{-1.2*exp(-\x)});\node[left]at(0,-1.2){$-1$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在初级恒流阶段解次级衰减并积分焦耳热}\par\nobreak
+图\ref{fig:em4:example:10:p}将快建立与慢衰减分开。之后初级电流不再变化，次级满足 $L_2\dot i_2+Ri_2=0$。以 $I_{20}=-MI_0/L_2$ 为初流，分离积分
+$\int_{I_{20}}^{i_2(t)}\dd z/z=-(R/L_2)\int_0^t\dd s$，
+得 $\ln|i_2/I_{20}|=-Rt/L_2$，保持初始负号。热量积分中
+$\int_0^\infty\e^{-2Rt/L_2}\dd t
+=[-L_2\e^{-2Rt/L_2}/(2R)]_0^\infty=L_2/(2R)$。
+因此
+\[i_2(t)=-\frac{MI_0}{L_2}\e^{-Rt/L_2},\quad Q_J=R\int_0^\infty i_2^2\dd t=\frac{M^2I_0^2}{2L_2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用磁能与总电量分别检查结果}\par\nobreak
+在理想阶跃极限，快过程内电阻热趋零，随后全部热量等于快过程建立的次级自感能。总次级电量仍为 $-MI_0/R$，与对完整方程积分的结果一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明有限上升时间与理想阶跃的连续性区别}\par\nobreak
+这里次级电流发生跳变，是因为初级阶跃产生了有限面积的电压冲激，$-M\dot i_1$ 不是有界电压。“电感电流连续”要求没有电压冲激，不能脱离这一条件使用。真实有限上升时间中电流始终连续，阶跃只是对快过程末状态的极限近似。\end{solution}

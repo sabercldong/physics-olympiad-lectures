@@ -1,0 +1,29 @@
+\fig{em3:unequal-rod-model}{不同有效轨宽下两棒的受力系数不同；图示电流按左棒动生作用为正}{
+\begin{tikzpicture}[scale=.9]
+\draw[world](0,0)--(5.4,0) (0,2.4)--(2.8,2.4)--(2.8,1.4)--(5.4,1.4);
+\draw[world,very thick](.8,0)--(.8,2.4)node[above]{$m_1$}
+ (4.2,0)--(4.2,1.4)node[above]{$m_2$};
+\draw[dim](-.55,0)--(-.55,2.4)node[midway,left]{$l_1$};
+\draw[dim](5.8,0)--(5.8,1.4)node[midway,right]{$l_2$};
+\draw[flow,blue](.8,3.1)--(1.8,3.1)node[right]{$v_1$};
+\draw[flow,blue](4.2,2.3)--(5.2,2.3)node[right]{$v_2$};
+\draw[force](.8,1.3)--(-.25,1.3)node[midway,above]{$k_1i$};
+\draw[force](4.2,.7)--(5.25,.7)node[midway,above]{$k_2i$};
+\draw[flow,red](.8,.3)--(.8,.9)node[right]{$i$};
+\node at(2.1,.65){$\otimes B$};
+\draw[flow,red](2.8,2.25)--(2.8,1.6);\draw[force,blue](2.8,1.9)--(3.9,1.9)node[midway,above]{$F_{\rm rail}$};
+\end{tikzpicture}}
+
+图\ref{em3:unequal-rod-model}改按左棒的动生作用选电流正向，令$k_j=Bl_j$，则
+\[
+ Ri=k_1v_1-k_2v_2,\qquad
+ m_1\dot v_1=-k_1i,\quad m_2\dot v_2=k_2i.
+\]
+两棒受力和为$(k_2-k_1)i$，故通常不能直接使用两棒总动量守恒。将两受力式分别除以各自$k_j$再相加，电流项消去：
+\[
+ \frac{\dd}{\dd t}
+ \left(\frac{m_1v_1}{k_1}+\frac{m_2v_2}{k_2}\right)=0.
+\]
+这个加权不变量只在图示有效长度各自恒定的阶段成立。跨越台阶后，$k_j$改变，应使用切换瞬间的实际速度重新确定后续不变量；如果接续产生机械冲量，还需单独计入。
+
+图中固定台阶上的竖直导线也载流，长度为 $l_1-l_2$。它所受水平安培力为 $(k_1-k_2)i$，与两棒合力相反；导轨固定时由支座承担这部分作用。只有将支座与外磁场装置的反作用一同计入，才可讨论更大系统的总动量，不能把两根运动棒单独当成无水平外力系统。

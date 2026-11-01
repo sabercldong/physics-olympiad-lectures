@@ -1,0 +1,144 @@
+\section{练习}
+
+\begin{question}\begin{drill}[互感脉冲与次级总电量]\label{em4:drill:1}
+两个固定线圈互感为 $M>0$，参考电流均流入同名端。次级自感 $L_2$、总电阻 $R$，初始电流为零。初级电流在有限时间内从零升至 $I_0$ 后保持，求次级充分稳定前通过的有向总电量。
+\end{drill}
+\fig{fig:em4:drill:1:s}{两电流以流入同名端为正；次级绕组经电阻闭合}{\begin{tikzpicture}
+
+
+\foreach \x/\j in {0/1,3.5/2}{
+\draw[world](\x,2.4)--(\x,1.95);\foreach \n in {0,...,3}{\draw[world](\x,{.35+.4*\n})arc(-90:90:.2);}\draw[world](\x,.35)--(\x,0);
+\fill({\x-.25},2.15)circle(2pt);\node[left]at(\x,1.1){$L_{\j}$};\draw[flow,red](\x,3.1)--(\x,2.5)node[midway,right]{$i_{\j}$};
+\node[right]at({\x+.3},2.35){$+$};\node[right]at({\x+.3},0){$-$};}
+\draw[<->](.8,1.1)--(2.8,1.1)node[midway,above]{$M>0$};
+
+
+\draw[world](3.5,2.4)--(5,2.4)--(5,1.5) (5,.8)--(5,0)--(3.5,0);\draw[world](4.8,.8)rectangle(5.2,1.5);\node[right]at(5.3,1.15){$R$};\node at(1.5,-.7){$i_1(0)=0,\quad i_1(\infty)=I_0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:1}
+\begin{question}\begin{drill}[耦合磁能的正定条件]\label{em4:drill:2}
+两线圈自感 $L_1,L_2>0$，互感 $M$。证明 $|M|\le\sqrt{L_1L_2}$，并求给定 $i_2=I$ 时磁能最小的 $i_1$ 与最小值。
+\end{drill}
+\fig{fig:em4:drill:2:s}{两线圈的参考方向确定有向互感 $M$；能量约束须对任意两电流成立}{\begin{tikzpicture}
+
+
+\foreach \x/\j in {0/1,3.5/2}{
+\draw[world](\x,2.4)--(\x,1.95);\foreach \n in {0,...,3}{\draw[world](\x,{.35+.4*\n})arc(-90:90:.2);}\draw[world](\x,.35)--(\x,0);
+\fill({\x-.25},2.15)circle(2pt);\node[left]at(\x,1.1){$L_{\j}$};\draw[flow,red](\x,3.1)--(\x,2.5)node[midway,right]{$i_{\j}$};
+\node[right]at({\x+.3},2.35){$+$};\node[right]at({\x+.3},0){$-$};}
+\draw[<->](.8,1.1)--(2.8,1.1)node[midway,above]{$M$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:2}
+\begin{question}\begin{drill}[插入磁芯时的机械功]\label{em4:drill:3}
+某线圈自感 $L(x)=L_0+\alpha x$，$\alpha>0$，$x$ 为磁芯插入量。分别讨论电源维持电流 $I$ 与断开电源后超导闭合、初始磁链 $\Psi_0$ 两种情形。求插入力及从 $0$ 到 $d$ 的机械功。
+\end{drill}
+\fig{fig:em4:drill:3:s}{磁芯前端越过线圈入口的距离为插入量 $x$，向右为正}{\begin{tikzpicture}
+
+\fill[gray!25](-1,.4)rectangle(2,1.1);\draw[world](-1,.4)rectangle(2,1.1);\draw[world](0,0)rectangle(4,1.5);
+\foreach\x in {.3,.7,1.1,1.5,1.9,2.3,2.7,3.1,3.5}{\draw[world](\x,0)--(\x,1.5);}
+\draw[guide](0,-.2)--(0,-1);\draw[guide](2,-.2)--(2,-1);\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$x$};\node at(2,2){$L(x)=L_0+\alpha x$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:3}
+\begin{question}\begin{drill}[同轴结构的外自感]\label{em4:drill:4}
+同轴结构内导体半径 $a$、外导体内半径 $b$，电流等大反向。介质磁导率 $\mu$。忽略端部与导体内部磁场，求单位长度自感及两导体间的磁场能。
+\end{drill}
+\fig{fig:em4:drill:4:s}{内导体电流向外，外导体等大反向回流；只计两者之间的磁场}{\begin{tikzpicture}
+
+\fill[blue!10,even odd rule](0,0)circle(1.6)(0,0)circle(.6);\draw[world](0,0)circle(.6)(0,0)circle(1.6);\node at(0,0){$\odot I$};
+\draw[dim](0,-.1)--(.6,-.1)node[midway,below]{$a$};\draw[dim](0,0)--(0,-1.6)node[midway,left]{$b$};\node at(1,.7){$\mu$};\node at(3,0){外导体 $\otimes I$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:4}
+\begin{question}\begin{drill}[不等线圈并联的等效电感]\label{em4:drill:5}
+自感 $L_1,L_2$、互感 $M>0$ 的线圈同名端相接并联。设 $L_1L_2>M^2$、初始两支路无电流。求端口等效电感，并检验 $M=0$ 与 $L_1=L_2$ 两种极限。
+\end{drill}
+\fig{fig:em4:drill:5:s}{同名端接公共点 $A$，另一端接公共点 $B$；两支路端压相同}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.3,2.4)--(3.3,1.95);\draw[world](3.3,0.35)arc(-90:90:.2);\draw[world](3.3,0.75)arc(-90:90:.2);\draw[world](3.3,1.15)arc(-90:90:.2);\draw[world](3.3,1.5500000000000003)arc(-90:90:.2);\draw[world](3.3,.35)--(3.3,0);\fill(3.0799999999999996,2.15)circle(2pt);
+\draw[world](0,2.4)--(0,2.9)--(3.3,2.9)--(3.3,2.4) (0,0)--(0,-.5)--(3.3,-.5)--(3.3,0);
+\node[left]at(0,1.1){$L_1$};\node[right]at(3.7,1.1){$L_2$};\fill(1.65,2.9)circle(2pt)node[above]{$A$};\fill(1.65,-.5)circle(2pt)node[below]{$B$};
+\draw[flow,red](-.7,2.7)--(-.7,1.9)node[left]{$i_1$};\draw[flow,red](4.1,2.7)--(4.1,1.9)node[right]{$i_2$};\node at(1.65,1.5){$M>0$};\node at(1.65,.6){$u=V_A-V_B$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:5}
+\begin{question}\begin{drill}[两个孤立超导线圈逐渐靠近]\label{em4:drill:6}
+相同线圈自感均为 $L$，互感从初始 $M=0$ 缓慢增大。两线圈均超导且彼此不电接触，初始电流分别为 $I_0,0$。自感保持不变，$0<M<L$。求两电流和总磁能，判断准静态靠近时外力需做正功还是负功。
+\end{drill}
+\fig{fig:em4:drill:6:s}{两个线圈各自超导闭合，磁耦合逐渐增强，彼此没有导线连接}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);\fill(3.28,2.15)circle(2pt);
+\draw[world](0,2.4)--(-1.2,2.4)--(-1.2,0)--(0,0) (3.5,2.4)--(4.7,2.4)--(4.7,0)--(3.5,0);
+\node[right]at(.4,1.1){$L$};\node[left]at(3.5,1.1){$L$};\node at(1.75,2.8){$0<M<L$};
+
+\draw[flow,red](0,3.2)--(0,2.5)node[midway,left]{$i_1$};\draw[flow,red](3.5,3.2)--(3.5,2.5)node[midway,right]{$i_2$};\node at(1.75,-.8){初始 $i_1=I_0,\ i_2=0,\ M=0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:6}
+\begin{question}\begin{drill}[相同耦合线圈的同向与反向磁能]\label{em4:drill:7}
+相同线圈自感 $L$，互感 $M>0$ 且 $M<L$。定义 $i_+=(i_1+i_2)/2,i_-=(i_1-i_2)/2$。将总磁能化成两个独立组合，比较给定 $i_1^2+i_2^2=I^2$ 时的最大、最小磁能，并说明对应电流方向。
+\end{drill}
+\fig{fig:em4:drill:7:s}{相同自感 $L$、互感 $0<M<L$ 的两线圈及其电流参考}{\begin{tikzpicture}
+
+
+\foreach \x/\j in {0/1,3.5/2}{
+\draw[world](\x,2.4)--(\x,1.95);\foreach \n in {0,...,3}{\draw[world](\x,{.35+.4*\n})arc(-90:90:.2);}\draw[world](\x,.35)--(\x,0);
+\fill({\x-.25},2.15)circle(2pt);\node[left]at(\x,1.1){$L$};\draw[flow,red](\x,3.1)--(\x,2.5)node[midway,right]{$i_{\j}$};
+\node[right]at({\x+.3},2.35){$+$};\node[right]at({\x+.3},0){$-$};}
+\draw[<->](.8,1.1)--(2.8,1.1)node[midway,above]{$M>0$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:7}
+\begin{question}\begin{drill}[非线性磁链的储能与增量电感]\label{em4:drill:8}
+可逆单值磁路满足 $i=a\Psi+b\Psi^3$，$a,b>0$。从零状态建立到磁链 $\Psi_0$，求场能、静态比值电感和增量电感。若理想恒压 $E$ 直接接在线圈上、线阻忽略，求建立过程电流。
+\end{drill}
+\fig{fig:em4:drill:8:s}{题设：非线性磁链的储能与增量电感}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(4.5,0)node[right]{$\Psi$};\draw[axis](0,0)--(0,3.5)node[above]{$i$};\draw[world,domain=0:3]plot(\x,{.35*\x+.06*(\x)^3});\node at(2,3.5){$i=a\Psi+b\Psi^3$};\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:8}
+\begin{question}\begin{drill}[零总磁链圆环缓慢伸展的外功]\label{em4:drill:9}
+柔性超导圆环半径为 $a$，总磁链恒为零，置于恒定垂直磁场 $B$。采用自感模型 $L(a)=\lambda a$，$\lambda>0$，忽略其他储能；初始已处于相应带电流状态。求半径缓慢增加时的电流、广义磁力及从 $a_1$ 到 $a_2$ 的外力功。
+\end{drill}
+\fig{fig:em4:drill:9:s}{题设：零总磁链圆环缓慢伸展的外功}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$a$};\node at(2.6,1){$\odot B$};\node at(2.6,.2){$L=\lambda a$};\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:9}
+\begin{question}\begin{drill}[矩形截面环形线圈的精确自感]\label{em4:drill:10}
+环形磁芯内半径 $a$、外半径 $b$、轴向高度 $h$，线性磁导率 $\mu$，绕组 $N$ 匝均匀紧密绕制。忽略漏磁和绕组内部场，求自感和磁能；若截面较窄，说明平均半径近似如何得到，以及它的误差从哪一阶开始。
+\end{drill}
+\fig{fig:em4:drill:10:s}{环形磁芯的内外半径与矩形截面；磁通面积元垂直环向磁场}{\begin{tikzpicture}
+
+
+\fill[gray!12,even odd rule](0,0)circle(1.6)(0,0)circle(.8);\draw[world](0,0)circle(1.6)(0,0)circle(.8);
+\draw[flow,blue](1.2,0)arc(0:135:1.2);\node at(-.2,1.9){$B(s)$};
+\draw[dim](0,0)--(.8,0)node[midway,below]{$a$};\draw[dim](0,0)--(0,-1.6)node[midway,left]{$b$};\node at(0,-2.2){密绕 $N$ 匝};
+\begin{scope}[xshift=4cm]
+\draw[world](0,0)rectangle(3,1.8);\fill[blue!30](1.3,0)rectangle(1.5,1.8);\draw[dim](-.5,0)--(-.5,1.8)node[midway,left]{$h$};
+\draw[axis](-.2,-.45)--(3.5,-.45)node[right]{$s$};\node[below]at(0,-.45){$a$};\node[below]at(3,-.45){$b$};
+\node at(2.3,.9){$\otimes B(s)$};\node at(1.4,2.25){$\dd s$};\draw[guide](1.4,2)--(1.4,1.8);\node at(1.5,-1.25){$\dd\Phi=B(s)h\dd s$};\end{scope}
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:10}
+\begin{question}\begin{drill}[嵌套长线圈的互感与耦合]\label{em4:drill:11}
+两根同轴长螺线管长度均 $\ell$，内线圈截面积 $S_1$、匝数 $N_1$，外线圈截面积 $S_2>S_1$、匝数 $N_2$，介质磁导率均 $\mu$。忽略端部漏场，各参考电流产生同向内部磁场。求两自感、互感和耦合系数，并在固定 $i_1$ 时求使总磁能最小的 $i_2$，解释剩余能量。
+\end{drill}
+\fig{fig:em4:drill:11:s}{嵌套线圈共轴且长度相同；内线圈只在内区产生磁场，外线圈还占据环区}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)circle(1.6);\fill[blue!18](0,0)circle(.85);\draw[world](0,0)circle(1.6)(0,0)circle(.85);
+\node at(0,0){$S_1$};\node at(0,1.2){$S_2-S_1$};\node at(0,2.2){共同横截面};
+\begin{scope}[xshift=4cm]\draw[world](0,0)rectangle(4,2.4)(0,.6)rectangle(4,1.8);
+\draw[dim](0,-.5)--(4,-.5)node[midway,below]{$\ell$};\node[right]at(4,2.2){$N_2$};\node[right]at(4,1.2){$N_1$};
+\draw[flow,blue](.5,1.2)--(3.4,1.2)node[midway,above]{$+B_1,+B_2$};\node at(2,3){纵截面，正磁场均向右};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:11}

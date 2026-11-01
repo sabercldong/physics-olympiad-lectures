@@ -1,0 +1,42 @@
+\section{练习}
+
+\begin{question}\begin{drill}[波前到达前后的位移]\label{w2:drill:1}
+绳端$x=0$从$t=0$起按$y_0=A\sin\omega t$运动，此前整根绳静止。波速$u$。写出$x>0$处运动规律，并求该点启动后的第一次正端点时刻。
+\end{drill}
+\fig{fig:w2:drill:1:s}{题设：波前到达前后的位移}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5.5,0)node[right]{$x$};\draw[world,domain=0:3,samples=80]plot(\x,{sin(120*(3-\x))});\draw[world](3,0)--(5,0);\node[above]at(3,0){$ut$};\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:1}
+\begin{question}\begin{drill}[质点速度与波速]\label{w2:drill:2}
+波$y=A\cos(\omega t-kx)$向右传播。在$t=0$、$x=\lambda/8$处求位移、横向速度及加速度，并比较最大振动速度和波速。
+\end{drill}
+\fig{fig:w2:drill:2:s}{题设：$t=0$的余弦波形及$x=\lambda/8$处的材料点}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$x/\lambda$};\draw[axis](0,-1.4)--(0,1.7)node[above]{$y/A$};\draw[world,domain=0:4.3,samples=90]plot(\x,{cos(90*\x)});\fill(.5,.7071068)circle(.06)node[above right]{$P$};\draw[guide](.5,0)--(.5,.7071068);\node[below]at(.5,-.15){$1/8$};\node[below]at(4,0){$1$};\draw[flow](2,1.5)--(3.1,1.5)node[right]{$u$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:2}
+\begin{question}\begin{drill}[改变弦张力后的波长]\label{w2:drill:3}
+弦线密度$\mu_\ell=0.01\,\mathrm{kg/m}$，张力$16\,\mathrm N$，振源频率$20\,\mathrm{Hz}$。求波速和波长；张力增到原来的四倍后再求这两量。
+\end{drill}
+\fig{fig:w2:drill:3:s}{题设：改变弦张力后的波长}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,0);\draw[force](0,0)--(-1,0)node[left]{$\mathcal T$};\draw[force](5,0)--(6,0)node[right]{$\mathcal T$};\node at(2.5,.7){$\mu_\ell,\ f$};\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:3}
+\begin{question}\begin{drill}[纵波的压缩位置]\label{w2:drill:4}
+纵向位移$\xi(x,t)=A\cos(\omega t-kx)$，平衡线密度$\mu_0$，$Ak\ll1$。求密度变化，并指出位移最大处和压缩最强处的相位关系。
+\end{drill}
+\fig{fig:w2:drill:4:s}{题设：纵波的压缩位置}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(5.5,0)node[right]{$x$};\draw[axis](0,-1.4)--(0,2)node[above]{$\xi$};\draw[world,domain=0:5,samples=100]plot(\x,{cos(180*\x)});\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:4}
+\begin{question}\begin{drill}[波的折射作图]\label{w2:drill:5}
+平面波从波速$u_1=2u_2$的介质入射到另一介质，入射角$30^\circ$。求折射角和波长比。频率是否改变？
+\end{drill}
+\fig{fig:w2:drill:5:s}{题设：波的折射作图}{\begin{tikzpicture}[scale=.88]\draw[world](-1,0)--(5,0);\draw[guide](2,-2)--(2,2);\draw[flow](.8,2.078)--(2,0);\node at(.2,1){$u_1=2u_2$};\node at(.2,-1){$u_2$};\node at(1.7,.9){$i=30^\circ$};\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:5}
+\begin{question}\begin{drill}[水波能否把浮球送到岸边]\label{w2:drill:6}
+在平静池塘中，小浮球随小振幅波运动。连续向水中投入石块，能否仅凭线性波传播保证浮球一直向岸移动？请说明模型限制。
+\end{drill}
+\fig{fig:w2:drill:6:s}{题设：水波能否把浮球送到岸边}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(5.5,0)node[right]{$x$};\draw[axis](0,-1.4)--(0,2)node[above]{$y$};\draw[world,domain=0:5,samples=100]plot(\x,{sin(180*\x+0)});\fill(2.5,1)circle(4pt)node[above]{$P$};\node at(5,1.7){岸};\end{tikzpicture}}
+\end{question}
+\answerlink{w2:drill:6}

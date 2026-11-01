@@ -1,0 +1,6 @@
+\fig{fv:s1:couple}{平移力的作用线时，要补加力偶才能保持刚体作用效果}{\begin{tikzpicture}[scale=.9]
+\fill(0,0)circle(2pt)node[below]{$A$};\fill(0,1.7)circle(2pt)node[above]{$B$};\draw[dashed](0,0)--(0,1.7);
+\draw[->,blue,thick](0,0)--(2,0)node[right]{$\bm F$};\draw[->,red,thick](0,1.7)--(2,1.7)node[right]{$\bm F$};
+\draw[->](4.4,.2)arc(-60:220:.6);\node at(4.8,1.6){$M=Fd$};\node at(2.1,-.8){$d=AB$，两力水平};
+\end{tikzpicture}}
+图\ref{fv:s1:couple}中，把 $A$处水平力直接移到 $B$，合力虽然不变，对原点的力矩却改变 $Fd$。若要保持原刚体受力效果，须同时补回相应方向的力偶。质点模型只追踪合力，刚体平衡还追踪合力矩；这是两种“等效”适用范围的差别。质心也只对均匀重力场给出等效重力作用线，不能据此替换任意分布外力。

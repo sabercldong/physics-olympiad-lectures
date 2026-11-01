@@ -1,0 +1,389 @@
+\section{复合场中的力、功与分量}
+电场与磁场共同存在时，带电粒子的方程为
+\begin{equation}m\dot{\bm v}=q(\bm E+\bm v\times\bm B)+m\bm g+\bm F_{\rm c}.\end{equation}
+$\bm F_{\rm c}$ 表示绳或支持等约束力。每个分量方程应由同一套坐标和电荷符号推出，不能先对速度取大小，再分别给各分量补上正负号。电荷为负时，电场力与电场方向相反，磁力也应对正电荷的叉乘方向反向。
+
+
+能量式由运动方程点乘速度得到。磁力项为零，因此没有约束力作功时，动能变化只来自电场力与重力。静电场中可写成 $K+q\varphi+mgh=\text{常量}$。这不能独立给出全部轨迹，却能确定末速率、检查数值结果，也能避免为仅求速率的问题求解全部耦合微分方程。
+
+
+若电、磁场平行，平行方向受电场加速，垂直平面仍作回旋。若两场垂直，则横向电场会使速度的两个分量耦合，不能继续把整个粒子当作以固定圆心运动。先分清场的相对方向，决定是否存在能简化方程的参考运动，是复合场建模的第一步。
+
+\section{平行场中的回旋与轴向加速}
+当电场与磁场都沿同一轴线，电场力只改变平行速度，磁场只转动横向速度。横向半径由初始 $v_\perp$ 决定并保持不变，平行坐标则一般为匀加速函数，所以三维轨迹不再是等螺距螺旋。
+
+
+判断再次经过轴线时，必须让两个横向坐标同时为零。某个坐标每半周就为零，另一个却可能正好处在横向直径的另一端。因此“横向速度转过半周”不等于“粒子回到轴线上”。先解横向交点的最早正时刻，再把该时刻代入轴向坐标，可避免漏掉这一区别。
+
+
+若还存在沿轴的重力，只需在该分量中把电场加速度与重力代数相加；横向回旋关系仍成立。若重力与磁场不平行，重力也会参与横向漂移，这时可把恒定非磁力统一写成 $\bm F_0$，其垂直漂移速度为 $\bm F_0\times\bm B/(qB^2)$。对于重力，这个速度与 $m/q$ 有关，与电场漂移的电荷无关性质不同。
+
+\fig{fig:mg4:k:parallel}{平行场中横向回旋周期不变，轴向加速使相邻两周的推进距离不同}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,-1)circle(1);\fill(0,0)circle(1.5pt)node[above left]{$O$};\draw[flow](0,0)--(1.2,0)node[above]{$v_{\perp0}$};\draw[flow](.707107,-.292893)arc(45:-50:1);\fill(0,-2)circle(1.5pt)node[below]{$t=T/2$};\node at(0,-2.8){横截面：半周不回到 $O$};\node at(0,1){$\odot B_z,\ q>0$};
+\end{scope}
+\begin{scope}[xshift=3.6cm,yshift=-1cm]
+\draw[axis](-.4,0)--(7.5,0)node[right]{$z,\bm E,\bm B$};\draw[->,blue,thick,domain=0:720,samples=220]plot({2*\x/360+.7*(\x/360)^2+.2*(cos(\x)-1)},{.8*sin(\x)});
+\foreach \x in {0,2.7,6.8}{\fill(\x,0)circle(1.4pt);}\draw[dim](0,-1.2)--(2.7,-1.2)node[midway,below]{$p_0$};\draw[dim](2.7,-1.2)--(6.8,-1.2)node[midway,below]{$p_1>p_0$};\node at(3.4,2){空间投影：图取 $qE_z>0$、$v_{z0}>0$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:parallel}左图取正电荷在 $+z$ 磁场中由轴线沿 $+x$ 发射，横向参数为 $x=r\sin\Omega t$、$y=r(\cos\Omega t-1)$。在半周时虽有 $x=0$，却有 $y=-2r$；两个横向坐标首次同时回到零发生在 $T=2\pi/\Omega$。轴向方程 $\dot v_z=a_z$ 中 $a_z$ 为常数。由初始位置 $z(0)=0$，
+\[
+ v_z(t)-v_{z0}=\int_0^t a_z\dd s=a_zt,\qquad
+ z(t)=\int_0^t(v_{z0}+a_zs)\dd s
+ =[v_{z0}s+a_zs^2/2]_0^t.
+\]
+右图使用同一周期，但代入轴向方程
+
+\[
+ z(t)=v_{z0}t+\tfrac12a_zt^2,\qquad a_z=qE_z/m+g_z.
+\]
+相邻两次回到轴线的间距为 $p_k=z[(k+1)T]-z(kT)=v_{z0}T+a_zT^2(k+1/2)$。只有 $a_z=0$ 时才是等螺距；若轴向先减速后反向，还要保留 $p_k$ 的符号，不能只画一直向前的螺旋。
+
+
+
+\section{相互垂直的电、磁场与漂移}
+在均匀、恒定且互相垂直的 $\bm E,\bm B$ 中，定义
+\[
+\bm v_D=\frac{\bm E\times\bm B}{B^2}.
+\]
+矢量恒等式给出 $\bm v_D\times\bm B=-\bm E$。令相对速度 $\bm u=\bm v-\bm v_D$，因为 $\bm v_D$ 为常量，原方程化为 $m\dot{\bm u}=q\bm u\times\bm B$。所以在随 $\bm v_D$ 匀速运动的坐标系中，粒子只作匀强磁场回旋；实验室轨迹是匀速漂移与圆周运动的合成。
+
+
+漂移方向与电荷符号、质量无关，回旋方向和周期却仍依赖它们。这不意味着正、负粒子的瞬时轨迹完全相同：初始相对速度与回旋方向不同，给出不同相位的旋轮线。沿磁场的初速度若非零，还要叠加平行方向的匀速运动。
+
+
+举例取 $\bm E=E\bm e_x,\bm B=B\bm e_z$，正粒子从静止出发，$\Omega=qB/m$、$v_D=E/B$。分量方程为 $\dot v_x=\Omega(v_y+v_D)$、$\dot v_y=-\Omega v_x$。令 $u_y=v_y+v_D$，则 $\dot v_x=\Omega u_y,\dot u_y=-\Omega v_x$。
+对第一式求导并消去 $u_y$，得 $\ddot v_x+\Omega^2v_x=0$。
+特征方程 $s^2+\Omega^2=0$ 给出实通解
+$v_x=A\cos\Omega t+D\sin\Omega t$。
+初态 $v_x(0)=0,\dot v_x(0)=\Omega v_D$ 确定 $A=0,D=v_D$，
+再由 $u_y=\dot v_x/\Omega$ 求出 $v_y$。
+对速度从 $0$ 积到 $t$，
+\[
+ x=v_D[-\cos\Omega s/\Omega]_0^t,\qquad
+ y=v_D[\sin\Omega s/\Omega-s]_0^t.
+\]
+原函数中的 $1/\Omega$ 正好抵消三角函数求导带来的 $\Omega$。于是
+
+\[
+v_x=v_D\sin\Omega t,\quad v_y=v_D(\cos\Omega t-1),
+\quad x=\frac{v_D}{\Omega}(1-\cos\Omega t),\quad
+y=\frac{v_D}{\Omega}\sin\Omega t-v_Dt.
+\]
+速度经过一周回到零，位置却沿 $-y$ 推进 $v_DT$。电场在半周内先增加动能，随后又收回；整周净电功为零，因为粒子的净位移与电场垂直。
+
+\fig{fig:mg4:k:drift}{实验室轨迹是旋轮线，灰色辅助圆表示某时刻漂移中心周围的相对回旋}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(6.4,0)node[right]{$-y$};\draw[axis](0,-.2)--(0,2)node[above]{$x$};
+\draw[->,blue,thick,domain=0:12.566371,samples=180]plot({.45*(\x-sin(\x r))},{.45*(1-cos(\x r))});
+\draw[guide](1.413717,.45)circle(.45);\fill(1.413717,.45)circle(1.5pt)node[below]{$C_D$};\fill(2.827433,0)circle(1.5pt)node[below]{$t=T$};\draw[->,red,thick](1.413717,.45)--(2.6,.45)node[right]{$\bm v_D$};
+\draw[->](-.8,.1)--(-.8,1.4)node[above]{$\bm E$};\node at(4.5,1.65){$\odot B_z,\ q>0$};\draw[dim](0,-.9)--(2.827433,-.9)node[midway,below]{$v_DT$};
+
+\end{tikzpicture}}
+
+图\ref{fig:mg4:k:drift}把实验室位移分为漂移系原点的平移和相对该原点的回旋。漂移速度使电、磁力的恒定部分抵消，却不要求粒子的瞬时回旋速度为零；因此平均漂移与每个时刻的零合力状态应分开。
+
+
+\subsection{速度选择与瞬时零合力}
+粒子若从一开始就取 $\bm v=\bm v_D$，电力与磁力完全抵消，始终作直线运动。这就是速度选择的理想条件。只有垂直于磁场的速度被选择，沿场分量不受这一条件约束。粒子偏离选定速率后产生回旋，实际装置用狭缝把偏转粒子挡住。
+
+
+电力与磁力在某一瞬间相等，并不自动保证以后一直抵消。匀强恒定场中，若初始总合力为零，速度保持不变，抵消条件才会持续成立；若场随位置改变或另外有重力，须再检查这些条件。速度选择器的“无偏转”还依赖入射方向，不能只比较 $E$ 与 $vB$ 两个大小。
+
+\fig{fig:mg4:k:selector}{在同一组坐标下，选定速度沿 $-y$，电力向上、磁力向下，出口狭缝保留直线束}{\begin{tikzpicture}
+
+\draw[world](0,1.2)--(5,1.2)(0,-1.2)--(5,-1.2);\foreach \x in {.6,1.6,2.6,3.6,4.6}{\node at(\x,1.45){$-$};\node at(\x,-1.45){$+$};}
+\draw[world](-.4,-1.1)--(-.4,-.18)(-.4,.18)--(-.4,1.1)(5.4,-1.1)--(5.4,-.18)(5.4,.18)--(5.4,1.1);
+\draw[->,blue,thick](-1.6,0)--(6.4,0)node[right]{$\bm v=-(E/B)\bm e_y$};\fill(2.5,0)circle(1.6pt);\draw[force,red](2.5,0)--(2.5,.9)node[right]{$qE$};\draw[force,red](2.5,0)--(2.5,-.9)node[right]{$qvB$};
+\node at(4,.6){$\odot B_z$};\draw[->](-1.5,.2)--(-1.5,1.1)node[above]{$x,\bm E$};\node at(2.5,-2.2){图取 $q>0$，只有与场方向相容的入射速度才无偏转};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:selector}沿用横轴向右为 $-y$、竖直向上为 $x$ 的坐标。选定速度满足整个矢量等式 $\bm E+\bm v\times\bm B=0$，不是仅有 $E=vB$ 的数值相等。若把速度改为沿 $+y$，电力和磁力同向，就不能由同一数值条件得到无偏转束。
+
+
+
+\section{任意恒力与磁场中的漂移}
+电场漂移的推导可以推广到任意与速度无关的恒力。设磁场均匀，另有恒力 $\bm F_0$，把它分成沿场和垂直场的两部分。垂直平面内寻找一个恒定速度 $\bm v_D$，使 $\bm F_{0\perp}+q\bm v_D\times\bm B=0$。两边与 $\bm B$ 叉乘，并用 $\bm v_D\perp\bm B$，得到
+
+\[
+\bm v_D=\frac{\bm F_0\times\bm B}{qB^2}.
+\]
+写成 $\bm v_\perp=\bm v_D+\bm u$ 后，剩余速度满足 $m\dot{\bm u}=q\bm u\times\bm B$，故相对漂移中心仍为匀速圆周。平行方向则满足 $m\dot v_\parallel=F_{0\parallel}$，一般为匀加速，不受上述漂移抵消。
+
+
+若恒力是电场力 $q\bm E$，$q$ 约去，正负粒子的电场漂移方向相同。若恒力是重力 $m\bm g$，漂移速度与 $m/q$ 成比例，正负电荷方向相反。两者形式相似，但电荷依赖性不同；同时存在时应先把各恒力相加，或按线性关系将各漂移相加。
+
+
+漂移方向与恒力垂直，因此恒力不对单独的匀速漂移分量作功，但仍可对回旋分量作功，使实验室系动能随时间周期变化。对于从静止释放的粒子，经过完整回旋周期回到相同高度时，动能也回到初值；中间过程并不保持动能恒定。把相对中心的匀速圆周与实验室系速度区分开，才能正确进行能量检查。
+
+\fig{fig:mg4:k:gravity}{电场力随电荷变号，重力却不变，因此两种恒力漂移具有不同的电荷依赖}{\begin{tikzpicture}
+
+\node at(0,2){$\bm E$ 向下，$\bm B=\odot B$};\draw[->](0,1.3)--(0,.2)node[right]{$\bm E$};\draw[->,blue,thick](.6,-.3)--(-1.6,-.3)node[left]{$\bm v_{D,E}$};\node at(0,-1){正、负电荷都向左};
+\begin{scope}[xshift=6.7cm]
+\node at(0,2){$\bm g$ 向下，$\bm B=\odot B$};\draw[->](0,1.3)--(0,.2)node[right]{$m\bm g$};\draw[->,blue,thick](-.2,-.2)--(-1.8,-.2)node[left]{$q>0$};\draw[->,red,thick](.2,-.65)--(1.8,-.65)node[right]{$q<0$};\node at(0,-1.5){$\bm v_{D,g}=m\bm g\times\bm B/(qB^2)$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:gravity}把相同的向下外作用分别作为电场或重力处理。电场力是 $q\bm E$，代入恒力漂移式时 $q$ 消去；重力为 $m\bm g$，除以 $q$ 后仍保留电荷正负。漂移是回旋中心的平均运动，不能将图中的方向直接当成每一个时刻的粒子速度方向。
+
+
+
+\section{霍尔电场、载流子符号与测量}
+稳态导体中，载流子的横向平均速度被边界限制为零。磁力先使它们偏向侧面，积累电荷产生横向电场，最终满足 $\bm E_H=-\bm v_d\times\bm B$。这里的平衡针对横向；沿电流方向仍有电场驱动，并由碰撞阻力平衡，不能据横向平衡推出总电场为零。
+
+
+由 $\bm J=nq_c\bm v_d$，其中 $q_c$ 是带符号的载流子电荷，得到
+\[
+\bm E_H=\frac{\bm B\times\bm J}{nq_c}.
+\]
+若按 $\bm E_H=R_H(\bm B\times\bm J)$ 定义霍尔系数，单一载流子模型给 $R_H=1/(nq_c)$，电子对应负值。使用另一个叉乘次序时，系数的符号约定也要改变，因此应先说明电压取向与坐标，不能孤立地记住一个正负号。
+
+
+设电流沿 $x$，磁场沿 $y$，霍尔电压沿厚度 $t$ 的 $z$ 方向测量，截面为 $wt$。电流给出 $|v_d|=I/(n|q_c|wt)$，故电压大小 $|U_H|=|v_d|Bt=IB/(n|q_c|w)$。电流密度中包含的厚度与测量距离中的厚度约去，分母留下的是与磁场平行的那条截面边。先确定三维方向，就不会把两条截面尺寸颠倒。
+
+
+\fig{fig:mg4:k:hall-section}{沿电流轴观察的横截面：$w$ 与磁场平行，$t$ 沿测量电压的方向}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(4,2);\node[align=center]at(1.2,.85){$\odot J_x$\\电子：$\otimes v_d$};\draw[->,blue,thick](.4,1.5)--(3.5,1.5)node[above]{$B_y$};
+\foreach \x in {.5,1.5,2.5,3.5}{\node at(\x,2.2){$-$};\node at(\x,-.2){$+$};}\draw[dim](0,-.8)--(4,-.8)node[midway,below]{$w$};\draw[dim](-.65,0)--(-.65,2)node[midway,left]{$t$};
+\draw[->,red,thick](4.7,.2)--(4.7,1.8)node[right]{$E_{H,z}$};\node at(2,3){截面为 $yz$ 平面，$+x$ 向纸外};\node at(2,-1.7){$I=J_xwt,\quad U_{\text{上}-\text{下}}=-E_{H,z}t=IB/(nq_cw)$};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:hall-section}把电流方向转到纸面法线，磁场沿宽 $w$，霍尔场沿厚 $t$。单载流子模型下 $E_{H,z}=-IB/(nq_cwt)$，乘测量间距 $t$ 后才约去这一厚度。对图示电子，$q_c<0$，所以上减下的电压为负，上边缘电势更低；这与前图的负电荷积累和向上的霍尔场一致。
+
+
+
+
+电子迁移率 $\mu$ 定义为零磁场时漂移速率与驱动场之比。在简单各向同性弛豫模型、横向开路条件下，纵向电场仍为 $E_x=|v_d|/\mu$，横向场由磁力平衡给出，所以总电场相对电流方向倾斜。霍尔电压反转磁场或电流会变号；固定的接触偏置通常不会同时服从这些变号规则，利用多次反向测量可以把相应分量分离出来。
+
+\fig{fig:mg4:k:hall}{电子向左漂移时，上边缘积累负电；霍尔场向上，电子所受电场力则向下}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(4,2);\draw[flow](.4,1.15)--(1.7,1.15)node[midway,above]{$I,\ +x$};\draw[flow](3.6,.7)--(2.3,.7)node[midway,below]{$\bm v_d$};
+\foreach \x in {.7,1.7,2.7,3.7}{\node at(\x,2.25){$-$};\node at(\x,-.25){$+$};}\node at(2,3){$\otimes B_y$};\draw[->,red,thick](4.7,.25)--(4.7,1.75)node[right]{$\bm E_H$};
+\draw[axis](-1,0)--(-1,1.4)node[above]{$+z$};\node at(2,-1){$q_c=-e,\quad \bm J=nq_c\bm v_d$};
+
+\end{tikzpicture}}
+
+图\ref{fig:mg4:k:hall}标的是电子漂移方向，它与常规电流方向相反。先由负电荷的洛伦兹力判断电子积累在哪侧，再由边缘电荷确定霍尔电场，最后核对电场力与磁力反向；只用右手规则而漏掉负电荷号会把电压极性颠倒。
+
+
+\subsection{电压取向与反向测量}
+在给定右手坐标后，应依次求 $\bm v_d$、磁力、横向电场，再由 $\bm E=-\nabla V$ 判断哪侧电势高。电场指向电势降低方向，负载流子受到的电场力与电场反向，因此“负电荷堆积的一侧”和“电场指向的一侧”不能混为一谈。
+
+
+纵向电场负责克服碰撞阻力，横向场负责抵消磁偏转。若迁移率 $\mu$ 以正数给定，零磁场单载流子模型中纵向大小满足 $J=n|q_c|\mu E_\parallel$；总电场大小应由正交分量平方相加。霍尔电压取决于沿哪个方向积分、以哪一端减哪一端，写出 $V_2-V_1=-\int_1^2\bm E\cdot\dd\bm l$ 后再代入，可避免只有大小没有符号的答案。
+
+
+实验中电压触点未必位于完全相同的纵向位置，测量值可能混入纵向压降。在材料参数与电流保持不变时，把磁场反向，霍尔项变号而理想纵向误差项不变。因此取 $[U(B)-U(-B)]/2$ 可提取随磁场反号的部分。若温度、接触状态也随反向过程变化，这个消差结论还需检查其适用条件，不能把任何漂移误差都自动消除。
+
+
+\input{knowledge-hall-sign}
+
+\section{轨道电子与外场建立后的比较}
+经典轨道电子既有机械角动量，也有反向的轨道磁矩。比较加入弱外场前后的圆轨道时，要把“半径固定”“角速度可变”“转向不变”等条件明确写出，再由径向力平衡判断速率增减。外磁场建立阶段一般伴随感生电场，因而不能把“最终磁力不做功”解释为“建立外场时电子速度绝不改变”。
+
+
+在弱场、半径变化可忽略的一阶近似中，角速度改变量的量级为 $|q|B/(2m)$。磁矩的改变量反抗外场，表现为经典轨道抗磁响应；这讨论的是轨道模型的变化，不涉及自旋及真实原子全部量子结构。若把强场下严格固定半径的力平衡根当成一切外场建立过程的实际轨迹，就会忽略初态与建立过程所带来的额外约束。
+
+
+
+对一阶轨道响应可直接核对改变量的方向。以沿 $+z$ 的外场为正，令轨道角速度 $\omega$ 保留转向，中心吸引力大小为 $F_C$，固定半径近似下有
+
+\[
+ mR\omega^2=F_C-q\omega RB,\qquad mR\omega_0^2=F_C.
+\]
+写 $\omega=\omega_0+\delta\omega$ 并减去无场关系，得到
+\[
+ mR[2\omega_0\delta\omega+(\delta\omega)^2]
+ =-qRB(\omega_0+\delta\omega).
+\]
+舍去 $B\delta\omega$ 与 $(\delta\omega)^2$ 等二阶项，
+再约去非零的 $R\omega_0$，有 $2m\delta\omega=-qB$，
+所以 $\delta\omega=-qB/(2m)$。轨道磁矩的轴向分量为 $m_{{\rm orb},z}=qR^2\omega/2$，所以
+
+\[
+ \delta m_{{\rm orb},z}=-\frac{q^2R^2B}{4m}.
+\]
+图\ref{fig:mg4:k:orbit-response}中即使电子原转向反过来，这一磁矩改变量仍反抗外场；它是带符号角速度改变后的结果，而非要求两种初转向都加快。
+
+\fig{fig:mg4:k:orbit-response}{外场建立阶段与最终径向平衡分别判断；图示电子原先逆时针转动}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.3);\node at(0,0){$\odot\dot B>0$};\draw[flow](1.3,0)--(1.3,1.2)node[right]{$v$};\draw[->,blue,thick](1.202082,1.202082)arc(45:-30:1.7)node[right]{$\bm E_{\rm ind}$};\node at(0,-2){建立阶段可由感生电场交换能量};
+\begin{scope}[xshift=6.2cm]
+\draw[world](0,0)circle(1.3);\node at(0,-.65){$\otimes\bm m_{\rm orb}$};\node at(1.3,0){$\ominus$};\draw[force,red](1.15,0)--(-.5,0)node[midway,above]{$F_C+e\omega RB$};\draw[flow](1.3,.2)--(1.3,1.2);\node at(0,2){末态：$\odot B$};\node at(0,-2){$\delta m_z=-e^2R^2B/(4m)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+还可直接解释图\ref{fig:mg4:k:orbit-response}左图中的能量交换。沿 $+z$ 看，取逆时针为正，缓慢建立的均匀场给出
+\[
+2\pi R E_\varphi=-\pi R^2\dot B,\qquad
+mR\dot\omega=qE_\varphi=-\frac{qR}{2}\dot B.
+\]
+在半径变化可忽略的一阶近似下，以外场从零建立为 $B$ 为积分边界，
+\[
+ \int_{\omega_0}^{\omega_0+\delta\omega}\dd\omega
+ =-\frac q{2m}\int_0^B\dd b,\qquad
+ [\omega]_{\omega_0}^{\omega_0+\delta\omega}
+ =-\frac q{2m}[b]_0^B.
+\]
+同样得到 $\delta\omega=-qB/(2m)$。电子 $q=-e$ 时，图示顺时针感生电场对逆时针运动的电子施加顺速度电力，电子加快；能量由建立外场的过程传入，而不是由最终静磁场做功。
+
+\section{超导态与磁场边界}
+理想超导体的零直流电阻与迈斯纳态的磁场排斥，是需要分别说明的物态性质。进入超导态要求温度低于相应临界温度；外场或电流超过材料与几何条件允许的临界范围，也会破坏所讨论的状态。以下在题目明确给定的完全排磁近似下讨论边界。
+
+
+在理想迈斯纳态中，忽略很薄的穿透层后，实体内部 $\bm B=0$。外场在表面激发屏蔽电流，其磁场与外加场叠加，使内部场消失。表面电流不能任意指定，而需由内外磁场的边界条件求出。对于局部平面，取超导体占据 $y<0$，外侧总场为 $B_s\bm e_x$，法线从内部向外为 $\bm e_y$，则
+
+\[
+\bm K=\frac1{\mu_0}\bm e_y\times(B_s\bm e_x-\bm0)
+=-\frac{B_s}{\mu_0}\bm e_z.
+\]
+这给出电流向纸内、大小 $B_s/\mu_0$。这里使用总场的跳变求电流；若再求这一层的机械受力，则仍须取两侧平均场来剔除自场，不能把边界求场与受力取场混为一步。
+
+
+对于带孔的超导环，材料内部的排斥条件不等于孔中磁场必为零。孔没有被超导材料占据，可以保留磁通，具体状态还与制备过程及闭合环路约束有关。理想零电阻环从给定初态出发的总磁链保持，则是电磁演化方程的结论，相关电流与自感计算在电磁感应专题中讨论。判断时应先问所指位置是材料内部、表面穿透层还是孔洞，再选择相应条件。
+
+
+\fig{fig:mg4:k:hole}{超导材料内部与环孔是不同位置，材料的排磁条件不能直接替代孔中磁通约束}{\begin{tikzpicture}
+
+\filldraw[fill=gray!18,world](0,0)circle(2);\filldraw[fill=white,world](0,0)circle(.95);\node[align=center]at(0,0){环孔\\$\odot\Phi$ 可非零};\node at(0,1.45){材料内 $B=0$};
+\node[align=center]at(4.3,.5){理想迈斯纳态\\表面有屏蔽电流\\孔中状态还取决于初始磁通等条件};\node at(1,-2.8){垂直于环轴的截面；这里只区分位置，不指定未知屏蔽电流的大小};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:hole}中的灰色材料区与空白孔洞必须分开使用条件：灰色区取理想排磁边界，孔中的场由环流、几何及给定初态共同确定。因而求解时先指定所在区域，再列相应的边界或磁链方程。
+
+
+
+
+\fig{fig:mg4:k:supercon}{迈斯纳态的平面边界与屏蔽电流}{\begin{tikzpicture}[scale=.88]
+\fill[gray!15](-2,-1.5)rectangle(2,0);\draw[world](-2,0)--(2,0);\draw[axis](-2.6,-1.5)--(-2.6,2.2)node[above]{$y$};\draw[flow](-1,1)--(1,1)node[midway,above]{$B_s\bm e_x$};\node at(0,-.9){超导体：$B=0$};\node[right]at(2.3,0){$\otimes K=B_s/\mu_0$};
+\end{tikzpicture}}
+
+图\ref{fig:mg4:k:supercon}中，外侧切向场沿 $+x$、外法线沿 $+y$，故面电流沿 $-z$。用右手定则检查，其自场在内侧抵消外场、在外侧与外场叠加，方向与边界方程一致。
+
+
+
+\section{缓变磁场中的磁镜约束}
+磁镜中的场沿轴向改变，不能仍把附近磁场画成完全平行、仅疏密不同的直线。轴对称、近轴无电流区域的零磁通关系给 $B_r\simeq-rB_z'/2$。场向前增强时，径向小分量向轴线收拢；它与快速回旋速度作用，才产生减小平行速度的轴向平均力。
+
+
+先取 $B_z>0$，以绕轴逆时针为方位正向。正电荷回旋实际为顺时针；对任意电荷符号，向心条件都可写为 $qv_\theta=-mv_\perp/r_L$。因此
+
+\[
+ F_z=-qv_\theta B_r\simeq
+ -\frac{mv_\perp^2}{2B_z}\frac{\dd B_z}{\dd z}
+ =-\mu\frac{\dd B_z}{\dd z},\qquad
+ \mu=\frac{mv_\perp^2}{2B}>0.
+\]
+这里 $\mu$ 是回旋的磁矩大小；带符号的回旋磁矩矢量反平行于局部场。电荷反号时回旋转向也反号，乘积 $qv_\theta$ 保持相同，所以磁镜力仍指向弱场，不随电荷正负反向。
+
+\fig{fig:mg4:k:mirrorforce}{近轴径向场与回旋速度共同产生向弱场端的力；图示正电荷顺时针回旋}{\begin{tikzpicture}
+
+\draw[axis](0,-.6)--(0,3.9)node[above]{$z$};\draw[->,blue](-1.9,0)..controls(-1.6,2)and(-1.1,3)..(-.9,3.5);\draw[->,blue](1.9,0)..controls(1.6,2)and(1.1,3)..(.9,3.5);
+\draw[world](0,1.8)ellipse(1.4 and .3);\node at(1.4,1.8){$\odot$};\node at(-1.4,1.8){$\otimes$};\node[right]at(1.6,2.15){$v_\theta$};\node[left]at(-1.6,2.15){$v_\theta$};
+\draw[->,blue,thick](1.3,1.8)--(.5,1.8);\draw[->,blue,thick](-1.3,1.8)--(-.5,1.8);\node at(.5,1.15){$B_r<0$（右侧）};
+\draw[force,red](1.4,1.4)--(1.4,.1)node[right]{$F_z<0$};\draw[force,red](-1.4,1.4)--(-1.4,.1);\node at(.5,4.6){$q>0,\ B_z>0,\ B_z'>0$};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:mirrorforce}的左右两处速度相反、径向场也相反，叉乘后的轴向力却同向。这个力是对快速回旋平均后的结果；若场在一周内变化显著，就不能将图中平均力直接用作瞬时完整运动方程。
+
+
+\subsection{平行与垂直能量的交换}
+磁力整体仍不做功，故总动能 $K=K_\parallel+K_\perp$ 保持不变。沿轴慢运动时，$\dd K_\parallel=F_z\dd z=-\mu\dd B$，相应有 $\dd K_\perp=\mu\dd B$。又由定义 $K_\perp=\mu B$，比较两式得到 $B\dd\mu\simeq0$，即
+
+\begin{equation}\mu=\frac{mv_\perp^2}{2B}\simeq\text{常量}.\end{equation}
+这一近似不变量把三维运动简化为轴向有效势能 $U_{\rm eff}(z)=\mu B(z)$ 下的慢运动：
+\[
+ K_\perp=\mu B,\qquad K_\parallel=K-\mu B,\qquad
+ \frac12mv_\parallel^2+\mu B=K.
+\]
+\fig{fig:mg4:k:mirror-energy}{总动能不变，场增强时垂直能量增加、平行动能减少；镜点处平行动能恰为零}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(7.5,0)node[right]{$z$};\draw[axis](0,0)--(0,3.8)node[above]{能量};
+\draw[thick,gray](0,3)--(7,3)node[right]{$K$};\draw[blue,thick](0,1)--(6.666667,3);\draw[orange!80!black,thick](0,2)--(6.666667,0);
+\draw[guide](6.666667,0)--(6.666667,3);\node[below]at(6.666667,0){$z_t$};\node[blue,above]at(3.8,2.14){$K_\perp=\mu B$};\node[orange!80!black,below]at(3.6,.92){$K_\parallel=K-\mu B$};
+\draw[flow](.6,-.7)--(2.5,-.7)node[midway,below]{进入强场};\draw[flow](5.8,-.7)--(3.2,-.7)node[midway,below]{反射后返回};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:mirror-energy}中的能量不是在磁场中被消耗，而是在两个正交运动分量之间转移。返回弱场时交换方向反转，平行速率重新增加。有效势能属于轴向慢自由度，不表示粒子的完整磁力在三维空间对它作了净功。
+
+
+\subsection{绝热条件与损失锥}
+上述分离要求回旋半径远小于场变化尺度，而且一周内沿轨道采样的相对场变很小。可分别估计
+\[
+ r_L\frac{|\nabla_\perp B|}{B}\ll1,\qquad
+ T_c\frac{|v_\parallel B'|}{B}\ll1,
+ \qquad T_c=\frac{2\pi m}{|q|B}.
+\]
+它们控制被舍弃项的大小。场很弱、梯度很大或突然跨越磁区边界时，这些条件可能失效，应重新使用完整洛伦兹方程，不能跨过锐边直接套用 $\mu$ 守恒。
+
+
+设粒子从中央场强 $B_0$ 处以总速率 $v_0$、俯仰角 $\alpha_0$ 朝一个强场端出发，初始 $K_\perp=mv_0^2\sin^2\alpha_0/2$。于是
+
+\[
+ v_\parallel^2=v_0^2\left(1-\frac{B}{B_0}\sin^2\alpha_0\right),\qquad
+ B_t=\frac{B_0}{\sin^2\alpha_0}.
+\]
+若端部可用最大场为 $B_m$，在峰值前出现普通镜点需要 $\sin^2\alpha_0>B_0/B_m$。小于该阈值时，到峰值仍有正的平行动能，粒子可以穿过本端。等号属于临界状态，必须再检查峰值处的到达时间。
+
+\fig{fig:mg4:k:mirror}{曲线是沿轴场强的剖面，两个镜点由 $B(z)=K/\mu$ 确定；它不是粒子轨迹或磁感线}{\begin{tikzpicture}
+
+\draw[axis](-3.7,0)--(3.8,0)node[right]{$z$};\draw[axis](0,0)--(0,3.2)node[above]{$B(z)$};\draw[blue,thick,domain=-3:3,samples=100]plot(\x,{1+1.5*(sin(30*\x))^2});
+\draw[orange!80!black,dashed](-3.3,1.9)--(3.4,1.9)node[right]{$K/\mu$};\foreach \x in {-1.692284,1.692284}{\draw[guide](\x,0)--(\x,1.9);\fill(\x,1.9)circle(1.5pt);}
+\node[below]at(-1.692284,0){$z_-$};\node[below]at(1.692284,0){$z_+$};\node[left]at(0,1){$B_0$};\node[above]at(-3,2.5){$B_m$};\node[above]at(3,2.5){$B_m$};
+\draw[flow](-1.65,-.6)--(1.65,-.6);\draw[flow](1.65,-1)--(-1.65,-1);\node at(0,-1.6){沿轴往返时仍保持快速回旋};
+
+\end{tikzpicture}}\fig{fig:mg4:k:losscone}{朝一个强场端发射的速度空间截面，临界俯仰角将穿越与镜点条件分开}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)--(2.4,0)arc(0:60:2.4)--cycle;\fill[orange!15](0,0)--(60:2.4)arc(60:90:2.4)--cycle;
+\draw[axis](0,0)--(3.1,0)node[right]{$v_\perp$};\draw[axis](0,0)--(0,3.1)node[above]{$v_\parallel$};\draw[world](2.4,0)arc(0:90:2.4);\draw[thick](0,0)--(1.2,2.078461);\draw[dim](0,.7)arc(90:60:.7)node[midway,above right]{$\alpha_c$};
+\node[right,align=center]at(3.3,2.4){损失锥内：可穿过本端\\临界线：等号需另判};\node[right,align=center]at(3.3,.8){蓝区：峰值前出现镜点\\$\sin^2\alpha_c=B_0/B_m$};\node at(2.2,-.8){图示 $B_m/B_0=4$，另一端损失锥对称};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:mirror}以场强剖面与常量 $K/\mu$ 相交定位两个镜点，图\ref{fig:mg4:k:losscone}则在同一总速率圆弧上比较入射俯仰角。俯仰角越小，初始垂直能量越少，所需镜场越高；这正是沿场方向形成损失锥的原因。
+
+
+严格沿对称轴且 $v_\perp=0$ 时，$\mu=0$，不存在回旋产生的磁镜力，不能因前方场增强就断言粒子反射。有限束宽、微小偏轴或横向速度会改变这一特殊初态，须按题给精度重新判断。磁矩不变量近似也不能当作任意非均匀场中的精确守恒量。
+
+
+\section{临界反射与到达时间}
+能量方程给出的反射条件，还应与位置和到达时间一起考察。若 $B(z)$ 单调增大到普通转折点 $z_t$，且 $B'(z_t)\ne0$，附近 $K-\mu B(z)$ 与 $z_t-z$ 成正比，所以 $v_\parallel$ 与 $\sqrt{z_t-z}$ 成正比。记 $v_\parallel\simeq c\sqrt{z_t-z}$，$c>0$。
+从 $z_t-\delta$ 到镜点，令 $s=z_t-z$，$\dd z=-\dd s$，则
+\[
+ \Delta t\simeq\frac1c\int_{z_t-\delta}^{z_t}
+ \frac{\dd z}{\sqrt{z_t-z}}
+ =\frac1c\int_0^\delta s^{-1/2}\dd s
+ =\frac1c[2\sqrt s]_0^\delta=\frac{2\sqrt\delta}{c}.
+\]
+时间积分在端点收敛，粒子在有限时间到达并反向。
+
+
+若反射阈值恰好对应磁场的光滑最大值 $B_m$，情况不同。设 $B(z)=B_m-a(z-z_m)^2+\cdots$，$a>0$，且 $K=\mu B_m$。此时 $v_\parallel\simeq\sqrt{2\mu a/m}\,|z-z_m|$，记 $\kappa=\sqrt{2\mu a/m}$，从峰前距离 $s_0$ 走到距离
+$\epsilon>0$ 时，令 $s=z_m-z$，
+\[
+ \Delta t\simeq-\frac1\kappa\int_{s_0}^{\epsilon}\frac{\dd s}{s}
+ =-\frac1\kappa[\ln s]_{s_0}^{\epsilon}
+ =\frac1\kappa\ln\frac{s_0}{\epsilon}.
+\]
+当 $\epsilon\to0^+$ 时，这个时间呈对数发散。理想模型中粒子无限接近峰值，却不在有限时间到达后掉头。
+
+
+因此损失锥边界的等号是临界状态。若题目问能否穿越，阈值可按能量判据给出；若问有限时间内是否已经反射，则应对等号情形单独说明。势垒顶端、圆周临界轨道和磁镜峰顶都体现了相同的数学特征：代数上允许到达某点，并不保证运动在有限时间内实际完成。
+
+
+\fig{fig:mg4:k:critical-time}{普通转折点处的可达性与光滑峰顶处的临界状态，必须分别判断到达时间}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.8,0)node[right]{$z$};\draw[axis](0,0)--(0,3.8)node[above]{$B(z)$};\draw[blue,thick,domain=0:5.5,samples=90]plot(\x,{3-.25*(\x-3)^2});
+\draw[red,dashed](0,2)--(4.8,2);\draw[orange!80!black,dashed](0,3)--(4.8,3);\fill[red](1,2)circle(1.7pt);\fill[orange!80!black](3,3)circle(1.7pt);
+\draw[guide](1,0)--(1,2)(3,0)--(3,3);\node[below]at(1,0){$z_t$};\node[below]at(3,0){$z_m$};
+\node[right,align=center]at(6.1,3.1){橙：$K/\mu=B_m$\\$v_\parallel\propto|z-z_m|$\\时间对数发散};\node[right,align=center]at(6.1,1.2){红：$B'(z_t)\ne0$\\$v_\parallel\propto\sqrt{z_t-z}$\\有限时间到达并反向};
+\node at(2.7,-.9){只讨论从左向右进入强场的一支；曲线为场强剖面};
+
+\end{tikzpicture}}
+图\ref{fig:mg4:k:critical-time}中红色能量线在上升段先相交，粒子到达普通转折点就返回；不能继续沿图中另一支寻找“第二个出点”。橙色临界能量线只在光滑峰顶相切，接近峰值时平行速率按距离的一次方趋零，导致时间积分发散。代数上的等号与有限时间内完成反弹，因而是两个不同的判断。
+

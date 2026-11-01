@@ -1,0 +1,7 @@
+\fig{fv:m4:hall}{保持同向常规电流，改用正载流子后霍尔极性反转；仍按横向力平衡确定}{\begin{tikzpicture}
+
+\draw[world](0,-1)rectangle(5,1);\draw[->,blue,thick](1,0)--(3,0)node[above]{$\bm v_d,\ I\parallel+x$};\node at(4,.4){$\otimes B_y$};
+\foreach \x in {1.2,2.2,3.2,4.2}{\node at(\x,1.25){$+$};\node at(\x,-1.25){$-$};}\draw[->,red,thick](.5,.7)--(.5,-.7)node[midway,left]{$\bm E_H$};\node at(2.5,-2){$q_c>0,\quad V_{\text{上}}>V_{\text{下}}$};
+
+\end{tikzpicture}}
+图\ref{fv:m4:hall}明确画的是正载流子向右漂移：磁力向上，上边缘积累正电，下边缘带负电，向下的霍尔场使横向合力为零。式 $q(\bm E_H+\bm v_d\times\bm B)=0$消去 $q$后，仍须通过 $\bm J=nq\bm v_d$把漂移速度换成规定的电流方向。对同向电流，负载流子的漂移反向，霍尔电压极性也反向；若直接把电子漂移箭头画成电流箭头，就会失去这一判断。

@@ -1,0 +1,96 @@
+\LectureAnswerSection
+
+\input{solution-inner-outer-rolling}
+
+\begin{drillsolution}{k3p10}\textbf{在内外两个接触点分别列无滑动方程}\par\nobreak
+规定逆时针为正，外环角速度为 $-\omega$，滚子公转、自转角速度分别为 $\Omega,\omega_s$。图\ref{k3p10q}中圆心轨道半径为 $3r$。内接触处速度为 $3r\Omega-r\omega_s=0$，外接触处为 $3r\Omega+r\omega_s=-4r\omega$。
+\fig{k3p10s}{圆环之间滚子的自转与公转：解答过程}{\begin{tikzpicture}\draw[world](0,0)circle(1);\fill(0,0)circle(1pt)node[above]{$P$};\draw[flow,blue](0,0)--(0,-1.4)node[right]{$3r\Omega$};\draw[flow,red](-1,0)--(-1,1.4)node[left]{$-r\omega_s$};\draw[flow,red](1,0)--(1,-1.4)node[right]{$r\omega_s$};\node[below]at(-1,-.4){内接触};\node[above]at(1,.4){外接触};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求公转与自转并按同一时间累积}\par\nobreak
+两式相加得 $\Omega=-2\omega/3$，相减得 $\omega_s=-2\omega$。所以外环转一周期间，$\boxed{\text{圆心顺时针公转 }2/3\text{圈，滚子顺时针自转 }2\text{圈}}$。图\ref{k3p10s}中两个接触点的速度属于同一个地面参考系；一边固定、一边运动，滚子圆心不可能固定。这里自转圈数表示姿态变化，不表示某个轮缘点围绕地面上任意固定点的闭合绕行次数。
+
+两式左边都是滚子接触点对地的切向速度：内点的自转速度反向于圆心公转切速，外点则同向。先相加消去自转，再相减消去公转，因而得到的两个未知量各有明确几何意义。把圈数代回可见内点累计切向位移为 $3r(-4\pi/3)-r(-4\pi)=0$，外点为 $-8\pi r$，满足两侧无滑动。\end{drillsolution}
+
+\begin{drillsolution}{k3p11}\textbf{把两环相对速度投影到斜绳方向}\par\nobreak
+取向上为正，图\ref{k3p11q}中竖直绳段 $A'O'$ 的增长率为 $v'$。斜绳从 $O$ 指向 $O'$ 的单位矢量，竖直分量为 $\cos\alpha$；斜段增长率为 $(-v'-v_O)\cos\alpha$。因此
+\[v'+(-v'-v_O)\cos\alpha=0,\qquad\boxed{v_O=v'(\sec\alpha-1)}.\]
+\fig{k3p11s}{两圆环与斜绳：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(3,1.6);\draw[flow,blue](0,0)--(0,1.2)node[left]{$v_O$};\draw[flow,red](3,1.6)--(3,.4)node[right]{$v'$};\draw[flow](1,.53)--(2,1.07)node[above]{$\bm e$};\node[below]at(1.5,-.5){斜段缩短率 $(v_O+v')\cos\alpha$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两段长短变化并检验极限}\par\nobreak
+图\ref{k3p11s}显示左环向上，右环向下，两者共同缩短斜绳，恰好补偿上方竖直段增长。若 $\alpha\to0$，右环的下降本身就足以缩短斜段，左环速度趋零；当斜绳接近水平时，竖直运动对长度变化的效率很低，所需左环速率增大。这一判断也检查了公式中的减号。
+
+若左环固定，右环下降会使竖直段增长 $v'$，斜段却只能缩短 $v'\cos\alpha$，总长仍增加。要补足剩下的 $v'(1-\cos\alpha)$，左环必须向上，使斜段再以 $v_O\cos\alpha$缩短。于是 $v_O\cos\alpha=v'(1-\cos\alpha)$，这与微分方程完全相同，也用图中的两段变化直接解释了上升方向。\end{drillsolution}
+
+\begin{drillsolution}{k3p12}\textbf{由均匀伸长建立当地材料速度场}\par\nobreak
+由图\ref{k3p12q}的均匀伸长条件，任一段材料占总长的比例在不爬行时保持不变。设丝线总长 $L=L_0+wt$，距固定端 $x$处的材料速度即为 $wx/L$。虫相对该处材料向左爬，所以虫的地面速度满足
+\[\dot x=\frac{wx}{L_0+wt}-u,\qquad x(0)=x_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换到材料坐标后积分}\par\nobreak
+引入无量纲相对位置 $z=x/L$，用商的求导法则消去伸长项：
+\begin{align*}
+\dot z&=\frac{\dot xL-x\dot L}{L^2}
+       =\frac{(wx/L-u)L-xw}{L^2}
+       =-\frac{u}{L_0+wt}.
+\end{align*}
+从初值 $z(0)=x_0/L_0$积分。令 $q=L_0+w\tau$，则 $\dd\tau=\dd q/w$，上下限由 $0,t$变为 $L_0,L_0+wt$，所以
+\begin{align*}
+ z(t)-\frac{x_0}{L_0}
+ &=-u\int_0^t\frac{\dd\tau}{L_0+w\tau}
+ =-\frac uw\int_{L_0}^{L_0+wt}\frac{\dd q}{q}\\
+ &=-\frac uw\left[\ln\frac q{L_0}\right]_{L_0}^{L_0+wt}
+ =-\frac uw\ln\left(1+\frac{wt}{L_0}\right).
+\end{align*}
+\fig{k3p12s}{均匀伸长丝线上的爬行：解答过程}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$t$};
+\draw[axis](0,0)--(0,2.3)node[above]{$z=x/L$};
+\draw[world,blue]plot[domain=0:10,samples=160,variable=\q]
+ ({4.8*(exp(\q-10)-exp(-10))/(1-exp(-10))},{1.8*(1-\q/10)});
+\fill(0,1.8)circle(1.5pt)node[left]{$z_0=1$};
+\fill(4.8,0)circle(1.5pt)node[below]{$t_{\rm end}$};
+\node at(3.2,1.5){从自由端出发};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由材料坐标归零求唯一到达时刻}\par\nobreak
+到达固定端等价于 $x=0$，也即 $z=0$。将它代入并依次取指数、解出时间，得到
+\[\ln\left(1+\frac{wt_{\rm end}}{L_0}\right)
+ =\frac{wx_0}{uL_0},\qquad
+\boxed{t_{\rm end}=\frac{L_0}{w}
+  \left[\exp\left(\frac{wx_0}{uL_0}\right)-1\right]}.\]
+图\ref{k3p12s}画出从自由端出发的 $z(t)$，曲线在有限的 $t_{\rm end}$处到达横轴。到达前 $\dot z<0$且 $z>0$，所以该时刻唯一。单位统一为米、秒后，$L_0/w=100\,\mathrm s$、$w/u=10$；从自由端出发 $x_0=L_0$，有
+\[t_{\rm end}=100(e^{10}-1)\,\mathrm s
+ \approx2.20\times10^6\,\mathrm s\approx25.5\text{天}.\]
+
+\Needspace{24\baselineskip}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原地面坐标并求转向时刻}\par\nobreak
+为了判断虫对地的运动方向，还须把相对位置还原为
+\[x(t)=(L_0+wt)\left[z_0-\frac uw
+                  \ln\left(1+\frac{wt}{L_0}\right)\right],
+ \qquad z_0=\frac{x_0}{L_0}.\]
+由乘积法则，对地速度为 $\dot x=\dot Lz+L\dot z=wz+(L_0+wt)[-u/(L_0+wt)]=wz-u$，代回即满足原运动方程。若 $z_0>u/w$，虫开始向右；随着 $z$单调减小，到 $z=u/w$时才转向。代入 $z(t)$，移项得 $\ln(1+wt/L_0)=wz_0/u-1$，再取指数得到
+\[t_{\rm turn}=\frac{L_0}{w}
+       \left[\exp\left(\frac{wz_0}{u}-1\right)-1\right].\]
+若 $z_0\le u/w$，则虫初始速度不向右，随后向左，不存在正的转向时刻。图\ref{k3p12ground}取本题允许的 $z_0=0.2$、$u/w=0.1$展示先右后左的情形，起点高度为 $x_0>0$，而非零。
+\fig{k3p12ground}{初始位置 $x_0/L_0=0.2$时，对地位置先增后减}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$t$};
+\draw[axis](0,0)--(0,2.3)node[above]{$x$};
+\draw[world,blue]plot[domain=0:2,samples=100,variable=\q]
+ ({4.8*(exp(\q)-1)/(exp(2)-1)},{6*exp(\q)*(.2-.1*\q)});
+\draw[guide](0,1.2)--(4.2,1.2);
+\node[left]at(0,1.2){$x_0$};
+\draw[guide]({4.8/(exp(1)+1)},0)--({4.8/(exp(1)+1)},{.6*exp(1)});
+\node[below]at({4.8/(exp(1)+1)},0){$t_{\rm turn}$};
+\fill(4.8,0)circle(1.4pt)node[below]{$t_{\rm end}$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查不伸长与不爬行两个极限}\par\nobreak
+最后检验极限：令 $w\to0$，用 $e^\varepsilon-1\sim\varepsilon$，上式给出 $t_{\rm end}\to x_0/u$；令 $u\to0^+$，到达时间发散。虫开始向右与最后到达左端并不矛盾，前者由对地速度判断，后者由始终减小的相对位置判断。题目的均匀伸长条件决定了速度场，不能省略。\end{drillsolution}

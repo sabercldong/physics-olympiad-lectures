@@ -1,0 +1,50 @@
+\section{练习}
+
+\begin{question}\begin{drill}[移动木块的质心变化]\label{s1:drill:1}
+$N$个等质量木块从左到右排列，相邻端面间空隙均为$l$，长度可不同。保持最右木块不动，其余向右移到无空隙相接。求系统质心位移。
+\end{drill}
+\fig{fig:s1:drill:1:s}{题设：移动木块的质心变化}{\begin{tikzpicture}[scale=.88]\foreach \x in {0,2,4}{\draw[world](\x,0)rectangle(\x+1,.6);}\draw[dim](1,1)--(2,1)node[midway,above]{$l$};\draw[dim](3,1)--(4,1)node[midway,above]{$l$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:1}
+\begin{question}\begin{drill}[无限叠放立方块的质心]\label{s1:drill:2}
+同材质立方块依次叠放，边长为$l,l/2,l/4,\ldots$，各块水平中心对齐。求系统质心距底面的高度。
+\end{drill}
+\fig{fig:s1:drill:2:s}{题设：无限叠放立方块的质心}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)rectangle(3,3);\draw[world](.75,3)rectangle(2.25,4.5);\draw[world](1.125,4.5)rectangle(1.875,5.25);\node at(3.6,4.8){$\cdots$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:2}
+\begin{question}\begin{drill}[升降平台上的人拉绳]\label{s1:drill:3}
+人质量$60\,\mathrm{kg}$，平台质量$30\,\mathrm{kg}$。绳一端固定天花板，向下绕过平台上的轻动滑轮，再向上跨过天花板轻定滑轮，自由端由平台上的人向下拉。系统静止，求手的拉力及人对平台压力。
+\end{drill}
+\fig{fig:s1:drill:3:s}{题设：升降平台上的人拉绳}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(4,3);\draw[world](.5,3)--(.5,.7)arc(180:360:.7)--(1.9,2.5)arc(180:0:.5)--(2.9,1);\draw[world](0,-.2)rectangle(3.7,0);\draw[world](1.2,.7)--(1.2,0);\node at(2.7,.5){人};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:3}
+\begin{question}\begin{drill}[弹簧自重引起的伸长]\label{s1:drill:4}
+均匀弹簧质量$m$、原长$l$、整体劲度$k$，竖直悬挂，下端自由。求自重伸长；若再挂质量$M$的物体，伸长变为多少？
+\end{drill}
+\fig{fig:s1:drill:4:s}{题设：弹簧自重引起的伸长}{\begin{tikzpicture}[scale=.88]\draw[world](1,3)--(3,3);\draw[spring](2,3)--(2,0);\node[right]at(2,1.4){$m,l,k$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:4}
+\begin{question}\begin{drill}[正六边形中的五个力]\label{s1:drill:5}
+从正六边形顶点$O$向其余五个顶点作矢量，五个力与这些矢量成同一比例。到对顶点的力为$F_3=10\,\mathrm N$，求合力。
+\end{drill}
+\fig{fig:s1:drill:5:s}{题设：正六边形中的五个力}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(1,1.732)--(3,1.732)--(4,0)--(3,-1.732)--(1,-1.732)--cycle;\foreach \x/\y in {1/1.732,3/1.732,4/0,3/-1.732,1/-1.732}{\draw[flow](0,0)--(\x,\y);}\node[left]at(0,0){$O$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:5}
+\begin{question}\begin{drill}[奇数质量列球的质心]\label{s1:drill:6}
+$N$个直径$d$的球相切排成一线，质量依次$m,3m,\ldots,(2N-1)m$。取第一个球心为原点，求质心；代入$N=500,d=3\,\mathrm{cm}$。
+\end{drill}
+\fig{fig:s1:drill:6:s}{题设：奇数质量列球的质心}{\begin{tikzpicture}[scale=.88]\foreach \x/\l in {0/m,1/{3m},2/{5m},4/{(2N-1)m}}{\draw[world](\x,0)circle(.5);\node[above]at(\x,.5){$\l$};}\node at(3,0){$\cdots$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:6}
+\begin{question}\begin{drill}[阴阳形组合板的质心]\label{s1:drill:7}
+半径$2r$的均匀下半圆板，挖去左侧半径$r$的上边界内切下半圆，再在右侧直径上补入半径$r$的上半圆。求组合板质心，原点取大圆心。
+\end{drill}
+\fig{fig:s1:drill:7:s}{题设：阴阳形组合板的质心}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)arc(180:360:2);\draw[world](0,0)arc(180:360:1);\draw[world](2,0)arc(180:0:1);\draw[guide](0,0)--(4,0);\node[below]at(2,0){$O$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:7}
+\begin{question}\begin{drill}[逐次内切挖补的圆板]\label{s1:drill:8}
+均匀圆板半径$R$、圆心原点。向右内切一半径$R/2$的圆盘并挖去，再在其中放回右内切、半径$R/4$的同密度圆盘，如此交替挖补。求剩余图形的质心。
+\end{drill}
+\fig{fig:s1:drill:8:s}{题设：逐次内切挖补的圆板}{\begin{tikzpicture}[scale=.88]\foreach \x/\r in {0/2,1/1,1.5/.5,1.75/.25}{\draw[world](\x,0)circle(\r);}\draw[axis](-2.3,0)--(2.6,0)node[right]{$x$};\end{tikzpicture}}
+\end{question}
+\answerlink{s1:drill:8}

@@ -1,0 +1,569 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[两电源相助与相抗]\label{c2:example:1}
+两理想电源电动势分别为 $10\,\mathrm V$、$2\,\mathrm V$，与 $2\,\Omega$ 电阻串联。分别求相助接法和相抗接法的电流，并判断两种情况下第二电源的能量转换。
+\end{example}
+\typeout{ECFIG:fig:c2:example:1:s}\fig{fig:c2:example:1:s}{题设：两电源相助与相抗}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$10\,\mathrm V$}](0,2)to[R,l={$2\,\Omega$}](3,2)to[battery1,invert,l={$2\,\mathrm V$}](3,0)--(0,0);\node at(1.5,-.6){相助接法};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按相助极性列回路并求电流}\par\nobreak
+在 图\ref{fig:c2:example:1:s} 的相助接法中，顺时针跨越两个电源均从负端到正端，总电动势 $12\,\mathrm V$。回路方程 $10+2-2I=0$ 给出 $I=6\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以放电方向计算两电源功率}\par\nobreak
+两个电源均供能，功率为 $60\,\mathrm W$ 和 $12\,\mathrm W$，电阻功率为 $6^2\times2=72\,\mathrm W$。
+\typeout{ECFIG:fig:c2:example:1:p}\fig{fig:c2:example:1:p}{解答过程：两电源相助与相抗}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$10\,\mathrm V$}](0,2)to[R,l={$2\,\Omega$}](3,2)to[battery1,l={$2\,\mathrm V$}](3,0)--(0,0);\draw[flow](.8,2.9)--(2,2.9)node[midway,above]{$4\,\mathrm A$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反接第二电源后重新列回路}\par\nobreak
+图\ref{fig:c2:example:1:p} 将第二电源反接，沿同一回路有 $10-2-2I=0$，故 $I=4\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断充电功率并核对能量守恒}\par\nobreak
+第二电源电流从正端流入，吸收功率 $2\times4=8\,\mathrm W$，第一电源供能 $40\,\mathrm W$，电阻耗能 $32\,\mathrm W$，满足 $40=8+32$。两种接法均应由极性读出代数电动势，不能只看电源数值相加。\end{solution}
+\begin{question}\begin{example}[三个不同电池直接并联]\label{c2:example:2}
+三个电池同极性并联，电动势依次为 $1,2,3\,\mathrm V$，内阻依次为 $3,2,1\,\Omega$，没有外接负载。求共同端电压和各电池输出电流。
+\end{example}
+\typeout{ECFIG:fig:c2:example:2:s}\fig{fig:c2:example:2:s}{题设：三个不同电池直接并联}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$1\,\mathrm V$}](0.0,1.5)to[R,l={$3\,\Omega$}](0.0,3);\draw(2.3,0)to[battery1,invert,l={$2\,\mathrm V$}](2.3,1.5)to[R,l={$2\,\Omega$}](2.3,3);\draw(4.6,0)to[battery1,invert,l={$3\,\mathrm V$}](4.6,1.5)to[R,l={$1\,\Omega$}](4.6,3);\draw(0,0)--(4.6,0)(0,3)--(4.6,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定端电压和各电池输出电流方向}\par\nobreak
+图\ref{fig:c2:example:2:s} 中电池正端连接 $A$，负端连接 $B$。令 $U=V_A-V_B$，各支路输出电流 $I_k$ 都从下向上。图\ref{fig:c2:example:2:p} 固定了这些箭头，因此
+\[
+ I_1=(1-U)/3,\quad I_2=(2-U)/2,\quad I_3=3-U.
+\]
+\typeout{ECFIG:fig:c2:example:2:p}\fig{fig:c2:example:2:p}{解答过程：三个不同电池直接并联}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$1\,\mathrm V$}](0.0,1.5)to[R,l={$3\,\Omega$}](0.0,3);\draw[flow](0.0+.55,.4)--(0.0+.55,1.5)node[midway,right]{$I_1$};\draw(2.3,0)to[battery1,invert,l={$2\,\mathrm V$}](2.3,1.5)to[R,l={$2\,\Omega$}](2.3,3);\draw[flow](2.3+.55,.4)--(2.3+.55,1.5)node[midway,right]{$I_2$};\draw(4.6,0)to[battery1,invert,l={$3\,\mathrm V$}](4.6,1.5)to[R,l={$1\,\Omega$}](4.6,3);\draw[flow](4.6+.55,.4)--(4.6+.55,1.5)node[midway,right]{$I_3$};\draw(0,0)--(4.6,0)(0,3)--(4.6,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由上节点总输出为零求共同端电压}\par\nobreak
+外部没有取电流，$I_1+I_2+I_3=0$。乘以 $6$ 得
+\[
+ 2-2U+6-3U+18-6U=0,\qquad U=\frac{26}{11}\,\mathrm V.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐支路回算电流并判断充放电}\par\nobreak
+回代有 $I_1=-5/11\,\mathrm A$、$I_2=-2/11\,\mathrm A$、$I_3=7/11\,\mathrm A$，前两电池被充电，第三电池供能。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用内阻总发热核对内部能量交换}\par\nobreak
+代数转换功率为
+\[
+ \sum\mathcal E_k I_k=\frac{-5-4+21}{11}=\frac{12}{11}\,\mathrm W,
+\]
+等于内阻总热功率 $3(5/11)^2+2(2/11)^2+(7/11)^2=12/11\,\mathrm W$，功率检查与方向判断相符。\end{solution}
+\begin{question}\begin{example}[双电源网络中的节点法]\label{c2:example:3}
+电路如图，各电阻和电源数值已标出。取 $V_O=0\,\mathrm V,V_B=0\,\mathrm V$。求各未知节点电势与各有阻支路电流，并核对电流守恒。底部 $O,B$ 由理想导线相连。
+\end{example}
+\typeout{ECFIG:fig:c2:example:3:s}\fig{fig:c2:example:3:s}{题设：双电源网络中的节点法}{\begin{tikzpicture}[scale=.88]
+\coordinate (O) at (0,0);\coordinate (M) at (0,4);\coordinate (N) at (5,4);\coordinate (B) at (5,0);\coordinate (T0) at (0.0,2.0);\draw (O) to[battery1,invert,l={$6\,\mathrm V$}](T0)to[R,l={$R_1=1\,\Omega$}](M);\draw (M)to[R,l={$R_2=2\,\Omega$}](B);\draw (N)to[R,l={$R_3=3\,\Omega$}](B);\coordinate(P3)at(6.6,0);\coordinate(Q3)at(6.6,4);\draw(B)--(P3)(N)--(Q3);\coordinate (T3) at (6.6,2.0);\draw (P3) to[battery1,invert,l={$7\,\mathrm V$}](T3)to[R,l={$R_4=4\,\Omega$}](Q3);\draw (M)to[R,l={$R_5=5\,\Omega$}](N);\draw (O)--(B);\fill (O)circle(1.6pt)node[above right]{$O$};\fill (M)circle(1.6pt)node[above right]{$M$};\fill (N)circle(1.6pt)node[above right]{$N$};\fill (B)circle(1.6pt)node[above right]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{明确参考节点和含电源支路方向}\par\nobreak
+以图\ref{fig:c2:example:3:s}的导线相连节点 $O,B$ 为参考地，未知量只有 $V_M,V_N$。图\ref{fig:c2:example:3:p}固定五条支路的参考方向；沿 $O\to M$ 与 $B\to N$ 分别跨过电势上升 $6\,\mathrm V$、$7\,\mathrm V$。
+\fig{fig:c2:example:3:p}{五条支路分别规定参考方向；电源极性与原网络相同}{\begin{tikzpicture}
+
+\coordinate(O)at(0,0);\coordinate(M)at(0,4);\coordinate(N)at(5,4);\coordinate(B)at(5,0);
+\draw(O)to[battery1,invert,l={$6\,\mathrm V$}](0,2)to[R,l={$R_1=1\,\Omega$}](M);
+\draw(M)to[R,l={$R_2=2\,\Omega$}](B);
+\draw(N)to[R,l={$R_3=3\,\Omega$}](B);
+\draw(B)--(6.6,0)to[battery1,invert,l={$7\,\mathrm V$}](6.6,2)to[R,l={$R_4=4\,\Omega$}](6.6,4)--(N);
+\draw(M)to[R,l={$R_5=5\,\Omega$}](N);\draw(O)--(B);
+\draw[flow](-.65,1.7)--(-.65,2.6)node[midway,left]{$i_1$};
+\draw[flow](1.5,2.3)--(2.6,1.42)node[midway,sloped,below]{$i_2$};
+\draw[flow](4.45,2.7)--(4.45,1.5)node[midway,left]{$i_3$};
+\draw[flow](7.25,1.7)--(7.25,2.6)node[midway,right]{$i_4$};
+\draw[flow](2,4.95)--(3.2,4.95)node[midway,above]{$i_5$};
+\fill(O)circle(1.5pt)node[below]{$O:0$};\fill(B)circle(1.5pt)node[below]{$B:0$};
+\fill(M)circle(1.5pt)node[above left]{$M:V_M$};\fill(N)circle(1.5pt)node[above right]{$N:V_N$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把每一支路写入对应节点方程}\par\nobreak
+在 $M,N$ 分别列流出电流代数和为零。各电阻数值以欧姆计，得到
+\[
+ \begin{cases}
+ (V_M-6)+V_M/2+(V_M-V_N)/5=0,\\
+ V_N/3+(V_N-7)/4+(V_N-V_M)/5=0.
+ \end{cases}
+\]
+第一式的三项分别对应 $MO,MB,MN$，第二式对应 $NB$ 的两条不同支路和 $NM$。虽然两支路端点都在 $N,B$，含电源的一条仍须保留其 $7\,\mathrm V$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求两个未知节点电势}\par\nobreak
+分别乘以 $10,60$ 去分母：
+\[
+ 17V_M-2V_N=60,\qquad -12V_M+47V_N=105.
+\]
+第一式乘 $47$，第二式乘 $2$ 后相加，得 $775V_M=3030$；回代得
+\[
+ \boxed{V_M=606/155\,\mathrm V},\qquad
+ \boxed{V_N=501/155\,\mathrm V}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以相同方向回算全部支路电流}\par\nobreak
+按原图的参考方向逐支路回算：
+\begin{align*}
+ i_1\ (O\to M)&=(6-V_M)/1=324/155\,\mathrm A,\\
+ i_2\ (M\to B)&=V_M/2=303/155\,\mathrm A,\\
+ i_3\ (N\to B)&=V_N/3=167/155\,\mathrm A,\\
+ i_4\ (B\to N)&=(7-V_N)/4=146/155\,\mathrm A,\\
+ i_5\ (M\to N)&=(V_M-V_N)/5=21/155\,\mathrm A.
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{独立检查两个节点和全网功率}\par\nobreak
+五项都为正，故实际方向与图中箭头相同。节点回查为 $-i_1+i_2+i_5=0$、$i_3-i_4-i_5=0$。还可核对全部功率：
+\[
+ 6i_1+7i_4=\frac{2966}{155}\,\mathrm W
+ =i_1^2+2i_2^2+3i_3^2+4i_4^2+5i_5^2.
+\]
+这项核验同时保留了两个电源及全部五个电阻，与原电路的系统边界一致。
+\end{solution}
+\begin{question}\begin{example}[断口两侧的电势差]\label{c2:example:4}
+上下两支路连接共同端点 $L,R$。上支路从 $L$ 到 $R$ 为电势上升 $1\,\mathrm V$ 的理想电源与 $1\,\Omega$ 电阻；下支路从 $L$ 到 $R$ 为电势上升 $3\,\mathrm V$ 的电源与 $1\,\Omega$ 电阻。另有断开支路：从 $L$ 经电势上升 $10\,\mathrm V$ 的电源及 $2\,\Omega$ 电阻到 $A$；从 $R$ 经电势下降 $5\,\mathrm V$ 的电源到 $B$。求 $V_A-V_B$。
+\end{example}
+\typeout{ECFIG:fig:c2:example:4:s}\fig{fig:c2:example:4:s}{题设：断口两侧的电势差}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)--(0,3.6)to[battery1,invert,l={$1\,\mathrm V$}](2,3.6)to[R,l={$1\,\Omega$}](5,3.6)--(5,0)to[R,l_={$1\,\Omega$}](2,0)to[battery1,l_={$3\,\mathrm V$}](0,0);\draw(0,1.8)to[battery1,invert,l={$10\,\mathrm V$}](1.4,1.8)to[R,l={$2\,\Omega$}](2.7,1.8)node[right]{$A$};\draw(5,1.8)to[battery1,l={$5\,\mathrm V$}](3.9,1.8)node[left]{$B$};\node[left]at(0,1.8){$L$};\node[right]at(5,1.8){$R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先分开断支路与闭合部分}\par\nobreak
+图\ref{fig:c2:example:4:s} 的 $A,B$ 没有接通，因此两个断开小支路电流为零，$2\,\Omega$ 电阻没有电势降。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在闭合回路中求共同两端电势}\par\nobreak
+令 $V_L=0,V_R=U$，闭合网络两支路从左到右的电流分别为 $I_1=1-U$、$I_2=3-U$。由 $I_1+I_2=0$ 得 $U=2\,\mathrm V$，故上支路实际向左 $1\,\mathrm A$、下支路向右 $1\,\mathrm A$。
+\typeout{ECFIG:fig:c2:example:4:p}\fig{fig:c2:example:4:p}{解答过程：断口两侧的电势差}{\begin{tikzpicture}[scale=.88]
+\node[draw]at(0,0){$L:0$};\node[draw]at(3,0){$R:2$};\node[draw]at(0,1.5){$A:10$};\node[draw]at(3,1.5){$B:-3$};\draw[flow](0,.3)--(0,1.2)node[midway,left]{$+10$};\draw[flow](3,.3)--(3,1.2)node[midway,right]{$-5$};\draw[flow](.8,0)--(2.1,0)node[midway,below]{$+2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿零电流支路追踪两断端电势}\par\nobreak
+图\ref{fig:c2:example:4:p} 的电势路径先由 $L$ 到 $A$，有 $V_A=0+10=10\,\mathrm V$；由 $R$ 到 $B$ 有 $V_B=2-5=-3\,\mathrm V$。所以 $V_A-V_B=13\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿另一条路径核对断口电压}\par\nobreak
+换路径检查：$V_A-V_B=(V_A-V_L)+(V_L-V_R)+(V_R-V_B)=10-2+5=13\,\mathrm V$。断路只使电流为零，并没有使电源电动势消失。\end{solution}
+\begin{question}\begin{example}[不平衡电桥的桥电流]\label{c2:example:5}
+电桥 $AM,MB,AN,NB,MN$ 的电阻依次为 $1,2,4,5,3\,\Omega$，$A,B$ 间接理想电压 $U$，$V_A-V_B=U>0$。求等效电阻及桥臂电流方向。
+\end{example}
+\typeout{ECFIG:fig:c2:example:5:s}\fig{fig:c2:example:5:s}{题设：不平衡电桥的桥电流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$1$}](2.4,1.5)to[R,l={$2$}](4.8,0)to[R,l_={$5$}](2.4,-1.5)to[R,l_={$4$}](0,0);\draw(2.4,1.5)to[R,l={$3$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以两中点电势列带载节点方程}\par\nobreak
+在 图\ref{fig:c2:example:5:s} 中令 $V_A=U,V_B=0$。两个中点的节点方程为
+\[
+ (V_M-U)+\frac{V_M}{2}+\frac{V_M-V_N}{3}=0,\qquad
+ \frac{V_N-U}{4}+\frac{V_N}{5}+\frac{V_N-V_M}{3}=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求两中点实际电势}\par\nobreak
+分别乘 $6$ 与 $60$，得 $11V_M-2V_N=6U$、$-20V_M+47V_N=15U$。第一式乘 $20$、第二式乘 $11$ 后相加消去 $V_M$，得 $477V_N=285U$，所以
+\[
+ V_N=\frac{95}{159}U,\qquad V_M=\frac{104}{159}U.
+\]
+\typeout{ECFIG:fig:c2:example:5:p}\fig{fig:c2:example:5:p}{解答过程：不平衡电桥的桥电流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$1$}](2.4,1.5)to[R,l={$2$}](4.8,0)to[R,l_={$5$}](2.4,-1.5)to[R,l_={$4$}](0,0);\draw(2.4,1.5)to[R,l={$3$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};\draw[flow](2.9,.7)--(2.9,-.7)node[midway,right]{$I_5$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断桥臂电流方向和大小}\par\nobreak
+图\ref{fig:c2:example:5:p} 中 $V_M>V_N$，桥臂电流 $I_5=(V_M-V_N)/3=U/53$，由 $M$ 流向 $N$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求输入电流和两端等效电阻}\par\nobreak
+电源总输出电流
+\[
+ I=\frac{U-V_M}{1}+\frac{U-V_N}{4}
+ =\frac{55U}{159}+\frac{16U}{159}=\frac{71U}{159},
+\]
+故 $R_{AB}=159/71\,\Omega$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按中点守恒核对各臂实际电流}\par\nobreak
+回查 $MB$ 电流为 $52U/159$，等于 $AM$ 电流减去 $MN$ 电流；$NB$ 电流为 $19U/159$，等于 $AN$ 电流加上 $MN$ 电流。桥臂有电流，不能把上下两条分压支路直接并联。\end{solution}
+\begin{question}\begin{example}[从桥臂端口作等效]\label{c2:example:6}
+电桥 $AM,MB,AN,NB$ 的电阻分别为 $2,4,3,3\,\Omega$，$A,B$ 间电压 $12\,\mathrm V$。桥臂 $MN$ 接 $5\,\Omega$。用等效电源求桥电流，并比较直接用无载中点电势差除以桥臂电阻的误差。
+\end{example}
+\typeout{ECFIG:fig:c2:example:6:s}\fig{fig:c2:example:6:s}{题设：从桥臂端口作等效}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2$}](2.4,1.5)to[R,l={$4$}](4.8,0)to[R,l_={$3$}](2.4,-1.5)to[R,l_={$3$}](0,0);\draw(2.4,1.5)to[R,l={$5$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先断开桥臂求端口开路电压}\par\nobreak
+先将 图\ref{fig:c2:example:6:s} 的桥臂断开。以 $V_B=0$，两支路分别分压得到 $V_M^{\rm oc}=12\times4/(2+4)=8\,\mathrm V$，$V_N^{\rm oc}=12\times3/(3+3)=6\,\mathrm V$，所以桥端开路电压 $U_{\rm oc}=2\,\mathrm V$。
+\typeout{ECFIG:fig:c2:example:6:p}\fig{fig:c2:example:6:p}{解答过程：从桥臂端口作等效}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$2\,\mathrm V$}](0,2.4)to[R,l={$17/6\,\Omega$}](3.4,2.4)to[R,l={$5\,\Omega$}](3.4,0)--(0,0);\node[above right]at(3.4,2.4){$M$};\node[below right]at(3.4,0){$N$};\draw[flow](4,1.9)--(4,.5)node[midway,right]{$I$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{关闭端部电源后从桥端看入求电阻}\par\nobreak
+图\ref{fig:c2:example:6:p} 中关闭理想端部电压源后，$A,B$ 合并为同一节点。由桥端看入，
+\[
+ R_{\rm th}=(2\parallel4)+(3\parallel3)=\frac43+\frac32=\frac{17}{6}\,\Omega.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接回桥臂计算实际电流}\par\nobreak
+接回 $5\,\Omega$ 桥臂，$I_{MN}=2/(5+17/6)=12/47\,\mathrm A$，由 $M$ 到 $N$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{定量比较忽略端口内阻造成的误差}\par\nobreak
+若直接用 $2/5=0.4\,\mathrm A$，相当于误把端口内阻设为零；相对正确值高估 $17/30$，约 $56.7\%$。实际桥端电压为 $60/47\,\mathrm V$，小于开路值 $2\,\mathrm V$，说明负载确实改变了两中点电势。\end{solution}
+\begin{question}\begin{example}[相同电池的串并联组合]\label{c2:example:7}
+有 $N$ 节相同电池，每节电动势 $\mathcal E$、内阻 $r$。每组串联 $n$ 节，共 $m$ 组并联，$mn=N$，接负载 $R$。求负载电流；先把 $n$ 视为连续变量求最优条件，再说明整数约束。
+\end{example}
+\typeout{ECFIG:fig:c2:example:7:s}\fig{fig:c2:example:7:s}{每个相同串联组折合为 $n\mathcal E,nr$，共 $m$ 组并联接同一负载}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$n\mathcal E$}](0,1.5)to[R,l={$nr$}](0,3.2)--(6,3.2)to[R,l={$R$}](6,0)--(0,0);
+\draw(3,0)to[battery1,invert,l={$n\mathcal E$}](3,1.5)to[R,l={$nr$}](3,3.2);
+\node at(1.5,1.5){$\cdots$};\node[below]at(1.5,-.5){共 $m=N/n$ 组};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先等效每组串联电池再作组间并联}\par\nobreak
+图\ref{fig:c2:example:7:s} 每组电动势为 $n\mathcal E$、内阻为 $nr$。$m$ 个相同组并联后等效电动势不变，内阻变为 $nr/m=n^2r/N$，因此
+\[
+ I(n)=\frac{n\mathcal E}{R+n^2r/N}
+ =\frac{\mathcal E}{R/n+nr/N}.
+\]
+\typeout{ECFIG:fig:c2:example:7:p}\fig{fig:c2:example:7:p}{连续变量下的电流曲线；$q=n/n_*$，$n_*=\sqrt{NR/r}$，整数可行点须另按 $N$ 的因数选取}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$q$};\draw[axis](0,0)--(0,2.7)node[above]{$I/I_*$};
+\draw[world,domain=0:4.5,samples=100]plot(\x,{4*\x/(1+(\x)^2)});
+\draw[guide](1,0)--(1,2)--(0,2);\node[left]at(0,2){$1$};\node[below]at(1,0){$1$};
+\node[above]at(3,2.4){峰值处 $n^2r/N=R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在连续模型下求电流最大值}\par\nobreak
+图\ref{fig:c2:example:7:p}按连续最优电流 $I_*=\mathcal E\sqrt{N}/(2\sqrt{Rr})$ 归一化，曲线为 $I/I_*=2q/(1+q^2)$。原式分母 $R/n+nr/N$ 的两项乘积固定，故和在两项相等时最小。直接对电流的商求导也得到
+\[
+ I'(n)=\mathcal E
+ \frac{(R+n^2r/N)-n(2nr/N)}{(R+n^2r/N)^2}
+ =\mathcal E\frac{R-n^2r/N}{(R+n^2r/N)^2}.
+\]
+分母为正，$I'(n)$ 的符号由 $R-n^2r/N$ 决定，所以连续最优值为 $n_*=\sqrt{NR/r}$，对应内阻 $n_*^2r/N=R$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按因数约束选择实际电池组合}\par\nobreak
+真实组合要求 $n$ 为 $N$ 的正因数且 $1\le n\le N$。应在允许的因数中比较连续最优位置两侧的电流，不能简单将 $n_*$ 四舍五入。若 $R\ge Nr$，最优为全串联；若 $R\le r/N$，最优为全并联。内阻与负载匹配只在允许组合中可实现时成立。\end{solution}
+\begin{question}\begin{example}[端口的两次负载测量]\label{c2:example:8}
+线性有源网络的端口分别接 $3\,\Omega$、$9\,\Omega$ 负载，测得端电压依次为 $6\,\mathrm V$、$9\,\mathrm V$。求等效电动势、内阻、短路电流和最大可供给负载功率。
+\end{example}
+\typeout{ECFIG:fig:c2:example:8:s}\fig{fig:c2:example:8:s}{题设：端口的两次负载测量}{\begin{tikzpicture}[scale=.88]
+\node[draw,minimum width=2cm,minimum height=1.5cm]at(0,1){线性网络};\draw(1,1.5)--(3,1.5)to[R,l={$R_L$}](3,.5)--(1,.5);\node at(2,2.2){$U$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两次负载测量分别求输出电流}\par\nobreak
+由 图\ref{fig:c2:example:8:s} 的两个负载，输出电流分别为 $I_1=6/3=2\,\mathrm A$、$I_2=9/9=1\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两组数据确定端口直线}\par\nobreak
+同一端口满足
+\[
+ 6=\mathcal E_{\rm eq}-2r_{\rm eq},\qquad
+ 9=\mathcal E_{\rm eq}-r_{\rm eq}.
+\]
+第二式减第一式得 $r_{\rm eq}=3\,\Omega$，回代得 $\mathcal E_{\rm eq}=12\,\mathrm V$。
+\typeout{ECFIG:fig:c2:example:8:p}\fig{fig:c2:example:8:p}{解答过程：端口的两次负载测量}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(5,0)node[right]{$I$};\draw[axis](0,-.2)--(0,3)node[above]{$U$};\draw[world](0,2.4)--(4,0);\fill(1,1.8)circle(2pt)node[right]{$(1,9)$};\fill(2,1.2)circle(2pt)node[right]{$(2,6)$};\node[left]at(0,2.4){$12$};\node[below]at(4,0){$4$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{读取短路电流并求最大负载功率}\par\nobreak
+图\ref{fig:c2:example:8:p} 的端口直线斜率为 $-3\,\Omega$，截距为 $12\,\mathrm V$。令 $U=0$ 得短路电流 $4\,\mathrm A$。用端口直线直接写负载功率
+$P=UI=(12-3I)I=12I-3I^2$，
+逐项求导得 $P'=12-6I$、$P''=-6<0$。
+故 $I=2\,\mathrm A$ 时功率最大，此时 $U=6\,\mathrm V$、
+$R_L=U/I=3\,\Omega$，$P_{\max}=12\,\mathrm W$。
+这与 $\mathcal E_{\rm eq}^2/(4r_{\rm eq})$ 相符。两次测量确定的是端口直线，并不确定内部电源电阻的唯一结构。\end{solution}
+\begin{question}\begin{example}[两端网络的等效电流源]\label{c2:example:9}
+$A,B$ 之间接两条内部支路：一条为 $1\,\mathrm V$ 电源串联 $1\,\Omega$，电源正端朝 $A$；另一条为 $2\,\Omega$ 电阻。求电流源等效；再接上 $2\,\mathrm V$ 电源串联 $3\,\Omega$ 的外支路，其正端同样朝 $A$，求三支路电流。
+\end{example}
+\typeout{ECFIG:fig:c2:example:9:s}\fig{fig:c2:example:9:s}{题设：两端网络的等效电流源}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$1\,\mathrm V$}](0.0,1.5)to[R,l={$1\,\Omega$}](0.0,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};\draw(0.0,3)--(2.3,3)to[R,l={$2\,\Omega$}](2.3,0)--(0.0,0);\node at(1.2,-.8){先看左侧两支路};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由端口短路求等效电流源}\par\nobreak
+先将 图\ref{fig:c2:example:9:s} 的 $A,B$ 短路。内部 $2\,\Omega$ 两端电压为零，无电流；$1\,\mathrm V$ 电源经 $1\,\Omega$ 产生 $1\,\mathrm A$ 短路电流，由 $A$ 流向外部。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{关闭独立电压源求并联电阻}\par\nobreak
+因此等效电流源为从 $B$ 指向 $A$ 的 $1\,\mathrm A$ 源，并联电阻 $1\parallel2=2/3\,\Omega$。等效开路电压为 $1\times2/3=2/3\,\mathrm V$。
+\typeout{ECFIG:fig:c2:example:9:p}\fig{fig:c2:example:9:p}{解答过程：两端网络的等效电流源}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$1\,\mathrm V$}](0.0,1.5)to[R,l={$1\,\Omega$}](0.0,3);\draw[flow](0.0+.55,.4)--(0.0+.55,1.5)node[midway,right]{$I_1$};\draw(2.3,0)to[battery1,invert,l={$2\,\mathrm V$}](2.3,1.5)to[R,l={$3\,\Omega$}](2.3,3);\draw[flow](2.3+.55,.4)--(2.3+.55,1.5)node[midway,right]{$I_2$};\draw(0,0)--(2.3,0)(0,3)--(2.3,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};\draw(2.3,3)--(4.6,3)to[R,l={$2\,\Omega$}](4.6,0)--(2.3,0);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用端口等效求外支路电流和共同端电压}\par\nobreak
+图\ref{fig:c2:example:9:p} 接回外部电源后，$2\,\mathrm V$ 电源较强，向内部端口供电，其输出电流
+\[
+ I_2=\frac{2-2/3}{3+2/3}=\frac4{11}\,\mathrm A.
+\]
+共同端电压 $U=2-3I_2=10/11\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原支路求电池电流并核对节点}\par\nobreak
+内部 $1\,\mathrm V$ 电池输出 $I_1=(1-U)/1=1/11\,\mathrm A$，$2\,\Omega$ 电阻电流 $I_R=U/2=5/11\,\mathrm A$ 向下。$I_1+I_2=I_R$，电流守恒。电流源和电压源两种等效给出相同端口结果，但内部原支路电流仍应从端电压回算。\end{solution}
+\begin{question}\begin{example}[带理想电压源的超节点]\label{c2:example:10}
+节点 $M,N$ 之间有理想电压源，$V_M-V_N=6\,\mathrm V$。$M$ 经 $2\,\Omega$ 接地，$N$ 经 $3\,\Omega$ 接地。理想电流源从地向 $M$ 注入 $2\,\mathrm A$。求两节点电势和电压源电流。
+\end{example}
+\typeout{ECFIG:fig:c2:example:10:s}\fig{fig:c2:example:10:s}{题设：带理想电压源的超节点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2\,\Omega$}](0,3)to[battery1,l={$6\,\mathrm V$}](3.5,3)to[R,l={$3\,\Omega$}](3.5,0)--(0,0);\draw(0,0)--(-2,0)to[isource,l={$2\,\mathrm A$}](-2,3)--(0,3);\node[above]at(0,3){$M$};\node[above]at(3.5,3){$N$};\node[below]at(1.7,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{圈出超节点并保留电压约束}\par\nobreak
+图\ref{fig:c2:example:10:s} 的理想电压源电流未知，不能用“电压除以零电阻”。把 $M,N$ 一起圈成超节点，内部电源电流从一端流出、另一端流入，在总守恒式中抵消。图\ref{fig:c2:example:10:p} 虚线包围的边界只有两电阻电流流出，电流源 $2\,\mathrm A$ 流入，故
+\[
+ \frac{V_M}{2}+\frac{V_N}{3}=2,\qquad V_M-V_N=6.
+\]
+\typeout{ECFIG:fig:c2:example:10:p}\fig{fig:c2:example:10:p}{解答过程：带理想电压源的超节点}{\begin{tikzpicture}[scale=.88]
+\draw[dashed,rounded corners](-.7,1.9)rectangle(4.2,3.5);\draw(0,0)to[R,l={$2$}](0,3)to[battery1,l={$6\,\mathrm V$}](3.5,3)to[R,l={$3$}](3.5,0)--(0,0);\node[above]at(0,3){$M$};\node[above]at(3.5,3){$N$};\draw[flow](-1.5,2.6)--(-.2,2.6)node[midway,above]{$2\,\mathrm A$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立求两个节点电势}\par\nobreak
+第一式乘 $6$ 得 $3V_M+2V_N=12$，代入 $V_M=V_N+6$，得 $5V_N=-6$，所以 $V_N=-6/5\,\mathrm V$，$V_M=24/5\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到单节点判断电压源电流方向}\par\nobreak
+$M$ 的电阻电流为 $12/5\,\mathrm A$ 向下，超过电流源输入的 $2\,\mathrm A$，因此还需从 $N$ 经电压源流入 $M$，大小为 $2/5\,\mathrm A$。$N$ 的电阻电流为 $-2/5\,\mathrm A$，实际从地流入 $N$，与上述方向相符。\end{solution}
+\begin{question}\begin{example}[叠加时保留电源内阻]\label{c2:example:11}
+双电源网络 $OM,MB,NB,BN,MN$ 与前面双电源例题相同，电阻为 $1,2,3,4,5\,\Omega$，电源在 $O\to M$ 提供 $6\,\mathrm V$、在 $B\to N$ 提供 $7\,\mathrm V$。$O,B$ 等势。用叠加说明求 $MN$ 支路电流的过程，并检查能否叠加功率。
+\end{example}
+\typeout{ECFIG:fig:c2:example:11:s}\fig{fig:c2:example:11:s}{题设：叠加时保留电源内阻}{\begin{tikzpicture}[scale=.88]
+\coordinate (O) at (0,0);\coordinate (M) at (0,4);\coordinate (N) at (5,4);\coordinate (B) at (5,0);\coordinate (T0) at (0.0,2.0);\draw (O) to[battery1,invert,l={$6\,\mathrm V$}](T0)to[R,l={$R_1=1\,\Omega$}](M);\draw (M)to[R,l={$R_2=2\,\Omega$}](B);\draw (N)to[R,l={$R_3=3\,\Omega$}](B);\coordinate(P3)at(6.6,0);\coordinate(Q3)at(6.6,4);\draw(B)--(P3)(N)--(Q3);\coordinate (T3) at (6.6,2.0);\draw (P3) to[battery1,invert,l={$7\,\mathrm V$}](T3)to[R,l={$R_4=4\,\Omega$}](Q3);\draw (M)to[R,l={$R_5=5\,\Omega$}](N);\draw (O)--(B);\fill (O)circle(1.6pt)node[above right]{$O$};\fill (M)circle(1.6pt)node[above right]{$M$};\fill (N)circle(1.6pt)node[above right]{$N$};\fill (B)circle(1.6pt)node[above right]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定目标支路的参考正向}\par\nobreak
+在 图\ref{fig:c2:example:11:s} 中固定 $MN$ 电流为从 $M$ 到 $N$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{关闭第二电源并解第一个子电路}\par\nobreak
+仅保留 $6\,\mathrm V$ 电源时，把 $7\,\mathrm V$ 电源短路，$4\,\Omega$ 仍在。两节点方程为
+\[
+ \frac{V_M-6}{1}+\frac{V_M}{2}+\frac{V_M-V_N}{5}=0,\quad
+ \frac{V_N}{3}+\frac{V_N}{4}+\frac{V_N-V_M}{5}=0.
+\]
+去分母得 $17V_M-2V_N=60$、$-12V_M+47V_N=0$，第一式乘 $47$、第二式乘 $2$ 后相加，
+$775V_M=2820$，故 $V_M=564/155$；
+第二式再给 $V_N=12V_M/47=144/155$，故 $I_{MN}^{(1)}=84/155\,\mathrm A$。
+\typeout{ECFIG:fig:c2:example:11:p}\fig{fig:c2:example:11:p}{分别关闭另一个理想电压源；各电阻均保留，两个子问题仍取 $M\to N$ 为参考正向}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=.62]
+\draw(0,0)--(5,0);\draw(0,2)to[R,l={$1$}](0,4)to[R,l={$5$}](5,4)to[R,l={$3$}](5,0);
+\draw(0,4)to[R,l={$2$}](5,0);\draw(5,4)--(6.6,4)to[R,l={$4$}](6.6,2);
+\draw(5,0)--(6.6,0);
+\draw(0,0)to[battery1,invert,l={$6\,\mathrm V$}](0,2);\draw(6.6,0)--(6.6,2);
+\node[above]at(0,4){$M$};\node[above]at(5,4){$N$};
+\node[below]at(3,-.7){$7\,\mathrm V$ 源短路，$4\,\Omega$ 保留};\end{scope}\begin{scope}[xshift=6.4cm,scale=.62]
+\draw(0,0)--(5,0);\draw(0,2)to[R,l={$1$}](0,4)to[R,l={$5$}](5,4)to[R,l={$3$}](5,0);
+\draw(0,4)to[R,l={$2$}](5,0);\draw(5,4)--(6.6,4)to[R,l={$4$}](6.6,2);
+\draw(5,0)--(6.6,0);
+\draw(0,0)--(0,2);\draw(6.6,0)to[battery1,invert,l={$7\,\mathrm V$}](6.6,2);
+\node[above]at(0,4){$M$};\node[above]at(5,4){$N$};
+\node[below]at(3,-.7){$6\,\mathrm V$ 源短路，$1\,\Omega$ 保留};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{关闭第一电源并解第二个子电路}\par\nobreak
+图\ref{fig:c2:example:11:p}左侧得到正的 $I_{MN}^{(1)}$，右侧沿同一 $M\to N$ 参考方向求第二项。仅保留 $7\,\mathrm V$ 电源时，$1\,\Omega$ 也必须保留，节点方程去分母为 $17V_M-2V_N=0$、$-12V_M+47V_N=105$，由第一式 $V_N=17V_M/2$，代入第二式，
+$(-12+47\times17/2)V_M=105$，即 $775V_M=210$。
+所以 $V_M=42/155,V_N=357/155$，故 $I_{MN}^{(2)}=-63/155\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加带符号电流后重新计算功率}\par\nobreak
+总电流
+\[
+ I_{MN}=\frac{84-63}{155}=\frac{21}{155}\,\mathrm A.
+\]
+总功率应计算为 $5(21/155)^2$，而非 $5[(84/155)^2+(63/155)^2]$。两组节点电势相加也应回到同时通电的节点法结果，提供独立核验。\end{solution}
+\begin{question}\begin{example}[电流源供电的三节点网络]\label{c2:example:12}
+如图，两个 $1\,\Omega$ 支路各串联 $2\,\mathrm V$ 电源，电势升高方向均从左向右。左右节点分别经 $2\,\Omega$ 接地，另以 $3\,\Omega$ 相连，电流源从地向中点注入 $2\,\mathrm A$。求电流源端电压与各电流。
+\end{example}
+\typeout{ECFIG:fig:c2:example:12:s}\fig{fig:c2:example:12:s}{题设：电流源供电的三节点网络}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2\,\Omega$}](0,2)to[R,l={$1\,\Omega$}](2,2)to[battery1,invert,l={$2\,\mathrm V$}](3,2)to[R,l={$1\,\Omega$}](5,2)to[battery1,invert,l={$2\,\mathrm V$}](6,2)to[R,l={$2\,\Omega$}](6,0)--(0,0);\draw(0,2)--(0,4)to[R,l={$3\,\Omega$}](6,4)--(6,2);\draw(3,0)to[isource,l={$2\,\mathrm A$}](3,2);\node[left]at(0,2){$L$};\node[above]at(3,2){$M$};\node[right]at(6,2){$R$};\node[ground]at(0,0){};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按两电源的升势方向写支路电流}\par\nobreak
+在 图\ref{fig:c2:example:12:s} 令 $V_L=x,V_M=y,V_R=z$，电阻用欧姆。按支路电源从左向右升高 $2\,\mathrm V$，左右两个中间支路电流为 $x-y+2$、$y-z+2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐节点建立三个独立方程}\par\nobreak
+在左节点、中节点、右节点分别写流出电流守恒：
+\[
+ \frac x2+(x-y+2)+\frac{x-z}{3}=0,\qquad
+ (y-x-2)+(y-z+2)=2,
+\]
+\[
+ \frac z2+(z-y-2)+\frac{z-x}{3}=0.
+\]
+中节点式右端为电流源注入量，左右式右端为零。
+左、右式乘 $6$ 去分母，中式直接合并，得到
+\[
+ 11x-6y-2z=-12,\quad -x+2y-z=2,\quad -2x-6y+11z=12.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用和与差消元求节点电势}\par\nobreak
+第一、三式相加得 $x+z=4y/3$；代入中式得 $2y-4y/3=2$，所以 $y=3$。再以第三式减第一式，得 $13(z-x)=24$，与 $x+z=4$ 联立得到 $x=14/13,z=38/13$。
+\typeout{ECFIG:fig:c2:example:12:p}\fig{fig:c2:example:12:p}{解答过程：电流源供电的三节点网络}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2\,\Omega$}](0,2)to[R,l={$1\,\Omega$}](2,2)to[battery1,invert,l={$2\,\mathrm V$}](3,2)to[R,l={$1\,\Omega$}](5,2)to[battery1,invert,l={$2\,\mathrm V$}](6,2)to[R,l={$2\,\Omega$}](6,0)--(0,0);\draw(0,2)--(0,4)to[R,l={$3\,\Omega$}](6,4)--(6,2);\draw(3,0)to[isource,l={$2\,\mathrm A$}](3,2);\node[left]at(0,2){$L$};\node[above]at(3,2){$M$};\node[right]at(6,2){$R$};\node[ground]at(0,0){};\node at(3,5){$V_L=14/13,\ V_M=3,\ V_R=38/13$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐支路回算电流及电流源功率}\par\nobreak
+由 图\ref{fig:c2:example:12:p} 电流源上端相对地电压为 $3\,\mathrm V$。$L\to M$ 电流 $1/13\,\mathrm A$，$M\to R$ 为 $27/13\,\mathrm A$，故中点净流出 $26/13=2\,\mathrm A$。顶部电流由 $R$ 向 $L$ 为 $(z-x)/3=8/13\,\mathrm A$；两个接地电阻向下电流分别为 $7/13,19/13\,\mathrm A$，其和仍为 $2\,\mathrm A$。电流源向网络供能 $2\times3=6\,\mathrm W$，其端电压是联立结果，不是给定电流独自决定的。\end{solution}
+\begin{question}\begin{example}[双电源网络的负载电流]\label{c2:example:13}
+电路如图，各电阻和电源数值已标出。取 $V_G=0\,\mathrm V$。求各未知节点电势与各有阻支路电流，并核对电流守恒。
+\end{example}
+\typeout{ECFIG:fig:c2:example:13:s}\fig{fig:c2:example:13:s}{两个电源通过跨接电阻共同影响 $A,B$ 两节点，两个接地负载并不互相并联}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$45\,\mathrm V$}](0,2.2)to[R,l={$R_1=5$}](0,4.5)--(2,4.5)to[R,l={$R_5=2$}](5,4.5)--(7,4.5)to[R,l={$R_2=3$}](7,2.2)to[battery1,l={$48\,\mathrm V$}](7,0)--(0,0);
+\draw(2,4.5)to[R,l={$R_3=2$}](2,0);\draw(5,4.5)to[R,l={$R_4=42$}](5,0);
+\fill(2,4.5)circle(1.5pt)node[above]{$A$};\fill(5,4.5)circle(1.5pt)node[above]{$B$};
+\node[below]at(3.5,0){$G:0\,\mathrm V$};\node[below]at(3.5,-.6){电阻单位 $\Omega$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{规定两电池输出与跨接支路的参考方向}\par\nobreak
+以图\ref{fig:c2:example:13:s}的底部公共导线为参考地，未知量为 $V_A,V_B$。图\ref{fig:c2:example:13:p}中 $i_1,i_5$ 分别取电池向上输出为正，$i_2,i_4$ 向下，跨接电流 $i_3$ 取 $A\to B$。
+\fig{fig:c2:example:13:p}{固定全部支路参考方向；跨接支路电流 $i_3$ 允许求得负值}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$45\,\mathrm V$}](0,2.2)to[R,l={$R_1=5$}](0,4.5)--(2,4.5)to[R,l={$R_5=2$}](5,4.5)--(7,4.5)to[R,l={$R_2=3$}](7,2.2)to[battery1,l={$48\,\mathrm V$}](7,0)--(0,0);
+\draw(2,4.5)to[R,l={$R_3=2$}](2,0);\draw(5,4.5)to[R,l={$R_4=42$}](5,0);
+\fill(2,4.5)circle(1.5pt)node[above]{$A$};\fill(5,4.5)circle(1.5pt)node[above]{$B$};
+\node[below]at(3.5,0){$G:0\,\mathrm V$};\node[below]at(3.5,-.6){电阻单位 $\Omega$};
+
+\draw[flow](.3,5.1)--(1.5,5.1)node[midway,above]{$i_1$};
+\draw[flow](1.4,3.2)--(1.4,1.8)node[midway,left]{$i_2$};
+\draw[flow](2.7,5.1)--(4.2,5.1)node[midway,above]{$i_3$};
+\draw[flow](4.4,3.2)--(4.4,1.8)node[midway,left]{$i_4$};
+\draw[flow](6.7,5.1)--(5.5,5.1)node[midway,above]{$i_5$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把实际支路写入两节点守恒式}\par\nobreak
+各电阻数值以欧姆计，分别对 $A,B$ 写流出电流代数和为零：
+\[
+ \begin{cases}
+ (V_A-45)/5+V_A/2+(V_A-V_B)/2=0,\\
+ (V_B-48)/3+V_B/42+(V_B-V_A)/2=0.
+ \end{cases}
+\]
+两条含电源支路的另一端电势分别是 $45\,\mathrm V$、$48\,\mathrm V$，两负载下端则都是零，不能把三类支路混用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求两个节点电势}\par\nobreak
+分别乘以 $10,14$ 得
+\[
+ 12V_A-5V_B=90,\qquad -7V_A+12V_B=224.
+\]
+第一式乘 $7$，第二式乘 $12$ 后相加，得到 $109V_B=3318$；回代：
+\[
+ \boxed{V_A=2200/109\,\mathrm V},\qquad
+ \boxed{V_B=3318/109\,\mathrm V}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐支路回算并解释负电流}\par\nobreak
+沿图中原参考方向逐项回算：
+\begin{align*}
+ i_1&=(45-V_A)/5=541/109\,\mathrm A,\\
+ i_2&=V_A/2=1100/109\,\mathrm A,\\
+ i_3&=(V_A-V_B)/2=-559/109\,\mathrm A,\\
+ i_4&=V_B/42=79/109\,\mathrm A,\\
+ i_5&=(48-V_B)/3=638/109\,\mathrm A.
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查节点守恒和原网络总功率}\par\nobreak
+因此跨接电流实际由 $B$ 流向 $A$，大小为 $559/109\,\mathrm A$，两电池仍均向外供能。节点检验为 $-i_1+i_2+i_3=0$、$-i_3+i_4-i_5=0$。功率也一致：
+\[
+ 45i_1+48i_5=\frac{54969}{109}\,\mathrm W
+ =5i_1^2+2i_2^2+2i_3^2+42i_4^2+3i_5^2.
+\]
+节点电势较高的一侧经跨接电阻补给另一侧负载，负电流只是原参考箭头与实际方向相反。
+\end{solution}
+\begin{question}\begin{example}[有源梯形网络的端口等效]\label{c2:example:14}
+左电源 $15\,\mathrm V$ 串联 $7\,\Omega$ 后接三个串联 $1\,\Omega$ 轨段，两个中间节点各经 $2\,\Omega$ 接公共回线，右末端为 $16\,\mathrm V$ 电源串联 $2\,\Omega$ 接回线，两电源正极均朝上。求左电源输出电流。
+\end{example}
+\typeout{ECFIG:fig:c2:example:14:s}\fig{fig:c2:example:14:s}{两电源正端均朝上部轨道；$A,G$ 是取出左电源与 $7\,\Omega$ 后的右侧网络端口}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$15\,\mathrm V$}](0,3)to[R,l={$7$}](2,3)to[R,l={$1$}](4,3)to[R,l={$1$}](6,3)to[R,l={$1$}](8,3)to[R,l={$2$}](8,1.5)to[battery1,l={$16\,\mathrm V$}](8,0)--(0,0);
+\draw(4,3)to[R,l={$2$}](4,0);\draw(6,3)to[R,l={$2$}](6,0);
+\foreach \x/\lab in {2/A,4/M,6/N}{\fill(\x,3)circle(1.5pt)node[above]{$\lab$};}
+\node[below]at(4,0){$G$};\node[above]at(5,4){电阻单位 $\Omega$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{断开左电源支路后选择右侧端口}\par\nobreak
+图\ref{fig:c2:example:14:s} 左端负载断开时，右侧电源经末端 $2+1=3\,\Omega$ 接至第二中点 $N$，$N$ 接地 $2\,\Omega$，并经 $1\,\Omega$ 到第一中点 $M$、再经 $2\,\Omega$ 接地。左端开路使首个 $1\,\Omega$ 无流，端口势即 $V_M$。\fig{c2:e14:open}{从 $A,G$ 看入右侧网络：开路时首个 $1\,\Omega$ 无电流，右端两串联电阻合为 $3\,\Omega$}{\begin{tikzpicture}
+
+\draw(0,0)--(6.3,0)to[battery1,invert,l={$16\,\mathrm V$}](6.3,3)to[R,l={$3$}](4,3)to[R,l={$1$}](2,3)to[R,l={$1$}](0,3);
+\draw(2,3)to[R,l={$2$}](2,0);\draw(4,3)to[R,l={$2$}](4,0);
+\draw[world](0,3)circle(2pt)node[left]{$A$};\draw[world](0,0)circle(2pt)node[left]{$G$};
+\node[above]at(2,3){$M$};\node[above]at(4,3){$N$};
+
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用开路状态求等效电动势}\par\nobreak
+图\ref{c2:e14:open}的节点方程为 $(V_M-V_N)+V_M/2=0$、$(V_N-V_M)+V_N/2+(V_N-16)/3=0$。
+\typeout{ECFIG:fig:c2:example:14:p}\fig{fig:c2:example:14:p}{右侧网络作端口等效后，接回 $15\,\mathrm V$ 与 $7\,\Omega$ 支路；两个电源在环路内相抗}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$64/21\,\mathrm V$}](0,3)to[R,l={$43/21\,\Omega$}](3,3)to[R,l={$7\,\Omega$}](6,3)to[battery1,l={$15\,\mathrm V$}](6,0)--(0,0);
+\draw[guide](-.7,-.4)rectangle(2.5,3.6);
+\fill(3,3)circle(1.5pt)node[above]{$A$};\fill(3,0)circle(1.5pt)node[below]{$G$};
+\draw[flow](5.5,3.8)--(4,3.8)node[midway,above]{$I$};
+
+\end{tikzpicture}}
+
+由图\ref{c2:e14:open}的第一式 $V_M=2V_N/3$，代入第二式，$V_N(1/3+1/2+1/3)=16/3$，所以 $V_N=32/7$、$V_M=64/21$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{关闭右源计算端口看入电阻}\par\nobreak
+关掉右源后，端口看入电阻
+\[
+ R_{\rm th}=1+\left[2\parallel\left(1+(2\parallel3)\right)\right]
+ =1+(2\parallel11/5)=\frac{43}{21}\,\Omega.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接回左源并判断其输出电流}\par\nobreak
+按图\ref{fig:c2:example:14:p}接回左源与 $7\,\Omega$，输出电流 $I=[15-64/21]/[7+43/21]=251/190\,\mathrm A$。右源虽较高，经分压后端口开路电压只有 $64/21\,\mathrm V$，仍允许左源向网络输出。\end{solution}
+\begin{question}\begin{example}[利用局部电势和电流避开全网求解]\label{c2:example:15}
+稳恒网络的有关部分如图，未标电阻可不求。图中已略去处于稳态的电容支路；上导线已知向左 $3\,\mathrm A$，$L$ 到中右支路末端向上 $6\,\mathrm A$。其余电势、电源与支流已标出。求 $R_x$ 中电流，正方向向下；并说明无须求出所有电阻的原因。
+\end{example}
+\typeout{ECFIG:fig:c2:example:15:s}\fig{fig:c2:example:15:s}{题设：利用局部电势和电流避开全网求解}{\begin{tikzpicture}[scale=.88]
+\draw(0,5)--(6,5)to[R](2,3)to[R,l={$0.2\,\Omega$}](5,0);\draw(0,5)to[R,l={$R_x$}](0,-3);\draw(2,3)to[battery1,invert](4,3)to[R](6,3);\draw[flow](6,3)--(6,5)node[midway,right]{$6\,\mathrm A$};\draw[flow](6,5)--(2.5,5)node[midway,above]{$3\,\mathrm A$};\draw(5,0)to[battery1,l={$10\,\mathrm V$}](7,0)to[R,l={$10\,\Omega$}](9,0);\draw(5,-3)to[battery1,invert,l={$10\,\mathrm V$}](5,-1.5)to[R,l={$1\,\Omega$}](5,0);\draw[flow](5,0)--(7,-1.5)node[midway,right]{$2\,\mathrm A$};\draw(2,3)to[battery1,l_={$7\,\mathrm V$}](2,1)to[R,l={$15\,\Omega$}](2,-1)to[battery1,invert,l={$7\,\mathrm V$}](2,-3);\node[left]at(2,3){$L$};\node[below]at(2,-3){$P:5\,\mathrm V$};\node[above left]at(5,0){$D:6\,\mathrm V$};\node[right]at(9,0){$6\,\mathrm V$};\node[below]at(5,-3){$2\,\mathrm V$};\draw[flow](6,5)--(8.3,5)node[midway,above]{$3\,\mathrm A$};\node[below]at(0,-3){后续网络};
+\foreach \x/\y in {2/5,6/5,2/3,5/0}{\fill(\x,\y)circle(1.5pt);}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从已知电势的下节点逐项求入流}\par\nobreak
+图\ref{fig:c2:example:15:s} 中先从 $D$ 节点求未知支流。由下方 $2\,\mathrm V$ 节点经升势 $10\,\mathrm V$、$1\,\Omega$ 到 $D$，电流 $(2+10-6)/1=6\,\mathrm A$ 流入 $D$。右侧 $6\,\mathrm V$ 经 $10\,\Omega$ 与正端朝 $D$ 的 $10\,\mathrm V$ 电源，电流 $(6+10-6)/10=1\,\mathrm A$ 也流入 $D$。另有 $2\,\mathrm A$ 从 $D$ 流出，因此流向 $L$ 的电流为 $6+1-2=5\,\mathrm A$。
+\typeout{ECFIG:fig:c2:example:15:p}\fig{fig:c2:example:15:p}{解答过程：利用局部电势和电流避开全网求解}{\begin{tikzpicture}[scale=.88]
+\draw(0,5)--(6,5)to[R](2,3)to[R,l={$0.2\,\Omega$}](5,0);\draw(0,5)to[R,l={$R_x$}](0,-3);\draw(2,3)to[battery1,invert](4,3)to[R](6,3);\draw[flow](6,3)--(6,5)node[midway,right]{$6\,\mathrm A$};\draw[flow](6,5)--(2.5,5)node[midway,above]{$3\,\mathrm A$};\draw(5,0)to[battery1,l={$10\,\mathrm V$}](7,0)to[R,l={$10\,\Omega$}](9,0);\draw(5,-3)to[battery1,invert,l={$10\,\mathrm V$}](5,-1.5)to[R,l={$1\,\Omega$}](5,0);\draw[flow](5,0)--(7,-1.5)node[midway,right]{$2\,\mathrm A$};\draw(2,3)to[battery1,l_={$7\,\mathrm V$}](2,1)to[R,l={$15\,\Omega$}](2,-1)to[battery1,invert,l={$7\,\mathrm V$}](2,-3);\node[left]at(2,3){$L$};\node[below]at(2,-3){$P:5\,\mathrm V$};\node[above left]at(5,0){$D:6\,\mathrm V$};\node[right]at(9,0){$6\,\mathrm V$};\node[below]at(5,-3){$2\,\mathrm V$};\draw[guide](-.6,2.4)rectangle(3,5.7);\draw[flow](-.6,1)--(-.6,-1)node[midway,left]{$I_x=2\,\mathrm A$};\draw[flow](6,5)--(8.3,5)node[midway,above]{$3\,\mathrm A$};\node[below]at(0,-3){后续网络};
+\foreach \x/\y in {2/5,6/5,2/3,5/0}{\fill(\x,\y)circle(1.5pt);}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由联络电阻压降求中间节点电势}\par\nobreak
+图\ref{fig:c2:example:15:p} 的 $0.2\,\Omega$ 支路给 $V_D-V_L=5\times0.2=1\,\mathrm V$，所以 $V_L=5\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断两电源抵消后的竖直支路电流}\par\nobreak
+$L,P$ 间两电源沿从 $L$ 到 $P$ 先降 $7$ 再升 $7$，净电动势零，而两端同为 $5\,\mathrm V$，故该 $15\,\Omega$ 支路电流为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿守恒区域边界求目标支路电流}\par\nobreak
+最后把左上两节点合为一个守恒区域。它从上导线取得 $3\,\mathrm A$、从 $D$ 支路取得 $5\,\mathrm A$，向右上支路送出 $6\,\mathrm A$，向下方 $P$ 支路送出零，余下只能经 $R_x$ 流出，$I_x=3+5-6=2\,\mathrm A$，向下。这个过程只使用与目标支路相联的守恒边界与已知电势；求全网所有电阻会增加无关未知量。\end{solution}

@@ -1,0 +1,925 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,bm}
+\usepackage[fontset=none]{ctex}\setCJKmainfont{Songti SC}
+\usepackage[margin=16mm]{geometry}
+\begin{document}
+% eq-001
+\[
+\bm r_{A/O}=\bm r_{B/O}+\bm r_{A/B}
+\]
+
+% eq-002
+\[
+\boxed{\bm v_{A/O}=\bm v_{A/B}+\bm v_{B/O}}
+\]
+
+% eq-003
+\[
+\boxed{\bm a_{A/O}=\bm a_{A/B}+\bm a_{B/O}}
+\]
+
+% eq-004
+\[
+\bm v_{B/A}=-\bm v_{A/B}
+\]
+
+% eq-005
+\[
+\bm v=v_x\bm e_x+v_y\bm e_y
+\]
+
+% eq-006
+\[
+\bm a=a_x\bm e_x+a_y\bm e_y
+\]
+
+% eq-007
+\[
+\bm r_i=\bm r_{i0}+\bm v_{i0}t+\tfrac12\bm a t^2
+\]
+
+% eq-008
+\[
+\bm R=\bm R_0+(\bm v_{20}-\bm v_{10})t
+\]
+
+% eq-009
+\[
+\bm R_0=\bm0\quad\Longrightarrow\quad\bm R=\Delta\bm v_0t
+\]
+
+% eq-010
+\[
+\bm a_{2/1}=\bm g-\bm g=\bm0
+\]
+
+% eq-011
+\[
+\bm v_{\text{雨/地}}=(u,-w),\qquad \bm V_{\text{车/地}}=(V,0)
+\]
+
+% eq-012
+\[
+\boxed{\bm v_{\text{雨/车}}=(u-V,-w)}
+\]
+
+% eq-013
+\[
+\tan\theta=\frac{|u-V|}{w}\qquad(w>0)
+\]
+
+% eq-014
+\[
+\bm v_{\rm rel}=\bm v_{\text{粒}}-\bm v_{\text{面}}
+\]
+
+% eq-015
+\[
+\mathrm d\mathcal V=S|\bm v_{\rm rel}\cdot\bm n|\,\mathrm dt
+\]
+
+% eq-016
+\[
+\boxed{\mathrm dN=nS|\bm v_{\rm rel}\cdot\bm n|\,\mathrm dt}
+\]
+
+% eq-017
+\[
+\mathrm dv=a\,\mathrm dt
+\]
+
+% eq-018
+\[
+\boxed{v=v_0+at}
+\]
+
+% eq-019
+\[
+\mathrm dx=(v_0+at)\,\mathrm dt
+\]
+
+% eq-020
+\[
+\boxed{x-x_0=v_0t+\tfrac12at^2}
+\]
+
+% eq-021
+\[
+\boxed{v^2-v_0^2=2a(x-x_0)}
+\]
+
+% eq-022
+\[
+\overline v=\frac{v_0+v}{2}
+\]
+
+% eq-023
+\[
+T_s=\frac{v_0}{b},\qquad s_s=\frac{v_0^2}{2b}\quad(b>0)
+\]
+
+% eq-024
+\[
+v_T=v_0+a_1T,\qquad x_T=x_0+v_0T+\tfrac12a_1T^2
+\]
+
+% eq-025
+\[
+\tau=t-T,\qquad v=v_T+a_2\tau
+\]
+
+% eq-026
+\[
+x=x_T+v_T\tau+\tfrac12a_2\tau^2
+\]
+
+% eq-027
+\[
+\Delta x=2v_0T+\tfrac32a_1T^2+\tfrac12a_2T^2
+\]
+
+% eq-028
+\[
+\Delta x_n=v_0\tau+\tfrac12a(2n-1)\tau^2
+\]
+
+% eq-029
+\[
+\Delta x_{n+1}-\Delta x_n=a\tau^2
+\]
+
+% eq-030
+\[
+v_0=0:\quad\Delta x_1:\Delta x_2:\Delta x_3=1:3:5
+\]
+
+% eq-031
+\[
+v_{\text{时间中点}}=\frac{v_0+v_1}{2}
+\]
+
+% eq-032
+\[
+v_{\text{位移中点}}^2=\frac{v_0^2+v_1^2}{2}
+\]
+
+% eq-033
+\[
+v(t)=v_0+\int_{t_0}^t a(\tau)\,\mathrm d\tau
+\]
+
+% eq-034
+\[
+x(t)=x_0+\int_{t_0}^t v(\tau)\,\mathrm d\tau
+\]
+
+% eq-035
+\[
+\mathrm dv<0,\quad a<0\quad\Longrightarrow\quad\mathrm dt>0
+\]
+
+% eq-036
+\[
+\mathrm dt=\frac{\mathrm dv}{a(v)},\qquad\mathrm dx=\frac{v\,\mathrm dv}{a(v)}
+\]
+
+% eq-037
+\[
+t-t_0=\int_{v_0}^v\frac{\mathrm du}{a(u)}
+\]
+
+% eq-038
+\[
+x-x_0=\int_{v_0}^v\frac{u\,\mathrm du}{a(u)}
+\]
+
+% eq-039
+\[
+a=\frac{\mathrm dv}{\mathrm dt}=\frac{\mathrm dv}{\mathrm dx}\frac{\mathrm dx}{\mathrm dt}=v\frac{\mathrm dv}{\mathrm dx}
+\]
+
+% eq-040
+\[
+v\,\mathrm dv=a(x)\,\mathrm dx
+\]
+
+% eq-041
+\[
+\boxed{v^2-v_0^2=2\int_{x_0}^x a(\xi)\,\mathrm d\xi}
+\]
+
+% eq-042
+\[
+v=\pm\sqrt{v_0^2+2\int_{x_0}^x a(\xi)\,\mathrm d\xi}
+\]
+
+% eq-043
+\[
+V_x=u-w\sin\beta,\qquad V_y=w\cos\beta>0
+\]
+
+% eq-044
+\[
+T=\frac d{V_y},\qquad S=\frac{d|\bm V|}{V_y}
+\]
+
+% eq-045
+\[
+D=x_{\text{前}}-x_{\text{后}}
+\]
+
+% eq-046
+\[
+\dot D=v_{\text{前}}-v_{\text{后}}
+\]
+
+% eq-047
+\[
+\min_{t\in I}D(t)\ge0
+\]
+
+% eq-048
+\[
+D(t_*)=0,\qquad\dot D(t_*)=0
+\]
+
+% eq-049
+\[
+\bm R(t)=\bm R_0+\bm Ut,\qquad U\ne0
+\]
+
+% eq-050
+\[
+R^2=R_0^2+2(\bm R_0\cdot\bm U)t+U^2t^2
+\]
+
+% eq-051
+\[
+\boxed{t_*=-\frac{\bm R_0\cdot\bm U}{U^2}}
+\]
+
+% eq-052
+\[
+R_{\min}^2=R_0^2-\frac{(\bm R_0\cdot\bm U)^2}{U^2}
+\]
+
+% eq-053
+\[
+t_{\min}=\begin{cases}0,&t_*<0,\\t_*,&0\le t_*\le T,\\T,&t_*>T.\end{cases}
+\]
+
+% eq-054
+\[
+U=0\quad\Longrightarrow\quad R(t)=R_0
+\]
+
+% eq-055
+\[
+\frac{\mathrm dN}{\mathrm dt}=nSV,\qquad T=\frac DV
+\]
+
+% eq-056
+\[
+\boxed{N=nSV\frac DV=nSD}
+\]
+
+% eq-057
+\[
+N=nS\int V(t)\,\mathrm dt=nSD
+\]
+
+% eq-058
+\[
+\bm v_{\text{雨/车}}=(-30,-w)
+\]
+
+% eq-059
+\[
+\bm e_\tau=(\cos37^\circ,-\sin37^\circ)
+\]
+
+% eq-060
+\[
+-30\cos37^\circ+w\sin37^\circ=0
+\]
+
+% eq-061
+\[
+\boxed{w=30\cot37^\circ=40\,\mathrm{m/s}}
+\]
+
+% eq-062
+\[
+|\bm v_{\text{雨/车}}|=\sqrt{30^2+40^2}=50\,\mathrm{m/s}
+\]
+
+% eq-063
+\[
+w_h=w\sin\zeta
+\]
+
+% eq-064
+\[
+|\bm w_h-\bm u|^2=w_h^2+u^2-2uw_h\cos\psi
+\]
+
+% eq-065
+\[
+\cos\psi=1\quad\Longrightarrow\quad |\bm w_h-\bm u|_{\min}=|w_h-u|
+\]
+
+% eq-066
+\[
+\bm u\text{可选时：}\quad\boxed{\bm u=\bm w_h}
+\]
+
+% eq-067
+\[
+T=\frac d{w\cos\beta}
+\]
+
+% eq-068
+\[
+\boxed{\beta=0,\qquad T_{\min}=\frac dw}
+\]
+
+% eq-069
+\[
+S=|\bm V|T=\frac{d|\bm V|}{V_y}
+\]
+
+% eq-070
+\[
+V_x=0\quad\Longrightarrow\quad\sin\beta=\frac uw
+\]
+
+% eq-071
+\[
+\boxed{S_{\min}=d},\qquad T=\frac d{\sqrt{w^2-u^2}}
+\]
+
+% eq-072
+\[
+\bm V\cdot(\bm V-u\bm e_x)=0
+\]
+
+% eq-073
+\[
+w^2-uw\sin\beta=0\quad\Longrightarrow\quad\sin\beta=\frac wu
+\]
+
+% eq-074
+\[
+\boxed{S_{\min}=\frac{du}{w}}
+\]
+
+% eq-075
+\[
+V_x=\frac{u^2-w^2}{u}
+\]
+
+% eq-076
+\[
+V_y=\frac{w\sqrt{u^2-w^2}}{u}
+\]
+
+% eq-077
+\[
+T=\frac{du}{w\sqrt{u^2-w^2}}
+\]
+
+% eq-078
+\[
+S=d\frac{\sqrt{(1-\sin\beta)^2+\cos^2\beta}}{\cos\beta}
+\]
+
+% eq-079
+\[
+S=d\sqrt{\frac2{1+\sin\beta}}
+\]
+
+% eq-080
+\[
+\beta\to\frac\pi2:\quad S\to d,\quad V_y\to0,\quad T\to\infty
+\]
+
+% eq-081
+\[
+W_y=\sqrt3(20-W_x)=\frac{40-W_x}{\sqrt3}
+\]
+
+% eq-082
+\[
+3(20-W_x)=40-W_x
+\]
+
+% eq-083
+\[
+\boxed{(W_x,W_y)=(10,10\sqrt3)\,\mathrm{km/h}}
+\]
+
+% eq-084
+\[
+|\bm W|=20\,\mathrm{km/h},\qquad \angle(\bm W,\bm e_x)=60^\circ
+\]
+
+% eq-085
+\[
+W_x-V=0\quad\Longrightarrow\quad\boxed{V=10\,\mathrm{km/h}}
+\]
+
+% eq-086
+\[
+\bm W=(5,-w)\,\mathrm{km/h}
+\]
+
+% eq-087
+\[
+\bm v_{\text{风/车},2}=(5-15,-w)=(-10,-w)
+\]
+
+% eq-088
+\[
+w=10\,\mathrm{km/h}
+\]
+
+% eq-089
+\[
+\boxed{\bm W=(5,-10)\,\mathrm{km/h}}
+\]
+
+% eq-090
+\[
+\boxed{|\bm W|=5\sqrt5\,\mathrm{km/h}}
+\]
+
+% eq-091
+\[
+\bm V=r\omega\bm e_\theta
+\]
+
+% eq-092
+\[
+\bm v_{\text{雨/人}}=-r\omega\bm e_\theta-w\bm e_z
+\]
+
+% eq-093
+\[
+\boxed{\tan\delta=\frac{r|\omega|}{w}}
+\]
+
+% eq-094
+\[
+u=w\tan\theta_0,\qquad v_i-u=w\tan\theta_i
+\]
+
+% eq-095
+\[
+v_i=w(\tan\theta_0+\tan\theta_i)
+\]
+
+% eq-096
+\[
+\boxed{\frac{v_1}{v_2}=\frac{\tan\theta_0+\tan\theta_1}{\tan\theta_0+\tan\theta_2}}
+\]
+
+% eq-097
+\[
+T_b=\frac b{U_y},\qquad |U_x-v|\frac b{U_y}\le a
+\]
+
+% eq-098
+\[
+k=\frac ab>0,\quad U_y>0,\quad U_x+kU_y\ge v
+\]
+
+% eq-099
+\[
+(1+k^2)(U_x^2+U_y^2)-(U_x+kU_y)^2
+\]
+
+% eq-100
+\[
+=(kU_x-U_y)^2\ge0
+\]
+
+% eq-101
+\[
+\boxed{U^2\ge\frac{v^2}{1+k^2}}
+\]
+
+% eq-102
+\[
+U_y=kU_x,\qquad U_x+kU_y=v
+\]
+
+% eq-103
+\[
+\boxed{U_x=\frac{vb^2}{a^2+b^2},\quad U_y=\frac{vab}{a^2+b^2}}
+\]
+
+% eq-104
+\[
+\boxed{U_{\min}=\frac{vb}{\sqrt{a^2+b^2}}}
+\]
+
+% eq-105
+\[
+\boxed{T=\frac c{U_y}=\frac{c(a^2+b^2)}{vab}}
+\]
+
+% eq-106
+\[
+18<8\times2+\tfrac12a\times2^2\quad\Longrightarrow\quad a>1
+\]
+
+% eq-107
+\[
+a=2:\quad18=8t+t^2
+\]
+
+% eq-108
+\[
+t=\sqrt{34}-4\approx1.831\,\mathrm s
+\]
+
+% eq-109
+\[
+v=8+2t\approx11.66<12.5\,\mathrm{m/s}
+\]
+
+% eq-110
+\[
+T_s=\frac85=1.6\,\mathrm s,\qquad s_s=\frac{8^2}{2\times5}=6.4\,\mathrm m
+\]
+
+% eq-111
+\[
+a=1\,\mathrm{m/s^2}\quad\Longrightarrow\quad x(2)=18\,\mathrm m
+\]
+
+% eq-112
+\[
+t_{\text{限速}}=\frac{12.5-8}{2}=2.25\,\mathrm s
+\]
+
+% eq-113
+\[
+t_{\text{通过}}\approx1.831\,\mathrm s<t_{\text{限速}}
+\]
+
+% eq-114
+\[
+v_{\text{到线}}=\sqrt{8^2-2\times5\times5}=\sqrt{14}\,\mathrm{m/s}
+\]
+
+% eq-115
+\[
+\boxed{\overline v_A=\overline v_B=\overline v_C=\frac{x_0}{20}}
+\]
+
+% eq-116
+\[
+s_B=s_C=x_0
+\]
+
+% eq-117
+\[
+s_A=x_m+(x_m-x_0)=2x_m-x_0
+\]
+
+% eq-118
+\[
+\boxed{\overline u_A=\frac{2x_m-x_0}{20}>\overline u_B=\overline u_C}
+\]
+
+% eq-119
+\[
+G=(0,-\tfrac12gt^2)
+\]
+
+% eq-120
+\[
+P_{\text{上/下}}=G+(0,\pm v_0t)
+\]
+
+% eq-121
+\[
+P_{\text{左/右}}=G+(\mp v_0t,0)
+\]
+
+% eq-122
+\[
+\text{对角线}=2v_0t,\qquad \text{边长}=\sqrt2v_0t
+\]
+
+% eq-123
+\[
+s_{\text{甲}}=\tfrac12aT^2+(aT)T+\tfrac12(2a)T^2=\tfrac52aT^2
+\]
+
+% eq-124
+\[
+s_{\text{乙}}=\tfrac12(2a)T^2+(2aT)T+\tfrac12aT^2=\tfrac72aT^2
+\]
+
+% eq-125
+\[
+\boxed{s_{\text{甲}}:s_{\text{乙}}=5:7}
+\]
+
+% eq-126
+\[
+v_{\text{甲}}=v_{\text{乙}}=3aT,\qquad\boxed{v_{\text{甲}}:v_{\text{乙}}=1:1}
+\]
+
+% eq-127
+\[
+a(x)=a_0-kx=v\frac{\mathrm dv}{\mathrm dx}
+\]
+
+% eq-128
+\[
+\int_{v_0}^v v\,\mathrm dv=\int_0^{s_0}(a_0-kx)\,\mathrm dx
+\]
+
+% eq-129
+\[
+\boxed{v=\sqrt{v_0^2+2a_0s_0-ks_0^2}}
+\]
+
+% eq-130
+\[
+x_c=\frac{a_0}{k},\qquad v_{\max}^2=v_0^2+\frac{a_0^2}{k}
+\]
+
+% eq-131
+\[
+v^2=v_0^2+\frac{a_0^2}{k}-k(x-x_c)^2
+\]
+
+% eq-132
+\[
+x_+=\frac{a_0+\sqrt{a_0^2+kv_0^2}}{k}
+\]
+
+% eq-133
+\[
+\boxed{0\le s_0\le x_+}
+\]
+
+% eq-134
+\[
+a(x_+)=-\sqrt{a_0^2+kv_0^2}<0
+\]
+
+% eq-135
+\[
+\bm v_{A/O}=\bm v_{A/B}+\bm v_{B/O}
+\]
+
+% eq-136
+\[
+\bm R=\bm R_0+\bm Ut
+\]
+
+% eq-137
+\[
+\mathrm dv=a(t)\,\mathrm dt
+\]
+
+% eq-138
+\[
+\mathrm dt=\frac{\mathrm dv}{a(v)}
+\]
+
+% eq-139
+\[
+T_{\text{过河}}=\frac d{V_y},\qquad S=\frac{d|\bm V|}{V_y}
+\]
+
+% eq-140
+\[
+u=g\sin\theta\,T,\qquad t\ge T
+\]
+
+% eq-141
+\[
+x_A=\tfrac12a_0t^2,\qquad x_B=u(t-T)
+\]
+
+% eq-142
+\[
+F=x_B-x_A=-\tfrac12a_0t^2+ut-uT
+\]
+
+% eq-143
+\[
+t_*=\frac u{a_0},\qquad F_{\max}=\frac{u^2}{2a_0}-uT
+\]
+
+% eq-144
+\[
+F_{\max}\ge0\quad\Longrightarrow\quad\boxed{a_0\le\frac{g\sin\theta}{2}}
+\]
+
+% eq-145
+\[
+t_-=\frac{u-\sqrt{u^2-2a_0uT}}{a_0}
+\]
+
+% eq-146
+\[
+T<t_-\le2T
+\]
+
+% eq-147
+\[
+\Delta v=v_1-v_2>0
+\]
+
+% eq-148
+\[
+\text{闭合速率}=\Delta v-(a-a_2)t
+\]
+
+% eq-149
+\[
+t_*=\frac{\Delta v}{a-a_2},\qquad a>a_2
+\]
+
+% eq-150
+\[
+\Delta x_{\max}=\frac{\Delta v^2}{2(a-a_2)}
+\]
+
+% eq-151
+\[
+\boxed{a=a_2+\frac{\Delta v^2}{2s}}
+\]
+
+% eq-152
+\[
+t_*\le\frac{v_2}{a_2}
+\]
+
+% eq-153
+\[
+\boxed{s\le s_*\equiv\frac{v_2\Delta v}{2a_2}}
+\]
+
+% eq-154
+\[
+\frac{v_1^2}{2a}-\frac{v_2^2}{2a_2}=s
+\]
+
+% eq-155
+\[
+\boxed{a_{\rm crit}=\begin{cases}a_2+\dfrac{(v_1-v_2)^2}{2s},&s\le s_*,\\[4pt]\dfrac{v_1^2}{2s+v_2^2/a_2},&s\ge s_*.\end{cases}}
+\]
+
+% eq-156
+\[
+s_* =\frac{v_2(v_1-v_2)}{2a_2}
+\]
+
+% eq-157
+\[
+s\ge s_*\quad\Longrightarrow\quad a\le\frac{a_2v_1}{v_2}
+\]
+
+% eq-158
+\[
+\frac{v_1}{a}\ge\frac{v_2}{a_2}
+\]
+
+% eq-159
+\[
+s_{*,BC}=\frac{6(8-6)}{2\times1}=6\,\mathrm m>5\,\mathrm m
+\]
+
+% eq-160
+\[
+\boxed{b\ge1+\frac{(8-6)^2}{2\times5}=\frac75\,\mathrm{m/s^2}}
+\]
+
+% eq-161
+\[
+b=\frac75:\quad D_{BC}=5-2t+\frac{t^2}{5}=\frac{(t-5)^2}{5}
+\]
+
+% eq-162
+\[
+5< T_B=\frac{40}{7}\,\mathrm s,\qquad5<T_C=6\,\mathrm s
+\]
+
+% eq-163
+\[
+s_{*,AB}=\frac{8(9-8)}{2(7/5)}=\frac{20}{7}\,\mathrm m<5\,\mathrm m
+\]
+
+% eq-164
+\[
+\frac{9^2}{2a}-\frac{8^2}{2(7/5)}=5
+\]
+
+% eq-165
+\[
+\boxed{a_{A,\rm crit}=\frac{189}{130}\,\mathrm{m/s^2}}
+\]
+
+% eq-166
+\[
+T_A=\frac{130}{21}\,\mathrm s>\frac{40}{7}\,\mathrm s=T_B
+\]
+
+% eq-167
+\[
+x_A=x_B=\frac{195}{7}\,\mathrm m,\qquad x_C=28\,\mathrm m
+\]
+
+% eq-168
+\[
+x_C-x_B=\frac17\,\mathrm m
+\]
+
+% eq-169
+\[
+\tfrac12at_1^2=l,\qquad t_1=\sqrt{\frac{2l}{a}},\quad u=\sqrt{2al}
+\]
+
+% eq-170
+\[
+\text{交换后：}\quad v_{A/B}=-u,\quad a_{A/B}=a
+\]
+
+% eq-171
+\[
+-u\tau+\tfrac12a\tau^2=0
+\]
+
+% eq-172
+\[
+\tau>0\quad\Longrightarrow\quad\boxed{\Delta t=\frac{2u}{a}=2\sqrt{\frac{2l}{a}}}
+\]
+
+% eq-173
+\[
+t_n=(2n-1)t_1
+\]
+
+% eq-174
+\[
+\Delta x_B=\sum_{k=1}^{n-1}ku\frac{2u}{a}
+\]
+
+% eq-175
+\[
+\boxed{\Delta x_B=\frac{u^2}{a}n(n-1)=2ln(n-1)}
+\]
+
+% eq-176
+\[
+u_1=\sqrt{2a_1l}
+\]
+
+% eq-177
+\[
+a_1\ge a_2:\quad a_{A/B}=a_1+a_2
+\]
+
+% eq-178
+\[
+\boxed{t_{n+1}-t_n=\frac{2u_1}{a_1+a_2}}
+\]
+
+% eq-179
+\[
+v_{B,\text{下次碰前}}=\frac{u_1(a_1-a_2)}{a_1+a_2}\ge0
+\]
+
+% eq-180
+\[
+B\text{碰后速度为}\ u_n,\qquad t_s=\frac{u_n}{a_2}
+\]
+
+% eq-181
+\[
+\tfrac12a_1(\Delta t_n)^2=\frac{u_n^2}{2a_2}
+\]
+
+% eq-182
+\[
+\Delta t_n=\frac{u_n}{\sqrt{a_1a_2}}>\frac{u_n}{a_2}
+\]
+
+% eq-183
+\[
+u_{n+1}=u_n\sqrt{\frac{a_1}{a_2}}
+\]
+
+% eq-184
+\[
+\boxed{\Delta t_n=\frac{u_1}{\sqrt{a_1a_2}}\left(\sqrt{\frac{a_1}{a_2}}\right)^{n-1}}
+\]
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}
+\draw[axis](0,0)--(4.6,0)node[right]{$v_0t/l$};
+\draw[axis](0,0)--(0,2.4)node[above]{$h/l$};
+\draw[world,blue]plot[domain=0:2,samples=60]({2*\x},{1.8*(sqrt(1+2*\x)-1)});
+\draw[guide](3,0)--(3,1.8)--(0,1.8);
+\node[below]at(3,0){$3/2$};\node[left]at(0,1.8){$1$};
+\end{tikzpicture}
+\end{document}

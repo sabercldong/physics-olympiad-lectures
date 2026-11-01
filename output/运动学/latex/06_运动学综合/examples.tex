@@ -1,0 +1,522 @@
+\section{例题与分析}
+\begin{question}\begin{example}[斜冰面上的网格轨迹]\label{k6p1}
+光滑斜冰面倾角为 $\alpha$。冰球以10m/s沿面抛出，初速度方向与沿面等高线成 $60^\circ$。图中横轴沿等高线，纵轴沿斜面向上，网格每格均为2.5m；轨迹上 $A$至最高点 $B$横向前进2格、向上1格。取 $g=10$m/s$^2$，求 $\alpha$。\end{example}
+\fig{k6p1q}{斜冰面上的网格轨迹：题设关系}{\begin{tikzpicture}\draw[step=.75,gray!40,thin](-2.25,-1.5)grid(2.25,.75);\draw[axis](-2.5,0)--(2.6,0)node[right]{$\xi$};\draw[axis](0,-1.7)--(0,1.1)node[above]{$\eta$};\draw[world]plot[domain=-2:2,samples=60]({\x},{-(\x)^2/3});\fill(-1.5,-.75)circle(2pt)node[below left]{$A$};\fill(0,0)circle(2pt)node[above right]{$B$};\node at(1.4,.7){每格2.5m};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用等高线方向的恒速读取两点间时间}\par\nobreak
+沿图\ref{k6p1q}等高线方向的重力分量为零，故 $v_\xi=10\cos60^\circ=5$m/s。$A$至 $B$的横向距离为5m，用时 $\Delta t=1$s。$B$为沿面轨迹的最高点，$v_{\eta B}=0$，因此从 $B$倒推这一秒，向上位移为 $g\sin\alpha\,\Delta t^2/2=2.5$m。
+\fig{k6p1s}{斜冰面上的网格轨迹：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$\Delta t$};\draw[axis](0,0)--(0,2.7)node[above]{$v_\eta$};\draw[world](0,2)--(3,0);\node[below]at(3,0){$1$s};\node[left]at(0,2){$5$m/s};\node at(1.6,.5){面积 $2.5$m};\node[above]at(3,.1){$B$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从到顶点的竖直面积反求沿面加速度}\par\nobreak
+得到 $\boxed{\sin\alpha=1/2,\ \alpha=30^\circ}$。图\ref{k6p1s}中沿面向下的加速度大小为5m/s$^2$，不是完整的 $g$；图上最高点也不是空间中自由抛射的最高点。发射角 $60^\circ$用于确定恒定的横向分量，不能再把该角套到并非发射点的 $A$处。
+
+从 $B$倒推时使用 $\Delta\eta=\tfrac12g\sin\alpha\,\Delta t^2$，是因为 $B$的沿面向上分速度为零；若从 $A$正向计算，应写 $\Delta\eta=v_{\eta A}\Delta t-\tfrac12g\sin\alpha\,\Delta t^2$并用 $v_{\eta A}=g\sin\alpha\Delta t$消元。两者相同。由此可得 $v_{\eta A}=5$m/s，而非发射时的 $10\sin60^\circ$，明确了 $A$不是发射点。\end{solution}
+
+\begin{question}\begin{example}[斜面弹跳后回到原点]\label{k6p2}
+斜面向右上倾角 $\theta$，球从斜面上原点以 $v_0$发射，方向比斜面再向上抬 $\theta$。与斜面每次碰撞均光滑完全弹性。求球恰在第 $N$次碰撞回到原点的条件及总时间。\end{example}
+\fig{k6p2q}{斜面弹跳后回到原点：题设关系}{\begin{tikzpicture}\draw[world](-.5,-.25)--(5,2.5);\draw[ray](0,0)--(1,1.7)node[above]{$v_0$};\draw[guide](0,0)--(2,0);\node at(.9,.2){$\theta$};\node at(.55,.7){$\theta$};\node[below]at(0,0){$O$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按法向反弹确定重复碰撞间隔}\par\nobreak
+沿图\ref{k6p2q}斜面向上取 $s$，外法向取 $n$。初速度分量为 $(v_0\cos\theta,v_0\sin\theta)$，加速度为 $(-g\sin\theta,-g\cos\theta)$。每段从刚离开斜面起取局部时间 $\tau$，法向位置为
+\[
+n(\tau)=v_0\sin\theta\,\tau-\frac12g\cos\theta\,\tau^2.
+\]
+令 $n(\tau)=0$，除去刚离面的 $\tau=0$，得
+$T=2v_0\sin\theta/(g\cos\theta)=2v_0\tan\theta/g$。
+碰前法向速度为 $v_0\sin\theta-g\cos\theta\,T=-v_0\sin\theta$；
+完全弹性反射将它反号，所以各次离面法向初速度相同，碰撞间隔恒为这个 $T$。
+\fig{k6p2s}{斜面弹跳后回到原点：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6.5,0)node[right]{$t$};\draw[axis](0,0)--(0,2)node[above]{$n$};\foreach \k in {0,1,2}\draw[blue,world]plot[domain=0:1.8,samples=35]({1.8*\k+\x},{1.2*\x*(1.8-\x)});\foreach \x/\s in {1.8/T,3.6/{2T},5.4/{3T}}\node[below]at(\x,0){$\s$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将沿面返回时间与整数次碰撞同步}\par\nobreak
+切向运动不受反射改变，回到 $s=0$的非零时间为 $t_r=2v_0\cot\theta/g$。图\ref{k6p2s}要求此时法向也归零，故 $t_r=NT$，得到 $\boxed{N=\cot^2\theta\in\mathbb N^+}$，总时间 $\boxed{t_r=2v_0\cot\theta/g}$。若 $\cot^2\theta$不是正整数，球在切向回到原坐标时仍在空中，不能称回到原点。
+
+切向坐标为 $s=v_0\cos\theta\,t-g\sin\theta\,t^2/2$，反射只使法向速度跳变，因此该切向式可跨越各次碰撞保持成立。第 $N$次碰撞时刻是 $NT$，代入 $s=0$并约去非零的 $NT$，同样给 $N=\cot^2\theta$。如果只满足切向返回，球的法向坐标还可能为正；整数条件正是把“投影返回”提升为“实际回到原点”的必要部分。\end{solution}
+
+\begin{question}\begin{example}[到达斜面的最短滑行时间]\label{k6p3}
+点 $A$在倾角 $\theta\in[0,\pi/2)$ 的斜面上方，沿竖直方向到斜面的距离为 $h$。斜面向右上方延伸。从 $A$铺一条光滑直木板至斜面任一点，物块由静止沿板滑下。木板方向可选，求到达斜面的最短时间及木板方向。\end{example}
+\fig{k6p3q}{到达斜面的最短滑行时间：题设关系}{\begin{tikzpicture}\draw[world](-2,-1)--(4,2);\fill(0,2)circle(2pt)node[above]{$A$};\draw[guide](0,2)--(0,0);\draw[world](0,2)--(1.5,.75)node[below right]{$P$};\node[left]at(0,1){$h$};\draw[guide](0,2)--(2,2);\node at(.6,1.8){$\varphi$};\node at(2,.8){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用板长和竖直落差建立滑行时间}\par\nobreak
+如图\ref{k6p3q}，取木板向右下方与水平夹角 $\varphi$，长为 $s$。交点条件为 $s\sin\varphi+s\cos\varphi\tan\theta=h$，所以 $s=h\cos\theta/\sin(\varphi+\theta)$。沿板加速度为 $g\sin\varphi$，由静止滑下时间满足
+\[t^2=\frac{2h\cos\theta}{g\sin\varphi\sin(\varphi+\theta)}.\]
+\fig{k6p3s}{到达斜面的最短滑行时间：解答过程}{\begin{tikzpicture}\draw[world](-2,-1)--(3,1.5);\fill(0,2)circle(2pt)node[above]{$A$};\draw[blue,world](0,1.055728)circle(.944272);\draw[guide](0,1.055728)--(.422291,.211146);\draw[very thick](0,2)--(.422291,.211146);\fill(.422291,.211146)circle(2pt)node[right]{$P$};\node[right]at(1.2,1.6){等时圆};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{优化角度并确认可行方向}\par\nobreak
+由 $2\sin\varphi\sin(\varphi+\theta)=\cos\theta-\cos(2\varphi+\theta)$，最大分母在 $2\varphi+\theta=\pi$取得，$\boxed{\varphi=\pi/2-\theta/2}$，$\boxed{t_{\min}=2\sqrt{h\cos\theta/[g(1+\cos\theta)]}}$。图\ref{k6p3s}的等时圆也可复核：静止沿各直板滑行同一时间 $t$的终点构成圆心在 $A$下方 $gt^2/4$、半径同为 $gt^2/4$的圆，首次与斜面相切时达到最短时间。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以等时圆首次相切证明全局最优}\par\nobreak
+等时圆可由坐标直接证明：向下取竖直坐标 $z$，静止滑行时间 $t$后有 $s=\tfrac12g\sin\varphi\,t^2$，所以 $x=K\sin\varphi\cos\varphi$、$z=K\sin^2\varphi$，其中 $K=gt^2/2$。消去角度得 $x^2+(z-K/2)^2=(K/2)^2$。随时间增大圆才首次碰到斜面，相切给全局最短时间；$\theta=0$时最优板竖直，时间退化为 $\sqrt{2h/g}$，与自由落体一致。\end{solution}
+
+\begin{question}\begin{example}[四杆机构的速度与加速度]\label{k6p4}
+$A=(0,0)$、$B=(4l,0)$为固定铰。某瞬间 $C=(0,2l)$、$D=(l,3l)$，故 $CD=\sqrt2l$且 $CD\perp BD$。杆 $AC$以恒定角速度大小 $\omega$顺时针转动。求 $D$点的速度与加速度。\end{example}
+\fig{k6p4q}{四杆机构的速度与加速度：题设关系}{\begin{tikzpicture}\draw[world](0,0)node[below]{$A$}--(0,2)node[left]{$C$}--(1,3)node[above]{$D$}--(4,0)node[below]{$B$};\draw[world](-.5,0)--(4.5,0);\node[left]at(0,1){$2l$};\node[above left]at(.5,2.5){$\sqrt2l$};\node at(3.3,.35){$45^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先由驱动杆求共同铰的速度}\par\nobreak
+取图\ref{k6p4q}的 $x$向右、$y$向上，逆时针角量为正。驱动杆 $AC$以恒定顺时针角速度转动，所以
+\[\bm v_C=(2l\omega,0),\qquad \bm a_C=(0,-2l\omega^2).
+\]
+位矢为 $\bm r_{D/C}=(l,l)$、$\bm r_{D/B}=(-3l,3l)$。分别记杆 $CD,BD$的有符号角速度为 $p,q$，共同铰 $D$的两个速度表达式为
+\[\bm v_D=(2l\omega-pl,pl)=(-3ql,-3ql).
+\]
+比较纵分量得 $p=-3q$，再比较横分量得 $2\omega-p=-3q=p$，所以 $p=\omega$、$q=-\omega/3$，$\boxed{\bm v_D=(l\omega,l\omega)}$。
+\fig{k6p4s}{四杆机构的速度与加速度：解答过程}{\begin{tikzpicture}
+\begin{scope}
+\draw[flow,blue](0,0)--(2,0)node[midway,below]{$\bm v_C$};
+\draw[flow,red](2,0)--(1,1)node[right]{$\bm v_{D/C}$};
+\draw[flow](0,0)--(1,1)node[above left]{$\bm v_D$};
+\node at(1,1.8){速度三角形};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\coordinate(O)at(0,0);\coordinate(E)at(0,-2);
+\coordinate(F)at(-.666667,-1.333333);\coordinate(G)at(-1.666667,-2.333333);
+\draw[flow,blue](O)--(E)node[midway,right]{$\bm a_C$};
+\draw[flow,green!50!black](E)--(F)node[midway,above left,xshift=-2pt]{$\bm a_t$};
+\draw[flow,red](F)--(G)node[midway,below right]{$\bm a_n$};
+\draw[flow](O)--(G)node[midway,above left]{$\bm a_D$};
+\node at(-.5,.7){加速度矢量首尾相接};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新建立两根从动杆的加速度表达式}\par\nobreak
+分别记从动杆 $CD,BD$的角加速度为 $b,c$。图\ref{k6p4s}左侧是速度三角形，右侧把 $\bm a_D=\bm a_C+\bm a_t+\bm a_n$首尾相接。
+
+其中 $\bm a_t=b(-l,l)$，$\bm a_n=-\omega^2(l,l)$。加速度须重新分解，不能把上述瞬时 $p,q$当作全过程常数。利用两个刚体表达式得到
+\begin{align*}
+\bm a_D&=\bm a_C+b(-l,l)-\omega^2(l,l)\\
+ &=(-lb-l\omega^2,\ lb-3l\omega^2),\\
+\bm a_D&=c(-3l,-3l)-\frac{\omega^2}{9}(-3l,3l)\\
+ &=(-3lc+l\omega^2/3,\ -3lc-l\omega^2/3).
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较分量消去未知角加速度}\par\nobreak
+第二个表达式的纵横分量之差为 $-2l\omega^2/3$；第一个为 $2lb-2l\omega^2$。因此 $2lb-2l\omega^2=-2l\omega^2/3$，移项并除以 $2l$，得 $b=2\omega^2/3$。代回第一式的横分量，$a_{Dx}=-5l\omega^2/3$；再与第二式横分量相等，有 $-3lc+l\omega^2/3=-5l\omega^2/3$，所以 $c=2\omega^2/3$。于是
+\[\boxed{\bm a_D=(-5l\omega^2/3,-7l\omega^2/3)},\qquad
+|\bm a_D|=\frac{\sqrt{74}}3l\omega^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐杆核对向心项与共同铰的一致性}\par\nobreak
+将结果分别代回两根杆的加速度式均一致，且沿杆 $CD$有 $(\bm a_D-\bm a_C)\cdot(1,1)/\sqrt2=-\sqrt2l\omega^2$，恢复该杆向心项。
+
+驱动匀速并不使两根从动杆的角加速度为零。\end{solution}
+
+\begin{question}\begin{example}[滑轮中心与轮缘点的信息]\label{k6p5}
+半径 $r$的圆柱在水平地面纯滚动，圆心同轴装有可独立转动的小滑轮 $P$。（1）已知圆柱顺时针角速度 $\omega$、角加速度 $\beta$，求中心 $P$的速度、加速度。（2）小滑轮半径为 $0<b<r/\sqrt2$，绳绕其左侧且无滑动。下绳端固定于地面点 $D$，上绳经定滑轮 $C$后水平向右以恒速 $v$拉动；$C$在 $D$正上方，$CD=2r$。上下切线绳段当下分别向右上、右下与水平成 $45^\circ$。定滑轮按点滑轮处理，求小滑轮当下顶部 $B$、底部 $A$的物质速度与加速度。\end{example}
+\fig{k6p5q}{滑轮中心与轮缘点的信息：题设关系}{\begin{tikzpicture}
+\coordinate(P)at(0,1.6);\coordinate(C)at({1.6-sqrt(2)*.4},3.2);
+\coordinate(D)at({1.6-sqrt(2)*.4},0);
+\coordinate(Tu)at({-.4/sqrt(2)},{1.6+.4/sqrt(2)});
+\coordinate(Td)at({-.4/sqrt(2)},{1.6-.4/sqrt(2)});
+\draw[world](-2,0)--(3.7,0);\draw[world](P)circle(1.6);
+\draw[world](P)circle(.4);
+\draw[very thick](Tu)--(C)--(3.3,3.2) (Td)--(D);
+\draw[very thick](Tu)arc(135:225:.4);
+\draw[guide](C)--(D) (P)--(-1.131371,.468629);
+\node[above left]at(-.8,.8){$r$};
+\fill(P)circle(1.3pt)node[right,xshift=12pt]{$P$};
+\fill(C)circle(2pt)node[above]{$C$};\fill(D)circle(2pt)node[below]{$D$};
+\draw[flow,blue](2.1,3.2)--(3.3,3.2)node[right]{$v$};
+\draw[dim](3.7,0)--(3.7,3.2)node[midway,right]{$2r$};
+\begin{scope}[xshift=6.2cm,yshift=1.6cm]
+\draw[world](0,0)circle(1);
+\fill(0,0)circle(1.3pt)node[below left]{$P$};
+\fill(0,1)circle(1.3pt)node[above]{$B$};
+\fill(0,-1)circle(1.3pt)node[below]{$A$};
+\draw[guide](0,0)--(1,0)node[midway,above]{$b$};
+\node at(0,-1.7){小滑轮局部放大};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{圆柱中心的纯滚动关系}\par
+图\ref{k6p5q}中圆柱与地面无滑动，中心高度保持为 $r$。顺时针角量为正时，纯滚动关系为 $x_P-r\varphi=\text{常量}$。逐次求导得
+\[\boxed{\bm v_P=(r\omega,0),\qquad
+          \bm a_P=(r\beta,0)}.\]
+小滑轮可独立自转，故其自转角速度另由绳的条件确定。
+
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{分别在上下切点列绳速条件}\par
+设中心向右速率为 $u$，小滑轮顺时针角速度为 $\Omega$。由于 $C,D$在同一竖线上，且中心 $P$的高度始终为 $CD/2=r$，上下两条切线关于过 $P$的水平线对称。在邻近时刻也可用同一个角 $\theta$表示两绳与水平的锐角。
+
+下切点 $T_-$沿向右下绳方向的速度为 $u\cos\theta-b\Omega$；下端固定，绳在这一段不流动。上切点 $T_+$沿向右上绳方向的速度为 $u\cos\theta+b\Omega$，等于拉绳速率 $v$。因此
+\[u\cos\theta-b\Omega=0,\qquad
+  u\cos\theta+b\Omega=v.\]
+两式相加和相减，分别得到
+\[u=\frac{v}{2\cos\theta},\qquad
+\Omega=\frac{v}{2b},\qquad \dot\Omega=0.\]
+\fig{k6p5s}{滑轮中心与轮缘点的信息：解答过程}{\begin{tikzpicture}
+\coordinate(P)at(0,0);\coordinate(C)at(1.034315,1.6);
+\coordinate(D)at(1.034315,-1.6);
+\coordinate(Tu)at(-.282843,.282843);\coordinate(Td)at(-.282843,-.282843);
+\draw[world](P)circle(.4);\draw[very thick](Tu)--(C) (Td)--(D);
+\draw[very thick](Tu)arc(135:225:.4);
+\draw[guide](C)--(D) (P)--(1.8,0) (P)--(Td);
+\fill(P)circle(1.3pt)node[left]{$P$};
+\fill(C)circle(1.5pt)node[above]{$C$};\fill(D)circle(1.5pt)node[below]{$D$};
+\fill(Tu)circle(1pt)node[above left]{$T_+$};
+\fill(Td)circle(1pt)node[below left]{$T_-$};
+\draw[dim](2,-1.6)--(2,0)node[midway,right]{$r$};
+\draw[dim](0,-2.2)--(1.034315,-2.2)node[midway,below]{$x$};
+\draw[flow,blue](0,.65)--(.8,.65)node[midway,above]{$u$};
+\draw[guide](D)--(-.2,-1.6);
+\draw(.484315,-1.6)arc(180:135:.55);
+\node at(.28,-1.3){$\theta$};
+\node at(-.2,2.2){对称切线与固定端几何};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{对切线几何求导求中心加速度}\par
+图\ref{k6p5s}中 $x$是中心 $P$到固定竖线 $CD$的水平距离。下绳的方向为 $(\cos\theta,-\sin\theta)$，取与它垂直的单位法向 $(\sin\theta,\cos\theta)$。位矢 $\overrightarrow{PD}=(x,-r)$在该法向上的投影为 $x\sin\theta-r\cos\theta$；切线离圆心的距离是 $b$，且位于左侧，所以
+\[r\cos\theta-x\sin\theta=b,\qquad \dot x=-u.\]
+对几何关系逐项求导：
+\[-r\sin\theta\dot\theta
+   -\dot x\sin\theta-x\cos\theta\dot\theta=0,\]
+整理得
+\[\dot\theta=\frac{u\sin\theta}{r\sin\theta+x\cos\theta}.\]
+再对中心速率求导；$v$恒定而 $\theta$变化，所以
+\[a_P=\frac{v\sin\theta}{2\cos^2\theta}\dot\theta
+     =u\tan\theta\dot\theta.\]
+当 $\theta=45^\circ$时，几何式给 $x=r-\sqrt2b>0$，进而
+\[u=\frac v{\sqrt2},\qquad
+r\sin\theta+x\cos\theta=\sqrt2r-b,\]
+\[\dot\theta=\frac{v/2}{\sqrt2r-b},\qquad
+\boxed{a_P=\frac{v^2}{4r-2\sqrt2b}}.\]
+
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{合成顶部与底部物质点的速度和加速度}\par
+计算题目指定的两个轮缘物质点。顶部 $B$、底部 $A$的相对位矢为 $(0,b)$、$(0,-b)$；顺时针自转使它们相对中心的速度分别向右、向左，大小均为 $b\Omega=v/2$。由图\ref{k6p5acc}的分解，得到
+\[\boxed{\bm v_B=(v/\sqrt2+v/2,0),\qquad
+\bm v_A=(v/\sqrt2-v/2,0)}.\]
+\fig{k6p5acc}{顶部、底部物质点的平动与向心加速度}{\begin{tikzpicture}
+\draw[world](0,0)circle(1);\fill(0,0)circle(1.3pt)node[left]{$P$};
+\fill(0,1)circle(1.4pt)node[above]{$B$};
+\fill(0,-1)circle(1.4pt)node[below]{$A$};
+\draw[flow,blue](0,1)--(1.7,1)node[right]{$u+b\Omega$};
+\draw[flow,blue](0,-1)--(.8,-1)node[right]{$u-b\Omega$};
+\begin{scope}[xshift=5cm]
+\fill(0,1)circle(1.4pt)node[above left]{$B$};
+\fill(0,-1)circle(1.4pt)node[below left]{$A$};
+\draw[flow,red](0,1)--(1.3,1)node[right]{$a_P$};
+\draw[flow,red](0,-1)--(1.3,-1)node[right]{$a_P$};
+\draw[flow,red](0,1)--(0,.2)node[midway,left]{$b\Omega^2$};
+\draw[flow,red](0,-1)--(0,-.2)node[midway,left]{$b\Omega^2$};
+\end{scope}
+\end{tikzpicture}}
+由于 $\dot\Omega=0$，两点没有相对圆心的切向加速度，但仍有向心加速度 $b\Omega^2=v^2/(4b)$。顶部指向下方，底部指向上方，再加中心的向右加速度，得
+\[\boxed{\bm a_B=(a_P,-v^2/(4b)),\qquad
+\bm a_A=(a_P,v^2/(4b))}.\]
+这两个点不同于绳切点 $T_\pm$，不能把绳速直接当成它们的速度。
+
+令 $b\to0$，中心加速度趋于 $v^2/(4r)$，但轮缘向心加速度随 $1/b$增大；忽略滑轮尺寸的模型只能给中心运动，不能继续用于计算轮缘加速度。
+
+% thirty-k6-contact
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{核对轮缘物质点与几何切点的区别}\par
+区分轮缘最高、最低点与两处绳切点。图\ref{k6p5contact}中 $T_\pm$的相对位矢为 $(-b\sin\theta,\pm b\cos\theta)$，它们并不是 $A,B$。对顺时针自转，$\bm\omega=(0,0,-\Omega)$，所以当下处于切点的轮缘物质点速度为
+\[\bm v_{T_+}=(u+b\Omega\cos\theta,b\Omega\sin\theta),\]
+\[\bm v_{T_-}=(u-b\Omega\cos\theta,b\Omega\sin\theta).\]
+在 $\theta=45^\circ$代入 $u=v/\sqrt2$、$b\Omega=v/2$，分别为 $(3v/(2\sqrt2),v/(2\sqrt2))$和 $(v/(2\sqrt2),v/(2\sqrt2))$。
+\fig{k6p5contact}{绳切点处的轮缘物质速度与绳向投影}{\begin{tikzpicture}
+\draw[world](0,0)circle(1.1);\coordinate(U)at(-.777817,.777817);\coordinate(D)at(-.777817,-.777817);
+\draw[world](U)--(.8,2.355634) (D)--(.8,-2.355634);
+\fill(U)circle(1.3pt)node[above left]{$T_+$};\fill(D)circle(1.3pt)node[below left]{$T_-$};
+\draw[flow,blue](U)--(.722183,1.277817)node[right]{$\bm v_{T_+}$};
+\draw[flow,red](D)--(-.077817,-.077817)node[below right,yshift=-5pt]{$\bm v_{T_-}$};
+\fill(0,0)circle(1.3pt)node[above right]{$P$};
+\end{tikzpicture}}
+把下切点速度投向下绳方向 $(\cos\theta,-\sin\theta)$，得到 $u\cos\theta-b\Omega=0$；上切点投向上绳方向则为 $u\cos\theta+b\Omega=v$，恰好恢复绳速约束。下段绳沿自身方向不流动，不等于切点处轮缘物质速度的整个矢量为零。
+
+因 $\dot\Omega=0$，切点处轮缘物质加速度为 $\bm a_P-\Omega^2\bm r_{T_\pm/P}$，所以
+\[\bm a_{T_\pm}=\left(a_P+\frac{v^2}{4\sqrt2b},\ \mp\frac{v^2}{4\sqrt2b}\right)
+\quad(\theta=45^\circ).\]
+这个结果对应当下位于切点的物质点。几何切点还会沿轮缘更换身份，若追踪它的坐标，应另对切线几何求导；不能将上述物质加速度直接称为几何切点的加速度。
+\end{solution}
+
+\begin{question}\begin{example}[两转杆的几何交点]\label{k6p6}
+固定点 $A,B$相距 $l$。两长杆分别绕 $A,B$以顺时针角速度大小 $\omega,2\omega$转动。某瞬间 $ABP$为等边三角形，$P$是两杆交点且在 $AB$上方。求 $P$的速度。\end{example}
+\fig{k6p6q}{两转杆的几何交点：题设关系}{\begin{tikzpicture}\draw[world](-.5,-.866)--(2,3.464) (3.5,-.866)--(1,3.464);\draw[world](0,0)node[below]{$A$}--(3,0)node[below]{$B$};\fill(1.5,2.598)circle(2pt)node[right]{$P$};\node at(.55,.3){$60^\circ$};\node at(2.45,.3){$60^\circ$};\node[left]at(.6,1.4){$\omega$};\node[right]at(2.4,1.4){$2\omega$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别沿两根杆的法向约束交点速度}\par\nobreak
+取图\ref{k6p6q}中 $A=(0,0),B=(l,0),P=(l/2,\sqrt3l/2)$。交点可沿杆滑动，但法向速度必须与杆上当下物质点相同。左杆法向单位矢量取 $(-\sqrt3/2,1/2)$，右杆取 $(-\sqrt3/2,-1/2)$，得到
+\[-\frac{\sqrt3}{2}v_x+\frac12v_y=-l\omega,\qquad -\frac{\sqrt3}{2}v_x-\frac12v_y=-2l\omega.\]
+\fig{k6p6s}{两转杆的几何交点：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(3,1.732)node[above]{$\bm v_P$};\draw[guide](0,0)--(3,0)--(3,1.732);\node[below]at(1.5,0){$\sqrt3l\omega$};\node[right]at(3,.8){$l\omega$};\node at(.9,.2){$30^\circ$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成速度并检查沿杆相对滑动}\par\nobreak
+联立得 $\boxed{\bm v_P=(\sqrt3l\omega,l\omega)}$，速率 $2l\omega$，向右上与水平成 $30^\circ$。图\ref{k6p6s}的两个法向投影分别属于两杆，交点速度本身不必垂直任一杆。若误把 $P$当成两杆上同一个固定物质点，会同时要求两个不同的物质速度而导致矛盾。
+
+两条法向方程相加得 $-\sqrt3v_x=-3l\omega$，相减得 $v_y=l\omega$，所以速率 $\sqrt{3l^2\omega^2+l^2\omega^2}=2l\omega$。将答案分别减去两杆当前材料点速度 $(\sqrt3l\omega/2,-l\omega/2)$与 $(\sqrt3l\omega,l\omega)$，所得相对速度各自沿对应杆，第一杆允许滑动、第二杆在此瞬间相对滑动恰为零。这是当前构形的结果，不能据此预设交点永远固定在第二杆上。\end{solution}
+
+\begin{question}\begin{example}[水平端匀速的滑杆]\label{k6p7}
+杆长 $l$，$A=(l\cos\theta,0)$沿水平导轨向右匀速 $v_0$，$B=(0,l\sin\theta)$沿竖直导轨运动，$0<\theta<\pi/2$。杆上 $C$满足 $AC=\lambda l$，求 $B,C$的速度，并给出 $C$的轨迹。\end{example}
+\fig{k6p7q}{水平端匀速的滑杆：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0);\draw[axis](0,0)--(0,3);\draw[world](0,2.4)node[left]{$B$}--(3.2,0)node[below]{$A$};\fill(1.28,1.44)circle(2pt)node[above right]{$C$};\draw[flow,blue](3.2,.4)--(4.4,.4)node[right]{$v_0$};\node at(2.6,.2){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由水平端驱动确定角速度和竖直端速度}\par\nobreak
+由图\ref{k6p7q}的 $x_A=l\cos\theta$和已知 $\dot x_A=v_0$，先得到参数的变化率
+\[-l\sin\theta\dot\theta=v_0,\qquad
+\dot\theta=-\frac{v_0}{l\sin\theta}.\]
+再对 $y_B=l\sin\theta$求导，有
+\[\dot y_B=l\cos\theta\dot\theta=-v_0\cot\theta,
+\qquad\boxed{\bm v_B=(0,-v_0\cot\theta)}.\]
+在题设角度区间内，$B$沿竖直导轨向下。
+\fig{k6p7s}{水平端匀速的滑杆：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(3.7,0)node[right]{$x_C$};\draw[axis](0,0)--(0,2.8)node[above]{$y_C$};\draw[world](0,2.3)arc(90:0:3 and 2.3);\fill(1.8,1.84)circle(2pt)node[above]{$C$};\draw[flow,blue](1.8,1.84)--(2.6,1.38);\node[below]at(3,0){$(1-\lambda)l$};\node[left]at(0,2.3){$\lambda l$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对固定分点坐标求速度}\par\nobreak
+图\ref{k6p7s}的分点满足 $\bm r_C=(1-\lambda)\bm r_A+\lambda\bm r_B$，所以
+\[x_C=(1-\lambda)l\cos\theta,\qquad
+y_C=\lambda l\sin\theta.\]
+由于 $\lambda$固定，对分点关系求导等价于对上述坐标分别求导，得到
+\[\bm v_C=(1-\lambda)(v_0,0)+\lambda(0,-v_0\cot\theta)
+ =\boxed{((1-\lambda)v_0,-\lambda v_0\cot\theta)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去角参数后限定椭圆弧范围}\par\nobreak
+当 $0<\lambda<1$，将两个坐标分别除以 $(1-\lambda)l$、$\lambda l$，平方相加便消去 $\theta$，有
+\[\boxed{\frac{x_C^2}{[(1-\lambda)l]^2}
+       +\frac{y_C^2}{(\lambda l)^2}=1}.\]
+轨迹是第一象限椭圆弧。端点 $\lambda=0,1$分别沿水平、竖直直线运动，应直接使用端点关系。这里恒定的是水平端速度；即使与第三讲的滑杆具有同样几何轨迹，时间规律也不同，不能将不同驱动条件下的加速度结论混用。\end{solution}
+
+\begin{question}\begin{example}[两斜面夹轮的约束检验]\label{k6p8}
+左斜面向右下倾角 $\theta_1$，以 $v_1>0$向右平移；右斜面向右上倾角 $\theta_2$，以 $v_2>0$向左平移。圆轮同时接触二者。（1）检验两处能否同时无滑动。（2）若改为两接触均光滑且持续保持接触，求圆心速度。\end{example}
+\fig{k6p8q}{两斜面夹轮的约束检验：题设关系}{\begin{tikzpicture}\draw[world](-3,1.73205)--(0,0)--(2.7,2.7);\draw[world](-.164525,1.249689)circle(1);\draw[flow,blue](-2.8,.5)--(-1.5,.5)node[below]{$v_1$};\draw[flow,red](2.8,.5)--(1.5,.5)node[below]{$v_2$};\node at(-.8,.23){$\theta_1$};\node at(.8,.3){$\theta_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先检验两处完整无滑动条件是否相容}\par\nobreak
+设图\ref{k6p8q}两接触处指向圆心的单位法线为 $\bm n_1=(\sin\theta_1,\cos\theta_1)$、$\bm n_2=(-\sin\theta_2,\cos\theta_2)$。若两处均无滑动，轮上接触点速度须分别为 $(v_1,0)$、$(-v_2,0)$。相减的竖直分量给 $\Omega r(\sin\theta_1+\sin\theta_2)=0$，所以 $\Omega=0$；但此时两点速度相同，与 $v_1,-v_2$矛盾。因此相向移动时两处同时无滑动不可能。
+\fig{k6p8s}{两斜面夹轮的约束检验：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(1,1.7)node[right]{$\bm n_1$};\draw[flow,red](0,0)--(-1.4,1.4)node[left]{$\bm n_2$};\draw[flow](0,0)--(.3,2.5)node[above]{$\bm V$};\node at(0,-.7){分别投影相对速度};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用两个法向条件求圆心速度}\par\nobreak
+若只要求光滑接触，图\ref{k6p8s}的法向相对速度为零给 $V_y=(v_1-V_x)\tan\theta_1=(v_2+V_x)\tan\theta_2$。解得
+\[\boxed{V_x=\frac{v_1\tan\theta_1-v_2\tan\theta_2}{\tan\theta_1+\tan\theta_2}},\]
+\[\boxed{V_y=\frac{(v_1+v_2)\tan\theta_1\tan\theta_2}{\tan\theta_1+\tan\theta_2}}.\]
+对称斜面、等速相向时，圆心水平速度为零、竖直向上，符合挤升的几何变化；自转还需其他条件，不能由光滑接触单独确定。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查对称挤升情形与自转信息}\par\nobreak
+若 $\theta_1=\theta_2=\theta$且 $v_1=v_2=v$，光滑接触给 $V_x=0$、$V_y=v\tan\theta$，两块斜面把圆轮向上挤升。两处完全无滑动却要求同一刚体左右接触点分别随斜面相向水平移动，这与刚体点间速度差必须垂直其连线不相容。发现矛盾本身就是第一问的结论，不应为得到数值而擅自删去一个接触条件。\end{solution}
+
+\begin{question}\begin{example}[圆上端点与圆的切点]\label{k6p9}
+固定圆半径为 $r$，地面滑块 $B$向左速率 $v$。（1）杆端 $A$沿圆周运动，$OA$与右向水平线成 $\theta_1$，从 $B$指向 $A$的杆与左向水平线成 $\theta_2$，求端点 $A$速度。（2）长杆始终与圆相切，求几何切点的速度，并与杆上当下处于切点的物质点速度比较。取接触在右上侧。\end{example}
+\fig{k6p9q}{圆上端点与圆的切点：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.2);\fill(0,0)circle(1.3pt)node[below left]{$O$};\draw[world](-1.5,0)--(4,0);\draw[world](.6,1.039)--(3,0);\draw[guide](0,0)--(.6,1.039);\node[above]at(.6,1.039){$A$};\node[below]at(3,0){$B$};\node at(.4,.2){$\theta_1$};\node at(2.3,.2){$\theta_2$};\draw[flow,blue](3,-.5)--(1.8,-.5)node[left]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定杆端沿圆运动：用沿杆投影相等}\par\nobreak
+（1）取图\ref{k6p9q}中沿圆周逆时针的端点速度为 $u_A$。圆周切线与半径垂直，因此
+\[\bm v_A=u_A(-\sin\theta_1,\cos\theta_1),\qquad
+\bm v_B=(-v,0).\]
+从 $B$指向 $A$的杆方向单位矢量为 $\bm e=(-\cos\theta_2,\sin\theta_2)$。杆长不变，故 $(\bm v_A-\bm v_B)\cdot\bm e=0$，即
+\[u_A\sin\theta_1\cos\theta_2
+  +u_A\cos\theta_1\sin\theta_2=v\cos\theta_2.\]
+用正弦和角公式整理，得到
+\[\boxed{u_A=\frac{v\cos\theta_2}{\sin(\theta_1+\theta_2)}}.\]
+在题设右上侧构形中两角均为锐角，分母为正，端点速度沿圆周切向左上。这里 $A$是杆上固定的物质端点，沿杆的速度投影相等直接适用。
+
+\fig{k6p9s}{圆上端点与圆的切点：解答过程}{\begin{tikzpicture}
+\coordinate(O)at(0,0);\coordinate(K)at(.6,{.6*sqrt(3)});\coordinate(B)at(2.4,0);
+\draw[world](O)circle(1.2);\draw[world](-1.5,0)--(3.1,0);
+\draw[world](-.4,{2.8/sqrt(3)})--(B);
+\draw[guide](O)--(K);
+\fill(O)circle(1.3pt)node[below left]{$O$};
+\fill(B)circle(1.5pt)node[below right]{$B$};
+\fill(K)circle(1.5pt)node[above right]{$K$};
+\draw[flow,blue](K)--(1.38,{.6*sqrt(3)-.78/sqrt(3)})node[right]{$\bm v_K$};
+\draw[flow,red](K)--(-.18,{.6*sqrt(3)+.78/sqrt(3)})node[above left]{$\bm v_{\text{物}}$};
+\draw[flow,blue](2.4,-.5)--(1.6,-.5)node[midway,below]{$v$};
+\draw(.5,0)arc(0:60:.5);\node at(.7,.3){$\theta_1$};
+\node at(1.85,.18){$\theta_2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{几何切点：对切线几何求导}\par\nobreak
+（2）图\ref{k6p9s}中几何切点记为 $K$。由于 $OK\perp BK$，有 $\theta_1+\theta_2=\pi/2$；直角三角形 $OKB$又给出
+\[OB=\frac r{\cos\theta_1}.\]
+滑块向左，所以 $\dot{OB}=-v$。对上式求导，保留角度的变化，得到
+\[-v=r\sec\theta_1\tan\theta_1\dot\theta_1
+    =\frac{r\sin\theta_1}{\cos^2\theta_1}\dot\theta_1,\]
+\[\dot\theta_1=-\frac{v\cos^2\theta_1}{r\sin\theta_1}<0.\]
+几何切点沿圆周顺时针移动，速率为
+\[\boxed{u_K=r|\dot\theta_1|
+       =\frac{v\cos^2\theta_1}{\sin\theta_1}
+       =\frac{v\sin^2\theta_2}{\cos\theta_2}},\]
+方向在图中为右下。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另算当前重合的物质点速度并比较方向}\par\nobreak
+再看杆上当时位于 $K$的物质点。杆始终与固定圆相切，该点的法向速度为零，故速度只能沿切线杆。刚杆两点沿杆的速度投影相等，取沿 $BK$的左上方向 $\bm e=(-\cos\theta_2,\sin\theta_2)$，则
+\[\bm v_{\text{物}}\cdot\bm e=\bm v_B\cdot\bm e
+        =v\cos\theta_2.\]
+所以物质点速率为 $\boxed{u_{\text{物}}=v\cos\theta_2}$，方向左上，与蓝色几何切点箭头相反。切点 $K$不断更换所对应的杆上物质点，因而两种速度可以不同；不能把第二问的 $K$当作第一问的固定杆端 $A$来求导。以上公式限定 $0<\theta_1,\theta_2<\pi/2$，端点退化构形需另作极限分析。\end{solution}
+
+\begin{question}\begin{example}[圆盘驱动两类从动机构]\label{k6p10}
+圆盘连同支架作为一个刚体绕固定轴 $C$转动，圆心为 $O$。某瞬间 $CO=l$向右水平，角速度为逆时针 $\omega$；圆盘半径为 $r$，左上侧点 $M$满足 $\bm r_{M/O}=r(-\cos\theta,\sin\theta)$。比较：（甲）只能水平移动的细杆，端点在固定高度与圆盘光滑接触；（乙）圆盘物质销 $M$嵌在水平移动框的竖直槽内。分别求杆和框的水平速度。\end{example}
+\fig{k6p10q}{圆盘驱动两类从动机构：题设关系}{\begin{tikzpicture}\foreach \x/\s in {0/甲,4.5/乙}{\draw[world](\x,0)circle(1);\fill({\x-2},0)circle(2pt)node[below]{$C$};\draw[guide]({\x-2},0)--(\x,0);\node[below]at(\x,0){$O$};\fill({\x-.8},.6)circle(2pt)node[above]{$M$};\node[above]at(\x,1.4){\s};}\draw[very thick](-2,.6)--(-.8,.6);\draw[very thick](3.5,-.4)rectangle(3.9,1.4);\draw[very thick](3.7,.6)--(5.8,.6);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求圆盘指定物质点的速度}\par\nobreak
+两机构在图\ref{k6p10q}中虽然接触位置相同，约束不同。圆心速度为 $(0,l\omega)$，圆盘当下物质点 $M$的速度为 $\bm v_M=(-r\omega\sin\theta,\omega(l-r\cos\theta))$。
+\fig{k6p10s}{圆盘驱动两类从动机构：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(-1.7,0)node[left]{$U_A$};\draw[flow,red](0,0)--(-.8,.6)node[above]{$\bm n$};\node at(-.5,-.7){甲：法向相对速度为零};\draw[flow,blue](4,0)--(2.7,0)node[above]{$U_B$};\draw[guide](4,0)--(4,1.4);\node at(4,-.7){乙：横坐标相同};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{光滑接触：约束法向相对速度}\par\nobreak
+甲杆端速度为 $(U_A,0)$，光滑接触只要求相对法向速度为零。法线沿半径方向。将相对速度向 $(-\cos\theta,\sin\theta)$投影，得到\[-U_A\cos\theta-l\omega\sin\theta=0.\]解得 \[\boxed{U_A=-l\omega\tan\theta}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{销槽连接：约束水平坐标}\par\nobreak
+乙框的竖直槽允许销上下滑动，但两者横坐标相同，故 \[\boxed{U_B=v_{M,x}=-r\omega\sin\theta}.\]图\ref{k6p10s}分别用法向投影与水平分量表示两个条件。负号均表示向左。甲的接触点不是圆盘固定材料，乙的销则是物质点；机构连接方式不能只靠圆盘外形相近就混用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释两式中不同半径的消去}\par\nobreak
+甲的法向投影中，圆盘自转速度与半径垂直，因此不贡献法向分量，只有圆心向上的 $l\omega$进入结果；乙的竖直槽则直接约束水平分量，自转贡献不能消去。这解释了甲式中半径 $r$消失、乙式中轨道半径 $l$消失的原因。若 $\theta=0$，两种机构水平速度都为零，但这只是此特殊位置的相合，并不使两种约束等价。\end{solution}
+
+\begin{question}\begin{example}[摆线的速度与加速度]\label{k6p11}
+半径 $R$ 的圆轮以圆心恒速 $u$向右纯滚动。轮缘标记在 $t=0$时位于原点、与地面接触。求标记轨迹、速度、加速度与正则点曲率半径，并讨论再次触地的位置。\end{example}
+\fig{k6p11q}{摆线的速度与加速度：题设关系}{\begin{tikzpicture}\draw[world](-1.5,0)--(4.5,0);\draw[world](0,1)circle(1);\fill(0,0)circle(2pt)node[below]{$P=O$};\draw[flow,blue](0,1)--(1.5,1)node[right]{$u$};\draw[guide](0,0)--(0,1)node[midway,left]{$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按初始触地相位写标记位置}\par\nobreak
+设图\ref{k6p11q}从初始接触构形转过的顺时针角为 $q=ut/R$。圆心为 $(Rq,R)$，标记相对圆心为 $(-R\sin q,-R\cos q)$，故
+\[\boxed{x=R(q-\sin q),\ y=R(1-\cos q)}.\]
+\fig{k6p11s}{摆线的速度与加速度：解答过程}{\begin{tikzpicture}\draw[world](-.4,0)--(6.9,0);\draw[blue,world]plot[domain=0:360,samples=100]({rad(\x)-sin(\x)},{1-cos(\x)});\draw[flow,red](0,0)--(0,.8)node[left]{$\bm a$};\draw[flow,blue](3.14159,2)--(4.4,2)node[right]{$2u$};\node[below]at(6.28318,0){$2\pi R$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求速度和加速度并检查三个特殊位置}\par\nobreak
+由于 $q=ut/R$，有 $\dot q=u/R$、$\ddot q=0$。每次对三角函数求时间导数，都要乘 $\dot q$：
+\begin{align*}
+v_x&=R(1-\cos q)\dot q=u(1-\cos q),&
+v_y&=R\sin q\,\dot q=u\sin q,\\
+a_x&=u\sin q\,\dot q=\frac{u^2}{R}\sin q,&
+a_y&=u\cos q\,\dot q=\frac{u^2}{R}\cos q.
+\end{align*}
+图\ref{k6p11s}中 $q=0,2\pi$均触地且速度为零，加速度向上；$q=\pi$到达高 $2R$处，速度为 $2u$。正则点的曲率由这些速度、加速度分量计算，下面逐项展开。在触地尖点速度为零，通常的曲率定义失效；两侧曲率半径趋零，不应把极限值直接说成该尖点的普通曲率半径。相邻触地点距离为 $2\pi R$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在正则点求曲率并积分一拱路程}\par\nobreak
+先由分量平方和求速率：
+\[
+v^2=u^2[(1-\cos q)^2+\sin^2q]
+=2u^2(1-\cos q)=4u^2\sin^2(q/2).
+\]
+所以 $v=2u|\sin(q/2)|$。曲率分母逐项计算为
+\begin{align*}
+|v_xa_y-v_ya_x|
+&=\frac{u^3}{R}|(1-\cos q)\cos q-\sin^2q|\\
+&=\frac{u^3}{R}|\cos q-1|
+=\frac{2u^3}{R}\sin^2(q/2).
+\end{align*}
+对 $\sin(q/2)\ne0$ 的正则点，
+\[
+\rho=\frac{v^3}{|v_xa_y-v_ya_x|}
+=\frac{8u^3|\sin(q/2)|^3}{2u^3\sin^2(q/2)/R}
+=4R|\sin(q/2)|.
+\]
+在一拱 $0\le q\le2\pi$ 内，$\sin(q/2)\ge0$，并且
+$\dd t=(R/u)\dd q$，故路程为
+\[
+s=\int_0^{2\pi}2u\sin(q/2)\frac Ru\,\dd q
+=2R[-2\cos(q/2)]_0^{2\pi}
+=2R[2-(-2)]=8R.
+\]
+它大于两触地点间距 $2\pi R$，也与曲线路径相符。\end{solution}
+
+\begin{question}\begin{example}[落体再次碰到转杆]\label{k6p12}
+长杆初始水平，绕左端 $O$以恒定顺时针角速度 $\omega$向下转动。杆上距 $O$为 $a$处的小球同时由静止脱离，不受杆的初始冲量，随后自由下落。求再次与杆相遇的角度方程，并给出小角度近似。杆长为 $l>a$，须检查碰撞是否在杆内。\end{example}
+\fig{k6p12q}{落体再次碰到转杆：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(4,0);\draw[world](0,0)--(3.5,-2);\fill(2,0)circle(2pt)node[above]{初始球};\draw[guide](2,0)--(2,-1.143);\fill(2,-1.143)circle(2pt)node[right]{相遇};\node[left]at(0,0){$O$};\node at(1,-.2){$\theta$};\draw[dim](0,.6)--(2,.6)node[midway,above]{$a$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从同一时间的球、杆位置建立相遇方程}\par\nobreak
+按图\ref{k6p12q}取 $x$向右、$y$向上，球由静止释放，故 $x=a$、$y=-gt^2/2$。令杆连续累积的顺时针角为 $\theta=\omega t$。球在杆所在直线上要求
+\[-\frac{gt^2}{2}=-a\tan\theta,\qquad
+\boxed{\frac{2a\omega^2}{g}=\frac{\theta^2}{\tan\theta}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留朝向条件与有限杆长}\par\nobreak
+这一步还没有保证球在从 $O$伸出的那一段杆上。因为球在右下方，必须同时有 $\cos\theta>0$、$\sin\theta>0$，所以候选角落在
+\[2k\pi<\theta<2k\pi+\frac\pi2,\qquad k=0,1,2,\ldots.
+\]
+此外，球到轴距离是 $a/\cos\theta$，有限杆要求 $a/\cos\theta\le l$。应从所有有效候选根中取最小正时间，不能把第一象限条件误写成永远只允许 $0<\theta<\pi/2$。
+
+\fig{k6p12s}{落体再次碰到转杆：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$\theta$};\draw[axis](0,0)--(0,2)node[above]{$\theta^2/\tan\theta$};\draw[world]plot[domain=.1:89,samples=70]({\x/20},{(rad(\x))^2/tan(\x)});\draw[blue,guide](0,.35)--(4.5,.35)node[right]{$\varepsilon$};\node[below]at(4.5,0){$\pi/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求首个小根的渐近表达}\par\nobreak
+图\ref{k6p12s}画的是首个向下转动区间。若 $\varepsilon=2a\omega^2/g\ll1$，最早的小根就在该区间，并有
+\begin{align*}
+\frac{\theta^2}{\tan\theta}
+&=\theta\,\frac{1-\theta^2/2+O(\theta^4)}
+{1-\theta^2/6+O(\theta^4)}\\
+&=\theta[1-\theta^2/2+O(\theta^4)]
+[1+\theta^2/6+O(\theta^4)]\\
+&=\theta-\frac{\theta^3}{3}+O(\theta^5).
+\end{align*}
+设 $\theta=\varepsilon+c\varepsilon^3+O(\varepsilon^5)$，代回上式后，
+$\varepsilon=\varepsilon+(c-1/3)\varepsilon^3+O(\varepsilon^5)$，
+比较三次项系数得 $c=1/3$，故 $\boxed{\theta=\varepsilon+\varepsilon^3/3+O(\varepsilon^5)}$。求出后仍须检查 $a/\cos\theta\le l$；杆若太短，这个小根也不能对应碰撞。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用杆长截断最晚有效时间并筛选后续转角}\par\nobreak
+还可由球到轴距离的单调增加筛去过晚的根：有限杆要求 $\sqrt{a^2+g^2t^4/4}\le l$，即 $t\le\sqrt{2\sqrt{l^2-a^2}/g}$。超过此时刻，球已远于杆长，后续转动无论方向如何都不能再碰到。初始重合根 $t=0$则始终不计入“再次相遇”。
+
+图\ref{k6p12turns}把允许相遇的转角区间画在累积角轴上。第一次向下转动未相遇，并不能仅凭这一事实排除后续转动；应在杆长给出的有限时间范围内继续筛选允许区间。图中的空档表示杆不指向球所在的右下区域，不需要在这些区间求方程根。
+\fig{k6p12turns}{累积转角中重复出现的允许相遇区间}{\begin{tikzpicture}[scale=.9]
+\draw[axis](-.2,0)--(7.4,0)node[right]{$\theta$};
+\draw[blue,line width=1.5pt](0,.5)--(1.3,.5);\draw[blue,line width=1.5pt](5.2,.5)--(6.5,.5);
+\foreach \x/\s in {0/0,1.3/{\pi/2},5.2/{2\pi},6.5/{5\pi/2}}{\draw[guide](\x,0)--(\x,.5);\filldraw[fill=white,draw=blue](\x,.5)circle(1.7pt);\node[below]at(\x,0){$\s$};}
+\node[above]at(.65,.6){首个区间};\node[above]at(5.85,.6){下一转的区间};
+\end{tikzpicture}}
+\end{solution}
+
+\begin{question}\begin{example}[竖直滑块与曲柄的瞬时角速度]\label{k6p13}
+曲柄端 $B$相对固定轴 $O$的位置为 $r(-\sin\varphi,\cos\varphi)$。连杆从 $B$指向竖直滑块 $P$，与向上竖直线向右成 $\alpha$，即沿杆单位方向为 $(\sin\alpha,\cos\alpha)$。$P$向下速率为 $v$，求曲柄有符号角速度，取逆时针为正。\end{example}
+\fig{k6p13q}{竖直滑块与曲柄的瞬时角速度：题设关系}{\begin{tikzpicture}\coordinate(O)at(2,0);\coordinate(B)at(.6,1.4);\coordinate(P)at(2,3.5);\draw[world](O)--(B)--(P);\draw[guide](O)--(P);\node[below]at(O){$O$};\node[left]at(B){$B$};\node[draw]at(P){$P$};\node at(1.8,.6){$\varphi$};\node at(1.8,2.7){$\alpha$};\draw[flow,blue](2.7,3.5)--(2.7,2.4)node[right]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{统一角速度符号后求两端沿杆投影}\par\nobreak
+图\ref{k6p13q}中的参数 $\varphi$沿逆时针转动增加，所以 $\bm v_B=(-r\omega\cos\varphi,-r\omega\sin\varphi)$；滑块速度为 $(0,-v)$。连杆长度不变，要求 $(\bm v_P-\bm v_B)\cdot(\sin\alpha,\cos\alpha)=0$，即
+\[-v\cos\alpha+r\omega\sin(\alpha+\varphi)=0.\]
+\fig{k6p13s}{竖直滑块与曲柄的瞬时角速度：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(1.4,2.1);\draw[flow,blue](1.4,2.1)--(1.4,.9)node[right]{$\bm v_P$};\draw[flow,red](0,0)--(-.72,-.72)node[left]{$\bm v_B$};\draw[guide](0,0)--(.7,1.05)node[midway,above left=5pt]{$\bm e_{BP}$};\node[above]at(1.4,2.1){$P$};\node[below right]at(0,0){$B$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出角速度并检查死点}\par\nobreak
+于是 $\boxed{\omega=v\cos\alpha/[r\sin(\alpha+\varphi)]}$，在图示锐角构形中为逆时针。图\ref{k6p13s}所画沿杆投影相等，连杆长度不进入瞬时速度结果。若 $\sin(\alpha+\varphi)=0$而分子非零，该构形无法以有限曲柄角速度实现指定滑块速度；这是机构死点处的运动约束，不能直接除零。
+
+连杆只能传递沿杆的长度约束，不能要求滑块与曲柄端的完整速度相同。投影中 
+\[
+\bm v_B\cdot\bm e_{BP}=-r\omega(\cos\varphi\sin\alpha+\sin\varphi\cos\alpha)=-r\omega\sin(\alpha+\varphi)
+\]
+；滑块投影是 $-v\cos\alpha$，两负号相等才得到正的逆时针角速度。图上曲柄端向左下运动，与这个符号一致。\end{solution}
+
+\begin{question}\begin{example}[斜绳牵引上侧出绳线轴]\label{k6p14}
+线轴外半径 $R$、内半径 $r$，在地面向右纯滚动。绳从内轴上侧沿切线向右上方引出，与水平成 $\alpha$，沿绳拉动速率为 $v_0$。求线轴圆心速度，并与下侧出绳比较。\end{example}
+\fig{k6p14q}{斜绳牵引上侧出绳线轴：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.3);\draw[world](0,0)circle(.6);\draw[world](-2,-1.3)--(3.5,-1.3);\draw[ray](-.3,.5196)--(2.7,2.2516)node[right]{$v_0$};\draw[guide](-.3,.5196)--(1.5,.5196);\node at(.5,.7){$\alpha$};\node at(.2,-.3){$r$};\node[left]at(-1.1,-.5){$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{合成圆心平动与上侧切点沿绳贡献}\par\nobreak
+设图\ref{k6p14q}圆心向右速度为 $U$，顺时针角速度为 $U/R$。上侧切点的转动速度沿绳向右上方，大小 $Ur/R$；圆心平动沿绳投影为 $U\cos\alpha$。由无滑动绳速约束，$v_0=U\cos\alpha+Ur/R$，得到
+\[\boxed{U=\frac{Rv_0}{R\cos\alpha+r}}.\]
+\fig{k6p14s}{斜绳牵引上侧出绳线轴：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(2,0)node[below]{$U\cos\alpha$};\draw[flow,red](2,0)--(3.2,0)node[above]{$Ur/R$};\draw[flow](0,.8)--(3.2,.8)node[midway,above]{$v_0$};\node at(1.6,-.8){沿绳方向的分量相加};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{更换切点侧别后重新判断符号与奇异角}\par\nobreak
+图\ref{k6p14s}的两个正贡献对应上侧出绳。下侧出绳的转动贡献改为负号，$U=Rv_0/(R\cos\alpha-r)$，在 $\cos\alpha=r/R$处发生奇异并可能换向。上侧在 $0\le\alpha\le\pi/2$没有这一零分母，圆心始终向右；水平拉绳时恢复 $Rv_0/(R+r)$。先识别切点所在侧，再判断符号，远比凭“向右拉所以向右滚”可靠。
+
+绳切向速度关系是 $\bm v_{\text{切点}}\cdot\bm e_{\text{绳}}=v_0$，并不要求切点完整速度等于沿绳速度。平动投影 $U\cos\alpha$和自转贡献 $Ur/R$分别对应平动与自转两部分。$\alpha\to\pi/2$时上侧式给 $U\to Rv_0/r$，仍为正；下侧则给负值，表示若保持向上收绳，轮心必须向左。符号应由约束解出。\end{solution}

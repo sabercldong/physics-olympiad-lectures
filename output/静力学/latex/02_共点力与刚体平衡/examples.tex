@@ -1,0 +1,277 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[竖直细线支承斜杆]\label{s2:example:1}
+均匀杆$AB$重$G$，$A$接触水平地面，$B$由竖直细线悬挂，杆与水平夹角为$\alpha<90^\circ$。求地面反力和绳张力，地面是否一定有摩擦？
+\end{example}
+\fig{fig:s2:example:1:s}{斜杆的长度、倾角与竖直悬线}{\begin{tikzpicture}
+
+\draw[world](-.6,0)--(4.6,0);\draw[world](0,0)--(4,2.4);\node[above left]at(1.2,.72){$L$};\draw[world](4,2.4)--(4,3.5);\draw[world](3.5,3.5)--(4.5,3.5);
+\node[below]at(0,0){$A$};\node[right]at(4,2.4){$B$};\fill(2,1.2)circle(2pt)node[above]{$C$};\draw(.8,0)arc(0:30.96:.8)node[midway,right]{$\alpha$};\draw[force](2,1.2)--(2,.2)node[right]{$G$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{隔离杆并确定零摩擦}\par\nobreak
+图\ref{fig:s2:example:1:s}外力只有重力、竖直张力$T$以及地面反力。水平平衡直接给$f_A=0$，粗糙接触并不意味着一定存在摩擦。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从图中读取垂直力臂}\par\nobreak
+对$A$取矩可同时消去未知的地面法向力和摩擦力。张力的力臂是$B$到$A$的水平距离$L\cos\alpha$，重力的力臂是杆中点到$A$的水平距离$(L/2)\cos\alpha$；两力均竖直，所以不能把杆长本身当力臂。
+\fig{fig:s2:example:1:p}{分别读取张力与重力的水平力臂}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,2.4);\node[below left]at(0,0){$A$};\node[above left]at(4,2.4){$B$};\fill(2,1.2)circle(2pt)node[above left]{$C$};
+\draw[force](0,0)--(0,1.3)node[left]{$N_A$};\draw[force](4,2.4)--(4,3.7)node[right]{$T$};\draw[force](2,1.2)--(2,-.3)node[right]{$G$};\draw[guide](4,2.4)--(4,-1.1);\draw[guide](2,1.2)--(2,-.7);\draw[dim](0,-.7)--(2,-.7)node[midway,below]{$\frac L2\cos\alpha$};\draw[dim](0,-1.5)--(4,-1.5)node[midway,below]{$L\cos\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求反力并检查竖直退化构型}\par\nobreak
+图\ref{fig:s2:example:1:p}对$A$取矩，$TL\cos\alpha=G(L/2)\cos\alpha$。非竖直时$\cos\alpha\ne0$，得$T=G/2$；竖直平衡$N_A+T=G$，所以$N_A=G/2$。若杆恰好竖直，此取矩方程退化为$0=0$，仅有$N_A+T=G$不足以唯一分配两力，需补充弹性或约束信息。\end{solution}
+\begin{question}\begin{example}[三轻杆支架的最小维持力]\label{s2:example:2}
+$AC,CD,DB$三根轻杆长均为$l$，$A,B$固定在水平天花板且$AB=2l$。$CD$水平，$C$处挂质量$m$的物体。求在$D$施力使体系平衡的最小力。
+\end{example}
+\fig{fig:s2:example:2:s}{等长三杆的水平投影确定两侧的倾角}{\begin{tikzpicture}
+
+\draw[world](0,2.6)--(4,2.6);\draw[world](0,2.6)--(1,.868)node[midway,left]{$l$}--(3,.868)node[midway,below]{$l$}--(4,2.6)node[midway,right]{$l$};
+\foreach \xx/\yy/\lab in {0/2.6/A,4/2.6/B,1/.868/C,3/.868/D}{\fill(\xx,\yy)circle(2pt)node[above right]{$\lab$};}
+\draw[dim](0,3.3)--(4,3.3)node[midway,above]{$2l$};\draw[force](1,.868)--(1,-.5)node[below]{$mg$};\draw[force](3,.868)--(4.1,.2)node[right]{$\bm F$（方向可调）};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由几何及节点 $C$ 求水平杆力}\par\nobreak
+图\ref{fig:s2:example:2:s}的水平投影各为$l/2$，斜杆与水平成$60^\circ$。在$C$点，$AC$拉力$T_1$的竖直分量平衡$mg$，故$T_1\sin60^\circ=mg$；$CD$的拉力$H=T_1\cos60^\circ=mg/\sqrt3$。
+\fig{fig:s2:example:2:p}{先解节点 $C$，再在节点 $D$ 对杆方向作正交分解}{\begin{tikzpicture}
+
+\begin{scope}
+\fill(0,0)circle(2pt)node[below right]{$C$};\draw[force](0,0)--(-.8,1.3856)node[left]{$T_1$};\draw[force](0,0)--(.8,0)node[right]{$H$};\draw[force](0,0)--(0,-1.3856)node[left]{$mg$};\node at(-.25,2){$T_1\sin60^\circ=mg$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill(0,0)circle(2pt)node[below left]{$D$};\draw[guide](-.6,-1.0392)--(1.2,2.0784)node[above]{$DB$};\draw[force](0,0)--(-1.6,0)node[left]{$H$};\draw[force](0,0)--(.4,.6928)node[right]{$T_{DB}$};\draw[force](0,0)--(1.2,-.6928)node[right]{$F_{\min}$};\draw(.12,.2078)--(.3278,.0878)--(.2078,-.12);
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在节点 $D$ 消去沿杆分量}\par\nobreak
+图\ref{fig:s2:example:2:p}在$D$点，已知力为向左的$H$，另一杆力沿$DB$与水平成$60^\circ$。图中先把向左的 $H$ 沿 $DB$ 及其法线分解。杆力只能抵消第一分量，法向分量大小恒为$H\sin60^\circ$，必须由外力承担。若外力还含沿杆分量，其总大小只会增大；故最小外力垂直$DB$，大小$F_{\min}=H\sin60^\circ=mg/2$。此时$DB$力沿右上方为正拉力，允许状态成立。\end{solution}
+\begin{question}\begin{example}[三球悬挂的两种接触分支]\label{s2:example:3}
+两质量$M$、半径$R$的光滑球，由长$2R$且作用线过球心的绳悬于同点。上方放质量$nM$、半径$R/2$的小球。绳与竖直夹角$\theta$，讨论对称平衡的可能状态。
+\end{example}
+\fig{fig:s2:example:3:s}{大球相接构型：悬线倾角 $\theta$ 与接触法线倾角 $\alpha$}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3.8284);\coordinate(A)at(-1,1);\coordinate(B)at(1,1);\coordinate(C)at(0,2.118);
+\draw[world](A)circle(1);\draw[world](B)circle(1);\draw[world](C)circle(.5);\draw[world](O)--(-.6667,1.9428);\draw[world](O)--(.6667,1.9428);\draw[guide](O)--(A)--(C)--(B)--(O);\draw[guide](O)--(0,2.5);\draw[guide](A)--(-1,2.4);
+\node[above]at(O){$O$};\node[below left]at(A){$A,M$};\node[below right]at(B){$B,M$};\node[right]at(C){$C,nM$};\node[left]at(-.55,2.9){$2R$};\draw(0,3.0784)arc(-90:-109.47:.75);\node[right]at(.05,3){$\theta$};\draw(-1,1.6)arc(90:48.19:.6);\node[left]at(-.65,1.9){$\alpha$};\node at(3.7,2.6){$OA=3R,\quad AC=3R/2$};\node at(3.7,1.8){接触时 $AB=2R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先建立球心几何和局部受力方程}\par\nobreak
+图\ref{fig:s2:example:3:s}悬点到大球心为$3R$。令大球到小球的接触法线与竖直夹角为$\alpha$，若两大球分离，几何关系为$\sin\alpha=2\sin\theta$。小球平衡得$2N\cos\alpha=nMg$；大球得$T\cos\theta=(1+n/2)Mg$，$T\sin\theta=N\sin\alpha$。
+悬点到大球心的长度为绳长加半径$2R+R=3R$，而大、小球心距为$R+R/2=3R/2$。两者具有相同水平投影$3R\sin\theta$，所以$(3R/2)\sin\alpha=3R\sin\theta$。这一步的几何长度不能都误取为绳长。
+\fig{fig:s2:example:3:aux}{两大球分离时的球心三角形}{\begin{tikzpicture}[scale=.88]\coordinate(O)at(0,4);\coordinate(A)at(-1.4031,1.3483);\coordinate(B)at(1.4031,1.3483);\coordinate(C)at(0,1.8787);\draw[world](A)circle(1);\draw[world](B)circle(1);\draw[world](C)circle(.5);\draw[world](O)--(-.9354,2.2322);\draw[world](O)--(.9354,2.2322);\draw[guide](O)--(A)--(C)--(B)--(O);\draw[guide](O)--(0,.1);\foreach\p in{O,A,B,C}{\fill(\p)circle(2pt);}\node[above]at(O){$O$};\node[left]at(A){$A$};\node[right]at(B){$B$};\node[above right]at(C){$C$};\draw[dim](-1.4031,-.1)--(1.4031,-.1)node[midway,below]{$AB=6R\sin\theta$};\node at(2.5,3.2){$OA=OB=3R$};\node at(2.5,2.7){$AC=BC=3R/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离分支：令大球接触力为零}\par\nobreak
+图\ref{fig:s2:example:3:aux}显示分离构型中$AB>2R$，此时两大球之间没有接触力，应令$H=0$；接触构型才保留图\ref{fig:s2:example:3:p}中的$H$。两种构型各自满足的几何条件和力方程须分别代入。
+\fig{fig:s2:example:3:p}{左大球在分离与接触两分支中的受力不同}{\begin{tikzpicture}
+
+\begin{scope}
+\fill(0,0)circle(2pt)node[below right]{$A$};\draw[force](0,0)--(.8,1.51)node[right]{$T$};\draw[force](0,0)--(-.8,-.3024)node[left]{$N$};\draw[force](0,0)--(0,-1.3)node[right]{$Mg$};\node at(0,2.2){分离分支，$H=0$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill(0,0)circle(2pt)node[below right]{$A$};\draw[force](0,0)--(.6,1.6971)node[right]{$T$};\draw[force](0,0)--(-.4,-.4472)node[left]{$N$};\draw[force](0,0)--(0,-1.25)node[right]{$Mg$};\draw[force](0,0)--(-1,0)node[left]{$H$};\node at(0,2.2){接触分支，$H\ge0$};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:s2:example:3:p}左图对应 $H=0$，消去 $T,N$，得到$(n+2)\tan\theta=n\tan\alpha$。写$s=\sin\theta$，利用$\sin\alpha=2s$，由$\tan\theta=s/\sqrt{1-s^2}$、$\tan\alpha=2s/\sqrt{1-4s^2}$，当$s>0$时约去$s$，得
+\[
+\frac{n+2}{\sqrt{1-s^2}}=\frac{2n}{\sqrt{1-4s^2}}.
+\]
+两边均正，平方不会引入符号伪根。交叉相乘，
+\[
+(n+2)^2(1-4s^2)=4n^2(1-s^2),
+\quad 16(n+1)s^2=(n+2)^2-4n^2.
+\]
+于是
+\[
+s^2=\frac{4+4n-3n^2}{16(1+n)}.
+\]
+分离要求$3R\sin\theta\ge R$，即$s\ge1/3$，代入$s^2\ge1/9$，得$27n^2-20n-20\le0$；取$n>0$的区间，因此
+\[
+0<n\le n_c=\frac{10+8\sqrt{10}}{27}.
+\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接触分支：检查互推力非负}\par\nobreak
+还存在两大球相接的分支：$\sin\theta=1/3$，$\sin\alpha=2/3$。接触时$\tan\theta=1/(2\sqrt2)$，$\tan\alpha=2/\sqrt5$。左大球的水平平衡为$T\sin\theta=N\sin\alpha+H$，代入$T\cos\theta=(1+n/2)Mg$和$N\cos\alpha=nMg/2$，即得大球互推力
+\[
+H=Mg\left[\frac{1+n/2}{2\sqrt2}-\frac n{\sqrt5}\right].
+\]
+$H\ge0$也给$n\le n_c$。$n<n_c$时有两个对称平衡构型；等号时两分支重合；超过阈值两者均不可实现。这里讨论存在性，并未由静力方程直接断言稳定性。\end{solution}
+\begin{question}\begin{example}[两光滑斜面之间的球]\label{s2:example:4}
+重$G$的球置于V形光滑槽内，左右斜面分别与水平成$\alpha,\beta$，$0<\alpha,\beta<90^\circ$。求两支持力。
+\end{example}
+\fig{fig:s2:example:4:s}{两斜面的倾角从水平线量起，接触法线过球心}{\begin{tikzpicture}
+
+\draw[world](0,2)--(2,0)--(5,1.732);\draw[guide](.2,0)--(5,0);\draw[world](2.166,1.248)circle(1);\fill(2.166,1.248)circle(2pt)node[above]{$O$};\draw[guide](2.166,1.248)--(1.459,.541);\draw[guide](2.166,1.248)--(2.666,.382);\draw(1.3,0)arc(180:135:.7);\node at(1,.3){$\alpha$};\draw(2.9,0)arc(0:30:.9);\node at(3.15,.25){$\beta$};\node at(3.8,2.4){球重 $G$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把斜面倾角换成法线倾角}\par\nobreak
+图\ref{fig:s2:example:4:s}中左法线向右上，与竖直夹角$\alpha$；右法线向左上，与竖直夹角$\beta$。水平、竖直平衡给$N_L\sin\alpha=N_R\sin\beta$，$N_L\cos\alpha+N_R\cos\beta=G$。
+\fig{fig:s2:example:4:p}{两法线与竖直的夹角分别等于对应斜面倾角}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[below left]{$O$};\draw[guide](0,-1.8)--(0,2);\draw[force](0,0)--(.8,.8)node[right]{$N_L$};\draw[force](0,0)--(-.8,1.3856)node[left]{$N_R$};\draw[force](0,0)--(0,-1.8)node[right]{$G$};\draw(0,.6)arc(90:45:.6);\node at(.32,.8){$\alpha$};\draw(0,1)arc(90:120:1);\node at(-.4,1.2){$\beta$};
+\node[align=left]at(4,0){水平投影相消\\竖直投影共同支承 $G$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去一股支持力并检查对称极限}\par\nobreak
+图\ref{fig:s2:example:4:p}由水平式$N_R=N_L\sin\alpha/\sin\beta$，代入竖直式后乘$\sin\beta$，得$N_L(\cos\alpha\sin\beta+\sin\alpha\cos\beta)=G\sin\beta$。分母出现$\sin\beta\cos\alpha+\sin\alpha\cos\beta=\sin(\alpha+\beta)$，所以
+\[
+N_L=\frac{G\sin\beta}{\sin(\alpha+\beta)},\qquad
+N_R=\frac{G\sin\alpha}{\sin(\alpha+\beta)}.
+\]
+两角相等时两力相同；角度均从水平量起，分母应为和角而非差角。\end{solution}
+\begin{question}\begin{example}[水平杆上两环的最大间距]\label{s2:example:5}
+质量均为$m$的两环套在水平杆上，由总长$a$的轻绳连接，绳中点挂质量$M$。环与杆的静摩擦系数$\mu$。求对称平衡时两环最大间距。
+\end{example}
+\fig{fig:s2:example:5:s}{两段绳等长，水平投影之和为两环间距}{\begin{tikzpicture}
+
+\draw[world](0,2)--(5,2);\draw[world](1,2)--(2.5,0)node[midway,left]{$a/2$}--(4,2)node[midway,right]{$a/2$};\draw[world](1,2)circle(.15);\draw[world](4,2)circle(.15);\node[above]at(1,2){$A,m$};\node[above]at(4,2){$B,m$};\fill(2.5,0)circle(3pt)node[below]{$M$};\draw[dim](1,2.8)--(4,2.8)node[midway,above]{$x$};\draw(1.65,2)arc(0:-53.13:.65);\node at(1.9,1.7){$\gamma$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求重物绳力与环的法向力}\par\nobreak
+图\ref{fig:s2:example:5:s}令绳与水平夹角$\gamma$。重物平衡$2T\sin\gamma=Mg$。每环所需水平摩擦$T\cos\gamma=(Mg/2)\cot\gamma$，法向支持$N=(m+M/2)g$。
+以左环为对象，绳拉力指向右下，所以摩擦指左、杆支持力指上；竖直平衡是$N=mg+T\sin\gamma$，不是简单的$N=mg$。利用重物方程$T\sin\gamma=Mg/2$后，才得到所列法向力。
+\fig{fig:s2:example:5:p}{解答过程：水平杆上两环的最大间距}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(0,1.3)node[anchor=south]{$N$};\draw[force](2.5,1)--++(1,-0.8)node[anchor=west]{$T$};\draw[force](2.5,1)--++(-1,0)node[anchor=east]{$f$};\draw[force](2.5,1)--++(0,-1.2)node[anchor=north]{$mg$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用静摩擦不等式限制几何间距}\par\nobreak
+图\ref{fig:s2:example:5:p}由$f\le\mu N$得到$\cot\gamma\le\mu(2m+M)/M$。令$C=\mu(2m+M)/M$，两环间距$x=a\cos\gamma$，随$\cot\gamma$增大而增大，因为$0<\gamma\le\pi/2$，$\cos\gamma=\cot\gamma/\sqrt{1+\cot^2\gamma}$，令 $z=\cot\gamma\ge0$，固定 $a$，对比例函数求导：
+\[
+\frac{\dd}{\dd z}\left[z(1+z^2)^{-1/2}\right]
+=(1+z^2)^{-1/2}
++z\left[-\frac12(1+z^2)^{-3/2}\cdot2z\right]
+=\frac1{(1+z^2)^{3/2}}>0.
+\]
+所以间距随 $\cot\gamma$ 单调增加。最大间距对应静摩擦恰达上限$\cot\gamma=C$，故
+\[
+x_{\max}=\frac{aC}{\sqrt{1+C^2}}.
+\]
+$\mu\to0$时$x_{\max}\to0$，$\mu\to\infty$时趋近$a$，均符合几何。\end{solution}
+\begin{question}\begin{example}[绕球细绳的整体取矩]\label{s2:example:6}
+质量$m_1$、半径$R$的球由长$l$的绳悬挂，绳作用线过球心；同一悬点另有轻绳绕过光滑球并在另一侧竖直悬挂$m_2$。悬点至球心距离$l+R$，球心偏离竖直线角$\theta$。求$\theta$。
+\end{example}
+\fig{fig:s2:example:6:s}{题设：绕球细绳的整体取矩}{\begin{tikzpicture}[scale=.88]\fill(2,3)circle(2pt)node[above]{$O$};\draw[world](1.3,.7)circle(.8);\draw[world](2,3)--(1.533,1.465);\draw[guide](1.533,1.465)--(1.3,.7);\draw[world](2,3)--(2.0992,.7351)arc(2.515:0:.8)--(2.1,-.8);\fill(2.1,-.8)circle(3pt)node[right]{$m_2$};\node[left]at(1.3,.7){$m_1$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选取整体并确定两个力臂}\par\nobreak
+图\ref{fig:s2:example:6:s}把球和绕球绳的受力合并，绳在悬点一侧的拉力对$O$无力矩，竖直端张力为$m_2g$。球心到$O$的水平距离为$(l+R)\sin\theta$，竖直绳作用线距球心为$R$。
+\fig{fig:s2:example:6:p}{整体绕悬点取矩：两个竖直外力分处悬点两侧}{\begin{tikzpicture}
+
+\coordinate(O)at(2,3);\coordinate(C)at(.7,.7);\fill(O)circle(2pt)node[above]{$O$};\fill(C)circle(2pt)node[left]{$C$};\draw[guide](O)--(C)node[midway,left]{$l+R$};\draw[guide](2,-1.8)--(O);\draw[guide](.7,.7)--(3,.7);
+\draw[force](C)--(.7,-.8)node[left]{$m_1g$};\draw[force](3,.7)--(3,-.8)node[right]{$m_2g$};\draw[dim](.7,1.2)--(3,1.2)node[midway,above]{$R$};\draw[dim](.7,-1.3)--(2,-1.3)node[midway,below]{$d$};\draw[dim](2,-1.3)--(3,-1.3)node[midway,below]{$R-d$};\draw(2,2.3)arc(-90:-119.5:.7);\node at(1.7,2.05){$\theta$};\node at(6,.8){$d=(l+R)\sin\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用力矩平衡消元并检查极限}\par\nobreak
+图\ref{fig:s2:example:6:p}对$O$取矩，$m_1g(l+R)\sin\theta=m_2g[R-(l+R)\sin\theta]$。先约去公共$g$并展开右侧：
+\[
+m_1(l+R)\sin\theta=m_2R-m_2(l+R)\sin\theta.
+\]
+将含$\sin\theta$的项移至左边，再除以$(m_1+m_2)(l+R)$，整理得
+\[
+\sin\theta=\frac{m_2R}{(m_1+m_2)(l+R)}.
+\]
+这样避开了球面上分布接触力的逐段积分；当$m_2\to0$，$\theta\to0$。\end{solution}
+\begin{question}\begin{example}[铰接支架中的力随外力变化]\label{s2:example:7}
+节点$P$由一水平轻杆和一与水平成$\alpha$的斜轻杆固定。轻绳从$P$悬挂重$G$物块，对物块施水平力$F$使其缓慢平衡。求杆力和绳张力随$F$的变化。
+\end{example}
+\fig{fig:s2:example:7:s}{水平杆、斜杆与受水平拉力的悬挂物块}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,3);\draw[world](0,2)--(3,2)--(0,0);\draw[world](3,2)--(3.7,.7);\fill(3.7,.7)circle(3pt);\draw[force](3.7,.7)--(4.9,.7)node[right]{$F$};\draw[force](3.7,.7)--(3.7,-.3)node[below]{$G$};\node[above]at(3,2){$P$};\draw(2.35,2)arc(180:213.69:.65);\node at(2.1,1.75){$\alpha$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由物块将绳力分量传到节点}\par\nobreak
+图\ref{fig:s2:example:7:s}中物块受力给绳张力$T=\sqrt{G^2+F^2}$。绳对$P$的力有向右分量$F$和向下分量$G$，无需先求绳倾角。
+先对物块列两个正交方向的平衡：绳在物块处的水平分量必须向左、大小$F$，竖直分量必须向上、大小$G$。由作用与反作用，节点$P$受到的绳力恰为$(F,-G)$；其模长才是$\sqrt{F^2+G^2}$。节点方程应使用这两个分量，不能把整股绳张力误当竖直力。
+\fig{fig:s2:example:7:p}{物块与节点分开画，绳端力按作用与反作用传递}{\begin{tikzpicture}
+
+\begin{scope}
+\fill(0,0)circle(2pt);\draw[force](0,0)--(-.6,1.2)node[left]{$T$};\draw[force](0,0)--(.6,0)node[right]{$F$};\draw[force](0,0)--(0,-1.2)node[right]{$G$};\node at(0,1.8){物块};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill(0,0)circle(2pt)node[below left]{$P$};\draw[force](0,0)--(-2.4,0)node[left]{$N_h$};\draw[force](0,0)--(1.8,1.2)node[right]{$N_s$};\draw[force](0,0)--(.6,-1.2)node[right]{$\bm T_{\text{绳}\to P}$};\draw[guide](.6,-1.2)--(.6,0)node[above]{$F$};\draw[guide](.6,-1.2)--(0,-1.2)node[left]{$G$};\node at(0,1.8){节点};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在节点上求杆力并判断变化趋势}\par\nobreak
+图\ref{fig:s2:example:7:p}斜杆提供向右上方的压力$N_s$，其竖直分量$N_s\sin\alpha=G$，故$N_s=G/\sin\alpha$不变。水平杆拉力$N_h=F+N_s\cos\alpha=F+G\cot\alpha$，随$F$线性增大。绳张力也增大。结论依赖图示斜杆位于$P$左下方，不能脱离支架方向讨论增减。\end{solution}
+\begin{question}\begin{example}[偏心球在两平面上的接触]\label{s2:example:8}
+半径$R$的偏心球在水平面上平衡时接触固连于球的点$A$，在粗糙$30^\circ$斜面上平衡时接触点为$B$，球体标记满足$\angle AOB=30^\circ$，取图示$C$位于$OA$内部的构型，求$OC$。
+\end{example}
+\fig{fig:s2:example:8:s}{同一球的两个接触构型；$A,B,C$ 均为固连标记}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-1.8,0)--(1.8,0);\draw[world](0,1.3)circle(1.3);\draw[guide](0,1.3)--(0,0);\draw[guide](0,1.3)--(.65,.1742);\fill(0,1.3)circle(2pt)node[above]{$O$};\fill(0,.5494)circle(2pt)node[left]{$C$};\node[below]at(0,0){$A$};\node[right]at(.65,.1742){$B$};\draw(0,.8)arc(-90:-60:.5);\node at(.45,.62){$30^\circ$};\node at(0,3){水平面平衡};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[world](-1.85,1.267)--(.95,-.35);\draw[world](0,1.7)circle(1.3);\draw[guide](0,1.7)--(-.65,.5742);\draw[guide](-.65,.5742)--(-.65,2.1);\fill(0,1.7)circle(2pt)node[right]{$O$};\fill(-.65,1.3247)circle(2pt)node[left]{$C$};\node[below left]at(-.65,.5742){$B$};\fill(-1.1258,1.05)circle(1.5pt)node[left]{$A$};\draw[guide](-.65,.5742)--(.7,.5742);\draw(0,.5742)arc(0:-30:.65);\node at(.25,.3){$30^\circ$};\node at(0,3.4){斜面平衡，$BC$ 竖直};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在两个接触构型中确定重力作用线}\par\nobreak
+在图\ref{fig:s2:example:8:s}的球体固连图中，水平面平衡要求$C$在$OA$上。斜面时支持力与摩擦力的合力作用于$B$，要与重力平衡，其合力和重力都应竖直，故$BC$是第二构型的竖直方向。
+\fig{fig:s2:example:8:p}{固连三角形确定偏心距，接触合力须沿 $BC$}{\begin{tikzpicture}
+
+\begin{scope}
+\coordinate(O)at(0,3);\coordinate(C)at(0,1.268);\coordinate(B)at(1.5,.402);\draw[world](O)--(C)--(B)--cycle;\node[left]at(O){$O$};\node[left]at(C){$C$};\node[right]at(B){$B$};\node[right]at(.9,1.5){$R$};\draw(0,2.4)arc(-90:-60:.6);\node at(.35,2.18){$30^\circ$};\draw(1.2,.9216)arc(120:150:.6);\node at(.8,1){$30^\circ$};\node at(.45,1.48){$120^\circ$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill(0,0)circle(2pt)node[below]{$B$};\draw[force](0,0)--(.6,1.0392)node[right]{$N$};\draw[force](0,0)--(-.6,.3464)node[left]{$f$};\draw[flow](0,0)--(0,1.3856)node[above]{$\bm N+\bm f$};\node at(0,-.8){$f/N=\tan30^\circ$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由固连三角形求偏心距并验摩擦}\par\nobreak
+图\ref{fig:s2:example:8:p}中法线$BO$与竖直$BC$成$30^\circ$，又$\angle AOB=30^\circ$，所以$\triangle OBC$在$O,B$的角分别为$30^\circ$和$30^\circ$，其余角为$120^\circ$。在三角形中，$OC$对着$B$角$30^\circ$，$OB=R$对着$C$角$120^\circ$，而不是对着另一$30^\circ$。所以正弦定理给$OC/R=\sin30^\circ/\sin120^\circ=1/\sqrt3$。因此$OC=R/\sqrt3$。斜面平衡还需$\mu\ge\tan30^\circ$；若接触点相对方位取另一构型，应重新作几何判断。\end{solution}
+\begin{question}\begin{example}[两转轴支承圆柱的轴向摩擦]\label{s2:example:9}
+质量$M$的大圆柱由两个反向转动的小圆柱支承，两接触法线与竖直均成$\theta$。小柱接触面的圆周速度大小$w$，方向均沿接触切线向上；大柱沿轴以速度$v$匀速移动而不转动，摩擦系数$\mu$。求轴向拉力。
+\end{example}
+\fig{fig:s2:example:9:s}{横截面中的接触切向运动与垂直截面的轴向运动}{\begin{tikzpicture}
+
+\draw[world](2,1.6703)circle(1.3);\draw[world](.9,0)circle(.7);\draw[world](3.1,0)circle(.7);\draw[guide](.9,0)--(2,1.6703)--(3.1,0);\draw[guide](2,-.3)--(2,2.1);\node[above]at(2,1.6703){$M$};
+\draw[flow](1.285,.5846)--(.617,1.0246)node[left]{$w$};\draw[flow](2.715,.5846)--(3.383,1.0246)node[right]{$w$};\draw(2,1.07)arc(-90:-123.37:.6);\node at(1.68,.82){$\theta$};\draw(2,1.07)arc(-90:-56.63:.6);\node at(2.32,.82){$\theta$};\node[align=left]at(5.7,2){$\odot\ v$：沿轴向纸外\\大柱不转动};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在接触切平面分解相对速度与摩擦}\par\nobreak
+图\ref{fig:s2:example:9:s}每处相对滑动具有轴向$v$和接触切向$w$两个正交分量，故摩擦总量$\mu N$的轴向分量为$\mu Nv/\sqrt{v^2+w^2}$，切向向上分量为$\mu Nw/\sqrt{v^2+w^2}$。
+\fig{fig:s2:example:9:p}{接触切平面分解摩擦，再合成两处竖直支持}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.3,0)--(2.8,0)node[right]{轴向};\draw[axis](0,-1.8)--(0,1.5)node[above]{切向上};\draw[flow](0,0)--(2,-1.2)node[right]{$\bm v_{\rm rel}$};\draw[guide](2,-1.2)--(2,0)node[above]{$v$};\draw[guide](2,-1.2)--(0,-1.2)node[left]{$w$};\draw[force](0,0)--(-1.2,.72)node[left]{$\bm f$};\node at(1,-2.1){$q=\sqrt{v^2+w^2}$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[guide](0,-1.5)--(0,2);\fill(0,0)circle(2pt);\draw[force](0,0)--(.77,1.1692)node[right]{$N$};\draw[force](0,0)--(-.668,.44)node[left]{$f_t=\mu Nw/q$};\draw[guide](.77,1.1692)--(0,1.1692);\node[right]at(.15,1.8){一处接触的截面分量};\node at(0,-2.1){另一处水平分量对称相消};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用两接触的竖直平衡求法向力}\par\nobreak
+图\ref{fig:s2:example:9:p}左图中大柱相对小柱的切向速度向下，故摩擦的切向分量向上；右图显示这一分量的竖直投影为 $f_t\sin\theta$，法向力的竖直投影为 $N\cos\theta$。两接触竖直平衡为$2N\cos\theta+2\mu N[w/\sqrt{v^2+w^2}]\sin\theta=Mg$。令$q=\sqrt{v^2+w^2}$，先从竖直平衡求
+\[
+N=\frac{Mgq}{2(q\cos\theta+\mu w\sin\theta)}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成轴向阻力并检查转向条件}\par\nobreak
+沿轴向两处摩擦均阻碍大柱运动，故拉力等于两轴向分量之和，代入$N$后约去$2q$，解得
+\[
+F=\frac{2\mu Nv}{q}
+=\frac{\mu Mgv}{q\cos\theta+\mu w\sin\theta}.
+\]
+若两轴转向使切向摩擦向下，分母第二项应取负，且分母必须为正。特例$v=w$可直接代入，但不能把两个正交摩擦分量都取成$\mu N$。\end{solution}

@@ -1,0 +1,328 @@
+\section{例题与分析}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[不同初压的两条加热路径]\label{t3-1}
+同种同量理想气体初温均为 $T_a$，初态分别为 $a,a^\prime$。路径一 $a\to b$ 等容；路径二 $a^\prime\to c$ 等容后 $c\to b$ 等温。$T_b>T_a$，且路径二的等容体积大于路径一。比较两路径的功与总热量。见图\ref{fig:t3-1q}。
+\end{example}
+\fig{fig:t3-1q}{不同初压的两条加热路径：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$T$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[guide] (0,0)--(1,1.5) (0,0)--(1,.6);\draw[ray] (1,1.5)--(2,3);\draw[ray] (1,.6)--(2,1.2);\draw[ray] (2,1.2)--(2,3);\node[left] at (1,1.5){$a$};\node[above] at (2,3){$b$};\node[below] at (1,.6){$a^\prime$};\node[right] at (2,1.2){$c$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{只用相同初温和共同末态比较两路径的内能差}\par\nobreak
+图\ref{fig:t3-1q}中两初态温度相同，且气体种类、物质的量相同，所以两路径的初内能相同。末态又同为 $b$，因而
+\[\Delta U_1=\Delta U_2=nC_V(T_b-T_a)>0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两条路径转入压强体积图，保留等温压缩的积分方向}\par\nobreak
+接下来比较功。路径一等容，$W_1=0$。路径二先等容升温，功仍为零；再从 $c$ 到 $b$ 保持 $T_b$，但由较大的 $V_c$ 压缩到较小的 $V_b$。图\ref{fig:t3-1s}将两条路径转为 $p$--$V$ 图，末段箭头明确向左，因此
+\[W_2=nRT_b\int_{V_c}^{V_b}\frac{\dd V}{V}
+=nRT_b\left[\ln\frac V{V_c}\right]_{V_c}^{V_b}
+=nRT_b\ln\frac{V_b}{V_c}<0.\]\fig{fig:t3-1s}{不同初压的两条加热路径：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[ray] (1,1.5)--(1,3);\draw[ray] (2.5,.6)--(2.5,1.2);\draw[ray] plot coordinates {(2.500000,1.200000) (2.476562,1.211356) (2.453125,1.222930) (2.429688,1.234727) (2.406250,1.246753) (2.382812,1.259016) (2.359375,1.271523) (2.335938,1.284281) (2.312500,1.297297) (2.289062,1.310580) (2.265625,1.324138) (2.242188,1.337979) (2.218750,1.352113) (2.195312,1.366548) (2.171875,1.381295) (2.148438,1.396364) (2.125000,1.411765) (2.101562,1.427509) (2.078125,1.443609) (2.054688,1.460076) (2.031250,1.476923) (2.007812,1.494163) (1.984375,1.511811) (1.960938,1.529880) (1.937500,1.548387) (1.914062,1.567347) (1.890625,1.586777) (1.867188,1.606695) (1.843750,1.627119) (1.820312,1.648069) (1.796875,1.669565) (1.773438,1.691630) (1.750000,1.714286) (1.726562,1.737557) (1.703125,1.761468) (1.679688,1.786047) (1.656250,1.811321) (1.632812,1.837321) (1.609375,1.864078) (1.585938,1.891626) (1.562500,1.920000) (1.539062,1.949239) (1.515625,1.979381) (1.492188,2.010471) (1.468750,2.042553) (1.445312,2.075676) (1.421875,2.109890) (1.398438,2.145251) (1.375000,2.181818) (1.351562,2.219653) (1.328125,2.258824) (1.304688,2.299401) (1.281250,2.341463) (1.257812,2.385093) (1.234375,2.430380) (1.210938,2.477419) (1.187500,2.526316) (1.164062,2.577181) (1.140625,2.630137) (1.117188,2.685315) (1.093750,2.742857) (1.070312,2.802920) (1.046875,2.865672) (1.023438,2.931298) (1.000000,3.000000)};\node[left] at (1,1.5){$a$};\node[above] at (1,3){$b$};\node[below] at (2.5,.6){$a^\prime$};\node[right] at (2.5,1.2){$c$};\node[below] at (1,0){$V_b$};\node[below] at (2.5,0){$V_c$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由相同内能差比较总热量，并保留第二路径吸放热的条件}\par\nobreak
+由 $Q=\Delta U+W$ 得
+\[Q_1=nC_V(T_b-T_a)>0,\]
+\[Q_2=nC_V(T_b-T_a)-nRT_b\ln\frac{V_c}{V_b}.\]
+所以
+\[\boxed{W_1>W_2,\qquad Q_1>0,\qquad Q_1>Q_2}.\]
+路径二在等容升温时吸热，在等温压缩时放热。总热量 $Q_2$ 的符号取决于这两部分的大小：当 $C_V(T_b-T_a)>RT_b\ln(V_c/V_b)$ 时为正，反之为负。题设只确定大小顺序，尚不足以断言路径二总体吸热或放热；图中的压缩面积正对应它比路径一少吸收的热量。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[氮气的两种加热方式]\label{t3-2}
+氮气初压 $10^5$Pa，初体积 $0.0082\,\mathrm{m^3}$，从300K升至400K。按刚性双原子理想气体处理，分别求等容和等压加热所需热量，并解释差值。见图\ref{fig:t3-2q}。
+\end{example}
+\fig{fig:t3-2q}{同样的氮气从300K升至400K：固定活塞与恒外压自由活塞对应不同的边界位移}{\begin{tikzpicture}
+
+\foreach \j in {0,1}{\begin{scope}[xshift={5.2*\j*1cm}]\draw[world](0,2.8)--(0,0)--(2.5,0)--(2.5,2.8);\fill[blue!8](0,0)rectangle(2.5,1.5);\draw[very thick](0,1.5)--(2.5,1.5);\node at(1.25,.7){300K};\end{scope}}
+\draw[world,very thick](-.2,1.5)--(.2,1.5) (2.3,1.5)--(2.7,1.5);\node at(1.25,3.4){等容：活塞固定};\draw[guide](5.2,2)--(7.7,2);\draw[flow](6.45,1.5)--(6.45,2.4);\node at(6.45,3.4){等压：活塞上升};\node at(6.45,2.9){外压$p_i$};\node at(3.5,-.7){两实验的末温均为400K};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{由共同初态求组合量并确定相同的内能增量}\par\nobreak
+两种加热从同一初态出发，气体量相同、温升也同为100K。先由初态求出组合量 $nR$，无需分别求 $n$ 和代入 $R$：
+\[nR=\frac{p_iV_i}{T_i}=\frac{10^5\times0.0082}{300}=\frac{820}{300}\,\mathrm{J/K}.\]
+刚性双原子氮气取 $C_V=5R/2$。两种过程的内能增量因此相同，均为
+\[\Delta U=\frac52nR\Delta T=683.33\,\mathrm J.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算固定边界与恒压移动边界的功}\par\nobreak
+等容时边界不动，$W_V=0$；等压时体积增大，$W_p=p_i\Delta V=nR\Delta T$。图\ref{fig:t3-2s}画出两实际路径及同温末态，阴影对应等压过程中多输出的机械功。\fig{fig:t3-2s}{同一初态出发，两末态在400K等温线上；等压段的矩形面积才是额外外功}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.5,0)node[right]{$V/V_i$};\draw[axis](0,0)--(0,4)node[above]{$p/p_i$};\fill[red!10](2,0)rectangle(2.666667,2.4);\draw[flow,blue](2,2.4)--(2,3.2);\draw[flow,red](2,2.4)--(2.666667,2.4);\draw[guide,domain=2:2.666667,samples=60]plot(\x,{6.4/\x});
+\fill(2,2.4)circle(.05)node[left]{$i$};\fill(2,3.2)circle(.05)node[above left]{$f_V$};\fill(2.666667,2.4)circle(.05)node[right]{$f_p$};\node[left]at(0,2.4){$1$};\node[left]at(0,3.2){$4/3$};\node[below]at(2,0){$1$};\node[below]at(2.666667,0){$4/3$};\node at(2.8,-1){$W_p=p_i\Delta V=273.33\,\mathrm J$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由第一定律求两热量，解释额外吸热的去向}\par\nobreak
+\[\boxed{Q_V=683.33\,\mathrm J},\qquad
+\boxed{Q_p=\Delta U+W_p=956.67\,\mathrm J},\]
+\[\boxed{Q_p-Q_V=W_p=nR\Delta T=273.33\,\mathrm J}.\]
+等压末体积为 $V_i(400/300)$，等容末压为 $p_i(400/300)$，两种末态的 $pV$ 相等，因此温度和内能相等，体积却不同。多吸收的273.33J全部传给大气，不能理解为等压气体储存了更多内能。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[弹簧活塞的加热量]\label{t3-3}
+水平缸中双原子理想气体推动轻活塞，外压 $p_0=10^5$Pa，活塞面积 $S=0.05\,\mathrm{m^2}$，外接劲度 $k=5\times10^4\,\mathrm{N/m}$ 的弹簧，初始无形变。缓慢加热使体积从0.015变为 $0.020\,\mathrm{m^3}$，求外功和热量。见图\ref{fig:t3-3q}。
+\end{example}
+\fig{fig:t3-3q}{弹簧活塞的加热量：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(4.7,0) (0,2)--(4.7,2);\fill[blue!6] (.02,.02) rectangle (3,1.98);\fill[pattern=north east lines] (3,0) rectangle (3.13,2);\node at (1.5,1){$p_1,V_1$};\node at (4.1,1){$p_0$};\draw[decorate,decoration={zigzag,segment length=3mm,amplitude=2mm}] (3.15,1)--(5,1);\draw[world] (5,0)--(5,2);\node[above] at (4,1.3){$k$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{把弹簧形变和气体体积用同一活塞位移联系}\par\nobreak
+图\ref{fig:t3-3q}中的弹簧初始无形变，故初压 $p_1=p_0$。设活塞向外移动 $x$，则 $V-V_1=Sx$；活塞缓慢平衡满足 $pS=p_0S+kx$。两式消去 $x$，得到完整路径
+\[p=p_0+\frac{k}{S^2}(V-V_1).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入终体积求末位移与末压}\par\nobreak
+末位移与末压分别为
+\[x_f=\frac{0.020-0.015}{0.05}=0.10\,\mathrm m,\qquad
+p_2=p_0+\frac{kx_f}{S}=2.0\times10^5\,\mathrm{Pa}.\]
+图\ref{fig:t3-3s}的斜直线来自弹簧负载逐渐增大，阴影梯形给出气体总外功。\fig{fig:t3-3s}{矩形面积对应大气功，额外三角形对应弹簧储能；两者构成总外功}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$V/\mathrm{m^3}$};\draw[axis](0,0)--(0,3.4)node[above]{$p/p_0$};\fill[blue!10](3,0)rectangle(4,1.2);\fill[red!12](3,1.2)--(4,2.4)--(4,1.2)--cycle;\draw[flow](3,1.2)--(4,2.4);\fill(3,1.2)circle(.05)node[above left]{1};\fill(4,2.4)circle(.05)node[above]{2};\node[below]at(3,0){$.015$};\node[below]at(4,0){$.020$};\node[left]at(0,1.2){$1$};\node[left]at(0,2.4){$2$};\node at(2.5,-1){$W=p_0\Delta V+kx_f^2/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求斜直线下总功，并按大气与弹簧两项核验}\par\nobreak
+\[\boxed{W=\frac{p_1+p_2}{2}(V_2-V_1)=750\,\mathrm J}.\]
+它也可按能量去向拆开：对大气做功 $p_0\Delta V=500\,\mathrm J$，弹簧储能 $kx_f^2/2=250\,\mathrm J$，两者和仍为750J。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由端点内能差求热量，检查气体并非等压}\par\nobreak
+刚性双原子气体的内能差只由端点决定，故
+\[\Delta U=\frac52(p_2V_2-p_1V_1)
+=\frac52(4000-1500)=6250\,\mathrm J.\]
+由第一定律，$\boxed{Q=\Delta U+W=7000\,\mathrm J}$。虽然有活塞移动，气体并非等压，不能使用 $nC_p\Delta T$；图中压强从 $p_0$ 增至 $2p_0$ 已直接显示了这一点。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[绝热双缸连通与活塞压缩]\label{t3-4}
+两等截面绝热缸由阀相连，左缸有单原子理想气体，初气柱高 $H$、温度 $T_0$，活塞承受恒定外压 $p_i$；右缸刚性、初为真空，容积也为 $SH$。打开阀门后重新平衡，求左气柱高度 $h$ 和末温。忽略连通管容积和活塞摩擦，活塞初末动能均为零。见图\ref{fig:t3-4q}。
+\end{example}
+\fig{fig:t3-4q}{左缸受恒定外负载，右缸为固定真空容积；连接阀使两侧气体可互通}{\begin{tikzpicture}
+\draw[world](0,3)--(0,0)--(2,0)--(2,.2) (2,.4)--(2,3);\draw[world](2,.2)--(4,.2)--(4,0)--(6,0)--(6,2)--(4,2)--(4,.4)--(2,.4);\fill[blue!8](0,0)rectangle(2,2);\draw[very thick](0,2)--(2,2);\node at(1,1){$SH,T_0$};\node at(1,2.7){外负载$p_i$};\node at(5,1){真空$SH$};\node[above]at(3,.4){阀门$K$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{把两缸气体合为封闭系统，只计算真正移动的边界功}\par\nobreak
+取两缸中的全部气体为封闭系统。阀门内的流动属于系统内部，外壁绝热，所以 $Q=0$。右缸刚性，唯一移动的外边界是左活塞；忽略初末动能与摩擦后，外界恒压 $p_i$ 对气体所做的功可由实际位移计算。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在公共末压下将总体积与末温联系}\par\nobreak
+末态左活塞平衡，气压仍为 $p_i$；气体总体积却是左室 $Sh$ 加右室 $SH$。与初态 $SH,T_0$ 比较，
+\[\frac{T_f}{T_0}=\frac{S(h+H)}{SH}=1+\frac hH.\]
+注意这不意味着等压膨胀路径成立；它只是两个平衡端点的状态关系。图\ref{fig:t3-4s}中左活塞实际向下，气体的边界功为 $W=p_iS(h-H)<0$。\fig{fig:t3-4s}{左活塞实际向下，右缸容积始终不变；总体积增加不能直接视为恒外压下的边界膨胀}{\begin{tikzpicture}
+\draw[world](0,3)--(0,0)--(2,0)--(2,.2) (2,.4)--(2,3);\draw[world](2,.2)--(4,.2)--(4,0)--(6,0)--(6,2)--(4,2)--(4,.4)--(2,.4);\fill[blue!8](0,0)rectangle(2,0.8);\draw[very thick](0,0.8)--(2,0.8);\fill[blue!8](4,0)rectangle(6,2);\draw[guide](0,2)--(2,2);\draw[flow](-.9,2)--(-.9,.8)node[midway,left]{$H-h$};\node at(1,.4){$p_i$};\node at(5,1){$p_i,T_f$};\node at(1,2.7){外负载$p_i$};\draw[dim](-.5,0)--(-.5,.8)node[midway,left]{$h$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以恒外压的实际压入功建立内能守恒并联立求解}\par\nobreak
+单原子气体有 $\Delta U=3nR(T_f-T_0)/2$。代入 $Q=0$ 和初态 $nRT_0=p_iSH$，得
+\[\frac32p_iSH\left(\frac{T_f}{T_0}-1\right)=p_iS(H-h).\]
+再代温度关系，化为 $3h/2=H-h$，因此
+\[\boxed{h=\frac25H,\qquad T_f=\frac75T_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对气体占据体积与有功边界位移的区别}\par\nobreak
+核验能量：外界压入功为 $3p_iSH/5$，内能增加同为 $3p_iSH/5$。气体总占据体积增至 $7SH/5$，但实际有功边界却向内移动；右室原有真空空间不是承受外压的活塞边界，不能把总体积增加量直接乘 $p_i$ 当作外功，也不能对整个流动套可逆绝热幂律。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[大气库向小容器充气]\label{t3-5}
+小刚性绝热容器 $A$ 与巨大气库 $B$ 装有同种刚性双原子理想气体，初温均为30$^\circ$C，初压 $p_B=2p_A$。缓慢开阀充气至两边压强相等，$B$ 的温度、压强视为恒定。忽略入口动能和容器壁热容，求 $A$ 的末温和气体量之比。见图\ref{fig:t3-5q}。
+\end{example}
+\fig{fig:t3-5q}{大气库向小容器充气：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (2,2) (4,-.5) rectangle (7,2.5);\draw[flow] (4,1)--(2,1);\node at (1,1){$A:p_A,T_0$};\node[align=center] at (5.5,1){巨大气库 $B$\\$2p_A,T_0$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{对小容器设固定控制体，保留随物质流入的能量}\par\nobreak
+小容器 $A$ 虽刚性绝热，物质的量却在增加，因此不能使用固定 $n$ 的绝热关系。按图\ref{fig:t3-5s}取包围 $A$ 的固定控制体，外壁不做体积功，入口气体带入的能量则必须保留。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恒定气库温度写每摩尔流入焓与累计能量}\par\nobreak
+每摩尔入口气体的内能为 $C_VT_0$，上游还做 $RT_0$ 的推动功，所以流入能量为 $C_pT_0$。气库巨大，$T_0=303.15\,\mathrm K$ 恒定，进入量为 $n_f-n_i$，故
+\[n_fC_VT_f-n_iC_VT_0
+=\int_0^{n_f-n_i}C_pT_0\,\dd n_{\text{入}}
+=C_pT_0[n_{\text{入}}]_0^{n_f-n_i}
+=(n_f-n_i)C_pT_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将末压条件与固定体积写成第二个独立方程}\par\nobreak
+停止充气时末压为 $2p_A$，而 $A$ 体积不变，状态方程还给出 $n_fT_f=2n_iT_0$。\fig{fig:t3-5s}{小容器体积不变，固定控制体内气体量增加；气库以同一入口温度持续供给焓}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(2,2.5) (4,0)rectangle(6,2.5) (9,-.4)rectangle(12,2.9);\draw[guide,rounded corners](3.8,-.2)rectangle(6.2,2.7);\node[align=center]at(1,1.3){初态$A$\\$n_i,T_0$\\$p_A$};\node[align=center]at(5,1.3){末态$A$\\$n_f,T_f$\\$2p_A$};\node[align=center]at(10.5,1.3){气库$B$\\$2p_A,T_0$\\保持不变};\draw[flow](9,1.3)--(6.1,1.3)node[midway,above]{$(n_f-n_i)C_pT_0$};\node at(1,-.7){$V_A$};\node at(5,-.7){$V_A$};\node at(5,-1.5){$Q=0,\quad W_{\text{壁}}=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去末温求进入量，再回代求末温并核验}\par\nobreak
+令 $r=n_f/n_i$，利用端点关系将能量式左边化为 $n_iC_VT_0$，得到
+\[C_V=(r-1)C_p,\qquad r=1+\frac{C_V}{C_p}.\]
+对刚性双原子气体 $C_V/C_p=5/7$，所以
+\[\boxed{\frac{n_f}{n_i}=\frac{12}{7},\qquad T_f=\frac{2}{12/7}T_0=\frac76T_0
+=353.675\,\mathrm K\simeq80.5^\circ\mathrm C}.\]
+末态气体量只增加到 $12/7$ 倍，温度却增加到 $7/6$ 倍，两因素乘积恰为2，符合末压加倍。温度高于气库不需要额外热源，入口推动功已包含在流入焓中；“缓慢开阀”也不等于容器与气库始终同温。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[自由膨胀后再绝热压缩]\label{t3-6}
+绝热刚性容器分为等容的两室，左室氦气初态为 $V_0,T_0=273.15$K，右室真空。撤掉隔板，自由膨胀平衡后，将一侧壁改为绝热活塞，再可逆绝热压缩到 $V_0$。求最终温升。见图\ref{fig:t3-6q}。
+\end{example}
+\fig{fig:t3-6q}{自由膨胀后再绝热压缩：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (5,2);\draw[thick] (2.5,0)--(2.5,2);\node at (1.25,1){He：$V_0,T_0$};\node at (3.75,1){真空 $V_0$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{用刚性、绝热和真空边界求自由膨胀末态}\par\nobreak
+先把两个过程分开。撤去隔板后，整个外容器仍刚性绝热；气体扩散进入真空，外界阻力为零，故第一步 $Q_1=W_1=0$。理想气体内能不变，平衡后仍为 $T_0$，体积为 $2V_0$，压强降为初压的一半。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{辨明两步不同的约束，只对第二步使用可逆绝热关系}\par\nobreak
+图\ref{fig:t3-6s}的虚线只连接第一步的两个平衡态，实际扩散中不存在一条均匀气体的准静态状态曲线。随后装上活塞并可逆绝热压缩，这一步才可用泊松关系。\fig{fig:t3-6s}{自由膨胀只连接初末平衡态；从$B$起的实线才是可逆绝热压缩路径}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.5,0)node[right]{$V/V_0$};\draw[axis](0,0)--(0,3.3)node[above]{$p/p_i$};\draw[guide,->](1.5,1.5)--(3,.75);\draw[flow,blue,domain=3:1.5,samples=100]plot(\x,{.75*(3/\x)^(5/3)});\fill(1.5,1.5)circle(.05)node[left]{$A$};\fill(3,.75)circle(.05)node[right]{$B$};\fill(1.5,2.381102)circle(.05)node[above]{$C$};\node[below]at(1.5,0){$1$};\node[below]at(3,0){$2$};\node[left]at(0,1.5){$1$};\node[left]at(0,.75){$1/2$};\node[left]at(0,2.381102){$2^{2/3}$};\node at(2,-1){虚线不表示实际准静态路径};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从两倍体积出发求压回原体积后的温升}\par\nobreak
+氦为单原子气体，$\gamma=5/3$。从体积 $2V_0$ 压回 $V_0$，
+\[T_fV_0^{2/3}=T_0(2V_0)^{2/3},\qquad T_f=2^{2/3}T_0.\]
+所以
+\[\boxed{T_f-T_0=(2^{2/3}-1)\times273.15\,\mathrm K\simeq160.5\,\mathrm K}.\]
+最终温度约为433.6K。图中压缩末点位于同体积初态之上，其压强同样增至初压的 $2^{2/3}$ 倍；外界输入的压缩功全部成为内能增加。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以熵增说明体积复原仍未恢复原状态}\par\nobreak
+第一步熵增加 $nR\ln2$，第二步可逆绝热熵不变，故最后并未恢复初态。体积恢复只能说明几何边界复原，不能据此令温度或总外功也恢复为零。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[双缸数据的自洽性检验]\label{t3-7}
+两等截面的水平相向气缸以轻杆连接活塞，外部真空，活塞最初固定且静止，随后释放。初始左室气体4g、20L、1atm、300K，右室同种气体12g、20L、300K。左壁绝热，右室与300K恒温热源接触；气体比定容热容为 $4\,\mathrm{J/(g\,K)}$。有人给出末态：左室15L、右室25L，杆最终静止。取1atm为 $10^5$Pa。先按这些端点计算右室热量，再检验全部条件能否同时成立。见图\ref{fig:t3-7q}。
+\end{example}
+\fig{fig:t3-7q}{两活塞由同一根杆连接，外部真空；右气室与300K恒温热源接触}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(3,0) (0,2)--(3,2) (4.8,0)--(8,0)--(8,2)--(4.8,2);\fill[blue!8](0,0)rectangle(2,2);\fill[red!6](6,0)rectangle(8,2);\draw[very thick](2,0)--(2,2) (6,0)--(6,2);\draw[world](2,1)--(6,1);\node[align=center]at(1,1){4g，20L\\1atm，300K};\node[align=center]at(7,1){12g，20L\\300K};\draw[world](9,0)rectangle(12,2);\node[align=center]at(10.5,1){恒温热源\\300K};\draw[world](8,1)--(9,1);\node at(4,2.6){外部真空，杆初始固定};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{暂用给定末态和等面积活塞平衡求两室末压、末温}\par\nobreak
+先暂按给定端点作计算，再检查能否实现。右室气体量是左室的3倍，初温、初体积相同，故右初压为3atm。右室始终接触300K恒温热源，给定末体积25L，对应末压
+\[p_{Rf}=3\times\frac{20}{25}=2.4\,\mathrm{atm}.\]
+两活塞等截面、外部真空，杆最终静止要求两气压相等。因此左室末温为
+\[T_{Lf}=300\frac{(2.4)(15)}{(1)(20)}=540\,\mathrm K.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先按端点内能差求形式上的热量需求}\par\nobreak
+左室绝热，内能增加 $\Delta U_L=4\times4\times(540-300)=3840\,\mathrm J$；右室温度不变，$\Delta U_R=0$。
+
+取两室气体、两活塞和杆为整体，初末机械动能均为零，外部真空无压力功，故形式上右室应从热源吸热 $Q_R=3840\,\mathrm J$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扩大到两气室与热源的整体，准备熵检验}\par\nobreak
+能量守恒只是必要条件。图\ref{fig:t3-7s}要求将两室和热源的熵变一起相加，进一步检查方向条件。\fig{fig:t3-7s}{按给定端点绘制的两缸与热源；气体、杆和热源共同构成外界无交换的整体}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(3,0) (0,2)--(3,2) (4.8,0)--(8,0)--(8,2)--(4.8,2);\fill[blue!8](0,0)rectangle(1.5,2);\fill[red!6](5.5,0)rectangle(8,2);\draw[very thick](1.5,0)--(1.5,2) (5.5,0)--(5.5,2);\draw[world](1.5,1)--(5.5,1);\draw[guide](2,0)--(2,2) (6,0)--(6,2);\node[align=center]at(.75,1){15L\\540K};\node[align=center]at(6.75,1){25L\\300K};\draw[world](9,0)rectangle(12,2);\node[align=center]at(10.5,1){恒温热源\\300K};\draw[flow,red](9,1)--(8.1,1)node[midway,above]{$Q_R$};\draw[guide,rounded corners](-.4,-.8)rectangle(12.4,2.7);
+\node at(.75,-.4){$\Delta S_L>0$};\node at(6.75,-.4){$\Delta S_R>0$};\node at(10.5,-.4){$\Delta S_{\rm source}<0$};\node at(6,-1.5){虚线为两活塞初位置；末态是待检验的端点假设};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用各室的质量热容与气体量求熵差}\par\nobreak
+左室 $m_Lc_V=16\,\mathrm{J/K}$，由初态求得 $n_LR=p_iV_i/T_i=20/3\,\mathrm{J/K}$，故
+\[\Delta S_L=16\ln\frac{540}{300}+\frac{20}{3}\ln\frac{15}{20}
+=7.4867\,\mathrm{J/K}.\]
+右室 $n_RR=20\,\mathrm{J/K}$，温度不变，
+\[\Delta S_R=20\ln\frac{25}{20}=4.4629\,\mathrm{J/K}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入热源熵减并检验总熵符号}\par\nobreak
+300K热源失去3840J，熵变为 $\Delta S_{\text{源}}=-3840/300=-12.8\,\mathrm{J/K}$，所以
+\[\boxed{\Delta S_{\text{总}}=7.4867+4.4629-12.8=-0.8504\,\mathrm{J/K}<0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分形式能量结果与真实可实现过程}\par\nobreak
+总熵减少与第二定律矛盾，故给出的全部条件不能同时成立。$3840\,\mathrm J$ 只能作为这些端点所要求的形式能量结果，不能称为真实过程中实际吸收的热量。
+左室可能经历不可逆运动，单凭它不满足可逆绝热关系并不足以否定末态；总熵检验才是在允许不可逆的前提下给出的矛盾。若要构造可实现过程，必须改变端点、热源条件或外部能量交换，不能保留全部给定条件。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[两等压两绝热的循环]\label{t3-8}
+理想气体作图\ref{fig:t3-8q}中的循环：$A\to B$ 高压等压吸热，$B\to C$ 可逆绝热膨胀，$C\to D$ 低压等压放热，$D\to A$ 可逆绝热压缩。$T_B=400$K，$T_C=300$K，热容恒定。求效率。
+\end{example}
+\fig{fig:t3-8q}{两等压两绝热的循环：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[ray] (1,2.0528)--(2,2.0528);\draw[ray] plot coordinates {(2.000000,2.052800) (2.016863,2.024275) (2.033725,1.996379) (2.050587,1.969093) (2.067450,1.942398) (2.084313,1.916278) (2.101175,1.890716) (2.118037,1.865695) (2.134900,1.841199) (2.151763,1.817214) (2.168625,1.793725) (2.185487,1.770718) (2.202350,1.748180) (2.219213,1.726097) (2.236075,1.704457) (2.252937,1.683248) (2.269800,1.662458) (2.286663,1.642076) (2.303525,1.622091) (2.320387,1.602492) (2.337250,1.583269) (2.354113,1.564412) (2.370975,1.545913) (2.387837,1.527761) (2.404700,1.509947) (2.421563,1.492464) (2.438425,1.475302) (2.455287,1.458454) (2.472150,1.441911) (2.489013,1.425667) (2.505875,1.409714) (2.522737,1.394044) (2.539600,1.378651) (2.556463,1.363529) (2.573325,1.348670) (2.590187,1.334068) (2.607050,1.319718) (2.623913,1.305613) (2.640775,1.291748) (2.657637,1.278116) (2.674500,1.264714) (2.691363,1.251535) (2.708225,1.238574) (2.725087,1.225827) (2.741950,1.213288) (2.758813,1.200954) (2.775675,1.188819) (2.792537,1.176878) (2.809400,1.165129) (2.826263,1.153566) (2.843125,1.142186) (2.859987,1.130984) (2.876850,1.119957) (2.893713,1.109101) (2.910575,1.098412) (2.927437,1.087887) (2.944300,1.077523) (2.961163,1.067316) (2.978025,1.057262) (2.994887,1.047360) (3.011750,1.037604) (3.028613,1.027994) (3.045475,1.018525) (3.062337,1.009195) (3.079200,1.000000)};\draw[ray] (3.0792,1)--(1.5396,1);\draw[ray] plot coordinates {(1.539600,1.000000) (1.531169,1.009194) (1.522738,1.018524) (1.514306,1.027993) (1.505875,1.037604) (1.497444,1.047359) (1.489013,1.057262) (1.480581,1.067315) (1.472150,1.077523) (1.463719,1.087887) (1.455288,1.098412) (1.446856,1.109100) (1.438425,1.119956) (1.429994,1.130984) (1.421563,1.142185) (1.413131,1.153566) (1.404700,1.165129) (1.396269,1.176878) (1.387838,1.188818) (1.379406,1.200953) (1.370975,1.213288) (1.362544,1.225827) (1.354113,1.238574) (1.345681,1.251535) (1.337250,1.264714) (1.328819,1.278116) (1.320388,1.291747) (1.311956,1.305612) (1.303525,1.319717) (1.295094,1.334068) (1.286663,1.348669) (1.278231,1.363528) (1.269800,1.378651) (1.261369,1.394044) (1.252938,1.409713) (1.244506,1.425667) (1.236075,1.441911) (1.227644,1.458453) (1.219213,1.475302) (1.210781,1.492463) (1.202350,1.509947) (1.193919,1.527760) (1.185488,1.545912) (1.177056,1.564412) (1.168625,1.583268) (1.160194,1.602491) (1.151763,1.622090) (1.143331,1.642075) (1.134900,1.662457) (1.126469,1.683247) (1.118038,1.704456) (1.109606,1.726096) (1.101175,1.748179) (1.092744,1.770718) (1.084313,1.793724) (1.075881,1.817213) (1.067450,1.841198) (1.059019,1.865694) (1.050588,1.890715) (1.042156,1.916278) (1.033725,1.942398) (1.025294,1.969092) (1.016863,1.996378) (1.008431,2.024274) (1.000000,2.052799)};\node[above] at (1,2.0528){$A$};\node[above] at (2,2.0528){$B$};\node[right] at (3.0792,1){$C$};\node[below] at (1.5396,1){$D$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{先确认只有两等压段交换热量，写出真正吸放热量}\par\nobreak
+先辨认热交换段。$AB$ 等压升温，吸热 $Q_h=nC_p(T_B-T_A)$；$CD$ 等压降温，放热绝对值 $Q_c=nC_p(T_C-T_D)$。另两段可逆绝热，均不交换热量，故效率为 $1-Q_c/Q_h$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同一压强比连接两条绝热线的温度倍率}\par\nobreak
+记两等压线分别为 $p_H,p_L$。由 $T^\gamma p^{1-\gamma}=\text{常量}$，$BC$ 和 $DA$ 跨越同一对压强，因而
+\[\frac{T_C}{T_B}=\left(\frac{p_L}{p_H}\right)^{(\gamma-1)/\gamma}
+=\frac{T_D}{T_A}.\]
+题给 $T_C/T_B=300/400=3/4$。图\ref{fig:t3-8s}中这一共同倍率把高压段的两个端点温度分别映到低压段端点。\fig{fig:t3-8s}{两绝热线给相同温度倍率，分别把高压等压段的两端映到低压段}{\begin{tikzpicture}
+
+\begin{scope}[x=2.1cm,y=1.25cm]
+\draw[axis](.3,0)--(4,0)node[right]{$V$};\draw[axis](.3,0)--(.3,3.1)node[above]{$p$};\draw[flow,red](1,2)--(2,2);\draw[flow,blue,domain=2:3.079201,samples=90]plot(\x,{2*(2/\x)^(5/3)});\draw[flow,blue](3.079201,.9742786)--(1.5396007,.9742786);\draw[flow,red,domain=1.5396007:1,samples=90]plot(\x,{2/\x^(5/3)});
+\node[above left]at(1,2){$A:T_A$};\node[above right]at(2,2){$B:400\,\mathrm K$};\node[below right]at(3.079201,.9742786){$C:300\,\mathrm K$};\node[below left]at(1.5396007,.9742786){$D:T_D$};\draw[guide](.3,2)--(1,2) (.3,.9742786)--(1.5396007,.9742786);\node[left]at(.3,2){$p_H$};\node[left]at(.3,.9742786){$p_L$};\end{scope}
+\node at(4,-1){$T_C/T_B=T_D/T_A=3/4$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把共同倍率转为两等压段的温差比，从而求效率}\par\nobreak
+于是 $T_C=3T_B/4,T_D=3T_A/4$，两等压段的温差也成相同比例：
+\[T_C-T_D=\frac34(T_B-T_A),\qquad \frac{Q_c}{Q_h}=\frac34.\]
+故
+\[\boxed{\eta=1-\frac{Q_c}{Q_h}=\frac14=25\%}.\]
+无需知道 $T_A$、$T_D$ 的具体值，也不必指定 $\gamma$ 的数值；共同压比已经使未知量消去。题图选 $\gamma=5/3$ 绘制曲线，只用于展示形状。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明温度比来自绝热线，并检查所用循环类型}\par\nobreak
+这里结果形式恰含 $1-300/400$，但400K、300K是同一绝热线两端的气体温度，并不是这个循环的两个恒温热源。推导依赖两等压段的温差比例，不能据外形把本循环直接当作卡诺循环。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[相似三角循环的效率]\label{t3-9}
+同一种理想气体作两个循环 $A_i\to B_i\to C_i\to A_i$，$i=1,2$。其中 $A_i=(V_1,k_iV_1)$、$B_i=(V_2,k_iV_2)$、$C_i=(V_2,k_iV_1)$，$V_2>V_1$、$k_1>k_2>0$。求两循环效率并比较。见图\ref{fig:t3-9q}，$C_V$ 恒定。
+\end{example}
+\fig{fig:t3-9q}{相同体积区间内的两个三角循环分开绘制，左右使用同一压强尺度}{\begin{tikzpicture}
+
+\foreach \j/\kk/\id in {0/.9/1,1/.4/2}{\begin{scope}[xshift={6.5*\j*1cm}]\draw[axis](0,0)--(4.5,0)node[right]{$V$};\draw[axis](0,0)--(0,3.5)node[above]{$p$};\draw[flow](1,\kk)--(3,{3*\kk})--(3,\kk)--(1,\kk);\node[left]at(1,\kk){$A_\id$};\node[right]at(3,{3*\kk}){$B_\id$};\node[right]at(3,\kk){$C_\id$};\node[below]at(1,0){$V_1$};\node[below]at(3,0){$V_2$};\node at(2,4){$k_\id$};\end{scope}}
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{逐边检查内能与功的符号，先确定吸热只来自斜边}\par\nobreak
+求效率前先确认哪些边吸热。在斜边 $A_iB_i$ 上，$p=k_iV$，随 $V$ 增加，$pV=k_iV^2$ 增加，故 $\Delta U>0,W>0,Q>0$。在 $B_iC_i$ 上体积不变、压强降低，故放热；在 $C_iA_i$ 上等压压缩且降温，$\Delta U,W$ 均负，也放热。因此吸热量只来自斜边。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从实际三角形面积求每周净功}\par\nobreak
+图\ref{fig:t3-9q}的循环为顺时针，净功等于三角形面积。底边长 $V_2-V_1$，竖直高为 $k_i(V_2-V_1)$，所以
+\[W_i=\frac12k_i(V_2-V_1)^2.\]
+图\ref{fig:t3-9s}将纵轴改为 $p/k_i$，两个三角形重合，表明净功和吸热量都可能按 $k_i$ 同比变化；仍须计算吸热量才能判断效率。\fig{fig:t3-9s}{相似三角循环的效率：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V$};\draw[axis] (0,0)--(0,3.5) node[above]{$p/k_i$};\node[below left] at (0,0){$O$};\fill[blue!15] (1,1)--(3,3)--(3,1)--cycle;\draw[ray] (1,1)--(3,3);\draw[ray] (3,3)--(3,1);\draw[ray] (3,1)--(1,1);\node at (2.6,3.8){两个循环归一化后重合};\node[below left] at (1,1){$A_i$};\node[above] at (3,3){$B_i$};\node[right] at (3,1){$C_i$};\draw[guide] (1,0)--(1,.8) (3,0)--(3,.8);\node[below] at (1,0){$V_1$};\node[below] at (3,0){$V_2$};\node at (2.3,1.4){$W_i/k_i$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{独立计算斜边的吸热量}\par\nobreak
+斜边的功与内能差分别为
+\[W_{A_iB_i}=k_i\int_{V_1}^{V_2}V\,\dd V
+=k_i\left[\frac{V^2}{2}\right]_{V_1}^{V_2}
+=\frac{k_i}{2}(V_2^2-V_1^2),\qquad
+\Delta U_{A_iB_i}=\frac{C_V}{R}k_i(V_2^2-V_1^2).\]
+因此
+\[Q_{hi}=k_i\left(\frac{C_V}{R}+\frac12\right)(V_2^2-V_1^2).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取净功与吸热量之比，核对纵向缩放与小循环极限}\par\nobreak
+将 $V_2^2-V_1^2=(V_2-V_1)(V_2+V_1)$ 约去，得到
+\[\boxed{\eta_1=\eta_2=\frac{V_2-V_1}{(2C_V/R+1)(V_2+V_1)}}.\]
+虽然 $k_1>k_2$ 使第一个循环每周输出功更大，但它每周吸热量也按同一倍数增加，故效率相等。若 $V_2\to V_1$，净功相对于吸热量更快趋零，效率趋零；这一极限也与图中逐渐收缩的三角形一致。
+\end{solution}

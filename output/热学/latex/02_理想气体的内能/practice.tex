@@ -1,0 +1,45 @@
+\section{练习}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[方均根速率与温度]\label{t2-11}
+氦与氮气处于同一温度 $T$。摩尔质量分别为4g/mol与28g/mol。求二者平均平动动能之比、方均根速率之比；若氮气的数密度是氦的两倍，求压强比。见图\ref{fig:t2-11q}。
+\end{drill}
+\fig{fig:t2-11q}{相同体积、同温度的示意比较；每个单点为一个氦原子，每个双点为一个氮分子}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,2);\draw[world](5,0)rectangle(8,2);\foreach \xx in {.6,1.5,2.4}{\foreach \yy in {.6,1.4}{\fill[blue](\xx,\yy)circle(.055);}}
+\foreach \xx in {5.6,6.5,7.4}{\foreach \yy in {.35,.8,1.25,1.7}{\draw[red](\xx,\yy)--({\xx+.16},\yy);\fill[red](\xx,\yy)circle(.045);\fill[red]({\xx+.16},\yy)circle(.045);}}
+\node[align=center]at(1.5,-.8){He：$T,n_N$\\$\mu=4\,\mathrm{g/mol}$};\node[align=center]at(6.5,-.8){$\mathrm{N_2}$：$T,2n_N$\\$\mu=28\,\mathrm{g/mol}$};
+
+\end{tikzpicture}}
+\hyperref[sol:t2-11]{详解见第\pageref{sol:t2-11}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[同一初末态的两条路径]\label{t2-12}
+1mol单原子气体从 $A(V_0,p_0)$ 到 $C(2V_0,2p_0)$。路径一先等容到 $B(V_0,2p_0)$ 再等压到 $C$；路径二沿直线 $AC$。求两条路径的内能变化、功与热量。见图\ref{fig:t2-12q}。
+\end{drill}
+\fig{fig:t2-12q}{题设：两条从$A$到$C$的路径，一条经$B$，一条为直线}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$V/V_0$};\draw[axis](0,0)--(0,4.8)node[above]{$p/p_0$};\draw[flow,blue](2,2)--(2,4)--(4,4);\draw[flow,red](2,2)--(4,4);\fill(2,2)circle(.05)node[left]{$A$};\fill(2,4)circle(.05)node[above left]{$B$};\fill(4,4)circle(.05)node[above right]{$C$};\node[below]at(2,0){$1$};\node[below]at(4,0){$2$};\node[left]at(0,2){$1$};\node[left]at(0,4){$2$};
+
+\end{tikzpicture}}
+\hyperref[sol:t2-12]{详解见第\pageref{sol:t2-12}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[刚性绝热容器中的电功]\label{t2-13}
+绝热刚性容器中有2mol单原子理想气体，内部电阻由外部电源输入600J，忽略电阻储能。求气体温升、压强比及边界体积功；初温为300K，取 $R=8.31$。见图\ref{fig:t2-13q}。
+\end{drill}
+\fig{fig:t2-13q}{刚性绝热容器中的电功：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (4,2.5);\draw[guide,rounded corners] (-.2,-.2) rectangle (4.2,2.7);\node[align=center] at (2,1.6){刚性绝热容器\\$2\,\mathrm{mol},300\,\mathrm K$};\draw[decorate,decoration={zigzag,segment length=2mm,amplitude=1mm}] (1,.5)--(3,.5);\draw (1,.5)--(1,-.6) (3,.5)--(3,-.6);\draw[flow] (2,-1.2)--(2,-.4);\node[right] at (2.2,-1){电功600J};
+\end{tikzpicture}}
+\hyperref[sol:t2-13]{详解见第\pageref{sol:t2-13}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[混合气体的绝热末温]\label{t2-14}
+两个刚性绝热容器由阀相连，分别装有1mol氦气、300K和1mol氮气、600K，体积均为 $V$。打开阀门，忽略反应和分子间作用，氮气按刚性双原子处理。求末温与末压。见图\ref{fig:t2-14q}。
+\end{drill}
+\fig{fig:t2-14q}{两个刚性绝热容器由阀门连通；氦与氮的初温、物质的量和所占体积分别给出}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,2.4) (4,0)rectangle(7,2.4);\draw[world](3,1.2)--(4,1.2);\draw[world](3.3,1)--(3.7,1.4)--(3.7,1)--(3.3,1.4)--cycle;\node[above]at(3.5,1.6){$K$};\draw[guide,rounded corners](-.25,-.25)rectangle(7.25,2.65);\node[align=center]at(1.5,1.2){He\\$1\,\mathrm{mol},300\,\mathrm K$\\$V$};\node[align=center]at(5.5,1.2){$\mathrm{N_2}$\\$1\,\mathrm{mol},600\,\mathrm K$\\$V$};
+
+\end{tikzpicture}}
+\hyperref[sol:t2-14]{详解见第\pageref{sol:t2-14}页}。
+\end{minipage}

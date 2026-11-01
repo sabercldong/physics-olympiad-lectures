@@ -1,0 +1,123 @@
+\section{从惯性系到平移加速系}
+\subsection{相对加速度与惯性力}
+加速车厢中的研究对象往往同车体具有简单的位置关系，选车为参考系可以减少几何变量。但参考系选择不能改变真实相互作用，必须先把运动学变换写清。设车厢只平移、不转动，原点在地面惯性系中的位置为 $\bm R(t)$，物体相对车厢位置为 $\bm r'$，则 $\bm r=\bm R+\bm r'$。对同一时间求两次导数，得到 $\bm a=\bm a_0+\bm a'$。
+
+\fig{n2deep:frame}{两个原点与同一个物体构成位置矢量三角形}{\begin{tikzpicture}
+\coordinate(O)at(0,0);\coordinate(C)at(3,0);\coordinate(P)at(4.5,2);
+\draw[axis](O)--(1.5,0);\draw[axis](O)--(0,1.5);\draw[axis](C)--(4.5,0);\draw[axis](C)--(3,1.5);
+\draw[flow,blue](O)--(C)node[midway,below]{$\bm R(t)$};\draw[flow,blue](C)--(P)node[midway,right]{$\bm r'$};\draw[flow,red](O)--(P)node[midway,above]{$\bm r$};\fill(P)circle(2pt)node[above]{$P$};\node[below left]at(O){$O$};\node[below]at(C){$O'$};\node at(2,2.6){两组坐标轴始终平行};
+\end{tikzpicture}}
+图\ref{n2deep:frame}从固定原点 $O$ 到物体 $P$ 有两条等价的矢量路径：直接沿红箭头到达，或先到移动原点 $O'$，再沿蓝色相对位置到达。由于坐标轴不转动，求导时基矢不变，位置关系逐次变为 $\bm v=\dot{\bm R}+\bm v'$ 和 $\bm a=\ddot{\bm R}+\bm a'$。因此惯性力中的加速度是参考系原点的 $\ddot{\bm R}$，不是物体自己的相对加速度。
+
+在地面系用 $\sum\bm F=m\bm a$，移项后可写为
+\begin{equation}\label{n2eq-frame}
+\sum\bm F-m\bm a_0=m\bm a'.
+\end{equation}
+附加的 $-m\bm a_0$ 称为平移惯性力。它不是某个接触物体或场对该物体的真实作用，没有第三定律意义上的反作用力；它记录的是参考系加速所带来的描述差别。在地面系不用它，在车厢系才把它同真实力一起列入式\eqref{n2eq-frame}，不能在一个方程中同时用对地加速度又添加惯性力。
+
+\fig{n2t-frame}{同一水平加速过程的两种受力描述}{\begin{tikzpicture}
+\fill(-2,0)circle(2pt);\draw[force,blue](-2,0)--(-.7,0)node[right]{$F$};\draw[flow](-2,-.7)--(-.7,-.7)node[right]{$a=a_0+a'$};\node at(-1.8,1){地面系};
+\fill(2,0)circle(2pt);\draw[force,blue](2,0)--(3.3,0)node[right]{$F$};\draw[force,red](2,0)--(.7,0)node[left]{$ma_0$};\node at(2,1){平移车厢系};\node at(2,-.9){$F-ma_0=ma'$};
+\end{tikzpicture}}
+图\ref{n2t-frame}左侧合力决定完整加速度，右侧形式决定相对加速度。若物体相对车厢静止，应令 $\bm a'=0$；若沿车内斜面滑动，$\bm a'$ 就沿斜面，不能仍把所有方向都写成平衡。
+
+\subsection{有效重力及其使用范围}
+把重力与平移惯性力合并，定义 $\bm g_{\rm eff}=\bm g-\bm a_0$。在平移车厢内相对平衡的悬球，悬线沿有效重力反向；接触支持和摩擦也按这一有效载荷调整。水平加速度大小为 $a_0$ 时，$|\bm g_{\rm eff}|=\sqrt{g^2+a_0^2}$。竖直向上加速时，有效重力向下、大小为 $g+a_0$；自由落体平移系中有效重力为零，失重并不表示真实重力消失。
+
+\fig{n2deep:effective}{水平加速、竖直加速和自由落体对应不同的有效重力}{\begin{tikzpicture}
+\begin{scope}\draw[flow,red](0,0)--(0,-1.7)node[right]{$\bm g$};\draw[flow,blue](0,0)--(-1.2,0)node[above]{$-\bm a_0$};\draw[flow,green!50!black](0,0)--(-1.2,-1.7)node[below]{$\bm g_{\rm eff}$};\draw[guide](-1.2,0)--(-1.2,-1.7)--(0,-1.7);\node at(-.5,.8){向右加速};\end{scope}
+\begin{scope}[xshift=3.5cm]\draw[flow,red](0,0)--(0,-1.7)node[left]{$\bm g$};\draw[flow,blue](0,-1.7)--(0,-2.5)node[right]{$-\bm a_0$};\draw[flow,green!50!black](.9,0)--(.9,-2.5)node[right]{$g+a_0$};\node at(.4,.8){向上加速};\end{scope}
+\begin{scope}[xshift=7.5cm]\draw[flow,red](0,0)--(0,-1.7)node[left]{$\bm g$};\draw[flow,blue](.45,-1.7)--(.45,0)node[right]{$-\bm a_0$};\node at(.2,-2.4){$\bm g_{\rm eff}=0$};\node at(.2,.8){自由落体};\end{scope}
+\end{tikzpicture}}
+图\ref{n2deep:effective}把 $\bm g-\bm a_0$ 的相减画成首尾相接。左图的有效重力斜向左下，悬球要相对静止，张力必须沿其反向；中图有效重力增强，秤的支持力相应增大；右图两矢量抵消，相对自由质点满足 $\bm a'=0$，但地面观察者仍测得真实加速度 $\bm g$。零有效重力也不保证任意物体都相对车厢静止，还须检查初始相对速度及其他真实作用。
+
+这个合并仅对所选平移系适用。转动系内还有离心、科里奥利及角加速度项，不能一概写成一个与位置和速度无关的常矢量；第三讲再展开转动系中的具体模型。本讲的车厢、斜面和直导轨都先限定为不转动的平移。
+
+\section{静摩擦方向与共同运动范围}
+\subsection{从所需摩擦到可实现条件}
+静摩擦可以与物体对地速度同向，也可以反向，甚至为零。判断应从接触面的相对运动开始。设车内小块被弹簧向右拉 $F_s$，小块若随车向右加速 $a_0$，则所需摩擦为 $f=ma_0-F_s$。随着 $a_0$ 增大，摩擦可以先向左减小，经过零，再向右增大。加速方向并不要求所有水平力都同向。
+
+若只给出“小块最初静止”，只能推出当时所需的 $|f|$ 不超过最大静摩擦。后来是否继续静止，还须比较全过程 $|ma_0-F_s|$ 与上限。若弹簧形变保持不变，且 $a_0$ 在给定范围单调变化，所需摩擦是 $a_0$ 的线性函数，最大绝对值出现在区间端点；这是判断全程条件的一种简化，而非另加一条经验规律。
+
+\fig{n2t-friction}{带符号摩擦直线必须留在允许的静摩擦带内}{\begin{tikzpicture}
+\fill[blue!8](0,-.8)rectangle(4.5,.8);\draw[axis](0,0)--(5.2,0)node[right]{$a_0$};\draw[axis](0,-1.5)--(0,1.7)node[above]{$f$};
+\draw[world](0,-1.2)--(4.5,1.5);\draw[blue,dashed](0,-.8)--(4.5,-.8) (0,.8)--(4.5,.8);\node[left]at(0,.8){$f_{s,\max}$};\node[left]at(0,-.8){$-f_{s,\max}$};\node[left]at(0,-1.2){$-F_s$};
+\draw[guide](.666667,-.8)--(.666667,0) (3.333333,.8)--(3.333333,0);\node[below right]at(2,0){$F_s/m$};\node[above,sloped]at(3.8,1.4){$f=ma_0-F_s$};
+\end{tikzpicture}}
+图\ref{n2t-friction}纵坐标的负值表示摩擦向左，不是负的摩擦力大小。若改画大小曲线 $|f|$，曲线就在零点处转折；只有该大小超过上限才发生相对滑动。图中的浅色水平带代表 $-f_{s,\max}\le f\le f_{s,\max}$，直线落在带内的部分才可采用共同运动方程。对于恒定 $F_s,N$，它直接给出 $(F_s-f_{s,\max})/m\le a_0\le(F_s+f_{s,\max})/m$，再与题目限定的加速度范围取交集。
+
+\subsection{多接触面要逐面检查}
+四块、三层或带滑轮的叠块装置通常有多个摩擦约束。各接触面所需摩擦不一样，法向力也不一样，不能任选一个最大值代表整个装置。应先按共同运动假设求出每处摩擦，用每个不等式限制同一驱动参数，再取这些区间的交集。首先达到边界的接触面决定下一运动分支。
+
+相对滑动开始后，仍需检查其余接触面是否保持静止。例如底板可以继续被地面静摩擦固定，而上方小块已经滑动；也可能两块共同沿地面运动，但层间不滑。每个接触面分别有“静止约束”或“给定滑动摩擦”两类方程。最大静摩擦与动摩擦不等时，状态切换后加速度出现跃变是允许的，速度却仍应连续。
+
+\subsection{用摩擦锥理解允许的加速度}
+把一个平面接触对物体的合接触力写成 $\bm R=N\bm n+f\bm t$。不分离和不滑动要求 $N\ge0$、$|f|\le\mu_sN$，所以接触合力的方向只能处在以法线为中心、半角 $\arctan\mu_s$ 的范围内。这个几何范围常称摩擦锥，在平面图中表现为一个角域。它同时包含压力和摩擦两个限制，比只凭直觉猜摩擦箭头更完整。
+
+\fig{n2t-cone}{相对平衡所需接触合力必须落在允许角域内}{\begin{tikzpicture}
+\fill[blue!8](0,0)--(-1,2.3)--(1,2.3)--cycle;\draw[axis](0,0)--(0,2.8)node[above]{$N\bm n$};\draw[guide](0,0)--(-1,2.3) (0,0)--(1,2.3);\draw[force,blue](0,0)--(.55,2)node[right]{$\bm R$};\draw[axis](0,0)--(2,0)node[right]{$f\bm t$};\node at(2.6,1.7){$|f|/N\le\mu_s$};
+\end{tikzpicture}}
+在平移车厢内相对平衡时，所需 $\bm R=-m\bm g_{\rm eff}$，于是图\ref{n2t-cone}可直接检查有效重力反方向是否落在角域内。随着车加速度改变，该方向转动；先碰到角域一侧表示向一种方向滑动，碰到另一侧表示相反滑动。若支持方向已背离接触面，则先发生分离。这个图形判断仍需以准确的法线与有效重力方向为前提，不能替代符号约定。
+
+\section{移动支点与绳长约束}
+\subsection{移动滑轮并不等于固定转向点}
+绳绕过固定滑轮时，常用的等加速度大小来自两段绳长之和恒定。滑轮随斜面移动时，水平绳段本身也变长或变短，沿面的绳段必须作相应补偿。此时应从固定墙面到滑轮、再到物块依次写长度；若先把支点当作不动，再加一个惯性力，仍会遗漏绳长变化。
+
+\fig{n2t-rope}{固定墙端与移动滑轮共同决定沿面相对位移}{\begin{tikzpicture}
+\draw[world](-2,0)--(1,0)--(1,2)--cycle;\draw[world](3,.2)--(3,2.8);\node[draw,rotate=33.6901,anchor=south](A)at(-.7,.866667){$m$};\path(A.center)++(1.7,1.133333)coordinate(Q);\path(Q)++(-56.3099:.15)coordinate(P);\path(P)++(90:.15)coordinate(R);\draw[world](A.east)--(Q)arc(123.6901:90:.15)--(3,0 |- R);\draw[world](P)circle(.15);\draw[flow](.8,-.45)--(1.9,-.45)node[right]{$X$};\node at(2,2.75){$d-X$};\node at(-.7,1.7){$s$};
+\end{tikzpicture}}
+图\ref{n2t-rope}若沿面绳段长为$s$，固定墙到滑轮的水平距离为$d-X$，则$s+d-X+C=L$。先求导得$\dot s-\dot X=0$，再求导得$\ddot s-\ddot X=0$，所以$\ddot s=\ddot X$。物块对地加速度还应叠加斜面平移，不能直接把$\ddot s$当作其完整加速度。长度约束在第一讲已经建立，这里新增的是支点运动造成的那一段长度。
+
+\subsection{初始位置与瞬时方向}
+斜杆上的圆环用竖直绳悬球时，在释放瞬间圆环沿杆运动，而球的绳向约束先联系竖直分量。初速度为零时，绳长二阶条件不含 $v^2/l$，两个端点沿绳方向的加速度相同。若经过有限时间后绳倾斜，或初速度本来不为零，就要使用完整绳长函数重新求导，不能把初始竖直方向的结果永久沿用。
+
+\fig{n2deep:rope}{绳长的二阶约束还包含横向相对速度的贡献}{\begin{tikzpicture}
+\coordinate(A)at(0,2);\coordinate(B)at(0,0);\draw[world](A)--(B)node[midway,left]{$l$};\fill(A)circle(2pt)node[left]{$A$};\fill(B)circle(2pt)node[left]{$B$};\draw[flow,blue](B)--(1.8,0)node[right]{$\bm v_B-\bm v_A$};\draw[flow,red](B)--(0,1.4)node[right]{$(\bm a_B-\bm a_A)_\parallel$};\draw[guide](0,0)arc(-90:-35:2);\node at(3,2){初始竖直，$\bm e$ 向下};
+\end{tikzpicture}}
+图\ref{n2deep:rope}令$\bm r=\bm r_B-\bm r_A=l\bm e$。定长约束为$\bm r\cdot\bm r=l^2$，第一次求导得$2\bm r\cdot\dot{\bm r}=0$；对这一乘积再求导得$2\dot{\bm r}\cdot\dot{\bm r}+2\bm r\cdot\ddot{\bm r}=0$。分别除以$2l$并代回相对速度、相对加速度，得到
+\[
+\bm e\cdot(\bm v_B-\bm v_A)=0,\qquad
+\bm e\cdot(\bm a_B-\bm a_A)=-\frac{|\bm v_B-\bm v_A|^2}{l}.
+\]
+蓝色横向相对速度使绳方向转动，因此红色沿绳相对加速度必须指向 $A$，并非总为零。只有释放瞬间两端相对速度为零，右端才消失，才可说两端沿绳加速度相同。这说明哪些“瞬时相等”来自初值，也说明过一段时间后为什么必须重新计算。
+
+动滑轮题还需要单独检查轻滑轮的受力。两侧同一根绳张力为 $T$，挂在滑轮轴上的物体所受向上力常是 $2T$，而绳端物体只受 $T$。运动约束中的系数二与动力学中的两股张力来自同一个结构，应在题图中都能找到。
+
+若装置含上下两根不同的轻绳，应分别设张力，而不是把“理想轻绳处处张力相同”跨绳使用。一个轻动滑轮被上绳悬挂，下绳绕过它时，平衡给上绳张力等于两股下绳张力的合力；这正是双层阿特伍德装置中张力倍数的由来。\fig{n2deep:tworopes}{上下两根轻绳给出不同张力与两条长度约束}{\begin{tikzpicture}
+\draw[world](0,2.5)circle(.5);\draw[world](-.5,2.5)arc(180:0:.5)--(.5,.5);\draw[world](-.5,2.5)--(-.5,.6);\node[draw,anchor=north]at(.5,.5){$C$};\draw[world](-.5,.6)circle(.4);\draw[blue,thick](-.9,-.6)--(-.9,.6)arc(180:0:.4)--(-.1,-.8);\node[draw,anchor=north]at(-.9,-.6){$A$};\node[draw,anchor=north]at(-.1,-.8){$B$};\node[right]at(.1,.8){$P$};\node[left]at(-.5,1.6){$T_1$};\node[left,blue]at(-.9,0){$T_2$};
+\begin{scope}[xshift=4.2cm,yshift=.6cm]\draw[world](0,0)circle(.4);\draw[force](0,.4)--(0,1.7)node[above]{$T_1$};\draw[force,blue](-.4,0)--(-.4,-1)node[below]{$T_2$};\draw[force,blue](.4,0)--(.4,-1)node[below]{$T_2$};\node at(0,-1.8){轻轮：$T_1=2T_2$};\end{scope}
+\end{tikzpicture}}
+图\ref{n2deep:tworopes}用黑、蓝两色区分绳。统一向下量各位置，黑绳给$y_P+y_C=\text{常量}$，蓝绳给$y_A+y_B-2y_P=\text{常量}$。第一次求导分别得$v_P+v_C=0$、$v_A+v_B-2v_P=0$；再求导得$a_P+a_C=0$、$a_A+a_B-2a_P=0$。右侧隔离轻轮才给出$T_1=2T_2$。长度方程负责关联运动，受力方程负责关联张力，二者缺一不可，也不能跨两根绳令$T_1=T_2$。
+
+另一方面，若滑轮本身有质量或转动惯量，轴向平动与转动的惯性项都可能使简单倍数失效，须回到滑轮自身的受力、受矩方程。
+
+\section{平动中的杆与支承载荷}
+\subsection{相对平衡还要求合力矩为零}
+研究对象有有限长度时，只写合力方程不足以保证它同车厢保持固定姿态。均匀杆既要同车平移，也不能转动，所以在车厢系内还须对任一点满足合力矩为零。平移惯性力可等效作用在质心；均匀重力也作用在质心。以某接触端为力矩中心，可以消去该点未知支持力及摩擦力的力矩。
+
+\fig{n2t-rod}{靠墙杆的重力与平移惯性力都作用在中点}{\begin{tikzpicture}
+\draw[world](-1.5,0)--(-1.5,3) (-1.5,0)--(2,0);\draw[line width=1.2pt](-1.5,2.5)--(1,0);\fill(-.25,1.25)circle(2pt);\draw[force,red](-.25,1.25)--(-.25,.2)node[right]{$Mg$};\draw[force,blue](-.25,1.25)--(-1.45,1.25)node[left]{$Ma_0$};\node[left]at(-1.5,2.5){$A$};\node[below]at(1,0){$B$};\node at(-1.1,2){$\theta$};
+\end{tikzpicture}}
+图\ref{n2t-rod}的后壁光滑，只有水平法向力；底面粗糙，才有水平摩擦。若误给后壁也加一个摩擦，就会得到另一个模型的平衡区间。杆与竖直夹角、与水平夹角的力臂也不同，列式前应标明角度基准。静力矩平衡只能判断某个姿态能否保持；若姿态已开始改变，要用转动方程而不能继续令力矩为零。
+
+\subsection{加速汽车的前后轴载荷}
+水平加速的汽车重心高度不为零，驱动摩擦力作用在地面，关于质心产生力矩。若车身俯仰角加速度可忽略，前后轮支持力必须重新分配，使合力矩抵消；竖直合力仍为零。后轮驱动时，总支持力 $N_f+N_r=mg$，但一般 $N_f\ne N_r$。因而防止驱动轮打滑应比较 $ma$ 与后轮实际载荷，而不是与总重力或预先假定的 $mg/2$ 比较。
+
+载荷计算还要检查两轮接触条件。若前轮支持力算得负值，说明前轮已离地，原来的四轮支承、车身不俯仰模型失效。类似地，平板翻转的边界来自允许转向上的力矩变号，而非某一个力恰好等于重力；在滑块有摩擦时，水平方向的摩擦也因支架高度产生力矩。
+
+\input{knowledge-axle-load}
+
+\subsection{滑动与倾倒是两种不同的边界}
+把有限大小物体放在车内，摩擦足够不滑，并不保证它不会倾倒。设物体底面沿运动方向半宽为 $b$，重心高 $h$，车向右加速度为 $a$。在随车平移系内，向左惯性力 $ma$ 同重力 $mg$ 的合力作用线，在底面上的交点向左偏离重心投影 $e=ah/g$。接触压力分布可以改变，但其合力作用点必须留在实际底面内，故 $|e|\le b$。
+
+\fig{n2t-tip}{重力与惯性力的合力作用线必须穿过支承范围}{\begin{tikzpicture}
+\draw[world](-1.2,0)rectangle(1.2,2.4);\fill(0,1.5)circle(2pt)node[right]{$C$};\draw[force,red](0,1.5)--(0,0)node[midway,right]{$mg$};\draw[force,blue](0,1.5)--(-.8,1.5)node[midway,above]{$ma$};\draw[guide](0,1.5)--(-.8,0);\fill(-.8,0)circle(2pt);\draw[dim](-1.2,-.5)--(1.2,-.5)node[midway,below]{$2b$};\node at(2,1){$e=ah/g$};
+\end{tikzpicture}}
+图\ref{n2t-tip}中的斜虚线不是另一种外力，而是 $m\bm g_{\rm eff}$ 的作用线。接触压力的合力可以在底面上移动来平衡力矩；当交点到达后缘，压力已不能再向后移。再增加 $a$ 会要求支承范围外的作用点，原来不转动的相对平衡因此失效。
+
+图\ref{n2t-tip}因此给出防倾倒条件 $a\le gb/h$，而防滑条件来自 $ma\le\mu_smg$，即 $a\le\mu_sg$。较小的阈值先达到：重心高、底面窄的物体可能先倾倒，重心低而摩擦小的物体可能先滑动。两者在理想刚体模型中由不同的约束边界决定。讨论“不会摔倒”时必须先说明究竟只考察平动滑移，还是也提供了几何尺寸以允许判断倾倒。
+
+\subsection{怎样把等式结果转成物理结论}
+本讲各类问题常在求解线性方程后才进入最关键的判断：接触力是否为正、某段绳是否仍绷紧、静摩擦是否超限、相对加速度是否符合预设方向。坐标符号本身不限制运动方向，负加速度可能只是相对所选方向减速；负张力或普通面的负支持力则通常意味着约束不能成立。
+
+求出一个使杆开始朝后壁转动的条件，也不自动证明它最后停在后壁上。若没有耗能机制，接触碰撞后可能反弹；若中途失去某接触，后续运动方程会改变。例题会将瞬时起动条件、全程保持条件和最终静止条件分别说明，使方程所能证明的结论同题目语言一致。

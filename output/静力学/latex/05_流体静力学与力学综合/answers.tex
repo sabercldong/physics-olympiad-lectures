@@ -1,0 +1,215 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{s5:drill:1}\textbf{比较铁块由浮板承重与沉底后的排液量}\par\nobreak
+图\ref{fig:s5:drill:1:s}铁块在板上时，使浮板额外排水$m/\rho$；铁块入水沉底后只排开自身体积$m/\rho_i$，浮板自身的排水量不变。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把不变排液量在前后状态中消去}\par\nobreak
+记浮板自身质量为$M$。移动铁块前排液总体积为$(M+m)/\rho$；移动后浮板排液为$M/\rho$，铁块虽已由底面支承，仍占据水中体积$m/\rho_i$。后减前，$M/\rho+m/\rho_i-(M+m)/\rho=m(1/\rho_i-1/\rho)$，再除以恒定截面积$S$。
+\fig{fig:s5:drill:1:p}{比较移动前后实际排液体积，浮板自身的排液量在差值中抵消}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,3)--(0,0)--(3,0)--(3,3);\fill[blue!10](0,0)rectangle(3,2);
+\draw[world](.6,1.6)rectangle(2.4,2.15);\draw[world](1.2,2.15)rectangle(1.8,2.8);
+\node at(1.5,-.6){$V_{\rm sub}=(M+m)/\rho$};\node at(1.5,3.4){移动前};
+\end{scope}
+\begin{scope}[xshift=5.2cm]
+\draw[world](0,3)--(0,0)--(3,0)--(3,3);\fill[blue!10](0,0)rectangle(3,1.7);
+\draw[guide](0,2)--(3,2);\draw[world](.6,1.5)rectangle(2.4,2.05);\draw[world](1.2,0)rectangle(1.8,.6);
+\draw[dim](3.4,1.7)--(3.4,2)node[right]{$-\Delta h$};
+\node at(1.5,-.6){$V'_{\rm sub}=M/\rho+m/\rho_i$};\node at(1.5,3.4){移动后};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由水体积守恒求液面变化}\par\nobreak
+图\ref{fig:s5:drill:1:p}排水体积变化为$m(1/\rho_i-1/\rho)$，所以$\Delta h=m(1/\rho_i-1/\rho)/S<0$，液面下降。这里要求铁块完整浸没且无水被带出；力的分配改变，不影响前后水体积的比较。\end{drillsolution}
+\begin{drillsolution}{s5:drill:2}\textbf{选择水平条带并写净压力}\par\nobreak
+图\ref{fig:s5:drill:2:s}两侧大气压抵消后用表压，条带$\dd F=\rho gbz\,\dd z$，积分范围为 $z_0\le z\le z_0+h$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{累加条带求合力}\par\nobreak
+条带均在同一深度$z$，所以条带面积$b\dd z$乘表压$\rho gz$得到$\dd F$。积分一次求合力，
+\[
+F=\rho gb\int_{z_0}^{z_0+h}z\,\dd z
+=\rho gb\left[\frac{z^2}{2}\right]_{z_0}^{z_0+h}
+=\frac{\rho gb}{2}[(z_0+h)^2-z_0^2]
+=\rho gbh(z_0+h/2).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{匹配力矩并检查两个极限}\par\nobreak
+压力中心以对液面的力矩相等定义。仍对相同的湿润区间积分，
+\[Fz_P=\rho gb\int_{z_0}^{z_0+h}z^2\dd z
+ =\rho gb\left[\frac{z^3}{3}\right]_{z_0}^{z_0+h}
+ =\frac{\rho gb}{3}[(z_0+h)^3-z_0^3].\]
+因此力矩分子必须用三次差而不是二次差。
+\fig{fig:s5:drill:2:p}{条带积分求力，关于液面的力矩积分求作用点}{\begin{tikzpicture}
+
+\draw[guide](-1,4)--(4,4)node[right]{液面};\draw[world,line width=1.4pt](0,0)--(0,3);
+\draw[axis](-1.5,4)--(-1.5,-.6)node[below]{$z$};
+\foreach \y in {0,.75,1.5,2.25,3}{\draw[flow](0,\y)--({.6*(4-\y)},\y);}
+\draw[guide](.6,3)--(2.4,0);\draw[fill=blue!20](-.12,1.8)rectangle(.12,2.05);
+\draw[force,blue](0,1.925)--(2,1.925)node[right]{$\dd F$};
+\draw[force,red](0,1.2)--(3,1.2)node[right]{$F$};\node[left]at(0,1.2){$P$};
+\draw[dim](-.6,1.925)--(-.6,4)node[midway,left]{$z$};
+\draw[dim](3.7,1.2)--(3.7,4)node[midway,right]{$z_P$};
+
+\end{tikzpicture}}
+
+图\ref{fig:s5:drill:2:p}对液面取力矩：
+\[
+z_P=\frac{\rho gb[(z_0+h)^3-z_0^3]/3}{F}
+=z_0+\frac h2+\frac{h^2}{12(z_0+h/2)}.
+\]
+因此压力中心低于面积中心；$z_0=0$时给$2h/3$，$z_0\gg h$时趋近中心，反映压强分布趋于均匀。\end{drillsolution}
+\begin{drillsolution}{s5:drill:3}\textbf{由相同重力确定时间缩放}\par\nobreak
+图\ref{fig:s5:drill:3:s}同样的无量纲下落过程满足$h=gt^2/2$、$h_m=gt_m^2/2$，所以$t_m/t=\sqrt{h_m/h}=1/7$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用拍摄帧数与播放时长建立关系}\par\nobreak
+同一无量纲高度所需的实物时间是模型时间的七倍。若模型实际拍摄时间$t_m$、拍摄帧率$f_c$，得到帧数$f_ct_m$；以每秒$24$帧播放，屏幕耗时为$f_ct_m/24$。令它等于实物时间$t=7t_m$，才得到$f_c=168$。
+\fig{fig:s5:drill:3:p}{解答过程：缩尺模型的摄影速率}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[dim](0,.7)--(4.2,.7)node[midway,above]{$t$};\draw[dim](0,1.5)--(.6,1.5)node[right]{$t/7$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求帧率与速度比并区分缩放尺度}\par\nobreak
+图\ref{fig:s5:drill:3:p}模型实际动作需在播放时放慢七倍，拍摄帧率应为$7\times24=168$帧每秒。对应实际速度比$v_m/v=t_m/t=1/7$。帧率放大倍数是时间缩放的倒数，不能用长度比$49$直接相乘。\end{drillsolution}
+\begin{drillsolution}{s5:drill:4}\textbf{用第一车速确定雨的水平分量}\par\nobreak
+在图\ref{fig:s5:drill:4:s}设雨对地速度为$(v_x,-v_y)$，$v_y>0$。第一条件使$v_x-6=0$，所以$v_x=6\,\mathrm{km/h}$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{作相对速度三角形并对应遮挡角}\par\nobreak
+在车速$18$时，雨的相对水平分量为$6-18=-12$，向后；竖直分量仍为$-v_y$。图中$AB$相对竖直偏$30^\circ$，所以应取“水平分量绝对值除以竖直分量绝对值”$12/v_y=\tan30^\circ=1/\sqrt3$，不能把此角当成相对水平的角。
+\fig{fig:s5:drill:4:p}{解答过程：车篷挡雨的速度三角形}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(3,0)node[right]{向右};\draw[axis](0,0)--(0,-2.8)node[below]{向下};\draw[flow](0,0)--(.6,-2.078)node[right]{$\boldsymbol v$};\draw[flow](.6,-2.078)--(-1.2,-2.078)node[left]{$-\boldsymbol u_2$};\draw[flow,blue](0,0)--(-1.2,-2.078)node[midway,left]{$\boldsymbol v_{\rm rel}$};\draw[world](0,-.65)arc(-90:-120:.65);\node at(-.4,-.95){$30^\circ$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求竖直分量及雨对地速度}\par\nobreak
+图\ref{fig:s5:drill:4:p}第二条件给$(18-v_x)/v_y=\tan30^\circ$，因此$v_y=12\sqrt3\,\mathrm{km/h}$，雨速$v=\sqrt{6^2+(12\sqrt3)^2}=6\sqrt{13}\,\mathrm{km/h}$。其方向相对竖直向前偏，$\tan\gamma=v_x/v_y=1/(2\sqrt3)$。必须先作相对速度相减，再对应遮挡边界。\end{drillsolution}
+\begin{drillsolution}{s5:drill:5}\textbf{由切线约束确定展开轨迹}\par\nobreak
+图\ref{fig:s5:drill:5:s}在每一段绳仍与圆柱相切的阶段，质点速度垂直自由绳，张力不做功，速率为$v$。用展开角$\phi$计自由绳长$s=R\phi$，切点$Q=R(\cos\phi,\sin\phi)$，向量取一条渐开线分支：
+\[
+\boldsymbol r(\phi)=R(\cos\phi+\phi\sin\phi,\ \sin\phi-\phi\cos\phi).
+\]
+\fig{fig:s5:drill:5:tangent}{自由绳始终沿切点的切线，质点位置是半径矢量与自由绳矢量之和}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1);\coordinate(Q)at(.5403,.84147);\coordinate(P)at(1.38177,.30117);
+\draw[guide](0,0)--(1.7,0);\draw[world](0,0)--(Q)node[midway,left]{$R$};
+\draw[world,blue](Q)--(P)node[midway,above right]{$s=R\phi$};
+\fill(Q)circle(2pt)node[above]{$Q$};\fill(P)circle(2pt)node[right]{$P$};
+\draw[force,red](P)--++(.5403,.84147)node[right]{$v$};
+\draw[force](P)--++(-.673,.432)node[midway,below left]{$T$};
+\draw[world](.4,0)arc(0:57.3:.4);\node at(.55,.3){$\phi$};\node[below left]at(0,0){$O$};
+
+\end{tikzpicture}}图\ref{fig:s5:drill:5:tangent}中$OQ\perp QP$，质点速度又垂直$QP$。因此张力只改变速度方向，且展开角与自由绳长由同一个$\phi$联系。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求轨迹导数并积分路径长}\par\nobreak
+把切点位置写成$\boldsymbol r_Q=R(\cos\phi,\sin\phi)$，沿所选展开方向的自由绳单位向量为$(\sin\phi,-\cos\phi)$，自由绳长$R\phi$。两矢量相加得到质点坐标。对每个含 $\phi$的乘积求导，
+\begin{align*}
+ \frac{\dd x}{\dd\phi}&=R[-\sin\phi+\sin\phi+\phi\cos\phi]=R\phi\cos\phi,\\
+ \frac{\dd y}{\dd\phi}&=R[\cos\phi-\cos\phi+\phi\sin\phi]=R\phi\sin\phi.
+\end{align*}
+因此 $|\dd\boldsymbol r/\dd\phi|=R\phi$，其中展开过程 $\phi\ge0$。由自由绳长 $R\phi$从0变为 $L$，积分上下限为 $0,L/R$，路径长为
+\[s_{\rm path}=\int_0^{L/R}R\phi\dd\phi
+ =R\left[\frac{\phi^2}{2}\right]_0^{L/R}
+ =\frac{L^2}{2R}.\]
+当$\phi\to0^+$，渐开线的切线方向趋向初始点的柱面外法线，正与图\ref{fig:s5:drill:5:s}的初速度方向一致；它不沿圆周切线。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对各阶段速率及完整路径}\par\nobreak
+每一阶段张力都垂直质点速度，弹性碰撞也不改变速率，因此全程才可用路径长除以同一$v$。
+\fig{fig:s5:drill:5:p}{蓝色为展开渐开线，红色为全展开半圆，另一侧卷回后在柱面反射}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(.7);\fill(.7,0)circle(2pt)node[right]{$P_0$};
+\draw[world,blue,domain=0:3,samples=90]plot({.7*(cos(\x r)+\x*sin(\x r))},{.7*(sin(\x r)-\x*cos(\x r))});
+\draw[world,orange,domain=0:3,samples=90]plot({.7*(cos(6 r)*(cos(\x r)+\x*sin(\x r))+sin(6 r)*(sin(\x r)-\x*cos(\x r)))},{.7*(sin(6 r)*(cos(\x r)+\x*sin(\x r))-cos(6 r)*(sin(\x r)-\x*cos(\x r)))});
+\coordinate(A)at(-.692995,.098784);\coordinate(E)at(-.39664,2.177768);\coordinate(F)at(-.98935,-1.9802);
+\fill(A)circle(2pt)node[above left]{$A$};\fill(E)circle(2pt)node[above]{$E$};\fill(F)circle(2pt)node[below]{$F$};
+\draw[guide](A)--(E)node[midway,right]{$L$};\draw[guide](A)--(F)node[midway,right]{$L$};
+\draw[flow,red](E)arc(81.887:261.887:2.1);\node[left]at(-2.8,.1){全展开半圆};
+\draw[guide](0,0)--(A);\node[above]at(-.4,-.08){$R$};
+\node[align=left]at(3.3,1.3){$P_0\to E$：展开\\$E\to F$：半圆\\$F\to$柱面：卷回};
+\node[align=left]at(3.3,-1){柱面反射后\\沿原轨迹反向返回};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入全展开半圆、卷回和反射返程}\par\nobreak
+图\ref{fig:s5:drill:5:p}的一段展开耗时为已求路径长除以速率，即 $L^2/(2Rv)$。绳完全展开后，质点还要以固定端为圆心、半径$L$绕行半周，才从另一侧重新接触圆柱；这段长$\pi L$，不能漏去。随后另一侧卷回渐开线耗时同前。到柱面弹性反射后逆程返回，故完整相空间周期为
+\[
+T=\frac{2L^2}{Rv}+\frac{2\pi L}{v}.
+\]
+这里固定端位于柱面且无导向阻挡；若题目另有限制使全展开后立即反向，周期模型将不同。\end{drillsolution}
+\begin{drillsolution}{s5:drill:6}\textbf{保留支点到零刻度的力矩偏置}\par\nobreak
+图\ref{fig:s5:drill:6:s}令单秤砣质量$m$，物体力臂$a$，每千克刻度长度$\ell$，零刻度距支点$c$。单秤砣标定使$m\ell=a$，杆盘自身力矩记为$K=mgc$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用单秤砣标定关系消去秤的参数}\par\nobreak
+单秤砣读数$q$时，标定要求任意物体质量$M=q$均满足$Mga+K=mg(c+q\ell)$。分别比较$q$的系数和常数项，得$a=m\ell$、$K=mgc$。双秤砣改变右侧的整个力矩，既改变$q\ell$项也改变$c$项，故须保留未知常量$mc/a$，用已知称重数据消去。
+\fig{fig:s5:drill:6:p}{双秤砣的质量关系既改变斜率，也改变零点截距}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.5,0)node[right]{$q\ (\mathrm{kg})$};\draw[axis](0,0)--(0,4.5)node[above]{$M\ (\mathrm{kg})$};
+\draw[world,blue](0,.5)--(3.8,4.3);\node[left]at(0,.5){$2$};
+\fill(1.5,2)circle(2pt);\draw[guide](1.5,0)--(1.5,2)--(0,2);\node[below]at(1.5,0){$3$};\node[left]at(0,2){$8$};
+\fill(3.25,3.75)circle(2pt);\draw[guide](3.25,0)--(3.25,3.75)--(0,3.75);\node[below]at(3.25,0){$6.5$};\node[left]at(0,3.75){$15$};
+\node[right,blue]at(3.8,4.3){$M=2q+2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用已知称重确定新零点并求质量}\par\nobreak
+图\ref{fig:s5:drill:6:p}用双秤砣读数$q$时，物体质量$M$满足$Mga+K=2mg(c+q\ell)$。代入标定得$M=2q+mc/a$。已知$8=2\times3+mc/a$，所以偏置$mc/a=2\,\mathrm{kg}$。西瓜质量$M=2\times6.5+2=15\,\mathrm{kg}$。双秤砣使零点力矩也改变，所以不能只把读数乘二。\end{drillsolution}
+\begin{drillsolution}{s5:drill:7}\textbf{由两处法向约束确定圆心和角速度}\par
+图\ref{fig:s5:drill:7:s}两面法向位置固定，持续双接触时圆心固定。若墙处无滑动则$\omega=0$；若车面无滑动则$R\omega=U$。$U\ne0$时两处不能同时粘着。
+\fig{fig:s5:drill:7:p}{箭头规定接触力的正方向；地面反力沿其作用线从图下方画出}{\begin{tikzpicture}
+
+\draw[world](-.7,0)--(5,0);\draw[world](-1,1.5)--(4.8,4.8486);
+\draw[world](2,1.5)circle(1.5);\fill(2,1.5)circle(2pt)node[right]{$C$};
+\coordinate(W)at(1.25,2.799);
+\draw[force,blue](W)--(1.75,1.933)node[right]{$N$};
+\draw[force,red](W)--(2.549,3.549)node[above]{$h$};
+\draw[force,red](2,0)--(3.6,0)node[below]{$f$};
+\draw[force,blue](2,-1.5)--(2,0)node[pos=0,below]{$N_g$};
+\draw[force](2,1.5)--(2,.5)node[right]{$G$};
+\node at(4,1.4){$U<0$};\draw[axis](-.5,-.5)--(.5,-.5)node[right]{$+x$};
+
+\end{tikzpicture}}
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{保留两处接触力与转动方程}\par
+图\ref{fig:s5:drill:7:p}的箭头先规定各力正方向：墙法向力$N$向右下，墙摩擦$h$沿上坡，车面摩擦$f$向右，反力$N_g$向上；角速度取逆时针为正。求得$h,f<0$时，实际摩擦均与对应箭头相反。平动及转动方程为
+\[
+N\sin\theta+h\cos\theta+f=0,\quad
+N_g-N\cos\theta+h\sin\theta=G,\quad
+I\dot\omega=R(f-h).
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{检验墙面粘着这一候选分支}\par
+初始若墙保持粘着，$\omega=\dot\omega=0$，所以$h=f$。车向左滑，$f=-\mu_2N_g$。把$h=f$代入水平式，$N\sin\theta+h(1+\cos\theta)=0$，所以
+\[
+h=-N\frac{\sin\theta}{1+\cos\theta}=-N\tan(\theta/2).
+\]
+再代入竖直式，$N_g=G+N\cos\theta+N\tan(\theta/2)\sin\theta$。利用$\tan(\theta/2)\sin\theta=1-\cos\theta$，得到$N_g=G+N$。最后将$h=f=-\mu_2N_g$代入，
+\[
+N=\frac{\mu_2G}{\tan(\theta/2)-\mu_2}.
+\]
+当$\mu_2>0$且要求墙面有正压力时，该粘着分支要求$\tan(\theta/2)>\mu_2$且$\mu_1\ge\tan(\theta/2)$。若$\mu_2=0$，可有$N=h=f=0$、$N_g=G$、$\omega=0$的退化解，墙面只是无压力接触，不需要上述墙摩擦下界。
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{粘着失效后的切换条件}\par
+\fig{fig:s5:drill:7:velocities}{固定圆心时，两接触点的相对切向速度由同一个角速度决定}{\begin{tikzpicture}
+
+\draw[world](0,1)circle(1);\draw[world](-2,0)--(2.5,0);\draw[world](-1.8,1.115)--(1.7,3.136);
+\fill(-.5,1.866)circle(2pt)node[above left]{$W$};\fill(0,0)circle(2pt)node[below]{$B$};
+\draw[axis,blue](-.5,1.866)--(-1.366,1.366)node[left]{$-R\omega$};
+\draw[axis,red](0,0)--(1.2,0)node[below right]{$R\omega-U$};
+\draw[axis](1,1)arc(0:90:1)node[above]{$\omega>0$};
+\node[align=left]at(5,1.8){墙面正切向取右上\\车面正切向取右\\摩擦与相对滑动反向};
+
+\end{tikzpicture}}图\ref{fig:s5:drill:7:velocities}中，墙面相对切向速度为$-R\omega$，车面为$R\omega-U$；这些符号才决定切换后各处摩擦的方向。
+
+若不满足，应按墙相对滑动方向设$h=\pm\mu_1N$，保留$I\dot\omega$求转向，并在$R\omega=U$或$N=0$处切换。仅凭“缓慢抽车”不能保证某一固定转向序列，也不能把两处摩擦都默认为静摩擦。\end{drillsolution}

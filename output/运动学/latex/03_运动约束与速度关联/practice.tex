@@ -1,0 +1,29 @@
+\section{本讲小结}
+约束问题从位置关系出发：定长、绳长与接触分别对应不同方程。速度投影是对位置约束求导的结果，加速度还含方向变化带来的平方项。先判断独立坐标，再选择投影法或参数微分法，通常比逐个猜速度关系可靠。
+
+滚动中的自转与公转须在同一参考系中比较；几何交点与物质点须分别追踪。多接触模型还要检验约束是否相容，均匀伸长问题则需写明局部材料的速度场。
+\section{练习}
+\nopagebreak[4]
+\begin{question}\begin{drill}[硬币沿另一硬币滚动]\label{k3p9}
+固定大硬币半径 $R=3r$。小硬币半径为 $r$，分别沿大硬币外侧和内侧无滑动地绕行一周。以小硬币圆心逆时针公转为正，求小硬币相对地面的自转圈数及方向。\end{drill}
+\fig{k3p9q}{硬币沿另一硬币滚动：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\draw[world](2,0)circle(.5);\draw[world](-1,0)circle(.5);\node at(0,0){$R=3r$};\node[above]at(2,.5){外滚};\node[above]at(-1,.5){内滚};\draw[guide](0,0)--(2,0);\end{tikzpicture}}
+\answerlink{k3p9}
+\end{question}
+
+\begin{question}\begin{drill}[圆环之间滚子的自转与公转]\label{k3p10}
+同心内外圆环半径分别为 $2r,4r$，半径 $r$ 的滚子夹在其间并与两环均无滑动。内环固定，外环顺时针转一周。求滚子圆心的公转圈数及滚子对地自转圈数。\end{drill}
+\fig{k3p10q}{圆环之间滚子的自转与公转：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1);\draw[world](0,0)circle(2);\draw[world](1.5,0)circle(.5);\draw[guide](0,0)--(2,0);\node at(0,.3){固定};\node[above]at(1.5,.5){$r$};\node[below]at(.5,0){$2r$};\node[above]at(0,2){外环顺时针};\end{tikzpicture}}
+\answerlink{k3p10}
+\end{question}
+
+\begin{question}\begin{drill}[两圆环与斜绳]\label{k3p11}
+两个小圆环分别只能沿竖直杆运动，左环 $O$ 低于右环 $O'$。绳从右杆上方固定点 $A'$ 竖直向下穿过 $O'$，再斜向左下连接 $O$。绳长不变，$O'$向下速率为 $v'$。斜绳与左侧竖直向上方向成 $\alpha\in(0,\pi/2)$，求 $O$ 的速度。\end{drill}
+\fig{k3p11q}{两圆环与斜绳：题设关系}{\begin{tikzpicture}\draw[world](0,-1)--(0,3) (3,-1)--(3,3);\draw[very thick](0,0)--(3,1.6)--(3,2.8);\foreach \x/\y/\s in {0/0/O,3/1.6/O',3/2.8/A'}\node[draw,circle,inner sep=1pt]at(\x,\y){$\s$};\draw[flow](3.6,1.6)--(3.6,.6)node[right]{$v'$};\node at(.3,.5){$\alpha$};\end{tikzpicture}}
+\answerlink{k3p11}
+\end{question}
+
+\begin{question}\begin{drill}[均匀伸长丝线上的爬行]\label{k3p12}
+丝线左端固定，初长 $L_0=1$m，右端以 $w=1$cm/s向右拉，且丝线均匀伸长。虫初始距左端 $x_0\in(0,L_0]$，以相对当地丝线 $u=1$mm/s向左爬。求到达固定端所需时间，并计算从自由端出发的情形。\end{drill}
+\fig{k3p12q}{均匀伸长丝线上的爬行：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(5,0);\draw[world](0,-.4)--(0,.7);\fill(2.8,0)circle(3pt)node[above]{虫};\draw[flow,blue](2.8,-.5)--(1.6,-.5)node[left]{$u$};\draw[flow](5,0)--(6,0)node[right]{$w$};\draw[dim](0,1)--(5,1)node[midway,above]{$L(t)$};\end{tikzpicture}}
+\answerlink{k3p12}
+\end{question}

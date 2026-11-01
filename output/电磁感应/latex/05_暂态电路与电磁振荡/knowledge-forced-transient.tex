@@ -1,0 +1,14 @@
+\fig{fv:f5:responses}{正弦电压从过零点接通时，正弦特解与自然项相加才满足零初流}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(13.1,0)node[right]{$\omega t$};\draw[axis](0,-1.5)--(0,2.35)node[above]{$i/I_m$};
+\draw[blue,dashed,domain=0:12.57,samples=160]plot(\x,{sin(\x r-atan(5))});\draw[red,dashed,domain=0:12.57,samples=100]plot(\x,{sin(atan(5))*exp(-.2*\x)});
+\draw[world,domain=0:12.57,samples=180]plot(\x,{sin(\x r-atan(5))+sin(atan(5))*exp(-.2*\x)});
+\node[left]at(0,1){$1$};\node[left]at(0,-1){$-1$};\node[blue]at(9,-1.5){正弦特解};\node[red]at(8,1.85){自然项};\node at(4,2.35){完整响应};
+
+\end{tikzpicture}}
+
+固定参数的串联 RL 电路受正弦电压驱动时，设 $i_{\rm ss}(t)$ 是已求得的正弦特解，任意初流 $I_0$ 对应的完整解为
+\[i(t)=i_{\rm ss}(t)+[I_0-i_{\rm ss}(0)]\e^{-t/\tau},\qquad\tau=L/R.\]
+齐次项的系数由初始差额确定，不能在接通瞬间直接舍弃。图\ref{fv:f5:responses}取 $e=E_m\sin\omega t$、$R/(\omega L)=0.2$，稳态相位滞后 $\phi=\arctan5$，因此 $i_{\rm ss}(0)=-I_m\sin\phi$。红色自然项在零时刻恰抵消蓝色特解，使总电流为零；两者斜率也在起点抵消，与原方程给出的 $\dot i(0)=e(0)/L=0$ 一致。
+
+若接通时已满足 $I_0=i_{\rm ss}(0)$，则没有指数暂态；这取决于电流的特解相位，不能简单用电压是否过零判断。电阻越小，自然项衰减越慢；理想纯电感的常量积分偏置不会自行消失。

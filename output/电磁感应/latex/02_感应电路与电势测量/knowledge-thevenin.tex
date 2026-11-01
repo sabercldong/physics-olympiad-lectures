@@ -1,0 +1,7 @@
+\fig{fv:f2:port}{规定负载路径后，将端口等效为开路电压与串联内阻}{\begin{tikzpicture}
+
+\draw[world](0,1.25)--(0,2.3)--(1,2.3) (2.2,2.3)--(4,2.3);\draw[world](1,2.05)rectangle(2.2,2.55);\node[above]at(1.6,2.55){$R_{\rm th}$};\draw[world](0,.85)circle(.4);\draw[world](0,.45)--(0,0)--(4,0);\node at(0,1.05){$+$};\node at(0,.65){$-$};\node[left]at(-.5,.85){$U_{\rm oc}$};
+\fill(4,2.3)circle(2pt)node[above]{$A$};\fill(4,0)circle(2pt)node[below]{$B$};\draw[dashed](4,2.3)--(5,2.3)--(5,1.6) (5,.7)--(5,0)--(4,0);\draw[world](4.75,.7)rectangle(5.25,1.6);\node[right]at(5.3,1.15){$R_L$};\draw[flow](3,2.8)--(4.3,2.8)node[midway,above]{$I$};
+
+\end{tikzpicture}}
+图\ref{fv:f2:port}用开路电压 $U_{\rm oc}=V_A-V_B$与串联电阻表示线性网络对指定端口的作用，负载电流的正向从 $A$流入负载、由 $B$返回。接入 $R_L$后，端口电流为 $I=U_{\rm oc}/(R_{\rm th}+R_L)$，端电压为 $IR_L$；开路时虽然电流为零，端电压一般不为零。在含感生电场的装置中，$U_{\rm oc}$还必须对应已规定的引线路径。若改动测量回路使包围磁通改变，就已改变端口描述，不能照搬原等效电源。

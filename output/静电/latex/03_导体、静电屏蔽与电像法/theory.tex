@@ -1,0 +1,371 @@
+\section{静电平衡与边界约束}
+\subsection{导体内部零场与表面电荷}
+
+金属含可移动的自由电荷。若静态导体内部仍存在宏观电场，自由电荷就会继续移动，状态不能保持。静电平衡时金属内部 $\bm E=0$，连通金属整体电势相同，表面切向场也为零。净自由电荷位于表面；若内部有空腔，还应区分内、外两个表面，不能把“电荷在表面”误解为“任何时候只在最外表面”。
+
+贴着导体表面取一个很薄的柱形高斯面，金属内侧场为零，侧面通量在厚度趋零时消失，得到外侧法向场 $E_n=\sigma/\varepsilon_0$，法向从金属指向相邻空间。内腔表面的法向因此朝向腔内，使用球坐标的向外径向时符号要特别检查。
+
+\fig{e3:surface-normal}{薄柱跨越导体表面；法向由金属指向相邻空间，外表面与内腔表面的几何方向不同}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[gray!15](-2,-1.2)rectangle(2,0);\draw(-2,0)--(2,0);\draw[guide](-.6,-.5)rectangle(.6,.6);
+\draw[flow](.1,.6)--(.1,1.8)node[right]{$\bm E_{\text{外}}$};\draw[force](1,0)--(1,1.2)node[right]{$\bm n$};
+\node at(0,-.9){金属内 $E=0$};\node at(0,2.5){外侧通量 $E_n\Delta S$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\fill[gray!15](0,0)circle(1.8);\fill[white](0,0)circle(1.1);\draw(0,0)circle(1.8);\draw(0,0)circle(1.1);
+\draw[force](1.1,0)--(.2,0)node[midway,above]{$\bm n_{\text{内}}$};\draw[force](1.8,0)--(2.8,0)node[right]{$\bm n_{\text{外}}$};
+\node at(0,-2.5){内表面法向指向空腔};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e3:surface-normal}左图在厚度趋零时，侧面通量随侧面积消失，内端面因金属零场没有通量，只剩 $E_n\Delta S=\sigma\Delta S/\varepsilon_0$。右图表明同一金属壳的内、外表面法向相反；“向外”应以从金属进入空间为准，而不是统一取离球心更远的方向。
+
+给定净电荷 $Q$ 和给定电势 $V$ 是两种不同约束。孤立导体与外界不交换电荷，$\int\sigma\dd S=Q$ 固定而电势待求；接地导体电势固定为地的零点，电荷可以进出，净量通常不守恒。接地线并非使每一点的面电荷都为零，反而常为感应电荷提供交换通道。
+
+\fig{e3:charge-vs-ground}{孤立导体固定净电荷，接地导体固定电势；地线允许感应电荷交换}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)circle(1.4);\fill(3,0)circle(2pt)node[above]{$q$};\node at(0,.2){$Q\text{ 固定}$};\node at(0,-.5){$V\text{ 待求}$};\node at(0,-2){孤立};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw(0,0)circle(1.4);\fill(3,0)circle(2pt)node[above]{$q$};\draw(0,-1.4)--(0,-2.8)node[ground]{};
+\node at(0,.2){$V=0$};\node at(0,-.5){$Q\text{ 待求}$};\draw[<->](1,-2.5)--(1,-1.5)node[right]{电荷交换};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e3:charge-vs-ground}中两种状态的表面分布都可能不均匀。孤立时守恒的是整块导体的净量；接地时保持的是电势，不要求每一处面密度为零，也不要求接地前后的净量相同。
+
+\subsection{唯一性使边界等效可以成立}
+
+无体电荷区域中，电势满足 $\nabla^2V=0$。若两种候选电势具有相同的真实点电荷奇点、相同边界电势及无穷远条件，它们的差 $u$ 在区域中无源且边界为零。先对各方向使用乘积求导，例如
+$\partial_x(u\partial_xu)=(\partial_xu)^2+u\partial_x^2u$，
+再将 $x,y,z$ 三项相加，得到
+$\nabla\cdot(u\nabla u)=|\nabla u|^2+u\nabla^2u$。
+对求解区域 $\Omega$ 积分，并用散度定理把左侧改为边界通量：
+\[
+ \oint_{\partial\Omega}u\,\partial_nu\,\dd S
+ =\int_\Omega|\nabla u|^2\dd v+\int_\Omega u\nabla^2u\,\dd v.
+\]
+边界上 $u=0$，左端为零；区域内 $\nabla^2u=0$，右端第二项为零，
+所以 $\int_\Omega|\nabla u|^2\dd v=0$，从而两场相同。这是接地边界问题的唯一性依据。
+
+若部分孤立导体给定净电荷而非电势，边界电势差可以是常数，但相应总电荷差为零，能量积分中的该导体边界项仍为零。因而保留这些电荷约束也能确定相应的静电解。检验像电荷方案时，必须同时满足几何边界、真实区域无额外奇点、无穷远行为和给定电荷或电势条件。
+
+
+\fig{e3:uniqueness-domain}{比较两个解时，真实电荷的奇点相同，差函数在整个求解区域内无源}{\begin{tikzpicture}
+
+\draw[thick](-3,-1.8)rectangle(3,1.8);\fill[gray!8](-2.95,-1.75)rectangle(2.95,1.75);
+\node at(0,.9){$u=V^{(1)}-V^{(2)}$};\node at(0,.1){$\nabla^2u=0$};\node at(0,-.8){同一真实电荷的奇点在作差后消去};
+\draw[force](3,.8)--(4,.8)node[right]{$\bm n$};\node at(0,2.4){边界 $u=0$};
+
+\end{tikzpicture}}
+
+图\ref{e3:uniqueness-domain}中若边界电势给定且相同，边界项 $\oint u\,\partial_nu\,\dd S=0$；积分恒等式迫使 $\nabla u=0$，再由边界常数为零得到 $u=0$。孤立导体边界上的 $u$ 可以是常数，但该面的总法向通量差由净电荷差固定为零，边界项仍消失。唯一性说明满足完整边界条件的辅助电荷方案即可代表真实区域内的解，而不要求辅助电荷在域外也给出真实场。
+
+\section{空腔与静电屏蔽}
+\subsection{外部作用如何与内腔分离}
+
+封闭导体空腔内没有电荷，腔壁是同一电势。常数电势已经满足腔内方程和边界，唯一性说明腔内处处零场。这个结论不要求外表面接地；外部电荷可以改变导体的整体电势和外表面分布，却不能在理想闭腔内建立场。
+
+内腔有电荷时，腔内场一般不为零。外部电荷若只使腔壁电势整体增加常数，腔内电场不变，内部物体之间的力也不变。若在内腔加入一个额外独立电极并改变其电势，则边界条件改变，腔内当然可以有场；屏蔽不能消除内部电极本身造成的场。
+
+内腔含总电荷 $q$，在金属中取包围腔的高斯面，内表面总电荷为 $-q$。若整个壳孤立且净量 $Q$，外表面总量为 $Q+q$。因此不接地的壳一般仍把内腔总电荷的信息传到外部；若内腔总量为零，则不一定产生这种外部附加场。壳接地、外部又没有其他电荷时，外部零势解成立，内腔电荷的外部影响被屏蔽。
+
+\typeout{ECFIG:fig:e3:cavity}\fig{fig:e3:cavity}{在金属中取虚线高斯面，腔内电荷由内壁总量抵消，外表面承担剩余净量}{\begin{tikzpicture}
+
+\fill[gray!15](0,0)circle(2.2);\fill[white](0,0)circle(1.4);\draw(0,0)circle(2.2);\draw(0,0)circle(1.4);\draw[guide](0,0)circle(1.8);
+\fill(.6,.2)circle(2pt)node[above]{$q$};\node at(-.3,-.5){腔内可有场};
+\draw[guide](-1.25,.6)--(-3,1.3)node[left]{内壁总量 $-q$};\draw[guide](1.9,.8)--(3,1.6)node[right]{外表面总量 $Q+q$};
+\node at(0,3){金属区域 $E=0$};\node at(4,-1){壳孤立时净量 $Q$};
+
+\end{tikzpicture}}
+图\ref{fig:e3:cavity}的虚线面位于金属内，故其总通量确为零。它包围腔内 $q$ 与整个内壁，直接给 $q+Q_{\text{内壁}}=0$；这是总量结论，不要求内壁密度均匀。若 $q$ 偏心，内壁通常非均匀，而金属中的零场仍然成立。
+
+\subsection{接触、接地和断开应逐阶段处理}
+
+电荷不接触地放入空腔，内外感应电荷成对出现，壳的净量不变；接触后，原小球与壳成为同一导体，静态电荷可转移到整个连通导体的最外表面。断开接触后，各个孤立部分保留分离时净电荷，再分别重新分布。
+
+“手触一下”表示暂时接地后撤去，撤手以后净电荷就固定。若地线仍接着便移走诱导电荷，电荷可能流回大地；若先断地线再移走，先前取得的净量保留。次序是问题的一部分，应在过程图中为每阶段注明是否接地、是否接触以及哪一个系统总电量守恒。
+
+理想屏蔽结论针对闭合导体边界。实际插入物体所用的小孔、绝缘穿线孔或网孔会带来漏场；竞赛模型若忽略这些细节，应明确以闭合腔或孔径足够小的近似处理，不能把任意大开口都当成完美屏蔽。
+
+
+\fig{e3:grounding-order}{外正电荷仍在时先撤地线，再移走外电荷，导体已取得的负净量被保留}{\begin{tikzpicture}
+
+\begin{scope}[scale=.85]
+\draw(0,0)circle(1.2);\fill(2.5,0)circle(2pt)node[above]{$+q$};\draw(0,-1.2)--(0,-2.3)node[ground]{};
+\node at(-.6,.4){$-$};\node at(.6,.4){$-$};\draw[flow](-.6,-2.1)--(-.6,-1.4);\node at(-1.3,-1.7){电子};\node at(0,2){接地感应};
+\end{scope}
+\begin{scope}[xshift=4.5cm,scale=.85]
+\draw(0,0)circle(1.2);\fill(2.5,0)circle(2pt)node[above]{$+q$};\draw(0,-1.2)--(0,-1.5);\node at(0,0){$Q_g<0$};\node at(0,2){先撤地线};
+\end{scope}
+\begin{scope}[xshift=9cm,scale=.85]
+\draw(0,0)circle(1.2);\foreach \a in {0,60,120,180,240,300}{\node at(\a:1){$-$};}\node at(0,0){$Q_g$};\node at(0,2){再移走 $q$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e3:grounding-order}的最后一步只重排已有净电荷，不再与大地交换。若反过来保持地线而先移走 $q$，没有外部电荷的接地球可回到零电荷状态。因此做题时每一步都应先画出连通关系，再指定哪一个导体或连通体的总量守恒。图仅示意正外电荷附近的导体，不把取得的负净量大小当成固定的 $-q$。
+
+\section{远隔导体与尖端场强}
+\subsection{连通两球的电势相同}
+
+两个相距远大于各自半径的金属球用细导线连接，忽略相互电势贡献和导线电荷，静电平衡给 $kQ_1/R_1=kQ_2/R_2$。故电量比为半径比，面密度比 $\sigma_1/\sigma_2=R_2/R_1$，表面场比也为 $R_2/R_1$。
+
+小球曲率半径较小，在相同电势下局部面密度和场强较大。这解释尖端附近容易出现强场的趋势，但“任意导体的面密度精确反比于曲率半径”不是普遍定律；真实分布还依赖整体形状、邻近物体和外部电极。用球模型作估算时，应交代远隔、近似球形和共同电势条件。
+
+
+\fig{e3:two-spheres}{远隔且用细线相连的两球等势；小球电量较少，面密度和表面场却较大}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.5);\draw(6,0)circle(.75);\draw(1.5,0)--(5.25,0);\node at(0,0){$Q_1,R_1$};\node at(6,0){$Q_2,R_2$};
+\draw[flow](0,1.5)--(0,2.3)node[above]{$E_1$};\draw[flow](6,.75)--(6,2.35)node[above]{$E_2$};
+\node at(3,-2.2){$V_1=V_2$，忽略相互电势与导线电荷};
+
+\end{tikzpicture}}
+
+图\ref{e3:two-spheres}以 $R_1=2R_2$ 的比例示意，所以等势条件给 $Q_1=2Q_2$，而 $\sigma_2=2\sigma_1$、$E_2=2E_1$。箭头表示同号正电情况下的向外场；若总量为负则场向内，大小关系保留。有限间距时各球还受另一球的电势和极化影响，不能继续使用这个精确半径比。
+
+\section{接地平面的电像法}
+\subsection{用反号镜像满足零势边界}
+
+图\ref{fig:e3:planeimage}把实际金属区域画在左侧，右半空间才是需要求解的真空区域。真实点电荷 $q$ 位于接地无限平面 $x=0$ 的右侧 $(d,0,0)$。在不属于真实求解区域的左侧放像电荷 $-q$ 于 $(-d,0,0)$，两者在平面任一点等距，电势代数和为零。右半空间又有相同真实奇点和无穷远条件，所以由唯一性，这两个点电荷产生的场等于真实右半空间的场。
+
+像电荷是表示真实导体感应电荷作用的计算工具，左半空间的像点不是实际电荷。在导体内部真实总场为零，像方案在左侧给出的场不能继续当作真实场。若单独求感应电荷在导体内某点的场，应使用 $\bm E_{\text{感}}=-\bm E_{\text{真点}}$，而右侧才可用像电荷场代表感应场。
+
+\typeout{ECFIG:fig:e3:planeimage}\fig{fig:e3:planeimage}{左侧辅助像只用于表示右半空间的解；真实导体内部的总场仍为零}{\begin{tikzpicture}
+
+\fill[pattern=north east lines](-3,-2)rectangle(0,2);\draw[thick](0,-2)--(0,2);\draw(0,-2)--(0,-2.6)node[ground]{};
+\draw[blue,dashed](-2,0)circle(.12);\node[blue,above]at(-2,.2){像 $-q$};\fill(2,0)circle(2.5pt)node[above]{$q$};
+\draw[guide](-2,0)--(2,0);\draw[<->](0,-1)--(2,-1)node[midway,below]{$d$};\draw[<->](-2,-1)--(0,-1)node[midway,below]{$d$};
+\node[fill=white]at(-1.5,1.3){真实金属 $E=0$};\node at(2.2,1.4){真实求解区 $x>0$};
+
+\end{tikzpicture}}
+\fig{e3:plane-projections}{在平面点 $P$，两电荷的切向场抵消，法向场叠加并指向导体}{\begin{tikzpicture}
+
+\draw[thick](0,-1.5)--(0,3);\fill(2,0)circle(2pt)node[below]{$q>0$};\draw[blue,dashed](-2,0)circle(.1);\node[below]at(-2,0){$-q$};
+\fill(0,1.2)circle(2pt)node[right]{$P$};\draw[guide](-2,0)--(0,1.2)--(2,0);
+\draw[force,gray](0,1.2)--(-1,.6);\draw[force,gray](0,1.2)--(-1,1.8);\draw[flow,blue](0,1.2)--(-1.7,1.2)node[left]{$E_x<0$};
+\draw[force](0,2.7)--(1,2.7)node[right]{$\bm n=\hat{\bm x}$};\node at(2,2){$OP=s$};\node at(0,-2.2){$\sigma=\varepsilon_0E_x<0$};
+
+\end{tikzpicture}}
+
+图\ref{e3:plane-projections}中从导体指向真空的法向是 $+x$，实际合场却沿 $-x$，因此 $\sigma$ 为负。每个场的法向投影都为 $-kqd/(d^2+s^2)^{3/2}$，两项相加产生面密度中的因子二。这个因子二与相互作用能的二分之一来自不同环节，不能混淆。
+
+\subsection{面密度、合力与能量}
+
+在距垂足横向距离 $s$ 的平面点，真实与镜像电荷的切向分量抵消，法向场为 $E_x=-2kqd/(s^2+d^2)^{3/2}$，因此
+\[
+ \sigma(s)=-\frac{qd}{2\pi(s^2+d^2)^{3/2}}.
+\]
+按图中的平面圆环积分总感应量，先以半径 $S$ 截断：
+\[
+ Q_g(S)=-qd\int_0^S\frac{s\dd s}{(s^2+d^2)^{3/2}}.
+\]
+令 $u=s^2+d^2$，$\dd u=2s\dd s$，则
+\[
+ Q_g(S)=-\frac{qd}{2}\int_{d^2}^{S^2+d^2}u^{-3/2}\dd u
+ =qd[u^{-1/2}]_{d^2}^{S^2+d^2}
+ =\frac{qd}{\sqrt{S^2+d^2}}-q.
+\]
+最后令 $S\to\infty$，得到 $Q_g=-q$，满足总感应量。真实电荷受感应电荷的合力等于它与像电荷间的库仑力，方向指向平面，大小 $kq^2/(4d^2)$。
+
+把电荷从 $d$ 缓慢移到无穷远，外力随当前位置 $x$ 变化。
+由图\ref{e3:image-force-energy}中每一位置的真像间距 $2x$，
+\[
+ W_{\text{外}}=\frac{kq^2}{4}\lim_{L\to\infty}\int_d^Lx^{-2}\dd x
+ =\frac{kq^2}{4}\lim_{L\to\infty}[-x^{-1}]_d^L
+ =\frac{kq^2}{4d}.
+\]对应相互作用能为 $-kq^2/(4d)$，等于 $q$ 乘像电势的一半。不能直接把真实与像电荷视为两个固定独立电荷计算 $qV_{\text{像}}$，因为像的位置和分布随真实电荷移动，且地线允许电荷交换。用实际受力积分最能避免这个倍数错误。
+
+
+\fig{e3:image-force-energy}{真电荷移到 $x$ 时镜像也移到 $-x$，受力距离始终为 $2x$；右图阴影为拉离功}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[thick](0,-1.4)--(0,1.4);\fill(2,0)circle(2pt)node[above]{$q$};\draw[blue,dashed](-2,0)circle(.1);\node[above]at(-2,0){$-q$};
+\draw[force](2,0)--(.8,0)node[below]{$F_{\text{感}}$};\draw[flow](2,1)--(3.3,1)node[right]{缓慢拉离};
+\draw[<->](-2,-1)--(2,-1)node[midway,below]{$2x$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw[axis](0,0)--(5,0)node[right]{$x/d$};\draw[axis](0,0)--(0,2.6)node[above]{$F_{\text{外}}/(kq^2/4d^2)$};
+\fill[blue!12](1,0)--plot[domain=1:4.5,samples=60](\x,{2/(\x*\x)})--(4.5,0)--cycle;
+\draw[blue,thick,domain=1:4.5,samples=60]plot(\x,{2/(\x*\x)});\node[below]at(1,0){$1$};\node[left]at(0,2){$1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e3:image-force-energy}左图不能把像固定在初始位置后再积分；每个新位置的像都应按新边界重新确定。右图只画出积分的一段，尾部还延伸到无穷远；对完整曲线积分才有 $W_{\text{外}}=kq^2/(4d)$。真实电荷的受力可直接按像计算，而系统能量必须反映感应分布随过程变化。
+
+\section{球面电像与给定净电荷}
+\subsection{接地球的几何比例}
+
+半径 $R$ 的接地球，外点电荷 $q$ 距球心 $d>R$。把像放在同一径向、距心 $b$ 处。对球面任一点，两电荷距离应保持固定比例，选 $b=R^2/d$ 时，球面距离满足 $s_{\text{像}}=(R/d)s_{\text{真}}$。再取 $q'=-qR/d$，两项电势在球面处处相消。
+
+球外像位于球内，不在真实外部区域，故允许；若求球形空腔内部，真实点在腔内，像反而在腔外。检查像是否落在求解区域以外，是确定方案是否合法的一步。
+
+\fig{e3:sphere-inversion}{球面点到真电荷与像电荷的距离保持固定比例，像在真实球外区域之外}{\begin{tikzpicture}
+
+\draw(0,0)circle(2);\fill(0,0)circle(1.7pt)node[below]{$O$};\fill(4.5,0)circle(2pt)node[below]{$q$};\draw[blue,dashed](.8889,0)circle(.1);\node[blue,below]at(.8889,0){$q'$};
+\fill(1.2,1.6)circle(2pt)node[above]{$P$};\draw[guide](0,0)--(1.2,1.6)node[midway,left]{$R$};
+\draw[blue](.8889,0)--(1.2,1.6)node[midway,right]{$s_{\text{像}}$};\draw(4.5,0)--(1.2,1.6)node[midway,above]{$s_{\text{真}}$};
+\draw[<->](0,-1)--(.8889,-1)node[midway,below]{$b$};\draw[<->](0,-2.8)--(4.5,-2.8)node[midway,below]{$d$};
+
+\end{tikzpicture}}
+
+图\ref{e3:sphere-inversion}中，若 $P$ 极角为 $\theta$，两段距离平方分别为 $d^2+R^2-2dR\cos\theta$ 与 $b^2+R^2-2bR\cos\theta$。代入 $b=R^2/d$，第二式恰为第一式的 $R^2/d^2$ 倍。再取 $q'=-qR/d$，才能使 $q/s_{\text{真}}+q'/s_{\text{像}}=0$ 对所有球面点成立。只在最近点抵消电势，不足以满足整个球面边界。
+
+外点电荷受到的接地球吸引力为
+\[
+ F_r=k\frac{qq'}{(d-b)^2}
+ =-\frac{kq^2Rd}{(d^2-R^2)^2}.
+\]
+像电荷总量 $q'$ 等于球的总感应电荷。接地球与大地交换电荷，并不满足原来“中性”的孤立约束；若把这组像直接套到中性球上，会少掉为保持总量所需的一项。
+
+\subsection{孤立球需增加中心像}
+
+若球净电荷指定为 $Q$，保留接地球像 $q'=-qR/d$，再在球心加像 $q_0=Q+qR/d$。中心像在球面产生常数势，不破坏等势；总像量 $q'+q_0=Q$，满足净量约束。球电势为 $kq_0/R=kQ/R+kq/d$，外点力为两个像的库仑力之和，
+\[
+ F_r=k\frac{qq_0}{d^2}-\frac{kq^2Rd}{(d^2-R^2)^2}.
+\]
+\fig{e3:center-image}{加中心像只使球面电势整体平移，偏心像仍负责抵消外点电荷在球面上的位置变化}{\begin{tikzpicture}
+
+\draw(0,0)circle(2);\fill(0,0)circle(2.2pt)node[below]{$q_0$};\draw[blue,dashed](.8,0)circle(.1);\draw[guide,blue](.8,0)--(2.5,.9);\node[blue,right]at(2.7,1.1){$q'=-qR/d$};\fill(4.5,0)circle(2pt)node[above]{$q$};
+\foreach \a in {45,100,160}{\draw[guide](0,0)--(\a:2);}\node at(0,2.8){每个球面点到 $q_0$ 距离均为 $R$};
+\node at(5,-1){孤立：$q_0+q'=Q$};\node at(5,-2){定势：$kq_0/R=V_0$};
+
+\end{tikzpicture}}
+
+图\ref{e3:center-image}把两种约束分开：指定孤立净量时，中心像由 $Q$ 决定；指定电势时，中心像由 $V_0$ 决定。两种条件不能同时任意给定。中心像不是额外放进球内的真实电荷，而是球外等效解的组成部分。
+
+表面面密度要从球面外侧的法向场计算，不能只对已经取为常数的球面电势求导。
+令极角 $\theta$ 从指向外电荷的方向量起，偏心像距球心为 $b=R^2/d$。
+图\ref{e3:surface-derivative}中的场点 $M$ 先取在球外 $r>R$，它到真电荷和偏心像的距离分别为
+\[
+ L_d=\sqrt{r^2+d^2-2rd\cos\theta},\qquad
+ L_b=\sqrt{r^2+b^2-2rb\cos\theta}.
+\]
+\fig{e3:surface-derivative}{先在球外写电势，再固定极角沿径向求导，最后取球面外侧极限}{\begin{tikzpicture}
+\draw[world](0,0)circle(1.5);\draw[guide](0,0)--(3,0);
+\fill(0,0)circle(2pt)node[below left]{$q_0$};
+\fill(.75,0)circle(2pt)node[below]{$q'$};
+\fill(3,0)circle(2pt)node[below]{$q$};
+\draw[guide](0,0)--(1.2,1.6)node[midway,left]{$r$};
+\draw[guide,blue](.75,0)--(1.2,1.6)node[midway,right]{$L_b$};
+\draw[guide,red](3,0)--(1.2,1.6)node[midway,right]{$L_d$};
+\fill(1.2,1.6)circle(2pt)node[above left]{$M(r,\theta)$};
+\draw[flow](.9,1.2)--(1.65,2.2)node[right]{外法向};
+\draw[->](.48,0)arc(0:53.13:.48)node[midway,right]{$\theta$};
+\node at(-1.1,1.3){$R$};
+\end{tikzpicture}}
+三个等效电荷给出球外电势
+\[
+ V(r,\theta)=k\left(\frac q{L_d}+\frac{q'}{L_b}+\frac{q_0}r\right).
+\]
+固定 $\theta$ 对 $r$ 求导。对任意固定轴向距离 $s$，
+先把倒数距离写为 $(r^2+s^2-2rs\cos\theta)^{-1/2}$，链式法则给出
+\[
+ \frac{\partial}{\partial r}\frac1{L_s}
+ =-\frac12(r^2+s^2-2rs\cos\theta)^{-3/2}
+      (2r-2s\cos\theta)
+ =-\frac{r-s\cos\theta}{L_s^3}.
+\]
+分别取 $s=d,b$，并用 $\partial(r^{-1})/\partial r=-r^{-2}$，
+由 $E_r=-\partial V/\partial r$ 可得
+\[
+ E_r=k\left[\frac{q(r-d\cos\theta)}{L_d^3}
+ +\frac{q'(r-b\cos\theta)}{L_b^3}+\frac{q_0}{r^2}\right].
+\]
+现在才令 $r\to R^+$。记
+$L=\sqrt{R^2+d^2-2Rd\cos\theta}$，由电像位置有
+$L_b=(R/d)L$。代入 $q'=-qR/d$ 后，前两项合并为
+\[
+ \frac q{L^3}\left[R-d\cos\theta
+ -\frac{d^2}{R^2}\left(R-\frac{R^2}{d}\cos\theta\right)\right]
+ =-\frac{q(d^2-R^2)}{RL^3}.
+\]
+球内导体场为零，外法向由球心向外，所以 $\sigma=\varepsilon_0E_r(R^+,\theta)$，最终得到
+\[
+ \sigma(\theta)=\frac{q_0}{4\pi R^2}
+ -\frac{q(d^2-R^2)}{4\pi R(d^2+R^2-2dR\cos\theta)^{3/2}}.
+\]
+第一项补足净电荷，第二项是接地球的感应分布。为核验总量，球面带的面积为 $2\pi R^2\sin\theta\dd\theta$。
+第一项均匀分布积分为 $q_0$；第二项的积分记为 $Q_g$：
+\[
+ Q_g=-\frac{qR(d^2-R^2)}2
+ \int_0^\pi\frac{\sin\theta\dd\theta}
+ {(d^2+R^2-2dR\cos\theta)^{3/2}}.
+\]
+令 $u=d^2+R^2-2dR\cos\theta$，
+$\dd u=2dR\sin\theta\dd\theta$。
+$\theta=0,\pi$ 对应 $u=(d-R)^2,(d+R)^2$，所以
+\begin{align*}
+ \int_0^\pi\frac{\sin\theta\dd\theta}{u^{3/2}}
+ &=\frac1{2dR}\int_{(d-R)^2}^{(d+R)^2}u^{-3/2}\dd u\\
+ &=\frac1{dR}[-u^{-1/2}]_{(d-R)^2}^{(d+R)^2}\\
+ &=\frac1{dR}\left(\frac1{d-R}-\frac1{d+R}\right)
+ =\frac{2}{d(d^2-R^2)}.
+\end{align*}
+因 $d>R$，根式的两个端点均可直接取正数 $d-R,d+R$。
+于是 $Q_g=-qR/d$，总量 $q_0+Q_g=Q$。
+面密度仍不必处处与净量同号。
+
+
+\section{线性、互易关系与有限导体}
+\subsection{叠加时哪些边界也要相加}
+
+电势方程是线性的，但叠加两个解时，导体的电势和净电荷也随之叠加。例如同一外点电荷下，孤立导体的解可以写成“接地感应解”与“没有外点电荷、导体另带一定电荷的解”之和。第二项不增加外点电荷，却把导体电势由零变为某常数，并补足指定净量。这解释了孤立球为什么需要增加中心像，也说明孤立平板不能简单沿用接地平板结论。
+
+两个电荷分布的相互作用积分满足
+\[
+ \int \rho_1 V_2\,\dd v=\int\rho_2 V_1\,\dd v.
+\]
+把 $V_2(\bm r)=k\int\rho_2(\bm r^\prime)/|\bm r-\bm r^\prime|\,\dd v^\prime$
+代入左端，保留两个独立源点变量：
+\begin{align*}
+ \int \rho_1V_2\dd v
+ &=k\iint\frac{\rho_1(\bm r)\rho_2(\bm r')}
+                 {|\bm r-\bm r'|}\dd v'\dd v\\
+ &=\int\rho_2(\bm r')
+    \left[k\int\frac{\rho_1(\bm r)}{|\bm r'-\bm r|}\dd v\right]\dd v'
+ =\int\rho_2V_1\dd v'.
+\end{align*}
+在相互作用积分收敛的条件下交换次序，括号内正是 $V_1$；表面电荷应作为面分布加入。这个互易关系不需要两组电荷同时存在，比较的是同一几何边界上的两种静电状态。
+
+设第一状态只有一个电势为 $V_0$ 的导体，其外部某点电势为 $\phi_0$。第二状态把导体接地，并在该点放电荷 $q$，导体取得净量 $Q_g$。互易关系给出 $0=Q_gV_0+q\phi_0$，因此 $Q_g=-q\phi_0/V_0$。这在难求局部分布、却能求总感应电荷时很有用。
+
+\fig{e3:reciprocity-states}{同一几何上的两种独立状态：先求已知导体势在外点的值，再求该点电荷诱导的接地总量}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)ellipse(1.2 and 1.7);\node at(0,0){$V_0$};\fill(3,0)circle(1.7pt)node[above]{$P$};\node[below]at(3,0){$\phi_0$};\node at(1,2.5){状态一：外点无电荷};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw(0,0)ellipse(1.2 and 1.7);\node at(0,0){$V=0$};\draw(0,-1.7)--(0,-2.6)node[ground]{};\fill(3,0)circle(2.3pt)node[above]{$q$};\node at(1,2.5){状态二：导体净量 $Q_g$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e3:reciprocity-states}第一状态在导体表面是常数 $V_0$，第二状态导体电势为零。互易式左侧第一状态电荷乘第二状态的势为零，右侧为 $Q_gV_0+q\phi_0$，所以无需求每处面密度即可确定 $Q_g$。两状态必须采用同一导体几何和同一参考零点。
+
+\subsection{局部平面近似与整体电荷约束}
+
+点电荷距有限金属面很近时，附近曲率与边缘可以忽略，局部面密度和近距离作用力可用接地平面近似。这个近似的条件是观察距离、离面高度都远小于金属面的横向尺度。把局部近似面密度积分到整个有限导体，或者用它决定孤立导体的净量，通常不可靠。
+
+有限导体的附加净电荷按其平衡分布重新分配，并不一定均匀。薄圆盘的自由表面电荷在边缘增强；尖端与边缘效应属于边界形状的整体结果。处理近轴点电荷与孤立圆盘时，应先求接地感应总量，再用圆盘自身的平衡分布补足指定电荷，而不是把补入电荷均匀摊在盘面。
+
+
+\fig{e3:local-global-disk}{局部近轴尺度 $a,s$ 远小于盘半径 $R$；补足孤立净量的自由电荷分布在边缘增强}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[thick](-3,0)--(3,0);\fill(0,1.2)circle(2pt)node[above]{$q$};\draw[<->](.5,0)--(.5,1.2)node[midway,right]{$a$};\draw[blue,very thick](-.8,0)--(.8,0);
+\draw[<->](-3,-.8)--(0,-.8)node[midway,below]{$R$};\node at(0,-1.8){局部区 $s\ll R$};
+\end{scope}
+\begin{scope}[xshift=8cm]
+\draw[axis](0,0)--(4.2,0)node[right]{$s/R$};\draw[axis](0,0)--(0,4.3)node[above]{$\sigma_{\text{自由}}$};
+\draw[blue,thick,domain=0:.97,samples=90]plot({3.5*\x},{.8/sqrt(1-\x*\x)});
+\draw[guide](3.5,0)--(3.5,4.1);\node[below]at(3.5,0){$1$};\node at(2,4.8){示意 $\Delta Q>0$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{e3:local-global-disk}左图的平面近似只控制近轴局部的主要感应项；右图的边缘增强属于整个有限盘的平衡分布。局部近似积分到边缘或无穷远，不能替代有限导体的净量约束。求孤立盘时，应先求接地感应的总量，再叠加满足实际几何的自由带电解；两部分各自满足边界，合起来才满足指定净量。

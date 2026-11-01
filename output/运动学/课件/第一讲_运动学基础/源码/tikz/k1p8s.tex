@@ -1,0 +1,11 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$h/\mathrm{cm}$};\draw[axis](0,0)--(0,2.7)node[above]{$1/v$};\fill[blue!12](0,0)--(0,1)--(4,2)--(4,0)--cycle;\draw[world](0,1)--(4,2);\node[left]at(0,1){$0.5$};\node[left]at(0,2){$1$};\node[below]at(4,0){$20$};\end{tikzpicture}
+\end{document}

@@ -1,0 +1,76 @@
+\begin{solution}\textbf{中性线完好时按电源相电压求支路电流与总功率}\par\nobreak
+图\ref{fig:em6:example:12:s}的中性线将$N$固定在电源中性点$O$的电位，各负载电压均为相应电源相电压。电流按线端流向$N$为正，利用$\underline U_a+\underline U_b+\underline U_c=0$：
+\[
+ \underline I_a=\frac{\underline U_a}{R},\quad
+ \underline I_b=\frac{\underline U_b}{R},\quad
+ \underline I_c=\frac{\underline U_c}{2R},\qquad
+ \underline I_a+\underline I_b+\underline I_c
+       =-\frac{\underline U_c}{2R}.
+\]
+因此中性线电流大小为$U/(2R)$；若按$N\to O$取正，其相量即上式三电流之和。负载总有功功率为
+\[
+ P_{\text{通}}=\frac{U^2}{R}+\frac{U^2}{R}
+                    +\frac{U^2}{2R}=\frac{5U^2}{2R}.
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{中性线断开后对浮动节点求电位}\par\nobreak
+断开$NO$后没有中性线电流，节点$N$不再等势于$O$。令$\underline U_N=V_N-V_O$，对$N$列电流守恒：
+\[
+ \frac{\underline U_a-\underline U_N}{R}
+ +\frac{\underline U_b-\underline U_N}{R}
+ +\frac{\underline U_c-\underline U_N}{2R}=0.
+\]
+乘以$2R$后合并，
+\[
+ 5\underline U_N=2\underline U_a+2\underline U_b+\underline U_c
+                =-\underline U_c,\qquad
+ \boxed{\underline U_N=-\underline U_c/5}.
+\]
+\fig{fig:em6:example:12:p}{电源电压从$O$起画，断线后的负载电压从新中性点$N$起画}{
+\begin{tikzpicture}[scale=1.15]
+\coordinate(O)at(0,0);\coordinate(A)at(2.6,0);
+\coordinate(B)at(-1.3,-2.252);\coordinate(C)at(-1.3,2.252);
+\coordinate(N)at(.26,-.4504);
+\draw[flow,gray](O)--(A)node[midway,above]{$\underline U_a$};
+\draw[flow,gray](O)--(B)node[midway,left]{$\underline U_b$};
+\draw[flow,gray](O)--(C)node[midway,left]{$\underline U_c$};
+\draw[force,blue](N)--(A)node[midway,below]{$\underline U_{aN}$};
+\draw[force,blue](N)--(B)node[midway,below right]{$\underline U_{bN}$};
+\draw[force,red](N)--(C)node[pos=.68,right]{$\underline U_{cN}$};
+\draw[flow](O)--(N);
+\fill(O)circle(1.5pt)node[above right]{$O$};
+\fill(N)circle(2pt)node[below right]{$N$};
+\node[right]at(A){$a$};\node[below left]at(B){$b$};\node[above left]at(C){$c$};
+\node at(1,-2.6){$\overrightarrow{ON}=\underline U_N=-\underline U_c/5$};
+\end{tikzpicture}}
+
+图\ref{fig:em6:example:12:p}中$O,N$表示相量平面上的电位端点。负载电压应沿$N$指向各线端，对应$\underline U_{jN}=\underline U_j-\underline U_N$；$N$沿$\underline U_c$反方向移动，使$c$支路电压增长。
+
+\par\medskip\Needspace{3\baselineskip}\noindent
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用新中性点分别求三个负载电压及总功率}\par\nobreak
+按图中的三条负载电压箭头，
+\[
+ \underline U_{aN}=\underline U_a+\frac{\underline U_c}{5},\quad
+ \underline U_{bN}=\underline U_b+\frac{\underline U_c}{5},\quad
+ \underline U_{cN}=\frac65\underline U_c.
+\]
+前两相与$\underline U_c$的夹角均为$120^\circ$，所以
+\[
+ |U_{aN}|^2=|U_{bN}|^2
+ =U^2\left(1+\frac1{25}+\frac25\cos120^\circ\right)
+ =\frac{21U^2}{25},\qquad |U_{cN}|=\frac65U.
+\]
+$c$支路出现20\%过电压。总有功功率为
+\[
+ \boxed{P_{\text{断}}
+   =2\frac{21U^2}{25R}+\frac{36U^2/25}{2R}
+   =\frac{12U^2}{5R}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对电流相量守恒及平衡负载极限}\par\nobreak
+两个$R$支路电压下降、$2R$支路上升，三电流重新分配后在$N$处相量和为零。若三电阻相等，节点方程恢复$\underline U_N=0$，可独立核对平衡极限。
+\end{solution}

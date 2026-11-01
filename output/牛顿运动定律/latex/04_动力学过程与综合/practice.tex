@@ -1,0 +1,25 @@
+\section{本讲小结}
+多过程动力学的关键是事件、初值和边界。先按真实受力求每段加速度，再连接连续的位置与速度；碰撞、停止和接触变化各用对应条件判断。图像中的斜率和面积应始终同坐标量纲对应，不能用瞬时力或不适当的平均值替代积分。
+
+变力问题可按自变量选择时间、位置或速度积分；重复过程先确定事件顺序，再建立递推。候选极值、无穷极限和停止位置都要配合模型范围解释。结果除了数值，还应交代方向、适用区间、临界之后的分支，以及至少一项独立的物理检查。
+\section{练习}
+\begin{question}\begin{drill}[平方阻力下的往返时间]\label{n4d1}
+物体竖直向上初速 $v_0$，阻力改为 $-cv|v|$，$c>0$。求上升时间、下落到出发点的时间及返回速率，判断总时间是否仍等于 $(v_0+v_f)/g$。可令 $u=\sqrt{mg/c}$。
+\fig{n4d1q}{平方阻力在上升与下降时使用不同的速度分支}{\begin{tikzpicture}
+\fill(-1.5,0)circle(3pt);\draw[flow,blue](-1.5,.2)--(-1.5,1.5)node[above]{$v>0$};\draw[force,red](-1.5,0)--(-1.5,-1.4)node[below]{$mg+cv^2$};\fill(1.5,0)circle(3pt);\draw[flow,blue](1.5,-.2)--(1.5,-1.5)node[below]{$v<0$};\draw[force,red](1.2,0)--(1.2,-1)node[left]{$mg$};\draw[force](1.8,0)--(1.8,1)node[above]{$cv^2$};
+\end{tikzpicture}}\answerlink{n4d1}\end{drill}\end{question}
+\begin{question}\begin{drill}[缓慢增加拉力后的滑离时间]\label{n4d2}
+上块质量 $m$、长板质量 $2m$，地面光滑，层间最大静摩擦和动摩擦均为 $\mu mg$。两者初静止，拉板的水平力为 $F(t)=\gamma t$，$\gamma>0$。求开始滑动时刻，以及从开始滑动到上块从板左端滑出的时间；初始上块到板左端的相对距离为 $\ell$。
+\fig{n4d2q}{板加速更快，上块相对板向左滑动}{\begin{tikzpicture}
+\node[draw,minimum width=4cm,minimum height=.6cm]at(0,.3){长板 $2m$};\node[draw,anchor=south]at(.6,.6){$m$};\draw[force](2,.3)--(3.3,.3)node[right]{$\gamma t$};\draw[dim](-2,1.6)--(.6,1.6)node[midway,above]{$\ell$};\draw[world](-2.5,0)--(2.5,0);
+\end{tikzpicture}}\answerlink{n4d2}\end{drill}\end{question}
+\begin{question}\begin{drill}[不等质量楔块的无穷层极限]\label{n4d3}
+沿用例题的光滑 $45^\circ$ 叠层，每层下三角块质量为 $m$，上三角块为 $\eta m$，$\eta>0$。求有限层底部支持系数的递推及无穷层极限，检验 $\eta=1$、$\eta\to0$ 和 $\eta\to\infty$。
+\fig{n4d3q}{每层上、下三角块的质量比固定}{\begin{tikzpicture}
+\foreach \j in {0,1}{\draw[world](0,{2*\j})rectangle(2,{2*(\j+1)});\draw[world](0,{2*\j})--(2,{2*(\j+1)});\node at(.5,{2*\j+1.5}){$\eta m$};\node at(1.5,{2*\j+.5}){$m$};}\draw[guide](.4,4)--(.4,4.6) (1.6,4)--(1.6,4.6);\draw[force,blue](1,-1)--(1,0)node[right]{$N_n$};
+\end{tikzpicture}}\answerlink{n4d3}\end{drill}\end{question}
+\begin{question}\begin{drill}[粗糙直槽的最短下滑时间]\label{n4d4}
+定点到倾角 $\alpha$ 斜面的法向距离为 $h$，直槽与竖直向下的右偏角限定为 $\beta\ge0$。槽内最大静摩擦与动摩擦均为 $\mu N$，物块从静止向下滑。求最优槽角，说明为何可能出现 $\beta=0$ 的边界最优。
+\fig{n4d4q}{重力的法向分量决定槽内摩擦}{\begin{tikzpicture}
+\draw[world](-2,0)--(3,2);\draw[world](-1,2.5)--(-.4,.64);\draw[guide](-1,2.5)--(-1,.3);\fill(-.7,1.55)circle(3pt);\draw[force,red](-.7,1.55)--(-.7,.4)node[right]{$mg$};\draw[force,blue](-.7,1.55)--(-1,2.48)node[left]{$\mu N$};\node at(-.8,2){$\beta$};\node at(-1.2,.2){$\alpha$};
+\end{tikzpicture}}\answerlink{n4d4}\end{drill}\end{question}

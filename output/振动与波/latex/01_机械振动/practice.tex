@@ -1,0 +1,44 @@
+\section{练习}
+
+\begin{question}\begin{drill}[两物块和弹簧的离地条件]\label{w1:drill:1}
+上物块质量$m_1$、下物块质量$m_2$，两者由劲度系数$k$的竖直轻弹簧连接，下物块起初在地面上。向下按上物块，待静止后撤去压力$F$。求下物块开始离地的临界压力。
+\end{drill}
+\fig{fig:w1:drill:1:s}{题设：两物块和弹簧的离地条件}{\begin{tikzpicture}[scale=.88]\draw[world](.5,0)--(3.5,0);\draw[world](1.4,0)rectangle(2.6,.5);\node at(2,.25){$m_2$};\draw[spring](2,.5)--(2,2);\draw[world](1.4,2)rectangle(2.6,2.5);\node at(2,2.25){$m_1$};\draw[force](2,3.6)--(2,2.6)node[right]{$F$};\end{tikzpicture}}
+\end{question}
+\answerlink{w1:drill:1}
+\begin{question}\begin{drill}[有干摩擦的弹簧振子]\label{w1:drill:2}
+$m=2\,\mathrm{kg}$、$k=400\,\mathrm{N/m}$，水平面静、动摩擦系数均为$0.2$，取$g=10\,\mathrm{m/s^2}$。弹簧自原长压缩$7\,\mathrm{cm}$后释放，求最大速度、最终位置及运动时间。
+\end{drill}
+\fig{fig:w1:drill:2:s}{题设：有干摩擦的弹簧振子}{\begin{tikzpicture}[scale=.88]\draw[world](0,-.4)--(0,1);\draw[spring](0,.3)--(1.6,.3);\draw[world](1.6,0)rectangle(2.3,.6);\node at(1.95,.3){$m$};\draw[world](0,-.1)--(4.5,-.1);\draw[guide](3.5,-.5)--(3.5,1)node[above]{$O$};\draw[axis](2.5,-.7)--(4.8,-.7)node[right]{$x$};\draw[dim](1.95,1.3)--(3.5,1.3)node[midway,above]{$7\,\mathrm{cm}$};\end{tikzpicture}}
+\end{question}
+\answerlink{w1:drill:2}
+\begin{question}\begin{drill}[圆弧槽与自由落球]\label{w1:drill:3}
+光滑圆弧槽曲率半径$R$，弧长远小于$R$。槽边缘小球$A$和最低点正上方高$h$处小球$B$同时静止释放。在小角近似下求它们在最低点相遇的全部$h$。
+\end{drill}
+\fig{fig:w1:drill:3:s}{小球A沿浅圆弧往复，小球B竖直下落，h从槽的最低点起算}{\begin{tikzpicture}
+
+\draw[world](-1.389185,.121538)arc(-100:-80:8);\fill(-1.389185,.121538)circle(.055)node[left]{$A$};\fill(0,2.3)circle(.055)node[right]{$B$};\fill(0,0)circle(.035)node[below]{最低点};
+\draw[dim](1.8,0)--(1.8,2.3)node[midway,right]{$h$};\draw[guide](0,2.3)--(1.9,2.3);\draw[flow](0,2)--(0,.8);\node at(-1,.8){曲率半径$R$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{w1:drill:3}
+\begin{question}\begin{drill}[两弹簧夹持的水平振子]\label{w1:drill:4}
+物块$m$在光滑水平面上，左右分别连接劲度$k_1,k_2$的弹簧。求相对平衡位置的小振动周期，并分析两弹簧初始预拉伸的影响。
+\end{drill}
+\fig{fig:w1:drill:4:s}{以真实平衡位置O为零点，向右位移x使左弹簧变长、右弹簧变短}{\begin{tikzpicture}
+
+\draw[world](0,-.3)--(0,1.1) (6,-.3)--(6,1.1);\draw[spring](0,.4)--(2.8,.4);\draw[world](2.8,0)rectangle(3.6,.8);\node at(3.2,.4){$m$};\draw[spring](3.6,.4)--(6,.4);
+\node[above]at(1.4,.7){$k_1$};\node[above]at(4.8,.7){$k_2$};\draw[guide](2.5,-.4)--(2.5,1.3)node[above]{$O$};\draw[dim](2.5,-.6)--(3.2,-.6)node[midway,below]{$x$};\draw[axis](3.8,-.6)--(5.8,-.6)node[right]{$+x$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{w1:drill:4}
+\begin{question}\begin{drill}[由位置和速度求振幅]\label{w1:drill:5}
+振子角频率$\omega=4\,\mathrm{s^{-1}}$，某时刻$x=3\,\mathrm{cm}$，$v=-16\,\mathrm{cm/s}$。求振幅、能量中动能所占比例及下一次到右端点的时间。
+\end{drill}
+\fig{fig:w1:drill:5:s}{同一时刻的正位移与负速度共同给出振幅和相位支路}{\begin{tikzpicture}
+
+\draw[world](0,-.3)--(0,1.1);\draw[spring](0,.4)--(2.4,.4);\draw[world](2.4,0)rectangle(3.2,.8);\node at(2.8,.4){$m$};
+\draw[guide](2,-.4)--(2,1.3)node[above]{$O$};\draw[dim](2,-.6)--(2.8,-.6)node[midway,below]{$x=3\,\mathrm{cm}$};\draw[flow](2.8,1.3)--(1,1.3)node[midway,above]{$v=-16\,\mathrm{cm/s}$};\node at(4.8,.9){$\omega=4\,\mathrm{s^{-1}}$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{w1:drill:5}

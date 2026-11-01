@@ -1,0 +1,274 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c2:drill:1}\textbf{忽略理想电压表电流后辨认串并联}\par\nobreak
+图\ref{fig:c2:drill:1:s} 的理想电压表不取电流，故 $M,B$ 间两条电阻均为 $2\,\Omega$，并联为 $1\,\Omega$。总电阻 $2\,\Omega$，主电流 $2\,\mathrm A$，两并联支路各为 $1\,\mathrm A$。
+\typeout{ECFIG:fig:c2:drill:1:p}\fig{fig:c2:drill:1:p}{电压表支路不取电流；主电流与两条并联支路的实际电流分别标出}{\begin{tikzpicture}
+
+\draw(0,0)--(0,2)to[R,l={$1$}](2.6,2)to[R,l={$1$}](5.2,2)to[R,l={$1$}](7.8,2)--(7.8,0)to[battery1,invert,l_={$4\,\mathrm V$}](0,0);
+\draw(2.6,2)--(2.6,.7)to[R,l={$2$}](7.8,.7);
+\foreach \x/\lab in {0/A,2.6/M,5.2/N,7.8/B}{\fill(\x,2)circle(1.5pt)node[above]{$\lab$};}
+\draw[flow](.4,2.7)--(1.8,2.7)node[midway,above]{$2\,\mathrm A$};
+\draw[flow](3.1,2.7)--(4.5,2.7)node[midway,above]{$1\,\mathrm A$};
+\draw[flow](4,1.45)--(5.5,1.45)node[midway,above]{$1\,\mathrm A$};
+\draw[dim](0,3.6)--(5.2,3.6)node[midway,above]{$U_{AN}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际电阻路径累计电压表读数}\par\nobreak
+图\ref{fig:c2:drill:1:p} 沿 $A\to M\to N$ 计算：$U_{AM}=2\times1=2\,\mathrm V$，$U_{MN}=1\times1=1\,\mathrm V$，所以读数 $U_{AN}=3\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用节点电势差独立核对读数}\par\nobreak
+也可令 $V_B=0$，有 $V_M=2,V_N=1,V_A=4\,\mathrm V$，差仍为 $3\,\mathrm V$。读数跨越主干电阻与一段分支电阻，不能只取某一只电阻的压降。\end{drillsolution}
+\begin{drillsolution}{c2:drill:2}\textbf{先将三电池等效为同一端口电源}\par\nobreak
+图\ref{fig:c2:drill:2:s} 的并联部分等效内阻为 $r_{\rm eq}=(1/3+1/2+1)^{-1}=6/11\,\Omega$，等效电动势为
+\[
+ \mathcal E_{\rm eq}=\frac{1/3+2/2+3/1}{1/3+1/2+1}=\frac{26}{11}\,\mathrm V.
+\]
+\typeout{ECFIG:fig:c2:drill:2:p}\fig{fig:c2:drill:2:p}{解答过程：三并联电池接入负载}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$26/11\,\mathrm V$}](0,2.6)--(3.4,2.6)to[R,l={$2\,\Omega$}](3.4,0)to[R,l_={$6/11\,\Omega$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接入负载后求新的共同端电压}\par\nobreak
+图\ref{fig:c2:drill:2:p} 中负载电流 $I_L=(26/11)/(2+6/11)=13/14\,\mathrm A$，端电压 $U=13/7\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原支路判断每节电池充放电}\par\nobreak
+各电池输出电流为 $I_1=(1-U)/3=-2/7\,\mathrm A$、$I_2=(2-U)/2=1/14\,\mathrm A$、$I_3=3-U=8/7\,\mathrm A$。其和为 $13/14\,\mathrm A$，等于负载电流。第一电池被充电，而另两个电池供电。接负载后应重新计算端电压，不能沿用外部开路时的各支路电流。\end{drillsolution}
+\begin{drillsolution}{c2:drill:3}\textbf{保持同一参考方向叠加电流}\par\nobreak
+按 图\ref{fig:c2:drill:3:s} 的同一参考方向叠加，$I=3+(-1)=2\,\mathrm A$，电阻功率 $P=I^2R=8\,\mathrm W$。
+\typeout{ECFIG:fig:c2:drill:3:p}\fig{fig:c2:drill:3:p}{解答过程：负载功率不能直接叠加}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2\,\Omega$}](4,0);\draw[flow](.7,.8)--(3.3,.8)node[midway,above]{$I=2\,\mathrm A$};\node at(2,-.8){$P=8\,\mathrm W$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先合成电流再计算焦耳热}\par\nobreak
+图\ref{fig:c2:drill:3:p} 的总电流沿第一电源贡献方向。单独功率之和是 $3^2\times2+(-1)^2\times2=20\,\mathrm W$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用交叉项说明功率不能直接相加}\par\nobreak
+平方展开的交叉项为 $2RI_1I_2=2\times2\times3\times(-1)=-12\,\mathrm W$，故实际功率是 $20-12=8\,\mathrm W$。线性叠加适用于电压与电流，功率须在叠加后重新计算。\end{drillsolution}
+\begin{drillsolution}{c2:drill:4}\textbf{以两中点电势相等求平衡等效电阻}\par\nobreak
+图\ref{fig:c2:drill:4:s} 中两条分压支路给出相同中点电势：$V_M-V_B=2U/3$，$V_N-V_B=6U/9=2U/3$，所以桥臂无电流，总电阻为 $3R\parallel9R=9R/4$。
+\typeout{ECFIG:fig:c2:drill:4:p}\fig{fig:c2:drill:4:p}{扰动后的实际电桥：$I_5$ 仍以 $M\to N$ 为参考方向}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);\coordinate(B)at(7,0);\coordinate(M)at(3.5,2.5);\coordinate(N)at(3.5,-2.5);
+\draw(A)to[R,l={$R$}](M)to[R,l={$2R$}](B)to[R,l_={$6R+\delta R$}](N)to[R,l_={$3R$}](A);
+\draw(M)to[R,l={$r$}](N);
+\draw[flow](2.7,.8)--(2.7,-.8)node[midway,left]{$I_5<0$};
+\foreach \q/\pos in {A/left,B/right,M/above,N/below}{\fill(\q)circle(1.5pt)node[\pos]{$\q$};}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{断开桥臂比较扰动后的开路电势}\par\nobreak
+图\ref{fig:c2:drill:4:p} 对扰动先断开桥臂判断开路电压。$V_M^{\rm oc}=2U/3$ 不变，而
+\[
+ V_N^{\rm oc}=U\frac{6R+\delta R}{9R+\delta R},\quad
+ V_N^{\rm oc}-V_M^{\rm oc}=\frac{U\delta R}{3(9R+\delta R)}>0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据正的总电阻确定实际桥电流方向}\par\nobreak
+看入电阻与桥臂电阻之和为正，所以桥电流由较高的 $N$ 流向 $M$。开路电压差决定方向；求大小时仍需计入端口内阻。\end{drillsolution}
+\begin{drillsolution}{c2:drill:5}\textbf{按环路内相抗的电源列方程}\par\nobreak
+图\ref{fig:c2:drill:5:s} 的两电源在闭合环路内相抗。取从电源一正端流向电源二正端为正，则 $\mathcal E_1-\mathcal E_2-I(r_1+r_2)=0$，所以 $I=(\mathcal E_1-\mathcal E_2)/(r_1+r_2)$。
+\typeout{ECFIG:fig:c2:drill:5:p}\fig{fig:c2:drill:5:p}{解答过程：两个电源的并联环流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E_1$}](0,1.5)to[R,l={$r_1$}](0,3)--(3,3)to[R,l={$r_2$}](3,1.5)to[battery1,l={$\mathcal E_2$}](3,0)--(0,0);\draw[flow](.7,3.4)--(2.3,3.4)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别由充电和放电支路求共同端电压}\par\nobreak
+图\ref{fig:c2:drill:5:p} 的端电压可分别由放电、充电关系计算，
+\[
+ U=\mathcal E_1-Ir_1=\mathcal E_2+Ir_2
+ =\frac{\mathcal E_1r_2+\mathcal E_2r_1}{r_1+r_2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查环流能量分配和零内阻极限}\par\nobreak
+能量关系为 $\mathcal E_1I=\mathcal E_2I+I^2(r_1+r_2)$。外端开路并不消除内部环流。若内阻趋零而两电动势不同，电流发散，表明两个不同理想电压源直接并联的模型不相容。\end{drillsolution}
+\begin{drillsolution}{c2:drill:6}\textbf{只断外负载并保留内部并联电阻}\par\nobreak
+先断开 图\ref{fig:c2:drill:6:s} 的 $3\,\Omega$ 外负载，内部 $2\,\Omega$ 保留。开路端电压 $U_{\rm oc}=6\times2/(1+2)=4\,\mathrm V$，关闭电源后的内阻 $R_{\rm th}=1\parallel2=2/3\,\Omega$。
+\typeout{ECFIG:fig:c2:drill:6:p}\fig{fig:c2:drill:6:p}{回到原电路：电池电流在端口分成内部电阻电流与外负载电流}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$6\,\mathrm V$}](0,1.5)to[R,l={$1\,\Omega$}](0,3)--(5.5,3)to[R,l={$3\,\Omega$}](5.5,0)--(0,0);
+\draw(2.8,3)to[R,l={$2\,\Omega$}](2.8,0);
+\draw[flow](.4,3.6)--(1.8,3.6)node[midway,above]{$I_{\rm bat}$};
+\draw[flow](2.2,2.4)--(2.2,.8)node[midway,left]{$I_{\rm int}$};
+\draw[flow](6.8,2.4)--(6.8,.8)node[midway,right]{$I_L$};
+\fill(2.8,3)circle(1.5pt)node[above right]{$A$};\fill(2.8,0)circle(1.5pt)node[below]{$B$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接回负载后求端电压}\par\nobreak
+先用端口等效求负载，再回到图\ref{fig:c2:drill:6:p}的原支路。得到 $I_L=4/(3+2/3)=12/11\,\mathrm A$，端电压 $U=36/11\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用原节点分流求真实电池电流}\par\nobreak
+内部电阻电流 $I_{\text{内}}=U/2=18/11\,\mathrm A$，真实电池电流为二者之和 $30/11\,\mathrm A$。回查 $(6-U)/1=30/11\,\mathrm A$。等效电源保留的是端口关系，不能把它的输出电流直接当成原网络内部某个电源电流。\end{drillsolution}
+\begin{drillsolution}{c2:drill:7}\textbf{由相同负载功率建立两个负载方程}\par\nobreak
+由 图\ref{fig:c2:drill:7:s}，相同负载功率意味着
+\[
+ \frac{\mathcal E^2R_1}{(R_1+r)^2}
+ =\frac{\mathcal E^2R_2}{(R_2+r)^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{交叉相乘并因式分解}\par\nobreak
+消去正数 $\mathcal E^2$ 后交叉相乘并展开，
+\[
+ R_1R_2^2+2rR_1R_2+r^2R_1
+ =R_2R_1^2+2rR_1R_2+r^2R_2.
+\]
+整理为 $(R_1-R_2)(r^2-R_1R_2)=0$。因 $R_1\ne R_2$，故 $R_1R_2=r^2$。
+\typeout{ECFIG:fig:c2:drill:7:p}\fig{fig:c2:drill:7:p}{横轴 $q=R/r$；两个等高点的横坐标互为倒数，分别位于峰值两侧}{\begin{tikzpicture}
+
+\begin{scope}[x=1cm,y=7cm]
+\draw[axis](0,0)--(5.2,0)node[right]{$q$};\draw[axis](0,0)--(0,.35)node[above]{$P/(\mathcal E^2/r)$};
+\draw[world,domain=0:4.8,samples=100]plot(\x,{\x/(1+\x)^2});
+\draw[guide](.4,0)--(.4,.2040816)--(2.5,.2040816)--(2.5,0);
+\fill(.4,.2040816)circle(1.3pt);\fill(2.5,.2040816)circle(1.3pt);
+\node[below]at(.4,0){$R_1/r$};\node[below]at(2.5,0){$R_2/r$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较峰值两侧的效率并求其和}\par\nobreak
+图\ref{fig:c2:drill:7:p} 的功率曲线中两电阻分处最大功率点两侧。若 $R_1<r<R_2$，效率 $\eta_i=R_i/(R_i+r)$ 随 $R_i$ 增大，故 $\eta_1<1/2<\eta_2$。进一步用 $R_2=r^2/R_1$，
+\[
+ \eta_2=\frac{r^2/R_1}{r^2/R_1+r}
+ =\frac{r}{R_1+r},\qquad
+ \eta_1+\eta_2=\frac{R_1}{R_1+r}+\frac r{R_1+r}=1.
+\]相同外功率并不意味着相同端电压或效率。\end{drillsolution}
+\begin{drillsolution}{c2:drill:8}\textbf{按电流源注入量写节点分流式}\par\nobreak
+图\ref{fig:c2:drill:8:s} 的注入电流分成内部电阻电流和负载电流，由节点守恒 $I_0=U/r+U/R$，所以
+\[
+ U=I_0\frac{rR}{r+R},\qquad I_R=\frac UR=\frac{I_0r}{r+R}.
+\]
+\typeout{ECFIG:fig:c2:drill:8:p}\fig{fig:c2:drill:8:p}{解答过程：理想电流源的关闭方式}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$I_0r$}](0,2.6)--(3.4,2.6)to[R,l={$R$}](3.4,0)to[R,l_={$r$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+\fig{c2:d8:zero-source}{求看入电阻时断开零电流源支路，移去负载；测试电压只在 $r$ 中产生测试电流}{\begin{tikzpicture}
+
+\draw(0,0)--(0,1);\draw(0,1.6)--(0,2.6)--(4,2.6);\draw(0,0)--(4,0);
+\draw[world](0,1)circle(2pt) (0,1.6)circle(2pt);
+\draw(2,2.6)to[R,l={$r$}](2,0);
+\draw[world](4,2.6)circle(2pt)node[above]{$A$};\draw[world](4,0)circle(2pt)node[below]{$B$};
+\draw[flow](5,2.6)--(4.2,2.6)node[midway,above]{$I_T$};
+\draw[dim](5.4,0)--(5.4,2.6)node[midway,right]{$U_T$};
+\node[left,align=right]at(-.3,1.3){$I_0=0$\\开路};\node[below]at(2,-.7){$R_{\rm th}=U_T/I_T=r$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相同端口关系确定等效电压源}\par\nobreak
+图\ref{fig:c2:drill:8:p} 的等效电压源电动势为 $I_0r$、串联内阻为 $r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{实际断开零电流源支路求看入电阻}\par\nobreak
+图\ref{c2:d8:zero-source}先移去负载，再把电流源强度设为零。左侧断开的两个端点表示该支路在任何电压下电流都为零，因此应开路。
+在 $A,B$ 端加测试电压 $U_T$ 时，测试电流只流过电阻 $r$，故
+$I_T=U_T/r$、$R_{\rm th}=U_T/I_T=r$；若误短路，会把整个端口短接并错误得到零内阻。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用开路与短路极限检查结果}\par\nobreak
+开路负载 $R\to\infty$ 时 $U\to I_0r$，短路负载 $R\to0$ 时 $I_R\to I_0$，均符合端口条件。\end{drillsolution}
+\begin{drillsolution}{c2:drill:9}\textbf{先由平衡比例删除零电流桥臂}\par\nobreak
+图\ref{fig:c2:drill:9:s} 的平衡只取决于四臂比例。桥臂无电流，外网络电阻 $R_L=(R+2R)\parallel(3R+6R)=9R/4$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接入电源内阻求实际总电流与端电压}\par\nobreak
+电源总电流
+\[
+ I=\frac{\mathcal E}{r+9R/4},\qquad
+ U_{AB}=I\frac{9R}{4}.
+\]
+\typeout{ECFIG:fig:c2:drill:9:p}\fig{fig:c2:drill:9:p}{解答过程：电桥中有限内阻电源的影响}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,2.6)--(3.4,2.6)to[R,l={$9R/4$}](3.4,0)to[R,l_={$r$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际端电压判断中点电势差}\par\nobreak
+图\ref{fig:c2:drill:9:p} 中从实际端电压出发，两中点均比 $B$ 高 $2U_{AB}/3$，所以 $V_M-V_N=0$。电源内阻只改变实际端电压和总电流，分压比例未变，因此不改变理想电桥的平衡条件。若电流计显示非零，应检查电阻比或其他非理想条件，而不能仅归因于电源存在内阻。\end{drillsolution}
+\begin{drillsolution}{c2:drill:10}\textbf{求连续最优串联数并列整数可行值}\par\nobreak
+图\ref{fig:c2:drill:10:s} 中连续最优串联数 $n_*=\sqrt{NR/r}=\sqrt{12\times2/0.5}=\sqrt{48}\approx6.93$。允许的因数为 $1,2,3,4,6,12$；电流在 $n<n_*$ 时增加、$n>n_*$ 时减少，只需比较相邻允许值 $6,12$。
+\typeout{ECFIG:fig:c2:drill:10:p}\fig{fig:c2:drill:10:p}{最优可行组合：两组六节串联电池并联，每组折合 $9\,\mathrm V$ 与 $3\,\Omega$}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$9\,\mathrm V$}](0,1.5)to[R,l={$3\,\Omega$}](0,3.2)--(6,3.2)to[R,l={$2\,\Omega$}](6,0)--(0,0);
+\draw(3,0)to[battery1,invert,l={$9\,\mathrm V$}](3,1.5)to[R,l={$3\,\Omega$}](3,3.2);
+\draw[flow](4.1,3.8)--(5.4,3.8)node[midway,above]{$I_6$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算相邻可行组合的电流}\par\nobreak
+图\ref{fig:c2:drill:10:p} 中 $n=6,m=2$ 时，等效电动势 $9\,\mathrm V$、内阻 $6(0.5)/2=1.5\,\Omega$，故 $I_6=9/3.5=18/7\,\mathrm A$。$n=12,m=1$ 时，$I_{12}=18/(2+6)=9/4\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较后选取满足全部电池约束的组合}\par\nobreak
+因 $18/7>9/4$，最优为每组六节串联、两组并联。不能把 $n_*$ 四舍五入到 $7$，因为那样无法将全部十二节组成相同组。\end{drillsolution}
+\begin{drillsolution}{c2:drill:11}\textbf{固定参考节点和四支路电流方向}\par\nobreak
+以 $A$ 为参考地，未知量为 $V_B,V_C$。图\ref{fig:c2:drill:11:p}中，$i_1,i_2$ 都取 $A\to B$，$i_3$ 取 $A\to C$，$i_4$ 取 $B\to C$；两个并联的 $AB$ 支路必须分别计入。
+\fig{fig:c2:drill:11:p}{全部电流参考方向固定；求得负数的纯电阻支路实际反向}{\begin{tikzpicture}
+
+\draw(0,1.8)to[R,l={$10$}](3.5,1.8)to[R,l={$5$}](7,1.8);
+\draw(0,1.8)--(0,4.5)to[battery1,invert,l={$3\,\mathrm V$}](2.3,4.5)to[R,l={$39/2$}](7,4.5)--(7,1.8);
+\draw(0,1.8)--(0,-.8)to[battery1,invert,l={$1\,\mathrm V$}](1.4,-.8)to[R,l={$11/2$}](3.5,-.8)--(3.5,1.8);
+\fill(0,1.8)circle(1.5pt)node[left]{$A:0$};\fill(3.5,1.8)circle(1.5pt)node[below right]{$B$};\fill(7,1.8)circle(1.5pt)node[right]{$C$};
+\node[right]at(4.5,-.8){电阻单位 $\Omega$};
+
+\draw[flow](.7,2.6)--(2.1,2.6)node[midway,above]{$i_1$};
+\draw[flow](.7,-1.5)--(2.1,-1.5)node[midway,below]{$i_2$};
+\draw[flow](.7,5.55)--(2.1,5.55)node[midway,above]{$i_3$};
+\draw[flow](4.2,2.6)--(5.6,2.6)node[midway,above]{$i_4$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两含源支路分别写入节点守恒式}\par\nobreak
+按图\ref{fig:c2:drill:11:s}的电源极性，两个升势后的支路端点电势分别为 $1\,\mathrm V$、$3\,\mathrm V$。在 $B,C$ 写节点方程，电阻数值以欧姆计：
+\[
+ \begin{cases}
+ V_B/10+(V_B-1)/(11/2)+(V_B-V_C)/5=0,\\
+ (V_C-V_B)/5+(V_C-3)/(39/2)=0.
+ \end{cases}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求两个未知电势}\par\nobreak
+分别乘以 $110,195$：
+\[
+ 53V_B-22V_C=20,\qquad -39V_B+49V_C=30.
+\]
+第一式乘 $39$，第二式乘 $53$ 后相加，得 $1739V_C=2370$；回代得
+\[
+ \boxed{V_B=1640/1739\,\mathrm V},\qquad
+ \boxed{V_C=2370/1739\,\mathrm V}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回算带符号电流并解释实际方向}\par\nobreak
+按原参考方向回算四条支路：
+\begin{align*}
+ i_1&=-V_B/10=-164/1739\,\mathrm A,\\
+ i_2&=(1-V_B)/(11/2)=18/1739\,\mathrm A,\\
+ i_3&=(3-V_C)/(39/2)=146/1739\,\mathrm A,\\
+ i_4&=(V_B-V_C)/5=-146/1739\,\mathrm A.
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查两个节点和全部元件的功率}\par\nobreak
+故 $10\,\Omega$ 支路实际由 $B$ 流向 $A$，$5\,\Omega$ 支路实际由 $C$ 流向 $B$。图中的参考箭头不改，节点检查为 $-i_1-i_2+i_4=0$、$-i_3-i_4=0$。若再作功率核验，须把两个含源支路的全部串联电阻都列入：
+\[
+ i_2+3i_3=\frac{456}{1739}\,\mathrm W
+ =10i_1^2+\frac{11}{2}i_2^2+\frac{39}{2}i_3^2+5i_4^2.
+\]
+\end{drillsolution}

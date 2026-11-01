@@ -1,0 +1,386 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[无限异号平面之间的电势]\label{e2:example:1}
+两无限平面位于 $x=-a,+a$，面密度分别为 $-\sigma,+\sigma$。取 $V(0)=0$，求全空间电场和电势图。
+\end{example}
+\typeout{ECFIG:fig:e2:example:1:s}\fig{fig:e2:example:1:s}{题设：无限异号平面之间的电势}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.5,-1.4)--(-1.5,1.4)(1.5,-1.4)--(1.5,1.4);\draw[axis](-3,0)--(3.4,0)node[right]{$x$};\node[above]at(-1.5,1.4){$-\sigma$};\node[above]at(1.5,1.4){$+\sigma$};\node[below]at(-1.5,0){$-a$};\node[below]at(1.5,0){$a$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两平面叠加先确定分区电场}\par\nobreak
+图\ref{fig:e2:example:1:s} 中两面之间电场从右侧正面指向左侧负面，$E_x=-\sigma/\varepsilon_0$；外部两场抵消，$E_x=0$。由 $-\dd V/\dd x=E_x$，板间 $\dd V=(\sigma/\varepsilon_0)\dd x$。
+参考点 $V(0)=0$ 与场点 $x$ 都在板间时，
+\[
+ V(x)-V(0)=\frac{\sigma}{\varepsilon_0}\int_0^x\dd s
+ =\frac{\sigma}{\varepsilon_0}[s]_0^x
+ =\frac{\sigma x}{\varepsilon_0}.
+\]
+这相当于把不定积分中的常数 $C$ 用 $V(0)=0$ 确定为零。
+\typeout{ECFIG:fig:e2:example:1:p}\fig{fig:e2:example:1:p}{左图电势连续而斜率分段；右图电场在两个带电面处跳变}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-3.5,0)--(3.8,0)node[right]{$x/a$};\draw[axis](0,-2.2)--(0,2.6)node[above]{$V/(\sigma a/\varepsilon_0)$};
+\draw[blue,thick](-3,-1.4)--(-1.4,-1.4)--(1.4,1.4)--(3,1.4);
+\node[below]at(-1.4,0){$-1$};\node[below]at(1.4,0){$1$};\node[left]at(0,1.4){$1$};\node[left]at(0,-1.4){$-1$};
+\end{scope}
+\begin{scope}[xshift=8cm]
+\draw[axis](-3.5,0)--(3.8,0)node[right]{$x/a$};\draw[axis](0,-2.2)--(0,2.6)node[above]{$E_x/(\sigma/\varepsilon_0)$};
+\draw[red,thick](-3,0)--(-1.4,0)(-1.4,-1.4)--(1.4,-1.4)(1.4,0)--(3,0);
+\draw[guide](-1.4,0)--(-1.4,-1.4)(1.4,0)--(1.4,-1.4);\node[below]at(-1.4,-1.5){$-1$};\node[below]at(1.4,-1.5){$1$};\node[left]at(0,-1.4){$-1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用参考点和连续性确定各段电势}\par\nobreak
+图\ref{fig:e2:example:1:p} 两边界电势连续，外部又为常数，因此
+\[
+ V(x)=\begin{cases}-\sigma a/\varepsilon_0,&x\le-a,\\
+ \sigma x/\varepsilon_0,&-a\le x\le a,\\
+ \sigma a/\varepsilon_0,&x\ge a.\end{cases}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按电势斜率复核场的方向与跳变}\par\nobreak
+场向左而电势向右升高，符号一致。板面电势没有跳变，跳变的是电场；若把每个外部区都设成零，会破坏连续性。\end{solution}
+\begin{question}\begin{example}[移去正三角形的一根带电棒]\label{e2:example:2}
+三根相同绝缘棒组成正三角形 $abc$，每根均匀带等量电荷。中心 $A$，$B$ 为 $A$ 关于边 $bc$ 所在直线的镜像。原电势为 $V_A,V_B$。移去 $bc$ 棒，保持其余分布不变，求新电势。
+\end{example}
+\typeout{ECFIG:fig:e2:example:2:s}\fig{fig:e2:example:2:s}{题设：移去正三角形的一根带电棒}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)node[below]{$b$}--(5,0)node[below]{$c$}--(2.5,4.33)node[above]{$a$}--cycle;\fill(2.5,1.443)circle(2pt)node[right]{$A$};\fill(2.5,-1.443)circle(2pt)node[right]{$B$};\draw[guide](2.5,-1.443)--(2.5,4.33);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用中心旋转对称确定单根棒的贡献}\par\nobreak
+在 图\ref{fig:e2:example:2:s} 的中心 $A$，三棒可由 $120^\circ$ 旋转互换，因此每棒电势贡献为 $V_A/3$。移去 $bc$ 后，$A$ 剩余电势 $V_A'=2V_A/3$。
+\typeout{ECFIG:fig:e2:example:2:p}\fig{fig:e2:example:2:p}{解答过程：移去正三角形的一根带电棒}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(2.5,4.33)--(5,0);\draw[guide](0,0)--(5,0);\fill(1,0)circle(2pt)node[below]{$\dd q$};\draw[guide](1,0)--(2.5,1.443)(1,0)--(2.5,-1.443);\node[right]at(2.5,1.443){$A$};\node[right]at(2.5,-1.443){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐微元证明被移去棒对镜像点等势}\par\nobreak
+在图\ref{fig:e2:example:2:p}中，把被移去棒上的源点记为 $T$。反射保持 $TA=TB$，因而先有逐微元的 $\dd V_{bc}(A)=k\dd q/TA=k\dd q/TB=\dd V_{bc}(B)$，再积分才得到两点同一根棒的贡献相等。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别减去同一棒的势并检查对称对象}\par\nobreak
+对 图\ref{fig:e2:example:2:p} 的镜像点 $A,B$，边 $bc$ 上每个电荷微元到二者距离相等，所以该棒在 $B$ 的贡献也为 $V_A/3$。由电势代数叠加，$V_B'=V_B-V_A/3$。两问用了不同对称：三棒在中心的旋转等价，以及两场点关于被移去棒的反射等距。不能把 $B$ 也当成三棒的对称中心而写成 $2V_B/3$。\end{solution}
+\begin{question}\begin{example}[圆周电荷的随机与均匀分布]\label{e2:example:3}
+$N\ge2$ 个同电荷 $q$ 均位于半径 $R$ 的圆周，一种均匀分布，一种位置任意。比较轴线上 $z$ 处的电势、轴向场分量和完整电场。
+\end{example}
+\typeout{ECFIG:fig:e2:example:3:s}\fig{fig:e2:example:3:s}{题设：圆周电荷的随机与均匀分布}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)ellipse(.5 and 1.4);\draw[axis](-1,0)--(4.5,0)node[right]{$z$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(3,0)circle(1.6pt)node[above]{$P$};\draw[dim](0,-1.8)--(3,-1.8)node[midway,below]{$z$};\draw[dim](0,0)--(0,1.4)node[midway,left]{$R$};\node at(-1.2,1.8){$N$ 个点电荷};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用等距求电势与轴向投影}\par\nobreak
+图\ref{fig:e2:example:3:s} 的轴线上场点到每个电荷距离都为 $s=\sqrt{R^2+z^2}$，因此无论方位怎样分布，电势 $V=kNq/s$。每个电荷场的轴向投影都是 $kqz/s^3$，所以 $E_z=kNqz/s^3$ 也相等。
+\typeout{ECFIG:fig:e2:example:3:p}\fig{fig:e2:example:3:p}{以环面正视图比较两种分布；均匀分布的横向矢量和为零，任意分布不保证抵消}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)circle(1.5);\foreach \a in {0,60,120,180,240,300}{\fill(\a:1.5)circle(2.5pt);\draw[flow,gray](0,0)--(\a:.8);}
+\node at(0,-2.2){均匀分布：$\sum\bm E_\perp=0$};\node at(0,2.3){轴线垂直纸面};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw(0,0)circle(1.5);\foreach \a in {-20,0,15,40,70,190}{\fill(\a:1.5)circle(2.5pt);}
+\draw[force,blue](0,0)--(-1.1,-.5);\node[blue]at(-.6,-1){$\bm E_\perp$};\node at(0,-2.2){任意分布：横向场一般非零};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较横向矢量是否抵消}\par\nobreak
+图\ref{fig:e2:example:3:p} 均匀分布的横向分量成对或按旋转矢量和抵消，完整场仅有轴向分量；任意分布的横向分量通常不为零，所以完整电场一般不同。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明一条轴线的势函数不能确定全部梯度}\par\nobreak
+由轴线上相同的标量函数 $V(z)$ 求导只能得到相同 $E_z$，不能推出横向导数相同。这也表明电势信息的空间范围必须与求导方向匹配。\end{solution}
+\begin{question}\begin{example}[圆环电势与非均匀分布]\label{e2:example:4}
+圆环半径 $R$、线电荷密度均匀为 $\lambda$。求轴线 $x$ 处电势；若密度改为 $\lambda(\theta)=\lambda_0(1+\eta\cos\theta)$，$|\eta|\le1$，求轴上电势与环心场。
+\end{example}
+\typeout{ECFIG:fig:e2:example:4:s}\fig{fig:e2:example:4:s}{题设：圆环电势与非均匀分布}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)ellipse(.5 and 1.4);\draw[axis](-1,0)--(4.5,0)node[right]{$x$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(3,0)circle(1.6pt)node[above]{$P$};\draw[dim](0,-1.8)--(3,-1.8)node[midway,below]{$x$};\draw[dim](0,0)--(0,1.4)node[midway,left]{$R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用均匀环的总电荷求轴上电势}\par\nobreak
+图\ref{fig:e2:example:4:s} 均匀环上取方位角$\varphi$，微元电荷$\dd q=\lambda R\,\dd\varphi$，每个微元到轴上场点的距离均为$\sqrt{R^2+x^2}$。以无穷远为零电势，
+\[
+V(x)=\int_0^{2\pi}\frac{k\lambda R}{\sqrt{R^2+x^2}}\,\dd\varphi
+=\frac{k\lambda R}{\sqrt{R^2+x^2}}[\varphi]_0^{2\pi}
+=\frac{2\pi kR\lambda}{\sqrt{R^2+x^2}}.
+\]
+\typeout{ECFIG:fig:e2:example:4:p}\fig{fig:e2:example:4:p}{环面坐标为 $y,z$；以 $\lambda_0>0,\eta>0$ 示意右半周电荷较多，环心场指向负 $y$}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.8);\draw[axis](-3,0)--(3.2,0)node[right]{$y$};\draw[axis](0,-2.4)--(0,2.8)node[above]{$z$};
+\foreach \a in {-75,-45,-15,15,45,75}{\fill(\a:1.8)circle(2.3pt);}\foreach \a in {120,180,240}{\fill(\a:1.8)circle(2.3pt);}
+\draw[guide](0,0)--(1.273,1.273);\draw[->](.7,0)arc(0:45:.7);\node at(.95,.4){$\theta$};
+\draw[force,blue](0,0)--(-1.5,0);\node[blue,above]at(-1.1,.35){$\bm E_O$};\node[below right]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对非均匀环重新核对总电荷}\par\nobreak
+先把非均匀密度沿圆周积分：
+\[
+Q=\lambda_0R\int_0^{2\pi}(1+\eta\cos\theta)\dd\theta
+ =\lambda_0R[\theta+\eta\sin\theta]_0^{2\pi}
+ =2\pi R\lambda_0.
+\]
+余弦项改变方位分配，却不改变总电荷；轴上每个微元分母仍为同一距离，因此轴上电势不含 $\eta$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按环面方位积分横向场}\par\nobreak
+图\ref{fig:e2:example:4:p} 的非均匀环取环面坐标 $(R\cos\theta,R\sin\theta)$，总电荷仍为 $2\pi R\lambda_0$，所以轴上电势只需把 $\lambda$ 换成 $\lambda_0$。环心场却为
+\[
+ \bm E_O=-\frac{k\lambda_0}{R}\int_0^{2\pi}
+ (1+\eta\cos\theta)(\cos\theta,\sin\theta)\dd\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释保留下来的余弦投影与方向}\par\nobreak
+将矢量积分分为 $y,z$ 两分量，需要以下四个定积分：
+\begin{align*}
+ \int_0^{2\pi}\cos\theta\dd\theta
+ &=[\sin\theta]_0^{2\pi}=0,\\
+ \int_0^{2\pi}\sin\theta\dd\theta
+ &=[-\cos\theta]_0^{2\pi}=0,\\
+ \int_0^{2\pi}\sin\theta\cos\theta\dd\theta
+ &=\left[\frac{\sin^2\theta}{2}\right]_0^{2\pi}=0,\\
+ \int_0^{2\pi}\cos^2\theta\dd\theta
+ &=\frac12\int_0^{2\pi}(1+\cos2\theta)\dd\theta
+ =\left[\frac\theta2+\frac{\sin2\theta}{4}\right]_0^{2\pi}=\pi.
+\end{align*}
+第三式用 $\dd(\sin^2\theta)=2\sin\theta\cos\theta\dd\theta$，
+第四式用倍角公式再逐项积分。于是
+$E_y=-(k\lambda_0/R)(0+\eta\pi)$，
+$E_z=-(k\lambda_0/R)(0+\eta\,0)=0$。因此只有密度余弦项的 $y$ 投影保留下来。
+
+
+
+这里把环面第一坐标记为 $y$、轴线仍为 $x$。若 $\eta>0$，正电荷较多的一侧是 $+y$，环心场指向 $-y$。电势的轴向等距简化不能用于直接忽略横向场。\end{solution}
+\begin{question}\begin{example}[外点电荷旁中性金属球的电势]\label{e2:example:5}
+中性金属球半径 $R$，距球心 $O$ 为 $L>R$ 处固定点电荷 $q$。求球心与整个金属球的电势，取无穷远为零点。
+\end{example}
+\typeout{ECFIG:fig:e2:example:5:s}\fig{fig:e2:example:5:s}{题设：外点电荷旁中性金属球的电势}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.2pt)node[below]{$O$};\draw[dim](0,0)--(-1.06,1.06)node[midway,left]{$R$};\draw[world,fill=white](3.5,0)circle(.12);\node[above]at(3.5,0.15){$q$};\draw[dim](0,-2)--(3.5,-2)node[midway,below]{$L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用中性条件与球心等距消去感应电势}\par\nobreak
+图\ref{fig:e2:example:5:s} 的外电荷使球表面重排，但中性球的感应电荷总量为零。对球心而言，每个感应面元距球心同为 $R$，所以它们的总电势是 $k\int\dd q/R=0$，无须知道面密度。
+\typeout{ECFIG:fig:e2:example:5:p}\fig{fig:e2:example:5:p}{以外电荷为正示意；球面微元到球心均为 $R$，感应电势由总量决定}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.7);\fill(0,0)circle(2pt)node[below]{$O$};\fill(4,0)circle(2pt)node[above]{$q>0$};
+\foreach \a in {130,180,230}{\node at(\a:1.5){$+$};}\foreach \a in {-40,0,40}{\node at(\a:1.5){$-$};}
+\draw[guide](0,0)--(1.2,1.2)node[midway,above left]{$R$};\draw[guide](0,0)--(-1.2,1.2);
+\draw[<->](0,-2.3)--(4,-2.3)node[midway,below]{$L$};\node at(5,1.8){$Q_{\text{感}}=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用金属等势推广球心结果}\par\nobreak
+图\ref{fig:e2:example:5:p} 因此外点电荷在球心的贡献 $kq/L$ 就是总电势 $V_O$。静电平衡连通金属球内部场为零，电势处处相同，故整个球表面、内部都为 $kq/L$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分感应场抵消与感应势抵消}\par\nobreak
+这不表示感应场处处为零；在球心，感应场恰抵消外点电荷场，感应电势却因正负总量相消为零。场的矢量抵消与势的标量抵消需要分别判断。\end{solution}
+\begin{question}\begin{example}[从电势曲线反求两个点电荷]\label{e2:example:6}
+两点电荷都在 $x$ 轴，正半轴电势 $V(x)$ 在 $x\to0^+$ 时趋 $+\infty$，$x\to\infty$ 时从负值趋零；于 $x_0$ 过零，于 $\alpha x_0$ 达极小 $-V_0$，$\alpha>2$。求电荷及位置。
+\end{example}
+\typeout{ECFIG:fig:e2:example:6:s}\fig{fig:e2:example:6:s}{满足题设形状的一条示意曲线，取 $\alpha=3$ 绘制；纵坐标仅作示意比例}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(8.8,0)node[right]{$x/x_0$};\draw[axis](0,-2)--(0,4.5)node[above]{$V$};
+\draw[thick,domain=.45:8.3,samples=140]plot(\x,{3*(1/\x-4/(\x+3))});
+\draw[guide](3,0)--(3,-1)--(0,-1);\fill(1,0)circle(2pt);\fill(3,-1)circle(2pt);
+\node[above]at(1,0){$1$};\node[below]at(3,-1.1){$\alpha$};\node[left]at(0,-1){$-V_0$};
+\draw[->](.45,3.1)--(.25,4.1);
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由奇点和远场符号确定电荷位置结构}\par\nobreak
+图\ref{fig:e2:example:6:s} 的正无穷奇点要求原点有正电荷 $q$；正半轴没有别的奇点，另电荷应在负轴。远处电势为负，故另一电荷是绝对值更大的负电荷 $-Q$，位置 $-d$。于是 $V=k[q/x-Q/(x+d)]$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立零点和驻点求电荷比与间距}\par\nobreak
+零点给 $Q/q=1+d/x_0$。对电势的两个倒数逐项求导，
+\[
+ V'(x)=k\left[-qx^{-2}+Q(x+d)^{-2}\right].
+\]
+第二项的两个负号分别来自原电荷 $-Q$ 和倒数求导。
+令 $V'(\alpha x_0)=0$，便有
+$q/(\alpha x_0)^2=Q/(\alpha x_0+d)^2$。设 $s=\sqrt{Q/q}>1$，代入 $d/x_0=s^2-1$，得 $\alpha s=\alpha+s^2-1$，即 $(s-1)(s+1-\alpha)=0$。因此 $s=\alpha-1$，$d=\alpha(\alpha-2)x_0$。
+\typeout{ECFIG:fig:e2:example:6:p}\fig{fig:e2:example:6:p}{解答过程：从电势曲线反求两个点电荷}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-3,0)--(4,0)node[right]{$x$};\draw[world](-2.4,0)circle(.12);\node[above]at(-2.4,.2){$-Q$};\draw[world](0,0)circle(.12);\node[above]at(0,.2){$q$};\fill(1.2,0)circle(1.4pt)node[below]{$x_0$};\fill(3,0)circle(1.4pt)node[below]{$\alpha x_0$};\node[below]at(-2.4,0){$-d$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用极小值恢复绝对电荷量}\par\nobreak
+图\ref{fig:e2:example:6:p} 将反求出的两个位置标清。代入极小值，
+\[
+ -V_0=\frac{kq}{\alpha x_0}
+ -\frac{kq(\alpha-1)^2}{\alpha(\alpha-1)x_0}
+ =-\frac{kq(\alpha-2)}{\alpha x_0}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对参数范围及三个边界条件}\par\nobreak
+故 $q=\alpha x_0V_0/[k(\alpha-2)]$，$Q=(\alpha-1)^2q$。另一电荷在负轴 $-\alpha(\alpha-2)x_0$。$\alpha>2$ 保证 $d>0,q>0$，回代零点、极值和远场符号均一致。\end{solution}
+\begin{question}\begin{example}[半球面在镜像点的电势关系]\label{e2:example:7}
+半径 $R$ 的均匀薄半球面总电荷为 $q$，$P,Q$ 是对称轴上关于球心的镜像点，且都位于完整球面以内。已知 $V_P$，求 $V_Q$。
+\end{example}
+\typeout{ECFIG:fig:e2:example:7:s}\fig{fig:e2:example:7:s}{题设：半球面在镜像点的电势关系}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-1.5)arc(-90:90:1.5);\draw[guide](0,1.5)arc(90:270:1.5);\draw[axis](-2.5,0)--(2.5,0);\fill(.6,0)circle(1.5pt)node[above]{$P$};\fill(-.6,0)circle(1.5pt)node[above]{$Q$};\node[below]at(0,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将真实半球与镜像半球补成全壳}\par\nobreak
+图\ref{fig:e2:example:7:s} 的半球面与镜像半球面合成完整均匀球壳，总电荷 $2q$。由于 $P,Q$ 关于中平面反射，镜像半球在 $P$ 产生的电势等于真实半球在 $Q$ 产生的电势。
+\typeout{ECFIG:fig:e2:example:7:p}\fig{fig:e2:example:7:p}{镜像同时变换源点和场点，蓝线段等长；完整球壳内电势恒定}{\begin{tikzpicture}
+
+\draw[thick](0,-2)arc(-90:90:2);\draw[guide](0,2)arc(90:270:2);\draw[guide](0,-2)--(0,2);
+\fill(.6,0)circle(2pt)node[below]{$P$};\fill(-.6,0)circle(2pt)node[below]{$Q$};
+\fill(1.414,1.414)circle(2pt)node[right]{$\dd q$};\fill(-1.414,1.414)circle(2pt)node[left]{$\dd q'$};
+\draw[blue](1.414,1.414)--(-.6,0);\draw[blue](-1.414,1.414)--(.6,0);
+\node at(4.7,.5){$V_{\text{全}}(P)=V_P+V_Q$};\node at(4.7,-.5){$V_{\text{全}}=2kq/R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按壳内恒定电势求另一镜像点}\par\nobreak
+图\ref{fig:e2:example:7:p} 因此完整球壳在 $P$ 的电势为 $V_P+V_Q$。二点都在壳内，全壳电势是 $2kq/R$，故
+\[
+ V_Q=\frac{2kq}{R}-V_P.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查位置范围对全壳电势的影响}\par\nobreak
+若点移到球壳外，完整球壳电势变为 $2kq/s$，其中 $s$ 是该镜像点到球心的距离，不能仍用 $2kq/R$。题设位置范围是公式的一部分。\end{solution}
+\begin{question}\begin{example}[球形导体空腔的球心电势]\label{e2:example:8}
+同心金属球壳内外半径 $R_1,R_2$，壳净电荷 $Q$。内腔放点电荷 $q$，距球心 $d$，$0<d<R_1$。无外部电荷。求球心电势。
+\end{example}
+\typeout{ECFIG:fig:e2:example:8:s}\fig{fig:e2:example:8:s}{金属位于两同心球面之间，点电荷在空腔内，球心不属于金属区域}{\begin{tikzpicture}
+
+\fill[gray!15](0,0)circle(2.2);\fill[white](0,0)circle(1.5);\draw(0,0)circle(2.2);\draw(0,0)circle(1.5);
+\fill(0,0)circle(2pt)node[below left]{$O$};\fill(.9,.3)circle(2pt)node[above right]{$q$};
+\draw[<->](0,0)--(-1.556,1.556)node[midway,left]{$R_2$};\draw[<->](0,0)--(0,1.5)node[midway,right]{$R_1$};
+\draw[guide](0,0)--(.9,.3);\node at(.55,-.35){$d$};\node at(3.8,1.8){壳净电荷 $Q$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在金属内取高斯面确定两个表面总电荷}\par\nobreak
+在 图\ref{fig:e2:example:8:s} 的金属内部取包围内腔的高斯面，场为零，包围电荷总和也为零，因此内表面总电荷为 $-q$。壳总电荷守恒，外表面总量为 $Q+q$。外表面球形、无外部电荷且等势，故外部电场为球对称，外表面电势为 $k(Q+q)/R_2$。
+\typeout{ECFIG:fig:e2:example:8:p}\fig{fig:e2:example:8:p}{金属内高斯面确定内表面总量；球心到同一球面上各面元等距，逐面相加电势}{\begin{tikzpicture}
+
+\fill[gray!12](0,0)circle(2.2);\fill[white](0,0)circle(1.4);\draw(0,0)circle(2.2);\draw(0,0)circle(1.4);\draw[guide](0,0)circle(1.8);
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(.8,.25)circle(2pt)node[above]{$q$};
+\draw[guide](0,0)--(-.99,.99);\node at(-.7,.4){$R_1$};\draw[guide](0,0)--(1.556,-1.556);\node at(1,-.7){$R_2$};
+\draw[guide](-1.25,.6)--(-3,1.3)node[left]{内表面总量 $-q$};\draw[guide](1.9,.8)--(3,1.6)node[right]{外表面总量 $Q+q$};
+\node at(4,-.5){金属内：$Q_{\text{高斯}}=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算点电荷与两球面的势}\par\nobreak
+图\ref{fig:e2:example:8:p} 在球心，内表面所有电荷距它同为 $R_1$，即使分布不均匀，其总电势仍为 $-kq/R_1$；外表面贡献 $k(Q+q)/R_2$；腔内点电荷贡献 $kq/d$。因此
+\[
+ V_O=k\left[\frac qd-\frac q{R_1}+\frac{Q+q}{R_2}\right].
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查奇点并区分空腔与金属区域}\par\nobreak
+结果只在 $O$ 不与点电荷重合时有限。不能因为导体本身等势，就把腔内球心也当成金属区域的一点；腔内有场，电势一般不同于壳。\end{solution}
+\begin{question}\begin{example}[半球开口圆盘的电势]\label{e2:example:9}
+半径 $R$ 的薄半球面均匀带正面密度 $\sigma$。求开口圆盘平面内、且在圆周以内任一点的电势，并判断该平面内的场分量。
+\end{example}
+\typeout{ECFIG:fig:e2:example:9:s}\fig{fig:e2:example:9:s}{题设：半球开口圆盘的电势}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.7,0)arc(180:0:1.7);\draw[world](0,0)ellipse(1.7 and .35);\fill(.6,.1)circle(2pt)node[below]{$P$};\node at(2.5,1.2){$\sigma$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在开口平面利用反射后场点不变}\par\nobreak
+图\ref{fig:e2:example:9:s} 的上半球面加上关于开口平面的镜像，组成总电荷 $4\pi R^2\sigma$ 的完整球壳。在开口圆盘平面内，$P$ 关于镜像不动，上下两个半球在该点电势相同。
+\typeout{ECFIG:fig:e2:example:9:p}\fig{fig:e2:example:9:p}{解答过程：半球开口圆盘的电势}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.7);\draw[guide](-1.7,0)--(1.7,0);\node at(0,1){真实半球};\node at(0,-1){镜像半球};\fill(.6,0)circle(1.7pt)node[above]{$P$};\draw[force](.6,0)--(.6,-.8)node[right]{$E_\perp$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取全壳电势的一半}\par\nobreak
+由 图\ref{fig:e2:example:9:p}，半球电势为全壳电势一半，
+\[
+ V_P=\frac12\frac{k(4\pi R^2\sigma)}R=2\pi k\sigma R
+ =\frac{\sigma R}{2\varepsilon_0}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只对平面切向求导并保留法向场}\par\nobreak
+它在圆盘内部恒定，故平面内切向电场为零；法向场一般不为零。圆心法向场已在电场一讲求得，正好说明“同一面上等势”不能推出该面每点完整电场为零。靠近薄壳锐边时场可能出现强烈变化，电势仍保持这个有限值。\end{solution}
+\begin{question}\begin{example}[带电球表面的质子擦碰条件]\label{e2:example:10}
+固定均匀带正电球半径 $R$，表面电势 $V_s=1000\,\mathrm V$。质子从远处以动能 $K_\infty=2000\,\mathrm{eV}$ 入射，入射直线渐近线距球心 $b$。求能碰到表面的最大 $b$。
+\end{example}
+\typeout{ECFIG:fig:e2:example:10:s}\fig{fig:e2:example:10:s}{题设：带电球表面的质子擦碰条件}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.2pt)node[below]{$O$};\draw[dim](0,0)--(-1.06,1.06)node[midway,left]{$R$};\draw[flow](-4,1.06)--(-2.5,1.06)node[midway,above]{$v_\infty$};\draw[guide](-4,0)--(0,0);\draw[dim](-4,0)--(-4,1.06)node[midway,left]{$b$};\node at(2.6,.5){$V_s>0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用角动量分离表面切向与径向动能}\par\nobreak
+图\ref{fig:e2:example:10:s} 球外电场为中心场。入射角动量 $\ell=mv_\infty b$ 守恒，能量 $K+eV=K_\infty$。在表面 $r=R$，切向动能为 $\ell^2/(2mR^2)=K_\infty b^2/R^2$，剩余径向动能必须非负：
+\[
+ K_\infty-eV_s-\frac{K_\infty b^2}{R^2}\ge0.
+\]
+\typeout{ECFIG:fig:e2:example:10:p}\fig{fig:e2:example:10:p}{解答过程：带电球表面的质子擦碰条件}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.4);\draw[world,domain=167:52,samples=100]plot({2.8*cos(\x)/(3*cos(\x-109.4712)-1)},{2.8*sin(\x)/(3*cos(\x-109.4712)-1)});\fill(-.466667,1.31993)circle(2pt)node[above left]{$P$};\draw[guide](0,0)--(-.466667,1.31993)node[midway,left]{$R$};\draw[flow](-.466667,1.31993)--(.2876,1.5866)node[right]{$v_P$};\node[below]at(0,0){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确认表面条件包含整个外部可达路径}\par\nobreak
+球外有效势为 $U_{\text{eff}}=\ell^2/(2mr^2)+eV_sR/r$，把两项分别写为 $r^{-2}$、$r^{-1}$ 后求导，
+\[
+ \frac{\dd U_{\text{eff}}}{\dd r}
+ =\frac{\ell^2}{2m}(-2)r^{-3}+eV_sR(-1)r^{-2}
+ =-\frac{\ell^2}{mr^3}-\frac{eV_sR}{r^2}<0,
+\]
+因此在整条 $r\ge R$ 入射区间，表面值最大。故这里的表面非负径向动能条件也是可达的充分条件，不会漏掉更外侧的势垒。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令径向速度为零求最大冲量参数}\par\nobreak
+图\ref{fig:e2:example:10:p} 的临界轨道在表面径向速度零、瞬时速度沿切线，取等号得到
+\[
+ b_{\max}=R\sqrt{1-\frac{eV_s}{K_\infty}}=\frac R{\sqrt2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{统一能量单位并核对零电势极限}\par\nobreak
+能量单位统一用电子伏特时 $eV_s=1000\,\mathrm{eV}$。若初能不超过 $eV_s$，即使正对球心也不能以正动能到达表面；若 $V_s=0$，结果退化为几何条件 $b_{\max}=R$。本题临界轨道只涉及球外场，不能误用均匀实心球内部的二次势。\end{solution}
+\begin{question}\begin{example}[异号不等电荷的零势球面]\label{e2:example:11}
+电荷 $+nq$、$-q$ 位于 $x=0,d$，$n>1$，无穷远势为零。证明零势面为球面，求球心和半径；再讨论 $n=1$。
+\end{example}
+\typeout{ECFIG:fig:e2:example:11:s}\fig{fig:e2:example:11:s}{题设：异号不等电荷的零势球面}{\begin{tikzpicture}[scale=.88]
+\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$+nq$};\draw[world,fill=white](3,0)circle(.12);\node[above]at(3,0.15){$-q$};\draw[axis](-1,0)--(6,0)node[right]{$x$};\draw[dim](0,-.7)--(3,-.7)node[midway,below]{$d$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将零势条件化成到两电荷的距离比}\par\nobreak
+图\ref{fig:e2:example:11:s} 的任一点 $P=(x,y,z)$ 到两电荷距离为 $r_1,r_2$。零势条件 $nq/r_1-q/r_2=0$ 等价于 $r_1=nr_2$。平方后
+\[
+ x^2+y^2+z^2=n^2[(x-d)^2+y^2+z^2].
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由平方距离配方得到球面}\par\nobreak
+移项、除以 $n^2-1$ 并配方，得到
+\[
+ \left(x-\frac{n^2d}{n^2-1}\right)^2+y^2+z^2
+ =\left(\frac{nd}{n^2-1}\right)^2.
+\]
+\typeout{ECFIG:fig:e2:example:11:p}\fig{fig:e2:example:11:p}{解答过程：异号不等电荷的零势球面}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.5,0)--(5.7,0)node[right]{$x$};\draw[world](4,0)circle(2);\fill(0,0)circle(2pt)node[above]{$+nq$};\fill(3,0)circle(2pt)node[above]{$-q$};\fill(4,0)circle(1.4pt)node[below]{$x_c$};\draw[dim](4,0)--(4,2)node[midway,right]{$a$};\node at(4,-2.7){图示 $n=2$，取 $d=3$ 的比例};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明球面位置及等量电荷的退化极限}\par\nobreak
+图\ref{fig:e2:example:11:p} 的球心位于小电荷后侧 $x_c=n^2d/(n^2-1)$，半径 $a=nd/(n^2-1)$。当 $n=1$ 时不能除以零，应回到原式 $r_1=r_2$，得到垂直平分面 $x=d/2$。球心与半径在 $n\to1$ 时均趋无穷，局部球面趋于该平面，几何与代数一致。\end{solution}

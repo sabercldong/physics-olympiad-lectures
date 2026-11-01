@@ -1,0 +1,24 @@
+\fig{em5:phase-plane}{归一化电荷、电流相平面：理想回路的闭合轨道与欠阻尼回路的收缩轨道}{
+\begin{tikzpicture}[scale=.88]
+\begin{scope}
+\draw[axis](-2.1,0)--(2.2,0)node[right]{$q/Q_*$};
+\draw[axis](0,-2)--(0,2.2)node[above]{$i/(\omega_0Q_*)$};
+\draw[world,blue](0,0)circle(1.5);
+\draw[flow,blue](1.5,0)arc(0:35:1.5);
+\draw[flow,blue](-1.5,0)arc(180:215:1.5);
+\fill(1.5,0)circle(2pt);\node at(1.7,-1.15){$t=0$};
+\node at(0,-2.6){$R=0$：能量保持};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](-2.1,0)--(2.2,0)node[right]{$q/Q_*$};
+\draw[axis](0,-2)--(0,2.2)node[above]{$i/(\omega_0Q_*)$};
+\draw[world,red,domain=0:28,samples=240,variable=\t]
+ plot({1.5*exp(-.12*\t)*(cos(sqrt(.9856)*\t r)+.12/sqrt(.9856)*sin(sqrt(.9856)*\t r))},
+ {1.5*exp(-.12*\t)/sqrt(.9856)*sin(sqrt(.9856)*\t r)});
+\draw[flow,red](1.49,.08)--(1.45,.36);
+\fill(1.5,0)circle(2pt);\node at(1.7,-1.15){$t=0$};
+\node at(0,-2.6){$0<R<2\sqrt{L/C}$：能量耗散};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{em5:phase-plane}取初态$q=Q_*>0,i=0$，并使用前文的放电正向$i=-\dot q$。起点处$\dot i=q/(LC)>0$，状态点先向上；到达上半平面后$\dot q<0$，所以沿逆时针方向前进。左图的归一化使能量椭圆变成圆；在未归一化的$q,i$坐标中仍是椭圆。右图采用同样初态，电阻使每次绕转后能量减小，轨道向原点收缩。两图的坐标均为状态量，不代表元件在空间中的位置。

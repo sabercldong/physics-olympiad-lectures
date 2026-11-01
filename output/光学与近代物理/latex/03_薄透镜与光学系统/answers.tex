@@ -1,0 +1,113 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:31}\textbf{确定量距起点和物像高度的符号}\par\nobreak
+图\ref{fig:d31q}中物体位于凸透镜两倍焦距以外。先以透镜为量距起点求像距，再由横向放大率计算带符号像高。物像距离统一用厘米，物像高度统一用毫米；两个比值各自保持单位一致，放大率为无量纲数。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用薄镜成像式求像距、放大率和像高}\par\nobreak
+图\ref{fig:d31q}中 \(f=+10.0,u=+30.0\,\mathrm{cm}\)，故
+\[
+ \boxed{v=\frac{fu}{u-f}=15.0\,\mathrm{cm}},\qquad
+ \boxed{\beta=-\frac vu=-0.500},\qquad
+ \boxed{h'=-1.00\,\mathrm{mm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两条实际出射线分别核对实虚和正倒}\par\nobreak
+图\ref{fig:d31s}中的两条实际出射线交于 \(B'\)，所以是倒立缩小实像。把像高取负并不表示像在镜前；像的位置看 \(v\)，正倒看 \(h'\)，两者分别判断。
+\fig{fig:d31s}{练习\ref{d:31}的解答图：高度作放大示意；两条实际出射线相交于轴下}{
+\begin{tikzpicture}[y=2cm]
+\draw[axisline](-3.5,0)--(2.5,0);\draw[<->,>=Stealth,world](0,-.7)--(0,.7);
+\draw[axis,thick](-3,0)--(-3,.3);\draw[axis,thick](1.5,0)--(1.5,-.15);
+\draw[ray](-3,.3)--(0,.3);\draw[ray](0,.3)--(1.5,-.15);
+\draw[ray](-3,.3)--(0,0);\draw[ray](0,0)--(1.5,-.15);
+\node[above]at(-3,.3){$B$};\node[below]at(-3,0){$A$};
+\node[above right]at(1.5,0){$A'$};\node[below right]at(1.5,-.15){$B'$};
+\draw[aux](1,-.4)--(1,-.03);\node[below]at(1,-.4){$F'$};
+\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:32}\textbf{先求第一镜单独作用时的中间像}\par\nobreak
+按图\ref{fig:d32q}从左到右计算。第一镜给出
+\[
+ v_1=\frac{10\times20}{20-10}=20.0\,\mathrm{cm},\qquad\beta_1=-1.
+\]
+\fig{fig:d32s}{练习\ref{d:32}的解答图：用虚线保留未受第二镜作用的中间会聚目标}{
+\begin{tikzpicture}[x=1.3cm,y=2.5cm]
+\draw[axisline](-2.6,0)--(3.1,0);\draw[world](0,-.6)--(0,.6) (1.5,-.6)--(1.5,.6);
+\draw[ray](-2,.2)--(0,.2);\draw[ray](0,.2)--(1.5,-.1);
+\draw[ray](1.5,-.1)--(2.5,-.4);
+\draw[ray](-2,.2)--(0,0);\draw[ray](0,0)--(1.5,-.15);
+\draw[ray](1.5,-.15)--(2.5,-.4);
+\draw[virtual](1.5,-.1)--(2,-.2);\draw[virtual](1.5,-.15)--(2,-.2);
+\node[above]at(0,.6){$L_1$};\node[above]at(1.5,.6){$L_2$};
+\draw[aux](2,.2)--(2,-.2);\node[above]at(2,.2){$B_1$};
+\node[below right]at(2.5,-.4){$B'$};
+\node[above]at(-2,.2){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把未到达的会聚目标作为第二镜的虚物}\par\nobreak
+该会聚目标在 \(L_2\) 后 \(5.00\,\mathrm{cm}\)，故
+\[
+ u_2=15-20=-5.00\,\mathrm{cm},\quad
+ -\frac15+\frac1{v_2}=-\frac1{10}
+ \Rightarrow\boxed{v_2=+10.0\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{连乘两级横向放大率，并核对距离号}\par\nobreak
+于是 \(\beta_2=-v_2/u_2=+2\)，
+\(\boxed{\beta=\beta_1\beta_2=-2}\)。
+\begin{center}\begin{tabular}{c|rrrr}
+元件&\(u/\mathrm{cm}\)&\(v/\mathrm{cm}\)&\(f/\mathrm{cm}\)&\(\beta\)\\\hline
+\(L_1\)&\(+20\)&\(+20\)&\(+10\)&\(-1\)\\
+\(L_2\)&\(-5\)&\(+10\)&\(-10\)&\(+2\)
+\end{tabular}\end{center}
+表中 \(L_2\) 的物距为负，因为入射到它的光尚未到达会聚目标；这与最终实像的正像距分别判断。
+图\ref{fig:d32s}的虚线指向假定没有第二镜时的 \(B_1\)。实际光在 \(L_2\) 被减弱会聚，最终在更远的 \(B'\) 相交，为倒立放大实像。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用会聚度相加检查负透镜后仍为实像}\par\nobreak
+还可直接从图中的会聚目标作方向检查：到达第二镜时，原光束本会在5cm之后相交，其会聚度为 \(+1/5\,\mathrm{cm}^{-1}\)；负透镜的光焦度为 \(-1/10\,\mathrm{cm}^{-1}\)，相加后为 \(+1/10\,\mathrm{cm}^{-1}\)，因此会聚目标变为10cm之后。负透镜使交点后移，但没有把光束变为发散，与 \(v_2>0\) 一致。这个检验同时排除了“负透镜必成虚像”的误判。
+
+
+\end{drillsolution}
+
+\begin{drillsolution}{d:33}\textbf{区分目标总光焦度与总色差两个条件}\par\nobreak
+光焦度分配同时受聚焦与色差约束。图\ref{fig:d33q}中两片紧贴，因此总光焦度按代数相加；一阶消色差要求蓝、红两色的总光焦度相同。两条件独立，应联立求解，而不能只要求一正一负。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立两片光焦度及其蓝红变化}\par\nobreak
+图\ref{fig:d33q}的两片紧贴，先写
+\[
+ \Phi_C+\Phi_F=0.100\,\mathrm{cm^{-1}},\qquad
+ 0.0200\Phi_C+0.0400\Phi_F=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出带符号光焦度，再分别取倒数求焦距}\par\nobreak
+第二式给出 \(\Phi_C=-2\Phi_F\)。代入第一式，
+\[
+ \boxed{\Phi_C=+0.200\,\mathrm{cm^{-1}},\quad
+ \Phi_F=-0.100\,\mathrm{cm^{-1}}}.
+\]
+\[
+\boxed{f_C=+5.00\,\mathrm{cm},\quad f_F=-10.0\,\mathrm{cm}}.
+\]
+\fig{fig:d33s}{相对红光的光焦度变化：蓝光端两片分别增加和减小相同数值，总变化为零}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0);\draw[axis](0,-1.8)--(0,2)node[above]{$\Delta\Phi/\mathrm{cm^{-1}}$};\draw[world,blue](0,0)--(4,1.4)node[right]{$C$};\draw[world,red](0,0)--(4,-1.4)node[right]{$F$};\draw[world,very thick](0,0)--(4,0)node[above right]{合成};\draw[guide](0,1.4)--(4,1.4) (0,-1.4)--(4,-1.4);\node[left]at(0,1.4){$+0.00400$};\node[left]at(0,-1.4){$-0.00400$};\draw[guide](4,-1.6)--(4,1.7);\node[below]at(0,-1.9){红光};\node[below]at(4,-1.9){蓝光};\fill[blue](4,1.4)circle(1.5pt);\fill[red](4,-1.4)circle(1.5pt);
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用蓝红端点核对色差抵消且聚焦保留}\par\nobreak
+图\ref{fig:d33s}中两片的蓝红光焦度差分别为 \(+0.00400\) 与 \(-0.00400\,\mathrm{cm^{-1}}\)，相加为零，而共同的总光焦度仍为正。仅要求两片焦距大小相等会使总光焦度也抵消，不能满足题设聚焦要求。
+
+\end{drillsolution}

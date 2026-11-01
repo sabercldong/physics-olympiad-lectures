@@ -1,0 +1,29 @@
+\section{本讲小结}
+综合运动学先分清对象、坐标和边界事件，再把几何关系转成速度或时间方程。碰撞、铰接和多重接触各有自己的连接条件；求加速度时重新求导，并检查向心项与驱动角加速度是否给足。
+
+优化题同时需要上界证明与实现构形，包络和速度可达区域提供了几何表达。对称追逐可化为尺度变化和转角变化，极限与退化位置仍须单独核对。
+\section{练习}
+\nopagebreak[4]
+\begin{question}\begin{drill}[绳与滑轮的速度约束]\label{k6p15}
+定滑轮 $B$在固定轴 $O$正上方，高差 $h$。杆端 $A$位于右侧，绳从 $A$经 $B$连接竖直悬物。杆顺时针角速度大小为 $\omega$，$BA$与向下竖直线夹角为 $\alpha$。分别用速度投影和绳长微分求悬物速度；说明反转转向后怎样变化。\end{drill}
+\fig{k6p15q}{绳与滑轮的速度约束：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(2.5,1);\draw[very thick](2.5,1)--(0,2.8)--(-.3,2.8)--(-.3,-.4);\node[below]at(0,0){$O$};\node[above]at(0,2.8){$B$};\node[right]at(2.5,1){$A$};\node[draw]at(-.3,-.6){$M$};\draw[guide](0,2.8)--(0,.7);\node at(.4,2){$\alpha$};\node[left]at(0,1.3){$h$};\end{tikzpicture}}
+\answerlink{k6p15}
+\end{question}
+
+\begin{question}\begin{drill}[给定初速的抛射包络]\label{k6p16}
+从原点在竖直平面内以固定速率 $v_0$发射质点，发射方向可变，$x$向右、$y$向上。求所有抛物线轨迹的上包络，说明包络、可达区域和发射角数目的关系。\end{drill}
+\fig{k6p16q}{给定初速的抛射包络：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,2.3)node[above]{$y$};\foreach \p in {.7,1.2,2,3}\draw[gray,world]plot[domain=0:{\p/(.15*(1+\p*\p))},samples=50]({\x},{\p*\x-.15*(1+\p*\p)*\x*\x});\draw[blue,world]plot[domain=0:3.333333,samples=50]({\x},{1.666667-.15*\x*\x});\end{tikzpicture}}
+\answerlink{k6p16}
+\end{question}
+
+\begin{question}\begin{drill}[先跑后游追赶离岸小船]\label{k6p17}
+船从岸边 $A$出发，以恒速沿与直岸成 $15^\circ$的方向驶离。人同时从 $A$出发，可先沿岸以4m/s跑一段，再沿直线以2m/s游泳追船。求还能追上的最大船速，并给出达到临界值的跑、游时间比例。\end{drill}
+\fig{k6p17q}{先跑后游追赶离岸小船：题设关系}{\begin{tikzpicture}\draw[world](-.5,0)--(6,0);\draw[ray](0,0)--(5,1.34)node[right]{船};\draw[flow,blue](0,0)--(3,0)node[midway,below]{跑};\draw[flow,blue](3,0)--(5,1.34)node[midway,above]{游};\node at(1.4,.2){$15^\circ$};\node[below]at(0,0){$A$};\end{tikzpicture}}
+\answerlink{k6p17}
+\end{question}
+
+\begin{question}\begin{drill}[三只蜗牛的对称追逐]\label{k6p18}
+三只蜗牛位于边长60cm的等边三角形顶点，从同一时刻以5cm/min分别朝下一只蜗牛的即时位置爬行，循环追逐。求相遇时间、每只走过的路程和轨迹形状。\end{drill}
+\fig{k6p18q}{三只蜗牛的对称追逐：题设关系}{\begin{tikzpicture}\draw[world](90:1.8)--(210:1.8)--(330:1.8)--cycle;\foreach \a/\b in {90/210,210/330,330/450}\draw[flow,blue](\a:1.8)--(\b:1.8);\fill(90:1.8)circle(2pt)node[above]{$A$};\fill(210:1.8)circle(2pt)node[below left]{$B$};\fill(330:1.8)circle(2pt)node[below right]{$C$};\fill(0,0)circle(1pt)node[below]{$O$};\draw[guide](0,0)--(90:1.8);\end{tikzpicture}}
+\answerlink{k6p18}
+\end{question}

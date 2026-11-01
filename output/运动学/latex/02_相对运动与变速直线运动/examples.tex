@@ -1,0 +1,321 @@
+\section{例题与分析}
+\begin{question}\begin{example}[行车中竖直木板的淋雨量]\label{k2p1}
+雨滴以恒定速度竖直下落，空间雨滴数密度为 $n$。面积 $S$ 的薄木板竖直立在车上，板面垂直行驶方向。车匀速驶过给定路程 $D$，求撞到板面上的雨滴数，并说明是否依赖车速和雨滴下落速度。\end{example}
+\fig{k2p1q}{行车中竖直木板的淋雨量：题设关系}{\begin{tikzpicture}\draw[world](0,0)rectangle(.15,2.4);\node[left]at(0,1.2){$S$};\foreach \x in {1,2,3,4}\draw[flow](\x,2.2)--(\x,1.5);\draw[flow](.4,.5)--(2,.5)node[right]{$V$};\draw[dim](0,-.5)--(4,-.5)node[midway,below]{$D$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从板面法向确定每秒撞击数}\par\nobreak
+图\ref{k2p1q}的雨速沿木板平面，法向相对速率只来自车速 $V$。单位时间扫过体积 $SV$，故撞击数率为 $nSV$；行驶时间为 $D/V$，得到 $\boxed{N=nSD}$。
+\fig{k2p1s}{行车中竖直木板的淋雨量：解答过程}{\begin{tikzpicture}\draw[world](0,0)rectangle(.15,2);\draw[guide](0,0)--(4,0)--(4,2)--(0,2);\draw[flow,blue](.2,1)--(3.8,1)node[midway,above]{$D$};\node[below]at(2,0){扫过体积 $SD$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去运动时间并明确模型范围}\par\nobreak
+图\ref{k2p1s}表示木板扫过的空间柱体，其体积只由面积与路程决定。只要 $V>0$、$D$固定，车速在撞击数率和总时间中相消，竖直雨速也不影响这个零厚度、单一竖直板面的结果。若计车顶或有限厚度物体的其他表面，便需要另加相应法向通量，不能直接推广为“跑快跑慢淋雨总量一定相同”。
+
+用随车参考系也得到相同结果：相对雨速虽有水平、竖直两分量，但撞向竖直板的法向只有水平分量 $V$。竖直分量只使雨滴在板面上的交点上下改变。若行驶中速度随时间变化而始终向前，数量仍为 $nS\int V(t)\dd t=nSD$；若往返，则应按实际扫过的路程与重复穿越的统计规则重新计数。\end{solution}
+
+\begin{question}\begin{example}[挡风玻璃上的垂直入射]\label{k2p2}
+无风时雨滴对地竖直下落。汽车向右以30m/s行驶，挡风玻璃由左上向右下倾斜，与水平面成 $37^\circ$。司机看到雨滴相对汽车垂直射向玻璃。求雨滴对地速率，取 $\sin37^\circ=3/5$、$\cos37^\circ=4/5$。\end{example}
+\fig{k2p2q}{挡风玻璃上的垂直入射：题设关系}{\begin{tikzpicture}\draw[world](0,2.25)--(3,0);\draw[guide](0,0)--(3.8,0);\draw(2.2,0)arc(180:143.13:.8);\node at(2.3,.25){$37^\circ$};\draw[flow,blue](2.2,2.55)--(.7,.55)node[left]{相对雨速};\draw[flow](3.4,1)--(4.8,1)node[right]{$30$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把垂直入射转成相对雨速的切向投影为零}\par\nobreak
+以图\ref{k2p2q}中向右、向上为正，雨对地速度为 $(0,-w)$，雨对车速度为 $(-30,-w)$。玻璃的切向单位矢量可取 $(\cos37^\circ,-\sin37^\circ)$。垂直入射意味着切向投影为零：
+\[-30\cos37^\circ+w\sin37^\circ=0,\qquad\boxed{w=30\cot37^\circ=40\,\mathrm{m/s}}.\]
+\fig{k2p2s}{挡风玻璃上的垂直入射：解答过程}{\begin{tikzpicture}\draw[flow](0,2.4)--(0,0)node[midway,right]{$w=40$};\draw[flow](0,0)--(-1.8,0)node[midway,below]{$-V=-30$};\draw[flow,blue](0,2.4)--(-1.8,0)node[midway,left]{$50$};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由速度三角形核对两个参考系的速率}\par\nobreak
+图\ref{k2p2s}把汽车速度从雨速中减去，得到左下方的相对速度。其水平、竖直分量之比为 $3:4$，与玻璃斜率对应的 $4:3$ 互为垂直条件。求得的40m/s为雨对地速率；雨对车速率另为 $\sqrt{30^2+40^2}=50$m/s，两者不可混同。
+
+玻璃切向与水平成 $-37^\circ$，法线可取向左下的 $(-\sin37^\circ,-\cos37^\circ)$。将相对雨速写为50倍这个单位法线，恰得 $(-30,-40)$m/s；再加车速 $(30,0)$即回到竖直雨速 $(0,-40)$。这一步从相对速度变回地面速度，完整验证了入射方向和两个速率的参照。\end{solution}
+
+\begin{question}\begin{example}[遮住头顶以后怎样避雨]\label{k2p3}
+雨速大小为 $w$，与竖直向下方向成角 $\zeta$。人用遮雨物完全挡住头顶来雨，侧面淋雨量按相对水平雨速的大小计。在给定时间内，若人的水平跑速大小固定为 $u$，应朝哪个方向跑？若跑速也可选择，结论如何？\end{example}
+\fig{k2p3q}{遮住头顶以后怎样避雨：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[flow](0,2.6)--(2,0)node[midway,right]{$\bm w$};\draw[guide](0,2.6)--(0,0);\node at(.3,1.9){$\zeta$};\draw[flow,blue](2,-.7)--(3.5,-.7)node[right]{$\bm u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用水平速度差表示侧面来雨}\par\nobreak
+图\ref{k2p3q}中雨速的水平分量为 $\bm w_h$，大小 $w\sin\zeta$。把人的运动方向与 $\bm w_h$ 的夹角记为 $\psi$，则相对水平速率平方为
+\[|\bm w_h-\bm u|^2=w^2\sin^2\zeta+u^2-2uw\sin\zeta\cos\psi.\]
+\fig{k2p3s}{遮住头顶以后怎样避雨：解答过程}{\begin{tikzpicture}\draw[flow](0,0)--(3.8,0)node[right]{$\bm w_h$};\draw[flow,blue](0,.5)--(2.3,.5)node[right]{$\bm u$};\draw[flow,red](2.3,0)--(3.8,0)node[midway,below]{$\bm w_h-\bm u$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定速率求方向，再允许调节速率}\par\nobreak
+图\ref{k2p3s}表示两个水平速度之差；固定 $u$ 时，$\cos\psi=1$ 使差最小，故应顺着雨滴的水平运动方向跑，而不是迎着雨来向跑。若速度也能选，取 $\bm u=\bm w_h$ 可使理想侧面通量为零。$\zeta=0$ 时各方向等价，增加跑速只增加侧面来雨。结论以题定时间、完全遮住头顶和固定侧面有效面积为前提。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查超越雨速及竖直降雨的边界}\par\nobreak
+当 $u,w\sin\zeta$均非零时，相对速率平方是 $\cos\psi$的递减函数，故最小值为 $(u-w\sin\zeta)^2$。即使跑速超过雨的水平速率，最优方向仍为同向，只是相对风的水平来向反转。若把考察条件换成固定路程，时间还会随跑速改变，便不能沿用固定时间下的这一个最优结论。\end{solution}
+
+\begin{question}\begin{example}[渡河时间与路程的不同最优方向]\label{k2p4}
+平直河道宽 $d$，水对岸速率 $u>0$，船对水速率 $w>0$，航向保持不变。分别求过河时间最短和对岸路程最短的航向；最短路程须讨论 $w>u$、$w=u$、$w<u$。\end{example}
+\fig{k2p4q}{渡河时间与路程的不同最优方向：题设关系}{\begin{tikzpicture}\draw[world](-1,0)--(5,0) (-1,2.5)--(5,2.5);\draw[flow](3,1)--(4.6,1)node[right]{$u$};\draw[dim](-.6,0)--(-.6,2.5)node[midway,left]{$d$};\draw[flow,blue](0,0)--(.6,1.5)node[above]{$\bm w$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用过河分速度求最短时间}\par\nobreak
+取图\ref{k2p4q}的水流方向为 $x$、过河方向为 $y$，船头从正 $y$轴向上游偏角 $\beta$，并要求 $-\pi/2<\beta<\pi/2$以保持正的过河分速度。合速度为
+\[V_x=u-w\sin\beta,\qquad V_y=w\cos\beta>0.\]
+河宽是沿 $y$的位移，所以 $T=d/V_y=d/(w\cos\beta)$。由于 $\cos\beta\le1$，时间最短须取 $\boxed{\beta=0,\ T_{\min}=d/w}$；船头垂直河岸，此时仍有顺流漂移。
+\fig{k2p4s}{渡河时间与路程的不同最优方向：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.8,0)node[right]{$v_x$};\draw[axis](0,0)--(0,3.2)node[above]{$v_y$};\draw[world](3,0)circle(1.5);\draw[guide](0,0)--(2.25,1.299);\draw[flow,blue](0,0)--(2.25,1.299);\draw[guide](3,0)--(2.25,1.299);\node[below]at(3,0){$u$};\node[right]at(4.5,1){半径 $w$};\node at(1,.25){$\gamma$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把最短路程转成速度方向问题}\par\nobreak
+航向固定时轨迹是直线，长度为 $S=|\bm V|T=d|\bm V|/V_y$。图\ref{k2p4s}中船对水的速度大小固定，故合速度端点位于以 $(u,0)$为圆心、$w$为半径的速度圆上。最短航程相当于让合速度方向尽量接近河岸法线，须按原点与速度圆的位置讨论。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{原点在速度圆内：可以正对岸到达}\par\nobreak
+当 $w>u$时，能够令 $V_x=0$，所需航向为 $\sin\beta=u/w$。任何过河路线长度都不小于宽度 $d$，此时正好达到，故
+\[\boxed{S_{\min}=d},\qquad
+T=\frac d{w\cos\beta}=\frac d{\sqrt{w^2-u^2}}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{原点在速度圆外：作切线求最短航程}\par\nobreak
+当 $w<u$时，原点在速度圆外，合速度与河岸的最大夹角对应上侧切线。令合速度端点为 $V$、圆心为 $W$，则 $OV\perp WV$。由直角三角形 $OWV$，$\sin\gamma=w/u$、$|OV|=\sqrt{u^2-w^2}$，所以
+\[\boxed{S_{\min}=\frac d{\sin\gamma}=\frac{du}{w}}.\]
+同一切线条件也可写成 $\bm V\cdot(\bm V-u\bm e_x)=0$；代入分量得到 $w^2-uw\sin\beta=0$，因此 $\sin\beta=w/u$。进而
+\[V_x=\frac{u^2-w^2}{u},\qquad
+V_y=\frac{w\sqrt{u^2-w^2}}u,\qquad
+T=\frac{du}{w\sqrt{u^2-w^2}}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{原点在圆上：下确界不能在有限时间取得}\par\nobreak
+\fig{k2deep:riverlimit}{速度圆与纵轴的交点决定能否沿河岸法线到达}{\begin{tikzpicture}
+\begin{scope}
+\draw[axis](-1.5,0)--(3.6,0)node[right]{$V_x$};\draw[axis](0,-.5)--(0,2.5)node[above]{$V_y$};
+\draw[world](1,0)circle(1.8);\fill(1,0)circle(1pt)node[below]{$W$};\fill(0,1.49666)circle(1.4pt)node[left]{$V$};
+\draw[flow,blue](0,0)--(0,1.49666);\draw[guide](1,0)--(0,1.49666);\node at(1,3){$w>u$：$V_y>0$};
+\end{scope}
+\begin{scope}[xshift=6.3cm]
+\draw[axis](-.7,0)--(3.6,0)node[right]{$V_x$};\draw[axis](0,-.5)--(0,2.5)node[above]{$V_y$};
+\draw[world](1.4,0)circle(1.4);\draw[flow,blue](0,0)--(.32754,.9);\fill(1.4,0)circle(1pt)node[below]{$W$};
+\node[below left]at(0,0){$O$};\node at(1.4,3){$w=u$：纵轴仅切于 $O$};
+\end{scope}
+\end{tikzpicture}}
+图\ref{k2deep:riverlimit}左图的纵轴交点对应有限的过河分速度；右图要趋向纵轴方向，合速度端点也同时趋近原点。因而必须同时检查航程和用时。
+
+当 $w=u$时，航程式直接化为
+\[S=d\frac{\sqrt{(1-\sin\beta)^2+\cos^2\beta}}{\cos\beta}
+   =d\sqrt{\frac{2}{1+\sin\beta}}.\]
+要使它趋近 $d$，需 $\beta\to\pi/2$，但这使 $V_y\to0$、$T\to\infty$。所以此时只有航程下确界 $d$，有限时间内不能取得。三个分支的时间和几何条件均须一同保留。\end{solution}
+
+\begin{question}\begin{example}[两次旗向反求风速]\label{k2p5}
+船沿固定航向行驶，速率20km/h时，旗伸向船后侧并与航向直线成锐角 $60^\circ$；速率增至40km/h后，旗仍伸向后侧，锐角变为 $30^\circ$。旗方向视为风对船的流动方向。求风对地的速度及旗与航向垂直时的船速。\end{example}
+\fig{k2p5q}{两次旗向反求风速：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4.8,0)node[right]{航向};\draw[flow,blue](3,0)--(2,1.73)node[above]{$20$时};\draw[flow,red](3,0)--(0,1.73)node[above]{$40$时};\node at(2.1,.2){$60^\circ$};\node at(1.4,.6){$30^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两次后向旗角列分量方程}\par\nobreak
+令图\ref{k2p5q}中的风对地分量为 $(W_x,W_y)$，选 $W_y>0$；左右镜像不改变风速大小。旗向后侧，故两次相对水平分量分别为 $W_x-20<0$、$W_x-40<0$。由锐角关系
+\[W_y=\sqrt3(20-W_x)=(40-W_x)/\sqrt3,\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立消元并恢复风对地的方向}\par\nobreak
+解得 $\boxed{W_x=10,\ W_y=10\sqrt3\ \mathrm{km/h}}$，风速为 $\boxed{20\,\mathrm{km/h}}$，流动方向与航向正向成 $60^\circ$。
+\fig{k2p5s}{两次旗向反求风速：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$V$};\draw[flow,blue](0,0)--(1,1.73)node[above]{$\bm W$};\draw[flow](2,0)--(1,1.73);\draw[flow](4,0)--(1,1.73);\node[below]at(1,0){$10$};\node[below]at(2,0){$20$};\node[below]at(4,0){$40$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令相对风纵向分量为零并回代两次旗角}\par\nobreak
+图\ref{k2p5s}画出真风与两次船速；相对风的竖直分量相同，水平分量改变20km/h。旗与航向垂直要求 $W_x-V=0$，故船速应为 $\boxed{10\,\mathrm{km/h}}$。风的来向与上述流动方向相反，不能把旗尖方向直接称为风的来向。
+
+将角关系的两边同乘 $\sqrt3$，得到 $3(20-W_x)=40-W_x$，由此先求 $W_x=10$，再回代求横向风分量。检查两次相对风分别为 $(-10,10\sqrt3)$与 $(-30,10\sqrt3)$km/h，确实都朝船后，锐角正切分别为 $\sqrt3$和 $1/\sqrt3$。若只取正切大小却不检查后向条件，可能误保留另一套方向分支。\end{solution}
+
+\begin{question}\begin{example}[骑行者看到的风向]\label{k2p6}
+自行车向正东以5km/h行驶时，骑车人感到风从正北吹来；车速增加两倍，即增至15km/h时，风从正东北吹来。求风对地的速度和来向。\end{example}
+\fig{k2p6q}{骑行者看到的风向：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{东};\draw[axis](0,0)--(0,3)node[above]{北};\draw[flow,blue](1,2.2)--(1,.7)node[below left]{第一次};\draw[flow,red](3,2.2)--(1.6,.8)node[below right]{第二次};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把来向反转成流动方向后相减}\par\nobreak
+图\ref{k2p6q}的“从北吹来”意味着第一次相对风指向正南，因此真风的东向分量等于车速5km/h。设真风为 $(5,-w)$。车速15km/h时，相对风为 $(-10,-w)$；来自东北表示流向西南，两个分量的绝对值相等，故 $w=10$km/h。
+\fig{k2p6s}{骑行者看到的风向：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(2,0)node[right]{东};\draw[axis](0,-2.6)--(0,1)node[above]{北};\draw[flow,blue](0,0)--(1,-2)node[right]{$(5,-10)$};\draw[guide](1,0)--(1,-2)--(0,-2);\node[above]at(1,0){$5$};\node[left]at(0,-2){$-10$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由真风矢量求大小和来向}\par\nobreak
+图\ref{k2p6s}给出 $\boxed{\bm W=(5,-10)\,\mathrm{km/h}}$，其大小为 $\boxed{5\sqrt5\,\mathrm{km/h}}$。来向是速度矢量的反向，即北偏西 $\arctan(1/2)\approx26.6^\circ$。若把“增加两倍”误作“变为两倍”，会换成另一道题；这里已明确第二次速率为15km/h。
+
+最后将真风分别减去两次车速，得到 $(0,-10)$与 $(-10,-10)$km/h，分别指向南和西南。题目给的“从北”“从东北”是这两个相对速度的反向，因而与答案一致。风对地向东南流动，其来向便在西北；先画真风矢量再反向读来向，比直接在方位词之间相加更可靠。\end{solution}
+
+\begin{question}\begin{example}[旋转木马上的雨伞]\label{k2p7}
+人在距旋转木马轴线 $r$ 处随木马以角速度 $\omega$ 转动，雨滴对地以速率 $w$ 竖直下落。忽略风和气流作用，求每个瞬间雨伞轴线应朝向何方以及相对竖直方向的倾角。\end{example}
+\fig{k2p7q}{旋转木马上的雨伞：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\fill(1.5,0)circle(1.5pt)node[right]{$P$};\draw[guide](0,0)--(1.5,0)node[midway,below]{$r$};\draw[flow](1.5,0)--(1.5,1.2)node[right]{$r\omega$};\node at(0,-2){俯视图};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在瞬时切向与竖直方向合成相对雨速}\par\nobreak
+图\ref{k2p7q}中人的瞬时切向速度为 $\bm V=r\omega\bm e_\theta$。雨对人的速度为 $\bm v_{\text{雨/人}}=-r\omega\bm e_\theta-w\bm e_z$，雨伞从手到伞顶的轴线应逆着这一来雨速度，故应向前进的切向倾斜。
+\[\boxed{\tan\delta=\frac{r|\omega|}{w}}.\]
+\fig{k2p7s}{旋转木马上的雨伞：解答过程}{\begin{tikzpicture}\draw[flow](0,2.5)--(0,0)node[midway,right]{$w$};\draw[flow](0,0)--(-2,0)node[midway,below]{$r|\omega|$};\draw[flow,blue](0,2.5)--(-2,0)node[midway,left]{相对雨速};\draw[very thick,red](-2,0)--(-.8,1.5)node[above]{伞顶};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定伞顶方向及随位置变化的朝向}\par\nobreak
+图\ref{k2p7s}的直角三角形把竖直来雨分量与向后的相对分量分开；伞顶指向前上方。虽然倾角恒定，切向方向却随人在木马上的位置转动，因此伞的水平朝向需要不断调整。$r=0$或 $\omega=0$ 时应竖直撑伞，$w$越大则所需倾角越小。
+
+在每个瞬间，若用局部前进方向作水平轴，雨对人的速度三角形都相同，所以倾角固定。不同瞬间局部轴却不同，伞轴在地面坐标中的水平投影也随之转动。这里用到的只是瞬时速度差，不曾把旋转木马上的坐标轴当作固定平动轴继续求相对加速度；因此不需要由向心加速度去额外改变伞的倾角。\end{solution}
+
+\begin{question}\begin{example}[由雨痕倾角求车速比]\label{k2p8}
+将车窗上的理想雨痕方向视为雨滴相对火车速度在竖直行驶平面内的方向。停车时雨痕向前倾，偏离竖直的角为 $\theta_0$；车速为 $v_1,v_2$ 时雨痕均向后倾，角分别为 $\theta_1,\theta_2$。求 $v_1/v_2$。\end{example}
+\fig{k2p8q}{由雨痕倾角求车速比：题设关系}{\begin{tikzpicture}\draw[guide](0,0)--(0,2.4) (2.4,0)--(2.4,2.4) (4.8,0)--(4.8,2.4);\draw[flow](0,2.2)--(.7,0);\draw[flow,blue](2.4,2.2)--(1.5,0);\draw[flow,red](4.8,2.2)--(3.3,0);\node[below]at(0,-.3){停车};\node[below]at(2.4,-.3){$v_1$};\node[below]at(4.8,-.3){$v_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将前倾和后倾分别译成带符号的分量}\par\nobreak
+把图\ref{k2p8q}中的雨对地水平、竖直向下分量记为 $u,w>0$。停车时 $u=w\tan\theta_0$；行驶时雨痕向后，说明 $v_i>u$，于是 $v_i-u=w\tan\theta_i$。
+\[v_i=w(\tan\theta_0+\tan\theta_i),\qquad\boxed{\frac{v_1}{v_2}=\frac{\tan\theta_0+\tan\theta_1}{\tan\theta_0+\tan\theta_2}}.\]
+\fig{k2p8s}{由雨痕倾角求车速比：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6,0);\node[below]at(0,0){$0$};\node[below]at(1.4,0){$u$};\node[below]at(3.2,0){$v_1$};\node[below]at(5.3,0){$v_2$};\draw[dim](0,.6)--(1.4,.6)node[midway,above]{$w\tan\theta_0$};\draw[dim](1.4,1.3)--(3.2,1.3)node[midway,above]{$w\tan\theta_1$};\draw[dim](1.4,2)--(5.3,2)node[midway,above]{$w\tan\theta_2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以不变的竖直雨速消元并核验角度趋势}\par\nobreak
+图\ref{k2p8s}沿同一个竖直分量 $w$ 比较三条水平分量：车速需要补偿原本向前的雨速，再产生向后的相对分量，所以分母、分子都是两个正切之和。若两次后倾角相同，车速相同；加速后后倾角增大，结果给出 $v_1/v_2<1$，符合方向判断。
+
+雨痕的竖直分量 $w$在三次观察中不变，因此可以作为共同标尺消去。若有一次雨痕仍向前倾，就应改写成 $u-v_i=w\tan\theta_i$，不再是两个正切相加。符号来自雨滴对车的水平运动方向，角的正切只给分量大小，两者必须结合，才能把图中的前倾、后倾正确译成方程。\end{solution}
+
+\begin{question}\begin{example}[以最小速率穿过车流]\label{k2p9}
+宽为 $c$ 的道路中央有一列车，以速率 $v$ 向右匀速行驶。车宽 $b<c$，相邻车头车尾之间的净间隙为 $a$。人视为质点，可选择入路时刻并沿直线匀速穿过该列车流。求刚好可行的最小速率，以及以此速率穿过整条道路的时间。\end{example}
+\fig{k2p9q}{以最小速率穿过车流：题设关系}{\begin{tikzpicture}\draw[world](-1,0)--(6,0) (-1,3)--(6,3);\foreach \x in {0,2.1,4.2}\draw[world](\x,1)rectangle({\x+1.3},2);\draw[dim](1.3,2.5)--(2.1,2.5)node[midway,above]{$a$};\draw[dim](-.5,1)--(-.5,2)node[midway,left]{$b$};\draw[flow](4.5,.5)--(5.7,.5)node[right]{$v$};\draw[dim](-1.5,0)--(-1.5,3)node[midway,left]{$c$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在车流参考系写出全段避碰条件}\par\nobreak
+取图\ref{k2p9q}中行人的速度为 $(U_x,U_y)$，$U_y>0$。穿过车宽 $b$所需时间为 $b/U_y$；在车流参考系中，这段时间的相对水平位移不能超过间隙 $a$，所以完整条件是
+\[|U_x-v|\frac b{U_y}\le a,
+\qquad v-\frac abU_y\le U_x\le v+\frac abU_y.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在可行速度区域寻找离原点最近的点}\par\nobreak
+令 $k=a/b>0$，左侧边界给 $U_x+kU_y\ge v$。利用恒等式
+\[(1+k^2)(U_x^2+U_y^2)-(U_x+kU_y)^2=(kU_x-U_y)^2\ge0,\]
+便得到柯西不等式对应的全局速率下界：
+\[U^2=U_x^2+U_y^2
+ \ge\frac{(U_x+kU_y)^2}{1+k^2}
+ \ge\frac{v^2}{1+k^2}.\]
+等号需同时满足 $U_y=kU_x$与 $U_x+kU_y=v$。联立得
+\[U_x=\frac{v}{1+k^2}=\frac{vb^2}{a^2+b^2},\qquad
+U_y=\frac{vk}{1+k^2}=\frac{vab}{a^2+b^2}.\]
+\fig{k2p9s}{可行速度区域中距离原点最近的点}{\begin{tikzpicture}
+\fill[blue!7](0,2.8)--(4.2,0)--(5.3,.733333)--(5.3,3.2)--(0,3.2)--cycle;
+\draw[axis](0,0)--(5.65,0)node[right]{$U_x$};\draw[axis](0,0)--(0,3.6)node[above]{$U_y$};
+\draw[world](0,2.8)--(4.2,0)--(5.3,.733333);
+\draw[flow,blue](0,0)--(1.29231,1.93846)node[above right]{$M$};
+\draw[guide](1.29231,1.93846)--(1.29231,0);
+\node[below]at(4.2,0){$v$};\node[above]at(3.1,2.8){可行区域};
+\node[above right]at(2.8,1.25){$U_x+\frac abU_y=v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验最优速度同时满足两侧边界}\par\nobreak
+图\ref{k2p9s}中的 $M$是边界直线的垂足，也满足完整的另一侧约束：
+$v-U_x=vk^2/(1+k^2)=kU_y>0$，故 $|U_x-v|b/U_y=a$。
+
+因此下界确可在题设的临界通行意义下达到，最小速率为
+\[\boxed{U_{\min}=\frac{vb}{\sqrt{a^2+b^2}}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总路宽计算用时并检查路径中间状态}\par\nobreak
+以此速度穿过整条道路的时间按总宽 $c$计算，得到
+\[\boxed{T=\frac c{U_y}=\frac{c(a^2+b^2)}{vab}}.\]
+这里的 $b/U_y$只用于车带内的避碰检查，$c/U_y$才是全路用时。$M$表示最小速率方案，不能据此称 $T$为任意速率下的最短过路时间。
+
+还需检验所取临界路径是否能安排。进入车带时，让人在车流参考系内从间隙的一端出发；经过 $b/U_y$，其相对横向位移恰为 $-a$，到达另一端。相对轨迹在这段时间内为直线，因而中间始终留在两端之间。题设允许选择入路时刻，正好保证这一相位安排。若要求严格避开边界，则应让不等式严格成立，速率可任意接近上述临界值；有限宽度的人还需保留相应间隙。
+\end{solution}
+
+\begin{question}\begin{example}[绿灯剩余时间与停车距离]\label{k2p10}
+汽车以8m/s驶向18m外的停车线，绿灯还剩2s，最大加速度为2m/s$^2$，最大制动减速度为5m/s$^2$，限速12.5m/s。判断：能否加速且不超速地在绿灯熄灭前通过；立即制动能否通过；保持8m/s至离线5m处才制动，能否停在线前。\end{example}
+\fig{k2p10q}{绿灯剩余时间与停车距离：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(6,0);\draw[world](.2,0)rectangle(1.5,.6);\draw[very thick](5,-.3)--(5,1.1)node[above]{停车线};\draw[dim](1.5,-.5)--(5,-.5)node[midway,below]{$18\,\mathrm m$};\draw[flow](1.6,.6)--(2.8,.6)node[right]{$8\,\mathrm{m/s}$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{检验加速通过的时间与限速}\par\nobreak
+图\ref{k2p10q}先检查加速段：在2s内位移为 $16+2a$，故 $a>1$m/s$^2$可在2s前通过。取最大 $a=2$，由 $18=8t+t^2$ 得 $t=\sqrt{34}-4\approx1.831$s，通过速度为 $8+2t\approx11.66$m/s，低于限速，因而可行。
+\fig{k2p10s}{绿灯剩余时间与停车距离：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[axis](0,0)--(0,3.1)node[above]{$v$};\draw[blue,world](0,1.8)--(4,2.7);\draw[red,world](0,1.8)--(3.2,0)--(5,0);\draw[guide](4,0)--(4,2.7);\node[below]at(4,0){$2$};\node[below]at(3.2,0){$1.6$};\node[left]at(0,1.8){$8$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别比较两种制动方案的剩余距离}\par\nobreak
+图\ref{k2p10s}中制动速度在 $t=8/5=1.6$s时归零，此后的速度取零。停车距离 $8^2/(2\times5)=6.4$m，小于18m，立即制动不会通过停车线。若只余5m才开始制动，6.4m的停车距离超过剩余距离，不能停在线前。不能把 $8t-5t^2/2$ 外推到停车之后，更不能由“加速通过”直接断言一定超速。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查临界时刻和晚制动的到线速度}\par\nobreak
+严格在绿灯结束前通过要求 $18<8\times2+\tfrac12a\times2^2$，故应取 $a>1$；$a=1$只是在熄灯瞬间到线。最大加速度方案还须先检查何时达到限速：$(12.5-8)/2=2.25$s，晚于通过时刻，所以此前无需换成匀速段。若只余5m制动，到线速度仍为 $\sqrt{8^2-2\times5\times5}=\sqrt{14}$m/s，明确表明尚未停住。\end{solution}
+
+\begin{question}\begin{example}[位置图中的平均速率]\label{k2p11}
+$A,B,C$同时同地出发，20s后均位于同一正坐标 $x_0$。$B,C$全程沿正方向运动；$A$先沿正方向经过 $x_0$ 到达 $x_m>x_0$，再返回 $x_0$。比较三者平均速度与平均速率。\end{example}
+\fig{k2p11q}{位置图中的平均速率：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,3.6)node[above]{$x$};\draw[world](0,0)..controls(1.8,3.3)and(3.3,3.4)..(4.5,2.4);\node[above]at(2.9,2.9){$A$};\draw[blue,world](0,0)--(4.5,2.4);\node[blue,below]at(2.7,1.44){$B$};\draw[red,world](0,0)..controls(2.7,.1)and(3.7,1)..(4.5,2.4);\node[red,right]at(3.5,1.1){$C$};\draw[guide](4.5,2.4)--(4.5,0);\node[below]at(4.5,0){$20$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由共同起终点计算平均速度}\par\nobreak
+图\ref{k2p11q}的三个起终点与用时相同，平均速度均为 $x_0/20$，方向沿正轴。$B,C$没有转向，路程均为 $x_0$；$A$先走到 $x_m$ 再退回 $x_0$，路程为 $x_m+(x_m-x_0)=2x_m-x_0$。
+\fig{k2p11s}{位置图中的平均速率：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6,0)node[right]{$x$};\node[below]at(0,0){$0$};\node[below]at(3.5,0){$x_0$};\node[below]at(5,0){$x_m$};\draw[flow,blue](0,.6)--(5,.6)node[midway,above]{$x_m$};\draw[flow,red](5,1.4)--(3.5,1.4)node[midway,above]{$x_m-x_0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按折返段的纵坐标变化累计路程}\par\nobreak
+图\ref{k2p11s}按位置改变的方向分段累加，故 $\overline u_A=(2x_m-x_0)/20>x_0/20=\overline u_B=\overline u_C$。位置图曲线下的面积没有路程意义，曲线的“弯曲长度”也不是物体的路程；路程应由各单调段的纵坐标变化量计算。共同终点只能保证平均速度相同，不能保证平均速率相同。
+
+若将位置函数按各单调段拆开，路程是各段 $|x(t_{i+1})-x(t_i)|$之和，而全程位移是同一组差值直接相加。对 $A$两段相加时折返量 $x_m-x_0$被计入路程却在位移中抵消。图横轴与纵轴量纲不同，即使把曲线画得更陡或更弯，也不能从纸面弧长读出物体走过的距离。\end{solution}
+
+\begin{question}\begin{example}[共同重力下的四球构形]\label{k2p12}
+四个小球在高空同一点同时以相同速率 $v_0$ 分别向上、向下、向左、向右抛出。忽略空气阻力且尚未碰到地面。求时间 $t$ 后四球的位置构形，说明其中心怎样运动。\end{example}
+\fig{k2p12q}{共同重力下的四球构形：题设关系}{\begin{tikzpicture}\fill(0,0)circle(2pt)node[below right]{$O$};\foreach \a/\s in {0/右,90/上,180/左,270/下}\draw[flow](0,0)--(\a:1.5)node[pos=1.25]{\s};\node at(3,0){各速率 $v_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{抽去四球共有的自由落体位移}\par\nobreak
+把图\ref{k2p12q}的抛出点取为原点，$y$轴向上。四球均有位移项 $(0,-gt^2/2)$，另有初速度造成的位移。令 $G=(0,-gt^2/2)$，则四个位置为 $G+(0,v_0t)$、$G+(0,-v_0t)$、$G+(-v_0t,0)$、$G+(v_0t,0)$。
+\fig{k2p12s}{共同重力下的四球构形：解答过程}{\begin{tikzpicture}\coordinate(G)at(0,0);\draw[world](0,1.6)--(1.6,0)--(0,-1.6)--(-1.6,0)--cycle;\foreach \p in {(0,1.6),(1.6,0),(0,-1.6),(-1.6,0)}\fill\p circle(1.5pt);\draw[guide](-1.6,0)--(1.6,0) (0,-1.6)--(0,1.6);\fill(0,0)circle(1pt)node[below right]{$G$};\node[above]at(0,2.4){$O$};\draw[flow,blue](.4,2.4)--(.4,0)node[midway,right]{$gt^2/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对边长与中心运动，并限定有效时段}\par\nobreak
+图\ref{k2p12s}中的四点以 $G$ 为中心，构成两条对角线均为 $2v_0t$ 的正方形，顶点分别在上下左右，中心做自由落体。四个点不是以抛出点 $O$ 为中心；也不能因上抛球受重力而把上半部菱形压扁，因为共同的重力位移平移了全部四点，不改变任意两球之间的相对位置。
+
+例如上球与右球的相对位置为 $(-v_0t,v_0t)$，长度为 $\sqrt2v_0t$，其余相邻边由对称性相同，故不仅对角线相等，四边也确为正方形。四球位置的算术平均为 $G$，因此几何中心自由落体。$t=0$时四点退化为一点，任一球先碰地以后共同加速度条件失效，正方形结论便不能继续外推。\end{solution}
+
+\begin{question}\begin{example}[交换两段加速度]\label{k2p13}
+甲乙从静止出发沿同一方向运动。在第一段时长 $T$ 内，甲加速度为 $a$、乙为 $2a$；第二段同样长为 $T$，两车交换加速度。求两段结束时的位移比与速度比。\end{example}
+\fig{k2p13q}{换段时加速度改变，而速度保持连续}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.9)node[above]{加速度};
+\draw[blue,very thick](0,1)--(2.2,1);\draw[blue,very thick](2.2,2)--(4.4,2);
+\draw[red,dashed,very thick](0,2)--(2.2,2);\draw[red,dashed,very thick](2.2,1)--(4.4,1);
+\draw[guide](2.2,0)--(2.2,2.4);\node[below]at(2.2,0){$T$};\node[below]at(4.4,0){$2T$};
+\node[left]at(0,1){$a$};\node[left]at(0,2){$2a$};\node[blue]at(5.6,2){甲：实线};\node[red]at(5.6,1){乙：虚线};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在换段处继承速度再分别计算位移}\par\nobreak
+图\ref{k2p13q}在 $t=T$ 处换加速度，速度本身连续。先得到 $v_{\text{甲}}(T)=aT$、$v_{\text{乙}}(T)=2aT$，这两个量分别是第二段的初速度。于是
+\begin{align*}
+s_{\text{甲}}&=\underbrace{\tfrac12aT^2}_{\text{第一段}}+
+ \underbrace{(aT)T+\tfrac12(2a)T^2}_{\text{第二段}}=\tfrac52aT^2,\\
+s_{\text{乙}}&=\underbrace{\tfrac12(2a)T^2}_{\text{第一段}}+
+ \underbrace{(2aT)T+\tfrac12aT^2}_{\text{第二段}}=\tfrac72aT^2.
+\end{align*}
+第二段的初速度项是先后顺序影响位移的来源。
+\fig{k2p13s}{交换两段加速度：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,3.5)node[above]{$v$};\draw[blue,world](0,0)--(2.2,1)--(4.4,3);\draw[red,world](0,0)--(2.2,2)--(4.4,3);\draw[guide](2.2,0)--(2.2,2);\node[below]at(2.2,0){$T$};\node[above left]at(2.2,2){乙};\node[below right]at(2.2,1){甲};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以速度差的面积核验位移比}\par\nobreak
+图\ref{k2p13s}的两条速度曲线在 $2T$ 汇合，末速度均为 $3aT$，但乙在整个中间阶段速度更大，面积也更大。因此 $\boxed{s_{\text{甲}}:s_{\text{乙}}=5:7}$，$\boxed{v_{\text{甲}}:v_{\text{乙}}=1:1}$。若只对两个加速度取平均，会得到相同末速度，却错误地遗漏先获得速度所带来的额外位移。
+
+两车速度增量都为 $aT+2aT=3aT$，所以末速度相同。位移差还可从速度差图求得：前一段差值从0线性增至 $aT$，后一段从 $aT$线性降至0，两块三角形面积之和为 $aT^2$。这恰等于 $7aT^2/2-5aT^2/2$，说明早获得的速度能在后续较长时间内贡献位移。\end{solution}
+
+\begin{question}\begin{example}[位置相关的线性加速度]\label{k2p14}
+质点从 $x=0$ 以正速度 $v_0$ 出发，加速度为 $a(x)=a_0-kx$，$a_0,k>0$。求第一次沿正方向到达 $x=s_0$ 时的速度，说明允许的 $s_0$ 范围。\end{example}
+\fig{k2p14q}{位置相关的线性加速度：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,-1.5)--(0,2.6)node[above]{$a$};\draw[world](0,2)--(4,-1);\node[left]at(0,2){$a_0$};\node[below]at(2.67,0){$a_0/k$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将位置相关的加速度写成速度平方的导数}\par\nobreak
+图\ref{k2p14q}中加速度随位置变化，不能把它当作常量代入匀变速公式。沿首个正向运动分支，$a=v\dd v/\dd x$，故
+\[
+ \int_{v_0}^{v}u\dd u=\int_0^{s_0}(a_0-k\xi)\dd\xi,
+ \qquad
+ \left[\frac{u^2}{2}\right]_{v_0}^{v}
+ =\left[a_0\xi-\frac k2\xi^2\right]_0^{s_0}.
+\]
+代入上下限，得 $(v^2-v_0^2)/2=a_0s_0-ks_0^2/2$。乘二、移项并按首个向右支路取非负根，得到 $\boxed{v=\sqrt{v_0^2+2a_0s_0-ks_0^2}}$。
+\fig{k2p14s}{速度平方曲线的顶点与首个正向转向点}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$x$};\draw[axis](0,0)--(0,3.1)node[above]{$v^2$};
+\draw[world,blue]plot[domain=0:{(.8+sqrt(.64+4*.224676))/(2*.224676)},samples=70](\x,{1+.8*\x-.224676*(\x)^2});
+\pgfmathsetmacro{\xc}{.8/(2*.224676)}\pgfmathsetmacro{\xp}{(.8+sqrt(.64+4*.224676))/(2*.224676)}
+\draw[guide](\xc,0)--(\xc,{1+.8*\xc-.224676*(\xc)^2});\node[below]at(\xc,0){$a_0/k$};
+\node[left]at(0,1){$v_0^2$};\node[below]at(\xp,0){$x_+$};\node[blue]at(3.4,2.6){首次正向：$v\ge0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由曲线零点确定首次正向到达的范围}\par\nobreak
+图\ref{k2p14s}的 $v^2$--$x$ 图为开口向下的抛物线，$x=a_0/k$处速率最大。首个正向分支至 $x_+=(a_0+\sqrt{a_0^2+kv_0^2})/k$ 停止，故 $0\le s_0\le x_+$；端点速度为零，中间取正根。之后若反向回到同一位置，速度应取负根，不能用同一正号表达全程。
+
+令 $x_c=a_0/k$，则 $v^2=v_0^2+a_0^2/k-k(x-x_c)^2$。质点从原点向右时，先因 $a>0$增速，过 $x_c$后因 $a<0$减速，直到正根 $x_+$停止。负根在原点左侧，不属于首次正向到达的区间。停止处 $a(x_+)=-\sqrt{a_0^2+kv_0^2}<0$，故随后确实反向，而不是静止保持在该点。\end{solution}

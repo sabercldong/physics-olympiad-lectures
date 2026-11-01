@@ -1,0 +1,59 @@
+\section{练习}
+
+\begin{question}\begin{drill}[同心圆环的净磁通]\label{em1:drill:1}
+两同心圆环半径 $a<b$，磁场轴对称，垂直分量为 $B_z(r)$。推导两环磁通之差，并说明只给“中心放有条形磁铁”是否足以断定大小。若 $a<r<b$ 内磁场全部向下，而两环净磁通都向上，哪一个较大？
+\end{drill}
+\fig{fig:em1:drill:1:s}{两圆盘使用同一纸外正法线，较大圆盘比小圆盘多包围一个环带}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.2)circle(2);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(1.2,0)node[midway,above]{$a$};\draw[dim](0,0)--(-1.4142,1.4142)node[midway,above right]{$b$};\node at(0,-2.6){两圆盘均取 $\odot\bm n$，$B_z(r)$ 按有向值积分};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:1}
+\begin{question}\begin{drill}[变化磁场中的直弦]\label{em1:drill:2}
+无限长圆柱形磁区半径为 $R$，磁场沿纸外，以恒定速率 $K>0$ 增大。圆柱截面内水平弦 $MN$ 位于圆心上方，距圆心 $h$，弦长 $l$，$M$ 在左、$N$ 在右。求沿 $M\to N$ 的感生电动势。若弦长恰为 $R$，求其大小。
+\end{drill}
+\fig{fig:em1:drill:2:s}{题设：变化磁场中的直弦}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$R$};\draw[very thick](-1.2,.9)node[left]{$M$}--(1.2,.9)node[right]{$N$};\draw[dim](0,0)--(0,.9)node[midway,right]{$h$};\node at(0,-.7){$\odot\dot B=K$};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:2}
+\begin{question}\begin{drill}[旋转带电环与被动线圈]\label{em1:drill:3}
+带正电绝缘圆环 $A$ 与同轴导体环 $B$ 平行，规定从上向下看逆时针为两环正向，互感 $M>0$。$A$ 上总电荷 $Q$ 均匀分布，以角速度 $\omega(t)$ 转动。$B$ 的电阻为 $R$，忽略自感。求 $B$ 中电流；讨论 $A$ 带负电、加速或减速时的变化。若相对位置或取向改变使互感为 $M(t)$，外加约束控制其运动，求一般表达式，并判断 $i_A>0$ 恒定而 $M$ 减小时 $B$ 中电流方向。
+\end{drill}
+\fig{fig:em1:drill:3:s}{两个平行环采用同一俯视逆时针正向，$\omega$ 和电流均保留符号}{\begin{tikzpicture}
+
+\draw[world](0,0)ellipse(1.5 and .4);\draw[world](0,1.6)ellipse(1.5 and .4);\draw[flow](1.5,1.6)arc(0:110:1.5 and .4);\draw[flow](1.5,0)arc(0:110:1.5 and .4);\node[right]at(1.7,1.6){$A,\ Q,\ \omega$};\node[right]at(1.7,0){$B,\ R$};\draw[guide](0,-.8)--(0,2.8);\draw[flow](-2.3,.4)--(-2.3,1.5)node[above]{$\bm n_A,\bm n_B$};\node at(1,-1.3){固定几何：$M>0$；运动时使用 $M(t)$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:3}
+\begin{question}\begin{drill}[锥面母线上的动生电动势]\label{em1:drill:4}
+绝缘圆锥的轴为 $z$ 轴、半锥角 $0<\theta<\pi/2$。长 $l$ 的金属丝 $OP$ 沿母线固定，锥顶为 $O$。圆锥以角速度 $\omega>0$ 绕 $+z$ 轴转动，磁场沿 $+x$，大小 $B$。$t=0$ 时 $OP$ 位于 $xz$ 平面且 $P$ 的 $x$ 坐标为正，求 $V_P-V_O$。若磁场改为沿 $+z$ 轴、大小仍为 $B$，再求 $V_P-V_O$，比较它与第一种情形的时间依赖。
+\end{drill}
+\fig{fig:em1:drill:4:s}{题设：锥面母线上的动生电动势}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(0,3.3)node[above]{$z$};\draw[axis](0,0)--(2.8,0)node[right]{$x$};\draw[world](0,0)--(1.5,2.598)node[above right]{$P$};\draw[guide](0,0)--(-1.5,2.598);\draw[guide](0,2.598)ellipse(1.5 and .32);\node[below left]at(0,0){$O$};\draw[force](2,1.5)--(3.2,1.5)node[right]{$B$};\draw[world](.325,.5629)arc(60:90:.65);\node at(.25,.95){$\theta$};\node[right]at(.75,1.3){$l$};\draw[flow](1.5,2.598)arc(0:70:1.5 and .32);\node at(-.8,3.1){$\omega$};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:4}
+\begin{question}\begin{drill}[无磁场区域中的带电探测器]\label{em1:drill:5}
+半径 $R$ 的无限长圆柱内有沿纸外的均匀磁场，以 $\dot B=-k<0$ 缓慢减弱，圆柱外磁场忽略。质量 $m$、电荷 $q>0$ 的探测器在圆柱外由某点以径向指向圆心的初速 $v_0$ 出发，经时间 $t$ 首次与柱面相切，位置相对初始径向转过 $\alpha\ (0<\alpha<\pi/4)$。忽略重力，求满足这些事件的 $v_0$ 与 $t,\alpha$ 的必要关系，并说明可实现条件。
+\end{drill}
+\fig{fig:em1:drill:5:s}{柱外粒子受感生电场而弯曲，在 $P$ 首次达到柱面并与之相切}{\begin{tikzpicture}
+
+\begin{scope}[scale=2]
+\fill[blue!7](0,0)circle(1);\draw[world](0,0)circle(1);\draw[guide](0,0)--(1.6,0);\draw[world,->]plot[smooth]coordinates{(1.6,0)(1.573973,.000627)(1.547945,.002524)(1.521914,.00571)(1.495879,.010209)(1.469835,.016043)(1.443775,.023235)(1.417693,.031811)(1.39158,.041794)(1.365423,.053211)(1.339209,.066089)(1.312921,.080454)(1.28654,.096335)(1.260044,.113759)(1.233405,.132756)(1.206593,.153353)(1.179574,.175579)(1.152308,.199461)(1.12475,.225025)(1.09685,.252297)(1.068552,.281297)(1.039794,.312045)(1.010506,.344555)(.980613,.378834)(.950036,.414885)(.918688,.4527)(.886477,.492263)(.85331,.533548)(.819091,.576513)(.783725,.621109)};
+\fill(1.6,0)circle(.7pt)node[right]{$P_0$};\fill(.783725,.621109)circle(.7pt)node[above right]{$P$};\draw[flow](1.6,-.12)--(1.15,-.12)node[below]{$v_0$};\draw[guide](0,0)--(.783725,.621109);\draw(.4,0)arc(0:38.397:.4);\node at(.55,.17){$\alpha$};\node at(0,-.5){$\odot B,\ \dot B<0$};\node at(0,.2){$O$};\end{scope}
+\node at(1.4,-2.8){图示为一条满足相切条件的轨迹；初始距离未预先给定};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:5}
+\begin{question}\begin{drill}[有缺口圆环的纯滚动]\label{em1:drill:6}
+半径 $a$ 的金属圆环有很小缺口，缺口对应的弧长为 $\Delta l\ll a$。圆环在竖直平面内沿绝缘水平面向右纯滚动，圆心速度 $v_0$。匀强磁场垂直环面向纸内，大小 $B$。求缺口两端开路电动势绝对值的最大值，说明平动与转动各自的贡献。
+\end{drill}
+\fig{fig:em1:drill:6:s}{题设：有缺口圆环的纯滚动}{\begin{tikzpicture}[scale=.88]\draw[world](0,-1.4)--(5,-1.4);\draw[world](2.2,0)++(65:1.4)arc(65:415:1.4);\fill(2.2,0)circle(1.5pt)node[below]{$O$};\draw[flow](2.2,0)--(3.6,0)node[right]{$v_0$};\node at(.4,.6){$\otimes B$};\node at(3.3,1.5){缺口};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:6}
+\begin{question}\begin{drill}[相同磁通变化的电量与发热]\label{em1:drill:7}
+电阻为 $R$ 的固定单匝回路，自感忽略，磁通从 $\Phi_0$ 减小到零。一种过程历时 $T$ 且磁通线性减小；另一种过程先在 $T/2$ 内线性减小到零，再保持不变。比较两过程的有向电量、热量与电流峰值。
+\end{drill}
+\fig{fig:em1:drill:7:s}{题设：相同磁通变化的电量与发热}{\begin{tikzpicture}[scale=.88]\draw[axis](-0.2,0)--(5,0)node[right]{$t$};\draw[axis](0,-0.2)--(0,2.4)node[above]{$\Phi$};\draw[world](0,2)--(4,0);\draw[guide](0,2)--(2,0)--(4,0);\node[left]at(0,2){$\Phi_0$};\node[below]at(2,0){$T/2$};\node[below]at(4,0){$T$};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:7}

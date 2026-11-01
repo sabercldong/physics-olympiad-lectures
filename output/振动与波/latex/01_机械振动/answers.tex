@@ -1,0 +1,117 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{w1:drill:1}\textbf{在下物块未离地阶段确定上物块振幅}\par\nobreak
+在下物块尚未离地的阶段，图\ref{fig:w1:drill:1:s}中下端固定，只有上物块振动。以弹簧压缩量$z$向下为正，撤去压力后的平衡压缩为$z_0=m_1g/k$；施压静止时$kz_i=m_1g+F$，故$z_i=(m_1g+F)/k$。释放时速度为零，所以释放点是相对于新平衡位置的下端点，振幅
+\[
+A=z_i-z_0=\frac Fk.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最大伸长及对下物块的最大拉力}\par\nobreak
+上物块到最高点时，压缩量最小，$z_{\min}=z_0-A=(m_1g-F)/k$。若$F>m_1g$，该处弹簧已经伸长，伸长量$\Delta l=-z_{\min}=(F-m_1g)/k$。
+\fig{fig:w1:drill:1:p}{临界时上物块位于最高点，弹簧伸长使下物块的地面支持力恰好归零}{\begin{tikzpicture}
+
+\draw[world](-.7,0)--(1.5,0);\draw[world](-.4,0)rectangle(.4,.5);\node at(0,.25){$m_2$};\draw[spring](0,.5)--(0,3.3);\draw[world](-.4,3.3)rectangle(.4,3.8);\node at(0,3.55){$m_1$};
+\draw[guide](-.7,2.3)--(1.5,2.3);\node[left]at(-.7,2.3){原长端};\draw[dim](1.2,2.3)--(1.2,3.3)node[midway,right]{$\Delta\ell$};
+\begin{scope}[xshift=5.4cm,yshift=1.2cm]\fill(0,0)circle(.08)node[left]{$m_2$};\draw[force](0,0)--(0,1.5)node[above]{$k\Delta\ell$};\draw[force](0,0)--(0,-1.2)node[below]{$m_2g$};\node at(2,0){$N_g=0$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用地面支持力归零确定临界并区分实际离地}\par\nobreak
+图\ref{fig:w1:drill:1:p}中下物块受到地面支持力$N_g$、重力$m_2g$以及弹簧向上的拉力$k\Delta l$。尚未离地时$N_g=m_2g-k\Delta l$；最大拉力出现在上述最高点，所以首次可达离地边界满足
+\[
+N_g=0,\quad k\Delta l=m_2g,\quad F-m_1g=m_2g.
+\]
+于是$F_c=(m_1+m_2)g$。恰好等号时只瞬时零支持，要形成实际离地运动需$F>F_c$。若两物块质量为$2\,\mathrm{kg}$与$3\,\mathrm{kg}$、$g=10\,\mathrm{m/s^2}$，临界压力为$50\,\mathrm N$；交换上下质量不改变总质量，故不改变这一临界值。\end{drillsolution}
+\begin{drillsolution}{w1:drill:2}\textbf{先比较初始弹力与静摩擦判断能否启动}\par\nobreak
+图\ref{fig:w1:drill:2:s}取弹簧原长为$x=0$、向右为正。静、动摩擦大小均为$f=\mu mg=4\,\mathrm N$，相应位移尺度$d=f/k=1\,\mathrm{cm}$，固有角频率$\omega=\sqrt{k/m}=10\sqrt2\,\mathrm{s^{-1}}$。初态$x_0=-7\,\mathrm{cm}$处弹力为$28\,\mathrm N>4\,\mathrm N$，所以物块确实向右启动。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以右行阶段的新中心求全程最大速度}\par\nobreak
+向右滑动时摩擦向左，$m\ddot x=-kx-f=-k(x+d)$，该段中心在$-d=-1\,\mathrm{cm}$。令$y=x+d$，有$\ddot y+\omega^2y=0$。其特征方程$s^2+\omega^2=0$给出通解$y=C\cos\omega t+D\sin\omega t$。由$y(0)=-6\,\mathrm{cm}$、$\dot y(0)=\omega D=0$，得$C=-6\,\mathrm{cm},D=0$，故$x=-d-(6\,\mathrm{cm})\cos\omega t$，$\dot x=(6\,\mathrm{cm})\omega\sin\omega t$。第一段经过中心时达到全程最大速率
+\[
+ \boxed{v_{\max}=0.06\omega=0.6\sqrt2\,\mathrm{m/s}}.
+\]
+\fig{fig:w1:drill:2:p}{逐段更换中心，从负7到正5、再到负3、最后到正1厘米}{\begin{tikzpicture}
+
+\begin{scope}[x=.55cm]\fill[gray!18](-1,-.4)rectangle(1,2.4);\draw[axis](-8,0)--(6,0)node[right]{$x/\mathrm{cm}$};
+\foreach \xx in {-7,-3,-1,1,5}{\draw(\xx,.1)--(\xx,-.1);\node[below]at(\xx,-.1){$\xx$};}
+\draw[flow](-7,2.1)--(5,2.1)node[midway,above]{中心$-1$};\draw[flow](5,1.4)--(-3,1.4)node[midway,above]{中心$+1$};\draw[flow](-3,.7)--(1,.7)node[midway,above]{中心$-1$};
+\fill(1,0)circle(.07cm);\node at(-1,-1){灰区内弹力可被静摩擦平衡};\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐次更新方向、中心和端点}\par\nobreak
+图\ref{fig:w1:drill:2:p}中，第一段从左端点到右端点，历时$\pi/\omega$，到$x_1=-1+6=5\,\mathrm{cm}$。此处$|kx_1|=20\,\mathrm N>f$，不能静止。向左滑动时中心改为$+1\,\mathrm{cm}$，振幅为$4\,\mathrm{cm}$，再过$\pi/\omega$到$x_2=1-4=-3\,\mathrm{cm}$。那里弹力大小$12\,\mathrm N>f$，又向右启动；中心回到$-1\,\mathrm{cm}$，该段振幅为$2\,\mathrm{cm}$，到$x_3=-1+2=1\,\mathrm{cm}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用静摩擦判停并累加三个半周期}\par\nobreak
+末态速度为零且$|kx_3|=4\,\mathrm N$，静摩擦恰能平衡弹力，因此之后保持静止：
+\[
+ \boxed{x_f=+1\,\mathrm{cm}},\qquad
+ \boxed{t_{\text{运动}}=3\pi/\omega=\frac{3\pi}{10\sqrt2}\,\mathrm s}.
+\]
+后两段的振幅分别为4厘米与2厘米，小于第一段的6厘米，所以前面计算的最大速率确为全程最大值。不能在最终端点继续延长下一段正弦运动。
+\end{drillsolution}
+\begin{drillsolution}{w1:drill:3}\textbf{由圆弧曲率建立小振动方程}\par\nobreak
+图\ref{fig:w1:drill:3:s}中，取槽内小球的切向位移$s=R\theta$。因弧角小，切向重力$-mg\sin\theta\simeq-mgs/R$，所以$\ddot s+(g/R)s\simeq0$。在线性模型中令$\omega=\sqrt{g/R}$，特征方程的根为$\pm\mathrm i\omega$，故$s=C\cos\omega t+D\sin\omega t$。从左端点静止释放给$s(0)=-a=C$、$\dot s(0)=\omega D=0$，因此$s=-a\cos\omega t$，周期$T\simeq2\pi\sqrt{R/g}$。
+\fig{fig:w1:drill:3:p}{槽内小球每隔半个周期经过最低点，必须逐一与自由落体时刻比较}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.7,0)node[right]{$t$};\draw[axis](0,-1.6)--(0,1.7)node[above]{$s/a$};\draw[blue,thick,domain=0:540,samples=120]plot({\x/90},{-1.1*cos(\x)});
+\foreach \xx/\lab in {1/{T/4},3/{3T/4},5/{5T/4}}{\fill(\xx,0)circle(.045);\draw[guide](\xx,-1.5)--(\xx,.3);\node[below]at(\xx,-1.5){$\lab$};}
+\node at(3.4,2){$t_B=\sqrt{2h/g}$只对应其中一次过零};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{列出全部经过最低点的离散时刻}\par\nobreak
+由图\ref{fig:w1:drill:3:p}，槽内小球到最低点不只一次。由$\cos\omega t=0$，得到
+\[
+ t_n=\frac T4+\frac{nT}2\simeq\frac{(2n+1)\pi}{2}\sqrt{\frac Rg},\qquad n=0,1,2,\ldots
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐一匹配自由落体时间并说明近似范围}\par\nobreak
+$B$从静止自由落下，首次到最低点的时间为$t_B=\sqrt{2h/g}$。逐一令$t_B=t_n$并平方，得到小角近似下的全部高度
+\[
+ \boxed{h_n\simeq\frac{\pi^2R}{8}(2n+1)^2},\qquad n=0,1,2,\ldots
+\]
+若只问$A$第一次到最低点相遇，则取$n=0$。这里忽略空气阻力，并要求$B$在此前不受槽边及其他结构阻挡；有限弧角的周期修正会相应改变这些高度。
+\end{drillsolution}
+\begin{drillsolution}{w1:drill:4}\textbf{分别写出两根弹簧实际拉力的变化}\par\nobreak
+图\ref{fig:w1:drill:4:s}以真实平衡位置为$x=0$。设平衡时两弹簧拉力均为$F_0$，向右位移$x$后，左弹簧的实际左向拉力为$F_L=F_0+k_1x$，右弹簧的实际右向拉力为$F_R=F_0-k_2x$。因此
+\[
+ F_x=F_R-F_L=(F_0-k_2x)-(F_0+k_1x)=-(k_1+k_2)x.
+\]
+\fig{fig:w1:drill:4:p}{实际拉力仍分居两侧；扣去平衡值后，两个力的变化量都向左}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(1,.8);\node at(.5,.4){$m$};\draw[force](0,.4)--(-1.7,.4)node[left]{$F_0+k_1x$};\draw[force](1,.4)--(2.4,.4)node[right]{$F_0-k_2x$};
+\begin{scope}[xshift=9cm]\draw[world](0,0)rectangle(1,.8);\draw[force](0,.6)--(-1.2,.6)node[left]{$\Delta F_L=-k_1x$};\draw[force](0,.15)--(-1.2,.15)node[left]{$\Delta F_R=-k_2x$};\node at(.5,1.5){力的增量};\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由增量合力确定有效劲度与周期}\par\nobreak
+图\ref{fig:w1:drill:4:p}左图取两弹簧仍受拉的状态；右图表示力的增量，不是把右弹簧的实际拉力直接改画为向左。运动方程为$m\ddot x+(k_1+k_2)x=0$，所以
+\[
+ \boxed{T=2\pi\sqrt{\frac{m}{k_1+k_2}}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分平衡位置改变与周期改变}\par\nobreak
+预拉伸改变各根弹簧的绝对拉力，也可能改变真实平衡位置，却不改变线性回复力的斜率。如果某个原参考位置的左右拉力为$F_{L0},F_{R0}$，应先平移到$x_e=(F_{R0}-F_{L0})/(k_1+k_2)$，再讨论同一周期。结论要求两弹簧理想线性且持续连接；若用只能拉的轻绳连接并发生松弛，就要重新分段。
+\end{drillsolution}
+\begin{drillsolution}{w1:drill:5}\textbf{把位置和速度统一单位后共同求振幅}\par\nobreak
+按图\ref{fig:w1:drill:5:s}所示坐标，将已知位移和速度代入振子的能量关系。
+把数据统一为厘米与秒：$\omega=4\,\mathrm{s^{-1}}$，$v/\omega=-16/4=-4\,\mathrm{cm}$，故$A=\sqrt{3^2+(-4)^2}=5\,\mathrm{cm}$。由能量关系$E=\frac12m\omega^2A^2$、$E_k=\frac12mv^2$，可约去$m/2$得到$E_k/E=(v/\omega)^2/A^2=16/25$。
+\fig{fig:w1:drill:5:p}{从已知上半圆状态沿相位增加方向走长弧，下一次才到右端点}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.8);\draw[axis](-2.2,0)--(2.5,0)node[right]{$x$};\coordinate(P)at(1.08,1.44);\fill(P)circle(.05)node[above right]{$P$};\draw[world](0,0)--(P)node[midway,left]{$A$};\draw[guide](P)--(1.08,0);
+\draw[flow](P)arc(53.130102:360:1.8);\node[below]at(1.08,0){$3A/5$};\node[right]at(1.8,-.3){$+A$};\node at(0,-2.5){$\Delta\psi=2\pi-\arccos(3/5)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度负号选相位并求下一次右端点时间}\par\nobreak
+图\ref{fig:w1:drill:5:p}中$x/A=3/5$而$v<0$，相位$\psi=\arccos(3/5)$位于第一象限。下一次右端点相位为$2\pi$，故$\Delta t=[2\pi-\arccos(3/5)]/4$。若误取$-\arccos(3/5)$，会得到向右运动的另一状态，与已知速度符号矛盾。\end{drillsolution}

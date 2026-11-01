@@ -1,0 +1,78 @@
+\section{练习}
+
+\begin{question}\begin{drill}[四面体金属面的中心电势]\label{e3:drill:1}
+正四面体四个金属面彼此绝缘，分别保持电势 $V_1,V_2,V_3,V_4$。忽略接缝，求几何中心电势。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:1:s}\fig{fig:e3:drill:1:s}{题设：四面体金属面的中心电势}{\begin{tikzpicture}[scale=.88]
+\coordinate(A)at(0,0);\coordinate(B)at(4,0);\coordinate(C)at(2,2.8);\coordinate(D)at(2,.8);\draw[world](A)--(B)--(C)--cycle;\draw[guide](A)--(D)--(B)(D)--(C);\node at(2,-.5){$V_1$};\node at(.4,1.4){$V_2$};\node at(3.6,1.4){$V_3$};\node at(2,1.7){$V_4$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:1}
+\begin{question}\begin{drill}[球壳连接远处小球]\label{e3:drill:2}
+同心薄金属球壳半径 $R_1<R_2$，净量分别为 $Q_1,Q_2$。将内壳用穿过绝缘小孔的细线连接远处半径 $r$ 的原中性小金属球，忽略小孔漏场、导线电荷与远球的相互电势。求远球所得电量。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:2:s}\fig{fig:e3:drill:2:s}{内壳通过绝缘小孔接远球，外壳与导线保持绝缘；只在连通的内壳与远球之间守恒电量}{\begin{tikzpicture}
+
+\draw(0,0)circle(1);\draw(0,0)circle(1.9);\fill[white](1.7,-.18)rectangle(2.1,.18);\draw(1.7,-.18)rectangle(2.1,.18);
+\draw(1,0)--(5.2,0);\draw(5.8,0)circle(.6);\node at(0,.4){$R_1$};\node at(-1.7,1.4){$R_2$};\node at(5.8,0){$r$};
+\draw[guide](1.9,.18)--(3.2,1.3)node[above]{绝缘孔};\node at(0,-2.6){内壳 $Q_1-q$，外壳净量 $Q_2$};\node at(5.8,-1.4){远球 $q$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:2}
+\begin{question}\begin{drill}[孤立中性球与远处点电荷]\label{e3:drill:3}
+中性金属球半径 $R$，外点电荷 $q$ 距球心 $d>R$。求力及 $d\gg R$ 时的主要项，并与接地球比较。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:3:s}\fig{fig:e3:drill:3:s}{孤立中性球与外点电荷，球心距离 $d>R$，球面半径为 $R$}{\begin{tikzpicture}
+\draw(0,0)circle(1.8);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[<->](0,0)--(-1.273,1.273)node[midway,left]{$R$};\fill(4,0)circle(2pt)node[above]{$q$};\node at(0,.6){$Q=0$};\draw[<->](0,-3.4)--(4,-3.4)node[midway,below]{$d$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:3}
+\begin{question}\begin{drill}[球腔内偏心点电荷]\label{e3:drill:4}
+球形接地空腔半径 $R$，点电荷 $q$ 距腔心 $b<R$。求电荷所受力，并判断球心位置的稳定性。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:4:s}\fig{fig:e3:drill:4:s}{接地球腔内的真实点电荷距中心为 $b<R$；金属区域在腔外}{\begin{tikzpicture}
+
+\fill[gray!12](-2.4,-2.4)rectangle(2.4,2.4);\fill[white](0,0)circle(1.8);\draw(0,0)circle(1.8);
+\fill(0,0)circle(1.5pt)node[below left]{$O$};\fill(.8,0)circle(2pt)node[above]{$q$};\draw[<->](0,-.7)--(.8,-.7)node[midway,below]{$b$};
+\draw[<->](0,0)--(-1.273,1.273)node[midway,left]{$R$};\draw(0,-2.4)--(0,-3.2)node[ground]{};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:4}
+\begin{question}\begin{drill}[两垂直接地平面的镜像]\label{e3:drill:5}
+两无限接地导体平面垂直相交，取截面为坐标轴，真实区域 $x>0,y>0$。电荷 $q$ 在 $(a,b)$，求镜像体系和两个方向的力。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:5:s}\fig{fig:e3:drill:5:s}{题设：两垂直接地平面的镜像}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(4,0)(0,0)--(0,3);\node[below]at(3,0){$x$};\node[left]at(0,2.6){$y$};\draw[world,fill=white](2,1.5)circle(.12);\node[above]at(2,1.65){$q$};\node at(3,2.5){$(a,b)$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:5}
+\begin{question}\begin{drill}[保持指定电势的金属球]\label{e3:drill:6}
+金属球半径 $R$，由电源保持电势 $V_0$，外点电荷 $q$ 距球心 $d>R$。求球净电量及点电荷所受力。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:6:s}\fig{fig:e3:drill:6:s}{外电源固定球电势 $V_0$；外点电荷距球心 $d>R$}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.8);\node at(0,.5){$V_0$};\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[<->](0,0)--(-1.273,1.273)node[midway,left]{$R$};
+\fill(4,0)circle(2pt)node[above]{$q$};\draw[<->](0,2.7)--(4,2.7)node[midway,above]{$d$};
+\draw(0,-4.3)to[battery1,invert,l={$V_0$}](0,-2.8)--(0,-1.8);\node[ground]at(0,-4.3){};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:6}
+\begin{question}\begin{drill}[感应面密度的半量半径]\label{e3:drill:7}
+点电荷 $q>0$ 距接地平面 $d$。以垂足为圆心，在平面取半径 $s$ 的圆域，求圆域内感应电量；多大半径的圆域包含总感应量的一半？
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:7:s}\fig{fig:e3:drill:7:s}{题设：感应面密度的半量半径}{\begin{tikzpicture}[scale=.88]
+\fill[pattern=north east lines](-.45,-2)rectangle(0,2);\draw[world](0,-2)--(0,2);\node[ground]at(-.2,-2){};\draw[world,fill=white](2,0)circle(.12);\node[above]at(2,0.15){$q$};\draw[dim](0,-1.2)--(2,-1.2)node[midway,below]{$d$};\draw[guide](0,0)ellipse(.25 and 1.2);\node at(-.6,1){$s$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:7}
+\begin{question}\begin{drill}[孤立细环靠近接地球]\label{e3:drill:8}
+孤立金属细环半径 $a$，远离其他导体时电势 $U_0$，其孤立电容为 $C_r$。将它移近半径 $b$ 的接地金属球，球心在环轴线上，距环心 $h$，且 $D=\sqrt{a^2+h^2}>b$。求球感应总量，并说明只给 $a,U_0$ 是否足够。
+\end{drill}
+\typeout{ECFIG:fig:e3:drill:8:s}\fig{fig:e3:drill:8:s}{题设：孤立细环靠近接地球}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.6)ellipse(2 and .4);\draw[world](0,-1)circle(1.2);\draw[guide](0,-1)--(0,1.6);\draw(0,-2.2)--(0,-3)node[ground]{};\node[right]at(2,1.6){$a$};\node at(1.8,-1){$b$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e3:drill:8}

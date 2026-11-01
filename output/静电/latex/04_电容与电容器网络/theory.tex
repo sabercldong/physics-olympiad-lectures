@@ -1,0 +1,178 @@
+\section{电容的定义与几何决定}
+\subsection{电量与电压描述状态，电容描述比例}
+
+形状、周围导体和线性介质均不变时，把所有激发电荷同时加倍，电场和电势也加倍。孤立导体周围没有其他外电荷，以无穷远为零势，便有 $Q=CV$。半径 $R$ 的孤立金属球表面 $V=kQ/R$，因此 $C=4\pi\varepsilon_0R$。图\ref{fig:e4:definition}中的两种充电状态有相同的 $Q/V$；电容由同一几何下的比例确定，未充电时也不会消失。
+
+双极电容器的两极带 $+Q,-Q$，约定 $U=V_A-V_B$，定义 $C=Q/U$。这里 $Q$ 是选定电极的带符号电量；若附近另有固定带电体，电极还可有感应偏置，应写 $Q_A=CU+Q_{\rm ind}$，不能把 $Q_A/U$ 始终当作几何电容。电容的单位为 $\mathrm F=\mathrm C/\mathrm V$，$1\,\mu\mathrm F=10^{-6}\,\mathrm F$，$1\,\mathrm{pF}=10^{-12}\,\mathrm F$。
+\fig{fig:e4:definition}{同一金属球的两种状态与电荷—电势直线}{\begin{tikzpicture}
+
+\foreach \x/\q/\v in{0/Q/V,3/{2Q}/{2V}}{\begin{scope}[xshift=\x cm]\fill[gray!12](0,0)circle(.8);\draw[world](0,0)circle(.8);\node at(0,-.3){$\q$};\node[below]at(0,-1){电势 $\v$};\draw[dim](0,0)--(.57,.57)node[midway,above left]{$R$};\end{scope}}
+\begin{scope}[xshift=6cm,yshift=-1cm]\draw[axis](0,0)--(3.3,0)node[right]{$V$};\draw[axis](0,0)--(0,2.8)node[above]{$Q$};\draw[world](0,0)--(2.7,2.4);\fill(1.1,.978)circle(1.6pt);\fill(2.2,1.956)circle(1.6pt);\node[right]at(2.2,1.956){斜率 $C$};\node[below left]at(0,0){$O$};\end{scope}
+
+\end{tikzpicture}}
+\subsection{先由场求势差，再求电容}
+
+试放 $+Q,-Q$，在两电极间求场，沿从 $A$ 指向 $B$ 的路径计算 $U=\int_A^B\bm E\cdot\dd\bm l$，最后取 $Q/U$。图\ref{fig:e4:geometry}中三种积分路径都与对称场同向，路径端点必须取在实际电极表面。
+\fig{fig:e4:geometry}{三种几何的电极、半径与势差积分路径}{\begin{tikzpicture}
+
+\begin{scope}\draw[world](0,0)--(2.7,0)(0,2)--(2.7,2);\node[left]at(0,2){$+Q$};\node[left]at(0,0){$-Q$};\draw[dim](3,0)--(3,2)node[midway,right]{$d$};\draw[flow](1.35,1.8)--(1.35,.2)node[midway,right]{$E$};\node at(1.35,2.6){平行板，面积 $S$};\end{scope}
+\begin{scope}[xshift=5.8cm,yshift=1cm]\draw[world](0,0)circle(.55);\draw[world](0,0)circle(1.1);\draw[dim](0,0)--(-.39,.39)node[midway,below left]{$a$};\draw[dim](0,0)--(.78,.78)node[pos=.8,above]{$b$};\draw[flow](.58,0)--(1.05,0);\node at(0,-1.6){同轴截面，长 $l$};\node at(0,1.6){柱面高斯面};\draw[guide](0,0)circle(.82);\end{scope}
+\begin{scope}[xshift=9.4cm,yshift=1cm]\draw[world](0,0)circle(.55);\draw[world](0,0)circle(1.1);\draw[guide](-1.1,0)arc(180:360:1.1 and .25);\draw[guide](-.55,0)arc(180:360:.55 and .13);\draw[dim](0,0)--(-.39,.39)node[midway,below left]{$a$};\draw[dim](0,0)--(.78,.78)node[pos=.8,above]{$b$};\draw[flow](.58,0)--(1.05,0);\node at(0,-1.6){同心球};\node at(0,1.6){球面高斯面};\end{scope}
+
+\end{tikzpicture}}
+平行板的横向尺寸远大于间隙 $d$，忽略边缘且两板净量相反时，电荷主要分布于相对内表面。间隙 $E=Q/(\varepsilon_0S)$，故 $U=Ed$，$C=\varepsilon_0S/d$。若两板净量并不相反，外侧也有场，应先求四面电荷，不能把每板净量全部当成内面电荷。
+
+同轴圆柱长度 $l\gg b$，图中半径 $r$ 的柱面侧面积为 $2\pi rl$，高斯定理给 $E(r)=Q/(2\pi\varepsilon_0lr)$。于是
+\[
+ U=\frac{Q}{2\pi\varepsilon_0l}\int_a^b\frac{\dd r}{r}
+ =\frac{Q}{2\pi\varepsilon_0l}[\ln r]_a^b
+ =\frac{Q}{2\pi\varepsilon_0l}\ln\frac ba,
+ \qquad C=\frac{2\pi\varepsilon_0l}{\ln(b/a)}.
+\]
+同心球的高斯面面积为 $4\pi r^2$，故
+\[
+ U=\int_a^b\frac{Q\dd r}{4\pi\varepsilon_0r^2}
+ =kQ[-r^{-1}]_a^b
+ =kQ\left(\frac1a-\frac1b\right).
+\]
+用 $C=Q/U$ 消去试放电量，得到
+\[
+ C=4\pi\varepsilon_0\frac{ab}{b-a}.
+\]
+当 $b-a=d\ll a$，球形结果趋于 $\varepsilon_0(4\pi a^2)/d$；当 $b\to\infty$，则趋于孤立球电容。前者检查局部平面极限，后者检查零势参考边界。
+
+\section{多导体的电荷约束}
+\subsection{一个间隙对应一只电容}
+
+平行多板的金属内部场零，相邻间隙的电势沿法线线性变化。图\ref{fig:e4:floating}中，左间隙在 $M$ 面上的电量为 $C_1(V_M-V_A)$，右间隙在 $M$ 面上的电量为 $C_2(V_M-V_B)$；两面相加才是中板净量。因此
+\[
+ Q_M=C_1(V_M-V_A)+C_2(V_M-V_B),\qquad
+ V_M=\frac{Q_M+C_1V_A+C_2V_B}{C_1+C_2}.
+\]
+原带电的悬浮板两面电荷通常不等量。中性 $Q_M=0$ 才是通常串联电量相等的条件。导线相连的几块板须先合并为等势组，对整组守恒净量，组内单块板的原电量不再分别守恒。
+\fig{fig:e4:floating}{中板的两面分别属于两个间隙，净电量是两面之和}{\begin{tikzpicture}
+
+\foreach \x/\n in{0/A,2/M,5/B}{\draw[world](\x,-.8)--(\x,1.8);\node[above]at(\x,1.8){$\n$};}
+\draw[dim](0,-1.2)--(2,-1.2)node[midway,below]{$d_1$};\draw[dim](2,-1.2)--(5,-1.2)node[midway,below]{$d_2$};\node at(1,.5){$C_1$};\node at(3.5,.5){$C_2$};\draw[guide](1.8,-.9)rectangle(2.2,2.2);\node at(2,2.7){净量 $Q_M$};
+\begin{scope}[xshift=6.5cm,yshift=.6cm]\draw(0,0)to[C,l={$C_1$}](2.4,0)to[C,l={$C_2$}](4.8,0);\foreach \x/\n in{0/A,2.4/M,4.8/B}{\fill(\x,0)circle(1.5pt);\node[above]at(\x,.2){$\n$};}\draw[guide](1.5,-.6)rectangle(3.3,.7);\node at(2.4,-1.2){对 $M$ 组写净量方程};\end{scope}
+
+\end{tikzpicture}}
+\subsection{串并联来自共同端点和中间净量}
+
+并联电容跨同一对节点，电压相同，端口电量相加，故 $C_{\parallel}=C_1+C_2$。图\ref{fig:e4:connections}左侧串联的中间组若原中性，两侧电量为 $-Q,+Q$，两电容的电量大小才同为 $Q$。总压 $U=Q/C_1+Q/C_2$，所以 $C_{\text{串}}^{-1}=C_1^{-1}+C_2^{-1}$。
+\fig{fig:e4:connections}{串联看中间组净量，并联看两个共同端点}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C_1$}](2.6,0)to[C,l={$C_2$}](5.2,0);\node[left]at(0,0){$A$};\node[right]at(5.2,0){$B$};\node[above]at(2.6,.1){$M$};\draw[guide](1.5,-.65)rectangle(3.7,.7);\node at(1.85,-.35){$-Q$};\node at(3.35,-.35){$+Q$};\node at(2.6,-1.15){$Q_M=0$};
+\begin{scope}[xshift=7cm,yshift=-.8cm]\draw(0,0)--(0,1.8)to[C,l={$C_1$}](3.4,1.8)--(3.4,0)to[C,l_={$C_2$}](0,0);\fill(0,.9)circle(1.5pt)node[left]{$A$};\fill(3.4,.9)circle(1.5pt)node[right]{$B$};\node at(1.7,2.5){两支电压同为 $U$};\end{scope}
+
+\end{tikzpicture}}
+静电平衡时没有持续传导电流，节点方程来自电荷约束。接地指定电势为零，电量待求；电源指定两端势差，可转移电荷。对称化简要求几何、连接和各浮置组初始净量都满足相应对称性；外观对称而初始电荷不同，不能直接判等势。
+
+\section{重接、充电与能量}
+\subsection{先画最终导体组，再求分配}
+
+图\ref{fig:e4:reconnect}中，两只断电电容同极连接，将合并的上端组原电量为 $C_1U_1+C_2U_2$，最终各电容电压同为 $U_f$，故
+\[
+ U_f=\frac{C_1U_1+C_2U_2}{C_1+C_2}.
+\]
+反极相连时，对同一个最终节点给初电量带符号。只守恒合并组的总量，不能再分别保留每只电容连接前的电量。
+\fig{fig:e4:reconnect}{连接前各自保存电荷，连接后只守恒合并组总量}{\begin{tikzpicture}
+
+\foreach \x/\c/\u in{0/C_1/U_1,3/C_2/U_2}{\draw(\x,0)to[C,l={$\c$}](\x,2);\node[above]at(\x,2){$+\c\u$};\node[below]at(\x,0){$-\c\u$};}\node at(1.5,3){连接前};
+\draw[flow](4.2,1)--(5.2,1);
+\begin{scope}[xshift=6.5cm]\draw(0,0)to[C,l={$C_1$}](0,2)--(3,2)to[C,l={$C_2$}](3,0)--(0,0);\draw[guide](-.4,1.6)rectangle(3.4,2.4);\node at(1.5,3){连接后：共同电压 $U_f$};\node at(1.5,-.7){虚线框为同一导体组};\end{scope}
+
+\end{tikzpicture}}
+初、末场能之差为
+\[
+ \Delta W=\frac12C_1U_1^2+\frac12C_2U_2^2
+ -\frac12(C_1+C_2)U_f^2
+ =\frac{C_1C_2}{2(C_1+C_2)}(U_1-U_2)^2.
+\]
+它非负，原来等势时才为零。小电阻影响耗散速度，不改变最终能量差；实际连接中的焦耳热、辐射等承接这部分能量。理想无耗散线路还可能振荡，不能把“达到静电平衡”的模型外推成能量凭空消失。
+
+\subsection{从逐渐充电的功理解储能}
+
+固定几何的线性电容，瞬时电量为 $q$ 时电压 $u=q/C$，继续输入微量电荷需要电功 $u\dd q$。图\ref{fig:e4:charge-work}蓝色三角形是逐渐充电的可逆功：
+\[
+ W=\frac1C\int_0^Q q\dd q
+ =\frac1C\left[\frac{q^2}{2}\right]_0^Q
+ =\frac{Q^2}{2C}=\frac12CU^2=\frac12QU.
+\]
+横轴是 $q$、纵轴是 $u$ 时斜率为 $1/C$；交换坐标后斜率才是 $C$。恒压电源一直以电压 $U$ 输送电量 $Q$，作功为整块矩形 $UQ=CU^2$，其中一半成为场能，另一半在充电线路释放。
+\fig{fig:e4:charge-work}{固定电容的场能为直线下三角形，恒压源功为整个矩形}{\begin{tikzpicture}
+
+\fill[orange!15](0,0)rectangle(4,2.5);\fill[blue!15](0,0)--(4,0)--(4,2.5)--cycle;\draw[axis](0,0)--(4.7,0)node[right]{$q$};\draw[axis](0,0)--(0,3)node[above]{$u$};\draw[world](0,0)--(4,2.5);\draw[guide](0,2.5)--(4,2.5)--(4,0);\node[below]at(4,0){$Q$};\node[left]at(0,2.5){$U$};\node at(2.8,.65){场能 $QU/2$};\node at(1.6,2){释放 $QU/2$};\node[right]at(4.5,1.7){电源功 $QU$};
+
+\end{tikzpicture}}
+真空平行板满足 $Q=\varepsilon_0SE$，故 $W=\varepsilon_0E^2Sd/2$，场能密度为 $w=\varepsilon_0E^2/2$。如果充电时几何也变化，$\int u\dd q$ 仍是电端输入功，却不一定等于场能增加，差额可成为机械功。场能是当前 $Q,C$ 决定的状态量，电源功则须沿实际充电路径积分。
+
+\subsection{机械力必须连同电源能量计算}
+
+设机械坐标 $x$ 增加使电容变为 $C(x)$。孤立电容的 $Q$ 不变，无电源输送能量，所以先固定 $Q$，对 $C(x)^{-1}$ 用链式法则：
+\[
+ F_x=-\frac{Q^2}{2}\frac{\dd}{\dd x}C(x)^{-1}
+ =-\frac{Q^2}{2}\bigl[-C(x)^{-2}C'(x)\bigr]
+ =\frac{Q^2C'(x)}{2C(x)^2}.
+\]接恒压源时，图\ref{fig:e4:force}右侧电源微功为 $U\dd Q=U^2\dd C$，场能变化只有 $U^2\dd C/2$，余下才是机械功，得到 $F_x=U^2C'(x)/2$。
+\fig{fig:e4:force}{上板沿间距增大方向运动：孤立时电荷固定，恒压时还有电源支路}{\begin{tikzpicture}
+
+\foreach \x in{0,6}{\begin{scope}[xshift=\x cm]\draw[world](0,0)--(3,0)(0,1.8)--(3,1.8);\draw[flow](1.4,1.55)--(1.4,.25)node[midway,right]{$E$};\draw[axis](-.5,1.8)--(-.5,2.8)node[above]{$+d$};\draw[force](2.3,1.8)--(2.3,.8)node[right]{$F_d<0$};\end{scope}}
+\node at(1.5,3.4){断电：$Q$ 固定};\node at(7.5,3.4){接源：$U$ 固定};\draw(9,1.8)--(10,1.8)to[battery1,l={$U$}](10,0)--(9,0);\node at(1.5,-.7){$\dd Q=0$};\node at(7.5,-.7){$U\dd Q=\dd W+F_d\dd d$};
+
+\end{tikzpicture}}
+对板间距 $d$，$C'(d)=-\varepsilon_0S/d^2$，所以力指向减小间距的方向。两约束在同一瞬时状态满足 $Q=CU$ 时都给
+\[
+ |F_d|=\frac{Q^2}{2\varepsilon_0S}=\frac12\varepsilon_0SE^2.
+\]
+直接受力法也须只取另一板产生的外场 $E/2$；用本板电荷乘间隙总场 $E$ 会把自身场重复计入。
+
+\section{网络方程、时序与测量}
+\subsection{电容矩阵是节点方程的展开}
+
+几何固定、介质线性时，多导体满足 $Q_i=\sum_jC_{ij}V_j$。在图\ref{fig:e4:matrix}的两节点网络中，$Q_1=c_{10}V_1+c_{12}(V_1-V_2)$，$Q_2=c_{20}V_2+c_{12}(V_2-V_1)$。因此对角元是与该节点相连的间隙电容之和，互电容系数为 $-c_{12}$；同一间隙对两节点贡献相反电量，保证总量守恒。
+\fig{fig:e4:matrix}{正的支路电容展开后给出负的非对角系数}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$c_{12}$}](4,0);\draw(0,0)to[C,l_={$c_{10}$}](0,-2.2)--(4,-2.2)to[C,l_={$c_{20}$}](4,0);\fill(0,0)circle(2pt)node[above]{$1:V_1,Q_1$};\fill(4,0)circle(2pt)node[above]{$2:V_2,Q_2$};\draw(2,-2.2)--(2,-2.6)node[ground]{};\node[right]at(5,-1){参考导体 $V_0=0$};
+
+\end{tikzpicture}}
+一般导体选无穷远为零势时，矩阵还包含对无穷远的耦合；封闭屏蔽腔则可取外壳为参考。系数满足互易性 $C_{ij}=C_{ji}$。实际求解通常直接写各浮置组的净量方程即可，不必先列一般矩阵，但接地节点的感应电量仍应保留为待求结果。
+
+\subsection{接通与撤线改变约束}
+
+两组连线前可各自守恒电量；连线后只守恒合并组总量并增加等势条件。撤线后，分离瞬间各自取得的净量成为新的初始条件。图\ref{fig:e4:sequence}显示接地再撤地：接地时 $V_M=0$、可与地交换电荷；撤线后 $Q_M=Q_*$ 固定，随后外部电势改变时 $V_M$ 可以变化。不能同时保留已经失效的旧电量与接地条件。若“地”其实是有限容量金属球，也须列入网络而不能强定零势。
+\fig{fig:e4:sequence}{接地阶段确定电量，撤地后保存该电量}{\begin{tikzpicture}
+
+\foreach \x in{0,6}{\begin{scope}[xshift=\x cm]\draw(0,0)to[C,l={$C_1$}](2.4,0)to[C,l={$C_2$}](4.8,0);\node[left]at(0,0){$A$};\node[right]at(4.8,0){$B$};\fill(2.4,0)circle(2pt);\end{scope}}
+\draw(2.4,0)--(2.4,-1)node[ground]{};\node at(2.4,1){接地：$V_M=0$};\draw(8.4,0)--(8.4,-.45);\draw[guide](8.4,-.7)--(8.4,-1)node[ground]{};\node at(8.4,1){撤线：$Q_M=Q_*$};\node at(5.4,-1.9){撤地瞬间电量连续，电势约束随之改变};
+
+\end{tikzpicture}}
+\subsection{测量仪器本身属于网络}
+
+普通电压表的有限内阻 $R_V$ 跨接孤立电容，形成图\ref{fig:e4:meter}左侧放电回路，电流由电压表支路流走，故 $C\dd U/\dd t=-U/R_V$。
+对 $U_0\ne0$，分离变量并从 $t=0,U=U_0$ 积至当前状态：
+\[
+ \int_{U_0}^{U(t)}\frac{\dd u}{u}
+ =-\frac1{R_VC}\int_0^t\dd t',
+ \qquad \ln|U(t)|-\ln|U_0|=-\frac{t}{R_VC}.
+\]
+解在有限时间内不换号，故取指数后
+$U(t)/U_0=e^{-t/(R_VC)}$，即 $U(t)=U_0e^{-t/(R_VC)}$。
+若 $U_0=0$，原方程的解恒为零，也包含在最终表达式中。读数时间应远小于 $R_VC$。理想静电计输入电阻极大，却仍有右侧输入电容 $C_m$；若其初始未充电，接入后由上端组电量守恒得 $U_f=CU_0/(C+C_m)$。高输入电阻防止长期放电，小输入电容减小瞬时分配，两条件作用不同。
+\fig{fig:e4:meter}{有限电阻造成持续放电，输入电容造成连接时的分配}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C$}](0,2)--(3,2)to[R,l={$R_V$}](3,0)--(0,0);\draw[flow](.5,2.2)--(1.8,2.2);\node at(1.5,3){普通表：$U(t)$ 衰减};
+\begin{scope}[xshift=6.5cm]\draw(0,0)to[C,l={$C$}](0,2)--(3,2)to[C,l={$C_m$}](3,0)--(0,0);\draw[guide](2.3,-.4)rectangle(4,2.4);\node at(1.5,3){静电计：共同电压 $U_f$};\node at(1.5,-1){输入支路原未充电};\end{scope}
+
+\end{tikzpicture}}
+\section{可变几何与实际器件}
+
+图\ref{fig:e4:variable}左侧平移极片的有效重叠长度为 $x$，宽 $b$、间距 $d$ 固定，忽略边缘时 $C(x)=\varepsilon_0bx/d$，近似线性。右侧保持面积 $S$、把间隙减为 $d_0-x$，则 $C(x)=\varepsilon_0S/(d_0-x)$，临近接触时增长加快。公式中的面积是相对的有效面积，间距是真空间隙；金属板厚度不应直接算入隙宽。
+\fig{fig:e4:variable}{改变重叠面积与改变间距对应不同的电容函数}{\begin{tikzpicture}
+
+\fill[blue!10](1.5,0)rectangle(4,1.2);\draw[world](0,0)--(4,0)(1.5,1.2)--(5.5,1.2);\draw[dim](1.5,-.5)--(4,-.5)node[midway,below]{$x$};\draw[dim](.8,0)--(.8,1.2)node[midway,left]{$d$};\draw[flow](4.6,1.7)--(5.5,1.7);\node at(2.8,2.4){重叠宽度 $b$};
+\begin{scope}[xshift=7cm]\draw[world](0,0)--(3,0)(0,1.3)--(3,1.3);\draw[guide](0,2.2)--(3,2.2);\draw[dim](3.5,0)--(3.5,1.3)node[midway,right]{$d_0-x$};\draw[flow](1.5,2.1)--(1.5,1.4)node[midway,left]{$x$};\node at(1.5,-.7){面积 $S$ 固定};\end{scope}
+
+\end{tikzpicture}}
+多片交错结构通过增加跨同一端口的有效间隙提高容量，外侧表面主要产生较小的边缘和杂散效应。实际器件的额定工作电压还受介质击穿和工艺限制，与标称容量是不同参数。耐压串联题应逐只检查 $|Q_i|/C_i$，不能直接把额定电压相加；需要研究漏电保持时间时，则把漏电电阻作为实际支路画入模型。
+

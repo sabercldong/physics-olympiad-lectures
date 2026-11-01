@@ -1,0 +1,6 @@
+\fig{fv:h2:capacities}{相同温升下，定压过程还要向外推动活塞}{\begin{tikzpicture}[scale=.85]
+\foreach \a in {0,5}{\begin{scope}[xshift=\a cm]\draw[thick](0,3)--(0,0)--(3,0)--(3,3);\fill[blue!9](0,0)rectangle(3,1.7);\draw[very thick](0,1.7)--(3,1.7);\end{scope}}
+\draw[thick](-.2,1.7)--(.2,1.7) (2.8,1.7)--(3.2,1.7);\node at(1.5,2.5){固定活塞};
+\draw[dashed](5,2.4)--(8,2.4);\draw[->,red](6.5,1.8)--(6.5,2.6);\node at(6.5,3){恒外压};
+\node at(1.5,-.6){$Q_V=\Delta U$};\node at(6.5,-.6){$Q_p=\Delta U+p\Delta V$};\end{tikzpicture}}
+图\ref{fv:h2:capacities}比较同样物质的量、相同温升的两份气体。左图的约束阻止边界位移，故没有体积功；右图的虚线标出受热后的活塞位置，外界获得$p\Delta V$。两份气体的内能增量相同，差别发生在跨边界的机械能传递，不能解释成定压时同一温度对应更大的分子平均平动动能。

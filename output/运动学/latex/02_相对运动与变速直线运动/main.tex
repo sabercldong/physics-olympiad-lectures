@@ -1,0 +1,24 @@
+% !TEX program = xelatex
+\documentclass[11pt,openany,fontset=fandol]{ctexbook}
+\usepackage[paperwidth=176mm,paperheight=250mm,inner=21mm,outer=18mm,top=20mm,bottom=20mm,headheight=14pt,headsep=6mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools,booktabs,array,enumitem,float}
+\usepackage{tikz,fancyhdr,hyperref}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\theoremstyle{definition}\newtheorem{example}{例}[chapter]\newtheorem{drill}{练习}[chapter]
+\newenvironment{solution}{\par\smallskip\noindent\textbf{解}\quad\ignorespaces}{\par\medskip}
+\newenvironment{drillsolution}[1]{\subsubsection*{练习\ref{#1}详解}\phantomsection\label{sol:#1}\ignorespaces}{\par\medskip}
+\newenvironment{question}{\par\medskip\noindent\begin{minipage}{\linewidth}}{\end{minipage}\par\medskip}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newcommand{\fig}[3]{\begin{figure}[H]\centering #3\caption{#2}\label{#1}\end{figure}}
+\newcommand{\answerlink}[1]{\par\smallskip\noindent\hyperref[sol:#1]{详解}}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\input{lecture-style}
+\LectureHeader{第二讲}{相对运动与变速直线运动}
+\begin{document}\frontmatter\LectureCover{运动学}{第二讲}{相对运动与变速直线运动}\tableofcontents\mainmatter
+\setcounter{chapter}{1}\chapter{相对运动与变速直线运动}
+\input{theory}
+\input{examples}
+\input{practice}
+\input{answers}
+\end{document}

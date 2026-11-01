@@ -1,0 +1,690 @@
+\section{波前、相位与叠加}
+
+\subsection{惠更斯原理与光程}
+
+第一讲已用惠更斯包络作图确定波前方向。本讲在同一图像上加入振幅与相位：几何作图只能说明光向哪里传播，明暗分布还取决于到达同一点的子波怎样叠加。在均匀各向同性介质中，光线仍沿等相位波前的法线。
+
+图\ref{fig:m2huygens}中，介质内波速为 \(c/n\)，故新、旧平面波前间距为 \(c\Delta t/n\)。包络面给出传播方向；若要计算明暗分布，还须把各子波的振幅、相位及方向性纳入叠加，这就是惠更斯--菲涅耳方法的基本思路。
+\fig{fig:m2huygens}{相同传播时间对应相同的子波半径}{
+\begin{tikzpicture}
+\draw[world] (0,-1.6)--(0,1.6) node[above] {$t$ 时波前};
+\foreach \y in {-1,0,1}{\draw[gray] (0,\y) circle(.9);\fill (0,\y) circle(1.1pt);}
+\draw[world] (.9,-1.9)--(.9,1.9) node[above right] {$t+\Delta t$ 时波前};
+\draw[ray] (1.5,0)--(3,0) node[right] {传播};
+\draw[dim] (0,-2.3)--(.9,-2.3) node[midway,below] {$c\Delta t/n$};
+\end{tikzpicture}}
+
+真空波长记为 \(\lambda_0\)，在折射率为 \(n\) 的介质中，频率不变、波长为 \(\lambda=\lambda_0/n\)。沿路径 \(\Gamma\) 的光程与传播相位为
+\[
+ \mathcal L=\int_\Gamma n\,\dd s,\qquad
+ \phi_{\mathrm{prop}}=\frac{2\pi}{\lambda_0}\mathcal L.
+\]
+光程不是几何路程。两束光经过不同介质时，应先算光程差，再判断相位差；若有反射附加相位，还须单独计入。
+
+\subsection{惠更斯--菲涅耳叠加的四个要素}
+
+仅用包络面可以确定波前，却不能算出某一点的明暗。图\ref{fig:m2fresnel}中，波面上的小面元 \(\dd S\) 向观察点 \(P\) 发出子波。若该面元的入射振幅为 \(A(Q)\)，与 \(P\) 的距离为 \(r\)，则其复振幅贡献可写成比例关系
+\[
+ \dd\mathcal E(P)\ \propto\
+ A(Q)\,\frac{K(\theta)}r
+ \exp\!\left(\mathrm i\frac{2\pi}{\lambda_0}\mathcal L_{QP}\right)\dd S.
+\]
+其中 \(\mathcal L_{QP}=\int_Q^P n\,\dd s\)，均匀介质内为 \(nr\)；\(K(\theta)\) 为倾斜因子，\(\theta\) 是面元法线与 \(QP\) 的夹角。此式采用标量衍射近似，整体比例因子须由所用积分公式确定。
+
+四个量各有作用：\(\dd S\) 决定面元的贡献大小；\(1/r\) 表示子波球面扩展时振幅衰减；光程决定传播相位；\(K(\theta)\) 反映子波的方向性。同一等相位波面上，出发相位相同，面元入射振幅则未必处处相等。
+\fig{fig:m2fresnel}{把波面分成面元，再在 \(P\) 点叠加复振幅}{
+\begin{tikzpicture}
+\draw[world,domain=-1.8:1.8,samples=60,variable=\y] plot ({.12*\y*\y},\y);
+\fill[gray!30] (-.06,-.16) rectangle (.06,.16);
+\coordinate (Q) at (0,0);\coordinate (P) at (4.8,1.35);
+\draw[axis] (Q)--(1.5,0) node[right] {$\boldsymbol N$};
+\draw[ray] (Q)--(P) node[midway,above] {$r,\ \mathcal L_{QP}$};
+\draw[aux] (.27,-1.5)--(P);
+\draw[aux] (.27,1.5)--(P);
+\draw (.9,0) arc[start angle=0,end angle=15.71,radius=.9];
+\node (ang) at (1,-.55) {$\theta$};
+\draw[aux] (ang)--(.9,.12);
+\node[left] at (Q) {$Q,\dd S$};\node[right] at (P) {$P$};
+\node[left] at (0,1.7) {波面 \(S\)};
+\end{tikzpicture}}
+图\ref{fig:m2fresnel}中各面元到 \(P\) 的光程不同，因而相位不同。总复振幅与强度分别为
+\[
+ \mathcal E(P)=\int_S\dd\mathcal E(P),\qquad
+ I(P)\propto|\mathcal E(P)|^2.
+\]
+应先求复振幅之和，再取模平方求强度；先把各面元强度相加，会丢掉干涉项。
+
+\subsection{稳定干涉的条件}
+
+在同一观察点，先把两束光的电场相加，再对电场平方作时间平均。若两束光同频、同偏振，复振幅可写成 $A_1$ 与 $A_2e^{i\Delta\phi}$，其中 $A_1,A_2\ge0$。图\ref{o5:phasor}把它们画在复平面上，斜边的长度给出合振幅：
+\[
+ |A_1+A_2e^{i\Delta\phi}|^2
+ =A_1^2+A_2^2+2A_1A_2\cos\Delta\phi.
+\]
+相同介质中 $I_j\propto A_j^2$，所以
+\[
+ \boxed{I=I_1+I_2+2\sqrt{I_1I_2}\cos\Delta\phi}.
+\]
+\fig{o5:phasor}{复振幅首尾相接；图中的角是相位差，箭头不是空间中的传播方向}{\begin{tikzpicture}
+
+\draw[axis](-.4,0)--(4.3,0)node[right]{$\operatorname{Re}$};
+\draw[axis](0,-.4)--(0,2.6)node[above]{$\operatorname{Im}$};
+\draw[axis,thick,blue](0,0)--(2,0)node[midway,below]{$A_1$};
+\draw[axis,thick,red](0,0)--(1.2,1.6)node[above]{$A_2e^{i\Delta\phi}$};
+\draw[axis,red,dashed](2,0)--(3.2,1.6);
+\draw[axis,very thick](0,0)--(3.2,1.6)node[above right]{$\mathcal E$};
+\draw(.6,0)arc(0:53.13:.6);\node at(1.2,.2){$\Delta\phi$};
+
+\end{tikzpicture}}
+
+稳定条纹要求相位差在观测时间内稳定，且偏振方向有共同分量。若两束线偏振夹角为 $\psi$，干涉项还乘 $\cos\psi$；正交偏振直接叠加时，该项为零。一般光源常从同一束光分出两路，使两路保留相位关联。
+
+若同相出发，在同一介质中传播，且没有反射等额外相移，几何路程差 $\delta$ 对应
+\[
+ \Delta\phi=\frac{2\pi\delta}{\lambda},\qquad
+ \delta=k\lambda\ \text{为强度极大},\quad
+ \delta=(k+\tfrac12)\lambda\ \text{为强度极小}.
+\]
+这里 $k\in\mathbb Z$，$\lambda$ 是该介质中的波长。强度极小不一定为零，还须检查振幅是否相等。
+
+不同频率之间的相位差随时间以 $\Delta\omega$ 的速率变化。令曝光时间为 $T$，且 $\Delta\omega\ne0$。交叉项中的余弦平均应按实际时间窗积分：
+\begin{align*}
+\left\langle\cos(\Delta\omega t+\phi_0)\right\rangle
+&=\frac1T\int_0^T\cos(\Delta\omega t+\phi_0)\,\dd t\\
+&=\frac1{T\Delta\omega}
+[\sin(\Delta\omega t+\phi_0)]_0^T\\
+&=\frac{\sin(\Delta\omega T+\phi_0)-\sin\phi_0}{T\Delta\omega}.
+\end{align*}
+分子的绝对值不超过 $2$，故当 $T\gg2\pi/|\Delta\omega|$ 时，平均交叉项趋近于零，探测器主要记录两种频率各自的强度之和。若 $\Delta\omega=0$，余弦不随时间变化，不能使用这一长时间相消的结论。白光干涉是各频率分别通过相干的两路形成条纹，再将各色强度相加；并非不同颜色彼此形成稳定干涉条纹。
+
+\subsection{干涉条纹的可见度与观测条件}
+由两束相干光的强度关系可知，相位差分别为 $0$ 和 $\pi$ 时，强度达到极大与极小：
+\[
+ I_{\max}=(\sqrt{I_1}+\sqrt{I_2})^2,\qquad
+ I_{\min}=(\sqrt{I_1}-\sqrt{I_2})^2.
+\]
+把两式相减、相加，可得条纹可见度
+\[
+ \mathcal V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}
+ =\frac{2\sqrt{I_1I_2}}{I_1+I_2}.
+\]
+强度相等才可能得到完全暗纹。不同频率的光在通常曝光时间内交叉项平均为零，应把各频率形成的强度图样相加；这仍可能让条纹重叠后变浅。没有不同频率之间的稳定干涉，并不妨碍每个频率自身通过双缝形成条纹。
+
+\input{knowledge-visibility}
+
+\section{双缝干涉与薄膜干涉}
+
+\subsection{双缝条纹的位置与测量}
+
+图\ref{fig:m2young}中，缝间距为 \(d\)，缝到屏距离为 \(L\)，屏上点 \(P\) 相对中央点 \(O\) 的高度为 \(x\)。当 \(L\gg d\)、\(|x|\ll L\) 时，
+\[
+ \delta=r_2-r_1\simeq d\sin\theta\simeq\frac{dx}{L}.
+\]
+于是
+\[
+ x_k=\frac{k\lambda L}{d},\qquad
+ \boxed{\Delta x=\frac{\lambda L}{d}},\qquad
+ \lambda=\frac{d\Delta x}{L}.
+\]
+\fig{fig:m2young}{以缝间距 \(d\) 和屏上高度 \(x\) 建立光程差}{
+\begin{tikzpicture}
+\draw[world] (0,-1.2)--(0,1.2);\draw[world] (5,-1.4)--(5,1.8);
+\coordinate (S1) at (0,.45);\coordinate (S2) at (0,-.45);
+\coordinate (P) at (5,1.25);
+\draw[ray] (S1)--(P) node[midway,above] {$r_1$};
+\draw[ray] (S2)--(P) node[midway,below] {$r_2$};
+\draw[axisline] (0,0)--(5,0);
+\node[left] at (S1) {$S_1$};\node[left] at (S2) {$S_2$};
+\node[right] at (P) {$P$};\node[right] at (5,0) {$O$};
+\draw[dim] (-.7,-.45)--(-.7,.45) node[midway,left] {$d$};
+\draw[dim] (5.7,0)--(5.7,1.25) node[midway,right] {$x$};
+\draw[dim] (0,-1.8)--(5,-1.8) node[midway,below] {$L$};
+\end{tikzpicture}}
+测量若跨越 \(N\) 个亮纹中心，首末两中心之间只有 \(N-1\) 个间隔，应取 \(\Delta x=\ell/(N-1)\)。白光的中央各色明纹重合，呈白色；两侧不同波长的条纹分开，离中心较远后重叠明显。
+
+图\ref{fig:m2young}的路程差可以由距离平方之差验证。两缝高度为 $\pm d/2$，故
+$r_2^2-r_1^2=(x+d/2)^2-(x-d/2)^2=2dx$；
+再除以 $r_2+r_1\simeq2L$，得到 $r_2-r_1\simeq dx/L$。这一步明确了远屏近似的作用，屏上高度还须足够小，才能把三角关系进一步线性化成等间距条纹。
+
+插入玻璃片或移动光源时，应先建立有符号总光程差，再令它等于 $k\lambda$。中央明纹是零总相位差所对应的位置，不一定仍在几何中垂线上。测量间距时最好跨越多个间隔再取平均，以降低定位单条条纹的误差；但首末中心数与间隔数必须区分。
+
+\subsection{薄膜的两束反射光}
+
+设薄膜折射率为 \(n_f\)，厚度为 \(t\)，膜内折射角为 \(r\)。两束反射光的传播光程差为 \(2n_ft\cos r\)。若只有一次相对的半波损失，则总相位差为
+\[
+ \Delta\phi=\frac{2\pi}{\lambda_0}(2n_ft\cos r)+\pi.
+\]
+“半波损失”表示反射电场相位改变 \(\pi\)，并不表示光在界面上多走了一段几何路径。普通透明介质近法向反射时，光由低折射率一侧向高折射率一侧反射产生 \(\pi\) 相移，反向则无此相移。
+
+图\ref{fig:m2film}的空气劈尖夹在两玻璃板之间，两束主要反射光只有一次相对半波损失。近法向观察时
+\[
+ \begin{array}{c|c}
+ \text{暗纹}&2t=k\lambda_0\\
+ \text{明纹}&2t=(k+\frac12)\lambda_0
+ \end{array},
+ \qquad
+ \Delta t=\frac{\lambda_0}{2}.
+\]
+\fig{fig:m2film}{空气夹层的两束反射光；在上侧玻璃内用公共波前 \(CD\) 比较相位}{
+\begin{tikzpicture}
+\fill[gray!8] (-2,.5) rectangle (2.5,2.1);
+\fill[gray!8] (-2,-.5) rectangle (2.5,0);
+\draw[world] (-2,.5)--(2.5,.5);\draw[world] (-2,0)--(2.5,0);
+\coordinate (A) at (-.6,.5);\coordinate (B) at (.15,0);
+\coordinate (C) at (.9,.5);\coordinate (D) at (-.13846,1.19231);
+\draw[ray] (-1.6,2)--(A);\draw[ray] (A)--(.4,2);
+\draw[ray] (A)--(B);\draw[ray] (B)--(C);\draw[ray] (C)--(1.9,2);
+\draw[aux] (C)--(D);
+\node[below left] at (A) {$A$};\node[below] at (B) {$B$};
+\node[below right] at (C) {$C$};\node[above left] at (D) {$D$};
+\node[above] at (.4,2.1) {反射1};\node[above] at (1.9,2.1) {反射2};
+\node[left] at (-2,1.2) {玻璃 \(n_g\)};
+\node[left] at (-2,.25) {膜 \(n_f\)};
+\node[left] at (-2,-.35) {玻璃};
+\draw[dim] (2.9,0)--(2.9,.5) node[midway,right] {$t$};
+\end{tikzpicture}}
+图\ref{fig:m2film}中，\(AD\) 是第一束光到公共出射波前前多走的路程。膜内折射角为 \(r\)，上侧入射角为 \(i\)，则
+\[
+ AB+BC=\frac{2t}{\cos r},\qquad
+ AD=AC\sin i=2t\tan r\sin i.
+\]
+利用 \(n_g\sin i=n_f\sin r\)，比较到同一波前的光程：
+\[
+ \delta=n_f(AB+BC)-n_gAD=2n_ft\cos r.
+\]
+所以不能把膜内往返的几何路程 \(2t/\cos r\) 直接当作两束出射光的光程差。劈尖角很小时，可在局部按这样的近似平行膜面处理，再用膜厚随位置的变化确定条纹。
+劈角为 \(\alpha\ll1\) 时，\(t(x)\simeq\alpha x\)，同级条纹是等厚线：
+\[
+ \boxed{\Delta x=\frac{\lambda_0}{2\alpha}}.
+\]
+判断工件凹凸时，应先标出空气膜变厚的方向，再看同级条纹向哪边弯。仅说“条纹左弯就是凸”没有普遍意义。
+
+\subsection{反射相位怎样改变明暗条件}
+
+一般情况下，应把膜内往返光程差与两次反射的相对相位分开记录：
+\[
+ \Delta\phi=\frac{4\pi n_ft\cos r}{\lambda_0}
+ +(\phi_{\text{下}}-\phi_{\text{上}}).
+\]
+\begin{center}\small
+\begin{tabular}{@{}p{3.2cm}p{3.2cm}p{4.3cm}@{}}
+\toprule
+折射率次序 & 相对反射相位 & 反射光明纹条件\\
+\midrule
+\(n_0<n_f<n_s\) & 两次均反相，相差 \(0\) & \(2n_ft\cos r=k\lambda_0\)\\
+\(n_0>n_f>n_s\) & 两次均不反相，相差 \(0\) & \(2n_ft\cos r=k\lambda_0\)\\
+\(n_f<n_0,n_s\) & 只有下表面反相，相差 \(\pi\) & \(2n_ft\cos r=(k+\tfrac12)\lambda_0\)\\
+\(n_f>n_0,n_s\) & 只有上表面反相，相差 \(\pi\) & \(2n_ft\cos r=(k+\tfrac12)\lambda_0\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+表中的 \(n_0,n_f,n_s\) 分别是入射侧、膜、基底折射率，相位分类用于普通透明介质的近法向入射。暗纹条件与明纹条件相差半级。观察方向也须固定：无吸收时，反射率降低伴随透射率升高。
+
+把相对反射相位换成等效的半个真空波长，只是计算相位的一种记号。若两次反射都发生 $\pi$ 跳变，它们相减为零，不应再额外补一次半波；若只有一次，才出现明暗条件的半级交换。传播光程差与反射相位在式中分别写出，能直接看出改变基底折射率为什么可能在膜厚未变时改变明暗。
+
+还应检查相消的振幅条件。总相位差为奇数倍 $\pi$ 只能保证两束振幅相减；如果振幅不同，剩余强度不为零。反射光变暗也不表示能量消失，无吸收时应主要转入透射方向。因而比较膜前后亮度，需要同时说明观察的是反射还是透射，以及材料是否吸收。
+
+\subsection{肥皂膜条纹与彩色薄膜}
+
+空气中的肥皂膜属于“低--高--低”结构，两个主要反射光束相差一次反射反相。近法向时，反射光的暗纹满足 \(2n_ft=k\lambda_0\)。竖直膜排液后，上部通常较薄、下部较厚，同色光的等厚条纹近似水平。
+
+图\ref{fig:m2soap}中，同一位置的 \(t\) 固定，各种波长代入相位条件后可分别加强或减弱，所以白光照明时出现彩色。若膜顶薄到 \(t\to0\)，反射相位差趋于 \(\pi\)，两束振幅接近时该处呈暗色。
+\fig{fig:m2soap}{竖直肥皂膜的等厚线；右图只示意膜厚随高度的趋势}{
+\begin{tikzpicture}
+\draw[world] (0,0) rectangle (2.8,3);
+\foreach \y in {.35,.9,1.45,2,2.55}{\draw[gray!70,line width=1.8pt] (0,\y)--(2.8,\y);}
+\node[above] at (1.4,3) {正视：等厚条纹};
+\draw[axis] (3.4,2.8)--(3.4,.2) node[midway,right] {向下增厚};
+\begin{scope}[xshift=5cm]
+\draw[world] (0,3)--(-.18,0);\draw[world] (.03,3)--(.5,0);
+\draw[dim] (-.12,.7)--(.39,.7) node[midway,below] {$t$};
+\node[above] at (.15,3) {侧视};
+\node[right] at (.5,1.7) {$n_f>1$};
+\end{scope}
+\end{tikzpicture}}
+膜厚扰动还可用来判断条纹侧移。对既定级次，\(n_ft\cos r\) 必须保持不变；若某处膜变厚，等厚条纹就移向原先较薄的区域。分析劈尖或工件表面时，也应按这一条件追踪同级条纹。
+
+\subsection{增透膜：相消条件与振幅条件}
+
+增透膜常取 \(n_0<n_f<n_s\)。图\ref{fig:m2ar}中，两次反射本身都发生 \(\pi\) 相移，相对反射相位为零。欲使设计波长 \(\lambda_0\) 的两束反射光相消，应有 \(2n_ft\cos r=\lambda_0/2\)。正入射时 \(r=0\)，所以
+\[
+ 2n_ft=\frac{\lambda_0}{2},\qquad
+ \boxed{t_{\min}=\frac{\lambda_0}{4n_f}}
+\]
+（正入射）。这是相位条件；若两束振幅不等，反射只能减弱，不能完全为零。
+\fig{fig:m2ar}{图中斜入射用来分辨光路；正入射厚度公式对应 \(r\to0\) 的极限}{
+\begin{tikzpicture}
+\fill[gray!12] (-2,0) rectangle (2,.8);
+\draw[world] (-2,.8)--(2,.8);\draw[world] (-2,0)--(2,0);
+\node[left] at (-2,1.6) {$n_0$};\node[left] at (-2,.4) {$n_f$};
+\node[left] at (-2,-.6) {$n_s$};
+\draw[ray] (-2.1,2.2)--(-.7,.8);
+\draw[ray] (-.7,.8)--(.7,2.2);
+\draw[ray] (-.7,.8)--(-.23812,0);
+\draw[ray] (-.23812,0)--(.22376,.8);
+\draw[ray] (.22376,.8)--(1.62376,2.2);
+\draw[dim] (2.4,0)--(2.4,.8) node[midway,right] {$t$};
+\node[above] at (.7,2.3) {1};\node[above] at (1.62376,2.3) {2};
+\end{tikzpicture}}
+两束主要反射光的近似足以判断相位条件；要讨论反射率严格为零，则应把膜内多次反射一并求和。理想的无吸收单层膜在正入射下，振幅匹配还要求
+\[
+ \boxed{n_f=\sqrt{n_0n_s}}.
+\]
+可用界面振幅反射系数验证。令
+\[
+ r_{0f}=\frac{n_0-n_f}{n_0+n_f},\qquad
+ r_{fs}=\frac{n_f-n_s}{n_f+n_s}.
+\]
+这里的系数是电场振幅比，均按正入射取值。透射系数为
+\(t_{0f}=2n_0/(n_0+n_f)\)、\(t_{f0}=2n_f/(n_0+n_f)\)，
+反向反射系数为 \(r_{f0}=-r_{0f}\)，因此
+\(t_{0f}t_{f0}=1-r_{0f}^2\)。这些振幅系数不能直接当作能量透射率。
+
+\fig{fig:m2ar-series}{将各次返回分开画出以辨认路径；振幅系数和往返相位均按正入射计算}{
+\begin{tikzpicture}[scale=.95]
+\fill[gray!12](-2.3,0)rectangle(2.4,1);
+\draw[world](-2.3,0)--(2.4,0) (-2.3,1)--(2.4,1);
+\node[left]at(-2.3,1.7){$n_0$};\node[left]at(-2.3,.5){$n_f$};\node[left]at(-2.3,-.4){$n_s$};
+\draw[ray](-2.2,2)--(-1.6,1);\draw[ray](-1.6,1)--(-.8,2.3)node[above]{$A_0$};
+\draw[ray](-1.6,1)--(-1.1,0);\draw[ray](-1.1,0)--(-.6,1);
+\draw[ray](-.6,1)--(.2,2.3)node[above]{$A_1$};
+\draw[ray](-.6,1)--(-.1,0);\draw[ray](-.1,0)--(.4,1);
+\draw[ray](.4,1)--(1.2,2.3)node[above]{$A_2$};
+\draw[ray](.4,1)--(.9,0);\draw[ray](.9,0)--(1.4,1);
+\draw[ray](1.4,1)--(2.2,2.3)node[above]{$A_3$};
+\draw[dim](2.8,0)--(2.8,1)node[midway,right]{$t$};
+\node at(0,-1.1){每增加一次膜内往返，乘以同一因子 $q$};
+\end{tikzpicture}}
+
+把入射振幅归一化为1，令一次往返的传播相位为
+\(\delta=4\pi n_ft/\lambda_0\)。图\ref{fig:m2ar-series}中，前表面直接反射的振幅为
+\(A_0=r_{0f}\)。第一束从膜内返回的光先透入膜、在下表面反射，再透出上表面，故
+\[
+ A_1=t_{0f}t_{f0}r_{fs}e^{\mathrm i\delta}.
+\]
+下一束比它多经历一次上表面内反射、一次下表面反射和一次往返传播，因此
+\[
+ q=r_{f0}r_{fs}e^{\mathrm i\delta},\qquad
+ A_2=A_1q,\quad A_3=A_1q^2,\quad\ldots.
+\]
+无吸收、正的有限折射率使这里 \(|q|<1\)。将所有返回光的复振幅相加，得到
+\begin{align*}
+ r_{\mathrm{tot}}&=r_{0f}+\frac{t_{0f}t_{f0}r_{fs}e^{\mathrm i\delta}}
+ {1-r_{f0}r_{fs}e^{\mathrm i\delta}}\\
+ &=r_{0f}+\frac{(1-r_{0f}^2)r_{fs}e^{\mathrm i\delta}}
+ {1+r_{0f}r_{fs}e^{\mathrm i\delta}}.
+\end{align*}
+通分后，含 \(r_{0f}^2r_{fs}\) 的两项相消，才得到严格的总反射系数
+\[
+ r_{\mathrm{tot}}=
+ \frac{r_{0f}+r_{fs}\exp(4\pi\mathrm i n_ft/\lambda_0)}
+ {1+r_{0f}r_{fs}\exp(4\pi\mathrm i n_ft/\lambda_0)}.
+\]
+四分之一波长厚度使指数因子为 \(-1\)，而 \(n_f^2=n_0n_s\) 使 \(r_{0f}=r_{fs}\)，因此分子为零。图\ref{fig:m2ar}的完全相消同时需要这两项条件。改变波长或入射角后，相位通常不再恰好相反，所以单层膜只能在一定波段、角度范围内有效增透。
+
+\section{衍射、偏振与旋光}
+
+\subsection{单缝衍射}
+
+光通过有限孔径后出现展宽，说明直线传播是有条件的近似。设平行单色光均匀、正入射到宽为 \(a\) 的狭缝，在远场方向 \(\theta\) 比较缝内各点的贡献。远场可由足够远的屏近似实现，也可在透镜的后焦面观察；它意味着在同一观察方向上，各微元到观察点的传播方向近似相同，振幅随距离的差别可以忽略，而相位差必须保留。
+
+远屏条件还可由路程展开说明。设屏上横坐标为 $x$，缝内坐标为 $s$，两平面相距 $L$，则近轴时
+\[
+ r(s)=\sqrt{L^2+(x-s)^2}
+ \simeq L+\frac{x^2}{2L}-\frac{xs}{L}+\frac{s^2}{2L}.
+\]
+前两项是共同相位，线性项决定方向相关的相位差；忽略最后一项要求缝内二次相位变化很小，通常用 $a^2/(\lambda L)\ll1$ 表示。透镜后焦面则把各平行出射方向会聚到不同位置，提供另一种观察夫琅禾费衍射的方法。
+
+图\ref{fig:slit-integral}以缝中心 \(O\) 为坐标原点，缝上微元坐标为 \(s\)。向上取 \(s>0\)，出射方向与法线夹角为 \(\theta>0\)，该微元相对中心到远方同一波前的路程短 \(s\sin\theta\)。选取相应相位约定，把各微元振幅相加，得到
+\[
+ E(\theta)=C\int_{-a/2}^{a/2}
+e^{-i(2\pi/\lambda)s\sin\theta}\,\dd s.
+\]
+记 $k_\theta=(2\pi/\lambda)\sin\theta$、$\beta=k_\theta a/2$。
+当 $k_\theta\ne0$ 时，指数函数的原函数为
+$e^{-ik_\theta s}/(-ik_\theta)$，因此
+\begin{align*}
+ E(\theta)
+ &=C\left[\frac{e^{-ik_\theta s}}{-ik_\theta}\right]_{-a/2}^{a/2}\\
+ &=C\frac{e^{-i\beta}-e^{i\beta}}{-ik_\theta}
+ =C\frac{-2i\sin\beta}{-ik_\theta}
+ =Ca\frac{\sin\beta}{\beta}.
+\end{align*}
+当 $k_\theta=0$ 时，直接积常数 $1$：
+\[
+ E(0)=C[s]_{-a/2}^{a/2}=Ca.
+\]
+\fig{fig:slit-integral}{缝上微元到同一远场波前的路程差由投影确定}{
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,-1.4)--(0,-1) (0,1)--(0,1.5);
+\draw[thick] (0,-1)--(0,1);
+\coordinate (O) at (0,0);\coordinate (Q) at (0,.8);\coordinate (H) at (.32,.16);
+\draw[axis] (-.4,0)--(3.7,0) node[right]{法线};
+\draw[axis] (0,-1.2)--(0,1.9) node[above]{$s$};
+\draw[ray] (O)--(3,1.5);\draw[ray] (Q)--(3,2.3);
+\draw[aux] (Q)--(H);\fill (Q) circle(1.2pt);
+\node[left] at (O){$O$};\node[left] at (Q){$Q(s)$};\node[below right] at (H){$H$};
+\draw[dim] (-1.3,-1)--(-1.3,1) node[midway,left]{$a$};
+\draw (1,0) arc(0:26.565:1);\node at (1.25,.25){$\theta$};
+\node[align=left] at (4.2,2){$QH\perp OH$\\$OH=s\sin\theta$};
+\end{tikzpicture}}
+这里 \(C\) 包含照明振幅及共同的传播因子。积分结果在 \(\beta=0\) 处按极限取值为 \(Ca\)，并非零除以零。光强正比于振幅模的平方，故归一化后
+\[
+ I(\theta)=I(0)\left(\frac{\sin\beta}{\beta}\right)^2,
+ \qquad \beta=\frac{\pi a\sin\theta}{\lambda}.
+\]
+非零整数 \(m\) 使 \(\sin\beta=0\) 而 \(\beta\ne0\)，于是暗纹满足 \(a\sin\theta=m\lambda\)，其中 \(m=\pm1,\pm2,\ldots\)。第一暗纹还可用图\ref{fig:slit-integral}的缝内配对理解：当 \(a\sin\theta=\lambda\) 时，将缝分成两半，相隔 \(a/2\) 的微元相位差恰为 \(\pi\)，均匀照明保证它们等幅，因而逐对相消。对于小角度、屏距为 \(L\) 的屏面，才进一步使用 \(\sin\theta\simeq\tan\theta=x/L\)，得到
+\[
+ x_m\simeq\frac{m\lambda L}{a},\qquad
+ \boxed{w_{\text{中央}}=\frac{2\lambda L}{a}}.
+\]
+中央亮纹两侧第一暗纹之间的宽度，是相邻暗纹间距的两倍。次级亮纹逐渐变弱，其极大位置并非严格等间隔；不能把整个图样概括成“所有暗纹间距都不同”。
+\fig{fig:m2sinc}{单缝衍射的归一化强度；横坐标 \(q=ax/(\lambda L)\)}{
+\begin{tikzpicture}[x=1.1cm,y=2.1cm]
+\draw[axis] (-3.5,0)--(3.5,0) node[right] {$q$};
+\draw[axis] (0,0)--(0,1.15) node[above] {$I/I(0)$};
+\draw[world,samples=250,domain=-3.2:-.01] plot(\x,{(sin(180*\x)/(pi*\x))^2});
+\draw[world,samples=250,domain=.01:3.2] plot(\x,{(sin(180*\x)/(pi*\x))^2});
+\foreach \x in {-3,-2,-1,1,2,3}{\draw (\x,.015)--(\x,-.025) node[below] {\(\x\)};}
+\draw[dim] (-1,-.3)--(1,-.3) node[midway,below] {中央亮纹};
+\end{tikzpicture}}
+由图\ref{fig:m2sinc}可知，增大 \(\lambda\) 或减小 \(a\) 会使衍射展宽。即便 \(a\gg\lambda\)，衍射仍然存在，只是角宽很小；能否观察还取决于传播距离、光源相干性及仪器分辨能力。
+
+\subsection{衍射光栅测波长}
+
+光栅由许多等间距狭缝构成，光栅常数 \(g\) 是相邻缝中心的距离，不是单条缝的宽度 \(a\)。单色平面波正入射时，相邻缝沿角度 \(\theta\) 出射的光程差为 \(g\sin\theta\)。图\ref{fig:m2grating}中的三个缝只是多缝中的一小段。
+
+各缝沿该方向同相叠加时形成主极大：
+\[
+ \boxed{g\sin\theta_m=m\lambda},\qquad
+ \boxed{\lambda=\frac{g\sin\theta_m}{m}}\quad(m\ne0).
+\]
+若光栅每单位长度有 \(N_\ell\) 条刻线，则 \(g=1/N_\ell\)，使用时应先统一长度单位。允许级次满足 \(|m|\lambda\le g\)；掠射边界还要结合实际仪器能否接收判断。
+\fig{fig:m2grating}{相邻缝间距沿传播方向的投影给出光程差}{
+\begin{tikzpicture}
+\coordinate (A) at (0,1);\coordinate (B) at (0,0);
+\coordinate (H) at (.5,.5);
+\draw[world] (0,-1.5)--(0,1.6);
+\foreach \y in {-1,0,1}{
+\fill[white] (-.08,\y-.09) rectangle (.08,\y+.09);
+\draw[ray] (0,\y)--(3,\y+3);}
+\draw[aux] (A)--(H);
+\draw[dim] (-1.1,0)--(-1.1,1) node[midway,left] {$g$};
+\draw[axisline] (0,0)--(1.3,0);
+\draw (.8,0) arc[start angle=0,end angle=45,radius=.8];
+\node at (1.05,.22) {$\theta$};
+\fill (H) circle (1pt);\node[above] at (.5,.7) {$H$};
+\node[left] at (A) {$S_j$};\node[left] at (B) {$S_{j+1}$};
+\node[above right] at (3,3) {同一远场方向};
+\end{tikzpicture}}
+图\ref{fig:m2grating}中，\(S_jH\) 垂直出射方向，故 \(S_{j+1}H=g\sin\theta\)。增大缝数主要使主极大更尖锐；各级亮度仍受单缝衍射包络限制。
+
+主极大的条件只要求相邻缝同相，而单缝内部还存在不同位置的相位差。若某一级恰好满足单缝暗纹条件，该主极大就会缺失。因此不能只按 $|m|\lambda\le g$ 数出几何允许级次，就断言每一级都能看见。缝数主要控制主极大宽度，缝间距决定位置，缝宽决定包络，这三个几何量各有作用。
+
+用左右对称的同级谱线测角，可以减小零角位置误差。若从刻线数换算光栅常数，应先把“每毫米”或“每厘米”换成统一长度单位，再与波长比较；一个单位换算错误会同时破坏波长数值和允许级次的判断。
+
+\subsection{多缝强度、衍射包络与缺级}
+设每条缝宽为 $a$，相邻缝中心距仍记为 $g$，共有 $N$ 条相同的缝。对图\ref{fig:m2grating}的同一远场方向，相邻缝复振幅相差相位 $2\beta=2\pi g\sin\theta/\lambda$。以第一缝为相位参考，多缝因子是等比数列之和：
+\[
+ S_N=\sum_{j=0}^{N-1}e^{2ij\beta}
+ =\frac{1-e^{2iN\beta}}{1-e^{2i\beta}}
+ =e^{i(N-1)\beta}\frac{\sin N\beta}{\sin\beta}.
+\]
+乘上前面求出的单缝振幅，再取模平方，得到
+\[
+ I(\theta)\propto
+ \left(\frac{\sin\alpha}{\alpha}\right)^2
+ \left(\frac{\sin N\beta}{\sin\beta}\right)^2,
+ \qquad \alpha=\frac{\pi a\sin\theta}{\lambda},\quad
+ \beta=\frac{\pi g\sin\theta}{\lambda}.
+\]
+本式中 $\alpha$ 描述一条缝内部的相位变化，$\beta$ 描述相邻缝的相位变化。第一因子决定衍射包络，第二因子决定窄的干涉峰。
+\fig{o5:multislit-phasor}{五缝复振幅的叠加：主极大同向相加，邻近第一个零点处首尾闭合}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\foreach \j in {0,...,4}{\draw[axis,thick,blue](\j,0)--(\j+1,0);}
+\node[above]at(2.5,.3){$2\beta=2m\pi$};
+\node[below,align=center]at(2.5,-.4){$|S_5|=5$\\五条缝同相};
+\end{scope}
+\begin{scope}[xshift=6cm,scale=1.1]
+\draw[axis,thick,red](0,0)--(1,0);
+\draw[axis,thick,red](1,0)--(1.309,.951);
+\draw[axis,thick,red](1.309,.951)--(.5,1.539);
+\draw[axis,thick,red](.5,1.539)--(-.309,.951);
+\draw[axis,thick,red](-.309,.951)--(0,0);
+\node[above]at(.5,1.9){$2\beta=2m\pi+2\pi/5$};
+\node[below]at(.5,-.3){$S_5=0$};
+\end{scope}
+
+\end{tikzpicture}}
+在 $\beta=m\pi$ 处不能直接把商当成 $0/0$；由原始求和式可知 $S_N=N$。图\ref{o5:multislit-phasor}左侧说明：每条缝的照明振幅不变时，该多缝因子的峰高为 $N^2$。右侧则把相邻相位差增加 $2\pi/N$，矢量构成闭合多边形，合振幅为零。
+
+某一主极大附近的第一对零点满足 $\beta=m\pi\pm\pi/N$。
+由 $\beta(\theta)=\pi g\sin\theta/\lambda$ 求导，
+\[
+\frac{\dd\beta}{\dd\theta}=\frac{\pi g}{\lambda}\cos\theta.
+\]
+在非掠射主极大 $\theta_m$ 附近，令偏离角为 $\delta\theta$，一阶展开为
+\[
+\beta(\theta_m+\delta\theta)-m\pi
+\simeq\frac{\pi g}{\lambda}\cos\theta_m\,\delta\theta.
+\]
+分别令左侧等于 $\pm\pi/N$，得到两侧零点相对主极大的偏移
+$\delta\theta_\pm\simeq\pm\lambda/(Ng\cos\theta_m)$，相减便得零点之间的角宽约为
+\[
+ \Delta\theta_{\text{零点间}}
+ \simeq\frac{2\lambda}{Ng\cos\theta_m}.
+\]
+因此增加缝数使干涉峰变窄；在包络变化缓慢时，实际总强度峰靠近这些多缝主极大。若主极大同时落在单缝零点 $a\sin\theta=q\lambda\ (q\ne0)$，总振幅仍为零，出现缺级。应将两个条件联立，而不能只看光栅方程。
+
+\subsection{偏振与马吕斯定律}
+
+线偏振光的电场在垂直传播方向的固定方向上振动。偏振现象说明光具有横波性质。理想检偏器保留沿透振轴的电场分量，图\ref{fig:polar-projection}中入射振幅 \(E_p\) 沿透振轴的投影为 \(E_p\cos\theta\)，与该轴垂直的分量被阻断。相同介质中光强与电场振幅平方成正比，所以
+\[
+ \boxed{I=I_p\cos^2\theta},
+\]
+其中 \(\theta\) 是入射光偏振方向与检偏器透振方向的夹角。不要把自然光的强度直接代入 \(I_p\)。
+\fig{fig:polar-projection}{沿传播方向看电场分解；只有沿透振轴的投影通过}{
+\begin{tikzpicture}
+\draw[axis] (-.7,0)--(3.7,0) node[right]{透振轴};
+\draw[axis] (0,-.35)--(0,2.5);
+\draw[axis,very thick] (0,0)--(2.4,1.8) node[above right]{$E_p$};
+\draw[axis,thick,blue] (0,0)--(2.4,0) node[midway,below]{$E_p\cos\theta$};
+\draw[aux] (2.4,1.8)--(2.4,0);
+\draw (.7,0) arc(0:36.87:.7);\node at (.95,.3){$\theta$};
+\node[align=left] at (5.1,1.6){振幅取投影\\强度取平方};
+\end{tikzpicture}}
+自然光的横向振动没有优先方向。将各取向对透振轴的投影平方作平均，
+\[
+ \langle\cos^2\varphi\rangle
+ =\frac1\pi\int_0^\pi\cos^2\varphi\,\dd\varphi
+=\frac1{2\pi}\int_0^\pi(1+\cos2\varphi)\dd\varphi.
+\]
+利用倍角公式后，两个原函数分别为 $\varphi$ 与 $\sin2\varphi/2$。
+代入上下限，
+\[
+ \langle\cos^2\varphi\rangle
+ =\frac1{2\pi}\left[\varphi+\frac{\sin2\varphi}{2}\right]_0^\pi
+ =\frac{\pi-0}{2\pi}=\frac12,
+ \qquad I_p=\frac12 I_{\text{自然}}.
+\]
+因此，自然光依次通过夹角为 \(\theta\) 的两片理想偏振片时，末强度是 \(I_{\text{自然}}\cos^2\theta/2\)。前一个 \(1/2\) 来自起偏时的取向平均，后一个 \(\cos^2\theta\) 来自已经确定偏振方向的投影，两步不能重复或遗漏。
+
+图\ref{fig:m2polar}中，两片平行时最亮，正交时理想透射为零。立体电影利用两路正交偏振区分左右眼画面，要求银幕能保持所需偏振性质，眼镜每片与相应画面偏振方向一致。
+\fig{fig:m2polar}{起偏器确定偏振方向，检偏器只透过沿自身方向的分量}{
+\begin{tikzpicture}
+\draw[axis] (-1,0)--(6,0) node[right] {传播};
+\draw[world] (0,0) ellipse(.35 and 1);
+\draw[world] (3,0) ellipse(.35 and 1);
+\draw[very thick] (0,-.8)--(0,.8);
+\draw[very thick] (2.6,-.65)--(3.4,.65);
+\node[above] at (0,1) {$A$};\node[above] at (3,1) {$B$};
+\node[below,align=center] at (1.5,-1.1) {线偏振\\强度 \(I_p\)};
+\node[below,align=center] at (4.8,-1.1) {\(I=I_p\cos^2\theta\)};
+\end{tikzpicture}}
+
+旋光溶液可使线偏振方向绕传播轴转动。固定波长、温度和溶液种类时，稀溶液的旋光角常写为
+\[
+ \alpha=[\alpha]\,\ell c_s,
+\]
+其中 \(\ell\) 为光程长度，\(c_s\) 为浓度，比旋光度 \([\alpha]\) 还与波长和温度有关。因此用旋光测浓度时，必须同时控制这些条件。
+
+\section{光子与光电效应}
+
+\subsection{单光子能量与电子逸出}
+
+真空中光子的能量与动量为
+\[
+ E_\gamma=h\nu=\frac{hc}{\lambda_0},\qquad
+ p_\gamma=\frac{E_\gamma}{c}=\frac h{\lambda_0}.
+\]
+单个光子的能量由频率决定；光功率则还取决于单位时间内通过的光子数。单色光功率为 \(P\) 时，
+\[
+ \dot N_\gamma=\frac{P}{h\nu}.
+\]
+光电效应指物质吸收光后发射电子。逸出的粒子是光电子，不能称为光子。通常讨论弱光下的一光子过程，其最大初动能满足
+\[
+ \boxed{K_{\max}=h\nu-W},\qquad
+ \boxed{\nu_0=\frac Wh},\qquad
+ \boxed{\lambda_{\max}=\frac{hc}{W}}.
+\]
+\(\nu<\nu_0\) 时，无论延长照射时间或增大通常范围内的光强，都不能用积累许多次弱吸收的办法使单个电子逸出。临界 \(\nu=\nu_0\) 对应理想模型中的 \(K_{\max}=0\)；要形成可测光电流还受表面状况及收集条件影响。
+
+\fig{o5:photo-energy}{一次吸收中的能量分配；最高初始电子给出最大逸出动能}{\begin{tikzpicture}
+
+\draw[axis](-.3,-1.8)--(-.3,2.5)node[above]{能量};
+\draw[thick](.3,-1.2)--(3,-1.2)node[right]{最高初始电子能量};
+\draw[thick](.3,0)--(3,0)node[right]{真空能级 $0$};
+\draw[thick](.3,1.7)--(3,1.7)node[right]{逸出后 $K_{\max}$};
+\draw[axis,very thick,blue](1,-1.2)--(1,1.7)node[midway,left]{$h\nu$};
+\draw[dim](2,-1.2)--(2,0)node[midway,right]{$W$};
+\draw[dim](2,0)--(2,1.7)node[midway,right]{$K_{\max}$};
+
+\end{tikzpicture}}
+图\ref{o5:photo-energy}以刚好离开材料后的真空能级为零，最高初始电子的能量比它低 $W$。吸收 $h\nu$ 后，先克服逸出功，余下部分成为动能；来自更低能态或途中损失能量的电子，其初动能小于 $K_{\max}$。因此能量方程给的是上限，不能把全部光电子视为同速。
+
+在频率固定、超过阈值时，增强光强主要增加电子发射数，不提高 \(K_{\max}\)。发射没有经典连续吸能模型所需的长时间等待，但仪器中电流建立的快慢还受电路响应影响。
+
+\subsection{截止电压、饱和电流和电流方向}
+
+光电子从阴极 \(K\) 飞向收集极 \(A\)。若 \(A\) 电势低于 \(K\)，电子受到阻碍。设反向电压大小为 \(U\ge0\)，则最快电子刚不能到达 \(A\) 时，
+\[
+ \boxed{eU_s=K_{\max}},\qquad
+ \boxed{U_s=\frac he\nu-\frac We}.
+\]
+电子带负电，逆着电势升高方向移动时电势能增大。图\ref{fig:m2tube}把减速方向、电场和电流方向分别标出。
+\fig{fig:m2tube}{反向电压下电子向右减速，管内常规电流方向向左}{
+\begin{tikzpicture}
+\draw[world] (-.5,-.8) rectangle (4.5,.8);
+\draw[very thick] (0,-.55)--(0,.55) node[above] {$K$};
+\draw[very thick] (4,-.55)--(4,.55) node[above] {$A$};
+\draw[ray] (-1.3,1.6)--(0,.3) node[pos=.1,above] {光};
+\draw[axis] (.7,.35)--(2.7,.35) node[midway,above] {电子速度};
+\draw[axis] (2.7,-.25)--(.7,-.25) node[midway,below] {电子受力、常规电流};
+\node[below] at (0,-1) {$V_K$ 高};
+\node[below] at (4,-1) {$V_A$ 低};
+\draw[axis] (.7,-1.55)--(2.7,-1.55) node[midway,above] {$\boldsymbol E$};
+\node at (2,-2.2) {$U=V_K-V_A>0$};
+\end{tikzpicture}}
+
+\fig{o5:retarding-energy}{均匀反向场中的最快电子；势能上升使动能逐步耗尽}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.8,0)node[right]{$x$};
+\draw[axis](0,-.3)--(0,3.1)node[above]{能量};
+\draw[blue,thick](0,0)--(4,2.4)node[above right]{$E_p(x)$};
+\draw[red,thick](0,2.4)--(4,2.4)node[left,pos=0]{$K_{\max}$};
+\draw[dim](1,.6)--(1,2.4)node[midway,right]{$K(x)$};
+\draw[aux](4,0)--(4,2.4);\node[below]at(0,0){$K$};\node[below]at(4,0){$A$};
+\node[above,align=center]at(2,3.3){截止时 $eU_s=K_{\max}$};
+
+\end{tikzpicture}}
+图\ref{o5:retarding-energy}把阴极处势能取为零。电子电荷为 $-e$，故从 $K$ 到 $A$ 的势能增加量是 $(-e)(V_A-V_K)=eU$。静电力作用下机械能守恒，$K_A=K_{\max}-eU$；截止时右端动能降到零，得到 $eU_s=K_{\max}$。这也核对了图\ref{fig:m2tube}中电场向右、电子受力向左的方向。
+
+若反过来给收集极加足够高的正电势，几乎所有逸出电子均被收集，得到饱和电流。固定频率和材料、量子效率不变时，
+\[
+ I_{\mathrm{sat}}=e\eta\frac{P}{h\nu}.
+\]
+\(\eta\) 是每个入射光子产生可收集电子的平均效率。强度、频率改变时不能都把电子数简单视为不变。最大初动能由截止电压测量，发射数量主要由饱和电流反映。
+
+下面把带符号的极间电压作为横坐标，分别比较改变光强和频率时的伏安曲线。读图中必须区分截止电压的大小与截止点的横坐标。
+
+电子还具有从零到最大值的一系列初动能与发射方向，因此零外加电压时也可能已经有可收集电流；反向电压增大后先淘汰能量不足的电子，直到最快的电子也不能到达收集极。饱和电流则是在足够强的收集条件下测得，不能把任意工作电压下的电流都当作总发射数。
+
+\subsection{用两组伏安曲线分清光强与频率}
+
+图\ref{fig:m2ivfamilies}统一以 \(U_{AK}=V_A-V_K\) 为横轴，右半轴为加速电压，左半轴为反向电压。截止点横坐标是 \(-U_s\)，因此频率越高，截止点越向左，而截止电压的大小 \(U_s\) 越大。
+\fig{fig:m2ivfamilies}{曲线形状作示意；固定材料，比较时另行标明保持不变的照射条件}{
+\begin{tikzpicture}[scale=.82]
+\begin{scope}
+\draw[axis] (-2.2,0)--(3.1,0) node[right] {$U_{AK}$};
+\draw[axis] (0,0)--(0,2.7) node[above] {$I$};
+\draw[world] (-1.5,0) .. controls (-1.2,1.7) and (.7,2) .. (1.5,2)--(2.7,2);
+\draw[world,dashed] (-1.5,0) .. controls (-1.2,.85) and (.7,1) .. (1.5,1)--(2.7,1);
+\node[below] at (-1.5,0) {$-U_s$};
+\node[right] at (1.7,2.3) {$J_2>J_1$};
+\node[above,align=center] at (.4,3.1) {甲：同频率\\改变光强 \(J\)};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis] (-2.6,0)--(2.6,0) node[right] {$U_{AK}$};
+\draw[axis] (0,0)--(0,2.7) node[above] {$I$};
+\draw[world] (-2.1,0) .. controls (-1.8,1.3) and (.3,1.8) .. (1.4,1.8)--(2.3,1.8);
+\draw[world,dashed] (-.95,0) .. controls (-.6,.9) and (.6,1.8) .. (1.4,1.8);
+\node[below] at (-2.1,0) {$-U_{s2}$};
+\node[below] at (-.95,-.35) {$-U_{s1}$};
+\node[above,align=center] at (.2,3.1) {乙：\(\nu_2>\nu_1\)\\固定光子到达率与量子效率};
+\end{scope}
+\end{tikzpicture}}
+甲图频率固定，最快电子的能量不变，故两条曲线共用截止点；光强增加时发射数增加，饱和电流增大。乙图保持光子到达率、量子效率相同，因而饱和电流相同，但频率较高的实线有更大的最大初动能。
+
+若改成保持光功率 \(P\) 相同，光子到达率为 \(P/(h\nu)\)，便不能继续把乙图的两个饱和电流画成相等。读图时必须先确认固定的是功率、光强、光子数率还是频率。
+
+从两条曲线提取材料参数时，应比较对应截止电压的大小，而不是饱和段的高度差。固定材料有 $e(U_{s2}-U_{s1})=h(\nu_2-\nu_1)$；同一频率、不同材料的截止差则反映逸出功之差。前一比较消去材料参数，后一比较消去光子能量，所保持不变的条件决定了差分关系能说明什么。
+
+\subsection{连续吸能图景与单光子吸收}
+
+若把电子想成持续吸收波能量，容易预期低频照射只要足够久也能逸出，以及光越强电子动能越大。前面的阈频、截止电压和饱和电流分别检验了这种图景的不同预测：阈频规定一次吸收能否克服逸出功，截止电压测量最快电子的能量，饱和电流则统计收集到的电子数。它们共同支持通常弱光条件下的单光子吸收模型；传播过程的干涉与偏振仍需用电磁波描述。
+
+\subsection{光信号怎样变成电信号}
+
+光电管的窗口应透过所研究波段，尤其不能默认普通玻璃对紫外线完全透明。改变滤光片主要调节频率，改变同频光功率主要调节光电子发射数，收集电极与外电路把发射数变化转成电流信号。由此可实现光信号检测和自动控制。
+\fig{fig:m2detection}{固定载光频率后，用随时间变化的光强传递信息}{
+\begin{tikzpicture}[every node/.style={font=\small,align=center}]
+\node[draw] (l) at (0,0) {光强 \(J(t)\)\\随信号变化};
+\node[draw] (k) at (3.4,0) {光电子发射\\与收集};
+\node[draw] (i) at (6.5,0) {电流 \(I(t)\)\\跟随变化};
+\draw[axis] (l)--(k);\draw[axis] (k)--(i);
+\node[draw] (a) at (6.5,-1.7) {后续电路\\放大、处理};
+\draw[axis] (i)--(a);
+\node[draw] (o) at (2.5,-1.7) {声音输出\\或自动控制};
+\draw[axis] (a)--(o);
+\end{tikzpicture}}
+图\ref{fig:m2detection}中，若光强按声音信号调制，探测电流经放大处理后便可驱动声音输出；若与阈值电路相接，也可用于自动控制。这里保持的是光子的载光频率，变化的是光强包络，二者不能混称为“光的频率变化”。
+
+太阳能电池通常利用半导体内部光生载流子输出电能，属于与真空光电子逸出有所区别的过程。光纤负责传输光，接收端的光电探测器再完成信号转换，不能把传输与探测混为一个过程。
+
+\subsection{三种模型各自回答的问题}
+
+同一实验可以先有传播、再有选择偏振，最后由探测器吸收。三种模型应按实验环节衔接，不能把不同环节所回答的问题互相替代。
+
+判断模型时可以沿装置中的过程展开：狭缝、光栅和透镜决定传播后的空间分布，偏振元件改变允许通过的电场分量，探测器再把到达的光转化为离散能量交换。计算屏上条纹位置时不能用一个光子的能量方程替代波的相位；计算逸出阈值时，也不能只用平均光强替代单光子能量。先完成传播问题，再按探测方式计算信号，可以把几种描述连接为同一实验的完整解释。
+
+\section{物质结构与模型的层次}
+
+分子和原子适合描述许多化学与物质性质，但原子还可分成原子核与电子。原子核中的质子、中子又有内部结构；在本讲采用的标准模型描述中，它们由夸克及其相互作用构成，而电子属于轻子。图\ref{fig:m2structure}按组成关系排列这些层次，图框大小不表示实际尺寸。
+
+\fig{fig:m2structure}{物质结构的组成层次；氢-1 等核素的核内没有中子}{
+\begin{tikzpicture}[every node/.style={font=\small,align=center}]
+\node[draw] (mol) at (0,0) {分子};
+\node[draw] (atom) at (2.4,0) {原子};
+\node[draw] (nucl) at (5,1) {原子核\\质子、中子};
+\node[draw] (e) at (5,-1) {电子\\轻子};
+\node[draw] (q) at (8,1) {夸克\\及其相互作用};
+\draw[axis] (mol)--(atom);
+\draw[axis] (atom)--(nucl);\draw[axis] (atom)--(e);
+\draw[axis] (nucl)--(q);
+\end{tikzpicture}}
+元素由原子核的电荷数区分；元素周期表中的化学性质周期性与电子结构有关。原子中的电磁作用决定许多电子状态与光的吸收、发射特征；核内结构还涉及强相互作用，某些粒子转变涉及弱相互作用。电磁作用、引力、强相互作用和弱相互作用是讨论物质结构时需要区分的四类基本相互作用。
+
+研究更小尺度，需要能分辨相应尺度的探测过程。光子的动量关系 \(p=h/\lambda\) 表明，较短波长对应较大动量；具体能分辨什么，还取决于相互作用机制、探测几何和实验分辨率。
+
+本讲的光电效应给出光与电子交换能量的一个模型，原子光谱与原子核问题则还需要各自的结构和能级模型。不同层次的模型描述不同实验量，不能把光子的离散吸收与经典微粒沿轨道运动视为同一假设。

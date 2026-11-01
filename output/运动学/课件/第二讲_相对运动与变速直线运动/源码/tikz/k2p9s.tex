@@ -1,0 +1,19 @@
+\documentclass[11pt,border=4pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=fandol]{ctex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}
+\fill[blue!7](0,2.8)--(4.2,0)--(5.3,.733333)--(5.3,3.2)--(0,3.2)--cycle;
+\draw[axis](0,0)--(5.65,0)node[right]{$U_x$};\draw[axis](0,0)--(0,3.6)node[above]{$U_y$};
+\draw[world](0,2.8)--(4.2,0)--(5.3,.733333);
+\draw[flow,blue](0,0)--(1.29231,1.93846)node[above right]{$M$};
+\draw[guide](1.29231,1.93846)--(1.29231,0);
+\node[below]at(4.2,0){$v$};\node[above]at(3.1,2.8){可行区域};
+\node[above right]at(2.8,1.25){$U_x+\frac abU_y=v$};
+\end{tikzpicture}
+\end{document}

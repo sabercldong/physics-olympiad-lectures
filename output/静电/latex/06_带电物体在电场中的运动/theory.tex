@@ -1,0 +1,211 @@
+\section{由电场到运动方程}
+\subsection{受力方向与轨迹弯曲}
+
+电场确定后，点电荷所受力为 $\bm F=q\bm E$。正电荷顺场受力，负电荷逆场受力；轨迹的切线给速度方向，轨迹向哪侧弯曲只给法向加速度方向，不能把速度方向直接当成受力方向。若电场线和轨迹同时给出，应先画速度、力与曲率法向，再判断电荷符号。
+
+\fig{fig:e6:force-velocity}{轨迹切线给速度，曲率法向给法向加速度，二者不必同向}{\begin{tikzpicture}
+
+\draw[world,domain=0:4,samples=50]plot(\x,{.12*(\x)^2});\fill(2,.48)circle(2pt);\draw[flow](2,.48)--(3.4,1.152)node[right]{$\bm v$};\draw[force](2,.48)--(2,1.9)node[above]{$q\bm E$};\draw[guide](2,.48)--(1.5,1.52)node[left]{$\bm n$};\node at(2,-.7){图示 $q>0$，电场竖直向上};
+\begin{scope}[xshift=6cm]\draw[axis](0,0)--(3,0)node[right]{$x$};\draw[axis](0,0)--(0,-2)node[below]{$y$};\draw[force](0,0)--(2.2,0)node[above]{$qE$};\draw[force](0,0)--(0,-1.5)node[left]{$mg$};\draw[flow](0,0)--(2.2,-1.5)node[right]{$m\bm a$};\end{scope}
+
+\end{tikzpicture}}\par 图\ref{fig:e6:force-velocity}左侧速度沿切线，电力并不沿切线；右侧重力与电力作为矢量合成。切向力改变速率，法向力改变速度方向。
+
+等势面的法线方向给电场方向，但要结合电势从高到低判断正向。相邻等势面的电势差相同且相距 $\Delta n$ 较小时，$E_n\simeq-\Delta V/\Delta n$，疏密反映场强；若图中各等势面电势差并不相同，只比较疏密就不可靠。轨迹曲率还与速度有关，$|qE_n|=mv^2/\mathcal R$，弯得更明显不一定说明场强更大。
+
+除电力外若有重力、弹力或约束力，应统一画在受力图上。电场力与重力同为恒定矢量时可合成有效加速度 $\bm a=\bm g+q\bm E/m$，再沿两个固定方向分解运动。若只使用能量式，能求速度大小，却一般不能单独确定轨迹、时间与方向。
+
+\subsection{静电场中的功与运动可达性}
+
+在不随时间变化的电场中，电力作功 $W_{AB}=q(V_A-V_B)$。仅有电力时 $K+qV$ 守恒；有重力时再加 $mgy$。先比较能量可以快速判断转向，但对二维中心场还有角动量约束，不能只因动能形式上非负就断言可以到达任意半径。圆轨道或擦边轨迹需要把径向动力学或有效势一起使用。
+
+\fig{fig:e6:energy-access}{一维转向由势能决定，带角动量的径向运动还需加入离心项}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,3.3)node[above]{$qV$};\draw[world,domain=.3:4.7,samples=60]plot(\x,{.35*(\x-2.5)^2+.5});\draw[guide](0,1.7)--(5,1.7)node[right]{$\mathcal E$};\draw[dim](.648,1.4)--(4.352,1.4)node[midway,below]{一维可达区};\fill(.648,1.7)circle(1.6pt);\fill(4.352,1.7)circle(1.6pt);\node at(2.5,2.6){转向点 $K=0$};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:energy-access}中允许 $qV\le\mathcal E$，沿一维轨迹才能到达相应区间。中心场的同类图须把纵轴换成径向有效势。
+
+均匀带电实心球的静电自能可按逐层组装求得。体密度 $\rho$ 固定，半径 $r$ 时已放入 $Q(r)=4\pi\rho r^3/3$，再加薄壳 $\dd Q=4\pi\rho r^2\dd r$，功为 $kQ(r)\dd Q/r$。积分到 $R$，
+\[
+ W_{\text{自}}=\frac{16\pi^2k\rho^2}3\int_0^Rr^4\,\dd r
+=\frac{16\pi^2k\rho^2}3\left[\frac{r^5}{5}\right]_0^R
+=\frac{16\pi^2k\rho^2R^5}{15}.
+\]
+再代入 $\rho=3Q/(4\pi R^3)$，得到
+\[
+W_{\text{自}}=\frac{16\pi^2kR^5}{15}
+\frac{9Q^2}{16\pi^2R^6}=\frac{3kQ^2}{5R}.
+\]
+\fig{fig:e6:self-energy}{逐层组装实心球：只把新薄壳与已装球的相互作用计一次}{\begin{tikzpicture}
+
+\fill[blue!10](0,0)circle(1.5);\draw[world](0,0)circle(2);\draw[world](0,0)circle(1.5);\draw[guide](0,0)circle(1.65);\fill(0,0)circle(1.3pt)node[below left]{$O$};\draw[dim](0,0)--(-1.06,1.06)node[midway,above right]{$r$};\draw[dim](1.5,0)--(1.65,0);\draw(1.6,.1)--(2.8,.8)node[right]{$\dd r,\ \dd Q$};\node[right]at(2.8,-.2){内部已装电量 $Q(r)$};\node at(0,-2.6){外边界半径 $R$};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:self-energy}中薄壳自身的二阶微小能量不计入一阶微功，$\dd W=kQ(r)\dd Q/r$。
+
+多个有限带电体的总能量含各自自能和体间相互作用能；理想点电荷模型通常只保留体间的有限相互作用部分，不把发散自能加入运动守恒式。这个区分在两个小球分开、三球受约束运动中尤其重要。
+
+
+\section{匀强场中的分运动}
+\subsection{加速、偏转与离场漂移}
+
+粒子先由加速电压 $U_a$ 从静止加速，若非相对论且电荷量大小为 $|q|$，则 $v_0^2=2|q|U_a/m$。水平进入长度 $L$、间距 $d$ 的平行板，偏转电压为 $U_d$，取竖直加速度带符号为 $a_y=qE_y/m$。以入场点和入场时刻为位置、时间零点，水平无力，故 $v_x=v_0$，而 $v_y(0)=0$。恒加速度逐次积分给出
+\begin{align*}
+v_y(t)&=\int_0^t a_y\,\dd s=a_y[s]_0^t=a_yt,\\
+x(t)&=\int_0^t v_0\,\dd s=v_0[s]_0^t=v_0t,\\
+y(t)&=\int_0^t a_ys\,\dd s
+=a_y\left[\frac{s^2}{2}\right]_0^t=\frac12a_yt^2.
+\end{align*}
+由 $t=x/v_0$ 消去时间，场内轨迹为抛物线 $y=a_yx^2/(2v_0^2)$。
+
+\fig{fig:e6:beam}{实际场内轨迹、出口切线与屏上漂移}{\begin{tikzpicture}
+
+\draw[world](0,1.2)--(4,1.2)(0,-1.2)--(4,-1.2);\draw[guide](-1,0)--(6,0);\draw[world](6,-1.5)--(6,2.5);\draw[flow](-1,0)--(0,0)node[midway,above]{$v_0$};\draw[world,domain=0:4,samples=50]plot(\x,{.04*(\x)^2});\draw[flow](4,.64)--(6,1.28);\draw[guide](2,0)--(6,1.28);\fill(4,.64)circle(1.6pt)node[above left]{出口};\draw[dim](0,-1.8)--(4,-1.8)node[midway,below]{$L$};\draw[dim](4,-1.8)--(6,-1.8)node[midway,below]{$b$};\draw[dim](6.6,0)--(6.6,1.28)node[midway,right]{$Y$};\draw[force](2,.16)--(2,.9)node[right]{$ma_y$};\node at(2,2){$a_y>0$ 的示意};
+
+\end{tikzpicture}}
+图\ref{fig:e6:beam}中的板内轨迹为曲线，离场后才沿出口速度作直线运动。
+
+出场时 $t_L=L/v_0$，$y_L=a_yL^2/(2v_0^2)$，$v_{yL}=a_yL/v_0$。距出口 $b$ 的屏上还要加漂移 $v_{yL}b/v_0$，总位移
+\[
+ Y=\frac{a_yL}{v_0^2}\left(b+\frac L2\right).
+\]
+等效上可以把出场切线看成从板长中点延长，但这是由抛物线推得的性质，不能把实际场内路径画成一条直线。入射中线时，未撞板要求整个场内 $|y(x)|<d/2$；单向加速度下只需检查出口，得到 $|qU_d|L^2/(mv_0^2d)<d$。
+
+负电荷的偏转方向与场相反。对电子应先由板电势判断场，再取 $q=-e$，最后给出屏上方向。公式中的加速电压常取正的大小，偏转电压则要指定正负定义，两者不能混用。
+
+\subsection{电场随时间变化时要逐段接续}
+
+若极板电压随时间变化，在电准静态近似下可写 $a(t)=qE(t)/m$，指定每段起始时刻 $t_0$ 后，用带上下限的积分保留初值：
+\[
+v(t)=v(t_0)+\int_{t_0}^{t}a(s)\,\dd s,\qquad
+x(t)=x(t_0)+\int_{t_0}^{t}v(s)\,\dd s.
+\]
+若某段 $a$ 为常量，先积出 $v(s)=v(t_0)+a(s-t_0)$，再代入位置积分：
+\[
+x(t)-x(t_0)
+=\left[v(t_0)(s-t_0)+\frac a2(s-t_0)^2\right]_{t_0}^{t}
+=v(t_0)(t-t_0)+\frac a2(t-t_0)^2.
+\]
+若 $a$ 随时间变化，则使用具体函数完成相应积分。电压突变时，理想模型中加速度可跳变，但位置和速度连续。每一段的末位置、末速度都是下一段初条件，不能在换向时重新设速度为零。
+
+\fig{fig:e6:switching}{换场时加速度跳变，速度连续；位移由速度图面积累加}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,-1.6)--(0,1.8)node[above]{$a_y$};\draw[world](0,1)--(2,1);\draw[world](2,-1)--(4,-1);\draw[guide](2,-1.4)--(2,1.4);\node[below right]at(2,0){$t_1$};\node[left]at(0,1){$a$};\node[left]at(0,-1){$-a$};
+\begin{scope}[xshift=7cm]\fill[blue!12](0,0)--(2,2)--(4,0)--cycle;\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.8)node[above]{$v_y$};\draw[world](0,0)--(2,2)--(4,0);\draw[guide](2,0)--(2,2);\node[below]at(2,0){$t_1$};\node[below]at(4,0){$2t_1$};\node at(2,3.4){$v_y(0)=0$ 的一组连续状态};\end{scope}
+
+\end{tikzpicture}}\par 图\ref{fig:e6:switching}中第二段从速度 $at_1$ 接续；两段位移都为正，周期末速度回零也不代表回到原位。
+
+此时电场对粒子的机械能不再满足简单的 $K+qV=\text{常量}$。沿粒子轨迹对势 $V(\bm r(t),t)$ 使用链式法则：
+\[
+\frac{\dd(qV)}{\dd t}
+=q\nabla V\cdot\bm v+q\frac{\partial V}{\partial t},
+\qquad
+\frac{\dd K}{\dd t}=q\bm E\cdot\bm v=-q\nabla V\cdot\bm v.
+\]
+两式相加，空间梯度项抵消，得到
+\[
+\frac{\dd(K+qV)}{\dd t}=q\frac{\partial V}{\partial t}.
+\]
+右侧描述外电源改变电势分布带来的能量交换。一个瞬时的电势差不能代替整段运动中随时间变化的电场功。
+
+
+\typeout{ECFIG:fig:e6:beam}
+\section{中心力、系统与约束}
+\subsection{中心电场中的径向有效能}
+
+绕固定电荷 $Q$ 运动的粒子受中心力，角动量大小 $\ell=mr^2\dot\theta$ 守恒。把速度分成径向与切向，能量为
+\[
+ \mathcal E=\frac12m\dot r^2+\frac{\ell^2}{2mr^2}+\frac{kqQ}{r}.
+\]
+后两项构成径向有效势。最近点满足 $\dot r=0$，却通常仍有切向速度；把最近点误当成总速度零，会把散射与擦边条件算错。入射速度 $v_\infty$、瞄准距 $b$ 给 $\ell=mv_\infty b$，几何信息正是通过角动量进入能量式。
+
+\fig{fig:e6:radial-energy}{斥力中心场的最近点由有效势与总能量的交点确定}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$r$};\draw[axis](0,0)--(0,4.6)node[above]{$U_{\rm eff}$};\draw[world,domain=.8:5,samples=60]plot(\x,{1/\x+1/(\x)^2});\draw[guide](0,1.5)--(5.1,1.5)node[right]{$\mathcal E$};\fill(1.21525,1.5)circle(2pt);\draw[guide](1.21525,0)--(1.21525,1.5);\node[below]at(1.21525,0){$r_{\min}$};\draw[flow](2.2,.5)--(4.7,.5)node[midway,above]{径向可达};\node at(3.3,3.5){$U_{\rm eff}=\ell^2/(2mr^2)+kqQ/r$};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:radial-energy}示意 $qQ>0$。最近点径向动能为零，切向动能仍包含在有效势中；只有正碰 $\ell=0$ 才能把最近点总速度设为零。
+
+若两个带电小球都可移动，应把两球作为系统，内力成对相消，总动量守恒。相对运动对应约化质量 $\mu=m_1m_2/(m_1+m_2)$，质心自由匀速。电势能减少如何在两球之间分配，要由动量守恒决定，不能默认平均分配；只有质量相同才有相等的末动能。
+
+\fig{fig:e6:center-mass}{两球都释放时质心匀速，零初动量时两动量等大反向}{\begin{tikzpicture}
+
+\fill(0,0)circle(3pt)node[below]{$m_1,q_1$};\fill(5,0)circle(3pt)node[below]{$m_2,q_2$};\fill(2,0)circle(1.6pt)node[above]{$C$};\draw[guide](0,0)--(5,0);\draw[flow](0,0)--(-1.6,0)node[left]{$\bm p_1$};\draw[flow](5,0)--(6.6,0)node[right]{$\bm p_2$};\node at(2.5,1.3){$\bm p_1+\bm p_2=0$，$m_1r_1=m_2r_2$};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:center-mass}的动量条件使 $K_1/K_2=m_2/m_1$，质量不同时不能平均分配释放的相互作用能。
+
+\subsection{约束先约速度，再写动能}
+
+带电小球通过不可伸长细线连接时，势能的变量可以由几何关系表示，但动能必须包括所有可动小球。先写出位置与约束参数的关系，再求导得到各球速度，最后求和 $K=\sum m_iv_i^2/2$。仅把某一个感兴趣小球的动能等同于全系统势能减少，会遗漏其他球的运动。
+
+\fig{fig:e6:string-constraint}{先由几何写位置，再对同一参数求导得到每个速度}{\begin{tikzpicture}
+
+\draw[world](-2,0)--(0,2.5)--(2,0);\draw[guide](0,-.5)--(0,3);\foreach \x/\y/\n in{-2/0/1,0/2.5/2,2/0/3}{\fill(\x,\y)circle(2pt)node[above left]{$\n$};}\node[left]at(-1,1.25){$L$};\node[right]at(1,1.25){$L$};\draw(0,1.8)arc(-90:-129:.7);\node at(-.4,1.7){$\theta$};\draw[dim](-2,-.7)--(2,-.7)node[midway,below]{$2L\sin\theta$};\draw[flow](0,2.5)--(0,1.6);\draw[flow](-2,0)--(-2.8,.35);\draw[flow](2,0)--(2.8,.35);\node at(0,3.6){质心固定时，三球都参与动能};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:string-constraint}中两绳长度固定，但端球间距可变；端球既有水平速度也有竖直速度，均须进入总动能。
+
+求最大速度也要检查几何允许范围与约束力是否可实现。对称构型往往减少变量，却不自动保证速度在最对称位置最大；应把速度平方写成参数函数并检查单调性或驻点。若细线可能松弛，还需检验张力非负，松弛后运动方程应重新建立。
+
+
+\section{轨迹和数据的最终检查}
+\subsection{可达、首次到达与理想边界}
+
+求出运动方程后，仍应沿实际时间区间检查粒子是否先撞到其他边界、是否在到达目标前转向。屏上的形式解可能对应早已撞板的电子；方波下某个后续周期的形式交点，也可能在前一阶段就被出发板吸收。题目中的“第一次”“最多”“所有相位”分别对应不同的极值或量词，应在解答中保留。
+
+\fig{fig:e6:boundary-check}{出口在板内仍可能先撞上板，必须检查轨迹内部极值}{\begin{tikzpicture}
+
+\draw[world](0,1.5)--(5,1.5)(0,-1.5)--(5,-1.5);\draw[guide](0,0)--(5,0);\draw[world,domain=0:1.5551,samples=30]plot(\x,{1.4*\x-.28*(\x)^2});\draw[guide,domain=1.5551:5,samples=40]plot(\x,{1.4*\x-.28*(\x)^2});\draw[guide](2.5,0)--(2.5,1.75);\fill(1.5551,1.5)circle(2pt)node[above left]{首次撞板};\node[right]at(5,0){形式出口};\node at(3,-2.2){虚线后续轨迹不能用于判断实际离场};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:boundary-check}中抛物线顶点超过上板，真实运动在第一次碰板时已终止，之后的数学曲线只供比较边界。
+
+零速度恰到边界是可达临界状态，通常算到达；如果题目要求穿过或非零速撞击，就应使用严格不等式。把这种定义差别写清楚，既避免整数滴数差一，也避免频率临界值是否取等号的混乱。理想模型中的相切、擦板还应与实际有限孔径、粒子大小相区分。
+
+\subsection{图形承担的计算信息}
+
+轨迹图至少应标入场、出场、速度方向、力方向与几何边界；速度—时间图则需标出换场时刻和连续端点。面积表示位移只适用于速度图，斜率表示加速度；在加速度图上面积才表示速度变化。这两种图不能靠相似外观互相代用。
+
+对于中心力最近点，图中速度应与半径垂直而非消失；对电容间的粒子平衡，应明确上下板电势或电荷符号，保证电力真的可与重力反向。完成代数后反向核对图的箭头，是发现符号错误最直接的方法。若结果在改变电荷符号后运动方向未相应改变，应检查是否过早把带符号的 $q$ 全部替换成正的电荷量大小。
+
+
+\section{轨迹参数的进一步求解}
+\subsection{场力做功之外还需要方向信息}
+
+同样的能量变化可以对应不同方向的速度。电场偏转题要由恒定水平动量或分运动确定方向，中心场则由角动量把瞄准距与最近点连接。散射角不是只靠电势能减少量就能求出的量；即使远处初末速率相同，轨迹方向仍可发生很大改变。
+
+\fig{fig:e6:flight-time}{从位置函数求时间：先定正向速度，再逐段积分 $\dd x/v(x)$}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{$v(x)$};\draw[world,domain=0:5,samples=70]plot(\x,{2.5*sqrt(\x/(1+\x))});\draw[guide](2,0)--(2,2.04)(2.3,0)--(2.3,2.09);\draw[dim](2,-.5)--(2.3,-.5);\node at(2.15,-1){$\dd x$};\node[right]at(3,1){$\dd t=\dd x/v(x)$};\node at(2.7,3.5){速度变快后，同样小位移所需时间更短};
+
+\end{tikzpicture}}\par 图\ref{fig:e6:flight-time}中 $v>0$ 表示向右运动；有转向时应在各方向分支重新选择速度符号。
+
+非均匀一维场可先由功求 $v(x)$，再用 $\dd t=\dd x/v(x)$ 求时间。这种先降阶再积分的做法可避免直接解二阶非线性方程，但积分的正负根必须由运动方向决定；接近转向点时还要分支接续。若题目只问速度，不必重复求完整时间表达式；需要飞行时间时，才把该积分继续算完。
+
+
+\section{运动近似与解答的自洽}
+\subsection{电压波形与粒子实际遇到的电场}
+
+偏转板给出的电压可能随外部时间变化，而一粒电子在入场和出场之间只经历其中一小段。若过板时间远小于电压变化的时间尺度，可以把该电子通过期间的偏转电压视为常量，不同电子再使用各自进入时刻对应的电压。若两个时间尺度可比，则必须把 $E(t)$ 带入运动积分，不能只使用入场瞬间的值。
+
+\fig{fig:e6:transit-window}{粒子只在入场至出场的时间窗内取样外加电压}{\begin{tikzpicture}
+
+\fill[blue!10](1.7,-1.6)rectangle(2,1.6);\fill[orange!10](3,-1.6)rectangle(5,1.6);\draw[axis](0,0)--(6.5,0)node[right]{$t$};\draw[axis](0,-1.8)--(0,2)node[above]{$U_d(t)$};\draw[world,domain=0:6,samples=80]plot(\x,{1.4*sin(60*\x)});\node at(1.85,2.6){短时间窗};\node at(4.3,-2.3){长时间窗须积分 $E(t)$};\draw[guide](1.85,1.5)--(1.85,2.2);
+
+\end{tikzpicture}}\par 图\ref{fig:e6:transit-window}中短窗内电压近似不变时才可用恒场偏转式；长窗内要积分粒子实际遇到的电场。
+
+加速段与偏转段也应分开。电子先经过加速电压得到水平速率，随后进入偏转场时，初速度已经不为零。若加速电压随时间缓慢变化，电子通过加速区的时间仍足够短，可以把它作为某一入射批次的初速参数；若不满足这一条件，则连初速也需要解加速区的时变运动，不能把 $eU$ 当作任意时变过程的总功。
+
+对给定的快速开关电压，本讲采用电准静态近似：装置尺寸与电压变化时间内电磁影响传播的距离相比很小，板间场可近似由当时电压除以间距给出。这个条件与粒子飞行时间是否短于周期不同。一个粒子可以经历很多电压周期，而每一个时刻的板间场仍可近似均匀；方波逐周期运动题正属于这种情况。
+
+\subsection{系统边界决定哪些守恒量可以使用}
+
+固定源电荷的支架可吸收动量，所以试探粒子与源电荷的机械总动量未必守恒，但静止支架不作功时粒子仍可使用固定静电势的能量关系。两带电小球都解除固定后，忽略外力的整个系统动量才守恒。把第一种情形的源电荷视为静止，又同时要求两球总动量守恒，会得到不相容的条件。
+
+\fig{fig:e6:system-boundary}{固定源的支架吸收动量，双球自由系统才整体守恒动量}{\begin{tikzpicture}
+
+\foreach \x/\n in{0/q,3/Q}{\fill(\x,0)circle(3pt)node[above]{$\n$};}\draw[world](3,0)--(3,-1);\draw[world](2.4,-1)--(3.6,-1);\draw[force](0,0)--(-1,0);\node at(1.5,1.4){固定源：外支架有冲量};
+\begin{scope}[xshift=7cm]\draw[guide](-1,-.8)rectangle(4,.8);\foreach \x/\n in{0/q,3/Q}{\fill(\x,0)circle(3pt)node[above]{$\n$};}\draw[force](0,0)--(-.8,0);\draw[force](3,0)--(3.8,0);\node at(1.5,1.4){双球自由：内力成对};\end{scope}
+
+\end{tikzpicture}}\par 图\ref{fig:e6:system-boundary}两种模型都可满足能量守恒，但允许使用的动量守恒式不同。
+
+带电粒子在电容器中运动时，若其电量足够小，可忽略它对极板电荷和电势的反作用，把场当作已知背景。若粒子在两板间反复搬运有限电荷，极板电量和电压会改变，就应把电容器的场能及电源也纳入系统。逐滴充电题与普通试探粒子题的区别正是前一滴已经改变下一滴遇到的场。
+
+细线、轨道和固定轴的约束力可能不作功，却仍改变动量方向；有摩擦或阻力时还要保留耗散。每使用一个守恒式，都应说明系统包含谁、外力或外功为何可忽略。这样的说明既是规范解答的一部分，也能在图上直接检查：约束点固定、速度沿允许方向、力是否确实与位移垂直。
+
+

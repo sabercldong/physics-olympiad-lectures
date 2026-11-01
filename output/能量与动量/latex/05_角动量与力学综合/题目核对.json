@@ -1,0 +1,92 @@
+[
+  {
+    "id": "em5:example:1",
+    "title": "撞到轻杆末端的小球",
+    "check": "第五讲例1；手记13"
+  },
+  {
+    "id": "em5:example:2",
+    "title": "小孔两侧的相连物体",
+    "check": "第五讲例2；手记12"
+  },
+  {
+    "id": "em5:example:3",
+    "title": "斜置双球杆撞墙",
+    "check": "第五讲例3；手记13"
+  },
+  {
+    "id": "em5:example:4",
+    "title": "运动系统中弹簧的功",
+    "check": "第五讲例4"
+  },
+  {
+    "id": "em5:example:5",
+    "title": "赤道发射的最低有用能量",
+    "check": "第五讲例5"
+  },
+  {
+    "id": "em5:example:6",
+    "title": "自由小车上的弹簧发射器",
+    "check": "第五讲例6"
+  },
+  {
+    "id": "em5:example:7",
+    "title": "大炮反冲对射程的影响",
+    "check": "第五讲例7；补清发射条件"
+  },
+  {
+    "id": "em5:example:8",
+    "title": "竖直杆与活动半球碗",
+    "check": "第五讲例8"
+  },
+  {
+    "id": "em5:example:9",
+    "title": "跳到自由小车另一端",
+    "check": "第五讲例9"
+  },
+  {
+    "id": "em5:example:10",
+    "title": "活动板上倒下的轻杆",
+    "check": "第五讲例10"
+  },
+  {
+    "id": "em5:example:11",
+    "title": "滑轮托盘与弹簧分离",
+    "check": "第五讲例11"
+  },
+  {
+    "id": "em5:example:12",
+    "title": "半球碗内的三维回转",
+    "check": "手记12、13；三维角动量与能量"
+  },
+  {
+    "id": "em5:example:13",
+    "title": "圆锥摆关于不同点的角动量",
+    "check": "手记12；参考点与分量"
+  },
+  {
+    "id": "em5:example:14",
+    "title": "可转动螺旋导线上的小环",
+    "check": "手记14；活动螺旋约束"
+  },
+  {
+    "id": "em5:example:15",
+    "title": "竖直滑杆与自由斜面",
+    "check": "手记9；活动斜面与竖直杆"
+  },
+  {
+    "id": "em5:drill:1",
+    "title": "落球在运动车面上的摩擦冲量",
+    "check": "第五讲练习1"
+  },
+  {
+    "id": "em5:drill:2",
+    "title": "桌边麦管与两只苍蝇",
+    "check": "第五讲练习2"
+  },
+  {
+    "id": "em5:drill:3",
+    "title": "叠放弹性小球的反弹",
+    "check": "第五讲练习3"
+  }
+]

@@ -1,0 +1,159 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e4:drill:1}\textbf{沿实际径向间隙积分势差}\par\nobreak
+图\ref{fig:e4:drill:1:s} 间隙的径向场为 $kQ/r^2$，以 $r$ 为径向积分变量，电极端点为 $R,R+d$：
+\[
+ U=kQ\int_R^{R+d}r^{-2}\dd r
+ =kQ[-r^{-1}]_R^{R+d}
+ =kQ\left(\frac1R-\frac1{R+d}\right)
+ =\frac{kQd}{R(R+d)}.
+\]
+故 $C=4\pi\varepsilon_0R(R+d)/d$。
+\typeout{ECFIG:fig:e4:drill:1:p}\fig{fig:e4:drill:1:p}{从内球到外球沿径向积分势差}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.2);\draw[world](0,0)circle(1.8);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(-.85,.85)node[midway,below left]{$R$};\draw[dim](1.2,0)--(1.8,0)node[midway,below]{$d$};\node[above]at(0,1.85){外球内半径 $R+d$};
+
+\draw[flow](.87,.87)--(1.25,1.25);\node[right]at(2.4,.9){$E(r)=kQ/r^2$};\node[right]at(2.4,.1){$R<r<R+d$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{提出平行板主项并解释修正所用的面积}\par\nobreak
+按 图\ref{fig:e4:drill:1:p} 提出平面主项，$C=[\varepsilon_0(4\pi R^2)/d](1+d/R)$。对球形结构这不是仅近似，而是以所选内球面积表示的精确分解；相对平面主项的一阶修正为 $d/R$。若用中面面积作主项，修正形式会变，不能混淆面积定义。\end{drillsolution}
+\begin{drillsolution}{e4:drill:2}\textbf{由中性浮板确定串联电荷关系}\par\nobreak
+图\ref{fig:e4:drill:2:s} 两间隙电容分别为 $\varepsilon_0S/x$ 和 $\varepsilon_0S/(d-x)$。浮板中性使它们串联，
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去浮板位置求端口电容}\par\nobreak
+倒数相加得 $C^{-1}=d/(\varepsilon_0S)$，所以等效电容与浮板位置无关。
+\typeout{ECFIG:fig:e4:drill:2:p}\fig{fig:e4:drill:2:p}{浮板两侧场强相同，电压力相反}{\begin{tikzpicture}
+
+\foreach \y/\n in{3/A,1.8/M,0/B}{\draw[world](0,\y)--(4.5,\y);\node[right]at(4.5,\y){$\n$};}\node at(.6,2.1){$-Q$};\node at(.6,1.5){$+Q$};\draw[flow](1.5,2.85)--(1.5,1.95)node[midway,right]{$E$};\draw[flow](1.5,1.5)--(1.5,.3)node[midway,right]{$E$};\draw[force](3.4,1.8)--(3.4,2.6)node[right]{$F_{\text{上}}$};\draw[force](3.4,1.8)--(3.4,1)node[right]{$F_{\text{下}}$};\node at(2.2,-.7){图示取上板正、下板负};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两侧压力并检查适用条件}\par\nobreak
+在 图\ref{fig:e4:drill:2:p} 浮板两面的电荷等量异号，两侧场大小相同，电压强 $\varepsilon_0E^2/2$ 相同、方向相反，净力为零。也可由任一正确约束下 $C$ 不随 $x$ 变化，得到场力零。若浮板净量非零，两侧场不再相同，本结论不适用。\end{drillsolution}
+\begin{drillsolution}{e4:drill:3}\textbf{按相邻间隙逐一识别共同端口}\par\nobreak
+在 图\ref{fig:e4:drill:3:s} 中每一个间隙都跨同一对端口，故有 $n-1$ 个 $C_0=\varepsilon_0S/d$ 并联。总电容 $C=(n-1)\varepsilon_0S/d$。
+\typeout{ECFIG:fig:e4:drill:3:p}\fig{fig:e4:drill:3:p}{每一相邻间隙都跨同一对端口}{\begin{tikzpicture}
+
+\draw(0,0)--(0,3);\draw(4,0)--(4,3);\foreach \y in{0,1.5,3}{\draw(0,\y)to[C,l={$C_0$}](4,\y);}\node[left]at(0,1.5){$A$};\node[right]at(4,1.5){$B$};\node at(2,-.8){省略中间支路，共 $n-1$ 支};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查内外极片的表面计数}\par\nobreak
+图\ref{fig:e4:drill:3:p} 对内板，两侧分别面对相反端口，每面各贡献相应电荷；外侧两板各只有一面参与主要间隙场。数的是间隙 $n-1$，不是板数 $n$，也不是把每块内板再当作独立电容。\end{drillsolution}
+\begin{drillsolution}{e4:drill:4}\textbf{先把每只耐压换成允许电量}\par\nobreak
+图\ref{fig:e4:drill:4:s} 中串联电量相同，分别受 $Q\le C_1U_{1\max}=200\,\mu\mathrm C$、$Q\le C_2U_{2\max}=240\,\mu\mathrm C$ 限制，因此先达到第一只耐压。最大电量 $200\,\mu\mathrm C$。
+\typeout{ECFIG:fig:e4:drill:4:p}\fig{fig:e4:drill:4:p}{相同串联电量下，第一只先达到额定电压}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C_1=2\,\mu\mathrm F$}](3.6,0)to[C,l={$C_2=3\,\mu\mathrm F$}](7.2,0);\node[left]at(0,0){$A$};\node[above]at(3.6,.1){$M$};\node[right]at(7.2,0){$B$};\node at(1.8,-1){$U_1=100\,\mathrm V$};\node at(5.4,-1){$U_2=200/3\,\mathrm V<80\,\mathrm V$};\node at(3.6,1.4){每只电量大小 $Q=200\,\mu\mathrm C$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同一电量求两只实际分压}\par\nobreak
+图\ref{fig:e4:drill:4:p} 此时 $U_1=100\,\mathrm V$、$U_2=200/3\,\mathrm V$，总压为 $500/3\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求总储能并核对限制条件}\par\nobreak
+等效电容 $6/5\,\mu\mathrm F$，储能
+\[
+ W=\frac{Q^2}2(1/C_1+1/C_2)=\frac1{60}\,\mathrm J.
+\]
+总耐压不是两额定耐压直接相加，只有两只同时恰到耐压时才可相加；实际漏电不一致也会改变长期分压，不能用理想瞬时模型替代均压设计。\end{drillsolution}
+\begin{drillsolution}{e4:drill:5}\textbf{对最终上端组守恒电荷}\par\nobreak
+图\ref{fig:e4:drill:5:s} 合并正端的电量守恒：$CU=2CV_f$，故 $V_f=U/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求转移电量}\par\nobreak
+原带电电容由 $CU$ 变为 $CU/2$，向另一只转移 $CU/2$。
+\typeout{ECFIG:fig:e4:drill:5:p}\fig{fig:e4:drill:5:p}{连接后同一上端组的电荷在两只电容间分配}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$C_1=C$}](0,3);\draw(5,0)to[C,l={$C_2=C$}](5,3);\draw(0,3)--(5,3);\draw(0,0)--(5,0);\node at(1.1,2.5){$+CU/2$};\node at(3.9,2.5){$+CU/2$};\node at(2.5,-.7){共同电压 $U/2$};\draw[flow](1,3.2)--(3.4,3.2)node[midway,above]{$\Delta q=CU/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两只电容各自与总储能的变化}\par\nobreak
+图\ref{fig:e4:drill:5:p} 初储能 $CU^2/2$，末储能 $2[C(U/2)^2/2]=CU^2/4$，释放 $CU^2/4$。第二只获得的储能只有 $CU^2/8$，不等于第一只减少的 $3CU^2/8$，差额正是连接过程释放的能量。电荷守恒不意味着场能保持不变。\end{drillsolution}
+\begin{drillsolution}{e4:drill:6}\textbf{同时检查几何与初始电荷的对称性}\par\nobreak
+图\ref{fig:e4:drill:6:s} 对上下中点的交换保持端口与所有电容不变，两中点原净量也同为零，唯一性使其电势相同。因此桥支 $C_0$ 上无电压、无电荷，不参与端口电量。
+\typeout{ECFIG:fig:e4:drill:6:p}\fig{fig:e4:drill:6:p}{两个中点均为 $U/2$，桥支的两端没有势差}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C$}](3,2.3)to[C,l={$C$}](6,0)to[C,l_={$C$}](3,-2.3)to[C,l_={$C$}](0,0);\draw[gray](3,2.3)to[C,l={$C_0,\ Q=0$}](3,-2.3);\node[left]at(0,0){$A:U$};\node[right]at(6,0){$B:0$};\node[above]at(3,2.5){$M:U/2$};\node[below]at(3,-2.5){$N:U/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{去掉无电压桥支后化简两条支路}\par\nobreak
+图\ref{fig:e4:drill:6:p} 剩上、下两条各为两个 $C$ 串联，每条 $C/2$，再并联得 $C_{AB}=C$。若某中点预先带净电荷，上下对称的边界条件被破坏，桥支不再一定无电荷。\end{drillsolution}
+\begin{drillsolution}{e4:drill:7}\textbf{把仪器输入电容纳入最终节点}\par\nobreak
+图\ref{fig:e4:drill:7:s} 接入后两者并联，正端组守恒 $CU_0=(C+C_m)U_f$，所以 $U_f=CU_0/(C+C_m)$。
+\typeout{ECFIG:fig:e4:drill:7:p}\fig{fig:e4:drill:7:p}{闭合后两电容共享同一电压，上端组总量仍为 $CU_0$}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$C$}](0,3);\draw(5,0)to[C,l={$C_m$}](5,3);\draw(0,3)--(5,3);\draw(0,0)--(5,0);\node at(2.5,3.8){上端组：$CU_f+C_mU_f=CU_0$};\node at(2.5,-.7){读数 $U_f$};\draw[guide](4.2,.5)rectangle(6.3,2.5);\node[left]at(0,2.3){$+$};\node[right]at(5,2.3){$+$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由精确相对扰动求输入电容上限}\par\nobreak
+在 图\ref{fig:e4:drill:7:p} 相对扰动 $(U_0-U_f)/U_0=C_m/(C+C_m)$。要求不超过 $0.01$，整理为 $0.99C_m\le0.01C$，即 $C_m\le C/99$。近似 $C_m/C\le1\%$ 在小扰动时可用，但精确界限应由分式求得。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分瞬时分配与长期放电}\par\nobreak
+无漏电只防止长期衰减，不能消除连接时的电荷分配。\end{drillsolution}
+\begin{drillsolution}{e4:drill:8}\textbf{只取另一板产生的场计算吸引力}\par\nobreak
+图\ref{fig:e4:drill:8:s} 每板仅受另一板场 $Q/(2\varepsilon_0S)$ 的作用，故吸引力 $F=Q^2/(2\varepsilon_0S)$，在忽略边缘条件下与间距无关。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由准静态外力求机械功}\par\nobreak
+缓慢拉开时外力沿间距增大的方向，且大小 $F$ 恒定，故
+\[
+ W_{\text{外}}=\int_{d_1}^{d_2}F\,\dd d
+ =F[d]_{d_1}^{d_2}=F(d_2-d_1).
+\]
+\typeout{ECFIG:fig:e4:drill:8:p}\fig{fig:e4:drill:8:p}{阴影为新增场区域，外力与电场吸引力方向相反}{\begin{tikzpicture}
+\fill[blue!12](0,1.3)rectangle(4.5,2.6);
+\draw[world](0,0)--(4.5,0)(0,2.6)--(4.5,2.6);\draw[guide](0,1.3)--(4.5,1.3);\node[right]at(4.5,2.6){$+Q$};\node[right]at(4.5,0){$-Q$};\draw[dim](-.6,0)--(-.6,1.3)node[midway,left]{$d_1$};\draw[dim](-1.4,0)--(-1.4,2.6)node[midway,left]{$d_2$};
+
+\draw[force](1.2,2.6)--(1.2,3.7)node[right]{$F_{\text{外}}$};\draw[force](3.4,2.6)--(3.4,1.5)node[right]{$F_{\text{电}}$};\draw[flow](2.3,1.1)--(2.3,.2)node[midway,right]{$E$};\node at(2.25,-.7){阴影体积 $S(d_2-d_1)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用新增场区域的能量独立验证}\par\nobreak
+在 图\ref{fig:e4:drill:8:p} 间隙场 $E=Q/(\varepsilon_0S)$，能量密度 $w=\varepsilon_0E^2/2$，对图中的新增场区域逐层积分，每层厚 $\dd z$、体积 $S\dd z$。
+由于 $w$ 和 $S$ 都不随 $z$ 变化，
+\[
+ \Delta W_{\text{场}}=\int_{d_1}^{d_2}wS\,\dd z
+ =wS[z]_{d_1}^{d_2}
+ =\frac{Q^2(d_2-d_1)}{2\varepsilon_0S},
+\]
+与外功一致。若用 $QE$ 直接求力，会把本板自身的场也算进去而多一倍。\end{drillsolution}
+\begin{drillsolution}{e4:drill:9}\textbf{标全节点并建立旋转后的互补关系}\par\nobreak
+图\ref{fig:e4:drill:9:s} 取 $V_A=0,V_B=U$。将电势除以 $U$，按从左到右记上轨为 $u_0,u_1,u_2,1$，下轨为 $0,w_1,w_2,w_3$。旋转180度交换端口使 $u_0=1-w_3,u_1=1-w_2,u_2=1-w_1$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对三个独立浮置组列净量方程}\par\nobreak
+对左上、上轨中间两点写净量零，
+\[
+ 2u_0-u_1=0,\quad3u_1-u_0-u_2-w_1=0,\quad
+ 3u_2-u_1-1-w_2=0.
+\]
+\typeout{ECFIG:fig:e4:drill:9:p}\fig{fig:e4:drill:9:p}{所有节点的电势与端口 $B$ 相连的两只电容}{\begin{tikzpicture}
+\foreach \x in{0,2.5,5,7.5}{\draw(\x,0)to[C](\x,2.5);}\foreach \x in{0,2.5,5}{\draw(\x,0)to[C](\x+2.5,0);\draw(\x,2.5)to[C](\x+2.5,2.5);}\fill(0,2.5)circle(2pt);\node[above]at(0,2.8){$1/5$};\fill(0,0)circle(2pt);\node[below]at(0,-.3){$0$};\fill(2.5,2.5)circle(2pt);\node[above]at(2.5,2.8){$2/5$};\fill(2.5,0)circle(2pt);\node[below]at(2.5,-.3){$1/3$};\fill(5,2.5)circle(2pt);\node[above]at(5,2.8){$2/3$};\fill(5,0)circle(2pt);\node[below]at(5,-.3){$3/5$};\fill(7.5,2.5)circle(2pt);\node[above]at(7.5,2.8){$1$};\fill(7.5,0)circle(2pt);\node[below]at(7.5,-.3){$4/5$};\node[left]at(0,0){$A$};\node[right]at(7.5,2.5){$B$};\node at(3.75,3.8){节点数字为 $V/U$，十只电容均为 $C$};\draw[guide](6.9,1.9)rectangle(8.2,3.2);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求全网节点势}\par\nobreak
+在 图\ref{fig:e4:drill:9:p} 用互补关系代入，第二式化为 $3u_1-u_0-1=0$，所以 $u_0=1/5,u_1=2/5$。第三式为 $3u_2-2=0$，得 $u_2=2/3$，故 $w_1=1/3,w_2=3/5,w_3=4/5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只累计实际接到端口的两支电量}\par\nobreak
+端口 $B$ 只接上轨相邻电容和末竖档，电量
+\[
+ Q_B=C(U-u_2U)+C(U-w_3U)=\frac8{15}CU.
+\]
+所以等效电容为 $8C/15$。节点方程应计算实际端口总电荷，不能把桥式网络强行看成几个明显串联。\end{drillsolution}

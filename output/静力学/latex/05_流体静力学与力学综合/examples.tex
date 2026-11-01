@@ -1,0 +1,226 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[钢块浮在水银与水中]\label{s5:example:1}
+边长$l$的钢立方体密度$7.89\,\mathrm{g/cm^3}$，水银密度$13.6\,\mathrm{g/cm^3}$。先求露出水银的高度；再在水银上加水，水面恰与钢块顶面平齐，求水层厚度。
+\end{example}
+\fig{fig:s5:example:1:s}{题设：钢块浮在水银与水中}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(4,0)--(4,3);\fill[blue!8](0,.05)rectangle(4,2);\draw[guide](0,2)--(4,2);\draw[world](1.2,1.072)rectangle(2.8,2.672);\node at(2,2.4){钢};\node at(.5,1){汞};\draw[dim](3.4,1.072)--(3.4,2.672)node[midway,right]{$l$};\draw[dim](.7,1.072)--(.7,2)node[midway,left]{$d$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求只有水银时的浸没比例}\par\nobreak
+图\ref{fig:s5:example:1:s}先设水银浸没深度$d$。浮力$\rho_{\rm Hg}gl^2d$平衡$\rho_sgl^3$，所以露出比例为$1-d/l=1-\rho_s/\rho_{\rm Hg}=0.41985$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{加水后按界面分出两段排液体积}\par\nobreak
+第一阶段露出高度为$l-d=0.41985l$。第二阶段水面与顶面齐平，图\ref{fig:s5:example:1:p}中的水层厚$x$就是水内钢块的高度；剩余$l-x$浸在水银中。应先按界面分出两段排液体积，再分别乘各自密度。
+\fig{fig:s5:example:1:p}{解答过程：钢块浮在水银与水中}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(4,0)--(4,3);\fill[blue!8](0,.05)rectangle(4,2.2);\draw[guide](0,2.2)--(4,2.2);\draw[guide](0,1.475)--(4,1.475);\draw[world](1.2,.6)rectangle(2.8,2.2);\node at(.5,1.8){水};\node at(.5,.8){汞};\draw[dim](4.5,1.475)--(4.5,2.2)node[midway,right]{$x$};\draw[dim](4.5,.6)--(4.5,1.475)node[midway,right]{$l-x$};\draw[force,blue](2,1.8375)--(2,2.8)node[above]{$B_w$};\draw[force,red](2,1.0375)--(2,1.5)node[right]{$B_{\rm Hg}$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成分层浮力并比较前后高度}\par\nobreak
+图\ref{fig:s5:example:1:p}的两段浮力为$B_w=\rho_wgl^2x$、$B_{\rm Hg}=\rho_{\rm Hg}gl^2(l-x)$。竖直平衡除以$gl^2$，得$\rho_wx+\rho_{\rm Hg}(l-x)=\rho_sl$。将浮力式除以$gl^2$后，$\rho_wx+\rho_{\rm Hg}l-\rho_{\rm Hg}x=\rho_sl$，把含$x$的项移到同一边得$(\rho_{\rm Hg}-\rho_w)x=(\rho_{\rm Hg}-\rho_s)l$，解得
+\[
+\frac xl=\frac{\rho_{\rm Hg}-\rho_s}{\rho_{\rm Hg}-\rho_w}
+=\frac{5.71}{12.6}=0.45317.
+\]
+水的浮力使块体上浮，所需水层厚度大于初始露出高度。压强若分别逐面计算也应得到同一结果。\end{solution}
+\begin{question}\begin{example}[悬杆入水后的倾斜]\label{s5:example:2}
+均匀细杆长$l$、截面积$S$、密度$\rho_b<\rho$，上端由轻绳悬挂，缓慢进入密度$\rho$的水。杆上端$A$高于液面$d$，取$0<d<l$，求竖直构型的失稳条件及倾斜平衡角。
+\end{example}
+\fig{fig:s5:example:2:s}{初始杆竖直，杆上端$A$在液面上方，绳在$A$处施向上拉力}{\begin{tikzpicture}
+
+\fill[blue!8](-1,-1.5)rectangle(2,1.5);\draw[world](-1,1.5)--(2,1.5);
+\draw[world,line width=1.2pt](0,3)--(0,-1);\draw[world](0,3)--(0,3.8);
+\fill(0,3)circle(2pt)node[left]{$A$};\draw[dim](1.5,1.5)--(1.5,3)node[midway,right]{$d$};
+\draw[dim](-.6,-1)--(-.6,3)node[midway,left]{$l$};\node at(1,-.5){$\rho$};\node[right]at(0,2.3){$\rho_b,S$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以液面交点确定水上段和浮心}\par\nobreak
+图\ref{fig:s5:example:2:s}中令杆与竖直夹角$\theta$。水上杆长$a=d/\cos\theta$，浸没杆长$l-a$。重力作用于$l/2$，浮力作用于距上端$(l+a)/2$处。
+\fig{fig:s5:example:2:p}{解答过程：悬杆入水后的倾斜}{\begin{tikzpicture}[scale=.88]\draw[guide](-1,1.8)--(3.2,1.8);\draw[world](0,3)--(2,-1);\draw[guide](0,3)--(0,1.8);\fill(0,3)circle(2pt)node[left]{$A$};\fill(1,1)circle(2pt)node[left]{$C$};\fill(1.3,.4)circle(2pt);\draw[guide](1.3,.4)--(2,.6)node[right]{$B_0$};\draw[force](1,1)--(1,-.3)node[right]{$mg$};\draw[force](1.3,.4)--(1.3,1.4)node[above right]{$B$};\draw[force](0,3)--(0,3.65)node[above]{$T$};\draw[guide](0,2.35)arc(-90:-63.435:.65);\node at(.5,2.45){$\theta$};\draw[dim](3,1.8)--(3,3)node[midway,right]{$d$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对杆上端取矩求倾斜平衡}\par\nobreak
+图\ref{fig:s5:example:2:p}中的液面交点把杆分成$a$与$l-a$两段。$B_0$是浸没杆段中点，浮力$B$通过此点，重力通过整杆中点$C$。对上端$A$取矩，非竖直平衡要求
+\[
+\rho_b Slg\frac l2\sin\theta
+=\rho S(l-a)g\frac{l+a}{2}\sin\theta,
+\]
+因为倾斜分支有$\sin\theta\ne0$，可约去$Sg\sin\theta/2$，得$\rho_bl^2=\rho(l-a)(l+a)=\rho(l^2-a^2)$。取水上杆长$a>0$，所以$a=l\sqrt{1-\rho_b/\rho}$，即$\cos\theta=d/[l\sqrt{1-\rho_b/\rho}]$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留净力矩判断竖直与倾斜分支}\par\nobreak
+为判断竖直构型，不能预先约去$\sin\theta$。取促进正偏角的力矩为正，保留$a=d/\cos\theta$，净力矩为
+\[
+\tau_\theta=\frac{\rho Sg}{2}\left(d_c^2-d^2\sec^2\theta\right)\sin\theta,
+\qquad d_c=l\sqrt{1-\rho_b/\rho}.
+\]
+小角度下 $\sec^2\theta=1+O(\theta^2)$、$\sin\theta=\theta+O(\theta^3)$，故一次力矩系数为 $(\rho Sg/2)(d_c^2-d^2)$。在悬绳张力允许的竖直构型上，$d>d_c$时产生线性回复，$d<d_c$时促进偏转。此时非零平衡分支由 $\cos\theta=d/d_c$给出。
+为判断倾斜分支，先对乘积求导，并保留 $\sec^2\theta$的链式导数：
+\[\frac{\dd\tau_\theta}{\dd\theta}
+ =\frac{\rho Sg}{2}\left[-2d^2\sec^2\theta\tan\theta\sin\theta
+ +(d_c^2-d^2\sec^2\theta)\cos\theta\right].\]
+在非零平衡角处第二项为零，所以导数为 $-\rho Sg d^2\sec^2\theta\tan\theta\sin\theta<0$，该分支局部稳定。下面还需检查所有候选构型的绳张力。
+
+\fig{fig:s5:example:2:torque}{临界点的一次回复项消失，三次项仍指向平衡位置}{\begin{tikzpicture}
+
+\draw[axis](-2.5,0)--(2.7,0)node[right]{$\theta$};\draw[axis](0,-1.6)--(0,1.7)node[above]{$\tau_\theta$};
+\draw[world,blue,domain=-2:2]plot(\x,{-.55*\x});\draw[world,red,domain=-2:2]plot(\x,{-.13*(\x)^3});
+\node[right,blue]at(2,-1.1){$d>d_c$：一次回复};\node[left,red]at(-2,1.04){$d=d_c$：三次回复};
+
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{补判临界状态并检验绳张力}\par\nobreak
+图\ref{fig:s5:example:2:torque}显示两种回复项在原点附近的差别。
+
+当$d=d_c$时，$\tau_\theta=-(\rho Sg d_c^2/2)\tan^2\theta\sin\theta\simeq-(\rho Sg d_c^2/2)\theta^3$，仍然回复，属于较弱的稳定平衡；临界点本身不应并入失稳区。倾斜分支上$a=d_c$，绳张力为
+\[
+T=\rho Sg\left[d_c-l(1-\rho_b/\rho)\right]>0,
+\]
+因为$0<1-\rho_b/\rho<1$时其平方根大于它本身，倾斜分支的绳张力为正，且 $a=d_c<l$保证确有浸没部分。
+竖直构型的张力另由竖直力平衡给出
+\[T_{\rm vert}=\rho_b Slg-\rho S(l-d)g
+ =\rho Sg(d-d_T),\qquad d_T=l(1-\rho_b/\rho).\]
+由于 $0<d_T<d_c$，$d>d_c$的竖直分支线性稳定，$d=d_c$仍有三次回复；$d_T<d<d_c$的竖直分支虽可绷紧平衡，但不稳定。$d=d_T$是零张力边界，须允许绳松弛后另判；$0<d<d_T$则竖直静止所需张力为负，根本不能保持该悬挂构型，不能只称其为不稳定平衡。对全部 $0<d<d_c$，前述倾斜平衡仍具有正张力。图\ref{fig:s5:example:2:branches}把张力边界与稳定性边界分开，两者不能互相替代。
+\fig{fig:s5:example:2:branches}{竖直候选构型先检查绳张力，再检查回复力矩}{\begin{tikzpicture}
+\draw[axis](0,0)--(9.4,0)node[right]{$d$};
+\foreach \x/\lab in {0/0,2.6/{d_T},6/{d_c},9/l}{\draw(\x,-.12)--(\x,.12);\node[below]at(\x,-.15){$\lab$};}
+\draw[world,red](.1,0)--(2.5,0);
+\draw[world,orange](2.7,0)--(5.9,0);
+\draw[world,blue](6.1,0)--(8.9,0);
+\node[red,align=center]at(1.3,.8){需负张力\\竖直构型不可维持};
+\node[orange,align=center]at(4.3,.8){正张力\\竖直不稳定};
+\node[blue,align=center]at(7.5,.8){正张力\\竖直线性稳定};
+\node[align=center]at(2.6,-1){零张力边界};
+\node[align=center]at(6,-1){三次回复，弱稳定};
+\end{tikzpicture}}
+\end{solution}
+\begin{question}\begin{example}[上宽下窄容器中液体分层]\label{s5:example:3}
+容器横截面积随高度严格增加。初始均匀混合液体密度$\bar\rho$，后来分成上层$\rho_1$、下层$\rho_2>\rho_1$，体积分别$V_1,V_2$，总体积不变且无收缩。比较底压。
+\end{example}
+\fig{fig:s5:example:3:s}{题设：上宽下窄容器中液体分层}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(1,0)--(3,0)--(4,3);\draw[guide](.33,2)--(3.67,2);\draw[guide](.67,1)--(3.33,1);\node at(2,.5){$\rho_2$};\node at(2,1.5){$\rho_1,V_1$};\draw[dim](4.4,1)--(4.4,2)node[midway,right]{$h_1$};\draw[dim](4.4,0)--(4.4,1)node[midway,right]{$h_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用平均截面区分质量与高度权重}\par\nobreak
+图\ref{fig:s5:example:3:s}层厚为$h_1,h_2$，令平均截面积$S_1=V_1/h_1$、$S_2=V_2/h_2$，上宽下窄给$S_1>S_2$。总质量守恒$\bar\rho=(\rho_1V_1+\rho_2V_2)/(V_1+V_2)$。
+\fig{fig:s5:example:3:p}{同一液面深度下，分层改变压强折线斜率；底压差由平均截面决定}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.2,0)node[right]{$z$向下};\draw[axis](0,0)--(0,3.4)node[above]{$p-p_0$};
+\draw[world,blue](0,0)--(2,.8)--(3.5,2.9);\draw[world,red](0,0)--(3.5,2.3);
+\draw[guide](2,0)--(2,.8);\draw[guide](3.5,0)--(3.5,2.9);
+\node[below]at(2,0){$h_1$};\node[below]at(3.5,0){$h_1+h_2$};
+\node[right,blue]at(3.5,2.9){分层后};\node[right,red]at(3.5,2.3){混合时};
+\draw[dim](5.2,2.3)--(5.2,2.9)node[midway,right]{$\Delta p$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{写出两状态底压差}\par\nobreak
+图\ref{fig:s5:example:3:p}分层前后液面相同，底压差
+\[
+\Delta p=g[\rho_1h_1+\rho_2h_2-\bar\rho(h_1+h_2)]
+=g(\rho_2-\rho_1)\frac{V_1V_2}{V_1+V_2}
+\left(\frac1{S_2}-\frac1{S_1}\right)>0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用截面单调性判断符号}\par\nobreak
+化简时可先写$\rho_1-\bar\rho=-(\rho_2-\rho_1)V_2/(V_1+V_2)$、$\rho_2-\bar\rho=(\rho_2-\rho_1)V_1/(V_1+V_2)$，再代入$h_i=V_i/S_i$。这样显式保留了质量平均密度与沿高度平均密度的差别。直筒容器两平均截面相同，差为零；上窄下宽则反号。这样同时说明质量守恒为何不能直接推出底压不变。\end{solution}
+\begin{question}\begin{example}[半球壳何时被水顶起]\label{s5:example:4}
+半径$R$的薄半球壳开口向下贴在水平桌面上，顶部小孔注水。当水面到顶部时壳刚开始抬起。忽略孔面积，水密度$\rho$，求壳质量。
+\end{example}
+\fig{fig:s5:example:4:s}{半球内注满水，顶部小孔连通大气；底部与桌面围成水体}{\begin{tikzpicture}
+
+\fill[blue!10](-2,0)arc(180:0:2)--cycle;\draw[world](-2,0)arc(180:0:2);\draw[world](-2.6,0)--(2.6,0);
+\draw[guide](0,2)--(0,2.8);\node[above]at(0,2.8){小孔，$p=p_0$};
+\draw[guide](0,0)--(1.414,1.414)node[midway,right]{$R$};\node[below]at(0,0){$O$};\node at(-.8,.65){水$\rho$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先隔离水体求壳水之间的合力}\par\nobreak
+图\ref{fig:s5:example:4:s}的孔口连通大气，故底部表压$p_b=\rho gR$。内外大气压抵消后，取壳内水体为研究对象：底面的向上压力$F_b=p_b\pi R^2$，水重$W_w=2\pi\rho gR^3/3$。设壳对水的竖直压力合力为向下的$F$，由图\ref{fig:s5:example:4:p}左图，$F_b-W_w-F=0$。
+
+\fig{fig:s5:example:4:p}{水体与壳体分别受力，接触压力大小相等、方向相反}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[blue!10](-1.5,0)arc(180:0:1.5)--cycle;\draw[world](-1.5,0)arc(180:0:1.5);
+\draw[force,blue](0,-1.1)--(0,0)node[pos=0,below]{$F_b$};
+\draw[force](0,.5625)--(0,-.35)node[right]{$W_w$};
+\draw[force,red](0,1.6)--(0,.8)node[right]{$F$};\node at(0,2.4){水体};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+\draw[world](-1.5,0)arc(180:0:1.5);\draw[guide](-2,0)--(2,0);
+\draw[force,red](0,1.5)--(0,2.2)node[right]{$F$};\draw[force](0,.75)--(0,-.55)node[right]{$mg$};
+\node at(0,2.8){壳体};\node at(0,-1.2){刚抬起时边缘支持力为零};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在刚抬起边界对壳列平衡}\par\nobreak
+图\ref{fig:s5:example:4:p}右图中，水对壳的力为向上的$F$；刚抬起时边缘支持力降为零，故$F=mg$。把它代入水体方程，得
+\[
+\rho g\pi R^3=mg+\frac23\rho g\pi R^3,\quad
+m=\frac13\pi\rho R^3.
+\]
+这也等于壳受到的净向上水压力除以$g$。均匀大气压对内外合力抵消，若壳外另有压差则须加入。\end{solution}
+\begin{question}\begin{example}[注水杯的最低总质心]\label{s5:example:5}
+空圆柱杯质量$M$，空杯质心高$h$，底面积$S$，水密度$\rho$。杯足够高，忽略壁厚。求加水时系统质心最低的位置。
+\end{example}
+\fig{fig:s5:example:5:s}{题设：注水杯的最低总质心}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(4,0)--(4,3);\fill[blue!8](0,.02)rectangle(4,2);\draw[guide](0,2)--(4,2);\draw[axis](4.6,0)--(4.6,3.1)node[above]{$z$};\draw[dim](-.4,0)--(-.4,2)node[midway,left]{$x$};\node at(2,.6){$S$};\fill(.12,1.2)circle(2pt)node[right]{$C_0$};\draw[dim](.5,0)--(.5,1.2)node[midway,right]{$h$};\node at(2,2.6){空杯质量$M$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按杯与水两部分写总质心}\par\nobreak
+图\ref{fig:s5:example:5:s}水深$x$，水质量$\rho Sx$、质心高$x/2$，所以
+\[
+z(x)=\frac{Mh+\rho Sx^2/2}{M+\rho Sx}.
+\]
+\fig{fig:s5:example:5:p}{解答过程：注水杯的最低总质心}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{$z$};\draw[world,domain=0:4.5,samples=80]plot(\x,{(1.5+.25*\x*\x)/(1+.5*\x)});\draw[guide](0,0)--(3,3);\node at(3.6,.7){$z=x$处取极小};\fill(1.1623,1.1623)circle(2pt);\draw[guide](1.1623,1.1623)--(1.1623,0)node[below]{$x_*$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求导并解唯一非负驻点}\par\nobreak
+图\ref{fig:s5:example:5:p}对分式使用商法则，
+\[
+z'(x)=
+\frac{\rho Sx(M+\rho Sx)-\rho S(Mh+\rho Sx^2/2)}
+{(M+\rho Sx)^2}.
+\]
+展开分子并合并$\rho^2S^2x^2$项，分子化为$\rho S[Mx+\rho Sx^2/2-Mh]$。唯一非负驻点满足$\rho Sx^2+2Mx-2Mh=0$，故
+\[
+x_*=\frac{\sqrt{M^2+2M\rho Sh}-M}{\rho S},\qquad z_{\min}=x_*.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{证明水面等于最低质心高度}\par\nobreak
+驻点条件又给$Mh=Mx_*+\rho Sx_*^2/2$，代回$z$的分子，得到$Mh+\rho Sx_*^2/2=x_*(M+\rho Sx_*)$，故$z(x_*)=x_*$，而不是另作猜测。导数分子严格增加，先负后正，确为最低点。水面与总质心等高也能从“新加薄层不再使质心下降”理解。\end{solution}
+\begin{question}\begin{example}[锥形活塞的均匀压力合力]\label{s5:example:6}
+重力可忽略的浅液体，表压均匀为$P$。锥台活塞的斜侧面与液体接触，两水平截面半径分别为上$R$、下$r$且$R>r$，液体位于斜面外侧。求侧面压力合力。
+\end{example}
+\fig{fig:s5:example:6:s}{锥台上大下小，液体从斜面外侧沿法线压向活塞}{\begin{tikzpicture}
+
+\draw[world](-2,2)--(-.7,0)--(.7,0)--(2,2);\draw[guide](-2,2)--(2,2);\draw[guide](0,-.5)--(0,2.7);
+\draw[dim](0,2.5)--(2,2.5)node[midway,above]{$R$};\draw[dim](0,-.4)--(.7,-.4)node[midway,below]{$r$};
+\draw[force,blue](-2.5,.3)--(-1.35,1.05)node[pos=0,left]{$P$};
+\draw[force,blue](2.5,.3)--(1.35,1.05)node[pos=0,right]{$P$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用轴对称和虚拟封口面}\par\nobreak
+图\ref{fig:s5:example:6:s}轴对称使水平分量成对抵消。用两虚拟水平圆面封闭锥台，均匀压强对闭合面的合力为零。上圆面压力向下$P\pi R^2$，下圆面向上$P\pi r^2$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用闭合面恒等式求侧面合力}\par\nobreak
+将压力合力写成面元积分$\boldsymbol F=-P\int\boldsymbol n\,\dd S$。封闭曲面满足$\int_{\rm closed}\boldsymbol n\,\dd S=0$，因而均匀压强合力为零。虚拟封口只是用于求侧面合力的辅助面，不能再把它们当成实际活塞上的受力重复加入。
+\fig{fig:s5:example:6:p}{给斜面补上两个虚拟水平封口面，三部分压力合力为零}{\begin{tikzpicture}
+
+\draw[world](-2,2)--(-.7,0)--(.7,0)--(2,2);\draw[guide](-2,2)--(2,2);\draw[guide](-.7,0)--(.7,0);
+\draw[force,blue](0,3.2)--(0,2)node[pos=0,above]{$P\pi R^2$};
+\draw[force,blue](0,-1.2)--(0,0)node[pos=0,below]{$P\pi r^2$};
+\draw[force,red](3,.2)--(3,2.4)node[above]{$F_{\rm side}$};
+\node at(0,1){仅作辅助封闭};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定净力方向并说明压强含义}\par\nobreak
+图\ref{fig:s5:example:6:p}因此斜侧面压力必须向上，大小$F=P\pi(R^2-r^2)$。这里$P$是内外压差；若内外均受同样绝对压强，净力为零。若液体在斜面内侧，方向则反向。\end{solution}

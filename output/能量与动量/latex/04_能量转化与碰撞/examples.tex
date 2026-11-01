@@ -1,0 +1,521 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[子弹、弹簧与系统守恒]\label{em4:example:1}
+质量$m$的子弹以$v_0$射入光滑桌面上的质量$M$木块并留在其中。木块右侧连接劲度系数$k$的轻弹簧，弹簧另一端固定在墙上。初始弹簧为自然长，木块静止，碰撞很短。判断从射入开始到弹簧长度最短这一全过程的动量、机械能是否守恒，并求最大压缩量。
+\end{example}
+\fig{fig:em4:example:1:s}{题设：子弹、弹簧与系统守恒}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(6,0);\draw[flow](0,.7)--(1.3,.7)node[above]{$m,v_0$};\draw[world](2,0)rectangle(3,.9);\node at(2.5,.45){$M$};\draw[spring](3,.45)--(5,.45);\draw[world](5,0)--(5,1.4);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别检查墙的外冲量与射入耗散}\par\nobreak
+图\ref{fig:em4:example:1:s}弹簧固定端承受墙的外力。整个压缩过程存在有限水平外冲量，故子弹、块和弹簧的总动量不守恒；射入碰撞又耗散机械能，故全过程机械能也不守恒。
+\fig{fig:em4:example:1:p}{射入时近似守恒动量，随后粘合体压缩固定端弹簧}{\begin{tikzpicture}
+
+\foreach \yy/\xx/\lab in {4/1.5/射入前,2/1.5/刚射入,0/2.8/最大压缩}{\begin{scope}[yshift=\yy cm]
+\draw[world](0,0)--(5.3,0);\draw[world](\xx,0)rectangle++(1,.8);\draw[spring](\xx+1,.4)--(5,.4);\draw[world](5,0)--(5,1.3);\node[left]at(-.4,.4){\lab};\end{scope}}
+\fill(.1,4.4)circle(.07)node[above]{$m$};\draw[flow](.1,4.9)--(1,4.9)node[right]{$v_0$};\node at(2,4.4){$M$};
+\node at(2,2.4){$M+m$};\draw[flow](1.7,3.2)--(2.8,3.2)node[right]{$V$};
+\node at(3.3,.4){$M+m$};\node[above]at(3.3,1){$v=0$};\draw[guide](2.5,-.6)--(2.5,1);
+\draw[dim](2.5,-.5)--(3.8,-.5)node[midway,below]{$x_{\max}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先求射入共速，再求弹簧最大压缩}\par\nobreak
+按图\ref{fig:em4:example:1:p}分两段。射入时间极短，弹簧形变几乎不变，其冲量可略，得到$mv_0=(M+m)V$。随后粘合体与弹簧之间只作可恢复的能量转化：$\tfrac12(M+m)V^2=\tfrac12kx_{\max}^2$。所以
+\[\boxed{x_{\max}=\frac{mv_0}{\sqrt{k(M+m)}}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对最大压缩量与不可恢复损失}\par\nobreak
+消元时先用$V=mv_0/(M+m)$，代入第二段得到$kx_{\max}^2=m^2v_0^2/(M+m)$；压缩量取非负根。还可算第一段耗散$Q=mv_0^2/2-(M+m)V^2/2=mMv_0^2/[2(M+m)]$，它恰是全过程机械能不守恒的那一部分。
+
+不能在整个过程上同时写动量、机械能守恒；分段之后，每个方程都有明确适用时间。\end{solution}
+\begin{question}\begin{example}[子弹入木的相对位移]\label{em4:example:2}
+质量$m$的子弹以$v_0$射入静止、质量$M$的自由木块。水平面光滑，子弹在木块中受到恒定阻力$f$，最终没有穿出，相对深入距离为$D$。求木块在射入期间的对地位移和机械能损失。
+\end{example}
+\fig{fig:em4:example:2:s}{自由木块可反冲，子弹的相对深入量从开始接触木块时计起}{\begin{tikzpicture}
+
+\draw[world](-.7,0)--(5.8,0);\draw[world](1.5,0)rectangle(5,1.3);\node at(3.8,.7){$M$};
+\fill(.1,.65)circle(.09)node[above]{$m$};\draw[flow](.1,1.1)--(1.1,1.1)node[right]{$v_0$};
+\draw[axis](5.2,.2)--(6,.2)node[right]{$x$};\node at(3.2,1.8){初始木块静止};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用相对减速度确定共速时间和深入量}\par\nobreak
+按图\ref{fig:em4:example:2:s}整体水平动量守恒，共速$V=mv_0/(M+m)$。记约化质量 $\mu=mM/(m+M)$。子弹相对木块的减速度大小为$f/m+f/M=f/\mu$，所以相对速度$v_0$降为零所需时间$t=\mu v_0/f$，相对深入$D=v_0t/2=\mu v_0^2/(2f)$。同一时间木块从静止以 $f/M$ 加速，故
+$X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
+\fig{fig:em4:example:2:p}{在固定地面坐标中比较木块边界与子弹的位置，位移之差等于穿入深度}{\begin{tikzpicture}
+
+\draw[world](0,2)rectangle(3.7,3);\fill(0,2.5)circle(.09)node[above left]{开始射入};\node at(2.8,2.5){$M$};
+\draw[world](.8,0)rectangle(4.5,1);\fill(2.5,.5)circle(.09)node[above]{$m$};\node at(3.7,.5){$M$};
+\draw[flow](3,1.4)--(4.1,1.4)node[right]{共速$V$};
+\draw[guide](0,-1.6)--(0,3.2);\draw[guide](.8,-1)--(.8,0);\draw[guide](2.5,-1.6)--(2.5,0);
+\draw[dim](0,-.5)--(.8,-.5)node[midway,below]{$X$};\draw[dim](.8,-.5)--(2.5,-.5)node[midway,below]{$D$};
+\draw[dim](0,-1.3)--(2.5,-1.3)node[midway,below]{$X+D$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两物体的对地位移相减}\par\nobreak
+由相对速度直线下降，$D=(v_0+0)t/2$；再代入$t=\mu v_0/f$才得到$D=\mu v_0^2/(2f)$，其中$\mu=mM/(m+M)$。把它与$X=\mu^2v_0^2/(2Mf)$相除，$X/D=\mu/M=m/(m+M)$，即可消去未知阻力和作用时间。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去作用时间并用相对路程求耗散}\par\nobreak
+图\ref{fig:em4:example:2:p}中木块加速度$f/M$，位移$X=ft^2/(2M)$。用上述$D$消去$t,f$后，得$\boxed{X=mD/(M+m)}$。两摩擦力总功为$-f[(X+D)-X]=-fD$，所以
+\[\boxed{Q=fD=\tfrac12\mu v_0^2}.\]
+子弹对地位移是$X+D$，不是$D$；$Q$必须由相对位移求出。\end{solution}
+\begin{question}\begin{example}[两车碰撞后的车内摆动]\label{em4:example:3}
+质量均为$M$的两车$A,B$在光滑水平面以相同速率$u=1.8\,\mathrm{m/s}$相向运动。$B$上竖直悬挂质量$M/4$的摆球，绳长$0.4\,\mathrm m$。两车短时碰撞后粘合，求摆球第一次到相对车的最高点时对地速度。
+\end{example}
+\fig{fig:em4:example:3:s}{摆球随B车一起向左运动；碰撞瞬间摆绳竖直}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(1.8,.3);\node at(.9,.65){$A:M$};\draw[flow](0,1.2)--(1.2,1.2)node[above]{$u$};
+\draw[world](3,0)rectangle(6,.3);\node at(5.4,-.4){$B:M$};\draw[world](3.4,.3)--(3.4,2.6)--(5.4,2.6);
+\draw[world](4.8,2.6)--(4.8,.6)node[midway,left]{$\ell$};\fill(4.8,.6)circle(.1)node[left]{$M/4$};
+\draw[flow](6.2,1.4)--(5,1.4)node[above]{$u$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在短碰撞中保留摆球原水平速度}\par\nobreak
+按图\ref{fig:em4:example:3:s}取$A$初运动方向为正。碰撞时摆绳竖直，摆球水平速度仍为$-u$；两车初动量相消，故粘合车架碰后瞬时静止。随后车、球共同保持总水平动量$P=-(M/4)u$。
+\fig{fig:em4:example:3:p}{短碰撞后车架暂时静止；摆角转折时球与车同速而非对地静止}{\begin{tikzpicture}
+
+\foreach \xx/\lab in {0/刚粘合,6/相对最高点}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,0)rectangle(4.7,.3);\draw[world](.4,.3)--(.4,2.6)--(3.5,2.6);\node[below]at(3.9,0){$2M$};\node at(2.2,3.4){\lab};\end{scope}}
+\draw[world](3,2.6)--(3,.6);\fill(3,.6)circle(.09);\draw[flow](2.8,.9)--(1.6,.9)node[left]{$-u$};\node at(1,.65){车速$0$};
+\draw[world](9,2.6)--(7.46325,1.32);\draw[guide](9,2.6)--(9,.6);\fill(7.46325,1.32)circle(.09);
+\draw[flow](7.4,1.1)--(6.3,1.1)node[below]{$V=-u/9$};\draw[flow](9.5,-.6)--(8.4,-.6);
+\draw[dim](9.5,.6)--(9.5,1.32)node[midway,right]{$h$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用摆角转折时共速求对地速度}\par\nobreak
+图\ref{fig:em4:example:3:p}摆球到相对车的转折点时，摆角变化率为零，球与车架具有相同水平速度$V$，于是$(2M+M/4)V=-(M/4)u$，故
+\[\boxed{V=-u/9=-0.20\,\mathrm{m/s}}.\]
+
+代入数值时$V=-(1.8)/9=-0.20\,\mathrm{m/s}$，负号对应图中$B$原来的运动方向。这里的共速条件来自摆角转折，所求是对地速度，不是“摆球相对车速度为零”这一句话本身。还必须保留粘合后车架质量$2M$与摆球质量$M/4$两个部分。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用上升高度核对绳始终绷紧}\par\nobreak
+还需核实确实存在绳绷紧的转折点。碰后动能为$Mu^2/8$，共速时为$Mu^2/72$，差值$Mu^2/9$转为摆球势能，故上升高度$h=4u^2/(9g)\approx0.144\,\mathrm m<\ell$（取$g=10$）。转折点在水平线以下，绳张力可保持正值，前述末态成立。\end{solution}
+\begin{question}\begin{example}[落块与竖直弹簧钢板]\label{em4:example:4}
+质量$m$的钢板连在竖直弹簧上，静平衡时压缩$x_0$，自然长位置为$O$，比平衡板面高$x_0$。物块从平衡板面上方$3x_0$处释放，与板短时碰撞后共同向下运动但不粘连。若物块质量$m$，恰好回到$O$停止；改为$2m$，求物块最后超过$O$的最高高度。
+\end{example}
+\fig{fig:em4:example:4:s}{题设：落块与竖直弹簧钢板}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(4,0);\draw[spring](2,0)--(2,1.2);\draw[world](1.2,1.2)--(2.8,1.2);\draw[guide](.4,2)--(3.6,2)node[right]{$O$};\draw[world](1.7,3.6)rectangle(2.3,4.1);\node[right]at(2.5,3.8){$m\text{或}2m$};\draw[dim](.7,1.2)--(.7,3.6)node[midway,left]{$3x_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从下落与短碰撞求共同下行初速}\par\nobreak
+由图\ref{fig:em4:example:4:s}平衡条件$kx_0=mg$。物块落到板前速率$u=\sqrt{6gx_0}$。质量为$2m$时，短碰撞中$2mu=3mV$，故$V=2u/3$。以平衡板面为重力势能零点，碰后总机械能为$\tfrac12(3m)V^2+\tfrac12kx_0^2$。
+\fig{fig:em4:example:4:p}{接触力随弹簧压缩量归零，物块从自然长位置继续自由上抛}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(3.5,0);\draw[spring](1,0)--(1,2);\draw[world](.3,2)--(1.7,2);\draw[guide](-.4,2)--(3.5,2)node[right]{$O$};
+\draw[world](.65,2)rectangle(1.35,2.5);\node at(1,2.3){$2m$};\draw[flow](1.7,2.3)--(1.7,3.2)node[right]{$v_O$};
+\draw[guide](.65,2.4)rectangle(1.35,2.9);\draw[dim](2.8,2)--(2.8,2.4)node[midway,right]{$h$};\node at(1,4){最高点$v=0$};
+\begin{scope}[xshift=5.5cm]\draw[axis](0,0)--(3,0)node[right]{$x$};\draw[axis](0,0)--(0,2.7)node[above]{$N$};\draw[blue,thick](0,0)--(2.5,2.2);
+\node at(1.8,2.8){$N=2kx/3$};\node at(1.6,-.7){回到$x=0$时分离};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到自然长时计算剩余动能}\par\nobreak
+在图\ref{fig:em4:example:4:p}回到自然长位置$O$时，弹簧势能为零，重力势能增加$3mgx_0$，因此
+\[\frac12(3m)v_O^2=\frac12(3m)\frac49(6gx_0)+\frac12mgx_0-3mgx_0=\frac32mgx_0.\]
+故$v_O^2=gx_0$。共同接触时板与物块具有相同的向下加速度$a$。整体有$3mg-kx=3ma$，物块有$2mg-N=2ma$；将$a=g-kx/(3m)$代入物块方程，得到$N=2kx/3$。因此当压缩量由正值减到零时，接触力确实先减到零；之后继续接触所需的负$N$不能实现。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查自然长处分离并计算自由上抛高度}\par\nobreak
+接触阶段法向力为$N=(2/3)kx$，其中$x$为弹簧压缩量；到$O$时$N=0$，再向上需弹簧向下拉板，物块便与板分离。物块随后上抛，故
+\[\boxed{h=v_O^2/(2g)=x_0/2}.\]
+质量为$m$时同算恰给$v_O=0$，与题中校准条件一致。\end{solution}
+\begin{question}\begin{example}[车板弹簧的往返过程]\label{em4:example:5}
+质量$M=4\,\mathrm{kg}$的小车置于光滑水平面，质量$m=1\,\mathrm{kg}$的块从车左端受向右冲量$I=10\,\mathrm{N\,s}$。块在动摩擦因数均匀的粗糙板上滑到右端轻弹簧，将其压缩后返回，恰在左端与车相对静止。求最大压缩时车的动量、返回左端时块的动能、弹簧最大势能。
+\end{example}
+\fig{fig:em4:example:5:s}{题设：车板弹簧的往返过程}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\draw[world](4.9,.3)--(4.9,1.2);\draw[spring](3.3,.7)--(4.9,.7);\draw[world](.2,.3)rectangle(1,.95);\node at(.6,.6){$m$};\draw[flow](.2,1.4)--(1.7,1.4)node[above]{$I$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由总动量求两次共速事件的速度}\par\nobreak
+图\ref{fig:em4:example:5:s}冲量后块速$v_0=I/m=10\,\mathrm{m/s}$。系统水平总动量为$I$，最大压缩时块与车同速$V=I/(M+m)=2\,\mathrm{m/s}$，故车动量
+\[\boxed{P_M=8\,\mathrm{kg\,m/s}}.\]
+返回左端并相对静止时共同速度仍是$2\,\mathrm{m/s}$，块动能
+\[\boxed{K_m=2\,\mathrm J}.\]
+
+\fig{fig:em4:example:5:p}{最大压缩点是相对位置的转折点，来回相对路程相等}{\begin{tikzpicture}
+
+\foreach \yy/\bx/\lab in {4.4/.2/冲量后,2.2/3.5/最大压缩,0/.2/返回左端共速}{\begin{scope}[yshift=\yy cm]
+\draw[world](0,0)rectangle(5.5,.3);\draw[world](5.5,.3)--(5.5,1.2);\draw[world](\bx,.3)rectangle++(.8,.6);
+\pgfmathsetmacro{\sp}{max(3.8,\bx+.8)}\draw[spring](\sp,.6)--(5.5,.6);\node[left]at(-.4,.5){\lab};\end{scope}}
+\draw[flow](.4,5.6)--(1.8,5.6)node[right]{$10\,\mathrm{m/s}$};
+\draw[flow](3.4,3.5)--(4.5,3.5)node[right]{$V=2\,\mathrm{m/s}$};\draw[flow](1,-.7)--(2.1,-.7)node[right]{$V=2\,\mathrm{m/s}$};
+\draw[dim](.2,1.6)--(3.5,1.6)node[midway,below]{$d,\quad Q_1=Q_2=fd$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用往返相对路程平分摩擦耗散}\par\nobreak
+按图\ref{fig:em4:example:5:p}设块从左端到最大压缩点的相对滑程为$d$，来回均滑过$d$，摩擦耗散分别相同。初始总动能$50\,\mathrm J$，最后总动能$10\,\mathrm J$，所以$2fd=40\,\mathrm J$。前半程能量式$50=10+U_{s,\max}+fd$，得到
+\[\boxed{U_{s,\max}=20\,\mathrm J}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扣除平动动能与单程耗散求储能}\par\nobreak
+由$2fd=40\,\mathrm J$先得单程耗散$fd=20\,\mathrm J$，而最大压缩时平动动能仍是$10\,\mathrm J$，并非零。故弹簧储能为$50-10-20=20\,\mathrm J$。返程释放这$20\,\mathrm J$，又恰好耗散同样的$20\,\mathrm J$，才满足返回左端共速的末态。
+
+过程图只标示块相对车板的三个位置，车对地还在平移。这里$d$包括压缩弹簧时的相对移动；忽略它会造成能量计算不一致。\end{solution}
+\begin{question}\begin{example}[弹簧连接的等质量两球]\label{em4:example:6}
+光滑水平轨道上，两质量均为$m$的小球由自然长轻弹簧连接。突然给左球向右速度$u_0$，右球仍静止。求弹簧第一次恢复自然长时两球速度及最大弹簧势能。
+\end{example}
+\fig{fig:em4:example:6:s}{题设：弹簧连接的等质量两球}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$u_0$};\draw[spring](1,0)--(4.2,0);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{列自然长末态的两个守恒式}\par\nobreak
+图\ref{fig:em4:example:6:s}中总动量为$mu_0$，质心速度$u_0/2$，相对速度由$u_0$先减为零再反向。弹簧第一次恢复自然长时势能重新为零，所以$v_1+v_2=u_0$、$v_1^2+v_2^2=u_0^2$。代数根为$(u_0,0)$或$(0,u_0)$。
+\fig{fig:em4:example:6:p}{等质量双球在半个相对周期后第一次回到自然长并交换速度}{\begin{tikzpicture}
+
+\foreach \yy/\xx/\rr/\lab in {4/0/3.4/初始,2/.7/2.7/最大压缩,0/.3/3.7/首次自然长}{\begin{scope}[yshift=\yy cm]
+\draw[world](\xx,0)circle(.22);\draw[world](\rr,0)circle(.22);\draw[spring](\xx+.22,0)--(\rr-.22,0);\node[left]at(-.8,0){\lab};\end{scope}}
+\draw[flow](0,4.6)--(1.3,4.6)node[right]{$u_0$};\node[above]at(3.4,4.6){$0$};
+\draw[flow](.7,2.6)--(1.4,2.6)node[above]{$u_0/2$};\draw[flow](2.7,2.6)--(3.4,2.6)node[above]{$u_0/2$};
+\node[above]at(.3,.6){$0$};\draw[flow](3.7,.6)--(5,.6)node[right]{$u_0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恢复自然长时的分离方向舍根}\par\nobreak
+将第一条式子平方，得$v_1^2+v_2^2+2v_1v_2=u_0^2$，与第二条相减得$v_1v_2=0$。于是两个候选态只有一球运动；要区分哪一球，必须再看首次恢复自然长时两球已由接近转为分离，即$v_2-v_1>0$。
+
+按图\ref{fig:em4:example:6:p}的压缩、回弹顺序，左球减速、右球加速，第一次返回应取
+\[\boxed{v_1=0,\ v_2=u_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扣除质心平动动能求最大储能}\par\nobreak
+最大压缩时同速，储能为
+\[\tfrac12mu_0^2-\tfrac12(2m)(u_0/2)^2=\boxed{mu_0^2/4}.\]
+另一组速度是初态而不是第一次返回的末态，说明守恒量还需配合运动顺序。\end{solution}
+\begin{question}\begin{example}[一列双球振子的碰撞传递]\label{em4:example:7}
+$N\ge2$个振子排在光滑直线上，每个由两等质量$m$小球和轻弹簧组成。第一个预压锁定、储能$E_0$，其余静止且自然长。释放第一个，每个振子右球在弹簧首次恢复自然长时恰碰到下一个的左球；等质量球碰撞交换速度，之后不再重碰。求全部碰撞结束后各振子继续振动的最大弹簧势能。
+\end{example}
+\fig{fig:em4:example:7:s}{题设：一列双球振子的碰撞传递}{\begin{tikzpicture}[scale=.9]\foreach \x in {0,2.4,4.8}{\draw[world](\x,0)circle(.1);\draw[spring](\x+.1,0)--(\x+1.2,0);\draw[world](\x+1.3,0)circle(.1);}\node at(.7,.7){$1$};\node at(3.1,.7){$2$};\node at(5.5,.7){$N$};\node at(3,-.7){碰撞发生在各弹簧自然长时};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求首振子传出速度后的相对运动能量}\par\nobreak
+按图\ref{fig:em4:example:7:s}第一个弹簧恢复自然长时，两球速度为$(-a,a)$，其中$ma^2=E_0$。它的右球碰下一个静止左球后变为零，故第一个剩余两球速度为$(-a,0)$。其总动能为$E_0/2$，质心动能为$E_0/4$，两者之差$E_0/4$可在相对振动中变为最大弹簧势能。
+\fig{fig:em4:example:7:p}{速度传入、内部压缩回弹与速度传出是三个先后事件}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {4.8/首振子传出后,3.2/中间振子刚接收,1.6/中间振子传出前,0/中间振子传出后}{\begin{scope}[yshift=\yy cm]
+\draw[world](0,0)circle(.18);\draw[world](3,0)circle(.18);\draw[spring](.18,0)--(2.82,0);\node[left]at(-.5,0){\lab};\end{scope}}
+\draw[flow](0,5.4)--(-.9,5.4)node[left]{$-a$};\node[above]at(3,5.4){$0$};
+\draw[flow](0,3.8)--(.9,3.8)node[right]{$a$};\node[above]at(3,3.8){$0$};
+\node[above]at(0,2.2){$0$};\draw[flow](3,2.2)--(3.9,2.2)node[right]{$a$};
+\node[above]at(0,.6){$0$};\node[above]at(3,.6){$0$};\node at(6,3.2){末振子保留刚接收态};
+\node at(6,2.5){相对动能$ma^2/4$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算首、末振子保留的振动能}\par\nobreak
+剩余振动能可用相对速度再核验。第一个振子碰后速度为$(-a,0)$，约化质量为$m/2$，故相对运动能量为$\tfrac12(m/2)a^2=ma^2/4=E_0/4$；最后一个接收$(a,0)$，给出同样结果。中间振子在再次交出速度后是$(0,0)$且弹簧自然长，剩余内部运动能量为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{追踪中间振子先接收再传出的状态}\par\nobreak
+图\ref{fig:em4:example:7:p}中中间振子接收到$(a,0)$，经一次压缩回弹成为$(0,a)$，再将右球速度传给下一个，于是两球均为零，弹簧自然长。最后一个接收到$(a,0)$，无后续碰撞，保留相对振动能$E_0/4$。因此全部碰撞结束后
+\[\boxed{U_{1,\max}=U_{N,\max}=E_0/4,\qquad U_{j,\max}=0\ (2\le j<N)}.\]
+传递途中，每个中间弹簧也曾储存$E_0/4$；题问的是全部碰撞结束后的剩余振动，不能与全程曾经达到的最大值混淆。\end{solution}
+\begin{question}\begin{example}[菱形方块之间的碰撞顺序]\label{em4:example:8}
+光滑水平面内，两个边长$a$、质量$m$的正方形块$C,D$，分别以一条对角线垂直于图中$x$轴对称放置，两块相邻顶点在原点接触。质量均为$2m$、半径$a/2$的小球$A,B$的球心分别在$x$轴的正、负半轴上，分别同时接触两方块的两侧面中点。$B$静止，$A$以$v$向左入射。各接触光滑、碰撞完全弹性；将$A$与两块的首轮冲击作为对称同时冲击。求其后$A,B$的碰撞及$B$最终速度。
+\end{example}
+\fig{fig:em4:example:8:s}{题设：菱形方块之间的碰撞顺序}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(1,1)--(0,2)--(-1,1)--cycle;\draw[world](0,0)--(1,-1)--(0,-2)--(-1,-1)--cycle;\draw[world](1,0)circle(.7071);\draw[world](-1,0)circle(.7071);\node at(1,0){$A$};\node at(-1,0){$B$};\node at(0,1){$C$};\node at(0,-1){$D$};\draw[flow](2.6,0)--(1.9,0)node[above]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{根据接触法线和对称性确定首轮冲量}\par\nobreak
+图\ref{fig:em4:example:8:s}每个接触法线通过方块中心，所以首轮冲击不使块转动。由对称性，设$C,D$速度分别为$(-w,w),(-w,-w)$，$A$的末速度为$u$（向右为正）。两块初始给$B$的法向相对速度为零，首轮中块沿与$B$接触的面切向离开，$B$此时不获得冲量。
+
+以上方块为例，令它所受冲量为$(-j,j)$，则$m\bm v_C=(-j,j)$，即$j=mw$。下方块对称地获得$(-j,-j)$，$A$受到两者反冲量之和$(2j,0)$，所以$2m(u+v)=2j$，同样给出$u=w-v$。这个冲量图说明了$B$为什么不应在首轮被直接赋予向左速度。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立首轮动量、能量并取非零冲击根}\par\nobreak
+首轮水平动量守恒给 $-2mv=2mu-2mw$，与冲量关系 $u=w-v$ 一致。两方块的速度大小均为 $\sqrt2w$，完全弹性碰撞的能量方程为 $mv^2=mu^2+2mw^2$。代入 $u=w-v$ 并约去 $m$，逐项展开：
+\[
+v^2=(w-v)^2+2w^2=v^2-2wv+3w^2,
+\qquad w(3w-2v)=0.
+\]
+$w=0$ 对应没有冲量，不能结束初始正在接近的接触；取非零根，得到 $w=2v/3$、$u=-v/3$。图\ref{fig:em4:example:8:p}据此画出首轮后的速度方向。
+\fig{fig:em4:example:8:p}{首轮冲击后方块斜向离开，A仍向左运动并随后与B正碰}{\begin{tikzpicture}
+
+\begin{scope}\draw[world](0,0)--(1,1)--(0,2)--(-1,1)--cycle;\draw[world](0,0)--(1,-1)--(0,-2)--(-1,-1)--cycle;
+\draw[world](1,0)circle(.7071);\draw[world](-1,0)circle(.7071);\node at(1,0){$A$};\node at(-1,0){$B$};\node at(0,1){$C$};\node at(0,-1){$D$};
+\draw[flow](0,1.5)--(-.9,2.4)node[left]{$(-w,w)$};\draw[flow](0,-1.5)--(-.9,-2.4)node[left]{$(-w,-w)$};
+\draw[flow](2.4,.4)--(1.6,.4)node[midway,above]{$-v/3$};\node at(0,3.2){首轮结束};\end{scope}
+\begin{scope}[xshift=6cm]\draw[world](-1.1716,1.1716)--(-.1716,2.1716)--(-1.1716,3.1716)--(-2.1716,2.1716)--cycle;
+\draw[world](-1.1716,-1.1716)--(-.1716,-2.1716)--(-1.1716,-3.1716)--(-2.1716,-2.1716)--cycle;
+\draw[world](.4142,0)circle(.7071);\draw[world](-1,0)circle(.7071);\node at(.4142,0){$A$};\node at(-1,0){$B$};
+\node at(-1.1716,2.1716){$C$};\node at(-1.1716,-2.1716){$D$};\draw[flow](-1,-1)--(-2,-1)node[left]{$-v/3$};
+\node at(.6,1.3){碰后$A$停止};\node at(.3,3.8){随后$A,B$碰撞};\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:em4:example:8:p}左图中，$A$ 仍向左，但上、下方块已有离开轴线的分量；$A$ 与方块在原接触法线方向的相对速度已经反号，首轮碰撞结束。接下来须按新的几何位置判断是否发生另一场碰撞。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查后续接触顺序并完成AB正碰}\par\nobreak
+在图\ref{fig:em4:example:8:p}中两个方块先沿与$B$接触面的切向滑移，越过面端点后继续远离$B$，所以这一段不再给$B$法向冲量；它们与$A$在原接触法线方向也已分离。于是两块斜向离开轴线，而$A$仍以$v/3$向左，随后与静止的等质量$B$正碰。交换速度后，$A$停止，
+\[\boxed{v_B=v/3\text{，向左}}.\]
+两方块继续以$(-2v/3,\pm2v/3)$运动。总动量为$-2mv$，总动能为$mv^2/9+2(4mv^2/9)=mv^2$，均与初态一致。若把多个先后接触随意合成一次碰撞，会漏掉$A$仍向左这一关键状态；若另规定方块导向、间隙或接触刚度，则应按新约束重新求解。\end{solution}
+\begin{question}\begin{example}[皮托管的流速测量]\label{em4:example:9}
+密度$\rho$的气体作近似不可压缩定常流动。皮托管前向开口测驻点压强$p_0$，侧孔测静压$p$。两孔近似等高，U形管内液体密度$\rho_l$，液面差$h$。求来流速率，并说明忽略气柱压强差时的近似。
+\end{example}
+\fig{fig:em4:example:9:s}{同高测压口接U形管：高压侧液面较低，h是两液面高度差}{\begin{tikzpicture}
+
+\draw[world](0,3)--(0,0)arc(180:360:1)--(2,3);\draw[blue!45,line width=5pt](0,1)--(0,0)arc(180:360:1)--(2,2);
+\fill(0,3)circle(.04)node[above]{$p_0$};\fill(2,3)circle(.04)node[above]{$p$};
+\draw[flow](-2,3)--(-.3,3)node[midway,above]{$v$};\node at(-1,2.3){迎流口};\node[right]at(2,2.8){侧孔};
+\draw[guide](0,1)--(3.2,1) (2,2)--(3.2,2);\draw[dim](3,1)--(3,2)node[midway,right]{$h$};
+\node at(1,-1.7){测压液$\rho_l$，上方气体$\rho$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把驻点压强差写成来流动能密度}\par\nobreak
+沿图\ref{fig:em4:example:9:s}进入前向开口的流线使用伯努利方程，驻点速度为零，所以$p_0-p=\rho v^2/2$。U形管静力关系在两孔等高时给$p_0-p=(\rho_l-\rho)gh$。
+\fig{fig:em4:example:9:p}{同一测压液内的A与B等高，压强相等；气柱修正给出密度差}{\begin{tikzpicture}
+
+\draw[world](0,3.3)--(0,0)arc(180:360:1)--(2,3.3);\draw[blue!45,line width=5pt](0,1)--(0,0)arc(180:360:1)--(2,2);
+\node[above]at(0,3.3){$p_0$};\node[above]at(2,3.3){$p$};\fill(0,1)circle(.055)node[left]{$A$};\fill(2,1)circle(.055)node[right]{$B$};\fill(2,2)circle(.055)node[right]{$C$};
+\draw[guide](0,1)--(2,1);\draw[dim](3.3,1)--(3.3,2)node[midway,right]{$h$};
+\node[align=left]at(6.4,2.3){$p_A=p_0+\rho g(H+h)$\\$p_C=p+\rho gH$\\$p_B=p_C+\rho_lgh=p_A$};
+\draw[dim](-.7,2)--(-.7,3.3)node[midway,left]{$H$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同高液面逐段累积气柱与液柱压强}\par\nobreak
+U形管中在同一水平液面取等压点，沿测压气柱和液柱逐段增减$\rho g\Delta h$，气柱修正会扣去$\rho gh$，液柱增加$\rho_lgh$，因此压差是$(\rho_l-\rho)gh$。将它等于$\rho v^2/2$，两边乘$2/\rho$后取正平方根。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立压强差求流速并检查近似}\par\nobreak
+按图\ref{fig:em4:example:9:p}联立得
+\[\boxed{v=\sqrt{2(\rho_l-\rho)gh/\rho}}.\]
+若$\rho\ll\rho_l$，可近似为$\sqrt{2\rho_lgh/\rho}$。前向孔不是测量“高速气体当地静压低”的孔，而是使来流减速的驻点；压差来自两种不同测压方式。若气流速度高到可压缩性显著，不能继续使用这一不可压缩表达式。\end{solution}
+\begin{question}\begin{example}[质量比与弹性碰撞速度]\label{em4:example:10}
+一维完全弹性碰撞中，质量$m_1$物体以$u$撞向静止、质量$m_2$的物体。推导两物末速度，并讨论等质量、重物撞轻物、轻物撞重物三个极限。
+\end{example}
+\fig{fig:em4:example:10:s}{题设：质量比与弹性碰撞速度}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m_1$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m_2$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{联立动量守恒与相对速度反号}\par\nobreak
+图\ref{fig:em4:example:10:s}动量守恒$m_1u=m_1v_1+m_2v_2$；弹性碰撞相对速度反号，$v_2-v_1=u$。代入$v_2=u+v_1$得$m_1u=(m_1+m_2)v_1+m_2u$，所以
+\[\boxed{v_1=\frac{m_1-m_2}{m_1+m_2}u,\qquad v_2=\frac{2m_1}{m_1+m_2}u}.\]
+\fig{fig:em4:example:10:p}{精确速度比随质量比变化，重入射粒子的速度始终不超过初速}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.2,0)node[right]{$r=m_1/m_2$};\draw[axis](0,-1.5)--(0,3)node[above]{$v/u$};
+\draw[blue,thick,domain=0:5,samples=100]plot(\x,{1.2*(\x-1)/(\x+1)});
+\draw[red,thick,domain=0:5,samples=100]plot(\x,{2.4*\x/(\x+1)});
+\draw[guide](0,1.2)--(5.5,1.2) (0,2.4)--(5.5,2.4);\node[left]at(0,1.2){$1$};\node[left]at(0,2.4){$2$};\node[left]at(0,-1.2){$-1$};
+\draw[guide](1,0)--(1,1.2);\node[below]at(1,0){$1$};\node[right]at(5,.8){$v_1/u$};\node[right]at(5,2){$v_2/u$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对目标速度与能量传递比例}\par\nobreak
+由$v_2=u+v_1$，再代入刚求出的$v_1$，分子为$(m_1+m_2)+(m_1-m_2)=2m_1$，因此$v_2=2m_1u/(m_1+m_2)$。其速度可能大于$u$，但目标动能比例$4m_1m_2/(m_1+m_2)^2\le1$，等号仅在质量相等时成立。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按质量比讨论三种极限}\par\nobreak
+图\ref{fig:em4:example:10:p}以质量比$r=m_1/m_2$展示$v_1/u=(r-1)/(r+1)$、$v_2/u=2r/(r+1)$。$r=1$时交换速度；$r\gg1$时重物近似不变，轻物约得$2u$；$r\ll1$时轻物反弹，重物近似静止。第二物可比入射速率更大，但其质量小，动能仍满足守恒，不能用速率大小代替能量判断。\end{solution}
+\begin{question}\begin{example}[恢复系数与损失动能]\label{em4:example:11}
+物体1在左、物体2在右，质量分别为$m_1,m_2$，沿直线运动，按向右为正记速度，碰前$u_1>u_2$，两者接近，碰撞恢复系数为$e$。求碰撞冲量大小及损失动能，说明为何动量守恒不能单独决定结果。
+\end{example}
+\fig{fig:em4:example:11:s}{题设：恢复系数与损失动能}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m_1$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m_2$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$u_1$};\draw[flow](4.6,0.8)--++(0.8,0)node[above]{$u_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从两物体的相反冲量求速度变化}\par\nobreak
+设图\ref{fig:em4:example:11:s}左物体受到向左冲量$J$，右物体得到向右冲量$J$。则$v_1=u_1-J/m_1$、$v_2=u_2+J/m_2$。恢复条件$v_2-v_1=e(u_1-u_2)$给
+\[J(1/m_1+1/m_2)=(1+e)(u_1-u_2),\quad\boxed{J=\mu(1+e)(u_1-u_2)}.\]
+\fig{fig:em4:example:11:p}{相反的接触冲量保持总动量，恢复系数控制相对动能损失}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(.4);\node at(0,0){$m_1$};\draw[world](2,0)circle(.4);\node at(2,0){$m_2$};
+\draw[force](0,.7)--(-1.1,.7)node[left]{$-J$};\draw[force](2,.7)--(3.1,.7)node[right]{$+J$};
+\node at(1,-1){$J=\mu(1+e)(u_1-u_2)$};
+\begin{scope}[xshift=5.2cm]\draw[axis](0,0)--(3.6,0)node[right]{$e$};\draw[axis](0,0)--(0,2.8)node[above]{$Q/Q_{\max}$};
+\draw[blue,thick,domain=0:1,samples=80]plot({3*\x},{2.2*(1-\x*\x)});\node[left]at(0,2.2){$1$};\node[below]at(3,0){$1$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恢复关系化简冲量并确定相对动能变化}\par\nobreak
+用$1/m_1+1/m_2=(m_1+m_2)/(m_1m_2)=1/\mu$，才能把冲量式简写为$J=\mu(1+e)(u_1-u_2)$。相对分离速率是原接近速率的$e$倍，平方后相对动能变成$e^2$倍，差值便是碰撞损失。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求损失动能并说明还需材料条件}\par\nobreak
+图\ref{fig:em4:example:11:p}质心动能不变，相对动能由$\mu(u_1-u_2)^2/2$降至其$e^2$倍，故
+\[\boxed{Q=\tfrac12\mu(1-e^2)(u_1-u_2)^2}.\]
+总动量守恒只有一条方程，需由$e$或等效的能量条件补充材料响应。$e=0$时损失最大，$e=1$时无损。\end{solution}
+\begin{question}\begin{example}[光滑斜碰的法向与切向]\label{em4:example:12}
+两光滑小球质量$m_1,m_2$，接触瞬间以从球1指向球2的方向为法向$\bm n$，切向为$\bm t$。碰前法向速度满足$u_{1n}>u_{2n}$，法向恢复系数$e$。给出完整的二维碰后速度计算方法及耗能。
+\end{example}
+\fig{fig:em4:example:12:s}{正法线由球1指向球2，切向取向上，图中两入射速度均有向上分量}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(.65);\draw[world](1.3,0)circle(.65);\node at(0,0){$m_1$};\node at(1.3,0){$m_2$};
+\draw[flow](-1.4,-1.2)--(-.45,-.25)node[midway,left]{$\bm u_1$};\draw[flow](2.8,-1)--(1.7,-.2)node[midway,right]{$\bm u_2$};
+\draw[axis](-.8,-1.6)--(3,-1.6)node[right]{$\bm n$};\draw[axis](3.3,-.5)--(3.3,1.4)node[above]{$\bm t$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{沿接触法线和切线分解冲击}\par\nobreak
+图\ref{fig:em4:example:12:s}接触光滑，冲量沿法线，因此各球切向速度不变：$v_{1t}=u_{1t}$、$v_{2t}=u_{2t}$。法向冲量大小由恢复系数给$J=\mu(1+e)(u_{1n}-u_{2n})$。
+\fig{fig:em4:example:12:p}{在各球的速度平面上，冲量仅平移法向分量，切向分量不变}{\begin{tikzpicture}
+
+\begin{scope}\draw[axis](-1,0)--(2.1,0)node[right]{$n$};\draw[axis](0,-.3)--(0,1.8)node[above]{$t$};
+\draw[flow](0,0)--(1.4,1)node[right]{$\bm u_1$};\draw[flow](0,0)--(-.5,1)node[left]{$\bm v_1$};
+\draw[guide](-.5,1)--(1.4,1);\draw[force](1.4,1.4)--(-.5,1.4)node[midway,above]{$-J\bm n/m_1$};
+\node at(.5,-.9){$v_{1t}=u_{1t}$};\end{scope}
+\begin{scope}[xshift=5.3cm]\draw[axis](-1.4,0)--(2.1,0)node[right]{$n$};\draw[axis](0,-.3)--(0,1.8)node[above]{$t$};
+\draw[flow](0,0)--(-.8,.8)node[left]{$\bm u_2$};\draw[flow](0,0)--(1.1,.8)node[right]{$\bm v_2$};
+\draw[guide](-.8,.8)--(1.1,.8);\draw[force](-.8,1.4)--(1.1,1.4)node[midway,above]{$+J\bm n/m_2$};
+\node at(.5,-.9){$v_{2t}=u_{2t}$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由恢复条件确定法向冲量}\par\nobreak
+法向分量分别满足$m_1(v_{1n}-u_{1n})=-J$、$m_2(v_{2n}-u_{2n})=J$，两式相减再代入恢复条件，即可得到法向冲量。切向无冲量则各自分量不变；最后需将两个正交分量合成为各球的完整矢量，而不能把法向末速当作总速率。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成完整速度并计算法向耗散}\par\nobreak
+按图\ref{fig:em4:example:12:p}分别加减冲量得到$\bm v_1=\bm u_1-(J/m_1)\bm n$、$\bm v_2=\bm u_2+(J/m_2)\bm n$。能量损失只有法向相对运动部分：
+\[\boxed{Q=\tfrac12\mu(1-e^2)(u_{1n}-u_{2n})^2}.\]
+切向相对运动在这一光滑模型中不耗散。若球具有转动但表面仍完全光滑，接触冲量过球心，也不会改变各球自转。\end{solution}
+\begin{question}\begin{example}[弹性散射的最大偏转角]\label{em4:example:13}
+质量$m$的粒子以速率$u$撞向静止、质量$M$的粒子，碰撞完全弹性、无外冲量。求当$m>M$时入射粒子的最大偏转角，并讨论$m=M$和$m<M$。
+\end{example}
+\fig{fig:em4:example:13:s}{题设：弹性散射的最大偏转角}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(5.5,0)node[right]{$x$};\draw[flow](0,.4)--(2,.4)node[above]{$m,u$};\fill(3,0)circle(.1)node[below]{$M$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在速度空间建立质心速度圆}\par\nobreak
+图\ref{fig:em4:example:13:s}质心速度$V=mu/(m+M)$。入射粒子在质心系的速度大小$a=Mu/(m+M)$，弹性散射后大小保持不变、方向可变。因此地面末速度$\bm v=V\bm e_x+\bm v^*$，其端点落在圆心$(V,0)$、半径$a$的圆上。
+\fig{fig:em4:example:13:p}{解答过程：弹性散射的最大偏转角}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(5.1,0);\draw[world](3,0)circle(1.5);\fill(0,0)circle(.035)node[below]{$O_v$};\fill(3,0)circle(.035)node[below]{$V$};\coordinate(Q)at(2.25,1.299038);\fill(Q)circle(.04);\draw[flow](0,0)--(Q);\draw[guide](3,0)--(Q)node[midway,right]{$a$};\draw(.7,0)arc(0:30:.7);\node at(.9,.33){$\theta_{\max}$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定最大偏转对应的极端方向}\par\nobreak
+由动能分解，完全弹性碰撞保持相对速率不变，因此质心系中入射粒子的速率$a$不变。平移速度矢量$V\bm e_x$后，末速度端点的轨迹才是图中的速度圆；它是速度空间中的圆，不是实际运动轨迹。最大偏转角对应从速度原点引向圆的极端方向。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用切线求角度并分别讨论原点位置}\par\nobreak
+当$m>M$时$V>a$，原点在圆外，图\ref{fig:em4:example:13:p}中最大偏转方向对应切线。直角三角形给$\sin\theta_{\max}=a/V=M/m$，所以
+\[\boxed{\theta_{\max}=\arcsin(M/m)}.\]
+$m=M$时圆过原点，非零末速度只能偏到接近$90^\circ$，极限处粒子末速趋零；$m<M$时圆包围原点，允许反向散射。这里讨论由守恒量允许的方向范围，实际散射角还由接触几何决定。\end{solution}
+\begin{question}\begin{example}[中间球怎样提高能量传递]\label{em4:example:14}
+光滑直线上入射球质量$m$、速度$u$，目标球质量$M$静止。在中间放一个静止、质量$x$的小球。先由$m$球与$x$球完全弹性正碰，再由$x$球与$M$球完全弹性正碰，暂不计后续再碰撞。求使目标球所获速度最大的$x$及其速度。
+\end{example}
+\fig{fig:em4:example:14:s}{题设：中间球怎样提高能量传递}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{向右};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m$};\draw[world](2.6-.35,-.3)rectangle(2.6+.35,.3);\node at(2.6,0){$x$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$M$};\draw[flow](0.6,0.8)--++(1.3,0)node[above]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{依次求两次碰撞的速度传递系数}\par\nobreak
+按图\ref{fig:em4:example:14:s}两次一维弹性碰撞，第一次中间球获速$u_x=2mu/(m+x)$，第二次目标球获速
+\[V_M=\frac{2x}{x+M}u_x=\frac{4mx}{(m+x)(x+M)}u.\]
+\fig{fig:em4:example:14:p}{分别在两次碰撞后更新中间球与目标球的速度}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {3.6/初始,1.8/第一次碰后,0/第二次碰后}{\begin{scope}[yshift=\yy cm]
+\foreach \xx/\mass in {0/m,2.5/x,5/M}{\draw[world](\xx,0)circle(.3);\node at(\xx,0){$\mass$};}\node[left]at(-.6,0){\lab};\end{scope}}
+\draw[flow](0,4.3)--(1.1,4.3)node[right]{$u$};\node[above]at(2.5,4.3){$0$};\node[above]at(5,4.3){$0$};
+\node[above]at(0,2.5){$v_m$};\draw[flow](2.5,2.5)--(3.6,2.5)node[right]{$u_x$};\node[above]at(5,2.5){$0$};
+\node[above]at(0,.7){$v_m$};\node[above]at(2.5,.7){$v_x$};\draw[flow](5,.7)--(6.1,.7)node[right]{$V_M$};
+\node at(3,-1){$u_x=\frac{2m}{m+x}u,\qquad V_M=\frac{2x}{x+M}u_x$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把目标速度化为正乘积的优化问题}\par\nobreak
+两次速度传递的系数相乘：第一次是$2m/(m+x)$，第二次是$2x/(x+M)$。在指定两次碰撞的模型内，目标质量固定，最大化它的速度等价于最大化它的动能；因此只需优化这个正的乘积。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用均值不等式确定最优中间质量}\par\nobreak
+在图\ref{fig:em4:example:14:p}把分母除以$x$，得到$V_M=4mu/[m+M+x+mM/x]$。由$x+mM/x\ge2\sqrt{mM}$，等号在$x=\sqrt{mM}$时成立，所以
+\[\boxed{x_{\mathrm{opt}}=\sqrt{mM},\qquad V_{M,\max}=\frac{4m}{(\sqrt m+\sqrt M)^2}u}.\]
+目标动能占初始动能的比例为$16mM/(\sqrt m+\sqrt M)^4$。若要求整个后续全过程末态，还应检查反弹的入射球是否追上中间球；本题明确只计指定的两次传递。\end{solution}
+\begin{question}\begin{example}[移动墙面的弹性反射]\label{em4:example:15}
+一光滑平面墙由外部装置保持沿法线速度$U$，小球质量$m$、法向入射速度$u>U$，正方向指向墙的运动方向。碰撞完全弹性，求小球末速度、所受冲量和动能变化，核对墙的功。
+\end{example}
+\fig{fig:em4:example:15:s}{题设：移动墙面的弹性反射}{\begin{tikzpicture}[scale=.9]\draw[world](3,-1)--(3,1.7);\draw[flow](0,.6)--(2,.6)node[above]{$u$};\draw[flow](3.3,1.2)--(4.7,1.2)node[above]{$U$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{到墙系反射后换回地面速度}\par\nobreak
+在图\ref{fig:em4:example:15:s}墙的惯性系中，入射速度为$u-U$，弹性反射后为$-(u-U)$；换回地面系得$\boxed{v=2U-u}$。球所受冲量
+\[\boxed{J=m(v-u)=2m(U-u)}.\]
+
+\fig{fig:em4:example:15:p}{墙系中速度反号，换回地面系后球可能仍向右运动但已相对墙分离}{\begin{tikzpicture}
+
+\draw[world](3,-.3)--(3,2.6);\fill(0,1.8)circle(.08);\draw[flow](0,1.8)--(1.8,1.8)node[midway,above]{$u-U$};
+\fill(1.8,.5)circle(.08);\draw[flow](1.8,.5)--(0,.5)node[midway,below]{$v-U=-(u-U)$};
+\node at(1.5,3.2){墙系：墙静止};\node[align=left]at(6,1.5){地面系：$v=2U-u$\\$v-U<0$保证分离\\$\Delta K=UJ$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算动能变化并讨论墙的运动方向}\par\nobreak
+展开平方可得$(2U-u)^2-u^2=4U^2-4Uu=4U(U-u)$，乘$m/2$即得动能变化。这个值可正可负：$0<U<u$时墙退让，小球损失动能；$U<0$时墙迎面运动，小球增加动能。相对墙的弹性并不要求对地动能不变。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以墙面受力点的速度核对做功}\par\nobreak
+由图\ref{fig:em4:example:15:p}动能变化$\Delta K=\tfrac12m[(2U-u)^2-u^2]=2mU(U-u)=JU$。碰撞中墙的作用点以$U$移动，墙对球的功正是$\int F U\dd t=UJ$。$U=0$时功为零而冲量非零；墙向球迎面运动时，球可增加动能，额外能量由维持墙运动的外部装置提供。\end{solution}
+\begin{question}\begin{example}[粗糙水平面上的反复弹跳]\label{em4:example:16}
+将小球视为不计自转的质点。它第一次撞击水平面前水平速度$u>0$、竖直向下速率$w$。法向碰撞完全弹性，动摩擦因数$\mu$；每次冲击中若水平速度先降至零则转为无滑动，忽略空气阻力。求第几次碰撞后水平运动停止，以及从第一次接触起到水平停止的总水平路程。
+\end{example}
+\fig{fig:em4:example:16:s}{法向弹性使每次弹跳高度相同，水平速度与每跳跨度逐次减小}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(8,0);\draw[flow](-.26,1.2)--(1,0)node[midway,left]{$(u,-w)$};
+\draw[world,domain=0:2,samples=40]plot({1+1.5*\x},{2*\x-\x*\x});
+\draw[world,domain=0:2,samples=40]plot({4+.9*\x},{2*\x-\x*\x});
+\draw[world,domain=0:2,samples=40]plot({5.8+.3*\x},{2*\x-\x*\x});
+\foreach \xx/\lab in {1/1,4/2,5.8/3,6.4/N}{\fill(\xx,0)circle(.05);\node[below]at(\xx,0){$\lab$};}
+\draw[flow](6.4,.1)--(6.4,1.6);\node[right]at(6.4,1.7){此后仍竖直弹跳};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{逐次累积受限切向冲量求停止次数}\par\nobreak
+按图\ref{fig:em4:example:16:s}每次法向冲量为$2mw$，滑动时水平速度减少$2\mu w$。因此第$n$次碰后水平速度$u_n=\max(u-2n\mu w,0)$，首次归零的次数为
+\[\boxed{N=\lceil u/(2\mu w)\rceil}.\]
+
+\fig{fig:em4:example:16:p}{碰后水平速度离散下降，最后一次冲量只消除剩余值}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.1,0)node[right]{$n$};\draw[axis](0,0)--(0,3)node[above]{$u_n$};
+\foreach \xx/\yy in {0/2.31,1/1.61,2/.91,3/.21,4/0}{\draw[guide](\xx,0)--(\xx,\yy);\fill(\xx,\yy)circle(.055);}
+\draw[dashed](0,2.31)--(3.3,0);\node[left]at(0,2.31){$u$};\node[below]at(4,0){$N$};
+\draw[dim](2.4,.21)--(2.4,.91)node[midway,right]{$2\mu w$};\node at(2.6,3.3){$u_n=\max(u-2n\mu w,0)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查末次冲量小于滑动上限}\par\nobreak
+第$n$次到来前尚未停止时，剩余水平速度为$u-2(n-1)\mu w$。如果这一速度不大于$2\mu w$，本次只需冲量$m[u-2(n-1)\mu w]$便可使水平速度归零；否则继续减少$2\mu w$。所以求停止次数应取使$n\ge u/(2\mu w)$的最小整数。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对停止前的各段飞行求和}\par\nobreak
+图\ref{fig:em4:example:16:p}每两次碰撞之间飞行时间均为$T=2w/g$。第$N$次碰撞后水平速度为零，故所求路程只包括前$N-1$段飞行：
+\[\boxed{S=\frac{2w}{g}\sum_{n=1}^{N-1}(u-2n\mu w)=\frac{2w}{g}(N-1)(u-\mu wN)}.\]
+$N=1$时$S=0$，即第一次冲击就消除了水平滑动。以后竖直弹跳仍继续；最后一次的实际切向冲量只取消除剩余水平速度所需值，不再强行等于$2\mu mw$。\end{solution}
+\begin{question}\begin{example}[碰撞耗散与惯性系变换]\label{em4:example:17}
+两物体质量$m_1,m_2$在直线上发生孤立碰撞，初末总动量均为$P$。另一个惯性系相对原系以速度$U$运动。证明总动能损失在两个惯性系中相同，并说明个体动能变化是否也不变。
+\end{example}
+\fig{fig:em4:example:17:s}{题设：碰撞耗散与惯性系变换}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,-1)--(5,-1)node[right]{$x^{\prime}$};\draw[flow](2,-1.6)--(3.5,-1.6)node[above]{$U$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{展开同一状态在另一惯性系的总动能}\par\nobreak
+按图\ref{fig:em4:example:17:s}每个速度变成$v'_i=v_i-U$，所以总动能
+\[K'=\sum\frac12m_i(v_i-U)^2=K-UP+\frac12(m_1+m_2)U^2.\]
+初末总动量相同，后两项在碰撞前后相同，因此
+\[\boxed{K_i'-K_f'=K_i-K_f}.\]
+
+\fig{fig:em4:example:17:p}{对前后两个状态使用同一个速度平移，才可比较能量变化}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {3/碰前,0/碰后}{\draw[axis](0,\yy)--(6.7,\yy)node[right]{速度};\node[left]at(-.4,\yy){\lab};}
+\fill(5,3)circle(.05)node[above]{$v_1$};\fill(2,3)circle(.05)node[above]{$v_2$};
+\fill(2.7,0)circle(.05)node[above]{$w_1$};\fill(4.3,0)circle(.05)node[above]{$w_2$};
+\foreach \xx/\yy/\lab in {5/3/{v_1-U},2/3/{v_2-U},2.7/0/{w_1-U},4.3/0/{w_2-U}}{
+\draw[flow](\xx,\yy-.35)--(\xx-1.1,\yy-.35);\draw[red](\xx-1.1,\yy-.12)--(\xx-1.1,\yy+.12);\node[below,red]at(\xx-1.1,\yy-.4){$\lab$};}
+\node at(3.2,-1.6){每个速度都减去同一$U$，两物体动量变化仍相消};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相减后用总动量不变消去平移项}\par\nobreak
+对初态、末态分别写上面的变换式，作差得$K_i'-K_f'=(K_i-K_f)-U(P_i-P_f)$，而总质量项自动相消。孤立碰撞满足$P_i=P_f$，最后一项才消失。这一步也说明如果系统受外冲量，不能再据此宣称损失数值与参考系无关。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用个体动量变化解释个体功的参考系依赖}\par\nobreak
+图\ref{fig:em4:example:17:p}对单个物体却有$\Delta K_i'=\Delta K_i-U\Delta p_i$，其动量一般改变，所以个体动能变化依赖惯性系。两物体的$\Delta p_i$相加为零，才使总耗散不变。若有固定墙等外部装置而系统外冲量不为零，必须把外界功一并考虑，不能继续使用这一孤立系统结论。\end{solution}

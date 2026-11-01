@@ -1,0 +1,29 @@
+\section{练习}
+
+\begin{question}\begin{drill}[任意刚体的复摆周期]\label{em6:drill:1}
+一刚体重为$G$，关于固定悬轴的转动惯量为$J$，质心位于轴下距离$h$。求在重力作用下小幅摆动的周期，并给出适用条件。
+\end{drill}
+\fig{fig:em6:drill:1:s}{题设：任意刚体的复摆周期}{\begin{tikzpicture}[scale=.9]\fill(1,2.5)circle(.06)node[above]{$O$};\draw[world](1,2.5)--(2,.3);\draw[world](2,.3)ellipse(.6 and .9);\fill(2,.3)circle(.05)node[right]{$C$};\draw[guide](1,2.5)--(1,-.2);\node at(1.4,1.5){$\theta$};\node[right]at(1.7,1){$h$};\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:1}
+\begin{question}\begin{drill}[复合双圆盘滑轮]\label{em6:drill:2}
+质量$m$、半径$r$的小均匀圆盘，与质量$2m$、半径$2r$的大均匀圆盘同轴粘接，绕水平光滑轴转动。小盘左侧、大盘右侧各绕一轻绳，各悬质量$m$的重物。绳不滑动，求组合惯量、角加速度和两侧张力。
+\end{drill}
+\fig{fig:em6:drill:2:s}{同一刚性双圆盘上，两条绳分别作用于r和2r的半径}{\begin{tikzpicture}
+
+\draw[world](0,1.8)circle(.6);\draw[world](0,1.8)circle(1.2);\draw[world](0,1.8)--(0,3.4);\draw[world](-.6,1.8)--(-.6,-.6);\draw[world](1.2,1.8)--(1.2,-.6);
+\draw[world](-.9,-.6)rectangle(-.3,-1.2);\node at(-.6,-.9){$m$};\draw[world](.9,-.6)rectangle(1.5,-1.2);\node at(1.2,-.9){$m$};
+\draw[dim](0,1.8)--(-.6,1.8)node[midway,above]{$r$};\draw[guide](0,1.8)--(1.2,1.8)node[midway,above]{$2r$};\node at(3,2.5){小盘$m,r$};\node at(3,1.6){大盘$2m,2r$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:2}
+\begin{question}\begin{drill}[半圆细线框的质心与摆动]\label{em6:drill:3}
+均匀半圆细线框质量$m$、半径$R$，用质量可忽略的刚性支架连接到圆心处垂直线框平面的水平悬轴，圆弧位于轴下方。求质心到轴的距离及小幅摆动周期。
+\end{drill}
+\fig{fig:em6:drill:3:s}{刚性支架质量忽略，只有半圆弧参与质心和转动惯量计算}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:360:2);\draw[guide](-2,0)--(0,0)--(2,0);\fill(0,0)circle(.06)node[above]{$O$};
+\draw[guide](0,0)--(1.414214,-1.414214)node[midway,right]{$R$};\draw[guide](0,0)--(0,-1.27324);\fill(0,-1.27324)circle(.05)node[right]{$C$};\node at(0,.8){$\otimes$固定悬轴};
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:3}

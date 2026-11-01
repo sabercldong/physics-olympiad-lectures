@@ -1,0 +1,6 @@
+\fig{fv:n4:gap}{速度相等给出间距的驻点，最小值仍需与阶段端点比较}{\begin{tikzpicture}[x=1.1cm,y=.9cm]
+\draw[->](0,0)--(5.8,0)node[right]{$t$};\draw[->](0,0)--(0,3.5)node[above]{$D$};
+\draw[blue,thick,domain=0:4,samples=60]plot(\x,{.7+.35*(\x-2.4)^2});\draw[blue,thick](4,1.596)--(5.1,2.7);
+\draw[dashed](2.4,0)--(2.4,.7);\draw[dashed](4,0)--(4,2.3);
+\node[below]at(2.4,0){$t_*$};\node[below]at(4,0){$t_1$};\node[right]at(2.4,.7){$\dot D=0$};\end{tikzpicture}}
+图\ref{fv:n4:gap}用净间距 $D=x_{\text{前}}-x_{\text{后}}$表示碰撞条件。曲线的斜率才是相对速度；斜率从负转正的 $t_*$为本阶段最小间距点。若算出的 $t_*$已越过停车或碰撞引起的阶段边界 $t_1$，便不是该段可用的驻点，应先比较区间端点，再进入下一段。全程安全要求每一段的最小 $D$都满足题设的间隙条件，不能只检查最初的一次速度相等。

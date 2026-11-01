@@ -1,0 +1,8 @@
+\fig{fv:n2:axles}{随车系中的力矩平衡解释前轴减载和后轴增载}{\begin{tikzpicture}
+\draw[world](-.5,0)--(6,0);\draw[world](0,.4)rectangle(5,1.8);\draw[world](.5,.4)circle(.4) (4.5,.4)circle(.4);\fill(2,1.2)circle(2pt)node[above]{$C$};
+\draw[force,red](2,1.2)--(2,-.3)node[right]{$Mg$};\draw[force,blue](2,1.2)--(.8,1.2)node[above]{$Ma$};\draw[force](.5,0)--(.5,1.1)node[left]{$N_r$};\draw[force](4.5,0)--(4.5,.9)node[right]{$N_f$};\draw[force](.5,0)--(1.7,0)node[midway,below]{$f$};
+\draw[dim](.5,-1.1)--(4.5,-1.1)node[midway,below]{$l$};\draw[dim](.5,2.3)--(2,2.3)node[midway,above]{$b$};\draw[dim](5.3,0)--(5.3,1.2)node[midway,right]{$h$};
+\end{tikzpicture}}
+图\ref{fv:n2:axles}采用随车平动的加速系，质心高度 $h$使向后的惯性力产生俯仰力矩。若车不俯仰，轴距 $l$，质心距后轴水平距离 $b$，对后轴取矩便有
+\[N_f l=Mg b-Ma h,\qquad N_r=Mg-N_f.\]
+前轴减载、后轴增载来自力矩平衡，而不是重力发生了改变。计算还须满足两支持力非负；若驱动力只由某一轴提供，摩擦上限应使用该轴的实际支持力，不能始终按总重力乘摩擦系数。

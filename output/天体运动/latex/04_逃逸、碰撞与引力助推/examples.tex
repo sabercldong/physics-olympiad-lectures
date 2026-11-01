@@ -1,0 +1,253 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[双曲线几何与引力守恒量]\label{at4:example:1}
+双曲线 $x^2/a_h^2-y^2/b_h^2=1$，$a_h,b_h>0$，焦距 $c_h=\sqrt{a_h^2+b_h^2}$。求渐近线倾角、焦点到渐近线距离；若它是引力参数 $\mu$ 的轨道，求单位质量能量、角动量和近点距离。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:1:s}\fig{fig:at4:example:1:s}{题设：双曲线几何与引力守恒量}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-3,-2)--(3,2)(-3,2)--(3,-2);\draw[world,domain=-1.2:1.2,samples=80]plot({cosh(\x)},{.666667*sinh(\x)});\fill(1.20185,0)circle(2pt)node[below]{$F$};\draw[axis](-2.5,0)--(3.5,0);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:1:s} 的渐近线为 $y=\pm(b_h/a_h)x$，故 $\theta=\arctan(b_h/a_h)$。焦点 $(c_h,0)$ 到其中一条直线的距离
+\[d=\frac{(b_h/a_h)c_h}{\sqrt{1+b_h^2/a_h^2}}=b_h.\]
+\typeout{ASTROFIG:fig:at4:example:1:p}\fig{fig:at4:example:1:p}{解答过程：双曲线几何与引力守恒量}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)--(3,2);\fill(2,0)circle(2pt)node[below]{$F$};\draw[dim](2,0)--(1.3846,.9231)node[midway,right]{$d=b_h$};\draw[axis](-.5,0)--(3.5,0);\node at(1,1.7){$\tan\theta=b_h/a_h$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:1:p} 取 $e=c_h/a_h$，近点距离 $r_p=c_h-a_h=a_h(e-1)$。轨道半通径为 $p=a_h(e^2-1)=b_h^2/a_h$，所以
+\[h=\sqrt{\frac{\mu b_h^2}{a_h}},\qquad \varepsilon=\frac\mu{2a_h}>0.\]
+若试验物体质量为 $m$，总能量和角动量分别再乘 $m$。由 $v_\infty^2=2\varepsilon$ 得 $h=b_hv_\infty$，也与 $d=b_h$ 的几何意义一致。几何半长轴为正，不能在此写成椭圆的负能量。\end{solution}
+\begin{question}\begin{example}[给定近地点的引力散射角]\label{at4:example:2}
+小天体以无穷远速度 $v_\infty$ 掠过质量 $M$ 的固定天体，最近距离为 $r_p$。求偏转角和冲量参数，忽略中心天体尺寸。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:2:s}\fig{fig:at4:example:2:s}{题设：给定近地点的引力散射角}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:2:s} 无穷远能量为 $v_\infty^2/2$，因此几何半长轴 $a_h=\mu/v_\infty^2$。由 $r_p=a_h(e-1)$，
+\[e=1+\frac{r_pv_\infty^2}{\mu}.\]
+\typeout{ASTROFIG:fig:at4:example:2:p}\fig{fig:at4:example:2:p}{解答过程：给定近地点的引力散射角}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};\draw[guide](0,0)--(.333,-.373)node[midway,above right]{$r_p$};\node at(-2,2){$e=1+r_pv_\infty^2/\mu$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:2:p} 两渐近线给速度转角 $\chi=2\arcsin(1/e)$，所以
+\[\chi=2\arcsin\frac1{1+r_pv_\infty^2/\mu},\qquad
+b^2=r_p^2+\frac{2\mu r_p}{v_\infty^2}.
+\]
+第二式也可由 $h^2=r_p^2(v_\infty^2+2\mu/r_p)=b^2v_\infty^2$ 检查。弱引力极限 $\mu\to0$ 时 $b\to r_p,\chi\to0$；固定 $r_p$ 而减小入射速度时转角增大。这里讨论无碰撞质点轨道，不能在有半径的天体中无限减小 $r_p$。\end{solution}
+\begin{question}\begin{example}[有冲量参数的碰撞条件]\label{at4:example:3}
+半径 $R$、质量 $M$ 的球形吸收体静止。小粒子在无穷远速度为 $v_\infty>0$，入射直线到中心距离为 $b$。求能够碰到表面的条件，允许相切。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:3:s}\fig{fig:at4:example:3:s}{题设：有冲量参数的碰撞条件}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};\draw[world](0,0)circle(.5);\node at(1.8,.2){表面 $R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:3:s} 用无穷远初态给 $h=bv_\infty$、$\varepsilon=v_\infty^2/2$。在球面若可达，径向速度平方须非负：
+\[v_r(R)^2=v_\infty^2+\frac{2\mu}{R}-\frac{b^2v_\infty^2}{R^2}\ge0.
+\]
+\typeout{ASTROFIG:fig:at4:example:3:p}\fig{fig:at4:example:3:p}{解答过程：有冲量参数的碰撞条件}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};\draw[world](0,0)circle(.5);\draw[dim](1,-1.118)--(1,0)node[midway,right]{$b$};\node at(-2,2){$r_p=R$ 为临界};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:3:p} 的相切边界给 $b_{\max}^2=R^2+2\mu R/v_\infty^2$。若 $b\le R$，所有正的 $v_\infty$ 都可命中；若 $b>R$，则
+\[v_\infty^2\le\frac{2\mu R}{b^2-R^2}.\]
+方向是不等号向下：速度越快，引力偏转越小，过大的冲量参数来不及被聚焦到表面。等号是擦碰；若必须穿入表面，取严格小于。这里的判断还利用了轨道从无穷远沿入射支到近点，不能拿它直接处理初始已经向外的轨道。\end{solution}
+\begin{question}\begin{example}[行星扫过尘埃的吸积率]\label{at4:example:4}
+半径 $R$、质量 $M$ 的行星以速度 $V$ 穿过静止、均匀、密度为 $\rho$ 的稀薄尘埃。尘埃碰到表面即被吸收，忽略粒子间作用和行星参数的瞬时变化，求吸积质量率。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:4:s}\fig{fig:at4:example:4:s}{题设：行星扫过尘埃的吸积率}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[flow](0,0)--(2,0)node[above]{$V$};\foreach \x in{-3,-2,3,4}{\foreach \y in{-1.5,-.5,.5,1.5}{\fill(\x,\y)circle(.8pt);}}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:4:s} 换到行星系，远处尘埃以 $V$ 入射。上一碰撞条件给 $b_{\max}^2=R^2(1+2GM/(RV^2))$。
+\typeout{ASTROFIG:fig:at4:example:4:p}\fig{fig:at4:example:4:p}{解答过程：行星扫过尘埃的吸积率}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,-1.5)rectangle(4,1.5);\draw[dim](-.5,-1.5)--(-.5,1.5)node[midway,left]{$2b_{\max}$};\draw[dim](0,-2)--(4,-2)node[midway,below]{$V\dd t$};\node at(2,0){入射质量 $\rho\pi b_{\max}^2V\dd t$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:4:p} 在时间 $\dd t$ 内被捕获的是远处半径 $b_{\max}$、长度 $V\dd t$ 的柱体质量，故
+\[\frac{\dd M}{\dd t}=\rho\pi R^2V\left(1+\frac{2GM}{RV^2}\right).
+\]
+括号内第一项是几何扫掠，第二项是引力聚焦。单位为质量每时间，符合质量流量。形式上 $V\to0$ 时聚焦项发散，提示匀速、无限均匀稀薄流和瞬时稳态近似不能任意延伸到零速；真实环境的有限尺度和其他相互作用会限制它。\end{solution}
+\begin{question}\begin{example}[陨石粘合后卫星是否撞地]\label{at4:example:5}
+质量 $m$ 的卫星绕质量 $M$、半径 $R_0$ 的行星作半径 $R>R_0$ 的圆运动。质量 $m/10$ 的陨石沿径向向内、以速度 $u$ 撞入并粘合。求能使合体碰到表面的最低 $u$，允许擦碰。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:5:s}\fig{fig:at4:example:5:s}{题设：陨石粘合后卫星是否撞地}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[guide](0,0)circle(2);\fill(2,0)circle(2pt)node[below]{$m$};\draw[flow](2,0)--(2,1)node[right]{$v_c$};\draw[force](3.5,0)--(2.6,0)node[above]{$u,\ m/10$};\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$R$};\draw[dim](0,0)--(-.707,.707)node[midway,left]{$R_0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:5:s} 取碰撞点向外为径向正方向，圆速 $v_c=\sqrt{\mu/R}$。碰撞短时忽略引力冲量，分别守恒切向和径向动量，得 $v_t=10v_c/11$、$v_r=-u/11$。
+\typeout{ASTROFIG:fig:at4:example:5:p}\fig{fig:at4:example:5:p}{解答过程：陨石粘合后卫星是否撞地}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(2pt)node[below]{$F$};\fill(3,0)circle(2pt)node[below]{粘合点};\draw[flow](3,0)--(3,1.5)node[right]{$10v_c/11$};\draw[flow](3,1.5)--(2,1.5)node[above]{$-u/11$};\draw[force](3,0)--(2,1.5);
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:5:p} 在碰后飞行段，$h=10Rv_c/11$，$2\varepsilon=(100v_c^2+u^2)/121-2\mu/R$。在表面可达的条件为
+\[2\varepsilon+\frac{2\mu}{R_0}-\frac{h^2}{R_0^2}\ge0.
+\]
+代入并乘121，再令 $x=R/R_0>1$，整理为
+\[u^2\ge\frac\mu R(100x^2-242x+142)
+=\frac{2\mu}{R}(x-1)(50x-71).
+\]
+因此 $u_{\min}=\sqrt{\max\{0,\,2\mu(x-1)(50x-71)/R\}}$。当 $1<x\le71/50$，仅切向减速就已使近点降至表面以下，最低径向速率为零；不是所有参数下都存在正阈值。碰撞前后机械能不守恒，守恒的是短时动量与碰后飞行能量两段各自的关系。\end{solution}
+\begin{question}\begin{example}[非零入射速度的两体相遇时间]\label{at4:example:6}
+两质点相距 $l$，$m_1$ 以速度 $u_0\ge0$ 沿连线朝初始静止的 $m_2$ 运动，只受引力。求相遇时间，给出三种相对能量下的表达式。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:6:s}\fig{fig:at4:example:6:s}{题设：非零入射速度的两体相遇时间}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$l$};\draw[flow](0,.5)--(1.3,.5)node[above]{$u_0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:6:s} 的初始相对速度为 $-u_0$，相对引力参数 $\mu=G(m_1+m_2)$。能量给 $\dot r=-\sqrt{2\mu/r-k}$，$k=2\mu/l-u_0^2$。
+\typeout{ASTROFIG:fig:at4:example:6:p}\fig{fig:at4:example:6:p}{解答过程：非零入射速度的两体相遇时间}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$l$};\node at(2.5,1){$\dot r<0$};\node at(2.5,-1.7){$k>0,=0,<0$ 分别换元};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:6:p} 对全过程取时间积分 $t=\int_0^l\dd r/\sqrt{2\mu/r-k}$。若 $k>0$，令 $A=2\mu/k$、$r=A\sin^2\theta$，$\theta_0=\arcsin\sqrt{l/A}$，则
+\[t=\frac{A}{\sqrt k}(\theta_0-\sin\theta_0\cos\theta_0).
+\]
+若 $k=0$，直接积 $\sqrt{r/(2\mu)}$，得 $t=2l^{3/2}/(3\sqrt{2\mu})$。若 $k<0$，令 $s=-k>0$、$r=(2\mu/s)\sinh^2\eta$，$\eta_0=\operatorname{arsinh}\sqrt{sl/(2\mu)}$，得
+\[t=\frac{2\mu}{s^{3/2}}(\sinh\eta_0\cosh\eta_0-\eta_0).
+\]
+换元时 $\dd r/\sqrt{2\mu/r-k}$ 分别化为 $2A\sin^2\theta\dd\theta/\sqrt k$ 和 $4\mu\sinh^2\eta\dd\eta/s^{3/2}$，所以两个原函数前的系数不同。$u_0=0$ 时第一式恢复静止相落；大 $u_0$ 时结果趋于 $l/u_0$。尽管高速时能量为正，当前仍是向内的径向碰撞分支。\end{solution}
+\begin{question}\begin{example}[垂直初速度下的相互逃逸]\label{at4:example:7}
+两质点相距 $l$，$m_1$ 初速度 $v_1$ 沿连线指向 $m_2$，$m_2$ 初速度 $v_2$ 与该连线垂直。只受相互引力，求可以相互分离至无穷远的条件，并检查 $v_2=0$。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:7:s}\fig{fig:at4:example:7:s}{题设：垂直初速度下的相互逃逸}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$l$};\draw[flow](0,.5)--(1.3,.5)node[above]{$v_1$};\draw[flow](5,0)--(5,1.4)node[right]{$v_2$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:7:s} 中相对速度平方为 $v_1^2+v_2^2$，相对角动量为 $h=lv_2$。相对能量非负给
+\[v_1^2+v_2^2\ge\frac{2G(m_1+m_2)}l.
+\]
+\typeout{ASTROFIG:fig:at4:example:7:p}\fig{fig:at4:example:7:p}{解答过程：垂直初速度下的相互逃逸}{\begin{tikzpicture}[scale=.85]
+\draw[axis](0,0)--(4,0)node[right]{$v_1$};\draw[axis](0,0)--(0,3)node[above]{$v_2$};\draw[world](0,2)arc(90:0:2);\node at(2.9,2){能量允许区：圆弧外};\node at(2.7,.5){另检验 $v_2>0$};
+\end{tikzpicture}}
+
+当 $v_2>0$，图\ref{fig:at4:example:7:p} 的轨道有非零最近距离，点质点模型下绕过后可沿抛物线或双曲线分离，因此上述不等式充分。可写阈值 $v_2\ge\sqrt{2\mu/l-v_1^2}$，但仅在根内非负且保持 $v_2>0$ 时这样表达。
+
+若 $v_2=0,v_1>0$，相对运动径向向内，必先相遇；能量再高也不能直接称作相互逃逸。若 $v_1^2\ge2\mu/l$，任意非零且足够小的 $v_2$ 都给逃逸，所需 $v_2$ 的下确界为零，却不由径向入射的零值实际取得。真实有半径天体还需增加最近距离大于接触距离的条件。\end{solution}
+\begin{question}\begin{example}[从地球表面直接逃离太阳系]\label{at4:example:8}
+地球在半径 $r_E$ 的圆轨道上绕太阳运动，日心圆速 $V_E$。地球半径 $R_E$、引力参数 $\mu_E$。忽略自转、大气，采用分段二体近似，求直接逃离太阳系的最小地表速率。另说明从地表静止瞬时加速到该速率时，对固定质量试验飞船做的功。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:8:s}\fig{fig:at4:example:8:s}{题设：从地球表面直接逃离太阳系}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(2.3);\fill(0,0)circle(4pt)node[below]{太阳};\fill(2.3,0)circle(3pt)node[below]{地球};\draw[flow](2.3,0)--(2.3,1.4)node[right]{$V_E$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:8:s} 在地球影响区外，日心临界逃逸速率为 $\sqrt2V_E$。为使所需地球系余速最小，应让余速沿地球公转方向，故 $u_E=(\sqrt2-1)V_E$。
+\typeout{ASTROFIG:fig:at4:example:8:p}\fig{fig:at4:example:8:p}{解答过程：从地球表面直接逃离太阳系}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(2,0)node[midway,below]{$V_E$};\draw[flow](2,0)--(3,0)node[midway,above]{$u_E$};\node at(1.5,1){$V_E+u_E=\sqrt2V_E$};\node at(1.5,-1){$v_0^2=u_E^2+2\mu_E/R_E$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:8:p} 再回到地球系，由地表到影响区外的能量式 $v_0^2-2\mu_E/R_E=u_E^2$，得到
+\[v_{0,\min}=\sqrt{\frac{2\mu_E}{R_E}+(\sqrt2-1)^2V_E^2}.
+\]
+若把地球系中地表初速视为零，固定质量 $m$ 的试验飞船经一个理想瞬时外力加速，做功是 $mv_0^2/2$，而不是两个逃逸能的简单相加。这不等于真实火箭燃料的全部化学能：喷出气体也带走能量，质量亦改变。这里忽略地球自转，若计入则初始速度矢量与发射纬度也会影响结果。\end{solution}
+\begin{question}\begin{example}[移动行星旁的末速为何不唯一]\label{at4:example:9}
+探测器在距行星中心 $r$ 处的恒星系速率为 $v_0$，与行星恒星系速度 $\bm V$ 垂直。行星引力参数 $\mu_p$，探测器以后能够离开。仅凭这些条件能否唯一确定最终恒星系速度？给出能确定的量及需要补充的条件。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:9:s}\fig{fig:at4:example:9:s}{题设：移动行星旁的末速为何不唯一}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(4pt)node[below]{行星};\draw[flow](0,0)--(1.5,0)node[below]{$\bm V$};\fill(3,1)circle(2pt)node[right]{探测器};\draw[flow](3,1)--(3,2.2)node[above]{$\bm v_0$};\draw[guide](0,0)--(3,1)node[midway,above]{$r$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:9:s} 转到行星系，当前相对速率平方 $u_0^2=v_0^2+V^2$。行星系能量守恒可确定无穷远余速
+\[u_\infty^2=v_0^2+V^2-\frac{2\mu_p}{r}\ge0.
+\]
+\typeout{ASTROFIG:fig:at4:example:9:p}\fig{fig:at4:example:9:p}{解答过程：移动行星旁的末速为何不唯一}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(2.3,0)node[midway,below]{$\bm V$};\draw[guide](2.3,0)circle(1.4);\draw[flow](2.3,0)--(3.3,1)node[right]{$\bm u_{\rm out}$};\draw[force](0,0)--(3.3,1)node[above]{$\bm v_{\rm out}$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:9:p} 回到恒星系，$\bm v_{\rm out}=\bm V+\bm u_{\rm out}$，其大小还含出射方向：
+\[v_{\rm out}^2=V^2+u_\infty^2+2Vu_\infty\cos\gamma.
+\]
+因此仅可给必要的三角不等式范围 $|V-u_\infty|\le v_{\rm out}\le V+u_\infty$，并不能断言整个范围在指定掠近约束下都可实现。必须补充当前相对位置矢量、入射或出射分支，或者等效地给出入射渐近方向、冲量参数和绕行一侧；还要检验不穿入行星。把相对速度直接反转180度只是另一个额外假设，不能从题中两速度垂直推出。\end{solution}
+\begin{question}\begin{example}[经过火星一次助推的发射速度条件]\label{at4:example:10}
+地球、火星按半径 $r_E<r_M$ 的同向共面圆轨道绕太阳运动，日心引力参数 $\mu_s$；地球半径 $R_E$、参数 $\mu_E$，火星参数 $\mu_M$、最小允许掠近半径 $r_{\min}$。允许等待相位。离地后探测器以日心切向速度 $x$ 顺行，首次向外到达火星轨道，随后无动力掠近火星一次。给出求最小地表发射速率的完整一维条件。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:10:s}\fig{fig:at4:example:10:s}{题设：经过火星一次助推的发射速度条件}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(1.5);\draw[guide](0,0)circle(3);\fill(0,0)circle(3pt)node[below]{太阳};\fill(1.5,0)circle(2pt)node[right]{地球};\fill(-2.142857,2.099563)circle(2pt)node[above]{火星};\draw[world,domain=0:135.58469,samples=90]plot({2.11764706*cos(\x)/(1+.411764706*cos(\x))},{2.11764706*sin(\x)/(1+.411764706*cos(\x))});
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at4:example:10:s} 的约束明确了出发方向、第一次交会和安全掠近半径。记 $V_E=\sqrt{\mu_s/r_E}$、$V_M=\sqrt{\mu_s/r_M}$。到达火星半径至少需要 $x\ge x_H=V_E\sqrt{2r_M/(r_E+r_M)}$，等号为双切转移。
+
+出发日心能量 $\varepsilon=x^2/2-\mu_s/r_E$，角动量 $h=r_Ex$。到火星半径时
+\[v_t=\frac{r_Ex}{r_M},\quad
+v_r=\sqrt{x^2-\frac{2\mu_s}{r_E}+\frac{2\mu_s}{r_M}-v_t^2},\quad
+U=\sqrt{v_r^2+(v_t-V_M)^2}.
+\]
+取 $v_r\ge0$ 对应第一次向外到达。相对入射与火星顺行方向的夹角 $\alpha=\operatorname{atan2}(v_r,v_t-V_M)$ 在 $[0,\pi]$。
+\typeout{ASTROFIG:fig:at4:example:10:p}\fig{fig:at4:example:10:p}{解答过程：经过火星一次助推的发射速度条件}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(2.5,0)node[midway,below]{$\bm V_M$};\draw[flow](2.5,0)--(1.5,1.7)node[midway,right]{$\bm U_{\rm in}$};\draw[flow,blue](2.5,0)--(4.4,.6)node[right]{$\bm U_{\rm out}$};\draw[guide](2.5,0)circle(1.97);\node at(2.5,-2.6){允许转角：$0\le\delta\le\delta_{\max}$};
+\end{tikzpicture}}
+
+图\ref{fig:at4:example:10:p} 掠近最多可转 $\delta_{\max}=2\arcsin[1/(1+r_{\min}U^2/\mu_M)]$。允许选择绕行一侧时，应尽量把余速朝向火星公转速度；最小剩余夹角为 $\gamma_{\min}=\max(0,\alpha-\delta_{\max})$。于是可实现的最大日心末速平方为
+\[W^2(x)=V_M^2+U^2+2V_MU\cos\gamma_{\min}.
+\]
+太阳逃逸要求 $W^2(x)\ge2\mu_s/r_M$。因此在 $x\ge x_H$ 的可行集合内，取满足该条件的最小 $x_*$，地表所需速率为
+\[v_{0,\min}=\sqrt{2\mu_E/R_E+(x_*-V_E)^2}.\]
+给出常量后可分段扫描、夹住边界并求根，再回代检查轨道交会与掠近条件；不应未经证明假设整个可行函数单调。若不给最小掠近半径、方向和交会限制，所谓“助推后的唯一最小发射速度”没有唯一的数值定义。本题所给是一套明确近似下可计算的完整条件，未把不受限制的180度反转当成自动可行。\end{solution}
+\begin{question}\begin{example}[双曲轨道到达近点的时间]\label{at4:example:11}
+引力双曲线正几何半长轴 $a_h$、离心率 $e>1$。探测器在入射支，初半径 $r_0>a_h(e-1)$。求到近点的剩余时间。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:11:s}\fig{fig:at4:example:11:s}{题设：双曲轨道到达近点的时间}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at4:example:11:s} 用双曲参数 $r=a_h(e\cosh H-1)$，初态入射选 $H_0<0$。令 $H_* =\operatorname{arcosh}[(r_0/a_h+1)/e]>0$，则 $H_0=-H_*$。
+  \typeout{ASTROFIG:fig:at4:example:11:p}\fig{fig:at4:example:11:p}{解答过程：双曲轨道到达近点的时间}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};\node at(-2,2){入射 $H_0=-H_*<0$};\node at(-2,1.3){近点 $H=0$};
+\end{tikzpicture}}
+
+  图\ref{fig:at4:example:11:p} 在双曲线中心坐标取 $X=a_h\cosh H,Y=b_h\sinh H$，焦点位置相差 $a_he$。扫面积微分大小为 $a_hb_h(e\cosh H-1)\dd H/2$。除以 $h/2$，并用 $h=b_h\sqrt{\mu/a_h}$，得 $\dd t=\sqrt{a_h^3/\mu}(e\cosh H-1)\dd H$。
+  从 $-H_*$ 积到零，剩余时间 $t=\sqrt{a_h^3/\mu}(e\sinh H_*-H_*)>0$。初点趋于近点时 $H_*\to0$、时间趋零。这个结果使用实际入射分支，没有把正参数的出射时刻误当成未来近点时间。\end{solution}
+\begin{question}\begin{example}[逆行点火使入射天体被捕获]\label{at4:example:12}
+粒子余速 $v_\infty>0$，近点 $r_p$，中心参数 $\mu$。在近点作逆行脉冲，求从双曲线变成有界椭圆所需速度减量的下确界，并讨论近点越低是否越有利。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:12:s}\fig{fig:at4:example:12:s}{题设：逆行点火使入射天体被捕获}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at4:example:12:s} 点火前 $v_p=\sqrt{v_\infty^2+2\mu/r_p}$。若点火后能量为负，需 $v_+<\sqrt{2\mu/r_p}$，并且保留非零切向速度以免退化为直接碰撞。
+  \typeout{ASTROFIG:fig:at4:example:12:p}\fig{fig:at4:example:12:p}{解答过程：逆行点火使入射天体被捕获}{\begin{tikzpicture}[scale=.85]
+\draw[guide](-4.6,-1.118)--(1,-1.118);\draw[world,domain=-2:2,samples=110]plot({(1.5-cosh(\x))/1.5+1.11803399*1.11803399*sinh(\x)/1.5},{-1.11803399*(1.5-cosh(\x))/1.5+1.11803399*sinh(\x)/1.5});\fill(0,0)circle(2pt)node[above left]{$F$};\draw[flow](-4.2,-1.118)--(-3,-1.118)node[midway,below]{$v_\infty$};\draw[force](.333,-.373)--(.7,-1.1)node[right]{逆行点火};\node at(-2,2){$\varepsilon_+<0$ 才束缚};
+\end{tikzpicture}}
+
+  图\ref{fig:at4:example:12:p} 速度减量的下确界为 $d_* =\sqrt{v_\infty^2+2\mu/r_p}-\sqrt{2\mu/r_p}$，等号只得到抛物线，不是束缚椭圆。真正捕获应取 $d>d_*$，并检验新近点或当前端点是否仍安全。把两根之差有理化，$d_*=v_\infty^2/[\sqrt{v_\infty^2+2\mu/r_p}+\sqrt{2\mu/r_p}]$，可见减小 $r_p$ 会减小这一下界；实际不能越过最小安全半径。下确界与能够实际取得的最小值在这里需要区分。\end{solution}
+\begin{question}\begin{example}[给定转向的完整引力助推]\label{at4:example:13}
+在行星影响区外，行星日心速率 $V$，探测器行星系余速 $u=V$，入射方向与行星速度垂直。选择绕行一侧，使余速向行星公转方向偏转 $45^\circ$。求日心末速和所需冲量参数，并给出安全近点的检查式。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:13:s}\fig{fig:at4:example:13:s}{题设：给定转向的完整引力助推}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(2,0)node[below]{$\bm V$};\draw[flow](0,0)--(0,2)node[left]{$\bm u_{\rm in}$};\draw[flow,blue](0,0)--(1.414,1.414)node[above]{$\bm u_{\rm out}$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at4:example:13:s} 已给定入射、出射一侧与转角，末余速分量为 $(u/\sqrt2,u/\sqrt2)$。因此日心末速度为 $(V+u/\sqrt2,u/\sqrt2)$。
+  \typeout{ASTROFIG:fig:at4:example:13:p}\fig{fig:at4:example:13:p}{解答过程：给定转向的完整引力助推}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(2,0)node[below]{$V$};\draw[flow,blue](2,0)--(3.414,1.414)node[right]{$u$};\draw[force](0,0)--(3.414,1.414)node[above]{$v_{\rm out}$};
+\end{tikzpicture}}
+
+  图\ref{fig:at4:example:13:p} 取 $u=V$ 得 $v_{\rm out}=V\sqrt{2+\sqrt2}$，初日心速率为 $V\sqrt2$，确有增加。散射式 $\tan(\chi/2)=\mu_p/(bu^2)$ 给 $b=\mu_p/[u^2\tan(\pi/8)]$。离心率 $e=1/\sin(\pi/8)$，最近距离 $r_p=\mu_p(e-1)/u^2$，还须 $r_p\ge r_{\min}$。若不满足，所要求45度助推在给定安全约束下不可行，不能仅凭速度三角形断定能实现。\end{solution}
+\begin{question}\begin{example}[有限半径双天体的相撞截面]\label{at4:example:14}
+两个球形天体质量为 $M_1,M_2$、半径为 $R_1,R_2$，在无穷远相对速度为 $u$，相对冲量参数为 $b$。忽略潮汐形变，求两表面相遇的临界截面。
+\end{example}
+\typeout{ASTROFIG:fig:at4:example:14:s}\fig{fig:at4:example:14:s}{题设：有限半径双天体的相撞截面}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[world](1.6,0)circle(.6);\fill(0,0)circle(2pt)node[above]{$M_1$};\fill(1.6,0)circle(2pt)node[above]{$M_2$};\draw[dim](0,-1.4)--(1.6,-1.4)node[midway,below]{$R_1+R_2$};\node at(.8,1.7){接触状态；相对初始参数 $b,u$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at4:example:14:s} 两体都运动时使用相对参数 $\mu=G(M_1+M_2)$，接触距离为 $R_c=R_1+R_2$，不是任一单独半径。相对角动量 $h=bu$，相对能量 $u^2/2$。
+  \typeout{ASTROFIG:fig:at4:example:14:p}\fig{fig:at4:example:14:p}{解答过程：有限半径双天体的相撞截面}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[world](1.6,0)circle(.6);\fill(0,0)circle(2pt)node[above]{$M_1$};\fill(1.6,0)circle(2pt)node[above]{$M_2$};\draw[dim](0,-1.4)--(1.6,-1.4)node[midway,below]{$R_1+R_2$};\node at(.8,1.7){接触状态；相对初始参数 $b,u$};\node at(.8,-2.4){$h=bu,\quad\mu=G(M_1+M_2)$};
+\end{tikzpicture}}
+
+  图\ref{fig:at4:example:14:p} 表面接触时径向速度平方 $u^2+2\mu/R_c-b^2u^2/R_c^2$，临界为零，故
+  \[\sigma=\pi b_{\max}^2=\pi(R_1+R_2)^2\left[1+\frac{2G(M_1+M_2)}{(R_1+R_2)u^2}\right].\]
+  换到质心系后没有必要把两颗球各自的实验室动能再重复加进相对式。若一个质量和尺寸都可忽略，结果恢复粒子撞固定球形天体的聚焦截面。接触后的粘合、反弹或碎裂不由这条截面公式决定。\end{solution}

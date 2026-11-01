@@ -1,0 +1,452 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[由元件关系求感抗与容抗]\label{em6:example:1}
+电流 $i=I_m\cos\omega t$ 分别通过理想电感 $L$、理想电容 $C$，电容电压无直流偏置。求两元件电压、有效值及平均功率。
+\end{example}
+\fig{fig:em6:example:1:s}{分别给两个独立元件通入给定电流，电压均采用电流流入端为正的被动约定}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);
+\draw[world](4,0)--(4,.9) (4,1.3)--(4,2.4);\draw[world](3.55,.9)--(4.45,.9) (3.55,1.3)--(4.45,1.3);\node[left]at(-.4,1.1){$L$};\node[right]at(4.6,1.1){$C$};
+\foreach\x/\j in {0/L,4/C}{\draw[flow,red](\x,3.2)--(\x,2.5)node[midway,right]{$i(t)$};\node[left]at({\x-.3},2.4){$+$};\node[left]at({\x-.3},0){$-$};\node at(\x,-.7){$u_{\j}$};}\node at(2,4){$i(t)=I_m\cos\omega t$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先固定被动端压，再分别微分和积分}\par\nobreak
+图\ref{fig:em6:example:1:s}中均按电流流入端为电压正端。电感由链式法则得
+$u_L=L\dot i=LI_m(-\sin\omega t)\omega=-\omega LI_m\sin\omega t$。
+电容满足 $\dot u_C=i/C$。令 $\varphi=\omega t$，$\dd t=\dd\varphi/\omega$，则
+\[
+ u_C=\frac{I_m}{C}\int\cos\omega t\dd t
+ =\frac{I_m}{\omega C}\int\cos\varphi\dd\varphi
+ =\frac{I_m}{\omega C}\sin\omega t+K.
+\]
+积分所得正弦项均值为零，无直流偏置要求 $K=0$。
+\fig{fig:em6:example:1:p}{按各自幅值归一化的相量只表示相位，电感、电容电压分别超前和滞后电流 $90^\circ$}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(2.6,0)node[right]{实部};\draw[axis](0,-2.3)--(0,2.4)node[above]{虚部};\draw[force](0,0)--(1.6,0)node[below]{$\underline I/I=1$};\draw[flow,blue](0,0)--(0,1.6)node[right]{$\underline U_L/U_L=\mathrm j$};\draw[flow,red](0,0)--(0,-1.6)node[right]{$\underline U_C/U_C=-\mathrm j$};\draw[guide](.6,0)arc(0:90:.6);\draw[guide](.8,0)arc(0:-90:.8);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由峰值求有效值并用相位定义两种电抗}\par\nobreak
+图\ref{fig:em6:example:1:p}以电流相位沿水平向右，电感电压向上、电容电压向下，故 $U_L=\omega LI_m/\sqrt2$，$U_C=I_m/(\sqrt2\omega C)$，感抗 $\omega L$、容抗 $1/(\omega C)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{直接对瞬时功率平均并说明储能往返交换}\par\nobreak
+瞬时功率均正比于 $\sin\omega t\cos\omega t$，利用 $2\sin\omega t\cos\omega t=\sin2\omega t$，且
+\[
+\int_0^T\sin2\omega t\,\dd t
+=\left[-\frac{\cos2\omega t}{2\omega}\right]_0^T
+=\frac{-\cos4\pi+\cos0}{2\omega}=0.
+\]
+故每一元件一周期平均功率均为零，表示能量往返交换。高频下电感阻抗增大而电容阻抗减小，但过高频率时寄生参数会使理想模型失效。\end{solution}
+\begin{question}\begin{example}[辉光器件的发光时间]\label{em6:example:2}
+交流电压 $u=311\sin(314t)\,\mathrm V$，简化设器件在正负两个方向均于 $|u|\ge220\,\mathrm V$ 时发光，无滞回。从 $t=0$ 起观察 $1\,\mathrm s$，求发光总时间，并比较把角频率近似为 $100\pi$ 时的结果。
+\end{example}
+\fig{fig:em6:example:2:s}{输入电压与正负发光阈值；两个方向均可发光，不能只计正半周}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi=314t$};\draw[axis](0,-2.6)--(0,2.6)node[above]{$u/(311\,\mathrm V)$};\draw[world,domain=0:6.283,samples=100]plot(\x,{2*sin(\x r)});
+\draw[guide](0,{2*220/311})--(6.3,{2*220/311});\draw[guide](0,{-2*220/311})--(6.3,{-2*220/311});\node[left]at(0,{2*220/311}){$220/311$};\node[left]at(0,{-2*220/311}){$-220/311$};\node[below]at(6.283,0){$2\pi$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先由双向阈值求四个导通边界}\par\nobreak
+图\ref{fig:em6:example:2:s}中令 $\alpha=\arcsin(220/311)$，正半周 $\sin\varphi\ge220/311$，两边界为 $\varphi=\alpha,\pi-\alpha$；负半周则为 $\pi+\alpha,2\pi-\alpha$。两个半周期各有相同的发光相位长度 $\pi-2\alpha$，从而整周期发光占比 $D=1-2\alpha/\pi\simeq0.49974$。
+\fig{fig:em6:example:2:p}{每周期两段发光；第50周期观察在灰色尾段之前结束，但未漏掉其中任何发光区}{\begin{tikzpicture}
+
+\pgfmathsetmacro{\aa}{asin(220/311)*pi/180}\pgfmathsetmacro{\be}{314-98*pi}
+\draw[axis](-.2,0)--(6.9,0)node[right]{周期内相位};\draw[axis](0,-.2)--(0,1.8)node[above]{发光状态};
+\fill[gray!20](\be,0)rectangle(6.283,1.5);\draw[blue,very thick](0,0)--(\aa,0)--(\aa,1)--({pi-\aa},1)--({pi-\aa},0)--({pi+\aa},0)--({pi+\aa},1)--({2*pi-\aa},1)--({2*pi-\aa},0)--(6.283,0);
+\draw[guide](\be,0)--(\be,1.5);\node at(3.4,2.5){第50周期只观察至 $\beta=314-98\pi$};\node[below]at(\aa,0){$\alpha$};\node[below]at({pi-\aa},0){$\pi-\alpha$};\node[below]at({pi+\aa},-.65){$\pi+\alpha$};\node[below]at({2*pi-\aa},-.65){$2\pi-\alpha$};\node[above]at(\be,1.5){$\beta$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先计算恰好50周期的近似角频率结果}\par\nobreak
+图\ref{fig:em6:example:2:p}标出正、负两个发光区。若取 $\omega=100\pi$，一秒恰为50周期，发光时间 $D\,\mathrm s\simeq0.49974\,\mathrm s$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段检查一秒观察窗末端并求严格计时结果}\par\nobreak
+若严格使用314，一秒相位为314，包含49整周期及余相位 $314-98\pi$。余相位约为6.1239，而最后一段的结束相位 $2\pi-\alpha$ 约为5.4974。该余段已经超过最后一段的结束点 $2\pi-\alpha$，所以仍包含第50周期的全部发光区间，发光总时间为
+\[t_{\rm on}=\frac{50(2\pi-4\alpha)}{314}\simeq0.49999\,\mathrm s.\]
+两种数值接近但计算条件不同；若只观察非整数周期，不能总用占空比乘观察时间。\end{solution}
+\begin{question}\begin{example}[并联钳位与串联截波]\label{em6:example:3}
+输入 $u_i=5\sin\omega t\,\mathrm V$，经电阻 $R$ 接输出节点 $A$，输出参考为地。理想二极管阳极接 $A$、阴极接 $+3\,\mathrm V$ 理想偏置端，输出负载近似开路。求输出；再反接二极管。另有串联电路：输入 $6\sin\omega t$ 经允许由输入流向输出的二极管与正向压降 $4\,\mathrm V$ 的偏置源接到负载 $R_L$，求负载电压。
+\end{example}
+\fig{fig:em6:example:3:s}{左为高阻输出的并联上钳位，右为有负载的串联阈值传输；两者输入和偏置分别给定}{\begin{tikzpicture}
+
+\begin{scope}\draw[world](0,0)--(3.2,0) (0,0)--(0,.85) (0,1.55)--(0,2.4)--(.8,2.4) (1.5,2.4)--(3.2,2.4)--(4,2.4) (3.2,2.4)--(3.2,1.9);
+\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$u_i$};\draw[world](.8,2.2)rectangle(1.5,2.6);\node[above]at(1.15,2.65){$R$};
+\draw[world](2.95,1.9)--(3.45,1.9)--(3.2,1.45)--cycle;\draw[world](2.9,1.4)--(3.5,1.4);\draw[world](3.2,1.4)--(3.2,1.05) (3.2,.35)--(3.2,0);\draw[world](3.2,.7)circle(.35);\node at(3.2,.85){$+$};\node at(3.2,.5){$-$};\node[right]at(3.6,.7){$3\,\mathrm V$};\node[right]at(4,2.4){$u_o$};\fill(3.2,2.4)circle(2pt)node[above]{$A$};\node at(1.6,-.7){$u_i=5\sin\varphi\,\mathrm V$};\end{scope}
+\begin{scope}[xshift=7cm]\draw[world](0,0)--(4,0)--(4,.7) (4,1.7)--(4,2.4)--(3.2,2.4) (2.5,2.4)--(1.7,2.4) (1.2,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$u_i$};
+\draw[world](1.2,2.15)--(1.2,2.65)--(1.65,2.4)--cycle;\draw[world](1.7,2.1)--(1.7,2.7);\draw[world](2.85,2.4)circle(.35);\node at(2.65,2.4){$+$};\node at(3.02,2.4){$-$};\node[above]at(2.85,2.85){$4\,\mathrm V$};\draw[world](3.8,.7)rectangle(4.2,1.7);\node[right]at(4.3,1.2){$R_L$};\node[right]at(4,2.4){$u_o$};\node at(2,-.7){$u_i=6\sin\varphi\,\mathrm V$};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按二极管截止后的开路输出判定上钳位}\par\nobreak
+图\ref{fig:em6:example:3:s}先假设二极管截止，输出无电流故 $u_o=u_i$。若 $u_i>3\,\mathrm V$，输出阳极高于阴极，导通后被钳到 $3\,\mathrm V$，且 $(u_i-3)/R\ge0$，符合方向。因此 $u_o=\min(u_i,3\,\mathrm V)$。
+
+\fig{em6:e3:upper-wave}{正接并联二极管把正峰钳在 $3\mathrm V$，负半波仍完整输出}{\begin{tikzpicture}
+\begin{scope}[yscale=.45]\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-5.7)--(0,6.2)node[above]{$u_o/\mathrm V$};\draw[world,blue,domain=0:6.283185,samples=150]plot(\x,{min(5*sin(\x r),3)});\draw[guide](0,3)--(6.3,3);\node[left]at(0,3){$3$};\node[left]at(0,-5){$-5$};\end{scope}
+\end{tikzpicture}}
+
+图\ref{em6:e3:upper-wave}的水平段来自二极管导通，曲线段来自截止后的开路输出；两个状态各自都满足题设电流方向。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反接二极管时保留偏置极性并重新核对电流方向}\par\nobreak
+反接后导通条件变为 $u_i<3\,\mathrm V$，电流由偏置源流向输入，所以 $u_o=\max(u_i,3\,\mathrm V)$。
+\fig{fig:em6:example:3:p}{反接二极管而保持偏置正端不变，下限便成为 $3\mathrm V$，输入较低时由偏置源向输入送电}{\begin{tikzpicture}
+\begin{scope}[yscale=.45]\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-0.6)--(0,6.2)node[above]{$u_o/\mathrm V$};\draw[world,blue,domain=0:6.283185,samples=150]plot(\x,{max(5*sin(\x r),3)});\draw[guide](0,3)--(6.3,3);\node[left]at(0,3){$3$};\node[left]at(0,5){$5$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对串联负载另列导通回路，确定零输出区间}\par\nobreak
+图\ref{fig:em6:example:3:p}画出保持 $+3\mathrm V$ 偏置而反接二极管的结果。另对图\ref{fig:em6:example:3:s}右侧串联负载，必须重新列回路。串联题截止时负载电流为零、$u_o=0$；导通时回路有 $u_i-4-iR_L=0$，且要求 $i\ge0$，故
+\[u_o=\begin{cases}6\sin\omega t-4,&\sin\omega t\ge2/3,\\0,&\sin\omega t<2/3.\end{cases}\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较实际波形并检查阈值处的连续性}\par\nobreak
+\fig{em6:e3:series-wave}{串联电路只输出超过 $4\mathrm V$ 偏置的部分，峰值为 $6-4=2\mathrm V$}{\begin{tikzpicture}
+\begin{scope}[yscale=.45]\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-0.6)--(0,3.4)node[above]{$u_o/\mathrm V$};\draw[world,blue,domain=0:6.283185,samples=150]plot(\x,{max(6*sin(\x r)-4,0)});\node[left]at(0,2){$2$};\end{scope}
+\end{tikzpicture}}
+
+图\ref{em6:e3:series-wave}的非零段要求二极管正向电流，零段则由负载电流为零确定。
+
+并联钳位保留未被削去的负半波，串联负载则在大部分周期没有电压。两种接法不能共用一张波形；阈值处两段都连续。\end{solution}
+\begin{question}\begin{example}[三个元件电压不能相加]\label{em6:example:4}
+串联 RLC 正弦稳态中，电阻、电感、电容的有效电压分别为 $60,100,20\,\mathrm V$，电流有效值 $2\,\mathrm A$，角频率 $\omega=1000\,\mathrm{s^{-1}}$。求总电压、各参数、有功功率与功率因数。
+\end{example}
+\fig{fig:em6:example:4:s}{串联电流相同，各端压按被动约定；有效值 $U_R=60\mathrm V,U_L=100\mathrm V,U_C=20\mathrm V$}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(1.5,0) (1.9,0)--(4,0) (0,2.4)--(1.2,2.4) (2,2.4)--(4,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4) (4,0)--(4,.35) (4,1.95)--(4,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$u$};\node[left]at(0,1.8){$+$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\node[above]at(1.1,2.8){$+$};\node[above]at(2.1,2.8){$-$};
+\foreach\j in {0,...,3}{\draw[world](4,{.35+.4*\j})arc(-90:90:.2);}\node[right]at(4.4,1.1){$L$};\node[right]at(4.2,2){$+$};\node[right]at(4.2,.2){$-$};
+\draw[world](1.5,-.4)--(1.5,.4) (1.9,-.4)--(1.9,.4);\node at(1.7,-.95){$-\quad C\quad+$};\draw[flow,red](2.5,2.4)--(3.5,2.4)node[midway,above]{$i$};
+
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由同一电流分别求电阻、电抗和元件参数}\par\nobreak
+图\ref{fig:em6:example:4:s}各元件电流相同，先求 $R=60/2=30\,\Omega$，$X_L=100/2=50\,\Omega$，$X_C=20/2=10\,\Omega$，因此 $L=X_L/\omega=0.050\,\mathrm H$，$C=1/(\omega X_C)=100\,\mu\mathrm F$。
+\fig{fig:em6:example:4:p}{解答过程：三个元件电压不能相加}{\begin{tikzpicture}[scale=.88]\draw[flow](0,0)--(3,0)node[right]{$60\,\mathrm V$};\draw[flow](3,0)--(3,5)node[above]{$100\,\mathrm V$};\draw[flow](3.6,5)--(3.6,4)node[midway,right]{$20\,\mathrm V$};\draw[guide](3,5)--(3.6,5) (3,4)--(3.6,4);\draw[force](0,0)--(3,4)node[midway,above left]{$U=100\,\mathrm V$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先合成反向电抗电压，再与电阻电压正交相加}\par\nobreak
+图\ref{fig:em6:example:4:p}以电流相量为水平正向，电阻电压与它同相，电感电压超前90度，电容电压滞后90度。因而图中竖直合电压为 $100-20=80\,\mathrm V$，与水平 $60\,\mathrm V$ 正交，所以 $U=\sqrt{60^2+80^2}=100\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算有功、视在功率及功率因数并检查}\par\nobreak
+只有电阻消耗平均功率，所以 $P=I^2R=2^2\times30=120\,\mathrm W$；视在功率 $UI=100\times2=200\,\mathrm{VA}$，故功率因数 $P/(UI)=120/200=0.60$，电压超前电流角 $\arctan(80/60)$。若错误相加得180V，会同时破坏相量关系和功率因数。\end{solution}
+\begin{question}\begin{example}[并联电路辨认真实线圈]\label{em6:example:5}
+正弦电源有效电压 $100\,\mathrm V$，一支路为 $100\,\Omega$ 电阻，另一支路为串联内阻 $r$ 与电感 $L$ 的真实线圈。总有功功率 $200\,\mathrm W$，总电流 $\sqrt{13}\,\mathrm A$，角频率 $1000\,\mathrm{s^{-1}}$。求 $r,L$。
+\end{example}
+\fig{fig:em6:example:5:s}{真实线圈支路中电阻与电感串联；它与 $100\Omega$ 纯电阻支路共用电压}{\begin{tikzpicture}
+\draw[world](6,2.4)--(6,1.95);\draw[world](6,0.35)arc(-90:90:.2);\draw[world](6,0.75)arc(-90:90:.2);\draw[world](6,1.15)arc(-90:90:.2);\draw[world](6,1.5500000000000003)arc(-90:90:.2);\draw[world](6,.35)--(6,0);
+\draw[world](0,0)--(6,0) (0,3.6)--(6,3.6)--(6,3.3) (6,2.7)--(6,2.4) (0,0)--(0,1.25) (0,1.95)--(0,3.6) (3,0)--(3,1) (3,2)--(3,3.6);\draw[world](0,1.6)circle(.35);\node at(0,1.6){$\sim$};\node[left]at(-.4,1.6){$100\,\mathrm V$};\draw[world](2.8,1)rectangle(3.2,2);\node[left]at(2.7,1.5){$100\,\Omega$};\draw[world](5.8,2.7)rectangle(6.2,3.3);\node[left]at(5.7,3){$r$};\node[right]at(6.4,1.1){$L$};
+\draw[flow,red](.7,3.6)--(1.7,3.6)node[midway,above]{$\underline I$};\draw[flow,blue](3.7,3.4)--(3.7,2.6)node[right]{$\underline I_R$};\draw[flow,blue](6.9,3.4)--(6.9,2.6)node[right]{$\underline I_L$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由纯电阻支路扣出线圈的有功功率}\par\nobreak
+图\ref{fig:em6:example:5:s}两支路同电压。纯电阻支路电流为 $1\,\mathrm A$、功率 $100\,\mathrm W$，所以线圈有功功率也是 $100\,\mathrm W$，同相电流分量为 $1\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总电流幅值求滞后的无功分量}\par\nobreak
+总同相分量 $2\,\mathrm A$，总电流大小 $\sqrt{13}$，因此无功分量大小为 $\sqrt{13-4}=3\,\mathrm A$，由电感性质取滞后方向。
+\fig{fig:em6:example:5:p}{电流相量沿同相、滞后方向分解；总幅值不能用支路幅值作正数相减}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(3.1,0)node[right]{同相分量 $/\mathrm A$};\draw[axis](0,-3.6)--(0,1)node[above]{无功分量 $/\mathrm A$};
+\draw[flow](0,0)--(1,0)node[above]{$I_R=1$};\draw[flow,red](1,0)--(2,-3)node[pos=.6,right]{$\underline I_L=1-3\mathrm j$};\draw[force,blue](0,0)--(2,-3)node[midway,left]{$\underline I=2-3\mathrm j$};\draw[guide](2,0)--(2,-3)--(0,-3);\node[above]at(2,0){$2$};\node[left]at(0,-3){$-3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用复数电压除以线圈电流求真实阻抗}\par\nobreak
+图\ref{fig:em6:example:5:p}中线圈相量 $\underline I_L=1-3\mathrm j$，阻抗
+\[Z_L=\frac{100}{1-3\mathrm j}\frac{1+3\mathrm j}{1+3\mathrm j}=\frac{100(1+3\mathrm j)}{1+9}=10+30\mathrm j\,\Omega.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原电感并用线圈发热独立核对}\par\nobreak
+所以 $r=10\,\Omega,L=30/1000=0.030\,\mathrm H$。检查线圈功率 $|I_L|^2r=10\times10=100\,\mathrm W$，与输入条件相符。直接用线圈电流大小与总电流相减会漏掉相位。\end{solution}
+\begin{question}\begin{example}[水电功率与两端变压器]\label{em6:example:6}
+进、出口压强相同，水以 $3\,\mathrm{m/s}$ 流入、以 $1\,\mathrm{m/s}$ 流出水轮机，流出位置低 $10\,\mathrm m$，体积流量 $10\,\mathrm{m^3/s}$，密度 $1000\,\mathrm{kg/m^3}$。水轮机、发电机效率分别为75\%、80\%，取 $g=10\,\mathrm{m/s^2}$。发电电压240V，线路总电阻12Ω、损耗占送出功率5\%，用户电压220V，两变压器理想，负载功率因数为1。求输出功率及升压、降压匝数比。
+\end{example}
+\fig{fig:em6:example:6:s}{水流入口、出口的速度与高度差；流量和效率共同确定发电功率}{\begin{tikzpicture}
+
+\draw[world](-1.5,2.5)--(0,2.5)--(0,.6) (0,-.6)--(0,-1)--(2,-1);\draw[world](0,0)circle(.6);\foreach\ang in {0,60,...,300}{\draw[world](0,0)--(\ang:.5);}\draw[flow,blue](-1.4,2.5)--(-.4,2.5)node[midway,above]{$v_1=3\,\mathrm{m/s}$};\draw[flow,blue](.5,-1)--(1.7,-1)node[midway,below]{$v_2=1\,\mathrm{m/s}$};
+\draw[dim](3,-1)--(3,2.5)node[midway,right]{$\Delta h=10\,\mathrm m$};\node at(-1.6,.6){水轮机};\node at(1,3.6){$\rho=1000\,\mathrm{kg/m^3},\quad Q=10\,\mathrm{m^3/s}$};\node at(1,-2.2){水轮机效率 $0.75$，发电机效率 $0.80$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按入口、出口的机械能差求水流功率}\par\nobreak
+图\ref{fig:em6:example:6:s}的水流机械能边界由入口和出口两截面确定，每秒流过质量 $\dot m=\rho Q=10^4\,\mathrm{kg/s}$，单位质量释放机械能 $g\Delta h+(v_1^2-v_2^2)/2=100+4=104\,\mathrm{J/kg}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{依次计入水轮机与发电机效率求送出功率}\par\nobreak
+故水流功率 $1.04\times10^6\,\mathrm W$，发电输出
+\[P=1.04\times10^6\times0.75\times0.80=6.24\times10^5\,\mathrm W.\]
+\fig{fig:em6:example:6:p}{升压后的线路以同一电流传送功率；降压匝比必须使用扣除损耗后的受端电压}{\begin{tikzpicture}
+
+\draw[world](0,0)--(6,0)--(6,.7) (6,1.7)--(6,2.4)--(3.5,2.4) (2.5,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$U_s$};\draw[world](2.5,2.2)rectangle(3.5,2.6);\node[above]at(3,2.65){$12\,\Omega$};\draw[world](5.8,.7)rectangle(6.2,1.7);\node[right]at(6.3,1.2){降压器与用户};\draw[flow,red](.7,2.4)--(1.8,2.4)node[midway,above]{$I=50.99\,\mathrm A$};\draw[dim](5,0)--(5,2.4)node[midway,left]{$U_r$};
+\node at(3,-.7){$P_s=624\,\mathrm{kW},\quad P_r=592.8\,\mathrm{kW}$};\node at(3,-1.4){$U_s=12237.6\,\mathrm V,\quad U_r=11625.8\,\mathrm V$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先由允许损耗求线路电流，再求两端电压}\par\nobreak
+图\ref{fig:em6:example:6:p}按功率逐段传递，$I^2R_\ell=0.05P$，得到线路电流 $I=\sqrt{31200/12}=50.99\,\mathrm A$。送端高压 $U_s=P/I=12237.6\,\mathrm V$，线路压降 $IR_\ell=611.9\,\mathrm V$，受端 $U_r=11625.8\,\mathrm V$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别使用升压前后与降压前后的真实电压求匝比}\par\nobreak
+理想变压器同频绕组的有效电压比等于匝数比：升压器输入为240V、输出为送端电压 $U_s$；降压器输入是已经扣除线路压降的 $U_r$、输出为220V。因而分别取相应两端电压，得到升压器 $N_1:N_2=240:12237.6\simeq1:50.99$，降压器 $N_1:N_2=11625.8:220\simeq52.84:1$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用受端功率与线路功率差闭合检查}\par\nobreak
+用户功率为 $0.95P$，与 $U_rI$ 一致。若改取 $g=9.8$，需从水流功率开始统一重算。\end{solution}
+\begin{question}\begin{example}[感性负载下交流发电机的制动转矩]\label{em6:example:7}
+$N$ 匝面积 $S$ 的线圈在匀强磁场 $B$ 中以角速度 $\omega$ 匀速转动，磁链取 $\Psi=NBS\cos\omega t$。接串联 $R,L$ 负载，已达稳态，忽略发电机其他损耗。求电流、瞬时电磁转矩和平均制动转矩，说明转矩是否始终阻碍转动。
+\end{example}
+\fig{fig:em6:example:7:s}{左图法向转角决定磁链，右图为发电机向串联RL负载供电的等效回路}{\begin{tikzpicture}
+\begin{scope}[scale=.7]
+
+\foreach\y in {-.8,0,.8}{\draw[flow,blue](-2.3,\y)--(2.4,\y);}\node[blue]at(2.3,1.3){$\bm B$};
+\draw[world,very thick](-.964,1.149)--(.964,-1.149);\draw[flow,red](0,0)--(1.532,1.286)node[above right]{$\bm n$};\draw[world](.8,0)arc(0:40:.8);\node at(1.15,.38){$\omega t$};\node at(0,0){$\odot$};\node[left]at(-.25,-.25){转轴};\node at(0,-1.9){线圈边视投影，$N$ 匝、每匝面积 $S$};
+
+\end{scope}\begin{scope}[xshift=5cm]\draw[world](4,2.4)--(4,1.95);\draw[world](4,0.35)arc(-90:90:.2);\draw[world](4,0.75)arc(-90:90:.2);\draw[world](4,1.15)arc(-90:90:.2);\draw[world](4,1.5500000000000003)arc(-90:90:.2);\draw[world](4,.35)--(4,0);
+\draw[world](0,0)--(4,0) (0,2.4)--(1.2,2.4) (2,2.4)--(4,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$e$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\node[right]at(4.4,1.1){$L$};\draw[flow,red](2.5,2.4)--(3.5,2.4)node[midway,above]{$i$};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由磁链相位求电动势和滞后的稳态电流}\par\nobreak
+由图\ref{fig:em6:example:7:s}的磁链相位，$e=-\dot\Psi=-NBS(-\sin\omega t)\omega=E_m\sin\omega t$，
+其中 $E_m=NBS\omega$。负载满足 $L\dot i+Ri=E_m\sin\omega t$。
+设周期特解 $i=A\sin\omega t+B_1\cos\omega t$，
+则 $\dot i=A\omega\cos\omega t-B_1\omega\sin\omega t$。
+比较正弦、余弦系数，得 $RA-\omega LB_1=E_m$、
+$\omega LA+RB_1=0$，从而
+$A=E_mR/(R^2+\omega^2L^2)$、
+$B_1=-E_m\omega L/(R^2+\omega^2L^2)$。
+齐次方程$L\dot i_h+Ri_h=0$在$i_h\ne0$时可分离为$\dd i_h/i_h=-(R/L)\dd t$，故
+\[
+\int\frac{\dd i_h}{i_h}=-\frac RL\int\dd t,\qquad
+\ln|i_h|=-\frac RLt+C_0.
+\]
+取指数并合并常数与符号，得到$i_h=K\e^{-Rt/L}$，其中$K=0$也包括零解。因此完整电流是上述周期特解加衰减项；题设已达稳态，选取$K=0$的周期响应。把特解合成为相位形式，负载稳态电流为 $i=I_m\sin(\omega t-\phi)$，其中 $I_m=E_m/\sqrt{R^2+\omega^2L^2}$、$\tan\phi=\omega L/R$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用机电功率关系确定瞬时转矩的有向符号}\par\nobreak
+电磁转矩对转子做功率为 $\tau_e\omega=-ei$，所以
+\[\tau_e=-\frac{E_mI_m}{\omega}\sin\omega t\sin(\omega t-\phi).\]
+\fig{fig:em6:example:7:p}{感性负载下的有向电磁转矩；正值短时助转，周期平均值为制动转矩}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\theta=\omega t$};\draw[axis](0,-1.1)--(0,.8)node[above]{$\tau_e/(E_mI_m/\omega)$};
+\fill[blue!12](0,0)--plot[domain=0:1.047198,samples=50](\x,{-sin(\x r)*sin((\x-pi/3) r)})--(1.047198,0)--cycle;
+\fill[blue!12](3.141593,0)--plot[domain=3.141593:4.188790,samples=50](\x,{-sin(\x r)*sin((\x-pi/3) r)})--(4.188790,0)--cycle;
+\draw[world,domain=0:6.283,samples=140]plot(\x,{-sin(\x r)*sin((\x-pi/3) r)});\draw[guide,red](0,-.25)--(6.3,-.25);\node[red]at(4.9,-1.1){平均值 $-\cos\phi/2=-1/4$};\node at(3.3,1.8){示例 $\phi=\pi/3$，蓝色为助转时段};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{平均瞬时功率求周期制动转矩}\par\nobreak
+图\ref{fig:em6:example:7:p}中利用积化和差，$ei=E_mI_m[\cos\phi-\cos(2\omega t-\phi)]/2$。在 $T=2\pi/\omega$ 内，
+$\int_0^T\cos(2\omega t-\phi)\dd t=
+[\sin(2\omega t-\phi)/(2\omega)]_0^T=0$。
+平均电磁转矩为负，平均制动转矩大小
+\[\bar\tau_b=\frac{E_mI_m\cos\phi}{2\omega}=\frac{E_m^2R}{2\omega(R^2+\omega^2L^2)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释助转区间并检查纯电阻、纯电感极限}\par\nobreak
+若 $L>0$，某些时段 $e,i$ 异号，$ei<0$，电磁转矩反而助转，表示电感释放磁能经电机送回转子。只有平均制动功率等于电阻平均热功率 $I_m^2R/2$。$L\to0$ 时瞬时功率始终非负，$R\to0$ 的理想纯电感负载则平均转矩为零，但瞬时转矩仍振荡。要维持严格匀速，外驱转矩也应作相应瞬时调整。\end{solution}
+\begin{question}\begin{example}[对称移相截波的有效值与功率]\label{em6:example:8}
+电阻负载的周期电压按相位 $\varphi=\omega t$ 给出：每个半周期前 $\alpha$ 相位不导通，其后保留输入正弦，$0\le\alpha\le\pi$。即 $u_o=U_m\sin\varphi$ 在 $[\alpha,\pi]$ 与 $[\pi+\alpha,2\pi]$，其余为零。求平均值、绝对值平均值、有效值及负载功率。
+\end{example}
+\fig{fig:em6:example:8:s}{对称移相截波的给定电压，图示 $\alpha=0.8$；两半周均须按同一延迟相位处理}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-1.5)--(0,1.6)node[above]{$u_o/U_m$};
+\draw[world](0,0)--(.8,0)--(.8,{sin(.8 r)});\draw[world,domain=.8:3.141593,samples=70]plot(\x,{sin(\x r)});\draw[world](3.141593,0)--(3.941593,0)--(3.941593,{-sin(.8 r)});\draw[world,domain=3.941593:6.283185,samples=70]plot(\x,{sin(\x r)});
+\node[below]at(.8,0){$\alpha$};\node[above]at(3.941593,0){$\pi+\alpha$};\node[below]at(6.283185,0){$2\pi$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用半周期反对称性区分平均值与绝对值平均值}\par\nobreak
+图\ref{fig:em6:example:8:s}两半周波形互为相反数，故平均电压为零。绝对值在两导通区的积分相等，$\overline{|u_o|}=\frac{U_m}{\pi}\int_\alpha^\pi\sin\varphi\dd\varphi
+=\frac{U_m}{\pi}[-\cos\varphi]_\alpha^\pi
+=\frac{U_m(1+\cos\alpha)}{\pi}$。它不同于有符号平均值，也不同于有效值。
+\fig{fig:em6:example:8:p}{平方后两半周贡献相同，面积须除以完整周期 $2\pi$，虚线示平方平均值}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi$};\draw[axis](0,-.2)--(0,1.6)node[above]{$u_o^2/U_m^2$};
+\fill[blue!15](.8,0)--plot[domain=.8:3.141593,samples=70](\x,{(sin(\x r))^2})--(3.141593,0)--cycle;\fill[blue!15](3.941593,0)--plot[domain=3.941593:6.283185,samples=70](\x,{(sin(\x r))^2})--(6.283185,0)--cycle;
+\draw[world,domain=.8:3.141593,samples=70]plot(\x,{(sin(\x r))^2});\draw[world,domain=3.941593:6.283185,samples=70]plot(\x,{(sin(\x r))^2});\draw[world](0,0)--(.8,0) (3.141593,0)--(3.941593,0);
+\draw[guide,red](0,{.5-.8/(2*pi)+sin(1.6 r)/(4*pi)})--(6.3,{.5-.8/(2*pi)+sin(1.6 r)/(4*pi)});\node[below]at(.8,0){$\alpha$};\node[below]at(3.941593,0){$\pi+\alpha$};\node[red]at(3.3,1.4){$U^2/U_m^2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将两段平方积分按完整周期归一化}\par\nobreak
+按图\ref{fig:em6:example:8:p}对平方波形积分，
+\begin{align*}U^2&=\frac{U_m^2}{\pi}\int_\alpha^\pi\sin^2\varphi\dd\varphi\\&=\frac{U_m^2}{\pi}\left[\frac{\varphi}{2}-\frac{\sin2\varphi}{4}\right]_\alpha^\pi
+\\&=U_m^2\left(\frac12-\frac{\alpha}{2\pi}+\frac{\sin2\alpha}{4\pi}\right).\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由电阻热功率求半功率相位并检查两端极限}\par\nobreak
+所以有效值为上式平方根，平均功率 $P=U^2/R$。若希望功率为未截波时的一半，$\alpha=\pi/2$ 满足条件，此时 $U=U_m/2$，不是 $U_m/(2\sqrt2)$。$\alpha=0$ 时恢复完整正弦，$U=U_m/\sqrt2$；$\alpha=\pi$ 时完全截止，所有输出量为零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用参数导数与负载条件核对导通边界}\par\nobreak
+对角度求导，$\dd(\sin2\alpha)/\dd\alpha=2\cos2\alpha$，故
+$\dd U^2/\dd\alpha=U_m^2[-1/(2\pi)+2\cos2\alpha/(4\pi)]
+=-U_m^2\sin^2\alpha/\pi\le0$，也检验出推迟导通确实降低功率。
+
+上述波形由纯电阻电流在过零时自然终止。若负载含电感，电流可能延续到电压过零之后，给定的截止边界将不再自动成立，应重新求导通区间。\end{solution}
+\begin{question}\begin{example}[全波整流后的电容滤波与纹波]\label{em6:example:9}
+理想全波整流器由频率 $f$、峰值 $U_m$ 的正弦电源驱动，输出接 $C$ 与电阻 $R$ 并联。忽略二极管压降，假定纹波很小、每半周期在峰值附近快速补电。求峰谷纹波、直流输出和纹波有效值的一阶近似，并说明近似适用条件。
+\end{example}
+\fig{fig:em6:example:9:s}{整流器的两输入端接正弦源，两输出端并联电容与负载；图中电压均对下方公共端计}{\begin{tikzpicture}
+
+\draw[world](0,0)--(1.1,0) (0,2.2)--(1.1,2.2) (0,0)--(0,.75) (0,1.45)--(0,2.2);\draw[world](0,1.1)circle(.35);\node at(0,1.1){$\sim$};\node[left]at(-.4,1.1){$U_m,f$};
+\draw[world](1.1,0)rectangle(2.9,2.2);\node[align=center]at(2,1.1){理想\\全波整流};\draw[world](2.9,0)--(7,0)--(7,.6) (7,1.6)--(7,2.2)--(2.9,2.2) (4.5,0)--(4.5,.9) (4.5,1.3)--(4.5,2.2);
+\draw[world](4.05,.9)--(4.95,.9) (4.05,1.3)--(4.95,1.3);\node[left]at(4,1.1){$C$};\draw[world](6.8,.6)rectangle(7.2,1.6);\node[right]at(7.3,1.1){$R$};\node[above]at(5.9,2.2){$u_o$};\node[above]at(3.2,2.2){$+$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由全波整流峰间隔估计放电电荷缺额}\par\nobreak
+图\ref{fig:em6:example:9:s}整流输出每半个输入周期有一个峰，相邻补电间隔约 $\Delta t=1/(2f)$。放电期负载电流近似 $I_L=U_{\rm dc}/R$，电容损失电荷 $I_L\Delta t$，所以峰谷差 $\Delta U\simeq I_L/(2fC)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用峰谷平均值连接纹波与直流输出}\par\nobreak
+上峰近似 $U_m$，下谷近似 $U_m-\Delta U$，两者平均给出 $U_{\rm dc}\simeq U_m-\Delta U/2$。
+\fig{fig:em6:example:9:p}{小纹波放大后的近似线性放电段；相邻补电峰间隔为 $\Delta t=1/(2f)$}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.1,0)node[right]{$t$};\draw[axis](0,-1.3)--(0,1.6)node[above]{$u_o-U_{\rm dc}$};
+\draw[world,blue](0,.8)--(1.5,-.8)--(1.5,.8)--(3,-.8)--(3,.8)--(4.5,-.8)--(4.5,.8);\draw[guide](0,.8)--(4.8,.8) (0,-.8)--(4.8,-.8);
+\node[left]at(0,.8){$+\Delta U/2$};\node[left]at(0,-.8){$-\Delta U/2$};\draw[dim](5,-.8)--(5,.8);\node[above]at(5,1){$\Delta U$};\draw[guide](1.5,-.8)--(1.5,-1.15) (3,-.8)--(3,-1.15);\node[below]at(1.5,-1.15){$\Delta t$};\node[below]at(3,-1.15){$2\Delta t$};\node at(2.7,2.1){上峰 $U_m$，平均输出 $U_{\rm dc}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立负载电流和电压求近似直流值与峰谷差}\par\nobreak
+联立图\ref{fig:em6:example:9:p}中的近似关系，
+\[U_{\rm dc}\simeq\frac{U_m}{1+1/(4fRC)},\qquad \Delta U\simeq\frac{U_{\rm dc}}{2fRC}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对去直流的放电段平方平均求纹波有效值}\par\nobreak
+纹波去掉平均后，近似在 $+\Delta U/2$ 与 $-\Delta U/2$ 之间匀速变化。写作 $x(t)=\Delta U/2-(\Delta U/\Delta t)t$，则
+$\dd t=-(\Delta t/\Delta U)\dd x$；$t=0,\Delta t$ 对应
+$x=\Delta U/2,-\Delta U/2$。所以一个放电周期平均平方为
+\[
+ \frac1{\Delta t}\int_0^{\Delta t}x(t)^2\dd t
+ =\frac1{\Delta U}\int_{-\Delta U/2}^{\Delta U/2}x^2\dd x
+ =\frac1{\Delta U}\left[\frac{x^3}{3}\right]_{-\Delta U/2}^{\Delta U/2}
+ =\frac{\Delta U^2}{12}
+\]
+因此纹波有效值 $U_{r}=\Delta U/(2\sqrt3)$。总有效值满足 $U_{\rm rms}^2\simeq U_{\rm dc}^2+U_r^2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查近似条件并区分输出估算与器件峰流}\par\nobreak
+小纹波要求 $2fRC\gg1$，还要求补电导通时间相对半周期短。若 $C$ 变小或负载重，放电不再近似线性，需使用指数放电与整流正弦相交来确定导通边界。本题的理想电源与瞬时补电近似不能给出有限二极管峰流，计算器件电流必须保留电源内阻、线路电感或导通时间。\end{solution}
+\begin{question}\begin{example}[由半功率频率反求串联谐振参数]\label{em6:example:10}
+串联 RLC 电路电阻 $R=20\,\Omega$，电源有效电压 $U=100\,\mathrm V$，改变频率而保持电压不变。两个半功率频率为 $f_1=80\,\mathrm{Hz},f_2=125\,\mathrm{Hz}$。求 $L,C$、谐振频率、品质因数以及谐振时电感和电容端电压。
+\end{example}
+\fig{fig:em6:example:10:s}{电压固定、频率可变的串联RLC；$R=20\Omega,U=100\mathrm V$，测得半功率频率 $80,125\mathrm{Hz}$}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(1.5,0) (1.9,0)--(4,0) (0,2.4)--(1.2,2.4) (2,2.4)--(4,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4) (4,0)--(4,.35) (4,1.95)--(4,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$u$};\node[left]at(0,1.8){$+$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\node[above]at(1.1,2.8){$+$};\node[above]at(2.1,2.8){$-$};
+\foreach\j in {0,...,3}{\draw[world](4,{.35+.4*\j})arc(-90:90:.2);}\node[right]at(4.4,1.1){$L$};\node[right]at(4.2,2){$+$};\node[right]at(4.2,.2){$-$};
+\draw[world](1.5,-.4)--(1.5,.4) (1.9,-.4)--(1.9,.4);\node at(1.7,-.95){$-\quad C\quad+$};\draw[flow,red](2.5,2.4)--(3.5,2.4)node[midway,above]{$i$};
+
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把半功率条件写成低、高频两侧不同符号的电抗方程}\par\nobreak
+图\ref{fig:em6:example:10:s}中 $I=U/\sqrt{R^2+(\omega L-1/\omega C)^2}$。谐振时功率最大 $U^2/R$，半功率要求分母平方变为 $2R^2$，所以低频和高频两边分别满足
+\[\frac1{\omega_1C}-\omega_1L=R,\qquad \omega_2L-\frac1{\omega_2C}=R.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两方程的差与代回求带宽、乘积关系}\par\nobreak
+分别乘 $\omega_1,\omega_2$ 后消去 $1/C$，得到 $(\omega_2^2-\omega_1^2)L=R(\omega_1+\omega_2)$，故 $L=R/(\omega_2-\omega_1)$。再代回任一式，$1/C=L\omega_1\omega_2$。
+\fig{fig:em6:example:10:p}{两半功率点与精确谐振峰；横轴为频率，求角频率关系时须乘 $2\pi$}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.6,0)node[right]{$f/\mathrm{Hz}$};\draw[axis](0,-.2)--(0,1.6)node[above]{$P/P_{\max}$};
+\draw[world,blue,domain=.2:5,samples=180]plot(\x,{1/(1+((20/9)*(\x/2.5-2.5/\x))^2)});\draw[guide](0,.5)--(5,.5);\draw[guide](2,0)--(2,.5) (3.125,0)--(3.125,.5) (2.5,0)--(2.5,1);
+\fill(2,.5)circle(2pt);\fill(3.125,.5)circle(2pt);\node[below]at(2,0){$80$};\node[below]at(3.125,0){$125$};\node[above]at(2.5,1){$100\,\mathrm{Hz}$};\node[left]at(0,.5){$1/2$};\node[left]at(0,1){$1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{统一频率与角频率后代入求参数}\par\nobreak
+由图\ref{fig:em6:example:10:p}的两半功率点，$L=20/[2\pi(125-80)]\simeq0.07074\,\mathrm H$，$C=1/[L(2\pi)^2(80)(125)]\simeq35.81\,\mu\mathrm F$。谐振频率 $f_0=\sqrt{f_1f_2}=100\,\mathrm{Hz}$，品质因数 $\mathcal Q=\omega_0L/R=f_0/(f_2-f_1)=20/9$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由谐振电流求元件端压及相互抵消}\par\nobreak
+谐振电流 $I_0=U/R=5\,\mathrm A$，$U_L=\omega_0LI_0=\mathcal QU\simeq222.2\,\mathrm V$，$U_C$ 同大小反相。元件端电压可以超过电源电压，矢量相消使总电压仍为100V。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查峰频与两边界的几何平均关系}\par\nobreak
+$f_0$ 是两个边界频率的几何平均；把它们直接取算术平均会给出102.5Hz，与精确谐振条件不符。\end{solution}
+\begin{question}\begin{example}[变压器匝比与最大负载功率]\label{em6:example:11}
+正弦电源开路有效电压 $E$、纯电阻内阻 $R_s$，通过理想变压器接固定电阻 $R_L$。匝比 $n=N_1/N_2$ 可调。求负载功率与 $n$ 的关系、最大功率时的匝比和效率，并说明这一点是否同时对应最高效率。
+\end{example}
+\fig{fig:em6:example:11:s}{有内阻的正弦电源接原绕组，固定电阻接副绕组，匝比 $n=N_1/N_2$ 可调}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);\draw[world](6.5,2.4)--(6.5,1.95);\draw[world](6.5,0.35)arc(-90:90:.2);\draw[world](6.5,0.75)arc(-90:90:.2);\draw[world](6.5,1.15)arc(-90:90:.2);\draw[world](6.5,1.5500000000000003)arc(-90:90:.2);\draw[world](6.5,.35)--(6.5,0);
+\draw[world](0,0)--(3,0) (0,2.4)--(1.1,2.4) (1.9,2.4)--(3,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$E$};\draw[world](1.1,2.2)rectangle(1.9,2.6);\node[above]at(1.5,2.65){$R_s$};
+\draw[world](4.5,-.2)--(4.5,2.6) (4.7,-.2)--(4.7,2.6);\fill(2.78,2.15)circle(2pt);\fill(6.28,2.15)circle(2pt);\node[left]at(2.9,1.1){$N_1$};\node[right]at(6.9,1.1){$N_2$};\draw[world](6.5,2.4)--(9.3,2.4)--(9.3,1.7) (9.3,.7)--(9.3,0)--(6.5,0);\draw[world](9.1,.7)rectangle(9.5,1.7);\node[right]at(9.6,1.2){$R_L$};\node at(4.65,-.8){$n=N_1/N_2$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把固定副边负载折算到源端并求负载功率}\par\nobreak
+图\ref{fig:em6:example:11:s}将副边负载折算到原边，$R_L'=n^2R_L$，原边电流 $I_1=E/(R_s+n^2R_L)$。理想变压器不耗有功，负载功率为
+\[P_L=I_1^2n^2R_L=\frac{E^2n^2R_L}{(R_s+n^2R_L)^2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以无量纲折算负载求功率极大值}\par\nobreak
+令 $x=n^2R_L/R_s>0$，得 $P_L=(E^2/R_s)x/(1+x)^2$；逐项求导，
+\[
+ \frac{\dd P_L}{\dd x}=\frac{E^2}{R_s}
+ \left[(1+x)^{-2}-2x(1+x)^{-3}\right]
+ =\frac{E^2}{R_s}\frac{1-x}{(1+x)^3}.
+\]
+导数在 $0<x<1$ 为正，在 $x>1$ 为负，故唯一最大值在 $x=1$。
+\fig{fig:em6:example:11:p}{副边负载折算为原边电阻 $n^2R_L$，源内阻仍在回路中并持续发热}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.5,0)--(4.5,.7) (4.5,1.7)--(4.5,2.4)--(2,2.4) (1.2,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$E$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R_s$};\draw[world](4.3,.7)rectangle(4.7,1.7);\node[right]at(4.8,1.2){$n^2R_L$};\draw[flow,red](2.6,2.4)--(3.6,2.4)node[midway,above]{$I_1$};\node at(2.2,-.7){$P_{\rm in}=EI_1=I_1^2R_s+P_L$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原最佳匝比并区分源内阻损耗与变压器损耗}\par\nobreak
+由图\ref{fig:em6:example:11:p}的等效原边，最佳匝比 $n_*=\sqrt{R_s/R_L}$，$P_{L,\max}=E^2/(4R_s)$。此时原边端压 $E/2$，副边电压 $E/(2n_*)$，源内阻热功率与负载功率相等，整个供电系统效率为50\%。理想变压器自身仍不耗能，不能把50\%归为变压器损耗。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较功率极值与效率随负载的变化}\par\nobreak
+一般效率 $\eta=P_L/(EI_1)=x/(1+x)$，随折算负载电阻增大而上升，但输出功率在 $x>1$ 后下降。$x\to\infty$ 时效率形式上趋1而功率趋0；最大功率与最高效率服务不同设计目标。实际匝比还受铁芯磁通、绕组电阻和额定电流约束，本题暂不计这些限制。\end{solution}
+\begin{question}\begin{example}[不平衡星形负载的中性点位移]\label{em6:example:12}
+三相理想电源相电压为 $\underline U_a=U$、$\underline U_b=U\e^{-\mathrm j2\pi/3}$、$\underline U_c=U\e^{\mathrm j2\pi/3}$，对电源中性点 $O$ 计。负载星形接法中 $a,b,c$ 三支路分别为 $R,R,2R$，公共点为 $N$。分别求中性线完好和断开时的支路电压、中性线电流及总有功功率。
+\end{example}
+\fig{fig:em6:example:12:s}{不平衡负载的实际星形连接；中性线完好时固定 $N$ 电位，断开后由节点方程求 $N$}{\begin{tikzpicture}
+
+
+\foreach \shift/\closed in {0/1,6.1/0}{
+\begin{scope}[xshift=\shift cm]
+\draw[world](0,2.4)--(2.1,1.2)--(0,0) (2.1,1.2)--(4.2,0);
+\node[draw,fill=white]at(1.05,1.8){$R$};
+\node[draw,fill=white]at(1.05,.6){$R$};
+\node[draw,fill=white]at(3.15,.6){$2R$};
+\node[left]at(0,2.4){$a$};\node[left]at(0,0){$b$};\node[right]at(4.2,0){$c$};
+\fill(2.1,1.2)circle(2pt)node[above right]{$N$};
+\draw[world](2.1,1.2)--(3,2.4) (3.6,2.4)--(4.2,2.4);
+\node[right]at(4.2,2.4){$O$};
+\ifnum\closed=1
+\draw[world](3,2.4)--(3.6,2.4);
+\node at(2.1,3.3){中性线完好：$V_N=V_O$};
+\else
+\draw[world](3,2.4)--(3.5,2.75);
+\node at(2.1,3.3){中性线断开：$V_N$待求};
+\fi
+\end{scope}}
+
+\end{tikzpicture}}
+\end{question}
+\input{solution-neutral-shift}

@@ -1,0 +1,11 @@
+\documentclass[11pt,border=4pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=fandol]{ctex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[world](0,2.25)--(3,0);\draw[guide](0,0)--(3.8,0);\draw(2.2,0)arc(180:143.13:.8);\node at(2.3,.25){$37^\circ$};\draw[flow,blue](2.2,2.55)--(.7,.55)node[left]{相对雨速};\draw[flow](3.4,1)--(4.8,1)node[right]{$30$};\end{tikzpicture}
+\end{document}

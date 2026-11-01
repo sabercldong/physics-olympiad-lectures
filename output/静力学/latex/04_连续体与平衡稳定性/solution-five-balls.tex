@@ -1,0 +1,78 @@
+\begin{drillsolution}{s4:drill:3}\textbf{确定球心几何。}
+图\ref{fig:s4:drill:3:s}的四个下球球心构成边长$2R$的正方形，其中心到顶点距离为$\rho=\sqrt2R$。
+\fig{fig:s4:drill:3:geometry}{左为下层球心的俯视图，右为经过上球和一个下球球心的竖直截面}{
+\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[world](-1,-1)rectangle(1,1);
+\foreach \x in {-1,1}\foreach \y in {-1,1}\fill(\x,\y)circle(2pt);
+\fill(0,0)circle(1.5pt)node[left]{$H$};
+\draw[world](0,0)--(1,1)node[midway,above left]{$\rho$};
+\node[right]at(1,1){$P$};
+\draw[dim](-1,-1.45)--(1,-1.45)node[midway,below]{$2R$};
+\node at(0,2.8){俯视};
+\end{scope}
+\begin{scope}[xshift=5.2cm]
+\coordinate(H)at(0,0);\coordinate(P)at(1.6,0);
+\coordinate(T)at(0,1.6);\coordinate(C)at(0,3);
+\draw[world](T)--(P)node[midway,right]{$2R$};
+\draw[guide](C)--(H)--(P);
+\draw[world](C)--(P)node[pos=.33,right]{$a-R$};
+\fill(H)circle(1.5pt)node[left]{$H$};
+\fill(P)circle(2pt)node[right]{$P$};
+\fill(T)circle(2pt)node[left]{$T$};
+\fill(C)circle(2pt)node[left]{$C$};
+\draw[dim](0,-.55)--(1.6,-.55)node[midway,below]{$\rho=\sqrt2R$};
+\node[left]at(0,.8){$h$};
+\draw[world](0,2.3)arc(-90:-61.93:.7);
+\node at(.23,2.08){$\beta$};
+\node at(1.4,3.4){$T$为上球心，$C$为碗心};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:s4:drill:3:geometry}右侧三角形$THP$给出
+\[
+ h=\sqrt{(2R)^2-\rho^2}=\sqrt2R=\rho.
+\]
+因此上、下球的连心线与竖直成$45^\circ$。设球间法向力大小为$Q$，上球竖直平衡：
+\[
+ 4Q\cos45^\circ=G,\qquad
+ Q\cos45^\circ=Q\sin45^\circ=\frac G4.
+\]
+这两个分量分别成为一个下球所受的向下和径向向外作用。
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{下球受力与接触条件。}
+\fig{fig:s4:drill:3:p}{取一个下球为研究对象；相邻下球的压力合力$H_r$只能向径向外侧}{
+\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[above right]{$P$};
+\draw[force,blue](0,0)--(-1.2,2)node[above]{$N$};
+\draw[force,red](0,0)--(1.2,-1.2)node[right]{$Q$};
+\draw[force](0,0)--(2,0)node[right]{$H_r\ge0$};
+\draw[force](0,0)--(0,-1.9)node[below]{$G$};
+\draw[guide](0,0)--(0,1.8);
+\node at(-.35,.9){$\beta$};
+\node at(-2.1,-.7){径向内};
+\node at(2.2,-.7){径向外};
+\end{tikzpicture}}
+图\ref{fig:s4:drill:3:p}中碗反力沿$PC$，与竖直成$\beta$角。竖直与径向平衡分别为
+\[
+ N\cos\beta=G+\frac G4=\frac{5G}{4},\qquad
+ N\sin\beta=\frac G4+H_r.
+\]
+相邻光滑球只能互相挤压，不能拉住对方，故$H_r\ge0$，从而
+\[
+ \tan\beta\ge\frac15.
+\]
+这一步不应预先把相邻下球的接触力设为零，只有求半径上限时才达到这一边界。
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{求碗半径上限。}
+由图\ref{fig:s4:drill:3:geometry}的$CHP$三角形，
+\[
+ \sin\beta=\frac{\rho}{a-R}=\frac{\sqrt2R}{a-R}.
+\]
+增大$a$会减小$\beta$，允许的最大$a$对应$H_r=0$、$\tan\beta=1/5$。此时$\sin\beta=1/\sqrt{26}$，所以
+\[
+ a-R=\sqrt2R\sqrt{26}=2\sqrt{13}R,\qquad
+ \boxed{a_{\max}=(1+2\sqrt{13})R}.
+\]
+结果给出允许半径的上限；在几何构型可实现的范围内，较陡的碗还可由非零下球间压力共同平衡。
+\end{drillsolution}

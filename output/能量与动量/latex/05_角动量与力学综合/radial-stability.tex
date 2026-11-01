@@ -1,0 +1,19 @@
+\fig{em5:radial-force}{固定角动量时，圆轨道附近净径向力的符号；横坐标$\rho=r/r_0$}{
+\begin{tikzpicture}[x=2.8cm,y=.9cm]
+\begin{scope}
+\draw[axis](.55,0)--(1.85,0)node[right]{$\rho$};
+\draw[axis](1,-2.3)--(1,1.9)node[above]{$F_{\rm eff}/(kr_0^{-n})$};
+\draw[world,blue,domain=.65:1.7,samples=80]plot(\x,{-1/(\x)^2+1/(\x)^3});
+\node[below left]at(1,0){$1$};
+\node at(1.1,-2.9){$n=2<3$：回复};
+\end{scope}
+\begin{scope}[xshift=5.7cm]
+\draw[axis](.55,0)--(1.85,0)node[right]{$\rho$};
+\draw[axis](1,-2.3)--(1,1.9)node[above]{$F_{\rm eff}/(kr_0^{-n})$};
+\draw[world,red,domain=.65:1.7,samples=80]plot(\x,{-1/(\x)^4+1/(\x)^3});
+\node[below left]at(1,0){$1$};
+\node at(1.1,-2.9){$n=4>3$：偏离增大};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{em5:radial-force}中正力指向半径增大方向。左图在$\rho>1$时力为负、在$\rho<1$时力为正，均指回圆轨道；右图的力与偏离方向相同。两图在$r_0$处的斜率正是展开式中$-(3-n)kr_0^{-n-1}$的符号。分析沿同一守恒角动量进行，因此等效的离心项也随$r$改变，不能固定角速度作此比较。

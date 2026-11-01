@@ -1,0 +1,161 @@
+﻿页码,标题,公式文件,LaTeX表达式
+2,质点、参考系与时间区间,公式/eq-001.tex,"\text{第3秒末：}\ t=3\,\mathrm s"
+2,质点、参考系与时间区间,公式/eq-002.tex,"\text{第3秒内：}\ 2\le t\le3\,\mathrm s"
+2,质点、参考系与时间区间,公式/eq-003.tex,"\text{前3秒：}\ 0\le t\le3\,\mathrm s"
+3,直角坐标与极坐标,公式/eq-004.tex,\boldsymbol r=x\boldsymbol e_x+y\boldsymbol e_y
+3,直角坐标与极坐标,公式/eq-005.tex,"\boldsymbol e_\rho=(\cos\theta,\sin\theta)"
+3,直角坐标与极坐标,公式/eq-006.tex,"\boldsymbol e_\theta=(-\sin\theta,\cos\theta)"
+4,位矢、运动方程与轨迹方程,公式/eq-007.tex,"\boldsymbol r=\boldsymbol r(t),\qquad x=x(t),\quad y=y(t)"
+4,位矢、运动方程与轨迹方程,公式/eq-008.tex,"x=A\cos\omega t,\qquad y=B\sin\omega t"
+4,位矢、运动方程与轨迹方程,公式/eq-009.tex,\frac{x^2}{A^2}+\frac{y^2}{B^2}=1
+4,位矢、运动方程与轨迹方程,公式/eq-010.tex,\boldsymbol r=\boldsymbol R(q)
+4,位矢、运动方程与轨迹方程,公式/eq-011.tex,\boldsymbol v=\boldsymbol R^{\prime}(q)\dot q
+4,位矢、运动方程与轨迹方程,公式/eq-012.tex,"\boldsymbol a=\boldsymbol R^{\prime\prime}(q)\dot q^{\,2} +\boldsymbol R^{\prime}(q)\ddot q"
+4,位矢、运动方程与轨迹方程,公式/eq-013.tex,"x(t)=x(t_0)+\int_{t_0}^t v_x(\tau)\,\mathrm d\tau"
+5,位移与路程,公式/eq-014.tex,\Delta\boldsymbol r=\boldsymbol r_2-\boldsymbol r_1
+5,位移与路程,公式/eq-015.tex,"s=\int_{t_1}^{t_2}|\boldsymbol v|\,\mathrm dt"
+5,位移与路程,公式/eq-016.tex,\bigl||\boldsymbol r_2|-|\boldsymbol r_1|\bigr|\le|\Delta\boldsymbol r|\le s
+5,位移与路程,公式/eq-017.tex,"\Delta x=\sum_i\Delta x_i,\qquad s=\sum_i|\Delta x_i|"
+6,平均速度与瞬时速度,公式/eq-018.tex,\overline{\boldsymbol v}=\frac{\Delta\boldsymbol r}{\Delta t}
+6,平均速度与瞬时速度,公式/eq-019.tex,\overline u=\frac{s}{\Delta t}\ge|\overline{\boldsymbol v}|
+6,平均速度与瞬时速度,公式/eq-020.tex,\boldsymbol v=\lim_{\Delta t\to0} \frac{\Delta\boldsymbol r}{\Delta t}=\frac{\mathrm d\boldsymbol r}{\mathrm dt}
+6,平均速度与瞬时速度,公式/eq-021.tex,u=|\boldsymbol v|=\frac{\mathrm ds}{\mathrm dt}
+7,分段平均与统计权重,公式/eq-022.tex,"\overline u=\frac{\sum s_i}{\sum t_i},\qquad t_i=\frac{s_i}{v_i}"
+7,分段平均与统计权重,公式/eq-023.tex,t_1=t_2\quad\Longrightarrow\quad\overline u=\frac{v_1+v_2}{2}
+7,分段平均与统计权重,公式/eq-024.tex,s_1=s_2\quad\Longrightarrow\quad\overline u=\frac{2v_1v_2}{v_1+v_2}
+7,分段平均与统计权重,公式/eq-025.tex,\frac{v_1+v_2}{2}-\frac{2v_1v_2}{v_1+v_2} =\frac{(v_1-v_2)^2}{2(v_1+v_2)}\ge0
+8,速度变化量与加速度,公式/eq-026.tex,\Delta\boldsymbol v=\boldsymbol v_2-\boldsymbol v_1
+8,速度变化量与加速度,公式/eq-027.tex,\boldsymbol a=\frac{\mathrm d\boldsymbol v}{\mathrm dt}
+8,速度变化量与加速度,公式/eq-028.tex,u^2=\boldsymbol v\cdot\boldsymbol v
+8,速度变化量与加速度,公式/eq-029.tex,2u\dot u=2\boldsymbol v\cdot\boldsymbol a
+8,速度变化量与加速度,公式/eq-030.tex,\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\qquad(u>0)
+9,零速度处的转向判断,公式/eq-031.tex,"v(t_*)=0,\qquad a(t_*)\ne0"
+9,零速度处的转向判断,公式/eq-032.tex,v(t_*+\delta t)=a(t_*)\delta t+o(\delta t)
+9,零速度处的转向判断,公式/eq-033.tex,\delta t<0\text{与}\delta t>0:\quad v\text{异号}
+9,零速度处的转向判断,公式/eq-034.tex,v(t)=c(t-t_*)^2\quad(c>0)
+9,零速度处的转向判断,公式/eq-035.tex,x(t)=x_*+\frac c3(t-t_*)^3
+9,零速度处的转向判断,公式/eq-036.tex,"v(t_*)=0,\qquad a(t_*)=0"
+10,一般直线运动的求解关系,公式/eq-037.tex,"x=x(t):\quad v=\frac{\mathrm dx}{\mathrm dt},\qquad a=\frac{\mathrm d^2x}{\mathrm dt^2}"
+10,一般直线运动的求解关系,公式/eq-038.tex,a=\frac{\mathrm dv}{\mathrm dt}
+10,一般直线运动的求解关系,公式/eq-039.tex,"x(t)=x_0+\int_{t_0}^t v(\tau)\,\mathrm d\tau"
+10,一般直线运动的求解关系,公式/eq-040.tex,"x(t_0)=x_0,\qquad v(t_0)=v_0"
+10,一般直线运动的求解关系,公式/eq-041.tex,"v(t)=v_0+\int_{t_0}^t a(\tau)\,\mathrm d\tau"
+10,一般直线运动的求解关系,公式/eq-039.tex,"x(t)=x_0+\int_{t_0}^t v(\tau)\,\mathrm d\tau"
+10,一般直线运动的求解关系,公式/eq-042.tex,\mathrm dt=\frac{\mathrm dx}{v(x)}
+10,一般直线运动的求解关系,公式/eq-043.tex,t-t_0=\int_{x_0}^x\frac{\mathrm d\xi}{v(\xi)}
+11,位置变量积分与端点可达性,公式/eq-042.tex,\mathrm dt=\frac{\mathrm dx}{v(x)}
+11,位置变量积分与端点可达性,公式/eq-044.tex,t_2-t_1=\int_{x_1}^{x_2}\frac{\mathrm dx}{v(x)}
+11,位置变量积分与端点可达性,公式/eq-045.tex,"u\sim C|x_*-x|^p,\qquad C>0"
+11,位置变量积分与端点可达性,公式/eq-046.tex,"\Delta t\sim\frac1C\int_0^\varepsilon \xi^{-p}\,\mathrm d\xi"
+11,位置变量积分与端点可达性,公式/eq-047.tex,p<1:\quad\Delta t<\infty
+11,位置变量积分与端点可达性,公式/eq-048.tex,p\ge1:\quad\Delta t\to\infty
+12,图像中的斜率与面积,公式/eq-049.tex,x\text{-}t:\quad v=\frac{\mathrm dx}{\mathrm dt}; \qquad v\text{-}t:\quad a=\frac{\mathrm dv}{\mathrm dt}
+12,图像中的斜率与面积,公式/eq-050.tex,"\Delta x=\int v\,\mathrm dt,\qquad s=\int |v|\,\mathrm dt"
+12,图像中的斜率与面积,公式/eq-051.tex,"\boxed{\Delta x=S_+-S_-},\qquad\boxed{s=S_++S_-}"
+13,分段运动与局部计时,公式/eq-052.tex,"v=v_0-at,\qquad t_*=\frac{v_0}{a}"
+13,分段运动与局部计时,公式/eq-053.tex,"x=v_0t-\frac12at^2,\qquad x_*=\frac{v_0^2}{2a}"
+13,分段运动与局部计时,公式/eq-054.tex,"\tau=t-t_1,\qquad v=v_1+a_2\tau"
+13,分段运动与局部计时,公式/eq-055.tex,x=x_1+v_1\tau+\frac12a_2\tau^2
+14,几何约束与几何交点,公式/eq-056.tex,"F(x,y,t)=0"
+14,几何约束与几何交点,公式/eq-057.tex,F_x\dot x+F_y\dot y+F_t=0
+14,几何约束与几何交点,公式/eq-058.tex,x^2+y^2=R^2\quad\Longrightarrow\quad xv_x+yv_y=0
+14,几何约束与几何交点,公式/eq-059.tex,v_x^2+v_y^2+xa_x+ya_y=0
+14,几何约束与几何交点,公式/eq-060.tex,(\boldsymbol v_P-\boldsymbol V_{\rm boundary})\cdot\boldsymbol n=0
+15,极坐标的基矢与速度,公式/eq-005.tex,"\boldsymbol e_\rho=(\cos\theta,\sin\theta)"
+15,极坐标的基矢与速度,公式/eq-061.tex,"\boldsymbol e_\theta=(-\sin\theta,\cos\theta),\qquad\omega=\dot\theta"
+15,极坐标的基矢与速度,公式/eq-062.tex,"\dot{\boldsymbol e}_\rho=\omega\boldsymbol e_\theta,\qquad \dot{\boldsymbol e}_\theta=-\omega\boldsymbol e_\rho"
+15,极坐标的基矢与速度,公式/eq-063.tex,\boldsymbol r=\rho\boldsymbol e_\rho
+15,极坐标的基矢与速度,公式/eq-064.tex,\boxed{\boldsymbol v=\dot\rho\boldsymbol e_\rho+\rho\omega\boldsymbol e_\theta}
+15,极坐标的基矢与速度,公式/eq-065.tex,"u=\sqrt{\dot\rho^{\,2}+\rho^2\omega^2}"
+16,极坐标加速度的推导,公式/eq-066.tex,\frac{\mathrm d}{\mathrm dt}(\dot\rho\boldsymbol e_\rho) =\ddot\rho\boldsymbol e_\rho+\dot\rho\omega\boldsymbol e_\theta
+16,极坐标加速度的推导,公式/eq-067.tex,\frac{\mathrm d}{\mathrm dt}(\rho\omega\boldsymbol e_\theta) =(\dot\rho\omega+\rho\dot\omega)\boldsymbol e_\theta-\rho\omega^2\boldsymbol e_\rho
+16,极坐标加速度的推导,公式/eq-068.tex,\boxed{a_\rho=\ddot\rho-\rho\omega^2}
+16,极坐标加速度的推导,公式/eq-069.tex,\boxed{a_\theta=2\dot\rho\omega+\rho\dot\omega}
+16,极坐标加速度的推导,公式/eq-070.tex,"\rho=R:\ a_\rho=-R\omega^2,\quad a_\theta=R\dot\omega"
+17,微元近似与积分累积,公式/eq-071.tex,\begin{aligned} \boldsymbol r(t+\delta t)-\boldsymbol r(t) &=\boldsymbol v(t)\delta t\\ &\quad+\tfrac12\boldsymbol a(t)(\delta t)^2+o((\delta t)^2) \end{aligned}
+17,微元近似与积分累积,公式/eq-072.tex,"\delta t=\frac TN,\qquad \text{总误差}\le NC(\delta t)^2=\frac{CT^2}{N}\to0"
+17,微元近似与积分累积,公式/eq-073.tex,"\Delta x=\int v(t)\,\mathrm dt,\qquad \Delta t=\int\frac{\mathrm dh}{v(h)}"
+18,椭圆运动的分量与方向核验,公式/eq-008.tex,"x=A\cos\omega t,\qquad y=B\sin\omega t"
+18,椭圆运动的分量与方向核验,公式/eq-074.tex,"\boldsymbol v=\omega(-A\sin\omega t,\ B\cos\omega t)"
+18,椭圆运动的分量与方向核验,公式/eq-075.tex,"\boldsymbol a=-\omega^2(x,y)"
+18,椭圆运动的分量与方向核验,公式/eq-076.tex,u^2=\omega^2(A^2\sin^2\omega t+B^2\cos^2\omega t)
+18,椭圆运动的分量与方向核验,公式/eq-077.tex,\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\qquad(u\ne0)
+19,例1　等路程两段的平均速度,公式/eq-078.tex,"t_1=\frac{s}{2v_1},\quad t_2=\frac{s}{2v_2},\qquad\frac{s}{v}=\frac{s}{2v_1}+\frac{s}{2v_2}"
+19,例1　等路程两段的平均速度,公式/eq-079.tex,"\boxed{v_2=\frac{vv_1}{2v_1-v}},\qquad t_2>0\ \Longrightarrow\ \boxed{0<v<2v_1}"
+19,例1　等路程两段的平均速度,公式/eq-080.tex,"\text{路程占比为}\lambda,1-\lambda\text{时：}\quad\frac1{\overline v}=\frac{\lambda}{v_1}+\frac{1-\lambda}{v_2}"
+20,例2　一圈赛跑的平均量,公式/eq-081.tex,"\overline{\boldsymbol v}=\boldsymbol0,\qquad\overline u=\frac{400}{40}=10\,\mathrm{m/s}"
+20,例2　一圈赛跑的平均量,公式/eq-082.tex,"\int_0^{40}u(t)\,\mathrm dt=400\,\mathrm m"
+20,例2　一圈赛跑的平均量,公式/eq-083.tex,"\int_0^{t_{50}}u(t)\,\mathrm dt=50\,\mathrm m"
+21,例3　速度图中的位移与路程,公式/eq-084.tex,"S_+=3\times1+\tfrac12\times2\times3=6\,\mathrm m"
+21,例3　速度图中的位移与路程,公式/eq-085.tex,"S_-=\tfrac12\times3\times3=4.5\,\mathrm m"
+21,例3　速度图中的位移与路程,公式/eq-086.tex,"\Delta x_3=s_3=6\,\mathrm m"
+21,例3　速度图中的位移与路程,公式/eq-087.tex,"\boxed{\Delta x_6=1.5\,\mathrm m},\qquad \boxed{s_6=10.5\,\mathrm m}"
+21,例3　速度图中的位移与路程,公式/eq-088.tex,"\overline v_6=\frac{1.5}{6}=0.25\,\mathrm{m/s},\qquad\overline u_6=\frac{10.5}{6}=1.75\,\mathrm{m/s}"
+22,例4　由分段速度重建位置图,公式/eq-089.tex,"x(t)=\begin{cases} v_0t,&0\le t\le T,\\ v_0T,&T\le t\le2T,\\ v_0T-v_0(t-2T),&2T\le t\le3T. \end{cases}"
+22,例4　由分段速度重建位置图,公式/eq-090.tex,"x(3T)=0,\qquad\Delta x=0,\qquad s=2v_0T"
+23,例5　延迟刹车的安全间距,公式/eq-091.tex,"T=\frac{v_0}{a},\qquad s=\frac{v_0^2}{2a}=\frac{v_0T}{2}"
+23,例5　延迟刹车的安全间距,公式/eq-092.tex,"\Delta x_{\rm approach}=s+s=2s,\qquad D_{\min}=d-2s"
+23,例5　延迟刹车的安全间距,公式/eq-093.tex,\boxed{d>2s}\quad\text{严格不接触};\qquad d=2s\quad\text{临界接触}
+24,例5解　全程间距与一般反应延迟,公式/eq-094.tex,"D(t)=\begin{cases}d-\frac12at^2,&0\le t\le T,\\d-s-v_0(t-T)+\frac12a(t-T)^2,&T\le t\le2T.\end{cases}"
+24,例5解　全程间距与一般反应延迟,公式/eq-095.tex,"\begin{aligned} \dot D&=-at\le0,&&0\le t\le T,\\ \dot D&=-v_0+a(t-T)\le0,&&T\le t\le2T \end{aligned}"
+24,例5解　全程间距与一般反应延迟,公式/eq-096.tex,"D(T)=d-s,\qquad D(2T)=d-2s"
+24,例5解　全程间距与一般反应延迟,公式/eq-097.tex,"s_{\rm rear}=v_0\tau+s,\qquad s_{\rm front}=s,\qquad\Delta x_{\rm approach}=v_0\tau"
+24,例5解　全程间距与一般反应延迟,公式/eq-098.tex,\boxed{d>v_0\tau}\quad\text{严格不接触};\qquad\tau=T\ \Longrightarrow\ v_0T=2s
+25,例6　定时发车与途中的相遇,公式/eq-099.tex,"T=60\,\mathrm{min},\quad\tau=10\,\mathrm{min},\quad u=1\,\mathrm{km/min}"
+25,例6　定时发车与途中的相遇,公式/eq-100.tex,"x_A=u(t-k\tau),\qquad x_B=uT-u(t-t_b)"
+25,例6　定时发车与途中的相遇,公式/eq-101.tex,t=\frac{T+t_b+k\tau}{2}
+25,例6　定时发车与途中的相遇,公式/eq-102.tex,"k\tau<t<k\tau+T,\qquad t_b<t<t_b+T"
+25,例6　定时发车与途中的相遇,公式/eq-103.tex,"\boxed{t_b-T<k\tau<t_b+T},\qquad k\ge0"
+26,例6解　整数计数与最早出发时刻,公式/eq-104.tex,"m-6<k<m+6,\qquad k\in\mathbb Z_{\ge0}"
+26,例6解　整数计数与最早出发时刻,公式/eq-105.tex,"k=\max(0,m-5),\ldots,m+5"
+26,例6解　整数计数与最早出发时刻,公式/eq-106.tex,"N=\begin{cases}m+6,&0\le m<5,\\11,&m\ge5.\end{cases}"
+26,例6解　整数计数与最早出发时刻,公式/eq-107.tex,"\boxed{N_{\max}=11},\qquad \boxed{t_b=50\,\mathrm{min}}"
+26,例6解　整数计数与最早出发时刻,公式/eq-108.tex,"t_k=55+5k\ \mathrm{min},\qquad k=0,\ldots,10"
+27,例7　两根平移直杆的交点,公式/eq-109.tex,"y=\frac{x+v_At}{\sqrt3},\qquad y=-\sqrt3(x-v_Bt)"
+27,例7　两根平移直杆的交点,公式/eq-110.tex,v_y=\frac{v_x+v_A}{\sqrt3}=\sqrt3(v_B-v_x)
+27,例7　两根平移直杆的交点,公式/eq-111.tex,"\boxed{v_x=\frac{3v_B-v_A}{4}},\qquad\boxed{v_y=\frac{\sqrt3(v_A+v_B)}4}"
+27,例7　两根平移直杆的交点,公式/eq-112.tex,v_A<3v_B:\ v_x>0;\quad v_A=3v_B:\ v_x=0
+28,例7解　速率与一杆静止的检验,公式/eq-113.tex,|\boldsymbol v_C|^2 =\frac{(3v_B-v_A)^2+3(v_A+v_B)^2}{16}
+28,例7解　速率与一杆静止的检验,公式/eq-114.tex,\boxed{|\boldsymbol v_C|=\frac12\sqrt{v_A^2+3v_B^2}}
+28,例7解　速率与一杆静止的检验,公式/eq-115.tex,"v_A=0:\quad (v_x,v_y)=\left(\frac{3v_B}4,\frac{\sqrt3v_B}4\right)"
+28,例7解　速率与一杆静止的检验,公式/eq-116.tex,"v_B=0:\quad (v_x,v_y)=\left(-\frac{v_A}4,\frac{\sqrt3v_A}4\right)"
+29,例8　速度随高度变化的爬行,公式/eq-117.tex,"v(h)=\frac{l v_0}{l+h},\qquad \mathrm dt=\frac{l+h}{l v_0}\,\mathrm dh"
+29,例8　速度随高度变化的爬行,公式/eq-118.tex,"t=\int_0^l\frac{l+h}{l v_0}\,\mathrm dh =\frac{3l}{2v_0}=\boxed{15\,\mathrm s}"
+29,例8　速度随高度变化的爬行,公式/eq-119.tex,"t=\frac{0.5+1}{2}\times20=\boxed{15\,\mathrm s}"
+30,例8解　位置函数与全过程核验,公式/eq-120.tex,"v_0t=h+\frac{h^2}{2l},\qquad (h+l)^2=l^2+2l v_0t"
+30,例8解　位置函数与全过程核验,公式/eq-121.tex,\boxed{h(t)=l\left(\sqrt{1+\frac{2v_0t}{l}}-1\right)}
+30,例8解　位置函数与全过程核验,公式/eq-122.tex,\dot h=\frac{v_0}{\sqrt{1+2v_0t/l}} =\frac{l v_0}{l+h}>0
+30,例8解　位置函数与全过程核验,公式/eq-123.tex,\ddot h=-\frac{v_0^2}{l} \left(1+\frac{2v_0t}{l}\right)^{-3/2}<0
+31,本讲小结,公式/eq-124.tex,"\boldsymbol r=\boldsymbol r(t),\quad \boldsymbol v=\dot{\boldsymbol r},\quad \boldsymbol a=\dot{\boldsymbol v}"
+31,本讲小结,公式/eq-125.tex,"\overline{\boldsymbol v}=\frac{\Delta\boldsymbol r}{\Delta t}, \qquad\overline u=\frac s{\Delta t}"
+31,本讲小结,公式/eq-126.tex,"\Delta x=\int v\,\mathrm dt,\qquad s=\int|v|\,\mathrm dt"
+31,本讲小结,公式/eq-127.tex,\Delta t=\int\frac{\mathrm dx}{v(x)}
+31,本讲小结,公式/eq-128.tex,\dot u=\frac{\boldsymbol v\cdot\boldsymbol a}{u}\quad(u>0)
+31,本讲小结,公式/eq-129.tex,"a_\rho=\ddot\rho-\rho\omega^2,\qquad a_\theta=2\dot\rho\omega+\rho\dot\omega"
+31,本讲小结,公式/eq-057.tex,F_x\dot x+F_y\dot y+F_t=0
+33,独立练习3、4,公式/eq-130.tex,"\boldsymbol v=\dot\rho\boldsymbol e_\rho+ \rho\omega\boldsymbol e_\theta,\qquad\omega=\dot\theta"
+34,练习提示,公式/eq-131.tex,"x=\frac d2,\qquad x^2+y^2=R^2"
+34,练习提示,公式/eq-132.tex,"\dot{\boldsymbol e}_\rho=\omega\boldsymbol e_\theta, \qquad\dot{\boldsymbol e}_\theta=-\omega\boldsymbol e_\rho"
+35,练习1解　路灯与平行光的影子,公式/eq-133.tex,\frac{l}{X-x}=\frac hX\quad\Longrightarrow\quad X=\frac h{h-l}x
+35,练习1解　路灯与平行光的影子,公式/eq-134.tex,"\boxed{\dot X=\frac h{h-l}v},\qquad \boxed{\dot\ell=\frac{l}{h-l}v}"
+35,练习1解　路灯与平行光的影子,公式/eq-135.tex,"\ell=l\cot\gamma,\qquad \boxed{\dot\ell=0,\quad\dot X=v}"
+35,练习1解　路灯与平行光的影子,公式/eq-136.tex,"\dot X=v-l\csc^2\gamma\,\dot\gamma"
+36,练习2解　圆约束与交点速度,公式/eq-137.tex,"x^2+y^2=R^2,\qquad(x-d)^2+y^2=R^2"
+36,练习2解　圆约束与交点速度,公式/eq-138.tex,"x=\frac d2,\qquad y=\sqrt{R^2-\frac{d^2}4}"
+36,练习2解　圆约束与交点速度,公式/eq-139.tex,"v_x=\frac v2,\qquad xv_x+yv_y=0"
+36,练习2解　圆约束与交点速度,公式/eq-140.tex,"v_y=-\frac{dv}{4y},\qquad \boxed{u_P=\frac{|v|R}{\sqrt{4R^2-d^2}}}"
+36,练习2解　圆约束与交点速度,公式/eq-141.tex,s_{PQ}=R\arccos\frac d{2R}
+36,练习2解　圆约束与交点速度,公式/eq-142.tex,\Delta t=\frac{2R-d}{v}\qquad(v>0)
+37,练习3解　绳长变化与速度投影,公式/eq-143.tex,"\ell=\sqrt{x^2+H^2},\qquad u=-\dot x,\qquad \dot\ell=-v"
+37,练习3解　绳长变化与速度投影,公式/eq-144.tex,\dot\ell=\frac{x\dot x}{\ell} =-u\cos\alpha=-v
+37,练习3解　绳长变化与速度投影,公式/eq-145.tex,\boxed{u=\frac v{\cos\alpha}}
+37,练习3解　绳长变化与速度投影,公式/eq-146.tex,"u\cos\alpha\,\mathrm dt=v\,\mathrm dt"
+38,练习4解　转动基矢参与求导,公式/eq-147.tex,"\boldsymbol e_\rho=(\cos\theta,\sin\theta),\qquad \boldsymbol e_\theta=(-\sin\theta,\cos\theta)"
+38,练习4解　转动基矢参与求导,公式/eq-062.tex,"\dot{\boldsymbol e}_\rho=\omega\boldsymbol e_\theta,\qquad \dot{\boldsymbol e}_\theta=-\omega\boldsymbol e_\rho"
+38,练习4解　转动基矢参与求导,公式/eq-066.tex,\frac{\mathrm d}{\mathrm dt}(\dot\rho\boldsymbol e_\rho) =\ddot\rho\boldsymbol e_\rho+\dot\rho\omega\boldsymbol e_\theta
+38,练习4解　转动基矢参与求导,公式/eq-067.tex,\frac{\mathrm d}{\mathrm dt}(\rho\omega\boldsymbol e_\theta) =(\dot\rho\omega+\rho\dot\omega)\boldsymbol e_\theta-\rho\omega^2\boldsymbol e_\rho
+38,练习4解　转动基矢参与求导,公式/eq-148.tex,"\boxed{a_\rho=\ddot\rho-\rho\omega^2},\qquad \boxed{a_\theta=2\dot\rho\omega+\rho\dot\omega}"
+39,练习4检验　直线匀速运动中的抵消,公式/eq-149.tex,"\rho=\sqrt{a^2+u^2t^2},\quad \theta=\arctan\frac{ut}{a},\quad\omega=\frac{au}{\rho^2}"
+39,练习4检验　直线匀速运动中的抵消,公式/eq-150.tex,"\dot\rho=\frac{u^2t}{\rho},\quad \ddot\rho=\frac{a^2u^2}{\rho^3},\quad \dot\omega=-\frac{2au^3t}{\rho^4}"
+39,练习4检验　直线匀速运动中的抵消,公式/eq-151.tex,a_\rho=\frac{a^2u^2}{\rho^3} -\rho\frac{a^2u^2}{\rho^4}=0
+39,练习4检验　直线匀速运动中的抵消,公式/eq-152.tex,a_\theta=2\frac{u^2t}{\rho}\frac{au}{\rho^2} -\rho\frac{2au^3t}{\rho^4}=0

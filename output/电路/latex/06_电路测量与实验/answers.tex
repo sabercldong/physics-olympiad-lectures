@@ -1,0 +1,198 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c6:drill:1}\textbf{把两种接法的相对误差写成待测阻值的函数}\par\nobreak
+
+图\ref{fig:c6:drill:1:s}中电压表与待测电阻并联，未修正值为 $R_{\text{测}}=R_xR_V/(R_x+R_V)$，相对误差大小
+\[
+\varepsilon_{\text{分流}}=\frac{R_x-R_{\text{测}}}{R_x}
+=\frac{R_x}{R_x+2000}.
+\]
+
+\typeout{ECFIG:fig:c6:drill:1:p}\fig{fig:c6:drill:1:p}{电压跨整个 $P,Q$ 端口时，所测电阻中包含电流表内阻}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[ammeter,l={$R_A$}](3,3)to[R,l={$R_x$}](3,0)--(0,0);
+\draw(0,3)--(-2.5,3)to[voltmeter,l_={$R_V$}](-2.5,0)--(0,0);
+\fill(0,3)circle(2pt)node[above]{$P$};\fill(0,0)circle(2pt)node[below]{$Q$};
+\draw[flow](3.8,2.7)--(3.8,1.8)node[midway,right]{$I_A=I_x$};
+
+\end{tikzpicture}}
+
+图\ref{fig:c6:drill:1:p}中 $R_{\text{测}}=R_x+R_A$，故 $\varepsilon_{\text{分压}}=0.5/R_x$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解精确临界方程并舍去负根}\par\nobreak
+
+令两误差大小相等，得
+\[
+R_x^2=0.5(R_x+2000),\qquad
+R_*=\frac{0.5+\sqrt{0.25+4000}}2\simeq31.87\,\Omega.
+\]
+另一根为负，不对应被测正电阻。近似式 $\sqrt{R_AR_V}$ 给 $31.62\,\Omega$，与精确值接近。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入两个阻值作实际误差比较}\par\nobreak
+
+$10\,\Omega<R_*$，宜用电压表仅跨电阻的接法，分流误差约 $0.498\%$，小于分压误差 $5\%$。$1000\,\Omega>R_*$，宜使电流表只读待测电流，分压误差 $0.050\%$，小于分流误差 $33.3\%$。这里按题意仅比较指定系统误差。
+\end{drillsolution}
+\begin{drillsolution}{c6:drill:2}\textbf{分别列出满偏和半偏时的实际回路条件}\par\nobreak
+
+图\ref{fig:c6:drill:2:s}断开 $S$ 时，$E=I_g(R_1+R_g)$。合上 $S$ 后表头电流为 $I_g/2$，并联端口电压为 $I_gR_g/2$，所以 $R_2$ 中电流为 $I_gR_g/(2R_2)$。
+
+\typeout{ECFIG:fig:c6:drill:2:p}\fig{fig:c6:drill:2:p}{左图满偏电流全经表头；右图半偏后的电源电流增加，不能把两支路电流都当成 $I_g/2$}{\begin{tikzpicture}
+
+\begin{scope}[scale=.85]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[R,l={$R_1$}](3,3)to[ammeter,l={$R_g$}](3,0)--(0,0);
+\draw[flow](.4,4)--(1.7,4)node[midway,above]{$I_g$};\node at(1.5,-.8){并联前};
+\end{scope}
+\begin{scope}[xshift=6cm,scale=.85]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[R,l={$R_1$}](3,3)to[ammeter,l={$R_g$}](3,0)--(0,0);
+\draw(3,3)--(6,3)to[R,l={$R_2$}](6,0)--(3,0);
+\draw[flow](2.2,2.6)--(2.2,1.9)node[midway,left]{$I_g/2$};
+\draw[flow](7,2.6)--(7,1.9)node[midway,right]{$I_2>I_g/2$};\node at(3,-.8){并联后};
+\end{scope}
+
+\end{tikzpicture}}
+
+按图\ref{fig:c6:drill:2:p}右回路，
+\[
+ E=R_1\left(\frac{I_g}2+\frac{I_gR_g}{2R_2}\right)+\frac{I_gR_g}2.
+\]
+与满偏式消去$E$，再乘$2/I_g$：
+\[
+2(R_1+R_g)=R_1+\frac{R_1R_g}{R_2}+R_g.
+\]
+把两边共有项移去，得到$R_1+R_g=R_1R_g/R_2$，即
+\[
+R_2(R_1+R_g)=R_1R_g,\qquad
+R_2=\frac{R_1R_g}{R_1+R_g}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由并联箱读数反求表头内阻}\par\nobreak
+
+\[
+R_g=\frac{R_1R_2}{R_1-R_2}
+=\frac{10000\times99}{10000-99}\simeq99.99\,\Omega.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查直接读数的误差大小和方向}\par\nobreak
+
+直接以 $R_2=99.0\,\Omega$ 作为表头内阻，相对误差为
+\[
+\frac{R_2-R_g}{R_g}=-\frac{R_2}{R_1}=-0.990\%.
+\]
+并联使源所见电阻降低、总电流增加，所以半偏时 $R_2$ 必须比 $R_g$ 略小；负号与这一过程相符。
+\end{drillsolution}
+\begin{drillsolution}{c6:drill:3}\textbf{用原表满偏电流确定串联电阻}\par\nobreak
+
+图\ref{fig:c6:drill:3:s}原表满偏电流 $I_g=3/3000=1\,\mathrm{mA}$。扩为 $6\,\mathrm V$，总电阻需 $6000\,\Omega$，故串联 $3\,\mathrm{k}\Omega$。若串联 $15\,\mathrm{k}\Omega$，量程变成 $18\,\mathrm V$，可覆盖灯压但偏转较小。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{使改装表整体跨灯泡两端}\par\nobreak
+
+\typeout{ECFIG:fig:c6:drill:3:p}\fig{fig:c6:drill:3:p}{串联附加电阻与原表组成六伏表，整体跨灯泡；原表电压 $U_V$ 只占一半}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$E$}](0,5)--(2,5)--(2,4.5);
+\draw(1.8,.5)rectangle(2.2,4.5);\draw(2,.5)--(2,0)--(0,0);
+\draw[<-](2.2,2.4)--(3.1,2.4);\draw(3.1,2.4)to[ammeter,l={$R_A$}](5,2.4)--(6.5,2.4)to[lamp,l={$L$}](6.5,0)--(2,0);
+\node[left]at(1.7,3.7){$R_P$};\node[above]at(2,5){$A$};\node[below]at(2,0){$B$};\node[above]at(3.1,2.4){$P$};
+\draw[->,gray](3.2,1.9)--(3.2,.4)node[midway,right]{起始移到 $B$};
+\fill(6.5,2.4)circle(2pt);\fill(6.5,0)circle(2pt);
+
+\draw(6.5,2.4)--(9,2.4)to[R,l={$R_s=3\,\mathrm{k}\Omega$}](9,1.2)to[voltmeter,l={$3\,\mathrm{k}\Omega$}](9,0)--(6.5,0);
+\draw[<->](10.6,0)--(10.6,1.2)node[midway,right]{$U_V$};
+
+\end{tikzpicture}}
+
+图\ref{fig:c6:drill:3:p}两相等的 $3\,\mathrm{k}\Omega$ 串联，因此 $U_L=2U_V$。这里 $U_V$ 指原三伏刻度的读数，不能把改装后六伏刻度再乘二。图中分压器为连续调压的一种接线，电压表支路不包含电流表。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对电流量程与有限内阻修正}\par\nobreak
+
+额定灯电流为 $2/4.8=0.4167\,\mathrm A$；改装表漏流为 $4.8/6000=0.00080\,\mathrm A$。电流表读约 $0.4175\,\mathrm A<0.6\,\mathrm A$，可覆盖额定点。各点准确灯电流为
+\[
+I_L=I_A-\frac{2U_V}{6000\,\Omega}.
+\]
+电流表内阻压降在额定点约 $0.4175\,\mathrm V$，若电压表跨在其外侧，就会把这部分混入灯泡电压。
+\end{drillsolution}
+\begin{drillsolution}{c6:drill:4}\textbf{先用偏转比反算基础刻度}\par\nobreak
+
+图\ref{fig:c6:drill:4:s}基础中值为 $20\,\Omega$，欧姆表关系为
+\[
+f=\frac{20}{20+R_{\text{基}}},\qquad
+R_{\text{基}}=20\left(\frac1f-1\right).
+\]
+代入 $f=2/7$，得基础读数 $50\,\Omega$，乘以1000，实际 $R_x=50\,\mathrm{k}\Omega$。
+
+\typeout{ECFIG:fig:c6:drill:4:p}\fig{fig:c6:drill:4:p}{蓝针为原来的 $2/7$ 偏转，红针为半偏；同一倍率下由五十千欧变为二十千欧}{\begin{tikzpicture}
+
+\draw[world](160:3)arc(160:20:3);
+\foreach \a/\lab in {160/\infty,146/180,132/80,113.333/40,90/20,66.667/10,43.333/4,20/0}{\draw(\a:2.9)--(\a:3.1);\node at(\a:3.55){$\lab$};}
+\draw[->,blue,thick](0,0)--(120:2.8);\draw[->,red,thick](0,0)--(90:2.8);\fill(0,0)circle(2pt);
+\node[blue,left]at(-1.2,1.4){$f=2/7$};\node[red,right]at(.2,1.8){$f=1/2$};\node at(0,-.7){$\Omega\times1000$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{半偏时直接使用中值并核对读数方向}\par\nobreak
+
+图\ref{fig:c6:drill:4:p}半偏对应 $R_{\text{基}}=20\,\Omega$，所以实际电阻为 $20\,\mathrm{k}\Omega$。偏转由 $2/7$ 增大到 $1/2$，意味着实际电阻减小；因换算关系为分式，不能把电阻按偏转的比例缩放。
+\end{drillsolution}
+\begin{drillsolution}{c6:drill:5}\textbf{把每次读数对应到被隔离的被测段}\par\nobreak
+
+图\ref{fig:c6:drill:5:s}电源两端断开，且测量时排除并联旁路。$L_1$、$L_2$ 分别测得有限电阻，说明各自有导电通路；只有 $d,e$ 间为无穷大，因此故障位于这段连接线。
+
+\typeout{ECFIG:fig:c6:drill:5:p}\fig{fig:c6:drill:5:p}{表笔只跨 $d,e$；断点切断这条测量路径，其他支路没有提供回路}{\begin{tikzpicture}
+
+\draw(0,2)to[lamp,l={$L_1$}](2.5,2)--(3.4,2);\draw(3.8,2)--(4.5,2)to[lamp,l={$L_2$}](7,2);
+\draw(3.4,2)--(3.55,2.12);\draw(3.65,1.88)--(3.8,2);
+\fill(2.5,2)circle(2pt)node[above]{$d$};\fill(4.5,2)circle(2pt)node[above]{$e$};
+\draw(2.5,2)--(2.5,0)to[ohmmeter](4.5,0)--(4.5,2);
+\node at(3.5,-1){读数 $\infty$};\draw[guide](3.6,2.4)--(3.6,3)node[above]{连接线断点};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释外部电源与旁路为何必须隔离}\par\nobreak
+
+欧姆表内部提供测试电源。外部电源若仍接入，表头电流就不再只由欧姆表和被测电阻决定，不能按原刻度换算。图\ref{fig:c6:drill:5:p}若另有 $d\to$其他元件$\to e$ 的并联路径，即使连接线已断，表头仍可能得到有限电流。因此定位结论依赖题给的隔离条件，不能只看“有限、无穷大”而忽略实际回路。
+\end{drillsolution}
+\begin{drillsolution}{c6:drill:6}\textbf{甲接法先把电压表分流计入电池总电流}\par\nobreak
+
+图\ref{fig:c6:drill:6:s}中 $I_{\text{源}}=I+U/R_V$，电池端电压为
+\[
+U=E-r\left(I+\frac U{R_V}\right)
+=\frac{ER_V}{R_V+r}-\frac{rR_V}{R_V+r}I.
+\]
+所以 $a_{\text{甲}}=ER_V/(R_V+r)<E$，$b_{\text{甲}}=rR_V/(R_V+r)<r$。电流表内阻会改变某次测量的工作点，但已测得支路电流 $I$ 后，不再额外进入此端电压关系。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{乙接法从端电压中再扣除电流表压降}\par\nobreak
+
+\typeout{ECFIG:fig:c6:drill:6:p}\fig{fig:c6:drill:6:p}{乙接法的电流表位于分流点之前；电压表只测 $P,Q$ 间外负载}{\begin{tikzpicture}
+\draw(0,0)to[battery1,invert,l={$E$}](0,1.7)to[R,l={$r$}](0,4);
+\draw[flow](.5,4.8)--(1.6,4.8)node[midway,above]{$I_{\text{源}}$};
+\draw(0,4)to[ammeter,l={$R_A$}](3,4)--(4.5,4)to[R,l={$R_x$}](4.5,0)--(0,0);
+\draw(4.5,4)--(7,4)to[voltmeter,l={$R_V$}](7,0)--(4.5,0);
+\fill(4.5,4)circle(2pt)node[above]{$P$};\fill(4.5,0)circle(2pt)node[below]{$Q$};
+\draw[flow](.5,3.2)--(1.7,3.2)node[midway,below]{$I$};
+\node at(3.5,-1){乙：$I_{\text{源}}=I$，$U=U_{PQ}$};
+
+\end{tikzpicture}}
+
+图\ref{fig:c6:drill:6:p}中电池总电流就是 $I$，电池端电压 $E-rI$ 还包含电流表压降 $R_AI$，因此
+\[
+U=E-(r+R_A)I,\qquad a_{\text{乙}}=E,\quad b_{\text{乙}}=r+R_A>r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由拟合参数反求真实值并检查理想极限}\par\nobreak
+
+乙接法修正为 $E=a_{\text{乙}}$、$r=b_{\text{乙}}-R_A$。甲接法则为
+\[
+r=\frac{b_{\text{甲}}R_V}{R_V-b_{\text{甲}}},\qquad
+E=\frac{a_{\text{甲}}R_V}{R_V-b_{\text{甲}}}.
+\]
+$R_V\to\infty$ 时甲的加载消失，$R_A\to0$ 时乙的压降误差消失。两接法都必须按图中电压端点与电流分支推导，不能仅凭接法简称判断误差。
+\end{drillsolution}

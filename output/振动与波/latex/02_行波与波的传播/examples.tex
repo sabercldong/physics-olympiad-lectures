@@ -1,0 +1,124 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[由瞬时波形求一点振动]\label{w2:example:1}
+正向简谐横波速率为$2\,\mathrm{m/s}$，$t=0$的波形为$y=-A\sin(\pi x/2)$，$A=10\,\mathrm{cm}$，$x$以米计。求$x=2\,\mathrm m$处质点的振动方程并画图。
+\end{example}
+\fig{fig:w2:example:1:s}{题设：由瞬时波形求一点振动}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(6.6,0)node[right]{$x/\mathrm m$};\draw[axis](0,-1.5)--(0,1.8)node[above]{$y/A$};\draw[world,domain=0:6,samples=100]plot(\x,{-sin(90*\x)});\foreach \x in {2,4,6}{\node[below]at(\x,0){$\x$};}\fill(2,0)circle(2pt)node[above]{$P$};\draw[flow](4.5,1.5)--(5.5,1.5)node[right]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从空间图读波长并确定时间尺度}\par\nobreak
+图\ref{fig:w2:example:1:s}相邻同相点间距为$4\,\mathrm m$，故$\lambda=4\,\mathrm m$，$T=\lambda/u=2\,\mathrm s$，$\omega=\pi\,\mathrm{s^{-1}}$。向正方向传播可写
+\[
+y=A\sin(\pi t-\pi x/2).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿传播方向平移，建立整列波的表达式}\par\nobreak
+也可以直接平移初始波形：右行波有$y(x,t)=y(x-ut,0)$，于是
+\[
+y=-A\sin\!\left[\frac{\pi}{2}(x-2t)\right]
+=A\sin(\pi t-\pi x/2).
+\]
+代入$t=0$恢复题给波形，等相位线$x-2t=\text{常数}$向右移动，两个条件同时满足。
+\fig{fig:w2:example:1:p}{固定$P$后得到时间图；初始正斜率对应向下速度，半秒后到负端点}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.1,0)node[right]{$t/\mathrm s$};\draw[axis](0,-1.4)--(0,1.7)node[above]{$y_P/A$};
+\draw[blue,thick,domain=0:2,samples=100]plot({2*\x},{-sin(180*\x)});\draw[flow](0,0)--(0,-.6)node[left]{$v_P(0)<0$};
+\foreach \xx/\ll in {1/.5,2/1,3/1.5,4/2}{\node[below]at(\xx,0){$\ll$};}\fill(1,-1)circle(.05);\draw[guide](1,-1)--(1,0);\node[left]at(0,-1){$-1$};\node[left]at(0,1){$1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定观察位置并用初速度核对振动图}\par\nobreak
+代入$P$的$x=2$得$y_P=-A\sin(\pi t)$。图\ref{fig:w2:example:1:p}显示$t=0$经过平衡位置向下，此后在$0.5\,\mathrm s$到负端点，$1\,\mathrm s$向上过平衡。由原波形$P$处正斜率，也可独立核对初速度为负。\end{solution}
+\begin{question}\begin{example}[两振动图的波长分支]\label{w2:example:2}
+波上$P,Q$分别位于$x_P=12\,\mathrm{cm}$、$x_Q=18\,\mathrm{cm}$。两点振幅$4\,\mathrm{cm}$、周期$1.2\,\mathrm s$；$P$在$t=0.3\,\mathrm s$向上过零，$Q$在$t=0$向上过零。求可能的波长和波速。
+\end{example}
+\fig{fig:w2:example:2:s}{题设：两振动图的波长分支}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5.2,0)node[right]{$t/\mathrm s$};\draw[axis](0,-1.5)--(0,1.8)node[above]{$y/A$};\draw[world,domain=0:4.5,samples=100]plot(\x,{-cos(120*\x)});\draw[guide,domain=0:4.5,samples=100]plot(\x,{sin(120*\x)});\foreach \x/\l in {.75/.3,1.5/.6,3/1.2,4.5/1.8}{\node[below]at(\x,0){$\l$};}\node at(3.5,1.6){实线$P$，虚线$Q$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把两点向上过零条件转换为相位差}\par\nobreak
+图\ref{fig:w2:example:2:s}表明$Q$相位比$P$超前$\pi/2$（模$2\pi$），频率确定为$f=1/1.2=5/6\,\mathrm{Hz}$，但波向未知。
+同样可把两点写为$y_Q=A\sin\omega t$和$y_P=A\sin(\omega t-\pi/2)$，其中$\omega=2\pi/1.2$；它们在指定时刻的导数均为$A\omega>0$，确是向上过零。两曲线只给相位差的余数，不能判断$P,Q$之间还包含多少整波长。
+\fig{fig:w2:example:2:p}{两种波向的最短相位间隔分支；图中均取$n=0$，再添整周仍满足两点初态}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.1,0)node[right]{$x$};\draw[blue,thick,domain=0:3,samples=80]plot(\x,{-cos(90*\x)});\fill(0,-1)circle(.05);\fill(3,0)circle(.05);\node[below]at(0,0){$P$};\node[below]at(3,0){$Q$};\draw[flow](3,0)--(3,.7)node[right]{$v_Q>0$};
+\draw[flow](.6,1.55)--(1.8,1.55)node[right]{右行};\node at(1.5,-1.8){$kd=3\pi/2$};
+\begin{scope}[yshift=-4.3cm]
+\draw[axis](-.3,0)--(4.1,0)node[right]{$x$};\draw[red,thick,domain=0:3,samples=80]plot(\x,{-cos(30*\x)});\fill(0,-1)circle(.05);\fill(3,0)circle(.05);\node[below]at(0,0){$P$};\node[below]at(3,0){$Q$};\draw[flow](3,0)--(3,.7)node[right]{$v_Q>0$};
+\draw[flow](1.8,1.2)--(.6,1.2)node[left]{左行};\node at(1.5,-1.8){$kd=\pi/2$};\draw[dim](0,-2.6)--(3,-2.6)node[midway,below]{$d=6\,\mathrm{cm}$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{右行时把较右点的相位滞后保留到整周}\par\nobreak
+若向右传播，图\ref{fig:w2:example:2:p}中$P$到$Q$的相位应滞后$kd$，故$-kd\equiv\pi/2\pmod{2\pi}$。取$d=6\,\mathrm{cm}$，得到$kd=3\pi/2+2n\pi$，
+\[
+\lambda=\frac{24}{4n+3}\,\mathrm{cm},\quad
+u=\frac{20}{4n+3}\,\mathrm{cm/s}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{左行时重新选空间相位符号并列出全部分支}\par\nobreak
+若向左传播，空间相位随$x$增加而增加。图\ref{fig:w2:example:2:p}下图给出$kd=\pi/2$的分支；一般为$kd=\pi/2+2n\pi$，得到$\lambda=24/(4n+1)\,\mathrm{cm}$，$u=20/(4n+1)\,\mathrm{cm/s}$。两种结果都由$\lambda=2\pi d/(kd)$及$u=\lambda/T$得到。两种情况均有$n=0,1,\ldots$，仅凭两条曲线不能选择其中一支。\end{solution}
+\begin{question}\begin{example}[波动方程中的单位与参数]\label{w2:example:3}
+已知$y=(5\,\mathrm{cm})\cos\{\pi[(2.50\,\mathrm{s^{-1}})t-(0.01\,\mathrm{cm^{-1}})x]\}$，求振幅、周期、波长和传播速度。
+\end{example}
+\fig{fig:w2:example:3:s}{题设：波动方程中的单位与参数}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$x/\lambda$};\draw[axis](0,-1.4)--(0,1.7)node[above]{$y/A$};\draw[world,domain=0:4,samples=100]plot(\x,{cos(90*\x)});\foreach\x/\a in {1/{1/4},2/{1/2},3/{3/4},4/1}{\node[below]at(\x,0){$\a$};}\draw[dim](0,1.35)--(4,1.35)node[midway,above]{$\lambda$};\node at(3,-1.6){$t=0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留相位外的圆周率并检查单位}\par\nobreak
+图\ref{fig:w2:example:3:s}的一个完整空间周期对应相位增加$2\pi$，比较得$\omega=2.50\pi\,\mathrm{s^{-1}}$，$k=0.01\pi\,\mathrm{cm^{-1}}$，而不是把方括号内系数直接视为频率和波数。
+振幅是三角函数外的$5\,\mathrm{cm}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用时间和空间相位增量求周期与波长}\par\nobreak
+一个完整周期要求相位变化$2\pi$，因此分别有$(2.50\pi)T=2\pi$和$(0.01\pi)\lambda=2\pi$，这里$\lambda$先用厘米表示。
+\fig{fig:w2:example:3:p}{同一波峰的时空轨迹；横坐标经过一个周期，纵坐标前进一个波长}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.1,0)node[right]{$t/\mathrm s$};\draw[axis](0,-.3)--(0,3.4)node[above]{$x/\mathrm m$};
+\draw[flow,blue](0,0)--(4,2.5);\fill(4,2.5)circle(.05)node[above right]{同一波峰};\draw[guide](4,0)--(4,2.5)--(0,2.5);\node[below]at(4,0){$.80$};\node[left]at(0,2.5){$2.00$};
+\draw[dim](4.5,0)--(4.5,2.5)node[midway,right]{$\lambda$};\draw[dim](0,-.8)--(4,-.8)node[midway,below]{$T$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等相位轨迹的斜率求传播速度}\par\nobreak
+由图\ref{fig:w2:example:3:p}的等相位条件$\omega\dd t-k\dd x=0$，
+\[
+A=5\,\mathrm{cm},\quad T=\frac{2\pi}{\omega}=0.80\,\mathrm s,\quad
+\lambda=\frac{2\pi}{k}=200\,\mathrm{cm},
+\]
+$u=\omega/k=250\,\mathrm{cm/s}=2.50\,\mathrm{m/s}$，方向为正$x$。相位内每一项均无量纲，量纲核对也排除了漏写$\pi$的结果。\end{solution}
+\begin{question}\begin{example}[由振源初态写出波动方程]\label{w2:example:4}
+正向平面简谐波$A=1.0\,\mathrm m$，$T=2.0\,\mathrm s$，$\lambda=2.0\,\mathrm m$。$t=0$时原点位于平衡位置并向正$y$方向运动，求波动方程。
+\end{example}
+\fig{fig:w2:example:4:s}{振源在$t=0$向上过平衡，扰动沿正$x$传播}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.1,0)node[right]{$x$};\draw[axis](0,-1.2)--(0,1.8)node[above]{$y$};\fill(0,0)circle(.07)node[below left]{$S$};\draw[flow](0,0)--(0,.9)node[left]{$v_y(0)>0$};\draw[flow](2,1.2)--(3.5,1.2)node[right]{$u$};\fill(3,0)circle(.05)node[below]{$P$};\node at(2.5,-1){$A=1.0\,\mathrm m,\quad T=2.0\,\mathrm s,\quad\lambda=2.0\,\mathrm m$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由原点的位移和速度符号选初相}\par\nobreak
+图\ref{fig:w2:example:4:s}的源初态要求$y(0,0)=0$且$\partial_ty(0,0)>0$，因此选$y_0=A\sin\omega t$最直接。$\omega=2\pi/T=\pi\,\mathrm{s^{-1}}$，$k=2\pi/\lambda=\pi\,\mathrm{m^{-1}}$。
+若用余弦形式，初相满足$\cos\varphi=0$和$-\sin\varphi>0$，可取$\varphi=-\pi/2$，同样得到$\cos(\omega t-\pi/2)=\sin\omega t$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把源时间改写为传播延迟后的时间}\par\nobreak
+由于波向正$x$传播，位置$x$处必须重现原点早$x/u$时的状态，空间项因此取负。
+\fig{fig:w2:example:4:p}{选$x=\lambda/4$作检查：同一振动历程比源滞后$T/4$，不是把质点沿$x$移动}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$t/T$};\draw[axis](0,-1.4)--(0,1.6)node[above]{$y/A$};
+\draw[blue,thick,domain=0:4.4,samples=100]plot(\x,{sin(90*\x)});\draw[red,dashed,thick,domain=0:4.4,samples=100]plot(\x,{sin(90*(\x-1))});
+\fill[blue](1,1)circle(.05);\fill[red](2,1)circle(.05);\draw[dim](1,1.9)--(2,1.9)node[midway,above]{$T/4$};
+\foreach \xx/\ll in {1/{1/4},2/{1/2},4/1}{\node[below]at(\xx,0){$\ll$};}\node[blue]at(1,-2){源$x=0$};\node[red]at(3.3,-2){$x=\lambda/4$};
+
+\end{tikzpicture}}
+
+图\ref{fig:w2:example:4:p}对比两个固定位置的时间图，较右位置整体延迟；一般应使用$t-x/u$，其中$u=\lambda/T=1.0\,\mathrm{m/s}$，于是
+\[
+y(x,t)=(1.0\,\mathrm m)\sin[(\pi\,\mathrm{s^{-1}})t-(\pi\,\mathrm{m^{-1}})x].
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回源初态并用等相位线检查波向}\par\nobreak
+固定相位得到$\dd x/\dd t>0$，再代入原点核对初速度$A\omega>0$，波向与初态同时满足。\end{solution}

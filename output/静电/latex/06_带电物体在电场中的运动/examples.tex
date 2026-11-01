@@ -1,0 +1,627 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[等势间距与运动方向的联合判断]\label{e6:example:1}
+在 $x<0$ 区电场为 $E_0\hat{\bm x}$，$x>0$ 区为 $E_0\hat{\bm x}/[1+(x/a)^2]$。粒子由左向右射入，初始 $v_x>0,v_y>0$，轨迹切线随前进逐渐偏向 $+x$。求电荷符号，并判断加速度、速度大小及电势能如何变化。
+\end{example}
+\typeout{ECFIG:fig:e6:example:1:s}\fig{fig:e6:example:1:s}{场方向、等势线与向右逐渐变平的实际轨迹}{\begin{tikzpicture}
+\draw[axis](-1.2,-.3)--(4.3,-.3)node[right]{$x/a$};\node[below]at(0,-.3){$0$};\draw[guide](-0.78540,-.15)--(-0.78540,2);\draw[guide](-0.52360,-.15)--(-0.52360,2);\draw[guide](-0.26180,-.15)--(-0.26180,2);\draw[guide](0.00000,-.15)--(0.00000,2);\draw[guide](0.26795,-.15)--(0.26795,2);\draw[guide](0.57735,-.15)--(0.57735,2);\draw[guide](1.00000,-.15)--(1.00000,2);\draw[guide](1.73205,-.15)--(1.73205,2);\draw[guide](3.73205,-.15)--(3.73205,2);\draw[world]plot coordinates{(-1.0000,0.0000)(-0.9200,0.0462)(-0.8400,0.0893)(-0.7600,0.1299)(-0.6800,0.1684)(-0.6000,0.2050)(-0.5200,0.2400)(-0.4400,0.2736)(-0.3600,0.3060)(-0.2800,0.3372)(-0.2000,0.3675)(-0.1200,0.3968)(-0.0400,0.4253)(0.0400,0.4530)(0.1200,0.4800)(0.2000,0.5064)(0.2800,0.5321)(0.3600,0.5574)(0.4400,0.5821)(0.5200,0.6064)(0.6000,0.6304)(0.6800,0.6540)(0.7600,0.6773)(0.8400,0.7003)(0.9200,0.7231)(1.0000,0.7456)(1.0800,0.7680)(1.1600,0.7901)(1.2400,0.8122)(1.3200,0.8340)(1.4000,0.8558)(1.4800,0.8774)(1.5600,0.8989)(1.6400,0.9203)(1.7200,0.9417)(1.8000,0.9629)(1.8800,0.9841)(1.9600,1.0051)(2.0400,1.0262)(2.1200,1.0471)(2.2000,1.0680)(2.2800,1.0889)(2.3600,1.1097)(2.4400,1.1304)(2.5200,1.1511)(2.6000,1.1718)(2.6800,1.1924)(2.7600,1.2130)(2.8400,1.2335)(2.9200,1.2541)(3.0000,1.2745)(3.0800,1.2950)(3.1600,1.3154)(3.2400,1.3358)(3.3200,1.3562)(3.4000,1.3766)(3.4800,1.3969)(3.5600,1.4172)(3.6400,1.4375)(3.7200,1.4577)(3.8000,1.4780)};\draw[flow](-.9,2.5)--(.8,2.5)node[right]{$\bm E$};\node at(1.3,-1){等势差相同；轨迹按 $q>0$ 的一组初态计算};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用恒定的竖直速度判断水平加速度符号}\par\nobreak
+图\ref{fig:e6:example:1:s} 中 $y$ 方向无力，所以 $v_y$ 恒定。轨迹逐渐偏向 $+x$ 表示 $v_x$ 增大，$a_x>0$；给定电场向右，因此 $q>0$，不是仅凭粒子从左往右就判断正电。
+\typeout{ECFIG:fig:e6:example:1:p}\fig{fig:e6:example:1:p}{场强在原点连续，正半轴衰减；速度仍因正功率而增长}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(5,0)node[right]{$x/a$};\draw[axis](0,0)--(0,2.8)node[above]{$E/E_0$};\draw[world](-1.8,2)--(0,2);\draw[world,domain=0:4.5,samples=70]plot(\x,{2/(1+(\x)^2)});\node[left]at(0,2){$1$};\node at(3,2.5){$qEv_x>0$，速率持续增大};\node[below left]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按空间场强变化判断加速度大小}\par\nobreak
+图\ref{fig:e6:example:1:p} 的 $a_x=qE(x)/m$ 在 $x<0$ 恒定，$x>0$ 随前进而减小。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以功率和电势梯度判断速率与势能}\par\nobreak
+功率 $\dd K/\dd t=qE(x)v_x>0$，故速度大小一直增大，尽管加速度变小。静电势满足 $\dd V/\dd x=-E<0$，所以 $qV$ 单调减小。等势线疏密、加速度大小、速度变化率与势能变化是四个相关但不同的判断。\end{solution}
+\begin{question}\begin{example}[静电除尘中的电荷与漂移]\label{e6:example:2}
+放电电极保持负高压，集尘板接地，负尘粒由电极附近向集尘板漂移。判断电场与电力方向。若用线性阻力 $-bv$、恒定场近似，求从静止开始的速度与位移。
+\end{example}
+\typeout{ECFIG:fig:e6:example:2:s}\fig{fig:e6:example:2:s}{题设：静电除尘中的电荷与漂移}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-1.5)--(0,1.5)(5,-1.5)--(5,1.5);\node at(0,2){负高压};\node at(5,2){接地};\draw[world,fill=white](2.5,0)circle(.12);\node[above]at(2.5,0.15){$-q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先由板电势确定场方向，再由负电性确定电力}\par\nobreak
+图\ref{fig:e6:example:2:s} 电场由零势集尘板指向负势电极，即向左；尘粒为负电，电力向右，迁移方向与电场相反。把尘粒到板后最终放电与迁移中带负电区分开。
+\typeout{ECFIG:fig:e6:example:2:p}\fig{fig:e6:example:2:p}{负尘粒的电力顺迁移方向，阻力反向，速度逐渐趋于终值}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[below]{$-q$};\draw[force](0,0)--(1.5,0)node[right]{$qE$};\draw[force](0,-.3)--(-1,-.3)node[left]{$bv$};\draw[flow](1,1)--(-1,1)node[midway,above]{$\bm E$};\draw[axis](-1,-1)--(1.5,-1)node[right]{$+x$};
+\begin{scope}[xshift=5cm]\draw[axis](0,0)--(4.5,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,2.7)node[above]{$v/v_\infty$};\draw[world,domain=0:4,samples=60]plot(\x,{2*(1-exp(-\x))});\draw[guide](0,2)--(4.2,2);\node[left]at(0,2){$1$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按迁移方向列含线性阻力的运动方程}\par\nobreak
+按 图\ref{fig:e6:example:2:p} 向右为正，以 $E>0$ 表示场强大小，则电力大小 $F_0=|q|E$，方程为 $m\dot v=F_0-bv$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始静止条件积分并检查终端速度}\par\nobreak
+令 $\tau=m/b$、$v_\infty=F_0/b$，方程化为
+\[
+\dot v+\frac v\tau=\frac{v_\infty}{\tau}.
+\]
+乘积分因子 $e^{t/\tau}$，左侧成为乘积的导数：
+\[
+\frac{\dd}{\dd t}(e^{t/\tau}v)=\frac{v_\infty}{\tau}e^{t/\tau}.
+\]
+先作不定积分，得 $e^{t/\tau}v=v_\infty e^{t/\tau}+C$，故通解为 $v=v_\infty+Ce^{-t/\tau}$。初条件 $v(0)=0$ 给 $C=-v_\infty$，即
+\[
+v(t)=v_\infty(1-e^{-t/\tau}).
+\]
+再令初位置为零，对速度积分：
+\begin{align*}
+x(t)&=v_\infty\int_0^t(1-e^{-s/\tau})\,\dd s\\
+&=v_\infty[s+\tau e^{-s/\tau}]_0^t
+=v_\infty[t-\tau(1-e^{-t/\tau})].
+\end{align*}
+对速度再求导，$\dot v=-v_\infty e^{-t/\tau}(-1/\tau)
+=(F_0/m)e^{-t/\tau}$。
+加速度 $F_0e^{-t/\tau}/m$ 逐渐减小；这是恒场与线性阻力模型的结果。真实除尘电场并不处处均匀，不能仅凭“在迁移”就断言每个位置加速度一定单调减小。\end{solution}
+\begin{question}\begin{example}[正负交错立方体的零场点]\label{e6:example:3}
+立方体八顶点交错放置 $\pm q$，任一棱两端异号。判断体心、六个面心和十二条棱中点哪些为零场点，忽略重力。
+\end{example}
+\typeout{ECFIG:fig:e6:example:3:s}\fig{fig:e6:example:3:s}{题设：正负交错立方体的零场点}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.0,0.0);\draw[world](0.0,0.0)--(0.0,3.0);\draw[world](0.0,0.0)--(1.15,1.15);\draw[world](3.0,0.0)--(3.0,3.0);\draw[world](3.0,0.0)--(4.15,1.15);\draw[world](0.0,3.0)--(3.0,3.0);\draw[world](0.0,3.0)--(1.15,4.15);\draw[world](3.0,3.0)--(4.15,4.15);\draw[world](1.15,1.15)--(4.15,1.15);\draw[world](1.15,1.15)--(1.15,4.15);\draw[world](4.15,1.15)--(4.15,4.15);\draw[world](1.15,4.15)--(4.15,4.15);\node[fill=white,inner sep=1pt]at(0.0,0.0){$+q$};\node[fill=white,inner sep=1pt]at(3.0,0.0){$-q$};\node[fill=white,inner sep=1pt]at(0.0,3.0){$-q$};\node[fill=white,inner sep=1pt]at(3.0,3.0){$+q$};\node[fill=white,inner sep=1pt]at(1.15,1.15){$-q$};\node[fill=white,inner sep=1pt]at(4.15,1.15){$+q$};\node[fill=white,inner sep=1pt]at(1.15,4.15){$+q$};\node[fill=white,inner sep=1pt]at(4.15,4.15){$-q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用顶点坐标的符号求和证明体心零场}\par\nobreak
+图\ref{fig:e6:example:3:s} 中以体心为原点，顶点坐标为 $(sa,ta,ua)$，$s,t,u=\pm1$，电荷可写 $qstu$。在体心，每个场分量都含一个独立符号的求和，例如 $E_x\propto\sum_{s,t,u}stu\,s=\sum tu=0$，所以体心零场。
+\typeout{ECFIG:fig:e6:example:3:p}\fig{fig:e6:example:3:p}{三个代表点的实际几何位置与棱中点非零场}{\begin{tikzpicture}
+
+\draw[world](0.0,0.0)--(3.0,0.0);\draw[world](0.0,0.0)--(0.0,3.0);\draw[world](0.0,0.0)--(1.15,1.15);\draw[world](3.0,0.0)--(3.0,3.0);\draw[world](3.0,0.0)--(4.15,1.15);\draw[world](0.0,3.0)--(3.0,3.0);\draw[world](0.0,3.0)--(1.15,4.15);\draw[world](3.0,3.0)--(4.15,4.15);\draw[world](1.15,1.15)--(4.15,1.15);\draw[world](1.15,1.15)--(1.15,4.15);\draw[world](4.15,1.15)--(4.15,4.15);\draw[world](1.15,4.15)--(4.15,4.15);\node[fill=white,inner sep=1pt]at(0.0,0.0){$+q$};\node[fill=white,inner sep=1pt]at(3.0,0.0){$-q$};\node[fill=white,inner sep=1pt]at(0.0,3.0){$-q$};\node[fill=white,inner sep=1pt]at(3.0,3.0){$+q$};\node[fill=white,inner sep=1pt]at(1.15,1.15){$-q$};\node[fill=white,inner sep=1pt]at(4.15,1.15){$+q$};\node[fill=white,inner sep=1pt]at(1.15,4.15){$+q$};\node[fill=white,inner sep=1pt]at(4.15,4.15){$-q$};
+\fill(2.075,2.075)circle(2pt)node[above left]{$O$};\fill(3.575,2.075)circle(2pt)node[above right]{$F$};\fill(3,1.5)circle(2pt)node[right]{$M$};\draw[force](3,1.5)--(3,.55)node[right]{$E_M\ne0$};\node at(2,-.9){$O$：体心；$F$：面心；$M$：棱中点};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对同一面的等距离四电荷分组求和}\par\nobreak
+在 图\ref{fig:e6:example:3:p} 面心 $(a,0,0)$，固定 $s$ 的四个顶点距该点相同；$x$ 分量含 $\sum_{t,u}tu=0$，$y,z$ 分量分别含 $\sum u$、$\sum t$，也为零，故各面心零场。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对代表棱中点累计全部八个场分量}\par\nobreak
+棱中点如 $(a,a,0)$，该棱两电荷在 $z=\pm a$ 且异号，对中点的场同向而不相消；其他棱上两端的场也须一起计算，不能仅凭最近一对就下结论。把八个电荷对该点的 $z$ 分量全部相加，得到
+\[
+ E_z=-\frac{2kq}{a^2}\left(1-\frac{2}{5^{3/2}}+\frac1{9^{3/2}}\right)\ne0
+\]
+（总符号取决于起始顶点正负）。括号内为正，所以棱中点不是零场。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分零电势与零电场}\par\nobreak
+结论为体心和面心。异号电荷关于中点成对时，电势相消而电场通常相加，不能用零势代替零场。\end{solution}
+\begin{question}\begin{example}[匀强场穿过半球面的通量]\label{e6:example:4}
+半球面半径 $R$，底面位于水平面，匀强电场沿底面内的 $x$ 正方向。求穿过曲面的有向电通量；再求只计 $E_n>0$ 部分的通量。
+\end{example}
+\typeout{ECFIG:fig:e6:example:4:s}\fig{fig:e6:example:4:s}{题设：匀强场穿过半球面的通量}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,0)arc(180:0:2);\draw[guide](-2,0)arc(180:360:2 and .4);\draw[world](-2,0)arc(180:0:2 and .4);\draw[flow](-2,2.7)--(2,2.7)node[right]{$E$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把曲面与底面闭合使用高斯定理}\par\nobreak
+图\ref{fig:e6:example:4:s} 的半球曲面加底面构成闭曲面，内部无净电荷，总通量零。底面法向竖直，电场水平，底面通量也零，所以曲面的有向通量为零。
+\typeout{ECFIG:fig:e6:example:4:p}\fig{fig:e6:example:4:p}{左图区分流入与流出，右图为流出部分在 $yz$ 面上的投影}{\begin{tikzpicture}
+
+\fill[blue!12](0,0)--(2,0)arc(0:90:2)--cycle;\draw[world](-2,0)arc(180:0:2);\draw[guide](-2,0)--(2,0);\draw[axis](-2.5,-.3)--(2.7,-.3)node[right]{$x$};\draw[force](1.4,1.4)--(2.1,2.1)node[right]{$E_n>0$};\draw[force](-1.4,1.4)--(-2.1,2.1)node[left]{$E_n<0$};\draw[flow](-.7,2.8)--(.7,2.8)node[right]{$E$};
+\begin{scope}[xshift=7cm]\fill[blue!12](-2,0)arc(180:0:2)--cycle;\draw[world](-2,0)arc(180:0:2)--cycle;\draw[axis](-2.5,0)--(2.7,0)node[right]{$y$};\draw[axis](0,0)--(0,2.7)node[above]{$z$};\node at(.8,.7){$\pi R^2/2$};\node at(0,-.8){沿 $x$ 看：上半圆投影};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把流出部分投影到垂直电场的平面}\par\nobreak
+图\ref{fig:e6:example:4:p} 右半曲面有向外通量，左半曲面有向内通量，数值相反。右半曲面向垂直电场的平面投影为半圆，面积 $\pi R^2/2$，故只计正法向部分的通量为 $E\pi R^2/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分有向通量、正向通量与无符号总量}\par\nobreak
+若求穿过曲面的无符号通量，应为两者绝对值之和 $E\pi R^2$。三种问法不能混淆。\end{solution}
+\begin{question}\begin{example}[电容压力传感器中的电流]\label{e6:example:5}
+电容传感器上板固定，下板受压后向上形变，平均间距减小。传感器经电阻接恒压源，正极接上板。判断电容变化、压力增大时电阻电流方向，并在缓慢变化近似下求电流。
+\end{example}
+\typeout{ECFIG:fig:e6:example:5:s}\fig{fig:e6:example:5:s}{电源正极经电阻接上板，下板受压使间距减小}{\begin{tikzpicture}
+
+\draw[world](0,2.5)--(4,2.5)(0,.5)--(4,.5);\draw[guide](0,0)--(4,0);\draw(0,2.5)--(-1,2.5)to[R,l_={$R$}](-1,-1)to[battery1,l_={$U$}](4,-1)--(4,.5);\node[right]at(4,2.5){$A:+$};\node[right]at(4,.5){$B:-$};\draw[force](2,-.1)--(2,.45)node[right]{压力};\draw[dim](5.2,.5)--(5.2,2.5)node[midway,right]{$d(t)$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由实际间距变化判断几何电容和充电方向}\par\nobreak
+图\ref{fig:e6:example:5:s} 间距减小使 $C\simeq\varepsilon_0S/d$ 增大。在电路调整足够快、电容变化足够慢时，两极电压近似为电源 $U$，正极板电量 $Q=CU$ 增大，电源经电阻向上板输送正电荷。
+\typeout{ECFIG:fig:e6:example:5:p}\fig{fig:e6:example:5:p}{缓慢受压时常规电流从正极经电阻流向上板}{\begin{tikzpicture}
+
+\draw[world](0,2.5)--(4,2.5)(0,.5)--(4,.5);\draw[guide](0,0)--(4,0);\draw(0,2.5)--(-1,2.5)to[R,l_={$R$}](-1,-1)to[battery1,l_={$U$}](4,-1)--(4,.5);\node[right]at(4,2.5){$A:+$};\node[right]at(4,.5){$B:-$};\draw[force](2,-.1)--(2,.45)node[right]{压力};\draw[dim](5.2,.5)--(5.2,2.5)node[midway,right]{$d(t)$};
+\draw[flow](-1.3,-.5)--(-1.3,1.7)node[midway,left]{$I>0$};\draw[flow](-.5,2.8)--(1.2,2.8);\node at(1.5,3.7){$\dot d<0\Rightarrow\dot C>0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在慢变化近似下求电流大小与正负}\par\nobreak
+图\ref{fig:e6:example:5:p}取电源正端指向上板为正。保持 $U,S$ 不变，而 $d=d(t)$，用乘积与链式法则：
+\[
+I=\dot Q\simeq\frac{\dd(CU)}{\dd t}=U\dot C,\qquad
+\dot C=\varepsilon_0S\frac{\dd(d^{-1})}{\dd t}
+=\varepsilon_0S(-d^{-2})\dot d.
+\]
+所以 $I\simeq-\varepsilon_0SU\dot d/d^2$；受压时 $\dot d<0$，故 $I>0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{写出有限电阻下的完整关系检查近似}\par\nobreak
+更精确的电路关系为 $U=RI+Q/C(t)$、$I=\dot Q$，不能在任意快速形变下同时令电容电压严格等于 $U$ 又保留非零 $RI$。压力保持不变并达到新平衡后，电流为零，传感器可通过瞬态电流反映压力变化。\end{solution}
+\begin{question}\begin{example}[奇对称电场图像的电势比较]\label{e6:example:6}
+一维电场 $E(x)=E_0(x/a)e^{-x^2/(2a^2)}$，取 $V(\infty)=0$。求电势及其极值，比较 $x$ 与 $-x$ 两点。
+\end{example}
+\typeout{ECFIG:fig:e6:example:6:s}\fig{fig:e6:example:6:s}{奇对称电场的完整正、负半轴，极值在 $x=\pm a$}{\begin{tikzpicture}
+
+\draw[axis](-4,0)--(4.3,0)node[right]{$x/a$};\draw[axis](0,-2)--(0,2)node[above]{$E/E_0$};\draw[world,domain=-3.5:3.5,samples=100]plot(\x,{2*\x*exp(-(\x)^2/2)});\foreach \x in{-1,1}{\draw[guide](\x,0)--(\x,{2*\x*exp(-.5)});\node[below]at(\x,0){$\x$};}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从无穷远零势沿带符号电场积分}\par\nobreak
+图\ref{fig:e6:example:6:s} 电场关于原点奇对称。由零势参考点得 $V(x)=\int_x^\infty E(s)\,\dd s$。先求原函数：令 $u=s^2/(2a^2)$，则 $\dd u=(s/a^2)\dd s$，于是
+\[
+\int E_0\frac{s}{a}e^{-s^2/(2a^2)}\,\dd s
+=E_0a\int e^{-u}\,\dd u
+=-E_0a e^{-u}+C=-E_0a e^{-s^2/(2a^2)}+C.
+\]
+这个原函数对全实轴连续可导，因此即使积分跨过 $s=0$，也可直接代入端点：
+\[
+V(x)=\lim_{M\to\infty}
+[-E_0a e^{-s^2/(2a^2)}]_x^M
+=E_0a e^{-x^2/(2a^2)}.
+\]
+\typeout{ECFIG:fig:e6:example:6:p}\fig{fig:e6:example:6:p}{电势为偶函数，最大值在零场点 $x=0$}{\begin{tikzpicture}
+
+\draw[axis](-4,0)--(4.3,0)node[right]{$x/a$};\draw[axis](0,0)--(0,2.8)node[above]{$V/(E_0a)$};\draw[world,domain=-3.5:3.5,samples=100]plot(\x,{2*exp(-(\x)^2/2)});\node[left]at(0,2){$1$};\draw[guide](-1.5,0)--(-1.5,{2*exp(-1.125)})--(1.5,{2*exp(-1.125)})--(1.5,0);\node[below]at(-1.5,0){$-x/a$};\node[below]at(1.5,0){$x/a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电势导数与对称性确定极值}\par\nobreak
+图\ref{fig:e6:example:6:p} 电势为偶函数，$V(x)=V(-x)$；在 $x<0$ 有 $E<0$、$V^\prime>0$，在 $x>0$ 有 $E>0$、$V^\prime<0$，因此原点是电势最大点，$V(0)=E_0a$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分场强极值与电势极值}\par\nobreak
+对电场使用乘积法则与链式法则：
+\[
+E'(x)=\frac{E_0}{a}\left[
+e^{-x^2/(2a^2)}+x e^{-x^2/(2a^2)}
+\left(-\frac{x}{a^2}\right)\right]
+=\frac{E_0}{a}e^{-x^2/(2a^2)}
+\left(1-\frac{x^2}{a^2}\right).
+\]
+驻点为 $x=\pm a$；由导数变号，$x=a$ 处是电场的最大值，$x=-a$ 处是最小值，均不是电势极值处。任意两点电势相等应比较带符号的场图面积，不能仅凭两个点的场强相等判断。\end{solution}
+\begin{question}\begin{example}[示波器的正弦信号与锯齿扫描]\label{e6:example:7}
+水平偏转使光点在一个扫描周期 $T$ 内由左到右匀速移动，$X=X_m(2t/T-1)$；竖直信号 $Y=-Y_m\sin(2\pi t/T)$。回扫消隐。画出一周期屏上轨迹，标出四分之一周期位置，并说明回扫不消隐的影响。
+\end{example}
+\typeout{ECFIG:fig:e6:example:7:s}\fig{fig:e6:example:7:s}{同一周期的水平扫描与竖直信号，回扫段不显示}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$t/T$};\draw[axis](0,-1.5)--(0,1.7)node[above]{$X/X_m$};\draw[world](0,-1)--(4,1);\draw[guide](4,1)--(4,-1);\node[below]at(4,0){$1$};\node at(2,2.2){水平扫描};\begin{scope}[xshift=7cm]\draw[axis](0,0)--(5.5,0)node[right]{$t/T$};\draw[axis](0,-1.5)--(0,1.7)node[above]{$Y/Y_m$};\draw[world,domain=0:1,samples=70]plot({4*\x},{-sin(360*\x)});\node[below]at(4,0){$1$};\node at(2,2.2){竖直正弦信号};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由水平扫描反解时间再消去参数}\par\nobreak
+图\ref{fig:e6:example:7:s} 的扫描使 $t/T=(X/X_m+1)/2$，代入竖直信号，得 $Y=Y_m\sin(\pi X/X_m)$，$-X_m\le X<X_m$。
+\typeout{ECFIG:fig:e6:example:7:p}\fig{fig:e6:example:7:p}{各时刻映射到屏上，箭头沿实际由左向右扫描方向}{\begin{tikzpicture}
+
+\draw[axis](-3.2,0)--(3.5,0)node[right]{$X$};\draw[axis](0,-2)--(0,2)node[above]{$Y$};\draw[world,domain=-2.6:2.6,samples=100,postaction={decorate},decoration={markings,mark=at position .25 with{\arrow{Stealth}},mark=at position .75 with{\arrow{Stealth}}}]plot(\x,{1.3*sin(180*\x/2.6)});\fill(-1.3,-1.3)circle(2pt)node[below]{$T/4$};\fill(1.3,1.3)circle(2pt)node[above]{$3T/4$};\node[below]at(-2.6,0){$0$};\node[below]at(.4,0){$T/2$};\node[below]at(2.6,0){$T^-$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按四分之一周期逐点确定扫描方向}\par\nobreak
+在 图\ref{fig:e6:example:7:p} 依次标出 $t=0$ 的 $(-X_m,0)$、$T/4$ 的 $(-X_m/2,-Y_m)$、$T/2$ 的 $(0,0)$、$3T/4$ 的 $(X_m/2,Y_m)$，临近 $T$ 为 $(X_m,0)$。它从左侧先向下，再穿过中心向上。若水平扫描方向相反或信号相位变号，曲线会左右或上下翻转，必须把相位写清楚。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释有限回扫时间产生的附加轨迹}\par\nobreak
+回扫若不消隐，有限回扫时间会画出额外连接轨迹，不能把回扫当成同一条慢扫描正弦曲线。\end{solution}
+\begin{question}\begin{example}[沿圆弧和延长线移动试探电荷]\label{e6:example:8}
+$A,B$ 相距 $2L$，分别固定 $+q,-q$。$O,D$ 位于 $B$ 左右，$BO=BD=L$，沿以 $B$ 为心的上半圆弧把单位正电荷由 $O$ 移到 $D$，再把单位负电荷从 $D$ 沿右方延长线移到无穷远。分别求电场功。
+\end{example}
+\typeout{ECFIG:fig:e6:example:8:s}\fig{fig:e6:example:8:s}{题设：沿圆弧和延长线移动试探电荷}{\begin{tikzpicture}[scale=.88]
+\draw[guide](-2,0)--(4,0);\draw[world](-1,0)arc(180:0:1);\draw[world,fill=white](-2,0)circle(.12);\node[above]at(-2,0.15){$A:+q$};\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$B:-q$};\node[below]at(-1,0){$O$};\node[below]at(1,0){$D$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按到两源电荷的距离求端点电势}\par\nobreak
+图\ref{fig:e6:example:8:s} 中 $O$ 到 $A,B$ 距离均为 $L$，故 $V_O=kq/L-kq/L=0$。$D$ 到 $A$ 为 $3L$、到 $B$ 为 $L$，故 $V_D=kq/(3L)-kq/L=-2kq/(3L)$。
+\typeout{ECFIG:fig:e6:example:8:p}\fig{fig:e6:example:8:p}{两段使用不同符号的试探电荷，分别按端点电势算功}{\begin{tikzpicture}
+
+\draw[guide](-2.5,0)--(4.5,0);\fill(-2,0)circle(2pt)node[below]{$A:+q$};\fill(0,0)circle(2pt)node[below]{$B:-q$};\fill(-1,0)circle(1.5pt)node[below]{$O$};\fill(1,0)circle(1.5pt)node[below]{$D$};\draw[world,postaction={decorate},decoration={markings,mark=at position .5 with{\arrow{Stealth}}}](-1,0)arc(180:0:1);\node at(0,1.6){$+1$ 沿上半圆 $O\to D$};\draw[flow](1.1,0)--(4,0)node[midway,above]{$-1:\ D\to\infty$};\draw[dim](-2,-1)--(-1,-1)node[midway,below]{$L$};\draw[dim](-1,-1)--(0,-1)node[midway,below]{$L$};\draw[dim](0,-1)--(1,-1)node[midway,below]{$L$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别代入正、负试探电荷计算两段功}\par\nobreak
+图\ref{fig:e6:example:8:p} 第一段电场功 $W_1=(+1)(V_O-V_D)=2kq/(3L)$，与所选圆弧路径无关。第二段试探电荷为单位负电荷，$W_2=(-1)(V_D-0)=2kq/(3L)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对电荷符号与单位}\par\nobreak
+两段功同号是因为电荷符号和电势变化方向同时改变，并非电势差与移动方向无关。若“单位电荷”用库仑作单位，结果单位为焦耳。\end{solution}
+\begin{question}\begin{example}[两带电小球解除固定]\label{e6:example:9}
+同号小球 $q_1,q_2$、质量 $m_1,m_2$，相距 $L$ 静止。分别只释放第一球，或同时释放两球。求各自可获得的最大动能，并说明势能属于哪个系统。
+\end{example}
+\typeout{ECFIG:fig:e6:example:9:s}\fig{fig:e6:example:9:s}{题设：两带电小球解除固定}{\begin{tikzpicture}[scale=.88]
+\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$q_1,m_1$};\draw[world,fill=white](4,0)circle(.12);\node[above]at(4,0.15){$q_2,m_2$};\draw[dim](0,-1)--(4,-1)node[midway,below]{$L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{只释放一球时先确定支架是否作功}\par\nobreak
+图\ref{fig:e6:example:9:s} 初相互作用能 $W_0=kq_1q_2/L>0$。只释放第一球，第二球的固定力不作功，第一球到无穷远时取得 $K_{1\max}=W_0$，第二球动能零。
+\typeout{ECFIG:fig:e6:example:9:p}\fig{fig:e6:example:9:p}{只放一球与同时释放两球的系统边界不同}{\begin{tikzpicture}
+
+\foreach \x/\n in{0/1,4/2}{\fill(\x,2)circle(3pt)node[above]{$m_\n,q_\n$};\fill(\x,-1)circle(3pt)node[above]{$m_\n,q_\n$};}\draw[world](4,2)--(4,1.2);\draw[world](3.5,1.2)--(4.5,1.2);\draw[flow](0,2)--(-1.5,2)node[left]{$v_1$};\draw[flow](0,-1)--(-1.5,-1)node[left]{$\bm p_1$};\draw[flow](4,-1)--(5.5,-1)node[right]{$\bm p_2$};\node[right]at(6,2){球2固定，支架不作功};\node[right]at(6,-1){两球自由，$\bm p_1+\bm p_2=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时释放时用系统总动量约束能量分配}\par\nobreak
+图\ref{fig:e6:example:9:p} 同时释放时，总动量原为零，始终有 $m_1v_1=m_2v_2$。因此 $K_1/K_2=m_2/m_1$，且两球分离到无穷远时 $K_1+K_2=W_0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两球最大动能并检查质量极限}\par\nobreak
+联立得
+\[
+ K_{1\max}=\frac{m_2}{m_1+m_2}W_0,\qquad
+ K_{2\max}=\frac{m_1}{m_1+m_2}W_0.
+\]
+相互作用势能属于两球系统，不能同时给每个球各分配完整的 $W_0$ 再相加。质量小的球获得更大速度与更大动能，等质量时才各为一半。\end{solution}
+\begin{question}\begin{example}[三带电球剪断一根细线]\label{e6:example:10}
+三个小球质量均为 $m$、电量均为 $q$，用三根长 $L$ 的轻绳组成正三角形，静置光滑水平面。剪断 $1,3$ 间细线，另两根保持绷直。求中间球 $2$ 的最大速度。
+\end{example}
+\typeout{ECFIG:fig:e6:example:10:s}\fig{fig:e6:example:10:s}{题设：三带电球剪断一根细线}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.5,0)--(0,2.598)--(1.5,0);\draw[guide](-1.5,0)--(1.5,0);\draw[world,fill=white](-1.5,0)circle(.12);\node[above]at(-1.5,0.15){$1$};\draw[world,fill=white](0,2.598)circle(.12);\node[above]at(0,2.7479999999999998){$2$};\draw[world,fill=white](1.5,0)circle(.12);\node[above]at(1.5,0.15){$3$};\node at(0,-.8){剪断 $1\!-\!3$，另两绳长 $L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用对称性与质心固定统一表示三球位置}\par\nobreak
+图\ref{fig:e6:example:10:s} 关于球 $2$ 的竖直对称轴对称，设每根绳与该轴夹角 $\theta$，初值 $\pi/6$。取质心静止，三球坐标可写
+\[
+ \bm r_2=(0,\tfrac23L\cos\theta),\quad
+ \bm r_{1,3}=(\mp L\sin\theta,-\tfrac13L\cos\theta).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对位置求导，把三球动能全部计入}\par\nobreak
+因为 $\theta=\theta(t)$，求导时每个三角函数都要乘 $\dot\theta$：
+\[
+\bm v_2=\left(0,-\frac23L\sin\theta\,\dot\theta\right),\qquad
+\bm v_{1,3}=\left(\mp L\cos\theta\,\dot\theta,
+\frac13L\sin\theta\,\dot\theta\right).
+\]
+把每个速度的两个分量平方相加，得 $v_2^2=4L^2\sin^2\theta\,\dot\theta^2/9$，两端球各有 $v_1^2=L^2(\cos^2\theta+\sin^2\theta/9)\dot\theta^2$。三球动能相加为
+\[
+K=\frac m2\left[2L^2\left(\cos^2\theta+\frac{\sin^2\theta}{9}\right)
++\frac49L^2\sin^2\theta\right]\dot\theta^2.
+\]
+用 $\cos^2\theta=1-\sin^2\theta$ 整理，得到总动能
+\[
+ K=mL^2(1-\tfrac23\sin^2\theta)\dot\theta^2.
+\]
+\typeout{ECFIG:fig:e6:example:10:p}\fig{fig:e6:example:10:p}{一般位置先由质心约束求速度，共线时三球仍同时运动}{\begin{tikzpicture}
+
+\draw[world](-1.5,0)--(0,2)--(1.5,0);\draw[guide](0,0)--(0,2.5);\foreach \x/\y/\n in{-1.5/0/1,0/2/2,1.5/0/3}{\fill(\x,\y)circle(2pt)node[above left]{$\n$};}\draw(0,1.4)arc(-90:-127:.6);\node at(-.35,1.25){$\theta$};\draw[flow](0,2)--(0,1.2);\draw[flow](-1.5,0)--(-2.3,.4);\draw[flow](1.5,0)--(2.3,.4);\node at(0,-.7){端球距 $2L\sin\theta$};
+\begin{scope}[xshift=7cm]\draw[world](-2.4,0)--(2.4,0);\foreach \x/\n in{-2.4/1,0/2,2.4/3}{\fill(\x,0)circle(2pt)node[above]{$\n$};}\draw[flow](0,0)--(0,-1.5)node[below]{$v_2$};\draw[flow](-2.4,0)--(-2.4,.75)node[left]{$v_2/2$};\draw[flow](2.4,0)--(2.4,.75)node[right]{$v_2/2$};\node at(0,2.5){首次共线：$\theta=\pi/2$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只让可变的端球距离进入势能变化}\par\nobreak
+图\ref{fig:e6:example:10:p} 两绳边距离仍为 $L$，端球距离 $2L\sin\theta$，所以势能减少
+$K=(kq^2/L)[1-1/(2\sin\theta)]$。令 $s=\sin\theta\in[1/2,1]$，消去 $\dot\theta$，
+\[
+ v_2^2=\frac{4kq^2}{3mL}\frac{s^2-s/2}{3-2s^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查速度函数在允许几何区间的最大值}\par\nobreak
+记 $f(s)=(s^2-s/2)/(3-2s^2)$。按商法则求导：
+\begin{align*}
+f'(s)&=\frac{(2s-\tfrac12)(3-2s^2)
+-(s^2-\tfrac s2)(-4s)}{(3-2s^2)^2}\\
+&=\frac{6s-\tfrac32-4s^3+s^2+4s^3-2s^2}{(3-2s^2)^2}
+=\frac{-s^2+6s-\tfrac32}{(3-2s^2)^2}.
+\end{align*}
+分子 $g(s)=-s^2+6s-3/2$ 的导数为 $g'(s)=6-2s>0$，且 $g(1/2)=5/4>0$，所以整个允许区间上 $f'(s)>0$。故最大值在 $s=1$，即三球第一次共线时，
+\[
+ v_{2\max}=\sqrt{\frac{2kq^2}{3mL}}.
+\]
+此时两端球各以中球速度一半沿反向运动，$K=3mv_2^2/4=kq^2/(2L)$，再次核对总能量。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算张力验证绷直约束}\par\nobreak
+还须核验绳能保持绷直。记 $A_0=kq^2/L^2$，取从中球 $2$ 指向左端球 $1$ 的单位矢量 $\bm n=(-s,-\cos\theta)$。端球沿 $\bm n$ 的电力与张力合分量为 $A_0-T+A_0/(4s)$，其中最后一项来自另一端球的排斥力。中球加速度沿竖直方向为 $2(A_0-T)\cos\theta/m$，投影到 $\bm n$ 后为 $-2(A_0-T)\cos^2\theta/m$。
+
+相对位置为 $L\bm n$，沿绳的相对加速度为 $-L\dot\theta^2$。两球加速度相减并投影，得到
+\[
+-mL\dot\theta^2
+=(A_0-T)(1+2\cos^2\theta)+\frac{A_0}{4s}
+=(A_0-T)(3-2s^2)+\frac{A_0}{4s}.
+\]
+移项并除以正数 $3-2s^2$，每根绳的张力为
+\[
+ T=A_0+\frac{mL\dot\theta^2+A_0/(4s)}{3-2s^2}>0
+ \qquad(1/2\le s\le1).
+\]
+因此所用绷直约束在这段运动中可以实现。首次共线后构型仍可继续变化，但 $s\le1$，速度平方的同一上界已由 $s=1$ 取得。\end{solution}
+\begin{question}\begin{example}[方波电压下的逐周期运动]\label{e6:example:11}
+两板 $B,A$ 相距 $d=5.0\,\mathrm{cm}$，$B$ 接地。$A$ 电势在每周期前半为 $-U_0$、后半为 $+U_0$，$U_0=2.5\,\mathrm V$。正粒子 $m=2.0\times10^{-23}\,\mathrm{kg}$、$q=1.6\times10^{-19}\,\mathrm C$，在 $t=0$ 从紧邻 $B$ 处静止释放，忽略重力，粒子接触任一极板即被吸收，零速接触也计为到达。求初加速度；当 $T=1.0\times10^{-5}\,\mathrm s$ 时到 $A$ 的动量。若从任意 $t_0\in[T/4,T/2]$ 释放，什么频率范围保证都不能到达 $A$？
+\end{example}
+\typeout{ECFIG:fig:e6:example:11:s}\fig{fig:e6:example:11:s}{实际极板、释放位置与电压波形共同确定加速度方向}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,3)(3,0)--(3,3);\draw(0,0)--(0,-.4)node[ground]{};\node[above]at(0,3){$B:0$};\node[above]at(3,3){$A:V_A(t)$};\fill(.15,1.5)circle(2pt)node[right]{$q>0$};\draw[axis](.3,.5)--(2.4,.5)node[right]{$+x$};\draw[dim](0,-1)--(3,-1)node[midway,below]{$d$};
+\begin{scope}[xshift=6cm]\draw[axis](0,0)--(6,0)node[right]{$t$};\draw[axis](0,-1.6)--(0,1.8)node[above]{$V_A$};\draw[world](0,-1)--(1.4,-1)--(1.4,1)--(2.8,1)--(2.8,-1)--(4.2,-1)--(4.2,1)--(5.6,1);\node[left]at(0,1){$U_0$};\node[left]at(0,-1){$-U_0$};\node[below]at(2.8,0){$T$};\node[above]at(1.4,0){$T/2$};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由实际板电压确定分段加速度}\par\nobreak
+按 图\ref{fig:e6:example:11:s} 从 $B$ 向 $A$ 取正方向，前半周加速度 $+a$，后半周 $-a$，其中 $a=qU_0/(md)=4.0\times10^5\,\mathrm{m/s^2}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段接续速度并累计单周期位移}\par\nobreak
+令 $H=T/2$。一个完整周期内，速度先由零升至 $aH$，再降至零，但位移始终增加，
+\[
+ \Delta x=\frac12aH^2+\left[aH^2-\frac12aH^2\right]
+ =aH^2=\frac{aT^2}{4}=1.0\times10^{-5}\,\mathrm m.
+\]
+\typeout{ECFIG:fig:e6:example:11:p}\fig{fig:e6:example:11:p}{零相位释放时每周期都向前累积位移，半周期换向只改变加速度}{\begin{tikzpicture}
+
+\foreach \x in{0,2.8}{\fill[blue!12](\x,0)--(\x+1.4,1.5)--(\x+2.8,0)--cycle;}\draw[axis](0,0)--(6.3,0)node[right]{$t$};\draw[axis](0,0)--(0,2.2)node[above]{$v_x$};\draw[world](0,0)--(1.4,1.5)--(2.8,0)--(4.2,1.5)--(5.6,0);\node at(3,2.8){每个三角形面积 $aT^2/4$};\node[below]at(1.4,0){$T/2$};\node[below]at(2.8,0){$T$};\node[left]at(0,1.5){$aT/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查整周期数与首次到达动量}\par\nobreak
+在 图\ref{fig:e6:example:11:p} 周期末速度虽为零，位置并未返回原处。$d/\Delta x=5000$ 恰为整数，粒子于 $5000T=0.050\,\mathrm s$ 在周期末第一次到达 $A$，故到达瞬间动量为零。若只算前半周后看位移小于 $d$ 就认定不能到达，会漏掉每周累积位移。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对任意释放相位求第一次向前最远位置}\par\nobreak
+第二问令从释放到下一换向的时长 $\delta=T/2-t_0\in[0,T/4]$。粒子先加速 $\delta$，再反向加速度减速 $\delta$，达到最大向前位移 $x_{\max}=a\delta^2$，随后转向返回；是否跨过下一次换场要继续接续速度。\fig{fig:e6:example:11:phase}{最早允许相位 $t_0=T/4$ 的速度接续：先前进，再返回出发板}{\begin{tikzpicture}
+
+\fill[blue!12](0,0)--(1,.9)--(2,0)--cycle;\fill[orange!15](2,0)--(3,-.9)--(4,0)--cycle;\draw[axis](0,0)--(4.8,0)node[right]{$t-t_0$};\draw[axis](0,-1.4)--(0,1.6)node[above]{$v_x$};\draw[world](0,0)--(1,.9)--(3,-.9)--(4,0);\foreach \x/\n in{1/{T/4},2/{T/2},3/{3T/4},4/T}{\node[below]at(\x,-.08){$\n$};}\node at(1,.0){};\node at(2,-2){正、负面积相等时回到 $B$，此后吸收};\node at(2,2.1){换场时刻：横坐标 $T/4,\ 3T/4$};
+
+\end{tikzpicture}}\par 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{继续接续返程，核对吸收边界}\par\nobreak
+图\ref{fig:e6:example:11:phase}表明，返回 $B$ 可能跨过下一次换场，不能假定整个返程加速度都为负。令 $H=T/2$，若粒子到 $t=T$ 尚未返回，则
+\[
+ x(T)=\tfrac a2(\delta^2+2H\delta-H^2),\qquad
+ v(T)=-a(H-\delta).
+\]
+下一正加速度阶段使它停止前尚需向左走 $a(H-\delta)^2/2$；这一距离减去 $x(T)$ 为 $aH(H-2\delta)\ge0$。因此所有 $0\le\delta\le H/2$ 的粒子都先接触 $B$，不能另起一轮向前运动；等号恰零速回板，也按题设吸收。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对全部相位取最大值并检查严格边界}\par\nobreak
+要让所有给定释放时刻均不到 $A$，需最大可能值 $aT^2/16<d$，即
+\[
+ T<4\sqrt{d/a},\qquad f>\frac14\sqrt{a/d}=7.07\times10^2\,\mathrm{Hz}.
+\]
+等号时最早释放的粒子可零速到板，按“到达”定义不包括在不能到达的范围内。\end{solution}
+\begin{question}\begin{example}[中性微粒分裂后的两体运动]\label{e6:example:12}
+均匀场沿 $+x$，静止中性微粒在 $(d,0)$ 分为等质量 $m$ 的两粒，分别带 $q$ 和 $-q$，忽略相互作用。粒 $1$ 初沿 $-y$ 运动并到达 $(0,-d)$，求分裂速度、到达时电力瞬时功率以及两粒间距。
+\end{example}
+\typeout{ECFIG:fig:e6:example:12:s}\fig{fig:e6:example:12:s}{分裂点、已知到达点与匀强场方向}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4,0)node[right]{$x$};\draw[axis](0,-2.7)--(0,2.7)node[above]{$y$};\draw[flow](.6,2.2)--(3.4,2.2)node[right]{$E_0$};\fill(2,0)circle(2pt)node[above]{$(d,0)$};\fill(0,-2)circle(2pt)node[left]{$(0,-d)$};\draw[flow](2,0)--(2,-1)node[right]{粒1初速度};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由到达点的横坐标判断粒1电荷符号}\par\nobreak
+图\ref{fig:e6:example:12:s} 粒 $1$ 要从 $x=d$ 移到 $0$，横向加速度必须向左，所以 $q<0$。令 $a=|q|E_0/m$，初竖直速度大小为 $u$，则 $x_1=d-at^2/2$、$y_1=-ut$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两个坐标分别求时间与初速}\par\nobreak
+到达时 $t_*=\sqrt{2d/a}$、$u=d/t_*=\sqrt{ad/2}$。
+\typeout{ECFIG:fig:e6:example:12:p}\fig{fig:e6:example:12:p}{两条实际抛物线关于固定质心对称，图中坐标按 $d$ 缩放}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(5,0)node[right]{$x$};\draw[axis](0,-2.8)--(0,2.8)node[above]{$y$};\draw[world,domain=0:1,samples=60]plot({2-2*(\x)^2},{-2*\x});\draw[world,domain=0:1,samples=60]plot({2+2*(\x)^2},{2*\x});\fill(0,-2)circle(2pt)node[below right]{粒1：$(0,-d)$};\fill(4,2)circle(2pt)node[above right]{粒2：$(2d,d)$};\fill(2,0)circle(2pt)node[above left]{$C:(d,0)$};\draw[guide](0,-2)--(4,2);\draw[force](0,-2)--(-1,-2)node[left]{$\bm F_1$};\draw[flow](0,-2)--(-.8,-2.4)node[below]{$\bm v_1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分裂瞬间动量确定另一粒初速}\par\nobreak
+图\ref{fig:e6:example:12:p} 分裂瞬间外场有限力的冲量可忽略，初总动量零，第二粒初速度为 $+u\hat{\bm y}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以瞬时速度点乘电力求功率}\par\nobreak
+到达时 $v_{1x}=-at_*$，电力也向左，瞬时功率
+\[
+ P_1=(-ma)(-at_*)=ma\sqrt{2ad}>0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求同一时刻间距并以质心核对}\par\nobreak
+第二粒位置 $x_2=d+at_*^2/2=2d$、$y_2=ut_*=d$，而第一粒为 $(0,-d)$，间距 $\sqrt{(2d)^2+(2d)^2}=2\sqrt2d$。两粒质心始终在 $(d,0)$，与电场力总和零一致。\end{solution}
+\begin{question}\begin{example}[并联电容器面积改变与粒子加速度]\label{e6:example:13}
+两相同水平电容器各面积 $S$、间距相同，上下板分别相连，充电后整体断电。左边小电荷最初与重力平衡。把右电容器重叠面积减为 $S^\prime$，左边不变，使小电荷加速度为 $g/2$，求 $S^\prime/S$。忽略小电荷对电场的扰动。
+\end{example}
+\typeout{ECFIG:fig:e6:example:13:s}\fig{fig:e6:example:13:s}{右电容通过平移改变重叠面积，左边间距与面积保持}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3,0)(0,2)--(3,2)(5,0)--(8,0)(6.4,2)--(9.4,2);\draw(0,2)--(0,3)--(6.4,3)--(6.4,2);\draw(3,0)--(5,0);\draw[guide](6.4,0)--(6.4,2)(8,0)--(8,2);\node at(1.5,-.6){面积 $S$};\node at(7.2,-.6){重叠面积 $S'$};\fill(1.5,1)circle(2pt)node[right]{$q,m$};\node at(4.5,3.7){上、下端各自相连，整体断电};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对断电后的整个并联组守恒电荷}\par\nobreak
+图\ref{fig:e6:example:13:s} 初总电容 $2C_0$，电量 $Q_{\text{总}}=2C_0U_0$。右面积改变后总电容为 $C_0(1+S^\prime/S)$，所以共同电压与左场均按比例
+$E/E_0=U/U_0=2/(1+S^\prime/S)$ 增大。
+\typeout{ECFIG:fig:e6:example:13:p}\fig{fig:e6:example:13:p}{面积减小使共同电压升高，左侧电力超过重力}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3,0)(0,2)--(3,2)(5,0)--(8,0)(6.4,2)--(9.4,2);\draw(0,2)--(0,3)--(6.4,3)--(6.4,2);\draw(3,0)--(5,0);\draw[guide](6.4,0)--(6.4,2)(8,0)--(8,2);\node at(1.5,-.6){面积 $S$};\node at(7.2,-.6){重叠面积 $S'$};\fill(1.5,1)circle(2pt)node[right]{$q,m$};\node at(4.5,3.7){上、下端各自相连，整体断电};
+\draw[force](1.5,1)--(1.5,1.8)node[left]{$qE$};\node at(2.7,2.3){$-$};\node at(2.7,-.3){$+$};\draw[flow](.5,.4)--(.5,1.5)node[left]{$E$};\draw[force](1.5,1)--(1.5,.45)node[left]{$mg$};\node at(4.5,-1.6){图示选 $q>0$，两板极性相应保证电力向上};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用原平衡与新加速度确定场强倍率}\par\nobreak
+图\ref{fig:e6:example:13:p} 初态电力向上平衡 $mg$，场增大后加速度向上，$qE-mg=mg/2$，故 $E/E_0=3/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反解面积并核对接源条件}\par\nobreak
+于是 $2/(1+S^\prime/S)=3/2$，解得 $S^\prime/S=1/3$。若电源始终接着，左电压不变，就不能通过改变右面积获得这个加速度。\end{solution}
+\begin{question}\begin{example}[水平电场中的带电单摆]\label{e6:example:14}
+摆长 $l$，小球质量 $m$、电量 $q>0$，匀强电场水平向右，重力向下。求平衡角、绳张力及小振动周期。
+\end{example}
+\typeout{ECFIG:fig:e6:example:14:s}\fig{fig:e6:example:14:s}{题设：水平电场中的带电单摆}{\begin{tikzpicture}[scale=.88]
+\fill(0,2.8)circle(2pt);\draw[world](0,2.8)--(1.3,.3);\draw[world,fill=white](1.3,0.3)circle(.12);\node[above]at(1.3,0.44999999999999996){$q,m$};\draw[guide](0,2.8)--(0,-.2);\draw[flow](2,2)--(4,2)node[right]{$E$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{合成重力与电力，求实际平衡方向}\par\nobreak
+图\ref{fig:e6:example:14:s} 把重力与电力合成有效重力 $m\bm g_{\rm eff}=mg\hat{\bm y}+qE\hat{\bm x}$，其中向下为 $+y$。大小 $g_{\rm eff}=\sqrt{g^2+(qE/m)^2}$，平衡时绳沿该合力方向，向右偏角满足 $\tan\theta_0=qE/(mg)$，张力 $T_0=mg_{\rm eff}$。
+\typeout{ECFIG:fig:e6:example:14:p}\fig{fig:e6:example:14:p}{左侧为平衡三力，右侧角度从有效重力方向起算}{\begin{tikzpicture}
+
+\fill(0,3)circle(2pt);\draw[guide](0,3)--(0,0);\draw[world](0,3)--(1.342,.317);\fill(1.342,.317)circle(2pt);\draw[force](1.342,.317)--(1.342,-.883)node[below]{$mg$};\draw[force](1.342,.317)--(1.942,.317)node[right]{$qE$};\draw[force](1.342,.317)--(.742,1.517)node[left]{$T_0$};\node at(1,3.7){平衡偏角 $\theta_0$};
+\begin{scope}[xshift=6cm]\fill(0,3)circle(2pt);\draw[guide](0,3)--(1.342,.317);\draw[world](0,3)--(1.928,.702);\fill(1.928,.702)circle(2pt);\draw[force](1.928,.702)--(2.528,-.498)node[right]{$m\bm g_{\rm eff}$};\draw(.447,2.106)arc(-63.435:-50:1);\node at(.9,1.9){$\phi$};\node at(1,3.7){相对新平衡方向的小偏离};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相对新平衡方向写切向运动方程}\par\nobreak
+图\ref{fig:e6:example:14:p} 以平衡方向为角度零点，偏离角 $\phi$ 的切向方程 $ml\ddot\phi=-mg_{\rm eff}\sin\phi$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在小偏离近似下求周期并检查极限}\par\nobreak
+当 $|\phi|\ll1$，取 $\sin\phi\simeq\phi$，方程成为
+$\ddot\phi+\omega^2\phi=0$，其中 $\omega^2=g_{\rm eff}/l$。
+试取 $\phi=e^{\lambda t}$，代入得 $(\lambda^2+\omega^2)e^{\lambda t}=0$，特征根为 $\lambda=\pm i\omega$。实通解为
+\[
+\phi(t)=A\cos\omega t+B\sin\omega t.
+\]
+若初偏角和初角速度为 $\phi_0,\dot\phi_0$，则 $\phi(0)=A=\phi_0$；对通解求导，
+$\dot\phi=-A\omega\sin\omega t+B\omega\cos\omega t$，所以
+$B=\dot\phi_0/\omega$。相位增加 $2\pi$ 后运动重复，因此周期为 $2\pi/\omega$，即
+\[
+ \mathcal T=2\pi\sqrt{\frac l{\sqrt{g^2+(qE/m)^2}}}.
+\]
+摆角应相对新的平衡方向量取，不能仍以竖直为零直接写无常量项的简谐方程。$E=0$ 回到普通单摆，改变电荷符号只改变偏转方向，不改变同场强下的小振动周期。\end{solution}
+\begin{question}\begin{example}[反平方衰减电场的飞行时间]\label{e6:example:15}
+一维正电场 $E(x)=E_0/(1+x/a)^2$，$x\ge0$。正粒子 $q,m$ 从原点静止释放，求到 $x=X$ 的速度和时间，忽略其他力。
+\end{example}
+\typeout{ECFIG:fig:e6:example:15:s}\fig{fig:e6:example:15:s}{题设：反平方衰减电场的飞行时间}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$x/a$};\draw[axis](0,-.2)--(0,2.4)node[above]{$E/E_0$};\draw[world,domain=0:4]plot(\x,{2.2/(1+\x)^2});
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先由带符号电场积分求正向速度}\par\nobreak
+图\ref{fig:e6:example:15:s} 沿图中从 $0$ 到 $X$ 的路径，令 $u=1+x/a$，则 $\dd x=a\,\dd u$，积分上下限为 $1$ 与 $1+X/a$：
+\begin{align*}
+W&=qE_0\int_0^X(1+x/a)^{-2}\,\dd x
+=qE_0a\int_1^{1+X/a}u^{-2}\,\dd u\\
+&=qE_0a[-u^{-1}]_1^{1+X/a}
+=qE_0a\left(1-\frac{a}{a+X}\right)
+=\frac{qE_0aX}{a+X}.
+\end{align*}
+由 $mv^2/2=W$，得
+\[
+ v(X)=v_\infty\sqrt{\frac X{a+X}},\qquad
+ v_\infty=\sqrt{2qE_0a/m}.
+\]
+粒子一直向右，速度取正根；虽电场趋零，速率仍趋于非零的有限极限。
+\typeout{ECFIG:fig:e6:example:15:p}\fig{fig:e6:example:15:p}{正向速率随位置增长并趋于有限值，时间积分取正分支}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$x/a$};\draw[axis](0,0)--(0,2.8)node[above]{$v/v_\infty$};\draw[world,domain=0:4,samples=80]plot(\x,{2.2*sqrt(\x/(1+\x))});\draw[guide](0,2.2)--(4.5,2.2);\node[left]at(0,2.2){$1$};\draw[guide](2,0)--(2,{2.2*sqrt(2/3)});\node[below]at(2,0){$X/a$};\node at(2.8,-1){$t=\int_0^X\dd x/v(x)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由速度降阶为时间积分}\par\nobreak
+沿 图\ref{fig:e6:example:15:p} 时间由
+\[
+ t(X)=\frac1{v_\infty}\int_0^X\sqrt{\frac{a+x}{x}}\,\dd x
+\]
+求出。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用双曲代换完成积分}\par\nobreak
+令 $x=a\sinh^2u$，并选 $u\ge0$。此时
+\[
+\dd x=2a\sinh u\cosh u\,\dd u,\qquad
+\sqrt{\frac{a+x}{x}}=\frac{\cosh u}{\sinh u}.
+\]
+当 $x=0$ 时 $u=0$，当 $x=X$ 时
+$u=u_X=\operatorname{arsinh}\sqrt{X/a}$。乘积中 $\sinh u$ 抵消，利用 $2\cosh^2u=1+\cosh2u$：
+\begin{align*}
+t(X)&=\frac{2a}{v_\infty}\int_0^{u_X}\cosh^2u\,\dd u
+=\frac{a}{v_\infty}\int_0^{u_X}(1+\cosh2u)\,\dd u\\
+&=\frac{a}{v_\infty}\left[u+\frac12\sinh2u\right]_0^{u_X}
+=\frac{a}{v_\infty}(u_X+\sinh u_X\cosh u_X).
+\end{align*}
+由 $\sinh u_X=\sqrt{X/a}$、$\cosh u_X=\sqrt{1+X/a}$，还原得到
+\[
+ t(X)=\frac{\sqrt{X(a+X)}+a\,\operatorname{arsinh}\sqrt{X/a}}{v_\infty}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用近场匀加速和远场匀速核对}\par\nobreak
+小位移时分子主项 $2\sqrt{aX}$，回到恒加速度时间 $\sqrt{2mX/(qE_0)}$；大位移时 $t/X\to1/v_\infty$，与速度极限一致。\end{solution}
+\begin{question}\begin{example}[同号库仑散射的偏转角]\label{e6:example:16}
+粒子从远处以速率 $v$、瞄准距 $b>0$ 射向固定同号点电荷 $Q$，粒子电量 $q$、质量 $m$。求散射偏转角，并讨论正碰与大瞄准距极限。
+\end{example}
+\typeout{ECFIG:fig:e6:example:16:s}\fig{fig:e6:example:16:s}{题设：同号库仑散射的偏转角}{\begin{tikzpicture}[scale=.88]
+\draw[flow](-4,1.4)--(-1.8,1.4);\draw[guide](-4,0)--(3,0);\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$Q$};\draw[dim](-3,0)--(-3,1.4)node[midway,left]{$b$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由入射几何确定能量与角动量}\par\nobreak
+图\ref{fig:e6:example:16:s}中，远处势能趋于零，故总能量
+$\mathcal E=mv^2/2$。令 $\alpha=kqQ>0$，角动量大小为
+$\ell=mvb$；取最近点为极角零，极角 $\varphi$ 沿实际运动方向增大，于是
+$\ell=mr^2\dot\varphi$。图\ref{fig:e6:example:16:p}的 $P$ 是最近点，速度在那里纯沿切向。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按最近点对称性求中心力轨道}\par\nobreak
+令 $u=1/r$，撇号表示对极角 $\varphi$ 求导。角动量关系先把时间导数换成极角导数：
+\[
+ \dot\varphi=\frac{\ell u^2}{m},\qquad
+ \dot r=-\frac{u'}{u^2}\dot\varphi=-\frac\ell m u',\qquad
+ \ddot r=-\frac{\ell^2}{m^2}u^2u''.
+\]
+径向向外为正，库仑斥力为 $\alpha/r^2$。代入径向牛顿方程，得到
+\begin{align*}
+ m(\ddot r-r\dot\varphi^2)&=\alpha u^2,\\
+ -\frac{\ell^2}{m}u^2(u''+u)&=\alpha u^2,
+ \qquad u''+u=-\frac{m\alpha}{\ell^2}.
+\end{align*}
+令 $c=m\alpha/\ell^2$，先取常数特解 $u_p=-c$，再令 $w=u+c$，
+便有 $w''+w=0$。试取 $w=e^{s\varphi}$，代入得
+$(s^2+1)e^{s\varphi}=0$，特征根为 $s=\pm i$。
+由 $e^{\pm i\varphi}=\cos\varphi\pm i\sin\varphi$ 合成两个独立实解，
+所以
+\[
+ w=A\cos\varphi+B\sin\varphi,\qquad
+ u=A\cos\varphi+B\sin\varphi-c.
+\]
+求导为 $u'=-A\sin\varphi+B\cos\varphi$。
+最近点处 $\dot r=0$，由前面的 $\dot r=-(\ell/m)u'$ 可知 $u'(0)=0$，
+代入即得 $B=0$。
+把剩余系数写为 $A=m\alpha e/\ell^2$，得
+\[
+ \frac1r=\frac{m\alpha}{\ell^2}(e\cos\varphi-1).
+\]
+系数 $e$ 还需由能量确定。将径向、切向速度分别写入动能：
+\[
+ \mathcal E=\frac m2(\dot r^2+r^2\dot\varphi^2)+\frac\alpha r
+ =\frac{\ell^2}{2m}(u'^2+u^2)+\alpha u.
+\]
+记 $c=m\alpha/\ell^2$，则 $u=c(e\cos\varphi-1)$、
+$u'=-ce\sin\varphi$，从而
+\[
+ u'^2+u^2=c^2(e^2-2e\cos\varphi+1).
+\]
+代回能量式后，含 $\cos\varphi$ 的两项相消，留下
+\[
+ \mathcal E=\frac{m\alpha^2}{2\ell^2}(e^2-1),\qquad
+ e=\sqrt{1+\frac{2\mathcal E\ell^2}{m\alpha^2}}
+ =\sqrt{1+\left(\frac{mv^2b}{\alpha}\right)^2}>1.
+\]
+\typeout{ECFIG:fig:e6:example:16:p}\fig{fig:e6:example:16:p}{精确斥力双曲线、最近点切向速度和入出渐近方向}{\begin{tikzpicture}
+
+\draw[guide](-6,1)--(-1,1)--(-1,6);\draw[world,domain=-1.8:1.8,samples=100,postaction={decorate},decoration={markings,mark=at position .2 with{\arrow{Stealth}},mark=at position .75 with{\arrow{Stealth}}}]plot({-1-exp(-\x)/sqrt(2)},{1+exp(\x)/sqrt(2)});\fill(0,0)circle(2pt)node[below right]{$Q$};\fill(-1.7071,1.7071)circle(2pt)node[left]{$P$};\draw[dim](0,0)--(-1.7071,1.7071);\node[right]at(-.6,.4){$r_{\min}$};\draw[flow](-1.7071,1.7071)--(-1.1071,2.3071)node[left]{$\bm v_P$};\draw[flow](-5.8,1)--(-4.7,1);\draw[flow](-1,4.8)--(-1,5.8);\draw[guide](-1,1)--(0,1);\draw(-.6,1)arc(0:90:.4);\node at(-.4,1.6){$\chi$};\node at(-3.2,6.8){图示 $kqQ/(mv^2)=b$，$\chi=\pi/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由径向渐近线转成速度偏转角}\par\nobreak
+图\ref{fig:e6:example:16:p} 的入、出渐近线满足 $1/r=0$，即 $\cos\varphi_\infty=1/e$。两条径向渐近线张角 $2\varphi_\infty$，速度偏转角是其补角 $\chi=\pi-2\varphi_\infty$，因此 $\sin(\chi/2)=1/e$。进一步
+\[
+ \tan\frac\chi2=\frac1{\sqrt{e^2-1}}
+ =\frac{kqQ}{mv^2b},\qquad
+ \chi=2\arctan\frac{kqQ}{mv^2b}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对正碰与大瞄准距极限}\par\nobreak
+$b\to0$ 时 $\chi\to\pi$，正碰反弹；$b$ 很大时 $\chi\simeq2kqQ/(mv^2b)$，小角偏转。远处初末速率相同，能量守恒不等于速度矢量不变。\end{solution}

@@ -1,0 +1,121 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{w3:drill:1}\textbf{把固定边界与三个波腹转换为模态数}\par\nobreak
+图\ref{fig:w3:drill:1:s}两端固定，故两端均为位移波节。应从波腹数确定容纳的半波长数，再计算波长和频率。
+第$n$模态含$n$个半波长，每个半波长区间内恰有一个波腹；三个波腹所以对应$n=3$。$L=3\lambda/2$给$\lambda=2L/3=0.8\,\mathrm m$，再用$f=u/\lambda=120/0.8=150\,\mathrm{Hz}$。内部节点有两个，加上两端共四个。
+\fig{fig:w3:drill:1:p}{三个节间各含一个波腹；四个波节把全长分成三个等长段}{\begin{tikzpicture}
+
+\draw[world](0,-1)--(0,1) (6,-1)--(6,1);\draw[guide](0,0)--(6,0);\draw[blue,thick,domain=0:6,samples=120]plot(\x,{.7*sin(90*\x)});
+\foreach \xx/\ll in {0/0,2/{.4},4/{.8},6/{1.2}}{\fill(\xx,0)circle(.06);\node[below]at(\xx,-.9){$\ll$};}\node[right]at(6.3,0){$x/\mathrm m$};
+\foreach \xx in {0,2,4}{\draw[dim](\xx,-1.5)--({\xx+2},-1.5)node[midway,below]{$\lambda/2$};}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从等长节间列出包括端点的全部波节}\par\nobreak
+图\ref{fig:w3:drill:1:p}中$x_j=jL/3$，$j=0,1,2,3$，即$0,0.4,0.8,1.2\,\mathrm m$。基频为$50\,\mathrm{Hz}$，所观察为第三模态。不要把三个波腹误当成三条内部波节。\end{drillsolution}
+\begin{drillsolution}{w3:drill:2}\textbf{分别确定空气位移与压强的端点条件}\par\nobreak
+图\ref{fig:w3:drill:2:s}的封闭端取$x=0$，开口取$x=L$。封闭端空气不能沿管运动，开口端近似与外界等压；这两端限制的变量不同。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先用闭口条件消去余弦，再用开口条件筛选波数}\par\nobreak
+令空气位移为$y=X(x)\cos\omega t$。代入波动方程，$-\omega^2X\cos\omega t=u^2X''\cos\omega t$，因而空间振幅满足$X''+k^2X=0$、$k=\omega/u$。试取$X=e^{sx}$得$s^2+k^2=0$，两根$\pm\mathrm ik$给出实数通解$X=C\sin kx+D\cos kx$。闭端$X(0)=0$使$D=0$，故$X=C\sin kx$。对空间求导，$X'=C\cos(kx)\,\dd(kx)/\dd x=Ck\cos kx$。开端$x=L$处压力扰动与$-\partial_xy$成正比，故$kC\cos kL=0$。非零振幅要求$kL=(2n-1)\pi/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从允许波数求频率序列和相邻间隔}\par\nobreak
+由$f=\omega/(2\pi)=uk/(2\pi)$逐步得到$f_n=(2n-1)u/(4L)$；相邻$n$相减得到间隔$2u/(4L)=u/(2L)$。
+\fig{fig:w3:drill:2:p}{同一基模的位移与压强空间因子；闭口位移节对应压强腹，开口相反}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.7,0)node[right]{$x$};\draw[blue,thick,domain=0:4,samples=80]plot(\x,{sin(22.5*\x)});\fill(0,0)circle(.05);\fill(4,1)circle(.05);\node[above]at(2,1.6){$X/C=\sin kx$};\node[below]at(0,0){闭口};\node[below]at(4,0){开口};\draw[guide](4,0)--(4,1.2);
+\begin{scope}[yshift=-3.6cm]\draw[axis](0,0)--(4.7,0)node[right]{$x$};\draw[red,thick,domain=0:4,samples=80]plot(\x,{-cos(22.5*\x)});\fill(0,-1)circle(.05);\fill(4,0)circle(.05);\node[above]at(2,1){$p'/(BkC\cos\omega t)=-\cos kx$};\node[below]at(4,0){$L$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相邻频率差反求管长并检查边界}\par\nobreak
+图\ref{fig:w3:drill:2:p}的位移与压强分别满足两端条件。相邻共振频率差$u/(2L)=200\,\mathrm{Hz}$，所以$L=340/400=0.85\,\mathrm m$。此结果忽略端部修正，若把两端都设成位移波节会得到错误的模态序列。\end{drillsolution}
+\begin{drillsolution}{w3:drill:3}\textbf{用两角频率的半和、半差分离快振动与慢包络}\par\nobreak
+在图\ref{fig:w3:drill:3:s}的观察点，$y=2A\cos(4\pi t)\cos(884\pi t)$。
+两角频率为$880\pi$与$888\pi\,\mathrm{s^{-1}}$。先取半差$4\pi$、半和$884\pi$，再和差化积。慢因子可能为负，但表示局部振幅的包络为$2A|\cos4\pi t|$；其负号只改变快振动的相位。
+\fig{fig:w3:drill:3:p}{解答过程：拍频与不完全消声}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(5.5,0)node[right]{$t/\mathrm s$};\draw[axis](0,-1.4)--(0,2)node[above]{$A_{\rm env}/(2A)$};\draw[world,domain=0:4,samples=140]plot(\x,{abs(cos(90*\x))});\foreach \x/\l in {1/.125,2/.25,3/.375,4/.5}{\node[below]at(\x,0){$\l$};}\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在包络图上分别确定强音重复与首次相消}\par\nobreak
+图\ref{fig:w3:drill:3:p}的实际包络为$2A|\cos4\pi t|$，拍频$4\,\mathrm{Hz}$，强音间隔$1/4\,\mathrm s$，因为$4\pi t=n\pi$的相邻解相差$1/4\,\mathrm s$。第一次包络为零满足$4\pi t=\pi/2$，所以$t=1/8\,\mathrm s$。若两振幅不同，则最小值为其差的绝对值，听到强弱起伏也未必存在完全静音。\end{drillsolution}
+\begin{drillsolution}{w3:drill:4}\textbf{沿传播方向写两者的有向速度}\par\nobreak
+沿图\ref{fig:w3:drill:4:s}从源到接收者为正，$v_S=20$、$v_D=-10$，不能把两个速率都代为正数。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从相邻发射事件求空气中的波长}\par\nobreak
+相邻波面发射间隔为$T=1/640\,\mathrm s$，这一时间内前一波面前进$340T$，声源也前进$20T$，波面间距所以是$(340-20)T$。接收者迎向波面，每秒遇到的长度为$340+10$米；以此除以每个波长的长度，才得到每秒遇到的波面数。
+\fig{fig:w3:drill:4:p}{声源前进使空气中的波面间距缩短；接收者迎向这些向右传播的波面}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6,0)node[right]{$x$};\fill(1,0)circle(.07)node[below]{$S$};\fill(5,0)circle(.07)node[below]{$D$};\foreach \xx in {2,3,4}{\draw[blue,thick](\xx,-.65)--(\xx,.65);}
+\draw[flow](1,1.2)--(2,1.2)node[above]{$20\,\mathrm{m/s}$};\draw[flow](5,1.2)--(4,1.2)node[above]{$10\,\mathrm{m/s}$};\draw[flow](3,2.2)--(4,2.2)node[right]{$u=340\,\mathrm{m/s}$};\draw[dim](2,-1.1)--(3,-1.1)node[midway,below]{$\lambda'=0.5\,\mathrm m$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以遇波速率除以波长，求接收频率并检查升降}\par\nobreak
+图\ref{fig:w3:drill:4:p}波长为$(340-20)/640=0.5\,\mathrm m$，接收者遇波速度为$340-(-10)=350\,\mathrm{m/s}$。因此$f'=350/0.5=700\,\mathrm{Hz}$。接近使频率升高，与计算一致；如果只用相对速率$30$替代$v_S$，会丢掉声源和接收者的不对称。\end{drillsolution}
+\begin{drillsolution}{w3:drill:5}\textbf{把移动板视为入射声波的接收者}\par\nobreak
+图\ref{fig:w3:drill:5:s}入射向右，反射体以$v_D=-V$接收，故其自身测得$f_1=(u+V)f/u$。反射时保持反射体参考系中的振荡频率。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以移动边界的同频条件连接两段传播}\par\nobreak
+在反射体自身位置上，入射与反射扰动必须随时间同频，否则无法满足移动边界的连续条件。因此$f_1$可以作为反射体再发射的频率。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反转传播方向后重新投影板速}\par\nobreak
+反射后的传播方向改为向左，反射体速度在新方向投影为$+V$；第二次公式的分母故为$u-V$，并非沿用第一次接收中的$u+V$。
+\fig{fig:w3:drill:5:p}{同一移动板反射相邻信号的时空图：靠近时，接收间隔比发射间隔短}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0)node[right]{$x$};\draw[axis](0,-.2)--(0,4.8)node[above]{$t$};\draw[world](4,0)--(2.125,4.5)node[above right]{反射板};
+\draw[flow,blue](0,0)--(3.2,1.92)--(0,3.84);\draw[flow,red](0,.6)--(3,2.4)--(0,4.2);\foreach \yy in {0,.6,3.84,4.2}{\fill(0,\yy)circle(.04);}\draw[dim](-.9,0)--(-.9,.6)node[midway,left]{$T$};\draw[dim](-.9,3.84)--(-.9,4.2)node[midway,left]{$T'$};\node[below]at(0,0){$S,D$};\draw[flow](4.1,3.3)--(3.2,3.3)node[above]{$V$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{组合两次频移并用接收间隔缩短核对}\par\nobreak
+图\ref{fig:w3:drill:5:p}反射波向左，反射体沿该方向速度为$+V$，固定接收者速度为零。第二次频移给$f_{\rm echo}=u f_1/(u-V)$，所以
+\[
+f_{\rm echo}=\frac{u+V}{u-V}f.
+\]
+当$V\ll u$，相对频移近似$2V/u$。两个因子分别属于接收和再发射，不能只计算一次。\end{drillsolution}
+\begin{drillsolution}{w3:drill:6}\textbf{固定截面分别求空间斜率和材料点速度}\par\nobreak
+在图\ref{fig:w3:drill:6:s}取正$x$为功率正方向，$P=-\mathcal T(\partial_xy)(\partial_ty)$。空间求导时$\cos\omega t$为常数，时间求导时$\sin kx$为常数，因此
+\[
+\partial_xy=B\cos\omega t\,\cos kx\,\underbrace{\partial_x(kx)}_{k}
+=Bk\cos kx\cos\omega t,
+\]
+\[
+\partial_ty=B\sin kx\,(-\sin\omega t)\underbrace{\partial_t(\omega t)}_{\omega}
+=-B\omega\sin kx\sin\omega t.
+\]
+\fig{fig:w3:drill:6:p}{取$t=T/8$；瞬时能流从两侧流向波腹，功率在波节与波腹处均为零}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[blue,thick,domain=0:4,samples=90]plot(\x,{.7071068*sin(45*\x)});\node[left]at(0,.7){$y/B$};\draw[flow](1,1.4)--(1.7,1.4);\draw[flow](3,1.4)--(2.3,1.4);\node at(2,2){能量流向};
+\begin{scope}[yshift=-2.7cm]\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[red,thick,domain=0:4,samples=90]plot(\x,{sin(90*\x)});\node[left]at(0,1.3){$P/P_0$};\foreach \xx/\ll in {0/0,2/{\pi/(2k)},4/{\pi/k}}{\fill(\xx,0)circle(.05);\node[below]at(\xx,-1.35){$\ll$};}\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把张力做功改写成通过截面的瞬时功率}\par\nobreak
+把同一截面的两导数代入功率式，得到
+\[
+P=\frac{\mathcal T B^2k\omega}{4}\sin2kx\sin2\omega t.
+\]
+图\ref{fig:w3:drill:6:p}取$P_0=\mathcal T B^2k\omega/4$，在$t=T/8$时$\sin2\omega t=1$，故左半段$P>0$、右半段$P<0$，能量都流向中部。式中$\cos kx\sin kx=\tfrac12\sin2kx$、$\cos\omega t\sin\omega t=\tfrac12\sin2\omega t$，故系数出现$1/4$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用时间平均与波节条件区分瞬时交换和净输运}\par\nobreak
+对一个周期积分，固定$x$后的空间系数不参与积分。令$z=2\omega t$，则$\dd t=\dd z/(2\omega)$，$t=0,T$分别对应$z=0,4\pi$，所以
+\[
+\frac1T\int_0^T\sin2\omega t\,\dd t
+=\frac1{2\omega T}\int_0^{4\pi}\sin z\,\dd z
+=\frac1{2\omega T}[-\cos z]_0^{4\pi}=0.
+\]
+因此时间平均功率为零，但一般位置的瞬时值不为零。波节$\sin kx=0$，故截面速度及功率恒为零；这与节间的局部能量交换并不矛盾。\end{drillsolution}

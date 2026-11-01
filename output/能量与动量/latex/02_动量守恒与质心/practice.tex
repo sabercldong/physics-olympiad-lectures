@@ -1,0 +1,49 @@
+\section{练习}
+
+\begin{question}\begin{drill}[摆球粘到车上的泥团]\label{em2:drill:1}
+光滑水平面上的小车最初静止，车上轻杆一端铰接，另一端固定小球。杆从水平位置释放，小球到最低点时与固定在车上的泥团粘合，并立即相对车静止。问此后车怎样运动，释放到粘合之间车是否一直静止？
+\end{drill}
+\fig{fig:em2:drill:1:s}{水平杆释放后绕车上铰点转动，最低点正好对应泥团所在位置}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(5,.3);\draw[world](1.5,.3)--(1.5,2.5);\draw[world](1.5,2.5)--(3.5,2.5);
+\fill(1.5,2.5)circle(2pt)node[above left]{$O$};\fill(3.5,2.5)circle(.12)node[right]{球};
+\fill(1.5,.5)circle(.12)node[right]{泥团};\draw[guide](1.5,2.5)--(1.5,.5);
+\draw[axis,blue](3.3,2.5)arc(0:-90:1.8);\node at(2.5,2.85){轻杆};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em2:drill:1}
+\begin{question}\begin{drill}[反复向墙抛球]\label{em2:drill:2}
+人和车总质量$M=16m$，球质量$m$，整个系统最初静止在光滑水平面上。人每次把球以固定对地速率$v$向前方固定墙抛出，球在墙上以原速率反弹，再由人接住。求第几次抛出后人将不能再接到反弹球。
+\end{drill}
+\fig{fig:em2:drill:2:s}{题设：反复向墙抛球}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(3,.3);\fill(1.5,.7)circle(.12);\draw[flow](2,1)--(4,1)node[above]{$v$};\draw[world](5,-.2)--(5,2);\node[right]at(5,1){墙};\end{tikzpicture}}
+\end{question}
+\answerlink{em2:drill:2}
+\begin{question}\begin{drill}[相向弹簧碰撞的速度区间]\label{em2:drill:3}
+$A,B$质量为$3\,\mathrm{kg},2\,\mathrm{kg}$，初速度分别为向右$4\,\mathrm{m/s}$、向左$5\,\mathrm{m/s}$。两物体在光滑水平面上通过轻弹簧相互作用。以下均研究从开始接触到最大压缩的阶段。求谁先停止、此时另一物体速度；求最大压缩时的速度；并求$B$加速运动时$A$速度的范围。
+\end{drill}
+\fig{fig:em2:drill:3:s}{初接触时弹簧连接两物体；压缩阶段它对两物体施相反方向的力}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(5,0);\draw[world](0,0)rectangle(1,.7);\draw[world](3.5,0)rectangle(4.5,.7);
+\draw[spring](1,.35)--(3.5,.35);\node at(.5,.35){$A,3$};\node at(4,.35){$B,2$};
+\draw[flow,blue](.2,1.2)--(1.5,1.2)node[above]{$4$};\draw[flow,blue](4.3,1.2)--(2.8,1.2)node[above]{$5$};
+\draw[axis](4.8,-.6)--(5.8,-.6)node[right]{$+x$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em2:drill:3}
+\begin{question}\begin{drill}[风扇、船帆与动量流]\label{em2:drill:4}
+船上风扇向本船的帆吹出水平气流，单位时间喷出空气质量$q$，气流相对岸的入帆速度为$u$。船速很小，忽略迎风阻力。假设风扇从周围吸入水平速度为零的空气，排出的气流此后不再接触船上其他部件。分别讨论气流离帆后水平速度为零，以及完全反向、末速率仍为$u$时，船获得的水平推力。
+\end{drill}
+\fig{fig:em2:drill:4:s}{船上同时有风扇与导流帆，末态气流离开船后不再与船接触}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(0,-.5)--(5,-.5)--(5.5,0)--cycle;
+\draw[world](1,0)--(1,1.3);\draw[world](1,1.3)circle(.25);\node[below]at(1,0){风扇};
+\draw[world](4,0)--(4,2.4);\draw[world](4,1.1)arc(-90:90:.55);\node[right]at(4.6,2.3){导流帆};
+\draw[flow,blue](1.3,1.1)--(3.8,1.1)node[midway,above]{$q,u$};
+\draw[flow,blue](4,2.2)--(-1,2.2)node[midway,above]{向后排气的情形};
+\draw[flow](.1,1.1)--(.7,1.1);\node at(-.7,.8){吸气};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em2:drill:4}

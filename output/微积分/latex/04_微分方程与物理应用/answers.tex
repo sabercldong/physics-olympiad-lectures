@@ -1,0 +1,108 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c4d1}\textbf{沿连线投影相对速度并证明会相遇}\par\nobreak
+图 \ref{c4d1q} 的即时瞄准单位方向由 $B$ 指向 $A$，记其与竖直向上的夹角为 $\theta$、两者距离为 $r$。由于目标的速度沿竖直向上，径向相对速度为
+$\dot r=v\cos\theta-kv$。
+因为 $\cos\theta\le1$，有 $\dot r\le-(k-1)v<0$。从初距 $a$ 开始，距离最迟在 $a/[(k-1)v]$ 的时间内降到零，所以可以在有限相遇时刻 $t_c$ 上作以下积分。
+\fig{c4d1s}{将瞄准速度投影到竖直方向}{\begin{tikzpicture}
+\coordinate(B)at(2,0);\coordinate(A)at(0,2.5);\draw[guide](B)--(A);
+\draw[force,red](B)--(.8,1.5)node[left]{$kv$};
+\draw[flow](B)--(2,1.5)node[right]{$kv\cos\theta$};\draw[guide](.8,1.5)--(2,1.5);
+\draw[guide](2,0)--(2,2.1);\draw(2,.55)arc(90:128.66:.55);\node at(1.75,.8){$\theta$};\node[below]at(B){$B$};\node[above]at(A){$A$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立竖直位移与距离积分求相遇时间}\par\nobreak
+图 \ref{c4d1s} 中追逐者的竖直速度为 $kv\cos\theta$。
+
+相遇时双方竖直位移相同，故
+$kv\int_0^{t_c}\cos\theta\dd t=vt_c$。
+因此 $\int_0^{t_c}\cos\theta\dd t=t_c/k$。另一方面，距离初值为 $r(0)=a$、末值为 $r(t_c)=0$，所以对距离方程积分得
+\[
+ -a=v\int_0^{t_c}\cos\theta\dd t-kvt_c
+ =\frac{vt_c}{k}-kvt_c.
+\]
+右侧合并为 $-vt_c(k^2-1)/k$，两边约去负号，再除以正系数 $v(k^2-1)/k$，得到 $\boxed{t_c=ak/[v(k^2-1)]}$。若相遇高度为 $a$，则 $vt_c=a$；代入时间式并约去 $a$，得 $k/(k^2-1)=1$，即 $k^2-k-1=0$。二次方程两根为 $(1\pm\sqrt5)/2$，负根不满足 $k>1$，所以
+$\boxed{k=(1+\sqrt5)/2}$。
+$k\to1^+$ 时相遇时间发散，$k\gg1$ 时约为 $a/(kv)$，都符合直观极限。
+
+\end{drillsolution}
+\begin{drillsolution}{c4d2}\textbf{投影到摆弧切向并明确小角近似对象}\par\nobreak
+图 \ref{c4d2q} 中张力 $T$ 沿绳指向悬点，与摆弧的切向垂直，因而没有切向分量。沿增大摆角的切向取正方向，重力投影为 $-mg\sin\theta$，切向加速度为 $l\ddot\theta$，所以 $ml\ddot\theta=-mg\sin\theta$。除以 $ml$，得精确方程 $\ddot\theta+(g/l)\sin\theta=0$。
+
+小角时以 $\theta$ 代替 $\sin\theta$，令 $\omega_0=\sqrt{g/l}$。试取 $\theta=\e^{rt}$，代入给出 $(r^2+\omega_0^2)\e^{rt}=0$，故 $r=\pm\mathrm i\omega_0$，组合两个指数解得到实通解 $\theta=C_1\cos\omega_0t+C_2\sin\omega_0t$。求导时保留内函数的导数 $\omega_0$，有 $\dot\theta=-\omega_0C_1\sin\omega_0t+\omega_0C_2\cos\omega_0t$。释放时 $\theta(0)=\theta_0$ 给出 $C_1=\theta_0$；令 $t=0$，有 $\dot\theta(0)=\omega_0C_2=0$，故 $C_2=0$，得到 $\theta=\theta_0\cos(\sqrt{g/l}\,t)$。二次求导得 $\ddot\theta=-\omega_0^2\theta_0\cos\omega_0t=-\omega_0^2\theta$，满足线性方程。
+\fig{c4d2s}{下降的高度决定最低点动能}{\begin{tikzpicture}
+\coordinate(O)at(0,2.3);\draw[guide](O)--(0,0);\draw[world](O)--(1.15,.30814);\draw[guide](0,.30814)--(1.15,.30814);
+\draw[dim](1.7,0)--(1.7,.30814)node[right,midway]{$l(1-\cos\theta_0)$};
+\draw[flow](0,0)--(1,0)node[below]{$v_{\max}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用实际下降高度计算最低点速度}\par\nobreak
+图 \ref{c4d2s} 中，初始球心在悬点下方的竖直距离为 $l\cos\theta_0$，最低点为 $l$，所以下降高度为 $l-l\cos\theta_0$。初动能为零、最低点势能取零，能量守恒给出
+$mv_{\max}^2/2=mgl(1-\cos\theta_0)$。约去 $m$ 并取正根，
+\[
+ v_{\max}=\sqrt{2gl(1-\cos\theta_0)}
+ =2\sqrt{gl}\,|\sin(\theta_0/2)|
+ \simeq\sqrt{gl}\,|\theta_0|.
+\]
+其中先用 $1-\cos\theta_0=2\sin^2(\theta_0/2)$，再在小角时用 $|\sin(\theta_0/2)|\simeq|\theta_0|/2$。对小角解求导，过零点时 $|\dot\theta|=\omega_0|\theta_0|$，故 $l|\dot\theta|=\sqrt{gl}|\theta_0|$，与能量法的首项一致。
+\end{drillsolution}
+\begin{drillsolution}{c4d3}\textbf{沿位置累积功，选择正速度支路}\par\nobreak
+图 \ref{c4d3q} 中 $0<x<L$ 时力为正，速度持续增加。对位置积分，
+\[
+ \frac12mv^2=\int_0^xF_0(1-\xi/L)\dd\xi
+ =F_0\left[\xi-\frac{\xi^2}{2L}\right]_0^x
+ =F_0\left(x-\frac{x^2}{2L}\right),
+\]
+故 $v=\sqrt{(F_0/mL)(2Lx-x^2)}$，在讨论区间内最大值为 $v(L)=\sqrt{F_0L/m}$。
+\fig{c4d3s}{速度平方在终点达到最大}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.5,0)node[right]{$x/L$};\draw[axis](0,0)--(0,2.5)node[above]{$mv^2/(F_0L)$};
+\draw[blue,domain=0:1,samples=40,xscale=3]plot(\x,{2*(2*\x-\x*\x)});
+\node[below]at(3,0){$1$};\node[left]at(0,2){$1$};\draw[guide](3,0)--(3,2);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由倒速度积分求到达时间}\par\nobreak
+图 \ref{c4d3s} 中 $\dd(v^2)/\dd x=(2F_0/m)(1-x/L)$，在 $0<x<L$ 为正、$x=L$ 为零，验证最大值位置。求时间时令 $x/L=1-\cos\phi$，$\phi:0\to\pi/2$。此时
+$\dd x=L\sin\phi\dd\phi$，
+$2Lx-x^2=L^2[1-\cos^2\phi]=L^2\sin^2\phi$。
+该区间 $\sin\phi\ge0$，所以 $v=\sqrt{F_0L/m}\sin\phi$，从而
+\[
+ t=\int_0^L\frac{\dd x}{v(x)}
+ =\sqrt{\frac{mL}{F_0}}\int_0^{\pi/2}\dd\phi
+ =\boxed{\frac\pi2\sqrt{\frac{mL}{F_0}}}.
+\]
+换元后的比值为
+$\dd x/v=[L\sin\phi/(\sqrt{F_0L/m}\sin\phi)]\dd\phi=\sqrt{mL/F_0}\dd\phi$；
+端点 $\phi=0$ 以连续极限补充。因此最后只需积分常数，再乘区间长度 $\pi/2$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查零速度端点的可积性}\par\nobreak
+起点虽有 $v=0$，但 $v\sim\sqrt{2F_0x/m}$，$\int_0^\varepsilon x^{-1/2}\dd x=2\sqrt\varepsilon$ 有限，所以到达时间不发散。也可把方程改写为 $\ddot x+(F_0/mL)(x-L)=0$，从简谐运动的四分之一周期独立核验。
+\end{drillsolution}
+\begin{drillsolution}{c4d4}\textbf{将运动方程乘速度，转成能量变化率}\par\nobreak
+对图 \ref{c4d4q} 的运动方程乘以 $v=\dot x$，得到
+$mv\dot v+kx\dot x=-cv^2$。
+左边两项分别是 $mv^2/2$ 与 $kx^2/2$ 的时间导数，所以 $\dot E=-cv^2$。从零到 $T$ 积分，先有
+$E(T)-E(0)=-c\int_0^T v^2\dd t$，再移项为
+$c\int_0^T v^2\dd t=E(0)-E(T)$。
+\fig{c4d4s}{耗散积分等于机械能的总减少}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$t$};\draw[axis](0,0)--(0,2.7)node[above]{$E$};
+\draw[blue,domain=0:4.3,samples=70]plot(\x,{2*exp(-.7*\x)});
+\draw[dim](4.5,.1)--(4.5,2)node[midway,right]{$E(0)-E(\infty)$};
+\node[left]at(0,2){$E(0)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用最终静止求整个耗散积分}\par\nobreak
+图 \ref{c4d4s} 只示意能量单调下降，实际斜率随 $v^2$ 起伏。欠阻尼解含有 $\e^{-ct/(2m)}$ 因子，所以 $x,v$ 均趋于零，$E(T)\to0$。把初始能量 $E(0)=mv_0^2/2+kx_0^2/2$ 代入积分式，再除以 $c>0$ 并取 $T\to\infty$，得到
+\[
+ \boxed{\int_0^\infty v^2\dd t
+ =\frac{mv_0^2+kx_0^2}{2c}}.
+\]
+结论也适用于临界、过阻尼，只要保持同一被动阻尼方程。$c=0$ 且有非零初始能量时振动不衰减，积分不收敛；零初始能量的恒静止解则例外地给出零。
+\end{drillsolution}

@@ -1,0 +1,66 @@
+\section{独立练习}
+
+\begin{question}\begin{drill}[由瞬时分量恢复轨道参数]\label{at2:drill:1}
+在 $r=r_0$ 处测得 $v_r=0$、$v_t=\sqrt{3\mu/(2r_0)}$。求轨道类型、两端距离和周期，并判断此点是近地点还是远地点。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:1:s}\fig{fig:at2:drill:1:s}{题设：由瞬时分量恢复轨道参数}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[flow](1.5,0)--(1.5,1.2)node[right]{$v_t$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:1}
+\begin{question}\begin{drill}[径向小脉冲的精确轨道与线性极限]\label{at2:drill:2}
+卫星在半径 $r_0$ 的圆轨道，圆速 $v_c$。受到径向向外脉冲 $u$，$0<u<v_c$。求点火后精确的 $a,e,r_p,r_a,T$，并检验 $u\ll v_c$ 时与微积分专题径向线性化结果的关系。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:2:s}\fig{fig:at2:drill:2:s}{题设：径向小脉冲的精确轨道与线性极限}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(2);\fill(0,0)circle(2pt)node[below]{$F$};\fill(2,0)circle(2pt);\draw[flow](2,0)--(2,1.2)node[left]{$v_c$};\draw[force,blue](2,0)--(3.3,0)node[above]{$u$};\draw[dim](0,-.6)--(2,-.6)node[midway,below]{$r_0$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:2}
+\begin{question}\begin{drill}[同一半径的去程与回程]\label{at2:drill:3}
+椭圆 $a,e$，某半径 $r=a$ 在去、回程各经过一次。求从去程到回程的时间，并比较两处速度分量。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:3:s}\fig{fig:at2:drill:3:s}{题设：同一半径的去程与回程}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(-1.5,2.598)circle(2pt)node[above]{$B_1$};\fill(-1.5,-2.598)circle(2pt)node[below]{$B_2$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:3}
+\begin{question}\begin{drill}[开普勒方程的数值解]\label{at2:drill:4}
+椭圆 $e=0.6$，某时刻平均近点角为 $n(t-t_p)=1$。求偏近点角到 $10^{-3}$ 弧度，并给出误差检查方法。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:4:s}\fig{fig:at2:drill:4:s}{题设：开普勒方程的数值解}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$E$};\draw[axis](0,-.2)--(0,2.4)node[above]{$E-e\sin E$};\draw[world,domain=0:3,samples=70]plot(\x,{\x-.6*sin(deg(\x))});\draw[guide](0,1)--(3,1);
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:4}
+\begin{question}\begin{drill}[经过半通径位置的时间]\label{at2:drill:5}
+椭圆 $a,e$，从近日点出发，第一次到达真近点角 $f=\pi/2$。求此时偏近点角与飞行时间。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:5:s}\fig{fig:at2:drill:5:s}{题设：经过半通径位置的时间}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[guide](0,0)--(0,2.25);\fill(0,2.25)circle(2pt)node[right]{$f=\pi/2$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:5}
+\begin{question}\begin{drill}[椭圆的平均动能与势能]\label{at2:drill:6}
+利用时间平均 $\langle1/r\rangle=1/a$，求椭圆轨道平均动能、平均势能与总能量，并判断等式是否逐点成立。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:6:s}\fig{fig:at2:drill:6:s}{题设：椭圆的平均动能与势能}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:6}
+\begin{question}\begin{drill}[近圆轨道的一阶位置修正]\label{at2:drill:7}
+离心率 $e\ll1$，平均近点角 $M=nt$。求 $E,f,r$ 到一阶，并估计将真近点角直接取为 $nt$ 的最大一阶角误差。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:7:s}\fig{fig:at2:drill:7:s}{题设：近圆轨道的一阶位置修正}{\begin{tikzpicture}[scale=.85]
+\draw[world](-0.45,0)ellipse(3 and 2.966058);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(2.55,0)circle(1.5pt)node[right]{$P$};\fill(-3.45,0)circle(1.5pt)node[left]{$A$};\draw[guide](-3.45,0)--(2.55,0);\node[below]at(-0.45,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:7}
+\begin{question}\begin{drill}[同周期椭圆的近点速度比较]\label{at2:drill:8}
+两卫星绕同一星球运动，周期相同而离心率分别为 $e_1<e_2$。比较两者半长轴、近日点速度、平均动能及每周扫过面积。
+\end{drill}
+\typeout{ASTROFIG:fig:at2:drill:8:s}\fig{fig:at2:drill:8:s}{题设：同周期椭圆的近点速度比较}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[guide](-.9,0)ellipse(3 and 2.862);
+\end{tikzpicture}}
+\end{question}
+\hintlink{at2:drill:8}

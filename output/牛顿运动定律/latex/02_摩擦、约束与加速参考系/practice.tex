@@ -1,0 +1,25 @@
+\section{本讲小结}
+平移加速系中的惯性力来自加速度变换。选车厢系可以简化相对位置，却不能省略相对加速度；移动支点也要求重写完整绳长。静摩擦先由所需运动求出，再同上限比较，滑动发生后还要检查地面和其他接触是否切换状态。
+
+有限长杆、汽车和平板的问题进一步说明，保持姿态不仅要求合力正确，还要求合力矩相容。支持力为零、摩擦达到上限、力矩变号分别对应不同边界，应把瞬时起动、接触阶段和最终状态的判断区别开。
+\section{练习}
+\begin{question}\begin{drill}[相对静止的完整加速度区间]\label{n2d1}
+斜面向右下方倾斜、倾角 $\theta$，水平向右加速度 $A\ge0$。其上物块质量 $m$，静摩擦因数 $\mu_s<\cot\theta$。求可保持相对静止的全部 $A$，并说明低端区间何时可以包括零。
+\fig{n2d1q}{同一接触面可能分别阻碍上滑和下滑}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.2)--cycle;\node[draw,rotate=-28.8108,anchor=south]at(-.4,1.32){$m$};\draw[flow](2,.6)--(3.3,.6)node[right]{$A$};\node at(1,.2){$\theta$};\node at(-1.1,.5){$\mu_s$};
+\end{tikzpicture}}\answerlink{n2d1}\end{drill}\end{question}
+\begin{question}\begin{drill}[下滑轮保持不动的质量条件]\label{n2d2}
+双层阿特伍德装置的下绳两端质量 $m_A,m_B$，上绳另一端质量 $m_C$。问 $m_C$ 应取何值，下滑轮中心及 $C$ 才能保持静止，而 $A,B$ 仍可相对运动？求此时 $A,B$ 的加速度。
+\fig{n2d2q}{静止的下滑轮仍可有绳从其上经过}{\begin{tikzpicture}
+\draw[world](0,3)circle(.55);\draw[world](-.55,1.3)--(-.55,3)arc(180:0:.55)--(.55,.6);\node[draw,anchor=north]at(.55,.6){$m_C$};\draw[world](-.55,1.3)circle(.5);\draw[world](-1.05,0)--(-1.05,1.3)arc(180:0:.5)--(-.05,-.5);\node[draw,anchor=north]at(-1.05,0){$m_A$};\node[draw,anchor=north]at(-.05,-.5){$m_B$};
+\end{tikzpicture}}\answerlink{n2d2}\end{drill}\end{question}
+\begin{question}\begin{drill}[前轮驱动的加速上限]\label{n2d3}
+车的质量、轴距和重心位置同例题中的汽车，但改为前轮驱动，后轮水平摩擦忽略。前轮静摩擦因数 $\mu_s$，求不打滑且两轮保持接触时最大加速度。
+\fig{n2d3q}{驱动轮处在加速时减载的一侧}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\draw[world](-1.4,.4)rectangle(1.4,1.5);\draw[world](-1.1,.25)circle(.25) (1.1,.25)circle(.25);\fill(0,1)circle(2pt)node[above]{$C$};\draw[force](1.1,0)--(2.3,0)node[right]{$f$};\node at(0,-.5){轴距 $2l$，重心高 $h$};
+\end{tikzpicture}}\answerlink{n2d3}\end{drill}\end{question}
+\begin{question}\begin{drill}[竖直导向块的分离阈值]\label{n2d4}
+竖直导向块 $m$ 与向右下方倾角 $\theta$ 的斜面 $M$ 光滑接触，地面光滑。现向左拉斜面，拉力大小 $P$。由静止释放，求保持接触的 $P$ 范围；超过阈值时求释放瞬间两物体的加速度。
+\fig{n2d4q}{左拉使固定导轨处的斜面高度下降}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.5)--cycle;\draw[world](.5,.1)--(.5,3) (1.2,.1)--(1.2,3);\draw[world,fill=white](.55,.90625)--(.55,1.8)--(1.15,1.8)--(1.15,.53125)--cycle;\node at(.85,1.3){$m$};\node at(-.7,.6){$M$};\draw[force](-2,1)--(-3.2,1)node[left]{$P$};
+\end{tikzpicture}}\answerlink{n2d4}\end{drill}\end{question}

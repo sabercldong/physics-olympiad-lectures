@@ -1,0 +1,204 @@
+\section{研究对象与独立平衡方程}
+静力学首先要求把对象从环境中分离出来。整体图可以消去内力，但不能直接求内部杆力；隔离某一节点或杆件可以暴露内力，却会增加未知量。两种选取应配合使用。作用与反作用应画在不同对象的图上，不应在同一受力图中互相抵消。
+
+质点平衡只需$\sum\boldsymbol F=0$。平面刚体还必须满足$\sum M_O=0$，常用三个独立标量方程为
+\[
+\sum F_x=0,\qquad \sum F_y=0,\qquad
+\sum_i(x_iF_{iy}-y_iF_{ix})=0.
+\]
+三式分别限制平动和转动。把合力为零当作完整条件，会漏掉一对大小相等、方向相反而作用线不同的力所组成的力偶。
+
+\fig{s2deep:couple}{合力为零仍可能有力偶；隔离对象后才能判断平衡}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)--(3,0);\draw[force](0,0)--(0,-1.2)node[left]{$F$};\draw[force](3,0)--(3,1.2)node[right]{$F$};
+\draw[dim](0,-1.6)--(3,-1.6)node[midway,below]{$d$};\node at(1.5,1.7){$\sum\bm F=0,\ M=Fd\ne0$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[world](-1,0)--(1,0);\draw[force](-1,0)--(-2,0)node[above]{$T$};\draw[force](1,0)--(2,0)node[above]{$T$};
+\node at(0,-.8){二力杆：等大、反向、共线};\node at(0,1.7){杆的受力图};
+\end{scope}
+\end{tikzpicture}}
+图\ref{s2deep:couple}左图的两力虽相消，却绕任一点留下同向的转动作用，故刚体仍会转动。右图两力共线，任一点的总力矩才同时为零。由此可知，“轻杆”能否简化为轴向二力杆，取决于它是否只受两个端部力；若杆中部还有载荷，端部反力一般不能预先沿杆画出。
+
+
+平衡并不意味着所有摩擦都达到最大值。应先由方程求所需摩擦，再检查$|f|\le\mu N$。同样，支持力必须非负、绳张力必须非负；某个解若要求墙面“拉住”物体，说明假设的接触状态不成立。先列等式再做可实现性检查，是平衡计算不可省略的一部分。
+
+\section{取矩点与力的作用线}
+对于作用点$\boldsymbol r$的力，关于$O$的力矩为$\boldsymbol M_O=\boldsymbol r\times\boldsymbol F$。平面内可取逆时针为正，力矩大小为力乘垂直力臂，不是力乘任意一条连线。重力的力臂应取质心到竖直作用线的水平距离；斜拉力的力臂应从取矩点向它的作用线作垂线。
+
+选择取矩点的目的在于消去未知量。若两个未知反力的作用线相交，可选交点取矩；这两力的力臂同时为零。取矩点不必是真实转轴，关键是同时保留平动力平衡。
+
+\fig{fig:s2:torque}{力臂取垂直距离，取矩点可消去未知支承力}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,2.4);\draw[world](-.5,0)--(4.5,0);\node[below]at(0,0){$A$};\node[right]at(4,2.4){$B$};\draw[force](2,1.2)--(2,-.2)node[right]{$mg$};\draw[force](4,2.4)--(3,3.4)node[right]{$F$};\draw[guide](0,0)--(3.2,3.2)node[midway,above left]{$d_\perp$};\fill(3.2,3.2)circle(1.5pt)node[below right]{$H$};\draw[guide](3.0586,3.0586)--(2.9172,3.2)--(3.0586,3.3414);\end{tikzpicture}}
+图\ref{fig:s2:torque}中，$H$是从$A$向拉力作用线作出的垂足，拉力矩为$Fd_\perp$。若用杆长$AB$计算，也必须乘拉力与杆的夹角正弦；两种写法由$d_\perp=AB|\sin\gamma|$联系。重力作用线竖直，故重力臂是$A$到质心的水平距离，不能把斜杆半长直接作为力臂。
+
+换取矩点的关系也可从每个力展开。以$\boldsymbol a=\overrightarrow{OO'}$表示新原点位置，则$\boldsymbol r_i'=\boldsymbol r_i-\boldsymbol a$，所以
+\[
+\sum_i\boldsymbol r_i'\times\boldsymbol F_i
+=\sum_i\boldsymbol r_i\times\boldsymbol F_i
+-\boldsymbol a\times\sum_i\boldsymbol F_i.
+\]
+只有合力为零时，两个总力矩才相同。因此选择取矩点是消元手段，并不表示那里真有转轴；同时列平动条件才能保证取矩点可自由选择。如果刚体还在加速，就应使用相应动力学方程，不能把静力换点结论直接当作任意转动定律。
+
+
+\subsection{方程独立性和退化构型}
+选择三个取矩点也能代替常见的两分量加一力矩，但这三个点不能共线，否则可能漏掉沿该直线方向的合力。两个不同点的力矩为零，只能限制合力的作用线，仍需另一独立条件。写出的方程数等于未知数个数并不保证可解，方程之间可能因几何特殊关系而相互依赖。
+
+\fig{s2deep:independent}{共线取矩点会漏掉沿该直线的合力}{\begin{tikzpicture}
+
+\draw[guide](-.5,0)--(5,0);\foreach \xx/\lab in {0/A,2/B,4/C}{\fill(\xx,0)circle(2pt)node[below]{$\lab$};}
+\draw[force](1,0)--(3,0)node[midway,above]{$F$};\fill(1,1.8)circle(2pt)node[left]{$D$};
+\draw[guide](1,1.8)--(1,0);\draw[dim](.5,0)--(.5,1.8)node[midway,left]{$h$};
+\node[align=left]at(7,1){$M_A=M_B=M_C=0$\\$M_D=Fh\ne0$};
+\end{tikzpicture}}
+图\ref{s2deep:independent}的水平合力穿过共线的 $A,B,C$，关于三点的力矩都为零，物体却仍有平动趋势。换用线外的 $D$，力矩 $Fh$ 立刻暴露遗漏的合力。因此用三个力矩式代替平衡条件时，取矩点必须不共线。
+
+
+一根斜杆由竖直绳与地面支持，非竖直时取地面端的矩可以求出两竖直力；杆转到恰好竖直时，两重力力臂同时为零，方程退化。此前公式的极限可以对应一种连续加载路径，却不能证明恰竖直状态仅有这一种力分配。题目若要求该状态的唯一支承力，需给出绳长、弹性形变或预紧等信息。
+
+对称性也应在对象和载荷都对称时使用。几何左右对称但质量或外力不对称，反力一般不相等。即使对称平衡存在，也可能有非对称构型。基本静力题常限定对称分支，解答应说明采用这一分支后哪些角相等、哪些法向力相等，再利用它减少未知量。
+
+计算得到的负杆力并不意味着平衡不可能，因为硬杆可以受压；计算得到负绳张力或负普通接触支持力则通常意味着假设失效。代数中的负号必须联系到相互作用性质解释，不能统一把所有负值取绝对值后继续使用。
+
+
+\subsection{三力共点为何需要先检查力矩}
+平面刚体只受三个非平行外力而静止时，三条作用线必共点。设其中两个力的作用线交于$P$，关于$P$取矩，这两力均无矩；第三力若不通过$P$便产生非零力矩，无法平衡。因此它也必须通过$P$。图\ref{fig:s2:threeforces}中，重力作用线穿过已知质心，两个约束反力的作用线交点必须落在这条竖线上。
+\fig{fig:s2:threeforces}{作用线共点后，还须由闭合力三角形确定大小}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](-1.4,-.4)--(1.4,2.4);\draw[guide](-1.4,2.4)--(1.4,-.4);\draw[guide](0,-1.2)--(0,2.4);
+\fill(0,1)circle(2pt)node[above left]{$P$};\draw[force](-1,0)--(0,1)node[midway,left]{$F_1$};\draw[force](1,0)--(0,1)node[midway,right]{$F_2$};\draw[force](0,1)--(0,-1)node[right]{$G$};
+\end{scope}
+\begin{scope}[xshift=4.5cm]
+\draw[force](0,0)--(1,1)node[midway,below right]{$\bm F_1$};\draw[force](1,1)--(0,2)node[midway,above right]{$\bm F_2$};\draw[force](0,2)--(0,0)node[midway,left]{$\bm G$};\node at(1,-.8){首尾闭合};
+\end{scope}
+\end{tikzpicture}}
+“共点”只解决力矩条件，不代表三个大小可任意取。还需平动平衡$\boldsymbol F_1+\boldsymbol F_2+\boldsymbol G=0$，对应图中的首尾闭合力三角形。先由几何找作用线，再由三角形或投影求大小，最后检查绳只能拉、光滑面只能推，是完整的建模顺序。
+
+三个力平行时作用线无有限交点，不能用上述证明的第一步；例如竖直绳支承斜杆，地面支持力、绳力、重力全部竖直，大小分配应由力矩方程求。刚体若受一个额外力偶，即使合力仍由三个力组成，力矩也含力偶项，三条作用线不必共点。两个接触点各有摩擦时，既可把每处法向与摩擦合成一个接触合力，也必须保留其允许方向范围。
+
+对多节点轻杆支架，某个节点的杆力作用线天然共点，但整个支架通常不止三个外力；节点平衡与整体三力定理属于不同层次。先从只含少数未知量的节点解起，再将杆端反力反向传递到相邻节点，可减少未知数。中间出现负的杆力只表示假设拉力应改为压力，负的绳张力或负支持力却表示原接触模型失效，两种负号的物理含义不能相同处理。
+
+\section{力三角形和最小外力}
+共点三力平衡时，按首尾连接可构成闭合力三角形。当一个力大小方向已知，另一个力方向已知而大小可变，第三个力的最小值常对应从固定矢量端点到方向直线的最短距离。这个最短距离垂直于该直线，等价于把已知力分解到给定方向及其法向。
+
+几何最小值仍受单向约束限制。如果最短点落在允许射线的反向延长线上，则需要负张力或负支持力，不能取这个数学最小值，应在可行边界上重新优化。用三角函数求极值时也要检查角度区间，分母最大值不一定在允许区间内。
+
+\input{knowledge-minimum-force}
+
+\subsection{最小外力的几何与代数一致性}
+设固定方向单位向量为$\boldsymbol e$的未知力为$\lambda\boldsymbol e$，已知合外力为$\boldsymbol G$，新增外力为$\boldsymbol F=-\boldsymbol G-\lambda\boldsymbol e$。平方后
+\[
+F^2=G^2+2\lambda\boldsymbol G\cdot\boldsymbol e+\lambda^2.
+\]
+把 $\boldsymbol G,\boldsymbol e$ 固定，对 $\lambda$ 逐项求导：
+\[
+\frac{\dd F^2}{\dd\lambda}
+=0+2\boldsymbol G\cdot\boldsymbol e+2\lambda,\qquad
+\frac{\dd^2F^2}{\dd\lambda^2}=2>0.
+\]
+令一阶导数为零，得唯一极小点 $\lambda=-\boldsymbol G\cdot\boldsymbol e$。它正是把$-\boldsymbol G$正交投影到给定方向直线上。
+
+如果$\lambda$表示绳张力，则必须$\lambda\ge0$。当投影所得$\lambda<0$时，数学上的垂足不在允许射线上，最小值改在$\lambda=0$取得。用力三角形作图时，同样应把直线和射线区分。若还限定外力方向在某一区间，应把垂足对应角与区间边界共同比较。
+
+刚体的最小力也可能由力矩优化得到。已知外力施于某点$P$，绕取矩点$O$需提供固定力矩$M$，则$F\,OP|\sin\gamma|=|M|$，因此允许所有方向时最小$F=|M|/OP$，方向垂直$OP$。但这只是力矩条件，另两个力分量必须能由其余约束承担；若需要负支持力，就不是可行的最小外力。
+
+
+\section{相切球、杆系和几何约束}
+光滑球间的接触力沿两球心连线，力的方向由几何决定，而不是凭示意图猜测。绳从球面出发悬挂球时，若绳的作用线通过球心，悬点到球心距离为绳长加半径；若明确系于球心，则不再加半径。先把题设长度落实到图中，可避免后续三角关系整体偏差。
+
+\fig{s2deep:spheres}{球面系绳先换算球心距离，再沿连心线画接触力}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(A)at(-1,0);\coordinate(B)at(1,0);
+\draw[world](A)circle(1);\draw[world](B)circle(1);\draw[world](O)--(-.6838,.9487);\draw[guide](-.6838,.9487)--(A);\draw[guide](A)--(B);
+\node[above]at(O){$O$};\node[below]at(A){$A$};\node[below]at(B){$B$};\node[left]at(-.6,2){$l$};\node[left]at(-.9,.6){$R$};\fill(0,0)circle(2pt)node[below]{$P$};
+\draw[force](A)--(-2.2,0)node[left]{$N_{B\to A}$};\draw[force](B)--(2.2,0)node[right]{$N_{A\to B}$};
+\node at(0,-1.6){$OA=l+R,\quad AB=2R$};
+\begin{scope}[xshift=6cm]
+\fill(0,0)circle(2pt)node[below right]{$A$};\draw[force](0,0)--(.45,1.35)node[right]{$T$};\draw[force](0,0)--(-1.2,0)node[left]{$N$};\draw[force](0,0)--(0,-1.4)node[right]{$Mg$};\node at(0,2){左球的隔离图};
+\end{scope}
+\end{tikzpicture}}
+图\ref{s2deep:spheres}左图的实线绳段止于球面，虚线再延伸一个半径才到球心，因此角度关系应使用 $OA=l+R$。两球相互推挤，左球所受接触力沿 $BA$ 向左；右球受力方向相反。右图只保留左球所受的三个力，另一球受到的反作用力不进入该球的平衡方程。
+
+
+对多球、多杆体系，通常先处理只含少数未知力的局部，例如顶部球、端部节点，再递推到下层。整体取矩适合消去复杂接触力。可先把未知杆力统一假设为拉力，计算负值就表示受压；不要在求解过程中随意更换符号约定。
+
+接触体系可能有不同分支：某两物体互不接触时，该接触力为零；接触时几何距离固定、接触力非负。应分别求解并核对条件，而不是把某一分支的代数公式延伸到不可能的范围。几何示意图的比例不是额外已知量。
+
+\subsection{整体与局部之间的逐步消元}
+节点法中，一个轻铰接点的所有杆力共点，写两个分量平衡足够；某根杆还承受自重或中间载荷时，不能再把它简单当作二力杆。应将杆本身隔离，保留两端反力及中间外力，再用三个刚体方程。轻杆是质量可忽略，不是可以传递任意方向的单一轴力。
+
+复杂球组宜先从最上方的球开始，因为它常只受重力和两至四个对称法向力。由它求出传给下层的竖直、水平分量，再分析下层球。把上球重量简单平均分给下球只得到竖直分量，忽略水平外推分量会漏掉碗壁反力和球间接触条件。三维对称题中，俯视图确认水平投影方向，竖直剖面确认倾角，两者作用不同。
+
+整体取矩时必须完整确定系统边界。例如板上放三球，取板加三球整体可以消掉板球间和球球间的内力，但球与墙接触力仍是外力，它的力臂需要从球心位置算出。把所有接触力都称为内力消去，会得到看似简洁而缺项的力矩式。每换一次研究对象，都应在图上重新标出边界和外力。
+
+
+\subsection{从节点方向到杆力大小的消元}
+图\ref{fig:s2:nodebalance}的节点$P$受竖直向下的力$W$，由两根轻杆连接到上方支座。先把两杆都假设为受拉，作用于节点的力分别为$T_1,T_2$，与水平线夹角为$\alpha,\beta$，其中$0<\alpha,\beta<\pi/2$。水平方向平衡要求两水平分量大小相等，竖直方向则共同支承载荷：
+\[
+T_1\cos\alpha=T_2\cos\beta,\qquad
+T_1\sin\alpha+T_2\sin\beta=W.
+\]
+
+\fig{fig:s2:nodebalance}{在同一节点上用水平消元连接两根杆力}{\begin{tikzpicture}[scale=.88]\draw[world](.5,2.5)--(2.5,0)--(5.5,2.5);\draw[guide](.3,0)--(5.7,0);\fill(2.5,0)circle(3pt)node[below left]{$P$};\node[above]at(.5,2.5){$A$};\node[above]at(5.5,2.5){$B$};\draw[force](2.5,0)--(1.3,1.5)node[left]{$T_1$};\draw[force](2.5,0)--(4,1.25)node[right]{$T_2$};\draw[force](2.5,0)--(2.5,-1.3)node[right]{$W$};\node at(1.7,.35){$\alpha$};\node at(3.4,.3){$\beta$};\end{tikzpicture}}
+从第一式写$T_2=T_1\cos\alpha/\cos\beta$，代入第二式，再通分得到$T_1[\sin\alpha\cos\beta+\cos\alpha\sin\beta]/\cos\beta=W$。用和角公式，便有
+\[
+T_1=\frac{W\cos\beta}{\sin(\alpha+\beta)},\qquad
+T_2=\frac{W\cos\alpha}{\sin(\alpha+\beta)}.
+\]
+当$\alpha=\beta$时两力相等，且$T_1=T_2=W/(2\sin\alpha)$；杆接近水平时，竖直分量很小，需要很大的轴力才能支承给定载荷。这是分母趋零的几何含义。若改为下方杆件顶住节点，应重新画方向；求出负杆力可解释为受压，但若连接件是柔绳，就不允许这个分支。
+
+节点图中的力还要反向传到杆或支座上。例如杆$AP$对节点的$T_1$沿$PA$，节点对杆的力沿$AP$；它们属于不同对象，不会在节点方程里相消。把局部载荷传到整体图后，再用整体的支反力检查总重量和总力矩，能发现漏载或重复计入内力的错误。
+
+\subsection{未知反力为何有时不能唯一确定}
+图\ref{fig:s2:threesupports}是一根水平刚梁，在$A,B,C$三处只有竖直支承，$AB=BC=\ell$，中点受向下力$W$。未知反力有三个，但水平方向没有未知量，独立静力条件只有
+\[
+N_A+N_B+N_C=W,\qquad
+N_B\ell+2N_C\ell=W\ell.
+\]
+两式相减得到$N_A=N_C=R$、$N_B=W-2R$。若支承只能推，$0\le R\le W/2$给出一整段平衡解；对称性只能给两端反力相等，不能再推出三者都相等。
+
+\fig{fig:s2:threesupports}{三点竖直支承需要形变条件才能分配反力}{\begin{tikzpicture}[scale=.88]\draw[world](0,1)--(5,1);\fill(.5,1)circle(2pt)node[above left]{$A$};\fill(2.5,1)circle(2pt)node[above left]{$B$};\fill(4.5,1)circle(2pt)node[above right]{$C$};\draw[force](.5,-.3)--(.5,1)node[midway,left]{$N_A$};\draw[force](2.5,-.3)--(2.5,1)node[midway,right]{$N_B$};\draw[force](4.5,-.3)--(4.5,1)node[midway,right]{$N_C$};\draw[force](2.5,2.4)--(2.5,1)node[midway,right]{$W$};\draw[dim](.5,-.7)--(2.5,-.7)node[midway,below]{$\ell$};\draw[dim](2.5,-.7)--(4.5,-.7)node[midway,below]{$\ell$};\end{tikzpicture}}
+若三个支承改为初始高度相同、劲度相同且无预紧的竖直弹簧，并保持对称加载，刚梁水平下降使三弹簧压缩相同，才多出$N_A=N_B=N_C$的变形条件，给$W/3$。若弹簧劲度不同，则同一压缩量对应不同反力。实际支承高度、弹性与装配预紧都会选择参数族中的具体状态，静力平衡本身不提供这些信息。
+
+这个例子说明应检查方程的独立性和物理约束，而非仅数“有三个平衡方程”。后续多点粗糙接触还会以摩擦不等式筛选反力范围，其基本逻辑相同：等式给候选解，不等式判断存在，额外变形关系才可能给唯一分配。
+
+\section{摩擦方向由相对运动判断}
+滑动摩擦与接触面之间的相对速度相反，未必与物体相对地面的速度相反。若木板向北而上面的木块向东，先作速度矢量相减得到滑动方向，再把摩擦画在相反方向。三维相对滑动时，摩擦总量为$\mu N$，其各分量应按相对速度的方向分配，不能每个方向各画一个$\mu N$。
+
+\fig{s2deep:relative}{先减速度，再把总摩擦沿反方向分解}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(3,0)node[right]{东 $x$};\draw[axis](0,0)--(0,2.5)node[above]{北 $y$};
+\draw[flow](0,0)--(2,0)node[below]{$\bm v_\text{块}$};\draw[flow](0,0)--(0,2)node[left]{$\bm v_\text{板}$};\draw[force,blue](0,2)--(2,0)node[midway,above right]{$\bm v_\text{rel}$};
+\begin{scope}[xshift=6cm]
+\draw[axis](-1.5,0)--(2,0);\draw[axis](0,-1.6)--(0,2);\fill(0,0)circle(2pt);
+\draw[flow](0,0)--(1.4,-1.4)node[right]{$\bm v_\text{rel}$};\draw[force](0,0)--(-1.1,1.1)node[left]{$\bm f$};\draw[guide](-1.1,1.1)--(-1.1,0);\draw[guide](-1.1,1.1)--(0,1.1);
+\end{scope}
+\end{tikzpicture}}
+图\ref{s2deep:relative}左图从下板速度箭头的末端指向木块速度箭头的末端，得到 $\bm v_\text{rel}=\bm v_\text{块}-\bm v_\text{板}$。右图摩擦与该向量反向，应统一写成
+\[
+\bm f=-\mu N\frac{\bm v_\text{rel}}{|\bm v_\text{rel}|}.
+\]
+两速率相等时，右图两个投影的绝对值都是 $\mu N/\sqrt2$，合成后才是总大小 $\mu N$。若相对速度为零，上式的分母消失，必须改用静摩擦的平衡需求及 $|\bm f|\le\mu_sN$，不能沿用动摩擦方向。
+
+
+约束挡板迫使物体沿指定方向运动时，光滑挡板的反力垂直于该方向。沿允许运动方向投影可以消去挡板反力，求出驱动力；垂直方向的方程还应检查挡板是否需要拉物体。这个思路也适用于斜面上的缓慢拉动和轴向移动的滚筒。
+
+\section{平面化分析与空间受力}
+能否用三个平面平衡方程，取决于所有外力和所讨论的运动是否处在同一平面。对称三维球组可以先将径向水平分量合成，再在径向竖直平面讨论；这个平面化来自对称性，不是把任意三维图投影成一张平面图就自动成立。一般空间刚体需要三个力分量和三个力矩分量。
+
+墙面光滑的球受支持力沿公法线，球面接触法线过球心，因此对球心不产生力矩；粗糙接触还含切向分量，便会产生转矩。画图时把支持力和摩擦力分开，有助于看清哪些力可通过取矩点消去。若改用全反力，应记得其作用线通常不再过球心，不能继续把它的力矩删去。
+
+\fig{s2deep:space}{对称的三个接触力：俯视图消去水平分量，剖面保留竖直分量}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](0,0)circle(1.5);\foreach \ang/\lab in {90/1,210/2,330/3}{\draw[force](0,0)--(\ang:1.5)node[pos=1.2]{$N_{\lab}\sin\alpha$};}\fill(0,0)circle(2pt);\node at(0,-2.1){俯视：三个水平投影相消};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+\draw[guide](0,-.2)--(0,2.2);\draw[force](0,0)--(1.2,1.6)node[right]{$N$};\draw[guide](1.2,1.6)--(0,1.6)node[left]{$N\cos\alpha$};\draw(0,.7)arc(90:53.13:.7)node[midway,above]{$\alpha$};\draw[force](0,0)--(0,-1.3)node[right]{$G$};\node at(.5,-2.1){竖直：$3N\cos\alpha=G$};
+\end{scope}
+\end{tikzpicture}}
+图\ref{s2deep:space}假定三个接触方向绕竖直轴等间隔，且载荷与构型均对称。各力的水平投影相差 $120^\circ$，合成后为零；竖直投影同向相加，故 $N=G/(3\cos\alpha)$。右图只画一股接触力的分解，并不意味着另外两股力处于同一剖面。若几何或载荷破坏对称，须回到三个空间方向逐项列式。
+
+结果检查不只是核对数值。反力的作用线应穿过接触区域，杆的拉压应与变形趋势相符，负载趋零应回到无负载构型，对称参数应恢复对称反力。遇到公式分母趋零，先看几何是否形成共线、支承力是否失去力臂或接触是否将脱离，再判断该极限是否属于题设允许范围。
+

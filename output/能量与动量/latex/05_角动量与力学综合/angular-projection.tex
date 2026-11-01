@@ -1,0 +1,23 @@
+\fig{em5:sphere-projection}{球面运动的子午面投影；方位速度垂直该截面}{
+\begin{tikzpicture}[scale=.95]
+\draw[world](0,0)circle(1.844);
+\draw[axis](0,-2.1)--(0,2.8)node[above]{$z$};
+\draw[guide](0,1.2)ellipse(1.4 and .28);
+\draw[world](0,0)--(1.4,1.2)node[midway,below]{$R$};
+\draw[guide](0,1.2)--(1.4,1.2);
+\draw[dim](0,1.7)--(1.4,1.7)node[midway,above]{$R\sin\theta$};
+\draw[world](0,.6)arc(90:40.6:.6);
+\node at(.25,.78){$\theta$};
+\fill(0,0)circle(1.5pt)node[below left]{$O$};
+\fill(1.4,1.2)circle(2pt)node[right]{$P$};
+\node[right]at(1.85,1.2){$\otimes\ v_\phi$};
+\draw[flow,blue](1.4,1.2)--(2.2,.27)node[right]{$v_\theta$};
+\node at(0,-2.65){$\phi$沿纬圈计，$\theta$沿子午线计};
+\end{tikzpicture}}
+
+图\ref{em5:sphere-projection}中，关于$z$轴的力臂是水平距离$R\sin\theta$，方位速度为$v_\phi=R\sin\theta\,\dot\phi$；子午速度$v_\theta=R\dot\theta$在截面内，对$L_z$没有贡献。因此
+\[
+ L_z=m(R\sin\theta)v_\phi
+     =mR^2\sin^2\theta\,\dot\phi.
+\]
+图中$\otimes$表示所选位置的正方位速度向纸面里。极角的转折只令$v_\theta=0$，若$L_z\ne0$，方位运动仍然存在。下面讨论守恒条件时，始终取同一固定轴。

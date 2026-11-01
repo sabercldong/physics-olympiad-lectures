@@ -1,0 +1,54 @@
+\section{练习}
+
+\begin{question}\begin{drill}[充电到一半时的能量]\label{c5:drill:1}
+未带电电容经电阻接恒压源 $\mathcal E$。当电荷为终值一半时，求电源已做功、电容储能和已产生的热。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:1:s}\fig{fig:c5:drill:1:s}{题设：充电到一半时的能量}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:1}
+\begin{question}\begin{drill}[反向接源后的过零时刻]\label{c5:drill:2}
+电容初电压为 $+\mathcal E$，经电阻 $R$ 换接到反向电动势 $-\mathcal E$。求电压首次过零时刻与过程总热。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:2:s}\fig{fig:c5:drill:2:s}{题设：反向接源后的过零时刻}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:2}
+\begin{question}\begin{drill}[电感释放能量到两个串联电阻]\label{c5:drill:3}
+初电流 $I_0$ 的电感 $L$，切换后仅与 $R_1,R_2$ 串联闭合。求电流与各电阻最终吸收热量。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:3:s}\fig{fig:c5:drill:3:s}{题设：电感与两个电阻串联闭合}{\begin{tikzpicture}
+
+\draw(0,0)to[L,l={$L$}](0,3)to[R,l={$R_1$}](4,3)to[R,l={$R_2$}](4,0)--(0,0);
+\draw[flow](1,4)--(3,4)node[midway,above]{$i(t)$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:3}
+\begin{question}\begin{drill}[LC电荷为一半时的电流]\label{c5:drill:4}
+理想LC初始电容带电 $q_0>0$，电感电流零。求第一次电荷降为 $q_0/2$ 的时刻与电流方向、大小。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:4:s}\fig{fig:c5:drill:4:s}{题设：LC电荷为一半时的电流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[L,l={$L$}](0,2.8)--(3.2,2.8)to[C,l={$C$}](3.2,0)--(0,0);\node[right]at(3.2,2){$q$};\draw[flow](.6,3.3)--(2.6,3.3)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:4}
+\begin{question}\begin{drill}[临界阻尼的完整解]\label{c5:drill:5}
+串联无源RLC满足 $R=2\sqrt{L/C}$，初值 $q_0>0,i_0=0$。求电荷响应，判断是否变号。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:5:s}\fig{fig:c5:drill:5:s}{题设：临界阻尼的完整解}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[L,l={$L$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:5}
+\begin{question}\begin{drill}[RC周期换接的稳定循环]\label{c5:drill:6}
+电容 $C$ 经同一电阻 $R$，交替连接恒电压 $U$ 和零电压，各持续时间 $T$。经过足够多周期后形成稳定循环，求每周期最低、最高电容电压。
+\end{drill}
+\typeout{ECFIG:fig:c5:drill:6:s}\fig{fig:c5:drill:6:s}{题设：RC周期换接的稳定循环}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$u_s(t)$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};\node at(1.5,-.8){电源每隔 $T$ 在 $U$ 与 $0$ 间切换};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c5:drill:6}

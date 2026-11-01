@@ -1,0 +1,108 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[反向行波合成驻波]\label{w3:example:1}
+两列波$y_1=A\cos(\omega t-kx)$、$y_2=A\cos(\omega t+kx)$叠加。求合波、波节波腹位置和相邻节间的相位关系。
+\end{example}
+\fig{fig:w3:example:1:s}{题设：两列波在$t=0$形状相同，之后分别向右、向左传播}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.9,0)node[right]{$x/\lambda$};\draw[axis](0,-1.4)--(0,1.8)node[above]{$y_i/A$};\draw[world,domain=0:4.4,samples=100]plot(\x,{cos(90*\x)});\node[below]at(2,0){$1/2$};\node[below]at(4,0){$1$};\draw[flow](.7,1.5)--(1.7,1.5)node[above]{$y_1$};\draw[flow](3.5,1.5)--(2.5,1.5)node[above]{$y_2$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在同一时空点叠加并分离空间与时间因子}\par\nobreak
+图\ref{fig:w3:example:1:s}在$t=0$时两条波形重合，但传播方向相反。叠加必须比较同一$x,t$处的位移，不能沿着任意一列波的波峰跟踪后相加。
+具体使用$\cos(a-b)+\cos(a+b)=2\cos a\cos b$，其中$a=\omega t$、$b=kx$，得$y=2A\cos kx\cos\omega t$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把空间系数的负号解释为相位差}\par\nobreak
+固定$x$后空间系数只是常数：它为正时初相为零，为负时应改写为
+\[
+ y=2A|\cos kx|\cos(\omega t+\pi).
+\]
+因此振幅始终非负，空间系数的负号进入了初相。
+\fig{fig:w3:example:1:p}{波节始终位于四分之一波长的奇数倍处；相邻节间的时间相位相反}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.9,0)node[right]{$x/\lambda$};\draw[axis](0,-1.4)--(0,1.8)node[above]{$y/(2A)$};\draw[blue,thick,domain=0:4.4,samples=100]plot(\x,{cos(90*\x)});\draw[red,dashed,domain=0:4.4,samples=100]plot(\x,{-cos(90*\x)});\foreach \xx/\ll in {1/{1/4},3/{3/4}}{\fill(\xx,0)circle(.06);\node[below]at(\xx,-1.15){$\ll$};}\node at(2.2,2.7){实线$t=0$，虚线$t=T/2$};\draw[dim](1,-1.8)--(3,-1.8)node[midway,below]{$\lambda/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由零空间系数定位波节，再比较相邻节间}\par\nobreak
+图\ref{fig:w3:example:1:p}中波节满足$\cos kx=0$，故$x=(2n+1)\lambda/4$；波腹在$x=n\lambda/2$。相邻波节间距$\lambda/2$，一个节间$\cos kx$符号不变，各点同相；跨一波节符号改变，反相。这里波节位置与正文采用正弦空间因子的情形相差$\lambda/4$，是初始相位不同造成，不能一律把原点定成波节。\end{solution}
+\begin{question}\begin{example}[两声信号的接收间隔]\label{w3:example:2}
+静止空气中，声源$S$和前方接收者$D$均沿正$x$方向匀速运动，速率分别为$v_S,v_D<u$。声源发出两个相隔$\Delta t$的短信号，求接收间隔。
+\end{example}
+\fig{fig:w3:example:2:s}{题设：两声信号的接收间隔}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(6,0)node[right]{$x$};\fill(1,0)circle(3pt)node[below]{$S$};\fill(4.5,0)circle(3pt)node[below]{$D$};\draw[flow](1,.8)--(2,.8)node[right]{$v_S$};\draw[flow](4.5,.8)--(5.4,.8)node[right]{$v_D$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定同一传播支路并求第一信号飞行时间}\par\nobreak
+按图\ref{fig:w3:example:2:s}取第一次发射时源为$x=0$、接收者为$x=d>0$。两个信号均沿正$x$传播，且第二次发射时接收者仍在源前方。
+首信号的追及方程是$u\tau_1=d+v_D\tau_1$，解得$\tau_1=d/(u-v_D)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由第二次发射时的真实间距求第二飞行时间}\par\nobreak
+第二次发射时，源位置为$v_S\Delta t$，接收者位置为$d+v_D\Delta t$，两者距离变为$d+(v_D-v_S)\Delta t$，所以$\tau_2=[d+(v_D-v_S)\Delta t]/(u-v_D)$。两次传播时长从各自发射时刻开始量，第二个信号的接收时刻还须加上$\Delta t$。
+\fig{fig:w3:example:2:p}{两条声信号轨迹平行；两次飞行时长分别从$E_1,E_2$量起}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.8,0)node[right]{$t$};\draw[axis](0,-.2)--(0,3.4)node[above]{$x$};\draw[world](0,2)--(4.2,2.84)node[right]{$D$};\draw[world](0,0)--(4.2,1.26)node[right]{$S$};
+\draw[flow,blue](0,0)--(2.5,2.5);\draw[flow,blue](1,.3)--(3.375,2.675);\fill(0,0)circle(.05)node[below left]{$E_1$};\fill(1,.3)circle(.05)node[above left]{$E_2$};\fill(2.5,2.5)circle(.05)node[above left]{$R_1$};\fill(3.375,2.675)circle(.05)node[above left]{$R_2$};
+\draw[guide](1,.3)--(1,0);\draw[guide](2.5,0)--(2.5,2.5);\draw[guide](3.375,0)--(3.375,2.675);\node[below]at(1,0){$\Delta t$};\node[below]at(2.5,0){$t_1$};\node[below]at(3.375,0){$t_2$};\draw[dim](2.5,-.8)--(3.375,-.8)node[midway,below]{$\Delta t'$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把飞行时间加回各自发射时刻后再相减}\par\nobreak
+图\ref{fig:w3:example:2:p}中接收时刻分别为$\tau_1$和$\Delta t+\tau_2$，相减得
+\[
+\Delta t'=\Delta t+\tau_2-\tau_1
+=\frac{u-v_S}{u-v_D}\Delta t,\quad
+f'=\frac{u-v_D}{u-v_S}f.
+\]
+若$v_S=v_D$，间隔不变；若仅声源更快，波长缩短、频率升高，与直观一致。\end{solution}
+\begin{question}\begin{example}[两崖之间的火车回声]\label{w3:example:3}
+火车以$v<u$沿两面静止平行崖壁的公法线向右匀速行进并持续鸣笛，笛声频率$f$，空气静止、声速$u$。只考虑沿这条法线往返的声波，计入多次反射，司机可能听见哪些回声频率？
+\end{example}
+\fig{fig:w3:example:3:s}{题设：两崖之间的火车回声}{\begin{tikzpicture}[scale=.88]\draw[world](0,-.5)--(0,2);\draw[world](6,-.5)--(6,2);\draw[world](2,0)rectangle(3,.6);\draw[flow](2.5,1)--(3.5,1)node[right]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求向前、向后发射到空气中的频率}\par\nobreak
+图\ref{fig:w3:example:3:s}中向前发出的声音在空气中的频率为$f_+=uf/(u-v)$，向后发出的为$f_-=uf/(u+v)$。静止墙面反射不改变这两个空气频率。
+\fig{fig:w3:example:3:p}{一束向前发射的声信号经一次、两次反射回到运动火车；斜线斜率在反射时只改变符号}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(6.7,0)node[right]{$x$};\draw[axis](0,-.2)--(0,3.9)node[above]{$t$};\draw[world](6,0)--(6,3.8);\draw[world,blue](2,0)--(4.55,3.74)node[above]{$S,D$};
+\draw[flow](2,0)--(6,.88);\draw[flow](6,.88)--(0,2.2);\draw[flow](0,2.2)--(4.117647,3.105882);
+\fill(2,0)circle(.05)node[below]{发射};\fill(3.043478,1.530435)circle(.06)node[right]{一次回声};\fill(4.117647,3.105882)circle(.06)node[right]{二次回声};\node[below]at(6,0){右壁};\node[left]at(0,2.2){左壁};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只按最后一段方向转换为司机接收频率}\par\nobreak
+图\ref{fig:w3:example:3:p}中同一向前发射支路，在一次回声处向后传播，在二次回声处向前传播。每次反射只改变波向，不改变空气中的频率；最终再用司机遇波的速率转换。若回声迎面向后传播，司机遇波速度为$u+v$，听得$(u+v)f_\pm/u$；若回声从后向前追上，遇波速度$u-v$，听得$(u-v)f_\pm/u$。可按“初段、末段”两个方向列出四个值：
+\[
+\begin{array}{c|cc}
+ &\text{末段向后}&\text{末段向前}\\ \hline
+\text{初段向前}&(u+v)f/(u-v)&f\\
+\text{初段向后}&f&(u-v)f/(u+v)
+\end{array}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合并重复频率并核对反射次数与到达条件}\par\nobreak
+其中对角项之外的两个$f$重复，四种组合化简后只有
+\[
+\frac{u+v}{u-v}f,\qquad f,\qquad \frac{u-v}{u+v}f.
+\]
+中间的$f$可由偶数次反射产生，不能因它等于鸣笛频率就删去。实际能否听到取决于传播时间、衰减和火车是否仍在两壁之间。\end{solution}
+\begin{question}\begin{example}[反相双源的合振幅]\label{w3:example:4}
+两相干点源初相相差$\pi$，到$P$的波程差$r_2-r_1=3\lambda/2$，两列波在$P$处振幅分别为$A$和$2A$。求合振幅，并判断是否相消。
+\end{example}
+\fig{fig:w3:example:4:s}{题设：反相双源的合振幅}{\begin{tikzpicture}[scale=.88]\fill(0,0)circle(3pt)node[left]{$S_1$};\fill(0,2)circle(3pt)node[left]{$S_2$};\fill(4,-.8)circle(3pt)node[right]{$P$};\draw[world](0,0)--(4,-.8)node[midway,above]{$r_1$};\draw[world](0,2)--(4,-.8)node[midway,above]{$r_2>r_1$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以同一顺序取源初相差和传播程差}\par\nobreak
+图\ref{fig:w3:example:4:s}规定$\Delta r=r_2-r_1>0$。应先把源初相差与传播相位延迟合并，不能只按$3\lambda/2$判断相消。
+取两源初相为$\varphi_1,\varphi_2$，$\varphi_2-\varphi_1=\pi$。传播到$P$后相位各减去$kr_i$，所以相减得$\Delta\varphi=(\varphi_2-\varphi_1)-k(r_2-r_1)$。代入$k=2\pi/\lambda$、$r_2-r_1=3\lambda/2$，即$\pi-3\pi=-2\pi$，相差整周。
+\fig{fig:w3:example:4:p}{解答过程：反相双源的合振幅}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0);\draw[force](0,.5)--(1.2,.5)node[midway,above]{$A$};\draw[force](1.2,.5)--(3.6,.5)node[midway,above]{$2A$};\draw[dim](0,-.5)--(3.6,-.5)node[midway,below]{$3A$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在观察点相加到达振幅并检查相消条件}\par\nobreak
+图\ref{fig:w3:example:4:p}的两个振幅矢量同向，$A_{\rm total}=\sqrt{A^2+4A^2+4A^2\cos(-2\pi)}=3A$。半奇数波长程差在反相源情形给出增强，不能直接照用同相源结论。即使抵达相位差为$\pi$，此题振幅不同，最小值也只能是$A$。\end{solution}

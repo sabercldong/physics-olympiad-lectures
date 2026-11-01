@@ -1,0 +1,20 @@
+\fig{fv:o5:visibility}{相同相位变化下，不等振幅使暗纹不能完全相消}{\begin{tikzpicture}[x=.9cm,y=.7cm]
+\draw[->](0,0)--(7.2,0)node[right]{$\Delta\phi$};\draw[->](0,0)--(0,4.7)node[above]{$I/I_0$};
+\draw[blue,thick,domain=0:6.283,samples=100]plot(\x,{2+2*cos(\x r)});
+\draw[red,thick,domain=0:6.283,samples=100]plot(\x,{2+1.2*cos(\x r)});
+\node[below]at(3.142,0){$\pi$};\node[below]at(6.283,0){$2\pi$};\node[blue]at(4.6,4.2){等强度};\node[red]at(4.8,3.2){不等强度};
+\end{tikzpicture}}
+图\ref{fv:o5:visibility}保持总强度 $I_1+I_2=2I_0$。蓝线取 $I_1=I_2=I_0$，谷值为零、可见度为 $1$；红线取 $I_1=1.8I_0,I_2=0.2I_0$，谷值为 $0.8I_0$，可见度为 $0.6$。两条曲线的极值位置相同，说明强度不匹配改变对比度，并不改变这里的相位条件。
+
+令强度比 $r_I=I_2/I_1>0$，则
+\[
+ \mathcal V=\frac{2\sqrt{r_I}}{1+r_I}.
+\]
+根式的导数为 $\dd(2\sqrt{r_I})/\dd r_I=r_I^{-1/2}$，再用商法则：
+\[
+\frac{\dd\mathcal V}{\dd r_I}
+=\frac{r_I^{-1/2}(1+r_I)-2r_I^{1/2}}{(1+r_I)^2}
+=\frac{1+r_I-2r_I}{\sqrt{r_I}(1+r_I)^2}
+=\frac{1-r_I}{\sqrt{r_I}(1+r_I)^2}.
+\]
+当 $r_I<1$ 时，增加较弱的一路会提高可见度；当 $r_I>1$ 时，适当减弱较强的一路也会提高可见度。应判断两路是否更均衡，不能笼统认为减弱任一路必使对比度下降。若相位在曝光期间随机变化，还须先求 $\langle\cos\Delta\phi\rangle$；即便两束平均强度相同，相干性不足也会使条纹消失。

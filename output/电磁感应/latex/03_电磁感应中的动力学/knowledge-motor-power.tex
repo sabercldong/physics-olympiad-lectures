@@ -1,0 +1,15 @@
+\fig{fv:f3:energy}{电源极性使棒中正电流向下、磁力向右；向右运动产生反向的动生电动势}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)--(4,0) (0,2.4)--(1,2.4) (2,2.4)--(4,2.4) (0,0)--(0,.7) (0,1.5)--(0,2.4);\draw[world](1,2.2)rectangle(2,2.6);\node[above]at(1.5,2.6){$R$};\draw[world](0,1.1)circle(.4);\node at(0,1.3){$+$};\node at(0,.9){$-$};\node[left]at(-.5,1.1){$E$};\draw[very thick](3,0)--(3,2.4);\draw[flow,red](3,2)--(3,1.3)node[right]{$i$};\draw[->,blue,thick](2.65,.35)--(2.65,1.1)node[left]{$kv$};\draw[force,red](3,.7)--(4.5,.7)node[right]{$ki$};\draw[flow](3,3.2)--(4.2,3.2)node[right]{$v$};\node at(1.2,.7){$\otimes B$};\node at(2,-.8){$Ri=E-kv$};
+\end{scope}
+\begin{scope}[xshift=7.2cm]
+\draw[axis](-.2,0)--(3.5,0)node[right]{$kv/E$};\draw[axis](0,-1.8)--(0,1.8)node[above]{$Ri/E$};\draw[world](0,1.4)--(3,-1.4);\node[below]at(1.5,0){$1$};\node[left]at(0,1.4){$1$};\node[red]at(1,2.4){$i>0$：电动};\node[blue]at(2.2,-2.4){$i<0$：再生发电};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fv:f3:energy}左图中的向下电流与纸内磁场给向右安培力，棒向右运动却产生向上动生作用，二者在电路方程中相抗。由 $Ri=E-kv$ 乘以 $i$，立即有
+\[
+Ei=Ri^2+kvi.
+\]
+右图过零点 $kv=E$ 将两种能量流向分开：$0<kv<E$ 时电源供能，磁力推动棒；$kv>E$ 时电流反向，磁力阻碍运动，且 $Ei<0$ 表示可逆电源吸能。无论哪种状态，电阻发热 $Ri^2$ 都非负。

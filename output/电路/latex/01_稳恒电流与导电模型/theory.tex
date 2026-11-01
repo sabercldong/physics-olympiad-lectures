@@ -1,0 +1,372 @@
+\section{电荷输运与局域导电规律}
+\subsection{电流由穿过截面的电荷定义}
+
+金属中的自由电子即使没有外加电场也在运动，但各个方向的热运动在宏观上相互抵消。电流描述的是某一截面两侧的净电荷输运，不能把电子的热运动速率直接当成电流公式中的速度。先给截面选定正法向，在时间 $\Delta t$ 内沿此方向通过的净电荷为 $\Delta Q$，则瞬时电流为
+\[
+ I=\lim_{\Delta t\to0}\frac{\Delta Q}{\Delta t}=\frac{\dd Q}{\dd t}.
+\]
+这里的 $I$ 是有正负的量。负电荷向正法向运动贡献负电流；负电荷反向运动贡献正电流。给支路指定电流箭头是在建立代数约定，求出负值后再说明实际方向，不能为使结果为正而中途改换箭头。
+
+接通电路时，电场与电磁信号沿装置建立，并不要求某个电子先从电池漂移到远处灯丝。载流子的漂移速率、无规则运动速率与电路响应的传播速率是不同的量，不能用 $v_{\rm d}$ 估计整个电路建立电流的时间。
+
+设同一种载流子的数密度为 $n$、单个电荷为 $q$、平均定向速度为 $\bm v_{\rm d}$。在很短时间 $\dd t$ 内，平均漂移扫过面积元 $\dd S$ 的有向体积为 $(\bm v_{\rm d}\cdot\bm n)\dd S\dd t$。乘以 $nq$ 得到有符号的输运电荷，因而电流密度和截面电流为
+\[
+ \bm j=nq\bm v_{\rm d},\qquad I=\int_S\bm j\cdot\dd\bm S.
+\]
+若有多种载流子，应先求 $\bm j=\sum_s n_s q_s\bm v_s$，再对截面积分。电解液中正、负离子反向运动，两个电流贡献可以同向；金属中的正离子一般固定在晶格附近，通常只有自由电子贡献输运电流。
+
+\typeout{ECFIG:fig:c1:flux}\fig{fig:c1:flux}{截面法向与电子漂移}{\begin{tikzpicture}[scale=.88]
+
+\draw[world](0,0)rectangle(4.6,1.4);\draw[guide](2,0)--(2,1.4);
+\draw[flow](2,.7)--(3.2,.7)node[right]{$\bm n,\bm j$};
+\draw[flow](1.7,1.8)--(.4,1.8)node[midway,above]{$\bm v_{\rm d}$（电子）};
+\node[below]at(2,0){$S$};\node at(.8,.65){$-e$};\node at(3.8,1.05){$n$};
+
+\end{tikzpicture}}
+
+图\ref{fig:c1:flux}中电子漂移向左，而 $q=-e$，所以电流密度向右。若截面内的 $n$ 和速度都均匀，且速度垂直截面，公式才可简化为 $I=neSv_{\rm d}$，其中 $e$、$v_{\rm d}$ 均取大小。导线弯曲或截面变化时仍应从通量定义判断面积，不能随意用侧面积代替垂直电流的截面。
+\subsection{稳恒不意味着导体内部没有电场}
+
+任取导体中的一小段体积，若流入、流出的电流不相等，体积内就会积累电荷。电荷连续性写成
+\[
+ \frac{\dd Q_{\text{内}}}{\dd t}=-\oint_{\partial V}\bm j\cdot\dd\bm S.
+\]
+稳恒时左端为零，因此没有分支的一条导电通道各截面电流相同；但在截面不同处，电流密度可以不同。均匀细棒中 $j=I/S$，棒变细时 $j$ 增大。维持稳恒电流需要电场持续对载流子做功，导体表面少量电荷的非均匀分布建立了适当的内部电场。
+
+“导体内部电场为零”属于静电平衡条件，不能用于有电阻的载流导体。对各向同性、处在欧姆区间内的材料，局域规律为
+\[
+ \bm j=\sigma\bm E,\qquad \rho=\frac1{\sigma}.
+\]
+电导率 $\sigma$ 的单位是 $\mathrm{S/m}$，电阻率 $\rho$ 的单位是 $\Omega\cdot\mathrm m$。温度、杂质和材料方向都会影响它们。非线性元件或显著发热的导体不一定保持常数 $\rho$；此时 $U/I$ 仍可定义某状态下的电阻，但不能把整个伏安曲线当成一条直线。
+
+\fig{c1:continuity-shape}{无分支稳恒导体：相同电流通过不同截面，细段的电流密度更大}{\begin{tikzpicture}
+
+\draw[world](0,0)--(2,0)--(2,.45)--(5,.45)--(5,.95)--(2,.95)--(2,1.4)--(0,1.4)--cycle;
+\draw[guide](1,0)--(1,1.4) (4,.45)--(4,.95);
+\draw[flow](.2,.7)--(1.7,.7)node[midway,above]{$I$};
+\draw[flow](2.5,.7)--(4.7,.7)node[midway,above]{$I$};
+\node[below]at(1,0){$S_1$};\node[below]at(4,.45){$S_2<S_1$};
+\node[above]at(1,1.7){$j_1=I/S_1$};\node[above]at(4,1.7){$j_2=I/S_2$};
+
+\end{tikzpicture}}
+图\ref{c1:continuity-shape}中，两截面间没有电荷持续积累，所以 $I_1=I_2$。材料电阻率相同时，$E_2/E_1=j_2/j_1=S_1/S_2$；电流相等并不要求场强相等。台阶附近存在端部效应，图中各段的均匀场关系只用于远离接合处的区域。
+
+\subsection{从局域规律得到整个导体的电阻}
+
+取长为 $l$、横截面积为 $S$ 的均匀细棒，两端的等势截面分别为 $A,B$。忽略端部效应时，$\bm j$、$\bm E$ 都沿棒轴，故
+\[
+ j=\frac IS,\qquad E=\rho\frac IS,\qquad
+ U_{AB}=\int_A^B\bm E\cdot\dd\bm l=\rho\frac{Il}{S}.
+\]
+因此 $R=U_{AB}/I=\rho l/S$。这里同时用了截面均匀、材料均匀、电流近似平行以及两端为等势面等条件。对于缓慢变截面细棒，可以把相邻截面之间的薄层近似为串联电阻，
+\[
+ \dd R=\frac{\rho(x)}{S(x)}\dd x,\qquad
+ R=\int_0^l\frac{\rho(x)}{S(x)}\dd x.
+\]
+之所以是串联，是因为同一电流依次穿过每个薄层，而各层电势差相加。若微元两端属于同一对等势面，电压相同、通过的电流相加，则应把电导相加。微元怎样组合由电流路径和等势面决定，并非所有积分都可以从 $\rho\,\dd l/S$ 机械写起。
+
+
+\fig{c1:series-parallel-elements}{微元的连接方式由等势面和电流路径确定：左串联，右并联}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)rectangle(4,1.4);
+\foreach \x in {1.3,1.8}{\draw[guide](\x,0)--(\x,1.4);}
+\fill[gray!15](1.3,0)rectangle(1.8,1.4);
+\draw[flow](.2,.7)--(3.8,.7)node[midway,above]{$I$};
+\draw[dim](1.3,-.5)--(1.8,-.5)node[midway,below]{$\dd x$};
+\node[above]at(2,1.8){同一电流依次穿过薄层};
+\node[below]at(2,-1.15){$\dd U=I\,\dd R$};
+\end{scope}
+\begin{scope}[xshift=6.3cm]
+\draw[world](0,0)rectangle(4,1.4);\draw[guide](0,.5)--(4,.5) (0,.9)--(4,.9);
+\fill[gray!15](0,.5)rectangle(4,.9);
+\foreach \y in {.25,.7,1.15}{\draw[flow](.3,\y)--(3.7,\y);}
+\node[left]at(0,.7){$A$};\node[right]at(4,.7){$B$};
+\draw[dim](0,-.5)--(4,-.5)node[midway,below]{$l$};
+\node[above]at(2,1.8){各细通道跨同一电压};
+\node[below]at(2,-1.15){$\dd I=U\,\dd G$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c1:series-parallel-elements}左侧的薄层是串联微元，电压逐层相加。右侧若材料性质随横向位置改变，每条轴向细通道连接同一对等势端面 $A,B$，则 $\dd G=\sigma\dd S/l$，于是
+\[
+ G=\frac1l\int_S\sigma\,\dd S,\qquad R=\frac l{\int_S\sigma\,\dd S}.
+\]
+同样是非均匀材料，沿电流方向变化与沿横截面变化给出不同的积分；确定等势面应先于选择积分式。
+
+\section{非均匀电流场的微元方法}
+\subsection{径向导电与同轴圆柱}
+
+两根同轴金属圆柱之间填充均匀导电材料，内、外半径为 $a,b$，有效长度为 $h$，金属端面的影响可忽略。圆柱对称性使电流沿径向流动，半径 $r$ 处与电流垂直的面积是 $2\pi rh$。每个圆柱面都被总电流 $I$ 穿过，故
+\[
+ j(r)=\frac{I}{2\pi rh},\qquad E(r)=\frac{\rho I}{2\pi rh}.
+\]
+内圆柱电势较高时，电流和电场都指向外侧；电子漂移则反向。图\ref{fig:c1:radial}的虚线圆柱面半径为 $r$，面积为 $2\pi rh$；径向薄层厚度 $\dd r$ 因而给 $\dd R=\rho\dd r/(2\pi rh)$。各薄层依次被同一电流穿过，形成串联，积分得到
+\[
+ U=\int_a^b E(r)\dd r
+=\frac{\rho I}{2\pi h}[\ln r]_a^b
+=\frac{\rho I}{2\pi h}\ln\frac ba,\qquad
+ R=\frac{\rho}{2\pi h}\ln\frac ba.
+\]
+半径不能用算术平均直接替代，因为每层有效面积随 $r$ 变化。若间隙 $d=b-a\ll a$，才可用 $\ln(1+d/a)\simeq d/a$，得到平板近似 $R\simeq\rho d/(2\pi ah)$。
+
+\typeout{ECFIG:fig:c1:radial}\fig{fig:c1:radial}{径向电流穿过不同半径的等势面}{\begin{tikzpicture}[scale=.88]
+
+\draw[world](0,0)circle(.65);\draw[world](0,0)circle(1.7);
+\draw[guide](0,0)circle(1.15);\draw[flow](.8,0)--(1.55,0)node[right]{$\bm j$};
+\draw[dim](0,0)--(0,.65)node[midway,left]{$a$};
+\draw[dim](0,0)--(-1.2,-1.2)node[midway,left]{$b$};
+\node[above]at(0,1.8){长度 $h$};\node at(3.6,.55){$S(r)=2\pi rh$};
+\node at(3.6,-.35){$\dd R=\rho\,\dd r/(2\pi rh)$};
+
+\end{tikzpicture}}
+\subsection{接地电流的半球扩散与跨步电压}
+
+电流从地表很小的电极流入均匀大地时，远离电极、其他回流电极和地形边界的区域可以近似为半空间。以注入点为球心的半球面面积为 $2\pi r^2$，故单个电极产生
+\[
+ j(r)=\frac{I}{2\pi r^2},\quad E(r)=\frac{\rho I}{2\pi r^2},\quad
+ V(r)=\frac{\rho I}{2\pi}\int_r^\infty s^{-2}\dd s
+=\frac{\rho I}{2\pi}[-s^{-1}]_r^\infty
+=\frac{\rho I}{2\pi r}.
+\]
+电势的零点选在无穷远，这只适用于回流足够远的单电极近似。真实电极具有有限尺寸；若把接触电极理想化成数学点，$r\to0$ 时电势和接触电阻发散，不能由点模型求出有限总电阻。对于半径 $a$ 的半球电极，接地电阻为 $\rho/(2\pi a)$。
+
+人两脚接触地面的位置不同，电势差应精确写成两接触点电势之差。两脚沿径向相距 $s$ 时，
+\[
+ \Delta V=V(r)-V(r+s)=\frac{\rho I}{2\pi}\left(\frac1r-\frac1{r+s}\right).
+\]
+只有当 $s\ll r$ 时才可进一步写成 $E(r)s$。有一注入、一收集两电极时，各自产生的场按带符号电流叠加；位于两电极外侧和位于它们之间，两个场的方向关系不同，须先画方向再作代数相加。
+
+
+\fig{c1:hemisphere-step}{均匀大地半空间的轴截面；圆弧代表等势半球面，地表两点的电势不同}{\begin{tikzpicture}
+
+\fill[gray!7](-3.4,-3.2)rectangle(3.5,0);\draw[world](-3.5,0)--(3.5,0)node[right]{地表};
+\foreach \r in {.5,2.1,2.9}{\draw[guide](-\r,0)arc(180:360:\r);}
+\draw[flow](0,.9)--(0,.1)node[pos=0,above]{$I$};
+\foreach \ang in {220,270,320}{\draw[flow](\ang:.8)--(\ang:1.8);}
+\fill(2.1,0)circle(1.5pt)node[above]{$A$};\fill(2.9,0)circle(1.5pt)node[above]{$B$};
+\draw[dim](2.1,.7)--(2.9,.7)node[midway,above]{$s$};
+\node[below left]at(-.5,0){电极半径 $a$};
+\node[left]at(-1.5,-1.5){$r$};\node[right]at(2.2,-1.9){$r+s$};
+\node[below]at(0,-3.4){$V_A-V_B=\rho I[1/r-1/(r+s)]/(2\pi)$};
+
+\end{tikzpicture}}
+图\ref{c1:hemisphere-step}中，地表外法向没有电流，电流只向地下半空间扩散。$A,B$ 分别位于半径 $r,r+s$ 的半球面上，先求各自电势再相减，便保留了场强随位置变化的影响。若加入近处回流电极，原先的同心等势面通常不再成立，但线性导电模型中各电极的电势贡献仍可叠加。
+
+\section{漂移、碰撞与惯性效应}
+\subsection{平均漂移速度为何能够保持稳定}
+
+电场使电子在两次碰撞之间加速，碰撞使有序动量传给晶格。长期平均后，电子的漂移速度可以稳定，而导体持续发热。可把平均阻碍作用表示成与漂移速度成正比的有效力。对电子有
+\[
+ m\frac{\dd\bm v_{\rm d}}{\dd t}=-e\bm E-\frac m\tau\bm v_{\rm d}.
+\]
+在稳恒状态中，$\bm v_{\rm d}=-e\tau\bm E/m$，因而
+\[
+ \bm j=\frac{ne^2\tau}{m}\bm E,\qquad
+ \rho=\frac{m}{ne^2\tau}.
+\]
+这里 $\tau$ 是动量弛豫时间，其定义已经包含所用碰撞统计模型。若另设一个简化模型，规定每次碰撞把定向速度清零，且两次碰撞严格相隔 $T$，那么随机观察时，距上次碰撞的平均时间为 $T/2$，于是平均速度为 $eET/(2m)$，得到 $\rho=2m/(ne^2T)$。这两个表达式中的时间参数含义不同，不能把 $T$ 直接当成 $\tau$，也不能在一道题中混用。
+
+\fig{c1:relaxation-collision}{左：阶跃电场后的平均漂移速率；右：严格定时清零模型，时间参数含义不同}{\begin{tikzpicture}
+
+\begin{scope}[x=1.1cm,y=1.5cm]
+\draw[axis](0,0)--(3.6,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,1.35)node[above]{$|v_{\rm d}|/(eE\tau/m)$};
+\draw[thick,blue,domain=0:3.3,samples=80]plot(\x,{1-exp(-\x)});
+\draw[guide](0,1)--(3.3,1);\node[left]at(0,1){$1$};
+\end{scope}
+\begin{scope}[xshift=6.5cm,x=1.1cm,y=1.5cm]
+\draw[axis](0,0)--(3.6,0)node[right]{$t/T$};\draw[axis](0,0)--(0,1.35)node[above]{$|v_{\rm d}|/(eET/m)$};
+\foreach \j in {0,1,2}{\draw[thick,red](\j,0)--(\j+1,1)--(\j+1,0);}
+\draw[thick,red](3,0)--(3.3,.3);\draw[guide](0,.5)--(3.3,.5);\node[left]at(0,.5){$1/2$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c1:relaxation-collision}左侧取初值 $\bm v_{\rm d}(0)=0$。把平均运动方程写为
+$\dot{\bm v}_{\rm d}+\bm v_{\rm d}/\tau=-e\bm E/m$，
+乘积分因子 $\e^{t/\tau}$：
+\[
+ \frac{\dd}{\dd t}(\e^{t/\tau}\bm v_{\rm d})
+ =-\frac{e\bm E}{m}\e^{t/\tau}.
+\]
+从 $0$ 到 $t$ 积分，
+\[
+ \e^{t/\tau}\bm v_{\rm d}(t)-\bm v_{\rm d}(0)
+ =-\frac{e\bm E}{m}[\tau\e^{s/\tau}]_0^t
+ =-\frac{e\tau\bm E}{m}(\e^{t/\tau}-1).
+\]
+除以积分因子并代入零初值，得到
+\[
+ \bm v_{\rm d}(t)=-\frac{e\tau}{m}\bm E(1-\e^{-t/\tau}).
+\]
+长期极限给出前面的稳恒漂移。右侧每个周期内定向速度线性增长后清零，平均值等于锯齿峰值的一半；该模型的 $T/2$ 来自指定的碰撞规则，不是对所有碰撞分布通用的系数。
+
+不必引入具体碰撞时间，也能由欧姆定律求稳恒时的有效阻力。取电子漂移速率大小为 $v$，由 $j=nev$ 与 $E=\rho j$，稳恒时阻力大小为
+\[
+ f_{\text{阻}}=eE=ne^2\rho v.
+\]
+这一表达式是平均模型。不能据此认为单个电子始终沿直线匀速运动，更不能把热运动速度代入有效阻力式。
+
+\subsection{突然制动与加速导体中的电荷分离}
+
+金属棒和晶格突然停止时，自由电子因惯性仍有相对晶格的初速度。如果在给定阶段可以忽略新建立的电场及边界效应，电子速度满足 $m\dot v=-bv$，其中 $b=ne^2\rho$。记 $\tau=m/b$。对 $v_0\ne0$，分离变量并用初值，
+\[
+ \int_{v_0}^{v(t)}\frac{\dd u}{u}=-\frac1\tau\int_0^t\dd s,
+ \qquad \ln\left|\frac{v(t)}{v_0}\right|=-t/\tau.
+\]
+速度在有限时间不变号，故 $v=v_0\e^{-t/\tau}$；
+$v_0=0$ 时直接取零解。再积分位移，
+\[
+ x(t)-x(0)=v_0\int_0^t\e^{-s/\tau}\dd s
+ =v_0[-\tau\e^{-s/\tau}]_0^t.
+\]
+于是
+\[
+ v(t)=v_0\e^{-t/\tau},\qquad
+ x(t)-x(0)=v_0\tau(1-\e^{-t/\tau}),\qquad \tau=\frac mb.
+\]
+速度只在渐近意义上趋于零，相对总位移却有限，为 $v_0\tau$。若棒长有限或电子聚集使内部电场不能忽略，必须把电场力重新加入方程；上式不代表任何金属块突然停止后的完整电磁过程。
+
+\fig{c1:braking-transient}{忽略新生电场阶段的制动模型：速度渐近为零，累计相对位移趋于有限值}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,1.5);
+\draw[blue,thick,domain=0:5,samples=100]plot(\x,{exp(-\x)});
+\draw[red,thick,domain=0:5,samples=100]plot(\x,{1-exp(-\x)});
+\draw[guide](0,1)--(5,1);\node[left]at(0,1){$1$};
+\node[blue,right]at(3,.25){$v/v_0$};\node[red,above]at(3,1.05){$[x-x(0)]/(v_0\tau)$};
+
+\end{tikzpicture}}
+图\ref{c1:braking-transient}中的红线来自蓝线对时间的积分。速度衰减快不等于位移也回到零；电子在衰减过程中仍发生了有限的净输运。模型若用于有限导体，须另行检查这一位移引起的电荷分离能否忽略。
+
+另一类问题考查导体达到无相对电流时的电场。竖直金属棒中的电子受到重力和电场力，简化为固定正离子背景且忽略晶格形变时，静止条件为 $-e\bm E+m\bm g=0$。由于电子带负电，电场须向下，电场力向上。旋转导体中自由电子若随晶格同速转动，需要向心力；在忽略其他径向作用的理想模型中，电场向外，电场力向内。此时应先列径向牛顿第二定律，再积分求电势差，不能仅凭“电子向外堆积”判断每一点的场。
+
+
+\fig{c1:gravity-rotation}{固定正离子背景下的两个理想模型；电场力方向均与电子所受电场相反}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,-1.3)rectangle(.6,1.3);\fill(.3,0)circle(1.5pt);
+\draw[force](.1,0)--(.1,-1)node[left]{$m\bm g$};
+\draw[force](.5,0)--(.5,1)node[right]{$-e\bm E$};
+\draw[flow](1.8,.7)--(1.8,-.7)node[right]{$\bm E$};
+\node[above]at(.4,1.7){电子相对晶格静止};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[world](0,0)circle(1.2);\fill(0,0)circle(1pt)node[below]{$O$};\fill(1.2,0)circle(1.5pt);
+\draw[flow](1.2,0)--(2.5,0)node[right]{$\bm E$};
+\draw[force](1.2,0)--(.25,0)node[midway,above]{$-e\bm E$};
+\draw[flow](1.2,0)--(1.2,.9)node[right]{$\bm v$};
+\node[above]at(.6,1.7){随晶格绕轴转动};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c1:gravity-rotation}左侧电子合力为零；右侧合力须向心，故 $eE_r=m\omega^2r$。外侧电场指向外，而电势沿外向降低：
+\[
+ V(R)-V(0)=-\int_0^R\frac{m\omega^2r}{e}\,\dd r
+ =-\frac{m\omega^2}{e}[r^2/2]_0^R
+=-\frac{m\omega^2R^2}{2e}.
+\]
+这两个结论都依赖题设的简化模型；若考虑晶格形变、其他载流子或额外径向作用，须重新列出电子的力。
+
+\section{电动势、电势差与功率}
+\subsection{沿闭合电路区别两种做功}
+
+稳恒电路中，静电场沿完整闭合路径所做的功为零。电阻中电场对电荷做正功，电源内部就存在一段电势上升过程，必须由化学作用等非静电作用搬运电荷。电动势定义为电源内部非静电力把单位正电荷从负端移到正端所做的功，
+\[
+ \mathcal E=\int_{\text{负端}}^{\text{正端}}\frac{\bm f_{\text{非静电}}}q\cdot\dd\bm l.
+\]
+电动势和电压单位相同，但一个表征能量转换作用，一个表征两点电势差。含内阻 $r$ 的电源向外放电时，电流从正端流出，端电压为 $U=\mathcal E-Ir$；被外电路充电时，电流从正端流入，若把充电电流大小记为 $I$，则 $U=\mathcal E+Ir$。
+
+\typeout{ECFIG:fig:c1:emf}\fig{fig:c1:emf}{电源放电与能量转换}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,2.6)--(3.4,2.6)to[R,l={$R$}](3.4,0)to[R,l_={$r$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+图\ref{fig:c1:emf}中电源内阻 $r$ 与外电阻 $R$ 通过同一电流，端电压应跨外电阻的 $A,B$ 两端定义。每秒非静电作用提供能量 $\mathcal EI$，其中 $I^2r$ 在电源内耗散，外电路获得 $UI$，所以
+\[
+ \mathcal EI=UI+I^2r.
+\]
+对于纯电阻，$P=UI=I^2R=U^2/R$；对于电动机、电解槽或充电电池，$UI$ 包含其他形式的能量转换，通常不能全部称作焦耳热。电阻发热的一般式仍是 $I^2R$。
+\subsection{局部发热、热平衡与模型适用范围}
+
+体积元 $\dd V$ 中每秒电场做功为 $\bm j\cdot\bm E\,\dd V$。各向同性欧姆材料有
+\[
+ p_V=\bm j\cdot\bm E=\rho j^2=\sigma E^2.
+\]
+截面串联的两根同材质细棒电流相同，较细的一根电流密度更大，单位体积发热功率随 $1/S^2$ 增长；单位长度功率则随 $1/S$ 增长。比较温升时还需要热容量和散热条件，不能只比较总功率。
+
+若电阻随温度变化，电路方程和热学方程需同时满足。例如设 $R(T)=R_0[1+\alpha(T-T_0)]$，散热功率近似为 $k(T-T_0)$。恒流条件下稳态应解 $I^2R(T)=k(T-T_0)$，恒压条件下则解 $U^2/R(T)=k(T-T_0)$，反馈方向不同。若算得的温升不满足线性电阻率或线性散热近似，必须回到更准确的材料规律。模型边界的检查与代数求值同样属于解题过程。
+
+
+\fig{c1:thermal-feedback}{正温度系数模型的热平衡；交点还须由净输入功率随温升的变化判断稳定性}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](0,0)--(4.6,0)node[right]{$\theta$};\draw[axis](0,0)--(0,3.4)node[above]{$P$};
+\draw[blue,thick](0,1)--(4,2)node[right]{$I^2R$};\draw[red,thick](0,0)--(4,3)node[above]{$k\theta$};
+\fill(2,1.5)circle(1.5pt);\node[above]at(2,3.8){恒流};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw[axis](0,0)--(4.6,0)node[right]{$\theta$};\draw[axis](0,0)--(0,3.4)node[above]{$P$};
+\draw[blue,thick,domain=0:4,samples=80]plot(\x,{2/(1+.5*\x)})node[right]{$U^2/R$};
+\draw[red,thick](0,0)--(4,3)node[above]{$k\theta$};\node[above]at(2,3.8){恒压};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c1:thermal-feedback}取 $\alpha>0,k>0$，$\theta=T-T_0$。若总热容量为 $C$，恒流时的温升方程为
+\[
+ C\dot\theta=I^2R_0+(\alpha I^2R_0-k)\theta.
+\]
+只有 $k>\alpha I^2R_0$，本线性模型才有正的稳定平衡温升 $\theta_*=I^2R_0/(k-\alpha I^2R_0)$。令 $k_{\rm eff}=k-\alpha I^2R_0>0$，
+$\delta=\theta-\theta_*$，则 $C\dot\delta=-k_{\rm eff}\delta$。
+若 $\delta(0)\ne0$，分离变量积分为
+\[
+ \int_{\delta(0)}^{\delta(t)}\frac{\dd u}{u}
+ =-\frac{k_{\rm eff}}{C}\int_0^t\dd s,\qquad
+ \delta(t)=\delta(0)\e^{-k_{\rm eff}t/C}.
+\]
+初始偏差为零时原方程直接给 $\delta=0$。偏差随时间衰减，
+因此温升略高于交点时，散热超过发热，系统返回平衡。恒压时 $U^2/R$ 随温升降低，与增大的散热构成负反馈；结论须连同温度系数符号一起使用。
+
+\section{材料交界面与电流的重新分布}
+\subsection{同一电流可以对应不同的电场}
+
+两个不同电阻率的导体端面紧密接合，截面均为 $S$，稳恒电流垂直穿过界面。电荷守恒要求 $j_1=j_2=I/S$，局域欧姆关系却给出 $E_1=\rho_1I/S$、$E_2=\rho_2I/S$。当 $\rho_1\ne\rho_2$ 时，界面两侧的法向电场不同。这不是电流不连续，而是界面存在少量电荷，使电场能适应材料差异。
+
+在简化为两侧介电常数均为 $\varepsilon_0$ 的模型中，用一小柱形闭合面跨过界面，法向取 $1\to2$。柱侧通量在厚度趋零时消失，两个端面通量之差为 $(E_2-E_1)\Delta S$，由高斯定律等于界面电荷 $\Sigma\Delta S/\varepsilon_0$，故
+\[
+ \Sigma=\varepsilon_0(E_2-E_1)
+ =\varepsilon_0(\rho_2-\rho_1)\frac IS.
+\]
+若第二段电阻率更大，界面正电荷使右侧场强增加。电荷的具体建立过程属于接通后的暂态，而上式给出稳恒状态需要满足的边界关系。材料的介电响应不可忽略时，应使用相应的电位移边界条件。
+
+\fig{c1:interface-pillbox}{相同法向电流穿过材料界面；跨界面的小柱形高斯面给出法向电场之差}{\begin{tikzpicture}
+
+\fill[gray!8](0,0)rectangle(2,1.8);\fill[gray!20](2,0)rectangle(4.4,1.8);
+\draw[world](0,0)rectangle(4.4,1.8);\draw[world](2,0)--(2,1.8);
+\draw[guide](1.6,.45)rectangle(2.4,1.35);
+\draw[flow](.3,.9)--(1.4,.9)node[midway,above]{$E_1$};
+\draw[flow](2.6,.9)--(4.1,.9)node[midway,above]{$E_2$};
+\node[above]at(1,2.1){$\rho_1$};\node[above]at(3.3,2.1){$\rho_2$};
+\node[below]at(2,-.15){界面电荷密度 $\Sigma$};
+\draw[flow](2.7,-1)--(4,-1)node[midway,below]{$\bm n:\ 1\to2$};
+\node[below]at(.8,-1){$j_1=j_2=I/S$};
+
+\end{tikzpicture}}
+图\ref{c1:interface-pillbox}的小柱左右端面的外法向相反，故通量是 $E_2\Delta S-E_1\Delta S$，不是两场大小之和。图中取 $\rho_2>\rho_1$，右侧场较强、界面净电荷为正，电流仍连续。
+
+这个例子解释了为什么“电流处处相同”不能推出“电场处处相同”，也说明导电问题与静电场并非互不相关。解稳恒电路时常把导线视为等势，是因为它的电阻远小于其他元件；对研究中的有阻导体，则必须保留维持电流所需的电场。
+
+
+
+\subsection{工作点电阻与微分电阻}
+
+对非线性元件，某工作点的 $U/I$ 是连接原点与该点的割线斜率，$\dd U/\dd I$ 则是该点切线斜率，二者一般不同。材料电阻率还需结合样品几何才能与端口电阻联系。只有在所讨论范围内 $U=RI$ 且 $R$ 近似恒定时，这些端口斜率才一致；曲线经过原点本身并不足以证明欧姆关系。
+\fig{c1:nonlinear-slopes}{同一工作点的割线与切线；曲线通过原点仍不保证两种电阻相等}{\begin{tikzpicture}
+
+\begin{scope}[x=2.3cm,y=1.3cm]
+\draw[axis](0,0)--(1.85,0)node[right]{$I$};\draw[axis](0,0)--(0,3)node[above]{$U$};
+\draw[world,domain=0:1.55,samples=90]plot(\x,{\x+.25*(\x)^3});
+\draw[blue,dashed](0,0)--(1.45,1.8125)node[right]{$U/I$};
+\draw[red,thick](.4,.2)--(1.6,2.3)node[right]{$\dd U/\dd I$};
+\fill(1,1.25)circle(1.5pt)node[above left]{$P$};
+\end{scope}
+
+\end{tikzpicture}}
+例如 $U=aI+bI^3\ (a,b>0)$，在图\ref{c1:nonlinear-slopes}的工作点有 $R_{\rm stat}=a+bI^2$、$r_{\rm diff}=a+3bI^2$。前者描述该工作点的总电压与电流之比，后者描述在该点附近的小变化 $\dd U\simeq r_{\rm diff}\dd I$。只有当非线性项可忽略时，二者才近似相同。

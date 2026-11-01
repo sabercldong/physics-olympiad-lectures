@@ -1,0 +1,454 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[垂直直导线的零磁场集合]\label{mg1:example:1}
+两条理想无限长细导线分别沿 $x,y$ 轴通有正向电流 $I_1,I_2>0$。交会处作绝缘跨越并忽略其微小尺寸。求空间中磁场为零的位置，并说明平面外是否可能抵消。
+\end{example}
+\fig{fig:mg1:example:1:s}{题设：垂直直导线的零磁场集合}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2,0)--(2.8,0)node[right]{$x$};\draw[axis](0,-2)--(0,2.8)node[above]{$y$};\draw[flow](-1.5,0)--(-.5,0)node[below]{$I_1$};\draw[flow](0,-1.5)--(0,-.5)node[left]{$I_2$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在空间点列两条导线的矢量场}\par\nobreak
+图\ref{fig:mg1:example:1:s}的两导线相互垂直，先不能假设零场点一定在纸面。取 $P=(x,y,z)$，绕 $x$ 轴电流和绕 $y$ 轴电流的环向场分别为
+\[
+\bm B_1=\frac{\mu_0I_1}{2\pi(y^2+z^2)}(y\bm e_z-z\bm e_y),\quad
+\bm B_2=\frac{\mu_0I_2}{2\pi(x^2+z^2)}(z\bm e_x-x\bm e_z).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用独立分量证明零场点必须在导线平面内}\par\nobreak
+总场的 $x$ 分量只有第二项提供，$y$ 分量只有第一项提供。两电流非零，故这两个分量同时为零要求 $z=0$，导线所在的奇点不在讨论范围内。
+\fig{fig:mg1:example:1:p}{先证零场点在 $z=0$，再叠加两导线在该平面内的垂直分量}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(3.2,0)node[right]{$x,I_1$};\draw[axis](0,-2)--(0,3.2)node[above]{$y,I_2$};
+\draw[blue,thick](-1.6,-1.6)--(2.4,2.4);\draw[fill=white](0,0)circle(2pt);
+\fill(1.5,1.5)circle(2pt)node[right]{$P$};\draw[guide](1.5,0)--(1.5,1.5)--(0,1.5);
+\node[below]at(1.5,0){$x$};\node[left]at(0,1.5){$y$};
+\node[right,align=center]at(3.1,2){$B_{1z}=\mu_0I_1/(2\pi y)$\\$B_{2z}=-\mu_0I_2/(2\pi x)$};
+\node[right,align=center]at(3.1,.4){$P$ 处：$\odot B_1,\ \otimes |B_2|$\\抵消要求 $I_1x=I_2y$};
+\node at(1.3,-2.65){蓝线示意 $I_1=I_2$；原点和两条导线均排除};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按垂直纸面的有向分量求零场直线并排除奇点}\par\nobreak
+在图\ref{fig:mg1:example:1:p}的平面内，只余 $B_z=\mu_0(I_1/y-I_2/x)/(2\pi)$。令它为零，交叉相乘得到 $I_1x=I_2y$，故零场集合是直线 $y=(I_1/I_2)x$，除去原点。它位于第一、第三象限，两项方向相反。第二、第四象限的两个环向场同向，大小即使偶然相等也不能抵消。若一股电流反向，零场线所在象限随之改变；这也是有向分量式的检验。
+
+两项的 $z$ 分量等大反向，是在 $z=0$ 这个已证明的平面内才成立；若场点偏离平面，原本可抵消的标量关系无法消去新增的两个分量。最后的直线方程必须附上 $x,y\ne0$，否则把理想导线奇点也当成零场点。\end{solution}
+\begin{question}\begin{example}[圆电流轴线上的磁场]\label{mg1:example:2}
+半径 $R$ 的圆环通有电流 $I$，方向使轴上正向磁场为 $+x$。求距圆心 $x$ 处的磁感应强度，并求场降到圆心值一半时的 $|x|$。
+\end{example}
+\fig{fig:mg1:example:2:s}{题设：圆电流轴线上的磁场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)ellipse(.45 and 1.4);\draw[axis](-1,0)--(4.7,0)node[right]{$x$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(3.7,0)circle(2pt)node[above]{$P$};\draw[dim](0,-1.8)--(3.7,-1.8)node[midway,below]{$x$};\draw[dim](0,0)--(0,1.4)node[midway,left]{$R$};\node at(-1,1.2){$I$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由同一场点的几何关系求轴向微元}\par\nobreak
+图\ref{fig:mg1:example:2:s}中从任一电流元到 $P$ 的距离均为 $s=\sqrt{R^2+x^2}$。毕奥—萨伐尔式给出 $\dd B=\mu_0I\dd l/(4\pi s^2)$；其轴向投影因子为 $R/s$，而不是 $x/s$。对称电流元的横向分量相消，所以
+\[
+B_x=\int\frac{\mu_0IR}{4\pi s^3}\dd l
+=\frac{\mu_0IR}{4\pi s^3}(2\pi R)
+=\frac{\mu_0IR^2}{2(R^2+x^2)^{3/2}}.
+\]
+\fig{fig:mg1:example:2:p}{轴线场关于圆心对称，半高位置由归一化曲线确定}{\begin{tikzpicture}
+
+\begin{scope}[x=1.5cm,y=2.2cm]
+\draw[axis](-2.8,0)--(3.1,0)node[right]{$x/R$};\draw[axis](0,0)--(0,1.3)node[above]{$B_x/B_c$};
+\draw[blue,thick,domain=-2.7:2.7,samples=100]plot(\x,{1/(1+\x*\x)^1.5});\draw[guide](-2,.5)--(2,.5);\node[left]at(0,.5){$1/2$};
+\draw[guide](-.766421,0)--(-.766421,.5)(.766421,0)--(.766421,.5);\fill(-.766421,.5)circle(1.3pt);\fill(.766421,.5)circle(1.3pt);\node[right]at(0,1.05){$1$};
+\node at(1.8,.95){$B_c=\mu_0I/(2R)$};\node[below]at(0,-.3){半高位置：$x/R=\pm\sqrt{2^{2/3}-1}$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{归一化场并求两侧半高位置}\par\nobreak
+图\ref{fig:mg1:example:2:p}中函数关于圆心对称。以 $B_c=\mu_0I/(2R)$ 归一化，$B_x/B_c=[1+(x/R)^2]^{-3/2}$。令该比值为 $1/2$，两边取 $-2/3$ 次幂，得 $1+(x/R)^2=2^{2/3}$，于是 $|x|=R\sqrt{2^{2/3}-1}$。$x=0$ 时回到圆心场，远处按 $x^{-3}$ 衰减，且两侧轴向方向相同，均符合完整圆电流的轴向场分布。\end{solution}
+\begin{question}\begin{example}[分流圆环的圆心场]\label{mg1:example:3}
+电阻率、截面均匀的细导线弯成半径 $R$ 的圆环，在点 $A,B$ 接入电源。两弧圆心角为 $\alpha$ 与 $2\pi-\alpha$，端电压为 $U$。引线对圆心的场忽略。求两弧电流及圆心磁场。
+\end{example}
+\fig{fig:mg1:example:3:s}{题设：分流圆环的圆心场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.3,0)node[midway,below]{$R$};\draw[flow](1.3*.707,1.3*.707)arc(45:115:1.3);\fill(1.3,0)circle(2pt)node[right]{$A$};\fill(-.65,1.126)circle(2pt)node[above left]{$B$};\draw[dim](.45,0)arc(0:120:.45);\node at(.35,.6){$\alpha$};\node[align=center]at(3.2,0){$U=V_A-V_B$\\引线场忽略};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按两段弧长求并联电流}\par\nobreak
+由图\ref{fig:mg1:example:3:s}可见，两段弧的电流都从 $A$ 流向 $B$，但沿圆周的绕向相反。记单位长度电阻为 $\lambda$，则 $R_1=\lambda R\alpha$、$R_2=\lambda R(2\pi-\alpha)$。两段并联，所以
+\[
+i_1=\frac{U}{\lambda R\alpha},\qquad
+i_2=\frac{U}{\lambda R(2\pi-\alpha)}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对相反绕向分别赋予场的正负号}\par\nobreak
+每段圆心场与电流、弧角的乘积成正比，取短弧所生场为正，有 $B_1=\mu_0i_1\alpha/(4\pi R)$、$B_2=-\mu_0i_2(2\pi-\alpha)/(4\pi R)$。
+\fig{fig:mg1:example:3:p}{解答过程：分流圆环的圆心场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.3);\draw[flow](1.3,0)arc(0:120:1.3);\draw[flow](1.3,0)arc(0:-240:1.3);\node at(.65,1.45){$i_1$};\node at(-.8,-1.4){$i_2$};\fill(1.3,0)circle(1.7pt)node[right]{$A$};\fill(-.65,1.126)circle(1.7pt)node[above left]{$B$};\node at(0,0){$O$};\node at(3,.6){$\odot B_1$};\node at(3,-.6){$\otimes |B_2|$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查电流与弧角的乘积，确定抵消条件}\par\nobreak
+图\ref{fig:mg1:example:3:p}中两个场箭头方向相反，而 $i_1\alpha=i_2(2\pi-\alpha)=U/(\lambda R)$，故总场严格为零。并不是两弧电流相等，而是较长弧的较小电流恰好由较大的弧角补偿。若单位长度电阻不均匀，或引线贡献不可忽略，这个抵消一般不再成立。总电流 $i_1+i_2$ 仍非零，零圆心场不表示圆环不耗电。\end{solution}
+\begin{question}\begin{example}[单层与双层面电流]\label{mg1:example:4}
+无限薄平面 $y=0$ 内有均匀面电流 $\bm K=K\bm e_z$。求两侧的场。再在 $y=h$ 放置反向面电流 $-K\bm e_z$，求三个区域的总场。
+\end{example}
+\fig{fig:mg1:example:4:s}{题设：单层与双层面电流}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,0)--(2,0);\draw[guide](-2,2)--(2,2);\node[right]at(2,0){$y=0,\ \odot K$};\node[right]at(2,2){$y=h,\ \otimes K$};\draw[axis](-2.5,-1)--(-2.5,3)node[above]{$y$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先对单层电流使用跨面矩形环路}\par\nobreak
+图\ref{fig:mg1:example:4:s}先只保留下平面。沿 $x$ 的平移对称和镜面对称使场沿 $x$，在两侧大小相等。正 $z$ 电流在 $y>0$ 产生 $-x$ 场。取跨面矩形，长边长度为 $L$，两长边的环量同号相加，$2BL=\mu_0KL$，故 $B=\mu_0K/2$。
+\fig{fig:mg1:example:4:p}{分别画出两电流面在三个区域的场，再作矢量相加}{\begin{tikzpicture}
+
+\draw[world](-2.7,0)--(2.7,0)(-2.7,2)--(2.7,2);\node[right]at(2.7,0){$\odot K,\ y=0$};\node[right]at(2.7,2){$\otimes K,\ y=h$};
+\draw[blue,->,thick](1.6,3.16)--(-.2,3.16);\draw[blue,->,thick](1.6,1.16)--(-.2,1.16);\draw[blue,->,thick](-.2,-.84)--(1.6,-.84);
+\draw[red,->,thick](-.2,-1.2)--(1.6,-1.2);\draw[red,->,thick](1.6,.8)--(-.2,.8);\draw[red,->,thick](-.2,2.8)--(1.6,2.8);
+\node[left]at(-2.2,3){$y>h$};\node[left]at(-2.2,1){$0<y<h$};\node[left]at(-2.2,-1){$y<0$};
+\node[right]at(3.1,3){$\bm B=0$};\node[right]at(3.1,1){$\bm B=-\mu_0K\bm e_x$};\node[right]at(3.1,-1){$\bm B=0$};
+\node at(1,-2){蓝：下平面；红：上平面，每项大小均为 $\mu_0K/2$};\draw[axis](-2.5,-2.8)--(-.5,-2.8)node[right]{$x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按各自所在的一侧叠加两层场}\par\nobreak
+按图\ref{fig:mg1:example:4:p}逐区叠加。下平面在其上方给 $-\mu_0K\bm e_x/2$、下方给正向同值；上平面电流相反，在其下方也给负向同值。在 $0<y<h$ 两项相加，$\bm B=-\mu_0K\bm e_x$；在 $y<0$ 与 $y>h$ 两项相消，总场为零。单个理想电流面的场在面上不连续，本题的分段结果指两侧极限，不把面内的自场强行赋成其中一侧值。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分单层环量方向与双层总场的方向}\par\nobreak
+对单个电流面取跨面矩形环路时，两长边按相反方向绕行，局部磁场也在面两侧反向，两次符号变化使环量同号相加。对两层叠加后的总场，则应使用图\ref{fig:mg1:example:4:p}所示的三个区域，不能仍假定夹层内部两条长边的场反向。若固定绕向却只改变某一长边的场符号，会错误得到零环量。矢量叠加与环路方向应分别处理。\end{solution}
+\begin{question}\begin{example}[密集线排的连续近似]\label{mg1:example:5}
+无穷多根平行细导线沿 $z$ 方向，均以电流 $I_0$ 向外通流，其横截面在 $x$ 轴上等间距排列，单位长度根数为 $n$。在高度 $y$ 远大于间距 $1/n$ 的区域求磁场，并说明靠近一根细线时能否继续使用该结果。
+\end{example}
+\fig{fig:mg1:example:5:s}{题设：密集线排的连续近似}{\begin{tikzpicture}[scale=.88]
+\draw[world](-3,0)--(3,0);\foreach\x in{-2.5,-1.5,-.5,.5,1.5,2.5}{\draw[world](\x,0)circle(.1);\fill(\x,0)circle(1pt);}\fill(.4,2)circle(2pt)node[right]{$P$};\draw[dim](3.3,0)--(3.3,2)node[midway,right]{$y$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把远处线排换成面电流并列环量}\par\nobreak
+图\ref{fig:mg1:example:5:s}中观察高度已经使单根导线的细节被平滑，单位横向长度所含总电流为 $K=nI_0$。将线排当作连续电流面后，关于 $y=0$ 的反射对称使两侧场反向，且水平平移不改变场。跨过线排作矩形环路，得 $2BL=\mu_0(nL)I_0$。
+\fig{fig:mg1:example:5:p}{线排远处可按连续面处理，单根导线近旁须恢复离散电流的局部环场}{\begin{tikzpicture}
+
+\foreach \x in {-2,-1,0,1,2}{\node at(\x,0){$\odot$};}\draw[guide](-2.5,-1)rectangle(2.5,1.8);\draw[->,blue,thick](1.7,1.8)--(-1.7,1.8);\draw[->,blue,thick](-1.7,-1)--(1.7,-1);
+\node at(0,2.4){$|y|\gg d=1/n$};\node at(0,-1.7){$B_{\rm far}=\mu_0nI_0/2$};
+\begin{scope}[xshift=6.5cm]
+\node at(0,0){$\odot I_0$};\draw[dashed](0,0)circle(1.1);\draw[flow](1.1,0)arc(0:90:1.1);\fill(1.1,0)circle(1.5pt)node[right]{$P$};\draw[dim](0,-.2)--(1.1,-.2)node[midway,below]{$\rho$};
+\node[align=center]at(0,2.1){放大单线近旁\\$\rho\ll d$};\node at(0,-1.7){$B_{\rm local}\simeq\mu_0I_0/(2\pi\rho)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由右手方向确定两侧远场}\par\nobreak
+因此图\ref{fig:mg1:example:5:p}上方 $\bm B=-\mu_0nI_0\bm e_x/2$，下方反向。结果不含高度，是连续无限面模型的性质。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对近线区域恢复单根电流的场}\par\nobreak
+若场点距某根线仅 $\rho\ll1/n$，该线贡献约为 $\mu_0I_0/(2\pi\rho)$，随 $\rho$ 变小会显著超过连续值，不能继续用均匀场代替。远场近似与近线行为并不冲突，因为它们对应不同的空间尺度；离散修正可用练习中的求和式定量检验。\end{solution}
+\begin{question}\begin{example}[由轴线场确定螺线管内场]\label{mg1:example:6}
+理想无限长螺线管单位长度匝数为 $n$，电流为 $I$，已知轴线场为 $\mu_0nI$。在没有外加场的条件下，证明管内任意位置的场等于轴线场。并计算 $n=127\,\mathrm{m^{-1}},I=1.76\,\mathrm A,\mu_0=1.26\times10^{-6}\,\mathrm{N/A^2}$ 时的大小。
+\end{example}
+\fig{fig:mg1:example:6:s}{无限长螺线管的纵截面；上下绕组电流方向相反，轴向场同向}{\begin{tikzpicture}
+
+\draw[world](-3,-1)--(3,-1)(-3,1)--(3,1);\foreach \x in {-2.7,-2.1,...,2.7}{\node at(\x,1){$\odot$};\node at(\x,-1){$\otimes$};}
+\draw[axis](-3.5,0)--(4,0)node[right]{$z$};\draw[force](-1,0)--(1,0)node[midway,above]{$B(0)$};\node at(0,1.8){单位长度匝数 $n$，每匝电流 $I$};\node at(0,-1.8){沿轴向无限延伸，半径为 $R$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由对称性确定场方向并选取内部环路}\par\nobreak
+图\ref{fig:mg1:example:6:s}的平移、绕轴旋转对称及端到端反射关系使内部磁场沿轴。取两条长为 $\ell$ 的轴向线段，一条在轴线上，一条在任意半径 $r<R$ 处，再用径向短边闭合。短边与场垂直，且该矩形不穿过绕在柱面上的电流，故环路定理给出 $[B(r)-B(0)]\ell=0$。
+\fig{fig:mg1:example:6:p}{绿色环路正向与蓝色磁场方向分开表示，环路面不穿过绕组电流}{\begin{tikzpicture}
+
+\draw[world](-3,-1)--(3,-1)(-3,1)--(3,1);\draw[guide](-3,0)--(3,0);
+\draw[green!45!black,dashed](-2,0)rectangle(2,.65);\draw[flow,green!45!black](-.8,0)--(.8,0);\draw[flow,green!45!black](.8,.65)--(-.8,.65);
+\draw[force,blue](-1.3,-.45)--(1.3,-.45)node[midway,below]{$\bm B(0)$};\draw[force,blue](-1.3,.9)--(1.3,.9)node[midway,above]{$\bm B(r)$};
+\draw[dim](2.6,0)--(2.6,.65)node[midway,right]{$r$};\draw[dim](-2,-1.6)--(2,-1.6)node[midway,below]{$\ell$};\node at(0,2){$I_{\rm enc}=0\ \Longrightarrow\ [B(0)-B(r)]\ell=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用零包围电流比较不同半径并计算数值}\par\nobreak
+由图\ref{fig:mg1:example:6:p}可得 $B(r)=B(0)=\mu_0nI$。代入数值，
+\[
+B=(1.26\times10^{-6})(127)(1.76)=2.82\times10^{-4}\,\mathrm T.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对无限长与无外加场的条件}\par\nobreak
+上述内部比较不需要先计算外部场；若要完整确定外部场，还要使用无外加场的边界条件。有限螺线管不能作轴向无限平移，端部附近的均匀性因此失效，不能仅因轴线上某点已知就把整片空间都设成同一数值。\end{solution}
+\begin{question}\begin{example}[均匀圆柱电流的内外场]\label{mg1:example:7}
+半径 $R$ 的无限长实心圆柱均匀通有轴向电流 $I$。介质按真空处理。求 $B(r)$，指出最大值的位置，并说明中心处场的方向怎样理解。
+\end{example}
+\fig{fig:mg1:example:7:s}{题设：均匀圆柱电流的内外场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.6);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.6,0)node[midway,below]{$R$};\draw[flow](1.6*.707,1.6*.707)arc(45:115:1.6);\node at(0,0.5){$\odot I$};\draw[guide](0,0)circle(.9);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别计算柱内与柱外环路包围的电流}\par\nobreak
+图\ref{fig:mg1:example:7:s}中的圆形安培环路半径为 $r$。对 $r<R$，均匀电流密度 $J=I/(\pi R^2)$，包围电流 $I_{\rm enc}=J\pi r^2=Ir^2/R^2$。因此 $B\,2\pi r=\mu_0Ir^2/R^2$，约去 $r>0$ 后得到 $B=\mu_0Ir/(2\pi R^2)$。对 $r\ge R$，回路包围全部电流，故 $B=\mu_0I/(2\pi r)$。
+\fig{fig:mg1:example:7:p}{解答过程：均匀圆柱电流的内外场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4,0)node[right]{$r/R$};\draw[axis](0,-0.2)--(0,1.5)node[above]{$B/B(R)$};\draw[world](0,0)--(1,1);\draw[world,domain=1:3.6]plot(\x,{1/\x});\draw[guide](1,0)--(1,1);\node[below]at(1,0){$1$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在柱面连接两支场并求最大值}\par\nobreak
+图\ref{fig:mg1:example:7:p}中内部随半径线性增长，外部随半径下降，两支在 $r=R$ 的值均为 $\mu_0I/(2\pi R)$，故最大值就在柱面。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用矢量极限解释轴心处的零场}\par\nobreak
+中心场为零，没有唯一的非零场方向；中心邻域的矢量可写作 $\bm B=\mu_0\bm J\times\bm r/2$，它在 $\bm r\to0$ 时连续趋零。用此矢量式比给中心硬指定一个“环向”更准确。\end{solution}
+\begin{question}\begin{example}[偏心圆柱孔洞中的均匀磁场]\label{mg1:example:8}
+无限长圆柱导体中挖去一条与轴平行的圆柱孔，孔完全位于导体内。剩余部分的均匀电流密度为 $\bm J$，从大柱轴到孔轴的矢量为 $\bm a$。求孔内磁场。计算 $J=1.40\,\mathrm{A/m^2},a=0.149\,\mathrm m$ 时的大小。
+\end{example}
+\fig{fig:mg1:example:8:s}{题设：偏心圆柱孔洞中的均匀磁场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.8);\draw[world](.6,.2)circle(.8);\fill(0,0)circle(1.5pt)node[below left]{$O_1$};\fill(.6,.2)circle(1.5pt)node[below right]{$O_2$};\draw[flow](0,0)--(.6,.2)node[midway,below]{$\bm a$};\node at(-0.8,1){$\odot J$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以正、负电流圆柱构造同一孔洞}\par\nobreak
+图\ref{fig:mg1:example:8:s}的“无电流孔洞”不能直接用一个以孔轴为中心的安培环路求场，因为整体电流没有关于孔轴的旋转对称。改把它叠加为完整大柱的 $\bm J$ 与孔柱的 $-\bm J$。对孔内任一点 $P$，两柱内部场分别是 $\mu_0\bm J\times\bm r_1/2$ 与 $-\mu_0\bm J\times\bm r_2/2$。
+\fig{fig:mg1:example:8:p}{左图重建孔洞中的正、负电流分布，右图放大同一场点的位置矢量关系}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\fill[blue!8](0,0)circle(1.98);\filldraw[white,draw=black](.9,.3)circle(1);
+\fill(0,0)circle(1.7pt)node[below left]{$O_1$};\fill(.9,.3)circle(1.7pt)node[below right]{$O_2$};\fill(1.215,.765)circle(1.7pt)node[right]{$P$};
+\node at(-1,1){$\odot\bm J$};\node[above]at(.9,1.5){孔内辅助分布 $-\bm J$};\draw[->,red](0,0)--(.9,.3)node[midway,above]{$\bm a$};
+\begin{scope}[xshift=4.2cm,yshift=-.5cm]
+\fill(0,0)circle(1.7pt)node[below]{$O_1$};\fill(2,.666667)circle(1.7pt)node[below right]{$O_2$};\fill(2.7,1.7)circle(1.7pt)node[above right]{$P$};
+\draw[->,red,thick](0,0)--(2,.666667)node[midway,below]{$\bm a$};\draw[->,blue,thick](0,0)--(2.7,1.7)node[midway,above]{$\bm r_1$};\draw[->,blue,thick](2,.666667)--(2.7,1.7)node[midway,right]{$\bm r_2$};
+\node at(1.4,2.5){$\bm r_1=\bm a+\bm r_2$};
+\end{scope}
+\node at(2.6,-2.7){孔内任意 $P$ 都有同一差矢量，场方向为 $\bm J\times\bm a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用位置矢量的差消去场点变量}\par\nobreak
+图\ref{fig:mg1:example:8:p}中 $\bm r_1=\bm a+\bm r_2$，故
+\[
+\bm B=\frac{\mu_0}{2}\bm J\times(\bm r_1-\bm r_2)
+=\frac{\mu_0}{2}\bm J\times\bm a.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算大小并检查同轴与孔洞边界极限}\par\nobreak
+结果不含场点坐标，说明孔内为均匀场。由于孔轴与电流轴平行，$\bm J\perp\bm a$，故 $B=\mu_0Ja/2=1.31\times10^{-7}\,\mathrm T$，方向为 $\bm J\times\bm a$。若孔变为同轴，$a\to0$，场连续趋零；若孔部分伸出大柱，上述两项“都在柱内”的条件就不再成立。
+
+叠加法中孔柱半径不进入最终结果，是因为所求点同时处于两个均匀电流圆柱的内部，两者内部场均为位置矢量的线性函数。这不表示孔半径在任意形状孔洞中都无关；改变孔形后，线性相消的基础一般不再存在。\end{solution}
+\begin{question}\begin{example}[两平行电流的极大场与零场点]\label{mg1:example:9}
+两条无限长导线位于 $x=\pm a$，电流都沿 $+z$。先令两电流均为 $I$，在垂直平分线 $x=0,y=s\ge0$ 上求场的极大值。再令左线电流为 $2I$、右线为 $I$，求零场点距左线的距离。
+\end{example}
+\fig{fig:mg1:example:9:s}{题设：两平行电流的极大场与零场点}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2.8,0)--(2.8,0)node[right]{$x$};\draw[axis](0,-0.2)--(0,3)node[above]{$y$};\draw[world](-1.5,0)circle(.13);\node at(-1.5,0){$\cdot$};\node[below]at(-1.5,-0.2){$I_1,\ x=-a$};\draw[world](1.5,0)circle(.13);\node at(1.5,0){$\cdot$};\node[below]at(1.5,-0.2){$I_2,\ x=a$};\fill(0,2)circle(2pt)node[right]{$P(0,s)$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对称抵消横向分量，求平分线上的场}\par\nobreak
+在图\ref{fig:mg1:example:9:s}的平分线上，两股相等电流的场之 $y$ 分量抵消，$x$ 分量同向。到每条线的距离 $\rho=\sqrt{a^2+s^2}$，投影因子为 $s/\rho$，因此场大小
+\[
+B(s)=2\frac{\mu_0I}{2\pi\rho}\frac{s}{\rho}
+=\frac{\mu_0I}{\pi}\frac{s}{a^2+s^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用导数符号确定极大位置}\par\nobreak
+对商求导，
+\[
+ B'(s)=\frac{\mu_0I}{\pi}
+ \frac{(a^2+s^2)-s(2s)}{(a^2+s^2)^2}
+ =\frac{\mu_0I(a^2-s^2)}{\pi(a^2+s^2)^2}
+\]，在 $0<s<a$ 为正、$s>a$ 为负，故 $s=a$ 取极大值 $\mu_0I/(2\pi a)$。
+\fig{fig:mg1:example:9:p}{等电流先作分量投影；不等电流再在两线间求反向场的抵消点}{\begin{tikzpicture}
+
+\begin{scope}
+\node at(-1.5,0){$\odot I$};\node at(1.5,0){$\odot I$};\fill(0,2)circle(1.5pt)node[right]{$P(0,s)$};
+\draw[guide](-1.5,0)--(0,2)--(1.5,0);\draw[->,blue,thick](0,2)--(-1.2,2.9)node[above]{$\bm B_L$};\draw[->,red,thick](0,2)--(-1.2,1.1)node[below]{$\bm B_R$};
+\draw[force](0,2)--(-2.4,2)node[left]{$\bm B$};\node[below]at(-1.5,-.2){$-a$};\node[below]at(1.5,-.2){$a$};
+\node at(0,-1){相等电流：$y$ 分量抵消};
+\end{scope}
+\begin{scope}[xshift=6.6cm]
+\draw[guide](-2,0)--(2,0);\node at(-2,0){$\odot 2I$};\node at(2,0){$\odot I$};\fill(.667,0)circle(1.7pt)node[above right]{$Q$};
+\draw[->,blue,thick](.667,.1)--(.667,1.4)node[above]{$\bm B_L$};\draw[->,red,thick](.667,-.1)--(.667,-1.4)node[below]{$\bm B_R$};
+\draw[dim](-2,-2)--(.667,-2)node[midway,below]{$d=4a/3$};\draw[dim](.667,-2)--(2,-2)node[midway,below]{$2a/3$};
+\node at(0,2.3){不等电流：$2I/d=I/(2a-d)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对不等电流另列反向场抵消式}\par\nobreak
+第二问按图\ref{fig:mg1:example:9:p}在两线之间设零场点距左线 $d$，两场方向相反，令 $2I/d=I/(2a-d)$。整理 $4a-2d=d$，得 $d=4a/3$，距右线 $2a/3$。零场点更靠近较弱电流，符合需要用较小距离补偿较小电流的判断。两线外侧场同向；不在连线上的点，两场方向不能反平行，因此没有另外的零场点。\end{solution}
+\begin{question}\begin{example}[同轴双线圈的中心均匀性]\label{mg1:example:10}
+两个相同圆线圈半径为 $R$，圆心在 $x=\pm a$，同向电流均为 $I$。求两圈中点的场。求使中点附近轴向场的二阶变化消失的间距，并说明这不等于处处均匀。
+\end{example}
+\fig{fig:mg1:example:10:s}{题设：同轴双线圈的中心均匀性}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.5,0)ellipse(.35 and 1.3);\draw[world](1.5,0)ellipse(.35 and 1.3);\draw[axis](-3,0)--(3,0)node[right]{$x$};\node[below]at(-1.5,0){$-a$};\node[below]at(1.5,0){$a$};\node[above]at(0,0){$O$};\foreach \x in {-1.5,1.5}{\node at(\x,1.3){$\odot$};\node at(\x,-1.3){$\otimes$};}\draw[dim](-2.3,0)--(-2.3,1.3)node[midway,left]{$R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{叠加两圆环轴线场并利用中心对称}\par\nobreak
+图\ref{fig:mg1:example:10:s}两圈的轴向场同向，令 $f(u)=(R^2+u^2)^{-3/2}$，则 $B(x)=\mu_0IR^2[f(x-a)+f(x+a)]/2$。在中点代入 $x=0$ 得 $B(0)=\mu_0IR^2/(R^2+a^2)^{3/2}$。关于中点的反射对称已经保证一阶导数为零，进一步考察二阶导数。
+\[
+\begin{aligned}
+ f'(u)&=-\frac32(R^2+u^2)^{-5/2}(2u)
+       =-3u(R^2+u^2)^{-5/2},\\
+ f''(u)&=-3(R^2+u^2)^{-5/2}
+       +(-3u)\left(-\frac52\right)(R^2+u^2)^{-7/2}(2u)\\
+       &=\frac{-3(R^2+u^2)+15u^2}{(R^2+u^2)^{7/2}}
+       =3(4u^2-R^2)(R^2+u^2)^{-7/2}.
+\end{aligned}
+\]
+\fig{fig:mg1:example:10:p}{解答过程：同轴双线圈的中心均匀性}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2,0)--(2.4,0)node[right]{$x/R$};\draw[axis](0,-0.2)--(0,1.5)node[above]{$B/B(0)$};\draw[world,domain=-2:2,samples=100]plot(\x,{(1/(1+(\x-.5)^2)^1.5+1/(1+(\x+.5)^2)^1.5)/(2/(1.25)^1.5)});\draw[guide](-.6,1)--(.6,1);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令二阶导数为零，求间距与中心场}\par\nobreak
+因此图\ref{fig:mg1:example:10:p}的 $B''(0)=0$ 要求 $4a^2-R^2=0$，取正距离 $a=R/2$，两圈间距即 $R$。此时 $B(0)=(4/5)^{3/2}\mu_0I/R$。场在中点附近的首个非零轴向修正是更高阶项，均匀程度提高；远离中心仍会下降。这个“消去局部二阶项”的条件，与声称整个空间为匀强场有不同的适用范围。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分局部高阶修正与全空间均匀}\par\nobreak
+把 $B(x)$ 在中心展开为 $B(0)+B''(0)x^2/2+\cdots$，奇次项因反射对称自动消失。线圈间距条件只用于消去二次项，并不要求各个电流环单独具有零二阶导数；两圈的空间布置才是关键变量。\end{solution}
+\begin{question}\begin{example}[长直导线附近矩形面的磁通]\label{mg1:example:11}
+无限长直导线沿 $z$ 轴通有电流 $I$。在 $xz$ 平面内取矩形，沿 $z$ 长度为 $l$，径向范围 $a<x<b$。正法线选 $+y$，求磁通，并求用中点场乘面积的相对误差最低阶。
+\end{example}
+\fig{fig:mg1:example:11:s}{矩形位于导线右侧的 $xz$ 平面，正法线与局部场均向纸内}{\begin{tikzpicture}
+
+\draw[flow](0,-.5)--(0,3.3)node[above]{$I,z$};\draw[world](1,0)rectangle(4,2.6);\fill[orange!18](2.5,0)rectangle(2.75,2.6);\draw(2.5,0)--(2.5,2.6)(2.75,0)--(2.75,2.6);
+\node[above]at(2.625,2.8){$\dd x$};\draw[dim](4.5,0)--(4.5,2.6)node[midway,right]{$l$};\node[below]at(1,0){$a$};\node[below]at(4,0){$b$};
+\node[align=center]at(1.7,1.3){$\otimes B$\\$\bm n=+\bm e_y$};\draw[axis](0,-1)--(5,-1)node[right]{$x$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按磁场变化方向取窄条并计算有向磁通}\par\nobreak
+图\ref{fig:mg1:example:11:s}的场垂直矩形面且指向 $+y$，沿高度不变，随 $x$ 按 $1/x$ 变化。取宽 $\dd x$、高 $l$ 的窄条，面积元 $l\dd x$，因此
+\[
+\Phi=\int_a^b\frac{\mu_0I}{2\pi x}l\,\dd x
+=\frac{\mu_0Il}{2\pi}[\ln x]_a^b
+=\frac{\mu_0Il}{2\pi}\ln\frac ba.
+\]
+\fig{fig:mg1:example:11:p}{同一磁通积分既可按窄条求和，也可用磁场曲线下的面积与中点矩形比较}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.6,0)node[right]{$x$};\draw[axis](0,0)--(0,3.2)node[above]{$B(x)$};
+\fill[blue!10]plot[domain=1:4,samples=80](\x,{2.7/\x})--(4,0)--(1,0)--cycle;
+\draw[orange!80!black,thick](1,0)rectangle(4,1.08);\draw[blue,thick,domain=.9:4.7,samples=80]plot(\x,{2.7/\x});
+\draw[guide](2.5,0)--(2.5,1.08);\node[below]at(1,0){$a$};\node[below]at(2.5,0){$d$};\node[below]at(4,0){$b$};
+\draw[dim](1,-.8)--(4,-.8)node[midway,below]{$w=b-a$};\node[right]at(4.8,2.6){$B=\mu_0I/(2\pi x)$};
+\node[align=center]at(6,1.1){蓝色面积 $\Phi/l$\\橙色矩形 $\Phi_m/l$};
+\node at(3,-1.7){$\Phi-\Phi_m>0$；曲线凸起使中点近似偏小};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{构造中点场近似并展开对数}\par\nobreak
+图\ref{fig:mg1:example:11:p}令中点距离 $d=(a+b)/2$、宽度 $w=b-a$。中点近似给 $\Phi_m=\mu_0Ilw/(2\pi d)$。把精确式写成 $\ln[(1+w/(2d))/(1-w/(2d))]$，令 $g(u)=\ln[(1+u)/(1-u)]$，则
+$g'(u)=1/(1+u)+1/(1-u)=2/(1-u^2)=2(1+u^2+O(u^4))$。
+由 $g(0)=0$，逐项积分为
+$g(u)=2\int_0^u(1+v^2+O(v^4))\dd v
+=2[u+u^3/3+O(u^5)]$，得 $\Phi=\mu_0Il[w/d+w^3/(12d^3)+\cdots]/(2\pi)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{给出误差阶数与窄面适用条件}\par\nobreak
+故中点近似偏小，相对误差最低阶为 $w^2/(12d^2)$。这里展开要求 $w\ll d$，不是仅要求矩形“看起来很窄”。\end{solution}
+\begin{question}\begin{example}[径向非均匀电流密度]\label{mg1:example:12}
+无限长圆柱半径 $R$，电流密度沿轴且大小 $J(r)=J_0r/R$。求总电流、内外磁场及最大场。
+\end{example}
+\fig{fig:mg1:example:12:s}{题设：径向非均匀电流密度}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.6);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.6,0)node[midway,below]{$R$};\draw[flow](1.6*.707,1.6*.707)arc(45:115:1.6);\node at(0,2.2){$J(r)=J_0r/R$};\node at(-.6,.6){$\odot J$};\fill[blue!15,even odd rule](0,0)circle(1.1)(0,0)circle(.94);\draw(0,0)circle(.94)(0,0)circle(1.1);\draw[dim](0,-.1)--(.94,-.1)node[midway,below]{$s$};\node[above right]at(.75,.8){$\dd s$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对同心薄环积分求包围电流与总电流}\par\nobreak
+图\ref{fig:mg1:example:12:s}中的密度随半径增加，半径 $r$ 内的电流应按同心薄环积分。薄环面积 $2\pi s\dd s$，故
+\[
+I(r)=\int_0^r\frac{J_0s}{R}2\pi s\,\dd s
+=\frac{2\pi J_0}{R}[s^3/3]_0^r
+=\frac{2\pi J_0r^3}{3R},\qquad I=I(R)=\frac{2\pi J_0R^2}{3}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用局部包围电流与总电流求内外场}\par\nobreak
+再由 $2\pi rB=\mu_0I(r)$ 得内部 $B=\mu_0J_0r^2/(3R)$。外部用总电流得到 $B=\mu_0J_0R^2/(3r)$。
+\fig{fig:mg1:example:12:p}{解答过程：径向非均匀电流密度}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(3.5,0)node[right]{$r/R$};\draw[axis](0,-0.2)--(0,1.5)node[above]{$B/B(R)$};\draw[world,domain=0:1]plot(\x,{\x*\x});\draw[world,domain=1:3]plot(\x,{1/\x});\node[below]at(1,0){$1$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{连接柱面场并检查边缘密度近似的偏差}\par\nobreak
+图\ref{fig:mg1:example:12:p}中内场按 $r^2$ 增长，外场按 $1/r$ 下降，最大值是柱面上的 $\mu_0J_0R/3$。若误把 $J(r)\pi r^2$ 当成包围电流，会高估为真实值的 $3/2$，因为这相当于把整个圆面都按边缘较大的密度计算。先积分分布，再使用环路定理，才保留了题设中的径向变化。\end{solution}
+\begin{question}\begin{example}[有限线圈的中心场精度]\label{mg1:example:13}
+半径 $R$、长度 $l$ 的密绕螺线管单位长度匝数为 $n$，电流 $I$。由圆环轴线场积分求中心场，并求中心场至少达到无限长值99\%所需的 $l/R$。
+\end{example}
+\fig{fig:mg1:example:13:s}{有限密绕线圈的纵截面，位于 $z'$ 的窄带含 $n\dd z'$ 匝}{\begin{tikzpicture}
+
+\draw[world](-2.5,-1)--(2.5,-1)(-2.5,1)--(2.5,1);\foreach \x in {-2.3,-1.9,...,2.3}{\node at(\x,1){$\odot$};\node at(\x,-1){$\otimes$};}
+\draw[axis](-3.2,0)--(3.4,0)node[right]{$z'$};\fill(0,0)circle(1.5pt)node[below left]{$O$};
+\fill[orange!20](1.1,-1)rectangle(1.35,1);\draw(1.1,-1)--(1.1,1)(1.35,-1)--(1.35,1);
+\draw[guide](0,0)--(1.23,1);\node[above,align=center]at(1.23,1.6){$n\dd z'$ 匝};\draw[dim](-2.5,-1.7)--(2.5,-1.7)node[midway,below]{$l$};\draw[dim](-3,0)--(-3,1)node[midway,left]{$R$};
+\node[below]at(-2.5,0){$-l/2$};\node[below]at(2.5,0){$l/2$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把窄带匝数乘单匝轴线场并积分}\par\nobreak
+图\ref{fig:mg1:example:13:s}中心到轴向窄带的距离为 $z'$，窄带匝数 $n\dd z'$，故
+\begin{align*}
+B_c&=\frac{\mu_0nIR^2}{2}\int_{-l/2}^{l/2}\frac{\dd z'}{(R^2+z'^2)^{3/2}}\\
+&=\frac{\mu_0nI}{2}
+ \left[\frac{z'}{\sqrt{R^2+z'^2}}\right]_{-l/2}^{l/2}\\
+&=\frac{\mu_0nI}{2}\frac{l}{\sqrt{R^2+l^2/4}}
+=\mu_0nI\frac{l}{\sqrt{l^2+4R^2}}.
+\end{align*}
+原函数可直接求导核验：
+$\dd[z'(R^2+z'^2)^{-1/2}]/\dd z'
+=(R^2+z'^2)^{-1/2}-z'^2(R^2+z'^2)^{-3/2}
+=R^2/(R^2+z'^2)^{3/2}$。
+上、下端贡献同号相加，与被积函数的偶对称相符。
+\fig{fig:mg1:example:13:p}{中心场随长径比趋近无限长值；99\%对应的长径比由阈值交点给出}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.4,0)node[right]{$l/(4R)$};\draw[axis](0,0)--(0,3.7)node[above]{$B_c/(\mu_0nI)$};
+\draw[blue,thick,domain=0:5,samples=100]plot(\x,{3*\x/sqrt(\x*\x+.25)});\draw[guide](0,3)--(5.1,3);
+\draw[orange!80!black,dashed](0,2.97)--(5,2.97);\draw[guide](3.50896,0)--(3.50896,2.97);\fill(3.50896,2.97)circle(1.5pt);
+\node[left]at(0,3.15){$1$};\node[left]at(0,2.75){$0.99$};\node[below,align=center]at(3.50896,0){$3.51$\\即 $l/R\simeq14.0$};
+\node at(3,4){固定 $n,I$，只比较中心场};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按中心场阈值求最小长径比}\par\nobreak
+图\ref{fig:mg1:example:13:p}要求比值 $l/\sqrt{l^2+4R^2}\ge0.99$。平方并移项，$0.0199l^2\ge3.9204R^2$，所以 $l/R\ge2(0.99)/\sqrt{1-0.99^2}=14.0$。这个约束只保证中心处达到所需精度，不能据此认为端口场也达到同样数值。在 $l/R\to0$ 而保持总匝数 $N=nl$ 不变时，式子趋于 $N\mu_0I/(2R)$，又回到薄线圈的圆心场，构成另一极限检验。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查归一化基准与固定总匝数的另一极限}\par\nobreak
+精度条件的分母取无限长值，且比值始终小于1，所以这里不需要再分高估、低估两种情形。若固定总匝数而改变长度，中心场绝对值同时随匝密度变化，不能把归一化曲线误读成总匝数固定时的场强增长曲线。\end{solution}
+\begin{question}\begin{example}[由轴线函数重建近轴磁场]\label{mg1:example:14}
+轴对称、近轴无电流区域中，已知轴线上 $B_z(0,z)=B_0(1-z^2/L^2)$，其中 $B_0>0,L>0$，考察 $r\ll L$ 的区域。求最低非零阶的 $B_r(r,z)$ 及 $B_z(r,z)$ 的二阶径向修正，并判断 $z>0$ 时磁感线向轴还是离轴。
+\end{example}
+\fig{fig:mg1:example:14:s}{题设：由轴线函数重建近轴磁场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-1)--(0,3)node[above]{$z$};\draw[guide](-1.5,0)--(1.5,0);\fill(1,1.5)circle(2pt)node[right]{$P(r,z)$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用小柱面的零总磁通求径向场}\par\nobreak
+对图\ref{fig:mg1:example:14:s}的小圆柱面应用零磁通，记题设轴线函数为 $f(z)=B_0(1-z^2/L^2)$，最低阶给 $B_r=-rf\prime(z)/2$。因为 $f\prime(z)=-2B_0z/L^2$，所以 $B_r=B_0rz/L^2+O(r^3)$。
+\fig{fig:mg1:example:14:p}{解答过程：由轴线函数重建近轴磁场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-.5)--(0,2.8)node[above]{$z$};\fill(1,1.2)circle(2pt)node[below]{$P$};\draw[flow](1,1.2)--(1.9,1.2)node[right]{$B_r>0$};\draw[flow](1,1.2)--(1,2.3)node[above]{$B_z$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用无电流小环路求轴向场的径向修正}\par\nobreak
+图\ref{fig:mg1:example:14:p}再使用无电流小矩形的零环量，$\partial B_z/\partial r=\partial B_r/\partial z=B_0r/L^2$。从轴线积分到半径 $r$，取积分变量 $\rho$，
+\[
+ B_z(r,z)-B_z(0,z)
+ =\frac{B_0}{L^2}\int_0^r\rho\dd\rho+O(r^4)
+ =\frac{B_0}{L^2}[\rho^2/2]_0^r+O(r^4),
+\]
+得到
+\[
+B_z(r,z)=B_0(1-z^2/L^2)+\frac{B_0r^2}{2L^2}+O(r^4).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由径向符号判断场线展开并核对两条约束}\par\nobreak
+因此 $z>0$ 时径向分量向外，正好补偿轴向场沿 $z$ 减弱造成的上下磁通差。两个表达式共同满足最低阶的无源和无环流条件；只写轴向变化而舍去径向场，不能在同一精度下满足这些约束。\end{solution}

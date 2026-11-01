@@ -1,0 +1,82 @@
+\section{独立练习}
+
+\begin{question}\begin{drill}[平抛测量给出的半径比]\label{at1:drill:1}
+两星球上近地平抛，参数满足 $v_1:v_2=8:7$、$h_1:h_2=6:5$、$M_1:M_2=5:6$、$x_1:x_2=3:4$。忽略自转，求 $R_1:R_2$。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:1:s}\fig{fig:at1:drill:1:s}{题设：平抛测量给出的半径比}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)--(5,0);\fill(0,2)circle(2pt)node[left]{$h_i$};\draw[flow](0,2)--(1.3,2)node[above]{$v_i$};\draw[world,domain=0:4]plot(\x,{2-\x*\x/8});\draw[dim](0,-.5)--(4,-.5)node[midway,below]{$x_i$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:1}
+\begin{question}\begin{drill}[由落下时间差估计山高]\label{at1:drill:2}
+地表半径 $R$，在地面下落短距离 $h$ 用时 $t$，在山顶下落相同距离用时 $t+\Delta t$。两处均可近似匀加速，求山高 $H$ 及 $\Delta t\ll t$ 的近似。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:2:s}\fig{fig:at1:drill:2:s}{题设：由落下时间差估计山高}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[world](1.3,0)--(2.1,0);\node[above]at(1.7,0){$H$};\draw[flow](2.1,.8)--(2.1,.2)node[right]{$h$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:2}
+\begin{question}\begin{drill}[正三角形三体的共同转动]\label{at1:drill:3}
+三个任意正质量 $m_1,m_2,m_3$ 位于边长 $l$ 的正三角形顶点。证明它们可保持形状绕共同质心转动，并求角速度。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:3:s}\fig{fig:at1:drill:3:s}{题设：正三角形三体的共同转动}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)--(4,0)--(2,3.464)--cycle;\node[left]at(0,0){$m_1$};\node[right]at(4,0){$m_2$};\node[above]at(2,3.464){$m_3$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:3}
+\begin{question}\begin{drill}[近侧与横向的潮汐加速度]\label{at1:drill:4}
+月球质量 $M^\prime$，距地心 $D$。在随地心平移而不转动的参考系，$A=(x,0)$ 在朝月方向，$B=(0,y)$，且 $x,y\ll D$。求扣除地心共同加速度后的月球作用。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:4:s}\fig{fig:at1:drill:4:s}{题设：近侧与横向的潮汐加速度}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(1.5,0)circle(2pt)node[below]{$A$};\fill(0,1.3)circle(2pt)node[left]{$B$};\fill(5,0)circle(4pt)node[right]{$M^\prime$};\draw[guide](0,0)--(5,0);
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:4}
+\begin{question}\begin{drill}[薄液层内近似不变的重力]\label{at1:drill:5}
+半径 $R$ 的球形天体质量为 $M$，外覆厚度 $h\ll R$ 的均匀液层。若重力随液层高度的一阶变化为零，求液层密度；再说明严格恒定重力所需的密度分布。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:5:s}\fig{fig:at1:drill:5:s}{题设：薄液层内近似不变的重力}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[world](0,0)circle(1.5);\node at(2.6,1){$h\ll R$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:5}
+\begin{question}\begin{drill}[均匀星球的直径隧道]\label{at1:drill:6}
+在均匀球形星球内开一条细直径隧道，忽略挖去的质量、自转和阻力。小物体从表面静止释放，求运动规律与穿过球心、到达另一端的时间。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:6:s}\fig{fig:at1:drill:6:s}{题设：均匀星球的直径隧道}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[world](-1.3,0)--(1.3,0);\fill(1.3,0)circle(2pt)node[right]{$x=R$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:6}
+\begin{question}\begin{drill}[两固定天体之间的零场点]\label{at1:drill:7}
+两固定点质量 $M_1,M_2$ 相距 $L$，求连线上零场点，并判断对沿线和横向小位移的稳定性。两场源由外界固定。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:7:s}\fig{fig:at1:drill:7:s}{题设：两固定天体之间的零场点}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$M_1$};\fill(5,0)circle(3pt)node[above]{$M_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:7}
+\begin{question}\begin{drill}[均匀球的自引力能]\label{at1:drill:8}
+质量 $M$、半径 $R$ 的均匀球由无穷远物质缓慢装配，求自引力势能及将其完全分散的最少功。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:8:s}\fig{fig:at1:drill:8:s}{题设：均匀球的自引力能}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[guide](0,0)circle(.8);\node at(2.8,1){加入 $\dd M$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:8}
+\begin{question}\begin{drill}[同密度星球的近表面周期]\label{at1:drill:9}
+两均匀星球半径不同、平均密度均为 $\rho$。比较忽略自转、大气时近表面圆轨道的周期，并用测得周期反推密度。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:9:s}\fig{fig:at1:drill:9:s}{题设：同密度星球的近表面周期}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.6);\draw[world](0,0)circle(3);\fill(0,0)circle(2pt)node[below]{$O$};\node[below]at(1.4,-.8){$r_1$};\node[below]at(2.8,-1.1){$r_2$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:9}
+\begin{question}\begin{drill}[空腔内自由运动的到达时间]\label{at1:drill:10}
+均匀球半径 $R$、密度 $\rho$，挖去半径 $R/2$ 的内切球腔。小物体从腔心 $C$ 静止释放，忽略对球体的影响，求首次到达腔壁的时间和速度。
+\end{drill}
+\typeout{ASTROFIG:fig:at1:drill:10:s}\fig{fig:at1:drill:10:s}{题设：空腔内自由运动的到达时间}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[world](.65,0)circle(.65);\fill(.65,0)circle(2pt)node[above]{$C$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at1:drill:10}

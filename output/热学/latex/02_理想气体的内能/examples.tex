@@ -1,0 +1,362 @@
+\section{例题与分析}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[开口管溢汞的临界温度]\label{t2-1}
+上端开口、下端封闭的等截面竖管长100cm，管内空气柱50cm，其上有20cm水银，水银上方通大气。初温27$^\circ$C，大气压76cmHg，取初温300K。缓慢加热，求水银开始溢出的温度，以及使剩余水银全部排出的最低加热门槛。见图\ref{fig:t2-1q}。
+\end{example}
+\fig{fig:t2-1q}{开口管溢汞的临界温度：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,4)--(0,0)--(1,0)--(1,4);\fill[gray!30] (0,2) rectangle (1,2.8);\node at (.5,1){气体};\draw[dim] (1.5,0)--(1.5,2) node[midway,right]{$50$cm};\draw[dim] (2.6,2)--(2.6,2.8) node[midway,right]{$20$cm};\node at (.5,4.4){开口};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{汞柱未溢出时先按恒定负载求开始溢出温度}\par\nobreak
+图\ref{fig:t2-1q}中水银尚未溢出时，汞柱高保持20cm，故气体承受的压强一直是 $76+20=96\,\mathrm{cmHg}$。到汞柱上端刚达管口，空气柱长度为 $100-20=80\,\mathrm{cm}$。等压膨胀给出开始溢出的温度
+\[\boxed{T_a=300\frac{80}{50}=480\,\mathrm K}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用剩余汞高同时写压强与体积，建立平衡曲线}\par\nobreak
+溢出后，汞柱变短，气体的平衡压强也随之减小。设剩余汞柱高度为 $h$，下式中长度数值均以cm计，则气柱长为 $100-h$，压强为 $(76+h)\,\mathrm{cmHg}$。对固定气体量列状态方程，
+\[\frac{(76+h)(100-h)}{T}=\frac{96\times50}{300},\quad
+T(h)=\frac{300}{4800}(76+h)(100-h).\]
+图\ref{fig:t2-1s}的实线从 $h=20$ 向左追踪升温时的平衡态。不能在未判断分支前就令 $h=0$。\fig{fig:t2-1s}{溢汞平衡曲线有温度极大值；从$h=20$出发的升温路径先到$h=12$失去稳定性}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.3,0)node[right]{$h/\mathrm{cm}$};\draw[axis](0,0)--(0,3.7)node[above]{$T/\mathrm K$};\draw(-.08,.15)--(.08,.25)--(-.08,.35)--(.08,.45);\draw[guide](0,1)--(4.8,1);
+\draw[gray,dashed,domain=0:2.4,samples=90]plot(\x,{1+1.5*\x-.3125*\x*\x});\draw[flow,blue,domain=4:2.4,samples=90]plot(\x,{1+1.5*\x-.3125*\x*\x});
+\fill(2.4,2.8)circle(.05)node[above]{$T_*=484\,\mathrm K$};\fill(4,2)circle(.05)node[right]{$480\,\mathrm K$};\node[below]at(2.4,0){$12$};\node[below]at(4,0){$20$};\node[left]at(0,1){$475$};\node at(2.2,-.8){纵轴截取高温区};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿升温支寻找平衡温度的极大值}\par\nobreak
+对$T(h)$中的两个一次因子使用乘积法则，
+\[
+\frac{\dd T}{\dd h}
+=\frac{300}{4800}\bigl[(100-h)\cdot1+(76+h)(-1)\bigr]
+=\frac{300}{4800}(24-2h).
+\]
+令一阶导数为零得$h=12\,\mathrm{cm}$；二阶导数$\dd^2T/\dd h^2=-600/4800<0$，确认这是极大值。临界温度为
+\[\boxed{T_*=\frac{300\times88\times88}{4800}=484\,\mathrm K}.\]
+\fig{fig:h2:e1levels}{溢出时汞面保持在管口；剩余汞柱变短，同时气柱变长、负载压强变小}{\begin{tikzpicture}
+
+\foreach \j/\air/\hh/\tt in {0/3.2/20/480,1/3.52/12/484}{\begin{scope}[xshift={4.5*\j*1cm}]\draw[world](0,4.2)--(0,0)--(.8,0)--(.8,4.2);\fill[blue!8](0,0)rectangle(.8,\air);\fill[gray!35](0,\air)rectangle(.8,4);\draw[dim](1.3,\air)--(1.3,4)node[midway,right]{$h=\hh\,\mathrm{cm}$};\node at(.4,2){气体};\node at(.4,-.6){$T=\tt\,\mathrm K$};\end{scope}}
+\node at(2.5,4.8){同一管口高度$100\,\mathrm{cm}$};\node at(2.5,-1.4){$\ell=100-h,\quad p/\mathrm{cmHg}=76+h$};
+
+\end{tikzpicture}}
+图\ref{fig:h2:e1levels}中的两个变化共同决定稳定性。后一个状态的气柱更长，所以继续膨胀同样距离所产生的气压降比例更小；汞柱每减少同样高度，外负载的下降比例却不变。比较这两个斜率，才能识别平衡分支是否还能承受扰动。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等温小扰动比较气压降与液柱负载降}\par\nobreak
+还需说明极值为何对应排汞门槛。在某平衡态上，设气体把汞柱再向上推 $x$，等温膨胀使气压降低约 $px/(100-h)$，汞柱溢出使负载降低约 $\rho gx$。在统一单位下，前者的系数为 $(76+h)/(100-h)$；$h>12$ 时它大于1，气压下降更快，净力转向下方，扰动不能持续扩大。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分临界温度与不可沿稳定支到达的零汞根}\par\nobreak
+$h=12$ 时一阶恢复能力消失，继续略微升温便不再有相连的稳定平衡，剩余水银被排出。
+直接代 $h=0$ 虽得475K，但该点在图中虚线分支，不能由480K起的缓慢升温稳定过程到达。484K应理解为理想模型的临界下限，真正触发失稳可由微扰或略超临界实现。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[连杆双缸的等温平衡]\label{t2-2}
+水平相向气缸截面分别为 $S_A=0.8\,\mathrm{m^2}$、$S_B=0.2\,\mathrm{m^2}$，两轻活塞以刚性杆相连。初始两气柱长度均为0.3m，左室有气体，右室真空，外界压强 $p_0$。打开连通两室的阀门，忽略连通管容积，活塞无摩擦，始末温度相同，求连杆位移。见图\ref{fig:t2-2q}。
+\end{example}
+\fig{fig:t2-2q}{两气柱初长相同，连杆使两活塞位移相同；外大气对不等面积活塞的合力不抵消}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(2.7,0) (0,2)--(2.7,2) (3,.5)--(6,.5)--(6,1.5)--(3,1.5);\fill[blue!8](0,0)rectangle(1.5,2);\draw[very thick](1.5,0)--(1.5,2) (4.5,.5)--(4.5,1.5);\draw[world](1.5,1)--(4.5,1);\draw[world](0,2)--(0,3)--(6,3)--(6,1.5);\draw[world](2.8,2.85)--(3.2,3.15)--(3.2,2.85)--(2.8,3.15)--cycle;\node[above]at(3,3.2){阀门$K$};\node at(.7,.8){气体};\node at(5.2,1){真空};\node[above]at(1.2,2){$S_A$};\node[below]at(4.8,.5){$S_B$};\draw[dim](0,-.6)--(1.5,-.6)node[midway,below]{$.30\,\mathrm m$};\draw[dim](4.5,-.6)--(6,-.6)node[midway,below]{$.30\,\mathrm m$};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{取两活塞与连杆整体，用初态受力求左室压强}\par\nobreak
+先求初、末两次机械平衡，不把“始末同温”误作全过程缓慢等温。取两活塞及连杆为整体，规定向右为正。左室气体推左活塞向右；大气对两活塞的合力因面积不同，不能抵消。初态右室真空，故
+\[p_{Ai}S_A-p_0S_A+p_0S_B=0,\qquad p_{Ai}=p_0\left(1-\frac{S_B}{S_A}\right)=0.75p_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由末态共同压强与整体受力求公共末压}\par\nobreak
+末态两室气压相同为 $p_f$，整体平衡为 $(p_f-p_0)(S_A-S_B)=0$。由于 $S_A\ne S_B$，得 $p_f=p_0$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一轴向坐标中分别写两气柱长度}\par\nobreak
+再用位移联系总体积。设连杆向右位移 $x$，左气柱增长为 $0.3+x$，右气柱缩短为 $0.3-x$；负号必须由相向气缸的几何关系确定。\fig{fig:t2-2s}{末态固定封闭端仍在原处；两活塞都左移$0.20\,\mathrm m$，连杆长度保持不变}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(2.7,0) (0,2)--(2.7,2) (3,.5)--(6,.5)--(6,1.5)--(3,1.5);\draw[guide](1.5,0)--(1.5,2) (4.5,.5)--(4.5,1.5);\draw[very thick](.5,0)--(.5,2) (3.5,.5)--(3.5,1.5);\draw[world](.5,1)--(3.5,1);\draw[flow](1.5,2.7)--(.5,2.7)node[midway,above]{$.20\,\mathrm m$};\draw[flow](4.5,2.7)--(3.5,2.7)node[midway,above]{$.20\,\mathrm m$};\draw[dim](0,-.6)--(.5,-.6)node[midway,below]{$.10\,\mathrm m$};\draw[dim](3.5,-.6)--(6,-.6)node[midway,below]{$.50\,\mathrm m$};\node at(3,-1.4){虚线为两活塞初位置；两气室末压均为$p_0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用始末同温和气体量守恒求位移并检查几何范围}\par\nobreak
+气体总量守恒、始末温度相同，所以
+\[p_0[0.8(0.3+x)+0.2(0.3-x)]
+=0.75p_0\times0.8\times0.3.\]
+消去 $p_0$ 后得 $0.30+0.60x=0.18$，故
+\[\boxed{x=-0.20\,\mathrm m},\]
+即连杆向左移动20cm。图\ref{fig:t2-2s}中末态左气柱长0.10m、右气柱长0.50m，均为正，满足活塞未越过封闭端的条件。
+虽然气体进入了原来的真空室，整体占据体积却由0.24减到0.18m$^3$。这与末压从 $0.75p_0$ 升至 $p_0$、温度相同完全一致；阀门开放并不保证总体积增加，最终几何变化由不等面积上的大气作用共同决定。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[从压强温度图判断变化]\label{t2-3}
+定量理想气体经历图\ref{fig:t2-3q}中的 $a\to b\to c\to d\to a$。$bc$ 的延长线过原点，$da\parallel bc$，$ab$ 竖直，$cd$ 水平。判断每段体积、平均平动动能和内能的增减。
+\end{example}
+\fig{fig:t2-3q}{从压强温度图判断变化：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$T$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[ray] (4,2.5)--(4,2);\draw[ray] (4,2)--(2,1);\draw[ray] (2,1)--(1,1);\draw[ray] (1,1)--(4,2.5);\draw[guide] (0,0)--(2,1);\foreach \x/\y/\t in {4/2.5/a,4/2/b,2/1/c,1/1/d}{\fill (\x,\y) circle(.04);\node[above left] at (\x,\y){$\t$};}
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{先由横坐标读温度，再用绝对温度比压强判断体积}\par\nobreak
+本图横轴是 $T$，纵轴是 $p$，因此竖直线表示等温而不是等容。先用 $\overline\varepsilon_{\text{平动}}=3kT/2$ 和 $U=nC_VT$ 判断能量，再用 $V=nRT/p$ 判断体积。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{等温降压段只改变体积，不改变两种能量}\par\nobreak
+$a\to b$ 的温度不变，平均平动动能、内能都不变；压强下降使 $T/p$ 增大，所以体积增大。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用过原点射线识别等容，再分析等压降温段}\par\nobreak
+$b\to c$ 位于同一过原点射线上，$p/T$ 不变，因此体积不变；温度下降，平均平动动能和内能均减小。$c\to d$ 是等压降温，故体积、两种能量都减小。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对有正截距的斜线求体积变化，汇总各段}\par\nobreak
+剩下 $d\to a$ 需要比较同一斜直线上 $T/p$ 的变化。图\ref{fig:t2-3s}把该直线反向延长，标出了正的纵截距 $b_0$；虽与 $bc$ 平行，它却没有经过原点。\fig{fig:t2-3s}{从压强温度图判断变化：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$T$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[guide] (0,0)--(4.8,2.4) node[right]{$bc:\ p/T=k$};\draw[world] (1,1)--(4,2.5);\draw[guide] (0,.5)--(1,1);\node[left] at (0,.5){$b_0>0$};\draw[flow] (1.7,1.6)--(3.1,2.3);\node at (2.7,3.2){$da:\ p=kT+b_0$};
+\end{tikzpicture}}
+
+设该段 $p=kT+b_0$，其中 $b_0>0$，则
+\[V(T)=\frac{nRT}{kT+b_0},\qquad
+\frac{\dd V}{\dd T}
+=nR\frac{(kT+b_0)\cdot1-T\cdot k}{(kT+b_0)^2}
+=\frac{nRb_0}{(kT+b_0)^2}>0.\]
+所以 $d\to a$ 升温的同时体积增加，平均平动动能和内能也增加。也可比较图中从原点引出的射线：沿 $da$ 向右，$p/T=k+b_0/T$ 减小，意味着体积增大。
+\begin{center}\small\begin{tabular}{ccccc}\toprule 过程&温度&体积&平均平动动能&内能\\\midrule $a\to b$&不变&增大&不变&不变\\$b\to c$&降低&不变&减小&减小\\$c\to d$&降低&减小&减小&减小\\$d\to a$&升高&增大&增大&增大\\\bottomrule\end{tabular}\end{center}
+决定等容的是过原点射线，决定能量的是横坐标；这两个判据在读图时应分别使用。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[两室加热的能量分配]\label{t2-4}
+绝热水平气缸内有固定导热隔板 $a$ 和可自由移动的轻活塞 $b$，两室各有 $n$ mol同种理想气体。左室体积固定，右室活塞外为大气。初态温度相同，给左室电阻通电，最后两室重新热平衡，温度均升高 $\Delta T$。求两室内能变化与输入电能。忽略隔板、电阻及活塞的储能变化。见图\ref{fig:t2-4q}。
+\end{example}
+\fig{fig:t2-4q}{两室加热的能量分配：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(6,0) (0,2)--(6,2);\draw[very thick] (2,0)--(2,2) (4.5,0)--(4.5,2);\node at (1,1){甲：$n$};\node at (3.25,1){乙：$n$};\node at (5.3,1){$p_0$};\node[above] at (2,2){$a$};\node[above] at (4.5,2){$b$};\draw[flow] (-.8,1)--(0,1) node[midway,above]{电};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{由相同气体量与温升求两室各自内能增加}\par\nobreak
+导热隔板固定，能在两室间传热，却不传递体积功。最终热平衡使甲、乙温升同为 $\Delta T$，且两室气体种类、物质的量相同，所以
+\[\boxed{\Delta U_{\text{甲}}=\Delta U_{\text{乙}}=nC_V\Delta T}.\]
+这不表示两室直接从电阻得到相同热量。电阻先加热甲，甲再通过隔板向乙传能；对单室列能量时，这份内部热交换必须保留。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选择整体边界，把隔板传热作为内部交换}\par\nobreak
+取两室气体与电阻为整体，隔板传热便在系统内部抵消。图\ref{fig:t2-4s}中输入电能最后分成整体内能增加与右室对大气的膨胀功两部分。\fig{fig:t2-4s}{电功进入绝热外边界，隔板传热属于内部交换；只有右室推动大气做功}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(7,0) (0,2)--(7,2);\draw[very thick](2,0)--(2,2) (5.5,0)--(5.5,2);\draw[guide](4.5,0)--(4.5,2);\draw[guide,rounded corners](-.4,-.4)rectangle(5.8,2.4);
+\draw[decorate,decoration={zigzag,segment length=2pt,amplitude=2pt}](.5,.5)--(1.5,.5);\draw[flow](-1.3,.5)--(.5,.5)node[midway,above]{$E_{\text{电}}$};\draw[flow,red](1.6,1.5)--(3,1.5)node[midway,above]{隔板传热};\draw[flow](4.5,2.9)--(5.5,2.9)node[midway,above]{$\Delta x$};\draw[flow](5.5,1)--(7.1,1)node[right]{$W=p_0S\Delta x$};\node at(1,1){甲};\node at(3.7,.7){乙};\node at(1,-1){$\Delta U_{\text{甲}}=nC_V\Delta T$};\node at(4.2,-1){$\Delta U_{\text{乙}}=nC_V\Delta T$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算右室的等压边界功后列整体能量守恒}\par\nobreak
+乙室外活塞轻、无摩擦，外压恒定，故乙室等压，状态方程给出 $p_0\Delta V_{\text{乙}}=nR\Delta T$。因此
+\[W_{\text{外}}=p_0\Delta V_{\text{乙}}=nR\Delta T,\]
+\[\boxed{E_{\text{电}}=\Delta U_{\text{甲}}+\Delta U_{\text{乙}}+W_{\text{外}}
+=n(2C_V+R)\Delta T}.\]
+甲室定容，升温表现为压强上升；乙室等压，升温表现为体积增大。两者内能只看相同温升，所以增加量相等，但外界收到的膨胀功只由乙室提供。整体外壁绝热并不能把这项外功删去。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[弹簧释放后的能量去向]\label{t2-5}
+绝热竖直缸内重活塞上方封有气体，下方真空；活塞下连竖直弹簧。初始弹簧压缩、储能 $E_p$，活塞被细线固定。剪断细线，经气体内部耗散后停在新平衡位置。设活塞升高 $\Delta h$，末态弹簧储能为 $E_{sf}$，求气体内能变化与能量分配。见图\ref{fig:t2-5q}。
+\end{example}
+\fig{fig:t2-5q}{弹簧释放后的能量去向：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3.5)--(2,3.5)--(2,0)--(0,0)--(0,3.5);\fill[pattern=north east lines] (0,1.4) rectangle (2,1.55);\draw[decorate,decoration={zigzag,segment length=3mm,amplitude=2mm}] (1,0)--(1,1.4);\node at (1,2.5){气体};\node[right] at (2,1.4){$m$};\node[right] at (2,.6){真空};\draw[blue] (.4,0)--(.4,1.4);\node[anchor=east] at (-.2,.7){待剪细线};\draw[guide] (-.1,.7)--(.4,.7);
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{根据气体受压过程选择包含弹簧与重力势能的整体}\par\nobreak
+剪断细线后，弹簧推动活塞上升，气体体积缩小并受到压缩。活塞运动中气体压力和弹簧力均会变化，只取气体就必须追踪压缩功。改取气体、活塞、弹簧与地球为整体，可以直接比较初末总能量。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一高度基准下比较初末静止状态}\par\nobreak
+图\ref{fig:t2-5s}在同一高度基准下对比初、末状态，虚线保留活塞初位置。整体边界包含气体、活塞、弹簧与地球。外壁绝热，下方真空不提供压力功，细线剪断后也不再向系统输入能量；初、末活塞都静止，因此动能变化为零。以初态活塞重力势能为零，则末态机械能包含 $mg\Delta h$ 和 $E_{sf}$。\fig{fig:t2-5s}{弹簧伸长释放储能，活塞升高使上方气体受压；末态弹簧仍可保持压缩}{\begin{tikzpicture}
+
+\foreach \j/\hh/\name in {0/1.2/初态,1/1.8/末态}{\begin{scope}[xshift={4.8*\j*1cm}]\draw[world](0,0)rectangle(2,3.6);\fill[blue!8](0,\hh)rectangle(2,3.6);\draw[very thick](0,\hh)--(2,\hh);\draw[decorate,decoration={zigzag,segment length=3pt,amplitude=2pt}](1,0)--(1,\hh);\node at(1,2.8){气体};\node at(1,-.6){\name};\node[right]at(2,.4){\ifnum\j=0 $E_p$\else $E_{sf}$\fi};\end{scope}}
+\draw[guide](4.5,1.2)--(7.5,1.2);\draw[dim](7.5,1.2)--(7.5,1.8)node[midway,right]{$\Delta h$};\node at(3.4,-1.5){$U_i+E_p=U_f+mg\Delta h+E_{sf}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以减少的弹簧能量分配气体内能与重力势能}\par\nobreak
+整体能量守恒为
+\[U_i+E_p=U_f+mg\Delta h+E_{sf},\]
+故
+\[\boxed{\Delta U=E_p-mg\Delta h-E_{sf}}.\]
+若气体量固定且 $C_V$ 不变，还可写 $nC_V(T_f-T_i)=E_p-mg\Delta h-E_{sf}$；没有足够的几何、弹簧参数时，不应再臆定一个数值温升。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用末态受力检查剩余弹性储能与耗散条件}\par\nobreak
+末态弹簧一般仍被压缩，因为它须向上平衡活塞重力与上方气体压力，即 $F_{sf}=mg+p_fS$。所以不能把“停止运动”解释为“弹簧恰好恢复原长”。本题又明确存在内部耗散，才允许系统最终静止；若完全无耗散，应继续考虑活塞振动及其动能。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[等容等压等温三段循环]\label{t2-6}
+单原子理想气体从 $a(p_1,V_1)$ 等容冷却至 $b(p_1/4,V_1)$，再等压膨胀至 $c(p_1/4,4V_1)$，最后等温压缩回到 $a$。求每段的功和热量以及循环净功。见图\ref{fig:t2-6q}。
+\end{example}
+\fig{fig:t2-6q}{三段过程首尾相接，$a,c$具有相同的$pV$并处在同一等温线上}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$V/V_1$};\draw[axis](0,0)--(0,3.7)node[above]{$p/p_1$};\draw[flow](1,3)--(1,.75);\draw[flow](1,.75)--(4,.75);\draw[flow,blue,domain=4:1,samples=100]plot(\x,{3/\x});\node[above]at(1,3){$a$};\node[below left]at(1,.75){$b$};\node[right]at(4,.75){$c$};\node[below]at(1,0){$1$};\node[below]at(4,0){$4$};\node[left]at(0,3){$1$};\node[left]at(0,.75){$1/4$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{先用各顶点的压强体积乘积确定温度和内能}\par\nobreak
+令 $E_*=p_1V_1$。图\ref{fig:t2-6q}的三个顶点满足 $p_aV_a=E_*$、$p_bV_b=E_*/4$、$p_cV_c=E_*$，所以 $a,c$ 温度相同，末段确为等温。单原子气体有 $U=3pV/2$，可先独立确定各段内能差。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求等容冷却与等压膨胀的功和热量}\par\nobreak
+$a\to b$ 等容，$W_{ab}=0$，故 $\Delta U_{ab}=Q_{ab}=\frac32(E_*/4-E_*)=-9E_*/8$。$b\to c$ 等压膨胀，
+\[W_{bc}=\frac{p_1}{4}(4V_1-V_1)=\frac34E_*,\quad
+\Delta U_{bc}=\frac32(E_*-E_*/4)=\frac98E_*.\]
+由 $Q=\Delta U+W$，得 $Q_{bc}=15E_*/8>0$。\fig{fig:t2-6s}{膨胀位于低压水平线，压缩位于高压双曲线；阴影面积的负值是循环净功}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$V/V_1$};\draw[axis](0,0)--(0,3.7)node[above]{$p/p_1$};\fill[blue!12](1,.75)--(1,3)--plot[domain=1:4,samples=100](\x,{3/\x})--cycle;\draw[flow](1,3)--(1,.75);\draw[flow](1,.75)--(4,.75);\draw[flow,blue,domain=4:1,samples=100]plot(\x,{3/\x});\node[above]at(1,3){$a$};\node[below left]at(1,.75){$b$};\node[right]at(4,.75){$c$};\node[below]at(1,0){$1$};\node[below]at(4,0){$4$};\node[left]at(0,3){$1$};\node[left]at(0,.75){$1/4$};\node at(3,2.5){逆时针：$W_{\text{净}}<0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿等温双曲线按压缩方向积分}\par\nobreak
+图\ref{fig:t2-6s}中 $c\to a$ 沿上方双曲线向左，是等温压缩。$\Delta U_{ca}=0$，功必须按体积积分并保留方向：
+\begin{align*}
+W_{ca}&=E_*\int_{4V_1}^{V_1}\frac{\dd V}{V}
+=E_*\left[\ln\frac V{V_1}\right]_{4V_1}^{V_1}\\
+&=E_*(\ln1-\ln4)=-E_*\ln4.
+\end{align*}
+由于 $\Delta U_{ca}=0$，第一定律给出 $Q_{ca}=W_{ca}<0$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段汇总并用循环方向检查净功与净热量}\par\nobreak
+各段合并如下：
+\begin{center}\small\begin{tabular}{cccc}\toprule 过程&$\Delta U/E_*$&$W/E_*$&$Q/E_*$\\\midrule $a\to b$&$-9/8$&0&$-9/8$\\$b\to c$&$9/8$&$3/4$&$15/8$\\$c\to a$&0&$-\ln4$&$-\ln4$\\\bottomrule\end{tabular}\end{center}
+故 $\boxed{W_{\text{净}}=Q_{\text{净}}=E_*(3/4-\ln4)<0}$。内能差相加为零；压缩发生在较高压强，输入功超过膨胀输出功，图中逆时针阴影的负面积与代数结果相符。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[电磁制动与膨胀做功]\label{t2-7}
+质量 $m$ 的导体棒以初速 $v$ 进入磁场并最终静止，全部焦耳热传入绝热水平缸中的1mol理想气体，气体 $C_V=5R/2$。轻液塞截面 $S$，外压 $p_0$ 恒定，液塞缓慢移动，忽略其他储能。求末态温升和液塞位移。见图\ref{fig:t2-7q}。
+\end{example}
+\fig{fig:t2-7q}{电磁制动与膨胀做功：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (2,2);\draw[very thick] (1.2,0)--(1.2,2);\draw[flow] (1.2,2.3)--(2.2,2.3) node[right]{$v$};\node at (.5,1){$B$};\draw[flow] (2.2,1)--(3.2,1) node[midway,above]{焦耳热};\draw[world] (3.3,2)--(3.3,0)--(6.3,0) (3.3,2)--(6.3,2);\draw[very thick] (5.4,0)--(5.4,2);\node at (4.3,1){气体};\node[right] at (6.3,1){$p_0$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{以导体棒的初末动能确定传入气体的能量}\par\nobreak
+导体棒最终停止，动能减少 $E=mv^2/2$。题设规定这部分能量全部以焦耳热传入气体，故气体吸收的能量已知；磁场过程的细节不再影响最终能量关系。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以恒外压和液塞位移联系温升与边界功}\par\nobreak
+液塞轻、缓慢运动，气体压强保持 $p_0$。设液塞向外移动 $x$，则 $\Delta V=Sx$，定量气体的状态方程给出
+\[p_0Sx=R\Delta T.\]
+该式既是几何与状态的联系，也确定气体对大气所做的功。图\ref{fig:t2-7s}因此把输入能量分为两项，而不是全部列作内能。\fig{fig:t2-7s}{焦耳热传入后气体膨胀，液塞的位移对应对大气的功；两项能量相加才等于棒的动能损失}{\begin{tikzpicture}
+
+\draw[world](0,2)--(0,0)--(6,0) (0,2)--(6,2);\fill[blue!8](0,0)rectangle(4.5,2);\draw[guide](3,0)--(3,2);\draw[very thick](4.5,0)--(4.5,2);\draw[flow](3,2.6)--(4.5,2.6)node[midway,above]{$x$};\draw[flow](-1.5,1)--(.6,1)node[midway,above]{$E=mv^2/2$};\draw[force](5.8,1.6)--(4.5,1.6)node[midway,above]{$p_0S$};\node at(1.4,.7){$\Delta U=5E/7$};\node at(3,-.7){$\Delta V=Sx,\quad W=p_0Sx=2E/7$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把输入分配为内能与膨胀功，联立求温升和位移}\par\nobreak
+第一定律为
+\[\frac12mv^2=\Delta U+W=\frac52R\Delta T+p_0Sx
+=\frac72R\Delta T.\]
+于是
+\[\boxed{\Delta T=\frac{mv^2}{7R},\qquad x=\frac{R\Delta T}{p_0S}=\frac{mv^2}{7p_0S}}.\]
+图中两条能量条的比例为 $\Delta U/E=5/7$、$W/E=2/7$，和为1。分母出现 $7R$ 是因为对气体实际执行的是等压加热，$C_p=C_V+R=7R/2$；它不改变气体内能仍按 $5R/2$ 计算的事实。忽略膨胀功会高估温升，并同时破坏状态方程给出的位移关系。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[同一加热器的两次实验]\label{t2-8}
+定量理想气体的 $C_V=5R/2$，初态 $p_0,V_0$。实验一固定活塞，输入能量 $E_1$ 后压强为 $p_1$；实验二允许轻活塞等压移动，输入能量 $E_2$ 后体积为 $V_1$。求 $E_1/E_2$。忽略加热器储能与散热。见图\ref{fig:t2-8q}。
+\end{example}
+\fig{fig:t2-8q}{相同初态分别进行两次实验；固定活塞只升压，自由轻活塞在恒压下移动}{\begin{tikzpicture}
+
+\foreach \j in {0,1}{\begin{scope}[xshift={5.3*\j*1cm}]\draw[world](0,2.8)--(0,0)--(3,0)--(3,2.8);\fill[blue!8](0,0)rectangle(3,1.5);\draw[very thick](0,1.5)--(3,1.5);\node at(1.5,.8){$p_0,V_0$};\draw[flow](1.5,-1.1)--(1.5,-.1)node[right]{$E_{\ifnum\j=0 1\else 2\fi}$};\end{scope}}
+\draw[world,very thick](-.2,1.5)--(.25,1.5) (2.75,1.5)--(3.2,1.5);\node at(1.5,3.3){实验一：固定};\draw[flow](6.8,1.5)--(6.8,2.6);\node at(6.8,3.3){实验二：自由轻活塞};\node at(6.8,2.9){外压$p_0$};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{固定活塞实验用零边界功与末压求输入能量}\par\nobreak
+两次实验从相同初态出发，却具有不同的末态和机械约束，应分别计算，不能把它们看成一个前后相接的过程。实验一固定活塞，故 $V=V_0,W_1=0$。由状态方程，
+\[nR\Delta T_1=p_1V_0-p_0V_0=V_0(p_1-p_0),\]
+所以输入能量为 $E_1=\Delta U_1=(5/2)V_0(p_1-p_0)$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{自由活塞实验同时计内能变化与对外做功}\par\nobreak
+实验二活塞自由且轻，压强保持 $p_0$。此时 $nR\Delta T_2=p_0(V_1-V_0)$，除内能增加外还有 $W_2=p_0(V_1-V_0)$。这正是图\ref{fig:t2-8s}中两种能量式的差别。\fig{fig:t2-8s}{两实验从同一初态$A$沿不同路径进行；只有右行等压段有矩形面积所示的体积功}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$V$};\draw[axis](0,0)--(0,3.7)node[above]{$p$};\fill[red!9](1,0)rectangle(3.5,1);\draw[flow,blue](1,1)--(1,2.8);\draw[flow,red](1,1)--(3.5,1);\fill(1,1)circle(.05)node[below left]{$A$};\fill(1,2.8)circle(.05)node[above right]{实验一末态};\fill(3.5,1)circle(.05)node[above right]{实验二末态};\draw[guide](1,0)--(1,1) (3.5,0)--(3.5,1) (0,2.8)--(1,2.8);\node[below]at(1,0){$V_0$};\node[below]at(3.5,0){$V_1$};\node[left]at(0,1){$p_0$};\node[left]at(0,2.8){$p_1$};\node at(2.3,.5){$W_2$};
+
+\end{tikzpicture}}
+
+\[E_2=\frac52p_0(V_1-V_0)+p_0(V_1-V_0)=\frac72p_0(V_1-V_0),\]
+故
+\[\boxed{\frac{E_1}{E_2}=\frac{5V_0(p_1-p_0)}{7p_0(V_1-V_0)}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对不同末态，避免擅自把两次温升设为相同}\par\nobreak
+式中 $n$ 被状态方程消去，不需要另求气体量。两实验的温升之比为 $V_0(p_1-p_0)/[p_0(V_1-V_0)]$，一般并不等于1；只有题设另外保证温升相同，能量比才可简化为 $C_V/C_p=5/7$。使用同一加热器本身不能提供这一额外条件。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[过原点直线过程的热量]\label{t2-9}
+$n$ mol氧气视为刚性双原子理想气体，沿 $p=kV$（$k>0$）从 $V_1$ 膨胀到 $V_2>V_1$。求 $W,\Delta U,Q$，见图\ref{fig:t2-9q}。
+\end{example}
+\fig{fig:t2-9q}{过原点直线过程的热量：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\draw[guide] (0,0)--(1,0.7);\draw[ray] (1,.7)--(4,2.8);\draw[guide] (1,0)--(1,.7) (4,0)--(4,2.8);\node[below] at (1,0){$V_1$};\node[below] at (4,0){$V_2$};\node[above] at (3,2.6){$p=kV$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{从实际斜直线路径和气体自由度选择内能表达式}\par\nobreak
+图\ref{fig:t2-9q}中路径是随体积增大的斜直线，压强不是常量。应按路径积分求功。刚性双原子氧气的摩尔定容热容为 $5R/2$，对任意两个平衡态都成立
+\[\Delta U=nC_V\Delta T=\frac{C_V}{R}\Delta(pV).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用端点压强体积乘积确定温升和内能差}\par\nobreak
+沿 $p=kV$ 有 $pV=kV^2$，因此 $\Delta(pV)=k(V_2^2-V_1^2)$。图\ref{fig:t2-9s}把实际膨胀功画成直线下方的梯形，其上下边分别对应两端压强。\fig{fig:t2-9s}{过原点直线过程的热量：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V$};\draw[axis] (0,0)--(0,3.5) node[above]{$p$};\node[below left] at (0,0){$O$};\fill[blue!15] (1,0)--(1,.7)--(4,2.8)--(4,0)--cycle;\draw[ray] (1,.7)--(4,2.8);\node at (3,.6){$W$};\draw[guide] (0,0)--(1,.7);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算直线下的有向面积，再与内能差相加求热量}\par\nobreak
+\[\boxed{W=\int_{V_1}^{V_2}kV\dd V
+=k\left[\frac{V^2}{2}\right]_{V_1}^{V_2}
+=\frac k2(V_2^2-V_1^2)},\]
+\[\boxed{\Delta U=\frac{5k}{2}(V_2^2-V_1^2),\qquad Q=\Delta U+W=3k(V_2^2-V_1^2)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对温升、吸热方向及能量分配比例}\par\nobreak
+温度也随 $V^2$ 增加，故本题同时升温、膨胀、吸热。输入热量的 $5/6$ 增加内能、$1/6$ 用于做功；该比例由直线路径确定，不能用等压过程的 $5/7$ 代替。$k$ 的量纲为 $\mathrm{Pa/m^3}$，与 $V^2$ 相乘为焦耳，结果中不应再额外乘一次 $n$。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[短管中空气的非等压冷却]\label{t2-10}
+竖直细玻璃管上端封闭，上端距外部水银槽面高76cm，管内空气量 $n=10^{-3}$mol，大气压76cmHg。$C_V=20.5\,\mathrm{J/(mol\,K)}$。缓慢降温10K，求空气放出的热量，取 $R=8.31\,\mathrm{J/(mol\,K)}$，忽略槽面移动。见图\ref{fig:t2-10q}。
+\end{example}
+\fig{fig:t2-10q}{短管中空气的非等压冷却：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,-.8)--(0,3.8)--(1,3.8)--(1,-.8);\draw[guide] (-1,0)--(2,0);\draw[thick] (0,2.3)--(1,2.3);\node at (.5,3){空气};\draw[dim] (1.7,0)--(1.7,3.8) node[midway,right]{$H=76$cm};\draw[dim] (-.5,2.3)--(-.5,3.8) node[midway,left]{$\ell$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{从固定管顶和槽面高度建立静液压关系}\par\nobreak
+令管截面为 $S$，空气柱长为 $\ell$。图\ref{fig:t2-10q}中管顶距外槽面固定为 $H=76\,\mathrm{cm}$，所以内水银面高于外槽面 $H-\ell$。从槽面沿水银向上到内液面，压强减小，故
+\[p=p_0-\rho g(H-\ell).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{使用特殊高度条件，把液面位置改写为过原点路径}\par\nobreak
+题给大气压恰为76cmHg，即 $p_0=\rho gH$，因此得到图\ref{fig:t2-10s}中的特殊路径关系
+\[p=\rho g\ell,\qquad V=S\ell,\qquad p=\frac{\rho g}{S}V.\]
+空气降温时 $p,V$ 都降低，水银面上升；不能因外槽通大气就令空气压强不变。\fig{fig:t2-10s}{冷却使内液面上升、气柱缩短；对应$p$--$V$图上沿过原点直线向左下方移动}{\begin{tikzpicture}
+
+\draw[world](0,-.5)--(0,3.8)--(1,3.8)--(1,-.5);\draw[guide](-.8,0)--(2,0)node[right]{槽面};\draw[guide](0,2.3)--(1,2.3);\draw[blue,thick](0,2.55)--(1,2.55);\draw[flow](.5,2.3)--(.5,2.55);\draw[dim](1.6,2.55)--(1.6,3.8)node[midway,right]{$\ell_f$};\draw[dim](-.6,0)--(-.6,3.8)node[midway,left]{$H$};\node at(.5,3.2){气体};
+\begin{scope}[xshift=5cm]\draw[axis](0,0)--(4.8,0)node[right]{$V$};\draw[axis](0,0)--(0,3.5)node[above]{$p$};\draw[guide](0,0)--(4.3,3.01);\draw[flow,blue](4,2.8)--(3.2,2.24);\fill(4,2.8)circle(.05)node[right]{$i$};\fill(3.2,2.24)circle(.05)node[left]{$f$};\node at(2,-1){$p=(\rho g/S)V$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿真实压缩路径求功，与内能变化相加求放热}\par\nobreak
+记$k=\rho g/S$，以$V_i,V_f$表示降温前后的体积。压缩时$V_f<V_i$，因此按真实方向积分：
+\[
+W=k\int_{V_i}^{V_f}V\,\dd V
+=k\left[\frac{V^2}{2}\right]_{V_i}^{V_f}
+=\frac12(kV_f^2-kV_i^2)
+=\frac12\Delta(pV)=\frac12nR\Delta T.
+\]
+冷却10K有$\Delta T=-10\,\mathrm K$，所以
+\[W=-0.04155\,\mathrm J,\qquad \Delta U=nC_V\Delta T=-0.20500\,\mathrm J,\]
+\[\boxed{Q=n\left(C_V+\frac R2\right)\Delta T=-0.24655\,\mathrm J}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查压缩功和放热的符号、数值关系}\par\nobreak
+故空气放出的热量为 $\boxed{0.247\,\mathrm J}$。水银上升压缩气体，对气体做正功，所以放热的绝对值比内能减少量更大；三个数的符号符合 $\Delta U=Q-W$，也与图中气柱缩短一致。
+\end{solution}

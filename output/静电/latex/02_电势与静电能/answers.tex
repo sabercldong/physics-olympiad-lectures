@@ -1,0 +1,277 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e2:drill:1}\textbf{用稳态电流与接地电压确定球电荷}\par\nobreak
+图\ref{fig:e2:drill:1:s} 稳态每秒进入球的负电荷大小 $Ne$，通过接地电阻的常规电流大小也为 $Ne$。球电势低于地，$V=-NeR$。忽略接地导线和电阻对球外场分布的影响，球的自电容关系为 $Q=4\pi\varepsilon_0aV$，所以 $Q=-4\pi\varepsilon_0aNeR$。
+\typeout{ECFIG:fig:e2:drill:1:p}\fig{fig:e2:drill:1:p}{稳态电子输入与流出相抵；常规电流从地流向负电势球，电阻与球表面分别发热}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.4);\node at(0,.4){$V=-NeR$};\node at(0,-.3){$Q<0$};
+\draw(0,-1.4)to[R,l={$R$}](0,-4)node[ground]{};\draw[flow](1,-3.5)--(1,-2)node[midway,right]{$I=Ne$};
+\draw[flow](-4,0)--(-1.6,0)node[midway,above]{$N,\ v$};\node at(-3,-1.3){每电子初能 $mv^2/2$};
+\draw[guide](1.2,.5)--(4,1.3)node[right]{$P_{\text{球}}=N K_{\text{到达}}$};
+\node at(4.5,-2.8){$P_R=I^2R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际电流方向核对球电势的负号}\par\nobreak
+稳态球上没有继续积累净电荷，所以电阻输送到球的正电荷率恰为 $Ne$。图\ref{fig:e2:drill:1:p}箭头是常规电流方向，沿导线向上；电子的实际漂移方向相反。球表面与地的电压降按这个方向为 $0-V=IR$，确定负号。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分开计算电阻热与电子到达动能}\par\nobreak
+图\ref{fig:e2:drill:1:p} 的电阻热功率 $P_R=(Ne)^2R$。每个电子从远处到球面，电场做功 $q(V_\infty-V)=-Ne^2R$，到达时动能为 $mv^2/2-Ne^2R$，故球接受的碰撞功率
+\[
+ P_{\text{球}}=N\left(\frac12mv^2-Ne^2R\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总能量流和到达条件检查}\par\nobreak
+二者之和等于远处电子流总动能输入 $Nmv^2/2$。实际到达率 $N$ 必须使括号非负，否则电子不能按题设能量到达球面；将负结果解释为“负发热”没有物理意义。电阻发热和球的碰撞发热是两个位置的能量，不应混为一项。\end{drillsolution}
+\begin{drillsolution}{e2:drill:2}\textbf{从初始电势反求中心球电荷}\par\nobreak
+图\ref{fig:e2:drill:2:s} 初始设中心球电荷为 $Q_A$。中壳净量为零，各球面在中心球区域的贡献按球对称相加，$V_A=k(Q_A/a+Q_C/c)$，所以 $Q_A=a(V_A-kQ_C/c)/k$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明初态两壳各表面的电势贡献}\par\nobreak
+以下把球壳视为题图中的理想薄壳，导线几何影响忽略。初态中壳内表面为 $-Q_A$、外表面为 $+Q_A$，两项对中心区域的电势在同一半径 $b$ 相消；外壳两表面的总贡献只剩净量 $kQ_C/c$。这解释了初态式中为什么没有额外的 $Q_A/b$ 项。
+
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用连通导体等势求第一次电势变化}\par\nobreak
+接通 $A,B$ 后它们等势，间隙中无净自由电荷，中心球电荷移到 $B$ 的外表面，$A$ 净量为零，二者共同电势 $V_1=k(Q_A/b+Q_C/c)$。因此
+\[
+ \Delta V_1=kQ_A\left(\frac1b-\frac1a\right)
+ =\left(V_A-\frac{kQ_C}{c}\right)\left(\frac ab-1\right).
+\]
+\typeout{ECFIG:fig:e2:drill:2:p}\fig{fig:e2:drill:2:p}{各阶段直接在同心球面上标净量，连接后总电荷只移到相连导体的最外表面}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\foreach \r in {.6,1.3,2}{\draw(0,0)circle(\r);}\node at(0,0){$Q_A$};\node[fill=white]at(1,1){$0$};\node[fill=white]at(1.7,-.9){$Q_C$};\node at(0,-2.8){初态};
+\end{scope}
+\begin{scope}[xshift=4.8cm,scale=.8]
+\foreach \r in {.6,1.3,2}{\draw(0,0)circle(\r);}\draw[blue,thick](.6,0)--(1.3,0);\node at(0,0){$0$};\node[fill=white]at(1,1){$Q_A$};\node[fill=white]at(1.7,-.9){$Q_C$};\node at(0,-2.8){接通 $A,B$};
+\end{scope}
+\begin{scope}[xshift=9.6cm,scale=.8]
+\foreach \r in {.6,1.3,2}{\draw(0,0)circle(\r);}\draw[blue,thick](.6,0)--(2,0);\node at(0,0){$0$};\node[fill=white]at(1,1){$0$};\node[fill=white]at(1.7,-.9){$Q_A+Q_C$};\node at(0,-2.8){再接通 $B,C$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把总电荷移到最外表面求第二次变化}\par\nobreak
+图\ref{fig:e2:drill:2:p} 再接通 $B,C$，总量 $Q_A+Q_C$ 移到最外表面，$A$ 在内部无场区，$V_2=k(Q_A+Q_C)/c$。第二次增量为
+\[
+ \Delta V_2=kQ_A\left(\frac1c-\frac1b\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对撤去第一根导线是否改变结果}\par\nobreak
+第一步后 $A$ 电荷已为零，即使之后撤去 $AB$ 导线，它在第二步仍保持零净量，所得电势也相同。若改动连接次序或给中壳非零净量，应重新按各阶段电荷守恒计算。\end{drillsolution}
+\begin{drillsolution}{e2:drill:3}\textbf{异号等量电荷的势相消而场相加}\par\nobreak
+图\ref{fig:e2:drill:3:s} 的原点到两电荷等距，电势为 $kq/a-kq/a=0$。正电荷在原点的场向右，负电荷在原点的场也向右，所以 $E_x=2kq/a^2$。
+\typeout{ECFIG:fig:e2:drill:3:p}\fig{fig:e2:drill:3:p}{解答过程：电势为零与电场为零}{\begin{tikzpicture}[scale=.88]
+\draw[world,fill=white](-1.5,0)circle(.12);\node[above]at(-1.5,0.15){$+q$};\draw[world,fill=white](1.5,0)circle(.12);\node[above]at(1.5,0.15){$+q$};\draw[force](0,.4)--(1.1,.4);\draw[force](0,-.4)--(-1.1,-.4);\node at(0,-1.2){$\bm E_O=0,\quad V_O=2kq/a$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同号等量电荷的场相消而势相加}\par\nobreak
+图\ref{fig:e2:drill:3:p} 改为同号电荷时，两场相反且等大，故 $\bm E_O=0$，电势却为 $2kq/a$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分标量抵消、矢量抵消与零点选择}\par\nobreak
+因此零电势只是所选零点下标量贡献相消，零场是矢量贡献相消，互不推出。异号情况的中垂面是零势面，电场仍垂直穿过该面；同号情况原点场零但附近场一般非零。\end{drillsolution}
+\begin{drillsolution}{e2:drill:4}\textbf{逐对计算初态和终态的相互作用能}\par\nobreak
+图\ref{fig:e2:drill:4:s} 共有三对不同电荷，每对相互作用能为 $kq^2/a$，总初能 $W_i=3kq^2/a$。释放后固定两电荷间距离仍为 $a$，它们保留能量 $kq^2/a$；移动电荷到无穷远时与二者的相互作用能趋零。
+\typeout{ECFIG:fig:e2:drill:4:p}\fig{fig:e2:drill:4:p}{释放电荷沿垂直平分线远离固定电荷；两固定电荷间仍保留一对能量}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[below]{$q$ 固定};\fill(4,0)circle(2pt)node[below]{$q$ 固定};\draw[blue,thick](0,0)--(4,0)node[midway,below]{$a$};
+\fill(2,3.464)circle(2pt)node[right]{$q,m$};\draw[guide](0,0)--(2,3.464)--(4,0);
+\draw[flow](2,3.7)--(2,5.4)node[above]{$v_\infty$};\node at(5.5,2.5){初态两条虚线的势能释放};\node at(2,-1.3){蓝边保留 $kq^2/a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两对释放能转成移动电荷动能}\par\nobreak
+图\ref{fig:e2:drill:4:p} 因此转为移动电荷动能的只有两对相互作用能，
+\[
+ \frac12mv_\infty^2=W_i-W_f=\frac{2kq^2}{a},
+ \qquad v_\infty=\sqrt{\frac{4kq^2}{ma}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查约束力做功与保留能量}\par\nobreak
+固定两电荷的约束力因位移为零不做功。若误把全部初始系统能量都转为该电荷动能，会忘记固定电荷之间仍保留的那一对能量。也可直接用外场电势 $2kq/a$ 乘移动电荷 $q$ 得到同一释放能。\end{drillsolution}
+\begin{drillsolution}{e2:drill:5}\textbf{按细环电荷与等距分母积分电势}\par\nobreak
+在 图\ref{fig:e2:drill:5:s} 中取半径 $s$ 的细环，$\dd q=2\pi\sigma s\dd s$。电势积分为
+\[
+ V(x)=2\pi k\sigma\int_0^R\frac{s\dd s}{\sqrt{x^2+s^2}}.
+\]
+令 $u=x^2+s^2$，$\dd u=2s\dd s$，上下限变成 $x^2,x^2+R^2$，
+于是
+\[
+ V(x)=\pi k\sigma\int_{x^2}^{x^2+R^2}u^{-1/2}\dd u
+ =2\pi k\sigma[\sqrt u]_{x^2}^{x^2+R^2}
+ =2\pi k\sigma(\sqrt{x^2+R^2}-|x|).
+\]
+\typeout{ECFIG:fig:e2:drill:5:p}\fig{fig:e2:drill:5:p}{电势在电荷面连续但有尖点；场的两个单侧极限相差 $\sigma/\varepsilon_0$}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-3.8,0)--(3.8,0)node[right]{$x/R$};\draw[axis](0,0)--(0,2.6)node[above]{$V/(2\pi k\sigma R)$};
+\draw[blue,thick,domain=-3.4:0,samples=70]plot(\x,{1.8*(sqrt(1+\x*\x)+\x)});
+\draw[blue,thick,domain=0:3.4,samples=70]plot(\x,{1.8*(sqrt(1+\x*\x)-\x)});\node[left]at(0,1.8){$1$};
+\end{scope}
+\begin{scope}[xshift=9cm]
+\draw[axis](-3.8,0)--(3.8,0)node[right]{$x/R$};\draw[axis](0,-2.5)--(0,2.6)node[above]{$E_x/(2\pi k\sigma)$};
+\draw[red,thick,domain=-3.4:-.001,samples=70]plot(\x,{1.8*(-1-\x/sqrt(1+\x*\x))});
+\draw[red,thick,domain=.001:3.4,samples=70]plot(\x,{1.8*(1-\x/sqrt(1+\x*\x))});
+\draw[fill=white](0,1.8)circle(2pt);\draw[fill=white](0,-1.8)circle(2pt);\node[left]at(0,1.8){$1$};\node[left]at(0,-1.8){$-1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用绝对值保证两侧连续和镜面对称}\par\nobreak
+图\ref{fig:e2:drill:5:p} 的电势左右对称，在 $x=0$ 连续取 $2\pi k\sigma R$。分别使用
+$\dd\sqrt{x^2+R^2}/\dd x=(2x)/(2\sqrt{x^2+R^2})$
+以及 $\dd|x|/\dd x=1$（$x>0$）、$-1$（$x<0$）。
+因此对两侧的光滑函数求导，得
+\[
+ E_x=2\pi k\sigma\left(\operatorname{sgn}x-\frac{x}{\sqrt{x^2+R^2}}\right),\quad x\ne0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求单侧导数并核对场跳变}\par\nobreak
+因此 $E_x(0^+)=\sigma/(2\varepsilon_0)$、$E_x(0^-)=-\sigma/(2\varepsilon_0)$，跳变量为 $\sigma/\varepsilon_0$。电势连续而法向导数跳变，对应有限面电荷。若漏掉 $|x|$ 而在负轴也直接写 $-x$，会破坏镜面对称并给出错误场方向。\end{drillsolution}
+\begin{drillsolution}{e2:drill:6}\textbf{按线段真实边界积分标量电势}\par\nobreak
+图\ref{fig:e2:drill:6:s} 中距 $y$ 微元的距离为 $\sqrt{x^2+y^2}$，故
+\[
+ V=k\lambda\int_{-l}^l\frac{\dd y}{\sqrt{x^2+y^2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合并上下限并检查对数的量纲}\par\nobreak
+为展开这个积分，令 $y=x\tan\theta$，其中
+$-\theta_0\le\theta\le\theta_0$、$\theta_0=\arctan(l/x)<\pi/2$。
+则 $\dd y=x\sec^2\theta\dd\theta$，
+$\sqrt{x^2+y^2}=x\sec\theta$，被积式化为 $\sec\theta\dd\theta$。
+它的原函数可由乘一个相同因子构造：
+\[
+ \sec\theta
+ =\frac{\sec^2\theta+\sec\theta\tan\theta}{\sec\theta+\tan\theta}
+ =\frac{\dd}{\dd\theta}\ln(\sec\theta+\tan\theta).
+\]
+故记 $s=\sqrt{x^2+l^2}$，有
+\begin{align*}
+ V&=k\lambda[\ln(\sec\theta+\tan\theta)]_{-\theta_0}^{\theta_0}\\
+ &=k\lambda\ln\frac{s+l}{s-l}
+ =k\lambda\ln\frac{(s+l)^2}{x^2}
+ =2k\lambda\ln\frac{s+l}{x}.
+\end{align*}
+这里用了 $(s-l)(s+l)=x^2$；对数参数为无量纲的距离比。
+\typeout{ECFIG:fig:e2:drill:6:p}\fig{fig:e2:drill:6:p}{解答过程：有限线段的中垂面电势}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-2)--(0,2);\fill(3,0)circle(1.6pt)node[above]{$P$};\draw[guide](0,1.3)--(3,0)node[midway,above]{$\sqrt{x^2+y^2}$};\node[left]at(0,1.3){$\dd q=\lambda\dd y$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先区分有限分布与无限长极限的零点}\par\nobreak
+本式是有限线段以无穷远为零的电势。若要作无限长极限，应先保留两个场点作差；发散的公共项才能消掉，而不是把两个无穷大分别指定成零。
+
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用求导核对电场，再对有限场点作差}\par\nobreak
+图\ref{fig:e2:drill:6:p} 求导时 $l$ 固定，$s=\sqrt{x^2+l^2}$ 满足
+$s'=2x/(2s)=x/s$，所以
+\begin{align*}
+ V'(x)&=2k\lambda\left(\frac{s'}{l+s}-\frac1x\right)
+ =2k\lambda\left(\frac{x}{s(l+s)}-\frac1x\right)\\
+ &=2k\lambda\left(\frac{s-l}{xs}-\frac{s}{xs}\right)
+ =-\frac{2k\lambda l}{xs}.
+\end{align*}
+因此 $E_x=-V'=2k\lambda l/[x\sqrt{x^2+l^2}]$，与直接场积分一致。$l\to\infty$ 时 $V\simeq2k\lambda\ln(2l/x)$ 发散，但两个有限距离处的 $V(x_1)-V(x_2)$ 趋于 $2k\lambda\ln(x_2/x_1)$。这正说明无限线电荷可以定义有限电势差，却不能沿用有限线段的无穷远零点。\end{drillsolution}
+\begin{drillsolution}{e2:drill:7}\textbf{在距离比小参数中保留首个不相消的阶}\par\nobreak
+图\ref{fig:e2:drill:7:s} 场点到正、负电荷距离首阶为 $r_\pm\simeq r\mp a\cos\theta$。展开倒数，$1/r_\pm\simeq(1/r)[1\pm(a/r)\cos\theta]$，两项 $1/r$ 抵消，故
+\[
+ V=kq\left(\frac1{r_+}-\frac1{r_-}\right)
+ \simeq\frac{kp\cos\theta}{r^2},\qquad p=2aq.
+\]
+\typeout{ECFIG:fig:e2:drill:7:p}\fig{fig:e2:drill:7:p}{球坐标的极角从偶极轴量起；增大 $\theta$ 的单位方向垂直于径向}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(5,0)node[right]{偶极轴};\draw[flow](0,-.8)--(2,-.8)node[midway,below]{$\bm p$};
+\draw[guide](0,0)--(3,2.4);\fill(3,2.4)circle(2pt)node[above left]{$P$};
+\draw[flow,blue](3,2.4)--(4.25,3.4)node[right]{$\hat{\bm r}$};
+\draw[flow,red](3,2.4)--(2,3.65)node[left]{$\hat{\bm\theta}$};
+\draw[->](.9,0)arc(0:38.66:.9);\node at(1.2,.4){$\theta$};\node[below left]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按径向和角向方向导数分别求场}\par\nobreak
+图\ref{fig:e2:drill:7:p} 中径向求导时固定 $\theta$，角向求导时固定 $r$：
+\[
+ \partial_rV=kp\cos\theta(-2r^{-3}),\qquad
+ \partial_\theta V=\frac{kp}{r^2}(-\sin\theta).
+\]
+沿极角方向的实际小位移为 $r\dd\theta$，故对应的场分量须再除以 $r$。
+于是
+\[
+ E_r=-\partial_rV=\frac{2kp\cos\theta}{r^3},\qquad
+ E_\theta=-\frac1r\partial_\theta V=\frac{kp\sin\theta}{r^3}.
+\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查轴线与中垂线的方向和大小}\par\nobreak
+轴线上 $\theta=0$，场沿偶极矩、大小 $2kp/r^3$；中垂线上 $\theta=\pi/2$，径向项零、角向场反向于偶极矩、大小 $kp/r^3$。中垂面电势为零但角向导数非零，再次体现零势不等于零场。\end{drillsolution}
+\begin{drillsolution}{e2:drill:8}\textbf{按每个球壳的电荷平方计算初末自能}\par\nobreak
+图\ref{fig:e2:drill:8:s} 初球壳的自能为 $W_i=kQ^2/(2R)$。图\ref{fig:e2:drill:8:p} 最终两壳相距无限远，无相互作用能，每壳自能 $k(Q/2)^2/(2R)$，总和
+\[
+ W_f=2\frac{k(Q/2)^2}{2R}=\frac{kQ^2}{4R}.
+\]
+\typeout{ECFIG:fig:e2:drill:8:p}\fig{fig:e2:drill:8:p}{解答过程：带电球壳分裂后的能量比较}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,0)circle(1);\draw[world](2,0)circle(1);\node at(-2,0){$Q/2$};\node at(2,0){$Q/2$};\node at(0,1.8){相距无穷远，两壳半径均为 $R$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由准静态过程确定外界做功符号}\par\nobreak
+所以 $\Delta W=-kQ^2/(4R)$。忽略其他能量变化且缓慢进行，外界对电荷系统做功 $W_{\text{外}}=\Delta W<0$，表示可从电场释放能量中取出正的机械功 $kQ^2/(4R)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对固定几何条件而不误用球滴分裂模型}\par\nobreak
+题设最终球壳半径仍为 $R$，并非材料体积守恒的球滴分裂；若尺寸也变化，需先按真实几何重新计算自能。\end{drillsolution}
+\begin{drillsolution}{e2:drill:9}\textbf{对负电荷写机械能守恒求末速}\par\nobreak
+图\ref{fig:e2:drill:9:s} 的能量守恒为 $mv^2/2-eV_B=mv_0^2/2-eV_A$，整理得
+\[
+ v^2=v_0^2+\frac{2e}{m}(V_B-V_A).
+\]
+\typeout{ECFIG:fig:e2:drill:9:p}\fig{fig:e2:drill:9:p}{电子沿高电势方向加速的局部情形；电场与电子受力反向}{\begin{tikzpicture}
+
+\draw(0,-1.5)--(0,1.5)(6,-1.5)--(6,1.5);\node[above]at(0,1.5){$V_A$};\node[above]at(6,1.5){$V_B>V_A$};
+\fill(.7,0)circle(2pt)node[below]{$-e$};\draw[flow](.7,0)--(2,0)node[above]{$\bm v_0$};
+\draw[flow,blue](4.8,.8)--(2.7,.8)node[midway,above]{$\bm E$};\draw[force](2.7,-.8)--(4.8,-.8)node[midway,below]{$-e\bm E$};
+\node at(3,-2.3){$\Delta K=e(V_B-V_A)>0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把可达条件扩展到整条运动路径}\par\nobreak
+对已指定的连续运动路径，以路径坐标 $s$ 标记各点，还须有
+\[
+K(s)=\frac12mv_0^2+e[V(s)-V_A]\ge0
+\]
+在途中始终成立；等价于电子的势能 $-eV(s)$ 不超过总能量。端点末速公式只给出这一条件在 $B$ 点的取值。
+
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断初静止电子的加速方向}\par\nobreak
+图\ref{fig:e2:drill:9:p} 若只讨论末端能量，右端须非负；若路径中还有更低电势的势垒，应检查整条允许运动路径的最大电子势能，末端条件本身未必充分。初静止且能从 $A$ 自由向 $B$ 加速时，需要 $V_B>V_A$，电子趋向高电势，势能 $-eV$ 却下降。高、低势不是对正、负电荷分别重新定义的，改变的是电荷势能与电势的关系。\end{drillsolution}

@@ -1,0 +1,166 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em2:drill:1}\textbf{用磁场与源电流的线性关系求总磁通变化}\par\nobreak
+图\ref{fig:em2:drill:1:s}中的外环包围整个管截面；线性关系给出 $\dot B=B_0\beta/I_0$，其中 $\beta$ 单位是安每秒。总电动势
+\[e=\pi a^2B_0\beta/I_0,\qquad i=e/(R_1+R_2).\]
+\fig{fig:em2:drill:1:p}{管外同心圆周的场按 $1/\rho$ 衰减，半周积分仍等于总电动势的一半}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)circle(.9);\draw[world](0,0)circle(.9)circle(1.7);\draw[->,blue,very thick](1.7,0)arc(0:180:1.7);\draw[->,red,very thick](-1.7,0)arc(180:360:1.7);\node at(0,.3){$\otimes\dot B$};\node at(0,2.3){$P\to Q:\ \int E_\theta\rho\dd\theta=e/2$};\node at(0,-2.4){$Q\to P:\ \int E_\theta\rho\dd\theta=e/2$};\node[right]at(1.7,0){$P$};\node[left]at(-1.7,0){$Q$};\draw[dim](0,0)--(.9,0)node[midway,below]{$a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在管外积分半周感生场再减电阻降}\par\nobreak
+图\ref{fig:em2:drill:1:p}中，外环处 $E_\theta=a^2\dot B/(2\rho)$，所以每半圆沿感生场方向的积分为
+\[
+ \int_0^\pi E_\theta\rho\dd\theta
+ =\rho E_\theta[\theta]_0^\pi
+ =\pi\rho E_\theta=\pi a^2\dot B/2=e/2.
+\]于是 $V_P-V_Q=iR_1-e/2=e(R_1-R_2)/[2(R_1+R_2)]$。外环半径增大不改变所包围的磁通，但若材料不变会改变其电阻，不能把这两种变化混为一谈。\end{drillsolution}
+\begin{drillsolution}{em2:drill:2}\textbf{由转轴距离求速度并沿斜边积分}\par\nobreak
+由图\ref{fig:em2:drill:2:s}取高 $h=\sqrt3l/2$。点 $(x,y)$ 的速度为 $-\omega x\bm e_z$，故 $\bm v\times\bm B=-B\omega x\bm e_y$。沿 $a\to b$，$x=l(h-y)/(2h)$，于是
+\[e_{ab}=\int_h^0-B\omega\frac{l(h-y)}{2h}\dd y
+=-\frac{B\omega l}{2h}\left[hy-\frac{y^2}{2}\right]_h^0
+=-\frac{B\omega l}{2h}\left(0-\frac{h^2}{2}\right)
+=\frac{B\omega lh}{4}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将三条真实边的驱动合成总电动势}\par\nobreak
+底边积分为零，另一斜边 $d\to a$ 同样贡献 $B\omega lh/4$。总电动势 $e=B\omega lh/2=\sqrt3 B\omega l^2/4$，电流沿 $a\to b\to d\to a$，大小 $e/R$。
+\fig{fig:em2:drill:2:p}{两斜边的动生推动沿实际电流方向，底边动生积分为零；求 $U_{ac}$ 沿真实边 $a\to b\to c$}{\begin{tikzpicture}
+
+\draw[world](0,2.598)node[above]{$a$}--(1.5,0)node[below right]{$b$}--(-1.5,0)node[below left]{$d$}--cycle;\fill(0,0)circle(2pt)node[below]{$c$};\draw[guide](0,-.4)--(0,3.4)node[above]{$+y,\ \omega$};\draw[flow](2,1.8)--(3.1,1.8)node[right]{$B,+x$};
+\draw[->,blue,thick](.8,1.212)--(.8,.45)node[right]{$\bm u\times\bm B$};\draw[->,blue,thick](-.8,1.212)--(-.8,1.975)node[left]{$\bm u\times\bm B$};\node at(3,.7){$\otimes\bm u$};\node at(-2.1,.7){$\odot\bm u$};
+\draw[->,red,thick](.15,2.338)--(.6,1.559);\draw[->,red,thick](1.3,0)--(.2,0);\node at(1.8,-.8){$b\to c:\ R/6,\ e_{bc}=0$};\node at(-1.8,-1.6){$a\to b:\ R/3,\ e_{ab}=e/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际金属边计算端电势与中点电势}\par\nobreak
+图\ref{fig:em2:drill:2:p}中 $ab$ 电阻为 $R/3$、电动势为 $e/2$，故 $U_{ab}=e/3-e/2=-e/6$。从 $a$ 经 $b$ 走到 $c$，电阻为 $R/2$、电动势仍为 $e/2$，所以 $U_{ac}=e/2-e/2=0$。轴 $ac$ 是几何转轴，不是新增导线；计算必须沿真实金属边。反转角速度，两有向电动势、电流和非零电势差同时反号。\end{drillsolution}
+\begin{drillsolution}{em2:drill:3}\textbf{用两条引线组成的逆时针回路确定差值符号}\par\nobreak
+图\ref{fig:em2:drill:3:s}中 $g_1$ 向右、$g_2$ 返回，环路方向逆时针，法线向纸外。忽略表负载影响，两次静电势差相同，读数差只来自引线积分，故 $U_1-U_2=\varepsilon_{g_1}-\varepsilon_{g_2}=-\beta S$。
+\fig{fig:em2:drill:3:p}{两引线之差沿下路去、上路回，正法线为纸外，误差正比于两路间面积}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)rectangle(4,1.5);\draw[world](0,0)node[left]{$A$}--(4,0)node[right]{$B$}--(4,1.5)--(0,1.5)--cycle;\draw[flow](.5,0)--(2,0)node[midway,below]{$g_1$};\draw[flow](3.5,1.5)--(2,1.5)node[midway,above]{$-g_2$};\node at(2,.75){$\odot\bm n,\quad S$};\node at(2,-.9){$U_1-U_2=-\beta S,\quad S\le u_0/|\beta|$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由误差容许值反求引线间面积上界}\par\nobreak
+图\ref{fig:em2:drill:3:p}用闭合箭头标明差值所对应的法线，因此误差大小为 $|\beta|S$。要求其不超过 $u_0$，得到 $S\le u_0/|\beta|$；当变化率为零时本项误差为零。反向绕行使差值反号，减小面积则直接减小测量误差。\end{drillsolution}
+\begin{drillsolution}{em2:drill:4}\textbf{对新孤立上导体守恒有向总电荷}\par\nobreak
+图\ref{fig:em2:drill:4:s}表示闭合前的连接关系，初始电压按各自上极板对下极板计。上导体总电荷 $CU+2C(-U)=-CU$，所以 $U_f=-CU/(3C)=-U/3$。
+\fig{fig:em2:drill:4:p}{最终上导体总电荷仍为 $-CU$，两上极板均为负；微小电阻保证最终稳定}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0) (.5,0)--(.5,.8) (.5,1.2)--(.5,2.5)--(1.6,2.5) (2.4,2.5)--(3.5,2.5)--(3.5,1.2) (3.5,.8)--(3.5,0);\draw[world](1.6,2.3)rectangle(2.4,2.7);\node[above]at(2,2.7){$r$};\foreach \xx in {.5,3.5}{\draw[world]({\xx-.35},1.2)--({\xx+.35},1.2) ({\xx-.35},.8)--({\xx+.35},.8);}\draw[blue,dashed,rounded corners](-.1,1)rectangle(4.1,3.1);\node[left]at(.15,1.7){$-CU/3$};\node[right]at(3.85,1.7){$-2CU/3$};\node at(2,3.7){框内 $Q=-CU$ 守恒};\node at(2,-.8){$U_f=-U/3,\quad Q_J=4CU^2/3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原两块上极板的最终电荷}\par\nobreak
+图\ref{fig:em2:drill:4:p}中，最终两上极板均带负电，电荷分别为 $-CU/3,-2CU/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由初末场能之差求再分配热量}\par\nobreak
+初场能 $3CU^2/2$，末场能 $3C(U/3)^2/2=CU^2/6$，因此热量 $Q=4CU^2/3$。它等于 $C(2C)(2U)^2/[2(3C)]$，与一般再分配公式一致；中间电阻只决定快慢。\end{drillsolution}
+\begin{drillsolution}{em2:drill:5}\textbf{分别计算两段电阻降与四分之一圈感生积分}\par\nobreak
+图\ref{fig:em2:drill:5:s}中总电阻为 $6R$，环流 $i=e/(6R)$。轴对称感生场使每四分之一圆的感应积分为 $e/4$，它不随该段电阻改变。逐段使用 $U=iR-\varepsilon$，得到
+\[V_P-V_M=\frac e6-\frac e4=-\frac e{12},\quad V_M-V_Q=\frac{3e}{6}-\frac e4=\frac e4.\]
+\fig{fig:em2:drill:5:p}{仅比较 $P,M,Q$ 三个连接点的电势；虚线不预先规定各段内部电势分布}{\begin{tikzpicture}
+
+\draw[axis](-.4,0)--(5.8,0)node[right]{连接点};\draw[axis](0,-.3)--(0,2.5)node[above]{$V\ (V_Q=0)$};\draw[guide](.4,1.3333)--(2.7,2)--(5,0);\fill(.4,1.3333)circle(2pt)node[left]{$V_P=e/6$};\fill(2.7,2)circle(2pt)node[above]{$V_M=e/4$};\fill(5,0)circle(2pt);\node[below]at(.4,0){$P$};\node[below]at(2.7,0){$M$};\node[below]at(5,0){$Q$};\draw[dim](3.6,1.3333)--(3.6,2)node[midway,right]{$e/12$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选零电势后比较三个指定连接点}\par\nobreak
+图\ref{fig:em2:drill:5:p}取 $V_Q=0$，因此 $V_M=e/4,V_P=e/6$，在三个指定连接点中 $M$ 电势最高。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿另一半圆复核端压并限定段内信息}\par\nobreak
+两段相加 $V_P-V_Q=e/6$；沿下半圆从 $Q$ 走到 $P$，得到 $V_Q-V_P=2Ri-e/2=-e/6$，相互核对一致。比较各段端点，高电阻段的电阻降超过该段感应积分，净电势下降；低电阻段的感应推动占优势，净电势上升。段内电势如何分布还需单位长度电阻等信息，不能由三个总电阻唯一确定。\end{drillsolution}
+\begin{drillsolution}{em2:drill:6}\textbf{由同一端点的测量差反演带符号的变化率}\par\nobreak
+图\ref{fig:em2:drill:6:s}两次测量的节点电势差相同，读数相减后只留下两引线感应积分之差。闭合方向逆时针，因此 $U_1-U_2=-S\dot B_z$。代入给定量，
+\[\dot B_z=-\frac{0.80-0.50}{0.015}=-20\,\mathrm{T/s}.\]
+\fig{fig:em2:drill:6:p}{窄条差分测量与包围全磁区的探测线圈，分别使用 $S$ 和 $\pi a^2$ 两种有效面积}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)circle(1.7);\draw[world](0,0)circle(1.7);\draw[guide](0,0)circle(2.2);\fill[orange!20](-.9,-.35)rectangle(.9,.35);\draw[world](-.9,-.35)rectangle(.9,.35);\draw[flow](-.7,-.35)--(.5,-.35);\draw[flow](.7,.35)--(-.5,.35);\node at(0,0){$S$};\node at(0,1){$\dot B_z=-20\,\mathrm{T/s}$};\draw[dim](0,0)--(1.7,0)node[midway,below]{$a$};\draw[->,blue,thick](2.2,0)arc(0:90:2.2);\node[right]at(2.4,1.3){$N$ 匝探测线圈};\node at(0,-2.9){全磁区面积 $\pi a^2$；线圈在磁区外部分不增加磁通};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用整个有效磁区面积求多匝探测电动势}\par\nobreak
+图\ref{fig:em2:drill:6:p}负号表示向纸外的磁场分量正在减小；也可能是向里磁场的大小正在增大，不能仅凭变化率判断当前磁场本身的方向。全截面线圈取向纸外为正法线，其电动势为 $\varepsilon_N=-N\pi a^2\dot B_z=(20\,\mathrm{T/s})N\pi a^2$。两种探测方式分别对应窄条面积和整个磁区面积。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查面积覆盖与负载条件对反演的影响}\par\nobreak
+若窄条有一部分在磁区外，应把 $S$ 换成与磁区重叠的有效面积；如果两表内阻有限、两次测量改变了节点电势，读数相减就不再只由引线面积确定。反演公式的成立依赖测量条件，不能把几何因子省去。\end{drillsolution}
+\begin{drillsolution}{em2:drill:7}\textbf{统一三支路参考方向求节点电势与电流}\par\nobreak
+按图\ref{fig:em2:drill:7:s}的共同参考方向，$i_1=(U+E)/R,i_2=(U+e)/R,i_3=U/R$。节点方程给出 $3U+E+e=0$，所以
+\[U=-\frac{E+e}{3},\quad i_1=\frac{2E-e}{3R},\quad i_2=\frac{2e-E}{3R},\quad i_3=-\frac{E+e}{3R}.\]
+\fig{fig:em2:drill:7:p}{电流随感应驱动变化：$e=2E$ 时直流源支路过零，再增大便反向吸能}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0)node[right]{$e/E$};\draw[axis](0,-2.5)--(0,3.4)node[above]{$i_jR/E$};\draw[blue,thick](0,.8)--(4,-.8)node[right]{$i_1$};\draw[red,thick](0,-.4)--(4,2.8)node[right]{$i_2$};\draw[world](0,-.4)--(4,-2)node[right]{$i_3$};\draw[guide](2,-2.2)--(2,3);\node[above right]at(2.05,.15){$2$};\fill(2,0)circle(2pt);\node[blue]at(1,2.7){直流源供能};\node[blue]at(3.6,3.5){直流源吸能};\node at(2,-3.1){$e=2E:\ (i_1,i_2,i_3)=(0,E/R,-E/R)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按直流源的有向供能功率判断吸能阈值}\par\nobreak
+图\ref{fig:em2:drill:7:p}以驱动的功率 $Ei_1$ 判断直流源的能量流向。$e<2E$ 时 $i_1>0$，电源向电路供能；$e>2E$ 时 $i_1<0$，电源吸收电能，理想可逆电源模型下可理解为被充电。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算阈值处热量并核验一般功率平衡}\par\nobreak
+临界 $e=2E$ 时，$i_1=0,i_2=E/R,i_3=-E/R$，总热功率为 $2E^2/R$，全部由感应驱动提供。
+
+一般情形的能量校验是 $Ei_1+ei_2=R(i_1^2+i_2^2+i_3^2)$。把上述三电流代入，两边都等于 $2(E^2+e^2-Ee)/(3R)$。直流源吸收功率与其内阻发热不是同一项，电源支路的电阻仍按 $i_1^2R$ 发热。\end{drillsolution}
+\begin{drillsolution}{em2:drill:8}\textbf{分别列总电压关系与孤立导体净电荷关系}\par\nobreak
+图\ref{fig:em2:drill:8:s}的电容支路稳定后无电流，因此不改变电阻网络给出的 $U$。沿支路积分，两个电容电压满足 $u_1+u_2=U+e_c=T$。中间导体由第一只电容的右极板和第二只的左极板相连而成，其电荷是 $-C_1u_1+C_2u_2=Q_X$。这是独立于电压和式的第二个约束，不能随意把两电容电荷设成相等。
+\fig{fig:em2:drill:8:p}{孤立中间导体包括两块内侧极板及连线，净电荷约束独立于总电压关系}{\begin{tikzpicture}
+
+\draw[world](0,0)--(1.7,0) (2.1,0)--(3.5,0) (3.9,0)--(5.5,0);\draw[world](1.7,-.5)--(1.7,.5) (2.1,-.5)--(2.1,.5) (3.5,-.5)--(3.5,.5) (3.9,-.5)--(3.9,.5);\node[left]at(0,0){$A$};\node[right]at(5.5,0){$B$};\draw[blue,dashed,rounded corners](1.9,-.8)rectangle(3.7,.8);\node at(2.8,1.4){$X:\ Q_X=-C_1u_1+C_2u_2$};\node[below]at(2.1,-.9){$-C_1u_1$};\node[below]at(3.5,-.9){$+C_2u_2$};\draw[flow](.2,-1.8)--(5.3,-1.8)node[midway,below]{$u_1+u_2=U+e_c$};\node at(.9,.8){$C_1,u_1$};\node at(4.7,.8){$C_2,u_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立两约束并将储能整理成两个平方项}\par\nobreak
+按图\ref{fig:em2:drill:8:p}标出的板电荷，联立得
+\[u_1=\frac{C_2T-Q_X}{C_1+C_2},\qquad u_2=\frac{C_1T+Q_X}{C_1+C_2}.\]
+代回电荷约束、相加电压，均恢复原条件。总电能为
+\[W_C=\frac12C_1u_1^2+\frac12C_2u_2^2=\frac{C_1C_2T^2+Q_X^2}{2(C_1+C_2)}.\]
+前一项随端口及引线驱动变化，后一项是由孤立导体净电荷固定的部分。$Q_X=0$ 时恢复通常的等量异号串联电容；$T=0$ 时如果 $Q_X\ne0$，两电压仍可相反且不为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在保持中间净电荷时求改线引起的响应}\par\nobreak
+若引线积分改变 $\Delta e_c$ 而网络 $U$ 不变，$\Delta u_1=C_2\Delta e_c/(C_1+C_2)$、$\Delta u_2=C_1\Delta e_c/(C_1+C_2)$，中间净电荷保持。不能以外部两端相同判断所有电容状态相同；引线路径与绝缘节点电荷都是不可省略的条件。\end{drillsolution}
+\begin{drillsolution}{em2:drill:9}\textbf{沿盘内半径积分动生作用并求负载电流}\par\nobreak
+图\ref{fig:em2:drill:9:s}的转速方向使盘内 $\bm v\times\bm B$ 径向向外。沿任意半径从 $O$ 积分到盘缘，$e=B\omega\int_0^a s\dd s=B\omega[s^2/2]_0^a=B\omega a^2/2$。中心与盘缘电刷组成持续滑动接触，电流从盘内向外流，外负载由 $A$ 返回 $O$，故 $I=e/(R_L+r)$，端电压 $V_A-V_O=IR_L$。
+\fig{fig:em2:drill:9:p}{同心薄环中的各份径向电流合为 $I$，切向磁力共同产生顺时针阻力矩}{\begin{tikzpicture}
+
+\fill[gray!8](0,0)circle(1.6);\fill[orange!30,even odd rule](0,0)circle(1.05)(0,0)circle(.85);\draw[world](0,0)circle(1.6);\draw[guide](0,0)circle(.85)circle(1.05);\fill(0,0)circle(2pt)node[below left]{$O$};
+\foreach \aa in {0,90,180,270}{\draw[->,blue,thick]({.55*cos(\aa)},{.55*sin(\aa)})--({1.3*cos(\aa)},{1.3*sin(\aa)});\draw[->,red,thick]({.95*cos(\aa)},{.95*sin(\aa)})--({.95*cos(\aa)+.65*sin(\aa)},{.95*sin(\aa)-.65*cos(\aa)});}
+\node[blue]at(1.5,.5){$\dd I_j$};\node[red]at(2,-.7){$\dd\bm F_j$};\node at(-1.5,1.5){$\odot B$};\draw[->](0,0)--({.85*cos(40)},{.85*sin(40)})node[midway,left]{$s$};\draw[->](2,1.7)--(.77,.61);\node[above]at(2,1.7){$\dd s$};\draw[->,thick](1.9,0)arc(0:80:1.9)node[above]{$\omega$};\node at(0,-2.4){$\sum_j\dd I_j=I,\quad\dd\tau=IBs\dd s$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对总径向电流积分薄环阻力矩}\par\nobreak
+图\ref{fig:em2:drill:9:p}中取半径 $s$ 处薄环。无论电流在周向怎样分配，穿过这一薄环的总径向电流为 $I$，其切向磁力对轴的阻力矩为 $\dd\tau=IBs\dd s$。因此阻力矩大小
+$\tau=IB\int_0^a s\dd s=IB[s^2/2]_0^a=IBa^2/2$，方向与转动相反；外驱转矩同大小逆时针。机械功率 $\tau\omega=eI=I^2(R_L+r)$，与两处发热和一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明滑动接触的作用并检查开路短路极限}\par\nobreak
+盘的几何外形和外磁场不变，不代表随同一批导体微元运动的闭合回路磁通不变：电刷不断接触不同的盘内微元，电流路径不能当成一个随材料整体转动的固定闭合回路。本题直接用运动电荷的局部推动作用积分，避免误把圆盘外轮廓当成实际电路。$R_L\to\infty$ 时可有开路电压而无电磁负载转矩；$R_L\to0$ 时端压趋零但电流与盘内发热一般不为零。\end{drillsolution}

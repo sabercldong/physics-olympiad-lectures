@@ -1,0 +1,247 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c1:drill:1}\textbf{以固定截面计算每周输运电荷}\par\nobreak
+图\ref{fig:c1:drill:1:s} 中电子沿逆时针运动，一周周期为 $T=2\pi R/v$。固定截面每经过一个周期有电荷 $-e$ 沿电子方向通过一次，所以若以逆时针为正，$I=-e/T$。
+\typeout{ECFIG:fig:c1:drill:1:p}\fig{fig:c1:drill:1:p}{解答过程：电子绕核运动的等效电流}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.3);\draw[flow](1.3,0)arc(0:-70:1.3)node[midway,right]{$I$};\node at(0,0){$+$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据负电荷运动方向确定平均正电流}\par\nobreak
+图\ref{fig:c1:drill:1:p} 标出等效正电流沿顺时针，大小为 $ev/(2\pi R)$。这里是周期平均电流；若严格讨论单个点电荷经过截面的瞬时输运，会表现为离散脉冲。圆心正电荷不绕轨道运动，不贡献这一轨道电流。\end{drillsolution}
+\begin{drillsolution}{c1:drill:2}\textbf{按指定碰撞规则对一个周期取平均}\par\nobreak
+图\ref{fig:c1:drill:2:s} 示意一个周期内定向速率从零线性增大，取电子实际矢量加速度 $\bm a=-e\bm E/m$。一个碰撞周期内的平均速度是
+\[
+ \overline{\bm v}=\frac1T\int_0^T\bm a t\,\dd t
+ =\frac{\bm a}{T}[t^2/2]_0^T
+=\frac{\bm aT}{2}=-\frac{eT}{2m}\bm E.
+\]
+\typeout{ECFIG:fig:c1:drill:2:p}\fig{fig:c1:drill:2:p}{解答过程：固定碰撞间隔与平均漂移}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(4.3,0)node[right]{$t$};\draw[axis](0,-.2)--(0,2.4)node[above]{$|v_{\rm d}|$};\fill[gray!15](0,0)--(3,2)--(3,0)--cycle;\draw[world](0,0)--(3,2);\draw[guide](0,1)--(3,1)node[right]{平均};\node[below]at(3,0){$T$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由平均漂移求电导率和电阻率}\par\nobreak
+由 图\ref{fig:c1:drill:2:p} 的三角形面积除以周期，亦得平均值为末速度的一半。于是 $\bm j=n(-e)\overline{\bm v}=ne^2T\bm E/(2m)$，$\rho=2m/(ne^2T)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对固定周期与弛豫模型的不同时间定义}\par\nobreak
+因子 $2$ 来自固定周期中的平均“加速年龄”为 $T/2$。若模型改为平均年龄等于 $\tau$ 的弛豫模型，应得到 $\rho=m/(ne^2\tau)$，两种时间参数不可直接等同。\end{drillsolution}
+\begin{drillsolution}{c1:drill:3}\textbf{由细圆台条件确定近似等势薄片}\par\nobreak
+图\ref{fig:c1:drill:3:s} 的缓慢变截面条件允许近似把每个轴向薄片看成等势截面间的电阻。半径 $r(x)=a+(b-a)x/l$，面积 $S(x)=\pi r(x)^2$。
+\typeout{ECFIG:fig:c1:drill:3:p}\fig{fig:c1:drill:3:p}{解答过程：圆台形细导体的电阻}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-.4)--(4,-.9)--(4,.9)--(0,.4)--cycle;\draw[guide](2,-.65)--(2,.65);\draw[guide](2.2,-.675)--(2.2,.675);\draw[flow](.5,0)--(1.4,0)node[midway,above]{$I$};\node at(2,-1.3){$\dd R=\rho\dd x/[\pi r(x)^2]$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿轴把串联薄片电阻积分}\par\nobreak
+由 图\ref{fig:c1:drill:3:p} 的薄片串联关系积分。先取 $a\ne b$，
+令 $u=a+(b-a)x/l$，则 $\dd x=l\dd u/(b-a)$，
+$x=0,l$ 对应 $u=a,b$；于是
+\begin{align*}
+ R&=\frac{\rho}{\pi}\int_0^l\frac{\dd x}{[a+(b-a)x/l]^2}\\
+ &=\frac{\rho l}{\pi(b-a)}\int_a^b u^{-2}\dd u
+ =\frac{\rho l}{\pi(b-a)}[-u^{-1}]_a^b\\
+ &=\frac{\rho l}{\pi(b-a)}\left(\frac1a-\frac1b\right)
+ =\frac{\rho l}{\pi ab}.
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对等半径极限和缓变条件}\par\nobreak
+当 $a=b$ 时取连续极限，回到 $\rho l/(\pi a^2)$。等效面积恰为 $\pi ab$，不是一般的两端面积算术平均。若圆台变化过陡，电流不再近似轴向，上述一维微元模型需要修正。\end{drillsolution}
+\begin{drillsolution}{c1:drill:4}\textbf{按完整球面面积求局域电场}\par\nobreak
+图\ref{fig:c1:drill:4:s} 的球对称性使电流径向流动，半径 $r$ 的完整球面积为 $4\pi r^2$，故 $E(r)=\rho I/(4\pi r^2)$。
+\typeout{ECFIG:fig:c1:drill:4:p}\fig{fig:c1:drill:4:p}{解答过程：同心球电极之间的电阻}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(.65);\draw[world](0,0)circle(1.6);\draw[guide](0,0)circle(1.1);\draw[flow](.7,0)--(1.5,0);\node at(3.7,.4){$4\pi r^2j=I$};\node at(3.7,-.5){$\dd R=\rho\dd r/(4\pi r^2)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿径向积分球壳串联电阻}\par\nobreak
+图\ref{fig:c1:drill:4:p} 表示各球壳薄层串联，得到
+\[
+ U=\frac{\rho I}{4\pi}\int_a^b\frac{\dd r}{r^2}
+ =\frac{\rho I}{4\pi}[-r^{-1}]_a^b
+=\frac{\rho I}{4\pi}\left(\frac1a-\frac1b\right),\quad
+ R=\frac{\rho}{4\pi}\left(\frac1a-\frac1b\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查远端可积性及半球模型的系数}\par\nobreak
+当外球面移到无穷远，$R_\infty=\rho/(4\pi a)$，有限且大于零。球面扩散电流的有效截面积随距离平方增长，故外部极远区域的附加电阻可积。与地表半球扩散比较，这里完整球面面积大一倍，同尺寸条件下电阻为其一半。\end{drillsolution}
+\begin{drillsolution}{c1:drill:5}\textbf{在每个小电极表面叠加自身和远端电势}\par\nobreak
+图\ref{fig:c1:drill:5:s} 中每个电极附近的自身贡献用半径 $a$ 截断，另一个远处电极的电势在该小表面上近似为常数。于是
+\[
+ V_P\simeq\frac{\rho I}{2\pi}\left(\frac1a-\frac1d\right),\qquad
+ V_Q\simeq\frac{\rho I}{2\pi}\left(\frac1d-\frac1a\right).
+\]
+\typeout{ECFIG:fig:c1:drill:5:p}\fig{fig:c1:drill:5:p}{高电势电极向地下送出电流，低电势电极收集；流线只作方向示意}{\begin{tikzpicture}
+
+\fill[gray!8](-.7,-2)rectangle(4.7,0);\draw[world](-.8,0)--(4.8,0);
+\draw[world](-.35,0)arc(180:360:.35) (3.65,0)arc(180:360:.35);
+\node[above]at(0,.1){$P:\ V_P>0$};\node[above]at(4,.1){$Q:\ V_Q<0$};
+\draw[flow](.1,-.3)..controls(.6,-1.5)and(3.4,-1.5)..(3.9,-.3);
+\draw[flow](-.1,-.3)..controls(-.3,-2.3)and(4.3,-2.3)..(4.1,-.3);
+\draw[dim](0,.8)--(4,.8)node[midway,above]{$d\gg a$};
+\node[below]at(2,-2.3){$U_{PQ}=V_P-V_Q>0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相减求两电极端电压和等效电阻}\par\nobreak
+图\ref{fig:c1:drill:5:p} 中 $P$ 是高电势端、$Q$ 是低电势端，两端差为
+\[
+ U_{PQ}\simeq\frac{\rho I}{\pi}\left(\frac1a-\frac1d\right),\qquad
+ R\simeq\frac{\rho}{\pi}\left(\frac1a-\frac1d\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查远离极限和电极间距近似}\par\nobreak
+当 $d\to\infty$，得到两个单电极接地电阻之和 $\rho/(\pi a)$。因 $d\gg a$，右式为正。有限 $d$ 时球面上来自另一电极的电势并不严格均匀，因此本式是相距很远时的近似，不能外推到 $d$ 与 $a$ 同量级。\end{drillsolution}
+\begin{drillsolution}{c1:drill:6}\textbf{由体积不变求截面及电阻变化}\par\nobreak
+由 图\ref{fig:c1:drill:6:s} 的体积约束 $Sl=S'kl$，得到 $S'=S/k$，所以
+\[
+ R'=\rho\frac{kl}{S/k}=k^2R.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按固定端电压求电流与漂移速率}\par\nobreak
+同电压下 $I'=U/R'=I/k^2$。若载流子数密度也不变，则
+\[
+ v'=\frac{I'}{neS'}=\frac{I/k^2}{neS/k}=\frac vk.
+\]
+\typeout{ECFIG:fig:c1:drill:6:p}\fig{fig:c1:drill:6:p}{解答过程：电阻丝拉长后的导电变化}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)rectangle(2,1);\draw[world](0,-1.2)rectangle(4,-.7);\node[right]at(2,.5){$l,S$};\node[right]at(4,-.95){$kl,S/k$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对总功率和未拉伸极限}\par\nobreak
+图\ref{fig:c1:drill:6:p} 中拉长后的导体更细，而电流下降更快，所以漂移速率仍下降。总功率 $P'=U^2/R'=P/k^2$。以 $k=1$ 检查，所有比值均回到 $1$。若温度或材料结构在拉伸后改变，$\rho$ 不再保持原值，必须另给材料规律才能继续定量计算。\end{drillsolution}
+\begin{drillsolution}{c1:drill:7}\textbf{根据电流流入正端判断充电端电压}\par\nobreak
+图\ref{fig:c1:drill:7:s} 中电流从电池正端流入，电池吸收电能。为克服电动势并使内阻中有电流，外加端电压应为
+\[
+ U=\mathcal E+Ir=12+2.0\times0.50=13\,\mathrm V.
+\]
+\typeout{ECFIG:fig:c1:drill:7:p}\fig{fig:c1:drill:7:p}{解答过程：电池充电时的功率}{\begin{tikzpicture}[scale=.88]
+\node[draw,minimum width=1.7cm]at(0,0){输入 $26$ W};\node[draw]at(4,.65){储能 $24$ W};\node[draw]at(4,-.65){发热 $2$ W};\draw[flow](1,0)--(2,0)--(2,.65)--(2.8,.65);\draw[flow](2,0)--(2,-.65)--(2.8,-.65);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求输入、发热和化学储能功率}\par\nobreak
+按 图\ref{fig:c1:drill:7:p} 的输入能量流向，输入功率 $P_{\text{入}}=UI=26\,\mathrm W$，内部焦耳热功率 $P_{\text{热}}=I^2r=2.0\,\mathrm W$，理想化学储能速率为 $\mathcal EI=24\,\mathrm W$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总功率平衡核对充电符号}\par\nobreak
+三者满足 $26=2+24$。把放电公式 $U=\mathcal E-Ir$ 生搬到此题，会违反端口输入功率的能量分配。\end{drillsolution}
+\begin{drillsolution}{c1:drill:8}\textbf{对导体列出随温升变化的热量方程}\par\nobreak
+在 图\ref{fig:c1:drill:8:s} 中取整根导体为热学系统，令 $\theta=T-T_0$。输入焦耳热功率为 $I^2R_0(1+\alpha\theta)$，散热为 $k\theta$，因此
+\[
+ C\dot\theta=I^2R_0-(k-\alpha I^2R_0)\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求正温升平衡及其存在条件}\par\nobreak
+若 $k>\alpha I^2R_0$，令右端为零得到
+\[
+ \theta_*=\frac{I^2R_0}{k-\alpha I^2R_0}.
+\]
+\typeout{ECFIG:fig:c1:drill:8:p}\fig{fig:c1:drill:8:p}{解答过程：恒流加热的稳态与稳定性}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(4.8,0)node[right]{$\theta$};\draw[axis](0,-.2)--(0,2.8)node[above]{$P$};\draw[world](0,0)--(4,2.5)node[above]{散热};\draw[world](0,.7)--(4,1.9)node[right]{发热};\draw[guide](2.15,0)--(2.15,1.34);\node[below]at(2.15,0){$\theta_*$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{线性化扰动判断平衡稳定}\par\nobreak
+图\ref{fig:c1:drill:8:p} 中温升偏离平衡值 $\delta\theta$ 后，满足 $C\delta\dot\theta=-(k-\alpha I^2R_0)\delta\theta$，记 $k_{\rm eff}=k-\alpha I^2R_0>0$，非零初始偏差满足
+\[
+ \int_{\delta\theta(0)}^{\delta\theta(t)}
+ \frac{\dd u}{u}
+ =-\frac{k_{\rm eff}}C\int_0^t\dd s,\qquad
+ \ln\left|\frac{\delta\theta(t)}{\delta\theta(0)}\right|
+ =-\frac{k_{\rm eff}t}{C}.
+\]
+所以 $\delta\theta(t)=\delta\theta(0)\e^{-k_{\rm eff}t/C}$；
+初始偏差为零则保持零。偏差衰减，所以平衡稳定。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分析没有非负稳态的参数范围}\par\nobreak
+若 $k=\alpha I^2R_0$，右端恒为正；若 $k<\alpha I^2R_0$，对任意 $\theta\ge0$ 右端也为正，线性模型没有非负稳态。温度持续上升时材料规律和散热规律会改变，因此结论应表述为该线性模型不再给出有限稳态，不能断言真实温度无限大。\end{drillsolution}
+\begin{drillsolution}{c1:drill:9}\textbf{以单位时间通过的电荷求粒子数率}\par\nobreak
+图\ref{fig:c1:drill:9:s} 电流是单位时间通过的电量，故每秒数率 $\dot N=I/e=6.25\times10^{15}\,\mathrm{s^{-1}}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由非相对论加速求两个位置的速率比}\par\nobreak
+均匀场从静止加速给 $v(x)=\sqrt{2ax}$，所以 $v(4L)=2v(L)$。
+\typeout{ECFIG:fig:c1:drill:9:p}\fig{fig:c1:drill:9:p}{相同短段长度内，快束流的驻留时间更短；图示粒子数之比为 $2:1$}{\begin{tikzpicture}
+
+\draw[flow](0,0)--(6,0)node[right]{束流};
+\draw[world](.6,-.5)rectangle(1.6,.5) (3.9,-.5)rectangle(4.9,.5);
+\fill(.85,0)circle(1.5pt);\fill(1.35,0)circle(1.5pt);\fill(4.4,0)circle(1.5pt);
+\draw[flow](.7,1)--(1.7,1)node[midway,above]{$v(L)$};
+\draw[flow](3.7,1)--(5.7,1)node[midway,above]{$v(4L)=2v(L)$};
+\node[below]at(1.1,-.6){$N_1,\ \Delta x$};\node[below]at(4.4,-.6){$N_2,\ \Delta x$};
+\node[below]at(3,-1.3){$N_i=\dot N\,\Delta x/v_i$，每秒通过数相同};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用驻留时间求同长短段的粒子数比}\par\nobreak
+图\ref{fig:c1:drill:9:p} 空间短段长度 $\Delta x$ 内的粒子数为 $\dot N\Delta x/v(x)$，因此 $N_1/N_2=v(4L)/v(L)=2$。每秒通过数相同而同长段内数目不同：速度大的位置驻留时间较短，线密度较小。若初速度不可忽略，该比值应保留 $v_0^2$，不再恰为二。\end{drillsolution}
+\begin{drillsolution}{c1:drill:10}\textbf{把电流衰减模型换成电阻率衰减率}\par\nobreak
+图\ref{fig:c1:drill:10:s} 有效摩擦使电子平均速率满足 $m\dot v=-bv$，电流与漂移速度在本模型中成正比，故
+$\dot I=-(b/m)I$。记 $\tau=m/b$，用 $I(0)=I_0>0$ 积分：
+\[
+ \int_{I_0}^{I(t)}\frac{\dd i}{i}=-\frac1\tau\int_0^t\dd s,
+ \qquad [\ln i]_{I_0}^{I(t)}=-t/\tau.
+\]
+因此 $I=I_0\e^{-t/\tau}$。局部电阻率关系 $\rho=b/(ne^2)$ 给衰减率 $1/\tau=ne^2\rho/m$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以最大未检出衰减量建立上限不等式}\par\nobreak
+由 $I(T)\ge I_0-\Delta I$，先除以正数 $I_0$，
+再取单调递增的对数：
+\[
+ \e^{-ne^2\rho T/m}\ge1-\frac{\Delta I}{I_0},
+ \qquad -\frac{ne^2\rho T}{m}
+ \ge\ln\left(1-\frac{\Delta I}{I_0}\right).
+\]
+乘负数 $-m/(ne^2T)$ 时不等号反向，故
+\[
+ \rho\le-\frac{m}{ne^2T}\ln(1-\Delta I/I_0).
+\]
+\typeout{ECFIG:fig:c1:drill:10:p}\fig{fig:c1:drill:10:p}{无外电源的衰减环路：电阻耗散，几何电感与电子动能共同提供惯性}{\begin{tikzpicture}
+
+\draw(0,0)to[L,l_={$L_k$}](3.8,0)--(3.8,2.4)to[R,l={$R$}](0,2.4)to[L,l_={$L_g$}](0,0);
+\draw[flow](3.3,2.9)--(1.8,2.9)node[midway,above]{$I$};
+\node[right,align=left]at(4.5,1.5){磁场能 $\tfrac12L_gI^2$\\电子定向动能 $\tfrac12L_kI^2$};
+\node[below]at(2,-.8){$R=\rho l/S$，热功率 $I^2R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入一年时间和观测精度求数值上限}\par\nobreak
+图\ref{fig:c1:drill:10:p} 用 $\Delta I/I_0=10^{-5}$、$T=3.156\times10^7\,\mathrm s$，以及 $m=9.11\times10^{-31}\,\mathrm{kg}$、$e=1.60\times10^{-19}\,\mathrm C$，得约 $1.41\times10^{-26}\,\Omega\mathrm m$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从总漂移动能推导动能电感}\par\nobreak
+还可把电子定向动能写成电路形式。环内载流子总数为 $nSl$，$v=I/(neS)$，故
+\[
+ K_{\rm drift}=\tfrac12nSl\,mv^2
+ =\tfrac12\frac{ml}{ne^2S}I^2=\tfrac12L_kI^2.
+\]
+于是 $L_k/R=m/(ne^2\rho)$，正好等于忽略几何电感时的微观弛豫时间。图\ref{fig:c1:drill:10:p}将这份惯性与几何电感 $L_g$ 分开列出。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{加入几何自感说明真实环路测量的约束量}\par\nobreak
+这是题设微观简化模型的估计，不是与环几何无关的普遍实验上限。真实闭合环的电磁自感使总惯性含几何电感，宏观衰减满足 $(L_g+L_k)\dot I+RI=0$，其中动能电感 $L_k=m l/(ne^2S)$。对该宏观方程同样分离变量，
+\[
+ \int_{I_0}^{I(t)}\frac{\dd i}{i}
+ =-\frac{R}{L_g+L_k}\int_0^t\dd s,\qquad
+ I(t)=I_0\e^{-Rt/(L_g+L_k)}.
+\]
+这说明应由观测到的指数衰减率限制总电感参与后的比值。缺少几何电感资料时，不能把简化数字宣称为任意超导实验的严格电阻率上限；能直接限制的是 $R/(L_g+L_k)$。\end{drillsolution}

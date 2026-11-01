@@ -1,0 +1,151 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{mg2:drill:1}\textbf{先用端点位移求合力，并选择有向积分变量}\par\nobreak
+图\ref{fig:mg2:drill:1:s}端点位移为 $2R\bm e_x$，故 $\bm F=I(2R\bm e_x)\times B\bm e_z=-2IBR\bm e_y$。为独立核对方向，令弧上坐标 $\bm r=R(\cos\varphi,\sin\varphi)$，电流从 $\varphi=\pi$ 走到0。微元 $\dd\bm l=R(-\sin\varphi,\cos\varphi)\dd\varphi$。
+\fig{fig:mg2:drill:1:p}{沿上半圆从左到右通电时，微元力都朝圆心；左右分量抵消，只留向下合力}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:0:2);\draw[flow](150:2)arc(150:65:2);\node at(0,2.6){$\odot B$};
+\foreach \ang in {30,60,90,120,150}{\draw[->,blue,thick](\ang:2)--(\ang:1.2);}
+\draw[guide](-2,0)--(2,0);\node[left]at(-2,0){$A$};\node[right]at(2,0){$B$};\draw[force,red](0,0)--(0,-1.8)node[below]{$\bm F=-2IBR\bm e_y$};
+\draw[dim](-2,-.6)--(2,-.6)node[pos=.8,below]{$2R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按电流对应的下降极角积分，检查微元力方向}\par\nobreak
+图\ref{fig:mg2:drill:1:p}中 $\dd F_x=IBR\cos\varphi\,\dd\varphi$，$\dd F_y=IBR\sin\varphi\,\dd\varphi$。从 $\pi$ 到0积分，水平分量为
+$IBR\int_\pi^0\cos\varphi\dd\varphi=IBR[\sin\varphi]_\pi^0=0$，
+竖直分量为 $IBR[-\cos\varphi]_\pi^0=-2IBR$。负积分方向与电流绕向一致，因此直接法与端点法相符。这里微元积分用于核验方向；一般题目若已满足均匀场条件，可直接使用端点式。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:2}\textbf{在微段切向与法向分别列平衡}\par\nobreak
+图\ref{fig:mg2:drill:2:s}取弧长 $\dd s$ 的微段。磁力总与导线切向垂直，因此切向受力平衡要求张力大小 $T$ 沿弧不变。若两端切线转角为 $\dd\psi$，两个张力的法向合量为 $T\dd\psi$，磁力大小为 $IB\dd s$，故曲率 $\dd\psi/\dd s=IB/T$ 为常数。
+\fig{fig:mg2:drill:2:p}{局部张力沿两端切线，磁力沿法向；整段的圆心角再把曲率与弦长联系起来}{\begin{tikzpicture}
+
+\draw[world](135:2)arc(135:45:2);\draw[very thick,orange!80!black](100:2)arc(100:80:2);
+\draw[guide](0,0)--(135:2)(0,0)--(45:2);\node[below]at(0,0){圆心};\draw[dim](.353553,.353553)arc(45:135:.5);\node at(0,.2){$\varphi$};
+\draw[force](-.3473,1.9696)--(-1.3321,1.7959)node[left]{$T$};\draw[force](.3473,1.9696)--(1.3321,1.7959)node[right]{$T$};\draw[force,blue](0,2.1)--(0,3.4)node[above]{$IB\dd s$};
+\draw[dim](-1.4142,1)--(1.4142,1)node[midway,below]{$2a$};\node at(3.2,2.5){$T\dd\psi=IB\dd s$};\node at(3.2,.3){$r=T/(IB)$};\node at(1.3,-.8){图示仅为圆弧的一支；$s=r\varphi$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把恒曲率写成圆弧，并消去圆心角与半径}\par\nobreak
+图\ref{fig:mg2:drill:2:p}中取定曲率符号为正，记 $k=IB/T$，由
+$\dd\psi/\dd s=k$ 得 $\psi(s)=\psi_0+ks$。
+再由切线分量 $\dd x/\dd s=\cos\psi,\dd y/\dd s=\sin\psi$，
+\[
+ x-x_0=\frac{\sin(\psi_0+ks)-\sin\psi_0}{k},\qquad
+ y-y_0=\frac{\cos\psi_0-\cos(\psi_0+ks)}{k}.
+\]
+两式分别来自 $\int_0^s\cos(\psi_0+k\sigma)\dd\sigma$、
+$\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导。
+移到圆心 $(x_0-\sin\psi_0/k,y_0+\cos\psi_0/k)$ 后，两坐标平方和为 $1/k^2$，
+故平衡曲线是半径 $r=1/k=T/(IB)$ 的圆弧。设圆心角为 $\varphi$，则 $s=r\varphi$、$2a=2r\sin(\varphi/2)$。消去 $r$ 后，也可直接把弦长与张力写成\[\boxed{2a=\frac{2T}{IB}\sin\!\left(\frac{IBs}{2T}\right)}.\]因此应先由 $a/s=\sin(\varphi/2)/\varphi$ 确定所选支的角度，再得 $T=IBs/\varphi$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留所选圆弧分支与正张力条件}\par\nobreak
+弦长与弧长不足以在所有允许大转角中无条件指定唯一支，需结合题设形状和稳定性；小弧支的曲率方向由电流与场决定。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:3}\textbf{用闭合与均匀场判断合力，再按面积求力偶}\par\nobreak
+图\ref{fig:mg2:drill:3:s}中的回路闭合，且外场均匀，故合力 $NI\oint\dd\bm l\times\bm B=0$。力矩则按面积磁矩计算，$\bm m=NIab\,\bm n$，所以 $\bm\tau=\bm m\times\bm B$，大小 $NIabB\sin\theta$。
+\fig{fig:mg2:drill:3:p}{合力为零仍有力偶；势能曲率区分平行和反平行两个零力矩位置}{\begin{tikzpicture}
+
+\draw[axis](0,-1.9)--(0,2.1)node[above]{$U/(NIabB)$};\draw[axis](-.2,0)--(4.3,0)node[right]{$\theta$};
+\draw[blue,thick,domain=0:3.5,samples=80]plot(\x,{-1.3*cos(\x r)});\node[left]at(0,-1.3){$-1$};\node[left]at(0,1.3){$+1$};
+\draw[guide](1.570796,-.2)--(1.570796,.2);\node[below]at(1.570796,-.2){$\pi/2$};\node[below]at(3.141593,-.1){$\pi$};
+\node[below,align=center]at(1,-2.2){$\theta=0$：稳定\\$\theta=\pi$：不稳定};\node at(2.6,2.8){$\theta=\pi/2$ 时力矩最大};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用势能曲率比较三个取向}\par\nobreak
+图\ref{fig:mg2:drill:3:p}表示机械势能 $U=-NIabB\cos\theta$。在 $\theta=0$ 力矩为零、势能最低，是稳定取向；$\theta=\pi/2$ 力矩大小最大；$\theta=\pi$ 力矩虽再次为零，却处在势能最高点。判断稳定性应看微小偏离后力矩的方向或势能曲率，不能只检查力矩是否为零。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:4}\textbf{对球壳区分转轴距离与球心半径，求角向平均}\par\nobreak
+由图\ref{fig:mg2:drill:4:s}的刚性转动，磁矩元为 $\dd m=\omega r_\perp^2\dd q/2$。取半径 $r$、厚 $\dd r$ 的球壳，总电荷密度 $\rho_q=3Q/(4\pi R^3)$，故壳电量 $\dd q=4\pi\rho_qr^2\dd r=3Qr^2\dd r/R^3$。利用题给角向平均，壳磁矩为 $\omega r^2\dd q/3$。
+\fig{fig:mg2:drill:4:p}{球壳半径 $r$ 与距转轴距离 $r_\perp$ 不同，先作球壳角向平均，再积壳的径向分布}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\fill[blue!12,even odd rule](0,0)circle(1.3)(0,0)circle(1.15);\draw[guide](0,0)circle(1.15)(0,0)circle(1.3);
+\draw[axis](0,-2.5)--(0,2.6)node[above]{$\omega\bm n$};\fill(.9192,.9192)circle(1.6pt);\draw[guide](.9192,.9192)--(1.5,.6);\node[right]at(1.5,.6){$\dd q$};\draw[->,blue](0,0)--(.9192,.9192)node[midway,below right]{$r$};\draw[guide](.9192,.9192)--(.9192,1.55);\draw[dim](0,1.55)--(.9192,1.55)node[midway,above]{$r_\perp$};
+\draw[flow](-2.8,1.7)--(-.8,1.02)node[pos=0,left]{$\dd r$};\node at(.5,-3.1){壳电量 $\dd q_{\rm shell}=3Qr^2\dd r/R^3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再对实际径向电荷分布积分并检查球壳极限}\par\nobreak
+图\ref{fig:mg2:drill:4:p}径向积分得到 $m_B=\frac{\omega}{3}\int_0^Rr^2\frac{3Qr^2}{R^3}\dd r
+=\frac{Q\omega}{R^3}\left[\frac{r^5}{5}\right]_0^R
+=\frac{Q\omega R^2}{5}$，方向随 $Q\omega$ 的符号确定。若电荷只分布在薄球壳表面，结果为 $Q\omega R^2/3$；两个系数不同，是电荷距转轴的平方平均不同，不是转动周期不同。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:5}\textbf{用小弧段的径向平衡建立磁力与张力关系}\par\nobreak
+图\ref{fig:mg2:drill:5:s}取微小弧段，磁力为 $IBR\dd\theta$ 向外，两端张力的向心合量为 $T\dd\theta$，平衡给出 $T=IBR$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把周长应变写成线弹性张力}\par\nobreak
+环的相对伸长等于周长相对增量 $(R-R_0)/R_0$，故线弹性本构是 $T=YA(R-R_0)/R_0$。
+\fig{fig:mg2:drill:5:p}{径向平衡使弹性张力等于磁力需求，右图放大自然半径附近的两条函数}{\begin{tikzpicture}
+
+\draw[world](-18:1.4)arc(-18:18:1.4);\draw[force](1.4,0)--(.2,0)node[left]{$T\dd\theta$};\draw[force,blue](1.4,.1)--(2.7,.1)node[right]{$IBR\dd\theta$};\node at(1.3,1.3){小弧段受力};
+\begin{scope}[xshift=5.7cm]
+\draw[axis](0,0)--(4.6,0)node[right]{$R/R_0$};\draw[axis](0,0)--(0,3.6)node[above]{$T/(YA)$};
+\draw[blue,thick](1,0)--(4,3)node[right]{$T_{\rm el}$};\draw[red,thick](0,.49)--(4,.53)node[right]{$T_{\rm mag}$};
+\fill(1.50505,.50505)circle(1.5pt);\draw[guide](1.50505,0)--(1.50505,.50505);\node[below]at(0,0){$0.98$};\node[below]at(1,0){$1$};\node[below]at(4,0){$1.06$};\draw(0,1)--(-.1,1)node[left]{$0.02$};
+\node at(2.2,4.3){$\eta=IBR_0/(YA)=0.01$};\node[align=center]at(2.2,-1){交点 $R/R_0\simeq1.010$\\对应约1\%应变，仍需核对材料的线弹性范围};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两条函数的交点，核对正半径与小应变条件}\par\nobreak
+联立图\ref{fig:mg2:drill:5:p}两式，得 $R=R_0/[1-IBR_0/(YA)]$。正半径要求 $IBR_0<YA$，但线弹性还要求 $(R-R_0)/R_0\ll1$，即参数 $IBR_0/(YA)$ 实际应远小于1。分母接近零时算得的巨大半径已超出小应变模型，不能解释为实际圆环可无限伸长。此题固定的是电流，区别于固定电量、固定角速度的旋转带电环。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:6}\textbf{先求一条线在另一条线处的场，再求单位长度受力}\par\nobreak
+图\ref{fig:mg2:drill:6:s}中先把左线作为场的产生者，右线所在处场大小为 $B_1=\mu_0I_1/(2\pi d)$，方向与右线电流垂直。右线长度 $l$ 受力 $F_2=I_2lB_1$，故 $f=F_2/l=\mu_0I_1I_2/(2\pi d)$，方向朝向左线。交换研究对象得到相反等大的力。
+\fig{fig:mg2:drill:6:p}{解答过程：两平行导线的每单位长度作用力}{\begin{tikzpicture}[scale=.88]
+\node at(-1.5,0){$\odot I_1$};\node at(1.5,0){$\odot I_2$};\draw[->,blue,thick](1.5,.3)--(1.5,1.6)node[above]{$\bm B_1$};\draw[force](-1.5,0)--(-.3,0)node[above]{$f$};\draw[force](1.5,0)--(.3,0)node[above]{$f$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时比较电流乘积与线距，并检查力密度单位}\par\nobreak
+图\ref{fig:mg2:drill:6:p}同向电流相吸。两个电流同时加倍使乘积增为4倍，线距加倍又使力密度减半，合计增为2倍。量纲检查：$\mu_0I_1I_2/d$ 的单位为 $\mathrm{N/m}$，这与力本身不同。若只取一小段导线作研究对象，还应考虑连接段对完整系统动量传递的作用，本式给出的是理想长线区域的局部作用。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:7}\textbf{在固定磁矩条件下由势能梯度求恒力}\par\nobreak
+图\ref{fig:mg2:drill:7:s}中磁矩的方向由约束保持，且电流恒定，机械势能为 $U(z)=-m_B[B_0+\beta z]$。因此 $F_z=-\dd U/\dd z=m_B\beta$，是常力。$\beta>0$ 时线圈被拉向场较强处，$\beta<0$ 时反向。
+\fig{fig:mg2:drill:7:p}{由场梯度决定的轴向恒力，作功是对应力—位移图下的有向面积}{\begin{tikzpicture}
+
+\draw[axis](0,-.6)--(0,3)node[above]{$z$};\foreach \y/\lab in {0/z_1,1.8/z_2}{\draw[world](0,\y)ellipse(.9 and .2);\draw[->,red,thick](1.3,\y)--(1.3,\y+.9);\node[left]at(-1,\y){$\lab$};}
+\node at(.3,3.8){$\beta>0$ 时 $F_z=m_B\beta>0$};
+\begin{scope}[xshift=4.2cm]
+\fill[blue!12](.7,0)rectangle(3.7,1.7);\draw[axis](0,0)--(4.3,0)node[right]{$z$};\draw[axis](0,0)--(0,2.7)node[above]{$F_z$};\draw[thick,blue](.3,1.7)--(4,1.7);
+\node[left]at(0,1.7){$m_B\beta$};\node[below]at(.7,0){$z_1$};\node[below]at(3.7,0){$z_2$};\node at(2.2,.8){面积 $W$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际位移积分求功并检查均匀场极限}\par\nobreak
+由图\ref{fig:mg2:drill:7:p}，磁力功 $W=m_B\beta\int_{z_1}^{z_2}\dd z
+=m_B\beta[z]_{z_1}^{z_2}=m_B\beta(z_2-z_1)$，也等于势能减少量。若线圈可自由翻转，其磁矩方向还受力矩控制；若线圈尺寸已与变化尺度相当，小偶极近似就不足，应逐段积分。特别地，$\beta=0$ 时均匀场的合力为零，即使该场 $B_0$ 很大也不会给出轴向推动力。\end{drillsolution}
+\begin{drillsolution}{mg2:drill:8}\textbf{在同一空间权重下比较电荷与质量积分}\par\nobreak
+图\ref{fig:mg2:drill:8:s}中每个体元到转轴的距离为 $r_\perp$。磁矩积分为 $\bm m_B=(\omega\bm n/2)\int r_\perp^2\dd q$，角动量为 $\bm L=\omega\bm n\int r_\perp^2\dd M$。把逐点成立的 $\dd q=(Q/M)\dd M$ 代入磁矩式，立即得到所证比例。
+\fig{fig:mg2:drill:8:p}{薄环与薄盘具有不同的半径平方平均，但同比分布使磁矩与角动量保留同一比值}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.4);\draw[flow](45:1.4)arc(45:125:1.4);\node at(0,0){$\odot\omega$};\node[align=center]at(0,-2.3){薄环\\$m_B=Q\omega R^2/2$\\$L=M\omega R^2$};
+\begin{scope}[xshift=5.5cm]
+\filldraw[fill=blue!8,world](0,0)circle(1.4);\draw[flow](45:1.4)arc(45:125:1.4);\node at(0,0){$\odot\omega$};\node[align=center]at(0,-2.3){薄盘\\$m_B=Q\omega R^2/4$\\$L=M\omega R^2/2$};
+\end{scope}
+\node at(2.75,2.3){两者均有 $\bm m_B=Q\bm L/(2M)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用薄环、薄盘检验比例和电荷符号}\par\nobreak
+图\ref{fig:mg2:drill:8:p}中薄环有 $m_B=Q\omega R^2/2$、$L=M\omega R^2$；薄盘的窄环质量、电荷分别为
+$\dd M=2Mr\dd r/R^2$、$\dd q=2Qr\dd r/R^2$，于是
+\[
+ m_B=\frac{\omega}{2}\frac{2Q}{R^2}\int_0^Rr^3\dd r
+ =\frac{Q\omega}{R^2}[r^4/4]_0^R=\frac{Q\omega R^2}{4},
+ \qquad
+ L=\frac{2M\omega}{R^2}[r^4/4]_0^R=\frac{M\omega R^2}{2}.
+\]
+两者比值都为 $Q/(2M)$。同一总电荷与总质量并不自动保证比例成立，关键是空间分布也同比。负电荷时磁矩与机械角动量反向；这个符号关系对于理解电子轨道电流尤其重要。\end{drillsolution}

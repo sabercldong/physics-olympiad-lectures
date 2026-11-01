@@ -1,0 +1,293 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[净电荷同号的两金属板]\label{e4:example:1}
+两足够大的平行薄金属板 $A,B$ 面积 $S$，间距 $d$，净量分别为 $Q_1>Q_2>0$。忽略边缘，求四个表面电荷、三区电场及 $V_A-V_B$。
+\end{example}
+\typeout{ECFIG:fig:e4:example:1:s}\fig{fig:e4:example:1:s}{两块薄金属板的净量、面积与间距}{\begin{tikzpicture}
+
+\fill[gray!15](0,1.8)rectangle(4.5,2);\fill[gray!15](0,0)rectangle(4.5,.2);\draw[world](0,1.8)rectangle(4.5,2);\draw[world](0,0)rectangle(4.5,.2);\node[right]at(4.5,1.9){$A:Q_1$};\node[right]at(4.5,.1){$B:Q_2$};\draw[dim](-.6,.2)--(-.6,1.8)node[midway,left]{$d$};\node at(2.25,2.7){面积均为 $S$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由金属内零场确定内外表面的关系}\par\nobreak
+图\ref{fig:e4:example:1:s} 两板从上到下记四面为 $1,2,3,4$。金属内零场要求相邻内面总量相反，设 $q_2=q,q_3=-q$；由净量得 $q_1=Q_1-q,q_4=Q_2+q$。无限板近似下最外两侧的场由全部电荷面叠加，在上侧向上、下侧向下，大小均为 $(Q_1+Q_2)/(2\varepsilon_0S)$，所以两外面各有 $(Q_1+Q_2)/2$。
+\typeout{ECFIG:fig:e4:example:1:p}\fig{fig:e4:example:1:p}{四面电荷及三区的实际场方向（$Q_1>Q_2>0$）}{\begin{tikzpicture}
+
+\fill[gray!15](0,1.8)rectangle(4.5,2);\fill[gray!15](0,0)rectangle(4.5,.2);\draw[world](0,1.8)rectangle(4.5,2);\draw[world](0,0)rectangle(4.5,.2);\node[above]at(.7,2){$q_1>0$};\node[below]at(.7,1.8){$q_2>0$};\node[above]at(.7,.2){$q_3<0$};\node[below]at(.7,0){$q_4>0$};\draw[flow](3,2.2)--(3,3.1)node[right]{$E_{\text{外}}$};\draw[flow](3,1.6)--(3,.4)node[midway,right]{$E_{\text{间}}$};\draw[flow](3,-.2)--(3,-1.1)node[right]{$E_{\text{外}}$};\node[right]at(4.7,1.9){$E_{\text{金属}}=0$};\node[right]at(4.7,.1){$E_{\text{金属}}=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用净量约束求四面电荷}\par\nobreak
+于是 图\ref{fig:e4:example:1:p} 中
+\[
+ q_1=q_4=\frac{Q_1+Q_2}2,\quad
+ q_2=\frac{Q_1-Q_2}2,\quad q_3=-\frac{Q_1-Q_2}2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算势差并检查两种极限}\par\nobreak
+间隙场向下，$E_{\text{间}}=(Q_1-Q_2)/(2\varepsilon_0S)$，故 $V_A-V_B=E_{\text{间}}d$。当 $Q_1=Q_2$ 时内面电荷和间隙场均为零，正电荷都在外面；当 $Q_2=-Q_1$ 时外面零，回到常用等量异号电容器。\end{solution}
+\begin{question}\begin{example}[两侧接地的三板系统]\label{e4:example:2}
+三板从左至右为 $C,A,B$，面积均为 $200\,\mathrm{cm}^2$，$CA=2.0\,\mathrm{mm}$、$AB=4.0\,\mathrm{mm}$。$B,C$ 接地，$A$ 带 $3.0\times10^{-7}\,\mathrm C$。求两接地板电量及 $A$ 电势。
+\end{example}
+\typeout{ECFIG:fig:e4:example:2:s}\fig{fig:e4:example:2:s}{按题干从左向右排列的接地三板}{\begin{tikzpicture}
+
+\foreach \x/\n in{0/C,2/A,6/B}{\draw[world](\x,0)--(\x,3);\node[above]at(\x,3){$\n$};}\draw(0,0)--(0,-.4)node[ground]{};\draw(6,0)--(6,-.4)node[ground]{};\draw[dim](0,-1)--(2,-1)node[midway,below]{$2\,\mathrm{mm}$};\draw[dim](2,-1)--(6,-1)node[midway,below]{$4\,\mathrm{mm}$};\node at(2,3.8){$q=3.0\times10^{-7}\,\mathrm C$};\node at(3,1.5){面积 $S$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把两个几何间隙化为对地并联支路}\par\nobreak
+将 图\ref{fig:e4:example:2:s} 的两个间隙看成 $A$ 对地的并联电容。左、右电容分别为 $C_L=\varepsilon_0S/(2.0\times10^{-3})$ 和 $C_R=\varepsilon_0S/(4.0\times10^{-3})$，所以 $C_L=2C_R$。$A$ 的总量 $q=(C_L+C_R)V_A$。
+\typeout{ECFIG:fig:e4:example:2:p}\fig{fig:e4:example:2:p}{两个间隙并联接在中板与同一地节点之间}{\begin{tikzpicture}
+
+\draw(0,0)--(0,2.4)to[C,l={$C_L=2C_R$}](4,2.4)--(4,0)to[C,l_={$C_R$}](0,0);\fill(0,1.2)circle(2pt)node[left]{$A:V_A$};\draw(4,1.2)--(5,1.2)--(5,.6)node[ground]{};\node[right]at(5,1.2){$B=C:0$};\node at(1.3,1.75){$+2q/3$};\node at(2.8,1.75){$-2q/3$};\node at(1.3,-.65){$+q/3$};\node at(2.8,-.65){$-q/3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按支路电容分配感应电量}\par\nobreak
+图\ref{fig:e4:example:2:p} 左、右内表面分得 $2q/3,q/3$，两接地板面对 $A$ 的电量分别为 $Q_C=-2q/3=-2.0\times10^{-7}\,\mathrm C$，$Q_B=-q/3=-1.0\times10^{-7}\,\mathrm C$。外侧零场时其外面不带电。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{统一单位计算中板电势}\par\nobreak
+代入 $S=0.0200\,\mathrm m^2$，得
+\[
+ V_A=\frac{3.0\times10^{-7}}{8.854\times10^{-12}\times.0200(500+250)}
+ \simeq2.26\times10^3\,\mathrm V.
+\]
+近侧间隙电容较大，分得电量较多；两间隙电压相同而场强不同。\end{solution}
+\begin{question}\begin{example}[定势两板间插入带电薄板]\label{e4:example:3}
+两板 $A,B$ 面积 $S$、间距 $d$，$V_A=U_0,V_B=0$。插入与两板平行、净量 $Q$ 的极薄金属板 $C$，距 $A$ 为 $d/3$。求 $V_C$ 及两间隙场。
+\end{example}
+\typeout{ECFIG:fig:e4:example:3:s}\fig{fig:e4:example:3:s}{题设：定势两板间插入带电薄板}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,3)--(4.5,3)(0,2)--(4.5,2)(0,0)--(4.5,0);\node[left]at(0,3){$A:U_0$};\node[left]at(0,2){$C:Q$};\node[left]at(0,0){$B:0$};\draw[dim](5.3,2)--(5.3,3)node[midway,right]{$d/3$};\draw[dim](5.3,0)--(5.3,2)node[midway,right]{$2d/3$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对带电中板写净量方程}\par\nobreak
+在 图\ref{fig:e4:example:3:s} 中令 $C_1=3\varepsilon_0S/d$、$C_2=3\varepsilon_0S/(2d)$。中间板不能按中性串联处理，其净量为 $Q=C_1(V_C-U_0)+C_2V_C$。移项后
+\[
+ V_C=\frac{C_1U_0+Q}{C_1+C_2}
+ =\frac23U_0+\frac{2Qd}{9\varepsilon_0S}.
+\]
+\typeout{ECFIG:fig:e4:example:3:p}\fig{fig:e4:example:3:p}{向下为电场的参考正方向，右侧网络保持同一上下次序}{\begin{tikzpicture}
+
+\foreach \y/\n in{3/A,2/C,0/B}{\draw[world](0,\y)--(4,\y);\node[left]at(0,\y){$\n$};}\draw[flow](1,2.85)--(1,2.15)node[midway,right]{$E_1$};\draw[flow](1,1.8)--(1,.2)node[midway,right]{$E_2$};\node[right]at(4,3){$U_0$};\node[right]at(4,2){$V_C,Q$};\node[right]at(4,0){$0$};\draw(7,3)to[C,l={$C_1$}](7,2)to[C,l={$C_2$}](7,0);\foreach \y/\n in{3/A,2/C,0/B}{\fill(7,\y)circle(1.5pt);\node[right]at(7.3,\y){$\n$};}\node at(3,-.8){$E_1,E_2$ 为带符号分量，负值表示实际反向};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用各间隙的势差计算带符号场强}\par\nobreak
+沿 图\ref{fig:e4:example:3:p} 向下为正，两间隙场分别为
+\[
+ E_1=\frac{U_0-V_C}{d/3}
+ =\frac{U_0}{d}-\frac{2Q}{3\varepsilon_0S},\quad
+ E_2=\frac{V_C}{2d/3}
+ =\frac{U_0}{d}+\frac{Q}{3\varepsilon_0S}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以场强跳变核对中板电荷}\par\nobreak
+检查 $\varepsilon_0S(E_2-E_1)=Q$，正好是中板两面净量；$Q=0$ 时薄板不改变均匀场，只在原线性势中取得 $2U_0/3$。$Q$ 足够大时某间隙场可反向，不应预先限定两场都从上往下。\end{solution}
+\begin{question}\begin{example}[四块平行板的两种接线]\label{e4:example:4}
+四块相同板按 $1,2,3,4$ 排列，相邻间距 $d$、面积 $S$。第一种把 $1,3$ 相连，在 $2,4$ 间测电容；第二种把 $1,4$ 相连，在 $2,3$ 间测电容。连接组原中性，求两种等效电容。
+\end{example}
+\typeout{ECFIG:fig:e4:example:4:s}\fig{fig:e4:example:4:s}{两种接线中的真实接点与测量端口}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw[world](0,3.6)--(3,3.6);\node[above right]at(2.8,3.6){$1$};\draw[world](0,2.4)--(3,2.4);\node[above right]at(2.8,2.4){$2$};\draw[world](0,1.2)--(3,1.2);\node[above right]at(2.8,1.2){$3$};\draw[world](0,0)--(3,0);\node[above right]at(2.8,0){$4$};\draw(0,3.6)--(-.6,3.6)--(-.6,1.2)--(0,1.2);\node[left]at(-.6,1.8){$X$};\draw(3,2.4)--(4,2.4)node[right]{$A$};\draw(3,0)--(4,0)node[right]{$B$};\node at(1.5,-.7){$Q_X=0$};\end{scope}\begin{scope}[xshift=7cm]\draw[world](0,3.6)--(3,3.6);\node[above right]at(2.8,3.6){$1$};\draw[world](0,2.4)--(3,2.4);\node[above right]at(2.8,2.4){$2$};\draw[world](0,1.2)--(3,1.2);\node[above right]at(2.8,1.2){$3$};\draw[world](0,0)--(3,0);\node[above right]at(2.8,0){$4$};\draw(0,3.6)--(-.6,3.6)--(-.6,0)--(0,0);\node[left]at(-.6,1.8){$X$};\draw(3,2.4)--(4,2.4)node[right]{$A$};\draw(3,1.2)--(4,1.2)node[right]{$B$};\node at(1.5,-.7){$Q_X=0$};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{合并第一种接线的节点并识别支路}\par\nobreak
+图\ref{fig:e4:example:4:s} 每一相邻间隙电容均为 $C_0=\varepsilon_0S/d$。第一种中，板 $1,3$ 合为浮置节点 $X$，端口 $A=2,B=4$。间隙 $1\!-\!2$ 与 $2\!-\!3$ 均跨 $A,X$，并联为 $2C_0$；间隙 $3\!-\!4$ 为 $X,B$ 间 $C_0$。两段串联得 $C_{AB}^{(1)}=2C_0/3$。
+\typeout{ECFIG:fig:e4:example:4:p}\fig{fig:e4:example:4:p}{第一种为并联后串联，第二种有直接跨端口的中间间隙}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$2C_0$}](3,0)to[C,l={$C_0$}](6,0);\node[left]at(0,0){$A$};\node[above]at(3,.1){$X$};\node[right]at(6,0){$B$};\node at(3,1.3){第一种：$X=1=3$};
+\begin{scope}[yshift=-3.4cm]\draw(0,0)--(0,2)to[C,l={$C_0$}](3,2)to[C,l={$C_0$}](6,2)--(6,0)to[C,l_={$C_0$}](0,0);\node[left]at(0,1){$A$};\node[right]at(6,1){$B$};\node[above]at(3,2){$X=1=4$};\node at(3,-1){第二种：下支为间隙 $2\! -\!3$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按第二种接线重新建立网络}\par\nobreak
+图\ref{fig:e4:example:4:p} 第二种令 $X=1=4,A=2,B=3$。中间间隙直接跨 $A,B$，贡献 $C_0$；另外两间隙组成 $A-X-B$ 的两个 $C_0$ 串联，贡献 $C_0/2$。故 $C_{AB}^{(2)}=3C_0/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对端口与连接条件}\par\nobreak
+同样四块板，仅导线连接不同，端口电容即可不同；先标节点比直接数板可靠。\end{solution}
+\begin{question}\begin{example}[油滴逐次落入水平电容器]\label{e4:example:5}
+水平板间距 $d=1.0\,\mathrm{cm}$、电容 $C=2.0\,\mu\mathrm F$，上板接地有小孔，下板原不带电。正油滴从孔上方 $h=10\,\mathrm{cm}$ 处静止释放，$q=2.0\times10^{-8}\,\mathrm C$、$m=2.0\times10^{-3}\,\mathrm g$，落到下板即转移全部电荷。忽略油滴彼此作用及其对场的扰动，$g=10\,\mathrm{m/s^2}$。第几滴在板间匀速？最多几滴能到达下板？
+\end{example}
+\typeout{ECFIG:fig:e4:example:5:s}\fig{fig:e4:example:5:s}{正油滴的释放高度、小孔与板间距离}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.5,0)(0,1.6)--(2.05,1.6)(2.45,1.6)--(4.5,1.6);\draw(4.5,1.6)--(5,1.6)--(5,1.1)node[ground]{};\draw[guide](2.25,0)--(2.25,3.5);\fill(2.25,3.3)circle(2pt)node[right]{$+q,m$};\draw[dim](-.6,1.6)--(-.6,3.3)node[midway,left]{$h$};\draw[dim](-.6,0)--(-.6,1.6)node[midway,left]{$d$};\node at(2.25,-.7){下板原未充电};\node[above]at(3.4,1.6){孔附近忽略扰动};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先确定第 $n$ 滴进入前的电场}\par\nobreak
+第 $n$ 滴进入 图\ref{fig:e4:example:5:s} 间隙前，下板已有 $(n-1)q$，电压为 $(n-1)q/C$，场向上，大小 $E_n=(n-1)q/(Cd)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由合力为零求匀速的滴数}\par\nobreak
+匀速要求电力向上恰等于重力，$qE_n=mg$，所以 $n-1=mgCd/q^2=1000$，即第 $1001$ 滴。
+\typeout{ECFIG:fig:e4:example:5:p}\fig{fig:e4:example:5:p}{第 $n$ 滴的实际受力与从孔向下的动能变化}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3.8,0)(0,2.8)--(1.7,2.8)(2.1,2.8)--(3.8,2.8);\node[below]at(1.9,0){$(n-1)q$};\fill(1.9,1.5)circle(2pt);\draw[force](1.9,1.5)--(1.9,2.5)node[right]{$qE_n$};\draw[force](1.9,1.5)--(1.9,.5)node[right]{$mg$};\draw[axis](-.5,2.8)--(-.5,.5)node[left]{$+z$};\node at(1.9,3.5){入孔动能 $mgh$};
+\begin{scope}[xshift=6cm]\draw[axis](0,0)--(4,0)node[right]{$z$};\draw[axis](0,0)--(0,3)node[above]{$K$};\draw[world](0,2.3)--(3.4,0);\draw[guide](3.4,0)--(3.4,2.4);\node[below]at(3.4,0){$d$};\node[left]at(0,2.3){$mgh$};\node at(2.3,2.8){最后可达的一滴};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由全过程能量求能否到达下板}\par\nobreak
+按 图\ref{fig:e4:example:5:p} 油滴到孔时已有动能 $mgh$。从孔到下板重力作功 $mgd$，电场作功 $-(n-1)q^2/C$。到达下板的动能为
+\[
+ K_n=mg(h+d)-\frac{(n-1)q^2}{C}.
+\]
+板间力恒定，若 $K_n\ge0$ 则整个向下路径可达，若为负则在板间转向。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查单位、整数边界与最后一次接触}\par\nobreak
+代入 $m=2.0\times10^{-6}\,\mathrm{kg}$，得
+\[
+ n-1\le\frac{mg(h+d)C}{q^2}=11000,
+\]
+所以最多 $11001$ 滴到达，其中最后一滴到板时速度恰为零。题目约定到板即转移电荷，故仍计入；若定义必须以非零速度撞击，则严格不等式会少一滴。到达条件是能量条件，不能误用匀速条件 $qE=mg$ 作为停止收集条件。\end{solution}
+\begin{question}\begin{example}[均匀带电实心球两半的排斥]\label{e4:example:6}
+半径 $R$、总电荷 $Q$ 的均匀带电绝缘实心球，沿过心平面分成两半但保持原位置。至少施加多大相向力才能使两半不分开？
+\end{example}
+\typeout{ECFIG:fig:e4:example:6:s}\fig{fig:e4:example:6:s}{绝缘球的体电荷分布与两半球所需的相向外力}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)circle(1.6);\draw[world](0,0)circle(1.6);\draw[guide](-1.6,0)--(1.6,0);\fill(0,0)circle(1.3pt)node[below left]{$O$};\draw[dim](0,0)--(1.13,1.13)node[midway,above left]{$R$};\draw[force](-.6,2.7)--(-.6,1.7)node[midway,left]{$F_{\text{外}}$};\draw[force](.6,-2.7)--(.6,-1.7)node[midway,right]{$F_{\text{外}}$};\node[right]at(2,0){$\rho=3Q/(4\pi R^3)$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用上半球自身内力相消确定积分对象}\par\nobreak
+图\ref{fig:e4:example:6:s} 的体密度 $\rho=3Q/(4\pi R^3)$，球内总场 $\bm E=\rho\bm r/(3\varepsilon_0)$。上半球所有电荷对自身的内力成对抵消，因此把上半球中的 $\rho\bm E$ 积分，所得净力正是下半球对它的力。水平方向对称相消，只需竖直分量。
+\typeout{ECFIG:fig:e4:example:6:p}\fig{fig:e4:example:6:p}{上半球薄层的体积、电荷与竖直场分量}{\begin{tikzpicture}
+
+\fill[blue!7](-2,0)arc(180:0:2)--cycle;\draw[world](-2,0)arc(180:0:2)--cycle;\fill[blue!25](-1.6,1.2)rectangle(1.6,1.3);\draw[world](-1.6,1.2)--(1.6,1.2);\draw[dim](2.4,0)--(2.4,1.2)node[midway,right]{$z$};\draw(1.6,1.25)--(3.5,1.8)node[right]{$\dd z$};\draw[force](0,1.25)--(0,2.7)node[above]{$\dd F_z$};\node at(0,-.6){薄层面积 $\pi(R^2-z^2)$};\node[left]at(-2,0){$0$};\node[left]at(0,2){$R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用水平薄层积分竖直净力}\par\nobreak
+在 图\ref{fig:e4:example:6:p} 高度 $z$ 的薄层，面积 $\pi(R^2-z^2)$，电量 $\rho\pi(R^2-z^2)\dd z$，竖直场为 $\rho z/(3\varepsilon_0)$。所以
+\[
+ \begin{aligned}
+ F&=\frac{\rho^2\pi}{3\varepsilon_0}\int_0^R(R^2z-z^3)\dd z\\
+ &=\frac{\rho^2\pi}{3\varepsilon_0}
+   \left[\frac{R^2z^2}{2}-\frac{z^4}{4}\right]_0^R
+ =\frac{\rho^2\pi}{3\varepsilon_0}\left(\frac{R^4}{2}-\frac{R^4}{4}\right)\\
+ &=\frac{\rho^2\pi R^4}{12\varepsilon_0}
+ =\frac{3Q^2}{64\pi\varepsilon_0R^2}
+ =\frac{3kQ^2}{16R^2}.
+\end{aligned}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定外力方向并检查电荷分布模型}\par\nobreak
+外力至少取此大小并指向分割平面。这里用的是体电荷，不是导体球壳；套用导体表面电压强公式会改变分布而得到错误系数。\end{solution}
+\begin{question}\begin{example}[反向连接两个已充电电容器]\label{e4:example:7}
+电容 $C_1=2C,C_2=C$，原电压均为 $U$。将 $C_1$ 正端与 $C_2$ 负端相连，另两端相连。求最终电压及释放能量。
+\end{example}
+\typeout{ECFIG:fig:e4:example:7:s}\fig{fig:e4:example:7:s}{接通前的反向极性：两个开关将同时闭合}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l_={$2C$}](0,3);\draw(5,0)to[C,l={$C$}](5,3);\draw(0,3)to[closing switch](5,3);\draw(0,0)to[closing switch](5,0);\node[left]at(0,2.2){$+$};\node[left]at(0,.8){$-$};\node[right]at(5,2.2){$-$};\node[right]at(5,.8){$+$};\node at(2.5,-1){两只初电压大小均为 $U$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按最终上节点给初电荷带符号}\par\nobreak
+在 图\ref{fig:e4:example:7:s} 指定最终上节点 $A$ 相对下节点 $B$ 的电压为 $V$。连接前将进入上节点的净电量为 $2CU-CU=CU$；最终是 $(2C+C)V$，所以 $V=U/3$，不能把两个初电量直接相加。
+\typeout{ECFIG:fig:e4:example:7:p}\fig{fig:e4:example:7:p}{最终上端组为正，两只电容均跨相同的上、下节点}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l_={$2C$}](0,3)--(5,3)to[C,l={$C$}](5,0)--(0,0);\node[left]at(0,3){$A$};\node[left]at(0,0){$B$};\node at(2.5,3.7){上端总量 $CU$，$V_A-V_B=U/3$};\node[right]at(.3,2.2){$+2CU/3$};\node[left]at(4.7,2.2){$+CU/3$};\node at(2.5,-.7){下端总量 $-CU$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求各极板末电量并判断极性}\par\nobreak
+图\ref{fig:e4:example:7:p} 最终 $C_1$ 的上端电量 $2CU/3$，$C_2$ 上端电量 $CU/3$，后者相对原正极已反号。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较初末储能}\par\nobreak
+初能 $W_i=3CU^2/2$，末能 $W_f=3C(U/3)^2/2=CU^2/6$，释放 $W_i-W_f=4CU^2/3$。释放量超过任一只原储能并不矛盾，它来自两只电容器共同降低的场能。\end{solution}
+\begin{question}\begin{example}[带初始电荷的电容桥中点]\label{e4:example:8}
+$A$ 电势 $U$、$B$ 电势零。$A$ 经 $2C$ 接中点 $M$，$M$ 经 $C$ 接 $B$；中点导体组净量 $Q_0$。求 $V_M$、两电容电荷及 $A$ 端对 $U$ 的微分电容。
+\end{example}
+\typeout{ECFIG:fig:e4:example:8:s}\fig{fig:e4:example:8:s}{题设：带初始电荷的电容桥中点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$2C$}](2.5,0)to[C,l={$C$}](5,0);\node[left]at(0,0){$A$};\node[above]at(2.5,0){$M$};\node[right]at(5,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把中点两侧电荷代数相加}\par\nobreak
+图\ref{fig:e4:example:8:s} 的中点净量是它两侧极板电荷之和，$Q_0=2C(V_M-U)+CV_M$，解得 $V_M=(2CU+Q_0)/(3C)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算两支路的电量}\par\nobreak
+$A$ 端电量
+\[
+ Q_A=2C(U-V_M)=\frac{2C}3U-\frac{2Q_0}3,
+\]
+右电容的 $M$ 端电量 $Q_{MB}=CV_M=2CU/3+Q_0/3$。按图中的极板归属，$Q_{MB}-Q_A=Q_0$，不是两只电容电量大小相等。
+\typeout{ECFIG:fig:e4:example:8:p}\fig{fig:e4:example:8:p}{虚线框中的中点组包含左侧负电量与右侧正电量的代数和}{\begin{tikzpicture}
+
+\draw(0,0)--(1.2,0)(1.5,0)--(4.5,0)(4.8,0)--(6,0);\foreach \x in{1.2,1.5,4.5,4.8}{\draw[world](\x,-.6)--(\x,.6);}\draw[guide](1.4,-.85)rectangle(4.6,.85);\node[left]at(0,0){$A:U$};\node[right]at(6,0){$B:0$};\node at(1.35,1.2){$2C$};\node at(4.65,1.2){$C$};\node at(2,-1.25){$-Q_A$};\node at(4,-1.25){$Q_{MB}$};\node at(3,1.9){$M:V_M,\ Q_0=Q_{MB}-Q_A$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定中点净量求微分电容}\par\nobreak
+图\ref{fig:e4:example:8:p} 保持 $Q_0$ 不变微调 $U$ 时，$\dd Q_A/\dd U=2C/3$。这与无初始电量时串联等效电容相同，但 $Q_A/U$ 还含感应偏置项，并不恒等于 $2C/3$。这也说明多导体环境中应先写电荷—电势关系，再解释电容。\end{solution}
+\begin{question}\begin{example}[连接顺序改变的三电容系统]\label{e4:example:9}
+三只相同电容 $C$，第一只初电压 $U_0$，其余未充电。先把第一、二只同极连接并平衡，再断开二者；然后把第二、三只同极连接并平衡。求最终各电压和全过程释放能量。
+\end{example}
+\typeout{ECFIG:fig:e4:example:9:s}\fig{fig:e4:example:9:s}{三只电容的初始电压与规定的连接顺序}{\begin{tikzpicture}
+
+\foreach \x/\n/\u in{0/1/U_0,3/2/0,6/3/0}{\draw(\x,0)to[C,l={$C_{\n}=C$}](\x,2);\node[below]at(\x,-.3){$U_{\n}=\u$};}\node at(3,3){先 $1\leftrightarrow2$，撤线，再 $2\leftrightarrow3$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对第一阶段的连接组守恒电荷}\par\nobreak
+图\ref{fig:e4:example:9:s} 第一阶段连接组初电量 $CU_0$，平衡后两只各为 $U_0/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{撤线后重设第二阶段的初始条件}\par\nobreak
+撤线后第一只保持 $U_0/2$，第二只也以电量 $CU_0/2$ 进入下一阶段。第二、三只平衡后各为 $U_0/4$。
+\typeout{ECFIG:fig:e4:example:9:p}\fig{fig:e4:example:9:p}{两阶段的实际连线：第二阶段第一只已被隔离}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw(0,0)to[C,l={$C_1$}](0,2.5);\node[below]at(0,-.4){$U_0/2$};\draw(3,0)to[C,l={$C_2$}](3,2.5);\node[below]at(3,-.4){$U_0/2$};\draw(6,0)to[C,l={$C_3$}](6,2.5);\node[below]at(6,-.4){$0$};\draw(0,0)--(3,0)(0,2.5)--(3,2.5);\node at(3,3.5){第一阶段平衡后};\end{scope}\begin{scope}[xshift=9cm]\draw(0,0)to[C,l={$C_1$}](0,2.5);\node[below]at(0,-.4){$U_0/2$};\draw(3,0)to[C,l={$C_2$}](3,2.5);\node[below]at(3,-.4){$U_0/4$};\draw(6,0)to[C,l={$C_3$}](6,2.5);\node[below]at(6,-.4){$U_0/4$};\draw(3,0)--(6,0)(3,2.5)--(6,2.5);\node at(3,3.5){第二阶段平衡后};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算总能量差并逐阶段核对}\par\nobreak
+图\ref{fig:e4:example:9:p} 最终 $(U_1,U_2,U_3)=(U_0/2,U_0/4,U_0/4)$。初储能 $CU_0^2/2$，末能
+\[
+ W_f=\frac C2\left(\frac{U_0^2}4+\frac{U_0^2}{16}+\frac{U_0^2}{16}\right)
+ =\frac{3CU_0^2}{16}.
+\]
+释放 $5CU_0^2/16$。各阶段分别释放 $CU_0^2/4$ 和 $CU_0^2/16$，相加一致。如果三只始终并联则末电压均为 $U_0/3$，与此顺序不同，因为第一只在第二阶段已被隔离。\end{solution}
+\begin{question}\begin{example}[电容桥的非对称中点]\label{e4:example:10}
+$A$ 电势 $U$、$B$ 零势，上支 $A-M-B$ 电容分别为 $C,2C$，下支 $A-N-B$ 为 $2C,C$，桥支 $M,N$ 间为 $C$。两中点原中性。求中点势和端口电容。
+\end{example}
+\typeout{ECFIG:fig:e4:example:10:s}\fig{fig:e4:example:10:s}{题设：电容桥的非对称中点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$C$}](3,2)to[C,l={$2C$}](6,0)to[C,l_={$C$}](3,-2)to[C,l_={$2C$}](0,0);\draw(3,2)to[C,l={$C$}](3,-2);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node[above]at(3,2){$M$};\node[below]at(3,-2){$N$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对两个中性浮置组逐项列电荷方程}\par\nobreak
+图\ref{fig:e4:example:10:s} 中，浮置组 $M$ 原中性，故 $C(V_M-U)+2CV_M+C(V_M-V_N)=0$；对 $N$ 同理有 $2C(V_N-U)+CV_N+C(V_N-V_M)=0$。各项都是相应支路在本节点上的电量。方程除以 $C$ 得 $4V_M-V_N=U$、$4V_N-V_M=2U$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立求中点势与桥支极性}\par\nobreak
+第一式乘四再加第二式，得 $15V_M=6U$，所以 $V_M=2U/5$；代入得 $V_N=3U/5$。
+\typeout{ECFIG:fig:e4:example:10:p}\fig{fig:e4:example:10:p}{实际电容桥的中点势与桥支带电极性（$U>0$）}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C$}](3,2.3)to[C,l={$2C$}](6,0)to[C,l_={$C$}](3,-2.3)to[C,l_={$2C$}](0,0);\draw(3,2.3)to[C,l={$C$}](3,-2.3);\node[left]at(0,0){$A:U$};\node[right]at(6,0){$B:0$};\node[above]at(3,2.5){$M:2U/5$};\node[below]at(3,-2.5){$N:3U/5$};\node[left]at(2.9,.35){$-$};\node[left]at(2.9,-.35){$+$};
+
+\end{tikzpicture}}
+
+图\ref{fig:e4:example:10:p} 桥支的 $M$ 端电量为 $C(V_M-V_N)=-CU/5$，并非零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端口电量并用场能验证}\par\nobreak
+高势端总量
+\[
+ Q_A=C(U-V_M)+2C(U-V_N)=\frac75CU,
+\]
+故端口电容 $7C/5$。储能逐支计算为
+$\tfrac12C[(3U/5)^2+2(2U/5)^2+2(2U/5)^2+(3U/5)^2+(U/5)^2]=7CU^2/10$，
+等于端口 $\tfrac12C_{\rm eq}U^2$，核对中点与桥支。\end{solution}

@@ -1,0 +1,184 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c5:drill:1}\textbf{用已转移电荷计算电源功与储存场能}\par\nobreak
+图\ref{fig:c5:drill:1:s} 中该时刻 $q=C\mathcal E/2$，电源功 $W_{\text{源}}=\mathcal Eq=C\mathcal E^2/2$。电容储能为 $q^2/(2C)=C\mathcal E^2/8$。
+\typeout{ECFIG:fig:c5:drill:1:p}\fig{fig:c5:drill:1:p}{累计能量随已充入电荷而变；在 $q/(C\mathcal E)=1/2$ 处分别读取三项}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4,0)node[right]{$q/(C\mathcal E)$};
+\draw[axis](0,0)--(0,2.5)node[above]{$W/(C\mathcal E^2)$};
+\draw[red,thick,domain=0:.5,samples=70]plot({6*\x},{3.6*\x});
+\draw[blue,thick,domain=0:.5,samples=70]plot({6*\x},{3.6*(\x-.5*\x^2)});
+\draw[black,thick,domain=0:.5,samples=70]plot({6*\x},{1.8*\x^2});
+\draw[guide](3,0)--(3,2);\node[below]at(3,-.1){$1/2$};
+\fill[red](3,1.8)circle(1.5pt);\fill[blue](3,1.35)circle(1.5pt);\fill(3,.45)circle(1.5pt);
+\node[red,right]at(4.5,2.1){$W_{\text{源}}/(C\mathcal E^2)=1/2$};
+\node[blue,right]at(4.5,1.3){$Q/(C\mathcal E^2)=3/8$};
+\node[right]at(4.5,.45){$W_C/(C\mathcal E^2)=1/8$};
+\draw[guide](3,1.8)--(4.3,2.1)(3,1.35)--(4.3,1.3)(3,.45)--(4.3,.45);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量守恒求已产生的焦耳热}\par\nobreak
+图\ref{fig:c5:drill:1:p} 的能量分配由守恒给出 $Q=W_{\text{源}}-W_C=3C\mathcal E^2/8$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较电荷比例与热量比例}\par\nobreak
+最终总热为 $C\mathcal E^2/2$，所以此时已产生最终热的 $3/4$，不是 $1/2$。原因是前期电流较大，焦耳热产生更快；“充入一半电荷”不代表“完成一半能量过程”。\end{drillsolution}
+\begin{drillsolution}{c5:drill:2}\textbf{保持原电容正向并继承切换初态}\par\nobreak
+图\ref{fig:c5:drill:2:s} 取原电容电压正向不变，初值 $+\mathcal E$、终值 $-\mathcal E$。回路式为 $RC\dot u_C+u_C=-\mathcal E$。令 $w=u_C+\mathcal E$，则 $w(0)=2\mathcal E$，分离积分为
+\[
+\int_{2\mathcal E}^{w(t)}\frac{\dd z}{z}
+=-\int_0^t\frac{\dd s}{RC},\qquad
+\ln\frac{w}{2\mathcal E}=-\frac t{RC}.
+\]
+所以 $u_C=-\mathcal E+2\mathcal E\e^{-t/(RC)}$。
+\typeout{ECFIG:fig:c5:drill:2:p}\fig{fig:c5:drill:2:p}{反向电源使电压从 $+\mathcal E$ 趋向 $-\mathcal E$；零点对应半个初始偏差}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$t/(RC)$};
+\draw[axis](0,-1.8)--(0,2)node[above]{$u_C/\mathcal E$};
+\draw[thick,domain=0:4.7,samples=100]plot(\x,{1.5*(-1+2*exp(-\x))});
+\node[left]at(0,1.5){$1$};\node[left]at(0,-1.5){$-1$};
+\draw[guide](0,-1.5)--(4.7,-1.5);\fill(.693147,0)circle(1.6pt);
+\draw[guide](.693147,-.2)--(.693147,-.9);\node[below]at(.693147,-.9){$\ln2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由剩余偏差的指数求过零时刻}\par\nobreak
+图\ref{fig:c5:drill:2:p} 中过零满足 $\e^{-t/(RC)}=1/2$，所以 $t_0=RC\ln2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求全过程热并检查电源净功}\par\nobreak
+总热由初终电压差求 $Q=C[(-\mathcal E)-(+\mathcal E)]^2/2=2C\mathcal E^2$。初末电容储能相同，电源净供能也正好为 $2C\mathcal E^2$。反接过程不是先无源放完电、再独立充电，两段电流由同一指数解连续连接。\end{drillsolution}
+\begin{drillsolution}{c5:drill:3}\textbf{由连续初电流求闭合回路的指数衰减}\par\nobreak
+图\ref{fig:c5:drill:3:s} 两电阻总看入电阻为 $R_s=R_1+R_2$，由 $L\dot i+R_si=0$，
+\[
+\int_{I_0}^{i(t)}\frac{\dd z}{z}
+=-\frac{R_s}{L}\int_0^t\dd s,\qquad
+\ln\left|\frac{i(t)}{I_0}\right|=-\frac{R_st}{L}.
+\]
+非零初流保留原符号；若 $I_0=0$，直接取恒零解。所以 $i=I_0\e^{-(R_1+R_2)t/L}$。初磁能为 $LI_0^2/2$，最终电流零，全部变热。
+\typeout{ECFIG:fig:c5:drill:3:p}\fig{fig:c5:drill:3:p}{两个电阻分别保留在同一闭合续流回路中，电流在各元件中相同}{\begin{tikzpicture}
+
+\draw(0,0)to[L,l={$L$}](0,3)to[R,l={$R_1$}](4,3)to[R,l={$R_2$}](4,0)--(0,0);
+\draw[flow](1,4)--(3,4)node[midway,above]{$i(t)$};
+\node at(2,-1){$P_1(t):P_2(t)=R_1:R_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按每时刻相同电流求热量分配}\par\nobreak
+图\ref{fig:c5:drill:3:p} 中两电阻每时刻电流相同，因此功率比始终为 $R_1:R_2$，而每只电阻的热积分为
+\[
+Q_j=R_jI_0^2\int_0^\infty\e^{-2R_st/L}\dd t
+=R_jI_0^2\left[-\frac L{2R_s}\e^{-2R_st/L}\right]_0^\infty
+=\frac{R_j}{R_s}\frac{LI_0^2}{2}.
+\]
+代入 $j=1,2$ 得
+\[
+ Q_1=\frac{R_1}{R_1+R_2}\frac{LI_0^2}{2},\qquad
+ Q_2=\frac{R_2}{R_1+R_2}\frac{LI_0^2}{2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对总能量与衰减快慢的区别}\par\nobreak
+二者之和等于初磁能。增大某个电阻会缩短衰减时间，但并不改变总释放能量；它只改变分配比例和释放速率。\end{drillsolution}
+\begin{drillsolution}{c5:drill:4}\textbf{同时利用电荷初值与零初电流}\par\nobreak
+按 图\ref{fig:c5:drill:4:s} 的 $i=\dot q$，由回路得 $L\ddot q+q/C=0$。令 $\omega_0=1/\sqrt{LC}$，指数试解的特征方程是 $s^2+\omega_0^2=0$，故 $q=A\cos\omega_0t+B\sin\omega_0t$。初电荷给出 $A=q_0$，初流 $B\omega_0=0$ 给出 $B=0$；对余弦用链式法则求导，解为 $q=q_0\cos\omega_0t$，$i=-\omega_0q_0\sin\omega_0t$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选取首次到达的相位与时刻}\par\nobreak
+首次 $q=q_0/2$ 时 $\omega_0t=\pi/3$，故 $t=\pi/(3\omega_0)$。
+\typeout{ECFIG:fig:c5:drill:4:p}\fig{fig:c5:drill:4:p}{从右端初态点顺时针运动，第一次到达 $q=q_0/2$ 位于下半圆}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(2.8,0)node[right]{$q/\sqrt C$};\draw[axis](0,-2.2)--(0,2.4)node[above]{$\sqrt L\,i$};
+\draw[thick](0,0)circle(1.8);
+\fill(1.8,0)circle(1.7pt)node[above right]{初态};
+\draw[flow,blue](1.8,0)arc[start angle=0,end angle=-60,radius=1.8];
+\fill(.9,-1.558846)circle(1.8pt);\draw[guide](.9,0)--(.9,-1.558846)--(0,-1.558846);
+\node[above]at(.9,.3){$q_0/(2\sqrt C)$};
+\draw[guide](.9,-1.558846)--(2.3,-2.1)node[right]{$i=-\sqrt3q_0/(2\sqrt{LC})$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从相图确定负方向和电流大小}\par\nobreak
+图\ref{fig:c5:drill:4:p} 的电流 $i=-\sqrt3\,\omega_0q_0/2$，负号表示实际流出所标正极板，大小 $\sqrt3q_0/(2\sqrt{LC})$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电场能与磁场能独立核对大小}\par\nobreak
+初能 $q_0^2/(2C)$，此时电容能为初能的 $1/4$，磁能为 $3/4$，由 $Li^2/2=3q_0^2/(8C)$ 得同一大小。运动时间与能量两种检查各有作用：能量给大小，时间解确定首次到达与方向。\end{drillsolution}
+\begin{drillsolution}{c5:drill:5}\textbf{用重根构造两个独立解}\par\nobreak
+图\ref{fig:c5:drill:5:s} 的特征方程有重根 $-\gamma$，$\gamma=1/\sqrt{LC}$，原方程为 $\ddot q+2\gamma\dot q+\gamma^2q=0$。令 $q=y\e^{-\gamma t}$，则
+\[
+\dot q=(\dot y-\gamma y)\e^{-\gamma t},\quad
+\ddot q=(\ddot y-2\gamma\dot y+\gamma^2y)\e^{-\gamma t}.
+\]
+代入相消后$\ddot y=0$。记$B=\dot y(0)$、$A=y(0)$，连续两次定积分：
+\[
+\dot y(t)-B=\int_0^t0\,\dd s=0,\qquad
+y(t)-A=\int_0^tB\,\dd s=B[s]_0^t=Bt.
+\]
+所以$\dot y=B$、$y=A+Bt$，所以一般解为 $q=(A+Bt)\e^{-\gamma t}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时代入电荷与电流初值}\par\nobreak
+初值给 $A=q_0$，$\dot q(0)=B-\gamma A=0$，所以 $B=\gamma q_0$。
+\typeout{ECFIG:fig:c5:drill:5:p}\fig{fig:c5:drill:5:p}{临界阻尼且初电流为零：曲线从水平切线起步，保持正值并单调趋零}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.7,0)node[right]{$\gamma t$};\draw[axis](0,0)--(0,3.7)node[above]{$q/q_0$};
+\draw[thick,domain=0:5.2,samples=100]plot(\x,{3*(1+\x)*exp(-\x)});
+\draw[blue](0,3)--(.9,3);\node[blue,right]at(.9,3.4){$i(0)=0$};
+\node[left]at(0,3){$1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据函数正性与导数判断是否变号}\par\nobreak
+故 图\ref{fig:c5:drill:5:p} 的响应 $q=q_0(1+\gamma t)\e^{-\gamma t}$，对 $t\ge0$ 恒正。乘积求导，
+$i=q_0[\gamma-\gamma(1+\gamma t)]\e^{-\gamma t}
+=-q_0\gamma^2t\e^{-\gamma t}\le0$，电荷单调下降但不穿过零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查初态、终态及重根解的独立性}\par\nobreak
+初始斜率为零，长时间趋零，符合初态和耗散条件。临界阻尼的解有乘 $t$ 的项，不能把两个相同根的指数简单相加当作两个独立解。\end{drillsolution}
+\begin{drillsolution}{c5:drill:6}\textbf{用最低值与最高值连接两段一阶过程}\par\nobreak
+令 图\ref{fig:c5:drill:6:s} 中稳定循环的最低、最高电压为 $u_-,u_+$，$a=\e^{-T/(RC)}$。接 $U$ 的一段满足 $RC\dot u=U-u$，从局部时间 $0$ 到 $t$ 积分，
+$\int_{u_-}^{u(t)}\dd z/(U-z)=t/(RC)$，即
+$\ln[(U-u_-)/(U-u(t))]=t/(RC)$。
+在 $t=T$ 代入 $u(T)=u_+$，所以 $u_+=U+(u_--U)a$。随后接零，从 $u_+$ 放电到 $u_-$。在放电阶段另以$s=0$为起点，满足$\dd u/u=-\dd s/(RC)$、$u(0)=u_+$。因此
+\[
+\int_{u_+}^{u(s)}\frac{\dd \xi}{\xi}
+=-\int_0^s\frac{\dd \sigma}{RC},\qquad
+[\ln\xi]_{u_+}^{u(s)}=-\frac{s}{RC}.
+\]
+到$s=T$时$u(T)=u_-$，于是$\ln(u_-/u_+)=-T/(RC)$。取指数并用$a=\e^{-T/(RC)}$，得$u_-=au_+$。
+\typeout{ECFIG:fig:c5:drill:6:p}\fig{fig:c5:drill:6:p}{稳定循环从非零最低值起步；图取 $T/(RC)=1.2$ 示意，换接点电容电压连续}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(3.6,0)node[right]{$t/T$};\draw[axis](0,0)--(0,3.7)node[above]{$u_C/U$};
+\draw[thick,domain=0:1,samples=60]plot(\x,{3*(1-(1-exp(-1.2)/(1+exp(-1.2)))*exp(-1.2*\x))});
+\draw[thick,domain=1:2,samples=60]plot(\x,{3/(1+exp(-1.2))*exp(-1.2*(\x-1))});
+\draw[thick,domain=2:3,samples=60]plot(\x,{3*(1-(1-exp(-1.2)/(1+exp(-1.2)))*exp(-1.2*(\x-2)))});
+\draw[guide](0,{3/(1+exp(-1.2))})--(3.2,{3/(1+exp(-1.2))});
+\draw[guide](0,{3*exp(-1.2)/(1+exp(-1.2))})--(3.2,{3*exp(-1.2)/(1+exp(-1.2))});
+\node[left]at(0,{3/(1+exp(-1.2))}){$u_+/U$};
+\node[left]at(0,{3*exp(-1.2)/(1+exp(-1.2))}){$u_-/U$};
+\foreach \x in {1,2,3}{\draw(\x,0)--(\x,-.1)node[below]{$\x$};}
+\node at(.5,3.2){接 $U$};\node at(1.5,3.2){接 $0$};\node at(2.5,3.2){接 $U$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立周期边界求电压上下界}\par\nobreak
+代入 图\ref{fig:c5:drill:6:p} 的两段连续条件，$u_+=U(1-a)+a^2u_+$，所以
+\[
+ u_+=\frac{U}{1+a},\qquad u_-=\frac{aU}{1+a}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用长、短换接时间检查循环幅度}\par\nobreak
+$T\gg RC$ 时 $a\to0$，电压几乎在 $0,U$ 间完整充放；$T\ll RC$ 时 $a\to1$，上下界都趋于 $U/2$，波动很小。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明周期解的稳定性与换接连续性}\par\nobreak
+完整周期的初值误差会乘以 $a^2<1$，所以这一周期解能够由任意有限初电压收敛得到。每次换接电压连续，变化的是微分方程右端，不能在换接瞬间把电容直接重设为外加电压。\end{drillsolution}

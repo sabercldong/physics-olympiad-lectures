@@ -1,0 +1,30 @@
+\fig{em6:neutral-topology}{不平衡星形负载的两种中性线状态；阻抗按支路标出}{
+\begin{tikzpicture}[scale=.83]
+\foreach \shift/\closed in {0/1,6.1/0}{
+\begin{scope}[xshift=\shift cm]
+\draw[world](0,2.4)--(2.1,1.2)--(0,0) (2.1,1.2)--(4.2,0);
+\node[draw,fill=white]at(1.05,1.8){$Z_a$};
+\node[draw,fill=white]at(1.05,.6){$Z_b$};
+\node[draw,fill=white]at(3.15,.6){$Z_c$};
+\node[left]at(0,2.4){$a$};\node[left]at(0,0){$b$};\node[right]at(4.2,0){$c$};
+\fill(2.1,1.2)circle(2pt)node[above right]{$N$};
+\draw[world](2.1,1.2)--(3,2.4) (3.6,2.4)--(4.2,2.4);
+\node[right]at(4.2,2.4){$O$};
+\ifnum\closed=1
+\draw[world](3,2.4)--(3.6,2.4);
+\node at(2.1,3.3){中性线完好：$V_N=V_O$};
+\else
+\draw[world](3,2.4)--(3.5,2.75);
+\node at(2.1,3.3){中性线断开：$V_N$待求};
+\fi
+\end{scope}}
+\end{tikzpicture}}
+
+图\ref{em6:neutral-topology}左图由导线直接规定$V_N=V_O$。右图的开关断开后，应对浮动节点$N$列方程。相电压均对$O$计，令$\underline U_N=V_N-V_O$，得到
+\[
+ \sum_{j=a,b,c}\frac{\underline U_j-\underline U_N}{Z_j}=0,\qquad
+ \underline U_N=
+ \frac{\underline U_a/Z_a+\underline U_b/Z_b+\underline U_c/Z_c}
+      {1/Z_a+1/Z_b+1/Z_c}.
+\]
+这里假定分母非零并存在有限的正弦稳态。各负载电压随后由$\underline U_{jN}=\underline U_j-\underline U_N$求出；三个阻抗相等时，相电压和为零使中性点位移恢复为零。若是特殊无损网络导致分母为零，应检查是否存在稳态，不能直接相除。

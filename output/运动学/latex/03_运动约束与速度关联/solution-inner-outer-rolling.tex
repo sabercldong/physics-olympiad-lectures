@@ -1,0 +1,51 @@
+\begin{drillsolution}{k3p9}取公转和自转均以对地逆时针为正，公转角速度为$\Omega>0$。分别考察小硬币圆心位于固定大圆心右方的瞬间；两个构型的圆心速度都向上，但接触点位于小圆心的不同侧。
+\fig{k3p9s}{外滚与内滚的接触点速度分解；灰色曲线为固定大圆的局部边界}{
+\begin{tikzpicture}[scale=1.05]
+\begin{scope}
+\node at(0,2.2){外滚：$K$在左};
+\draw[world](0,0)circle(.75);
+\draw[gray,thick](-.94,-.9)..controls(-.68,-.3)and(-.68,.3)..(-.94,.9);
+\fill(-.75,0)circle(2pt)node[left]{$K$};
+\fill(0,0)circle(1.5pt)node[below right]{$O$};
+\draw[flow,blue](0,0)--(0,1.35)node[right]{$v_O$};
+\draw[flow,red](-.75,0)--(-.75,-1.3)node[left]{$r\omega$};
+\draw[flow](30:1.05)arc(30:120:1.05);
+\node[right]at(.9,.8){$\omega>0$};
+\node at(0,-1.95){$(R+r)\Omega-r\omega=0$};
+\end{scope}
+\begin{scope}[xshift=5.3cm]
+\node at(0,2.2){内滚：$K$在右};
+\draw[world](0,0)circle(.75);
+\draw[gray,thick](.56,-.9)..controls(.82,-.3)and(.82,.3)..(.56,.9);
+\fill(.75,0)circle(2pt)node[right]{$K$};
+\fill(0,0)circle(1.5pt)node[below left]{$O$};
+\draw[flow,blue](0,0)--(0,1.35)node[left]{$v_O$};
+\draw[flow,red](.75,0)--(.75,-1.3)node[right]{$r|\omega|$};
+\draw[flow](150:1.05)arc(150:60:1.05);
+\node[left]at(-.9,.8){$\omega<0$};
+\node at(0,-1.95){$(R-r)\Omega+r\omega=0$};
+\end{scope}
+\end{tikzpicture}}
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{外滚。}
+图\ref{k3p9q}给出圆心轨道半径$R+r$，故$v_O=(R+r)\Omega$。图\ref{k3p9s}左侧接触点在小圆心左方，逆时针自转给该点向下速度，恰好抵消圆心向上速度：
+\[
+ \omega=\frac{R+r}{r}\Omega.
+\]
+公转一周时$\int\Omega\,\dd t=2\pi$，代入$R=3r$，
+\[
+ \Delta\varphi_{\text{外}}=\frac{R+r}{r}2\pi=8\pi,
+ \qquad \boxed{n_{\text{外}}=4\text{圈，逆时针}}.
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{内滚。}
+圆心轨道半径改为$R-r$。图\ref{k3p9s}右侧接触点位于小圆心右方，只有顺时针自转才能产生向下的接触点速度。因此
+\[
+ \omega=-\frac{R-r}{r}\Omega,\qquad
+ \Delta\varphi_{\text{内}}=-\frac{R-r}{r}2\pi=-4\pi,
+ \qquad \boxed{n_{\text{内}}=2\text{圈，顺时针}}.
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{核对计角参考系。}
+以上角度均相对地面计。若改问相对两圆心连线的姿态变化，还须从有向自转角中减去连线转过的$2\pi$，分别得到$2\pi R/r$与$-2\pi R/r$。只用固定圆周长除以小圆周长，计算的是这一相对角度，会漏掉圆心连线自身转动对地面姿态的贡献。
+\end{drillsolution}

@@ -1,0 +1,283 @@
+\section{电势差、电场功与零点}
+\subsection{从保守场到标量势}
+
+在固定静电场中，电场力对给定电荷从 $A$ 移到 $B$ 所做的功只依赖起终位置。将它除以受力电荷 $q$，定义两点电势差
+\[
+ U_{AB}=V_A-V_B=\frac{W_{A\to B}}q
+ =\int_A^B\bm E\cdot\dd\bm l.
+\]
+电荷带负号时，功与电势差的符号关系也随之改变。电势差属于场的性质，与用多大试探电荷探测无关；若把一固定外场中的 $q$ 改成两倍，做功也同时变成两倍，不能仅从分母有 $q$ 就说电势差与电荷成反比。
+
+选择某个参考点 $O$，规定 $V_O=0$，便可给每点赋予电势 $V_A=U_{AO}$。改变参考点，相当于所有电势加同一常数，不改任意电势差、电场或可观测做功。有限电荷分布常可选无穷远为零点，但无限平面、无限长直线等场的积分到无穷远可能发散，此时必须用有限参考点，不能强行设 $V_\infty=0$。
+
+\fig{e2:path-work}{两条路径连接同一对端点；静电场中功由端点电势差确定}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[left]{$A$};\fill(6,0)circle(2pt)node[right]{$B$};
+\draw[flow,blue](0,0)..controls(1,2)and(5,2)..(6,0);\node[blue]at(3,1.8){路径 $\Gamma_1$};
+\draw[flow,red](0,0)..controls(1,-1.6)and(5,-1.6)..(6,0);\node[red]at(3,-1.5){路径 $\Gamma_2$};
+\node at(3,2.8){$\int_{\Gamma_1}\bm E\cdot\dd\bm l=\int_{\Gamma_2}\bm E\cdot\dd\bm l=V_A-V_B$};
+
+\end{tikzpicture}}
+
+图\ref{e2:path-work}中沿 $\Gamma_1$ 去、沿 $\Gamma_2$ 返回，闭合积分为零。选电势零点不改变这两个积分。若所有点都加常数 $C$，$qV$ 虽增加 $qC$，但 $q(V_B-V_A)$ 不变；比较不同公式时须先统一参考点。
+
+这里的路径无关针对静电场。变化磁通产生的感应电场一般不能用单值标量势完全表示，不在本讲模型内。
+
+\subsection{电势高低与势能增减}
+
+固定外场中电荷的势能为 $U_{\rm e}=qV$，场力做功 $W=-\Delta U_{\rm e}=q(V_A-V_B)$。正电荷沿场线方向电势下降、势能减小；负电荷沿场线方向电势仍下降，但势能增大。场强、电势、势能分别是矢量场、标量场和系统能量，比较前应先说清研究的量。
+
+若缓慢移动电荷，初末动能可忽略，外力功为势能增加；若仅在电场力作用下自由运动，动能增加为势能减少。若电源、摩擦或移动导体参与，还需把相应做功纳入系统，不能把一切过程都写成“动能加电势能守恒”。
+
+\typeout{ECFIG:fig:e2:work}\fig{fig:e2:work}{同一电势差对应两种电荷的不同做功}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-1)--(0,1)(4,-1)--(4,1);\node[above]at(0,1){$V_A$};\node[above]at(4,1){$V_B<V_A$};\draw[flow](.5,.5)--(3.5,.5)node[midway,above]{$\bm E$};\draw[flow](.5,-.5)--(3.5,-.5)node[midway,below]{$A\to B$};\node at(2,-1.6){$W=q(V_A-V_B)$};
+\end{tikzpicture}}
+
+在图\ref{fig:e2:work}中，电势由 $A$ 到 $B$ 降低。若 $q>0$，$W>0$，自由运动时动能增加；若 $q<0$，沿同一路径移动则 $W<0$，需要原有动能或外力供能。图中的几何路径和电势高低没有因电荷符号改变，改变的是 $qV$ 的增减。
+
+\section{电势与电场的空间关系}
+\subsection{梯度和等势面}
+
+对很小的位移 $\dd\bm l$，有 $\dd V=-\bm E\cdot\dd\bm l$，所以
+\[
+ E_x=-\frac{\partial V}{\partial x},\quad
+ E_y=-\frac{\partial V}{\partial y},\quad
+ E_z=-\frac{\partial V}{\partial z},\qquad\bm E=-\nabla V.
+\]
+若只知道一条轴线上的 $V(x)$，求导只给该线上的轴向分量；没有对称性时不能据此断言横向分量为零。在一条曲线上电势恒定，只能说电场沿其切向的分量为零。
+
+沿等势面移动，$\dd V=0$，电场与任意切向垂直，所以电场沿等势面法向。场方向指向电势下降最快的方向，大小为法向电势变化率。若两相邻等势面电势差相同，间距越小，场越强；若图中的等势面差值不同，就不能单看几何间距比较场强。
+
+一维图像中 $V(x)$ 的斜率决定 $E_x$，极值点斜率为零。若该方向没有其他场分量，正电荷在电势极小处具有该方向的稳定平衡，负电荷在极大处稳定；是否在三维空间稳定还要检查其他方向。电势为零与场强为零没有必然对应：同号电荷中点可场零势非零，异号等量电荷中垂面可势零场非零。
+
+\fig{e2:equipotential-spacing}{相邻等势线均相差同一电势；右侧更密，法向场更强}{\begin{tikzpicture}
+
+\foreach \x/\lab in {0/4,2.2/3,3.7/2,4.7/1,5.3/0}{\draw(\x,-1.2)--(\x,1.2);\node[above]at(\x,1.3){$\lab$};}
+\draw[flow,blue](.3,0)--(1.6,0);\draw[flow,blue](4.8,0)--(6.8,0)node[right]{$\bm E$};
+\node at(2.6,-2){$E_n\simeq\Delta V/\Delta n$};\node at(2.6,2.3){$V/\Delta V$};\draw[<->](2.2,-.8)--(3.7,-.8)node[midway,below]{$\Delta n$};
+
+\end{tikzpicture}}
+
+图\ref{e2:equipotential-spacing}把相邻电势差固定为 $\Delta V$，因此能用间距比较场。沿同一条竖直等势线移动，电场功为零，但水平电场仍然存在。已知一条曲线上的 $V$，只能沿曲线求方向导数；只有掌握邻近空间的变化，才能得到完整的 $-\nabla V$。
+
+\subsection{点电荷电势与叠加}
+
+点电荷以无穷远为零点，沿径向积分，先用有限上限 $L$ 再取极限：
+\[
+ V(r)=\lim_{L\to\infty}kq\int_r^L s^{-2}\dd s
+ =\lim_{L\to\infty}kq[-s^{-1}]_r^L
+ =\lim_{L\to\infty}kq\left(\frac1r-\frac1L\right)=\frac{kq}{r}.
+\]多个固定点电荷的电势作代数相加，
+\[
+ V(P)=k\sum_i\frac{q_i}{r_i}.
+\]
+不需要像场强那样分解方向，但各项电荷仍须保留符号。相互抵消的电势可能对应不抵消的场，因为空间导数还包含各源点方向。连续分布则有 $V=k\int\dd q/s$，相同距离的微元特别适合先把电荷总量合并。
+
+
+\fig{e2:slope-stability}{同一电势曲线的斜率决定场；稳定性则由电荷的势能曲率决定}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-2.7,0)--(2.9,0)node[right]{$x$};\draw[axis](0,-.3)--(0,3)node[above]{$V$};
+\draw[thick,domain=-2:2,samples=60]plot(\x,{.5+.45*\x*\x});\node[left]at(0,.5){$V_0$};
+\draw[blue,thick](-1,0)--(1,0);\node[blue]at(0,-.7){$V'(0)=0$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis](-2.7,0)--(2.9,0)node[right]{$x$};\draw[axis](0,-2.2)--(0,2.5)node[above]{$F_x$};
+\draw[blue,thick](-2,1.6)--(2,-1.6);\draw[red,thick](-2,-1.6)--(2,1.6);
+\node[blue,right]at(1.3,-1.6){$q>0$};\node[red,right]at(1.3,1.6){$q<0$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e2:slope-stability}取局部 $V=V_0+cx^2/2$，$c>0$。由 $E_x=-cx$，正电荷有 $F_x=-qcx$，一维回复；负电荷的力与位移同向，一维不稳定。加常数 $V_0$ 不改变任何力。这个图只表示指定方向的局部变化；若其余方向未被约束，还须检查相应的二阶变化。
+
+\section{常见分布的电势与补形}
+\subsection{圆环、球壳与实心球}
+
+圆环轴线上每个电荷微元距场点同为 $\sqrt{R^2+x^2}$，故 $V=kQ/\sqrt{R^2+x^2}$，无论环上分布是否均匀都成立。对 $x$ 求导时，根式的内函数导数为 $2x$，所以
+\[
+ E_x=-\frac{\dd V}{\dd x}
+ =-kQ\left(-\frac12\right)(R^2+x^2)^{-3/2}(2x)
+ =\frac{kQx}{(R^2+x^2)^{3/2}}.
+\]只有均匀分布或其他保证横向抵消的条件下，这才是完整电场。
+
+均匀球壳外部电场等效点电荷，所以 $V_{\text{外}}=kQ/r$；内部场为零，电势处处与表面相同，为 $kQ/R$。不能把球内零场误写成零电势。均匀实心球则须从表面电势继续向内积分，
+\[
+ \begin{aligned}
+ V(r)&=V(R)+\int_r^R\frac{kQs}{R^3}\dd s
+ =\frac{kQ}{R}+\frac{kQ}{R^3}\left[\frac{s^2}{2}\right]_r^R\\
+ &=\frac{kQ}{R}+\frac{kQ}{2R^3}(R^2-r^2)
+ =\frac{kQ}{2R}\left(3-\frac{r^2}{R^2}\right)\quad(r\le R).
+\end{aligned}
+\]
+中心电势是表面的一点五倍，内外电势在表面连续，导数也与连续场相符。对固定体电荷挖孔，可把正完整分布与负补充分布的电势直接相加。
+
+\typeout{ECFIG:fig:e2:ball}\fig{fig:e2:ball}{实心球电势由表面值向内积分；旁图用负斜率核对内外电场}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](0,0)--(4.5,0)node[right]{$r/R$};\draw[axis](0,0)--(0,2.2)node[above]{$V/(kQ/R)$};
+\draw[blue,thick,domain=0:1,samples=50]plot(\x,{(3-\x*\x)/2});\draw[blue,thick,domain=1:4,samples=70]plot(\x,{1/\x});
+\draw[guide](1,0)--(1,1);\node[below]at(1,0){$1$};\node[left]at(0,1.5){$3/2$};\node[left]at(0,1){$1$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis](0,0)--(4.5,0)node[right]{$r/R$};\draw[axis](0,0)--(0,2.2)node[above]{$E_r/(kQ/R^2)$};
+\draw[red,thick](0,0)--(1,1);\draw[red,thick,domain=1:4,samples=70]plot(\x,{1/(\x*\x)});
+\draw[guide](1,0)--(1,1);\node[below]at(1,0){$1$};\node[left]at(0,1){$1$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:e2:ball}中 $r=R$ 处两段电势不仅数值相同，左右斜率也相同，故场连续；这是没有额外面电荷的实心球。球壳的电势也连续，但壳内斜率为零、壳外斜率非零，对应法向场跳变。电势为偶函数或径向函数的情形，应检查求导后场的方向，不能仅检查正半轴数值。
+
+圆环轴上电势为偶函数，中心取有限极大 $kQ/R$，轴向场为奇函数且中心为零。若环上电荷不均匀，轴向电势仍只取决于总电荷，但环面内的导数不能从这一条轴线函数求出。
+
+\subsection{无限分布的参考点应留在有限处}
+
+无限长均匀线电荷的场为 $\lambda/(2\pi\varepsilon_0r)$，故相对半径 $r_0$ 的电势
+\[
+ \begin{aligned}
+ V(r)-V(r_0)
+ &=-\int_{r_0}^{r}\frac{\lambda}{2\pi\varepsilon_0s}\dd s
+ =-\frac{\lambda}{2\pi\varepsilon_0}[\ln s]_{r_0}^{r}\\
+ &=-\frac{\lambda}{2\pi\varepsilon_0}(\ln r-\ln r_0)
+ =-\frac{\lambda}{2\pi\varepsilon_0}\ln\frac r{r_0}.
+\end{aligned}
+\]
+当 $r\to\infty$ 对数发散，不能把无穷远同时规定为有限零点。无限面电荷的场大小恒定，电势随法向距离线性变化，也不适合无穷远零点。
+
+带电面可以使法向电场有跳变，但对有限面密度、电势本身仍连续。作分段电势时，每段积分都会出现常数，应由参考点与边界连续性统一确定。只分别对每段场积分而漏掉常数，常导致电势图像在并无无限势垒的位置凭空断开。
+
+
+\fig{e2:line-reference}{无限线电荷取有限参考半径 $r_0$；电势差取决于半径比而非绝对零点}{\begin{tikzpicture}
+
+\begin{scope}
+\fill(0,0)circle(3pt)node[below]{$\lambda$};\draw[guide](0,0)circle(1);\draw[guide](0,0)circle(2);
+\draw[flow](1,0)--(2,0);\node[above]at(1,0){$r_0$};\node[above]at(2,0){$r$};\node at(0,-2.6){横截面};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](0,0)--(5,0)node[right]{$r/r_0$};\draw[axis](0,-2.4)--(0,2.8)node[above]{$(V-V_0)/(2k\lambda)$};
+\draw[thick,domain=.3:4.4,samples=90]plot(\x,{-ln(\x)});\node[below]at(1,0){$1$};\fill(1,0)circle(2pt);
+\node at(2.7,2){$-\ln(r/r_0)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e2:line-reference}在 $r=r_0$ 过零。对数只能作用于无量纲比值 $r/r_0$；把 $\ln r$ 单独作为具有绝对零点的电势，会掩盖积分常数和量纲。令外端趋无穷时，势差无界，因此不能同时要求无限线的 $V_\infty=0$ 且有限处 $V$ 有限。
+
+\section{由对称和等距获得电势}
+\subsection{保留标量信息，避免过度推断}
+
+对称分布的电势常不必直接积分。正三角形三条等量带电棒在中心贡献相同，若已知总电势，任一棒贡献便是三分之一。某场点关于一条棒所在直线反射，点到该棒每个微元的距离不变，因此这条棒在两点的电势相同。两种对称分别作用于电荷分布与场点，不应混为一句没有对象的“由对称可知”。
+
+对于半球面，把它与镜像半球拼成完整球壳。在球面以内，完整球壳电势恒定；半球上方点与下方镜像点的两个电势之和因此为定值。在开口圆盘平面内，场点与其镜像重合，半球电势恰为全壳的一半。这不意味着整个开口圆盘上电场为零，只能推出圆盘平面内的切向场为零。
+
+\fig{e2:mirror-distances}{补成完整球壳后，镜像微元到镜像场点的距离相同；真实半球的两个势之和可由全壳得到}{\begin{tikzpicture}
+
+\draw[thick](0,-2)arc(-90:90:2);\draw[guide](0,2)arc(90:270:2);\draw[guide](0,-2.2)--(0,2.2);
+\fill(.6,0)circle(2pt)node[below]{$P$};\fill(-.6,0)circle(2pt)node[below]{$Q$};
+\fill(1.414,1.414)circle(2pt)node[right]{$\dd q$};\fill(-1.414,1.414)circle(2pt)node[left]{$\dd q'$};
+\draw[blue](1.414,1.414)--(-.6,0);\draw[blue](-1.414,1.414)--(.6,0);
+\node at(4.8,1){$|P-\dd q'|=|Q-\dd q|$};\node at(4.8,-.2){$V_{\text{全}}(P)=V_{\text{半}}(P)+V_{\text{半}}(Q)$};
+
+\end{tikzpicture}}
+
+图\ref{e2:mirror-distances}用同一对镜像操作同时变换源点和场点，因此每一项 $k\dd q/s$ 相同。若 $P,Q$ 位于球内，全壳电势为常数；若它们移到壳外，应改用对应半径处的全壳电势。这里没有把半球电荷当成集中在球心的一点。
+
+\subsection{导体等势所需的最少事实}
+
+静电平衡导体内部自由电荷不再作宏观定向移动，体内场为零，连通导体电势相同。外部点电荷会使中性导体表面电荷重排，局部感应电荷不为零，但整体净电荷仍为零。对球心而言，所有球面电荷距离同为 $R$，因此表面电荷在球心产生的总电势只由净电荷决定，而不依赖重排细节。
+
+封闭金属壳的内腔若有电荷，内表面总感应电荷可用金属内部的高斯面确定。求球心电势时，有时只需内表面总量和球面等距，不必先求非均匀面密度。电像法将在下一讲用于求完整分布；本讲使用等势、守恒和球面对中心等距这些已说明的条件完成相关电势计算。
+
+
+\fig{e2:neutral-sphere}{以外电荷 $q>0$ 示意感应；所有球面微元到球心等距，总感应电荷仍为零}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.8);\fill(0,0)circle(2pt)node[below]{$O$};\fill(4,0)circle(2.5pt)node[above]{$q>0$};
+\foreach \a in {135,180,225}{\node at(\a:1.6){$+$};}\foreach \a in {-45,0,45}{\node at(\a:1.6){$-$};}
+\draw[guide](0,0)--(1.273,1.273)node[midway,above left]{$R$};\draw[guide](0,0)--(-1.273,1.273);
+\draw[<->](0,-2.4)--(4,-2.4)node[midway,below]{$L$};\node at(5.5,1.7){$\int\dd q_{\text{感}}=0$};
+
+\end{tikzpicture}}
+
+图\ref{e2:neutral-sphere}中只对球心有 $V_{\text{感}}=k\int\dd q_{\text{感}}/R=0$。球心总势于是等于外点电荷的 $kq/L$，再由连通金属等势推广到整个金属球。若任取一个不在球心的场点，各面元距离不相等，不能先把感应总量零直接提出积分。
+
+有内腔时，还要分清金属区域与空腔。金属内部取高斯面可确定内表面感应总量；只有所求点到整个球面的距离相同，才可用总量直接计算该面的电势。
+
+\section{静电能与能量方法}
+\subsection{点电荷系统的装配功}
+
+将点电荷从无穷远依次搬到指定位置，第一次搬入没有与其他电荷的相互作用能；以后每一次外力缓慢搬运所做的功，等于新电荷乘已放置电荷产生的电势。每一对相互作用恰计一次，所以
+\[
+ W_{\rm e}=\sum_{i<j}\frac{kq_iq_j}{r_{ij}}
+ =\frac12\sum_iq_iV_{\text{他}}(i).
+\]
+后一个式子中 $V_{\text{他}}$ 不含自身点电荷的场，因子 $1/2$ 避免每对重复计算。点电荷的理想自能不在此有限相互作用能中。系统能量为负表示把各电荷完全分离到无穷远需要外界供能，并非能量大小没有意义。
+
+\fig{e2:assembly-pairs}{逐个装配三个点电荷；最后搬入的电荷与已放置的两者各增加一对相互作用能}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[below]{$q_1$};\fill(4,0)circle(2pt)node[below]{$q_2$};\fill(2,3)circle(2pt)node[above]{$q_3$};
+\draw[blue](0,0)--(4,0)node[midway,below]{$r_{12}$};\draw[red](0,0)--(2,3)node[midway,left]{$r_{13}$};\draw[red](4,0)--(2,3)node[midway,right]{$r_{23}$};
+\draw[flow,gray](6,4)..controls(5,3)and(3.5,3)..(2.3,3);\node[right]at(6,4){从无穷远搬入 $q_3$};
+
+\end{tikzpicture}}
+
+图\ref{e2:assembly-pairs}先放 $q_1$，再放 $q_2$ 时增加 $kq_1q_2/r_{12}$；最后放 $q_3$ 时增加 $q_3(kq_1/r_{13}+kq_2/r_{23})$。三对恰计一次。若反过来对每个电荷都乘其余电荷的势，每条边会从两端各计一次，才需要 $1/2$。
+
+单个试探电荷置于已经建立且不随它变化的外场，势能为 $qV_{\text{外}}$，不能再除以二。若外部导体的感应随充入电量改变，应沿实际充电过程积分：在线性响应 $V_{\text{感}}(q')=Cq'$ 下，积分须保留充电变量：
+\[
+ \int_0^qV_{\text{感}}(q')\dd q'
+ =C\int_0^q q'\dd q'
+ =C\left[\frac{q'^2}{2}\right]_0^q
+ =\frac{Cq^2}{2}=\frac{qV_{\text{感}}(q)}2.
+\]须先说明哪些分布固定、哪些随过程响应。
+
+连续带电体在自能有限的情形可写成 $W_{\rm e}=\frac12\int V\,\dd q$，但更容易检查的方法是按明确次序逐层装配。球壳在已有电荷 $Q'$ 时表面电势 $kQ'/R$，再放入 $\dd Q'$ 的功为 $kQ'\dd Q'/R$，从零电量积到 $Q$，有
+\[
+ W_{\text{壳}}=\frac kR\int_0^Q Q'\dd Q'
+ =\frac kR\left[\frac{Q'^2}{2}\right]_0^Q
+ =\frac{kQ^2}{2R}.
+\]均匀实心球按同心薄壳装配，已有 $Q(r)=Qr^3/R^3$，新增 $\dd Q=3Qr^2\dd r/R^3$，故
+\[
+ \begin{aligned}
+ W_{\text{球}}
+ &=\int_0^R\frac{kQ(r)}r\dd Q(r)
+ =\int_0^R\frac{kQr^3}{R^3r}\frac{3Qr^2}{R^3}\dd r\\
+ &=\frac{3kQ^2}{R^6}\int_0^Rr^4\dd r
+ =\frac{3kQ^2}{R^6}\left[\frac{r^5}{5}\right]_0^R
+ =\frac{3kQ^2}{5R}.
+\end{aligned}
+\]
+在每一步只计算新薄壳与已有内部电荷的相互作用，就不再额外乘 $1/2$。
+
+\fig{e2:ball-assembly}{固定半径球壳逐渐加电荷，与均匀实心球逐层增加半径是两种不同装配过程}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)circle(1.6);\node at(0,.4){$Q'$};\draw[flow](3,1)--(1.8,.6)node[midway,above]{$\dd Q'$};
+\draw[<->](0,0)--(1.6,0)node[midway,below]{$R$};\node at(0,-2.3){$\dd W=(kQ'/R)\dd Q'$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\fill[gray!12](0,0)circle(1.3);\draw(0,0)circle(1.3);\draw[blue](0,0)circle(1.5);\draw[guide](0,0)circle(1.9);
+\draw[<->](0,0)--(1.3,0)node[midway,below]{$r$};\draw[guide](1.4,.3)--(2.7,.8)node[right]{$\dd r$};
+\node at(0,-2.3){$Q(r)=Qr^3/R^3$};\node at(0,2.5){$\dd Q=4\pi\rho r^2\dd r$};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e2:ball-assembly}左图的积分变量是已充入电量 $Q'$，半径固定；右图的变量是生长半径 $r$，体密度固定。右图每一步已经只计新增壳与已有内球之间的相互作用，故不额外乘二分之一。若把两个过程的微元关系混用，会得到错误的自能系数。
+
+\subsection{电势能、角动量与可达条件}
+
+固定球对称电场中的带电质点受中心力，机械能和关于球心的角动量守恒。若角动量大小为 $\ell$，把动能分成径向与切向，
+\[
+ E=\frac12m\dot r^2+\frac{\ell^2}{2mr^2}+qV(r).
+\]
+有效势包含离心项与电势能。能否到达球面，不仅取决于总动能是否大于 $qV(R)$，还取决于给定冲量参数带来的切向动能。若径向速度在表面恰为零，就得到擦碰的临界边界。势能方法应与轨迹或过程图相结合，标明能量在何处评价、角动量由哪段初始运动确定。
+\fig{e2:effective-potential}{排斥库仑场的有效势示意：总能量与有效势相交处为径向转折点}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.4,0)node[right]{$r/R$};\draw[axis](0,0)--(0,5.5)node[above]{$U_{\text{eff}},E$};
+\draw[blue,thick,domain=.8:5.8,samples=100]plot(\x,{2/\x+.5/(\x*\x)});
+\draw[red,dashed,domain=.8:5.8,samples=100]plot(\x,{.5/(\x*\x)});
+\draw[guide](1,0)--(1,4.5);\node[below]at(1,0){$1$};\draw[thick](0,2.5)--(5.8,2.5)node[right]{$E_{\text{临}}$};
+\fill(1,2.5)circle(2pt);\node[blue,right]at(3.4,1.4){$qV+\ell^2/(2mr^2)$};\node[red]at(3.8,.5){离心项};
+
+\end{tikzpicture}}
+图\ref{e2:effective-potential}中仅有 $E\ge U_{\text{eff}}(r)$ 的半径可达，差值就是径向动能。排斥库仑场的有效势在球外单调下降，因此从无穷远走到表面时只需检查表面这一最高值，临界处 $\dot r=0$，仍有切向速度。对于一般中心势，若外部还有更高的有效势垒，还须检查整条入射路径，不能只用表面能量条件。

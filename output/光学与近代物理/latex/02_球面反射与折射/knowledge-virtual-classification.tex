@@ -1,0 +1,10 @@
+\fig{fv:o2:virtual}{分别在光具前后判断光束，才能区分虚物与虚像}{\begin{tikzpicture}[x=.85cm,y=.85cm]
+\foreach \a in {0,5.4}{\draw[dashed](\a,-1.4)--(\a,1.5);}
+\draw[->,thick](-2,1)--(0,.5);\draw[->,thick](-2,-1)--(0,-.5);
+\draw[dashed](0,.5)--(2,0)--(0,-.5);\fill(2,0)circle(1.5pt)node[below]{$Q$};
+\node at(0,-2){入射束会聚：$Q$为虚物};
+\draw[->,blue,thick](5.4,.5)--(7.4,1);\draw[->,blue,thick](5.4,-.5)--(7.4,-1);
+\draw[dashed,blue](5.4,.5)--(3.4,0)--(5.4,-.5);\fill(3.4,0)circle(1.5pt)node[below]{$Q'$};
+\node at(5.4,-2){出射束发散：$Q'$为虚像};
+\end{tikzpicture}}
+图\ref{fv:o2:virtual}中的虚线均表示假想延长，实箭头才表示对应阶段真正传播的光。左图的 $Q$在入射光前进的一侧，却在光到达前已由光具截获，故为虚物；右图的出射光未实际经过 $Q'$，故为虚像。这两个判断彼此独立。正式计算时把各点到本次顶点的距离按本讲约定赋予符号，不能仅按图上“左、右”固定正负。

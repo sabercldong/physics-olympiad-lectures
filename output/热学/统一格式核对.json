@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-26",
+  "common_style": "lecture-style.tex",
+  "lectures": [
+    {
+      "lecture": "01_物质的热性质",
+      "pages": 28,
+      "questions": 13,
+      "figures": 31,
+      "internal_links": 75,
+      "common_style_sha256": "b5f9c3d2515cc284b4f4ee6c0995b7d7c052da6385679fe4dd72c83e91500147",
+      "tex_project_sha256": "ba99ebbd3f210f83a83f9f88bb6eaa7aeae1a5e57a5c88d7fc8e455d5446088d",
+      "pdf_sha256": "5023d62166928af1ce0b10e1da258e401baf846a676e659fe759334f99c94f87",
+      "compiler_issues": [],
+      "blank_pages": [],
+      "page_edge_issues": []
+    },
+    {
+      "lecture": "02_理想气体的内能",
+      "pages": 28,
+      "questions": 14,
+      "figures": 32,
+      "internal_links": 72,
+      "common_style_sha256": "b5f9c3d2515cc284b4f4ee6c0995b7d7c052da6385679fe4dd72c83e91500147",
+      "tex_project_sha256": "497e2231749ad8ab10ae94b71bea406b45591dceb351918964985cebbc7d95d3",
+      "pdf_sha256": "a186fa1434e5e4690ca0fbff3e98878f8104fe20d53989fe5b4e0fa9c7b051b6",
+      "compiler_issues": [],
+      "blank_pages": [],
+      "page_edge_issues": []
+    },
+    {
+      "lecture": "03_热力学过程与循环",
+      "pages": 28,
+      "questions": 13,
+      "figures": 31,
+      "internal_links": 78,
+      "common_style_sha256": "b5f9c3d2515cc284b4f4ee6c0995b7d7c052da6385679fe4dd72c83e91500147",
+      "tex_project_sha256": "60084c3a8b053f67090da66c0950c31e33ddbf31d068c4efd3ed346c35aaa8c3",
+      "pdf_sha256": "9ee18937e5def064a186a85c57e315c7d0bf074a97053e371d49aa2aa7becd01",
+      "compiler_issues": [],
+      "blank_pages": [],
+      "page_edge_issues": []
+    },
+    {
+      "lecture": "04_相变与饱和蒸汽",
+      "pages": 29,
+      "questions": 13,
+      "figures": 32,
+      "internal_links": 76,
+      "common_style_sha256": "b5f9c3d2515cc284b4f4ee6c0995b7d7c052da6385679fe4dd72c83e91500147",
+      "tex_project_sha256": "32217623d9b6e2b34186f565bdc3aa18c9b77e92f6f15b0815b9f010d25bb937",
+      "pdf_sha256": "76a17675880a44d4e1f147bc6594ce15dde5795caf5804255aa0a70deee576d3",
+      "compiler_issues": [],
+      "blank_pages": [],
+      "page_edge_issues": []
+    }
+  ],
+  "total_pages": 113,
+  "total_questions": 53,
+  "total_figures": 126,
+  "all_projects_xelatex_compile": true,
+  "front_matter_removed": true,
+  "separate_difficulty_labels_removed": true
+}

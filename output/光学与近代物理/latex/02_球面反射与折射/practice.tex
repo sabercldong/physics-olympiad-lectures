@@ -1,0 +1,46 @@
+\section{练习}
+
+\begin{question}
+\begin{drill}[视深与真实移动]\label{d:21}
+水的折射率为 \(4/3\)。小物体在平面水面下 \(40.0\,\mathrm{cm}\)，从空气中沿法线附近观察。求视深。若物体上升 \(4.00\,\mathrm{cm}\)，虚像上升多少？忽略水面波动。
+\end{drill}
+\fig{fig:d21q}{练习：视深与真实移动}{
+\begin{tikzpicture}
+\fill[cyan!6](-2,-3)rectangle(2,0);\draw[world](-2,0)--(2,0);
+\draw[normal](0,-3.2)--(0,1.2);
+\fill(0,-2.4)circle(1.5pt)node[left]{$S$};
+\draw[dim](1,0)--(1,-2.4)node[midway,right]{$40.0\,\mathrm{cm}$};
+\draw[axis](-.5,-2.4)--(-.5,-1.7)node[left]{上升 $4.00\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[空气与玻璃球面的近轴成像]\label{d:22}
+光从空气射入折射率 \(1.50\) 的玻璃，球心在出射侧，曲率半径为 \(+10.0\,\mathrm{cm}\)。实物位于顶点前 \(10.0\,\mathrm{cm}\)。求像距、实虚、正倒和横向放大率，只讨论近轴成像。
+\end{drill}
+\fig{fig:d22q}{练习：空气与玻璃球面的近轴成像}{
+\begin{tikzpicture}
+\draw[axisline](-3.5,0)--(3,0);\draw[world,domain=-.7:.7,samples=50]plot({1-sqrt(1-(\x)^2)},\x);\draw[dim](0,1.1)--(1,1.1)node[midway,above]{$R_s=+10.0\,\mathrm{cm}$};
+\node[below]at(0,0){$O$};\fill(-1,0)circle(1pt)node[below]{$A$};
+\fill(1,0)circle(1pt)node[below]{$C$};
+\node at(-1.8,.7){空气};\node at(1.7,.7){玻璃 \(1.50\)};
+\draw[dim](-1,-.6)--(0,-.6)node[midway,below]{$10.0$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[凹面镜的两个共轭位置]\label{d:23}
+凹面镜焦距 \(f=10.0\,\mathrm{cm}\)，实物距 \(u=15.0\,\mathrm{cm}\)。求像的位置及横向放大率。再把物体放到第一次的像位置，求第二次成像位置及放大率。
+\end{drill}
+\fig{fig:d23q}{练习：凹面镜的两个共轭位置}{
+\begin{tikzpicture}
+\draw[axisline](-4,0)--(.6,0);\draw[world,domain=-.8:.8,samples=50]plot({-2+sqrt(4-(\x)^2)},\x);
+\draw[axis,thick](-1.5,0)--(-1.5,.5);
+\node[above]at(-1.5,.5){$B$};\node[below]at(-1.5,0){$A$};
+\fill(-1,0)circle(1pt)node[below]{$F$};
+\fill(-2,0)circle(1pt)node[below]{$C$};\node[right]at(0,0){$O$};
+\end{tikzpicture}}
+\end{question}
+

@@ -1,0 +1,303 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{mg4:drill:1}\textbf{按实际截面和电压间距反求密度}\par\nobreak
+图\ref{fig:mg4:drill:1:s}中 $B$ 沿厚度方向，电流穿过截面 $wt$，横向电压端的间距为 $w$。单一电子模型给出
+\[
+v_d=\frac{I}{newt},\qquad U_H=v_dBw=\frac{IB}{net},\qquad
+\boxed{n=\frac{IB}{etU_H}}.
+\]
+这里 $U_H$ 是大小；载流子正负需要另由端子极性判断。
+\fig{fig:mg4:drill:1:p}{横向霍尔平衡与纵向欧姆测量使用不同的长度}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)rectangle(3.6,1.5);\draw[flow](.2,.75)--(1.4,.75)node[above]{$I$};\draw[flow](3.1,2.7)--(3.1,1.9)node[above right]{$\bm E_H$};
+\foreach \x in {.4,1,1.6,2.2,2.8,3.4}{\node at(\x,1.3){$+$};\node at(\x,.2){$-$};}
+\node at(2.4,.75){$\odot B$};\draw[dim](-.45,0)--(-.45,1.5)node[midway,left]{$w$};\node at(1.8,-.7){$U_H=|E_H|w$};\node at(1.8,-1.3){$|E_H|=v_dB$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[world](0,0)rectangle(3.5,1.5);\draw[flow](.2,.75)--(1.5,.75)node[above]{$J=I/(wt)$};\draw[flow](2,.75)--(3.2,.75)node[above]{$E_x$};
+\draw[dim](0,-.5)--(3.5,-.5)node[midway,below]{$L$};\node at(1.75,2.1){纵向压降 $IR$};\node at(1.75,-1.3){$E_x=IR/L$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用纵向压降求电导率}\par\nobreak
+图\ref{fig:mg4:drill:1:p}左图将电流密度写成 $J=I/(wt)$。纵向电场由两端压降 $IR$ 除以长度 $L$ 得到，故
+\[
+\sigma=\frac{J}{E_x}=\frac{I/(wt)}{IR/L}=\boxed{\frac{L}{Rwt}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去密度求迁移率并检查模型条件}\par\nobreak
+再由单一载流子模型 $\sigma=ne\mu$，得到
+\[
+\boxed{\mu=\frac{LU_H}{RwIB}}.
+\]
+横向电压中的 $w$ 在求 $n$ 时约去，磁场方向的长度 $t$ 保留；代入迁移率后 $t$ 又约去。图中的两种测量方向决定这些消去关系。要求样品均匀、横向稳态且单一载流子近似成立；多种载流子并存时，不能直接用这一组公式唯一反演。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:2}\textbf{由原来无偏转确定两种场力的关系}\par\nobreak
+由图\ref{fig:mg4:drill:2:s}的方向约定，$\bm v_0\times\bm B$ 向下，而 $\bm E$ 向上。原来无偏转给出
+\[
+\bm E+\bm v_0\times\bm B=0.
+\]
+\fig{fig:mg4:drill:2:p}{沿题设同一坐标约定，分别重画三次反向后的电力和磁力}{\begin{tikzpicture}
+
+\foreach \x/\y/\lab/\ee/\bb/\vv in {0/0/{$q,\bm v_0$}/1/-1/1,4.7/0/{$-q,\bm v_0$}/-1/1/1,0/-4/{$q,-\bm v_0$}/1/1/-1,4.7/-4/{$-q,-\bm v_0$}/-1/-1/-1}{\begin{scope}[shift={(\x,\y)}]
+\fill(0,0)circle(2pt);\draw[->,blue,thick](-.4,0)--(-.4,\ee)node[left]{$\bm F_E$};\draw[->,red,thick](.4,0)--(.4,\bb)node[right]{$\bm F_B$};
+\draw[->,thick](0,-1.7)--({1.1*\vv},-1.7)node[midway,below]{$\bm v$};\node at(0,1.65){\lab};\node at(1.6,0){$\odot B$};\end{scope}}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别反转电荷或速度并重画场力}\par\nobreak
+图\ref{fig:mg4:drill:2:p}左上到右上，只把 $q$ 改为 $-q$，电力、磁力同时反向，仍相互抵消，故 $\bm F=0$。
+
+左下仅把速度反向：电力不变，磁力由向下变为向上，因而
+\[
+\bm F=q(\bm E-\bm v_0\times\bm B)=\boxed{2q\bm E}.
+\]
+右下同时反转电荷和速度：磁力经历两次变号而回到原方向，电力反向，两力均向下，得到 $\boxed{\bm F=-2q\bm E}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确原电荷量和初始合力的含义}\par\nobreak
+结论中的 $q$ 始终指原来的正电荷量。这里判断的是改变后的初始合力；粒子随后偏转时磁力方向会随速度变化。若还存在重力等与电荷无关的外力，应将其加入完整合力后重新判断。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:3}\textbf{同时检查两个速度分量的首次回零}\par\nobreak
+按图\ref{fig:mg4:drill:3:s}取 $\Omega=qB/m>0$、$V=E/B$，从静止开始的速度为
+\[
+v_x=V\sin\Omega t,\qquad v_y=V(\cos\Omega t-1).
+\]
+必须同时满足 $\sin\Omega t=0$ 与 $\cos\Omega t=1$，所以首次再次静止为 $T=2\pi/\Omega$；半周时只有 $v_x=0$。
+\fig{fig:mg4:drill:3:p}{摆线的实际节距与一周期的动能变化；两图相位一一对应}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.3,0)--(4.4,0)node[right]{$-y$};\draw[axis](0,-.3)--(0,2.3)node[above]{$x,\ E$};
+\draw[world,domain=0:360,samples=140]plot({.6*(\x*pi/180-sin(\x))},{.6*(1-cos(\x))});
+\fill(0,0)circle(2pt)node[below]{$P_0$};\fill(3.7699,0)circle(2pt)node[below]{$P_1$};\fill(1.885,1.2)circle(2pt)node[above]{$T/2$};
+\draw[->,red,thick](1.5,1.17)--(2.25,1.17)node[below]{$2V$};\node at(3,2.1){$\odot B$};\draw[dim](0,-.75)--(3.7699,-.75)node[midway,below]{$VT$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](-.25,0)--(4.2,0)node[right]{$\psi$};\draw[axis](0,-.25)--(0,2.4)node[above]{$K/(mV^2)$};
+\draw[world,domain=0:360,samples=100]plot({\x/100},{1-cos(\x)});\draw[guide](1.8,0)--(1.8,2)--(0,2);\node[left]at(0,2){$2$};\node[below]at(1.8,0){$\pi$};\node[below]at(3.6,0){$2\pi$};\node at(1.8,-1){先得能，后失能};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由摆线端点求整周期位移和净功}\par\nobreak
+由图\ref{fig:mg4:drill:3:p}左侧摆线，令 $\psi=\Omega t$，位置积分中用 $\eta=\Omega s$、
+$\dd s=\dd\eta/\Omega$，上下限由 $0,t$ 变为 $0,\psi$：
+\[
+ x=\frac V\Omega\int_0^\psi\sin\eta\dd\eta
+ =\frac V\Omega[-\cos\eta]_0^\psi,\qquad
+ y=\frac V\Omega\int_0^\psi(\cos\eta-1)\dd\eta
+ =\frac V\Omega[\sin\eta-\eta]_0^\psi.
+\]
+所以
+\[
+x=\frac V\Omega(1-\cos\psi),\qquad
+y=\frac V\Omega(\sin\psi-\psi).
+\]
+末点 $P_1$ 回到 $x=0$，沿 $-y$ 平移一个节距，故
+\[
+\boxed{\Delta\bm r=-VT\bm e_y=-\frac{2\pi mE}{qB^2}\bm e_y}.
+\]
+电场沿 $x$，所以 $W_E=qE\Delta x=0$，与末初动能均为零一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用动能曲线检查中途的能量交换}\par\nobreak
+图\ref{fig:mg4:drill:3:p}右图显示中途
+\[
+K=\tfrac12m(v_x^2+v_y^2)=mV^2(1-\cos\psi),\qquad K(T/2)=2mV^2>0.
+\]
+前半周 $v_x>0$，电场做正功；后半周 $v_x<0$，电场做负功。整周净功为零，不能据此将中途的动能也置零。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:4}\textbf{由直角三角形给出严格的存在下界}\par\nobreak
+图\ref{fig:mg4:drill:4:s}中 $s^2=h^2+\rho^2$，非零水平圆周要求 $s>h>0$。因 $h=mg/D$，先有 $D>0$；再比较
+\[
+\left(\frac{k_eQq}{D}\right)^{2/3}>\frac{m^2g^2}{D^2}
+\quad\Longrightarrow\quad k_eQqD^2>m^3g^3.
+\]
+因此真正的下界为
+\[
+\boxed{D>D_{\min},\qquad D_{\min}=\sqrt{\frac{m^3g^3}{k_eQq}}}.
+\]
+\fig{fig:mg4:drill:4:p}{严格下界截出的角速度开区间；两端均退化为零半径}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$\omega$};\draw[axis](0,-.3)--(0,3.4)node[above]{$D$};
+\draw[world,domain=0:4,samples=80]plot(\x,{.7*\x*(4-\x)});\draw[dashed,red](0,1.4)--(4.5,1.4)node[right]{$D_{\min}$};
+\pgfmathsetmacro{\wa}{2-sqrt(2)}\pgfmathsetmacro{\wb}{2+sqrt(2)}
+\draw[blue,very thick,domain=\wa:\wb,samples=70]plot(\x,{.7*\x*(4-\x)});\draw[guide](\wa,1.4)--(\wa,0) (\wb,1.4)--(\wb,0) (2,2.8)--(2,0);
+\foreach \xx in {\wa,\wb}{\draw[fill=white,red](\xx,1.4)circle(2pt);}\node[below]at(\wa,0){$\omega_-$};\node[below]at(\wb,0){$\omega_+$};\node[below]at(2,0){$\frac{qB}{2m}$};\node[below]at(4,0){$\frac{qB}{m}$};
+\node[above]at(2,2.8){$D_{\max}$};\node at(2,-1){蓝弧内部才满足 $s>h$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较抛物线最大值与所需下界}\par\nobreak
+图\ref{fig:mg4:drill:4:p}的抛物线 $D(\omega)=qB\omega-m\omega^2$ 满足
+$D'(\omega)=qB-2m\omega$、$D''(\omega)=-2m<0$，
+故在导数为零的 $\omega=qB/(2m)$ 取最大值 $(qB)^2/(4m)$。存在允许角速度的条件是
+\[
+\boxed{\frac{(qB)^2}{4m}>D_{\min}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求角速度开区间并排除退化边界}\par\nobreak
+当此条件成立，水平线与抛物线交于 $\omega_-,\omega_+$，允许范围为
+\[
+\boxed{\omega_-<\omega<\omega_+,\qquad
+\omega_\pm=\frac{qB\pm\sqrt{(qB)^2-4mD_{\min}}}{2m}}.
+\]
+两端均不包含：$D=D_{\min}$ 时 $s=h$、$\rho=0$，轨道退化；最大值若等于或小于下界，任何角速度都不能给出非零半径。$D>0$ 只保证给定的高度和距离为正，还没有保证它们能组成所需直角三角形。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:5}\textbf{在漂移系中确定相对回旋速率}\par\nobreak
+图\ref{fig:mg4:drill:5:s}中漂移速度为 $V\bm e_x$，初始相对速度为 $(v_0-V)\bm e_x$。在漂移系中，速率 $u=|v_0-V|$ 不变，回旋速度的 $x$ 分量扫过 $[-u,u]$，所以
+\[
+V-u\le v_x\le V+u.
+\]
+\fig{fig:mg4:drill:5:p}{同一漂移速率下的平滑轨迹、尖点轨迹与回绕轨迹}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.2,0)--(3.8,0)node[right]{$x$};\draw[world,domain=0:360,samples=140]plot({.5*\x*pi/180+.25*sin(\x)},{.25*(cos(\x)-1)});\node at(1.6,.7){$v_0=1.5V$};\node at(1.6,-1.1){$v_x>0$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](-.2,0)--(3.8,0)node[right]{$x$};\draw[world,domain=0:360,samples=140]plot({.5*(\x*pi/180-sin(\x))},{.5*(1-cos(\x))});\fill(0,0)circle(2pt);\fill(3.1416,0)circle(2pt);\node at(1.6,1.6){$v_0=0$};\node at(1.6,-1.1){两端尖点 $v=0$};
+\end{scope}
+\begin{scope}[shift={(2.5,-3.2)}]
+\draw[axis](-.5,0)--(4,0)node[right]{$x$};\draw[world,domain=0:360,samples=180]plot({.5*\x*pi/180+sin(\x)},{cos(\x)-1});\draw[->,red,thick,domain=140:220,samples=50]plot({.5*\x*pi/180+sin(\x)},{cos(\x)-1});\node at(1.6,.65){$v_0=3V$};\node at(1.6,-2.6){红段向左：$v_x<0$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将速度最小值与实际轨迹形状对应}\par\nobreak
+图\ref{fig:mg4:drill:5:p}各轨迹均叠加同一向右漂移。若 $u<V$，则始终 $v_x>0$，平滑推进；若 $u=V$，回旋速度恰好与漂移反向时，总速度为零，产生尖点；若 $u>V$，出现 $v_x<0$ 的反向区间，并形成回绕。
+
+利用题给 $v_0\ge0$，将相对速率条件改写为
+\[
+\boxed{\begin{array}{ll}
+0<v_0<2V &: \text{平滑推进},\\
+v_0=0\ \text{或}\ 2V &: \text{出现尖点},\\
+v_0>2V &: \text{出现回绕}.
+\end{array}}
+\]
+其中 $v_0=V$ 时 $u=0$，轨迹退化为匀速直线。两个尖点情形只是初始回旋相位不同：$v_0=0$ 从尖点出发，$v_0=2V$ 在半周后到达尖点。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分量速度复核尖点与回绕的区别}\par\nobreak
+例如取正电荷、$\bm B=B\bm e_z$、$\bm E=E\bm e_y$，令 $u_x=v_x-V$，运动方程为
+$\dot u_x=\Omega v_y,\dot v_y=-\Omega u_x$，
+消元得 $\ddot u_x+\Omega^2u_x=0$，特征根为 $\pm\mathrm i\Omega$。
+初值 $u_x(0)=v_0-V,\dot u_x(0)=0$ 给
+$u_x=(v_0-V)\cos\Omega t$，再由 $v_y=\dot u_x/\Omega$ 得
+\[
+v_x=V+(v_0-V)\cos\Omega t,\qquad v_y=-(v_0-V)\sin\Omega t.
+\]
+在尖点处两个分量同时为零；在回绕情形，横向速度一般仍不为零，不能把每个 $v_x=0$ 的位置都称为尖点。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:6}\textbf{把两端逃逸方向对应到速度球球冠}\par\nobreak
+图\ref{fig:mg4:drill:6:s}的两端镜比相同，设 $B_m>B_0$。每端损失锥半角为
+\[
+\sin^2\alpha_c=\frac{B_0}{B_m},\qquad 0<\alpha_c<\frac\pi2.
+\]
+朝向右端且夹角小于 $\alpha_c$ 的方向，以及朝向左端的相应方向，构成速度球上的两个球冠。
+\fig{fig:mg4:drill:6:p}{两端损失锥在速度球上截出两个球冠；按立体角求比例}{\begin{tikzpicture}
+
+\fill[orange!25](1.732,1)arc(30:-30:2)to[out=110,in=-110](1.732,1);
+\fill[orange!25](-1.732,-1)arc(210:150:2)to[out=-70,in=70](-1.732,-1);
+\draw[world](0,0)circle(2);\draw[guide](0,0)ellipse(2 and .4);\draw[guide](0,0)ellipse(.4 and 2);
+\draw[orange!80!black](1.732,0)ellipse(.2 and 1);\draw[orange!80!black](-1.732,0)ellipse(.2 and 1);
+\draw[axis](-2.9,0)--(3.2,0)node[right]{$v_\parallel$};\draw[guide](0,0)--(1.732,1) (0,0)--(1.732,-1) (0,0)--(-1.732,1) (0,0)--(-1.732,-1);
+\draw(.7,0)arc(0:30:.7);\node at(1,.25){$\alpha_c$};\node at(0,2.6){速度球：$|\bm v|=v_0$};
+\draw[->](3,1.7)--(1.95,.5);\node[above]at(3,1.7){右端球冠};\draw[->](-3,-1.7)--(-1.95,-.5);\node[below]at(-3,-1.7){左端球冠};
+\node at(0,-2.8){每个球冠 $\Omega=2\pi(1-\cos\alpha_c)$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分单端球冠并合并两端比例}\par\nobreak
+图\ref{fig:mg4:drill:6:p}中，与轴夹角为 $\alpha$ 的细纬带面积正比于 $\sin\alpha\,\dd\alpha$。各向同性对应单位立体角人数相同，因此单个球冠为
+\[
+\Omega_{\rm cap}=\int_0^{2\pi}\dd\varphi\int_0^{\alpha_c}\sin\alpha\,\dd\alpha
+=[\varphi]_0^{2\pi}[-\cos\alpha]_0^{\alpha_c}
+=2\pi(1-\cos\alpha_c).
+\]
+两端球冠面积相同且不重叠，除以全空间 $4\pi$，得到
+\[
+\boxed{f_{\rm loss}=\frac{2\Omega_{\rm cap}}{4\pi}
+=1-\sqrt{1-\frac{B_0}{B_m}}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查大镜比、临界锥面和无镜约束极限}\par\nobreak
+当 $B_m/B_0\gg1$ 时，$f_{\rm loss}\simeq B_0/(2B_m)$。临界锥面本身的立体角为零；即使光滑峰值处的临界到达时间发散，也不改变上述初始方向比例。若 $B_m=B_0$，没有镜约束，除零测度的垂直方向外均可轴向离开，极限 $f_{\rm loss}=1$ 正确。碰撞持续补充损失锥时的长期损失率还需要动力学信息。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:7}\textbf{固定电压接线后列出四组读数}\par\nobreak
+按图\ref{fig:mg4:drill:7:s}，四次测量始终记录 $V_A-V_C$，接线不随输入反向互换。以 $I,B$ 表示正的大小，四个读数为
+\[
+\begin{aligned}
+U_{++}&=U_0+kIB,& U_{+-}&=U_0-kIB,\\
+U_{-+}&=U_0-kIB,& U_{--}&=U_0+kIB.
+\end{aligned}
+\]
+\fig{fig:mg4:drill:7:p}{四组反向测量的实际接线、场向、电流向及组合权重}{\begin{tikzpicture}
+
+\foreach \xx/\yy/\ii/\bb/\lab/\coef in {0/0/1/1/{U_{++}}/{+1},4.8/0/1/-1/{U_{+-}}/{-1},0/-3.6/-1/1/{U_{-+}}/{-1},4.8/-3.6/-1/-1/{U_{--}}/{+1}}{\begin{scope}[shift={(\xx,\yy)}]
+\draw[world](-1.2,-.5)rectangle(1.2,.5);\draw[->,blue,thick]({-.8*\ii},0)--({.8*\ii},0);
+\ifnum\bb=1\node[right]at(1.35,0){$\odot B$};\else\node[right]at(1.35,0){$\otimes B$};\fi
+\draw(0,.5)--(0,1)node[left]{$A\ (+)$};\draw(0,-.5)--(0,-1)node[left]{$C\ (-)$};\node at(0,1.65){$\lab\quad\text{权重 }\coef$};\end{scope}}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{依次取电流奇部和磁场奇部}\par\nobreak
+图\ref{fig:mg4:drill:7:p}中，先在各固定磁场下取电流反向差，再取磁场反向差，得到
+\[
+\boxed{U_H=\frac{(U_{++}-U_{-+})-(U_{+-}-U_{--})}{4}=kIB}.
+\]
+固定偏置的总系数为 $1-1-1+1=0$，而霍尔项的四个贡献同号相加。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断任意偶项的消去及剩余干扰}\par\nobreak
+任意电流偶项 $f(I^2,B)$ 在同一磁场下满足 $f((+I)^2,B)=f((-I)^2,B)$，所以第一步电流差就将其消去；并不额外要求它对 $B$ 为偶。第二步磁场差还会消去电流奇、磁场偶的项。对 $I$ 和 $B$ 都为奇的干扰项将与霍尔信号一起保留，单靠这四次测量不能分开。上述消去要求四次测量采用相同的 $|I|,|B|$，且样品与固定偏置在测量期间保持稳定。\end{drillsolution}
+
+\begin{drillsolution}{mg4:drill:8}\textbf{将带符号电势能与绝热横向能量一同守恒}\par\nobreak
+图\ref{fig:mg4:drill:8:s}中，将沿导引中心路径的场强、电势一起代入守恒总能量：
+\[
+K_\parallel+\mu B+q\varphi
+=K_{\parallel0}+\mu B_0+q\varphi_0.
+\]
+用题给电势关系，并令 $A=\mu+q\lambda$，得到
+\[
+\boxed{K_\parallel=K_{\parallel0}-A(B-B_0)}.
+\]
+\fig{fig:mg4:drill:8:p}{有效系数 $A=\mu+q\lambda$ 决定平行能量随场强变化的斜率}{\begin{tikzpicture}
+
+\draw[axis](-1.8,0)--(5,0)node[right]{$B-B_0$};\draw[axis](0,-.3)--(0,4.3)node[above]{$K_\parallel$};
+\draw[blue,thick](-1,3)--(3,0);\draw[red,thick](-1.2,1.65)--(3,3.75);\draw[world,dashed](-1.3,2.25)--(4.2,2.25);
+\fill(0,2.25)circle(2pt);\draw[->](-1.25,3.5)--(-.08,2.33);\node[above]at(-1.25,3.5){$K_{\parallel0}$};\fill(3,0)circle(2pt);\node[below]at(3,0){$K_{\parallel0}/A$};
+\node[blue]at(3.7,.6){$A>0$};\node[red]at(3.7,3.75){$A<0$};\node[above]at(3.7,2.25){$A=0$};
+\node at(1.2,-1.1){图示强场方向：只有蓝线可到零};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按有效系数符号求候选镜点}\par\nobreak
+取进入时 $K_{\parallel0}>0$。当 $A\ne0$，候选镜点满足
+\[
+\boxed{B_{\rm mir}=B_0+\frac{K_{\parallel0}}{A}}.
+\]
+图\ref{fig:mg4:drill:8:p}中，向强场运动时，只有 $A>0$ 的蓝线随 $B$ 增加而下降，才可能到达零点；$A=0$ 时平行能量不变，$A<0$ 时反而增加。故对递增场，必须有 $A>0$ 且路径可达场强至少达到 $B_{\rm mir}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查路径可达性和有限时间反射条件}\par\nobreak
+候选值还必须落在实际路径中，并满足缓变、非零磁场等绝热条件。若 $B_{\rm mir}$ 严格小于可达峰值且该处 $B'(z)>0$，就是普通的有限时间反射；若恰等于光滑非退化峰值，则是临界渐近接近，不能直接断言有限时间返回。
+
+题目若未限定朝强场运动，还要考虑 $A<0$：这时只有沿途 $B$ 减小，才可能消耗平行能量，候选镜点位于 $B_{\rm mir}<B_0$，并须保持正值及绝热可达。判据的统一形式是沿前进路径 $A(B-B_0)$ 首次增加到 $K_{\parallel0}$。取 $\lambda=0$ 恢复普通磁镜，取 $q\lambda=-\mu$ 则静电作用恰好抵消磁镜作用。\end{drillsolution}

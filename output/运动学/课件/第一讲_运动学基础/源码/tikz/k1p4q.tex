@@ -1,0 +1,18 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}
+\draw[axis](0,0)--(5.5,0)node[right]{$t$};
+\draw[axis](0,-1.3)--(0,1.5)node[above]{$v$};
+\draw[world,blue](0,1)--(1.5,1) (1.5,0)--(3,0) (3,-1)--(4.5,-1);
+\node[left]at(0,1){$v_0$};\node[left]at(0,-1){$-v_0$};
+\foreach \x/\a in {1.5/T,3/2T,4.5/3T}\node[below]at(\x,0){$\a$};
+\draw[guide](1.5,0)--(1.5,1) (3,0)--(3,-1) (4.5,0)--(4.5,-1);
+\end{tikzpicture}
+\end{document}

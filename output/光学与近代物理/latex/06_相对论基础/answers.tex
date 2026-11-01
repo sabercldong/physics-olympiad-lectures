@@ -1,0 +1,467 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:61}\textbf{先在地面同时测量船长}\par\nobreak
+图\ref{fig:d61q}两端同时测得的地面船长为
+\[
+ \gamma=1.25,\qquad L=300/1.25=240\,\mathrm m.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对同一对闪光变换时间差}\par\nobreak
+固定事件顺序为 \(B-A\)，地面事件间隔为 \((\Delta x,\Delta t)=(240\,\mathrm m,0)\)，所以
+\[
+ \boxed{\Delta t'=-\gamma\frac{VL}{c^2}=-0.600\,\mu\mathrm s}.
+\]
+故船系中 \(\boxed{\text{船头闪光比船尾早 }0.600\,\mu\mathrm s}\)。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐个变换并核对另一条同时线}\par\nobreak
+取事件 \(A\) 为两系共同原点，逐个变换事件可作独立核对：
+\begin{center}\begin{tabular}{c|rr|rr}
+事件&\(x/\mathrm m\)&\(t/\mu\mathrm s\)&\(x'/\mathrm m\)&\(t'/\mu\mathrm s\)\\\hline
+船尾 \(A\)&0&0&0&0\\
+船头 \(B\)&240&0&300&\(-0.600\)
+\end{tabular}\end{center}
+两系比较的是同一对闪光事件；船系的 \(300\,\mathrm m\) 也是两端静止位置之差，不能把时间差随之误写成零。
+图\ref{fig:d61s}中，船头世界线与 $t'=0$ 相交于 $C$，闪光事件 $B$ 位于 $C$ 之前。$A,C$ 是另一对船系同时的端点事件；题目所问仍是 $A,B$，不能为恢复同时性而擅自换成 $C$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查先后变化与因果关系}\par\nobreak
+两事件类空分离，先后次序依赖参考系；这不构成从一端到另一端的超光速信号。
+\fig{fig:d61s}{同一对闪光 $A,B$ 在地面同时；$C$ 才是船头在船系 $t'=0$ 上的事件}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.2,0)node[right]{$x/(100\,\mathrm m)$};
+\draw[axis](0,-.5)--(0,4.1)node[above]{$ct/(100\,\mathrm m)$};
+\draw[world](0,0)--(2.1,3.5)node[above] {船尾};
+\draw[world](2.4,0)--(4.5,3.5)node[above]{船头};
+\draw[dash dot,blue](0,0)--(4.7,2.82)node[right]{$t'=0$};
+\draw[thick](0,0)--(2.4,0);
+\fill(0,0)circle(1.5pt)node[below left]{$A$};
+\fill(2.4,0)circle(1.5pt)node[below]{$B$};
+\fill[blue](3.75,2.25)circle(1.5pt)node[above left]{$C$};
+\node[below]at(1.2,-.65){地面同时：$t=0$};
+
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:62}\textbf{取粒子世界线上相邻事件}\par\nobreak
+图\ref{fig:d62q}的粒子在船系纯横向运动。为避免把速度分量当作普通矢量直接平移，选取粒子世界线上相邻两个事件，则 \(\dd x'=0\)、\(\dd y'=u'_y\dd t'\)。由逆洛伦兹变换，
+\[
+ \dd t=\gamma_V\left(\dd t'+\frac{V\dd x'}{c^2}\right)=\gamma_V\dd t',
+ \quad \dd x=\gamma_VV\dd t',\quad \dd y=\dd y'.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由空间与时间微分共同求速度分量}\par\nobreak
+因此 \(u_x=\dd x/\dd t=V\)，\(u_y=\dd y/\dd t=u'_y/\gamma_V\)。横向空间间隔不变，横向速度仍因时间间隔变换而改变。这里 \(\gamma_V=1.25\)、\(u'_x=0\)，故
+\[
+ \boxed{u_x=0.600c},\qquad
+ \boxed{u_y=0.800c/1.25=0.640c}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成总速率并检查小于光速}\par\nobreak
+图\ref{fig:d62s}中两分量组成地面系速度矢量，
+\[
+ \boxed{u=c\sqrt{0.600^2+0.640^2}=0.877c<c}.
+\]
+若把横向分量仍写成 \(0.800c\)，就遗漏了时间变换，算得速率恰为 \(c\)，与有静质量粒子的运动不符。
+\fig{fig:d62s}{练习\ref{d:62}的解答图：地面系速度矢量由重新变换后的两个分量组成}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(3,0)node[right]{$u_x$};
+\draw[axis](0,0)--(0,3)node[above]{$u_y$};
+\draw[axis,thick](0,0)--(1.8,1.92)node[above right]{$\boldsymbol u$};
+\draw[aux](1.8,0)--(1.8,1.92)--(0,1.92);
+\node[below]at(1.8,0){$0.600c$};\node[left]at(0,1.92){$0.640c$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:63}\textbf{把静止靶的静能列入初态总能量}\par\nobreak
+图\ref{fig:d63q}中，静止靶虽无动量，仍贡献静能 $mc^2$。运动粒子的 \(\gamma=1.25\)，所以
+\[
+ E_{\rm tot}=2.25mc^2,\qquad p_{\rm tot}=0.750mc.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总能量和动量同时求速度与质量}\par\nobreak
+封闭系统的能量、动量均守恒。实验室总动量不为零，复合粒子仍运动，须同时使用 $V=c^2p_{\rm tot}/E_{\rm tot}$ 和系统质量不变量：
+\[
+ \boxed{V=\frac{c^2p_{\rm tot}}{E_{\rm tot}}=\frac c3},\qquad
+ \boxed{M=m\sqrt{2.25^2-0.750^2}=\frac3{\sqrt2}m}.
+\]
+图\ref{fig:d63s}显示碰后实验室动量仍向右，不能把实验室总能量直接写成 \(Mc^2\)。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在复合物静止系计算增加的内能}\par\nobreak
+在复合粒子静止系中增加的内能为
+\[
+ \boxed{\Delta E_{\rm int}=(M-2m)c^2=(3/\sqrt2-2)mc^2\approx0.121mc^2}.
+\]
+这不是实验室初始全部动能 \(0.250mc^2\)，其余部分对应碰后整体运动。
+\fig{fig:d63s}{练习\ref{d:63}的解答图：实验室仍有整体动量；静止系总能量才等于 \(Mc^2\)}{
+\begin{tikzpicture}
+\node at(0,1){实验室碰后};
+\fill(2,1)circle(2pt)node[below]{$M$};\draw[axis](2.3,1)--(4.3,1)node[above]{$V=c/3$};
+\node at(0,-1){复合粒子静止系};
+\fill(2,-1)circle(2pt)node[below]{$M,\ \boldsymbol p'=0$};
+\node[right]at(3,-1){$E'=Mc^2>2mc^2$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:64}\textbf{用九十度散射求光子波长}\par\nobreak
+图\ref{fig:d64q}中散射角 \(90^\circ\)，所以
+\[
+ \boxed{\lambda=\lambda_C+\lambda_C(1-\cos90^\circ)=2\lambda_C}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量守恒求电子动能和总能量}\par\nobreak
+初、末光子能量分别为 \(mc^2,mc^2/2\)。由能量守恒，
+\(\boxed{K_e=mc^2/2}\)，电子总能量 \(E_e=3mc^2/2\)。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按矢量差求电子动量分量}\par\nobreak
+初态电子静止，图\ref{fig:d64s}中电子末动量为入射光子动量减去上行散射光子动量，所以
+\[
+ p_{ex}=mc,\qquad p_{ey}=-mc/2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以总能量和动量共同反求电子速度}\par\nobreak
+利用 \(\boldsymbol v=c^2\boldsymbol p/E_e\)，得
+\[
+ \boxed{v_x=2c/3,\qquad v_y=-c/3},\qquad
+ |\boldsymbol v|=\sqrt5c/3<c.
+\]
+电子向右下方反冲，以补偿散射光子向上的动量。这里不能用 \(p=mv\) 反求速度。
+\fig{fig:d64s}{练习\ref{d:64}的解答图：上行光子动量与下行电子动量的纵向分量抵消}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(2,0)node[right]{$\boldsymbol p_{\gamma0}=mc\,\boldsymbol e_x$};
+\draw[axis,thick](0,0)--(0,1)node[above]{$\boldsymbol p_\gamma$};
+\draw[axis,thick](0,0)--(2,-1)node[below right]{$\boldsymbol p_e$};
+\draw[aux](0,1)--(2,0)--(2,-1);
+\node[left]at(0,.5){$mc/2$};\node[right]at(2,-.5){$-mc/2$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr1}\textbf{在飞船同时面上测量跑道长度}\par\nobreak
+图\ref{fig:hrh1q}中的跑道静止于地面，故 $L_0$ 是固有长度。飞船必须在自身同一时刻测量跑道两端，所得长度为
+\[
+L'=\frac{L_0}{\gamma}=60\,\mathrm m,\qquad \gamma=\frac53.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{为赛跑另选起跑和到达两个事件}\par\nobreak
+运动员的起跑、到达是另外两个事件，记作 $E_A,E_B$。图\ref{fig:hrh1s}把它们与跑道长度的测量分开表示。
+\fig{fig:hrh1s}{赛跑事件的变换；两侧坐标采用各自注明的尺度}{
+\begin{tikzpicture}
+\begin{scope}[x=.34cm,y=.2cm]
+\draw[axis](-.5,0)--(10,0)node[right]{$x/(100\,\mathrm m)$};\draw[axis](0,-.4)--(0,13)node[above]{$t/\mathrm s$};
+\draw[world](0,0)--(1,10);\fill(0,0)circle(1.7pt)node[below left]{$E_A$};\fill(1,10)circle(1.7pt)node[right]{$E_B(1,10)$};\node at(6,4){地面系 $S$};
+\end{scope}
+\begin{scope}[shift={(8,0)},x=.65cm,y=.14cm]
+\draw[axis](-5,0)--(1,0)node[right]{$x'/(10^9\,\mathrm m)$};\draw[axis](0,-.5)--(0,21)node[above]{$t'/\mathrm s$};
+\draw[world](0,0)--(-4,16.667);\fill(0,0)circle(1.7pt)node[below left]{$E'_A$};\fill(-4,16.667)circle(1.7pt)node[above]{$E'_B$};\node at(-3.3,6){飞船系 $S'$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换赛跑事件的位移和时间}\par\nobreak
+以 $E_A$ 为共同零点，图中的 $E_B$ 满足 $\Delta x=100\,\mathrm m$、$\Delta t=10\,\mathrm s$。洛伦兹变换给出
+\begin{align*}
+\Delta x'&=\gamma(\Delta x-V\Delta t)
+ =-3.999999833\times10^9\,\mathrm m,\\
+\Delta t'&=\gamma\left(\Delta t-\frac{V\Delta x}{c^2}\right)
+ =16.66666622\,\mathrm s.
+\end{align*}
+图\ref{fig:hrh1s}中 $E'_B$ 在 $E'_A$ 左侧，说明运动员在飞船系向南运动。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求路程与带方向的平均速度}\par\nobreak
+他做匀速直线运动，路程为位移的绝对值：
+\[
+\boxed{s'=|\Delta x'|\simeq4.00\times10^9\,\mathrm m}.
+\]
+平均速度为
+\[
+\boxed{u'=\frac{\Delta x'}{\Delta t'}
+ =\frac{u-V}{1-uV/c^2}
+ \simeq-2.399999964\times10^8\,\mathrm{m/s}}.
+\]
+跑道在飞船系中也不断向南移动，因此运动员走过的路程不能用收缩后的跑道长度 $60\,\mathrm m$ 代替。路程取正值，向南的方向由速度的负号表示。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由运动终点线核对赛跑路程}\par\nobreak
+还可在飞船系内直接复核。取起跑事件 $E'_A$ 为零点，飞船系 $t'=0$ 时终点线在 $x'=L'=60\,\mathrm m$，随后以速度 $-V$ 向南移动。
+
+运动员到达终点线时，故有
+\[
+\Delta x'=L'-V\Delta t'.
+\]
+代入 $\Delta t'=16.66666622\,\mathrm s$，与事件变换所得位移一致。这说明图\ref{fig:hrh1s}的长位移主要来自跑道随地面向后运动，并非把一段百米跑道测成了数十亿米。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr2}\textbf{从固有镜距和车速计算共同参数}\par\nobreak
+先由图\ref{fig:hrh2q}中的镜距 $l_0$和车速 $V$算参数：
+\[
+\beta=0.256667,\quad \gamma=1.034661,\quad
+\tau_0=1.640\times10^{-3}\,\mathrm s.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用横向光路求车上测得的地面钟周期}\par\nobreak
+第 (1) 问中，光钟随地面相对于车辆向后运动。图\ref{fig:hrh2s}左侧的 $A_0,M_1,A_2$ 是车上观察者所见的发射、反射和接收位置。光钟横向尺寸不变，每半程均有
+\[
+\left(\frac{c\tau}{2}\right)^2=l_0^2+
+\left(\frac{V\tau}{2}\right)^2,
+\quad\boxed{\tau=\gamma\tau_0=1.69684\times10^{-3}\,\mathrm s}.
+\]
+\fig{fig:hrh2s}{左：车上所见地面光钟的路径；右：地面所见车载纵向光钟的三个事件}{
+\begin{tikzpicture}[scale=.9]
+\pgfmathsetmacro{\halfshift}{(7.7/30)/sqrt(1-(7.7/30)^2)*2.4}
+\draw[light](0,0)--(-\halfshift,2.4)--({-2*\halfshift},0);\draw[axisline]({-2*\halfshift},0)--(0,0);\draw[dim](.5,0)--(.5,2.4)node[midway,right]{$l_0$};
+\fill(0,0)circle(1.6pt)node[below]{$A_0$};\fill(-\halfshift,2.4)circle(1.6pt)node[above]{$M_1$};\fill({-2*\halfshift},0)circle(1.6pt)node[below]{$A_2$};
+\draw[dim]({-2*\halfshift},-.7)--(0,-.7)node[midway,fill=white]{$V\tau$};
+\begin{scope}[shift={(4.4,-.3)},scale=.85]
+\pgfmathsetmacro{\be}{7.7/30}\pgfmathsetmacro{\ell}{2*sqrt(1-\be*\be)}\pgfmathsetmacro{\tm}{\ell/(1-\be)}\pgfmathsetmacro{\tt}{2*\ell/(1-\be*\be)}
+\draw[axis](-.2,0)--(4,0)node[right]{$x$};\draw[axis](0,-.2)--(0,5.2)node[above]{$ct$};
+\draw[world](0,0)--({\be*4.9},4.9)node[above right]{$A$};\draw[world](\ell,0)--({\ell+\be*4.9},4.9)node[above]{$M$};
+\draw[light](0,0)--(\tm,\tm)--({\be*\tt},\tt);
+\fill(0,0)circle(1.6pt)node[below left]{$E_0$};\fill(\tm,\tm)circle(1.6pt)node[right]{$E_1$};\fill({\be*\tt},\tt)circle(1.6pt)node[left]{$E_2$};
+\draw[dim](0,-.55)--(\ell,-.55)node[midway,fill=white]{$L=l_0/\gamma$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时测量车载纵向光钟的镜距}\par\nobreak
+第 (2) 问的光钟固定于车上，地面同时测量图\ref{fig:hrh2s}右侧两条世界线之间的水平距离，得
+\[
+\boxed{L=\frac{l_0}{\gamma}=2.37759\times10^5\,\mathrm m}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求追赶和迎面传播的两半程}\par\nobreak
+第 (3) 问沿右图的折线 $E_0E_1E_2$ 计算。
+
+去程追赶前方镜面，回程迎向接收器，所以
+\[
+t_+=\frac{L}{c-V},\qquad t_-=\frac{L}{c+V}.
+\]
+两段时间不等，但总周期仍为
+\[
+\boxed{\tau=t_++t_-=\frac{2Lc}{c^2-V^2}
+ =\gamma\frac{2l_0}{c}=1.69684\times10^{-3}\,\mathrm s}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查完整滴答与半程的事件区别}\par\nobreak
+第 (1) 问的相邻滴答发生在同一地面接收器处，第 (3) 问则发生在同一车载接收器处；各自的固有周期均为 $\tau_0$。
+图\ref{fig:hrh2s}右侧还可读出两个不相等的半程：
+\[
+t_+=1.06618\times10^{-3}\,\mathrm s,\qquad
+t_-=0.630660\times10^{-3}\,\mathrm s.
+\]
+它们的比值为 $(c+V)/(c-V)$，相加才是实验室周期。
+
+不能把“一个滴答整体变慢”进一步理解成纵向光钟的每个半程都等于 $\gamma l_0/c$：反射事件 $E_1$ 在另一面镜上，时间变换中还含有位置项。横向光钟的两半程对称，纵向光钟则不对称，二者的完整周期才满足同一时间膨胀关系。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr3}\textbf{由视线方向反向确定入射光速度}\par\nobreak
+图\ref{fig:hrh3q}中的光向左下方传播，故在 $S$ 中
+\[
+u_x=-c\cos\theta,\qquad u_y=-c\sin\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换光速分量后重新定义视线角}\par\nobreak
+速度变换给出
+\[
+u'_x=-c\frac{\cos\theta+\beta}{1+\beta\cos\theta},\qquad
+u'_y=-c\frac{\sin\theta}{\gamma(1+\beta\cos\theta)}.
+\]
+在飞机系中，视线仍取光传播的反方向。图\ref{fig:hrh3s}左侧据此画出 $\theta'$，所以
+\[
+\boxed{\cos\theta'=\frac{\cos\theta+\beta}{1+\beta\cos\theta}},\qquad
+\sin\theta'=\frac{\sin\theta}{\gamma(1+\beta\cos\theta)}.
+\]
+取 $\beta=0.87$，得 $\boxed{\theta'=8.34^\circ}$。
+\fig{fig:hrh3s}{左：前方恒星的视线偏向机头；右：恒星系中的可见角范围}{
+\begin{tikzpicture}[scale=.9]
+\draw[axis](0,0)--(4.5,0)node[right]{机头};\draw[aux](0,0)--(3.8,2.274)node[above]{$\theta=30.9^\circ$};
+\draw[world](0,0)--(4.2,.615)node[above left]{$\theta'=8.34^\circ$};\draw(1,0)arc(0:30.9:1);\draw(1.6,0)arc(0:8.34:1.6);
+\fill(0,0)circle(2pt);
+\begin{scope}[shift={(7.8,0)}]
+\fill[gray!12](0,0)--(-150.458:1.8)arc(-150.458:150.458:1.8)--cycle;
+\draw[world](0,0)circle(1.8);\draw[axis](-2.1,0)--(2.3,0)node[right]{$+x$};\draw[aux](0,0)--(150.458:1.8);\draw[aux](0,0)--(-150.458:1.8);
+\node[align=center]at(.55,-.75){可见方向};\node[align=center]at(-2.1,-1.5){后方盲区};\draw[aux](-1.6,-.5)--(-2.1,-1.2);\draw(.7,0)arc(0:150.458:.7);\node at(.1,1.15){$\theta_{\max}$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由前半球条件求原星空可见范围}\par\nobreak
+半球观察室接收 $\cos\theta'>0$ 的光。分母 $1+\beta\cos\theta$ 恒正，故恒星系中的可见条件为
+\[
+\cos\theta>-\beta,\qquad
+0\le\theta<\theta_{\max}=\arccos(-\beta).
+\]
+本题 $\theta_{\max}=150.46^\circ$，右图的后方盲区已小于半球。当 $\beta\to1$ 时，$\theta_{\max}\to\pi$，除严格后方的方向外，几乎整个星空都可进入前端观察室。
+
+图中画的是过飞行轴的截面；绕轴旋转即为空间角范围。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以半角关系解释视线聚向机头}\par\nobreak
+角度的压缩还可写成半角形式。由上面的正弦、余弦关系，
+\[
+\tan\frac{\theta'}2=\frac{\sin\theta'}{1+\cos\theta'}
+=\sqrt{\frac{1-\beta}{1+\beta}}\tan\frac\theta2.
+\]
+对任一固定的 $\theta<\pi$，当 $\beta\to1$ 时均有 $\theta'\to0$，即星光视线聚向机头。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算方向立体角并明确所数范围}\par\nobreak
+若按恒星系的方向立体角计算，轴对称可见区域的立体角微元为
+$\dd\Omega=\sin\theta\,\dd\theta\,\dd\phi$。先积方位角，再积极角，
+\begin{align*}
+ \Omega_{\text{可见}}
+ &=\int_0^{2\pi}\dd\phi\int_0^{\theta_{\max}}\sin\theta\,\dd\theta\\
+ &=2\pi[-\cos\theta]_0^{\theta_{\max}}
+ =2\pi(1-\cos\theta_{\max})=2\pi(1+\beta).
+\end{align*}
+占整天方向的比例为 $(1+\beta)/2$，本题为 $93.5\%$。
+
+这个比例描述可见的方向范围，未对恒星的亮度或实际数量分布作假设。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr4}\textbf{由对称初态动量判断碰后静止}\par\nobreak
+图\ref{fig:hrh4q}两侧动量相消，系统总动量为零。碰后只有一个质点，因而复合质点在实验室系静止。它的总能量就是静能 $Mc^2$。
+\fig{fig:hrh4s}{碰前等值反向动量相消；碰后只有一个复合粒子，静止于同一实验室系}{\begin{tikzpicture}
+
+\fill(-2,1)circle(2.5pt);\fill(2,1)circle(2.5pt);
+\draw[axis,thick](-2,1.5)--(-.4,1.5)node[midway,above]{$\bm p_1$};
+\draw[axis,thick](2,1.5)--(.4,1.5)node[midway,above]{$\bm p_2=-\bm p_1$};
+\node[below]at(-2,1){$E_1=\gamma m_0c^2$};\node[below]at(2,1){$E_2=\gamma m_0c^2$};
+\draw[axis](0,.4)--(0,-.5);
+\fill(0,-1)circle(4pt)node[right]{$M,\ u=0$};
+\node[below]at(0,-1.5){$Mc^2=E_1+E_2$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两份相对论总能量转为复合静能}\par\nobreak
+对图\ref{fig:hrh4s}写能量守恒式：
+\[
+Mc^2=2\gamma m_0c^2,\qquad
+\boxed{M=\frac{2m_0}{\sqrt{1-v^2/c^2}}
+ =2.0677\times10^{-26}\,\mathrm{kg}}.
+\]
+数值上 $\gamma=2.45572$，所以 $M=4.91144m_0$。增加的静能 $(M-2m_0)c^2$ 等于碰前的总动能，并以复合系统的内能等形式保留。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以动能转内能核对质量增量}\par\nobreak
+把图\ref{fig:hrh4s}上方每个粒子的能量拆开，有 $\gamma m_0c^2=m_0c^2+K_1$，因此也可写成
+\[
+M=2m_0+\frac{2K_1}{c^2}.
+\]
+粘合后宏观动能为零，复合系统的内能相应增加，总能量守恒。
+
+这里 $v$ 是每个粒子在实验室系的速率，求 $\gamma$ 时应使用它；若换成两粒子的相对速率，就改变了能量所属的参考系。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr5}\textbf{由两光子矢量和确定母粒子动量}\par\nobreak
+母粒子在所选惯性系中未必静止。图\ref{fig:hrh5s}把图\ref{fig:hrh5q}中的两个光子动量首尾相接，合动量 $\bm p=\bm p_1+\bm p_2$ 就是母粒子衰变前的动量。
+\fig{fig:hrh5s}{动量三角形；平行虚线保留两光子的夹角}{
+\begin{tikzpicture}[scale=.9]
+\coordinate(O)at(0,0);\coordinate(P)at(3.64,0);\coordinate(Q)at(6.207,1.977);
+\draw[axis](O)--(P)node[midway,below]{$\bm p_1$};\draw[axis](P)--(Q)node[midway,above left]{$\bm p_2$};\draw[axis](O)--(Q)node[midway,above]{$\bm p$};
+\draw[aux](P)--(5.2,0);\draw(4.44,0)arc(0:37.6:.8)node[midway,right]{$\theta$};
+\node[below left]at(O){$O$};\node[below]at(P){$P$};\node[right]at(Q){$Q$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立能量和动量求母粒子质量}\par\nobreak
+由图中的矢量和及光子关系 $p_i=E_i/c$，
+\[
+p^2=\frac{E_1^2+E_2^2+2E_1E_2\cos\theta}{c^2}.
+\]
+总能量 $E=E_1+E_2$。代入母粒子的能量动量关系，得
+\begin{align*}
+m_0^2c^4&=(E_1+E_2)^2-p^2c^2\\
+ &=2E_1E_2(1-\cos\theta).
+\end{align*}
+因此
+\[
+\boxed{m_0=\frac{\sqrt{2E_1E_2(1-\cos\theta)}}{c^2}
+ =110.67\,\mathrm{MeV}/c^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查能否把母粒子误当静止}\par\nobreak
+若母粒子静止，两个光子应等能且反向。本题的能量和夹角不满足这一条件，故不能令总动量为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反求运动状态验证质量不变量}\par\nobreak
+由图\ref{fig:hrh5s}还可检查母粒子的运动状态。它的总能量为 $344\,\mathrm{MeV}$，故
+\[
+\frac{u}{c}=\frac{pc}{E}
+=\sqrt{1-\left(\frac{m_0c^2}{E_1+E_2}\right)^2}
+\simeq0.94683.
+\]
+若选到母粒子静止系，总动量才为零，两光子在那里反向且各有能量 $m_0c^2/2$。当前系的两份能量可以不同，但由它们和夹角求出的 $m_0$ 保持不变；这正是不变量方法能避免另外求母粒子速度的原因。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:hr6}\textbf{按动量反向和能量分配确定末态总量}\par\nobreak
+取光子方向为 $+x$。图\ref{fig:hrh6q}中的初态总动量为零，故剩余粒子的动量为 $p_x=-Q/c$。能量守恒给出
+\[
+E=M_0c^2-Q=(1-\lambda)M_0c^2.
+\]
+图\ref{fig:hrh6s}分别画出能量分配和动量平衡。剩余粒子的 $E$ 包含静能与反冲动能，不能直接以 $E/c^2$ 作为静质量。
+\fig{fig:hrh6s}{能量分配与等值反向的动量}{
+\begin{tikzpicture}[scale=.95]
+\draw[world](0,1)rectangle(7,1.7);\draw[world](6.027,1)--(6.027,1.7);\node at(3,1.35){$(1-\lambda)M_0c^2$};\node at(6.52,1.35){$Q$};\node[left]at(0,1.35){能量};
+\draw[axis](3.5,0)--(1,0)node[midway,below]{$\bm p$};\draw[axis](3.5,0)--(6,0)node[midway,below]{$\bm p_\gamma$};\node[above]at(3.5,0){$|\bm p|=|\bm p_\gamma|$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由剩余粒子的总能量求反冲速率}\par\nobreak
+用 $\bm u=c^2\bm p/E$，反冲速率为
+\[
+\boxed{\frac{u}{c}=\frac{\lambda}{1-\lambda}=0.16144},
+\]
+方向与图中光子相反。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求剩余静质量并检查允许参数}\par\nobreak
+再由能量动量关系，
+\begin{align*}
+m^2c^4&=E^2-p^2c^2\\
+ &=[(1-\lambda)^2-\lambda^2]M_0^2c^4,
+\end{align*}
+得
+\[
+\boxed{\frac{m}{M_0}=\sqrt{1-2\lambda}=0.849706}.
+\]
+若剩余粒子具有正静质量，需 $0<\lambda<1/2$。
+
+本题满足该条件，且所得反冲速率小于光速。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对静能减少如何供给光子和反冲动能}\par\nobreak
+静质量的减少也可逐项核对。剩余粒子的反冲动能为
+\[
+K=E-mc^2=\bigl[1-\lambda-\sqrt{1-2\lambda}\bigr]M_0c^2
+\simeq0.0112942M_0c^2.
+\]
+因此 $(M_0-m)c^2=Q+K$：初态减少的静能既供给光子，也供给反冲动能。图\ref{fig:hrh6s}左侧大能量块表示剩余粒子的总能量，其中还应包含这份 $K$，不能把它全部当作静能。
+
+\end{drillsolution}

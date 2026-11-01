@@ -1,0 +1,127 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c2d1}\textbf{从加速度依次积分，并各自代入初值}\par\nobreak
+按图\ref{c2d1q}，加速度对时间累积给速度改变量，而速度对时间累积给位移。用 $\tau$作积分中的哑变量，并分别带入初值：
+\begin{align*}
+v(t)-v_0&=\int_0^t(a_0+b\tau)\dd\tau
+ =\left[a_0\tau+\frac b2\tau^2\right]_0^t
+ =a_0t+\frac b2t^2,\\
+x(t)-x_0&=\int_0^t\left(v_0+a_0\tau+\frac b2\tau^2\right)\dd\tau
+ =v_0t+\frac{a_0}2t^2+\frac b6t^3.
+\end{align*}
+因此 $v=v_0+a_0t+bt^2/2$，$x=x_0+v_0t+a_0t^2/2+bt^3/6$。
+\fig{c2d1s}{同一组初值下，加速度面积依次决定速度和位置的增量}{\begin{tikzpicture}
+
+\foreach \j/\name/\power in {0/a/1,1/v/2,2/x/3}{\begin{scope}[xshift=\j*3.4cm]
+\draw[axis](0,0)--(2.5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.8)node[above]{$\name$};
+\ifnum\j=0\draw[blue,thick,domain=0:2,samples=70]plot(\x,{.2+.3*\x});\else\ifnum\j=1\draw[blue,thick,domain=0:2,samples=70]plot(\x,{.2+.2*\x+.15*\x*\x});\else\draw[blue,thick,domain=0:2,samples=70]plot(\x,{.2+.2*\x+.1*\x*\x+.05*\x*\x*\x});\fi\fi
+\fill(0,.2)circle(1.2pt);\node[below]at(1.2,-.45){\ifnum\j=0 斜率为 $b$\else\ifnum\j=1 斜率为 $a$\else 斜率为 $v$\fi\fi};
+\end{scope}}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向求导及参数退化检查}\par\nobreak
+图\ref{c2d1s}以 $a_0,v_0,x_0,b$ 均为正的情形示意：速度曲线的切线斜率跟随加速度，位置曲线的切线斜率跟随速度。每一级积分都保留相应的初值。反向求导时，位置的一阶导数恢复所得速度，二阶导数恢复 $a_0+bt$；令 $t=0$又分别恢复 $x_0,v_0$。参数 $b$具有长度每时间三次方的单位，故 $bt^3$具有位置的量纲。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验恒加速度的退化情形}\par\nobreak
+取 $b=0$，恢复匀加速关系 $v=v_0+a_0t$、$x-x_0=v_0t+a_0t^2/2$。若 $a_0\ne0$，用 $a_0t=v-v_0$消去时间：
+\[2a_0(x-x_0)=2v_0(a_0t)+(a_0t)^2
+ =2v_0(v-v_0)+(v-v_0)^2=v^2-v_0^2.\]
+这一步得到的是恒加速度情况下的速度与位移关系；$b\ne0$时不能直接套用。若 $a_0=0$，则直接按 $x-x_0=v_0t$处理，不能在消元时除以零。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别累积电荷与粒子数}\par\nobreak
+另两种累积分别使用时间微元和空间微元：
+\[Q=\int_0^T I(t)\dd t=\alpha\left[\frac{t^2}2\right]_0^T
+ =\frac{\alpha T^2}2,\qquad
+N=\int_0^L n(x)\dd x=\gamma\left[\frac{x^2}2\right]_0^L
+ =\frac{\gamma L^2}2.\]
+两式外形相同，但微元的单位不同。直接用 $I(T)T$或 $n(L)L$，相当于把整个区间都按末端的最大值累积，会将本题结果高估一倍。
+\end{drillsolution}
+\begin{drillsolution}{c2d2}\textbf{把每段高度转换成所需时间}\par\nobreak
+图\ref{c2d2q}中向上运动时 $v(h)>0$，微小高度 $\dd h$需要的时间为 $\dd t=\dd h/v(h)$。代入题设速度，沿整个高度累加得
+\[t=\int_0^H\frac{a+bh}{c}\dd h
+ =\left[\frac{ah+bh^2/2}{c}\right]_0^H
+ =\boxed{\frac{aH}{c}+\frac{bH^2}{2c}}.\]
+\fig{c2d2s}{梯形表示实际时间，上方三角形表示末速估计的偏差}{\begin{tikzpicture}[scale=.7]
+\draw[axis](0,0)--(4,0)node[right]{$h$};\draw[axis](0,0)--(0,2.6)node[above]{$1/v$};
+\fill[blue!10](0,0)--(3,0)--(3,2.1)--(0,.6)--cycle;\draw[world](0,.6)--(3,2.1);
+\node[below]at(3,0){$H$};\node[left]at(0,.6){$a/c$};
+\fill[red!10](0,.6)--(0,2.1)--(3,2.1)--cycle;\draw[red,dashed](0,2.1)--(3,2.1);\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用面积比较说明末速估计的偏差}\par\nobreak
+图\ref{c2d2s}中 $1/v$随高度线性增加，实际时间是梯形面积。若把全程按末速度估计，便是高为 $1/v(H)$的矩形；矩形比梯形多出的上方三角形，正好给出估计偏差：
+\[\frac H{v(H)}-t
+ =\left(\frac{aH}{c}+\frac{bH^2}{c}\right)
+ -\left(\frac{aH}{c}+\frac{bH^2}{2c}\right)
+ =\frac{bH^2}{2c}\ge0.\]
+当 $b=0$时偏差为零，恢复匀速情形；$b>0$时末速估计偏大。
+
+相对于实际时间的误差为 $bH/(2a+bH)$，因而只有 $bH\ll a$时，才可把速度变化的影响视为较小修正。相对误差只由无量纲参数 $bH/a$决定，选用不同长度单位不会改变这一判断。
+\end{drillsolution}
+\begin{drillsolution}{c2d3}\textbf{根据旋转体内部确定圆盘微元}\par\nobreak
+图 \ref{c2d3q} 中先指定内部 $0\le r\le\sqrt{\ell z}$，再取图 \ref{c2d3s} 的圆盘，得到 $\dd V=\pi\ell z\dd z$。
+\fig{c2d3s}{容器内部以圆盘叠加}{\begin{tikzpicture}[scale=.7]
+\draw[world,domain=-1.5:1.5,samples=40]plot(\x,{\x*\x});
+\draw[fill=blue!15](0,1.2)ellipse(1.0954 and .2);\draw[flow](0,1.2)--(1.0954,1.2)node[midway,above]{$\sqrt{\ell z}$};
+\node[right]at(1.3,.8){厚 $\dd z$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由圆盘面积积分容量并检查量纲}\par\nobreak
+将半径平方 $r^2=\ell z$ 代入圆盘面积，得到 $A(z)=\pi r^2=\pi\ell z$，所以
+$V=\int_0^H\pi\ell z\dd z=\pi\ell[z^2/2]_0^H=\boxed{\pi\ell H^2/2}$。
+量纲为长度三次方。口部圆盘面积为 $\pi\ell H$，同高圆柱体积为 $\pi\ell H^2$，故容器容量恰为其一半。在截面中同时取左右两支 $z=x^2/\ell$，$|x|\le\sqrt{\ell H}$，只需绕轴旋转半周就能覆盖同一内壁；若只取右支，则需旋转一周。
+
+% thirty-c2-cupunit
+选定长度单位后，若内壁为 $z=r^2$且杯高为1，便有 $\ell=H=1$，容量数值为 $\pi/2$。图\ref{c2d3s}的截面从杯底的零面积线性增加到杯口的 $\pi$，平均截面积为 $\pi/2$；乘杯高1，再次得到同一容量。换回实际单位时，应给这个数值附上相应的体积单位。
+\end{drillsolution}
+\begin{drillsolution}{c2d4}\textbf{把四维体积分成三维球截面}\par\nobreak
+图 \ref{c2d4q} 的线段只是截面示意，实际截面是三维球，故
+\[
+ V_4=\int_{-R}^R\frac{4\pi}3(R^2-w^2)^{3/2}\dd w
+ =\frac{4\pi R^4}3\int_0^\pi\sin^4\theta\dd\theta.
+\]
+\fig{c2d4s}{固定第四坐标后得到三维球，截面体积随第四坐标变化}{\begin{tikzpicture}
+\begin{scope}\draw[world](0,1.2)circle(1.2);\draw[world](0,1.2)ellipse(1.2 and .32);\draw[guide](0,0)--(0,2.4);\draw[dim](0,1.2)--(1.2,1.2);\node[above]at(.55,1.2){$r_w$};\node at(0,-.6){$x^2+y^2+z^2\le r_w^2$};\node at(0,-1.2){$r_w=\sqrt{R^2-w^2}$};\node at(0,3){固定 $w$ 的三维截面};\end{scope}
+\begin{scope}[xshift=5cm]\draw[axis](-2.2,0)--(2.4,0)node[right]{$w$};\draw[axis](0,0)--(0,3)node[above]{$V_3(w)$};\fill[blue!15](.8,0)--plot[domain=.8:1,samples=15](\x,{2.2*(1-(\x/2)^2)^1.5})--(1,0)--cycle;\draw[world,domain=-2:2,samples=60]plot(\x,{2.2*(1-(\x/2)^2)^1.5});\node[below]at(-2,0){$-R$};\node[below]at(2,0){$R$};\node[left]at(0,2.2){$4\pi R^3/3$};\draw[guide](.8,0)--(.8,-.35) (1,0)--(1,-.35);\node at(.9,-.65){$\dd w$};\node at(0,-1.2){窄条面积 $V_3(w)\dd w$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留三次截面半径与一阶微元因子}\par\nobreak
+换元时 $w=R\cos\theta$、$\dd w=-R\sin\theta\dd\theta$，根式的三次幂为 $R^3\sin^3\theta$，相乘才得到 $R^4\sin^4\theta$。旧上下限 $-R,R$ 分别对应新上下限 $\pi,0$，反转后吸收负号。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算换元后的积分与边界测度}\par\nobreak
+为算最后的积分，先平方 $\sin^2\theta=(1-\cos2\theta)/2$，再用 $\cos^22\theta=(1+\cos4\theta)/2$，得到
+$\sin^4\theta=(3-4\cos2\theta+\cos4\theta)/8$。
+因此
+\[
+ \int_0^\pi\sin^4\theta\dd\theta
+ =\left[\frac{3\theta}{8}-\frac{\sin2\theta}{4}
+ +\frac{\sin4\theta}{32}\right]_0^\pi
+ =\frac{3\pi}{8}.
+\]
+乘回截面积分前面的系数，
+\[
+ V_4=\frac{4\pi R^4}{3}\cdot\frac{3\pi}{8}
+ =\boxed{\frac{\pi^2}{2}R^4}.
+\]
+对 $R$ 求导，$S_3=\dd V_4/\dd R=(\pi^2/2)\,4R^3=\boxed{2\pi^2R^3}$。
+图 \ref{c2d4s}左侧画的是固定 $w$ 后真实的三维截面，右侧用截面体积作为纵坐标；右图窄条面积为 $V_3(w)\dd w$。对所有 $w$ 累加时，每个三维体积都增加一个长度因子，所以体积的量纲为长度四次方，边界测度的量纲为长度三次方；后者不是通常的二维表面积。
+
+% thirty-c2-dimension
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由下一维递推核对边界的量纲}\par\nobreak
+截面递推还可延续一步，以检查“维数”与边界测度的关系。五维球在固定第五坐标 $z$的截面是半径 $\sqrt{R^2-z^2}$的四维球，因此
+\[V_5(R)=\int_{-R}^{R}\frac{\pi^2}{2}(R^2-z^2)^2\dd z
+ =\pi^2\left[R^4z-\frac23R^2z^3+\frac15z^5\right]_0^R
+ =\frac{8\pi^2}{15}R^5.\]
+相应边界的四维测度为 $S_4=\dd V_5/\dd R=8\pi^2R^4/3$。图\ref{c2d4q}只表示截面与剩余半径的关系，并不是把高维球当作普通三维物体画出。一般地，若 $V_n(R)=C_nR^n$，增厚 $\dd R$形成薄层，便有 $S_{n-1}(R)=nC_nR^{n-1}$；两式的长度量纲相差一次，符合边界比内部少一个维度。
+\end{drillsolution}

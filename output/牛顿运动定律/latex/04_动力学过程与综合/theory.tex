@@ -1,0 +1,155 @@
+\section{以事件连接动力学过程}
+\subsection{先确定阶段边界，再使用运动学}
+动力学综合题常由多个简单过程组成，困难不在某条单独公式，而在阶段边界的识别。撤力、换接触面、速度变零、两物体速度相同、碰撞以及支持力降为零，都会改变受力或约束。先写每段实际受力，再判断其加速度是否恒定，最后以边界事件连接相邻两段，才能避免将全程误当作一段匀加速运动。
+
+若第 $j$ 段从时刻 $t_j$ 开始，恒加速度为 $a_j$，应写 $v=v_j+a_j(t-t_j)$、$x=x_j+v_j(t-t_j)+a_j(t-t_j)^2/2$。式中的局部时间与绝对时刻不同。非冲击切换通常保持位置、速度连续；加速度可以跳变。碰撞则可能在很短时间内使速度改变，但碰前、碰后的位置应相容，不能让两物体穿越。
+
+\fig{n4t-events}{连续速度与分段加速度分别承担不同的衔接条件}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$t$};\draw[axis](0,0)--(0,2.4)node[above]{$v$};\draw[world](0,0)--(1.8,1.8)--(3,1.2)--(5,1.2);\draw[guide](1.8,0)--(1.8,2.2) (3,0)--(3,2.2);\node[below]at(1.8,0){撤力};\node[below]at(3,0){共同运动};\node at(4,1.7){$a=0$};
+\end{tikzpicture}}
+图\ref{n4t-events}在折点处速度连续，斜率改变。假如物块与长板速度相同，不能立刻预设以后共同运动；应先算共同加速度所需静摩擦，若未超上限才能转入共同运动，否则相对滑动会换向或继续。
+
+\fig{n4deep:match}{分段计算在同一边界继承位置与速度，斜率可以改变}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(4.4,0)node[right]{$t$};\draw[axis](0,0)--(0,3.4)node[above]{$x$};\draw[world,domain=0:2,samples=30]plot(\x,{.4*(\x)^2});\draw[world,blue,domain=2:3.6,samples=30]plot(\x,{1.6+1.6*(\x-2)-.4*(\x-2)^2});\draw[guide](2,0)--(2,1.6);\fill(2,1.6)circle(2pt)node[above left]{$x_j$};\draw[red,dashed](1.3,.48)--(2.7,2.72);\node[below]at(2,0){$t_j$};\end{scope}
+\begin{scope}[xshift=5.5cm]\draw[axis](0,0)--(4.1,0)node[right]{$t$};\draw[axis](0,0)--(0,2.4)node[above]{$v$};\draw[world](0,0)--(2,1.6);\draw[world,blue](2,1.6)--(3.6,.32);\fill(2,1.6)circle(2pt)node[above]{$v_j$};\draw[guide](2,0)--(2,1.6);\node[below]at(2,0){$t_j$};\node at(2,-.7){新一段用 $\tau=t-t_j$};\end{scope}
+\end{tikzpicture}}
+图\ref{n4deep:match}左图在边界处共享位置和切线，右图在同一时刻共享速度值，但两边斜率不同。后一段的初值应当是 $(x_j,v_j)$，即 $x=x_j+v_j\tau+\tfrac12a_j\tau^2$。若误把绝对时刻 $t$ 直接当作新一段历时，边界处便通常出现位置或速度的虚假跳跃。图中的连续性以切换不产生冲量为前提，碰撞须另用碰前、碰后速度连接。
+
+\subsection{阻力由速度方向决定}
+大小恒定的滑动阻力或空气阻力，其方向通常与当时速度相反。飞行器先上升再下落时，同一个大小 $f$ 在竖直方程中的符号需要改变；恢复升力但还在向下运动的阶段，升力与阻力可能共同向上制动。不能因为“恢复了动力”就直接套用先前上升阶段的加速度。
+
+速度恰为零的时刻是阶段边界，恒大小阻力模型在这一点本身可能不光滑。判断接下来向哪边运动，要用外力和允许的静态条件；在采用纯运动阻力近似的飞行器模型中，可分别求上升终点前、下降起点后两个极限。制动距离还须计入恢复动力前已经损失的高度，而不是只看恢复时是否仍在空中。
+
+\fig{n4deep:forceswitch}{阻力随速度改变方向，动力恢复时还要保留当时速度方向}{\begin{tikzpicture}
+\foreach \x/\title in {0/无动力上升,3.6/无动力下降,7.2/恢复动力制动}{\fill(\x,0)circle(2pt);\draw[force,red](\x,0)--(\x,-1.2)node[below]{$mg$};\node at(\x,-2){\title};}
+\draw[force,blue](.4,0)--(.4,-.7)node[right]{$f$};\draw[flow](-.6,0)--(-.6,1)node[above]{$v>0$};
+\draw[force,blue](3.6,0)--(3.6,.7)node[above]{$f$};\draw[flow](3,0)--(3,-1)node[left]{$v<0$};
+\draw[force,blue](7.2,0)--(7.2,.7)node[above]{$f$};\draw[force](7.7,0)--(7.7,1.5)node[above]{$F$};\draw[flow](6.6,0)--(6.6,-1)node[left]{$v<0$};
+\end{tikzpicture}}
+图\ref{n4deep:forceswitch}三图统一向上取正，分别对应 $ma=-mg-f$、$ma=-mg+f$ 和 $ma=F-mg+f$。第三图速度向下而加速度可以向上，表示正在制动；必须把制动距离计入总下降高度。待速度真正降到零并重新向上后，阻力才再次向下。由此可以逐个事件决定方程，而不必记忆彼此容易混淆的加速度。
+
+地面摩擦中的停止事件还可能引入一段停留。例如物体原来向右滑动，恒定右向驱动力为 $P<\mu_kmg$，滑动阶段向左减速。到零速度后，若 $P\le f_{s,\max}$，地面静摩擦即可平衡驱动力，物体保持静止，不能继续按 $P-\mu_kmg<0$ 向左加速。只有另一个作用使它真正向左滑动时，动摩擦才改为向右。重复碰撞题中某个滑块先停下后等待追撞，使用的就是这种静止分支。
+
+\fig{n4deep:stop}{停车后静摩擦维持静止，原减速直线不再适用}{\begin{tikzpicture}
+\begin{scope}\node[draw]at(0,0){$m$};\draw[force](.4,0)--(1.3,0)node[above]{$P$};\draw[force,blue](-.4,0)--(-1.7,0)node[above]{$\mu_kmg$};\draw[flow](-.4,.8)--(.8,.8)node[right]{$v>0$};\node at(0,-.8){滑动阶段};\end{scope}
+\begin{scope}[xshift=4cm]\draw[axis](0,0)--(4,0)node[right]{$t$};\draw[axis](0,-1)--(0,2.3)node[above]{$v$};\draw[world](0,1.8)--(2.4,0)--(3.6,0);\draw[red,dashed](2.4,0)--(3.5,-.825);\node[below left]at(2.4,0){$t_s$};\node at(2,2){停止后 $f_s=P$};\node[red]at(2.8,-1.3){虚线不满足摩擦方向};\end{scope}
+\end{tikzpicture}}
+图\ref{n4deep:stop}中 $0<P<\mu_kmg$，停车前 $a=(P-\mu_kmg)/m<0$；若 $P\le f_{s,\max}$，停车后取静摩擦 $f_s=P$、$a=0$。把红虚线继续到 $v<0$ 却仍保留向左动摩擦，会使摩擦沿运动方向做正功，直接暴露了阶段延续的错误。
+
+\section{运动图像与受力的相互转换}
+\subsection{斜率、面积与量纲}
+在 $v$--$t$ 图中，斜率为加速度，乘质量得到合力；曲线下的有符号面积为位移。$a$--$t$ 图的面积则是速度变化，不是位移。$F$--$t$ 图的面积给冲量，$F$--$x$ 图的面积给功。它们纵横坐标不同，不能只凭“面积”二字互相代用。
+
+如果给出稀疏的速度测量，先用确实属于同一阶段的相邻数据求斜率。斜面到粗糙水平面的交界时刻不一定正好在采样点，应由两段速度函数的连续性交点求出。再判断所问时刻落在哪一段，才能代入正确的速度函数。反求的摩擦因数还应使用该段实际支持力，而非无条件采用 $mg$。
+
+有限采样只给区间平均加速度，不能单凭两个点就证明整个区间加速度恒定。讲义中的分段直线模型还使用了“光滑固定斜面”“恒定动摩擦”“平滑转接”等受力假设。实测数据若偏离直线，应先判断测量误差、交界区间和阻力模型，而不是选择部分点强行代入匀变速公式。根据图像得到的参数，应回代其余采样点检查是否同时满足。
+
+\fig{n4t-graphs}{速度图的斜率与加速度图的高度逐段一致}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(3.2,0)node[right]{$t$};\draw[axis](0,0)--(0,2.5)node[above]{$v$};\fill[blue!8](0,0)--(1,2)--(2.5,.5)--(2.5,0)--cycle;\draw[world](0,0)--(1,2)--(2.5,.5);\draw[guide](1,0)--(1,2);\node[below]at(1,0){$1$};\node[left]at(0,2){$2$};\node at(1.4,-.7){面积为 $\Delta x$};\end{scope}
+\begin{scope}[xshift=5cm]\draw[axis](0,0)--(3.2,0)node[right]{$t$};\draw[axis](0,-1.3)--(0,2.5)node[above]{$a$};\fill[blue!8](0,0)rectangle(1,2);\fill[red!8](1,0)rectangle(2.5,-1);\draw[world](0,2)--(1,2) (1,-1)--(2.5,-1);\draw[guide](1,-1)--(1,2);\node[left]at(0,2){$2$};\node[left]at(0,-1){$-1$};\node[below right]at(1,0){$1$};\node at(1.4,-1.8){有符号面积为 $\Delta v$};\end{scope}
+\end{tikzpicture}}
+图\ref{n4t-graphs}采用一致单位：前一段速度从 $0$ 增到 $2$，历时 $1$，所以右图高度为 $2$；后一段速度在 $1.5$ 的时间内下降 $1.5$，右图高度为 $-1$。右图两块有符号面积之和为 $2-1.5=0.5$，正好等于左图的末速度减初速度。负面积使速度减小，而不是使速度立即变负。求两物体相对位移时，应积分速度差；求相对速度时，应积分加速度差。在图像中涂出两条曲线之间的区域，还须说明区域属于哪一时间区间，以及被积差是否发生变号。
+
+\subsection{由速度反求的是合力}
+测得一维有符号速度 $v(t)$，在惯性系内定质量模型给 $F_{\rm net}(t)=m\dot v(t)$。同一个合力可以由多种外力组合产生，因此仅靠速度函数不能唯一确定某一根绳张力、某一个驱动力或摩擦系数，除非其他力已知。若只给速率而运动方向不断变化，还不能只求速率导数就得到合力矢量，需要另外给出轨迹曲率与方向。
+
+当不同物体的外力分别随时间变化，接触阶段应先取整体求共同加速度，再隔离求内部压力。压力到零时通常是分离候选点；分离后各自加速度按各自外力决定，之后两者间的速度差从零开始累积，而不是在分离瞬间就有有限的相对速度。
+
+\fig{n4t-speed}{相同速率图不唯一决定合力，轨迹方向也提供信息}{\begin{tikzpicture}
+\draw[world](-3,0)--(-.7,0);\draw[flow,blue](-2.6,0)--(-1.3,0)node[above]{$v$};\node at(-1.9,-.8){直线：$F=0$};\draw[world](1.7,0)circle(.9);\fill(2.6,0)circle(2pt);\draw[flow,blue](2.6,0)--(2.6,1.2)node[above]{$v$};\draw[force,red](2.6,0)--(1.7,0)node[midway,below]{$F$};\node at(1.7,-1.4){圆周：$F=mv^2/R$};
+\end{tikzpicture}}
+图\ref{n4t-speed}两物体速率都为常量，但左图速度方向不变，合力为零；右图切向速度与径向合力垂直，合力大小为 $mv^2/R$。只给速率图便无法区分这两种受力，所以逆向求力前必须确认所测量的是固定轴的速度分量，还是没有方向信息的速率。
+
+\section{选择合适的微分变量}
+\subsection{位置相关力与时间相关力}
+若合力写成 $F(t)$，从初态积分有
+$m\int_{v_0}^{v}\dd w=\int_{t_0}^{t}F(t')\dd t'$，
+即 $m(v-v_0)=\int_{t_0}^{t}F(t')\dd t'$。
+若力写成 $F(x)$，则按链式法则
+$\dd v/\dd t=(\dd v/\dd x)(\dd x/\dd t)=v\dd v/\dd x$，
+因而
+$m\int_{v_0}^{v}w\dd w=\int_{x_0}^{x}F_{\rm net}(\xi)\dd\xi$。
+左边用原函数 $mw^2/2$ 代入上下限，得到
+\begin{equation}\label{n4eq-work}
+\frac m2(v^2-v_0^2)=\int_{x_0}^xF_{\rm net}(\xi)\dd\xi.
+\end{equation}
+式中积分沿实际单调运动段进行。若先向右再向左，位移的符号应随路径改变，不能把路程一律当成正的 $\dd x$。在分段恒力近似下，式\eqref{n4eq-work}也可以从各段的 $v_{j+1}^2-v_j^2=2F_j\Delta x_j/m$ 相加直接得到。
+
+平均力的概念因此必须附带权重。等时间段作用力的算术平均与冲量相联系；等位移段作用力的算术平均与功相联系。若作用力随位置线性变化，空间平均值等于两端平均；随时间线性变化时，这一平均并不自动等于空间平均。判断某个“平均值”能否代入前，先看要求累积的是速度还是速度平方。
+
+\fig{n4deep:weights}{横轴决定累积量，同样的两级力不一定具有相同平均值}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(3.6,0)node[right]{$t$};\draw[axis](0,0)--(0,2.6)node[above]{$F$};\fill[blue!8](0,0)rectangle(1,1);\fill[red!8](1,0)rectangle(3,2);\draw[world](0,1)--(1,1) (1,2)--(3,2);\node[left]at(0,1){$F_1$};\node[left]at(0,2){$F_2$};\node at(.5,.4){$\Delta t_1$};\node at(2,.4){$\Delta t_2$};\node at(1.5,-.7){总面积 $J$};\end{scope}
+\begin{scope}[xshift=5cm]\draw[axis](0,0)--(3.6,0)node[right]{$x$};\draw[axis](0,0)--(0,2.6)node[above]{$F$};\fill[blue!8](0,0)rectangle(1.5,1);\fill[red!8](1.5,0)rectangle(3,2);\draw[world](0,1)--(1.5,1) (1.5,2)--(3,2);\node[left]at(0,1){$F_1$};\node[left]at(0,2){$F_2$};\node at(.75,.4){$\Delta x$};\node at(2.25,.4){$\Delta x$};\node at(1.5,-.7){总面积 $W$};\end{scope}
+\end{tikzpicture}}
+图\ref{n4deep:weights}对比两种给定方式。左图冲量为 $J=F_1\Delta t_1+F_2\Delta t_2$，时间平均力为 $J/(\Delta t_1+\Delta t_2)$；右图功为 $W=(F_1+F_2)\Delta x$，空间平均力才是 $(F_1+F_2)/2$。这两图不假定描述同一运动；它们强调，只有权重相等时才可直接取算术平均。
+
+\subsection{线性阻力的速度与位置关系}
+水平运动受线性阻力 $-kv$ 时，时间方程为 $m\dot v=-kv$。在 $v>0$ 时分离变量，以 $v(0)=v_0>0$ 确定常数：
+\[
+\int_{v_0}^{v}\frac{\dd w}{w}=-\frac km\int_0^t\dd t',
+\qquad
+[\ln w]_{v_0}^{v}=-\frac km[t']_0^t,
+\qquad
+\ln\frac{v}{v_0}=-\frac{kt}{m}.
+\]
+指数化得到 $v(t)=v_0\e^{-t/\tau}$，$\tau=m/k$。令初始位置为零，再积分速度，
+\[
+x(t)=v_0\int_0^t\e^{-t'/\tau}\dd t'
+=v_0[-\tau\e^{-t'/\tau}]_0^t
+=v_0\tau(1-\e^{-t/\tau}).
+\]
+在同一个 $v>0$ 的运动段，也可写 $mv\dd v/\dd x=-kv$，约去 $v$ 后积分：
+$\int_{v_0}^v\dd w=-(k/m)\int_0^x\dd\xi$，
+得到 $v-v_0=-kx/m$，即速度随位置线性下降。两种关系描述同一运动，位置线性并不意味着时间线性。
+
+\fig{n4t-drag}{速度随时间指数衰减，随位置则为直线}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(2.8,0)node[right]{$t$};\draw[axis](0,0)--(0,1.9)node[above]{$v$};\draw[world,domain=0:2.5,samples=40]plot(\x,{1.6*exp(-1.2*\x)});\end{scope}
+\begin{scope}[shift={(4,0)}]\draw[axis](0,0)--(2.8,0)node[right]{$x$};\draw[axis](0,0)--(0,1.9)node[above]{$v$};\draw[world](0,1.6)--(2.3,0);\node[below]at(2.3,0){$mv_0/k$};\end{scope}
+\end{tikzpicture}}
+图\ref{n4t-drag}的直线终点是位置的极限，不是在某个有限时刻突然停住的事件。约去 $v$ 的步骤只在 $v\ne0$ 区间有效；不能将直线继续延长到负速度并解释成阻力把物体反向拉走。模型预测的是无限趋近零速和有限极限位移。
+
+判断是否有限时间到达某位置，可用 $\Delta t=\int\dd x/v(x)$。若接近终点时 $v(x)$ 近似为 $C(x_*-x)^p$，$C>0$，考虑从 $x_*-\varepsilon$ 到 $x_*-\delta$ 的一小段，$0<\delta<\varepsilon$。换元 $y=x_*-x$，有 $\dd x=-\dd y$，上下限从 $\varepsilon$ 变到 $\delta$，故
+\[
+\Delta t\simeq\frac1C\int_\delta^\varepsilon y^{-p}\dd y
+=\begin{cases}
+\dfrac{\varepsilon^{1-p}-\delta^{1-p}}{C(1-p)},&p\ne1,\\[3pt]
+\dfrac1C\ln(\varepsilon/\delta),&p=1.
+\end{cases}
+\]
+第一行的原函数为 $y^{1-p}/(1-p)$，第二行为 $\ln y$。令 $\delta\to0^+$：$p<1$ 时剩余时间有限，$p\ge1$ 时发散。恒定反向合力给 $v\propto\sqrt{x_*-x}$，所以有限时间停下；线性速度阻力给 $v\propto x_*-x$，则只能无限接近。这里比较的是不同物理阻力模型的终点行为，不能只看空间表达式都存在一个零点。
+
+\section{相对运动、碰撞与重复过程}
+\subsection{最近距离由相对速度为零确定}
+两物体沿一直线相向或追及，间距变化率是它们的速度差。最近时两者速度相同，但共同速度一般不为零；只有在特定质心系中才可能同时静止。已知相互斥力时，可以分别求绝对加速度，也可以直接写相对加速度 $F(1/m_1+1/m_2)$，再用相对初速求接近距离。
+
+把相互作用写成保守斥力模型时，近距离内的势能储存使相对速度降低，随后又释放，使两物体分开。最近时并不要求外界能量消失。质心保持原来的匀速运动与相对运动的反向，是两个互相独立的描述，应同时满足总动量和位置连续的检查。
+
+\input{knowledge-gap}
+
+\subsection{碰后交换速度并非全程交换轨迹}
+等质量一维完全弹性碰撞在外力冲量可忽略时交换瞬时速度。碰撞后两物体仍各自受到自己的重力分量和摩擦，若摩擦因数不同，后续加速度便不同。因此不能把第一次交换速度后直接理解成两物体从此互换了全部轨迹。
+
+\fig{n4deep:collision}{碰撞只交换边界速度，碰后的斜率仍由各自外力决定}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[axis](0,0)--(0,3.5)node[above]{$v$};\draw[guide](2,0)--(2,3.3);\node[below]at(2,0){$t_c$};\draw[world,blue](0,1)--(2,3);\draw[world,red](0,1.2)--(2,1.2);\draw[world,blue](2,1.2)--(4,3.2);\draw[world,red](2,3)--(4.7,3);\draw[blue,dashed](2,3)--(2,1.2);\fill[blue](2,1.2)circle(2pt);\fill[red](2,3)circle(2pt);\node[blue]at(4.4,2){$a_A$ 保持};\node[red,above]at(4.5,3){$a_B=0$};\node at(1,-.7){碰前};\node at(3.5,-.7){碰后重新计时};
+\end{tikzpicture}}
+图\ref{n4deep:collision}以 $A$ 受恒定下滑合力、$B$ 滑动时合力为零为例。碰撞瞬间蓝、红两条线交换高度，表示交换速度；碰后蓝线仍有原来的斜率，红线仍水平。下一次接触由碰后两条速度线之间的有符号面积累计到零确定，不能在图上把两种颜色的整条后续轨迹互换。若有一条线先到零速度，须先处理停车事件。
+
+重复碰撞常由“碰前速度—碰后初值—下一事件”形成递推。先判断下一次是再次接触，还是其中一个物体先停下。若先停下，应将余下过程切成两段；只有事件顺序确定后，才能讨论时间间隔或位移构成等差、等比数列。无穷层、无穷次问题则应先求有限层或有限次结果，再明确所取极限。
+
+速度交换还含质量与弹性两个条件。对两个相同质量的物体，若碰撞期间外力冲量可忽略，内部相互作用按第三定律抵消，故 $v_1^-+v_2^-=v_1^++v_2^+$。完全弹性的一维碰撞还要求相对分离速度等于碰前相对接近速度，即 $v_2^+-v_1^+=v_1^--v_2^-$。两式相加、相减才得到交换速度。若恢复系数小于一，第二式右端还须乘该系数，交换规律就不成立；若两质量不等，也不能用等质量形式的动量关系。
+
+“碰撞很短”本身不是忽略外力冲量的充分表述。还应比较外力乘接触时间同碰撞引起的典型动量变化；当物体速度差已经极小，原来可忽略的重力或摩擦冲量可能变得重要。无穷次碰撞的递推极限正是在这种尺度逐渐缩小时最需谨慎解释。有限次结果仍可严格依照给定理想模型计算，而不必把模型的极限结论扩大成接触材料的真实行为。
+
+\subsection{优化所需时间时保留几何边界}
+沿固定光滑直槽下滑，加速度是重力沿槽的分量，行程由槽同目标边界的交点决定。改变槽方向会同时改变加速度与路程，不能只选择最大重力分量。可用几何关系把时间平方写成角度函数，再在允许到达目标的角度区间内取最小值；最优角还应保证槽向下、与目标有正的交会距离。
+
+\fig{n4deep:path}{槽越竖直不一定越快，还须比较它与目标的交点距离}{\begin{tikzpicture}
+\coordinate(A)at(0,3);\coordinate(P)at(1.2,.6);\coordinate(B)at(.68,.34);\draw[world](-1,-.5)--(3.4,1.7);\draw[world](A)--(B)node[midway,left]{$s$};\draw[guide](A)--(P)node[midway,right]{$h$};\draw[guide](A)--(0,-.2);\draw[flow,red](-.45,2.4)--(-.45,1.4)node[left]{$\bm g$};\fill(A)circle(2pt)node[above]{$A$};\fill(B)circle(2pt)node[below]{$B$};\node[right]at(P){$P$};\draw(1.11,.78)--(1.29,.87)--(1.38,.69);\node at(.15,2.05){$\beta$};\node at(.56,1.75){$\gamma$};
+\end{tikzpicture}}
+图\ref{n4deep:path}中 $AP=h$ 为到目标直线的垂距，槽 $AB=s$ 与竖直夹角为 $\beta$，与向下法线 $AP$ 夹角为 $\gamma$。垂直投影给 $s\cos\gamma=h$，受力给 $a_s=g\cos\beta$，于是
+\[
+t^2=\frac{2s}{a_s}=\frac{2h}{g\cos\beta\cos\gamma}.
+\]
+优化须同时保留这两个余弦因子，并要求它们都为正；前者保证沿槽向下加速，后者保证槽能正向到达目标。目标倾角固定时，$\beta$ 与 $\gamma$ 还有一个几何关系，代入后才得到单变量极值问题。
+
+这类优化同运动学中的最短时间问题相衔接。几何关系确定路程，受力关系确定沿槽加速度；将它们同时代入时间函数后，应展开所用的三角变换或求导步骤，并把内部极值与允许角度的端点比较，才能确定可实现的最短时间。

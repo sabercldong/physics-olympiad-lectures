@@ -1,0 +1,364 @@
+\section{例题与分析}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[钢摆钟的日差]\label{t1-1}
+一钢制单摆在 $0^\circ\mathrm C$ 时周期 $P_0=1.000\,\mathrm s$，线膨胀系数 $\alpha=1.2\times10^{-5}\,\mathrm{K^{-1}}$。温度升至 $25^\circ\mathrm C$，重力加速度不变。求新周期，以及实际经过一天时钟面少走的时间。见图\ref{fig:t1-1q}。
+\end{example}
+\fig{fig:t1-1q}{钢摆钟的日差：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(1,2);\draw[world] (.5,2)--(.5,-.4);\fill (.5,-.4) circle(.15);\draw[dim] (1.2,2)--(1.2,-.4) node[midway,right]{$L_0$};\draw[world] (4,2)--(5,2);\draw[world] (4.5,2)--(4.5,-.6);\fill (4.5,-.6) circle(.15);\draw[dim] (5.2,2)--(5.2,-.6) node[midway,right]{$L$};\node at (.5,-1){$0^\circ\mathrm C$};\node at (4.5,-1){$25^\circ\mathrm C$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{先求自由热伸长，再由摆长求周期}\par\nobreak
+图\ref{fig:t1-1q}中两根摆线表示同一钢摆在不同温度下的长度。支点不变、重力加速度不变，温度只通过摆长影响周期。由自由线膨胀关系，
+\[L=L_0(1+\alpha\Delta T),\qquad \alpha\Delta T=1.2\times10^{-5}\times25=3.0\times10^{-4}.\]
+将它代入单摆的小振幅周期公式，而不是直接把长度变化率作为周期变化率，得
+\[\frac P{P_0}=\sqrt{\frac L{L_0}}=\sqrt{1.00030},\qquad \boxed{P\simeq1.000150\,\mathrm s}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用振动计数定义钟面时间}\par\nobreak
+接下来需要区分实际经过的时间与钟面计数。设实际经过 $t$，摆共完成 $N=t/P$ 次周期，钟的刻度机构仍按每次 $P_0$ 秒累计，因此钟面显示 $t_{\text{钟}}=NP_0$。图\ref{fig:t1-1s}用相邻峰的间隔表示周期，并用同一条竖线比较实际经过相同时间后的振动计数；周期增长后计数较少。\fig{fig:t1-1s}{周期增大后，同一实际时长内完成的振动次数减少；周期差夸张绘制}{\begin{tikzpicture}[x=.9cm,y=.8cm]
+\draw[->](0,2.3)--(7.5,2.3)node[right]{$t$};\draw[->](0,0)--(7.5,0)node[right]{$t$};
+\draw[blue,thick,domain=0:6.8,samples=200]plot(\x,{2.3+.6*cos(180*\x)});
+\draw[red,thick,domain=0:6.8,samples=200]plot(\x,{.6*cos(138.4615*\x)});
+\draw[dashed](6.5,-.8)--(6.5,3.3);\node[above]at(6.5,3.3){同一实际时刻};
+\draw[<->](0,3.2)--(2,3.2)node[midway,above]{$P_0$};\draw[<->](0,-1)--(2.6,-1)node[midway,below]{$P>P_0$};
+\node[left]at(0,2.3){原温};\node[left]at(0,0){升温后};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由实际时间与钟面读数之差求日差并检查走慢}\par\nobreak
+实际一天取 $t=86400\,\mathrm s$，故少走的时间为
+\[\Delta t=t-t_{\text{钟}}=t\left(1-\frac{P_0}{P}\right)
+=86400\left(1-\frac1{\sqrt{1.00030}}\right)
+\simeq\boxed{12.96\,\mathrm s}.\]
+图中摆长增加，所以每次摆动用时增加，同一实际时间内计数减少，结果应是走慢。若只保留一阶，$P/P_0\simeq1+\alpha\Delta T/2$，便有 $\Delta t\simeq86400\alpha\Delta T/2=12.96\,\mathrm s$。该近似与上式相符，也表明日差的相对量级约为 $1.5\times10^{-4}$。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[受边界约束的肥皂膜细线]\label{t1-2}
+两条光滑水平平行边相距 $d$，不可伸长的轻细线两端固定在左侧 $A,B$，长度 $\ell>\pi d/2$。细线两侧最初有肥皂膜，刺破左侧膜，右侧膜保留，表面张力系数为 $\sigma$。允许细线贴着光滑边界，求平衡形状和张力。见图\ref{fig:t1-2q}。
+\end{example}
+\fig{fig:t1-2q}{刺破左侧后保留右侧双面膜；图示细线尚未达到平衡}{\begin{tikzpicture}
+
+\fill[blue!8](0,2)--(5,2)--(5,0)--(0,0)..controls(2.5,0)and(2.5,2)..(0,2)--cycle;
+\draw[world](-.6,0)--(5,0) (-.6,2)--(5,2);\draw[very thick](0,2)..controls(2.5,2)and(2.5,0)..(0,0);\fill(0,2)circle(.05)node[left]{$A$};\fill(0,0)circle(.05)node[left]{$B$};\node at(.7,1){已刺破};\node at(3.7,1){右侧双面膜};\draw[dim](5.5,0)--(5.5,2)node[midway,right]{$d$};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{在自由弧上用微元平衡确定恒定曲率}\par\nobreak
+刺破左侧膜后，细线自由段只受到右侧双面膜的分布拉力。先不猜整条线的形状，在自由段取一小段 $\dd s$：两端张力大小相等，切向分量相互抵消；法向合力为 $\tau\dd\varphi$。两面膜对这一段的合力为 $2\sigma\dd s$，因此
+\[\tau\dd\varphi=2\sigma\dd s,\qquad \frac1r=\frac{\dd\varphi}{\dd s}=\frac{2\sigma}{\tau}.\]
+张力沿光滑轻线不变，自由段的曲率也不变，因而是圆弧。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用上下边界筛选相切半圆与贴边段}\par\nobreak
+还须使用图\ref{fig:t1-2q}的上下边界：细线不能越过两条水平边。由于 $\ell>\pi d/2$，连接上下边界的半圆已经不能容纳全部线长，平衡形状应包含贴边直线段。
+在图\ref{fig:t1-2s}中，圆弧与边界光滑相切于 $C,D$，两点间竖直距离为 $d$，所以 $CD$ 为右半圆弧，$r=d/2$。\fig{fig:t1-2s}{受边界约束的肥皂膜细线：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[blue!8] (1.8,2)--(5,2)--(5,0)--(1.8,0) arc[start angle=-90,end angle=90,radius=1]--cycle;\draw[world] (0,0)--(5,0) (0,2)--(5,2);\draw[very thick] (0,2)--(1.8,2) arc[start angle=90,end angle=-90,radius=1]--(0,0);\node[left] at (0,2){$A$};\node[left] at (0,0){$B$};\node[above] at (1.8,2){$C$};\node[below] at (1.8,0){$D$};\draw[guide] (1.8,1)--(2.8,1);\node at (1.8,1){$O$};\node[below] at (2.3,1){$r$};\draw[force] (2.8,1)--(4,1) node[right]{$2\sigma\,\dd s$};\node at (1,-.8){$AC=BD$};\draw[force] (1.8,2)--(.8,2) node[midway,above]{$\tau$};\draw[force] (1.8,0)--(.8,0) node[midway,below]{$\tau$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由半径求张力，再由总线长求贴边长度}\par\nobreak
+由微元平衡式立即得到
+\[\boxed{\tau=2\sigma r=\sigma d}.\]
+圆弧长为 $\pi d/2$。其余部分由 $AC,DB$ 分担；上下对称且圆弧两端位于同一竖线上，故
+\[\boxed{AC=BD=\frac{\ell-\pi d/2}{2}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按真实膜区域检查整体受力与线长变化}\par\nobreak
+图中蓝色膜仅在圆弧右侧，贴着上下边界的两段直线内侧已经没有膜，不能再给它们画出持续的横向膜力。再取整个半圆弧验算：膜力的水平合力为 $2\sigma d$ 向右，$C,D$ 处各有一个向左的张力，故 $2\tau=2\sigma d$，与局部推导一致。线长增大只使两段贴边线等量变长，半径和张力均保持不变。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[双U形管的液面联动]\label{t1-3}
+四根等截面竖管 $a,b,c,d$ 构成双U形装置：$a,b$ 下端由水银连通，$c,d$ 下端由水银连通，$b,c$ 顶端封有同一团气体，$a,d$ 开口。温度降低后 $c$ 中水银上升 $\Delta h$。求其余液面位移与气体压强变化。见图\ref{fig:t1-3q}，大气压恒定。
+\end{example}
+\fig{fig:t1-3q}{双U形管的液面联动：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3)--(0,0)--(1.1,0)--(1.1,2.6)--(2.2,2.6)--(2.2,0)--(3.3,0)--(3.3,3);\draw[world] (.3,3)--(.3,.3)--(.8,.3)--(.8,2.9)--(2.5,2.9)--(2.5,.3)--(3,.3)--(3,3);\foreach \x/\t in {.15/a,.95/b,2.35/c,3.15/d}{\node[above] at (\x,3.2){$\t$};}\draw[thick] (0,2)--(.3,2) (.8,1.4)--(1.1,1.4) (2.2,1.4)--(2.5,1.4) (3,2)--(3.3,2);\node at (1.65,2.3){气体};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{对两组独立水银分别列体积守恒}\par\nobreak
+以竖直向上为正，设四液面位移为 $\delta h_a,\delta h_b,\delta h_c,\delta h_d$。图\ref{fig:t1-3q}中左、右两组水银彼此独立，每组的水银量都不变；又因四管等截面，分别有
+\[\delta h_a+\delta h_b=0,\qquad \delta h_c+\delta h_d=0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以同一气体压强联系两组液面高度差}\par\nobreak
+两外侧液面承受同一大气压，两内侧液面承受同一团气体的压强。沿左、右水银各从开口面走到气体面，得到
+\[p=p_0+\rho g(h_a-h_b)=p_0+\rho g(h_d-h_c).\]
+因此两组高度差的变化相等，即 $\delta h_a-\delta h_b=\delta h_d-\delta h_c$。题给 $\delta h_c=\Delta h$，依次代入上述关系，便确定图\ref{fig:t1-3s}中的四个箭头。\fig{fig:t1-3s}{双U形管的液面联动：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \shift/\title in {0/初态,5.5/末态}{\begin{scope}[xshift=\shift cm]
+\draw[world] (0,3)--(0,0)--(1.1,0)--(1.1,2.6)--(2.2,2.6)--(2.2,0)--(3.3,0)--(3.3,3);
+\draw[world] (.3,3)--(.3,.3)--(.8,.3)--(.8,2.9)--(2.5,2.9)--(2.5,.3)--(3,.3)--(3,3);
+\foreach \x/\t in {.15/a,.95/b,2.35/c,3.15/d}{\node[above] at (\x,3.2){$\t$};}
+\node at (1.65,3.9){同一团气体};\draw[guide] (1.65,3.6)--(1.65,2.75);\node at (1.65,-.5){\title};
+\draw[guide] (-.2,0)--(3.6,0);
+\end{scope}}
+\draw[thick] (0,2)--(.3,2) (.8,1.4)--(1.1,1.4) (2.2,1.4)--(2.5,1.4) (3,2)--(3.3,2);
+\draw[dim] (3.7,1.4)--(3.7,2) node[midway,right]{$H_i$};
+\begin{scope}[xshift=5.5cm]
+\draw[thick,blue] (0,1.8)--(.3,1.8) (.8,1.6)--(1.1,1.6) (2.2,1.6)--(2.5,1.6) (3,1.8)--(3.3,1.8);
+\draw[guide] (-.1,2)--(.5,2) (.6,1.4)--(1.3,1.4) (2,1.4)--(2.7,1.4) (2.8,2)--(3.5,2);
+\foreach \x/\a/\b in {.15/2/1.8,.95/1.4/1.6,2.35/1.4/1.6,3.15/2/1.8}{\draw[force,blue] (\x,\a)--(\x,\b);}
+\draw[thick] (3.7,1.6)--(3.7,1.8);\draw (3.6,1.6)--(3.8,1.6) (3.6,1.8)--(3.8,1.8);\node[right] at (3.85,1.7){$H_f$};
+\end{scope}
+\node at (4.45,-1.1){$H_i=h_a-h_b=h_d-h_c,\qquad H_f=H_i-2\Delta h$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出四液面位移，再求压强增量}\par\nobreak
+结果为
+\[\boxed{\delta h_b=\delta h_c=\Delta h,\qquad \delta h_a=\delta h_d=-\Delta h}.\]
+图\ref{fig:t1-3s}中虚线保留各液面的初始位置，蓝色短线表示末位置；两幅图共用同一零高度。左组气体侧液面升高 $\Delta h$，大气侧液面降低 $\Delta h$，所以 $H_f=(h_a-\Delta h)-(h_b+\Delta h)=H_i-2\Delta h$。右组也给出同样变化，故
+\[\boxed{p_f-p_i=-2\rho g\Delta h}.\]
+这个倍数来自两边液面同时移动，不能只取内侧的一次位移。结论也符合降温后的趋势：气体压强降低，外侧大气把水银推入气体侧。整个推导只用了液柱平衡和水银体积守恒；若还要求末温，才需要补充气体体积和状态方程。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[漏气水银气压计]\label{t1-4}
+气压计顶部有少量空气。大气压为 $76\,\mathrm{cmHg}$ 时读数为 $74\,\mathrm{cm}$，顶部空气柱长 $8\,\mathrm{cm}$；后来读数为 $72\,\mathrm{cm}$，温度不变。槽面高度不变，求后来的真实大气压。见图\ref{fig:t1-4q}。
+\end{example}
+\fig{fig:t1-4q}{漏气水银气压计：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0)--(0,4.1)--(1,4.1)--(1,0);\fill[gray!25] (.02,0) rectangle (.98,3.7);\draw[guide] (-.5,0)--(2,0);\draw[dim] (1.5,0)--(1.5,3.7) node[midway,right]{$74\,\mathrm{cm}$};\draw[dim] (-.5,3.7)--(-.5,4.1) node[midway,left]{$8$};\node at (.5,4.6){管顶固定};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{用初读数求顶部空气压强与固定管顶高度}\par\nobreak
+先从初态确定顶部空气的压强与管顶位置。图\ref{fig:t1-4q}中槽面作为固定零高度，管顶高度为 $H=74+8=82\,\mathrm{cm}$。水银柱只承担两端压差，所以初态满足
+\[p_{01}=p_{a1}+74\,\mathrm{cmHg},\qquad p_{a1}=2\,\mathrm{cmHg}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由固定几何求第二次空气柱长度}\par\nobreak
+读数变为 $72\,\mathrm{cm}$ 时，管顶没有移动，故空气柱不是原来的8cm，而是 $\ell_2=82-72=10\,\mathrm{cm}$。图\ref{fig:t1-4s}把两次空气柱长度及其对应压强并列表示。\fig{fig:t1-4s}{管顶和槽面固定，读数降低使顶部空气柱增长}{\begin{tikzpicture}[x=1cm,y=1.15cm]
+\foreach \a/\hh/\lab/\air in {0/3.7/{74\,\mathrm{cm}}/{8\,\mathrm{cm}},4.5/3.6/{72\,\mathrm{cm}}/{10\,\mathrm{cm}}}{\begin{scope}[xshift=\a cm]
+\draw[thick](0,-.2)--(0,4.1)--(.6,4.1)--(.6,-.2);\fill[gray!35](0,0)rectangle(.6,\hh);\fill[blue!8](0,\hh)rectangle(.6,4.1);
+\draw[dashed](-.7,0)--(1,0);\draw[<->](1,0)--(1,\hh)node[midway,right]{$\lab$};
+\draw[<->](-.6,\hh)--(-.6,4.1)node[midway,left]{$\air$};\node[above]at(.3,4.3){固定管顶};\end{scope}}
+\node at(2.5,-.8){$p_{01}=p_{a1}+74,\qquad p_{02}=p_{a2}+72$（cmHg）};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用顶部空气的等温关系求真实大气压}\par\nobreak
+顶部空气量不变、温度不变，且管截面相同，因而 $p_a\ell$ 不变。取压强单位为cmHg、长度单位为cm，有
+\[p_{a2}\times10=2\times8,\qquad p_{a2}=1.6\,\mathrm{cmHg}.\]
+由第二次水银柱的平衡关系，真实大气压等于顶部空气压强与水银柱压强之和：
+\[\boxed{p_{02}=p_{a2}+72=73.6\,\mathrm{cmHg}}.\]
+空气柱变长、空气压强减小，与等温膨胀一致。若把72cm直接作为大气压，会漏掉顶部空气承担的1.6cmHg；若令空气柱仍长8cm，则违背图中固定管顶、固定槽面的几何条件。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[双挡板之间的加热]\label{t1-5}
+水平气缸内轻活塞初始靠左挡板 $B$，气体体积 $V_0$、压强 $0.9p_0$、温度297K，外压 $p_0$。右挡板 $A$ 对应体积 $1.1V_0$。缓慢加热到399.3K，求离开 $B$、到达 $A$ 的温度和末压，画出 $p$--$V$ 路径。见图\ref{fig:t1-5q}。
+\end{example}
+\fig{fig:t1-5q}{双挡板之间的加热：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(4.7,0) (0,2)--(4.7,2);\fill[blue!6] (.02,.02) rectangle (3,1.98);\fill[pattern=north east lines] (3,0) rectangle (3.13,2);\node at (1.5,1){$0.9p_0,V_0,297\,\mathrm K$};\node at (4.1,1){$p_0$};\node[above] at (3,2.2){$B$};\draw[guide] (3.6,0)--(3.6,2);\node[above] at (3.6,2.2){$A$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{活塞靠左挡板时，以支持力归零确定离开温度}\par\nobreak
+初态气压小于外压，活塞被大气压在左挡板 $B$ 上。加热初期，$B$ 提供向右支持力 $N_B=(p_0-p)S$，只要 $p<p_0$，活塞就不能自由向右运动，体积保持 $V_0$。当 $N_B$ 首次减为零，$p_2=p_0$，气体由等容关系给出
+\[\boxed{T_2=297\frac{p_0}{0.9p_0}=330\,\mathrm K}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{活塞自由运动时，以等压膨胀确定接触右挡板温度}\par\nobreak
+离开 $B$ 后，轻活塞无摩擦地缓慢移动，不再有挡板支持力，故两侧气压相等。此段等压，直至体积由 $V_0$ 增大到 $1.1V_0$，有
+\[\boxed{T_3=T_2\frac{1.1V_0}{V_0}=363\,\mathrm K}.\]
+图\ref{fig:t1-5s}中的点2、3分别对应“刚离开 $B$”和“刚接触 $A$”；水平段 $2\to3$ 才是自由运动段。\fig{fig:t1-5s}{双挡板之间的加热：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(4.8,0) node[right]{$V/V_0$};\draw[axis] (0,0)--(0,3.4) node[above]{$p/p_0$};\draw (.15,-.08)--(.25,.08)--(.35,-.08)--(.45,.08);\draw (-.08,.15)--(.08,.25)--(-.08,.35)--(.08,.45);\draw[ray] (1,.6)--(1,1.6);\draw[ray] (1,1.6)--(3,1.6);\draw[ray] (3,1.6)--(3,2.6);\foreach \x/\y/\t in {1/.6/1,1/1.6/2,3/1.6/3,3/2.6/4}{\fill (\x,\y) circle(.04);\node[above left] at (\x,\y){$\t$};}\node[below] at (1,0){$1$};\node[below] at (3,0){$1.1$};\node[left] at (0,.6){$0.9$};\node[left] at (0,1.6){$1$};\node[left] at (0,2.6){$1.1$};\node at (2,-.8){坐标轴截取局部};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接触右挡板后，以等容升压求末压}\par\nobreak
+由于 $399.3\,\mathrm K>363\,\mathrm K$，末态已在右挡板上。继续加热时体积固定为 $1.1V_0$，于是
+\[\boxed{p_4=p_3\frac{T_4}{T_3}=p_0\frac{399.3}{363}=1.1p_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对两挡板的反力方向与非负条件}\par\nobreak
+图中 $1\to2$、$3\to4$ 两条竖线分别是两个挡板建立的等容约束。后一段右挡板向左的支持力为 $(p-p_0)S$，从零增加到 $0.1p_0S$，始终非负；前一段左挡板的支持力则由 $0.1p_0S$ 减到零。两段力的方向均与边界阻挡方向一致，因此这一分段确实可实现。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[沙袋活塞与温度反推]\label{t1-6}
+轻活塞压着气体并承受沙袋，初始靠在支环上，气柱高 $H_0$、压强 $p_0$。加热60K时活塞恰能离环，再继续加热使其上升到 $1.5H_0$。保持此时温度，逐渐移去全部沙袋，气柱最终高 $1.8H_0$。外压恒为 $p_0$，求初温及末温。见图\ref{fig:t1-6q}。
+\end{example}
+\fig{fig:t1-6q}{沙袋活塞与温度反推：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3)--(0,0)--(2,0)--(2,3);\fill[pattern=north east lines] (0,1.2) rectangle (2,1.35);\draw[world] (.6,1.35) rectangle (1.4,1.8);\node at (1,1.6){沙};\node at (1,.55){$p_0,T_0$};\draw[dim] (2.4,0)--(2.4,1.2) node[midway,right]{$H_0$};\node[left] at (0,1.2){支环};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{区分支环承托状态与带沙袋的自由平衡压强}\par\nobreak
+设沙袋质量为 $m$、活塞面积为 $S$。只要活塞带着全部沙袋自由上升，平衡压强就是常量 $P=p_0+mg/S$。图\ref{fig:t1-6q}的初态尚由支环承托，故初始气压 $p_0$ 不必等于 $P$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用移沙等温段反求带载压强}\par\nobreak
+从末两态反推 $P$ 最直接：移沙时温度保持 $T_1$，活塞下气体量不变，而体积正比于气柱高度。按图\ref{fig:t1-6s}中的等温段 $C\to D$，
+\[P\,(1.5SH_0)=p_0(1.8SH_0),\qquad P=1.2p_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用离环前等容关系反求初温}\par\nobreak
+再回到最初的加热阶段。活塞离环前高度仍是 $H_0$；加热60K后支环支持力恰降至零，此时才达到自由平衡压强 $P$。\fig{fig:t1-6s}{局部放大的状态路径，轴上数字保留实际无量纲取值}{\begin{tikzpicture}[x=1.1cm,y=1cm]
+\draw[->](-.4,0)--(5.3,0)node[right]{$V/(SH_0)$};\draw[->](0,-.5)--(0,2.7)node[above]{$p/p_0$};
+\draw[->,blue,thick](0,0)--(0,1.6);\draw[->,red,thick](0,1.6)--(2.5,1.6);
+\draw[->,orange,thick,domain=2.5:4,samples=60]plot(\x,{8*(1.8/(1+\x/5)-1)});
+\fill(0,0)circle(1.5pt)node[above right]{$A$};\fill(0,1.6)circle(1.5pt)node[above right]{$B$};
+\fill(2.5,1.6)circle(1.5pt)node[above]{$C$};\fill(4,0)circle(1.5pt)node[above right]{$D$};
+\node[left]at(0,0){$1$};\node[left]at(0,1.6){$1.2$};\node[below]at(0,-.4){$1$};\node[below]at(2.5,-.1){$1.5$};\node[below]at(4,-.1){$1.8$};
+\node at(2.5,-1.2){$A\to B$等容；$B\to C$等压；$C\to D$等温};\end{tikzpicture}}
+
+等容状态关系给出
+\[\frac{T_0+60}{T_0}=\frac P{p_0}=1.2,\qquad \boxed{T_0=300\,\mathrm K}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用带载等压关系求最终温度并检查移沙阶段}\par\nobreak
+因此离环温度为360K。此后保留全部沙袋继续加热，气体等压膨胀到原高度的1.5倍：
+\[\boxed{T_1=360\frac{1.5H_0}{H_0}=540\,\mathrm K}.\]
+逐渐移沙是另一个等温膨胀过程，末温仍为540K；高度比1.8/1.5通过压强下降来满足状态方程，不能再次用来提高温度。三阶段分别保持体积、压强和温度，图中同一高度或同一温度的对应关系正是反推未知初温的依据。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[提起气缸的临界压强]\label{t1-7}
+质量 $M$ 的绝热竖直气缸放在地面，截面 $A$。轻活塞下气体初态为 $p_0,T_0$，外压为 $p_0$。气缸由小支脚承托，缸底外表面始终与大气相通；忽略壁厚、活塞摩擦及气体质量，气缸足够长且活塞始终密封。缓慢上提活塞，直到气缸恰离地。气体满足 $pV^\gamma=\text{常量}$。求离地温度及必要条件。见图\ref{fig:t1-7q}。
+\end{example}
+\fig{fig:t1-7q}{上提活塞使气体膨胀；缸底由支脚架空，大气能够作用于底板外侧}{\begin{tikzpicture}
+
+\draw[world](0,3)--(0,0)--(2,0)--(2,3);\fill[blue!8](0,0)rectangle(2,1.3);\draw[very thick](0,1.3)--(2,1.3);\draw[force](1,1.3)--(1,2.7)node[above]{$F$};\node at(1,.6){$p,T$};\node[right]at(2,2){$p_0$};
+\draw[world](.15,0)--(.15,-.4) (1.85,0)--(1.85,-.4) (-.4,-.4)--(2.4,-.4);\draw[flow](1,-.9)--(1,-.1)node[left]{$p_0$};\node[right]at(2.4,-.2){底部通大气};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{以气缸壳体为对象，用地面反力归零求临界压强}\par\nobreak
+应把气缸壳体与气体分别作为研究对象。上提轻活塞会使气体膨胀、压强下降；真正使壳体离地的是底板内外的压差。图\ref{fig:t1-7s}中底板外侧大气压向上作用，内侧气压向下作用。壳体竖直平衡为
+\[N+p_0A-pA-Mg=0.\]
+刚离地时地面对壳体的支持力 $N=0$，故临界压强为
+\[\boxed{p_f=p_0-\frac{Mg}{A}}.\]
+这一步只依赖壳体受力，与气体的绝热指数无关。\fig{fig:t1-7s}{提起气缸的临界压强：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(2,0)--(2,2);\draw[force] (.5,-.9)--(.5,-.05) node[above left]{$p_0A$};\draw[force] (1.3,.05)--(1.3,-.9) node[below]{$p_f A$};\draw[force] (2,1)--(2,-.1) node[right]{$Mg$};\node at (1,2.6){壳体临界受力：$N=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由准静态绝热路径把临界压强转换为温度}\par\nobreak
+再对封闭气体使用题给的准静态绝热关系。由 $pV^\gamma=p_0V_0^\gamma$ 得 $V_f/V_0=(p_0/p_f)^{1/\gamma}$；结合状态方程，
+\[\frac{T_f}{T_0}=\frac{p_fV_f}{p_0V_0}
+=\left(\frac{p_f}{p_0}\right)^{(\gamma-1)/\gamma}.\]
+代入临界压强，得
+\[\boxed{T_f=T_0\left(1-\frac{Mg}{p_0A}\right)^{(\gamma-1)/\gamma}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查正压条件与无限膨胀极限}\par\nobreak
+有限体积的气体压强必须为正，因此需要 $\boxed{p_0A>Mg}$。等号只对应无限膨胀、压强趋零的极限，不能在有限位移处离地；若 $p_0A<Mg$，即便内部接近真空，大气在底板上所能提供的最大向上作用也不足以克服重力。所得 $T_f<T_0$ 则与膨胀对外做功、内能降低相符。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[三截面管与不可伸长细线]\label{t1-8}
+水平管的三个区段面积依次为 $2S,S/2,S$，中段长 $2\ell$。两轻活塞 $A,B$ 分别在左右宽段，距相邻台阶均为 $\ell$，用长 $4\ell$ 的轻绳连接。初态 $p_0,T_0$，外压 $p_0$。缓慢升温到 $T\ge T_0$，求压强的分段表达式。活塞不能通过较窄的台阶。见图\ref{fig:t1-8q}。
+\end{example}
+\fig{fig:t1-8q}{两活塞间气体占据三个截面不同的区段；各轴向长度按同一比例画出}{\begin{tikzpicture}
+
+\draw[world](-.7,1.6)--(2,1.6)--(2,.4)--(4,.4)--(4,.8)--(6.5,.8) (-.7,-1.6)--(2,-1.6)--(2,-.4)--(4,-.4)--(4,-.8)--(6.5,-.8);
+\draw[very thick](1,-1.6)--(1,1.6) (5,-.8)--(5,.8);\draw[world](1,0)--(5,0);\node[above]at(1,1.6){$A$};\node[above]at(5,.8){$B$};\node at(.1,.6){$2S$};\node at(3,.85){$S/2$};\node at(6,.3){$S$};
+\draw[dim](1,-2.1)--(2,-2.1)node[midway,below]{$\ell$};\draw[dim](2,-2.1)--(4,-2.1)node[midway,below]{$2\ell$};\draw[dim](4,-2.1)--(5,-2.1)node[midway,below]{$\ell$};\node at(3,2.5){轻绳长$4\ell$，中段长度$2\ell$};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{按截面分段求初始体积}\par\nobreak
+图\ref{fig:t1-8q}中两活塞之间的初体积要逐段计算：
+\[V_0=2S\ell+\frac S2(2\ell)+S\ell=4S\ell.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别列自由活塞平衡并消去同一绳张力}\par\nobreak
+先考察两活塞都未接触台阶的阶段。若绳保持伸直，$A$ 上的压差力要求 $\tau=2S(p-p_0)$，$B$ 上则要求 $\tau=S(p-p_0)$。同一轻绳的张力相同，故只能有 $p=p_0,\tau=0$；这是准静态运动的极限，升温引起的体积增加决定移动方向。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用共同位移求体积，确定首先接触的活塞}\par\nobreak
+取两活塞共同向左移动的距离为 $x$。
+
+左侧宽段长度增加 $x$，右侧宽段长度减少 $x$，中段不变，因此
+\[V(x)=2S(\ell+x)+S\ell+S(\ell-x)=4S\ell+Sx.\]
+可见向左移动反而使体积增大。升温时正沿此方向运动；首先到达台阶的是 $B$，其临界位移 $x=\ell$，对应 $V_*=5S\ell$。\fig{fig:t1-8s}{共同左移使左侧增容超过右侧减容；$B$到达右台阶后两活塞均固定}{\begin{tikzpicture}
+
+\foreach \xx/\lab in {0/初态,1/临界态}{\begin{scope}[yshift={-3.6*\xx*1cm}]
+\draw[world](-.7,1.3)--(2,1.3)--(2,.4)--(4,.4)--(4,.8)--(6,.8) (-.7,-1.3)--(2,-1.3)--(2,-.4)--(4,-.4)--(4,-.8)--(6,-.8);\draw[very thick]({1-\xx},-1.3)--({1-\xx},1.3) ({5-\xx},-.8)--({5-\xx},.8);\draw[world]({1-\xx},0)--({5-\xx},0);\node[above]at({1-\xx},1.3){$A$};\node[above]at({5-\xx},.8){$B$};\node[right]at(6.2,0){\lab};\end{scope}}
+\draw[flow](1,2)--(0,2)node[midway,above]{$x$};\draw[flow](5,2)--(4,2)node[midway,above]{$x$};\node at(3,-5.6){$V=4S\ell+Sx,\quad 0\le x\le\ell$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在接触事件处衔接等压和等容两段}\par\nobreak
+图\ref{fig:t1-8s}中共同左移至$x=\ell$时压强仍为$p_0$，所以
+\[T_*=T_0\frac{V_*}{V_0}=\frac54T_0.\]
+到达图\ref{fig:t1-8s}下部的位置后，台阶阻止 $B$ 继续左移；若 $A$ 再向左，绳长便会增加，因此 $A$ 也固定。继续加热属于等容过程，最终得到
+\[\boxed{\frac p{p_0}=\begin{cases}1,&1\le T/T_0\le5/4,\\[1mm]4T/(5T_0),&T/T_0\ge5/4.\end{cases}}\]
+\fig{fig:h1:e8path}{共同移动段保持$p=p_0$；$B$接触台阶后沿等容直线升压}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.8,0)node[right]{$T/T_0$};\draw[axis](0,0)--(0,3)node[above]{$p/p_0$};\draw[flow,blue](3,1.5)--(3.75,1.5);\draw[flow,red](3.75,1.5)--(5.4,2.16);\draw[guide](3,0)--(3,1.5) (3.75,0)--(3.75,1.5)--(0,1.5);\node[below]at(3,0){$1$};\node[below]at(3.75,0){$5/4$};\node[left]at(0,1.5){$1$};\node at(1.4,2.4){共同左移};\node at(4.5,2.8){接触后等容};
+
+\end{tikzpicture}}
+图\ref{fig:h1:e8path}的两段在$(T/T_0,p/p_0)=(5/4,1)$连续衔接。接触后体积不变，所以$p/T$为常量，这条红线的反向延长线通过原点；它与蓝色等压段代表不同约束。
+
+
+\fig{fig:h1:e8forces}{图取接触后的$p>p_0$；压力已合并成内外压差力，台阶只在$B$上提供向右反力}{\begin{tikzpicture}
+
+\begin{scope}\draw[world](0,0)rectangle(1,.6);\node at(.5,.3){$A$};\draw[force](0,.3)--(-1.5,.3)node[left]{$2S(p-p_0)$};\draw[force](1,.3)--(2.4,.3)node[right]{$\tau$};\end{scope}
+\begin{scope}[yshift=-2.8cm]\draw[world](0,0)rectangle(1,.6);\node at(.5,.3){$B$};\draw[force](0,.3)--(-1.5,.3)node[left]{$\tau$};\draw[force](1,.45)--(2.4,.45)node[right]{$S(p-p_0)$};\draw[force](1,.1)--(2.4,.1)node[right]{$N_B$};\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:h1:e8forces}将两个活塞分开，绳对$A$向右、对$B$向左。台阶接触前没有$N_B$，两个平衡式只能共同给出$p=p_0,\tau=0$；接触后多出一个允许的向右反力，才可维持$p>p_0$的静止状态。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对绳张力与台阶反力均非负}\par\nobreak
+还需检验后段受力。$A$ 平衡要求 $\tau=2S(p-p_0)\ge0$；在 $B$ 上，绳向左拉，压差力和台阶支持力向右，因此 $N_B=\tau-S(p-p_0)=S(p-p_0)\ge0$。图中 $N_B$ 的方向正能阻止 $B$ 穿过台阶。两段在 $T_*$ 处压强连续，张力与支持力均由零开始增加。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[双活塞冷却的三段路径]\label{t1-9}
+竖直台阶管下段面积 $2S=20\,\mathrm{cm^2}$，上段面积 $S=10\,\mathrm{cm^2}$。$A$ 质量1kg，初高 $L$；台阶高 $2L$；$B$ 质量0.5kg，初高 $4L$。两活塞用长 $3L$ 的绳相连，$B$ 还经定滑轮连接质量 $M$ 的砝码。初气压 $1.2\times10^5$Pa、温度800K，外压 $10^5$Pa，$g=10\,\mathrm{m/s^2}$。缓慢冷却到210K，求 $M$ 和各阶段状态。见图\ref{fig:t1-9q}。
+\end{example}
+\fig{fig:t1-9q}{两活塞间为独立轻绳；上方另一根绳从$B$绕过定滑轮连接外侧砝码}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,2)--(.5,2)--(.5,4.7) (2,0)--(2,2)--(1.5,2)--(1.5,4.7);\fill[blue!8](0,1)rectangle(2,2);\fill[blue!8](.5,2)rectangle(1.5,4);
+\draw[very thick](0,1)--(2,1) (.5,4)--(1.5,4);\draw[world](1,1)--(1,4);\draw[world](1,4)--(1,5.2)arc(180:0:.6)--(2.2,4.1);\draw[world](1.6,5.2)circle(.6);\fill(1.6,5.2)circle(.04);\draw[world](1.6,5.2)--(1.6,6.2);\draw[world](1.1,6.2)--(2.1,6.2);\draw[world](1.9,3.5)rectangle(2.5,4.1);\node at(2.2,3.8){$M$};
+\node[left]at(0,1){$A:L$};\node[left]at(0,2){$2L$};\node[left]at(.5,4){$B:4L$};\node[left]at(.95,2.7){$\tau$};\node[right]at(2.2,4.6){$Mg$};\node at(1,-.6){气体在$A$上方、$B$下方};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{分开画两活塞受力，利用初态反求砝码质量}\par\nobreak
+先取竖直向上为正，并记 $\Delta p=p-p_0$。图\ref{fig:t1-9q}中气体位于 $A$ 上方、$B$ 下方，两个气体压力的方向相反。两活塞间绳张力为 $\tau$，上方经定滑轮的绳张力为 $Mg$，分别列平衡得
+\[A:\quad\tau=10+2S\Delta p,\qquad
+B:\quad\tau=S\Delta p+Mg-5.\]
+\fig{fig:h1:e9forces}{初段两活塞均自由：气体净压力对$A$向下、对$B$向上，绳的两端拉力相反}{\begin{tikzpicture}
+
+\begin{scope}\draw[world](0,0)rectangle(1,.6);\node at(.5,.3){$A$};\draw[force](.5,.6)--(.5,2)node[above]{$\tau$};\draw[force](.2,0)--(.2,-1.3)node[left]{$2S\Delta p$};\draw[force](.8,0)--(.8,-.8)node[right]{$m_Ag$};\end{scope}
+\begin{scope}[xshift=5.5cm]\draw[world](0,0)rectangle(1,.6);\node at(.5,.3){$B$};\draw[force](.2,.6)--(.2,2)node[left]{$Mg$};\draw[force](.8,.6)--(.8,1.4)node[right]{$S\Delta p$};\draw[force](.2,0)--(.2,-1.3)node[left]{$\tau$};\draw[force](.8,0)--(.8,-.8)node[right]{$m_Bg$};\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:h1:e9forces}中$\Delta p=p-p_0$，只把内外压力合并，两个重力和两根绳的张力仍分别保留。若后续$A$接触台阶，须在其图中另加向下反力；两活塞间的绳松弛时，则应把两图中的$\tau$同时置零。
+
+
+初态 $S=10^{-3}\,\mathrm{m^2}$、$\Delta p=2\times10^4\,\mathrm{Pa}$，所以 $\tau=50\,\mathrm N$，再由 $B$ 的方程得 $Mg=35\,\mathrm N$，即 $\boxed{M=3.5\,\mathrm{kg}}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{共同上移的等压冷却，直到下活塞接触台阶}\par\nobreak
+两活塞同时自由且绳绷直时，联立平衡方程使 $p=1.2\times10^5\,\mathrm{Pa}$ 固定。设共同上移 $x$，则下段气体缩短 $x$、上段气体增长 $x$，
+\[V=2S(L-x)+S(2L+x)=4SL-Sx.\]
+因此冷却时两活塞上移。$A$ 首先在 $x=L$ 时接触台阶，此时 $z_A=2L,z_B=5L,V=3SL$，由等压关系得 $T=800\times3/4=600\,\mathrm K$。图\ref{fig:t1-9s}将这一步的装置位置与状态路径对应起来。\fig{fig:t1-9s}{双活塞冷却的三段路径：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,0)--(5.4,0) node[right]{$V/(SL)$};\draw[axis] (0,0)--(0,3.5) node[above]{$p/(10^5\,\mathrm{Pa})$};\node[below left] at (0,0){$O$};\draw[ray] (4,2.4)--(3,2.4);\draw[ray] (3,2.4)--(3,1.4);\draw[ray] (3,1.4)--(1.8,1.4);\node[above] at (4,2.4){$800$K};\node[above left] at (3,2.4){$600$K};\node[right] at (3,1.4){$350$K};\node[below] at (1.8,1.4){$210$K};\node[left] at (0,2.4){$1.2$};\node[left] at (0,1.4){$0.7$};\foreach \x in {1.8,3,4}{\node[below] at (\x,0){$\x$};}\begin{scope}[shift={(-.5,-4)}]\foreach \x/\ha/\hb/\txt in {0/1/4/初态,2.5/2/5/接触台阶}{\begin{scope}[shift={(\x,0)},scale=.55]\draw[world] (0,0)--(0,2)--(.5,2)--(.5,5.5) (2,0)--(2,2)--(1.5,2)--(1.5,5.5);\draw[very thick] (0,\ha)--(2,\ha) (.5,\hb)--(1.5,\hb);\draw (1,\ha)--(1,\hb);\node[below] at (1,-.2){\txt};\end{scope}}\begin{scope}[shift={(5,0)},scale=.55]\draw[world] (0,0)--(0,2)--(.5,2)--(.5,5.5) (2,0)--(2,2)--(1.5,2)--(1.5,5.5);\draw[very thick] (0,2)--(2,2) (.5,3.8)--(1.5,3.8);\draw (1,2) .. controls (.3,2.4) and (1.7,3) .. (1,3.8);\node[below] at (1,-.2){绳松弛};\end{scope}\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定体积冷却，直到两活塞间的绳张力归零}\par\nobreak
+接触后，$A$不能继续上移；绳长限制又使$B$不能继续上移。此时$B$的自由平衡仍要求$\tau=S\Delta p+30$。只要此值为正，$B$就不能向下离开并使绳松弛后仍保持平衡，因而两活塞位置及体积暂时固定。冷却使$p$和$\tau$同时降低，到
+\[\tau=0\quad\Longrightarrow\quad p=0.7\times10^5\,\mathrm{Pa}\]
+时绳恰松弛，对应温度
+\[T=800\frac{(0.7)(3)}{(1.2)(4)}=350\,\mathrm K.\]
+在这一等容段，$A$ 上台阶向下的支持力为 $N=\tau-10-2S\Delta p=20-S\Delta p$，由0增至50N，方向始终可行。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{绳松弛后重新列上活塞平衡并求末位置}\par\nobreak
+继续冷却时两活塞间绳已松弛。$B$ 由上绳拉力、重力和压差力平衡，使 $p$ 保持 $0.7\times10^5\,\mathrm{Pa}$；$A$ 则仍贴台阶。于是末体积与位置为
+\[\boxed{V_f=3SL\frac{210}{350}=1.8SL,\quad z_{Af}=2L,\quad z_{Bf}=2L+\frac{V_f}{S}=3.8L}.\]
+末态两活塞间距 $1.8L<3L$，绳确已松弛；$A$ 的支持力仍为50N。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{汇总关键状态并核对各段反力与几何边界}\par\nobreak
+关键状态如下，其中 $\tau$ 指两活塞间绳张力。
+\begin{center}\small\begin{tabular}{cccccc}\toprule $T/\mathrm K$&$p/(10^5\mathrm{Pa})$&$V/(SL)$&$z_A/L$&$z_B/L$&$\tau/\mathrm N$\\\midrule800&1.2&4&1&4&50\\600&1.2&3&2&5&50\\350&0.7&3&2&5&0\\210&0.7&1.8&2&3.8&0\\\bottomrule\end{tabular}\end{center}
+
+\end{solution}

@@ -1,0 +1,67 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em3:drill:1}\textbf{先用重物静止与人体水平平衡求力}\par\nobreak
+图\ref{fig:em3:drill:1:s}的重物静止，绳张力$T=m_2g$。图中绳把人体向左拉，人体的水平平衡要求传送带对人的摩擦力向右，大小也为$m_2g$。由反作用关系，人对带的力向左。
+\fig{fig:em3:drill:1:p}{人体平衡决定力的大小，带面受力点的速度决定功率}{\begin{tikzpicture}
+
+\begin{scope}\fill(0,1)circle(.12);\draw[force](0,1)--(-1.3,1)node[left]{$T$};\draw[force](0,.3)--(1.3,.3)node[right]{$f_{\text{带对人}}$};
+\draw[guide](0,.4)--(0,1);\node at(0,1.8){人体水平受力};\node at(0,-.4){$T=f_{\text{带对人}}$};\end{scope}
+\begin{scope}[xshift=5.7cm]\draw[world](-1.5,0)rectangle(1.7,.3);\fill(.5,.3)circle(.05);
+\draw[force](.5,.3)--(-1,.3)node[midway,above]{$f_{\text{人对带}}$};\draw[flow](.5,-.5)--(-1,-.5)node[midway,below]{$v$};
+\node at(0,1.8){带面受力点};\node at(0,-1.4){$P=\bm F\cdot\bm v>0$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在带面上选取做功对象和作用点}\par\nobreak
+人水平方向的绳拉力与带面摩擦平衡；重物静止保证绳张力等于其重力。这两步分别使用人的水平平衡和重物的竖直平衡，才把人的作用力大小与$m_2g$联系起来。人对带的力和带面速度均向左，点积为正。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由同向力与速度求正功率}\par\nobreak
+图\ref{fig:em3:drill:1:p}中带的受力点速度同样向左，故$\boxed{P=m_2gv}$，为正。运动员重心不移动并不意味着对传送带不做功；应代入受力带面质点的速度，而不是运动员重心速度。能量来自运动员的化学能。\end{drillsolution}
+\begin{drillsolution}{em3:drill:2}\textbf{由绕钉几何确定半径且检查无能量突变}\par\nobreak
+图\ref{fig:em3:drill:2:s}绳绕钉后有效半径$r=L-AP=L-\sqrt{x^2+L^2/4}$。绳第一次碰钉时方向沿$AP$，球速度与绳垂直，故没有沿球速度的冲击损失。以$P$为高度零点，初始球高为$L/2$。
+\fig{fig:em3:drill:2:p}{偏置钉将原摆长分成AP和新半径r，顶部与底部是张力极值位置}{\begin{tikzpicture}
+
+\begin{scope}\coordinate(A)at(0,1.5);\coordinate(P)at(1.5,0);\coordinate(S)at(2.12132,-.62132);
+\draw[guide](0,0)--(A);\fill(A)circle(.05)node[above]{$A$};\fill(P)circle(.05)node[above right]{$P$};
+\draw[world](A)--(S);\fill(S)circle(.07)node[right]{首次碰钉};\draw[flow](S)--(1.6,-1.1426)node[below]{$v$};
+\node[above left]at(.75,.75){$AP$};\node[below left]at(1.8,-.3){$r$};\node at(.5,-1.9){$AP+r=L$};\end{scope}
+\begin{scope}[xshift=5.6cm]\draw[world](0,0)circle(1.3);\fill(0,0)circle(.04)node[right]{$P$};
+\fill(0,1.3)circle(.06)node[right]{顶部};\fill(0,-1.3)circle(.06)node[below left]{底部};
+\draw[force](0,1.3)--(0,.6)node[left]{$T_t$};\draw[force](0,-1.3)--(0,-.5)node[left]{$T_b$};
+\draw[flow](0,1.3)--(-1.1,1.3)node[above]{$v_t$};\draw[flow](0,-1.3)--(1.1,-1.3)node[right]{$v_b$};
+\node at(0,-2.4){$0\le T_t\le T\le T_b\le7mg$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用顶部不松绳和底部不断绳限制半径}\par\nobreak
+按图\ref{fig:em3:drill:2:p}，圆周顶部速度满足$v_t^2=2g(L/2-r)=g(L-2r)$。顶部张力非负要求$v_t^2\ge gr$，所以$r\le L/3$。底部$v_b^2=g(L+2r)$，最大张力$T_b=mg+mv_b^2/r=mg(3+L/r)$，不超过$7mg$要求$r\ge L/4$。还需确认底部确是张力最大处。设绕钉圆周任意点相对向上竖直半径夹角为$\varphi$，高度$y=r\cos\varphi$，速度平方为$gL-2gr\cos\varphi$；向心式给$T=mv^2/r-mg\cos\varphi=mgL/r-3mg\cos\varphi$。因此顶部最小、底部最大，两个端点检查覆盖了完整一周。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将半径范围转回钉子的水平位置}\par\nobreak
+两条件合并为$L/4\le r\le L/3$。
+
+把$r$代回几何关系，得到
+\[\boxed{\sqrt7L/6\le x\le\sqrt5L/4}.\]
+阻挡前旧圆弧的张力不超过$3mg$，故真正上限来自新小圆底部。这里根号不能漏写，否则坐标范围甚至会违背$AP<L$。\end{drillsolution}
+\begin{drillsolution}{em3:drill:3}\textbf{在松绳点联立几何与零张力条件}\par\nobreak
+令图\ref{fig:em3:drill:3:s}绕钉后的半径$r=\ell-x$，从向下竖直方向向右计角$\theta$。松绳处令$c=\cos\theta<0$、$s=\sin\theta>0$，坐标相对$C$为$(rs,-rc)$，切向速度为$(vc,vs)$。张力为零给$v^2=-grc$。
+\fig{fig:em3:drill:3:p}{解答过程：绳松弛后击中钉子}{\begin{tikzpicture}[scale=.9]\draw[axis](-.4,0)--(3,0)node[right]{$X$};\draw[axis](0,-.5)--(0,2.7)node[above]{$Y$};\node[below left]at(0,0){$C$};\draw[guide](0,-2)arc(-90:40:2);\coordinate(S)at(1.63299,1.1547);\fill(S)circle(.05)node[right]{松绳点};\draw[guide](0,0)--(S)node[midway,below]{$r$};\draw[flow](S)--(1.03299,2.00323)node[left]{$\bm v=(vc,vs)$};\draw[world,domain=0:2.63215,samples=80]plot({1.63299-.620403*\x},{1.1547+.877383*\x-.5*\x*\x});\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{要求抛体横纵坐标同时到达钉子}\par\nobreak
+按图\ref{fig:em3:drill:3:p}飞到$C$需同时满足$0=rs+vct$及$0=-rc+vst-gt^2/2$。第一式给$t=-rs/(vc)>0$；代入第二式时，$vst=-rs^2/c$，而$-gt^2/2=-gr^2s^2/(2v^2c^2)=rs^2/(2c^3)$。再除以$r$，得到$-c-s^2/c+s^2/(2c^3)=0$；利用$c^2+s^2=1$合并前两项，得$-1/c+s^2/(2c^3)=0$，所以$2c^2=s^2$，即$c=-1/\sqrt3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用允许的释放高度求钉距下限}\par\nobreak
+图\ref{fig:em3:drill:3:p}中自由飞行后只有重力作用，轨迹再次经过圆心并不意味着沿径向返回。由所得$c=-1/\sqrt3$，松绳点相对$O$的高度为$-x+r/\sqrt3$，速率平方为$gr/\sqrt3$。因此所需初始释放高度$h_0$满足
+\[gh_0=g(-x+r/\sqrt3)+\frac12\frac{gr}{\sqrt3}=g\left(-x+\frac{\sqrt3}{2}r\right).\]
+释放点不高于$O$，要求$h_0\le0$，于是$x\ge\sqrt3(\ell-x)/2$，得到
+\[\boxed{x_{\min}=(2\sqrt3-3)\ell}.\]
+临界时从与$O$等高的水平位置释放；代入上述抛体方程可直接核验确实击中钉子。\end{drillsolution}

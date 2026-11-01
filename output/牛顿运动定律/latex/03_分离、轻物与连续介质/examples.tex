@@ -1,0 +1,567 @@
+\section{例题与分析}
+\begin{question}\begin{example}[下降托板与悬挂弹簧]\label{n3e1}
+轻弹簧上端固定，劲度系数 $k$，下端系质量 $m$ 的物块。托板起初使弹簧保持原长，随后从静止以恒加速度 $0<a<g$ 向下运动。求物块与板分离的时刻。
+\fig{n3e1q}{接触期间弹簧伸长等于托板下降量}{\begin{tikzpicture}
+\draw[world](-1,3)--(1,3);\node[draw,anchor=south](B)at(0,.6){$m$};\draw[spring](0,3)--(B.north);\draw[line width=1pt](-.9,.6)--(.9,.6);\draw[flow](1.3,1.3)--(1.3,.1)node[below]{$a$};\node[right]at(.3,2){$k$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由共同下降求接触力}\par\nobreak
+接触时图\ref{n3e1q}的物块随板向下加速度 $a$，弹簧伸长 $x=at^2/2$。向下列 $mg-kx-N=ma$，所以 $N=m(g-a)-kat^2/2$。
+\fig{n3e1s}{接触力先为正，到零后切换为自由弹簧运动}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$t$};\draw[axis](0,0)--(0,2)node[above]{$N$};\draw[world,domain=0:3,samples=40]plot(\x,{1.6*(1-\x*\x/9)});\draw[guide](3,0)--(3,1.8);\node[below]at(3,0){$t_s$};\node[right]at(.2,1.6){$m(g-a)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求零支持力时刻并检验前后阶段}\par\nobreak
+图\ref{n3e1s}零点给 $x_s=m(g-a)/k$，进而
+\[t_s=\sqrt{\frac{2m(g-a)}{ka}}.\]
+在此前 $N>0$，接触假设成立；此后若继续同板运动会需 $N<0$，故必须分离。$a\to0^+$ 时所需时间趋于无穷，$a\to g^-$ 时趋于零。若一开始 $a\ge g$，板不能靠向下的拉力带动物块，接触立即解除，不能继续使用上式的负根号。
+\end{solution}
+
+\begin{question}\begin{example}[向上匀加速提离弹簧秤盘]\label{n3e2}
+秤盘质量 $m_1=1.5\,\mathrm{kg}$，盘内物体 $P$ 质量 $m_2=10.5\,\mathrm{kg}$，下方轻弹簧劲度系数 $k=800\,\mathrm{N/m}$，系统初静止。用向上力 $F(t)$ 使 $P$ 从静止以加速度 $b$ 匀加速上升。求接触阶段的 $F(t)$ 和分离时刻；分别计算 $b=6\,\mathrm{m/s^2}$ 时的分离时间，以及分离时间 $0.2\,\mathrm s$ 时的 $b$ 和最大拉力。取 $g=10\,\mathrm{m/s^2}$。
+\fig{n3e2q}{弹簧承受盘和物体的初始总重量}{\begin{tikzpicture}
+\draw[world](-1.2,0)--(1.2,0);\draw[spring](0,0)--(0,1.3);\draw[world](-.8,1.3)--(.8,1.3);\node[right]at(.8,1.3){$m_1$};\node[draw,anchor=south](P)at(0,1.3){$P,m_2$};\draw[force](P.north)--(0,3.2)node[above]{$F(t)$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{隔离秤盘求支持力}\par\nobreak
+初始压缩量 $x_0=(m_1+m_2)g/k=0.15\,\mathrm m$。图\ref{n3e2q}接触阶段共同上升 $y=bt^2/2$，弹簧向上力为 $k(x_0-y)$。隔离盘：$k(x_0-y)-m_1g-N=m_1b$，得到
+\[N=m_2g-m_1b-ky=m_2g-m_1b-\tfrac12kbt^2.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由物体方程求所需拉力}\par\nobreak
+隔离 $P$：$F+N-m_2g=m_2b$，代入得 $F=(m_1+m_2)b+kbt^2/2$。
+\fig{n3e2s}{分离前拉力上升，分离后保持恒定}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.4)node[above]{$F$};\draw[world,domain=0:2,samples=30]plot(\x,{.7+.3*\x*\x});\draw[world](2,1.9)--(4.5,1.9);\draw[guide](2,0)--(2,1.9);\node[below]at(2,0){$t_s$};\node[above]at(3.4,1.9){$m_2(g+b)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定分离边界与拉力连续性}\par\nobreak
+令 $N=0$ 得 $t_s=\sqrt{2(m_2g-m_1b)/(kb)}$，要求 $0<b<m_2g/m_1$。分离后物体仍按题设加速，故 $F=m_2(g+b)$，恰与图\ref{n3e2s}分离前的极限值连续。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入数值并反算加速度}\par\nobreak
+$b=6$ 时，$m_2g-m_1b=96\,\mathrm N$，$t_s=\sqrt{192/4800}=0.2\,\mathrm s$。反过来，给定 $t_s$，有 $b=m_2g/(m_1+kt_s^2/2)$；代入 $0.2\,\mathrm s$ 仍得 $b=6\,\mathrm{m/s^2}$。最大拉力 $F_{\max}=10.5(10+6)=168\,\mathrm N$，最小拉力为初始值 $F_{\min}=72\,\mathrm N$。盘与物体的质量不能混用：分离后恒力只加速物体 $P$。
+\end{solution}
+
+\begin{question}\begin{example}[粗糙地面上弹簧双块的分离位置]\label{n3e3}
+轻弹簧劲度系数 $k$，右端连物块 $A$，$B$ 靠在 $A$ 右侧。质量分别为 $M_A,M_B$，各自地面摩擦因数为 $\mu_A,\mu_B$，最大静摩擦等于动摩擦。弹簧初压缩 $x_0>0$，由静止释放。以原长时 $A$ 的位置为 $q=0$、向右为正，讨论分离候选位置及其可达条件。
+\fig{n3e3q}{弹簧只直接作用于左块，接触面只能推不能拉}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0) (-3,0)--(-3,1.8);\node[draw,minimum width=1cm,minimum height=.6cm,anchor=south](A)at(-.6,0){$A$};\node[draw,minimum width=1cm,minimum height=.6cm,anchor=south]at(.4,0){$B$};\draw[spring](-3,.3)--(A.west);\draw[axis](-1,-.6)--(2,-.6)node[right]{$q$};\node at(-.6,1.2){$-x_0$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先判断能否起动}\par\nobreak
+先检查能否起动。记总滑动阻力 $D=(\mu_AM_A+\mu_BM_B)g$。若 $kx_0\le D$，可以由两地面静摩擦与接触力保持静止，没有必然分离事件。以下取 $kx_0>D$，两块先共同向右运动。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在共同向右阶段求接触力}\par\nobreak
+图\ref{n3e3q}中弹簧作用为 $-kq$，共同加速度 $b=(-kq-D)/(M_A+M_B)$。隔离 $B$，接触力 $N-\mu_BM_Bg=M_Bb$，因此
+\[N=\frac{M_B}{M_A+M_B}\{ -kq+M_Ag(\mu_B-\mu_A)\}.\]
+候选分离位置为 $q_s=M_Ag(\mu_B-\mu_A)/k$：$\mu_A>\mu_B$ 时在原长左侧，相等时在原长，$\mu_A<\mu_B$ 时在右侧。
+\fig{n3e3s}{零支持力的位置还须落在实际向右运动段内}{\begin{tikzpicture}
+\draw[axis](0,0)--(6,0)node[right]{$q$};\draw[world](.5,1.8)--(4.7,0);\node at(2.4,1.7){$N(q)$};\draw[guide](.5,0)--(.5,1.8);\node[below]at(.5,0){$-x_0$};\node[below]at(3,0){$0$};\node[below]at(4.7,0){$q_s$};\node at(2.8,-.8){需核对 $v^2(q_s)>0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度零点筛选分离候选位置}\par\nobreak
+为检查图\ref{n3e3s}零点可达，在共同向右运动段用 $b=v\,\dd v/\dd q$，从静止初态 $q=-x_0$ 积分：
+\begin{align*}
+(M_A+M_B)\int_0^v w\,\dd w
+&=\int_{-x_0}^{q}(-k\xi-D)\,\dd\xi,\\
+\frac{M_A+M_B}{2}v^2
+&=\left[-\frac{k\xi^2}{2}-D\xi\right]_{-x_0}^{q}\\
+&=\frac k2(x_0^2-q^2)-D(q+x_0)\\
+&=(q+x_0)\left[\frac k2(x_0-q)-D\right].
+\end{align*}
+令乘积为零，除初始根 $q=-x_0$，下一速度零点为 $q_t=x_0-2D/k$。若 $q_s<q_t$，两块在仍向右运动时以 $N=0$ 分离；此条件等价于
+\[kx_0>g\{M_A(\mu_A+\mu_B)+2\mu_BM_B\}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{停止后重新判断静止或反向分离}\par\nobreak
+若 $q_s\ge q_t$，它们先同时停在 $q_t$，不能继续用向右滑动方程求分离。
+
+此时分两种情形：$q_t\le0$ 时压缩弹簧力已小于总静摩擦上限，可停住；$q_t>0$ 时弹簧向左拉 $A$，若 $kq_t\le\mu_AM_Ag$ 也可停住，若 $kq_t>\mu_AM_Ag$，则 $A$ 开始向左返回而 $B$ 可静止，两块在转向点 $q_t$ 分离。等号属于临界状态，是否进一步运动要看扰动及所取静摩擦约定。这样才把候选位置、停止与反向分离三个过程区别开。
+
+\end{solution}
+
+\begin{question}\begin{example}[光滑圆柱的接触解除]\label{n3e4}
+两个等半径 $R$、等质量 $m$ 的圆柱，在光滑地面与竖直光滑墙之间相互接触。下圆柱中心只水平移动，上圆柱中心沿墙竖直移动。中心连线同水平夹角初为 $\theta_0$，由静止释放，求两圆柱分离时的 $\theta$。
+\fig{n3e4q}{两中心间距固定为 $2R$}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,3.1);\draw[world](.3,.7)circle(.7);\draw[world](1.3,1.679796)circle(.7);\draw[guide](.3,.7)--(1.3,1.679796);\draw[guide](.3,.7)--(1.8,.7);\node at(.85,.9){$\theta$};\node at(.3,.7){$1$};\node at(1.3,1.679796){$2$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由中心距约束关联两圆柱速度}\par\nobreak
+设图\ref{n3e4q}下圆柱向左速率 $v_1$、上圆柱向下速率 $v_2$。两中心水平距离 $x=2R\cos\theta$，竖直距离 $h=2R\sin\theta$，因而 $x^2+h^2=4R^2$。对时间求导，$2x\dot x+2h\dot h=0$；代入 $\dot x=v_1$、$\dot h=-v_2$，得 $v_1\cos\theta=v_2\sin\theta$。记相对速率 $v_r=\sqrt{v_1^2+v_2^2}$，便有 $v_1=v_r\sin\theta$、$v_2=v_r\cos\theta$。各接触力均沿圆柱法线、通过中心，没有转动力矩，初始不转的圆柱无需计入转动动能。
+\fig{n3e4s}{分离瞬间下圆柱无水平力，上圆柱自由下落}{\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[below right]{$1$};\fill(2,1.5)circle(2pt)node[above right]{$2$};\draw[guide](0,0)--(2,1.5)node[midway,above]{$2R$};\draw[flow,blue](0,0)--(-1.2,0)node[left]{$v_1$};\draw[flow,blue](2,1.5)--(2,.4)node[midway,left]{$v_2$};\draw[force,red](2.2,1.5)--(2.2,-.2)node[right]{$mg$};\node at(.8,-.9){$g\sin\theta=v_r^2/(2R)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际下降路径求相对速率}\par\nobreak
+上圆柱中心下降 $2R(\sin\theta_0-\sin\theta)$，重力做功等于两圆柱动能增加，得
+\[2mgR(\sin\theta_0-\sin\theta)=\tfrac12m(v_1^2+v_2^2)=\tfrac12mv_r^2.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用零接触力与二阶距离约束联立}\par\nobreak
+在图\ref{n3e4s}分离瞬间 $N=0$，下圆柱水平加速度为零，上圆柱向下加速度为 $g$。
+
+将 $x\dot x+h\dot h=0$ 再求导，乘积法则给
+\[
+\dot x^2+x\ddot x+\dot h^2+h\ddot h=0.
+\]
+此时 $\ddot x=0$、$\ddot h=-g$，所以 $v_r^2-gh=0$，即 $g\sin\theta=v_r^2/(2R)$。把上一段的 $v_r^2=4gR(\sin\theta_0-\sin\theta)$ 代入，得到 $g\sin\theta=2g(\sin\theta_0-\sin\theta)$，整理即
+\[\sin\theta_s=\frac23\sin\theta_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查初始角与静止极限}\par\nobreak
+只有在初态趋近竖直排列 $\theta_0\to90^\circ$ 时，才得到常见的 $\theta_s\to\arcsin(2/3)$。完全竖直且无任何扰动的理想静止状态不会自行开始滑动，宜理解为微小偏离后的极限。未给初始角时，分离角不能无条件取固定数值。
+
+\end{solution}
+
+\begin{question}\begin{example}[光滑双斜面上的轻绸带]\label{n3e5}
+固定等腰斜面两侧倾角均为 $\alpha$，轻绸带跨过顶端，带同斜面无摩擦。质量 $M>m$ 的两物块分别放在左右绸带上，物块与带间最大静摩擦和动摩擦均为 $\mu N$。由静止释放，讨论两物块是否随带、摩擦大小是否相等及轻块能否向上运动。
+\fig{n3e5q}{带质量忽略，左右物块质量不同}{\begin{tikzpicture}
+\draw[world](-2.5,0)--(0,2)--(2.5,0)--cycle;\draw[line width=1.3pt](-2.5,.06)--(0,2.06)--(2.5,.06);\node[draw,rotate=38.6598,anchor=south]at(-1.25,1.06){$M$};\node[draw,rotate=-38.6598,anchor=south]at(1.25,1.06){$m$};\node at(-1.6,.25){$\alpha$};\node at(1.6,.25){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{利用轻带平衡关联两侧摩擦}\par\nobreak
+图\ref{n3e5q}绸带没有切向外部阻力且质量忽略，所以两块对带的切向作用必须相反等大，由第三定律，两物块受到的摩擦大小相等，记 $f$。先假设两块都随带，重块沿左侧向下加速度 $a$，轻块沿右侧向上同为 $a$。
+\fig{n3e5s}{同一摩擦需求须先同轻块的较小上限比较}{\begin{tikzpicture}
+\node[draw]at(-1.5,0){$M$};\draw[flow](-1.8,-.3)--(-2.7,-1)node[left]{$a$};\draw[force,blue](-1.2,.3)--(-.2,1.1)node[above]{$f$};\node[draw]at(1.5,0){$m$};\draw[flow](1.2,.3)--(.3,1)node[above]{$a$};\draw[force,blue](1.2,.3)--(.7,.7);\node at(1.7,-1.2){上限 $\mu mg\cos\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{假设共同运动并检验静摩擦上限}\par\nobreak
+两块的正方向分别沿带的运动方向，方程为
+\[
+Mg\sin\alpha-f=Ma,\qquad f-mg\sin\alpha=ma.
+\]
+相加消去摩擦得加速度，再代回轻块方程求摩擦：
+\[
+a=\frac{M-m}{M+m}g\sin\alpha,\qquad
+f=m(g\sin\alpha+a)=\frac{2Mm}{M+m}g\sin\alpha.
+\]按图\ref{n3e5s}，较严格的轻块摩擦上限给
+\[\tan\alpha\le\frac{\mu(M+m)}{2M}.\]
+此区间两块都可相对带静止，轻块随带沿右斜面上升，已经说明“两块不可能都不滑”和“轻块不可能上升”都不成立。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{轻块滑动后重新列两块方程}\par\nobreak
+超过该区间，轻块相对带滑动，摩擦大小 $f=\mu mg\cos\alpha$。重块仍可随带，因为这一摩擦小于它自己的上限 $\mu Mg\cos\alpha$；重块沿面向下加速度 $a_M=g(\sin\alpha-\mu m\cos\alpha/M)$。轻块沿右面向下加速度 $b_m=g(\sin\alpha-\mu\cos\alpha)$，可正可负；相对带的向下加速度为 $b_m+a_M>0$，与所取滑动方向一致。在此理想模型中，重块不会先相对带滑动，但轻块可能对斜面上升、静止或下降。
+\end{solution}
+
+\begin{question}\begin{example}[等质量双滑块与轻直角楔]\label{n3e6}
+质量忽略的直角楔置于光滑水平面，两斜面与水平分别成 $\theta$ 和 $90^\circ-\theta$，各放质量均为 $m$ 的滑块，两接触均光滑。求释放后楔的水平加速度。
+\fig{n3e6q}{两个面倾角互余，楔的水平合力必须为零}{\begin{tikzpicture}
+\draw[world](-2.4,0)--(0,2)--(1.666667,0)--cycle;\node[draw,rotate=39.8056,anchor=south]at(-1.15,1.041667){$A,m$};\node[draw,rotate=-50.1944,anchor=south]at(.9,.92){$B,m$};\node at(-1.55,.2){$\theta$};\node at(1,.25){$\pi/2-\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由滑块法向加速度求支持力}\par\nobreak
+设图\ref{n3e6q}轻楔向右加速度 $A$，左右支持力分别为 $N_A,N_B$。两物块法向加速度同各自斜面，分别列 $N_A=mg\cos\theta-mA\sin\theta$、$N_B=mg\sin\theta+mA\cos\theta$。
+\fig{n3e6s}{轻楔水平受力平衡，法向力却由滑块运动确定}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(1.1,-1.2)node[right]{$N_A$};\draw[force,red](0,0)--(-1.3,-1)node[left]{$N_B$};\draw[force](0,0)--(0,1.3)node[above]{$R$};\node at(2.5,.4){$N_A\sin\theta=N_B\cos\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两侧反作用代入轻楔平衡条件}\par\nobreak
+图\ref{n3e6s}轻楔水平合力为零，即 $N_A\sin\theta-N_B\cos\theta=0$。代入后重力项恰消去，剩下 $-mA(\sin^2\theta+\cos^2\theta)=0$，所以 $A=0$。这里不是因为“轻物必定不加速”，而是等质量和互余斜角使两侧水平作用抵消；改变任一质量，一般会有非零加速度。
+\end{solution}
+
+\begin{question}\begin{example}[剪去一端支绳的轻杆双球]\label{n3e8}
+长 $l$ 的轻杆上固定两个质量均为 $m$ 的球，位置分别距左端 $l/3,2l/3$。杆两端用竖直轻绳悬挂，初始水平静止。剪断右绳，求两球瞬时加速度和左绳张力。
+\fig{n3e8q}{两球位置均为三等分点，左端竖直绳保留}{\begin{tikzpicture}
+\draw[world](-3.3,2)--(3.3,2);\draw[world](-3,0)--(-3,2);\draw[guide](3,0)--(3,2);\draw[line width=1.2pt](-3,0)--(3,0);\fill(-1,0)circle(4pt)node[below]{$1,m$};\fill(1,0)circle(4pt)node[below]{$2,m$};\node[right]at(3,1){剪断};\node[below]at(-3,0){$O$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{利用保留悬绳确定瞬时运动约束}\par\nobreak
+图\ref{n3e8q}左端竖直绳在初速为零时约束该端竖直加速度为零。又因没有水平外力，杆上各点此时水平加速度相同且为零，因此左端瞬时加速度为零。记顺时针角加速度大小为 $\beta$，两球向下加速度为 $a_1=\beta l/3$、$a_2=2\beta l/3$。
+\fig{n3e8s}{关于瞬时零加速度端点求矩，再由整体竖直方程求张力}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0);\draw[force,blue](-3,0)--(-3,1.3)node[above]{$T$};\foreach \x/\s in {-1/1,1/2}{\fill(\x,0)circle(3pt);\draw[force,red](\x,0)--(\x,-1)node[below]{$mg$};}\draw[flow](-.7,0)--(-.7,-.65);\draw[flow](1.3,0)--(1.3,-1.3);\node at(0,1.2){$a_2=2a_1$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求角加速度与两球加速度}\par\nobreak
+在图\ref{n3e8s}该瞬间绕左端的惯量为 $I_O=m(l/3)^2+m(2l/3)^2=5ml^2/9$，重力矩为 $mg(l/3+2l/3)=mgl$。因此 $\beta=9g/(5l)$，$a_1=3g/5$、$a_2=6g/5$，均向下。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到整体平动方程求悬绳张力}\par\nobreak
+整体竖直式 $2mg-T=m(a_1+a_2)$ 给 $T=mg/5$。左端以后可以沿悬绳圆弧运动，所以这里只能将它作为瞬时零加速度点，不能当作永久铰链。
+\end{solution}
+
+\begin{question}\begin{example}[水平面内轻杆三球的横向响应]\label{n3e9}
+光滑水平面上的三个等质量球 $m$ 固定在轻杆的左端、中点、右端，相邻距离 $l$，初静止。对右球施加水平面内、垂直杆且指向图上方的力 $F$，求三球瞬时加速度。
+\fig{n3e9q}{俯视图中的向上箭头表示平面内方向}{\begin{tikzpicture}
+\draw[line width=1.2pt](-2.5,0)--(2.5,0);\foreach \x/\s in {-2.5/1,0/2,2.5/3}{\fill(\x,0)circle(4pt)node[below]{$\s,m$};}\draw[force](2.5,0)--(2.5,1.6)node[above]{$F$};\node at(-1.2,.35){$l$};\node at(1.2,.35){$l$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{分别求质心平动与角加速度}\par\nobreak
+图\ref{n3e9q}的重力与桌面支持力竖直平衡，不进入纸面内方程。以图上方为正，质心在中球位置，整体平动给 $a_C=F/(3m)$。绕质心力矩为 $Fl$，转动惯量 $I_C=2ml^2$，故角加速度 $\beta=F/(2ml)$，逆时针。
+\fig{n3e9s}{质心平动与转动分量叠加后，左球加速度反向}{\begin{tikzpicture}
+\draw[world](-2.5,0)--(2.5,0);\draw[flow,blue](-2.5,0)--(-2.5,-.5)node[below]{$-F/(6m)$};\draw[flow,blue](0,0)--(0,1)node[above]{$F/(3m)$};\draw[flow,blue](2.5,0)--(2.5,1.8)node[above]{$5F/(6m)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加两种运动并检验合外力}\par\nobreak
+初始角速度为零，各点没有向心项。图\ref{n3e9s}分别为 $a_1=a_C-\beta l=-F/(6m)$，$a_2=a_C=F/(3m)$，$a_3=a_C+\beta l=5F/(6m)$。检查三加速度之和为 $F/m$，乘 $m$ 后正好等于外力。沿左端到右端的横向加速度线性变化，零点在距左端 $l/3$ 处，即整杆长度的六分之一；它是瞬时零加速度点，而非“不动点”。
+\end{solution}
+
+\begin{question}\begin{example}[均匀杆的连续加速度分布]\label{n3e10}
+均匀杆质量 $m$、长 $l$，初静止放在光滑水平面上。右端受水平面内、垂直杆的力 $F$。以左端为 $x=0$，求任意位置 $x$ 的瞬时横向加速度，并用微元总和检验。
+\fig{n3e10q}{均匀杆各位置的质量微元参与同一刚性运动}{\begin{tikzpicture}
+\draw[line width=2pt](-2.5,0)--(2.5,0);\draw[force](2.5,0)--(2.5,1.5)node[above]{$F$};\draw[dim](-2.5,-.6)--(2.5,-.6)node[midway,below]{$l$};\draw[line width=4pt,blue](.3,0)--(.55,0);\node[above]at(.4,.1){$\dd m$};\node[below]at(-2.5,0){$0$};\node[below]at(.4,-.15){$x$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由质心与转动方程建立线性分布}\par\nobreak
+图\ref{n3e10q}质心加速度 $a_C=F/m$，绕质心力矩 $Fl/2$，均匀杆惯量 $ml^2/12$，故角加速度 $\beta=6F/(ml)$。初始角速度为零，任意位置的横向加速度为
+\[a(x)=a_C+\beta(x-l/2)=\frac Fm\left(\frac{6x}{l}-2\right).\]
+\fig{n3e10s}{加速度分布过零，并不意味着杆分成两个独立运动体}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,-1.1)--(0,2.2)node[above]{$a$};\draw[world](0,-1)--(4,2);\node[left]at(0,-1){$-2F/m$};\node[right]at(4,2){$4F/m$};\node[below]at(1.333,0){$l/3$};\node[below]at(4,0){$l$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用微元合力和力矩双重检验}\par\nobreak
+图\ref{n3e10s}给出左端向下、右端向上，零点在 $x=l/3$。用 $\dd m=(m/l)\dd x$ 检查整体合力：
+\[
+\int_0^la(x)\dd m=\frac Fl\int_0^l(6x/l-2)\dd x
+=\frac Fl\left[\frac{3x^2}{l}-2x\right]_0^l
+=\frac Fl(3l-2l)=F.
+\]
+再绕左端检验质量加权加速度矩：
+\[
+\int_0^l xa(x)\dd m
+=\frac Fl\int_0^l\left(\frac{6x^2}{l}-2x\right)\dd x
+=\frac Fl\left[\frac{2x^3}{l}-x^2\right]_0^l=Fl,
+\]
+同外力矩相等。两项积分分别核查加速度分布的平均值与位置权重，不能只用其中一项确定两个待定系数。
+\end{solution}
+
+\begin{question}\begin{example}[桌边支承轻杆的滑动临界]\label{n3e11}
+轻杆两端分别固定质量 $2m$ 的 $A$ 和质量 $m$ 的 $B$，杆的中点 $O$ 接触桌边。杆向右下方倾斜，与水平成 $\theta$，桌边接触力分解为垂直杆的支持与沿杆的摩擦，静摩擦因数 $0.5$。由静止释放，求不沿桌边滑动的角度条件。
+\fig{n3e11q}{支点在几何中点，质心却偏向重端}{\begin{tikzpicture}
+\draw[world](-2,0)--(0,0)--(0,-1.5);\draw[line width=1.2pt](-2,1.1)--(2,-1.1);\fill(-2,1.1)circle(3pt)node[above]{$B,m$};\fill(2,-1.1)circle(4pt)node[below]{$A,2m$};\fill(0,0)circle(2pt)node[above right]{$O$};\draw[guide](0,0)--(2,0);\node at(1,-.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{假设接触点不滑并求瞬时转动}\par\nobreak
+先按图\ref{n3e11q}假设 $O$ 不滑。记杆半长 $l$，则 $I_O=3ml^2$，重力关于 $O$ 的净顺时针力矩为 $mgl\cos\theta$。角加速度 $\beta=g\cos\theta/(3l)$，两端法向加速度大小均为 $\beta l=g\cos\theta/3$，方向相反；初速为零，没有沿杆向心加速度。
+\fig{n3e11s}{接触摩擦限制沿杆滑动，支持力沿法向}{\begin{tikzpicture}
+\draw[axis](0,0)--(1.7,-.9)node[right]{$\bm t$};\draw[axis](0,0)--(.9,1.7)node[above]{$\bm n$};\draw[force,blue](0,0)--(-1.3,.7)node[left]{$f$};\draw[force](0,0)--(.7,1.3)node[right]{$N$};\node at(2.6,.6){$f\le\mu_sN$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿杆与法向分别求接触力}\par\nobreak
+沿图\ref{n3e11s}重端方向 $\bm t$，整体加速度质量加权分量为零，故摩擦大小 $f=3mg\sin\theta$，向上沿杆。法向上，重端向下、轻端向上，质量加权加速度为 $-mg\cos\theta/3$，所以 $N-3mg\cos\theta=-mg\cos\theta/3$，即 $N=8mg\cos\theta/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验静摩擦上限并确定角度范围}\par\nobreak
+于是 $f/N=(9/8)\tan\theta\le0.5$，得 $\tan\theta\le4/9$。超过 $\arctan(4/9)$，所需沿杆摩擦超限，中点不再是固定支点，须改用滑动接触的平动与转动方程。此结果依赖题设所规定的接触法线沿杆法向；若杆只是放在一个水平粗糙面上，法向约定不同，不能直接套用。
+\end{solution}
+
+\begin{question}\begin{example}[转盘两物体的静摩擦分配]\label{n3e12}
+转盘水平匀速转动，左物块质量 $m$、距轴 $r$，右物块质量 $2m$、距轴 $2r$，两者用跨过转轴方向的轻绳连接，静摩擦因数均为 $\mu_s$。求共同转动的最大角速度，并说明仅凭这些条件能否唯一求出左块摩擦随角速度的函数。
+\fig{n3e12q}{两物块在转轴两侧，张力都指向转轴}{\begin{tikzpicture}
+\draw[world](0,0)ellipse(3 and .8);\fill(0,0)circle(2pt)node[above]{$O$};\node[draw]at(-1,0){$A,m$};\node[draw]at(2,0){$B,2m$};\draw[world](-.6,0)--(1.5,0);\node[below]at(-.5,-.2){$r$};\node[below]at(1,-.2){$2r$};\draw[axis](0,.2)--(0,1.7)node[above]{$\omega$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{把径向方程写成张力的允许区间}\par\nobreak
+图\ref{n3e12q}分别朝转轴取径向正方向，记左、右块摩擦分量为 $f_A,f_B$，可带正负。令 $q=m\omega^2r$，两径向式为 $T+f_A=q$、$T+f_B=4q$，限制 $T\ge0$、$|f_A|\le\mu_smg$、$|f_B|\le2\mu_smg$。因此可行张力区间为
+\[
+ \max\{0,q-\mu_smg,4q-2\mu_smg\}\le T
+ \le\min\{q+\mu_smg,4q+2\mu_smg\}.
+\]
+在 $q\ge0$ 下可简化为 $\max\{0,4q-2\mu_smg\}\le T\le q+\mu_smg$。
+\fig{n3e12s}{允许张力区间在共同转动上限处收缩为一点}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$q/(\mu_smg)$};\draw[axis](0,0)--(0,2.6)node[above]{$T/(\mu_smg)$};\fill[blue!10](0,0)--(2,0)--(4,2)--(0,1)--cycle;\draw[world](0,1)--(4,2);\draw[world](0,0)--(2,0)--(4,2);\node[below]at(2,0){$1/2$};\node[below]at(4,0){$1$};\node at(2,1.25){可行区};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令允许区间收缩求临界角速度}\par\nobreak
+图\ref{n3e12s}非空要求 $4q-2\mu_smg\le q+\mu_smg$，得 $q\le\mu_smg$，所以 $\omega_c=\sqrt{\mu_sg/r}$。极限处 $T=2\mu_smg$、$f_A=-\mu_smg$ 向外、$f_B=2\mu_smg$ 向内。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分可行受力分配与唯一解}\par\nobreak
+\fig{n3deep:criticalfriction}{共同转动上限处，左块的静摩擦反而径向向外}{\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[below]{$O$};\node[draw](A)at(-2,0){$A,m$};\node[draw](B)at(3,0){$B,2m$};\draw[force,blue](A.east)--(-.4,0)node[midway,above]{$T=2\mu_smg$};\draw[force,red](A.west)--(-3.3,0)node[midway,below]{$|f_A|=\mu_smg$};\draw[force,blue](B.west)--(1.3,0)node[midway,above]{$T$};\draw[force,red](3,-.5)--(1.6,-.5)node[midway,below]{$f_B=2\mu_smg$};\node at(-1.2,-1.3){合力向内：$\mu_smg$};\node at(3,-1.3){合力向内：$4\mu_smg$};
+\end{tikzpicture}}
+图\ref{n3deep:criticalfriction}把临界受力代回原来的两个物块：左块张力超过它的向心需求，静摩擦必须向外抵消一部分；右块则需张力与静摩擦共同向内。静摩擦的方向由所需合力决定，不能仅凭“物体在转圈”就一律指向圆心。
+
+低于极限时，可行区间通常不止一点，因此 $f_A=q-T$ 也并非唯一。若另加特定的加载分配：低速阶段张力为零，右块到达摩擦上限后保持在该边界，则可取 $T=\max\{0,4q-2\mu_smg\}$，从而 $f_A=q$（$q\le\mu_smg/2$），或 $f_A=2\mu_smg-3q$（其后至临界）。这是一条附加分配条件下的可行曲线，不能由理想刚绳条件唯一推出。超过 $\omega_c$ 后两块位置开始变化，不能继续把 $f_A$ 仅写成 $\omega$ 的单值函数。
+\end{solution}
+
+\begin{question}\begin{example}[轻杆双球的圆锥摆]\label{n3e13}
+轻杆上距固定端分别为 $l,2l$ 处固定两个等质量球 $m$。杆与竖直夹角 $\theta$，绕通过固定端的竖直轴匀速转动。求角速度，说明为何不能把每个球都当作独立单球圆锥摆。
+\fig{n3e13q}{两球由同一刚杆约束，轨道半径不等}{\begin{tikzpicture}
+\draw[axis](0,-.3)--(0,3)node[above]{$\omega$};\draw[line width=1.2pt](0,2.8)--(-1.6,0);\fill(-.8,1.4)circle(3pt)node[left]{$m$};\fill(-1.6,0)circle(3pt)node[left]{$m$};\node at(-.25,2){$\theta$};\node[left]at(-.35,2.1){$l$};\node[left]at(-1.15,.7){$l$};\draw[guide](-1.6,0)--(0,0);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{在转动系中选取整体并绕悬点求矩}\par\nobreak
+图\ref{n3e13q}两个球在杆系内静止，分别受向外离心力 $m\omega^2l\sin\theta$ 和 $m\omega^2(2l)\sin\theta$。绕固定端取垂直于杆摆动平面的力矩，支点力无矩，重力与离心力矩平衡。
+\fig{n3e13s}{重力矩按距离一次加权，离心力矩按距离平方加权}{\begin{tikzpicture}
+\draw[world](0,2.8)--(-1.6,0);\foreach \x/\y/\s in {-.8/1.4/l,-1.6/0/2l}{\fill(\x,\y)circle(2pt);\draw[force,red](\x,\y)--++(0,-.9)node[right]{$mg$};\draw[force,blue](\x,\y)--++(-1,0)node[left]{$m\omega^2\s\sin\theta$};}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算两种力矩并求共同角速度}\par\nobreak
+根据图\ref{n3e13s}，重力矩总和为 $3mgl\sin\theta$，离心力矩为 $5m\omega^2l^2\sin\theta\cos\theta$。当 $0<\theta<\pi/2$，消去公共因子后
+\[\omega^2=\frac{3g}{5l\cos\theta},\qquad \omega=\sqrt{\frac{3g}{5l\cos\theta}}.\]
+两球的杆内作用彼此关联，不能分别用 $\omega^2=g/(l\cos\theta)$ 和 $g/(2l\cos\theta)$。$\cos\theta$ 因子来自离心力关于悬点的竖直力臂，不能省略。
+\end{solution}
+
+\begin{question}\begin{example}[给上球或下球水平初速]\label{n3e14}
+上绳长 $l_1$，下绳长 $l_2$，依次悬挂质量 $m_1,m_2$ 的球，初始两绳竖直。分别只给下球或只给上球水平初速 $v_0$，另一球初速为零。冲量结束后求上绳的瞬时张力 $T_1$。
+\fig{n3e14q}{两种赋速改变的是不同绳段的相对速度}{\begin{tikzpicture}
+\foreach \x in {-2,2}{\draw[world](\x,3)--(\x,0);\fill(\x,1.5)circle(3pt)node[left]{$m_1$};\fill(\x,0)circle(3pt)node[left]{$m_2$};\node[right]at(\x,2.25){$l_1$};\node[right]at(\x,.75){$l_2$};}
+\draw[flow](-2,0)--(-.7,0)node[right]{$v_0$};\draw[flow](2,1.5)--(3.3,1.5)node[right]{$v_0$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对两段绳分别使用相对速度约束}\par\nobreak
+图\ref{n3e14q}在赋速后瞬间两绳仍竖直。对于任一绳段，记由上端指向下端的矢量为 $\bm r$，则 $\bm r\cdot\bm r=l^2$。连续求导得到
+\[
+2\bm r\cdot\bm v_{\rm rel}=0,\qquad
+2\bm v_{\rm rel}\cdot\bm v_{\rm rel}
++2\bm r\cdot\bm a_{\rm rel}=0.
+\]
+此时 $\bm r=(0,-l)$，所以向上相对加速度为 $a_{{\rm rel},y}=v_{\rm rel}^2/l$。上绳给 $a_{1,y}=v_1^2/l_1$，下绳给 $a_{2,y}-a_{1,y}=(v_2-v_1)^2/l_2$，均取向上为正。这两个关系不能仅凭球自身的绝对速率混写。
+\fig{n3e14s}{上绳同时承担上球的重力、加速度和下绳拉力}{\begin{tikzpicture}
+\fill(0,1.5)circle(3pt)node[above right]{$m_1$};\fill(0,-1.2)circle(3pt)node[right]{$m_2$};\draw[force,blue](0,1.5)--(0,2.7)node[above]{$T_1$};\draw[force](-.15,1.5)--(-.15,.25)node[midway,left]{$T_2$};\draw[force,red](.15,1.5)--(.15,.1)node[midway,right]{$m_1g$};\draw[force,blue](0,-1.2)--(0,-.2)node[midway,right]{$T_2$};\draw[force,red](0,-1.2)--(0,-2.3)node[below]{$m_2g$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两球受力建立张力递推式}\par\nobreak
+图\ref{n3e14s}先隔离下球，再隔离上球，得到
+\[
+T_2-m_2g=m_2a_{2,y},\qquad T_1-T_2-m_1g=m_1a_{1,y}.
+\]
+因此 $T_2=m_2(g+a_{2,y})$，$T_1=m_1(g+a_{1,y})+m_2(g+a_{2,y})$，上绳承担的是两球各自所需的竖直作用之和。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入下球赋速的加速度}\par\nobreak
+只给下球初速时，$a_{1,y}=0$、$a_{2,y}=v_0^2/l_2$，所以 $T_1=(m_1+m_2)g+m_2v_0^2/l_2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入上球运动对下球的影响}\par\nobreak
+只给上球初速时，$a_{1,y}=v_0^2/l_1$，下绳相对速率仍是 $v_0$，所以 $a_{2,y}=v_0^2/l_1+v_0^2/l_2$。于是
+\[T_1=(m_1+m_2)g+(m_1+m_2)\frac{v_0^2}{l_1}+m_2\frac{v_0^2}{l_2}.\]
+下球即使此时绝对速度为零，也会有向上的加速度，因为上绳支点所在的上球正在改变运动方向。
+\end{solution}
+
+\begin{question}\begin{example}[旋转U形管的轴处压强]\label{n3e15}
+等截面U形管绕竖直轴匀速转动，左、右竖直支管分别距轴 $l,2l$，底部水平管经过转轴。液体密度 $\rho$，静止时两液面高度均为 $h$，两端开口压强 $p_0$。求角速度 $\omega$ 时的两液面高度与底部轴处压强。
+\fig{n3e15q}{转轴不在两支管的几何中点}{\begin{tikzpicture}
+\draw[world](-1.5,2.7)--(-1.5,0)--(3,0)--(3,2.7);\draw[world](-1.3,2.7)--(-1.3,.2)--(2.8,.2)--(2.8,2.7);\fill[blue!10](-1.5,0)rectangle(-1.3,1.3);\fill[blue!10](2.8,0)rectangle(3,2);\draw[axis](0,-.3)--(0,3)node[above]{$\omega$};\fill(0,.1)circle(2pt)node[below]{$p$};\node[left]at(-1.5,1.3){$h_1$};\node[right]at(3,2){$h_2$};\draw[dim](-1.4,-.6)--(0,-.6)node[midway,below]{$l$};\draw[dim](0,-.6)--(2.9,-.6)node[midway,below]{$2l$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{分别连接径向压强差与竖直液柱}\par\nobreak
+图\ref{n3e15q}液体在旋转系内平衡，底部微元给 $\dd p/\dd r=\rho\omega^2r$，所以从轴向外积分得
+\[
+p(r)-p(0)=\rho\omega^2\int_0^r s\,\dd s
+=\rho\omega^2[s^2/2]_0^r=\frac12\rho\omega^2r^2.
+\]
+竖直支管以底部为 $z=0$，从液面 $z=h_i$ 向下积分，$p_{\rm bottom}-p_0=-\rho g[z]_{h_i}^0=\rho gh_i$，所以
+\[
+ p_0+\rho gh_1-p=\tfrac12\rho\omega^2l^2,\qquad
+ p_0+\rho gh_2-p=2\rho\omega^2l^2.
+\]
+两支管等截面且底管体积不变，液量守恒给 $h_1+h_2=2h$。
+\fig{n3e15s}{同高底管压强随半径平方增加}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.7,0)node[right]{$r$};\draw[axis](0,0)--(0,2.5)node[above]{$p(r)-p$};\draw[world,domain=0:4,samples=40]plot(\x,{.13*\x*\x});\draw[guide](2,0)--(2,.52) (4,0)--(4,2.08);\node[below]at(2,0){$l$};\node[below]at(4,0){$2l$};\node at(2.5,1.9){$\rho\omega^2r^2/2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{结合液量守恒求液高和轴处压强}\par\nobreak
+两压强式相减，按图\ref{n3e15s}得 $h_2-h_1=3\omega^2l^2/(2g)$，因此
+\[
+ h_1=h-\frac{3\omega^2l^2}{4g},\quad
+ h_2=h+\frac{3\omega^2l^2}{4g},\quad
+ p=p_0+\rho gh-\frac54\rho\omega^2l^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{交叉检验并限定公式适用范围}\par\nobreak
+代回左、右支管均得到相同 $p$，可检验系数 $5/4$。还须 $h_1\ge0$、右管不溢出，且绝对压强不低到发生空化；否则液体占据区域改变，不能继续使用两液柱都存在的公式。
+\end{solution}
+
+\begin{question}\begin{example}[加速水杯的等压面与浮体]\label{n3e16}
+开口水杯随车以恒加速度 $a_0$ 向右平移，液体晃动衰减后相对车静止。求自由液面斜率；比较同高两点 $A,B$（$B$ 在右）的压强，并分析密度 $\rho_b<\rho$ 的刚性木块怎样随车漂浮。
+\fig{n3e16q}{自由液面左高右低，等高两点并非等压}{\begin{tikzpicture}
+\draw[world](-2,2.7)--(-2,0)--(2,0)--(2,2.7);\fill[blue!10](-2,0)--(2,0)--(2,1.1)--(-2,2.1)--cycle;\draw[world](-2,2.1)--(2,1.1);\fill(-.7,.8)circle(2pt)node[above]{$A$};\fill(.7,.8)circle(2pt)node[above]{$B$};\draw[flow](2.2,2)--(3.5,2)node[right]{$a_0$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由压强梯度求液面和同高压差}\par\nobreak
+在图\ref{n3e16q}车厢系取向右 $x$、向上 $z$，压强梯度为 $\partial_xp=-\rho a_0$、$\partial_zp=-\rho g$。自由面等压，故 $0=\dd p=-\rho a_0\dd x-\rho g\dd z$，得到 $\dd z/\dd x=-a_0/g$。同高两点沿水平路径积分：
+\[
+p_B-p_A=-\rho a_0\int_{x_A}^{x_B}\dd x
+=-\rho a_0[x]_{x_A}^{x_B}
+=-\rho a_0(x_B-x_A)<0.
+\]
+\fig{n3e16s}{浮力反向于有效重力，具有水平分量}{\begin{tikzpicture}
+\draw[world](-2,1.3)--(2,.3);\node[draw,rotate=-14,minimum width=1.2cm,minimum height=.6cm]at(0,.8){};\node at(-1,1.6){木块};\draw[force,blue](0,.8)--(.325,2.1)node[above]{$\bm B$};\draw[force,red](0,.8)--(-.325,-.5)node[below]{$m\bm g_{\rm eff}$};\draw[guide](-1.5,.2)--(1.5,-.55);\node at(2.4,-.4){等压面};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用倾斜浮力求浸入体积}\par\nobreak
+所有等压面满足 $a_0x+gz=\text{常量}$，与自由面平行。图\ref{n3e16s}木块浸入体积 $V_i$ 时，浮力 $\bm B=-\rho V_i\bm g_{\rm eff}$。车厢系平衡给 $\rho V_i=m=\rho_bV$，故浸入体积分数 $V_i/V=\rho_b/\rho$。浮力水平分量向右，为木块随车加速提供真实水平力；只画竖直浮力会漏掉压强的横向变化。具体浮态还需力矩平衡，但并不要求木块相对杯持续向后运动。
+\end{solution}
+
+\begin{question}\begin{example}[有效重力、失重与加速桶水流]\label{n3e17}
+分别分析三个过程：初始中性悬浮的鱼随鱼缸在电梯中向上加速时是否上浮；有孔水杯在自由落体中是否仍因静水压流出；质量流率为 $Q$ 的细水流从水平加速度为 $a$ 的桶底流出，若离口竖直相对初速可忽略，求距桶底竖直距离 $h$ 处、沿实际水流的质量线密度。忽略空气阻力。
+\fig{n3e17q}{前两问考察有效重力，第三问考察离口后的自由运动}{\begin{tikzpicture}
+\draw[world](-3,1.8)--(-3,0)--(-1.3,0)--(-1.3,1.8);\node[draw]at(-2.2,.7){鱼};\draw[flow](-3.5,.2)--(-3.5,1.6)node[above]{$a_0$};\draw[world](1,1.8)--(1,.8)--(2.5,.8)--(2.5,1.8);\draw[flow](2.7,1.5)--(3.8,1.5)node[right]{$a$};\draw[guide](1.75,.8)--(1.75,-1.3);\draw[world](1.75,.8)--(.9,-1.3);\draw[dim](2.2,.8)--(2.2,-1.3)node[midway,right]{$h$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{检查鱼的有效重量与浮力是否同步变化}\par\nobreak
+对图\ref{n3e17q}左侧，若鱼与水均近似不可压缩、鱼体积不变，初始中性浮力说明 $m_f=\rho V_f$。电梯向上加速后，有效重力大小 $g+a_0$，浮力和有效重量同步变为 $\rho V_f(g+a_0)$ 与 $m_f(g+a_0)$，仍相等，故不产生由此模型预测的上浮或下沉。若鱼鳔可压缩导致体积改变，就不再能作此结论；实际突然加速还存在压强建立的瞬态。
+
+\fig{n3e17s-fluid}{中性浮体与自由落体水杯分别检查有效重力}{\begin{tikzpicture}
+\node[draw]at(-1.8,0){鱼};\draw[force,blue](-1.8,.3)--(-1.8,1.5)node[above]{$\rho V_f(g+a_0)$};\draw[force,red](-1.8,-.3)--(-1.8,-1.5)node[below]{$m_f(g+a_0)$};
+\draw[world](1.2,1)--(1.2,-1)--(2.6,-1)--(2.6,-.55) (2.6,-.35)--(2.6,1);\draw[guide](2.6,-.45)--(3,-.65)node[right]{孔};\draw[guide](1.2,.2)--(2.6,.2);\draw[flow](4.2,1)--(4.2,-.4)node[below]{$a_0=g$};\node at(1.9,-1.6){$\bm g_{\rm eff}=0$};
+\end{tikzpicture}}
+
+图\ref{n3e17s-fluid}左图显示两有效力同倍数变化；右图用相同容器系描述自由落体水杯。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分压差驱动消失与原有流速}\par\nobreak
+自由落体水杯的有效重力近似为零，因而重力维持的静水压梯度消失；若孔两侧气压相同、初始无相对流动且忽略表面张力，不会再由静水压差持续喷流。
+
+若释放前水已在流，已有流速不会瞬间消失，不能把“静水压驱动消失”误写成所有水立即相对静止。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在桶系中求水滴位移与切向速率}\par\nobreak
+\fig{n3e17s}{向上的坐标轴与向后下的水流方向分别标明}{\begin{tikzpicture}
+\draw[axis](0,0)--(1.6,0)node[right]{$x'$};\draw[axis](0,-.2)--(0,1.4)node[above]{$z'$};\fill(0,0)circle(2pt)node[above left]{出口};\draw[world](0,0)--(-2,-2.6);\draw[flow,blue](-.8,-1.04)--(-1.4,-1.82)node[left]{$\bm v_{\rm rel}$};\draw[flow,red](2.2,-.8)--(1.6,-1.58)node[right]{$(-a,-g)$};\draw[guide](-2,-2.6)--(.5,-2.6);\draw[dim](.4,0)--(.4,-2.6)node[midway,right]{$h=-z'$};\draw[line width=2pt,blue](-1.6,-2.08)--(-1.8,-2.34)node[midway,left]{$\dd s$};
+\end{tikzpicture}}
+第三问在图\ref{n3e17s}桶系内，离口后经过时间 $\tau$ 的水滴相对位移为 $x'=-a\tau^2/2$、$z'=-g\tau^2/2$，所以水流沿直线 $x'=az'/g$。$h=-z'$ 给 $\tau=\sqrt{2h/g}$，相对流速大小 $v_{\rm rel}=\sqrt{a^2+g^2}\,\tau$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际流线长度换算质量线密度}\par\nobreak
+长度微元 $\dd s=v_{\rm rel}\dd\tau$ 内质量 $\dd m=Q\dd\tau$，故
+\[\lambda=\frac Q{v_{\rm rel}}=Q\sqrt{\frac{g}{2h(g^2+a^2)}}.\]
+这里线密度按倾斜水流的实际长度计，若按竖直高度计则为 $Q/\sqrt{2gh}$，两者相差投影因子。非零 $Q$ 与可忽略离口速度是给定细流模型的近似，不在此额外用孔口流量公式决定 $Q$。
+\end{solution}
+
+\begin{question}\begin{example}[旋转水桶的液面与液量约束]\label{n3e18}
+半径 $R$ 的直圆柱开口桶盛不可压缩液体，静止液深 $H$。液体最终以角速度 $\omega$ 绕竖直轴整体旋转，未溢出也未露底。求液面方程及轴心、桶壁液面高度，并说明桶停转时为何液面不必立即变平。
+\fig{n3e18q}{桶壁动作与液体自身旋转状态应分别判断}{\begin{tikzpicture}
+\draw[world](-2,2.7)--(-2,0)--(2,0)--(2,2.7);\draw[world,domain=-2:2,samples=40]plot(\x,{1+.28*\x*\x});\draw[guide](-2,1.56)--(2,1.56)node[right]{$H$};\draw[axis](0,0)--(0,3.2)node[above]{$\omega$};\node at(0,-.4){$r=0$};\node[below]at(2,0){$R$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对圆环液柱积分并使用液量守恒}\par\nobreak
+知识正文已经由压强梯度得到图\ref{n3e18q}的自由液面 $z(r)=z_0+\omega^2r^2/(2g)$。本题新增的条件是液量守恒：
+\[
+ \pi R^2H=\int_0^R\left(2\pi z_0r+\frac{\pi\omega^2}{g}r^3\right)\dd r
+ =\left[\pi z_0r^2+\frac{\pi\omega^2r^4}{4g}\right]_0^R
+ =\pi R^2z_0+\frac{\pi\omega^2R^4}{4g}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定液面常数与边界高度}\par\nobreak
+所以 $z_0=H-\omega^2R^2/(4g)$，液面为
+\[z(r)=H-\frac{\omega^2R^2}{4g}+\frac{\omega^2r^2}{2g}.\]
+\fig{n3e18s}{轴心下降量与桶壁上升量在此圆柱模型中相等}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.4,0)node[right]{$r$};\draw[axis](0,0)--(0,2.8)node[above]{$z$};\draw[guide](0,1.4)--(4,1.4)node[right]{$H$};\draw[world,domain=0:4,samples=30]plot(\x,{.7+.0875*\x*\x});\node[left]at(0,.7){$z_0$};\node[right]at(4,2.1){$z_R$};\node[below]at(4,0){$R$};
+\end{tikzpicture}}
+图\ref{n3e18s}桶壁高度 $z_R=H+\omega^2R^2/(4g)$，未露底要求 $\omega^2R^2\le4gH$，未溢出还要求 $z_R$ 不超过桶高。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分桶壁运动和液体自身转动}\par\nobreak
+液面形状由液体对惯性系的向心加速度决定：桶刚启动而液体尚未跟转时仍可近似平；桶停下但液体保留旋转时仍可暂时凹下。待黏滞作用使液体转速衰减，液面才逐渐回平，不需引入不可观测的绝对空间。
+\end{solution}
+
+\begin{question}\begin{example}[弹簧自身重力造成的伸长]\label{n3e19}
+均匀弹簧自然长 $L_0$、质量 $m_0$、整体劲度系数 $k$，竖直悬挂，上端固定，下端自由。在线弹性近似内求总伸长及轴力沿材料坐标的分布。
+\fig{n3e19q}{上方截面承受更多下方弹簧的重量}{\begin{tikzpicture}
+\draw[world](-1,3)--(1,3);\draw[spring](0,3)--(0,0);\draw[axis](1.6,3)--(1.6,-.2)node[below]{$u$};\draw[guide](0,1.4)--(1.6,1.4);\node[right]at(1.6,3){$0$};\node[right]at(1.6,0){$L_0$};\node[left]at(0,1.4){截面};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{截取下方弹簧求截面轴力}\par\nobreak
+按图\ref{n3e19q}从上端向下取自然坐标 $u$，下方质量为 $m_0(1-u/L_0)$，因此轴力 $T(u)=m_0g(1-u/L_0)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用局部劲度把轴力转换为伸长}\par\nobreak
+取自然微元 $\dd u$，局部劲度 $kL_0/\dd u$，所以伸长微元为 $T(u)\dd u/(kL_0)$。
+\fig{n3e19s}{线性轴力图的平均值为上端轴力的一半}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.6,0)node[right]{$u$};\draw[axis](0,0)--(0,2.3)node[above]{$T$};\fill[blue!10](0,0)--(0,2)--(4,0)--cycle;\draw[world](0,2)--(4,0);\node[left]at(0,2){$m_0g$};\node[below]at(4,0){$L_0$};\node at(1.5,.6){$\int T\dd u$};
+\end{tikzpicture}}
+图\ref{n3e19s}三角形面积给
+\[
+\Delta L=\frac{m_0g}{kL_0}\int_0^{L_0}(1-u/L_0)\dd u
+=\frac{m_0g}{kL_0}\left[u-\frac{u^2}{2L_0}\right]_0^{L_0}
+=\frac{m_0g}{kL_0}\left(L_0-\frac{L_0}{2}\right)
+=\frac{m_0g}{2k}.
+\]
+上端力确为 $m_0g$，但不能据此直接得到伸长 $m_0g/k$，因为下方截面内力较小。若下端再悬挂质量 $M$，所有截面都多承受 $Mg$，总伸长才在上述基础上增加 $Mg/k$。
+\end{solution}
+
+\begin{question}\begin{example}[水平旋转的有质量弹簧]\label{n3e20}
+均匀弹簧自然长 $L_0$、质量 $m_0$、整体劲度系数 $k$，在光滑水平面上一端固定于转轴，以角速度 $\omega$ 稳定径向旋转，另一端自由。求长度及伸长，假设线弹性模型有效。
+\fig{n3e20q}{微元向心加速度取决于伸长后的半径}{\begin{tikzpicture}
+\fill(0,0)circle(3pt)node[below]{$O$};\draw[spring](0,0)--(4.5,0);\draw[axis](0,0)--(0,1.7)node[above]{$\omega$};\draw[dim](0,-.6)--(4.5,-.6)node[midway,below]{$L$};\draw[guide](2.2,-.2)--(2.2,1.2);\node[above]at(2.2,1.2){$r(u)$};\node at(4.5,.5){自由端};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{隔离材料微元建立向心力方程}\par\nobreak
+\fig{n3deep:radialelement}{内侧较大的张力提供旋转弹簧微元的向心力}{\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[below]{$O$};\draw[spring](0,0)--(2,0);\draw[fill=blue!8](2,-.25)rectangle(3,.25);\draw[spring](3,0)--(4.6,0);\draw[force,blue](2,0)--(.6,0)node[above]{$T(u)$};\draw[force,blue](3,0)--(3.9,0)node[above]{$T(u+\dd u)$};\draw[flow,red](2.5,.8)--(1.3,.8)node[midway,above]{$\omega^2r$};\draw[dim](0,-.8)--(2.5,-.8)node[midway,below]{$r(u)$};
+\end{tikzpicture}}
+图\ref{n3deep:radialelement}以径向向外为正，内侧轴力向内、外侧轴力向外，所以两者之差为负，恰提供向心加速度。以自然长度计的质量保持不变，实际半径却须随形变求出。
+
+图\ref{n3e20q}用自然坐标 $u\in[0,L_0]$ 标记材料点，实际半径为 $r(u)$。局部胡克关系为 $T=kL_0(r'-1)$。微元质量 $(m_0/L_0)\dd u$，外侧张力比内侧小，故 $\dd T/\dd u=-(m_0/L_0)\omega^2r$。联立得到
+\[r''+\frac{m_0\omega^2}{kL_0^2}r=0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用固定端与自由端条件确定映射}\par\nobreak
+令 $\beta=\omega\sqrt{m_0/k}$。当 $\beta>0$，试取 $r=e^{\lambda u}$，代入得到 $\lambda^2+(\beta/L_0)^2=0$，根为 $\lambda=\pm i\beta/L_0$。用欧拉公式组合成实数通解，
+\[
+r=C\sin(\beta u/L_0)+D\cos(\beta u/L_0).
+\]
+固定端 $r(0)=0$ 给 $D=0$。链式求导得
+$r'(u)=C(\beta/L_0)\cos(\beta u/L_0)$；
+自由端 $T(L_0)=kL_0[r'(L_0)-1]=0$ 给
+$C(\beta/L_0)\cos\beta=1$，所以 $C=L_0/(\beta\cos\beta)$。
+当 $\beta=0$ 时，方程直接为 $r''=0$，两次积分给 $r=C_0u+D_0$；边界给 $D_0=0,C_0=1$，即未伸长的 $r=u$，也等于上述解的连续极限。
+\fig{n3e20s}{径向映射由两端边界确定，不能假设均匀伸长}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.6,0)node[right]{$u/L_0$};\draw[axis](0,0)--(0,3.1)node[above]{$r/L_0$};\draw[guide](0,0)--(4,1.8)node[right]{无伸长};\draw[world,domain=0:1,samples=40]plot({4*\x},{1.8*sin(45*\x)/(pi/4*cos(45))});\node[below]at(4,0){$1$};\node at(2.1,2.85){示意 $0<\beta<\pi/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算总长并选择物理解分支}\par\nobreak
+由图\ref{n3e20s}的末端值，
+\[L=L_0\frac{\tan\beta}{\beta},\qquad
+\Delta L=L_0\left(\frac{\tan\beta}{\beta}-1\right).\]
+物理拉伸分支要求 $0\le\beta<\pi/2$，使映射单调且轴力非负。小角速度展开给 $\Delta L\simeq m_0\omega^2L_0/(3k)$。当 $\beta\to\pi/2$ 时理想解发散，表明该稳定分支失效，不能把三角函数的后续周期分支解释成普通稳定弹簧；真实材料的线弹性范围通常更早就会限制模型。
+\end{solution}
+
+\begin{question}\begin{example}[不等端力下弹簧的共同加速]\label{n3e21}
+均匀弹簧自然长 $L_0$、质量 $m_0$、整体劲度系数 $k$，放在光滑水平面上，左端受向左拉力 $F_1$，右端受向右拉力 $F_2$，均为恒力。考察轴向振动已可忽略、形状在共同加速系中不变的状态，求加速度与总伸长。
+\fig{n3e21q}{净拉力决定加速度，平均轴力决定伸长}{\begin{tikzpicture}
+\draw[spring](-2,0)--(2,0);\draw[force](-2,0)--(-3.3,0)node[left]{$F_1$};\draw[force](2,0)--(3.3,0)node[right]{$F_2$};\draw[dim](-2,-.6)--(2,-.6)node[midway,below]{$L_0$ 的材料区间};\draw[guide](0,-.2)--(0,1);\node[above]at(0,1){$u$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{整体净力决定共同加速度}\par\nobreak
+取图\ref{n3e21q}向右为正，整体给 $a=(F_2-F_1)/m_0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由局部质量求轴力分布}\par\nobreak
+截取左端到自然坐标 $u$ 的材料段，外力为 $T(u)-F_1$，质量 $m_0u/L_0$，所以
+\[T(u)-F_1=(m_0u/L_0)a,\quad T(u)=F_1+(F_2-F_1)u/L_0.\]
+\fig{n3e21s}{轴力在两个端力之间线性变化}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.7,0)node[right]{$u$};\draw[axis](0,0)--(0,2.5)node[above]{$T$};\fill[blue!10](0,0)--(0,.8)--(4,2)--(4,0)--cycle;\draw[world](0,.8)--(4,2);\node[left]at(0,.8){$F_1$};\node[right]at(4,2){$F_2$};\node[below]at(4,0){$L_0$};\node at(2,.7){平均值 $(F_1+F_2)/2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分伸长并用两个极限检验}\par\nobreak
+图\ref{n3e21s}梯形面积给总伸长
+\begin{align*}
+\Delta L&=\frac1{kL_0}\int_0^{L_0}
+\left[F_1+(F_2-F_1)\frac{u}{L_0}\right]\dd u\\
+&=\frac1{kL_0}\left[F_1u+\frac{F_2-F_1}{2L_0}u^2\right]_0^{L_0}
+=\frac{F_1L_0+(F_2-F_1)L_0/2}{kL_0}
+=\frac{F_1+F_2}{2k}.
+\end{align*}
+差 $F_2-F_1$ 决定整体加速，和 $F_1+F_2$ 决定平均拉伸。特别地，$F_1=F_2=F$ 时 $a=0$ 而 $\Delta L=F/k$；只拉一端时 $\Delta L=F/(2k)$。这两个极限也能排除把伸长误写成两端力差除以 $2k$ 的做法。若刚突然施加力而内部振动尚明显，形变还随时间变化，不能直接套用准稳态结果。
+\end{solution}

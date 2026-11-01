@@ -1,0 +1,99 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:41}\textbf{由近点位置确定负像距并求物距}\par\nobreak
+图\ref{fig:d41q}中最终像必须在透镜左侧，故 \(v=-25.0\,\mathrm{cm}\)。
+\[
+ \frac1u-\frac1{25}=\frac15
+ \Rightarrow\boxed{u=\frac{25}{6}\,\mathrm{cm}=4.17\,\mathrm{cm}}.
+\]
+\fig{fig:d41s}{练习\ref{d:41}的解答图：放大镜的近点虚像；横纵尺度不同，两条实际出射线的反向延长线相交}{
+\begin{tikzpicture}
+\begin{scope}[x=.25cm,y=1cm]
+\draw[axisline](-27,0)--(7,0);\draw[world](0,-.6)--(0,1.4);
+\draw[ray](-4.166667,.2)--(0,.2);\draw[ray](0,.2)--(6,-.04);
+\draw[ray](-4.166667,.2)--(0,0);\draw[ray](0,0)--(6,-.288);
+\draw[virtual](-25,1.2)--(0,.2);\draw[virtual](-25,1.2)--(0,0);
+\node[above]at(-25,1.2){$B'$};\node[below]at(-25,0){$A'$};
+\node[above left]at(-4.166667,.2){$B$};\node[below]at(-4.166667,0){$A$};
+\node[below left]at(0,0){$O$};\draw[axis,blue](-4.166667,0)--(-4.166667,.2);\draw[axis,red,dashed](-25,0)--(-25,1.2);\draw[dim](-25,-.8)--(0,-.8)node[midway,below]{$D$};\node[above]at(0,1.6){眼与镜近似重合};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在眼处比较经镜视角和裸眼参照角}\par\nobreak
+题设忽略眼、镜间隔，故图\ref{fig:d41s}中的光心 \(O\) 也作为眼的位置。裸眼把同一高度 \(h\) 的物体放在明视距离 \(D\) 处，参考视角约为 \(h/D\)；经镜后沿过光心的光线看去，视角约为 \(h/u\)，所以
+\[
+ \boxed{M_D=\frac Du=6.00}.
+\]
+图\ref{fig:d41s}中两条实际出射线发散，其反向延长线在 \(B'\) 相交，像正立。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新确定物面，比较近点与放松观察}\par\nobreak
+若改为无穷远观察，\(u=f=5.00\,\mathrm{cm}\)，\(M_\infty=D/f=5.00\)。
+本题恰有虚像到眼的距离与裸眼参照距离同为 \(D\)，因此 \(\beta=|v|/u\) 与 \(M_D=D/u\) 数值相同。这种相同来自具体观察条件，不能用作一般定义。无穷远观察时出射为平行束，视角仍有限，却没有可供使用的有限虚像高度，因而应直接以 \(h/f\) 求视角。
+
+
+\end{drillsolution}
+
+\begin{drillsolution}{d:42}\textbf{先由前焦平面判断去程的平行光束}\par\nobreak
+图\ref{fig:d42q}中 \(u=f\)，第一次经过透镜后同一物点的出射光互相平行。
+平面镜使轴向传播方向反转，再经透镜后会聚回前焦平面。
+为了判断正倒，必须处理离轴点 \(B=(-f,h)\)，不能只追迹轴上点 \(A\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{追迹离轴点的一条完整往返路径}\par\nobreak
+图\ref{fig:d42s}以 \(f\) 为轴向单位，示意 \(h/f=0.2\)。平行主轴进入透镜的那条光，在第一次折射后倾角为 \(-h/f\)，于镜面处高度为 \(-h\)，返回透镜时高度为 \(-3h\)。以返回的向左方向为正传播方向，第二次折射后倾角为 \(2h/f\)，再走距离 \(f\) 后高度为 \(-h\)。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用第二条独立光线核对像点和倒立等大性质}\par\nobreak
+蓝色的另一条入射线通过透镜光心，往返后也到达同一 $B'$，与黑色路径给出的像点一致。故 \(\boxed{u_{\rm final}=f=10.0\,\mathrm{cm},\ \beta=-1}\)，像在物平面内，倒立等大，为实像。
+镜前物平面与像平面重合，不代表每个离轴点都回到自身。
+\fig{fig:d42s}{两条独立光线均在同一 $B'$ 相交；黑线返回透镜时高度为 $-3h$，图中高度放大示意}{
+\begin{tikzpicture}
+\begin{scope}[x=1.5cm,y=2cm]
+\draw[axisline](-1.6,0)--(2.6,0);\draw[world](0,-1)--(0,.6) (2,-1)--(2,.6);
+\draw[ray](-1,.2)--(0,.2);\draw[ray](0,.2)--(2,-.2);
+\draw[ray](2,-.2)--(0,-.6);\draw[ray](0,-.6)--(-1,-.2);\draw[ray,blue](-1,.2)--(0,0);\draw[ray,blue](0,0)--(2,-.4);\draw[ray,blue](2,-.4)--(0,-.8);\draw[ray,blue](0,-.8)--(-1,-.2);
+\draw[axis,thick](-1,0)--(-1,.2);\draw[axis,thick](-1,0)--(-1,-.2);
+\node[above left]at(-1,.2){$B$};\node[below left]at(-1,-.2){$B'$};
+\node[left]at(-1,0){$A=A'$};\node[above]at(0,.6){$L$};
+\node[right]at(2,-.2){$-h$};
+\end{scope}
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:43}\textbf{把物镜的会聚平面作为负目镜的虚物平面}\par\nobreak
+按图\ref{fig:d43q}传播顺序，物镜原本会在其右侧 \(30.0\,\mathrm{cm}\) 处会聚。将负目镜放在此点之前 \(5.00\,\mathrm{cm}\)，入射会聚束经目镜恰变为平行束，所以
+\[
+ \boxed{d=f_o+f_e=25.0\,\mathrm{cm}},\qquad
+ \boxed{M=-\frac{f_o}{f_e}=+6.00}.
+\]
+
+
+\fig{fig:d43s}{练习\ref{d:43}的解答图：高度放大示意；两条出射线平行，虚线指向物镜单独的会聚目标}{
+\begin{tikzpicture}
+\begin{scope}[x=1.5cm,y=2cm]
+\draw[axisline](-1.3,0)--(4,0);\draw[world](0,-.3)--(0,.8) (2.5,-.3)--(2.5,.8);
+\draw[ray](-1,-.06)--(0,0);\draw[ray](0,0)--(2.5,.15);
+\draw[ray](2.5,.15)--(3.5,.51);
+\draw[ray](-1,.24)--(0,.3);\draw[ray](0,.3)--(2.5,.2);
+\draw[ray](2.5,.2)--(3.5,.56);
+\draw[virtual](2.5,.15)--(3,.18);\draw[virtual](2.5,.2)--(3,.18);
+\draw[aux](3,-.3)--(3,.75);\fill(3,0)circle(1pt)node[below]{$F'_o=F_e$};\fill(3,.18)circle(1pt);\draw[aux](3,.18)--(3.5,.8);\node[above]at(3.5,.8){$B_1$};
+\node[above]at(0,.8){$L_o$};\node[above]at(2.5,.8){$L_e$};
+\end{scope}
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分清轴上焦点和离轴目标，检查出射平行}\par\nobreak
+图\ref{fig:d43s}中，轴上的共同焦点为 $F'_o=F_e$；所画斜入射束的单独会聚目标是同一焦平面内的离轴点 $B_1$。目镜在会聚前截获光束，所受虚物距为 $u_e=-5.00\,\mathrm{cm}$，所以
+\[
+\frac1{v_e}=\frac1{f_e}-\frac1{u_e}=-\frac15+\frac15=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两侧有向倾角求正视角放大率}\par\nobreak
+这从成像式检查了平行出射条件。对小入射倾角 $\alpha$，中间像高 $h_1=f_o\alpha$，出射倾角 $\alpha'=-h_1/f_e=+6\alpha$；因此像正立。把镜距写成 $f_o+|f_e|$ 会破坏共同焦平面的衔接。
+
+\end{drillsolution}

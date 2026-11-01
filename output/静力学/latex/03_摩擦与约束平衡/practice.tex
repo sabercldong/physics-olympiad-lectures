@@ -1,0 +1,38 @@
+\section{练习}
+
+\begin{question}\begin{drill}[抬举能力有限的斜面推物]\label{s3:drill:1}
+斜面倾角$15^\circ$，动摩擦系数$1/\sqrt3$。人可施加的力大小不超过$mg$，方向可自由选择，使物块缓慢上移并保持接触。求最大物块质量。
+\end{drill}
+\fig{fig:s3:drill:1:s}{题设：抬举能力有限的斜面推物}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,1.34);\begin{scope}[rotate=15]\draw[world](2,0)rectangle(3,.8);\end{scope}\draw[force](2.9,1.2)--(4,2.3)node[right]{$F\le mg$};\draw[guide](0,0)--(5,0);\draw(1.2,0)arc(0:15:1.2);\node at(1.7,.2){$15^\circ$};\node at(2.3,1){$M$};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:1}
+\begin{question}\begin{drill}[竖杆拉绳的自锁高度]\label{s3:drill:2}
+竖直杆高$l$、重$G$，下端在静摩擦系数$\mu$的地面，上端由向左下、与水平夹角$\theta$的绳拉住。在高$h$处施水平向右力$F$，$0<h\le l$。求任意大$F$也不滑的条件。
+\end{drill}
+\fig{fig:s3:drill:2:s}{题设：竖杆拉绳的自锁高度}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,0);\draw[world](3,0)--(3,3);\draw[world](3,3)--(.5,0);\draw[force](3,1.7)--(4.2,1.7)node[above]{$F$};\draw[dim](4.8,0)--(4.8,1.7)node[midway,right]{$h$};\draw[dim](5.5,0)--(5.5,3)node[midway,right]{$l$};\draw[guide](3,3)--(1.5,3);\node at(2.4,2.7){$\theta$};\node[below]at(3,0){$A$};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:2}
+\begin{question}\begin{drill}[抽屉式双角接触的卡紧]\label{s3:drill:3}
+忽略重力的刚性滑块在水平平行导轨中对角接触，两接触点水平间距$L$。水平拉力$F$的作用线离中线距离$e$，法向反力形成的力偶与$Fe$抵消，两处摩擦系数$\mu$。求自锁条件。
+\end{drill}
+\fig{fig:s3:drill:3:s}{题设：抽屉式双角接触的卡紧}{\begin{tikzpicture}[scale=.88]\draw[world](0,1.5)--(5,1.5);\draw[world](0,-1.5)--(5,-1.5);\draw[world](1,1.5)--(4,1.2)--(4,-1.5)--(1,-1.2)--cycle;\draw[world](4,1.2)--(4,2.2);\draw[force](4,2.2)--(5.3,2.2)node[right]{$F$};\draw[dim](.4,0)--(.4,2.2)node[midway,left]{$e$};\draw[guide](.4,0)--(4.3,0);\draw[dim](1,-2)--(4,-2)node[midway,below]{$L$};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:3}
+\begin{question}\begin{drill}[人字梯两脚的摩擦裕度]\label{s3:drill:4}
+轻质对称人字梯两脚为$A,B$，地面静摩擦系数均为$\mu$，顶部为光滑铰链，无横向拉杆。考察梯形状保持不变的准静态平衡：人沿靠近$A$的一边向上，人在地面的投影位于$A$与两脚中点之间。比较两脚的摩擦裕度，并判断上行是否必然使某一脚从静止进入滑动。
+\end{drill}
+\fig{fig:s3:drill:4:s}{题设：人字梯两脚的摩擦裕度}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(2,3)--(4,0);\draw[world](-.5,0)--(4.5,0);\fill(1,1.5)circle(3pt)node[left]{$D$};\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\draw[guide](1,1.5)--(1,-.6);\draw[dim](0,-.6)--(1,-.6)node[midway,below]{$x<d/2$};\draw[dim](0,-1.3)--(4,-1.3)node[midway,below]{$d$};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:4}
+\begin{question}\begin{drill}[斜面缓拉轨迹]\label{s3:drill:5}
+倾角$\theta$的平面内，木块受指向固定滑轮$O$的轻绳缓慢拉动，动摩擦系数$\mu=\tan\theta$。绳力平行斜面。初态木块与滑轮等高、相距$\rho_0$。求平面内轨迹。
+\end{drill}
+\fig{fig:s3:drill:5:s}{题设：斜面缓拉轨迹}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,-3)--(0,1)node[above]{$y$};\fill(0,0)circle(3pt)node[left]{$O$};\fill(4,0)circle(3pt)node[above]{$P_0$};\node at(3,-2.4){$y$向上坡};\draw[world](0,0)--(4,0)node[midway,above]{$\rho_0$};\draw[guide](0,0)--(3,-1.5);\fill(3,-1.5)circle(2pt)node[right]{$P$};\node at(1.7,-1.1){绳};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:5}
+\begin{question}\begin{drill}[墙角圆球的偏心下压力]\label{s3:drill:6}
+重$G$、半径$r$的球接触左墙和地面，两处静摩擦系数$0<\mu<1$。在球心左侧水平距离$s$处施竖直向下力$F$。求刚开始逆时针转动时的偏心距。
+\end{drill}
+\fig{fig:s3:drill:6:s}{题设：墙角圆球的偏心下压力}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(4,0);\draw[world](1.2,1.2)circle(1.2);\draw[force](.4,3)--(.4,2)node[above,pos=0]{$F$};\node[above right]at(1.2,1.2){$O$};\draw[guide](1.2,1.2)--(1.2,3.5);\draw[guide](.4,3)--(.4,3.5);\draw[dim](.4,3.4)--(1.2,3.4)node[midway,above]{$s$};\draw[guide](1.2,1.2)--(2.4,1.2)node[midway,below]{$r$};\end{tikzpicture}}
+\end{question}
+\answerlink{s3:drill:6}

@@ -1,0 +1,552 @@
+\section{例题与分析}
+\begin{question}\begin{example}[弹簧牵引下的摩擦反向]\label{n2e1}
+车内 $10\,\mathrm{kg}$ 的物块被水平弹簧向右拉 $5\,\mathrm N$，开始随静止车厢保持静止。车厢向右加速度从零缓慢增至 $1\,\mathrm{m/s^2}$。弹簧形变在相对静止时不变，判断物块能否一直随车静止，并求摩擦变化。
+\fig{n2e1q}{弹簧右端固定在车厢右壁}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,2);\node[draw,anchor=south](A)at(-.7,0){$m$};\draw[spring](A.east)--(2,0 |- A.center);\draw[flow](2.2,1.2)--(3.5,1.2)node[right]{$a_0$};\node at(.7,.9){$5\,\mathrm N$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用初始平衡确定静摩擦至少能提供多大值}\par\nobreak
+图\ref{n2e1q}中初始所需静摩擦为向左 $5\,\mathrm N$，已经说明最大静摩擦不小于这一数值。若物块随车，水平式为 $5\,\mathrm N+f=ma_0$，所以 $f=(10\,\mathrm{kg})a_0-5\,\mathrm N$。
+\fig{n2e1s}{摩擦分量过零，大小先减小再增大}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$a_0/(\mathrm{m/s^2})$};\draw[axis](0,-1.3)--(0,1.5)node[above]{$f/\mathrm N$};\draw[world](0,-1)--(4,1);\node[left]at(0,-1){$-5$};\node[left]at(0,1){$5$};\node[below]at(2,0){$0.5$};\node[below]at(4,0){$1$};\draw[guide](4,0)--(4,1)--(0,1);
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查全区间所需摩擦并确定反向时刻}\par\nobreak
+由图\ref{n2e1s}，所需摩擦从 $-5$ 变到 $+5\,\mathrm N$，绝对值全程不超过初始已经能提供的 $5\,\mathrm N$，故相对静止可以维持。$a_0<0.5\,\mathrm{m/s^2}$ 时摩擦向左，等于时为零，之后向右。结论依赖水平支持力和最大静摩擦未改变，以及加速度缓慢调节、没有额外冲击。
+\end{solution}
+
+\begin{question}\begin{example}[两组叠块之间的连接绳]\label{n2e2}
+两块质量均为 $2m$ 的底块 $D,A$ 在光滑地面上，各放一质量 $m$ 的上块 $C,B$，两上块用水平轻绳连接。各层间最大静摩擦均为 $\mu mg$，向右拉右底块 $A$，使四块共同加速。求绳张力最大值。
+\fig{n2e2q}{绳连接两个上块，外力作用在右下块}{\begin{tikzpicture}
+\draw[world](-3.4,0)--(3.4,0);\node[draw,minimum width=1.5cm,minimum height=.6cm,anchor=south]at(-1.8,0){$D,2m$};\node[draw,minimum height=.4cm,anchor=south](C)at(-1.8,.6){$C,m$};\node[draw,minimum width=1.5cm,minimum height=.6cm,anchor=south]at(1.5,0){$A,2m$};\node[draw,minimum height=.4cm,anchor=south](B)at(1.5,.6){$B,m$};\draw[world](C.east)--(B.west)node[midway,above]{$T$};\draw[force](2.25,.3)--(3.6,.3)node[right]{$F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从左下块逐个求连接绳与层间摩擦}\par\nobreak
+设共同加速度为 $a$。图\ref{n2e2q}左下块 $D$ 只受层间摩擦而水平加速，因此
+\[f_D=2ma\quad\text{向右}.\]
+反作用于 $C$ 的摩擦向左。隔离 $C$ 后，沿向右方向列式：
+\[T-f_D=ma\quad\Longrightarrow\quad T=3ma.\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求另一个接触面所需摩擦}\par\nobreak
+再看右上块 $B$，其受右向摩擦 $f_B$ 与左向张力，$f_B-T=ma$，故 $f_B=4ma$。
+\fig{n2e2s}{右侧接触面先达到摩擦上限}{\begin{tikzpicture}
+\node[draw]at(-1.5,0){$C$};\draw[force](-1.1,0)--(.1,0)node[midway,above]{$T$};\draw[force,blue](-1.9,0)--(-3,0)node[left]{$2ma$};\node[draw]at(2,0){$B$};\draw[force,blue](2.4,0)--(3.7,0)node[right]{$4ma$};\draw[force](1.6,0)--(.5,0)node[midway,below]{$T$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取两个不滑条件的交集求最大张力}\par\nobreak
+按图\ref{n2e2s}逐面限制，$2ma\le\mu mg$，$4ma\le\mu mg$，后者更严格，得 $a\le\mu g/4$。所以 $T_{\max}=3\mu mg/4$。整体 $F=6ma$ 给出临界驱动力 $F_c=3\mu mg/2$，可作为同一状态的另一种表达。
+\end{solution}
+
+\begin{question}\begin{example}[共同初速度不等于共同受力]\label{n2e3}
+粗糙地面上的斜面向右下方倾斜，倾角 $\theta$，上有原本能静止的物块。给两者共同向左初速度后，地面摩擦使斜面减速。讨论物块压力如何变化，以及可能沿面向哪一方向相对滑动。
+\fig{n2e3q}{速度向左，减速阶段的斜面加速度向右}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.2)--cycle;\node[draw,rotate=-28.8108,anchor=south]at(-.4,1.32){$m$};\draw[flow](-1,2.7)--(-2.3,2.7)node[left]{$v$};\draw[flow](1,.5)--(2.4,.5)node[right]{$A$};\draw[world](-2.5,-.05)--(2.5,-.05);\node at(1.2,.15){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用法向接触条件确定压力增加}\par\nobreak
+在图\ref{n2e3q}的接触阶段，直斜面只平移，法向相对加速度为零。设斜面向右加速度 $A>0$，则无论切向是否已经滑动，法向式都给 $N=m(g\cos\theta+A\sin\theta)>mg\cos\theta$，压力增大。
+\fig{n2e3s}{维持相对静止所需的摩擦方向可以反转}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.5,0)node[right]{$A$};\draw[axis](0,-1)--(0,1.5)node[above]{$f_{\rm up}$};\draw[world](0,1.1)--(4,-.7);\node at(2.6,1.1){$m(g\sin\theta-A\cos\theta)$};\node[below]at(2.45,0){$g\tan\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相对静止所需的带符号摩擦}\par\nobreak
+假设物块相对静止，图\ref{n2e3s}向上沿面的所需摩擦为 $f_{\rm up}=m(g\sin\theta-A\cos\theta)$。其与压力之比
+\[
+ \frac{f_{\rm up}}N=\frac{g\sin\theta-A\cos\theta}{g\cos\theta+A\sin\theta}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{据摩擦与压力之比判断可能失稳方向}\par\nobreak
+令上式为 $q(A)$，并记分母 $D=g\cos\theta+A\sin\theta$，则 $D'=\sin\theta$。
+用商法则逐项整理：
+\begin{align*}
+q'(A)&=\frac{-\cos\theta\,D-(g\sin\theta-A\cos\theta)\sin\theta}{D^2}\\
+&=\frac{-g\cos^2\theta-A\sin\theta\cos\theta
+-g\sin^2\theta+A\sin\theta\cos\theta}{D^2}\\
+&=-\frac g{(g\cos\theta+A\sin\theta)^2}<0.
+\end{align*}
+因此所需的带符号摩擦与压力之比随$A$增大严格减小。初始已经能平衡向下滑动趋势，故新增的向右加速度不会引起向下失稳；它可能仍相对静止，或需要过大的向下摩擦而改为沿面向上滑动。
+
+这里比较的是接触仍保持、地面仍使斜面向右减速的阶段，不把结论延伸到斜面停止以后的状态。
+\end{solution}
+
+\begin{question}\begin{example}[串联两球的悬线方向]\label{n2e4}
+上、下小球质量分别为 $m_1,m_2$，由两段轻绳串联悬挂。悬点向右作加速度 $a$ 的水平平移，两球均相对悬点静止。求两绳方向和张力，质量不同是否使倾角不同？
+\fig{n2e4q}{上绳悬挂两球，下绳只直接拉下球}{\begin{tikzpicture}
+\draw[world](0,3)--(-.7,1.5)--(-1.4,0);\fill(-.7,1.5)circle(4pt)node[left]{$m_1$};\fill(-1.4,0)circle(3pt)node[left]{$m_2$};\draw[guide](0,3)--(0,0);\draw[flow](.2,3)--(1.5,3)node[right]{$a$};\node[right]at(-.3,2.2){$T_1$};\node[right]at(-1,.7){$T_2$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{隔离下球求下绳张力和方向}\par\nobreak
+图\ref{n2e4q}下球的张力分量为 $T_{2x}=m_2a$、$T_{2y}=m_2g$，故下绳向上向右，与竖直夹角满足 $\tan\beta_2=a/g$，大小 $T_2=m_2\sqrt{g^2+a^2}$。
+\fig{n2e4s}{取两球整体可以直接确定上绳方向}{\begin{tikzpicture}
+\node[draw,minimum width=1.8cm]at(0,0){$m_1+m_2$};\draw[force,blue](0,.3)--(.8,1.8)node[above]{$T_1$};\draw[force,red](0,-.3)--(0,-1.5)node[below]{$(m_1+m_2)g$};\draw[flow](2,0)--(3.2,0)node[right]{$a$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取两球整体求上绳，再隔离上球复核}\par\nobreak
+对图\ref{n2e4s}整体，$T_{1x}=(m_1+m_2)a$、$T_{1y}=(m_1+m_2)g$，因此 $\tan\beta_1=a/g$、$T_1=(m_1+m_2)\sqrt{g^2+a^2}$。两绳平行且同向，不因两球质量不同而弯折。再隔离上球，$\bm T_1-\bm T_2+m_1\bm g=m_1\bm a$，也恰好满足其受力方程。
+\end{solution}
+
+\begin{question}\begin{example}[加速斜面上的悬球脱离]\label{n2e5}
+质量 $10\,\mathrm{kg}$ 的球由沿斜面向右上方的轻绳牵住，接触倾角 $37^\circ$ 的光滑斜面。分别考察装置以 $a_1=g/2$ 和 $a_2=\sqrt3g$ 向右平移时可实现的相对平衡构形，求绳张力和斜面压力。取 $g=10\,\mathrm{m/s^2}$。
+\fig{n2e5q}{有接触时绳沿面，脱离后绳可以转向}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,2.4)--cycle;\fill(-.6,.84)circle(3pt);\draw[world](-.6,.84)--(1,1.8);\node[above]at(.4,1.45){绳};\draw[flow](2.2,.8)--(3.4,.8)node[right]{$a$};\node at(-1,.15){$37^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{假设接触并求支持力的允许范围}\par\nobreak
+图\ref{n2e5q}有接触时，绳力沿面向右上，支持力沿法向向左上，写
+\[
+ T\cos\theta-N\sin\theta=ma,\quad T\sin\theta+N\cos\theta=mg.
+\]
+解得 $T=m(a\cos\theta+g\sin\theta)$、$N=m(g\cos\theta-a\sin\theta)$。所以接触要求 $a\le g\cot\theta=4g/3$。
+\fig{n2e5s}{先检查法向力，负值要求改换构形}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt);\draw[force,blue](-1.5,0)--(-.3,.9)node[above]{$T$};\draw[force](-1.5,0)--(-2.2,.95)node[above]{$N$};\draw[force,red](-1.5,0)--(-1.5,-1.2)node[below]{$mg$};\fill(2,0)circle(2pt);\draw[force,blue](2,0)--(3.5,.87)node[above]{$T_2$};\draw[force,red](2,0)--(2,-1.2)node[below]{$mg$};\node at(2.7,-1.7){脱离后 $N=0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入第一种加速度检查接触}\par\nobreak
+$a_1<4g/3$，代入得到 $T_1=100\,\mathrm N$、$N_1=50\,\mathrm N$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{舍弃负支持力，求脱离后的相对平衡构形}\par\nobreak
+$a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n2e5s}右图取 $N_2=0$，相对平衡须 $T_{2x}=ma_2$、$T_{2y}=mg$，故 $T_2=m\sqrt{a_2^2+g^2}=200\,\mathrm N$，绳与水平夹角 $30^\circ$。这描述新的相对平衡状态；突然改变加速度后的实际过渡运动，还取决于初态和摆动过程。
+\end{solution}
+
+\begin{question}\begin{example}[车内沿光滑斜面上升]\label{n2e6}
+车内固定向右上方升高、倾角 $37^\circ$、高 $H$ 的光滑斜面，物块初静止在底部。车突然以恒加速度 $a_0$ 向左运动。求使物块上升的加速度条件；当 $a_0=g$ 时，求压力和到顶时间。
+\fig{n2e6q}{车厢系中惯性力向右}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,{4*tan(37)})--cycle;\node[draw,rotate=37,anchor=south]at(-1.2,{.8*tan(37)}){$m$};\draw[dim](2.3,0)--(2.3,{4*tan(37)})node[midway,right]{$H$};\draw[flow](-1,-.5)--(-2.5,-.5)node[left]{$a_0$};\node at(-1.3,.2){$37^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{在随车系投影有效重力并确定上滑阈值}\par\nobreak
+选图\ref{n2e6q}中的车为平移系，沿面向右上为正。物块受向右惯性力 $ma_0$，故相对加速度 $b=a_0\cos\theta-g\sin\theta$；法向式为 $N=mg\cos\theta+ma_0\sin\theta$。从相对静止开始真正上升要 $b>0$，即 $a_0>g\tan37^\circ=0.75g$，等号只是阈值。
+\fig{n2e6s}{相对沿面位移与车体水平位移分开计算}{\begin{tikzpicture}
+\draw[axis](0,0)--(3.4,2)node[right]{$s$};\draw[force,blue](0,0)--(2,0)node[right]{$ma_0$};\draw[force,red](0,0)--(0,-1.3)node[below]{$mg$};\node at(3,.6){$s_{\rm top}=H/\sin\theta$};\node at(2,2.6){$b=a_0\cos\theta-g\sin\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将沿面距离代入相对运动方程求时间}\par\nobreak
+当 $a_0=g$，图\ref{n2e6s}给出 $b=0.2g$、$N=1.4mg$。到顶沿面距离为 $H/0.6=5H/3$，由 $s=bt^2/2$ 得 $t=\sqrt{50H/(3g)}$。法向力保持正值，且相对加速度恒定，所以这段匀加速公式可以使用。
+\end{solution}
+
+\begin{question}\begin{example}[斜杆圆环与竖直悬球]\label{n2e7}
+质量 $m$ 的圆环套在倾角 $\theta$ 的光滑固定杆上，用初始竖直轻绳悬挂质量 $M$ 的球。手托圆环使系统静止后松手，求释放瞬间绳张力。
+\fig{n2e7q}{初始绳竖直，杆向右上方倾斜}{\begin{tikzpicture}
+\draw[world](-2,0)--(1.5,2.5);\draw[world](.2,1.57)circle(.16);\draw[world](.2,1.4)--(.2,.1);\fill(.2,.1)circle(4pt)node[right]{$M$};\node[left]at(0,1.7){$m$};\draw[guide](-2,0)--(1.5,0);\node at(-1,.3){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先建立释放瞬间的绳向加速度约束}\par\nobreak
+设图\ref{n2e7q}圆环沿杆向左下加速度为 $b$，悬球向下分量为 $a$。初速度为零且绳初始竖直，定长约束沿绳二阶求导给 $a=b\sin\theta$，并非 $a=b$。悬球方程为 $Mg-T=Ma$；环沿杆方程为 $(mg+T)\sin\theta=mb$。
+\fig{n2e7s}{环沿杆加速度的竖直投影联系悬球}{\begin{tikzpicture}
+\draw[flow](0,1.5)--(-1.5,.43)node[left]{$b$};\draw[guide](0,1.5)--(0,.43)--(-1.5,.43);\node[right]at(0,1){$b\sin\theta$};\fill(2.5,0)circle(2pt);\draw[force,blue](2.5,0)--(2.5,1)node[above]{$T$};\draw[force,red](2.5,0)--(2.5,-1.2)node[below]{$Mg$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入动力学消元求张力}\par\nobreak
+用图\ref{n2e7s}的投影关系代入：$Mg-T=M(g+T/m)\sin^2\theta$，整理得
+\[T=\frac{mMg\cos^2\theta}{m+M\sin^2\theta}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查两个极限及瞬时结论的适用范围}\par\nobreak
+当杆水平时 $T=Mg$，环没有沿杆驱动力；杆竖直时 $T\to0$，两物体一起自由落体。经过有限时间绳可能不再竖直，因此此结果只用于释放瞬间。
+\end{solution}
+
+\begin{question}\begin{example}[使滑轮悬线恰好无张力]\label{n2e8}
+轻定滑轮两侧分别悬挂质量 $M$ 的物体与质量 $m'$ 的梯子，质量 $m$ 的人抓住梯子。求人相对梯子的竖直加速度，才能使滑轮上方悬线张力瞬时降到零，假定两侧绳在该临界瞬间仍绷紧。
+\fig{n2e8q}{人对梯子的作用可以改变两侧绳张力}{\begin{tikzpicture}
+\draw[world](0,3)--(0,2.4);\draw[world](0,2)circle(.4);\draw[world](-.4,.4)--(-.4,2)arc(180:0:.4)--(.4,.2);\node[draw,anchor=north]at(-.4,.4){$M$};\draw[world](.2,.2)--(.2,1.2) (.8,.2)--(.8,1.2);\foreach \y in {.3,.6,.9}{\draw(.2,\y)--(.8,\y);}\node[above]at(.7,1.2){$m'$};\draw[world](1.1,.94)circle(.12);\draw[world](1.1,.82)--(1.1,.45)--(.9,.2) (1.1,.45)--(1.3,.2) (1.1,.7)--(.8,.6);\node[right]at(1.3,.65){$m$};\node[right]at(.1,2.8){$S$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由悬线零张力推到两侧绳的临界运动}\par\nobreak
+图\ref{n2e8q}轻滑轮受力平衡给 $S=2T$，因此 $S=0$ 要求两侧绳张力 $T=0$。物体 $M$ 此时向下自由落体，加速度 $g$；绳长约束使梯子加速度向上 $g$。
+\fig{n2e8s}{零绳张力时，梯子向上运动由人的反作用提供}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[right]{梯子};\draw[force,blue](-1.5,0)--(-1.5,1.3)node[above]{$Q$};\draw[force,red](-1.5,0)--(-1.5,-1)node[below]{$m'g$};\fill(2,0)circle(2pt)node[right]{人};\draw[force,red](2,0)--(2,-1.5)node[below]{$mg+Q$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由梯子受力求人与梯子的相互作用}\par\nobreak
+设人对梯子的向上力为 $Q$，按图\ref{n2e8s}对梯子列 $Q-m'g=m'g$，得 $Q=2m'g$。梯子反向向下拉人，因此人对地向下加速度 $a_p=(mg+Q)/m=g+2m'g/m$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{换算人的相对加速度并核查约束边界}\par\nobreak
+相对向上加速的梯子，人向下加速度为
+\[a_{p/\text{梯}}=a_p+g=2g\left(1+\frac{m'}m\right).\]
+这要求人主动向上作用于梯子，仅仅放手不能实现。$S=0$ 是绷紧约束的边界；若继续要求负张力，实际绳会松弛，原来的加速度关系失效。
+\end{solution}
+
+\begin{question}\begin{example}[剪断绳端支承的动滑轮]\label{n2e9}
+一根轻绳右端固定在天花板，向下绕过连接质量 $m$ 的物块 $B$ 的轻动滑轮，再向上连接同质量物块 $A$。$A$ 最初另用上方短绳悬住。分别讨论：剪断该短绳时两物块的瞬时加速度；保留短绳而剪断 $A$ 下方长绳时 $B$ 的加速度。
+\fig{n2e9q}{剪断的是支承 $A$ 的短绳，绕轮长绳仍在}{\begin{tikzpicture}
+\draw[world](-1.3,3)--(1.3,3);\node[draw]at(-.5,1.9){$A$};\draw[guide](-.5,2.2)--(-.5,3);\draw[world](-.5,1.6)--(-.5,.8)arc(180:360:.5)--(.5,3);\draw[world](0,.8)circle(.5);\draw[world](0,.3)--(0,-.2);\node[draw]at(0,-.4){$B$};\node[left]at(-.5,2.7){剪断};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对未断长绳写长度约束与两个受力方程}\par\nobreak
+统一向下取$y_A,y_B$。图\ref{n2e9q}的长绳长度为$2y_B-y_A+C$；先求导得$2v_B-v_A=0$，再求导得$2a_B-a_A=0$，所以$a_A=2a_B$。受力方面，长绳向下拉$A$，以两股张力向上拉动滑轮和$B$，因此
+\[mg+T=ma_A,\qquad mg-2T=ma_B.\]
+\fig{n2e9s}{绳端和动滑轮的张力方向、股数都不同}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[above]{$A$};\draw[force,red](-1.5,0)--(-1.5,-1.4)node[below]{$mg+T$};\fill(1.5,0)circle(2pt)node[right]{$B$};\draw[force,blue](1.5,0)--(1.5,1.2)node[above]{$2T$};\draw[force,red](1.5,0)--(1.5,-1)node[below]{$mg$};\node at(0,1.7){$a_A=2a_B$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立求加速度并验证正张力}\par\nobreak
+把 $a_A=2a_B$ 代入图\ref{n2e9s}的第一式，$T=2ma_B-mg$；再代第二式，$3mg=5ma_B$。于是 $a_B=3g/5$ 向下，$a_A=6g/5$ 向下，$T=mg/5>0$。绳端下降应比动滑轮快一倍，这一几何检查可以避免把两加速度互换。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另换剪断位置：重画自由端并取消长度约束}\par\nobreak
+\fig{n2e9s-cut}{剪断长绳后自由端无拉力，整个长绳张力为零}{\begin{tikzpicture}
+\draw[world](0,1)circle(.4);\draw[guide](-.4,2)--(-.4,1);\draw[world](.4,1)--(.4,2.3);\draw[world](0,.6)--(0,0);\node[draw]at(0,-.2){$B$};\draw[flow,red](0,-.5)--(0,-1.5)node[below]{$g$};\node at(2,1){自由端：$T=0$};
+\end{tikzpicture}}
+第二种剪法保留 $A$ 的上方悬线，却破坏绕轮长绳的闭合长度约束。图\ref{n2e9s-cut}自由端不受外拉，理想轻绳的张力为零，$B$ 与轻滑轮仅受自身重力，故 $a_B=g$ 向下。不能在长绳剪断后继续使用 $a_A=2a_B$。
+\end{solution}
+
+\begin{question}\begin{example}[固定墙端与向右平移的斜面]\label{n2e10}
+向右下方倾斜、倾角 $\alpha$ 的光滑斜面以规定加速度 $a_0\ge0$ 向右平移。轻绳一端固定在左墙，水平绕过斜面顶端轻滑轮，再沿斜面连接质量 $m$ 的物块。求绳张力和支持力。
+\fig{n2e10q}{墙到滑轮的绳段变长，沿面绳段必须缩短}{\begin{tikzpicture}
+\draw[world](-3,0)--(-3,2.8);\draw[world](-1.5,0)--(2,0)--(-1.5,2.2)--cycle;\node[draw,rotate=-32.1523,anchor=south](A)at(.5,.942857){$m$};\path(A.center)++(-2,1.257143)coordinate(Q);\path(Q)++(-122.1523:.15)coordinate(P);\path(P)++(90:.15)coordinate(R);\draw[world](-3,0 |- R)--(R)arc(90:57.8477:.15)--(A.west);\draw[world](P)circle(.15);\draw[flow](1.7,.6)--(3,.6)node[right]{$a_0$};\node at(1,.2){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从移动滑轮引起的绳长变化求相对加速度}\par\nobreak
+图\ref{n2e10q}取斜面向右位移$X$，沿面向右下的绳段长度$s$。由$X+s+C=L$依次求导，$\dot X+\dot s=0$、$\ddot X+\ddot s=0$，所以$\ddot s=-a_0$，即物块相对斜面向上加速度$a_0$。在车架系内，沿面向上投影：$T+ma_0\cos\alpha-mg\sin\alpha=ma_0$。
+\fig{n2e10s}{上坡方向的相对加速度与惯性力分量}{\begin{tikzpicture}
+\draw[axis](0,0)--(-1.7,1)node[left]{沿面向上};\draw[force,blue](0,0)--(-1.8,0)node[left]{$ma_0$};\draw[force,red](0,0)--(0,-1.3)node[below]{$mg$};\draw[force](0,0)--(-1, .6)node[above]{$T$};\draw[force](0,0)--(.7,1.2)node[above]{$N$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求绳张力与法向力并核对静止滑轮极限}\par\nobreak
+按图\ref{n2e10s}，$T=m[g\sin\alpha+a_0(1-\cos\alpha)]$。法向没有相对加速度，故 $N=m(g\cos\alpha+a_0\sin\alpha)$。二者在给定范围均非负；若 $a_0=0$，物块被固定绳保持静止，结果回到 $T=mg\sin\alpha$、$N=mg\cos\alpha$，而不是自由下滑。
+\end{solution}
+
+\begin{question}\begin{example}[由沿面滑动驱动斜面]\label{n2e11}
+质量 $M$ 的光滑斜面向右上方升高，倾角 $\theta$，在光滑水平面上可自由平移。轻绳一端固定于右墙，水平绕过斜面顶端轻滑轮后连接斜面上的物块 $m$。由静止释放，求保持接触时的加速度及其条件。
+\fig{n2e11q}{固定右墙，沿面绳段增长对应斜面右移}{\begin{tikzpicture}
+\draw[world](-2,0)--(1,0)--(1,2)--cycle;\node at(.2,.5){$M$};\draw[world](3,0)--(3,2.8);\node[draw,rotate=33.6901,anchor=south](A)at(-.8,.8){$m$};\path(A.center)++(1.8,1.2)coordinate(Q);\path(Q)++(-56.3099:.15)coordinate(P);\path(P)++(90:.15)coordinate(R);\draw[world](A.east)--(Q)arc(123.6901:90:.15)--(3,0 |- R);\draw[world](P)circle(.15);\node at(-1.2,.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由固定墙端绳长建立相对加速度关系}\par\nobreak
+令图\ref{n2e11q}斜面向右加速度为$A$，物块相对斜面沿面向左下加速度为$b$。绳长为$s+d-X+C$，先求导得$\dot s-\dot X=0$，再求导得$\ddot s-\ddot X=0$，故$b=A$。在斜面系沿面向下列$mg\sin\theta-T+mA\cos\theta=mb$，所以$T=mg\sin\theta-mA(1-\cos\theta)$。
+\fig{n2e11s}{墙端张力是整体的水平外力，两个加速度必须分别投影}{\begin{tikzpicture}
+\draw[world](-2,0)--(1.2,0)--(1.2,2)--cycle;\fill(-.6,.875)circle(2pt)node[left]{$m$};\node at(.5,.4){$M$};\draw[guide,rounded corners](-2.3,-.2)rectangle(1.5,2.4);\draw[force,blue](1.2,2.2)--(2.8,2.2)node[right]{$T$};\draw[flow](.5,-.7)--(1.8,-.7)node[right]{$A$};
+\begin{scope}[xshift=4.7cm,yshift=1.4cm]\draw[flow,blue](0,0)--(1.5,0)node[right]{$A\bm e_x$};\draw[flow,red](1.5,0)--(.3,-.9)node[below]{$-b\bm t$};\draw[flow](0,0)--(.3,-.9)node[left]{$\bm a_m$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取整体求斜面加速度并恢复滑块运动}\par\nobreak
+图\ref{n2e11s}右侧先把平移加速度与沿面相对加速度首尾相接，得到 $a_{m,x}=A-b\cos\theta$。左侧整体边界的水平外力只有墙端张力，因此 $T=MA+m(A-b\cos\theta)$。代入 $b=A$，整体水平式给 $T=[M+m(1-\cos\theta)]A$。联立得
+\[
+ A=b=\frac{mg\sin\theta}{M+2m(1-\cos\theta)},\qquad
+ T=\frac{mg\sin\theta[M+m(1-\cos\theta)]}{M+2m(1-\cos\theta)}.
+\]
+物块完整加速度为 $(A(1-\cos\theta),-A\sin\theta)$，支持力 $N=m(g\cos\theta-A\sin\theta)$。因此接触分支要求 $m(1-\cos\theta)^2\le M\cos\theta$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另建释放瞬间的分离方程}\par\nobreak
+若上述不等式不成立，释放瞬间应取$N=0$。此时物块只受重力和沿原绳向的张力，其对地加速度为$(-T\cos\theta/m,T\sin\theta/m-g)$。沿下坡单位矢量$(-\cos\theta,-\sin\theta)$投影相对斜面的加速度，得到$g\sin\theta-T/m+A\cos\theta$。初速度为零，绳长的二阶约束仍令这一绳向分量等于$A$，于是$T=m[g\sin\theta-A(1-\cos\theta)]$。斜面上的轻滑轮受到水平右向$T$及沿面左下的$T$，故$MA=T(1-\cos\theta)$。两式联立得
+\[A=\frac{mg\sin\theta(1-\cos\theta)}{M+m(1-\cos\theta)^2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向间隙加速度检验分离假设}\par\nobreak
+此时物块相对斜面的法向加速度为 $A\sin\theta-g\cos\theta>0$，确实离开斜面。分离后绳角随运动改变，该式只描述释放瞬间，不能当作全程恒加速度。
+\end{solution}
+
+\begin{question}\begin{example}[光滑后壁与粗糙车底之间的杆]\label{n2e12}
+均匀杆质量 $M$、长 $l$，上端 $A$ 靠在车厢光滑后壁，下端 $B$ 接触粗糙车底，静摩擦因数为 $\mu_s$。车向右加速度为 $a$，杆与竖直后壁夹角为 $\theta$。求杆能相对车厢保持静止的角度范围。
+\fig{n2e12q}{后壁无摩擦，角度从竖直量起}{\begin{tikzpicture}
+\draw[world](-1.8,0)--(-1.8,3) (-1.8,0)--(2,0);\draw[line width=1.3pt](-1.8,2.6)node[left]{$A$}--(.8,0)node[below]{$B$};\node at(-1.4,2.1){$\theta$};\draw[flow](1,1.8)--(2.5,1.8)node[right]{$a$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{在随车系列合力平衡方程}\par\nobreak
+在图\ref{n2e12q}车厢系，质心受向左惯性力 $Ma$。设后壁法向力 $N_A$ 向右，车底法向力 $N_B$ 向上，底部摩擦 $f$ 向右为正。相对平衡给 $N_A+f=Ma$、$N_B=Mg$。
+\fig{n2e12s}{绕下端取矩，底部两个未知力均无力矩}{\begin{tikzpicture}
+\draw[world](-1.5,2)--(.7,0);\draw[force,blue](-1.5,2)--(-.3,2)node[right]{$N_A$};\draw[force,red](-.4,1)--(-.4,-.1)node[below]{$Mg$};\draw[force](-.4,1)--(-1.6,1)node[left]{$Ma$};\fill(.7,0)circle(2pt)node[below]{$B$};\node at(2,1){力臂：$l\cos\theta,l\sin\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{绕下端取矩确定后壁压力和底部摩擦}\par\nobreak
+按图\ref{n2e12s}绕 $B$ 取矩，$N_A l\cos\theta=(Mg\,l\sin\theta+Ma\,l\cos\theta)/2$，故 $N_A=M(a+g\tan\theta)/2$，$f=M(a-g\tan\theta)/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用摩擦上限与角度范围筛选可行姿态}\par\nobreak
+由 $|f|\le\mu_sN_B$，得到
+\[
+ \max\{0,a/g-2\mu_s\}\le\tan\theta\le a/g+2\mu_s,
+ \qquad 0<\theta<\pi/2.
+\]
+下界若为零，表示不存在额外的正角度下限，仍须排除端点接触方式改变的退化构形。后壁光滑，所以全题不应出现后壁摩擦；只有车底摩擦参与上述不等式。
+\end{solution}
+
+\begin{question}\begin{example}[杆开始向后壁转动的条件]\label{n2e13}
+沿用同一杆与车厢，杆初始相对静止、夹角 $\theta_0$。车突然取较大向右加速度 $a$，底面最大静摩擦与动摩擦均为 $\mu N_B$。求下端开始向后壁滑动的条件，并区分该条件与“最后静止贴壁”。
+\fig{n2e13q}{下端向左滑动对应与竖直夹角减小}{\begin{tikzpicture}
+\draw[world](-1.7,0)--(-1.7,3) (-1.7,0)--(2,0);\draw[world](-1.7,2.5)--(.8,0);\draw[guide](-1.7,2.8)--(-.6,0);\draw[flow](.7,-.35)--(-.5,-.35)node[left]{下端初始趋势};\node at(-1.3,2){$\theta_0$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由静摩擦边界确定向后壁滑动的阈值}\par\nobreak
+由图\ref{n2e13q}的相对平衡分析，底部向右摩擦的最大值对应 $a-g\tan\theta_0=2\mu g$。当 $a>g\tan\theta_0+2\mu g$，维持静止所需向右摩擦超限，下端有向左滑动趋势。
+\fig{n2e13s}{开始转动后用质心平动和转动方程核查方向}{\begin{tikzpicture}
+\draw[world](-1.2,2.2)--(1,0);\fill(-.1,1.1)circle(2pt)node[right]{$C$};\draw[force](1,0)--(2.2,0)node[right]{$\mu N_B$};\draw[force,blue](1,0)--(1,1)node[above]{$N_B$};\draw[force,blue](-1.2,2.2)--(0,2.2)node[right]{$N_A$};\node at(-1.5,-.5){$\ddot\theta<0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始角加速度写质心与转动方程}\par\nobreak
+还可独立验证初始角加速度。记$b=\ddot\theta(0)$，杆长$l$。两端保持接触时，质心相对车厢坐标为$x_C=(l/2)\sin\theta$、$y_C=(l/2)\cos\theta$。第一次求导为$\dot x_C=(l/2)\cos\theta\,\dot\theta$、$\dot y_C=-(l/2)\sin\theta\,\dot\theta$；对两个乘积再求导，
+\[
+\ddot x_C=\frac l2(\cos\theta\,\ddot\theta-\sin\theta\,\dot\theta^2),\qquad
+\ddot y_C=-\frac l2(\sin\theta\,\ddot\theta+\cos\theta\,\dot\theta^2).
+\]
+初始$\dot\theta=0$，才化为$a_{C,x}=lb\cos\theta_0/2$、$a_{C,y}=-lb\sin\theta_0/2$。图\ref{n2e13s}假设底部向左滑，故摩擦向右，列
+\[
+ N_A+\mu N_B-Ma=Mlb\cos\theta_0/2,\quad
+ N_B-Mg=-Mlb\sin\theta_0/2,
+\]
+\[
+ \frac{Ml^2}{12}b=\frac l2\{N_B\sin\theta_0+(\mu N_B-N_A)\cos\theta_0\}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求初始转动方向并保留接触条件}\par\nobreak
+先由竖直式求$N_B=M(g-lb\sin\theta_0/2)$，由水平式求$N_A=Ma+Mlb\cos\theta_0/2-\mu N_B$。将二者代入力矩式，除以$Ml/2$并收集$b$项，得到
+\[
+lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
+=g(\sin\theta_0+2\mu\cos\theta_0)-a\cos\theta_0.
+\]
+于是
+\[
+ b=\frac{g(\sin\theta_0+2\mu\cos\theta_0)-a\cos\theta_0}
+ {l(2/3+\mu\sin\theta_0\cos\theta_0)}.
+\]
+分母为正，上述阈值恰使 $b<0$，验证最初向壁转动。
+
+此式只在两个接触仍存在时适用，还应检查 $N_A,N_B\ge0$。要进一步断言最后贴壁静止，必须说明后续接触和到壁碰撞中的耗能；不能用静力矩边界代替完整的后续过程。
+\end{solution}
+
+\begin{question}\begin{example}[绕动滑轮的叠块与地面摩擦]\label{n2e17}
+上块 $A$、下块 $B$ 质量均为 $m$，悬块 $C$ 质量 $2m$。一根轻绳两端分别系 $A,B$，通过两个固定转向滑轮后绕过悬挂 $C$ 的轻动滑轮。地面摩擦因数 $\mu_1$，层间为 $\mu_2$，各处最大静摩擦等于动摩擦。先求层间不滑时摩擦；再在层间确实滑动时分支求 $C$ 的加速度。
+\fig{n2e17q}{两绳端分别牵引上、下两块}{\begin{tikzpicture}
+\draw[world](-3,0)--(.7,0);\node[draw,minimum width=1.5cm]at(-1.7,.3){$B,m$};\node[draw]at(-1.7,.9){$A,m$};\draw[world](-1.3,.9)--(1.5,.9)arc(90:0:.1)--(1.6,-1.2)arc(0:-180:.4)--(.8,.2)arc(0:90:.1)--(-.95,.3);\draw[world](1.2,-1.2)circle(.4);\draw[world](1.2,-1.6)--(1.2,-1.9);\node[draw]at(1.2,-2.1){$C,2m$};\node at(0,1.4){$a_A+a_B=2a_C$};
+\draw[world](1.5,.8)circle(.1) (.7,.2)circle(.1);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{分别检查全静止与层间共同运动}\par\nobreak
+图\ref{n2e17q}取两桌上块向右、悬块向下为正。若$A,B$共同运动，绳长给$a_A=a_B=a_C=a$。地面能保持全系统静止时，$T=mg$、层间摩擦为$mg$，地面则需平衡下块所受$T+mg=2mg$，故全静止须同时满足$\mu_1\ge1$与$\mu_2\ge1$。当地面滑动而层间不滑，分别写
+\[
+ T-f=ma,\quad T+f-2\mu_1mg=ma,\quad 2mg-2T=2ma.
+\]
+相减得 $f=\mu_1mg$，再解得 $a=(1-\mu_1)g/2$；这一运动分支要求 $\mu_1<1$ 且 $\mu_2\ge\mu_1$。
+\fig{n2e17s}{层间滑动后，地面仍可能保持静止}{\begin{tikzpicture}
+\node[draw]at(-1.4,.5){$A$};\draw[force](-1,.5)--(.3,.5)node[right]{$T$};\draw[force,blue](-1.8,.5)--(-2.8,.5)node[left]{$\mu_2mg$};\node[draw]at(1.6,-.7){$B$};\draw[force](2,-.7)--(3.2,-.7)node[right]{$T+\mu_2mg$};\draw[force,red](1.2,-.7)--(-.2,-.7)node[left]{$f_{\rm ground}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{层间滑动、下块仍静止时求悬块加速度}\par\nobreak
+现在取层间确实相对滑动的情形 $0\le\mu_2<\min\{\mu_1,1\}$，图\ref{n2e17s}中 $A$ 相对 $B$ 向右。若 $B$ 仍静止，$a_A=2a_C$，由 $T-\mu_2mg=2ma_C$、$2mg-2T=2ma_C$ 得
+\[
+ a_C=\frac{1-\mu_2}{3}g,\qquad T=\frac{2+\mu_2}{3}mg.
+\]
+地面所需摩擦为 $T+\mu_2mg=2(1+2\mu_2)mg/3$，故该分支的条件为 $\mu_1\ge(1+2\mu_2)/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{地面也滑动时重新列三物体方程}\par\nobreak
+若 $\mu_2<\mu_1<(1+2\mu_2)/3$，下块也向右运动，将地面摩擦改为 $2\mu_1mg$，三方程与绳长关系为
+\[
+ ma_A=T-\mu_2mg,\quad ma_B=T+\mu_2mg-2\mu_1mg,
+\]
+\[
+ 2ma_C=2mg-2T,\qquad a_A+a_B=2a_C.
+\]
+相加消元得到 $T=(1+\mu_1)mg/2$，从而
+\[
+ a_C=\frac{1-\mu_1}{2}g,\quad
+ a_A=\frac{1+\mu_1-2\mu_2}{2}g,\quad
+ a_B=\frac{1-3\mu_1+2\mu_2}{2}g.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{验证两处滑动方向及分支连接}\par\nobreak
+该区间保证 $a_B>0$、$a_A-a_B=2(\mu_1-\mu_2)g>0$，且在地面起动阈值处 $a_B\to0$，两分支连续。地面是否滑动必须在层间滑动后重新检查。
+\end{solution}
+
+\begin{question}\begin{example}[不等质量叠块的摩擦必要量]\label{n2e18}
+与前一动滑轮装置相同，现地面光滑，$A,B,C$ 的质量分别为 $m_1,m_2,m$，层间静摩擦因数 $\mu_s$。求两桌上块不相对滑动的条件。
+\fig{n2e18q}{两块虽受相同张力，质量不同仍需要摩擦调整}{\begin{tikzpicture}
+\draw[world](-3,0)--(.7,0);\node[draw,minimum width=1.7cm]at(-1.7,.3){$B,m_2$};\node[draw]at(-1.7,.9){$A,m_1$};\draw[world](-1.2,.9)--(1.5,.9)arc(90:0:.1)--(1.6,-.9)arc(0:-180:.4)--(.8,.2)arc(0:90:.1)--(-.85,.3);\draw[world](1.2,-.9)circle(.4);\node[draw]at(1.2,-1.6){$C,m$};\draw[world](1.2,-1.3)--(1.2,-1.4);
+\draw[world](1.5,.8)circle(.1) (.7,.2)circle(.1);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由共同加速度写三个物体的方程}\par\nobreak
+若图\ref{n2e18q}两块共同向右，绳长令 $a_C=a$。取作用在 $A$ 上的摩擦向右为正，方程为 $m_1a=T+f$、$m_2a=T-f$、$ma=mg-2T$。相加得到 $(m_1+m_2+m)a=mg$，相减得到 $2f=(m_1-m_2)a$。
+\fig{n2e18s}{摩擦方向随质量差改变}{\begin{tikzpicture}
+\node[draw]at(-1.5,0){$A$};\draw[force](-1.1,0)--(.2,0)node[midway,below]{$T$};\draw[force,blue](-1.1,.35)--(-.1,.35)node[midway,above]{$f$};\node[draw]at(2,0){$B$};\draw[force](2.4,0)--(3.7,0)node[midway,above]{$T$};\draw[force,blue](1.6,0)--(.5,0)node[midway,below]{$f$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用质量差求所需摩擦并检查上限}\par\nobreak
+由图\ref{n2e18s}的符号约定，
+\[
+ f=\frac{mg(m_1-m_2)}{2(m_1+m_2+m)},\qquad
+ \mu_s\ge\frac{m|m_1-m_2|}{2m_1(m_1+m_2+m)}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释符号反转及等质量特例}\par\nobreak
+若 $m_1<m_2$，$f<0$ 表示图中摩擦箭头应反向，而非约束自然失效。取绝对值是因为摩擦上限限制大小。两质量相等时所需摩擦为零，即使接触面光滑也可共同运动。
+\end{solution}
+
+\begin{question}\begin{example}[竖直导向块与水平斜面]\label{n2e19}
+质量 $m$ 的滑块只能沿固定光滑竖直导轨运动，底部接触质量 $M$、向右下方倾斜的光滑斜面，倾角 $\theta$。地面光滑，用水平力 $F\ge0$ 向右推斜面。求斜面与滑块的加速度。
+\fig{n2e19q}{固定竖直导轨使滑块没有水平加速度}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.5)--cycle;\node at(-.8,.6){$M$};\draw[world](.8,.1)--(.8,3) (1.5,.1)--(1.5,3);\draw[world,fill=white](.85,.71875)--(.85,1.75)--(1.45,1.75)--(1.45,.34375)--cycle;\node at(1.15,1.25){$m$};\draw[force](-3,1)--(-2,1)node[midway,above]{$F$};\node at(1,.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由导轨处斜面高度写加速度约束}\par\nobreak
+图\ref{n2e19q}斜面向右位移 $X$ 时，固定导轨位置处的面高度上升 $X\tan\theta$，所以滑块向上加速度 $b=A\tan\theta$，其中 $A=\ddot X$ 可带符号。设斜面支持力为 $N$，分别列
+\[F-N\sin\theta=MA,\qquad N\cos\theta-mg=mb=mA\tan\theta.\]
+\fig{n2e19s}{竖直导轨承担滑块的水平受力平衡}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(.7,1.2)node[above]{$N$};\draw[force](0,0)--(-1.2,0)node[left]{$R$};\draw[force,red](0,0)--(0,-1.3)node[below]{$mg$};\draw[flow](2,0)--(2,1.3)node[above]{$b=A\tan\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立受力方程求带符号的运动}\par\nobreak
+消去图\ref{n2e19s}中的 $N$，得到
+\[
+ A=\frac{F-mg\tan\theta}{M+m\tan^2\theta},\qquad
+ b=\frac{(F-mg\tan\theta)\tan\theta}{M+m\tan^2\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核查外力来源、反向运动与接触条件}\par\nobreak
+这里固定导轨给系统水平外力，不能对“斜面加滑块”直接用水平动量守恒。$F<mg\tan\theta$ 时，计算值为负，表示斜面向左、滑块向下。法向力 $N=m(Mg+F\tan\theta)/[(M+m\tan^2\theta)\cos\theta]$ 对 $F\ge0$ 保持正值，接触分支成立。
+\end{solution}
+
+\begin{question}\begin{example}[平台边缘的双楔块]\label{n2e20}
+两直角楔块 $ABC,ADC$ 质量均为 $m$，沿斜面 $AC$ 接触，倾角 $\alpha$。$BC,AD$ 水平，$ABC$ 由光滑平台支承，$ADC$ 可向平台边缘下落，其水平顶面另有质量 $m$ 的小块 $E$。各处光滑，从静止释放，求保持斜面接触时下楔块加速度。
+\fig{n2e20q}{上楔块与顶块竖直运动相同，水平运动不同}{\begin{tikzpicture}
+\fill[blue!7](-2,0)--(-2,2)--(2,0)--cycle;\draw[world](-2,0)node[below]{$B$}--(-2,2)node[above left]{$A$}--(2,2)node[above right]{$D$}--(2,0)node[below]{$C$}--cycle;\draw[world](-2,2)--(2,0);\node[draw,anchor=south]at(.5,2){$E$};\draw[world](-2.7,-.1)--(.4,-.1)--(.4,-1);\node at(-1.2,.5){$m$};\node at(1,1.4){$m$};\node at(-1,1.8){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{以水平整体方程联系两个楔块}\par\nobreak
+图\ref{n2e20q}下楔块只能水平运动，设其向左加速度 $a_0$，上楔块向右加速度 $a_x$，两上方物体共同向下加速度为 $b$。顶面光滑，$E$ 不受水平力，所以它水平加速度为零。整体没有水平外力，$-ma_0+ma_x=0$，即 $a_x=a_0$。
+\fig{n2e20s}{接触法向关系联系相向水平运动与竖直下落}{\begin{tikzpicture}
+\draw[guide](-2,1)--(2,-1);\draw[flow](-1,0)--(-2.3,0)node[left]{$a_0$};\draw[flow](.8,.8)--(2,.8)node[right]{$a_x$};\draw[flow](.8,.8)--(.8,-.6)node[below]{$b$};\draw[force,blue](0,0)--(.6,1.2)node[above]{$N$};\node at(0,-1.6){$b\cos\alpha=(a_0+a_x)\sin\alpha$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向接触关系关联竖直下落}\par\nobreak
+图\ref{n2e20s}接触法向相对加速度为零，故 $b=2a_0\tan\alpha$。下楔块水平式为 $N\sin\alpha=ma_0$；取上楔块与 $E$ 的竖直整体，$2mg-N\cos\alpha=2mb$。消去 $N,b$ 后得到
+\[2g-a_0\cot\alpha=4a_0\tan\alpha,\quad
+ a_0=\frac{2g}{4\tan\alpha+\cot\alpha}\quad\text{向左}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查顶块、平台两处支持力及有效阶段}\par\nobreak
+上楔块向下加速度 $b=4g\sin^2\alpha/(\cos^2\alpha+4\sin^2\alpha)<g$，因此对 $E$ 的支持力 $m(g-b)>0$。下楔块地面支持为 $mg+N\cos\alpha>0$。结果适用于未越出平台、两斜面仍有接触的阶段。
+\end{solution}
+
+\begin{question}\begin{example}[双层阿特伍德装置]\label{n2e21}
+上方固定轻滑轮一侧悬挂质量 $3\,\mathrm{kg}$ 的 $C$，另一侧悬挂下方轻动滑轮。下滑轮绳两端质量分别为 $A:1\,\mathrm{kg}$、$B:2\,\mathrm{kg}$。两绳均轻、滑轮光滑，求三物体加速度。
+\fig{n2e21q}{两根绳分别给出一条独立约束}{\begin{tikzpicture}
+\draw[world](0,3)circle(.55);\draw[world](-.55,1.3)--(-.55,3)arc(180:0:.55)--(.55,.6);\node[draw,anchor=north]at(.55,.6){$C,3$};\draw[world](-.55,1.3)circle(.5);\draw[world](-1.05,0)--(-1.05,1.3)arc(180:0:.5)--(-.05,-.5);\node[draw,anchor=north]at(-1.05,0){$A,1$};\node[draw,anchor=north]at(-.05,-.5){$B,2$};\node[right]at(0,1.3){$P$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{分开两根绳写约束，再隔离轻动滑轮}\par\nobreak
+统一向下为正，图\ref{n2e21q}上绳给 $a_P+a_C=0$，下绳给 $a_A+a_B=2a_P$，合并为 $a_A+a_B=-2a_C$。设下绳张力为 $T$，轻动滑轮平衡要求上绳张力为 $2T$。
+\fig{n2e21s}{上绳张力等于下绳两股张力之和}{\begin{tikzpicture}
+\draw[world](0,0)circle(.4);\draw[force,blue](0,0)--(0,1.3)node[above]{$2T$};\draw[force,red](-.4,0)--(-.4,-1.2)node[below]{$T$};\draw[force,red](.4,0)--(.4,-1.2)node[below]{$T$};\node at(2.7,.7){$a_P=-a_C$};\node at(2.7,-.4){$a_A+a_B=2a_P$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把不同张力代入三个物体方程}\par\nobreak
+由图\ref{n2e21s}，以质量的千克数代入，各物体方程为 $a_A=g-T/(1\,\mathrm{kg})$、$a_B=g-T/(2\,\mathrm{kg})$、$a_C=g-2T/(3\,\mathrm{kg})$。代入约束：
+\[
+ 2g-\frac{3T}{2\,\mathrm{kg}}=-2g+\frac{4T}{3\,\mathrm{kg}},\qquad
+ T=\frac{24}{17}(1\,\mathrm{kg})g.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复实际方向并代回绳长验证}\par\nobreak
+所以 $a_A=-7g/17$，即向上；$a_B=5g/17$ 向下；$a_C=g/17$ 向下。验证 $a_A+a_B=-2g/17=-2a_C$。若对 $C$ 单独选向上为正，绳长式也须相应改号，不能只改受力方程的符号。
+\end{solution}
+
+\begin{question}\begin{example}[后轮驱动汽车的载荷转移]\label{n2e22}
+汽车质量 $m$，前后轮距 $2l$，质心在两轴中间、离地高 $h$。后轮驱动，汽车向右加速度 $a$，忽略前轮水平摩擦和车身俯仰角加速度。求后轮所需最小静摩擦因数及维持前轮接触的条件。
+\fig{n2e22q}{驱动力低于质心，前后轴载荷随之改变}{\begin{tikzpicture}
+\draw[world](-2.5,0)--(2.5,0);\draw[world](-1.5,.5)rectangle(1.5,1.8);\draw[world](-1.2,.3)circle(.3) (1.2,.3)circle(.3);\fill(0,1.2)circle(2pt)node[above]{$C$};\draw[dim](0,0)--(0,1.2)node[midway,right]{$h$};\draw[dim](-1.2,-.4)--(1.2,-.4)node[midway,below]{$2l$};\draw[flow](1.8,1.4)--(3,1.4)node[right]{$a$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{列整体合力和无俯仰的力矩方程}\par\nobreak
+图\ref{n2e22q}后轮摩擦 $f$ 向右，整体水平方程为 $f=ma$，竖直方程为 $N_f+N_r=mg$。绕质心列无俯仰角加速度的力矩式，$fh+N_fl-N_rl=0$。
+\fig{n2e22s}{前轴减载、后轴增载共同抵消驱动力矩}{\begin{tikzpicture}
+\draw[world](-1.8,0)--(1.8,0);\fill(0,1)circle(2pt)node[above]{$C$};\draw[force,blue](-1.5,0)--(-1.5,1.6)node[above]{$N_r$};\draw[force,blue](1.5,0)--(1.5,1.1)node[above]{$N_f$};\draw[force](-1.5,0)--(-.1,0)node[midway,below]{$f$};\draw[force,red](0,1)--(0,-.6)node[right]{$mg$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求前后轴载荷并限制驱动轮摩擦}\par\nobreak
+由图\ref{n2e22s}两支持力之和、差，得 $N_r=mg/2+mah/(2l)$，$N_f=mg/2-mah/(2l)$。后轮不滑要求 $ma\le\mu_sN_r$，所以
+\[\mu_{s,\min}=\frac{2al}{gl+ah}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查前轮接触及零重心高度极限}\par\nobreak
+与此同时，$N_f\ge0$ 要求 $a\le gl/h$；超过后前轮离地，原载荷分配式不能继续使用。$h\to0$ 时 $\mu_{s,\min}\to2a/g$，对应驱动轮只承担一半总载荷。
+\end{solution}
+
+\begin{question}\begin{example}[滑块对高支架平板的翻转作用]\label{n2e23}
+均匀水平平板长 $2L$，中点 $C$ 固定在高为 $R$ 的支架顶端，支架底部绕 $O$ 转动。左半板由平台限制，只能顺时针翻转。滑块从光滑斜槽下降高度 $h$ 后平滑进入板左端 $a$，板面动摩擦因数 $\mu$。取 $L=R=1\,\mathrm m$、$\mu=0.2$、$g=10\,\mathrm{m/s^2}$。求单块不翻转的最大 $h$；若两等质量块从 $0.45\,\mathrm m$ 高处先后释放、到板时刻相差 $0.2\,\mathrm s$，求第二块上板后多久首次翻转。
+\fig{n2e23q}{水平摩擦通过支架高度也产生翻转力矩}{\begin{tikzpicture}
+\draw[world](-3,2)--(-2,1.2)--(2,1.2);\draw[world](0,1.2)--(0,-.3);\fill(0,-.3)circle(2pt)node[below]{$O$};\node[above]at(0,1.2){$C$};\node[below]at(-2,1.2){$a$};\draw[dim](-2,1.8)--(0,1.8)node[midway,above]{$L$};\draw[dim](.5,-.3)--(.5,1.2)node[midway,right]{$R$};\node[draw]at(-1.2,1.5){$m$};\draw[world](-3,1.05)--(-.3,1.05);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由入板速度求滑行距离并辨认两种力矩}\par\nobreak
+图\ref{n2e23q}滑块进入平板的速率为 $v_0=\sqrt{2gh}$，随后减速度 $\mu g$，停止距离 $s_0=h/\mu$。平板与支架自重作用线通过 $O$，不产生翻转力矩。块在距左端 $s$ 处滑动时，对板向下压力 $mg$ 产生逆时针矩 $mg(L-s)$，向右摩擦 $\mu mg$ 产生顺时针矩 $\mu mgR$。
+\fig{n2e23s}{绕底轴比较压力矩和摩擦矩}{\begin{tikzpicture}
+\draw[world](-2,1.5)--(2,1.5) (0,1.5)--(0,0);\fill(0,0)circle(2pt)node[below]{$O$};\draw[force,red](-.8,1.5)--(-.8,.4)node[left]{$mg$};\draw[force,blue](-.8,1.5)--(.7,1.5)node[above]{$\mu mg$};\draw[dim](-.8,-.4)--(0,-.4)node[midway,below]{$L-s$};\node at(2.4,.5){力臂 $R$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对单块的全过程求不翻转高度}\par\nobreak
+由图\ref{n2e23s}，滑动全过程需 $s\le L-\mu R$。最大位移出现在停下前，故 $h/\mu\le L-\mu R$，$h_{\max}=\mu(L-\mu R)=0.16\,\mathrm m$。停止后摩擦消失，不会比停止前更容易顺时针翻转。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{为两块各设运动时钟并列总力矩边界}\par\nobreak
+两块进入板时均有 $v_0=3\,\mathrm{m/s}$。令第二块上板后时间为 $t$，在两块均向右滑动的阶段，
+\[s_A=3(t+0.2)-(t+0.2)^2,\qquad s_B=3t-t^2,\]
+各长度以米、时间以秒计。翻转边界为 $mg(2L-s_A-s_B)=2\mu mgR$，即 $s_A+s_B=1.6\,\mathrm m$。代入得到 $2t^2-5.6t+1.04=0$，两根为 $0.2\,\mathrm s$、$2.6\,\mathrm s$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{舍弃越出滑动阶段的根并验证首次翻转}\par\nobreak
+第二根晚于两块停下时刻，不属于所用的滑动分支，应舍去。第一根时 $v_A=3-2(0.4)=2.2\,\mathrm{m/s}$、$v_B=3-2(0.2)=2.6\,\mathrm{m/s}$，均为正；第一块在第二块上板前只到 $s_A=0.56\,\mathrm m<0.8\,\mathrm m$，未先翻转。因此首次到达翻转边界为第二块上板后 $0.2\,\mathrm s$，再后力矩向顺时针。
+\end{solution}
+
+\begin{question}\begin{example}[相同悬角未必对应理想加速度]\label{n2e24}
+质量 $M$ 的滑轮沿向右下方倾角 $\theta$ 的钢索滑动，吊篮及人质量为 $m$。滑轮与索间滑动摩擦为 $\mu N$，人受沿索向上的空气阻力 $kmg$，滑轮空气阻力忽略。二者相对平衡时，悬线向左偏离竖直角 $\alpha$。求加速度及 $\alpha$，判断能否有 $\alpha=\theta$ 而 $a<g\sin\theta$。
+\fig{n2e24q}{空气阻力作用在人，索摩擦作用在滑轮}{\begin{tikzpicture}
+\draw[world](-2,2.5)--(2,1);\draw[world](0,1.75)circle(.16);\draw[world](0,1.75)--(-.6,.1);\node[draw]at(-.6,-.1){$m$};\node[right]at(.2,1.9){$M$};\draw[guide](0,1.75)--(0,-.2);\node at(-.2,.9){$\alpha$};\draw[flow,red](-.6,.1)--(-1.7,.51)node[left]{$kmg$};\node at(1.3,1.1){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{沿索和垂直索取轴，先求整体加速度}\par\nobreak
+沿图\ref{n2e24q}钢索向下取 $t$ 轴，垂直索向外取 $n$ 轴。吊篮无 $n$ 向加速度，所以 $T\cos(\theta-\alpha)=mg\cos\theta$。取滑轮与吊篮整体，$N=(M+m)g\cos\theta$；沿索外力为总重力分量减去两处阻力，因此
+\[
+ a=g\left(\sin\theta-\mu\cos\theta-\frac{km}{M+m}\right).
+\]
+\fig{n2e24s}{吊篮与整体分别给出悬角和加速度}{\begin{tikzpicture}
+\draw[axis](0,0)--(1.8,-.7)node[right]{$t$};\draw[axis](0,0)--(.6,1.6)node[above left]{$n$};\draw[force,blue](0,0)--(.4,1.3)node[midway,right]{$T$};\draw[force,red](0,0)--(0,-1.3)node[below]{$mg$};\draw[force](0,0)--(-1.5,.58)node[left]{$kmg$};\node at(3.4,.7){$N=(M+m)g\cos\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离吊篮求悬角}\par\nobreak
+吊篮沿索方程为 $ma=mg\sin\theta-T\sin(\theta-\alpha)-kmg$。用图\ref{n2e24s}的法向式消去 $T$，有
+\[
+ \tan(\theta-\alpha)=\mu-\frac{kM}{(M+m)\cos\theta},
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选角度分支并检验等悬角的条件}\par\nobreak
+取与图示构形相符的角度分支。当 $\mu=kM/[(M+m)\cos\theta]$ 且 $k>0$ 时，确有 $\alpha=\theta$，但 $a=g(\sin\theta-k)<g\sin\theta$。若还要求从静止沿索向下加速，应取 $k<\sin\theta$；已在下滑且 $k$ 更大时，则可能是沿索减速阶段。角度相同并不能单独排除空气阻力与滑轮摩擦的共同影响。
+\end{solution}

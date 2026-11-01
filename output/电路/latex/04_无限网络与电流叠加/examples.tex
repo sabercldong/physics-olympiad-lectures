@@ -1,0 +1,747 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[单导轨半无限梯形的输入电阻]\label{c4:example:1}
+上导轨由串联电阻 $r$ 构成，下导线理想。每节上节点经横档 $r$ 接下导线，输入端先经过一只上导轨电阻再到第一横档。求输入电阻及横档节点看入电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:1:s}\fig{fig:c4:example:1:s}{题设：单导轨半无限梯形的输入电阻}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)--(1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)--(3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)--(5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\draw(-1.7,2)to[R,l={$r$}](0,2);\draw(-1.7,0)--(0,0);\node[left]at(-1.7,2){$A$};\node[left]at(-1.7,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定输入切口并识别同型尾部}\par\nobreak
+图\ref{fig:c4:example:1:s} 的输入端明确位于第一串联电阻之前。按 图\ref{fig:c4:example:1:p} 切开首单元后，余下部分与原输入结构相同，设输入电阻为 $X$，则 $X=r+(r\parallel X)$。
+\typeout{ECFIG:fig:c4:example:1:p}\fig{fig:c4:example:1:p}{解答过程：单导轨半无限梯形的输入电阻}{\begin{tikzpicture}[scale=.88]
+\draw(0,2)to[R,l={$r$}](2,2)--(4.5,2)to[R,l={$X$}](4.5,0)--(0,0);\draw(2,2)to[R,l={$r$}](2,0);\node[left]at(0,2){输入 $A$};\node[left]at(0,0){回线 $B$};\fill(2,2)circle(1.5pt);\fill(2,0)circle(1.5pt);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求被动固定点并排除负根}\par\nobreak
+去分母 $X(r+X)=r(r+X)+rX$，整理为 $X^2-rX-r^2=0$。正根 $X=(1+\sqrt5)r/2$，负根舍去。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{更换端口后扣除首串联段}\par\nobreak
+第一横档节点到下导线的电阻为 $Y=r\parallel X=X-r=(\sqrt5-1)r/2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用有限截断与收敛范围检查}\par\nobreak
+由一个单元末端开路开始，递推值为 $2r,5r/3,13r/8,\ldots$，趋向正根。有限截断满足 $r<X_N\le2r$，第一节取上界；无限极限严格满足 $r<X<2r$。正文已由 $0<f'(X)\le1/4$ 证明递推误差随层数衰减，说明此根确实对应所定义的有限截断极限。\end{solution}
+\begin{question}\begin{example}[双导轨半无限梯形]\label{c4:example:2}
+两条导轨每段电阻均为 $r$，相邻节点间的横档也为 $r$。输入端先经过上下各一只导轨电阻，再到第一横档。求输入电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:2:s}\fig{fig:c4:example:2:s}{题设：双导轨半无限梯形}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)to[R,l_={$r$}](1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)to[R,l_={$r$}](3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)to[R,l_={$r$}](5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\draw(-1.7,2)to[R,l={$r$}](0,2);\draw(-1.7,0)to[R,l_={$r$}](0,0);\node[left]at(-1.7,2){$A$};\node[left]at(-1.7,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{同时保留上下两条有阻引线}\par\nobreak
+图\ref{fig:c4:example:2:s} 中上下两段导轨都属于首单元，每一段通过同一总电流，因此首单元的串联部分是 $2r$。设输入电阻为 $X$，图\ref{fig:c4:example:2:p} 给出 $X=2r+(r\parallel X)$。
+\typeout{ECFIG:fig:c4:example:2:p}\fig{fig:c4:example:2:p}{保留首单元的上下两个 $r$；首横档与尾部 $X$ 并联}{\begin{tikzpicture}
+
+\draw(0,3)to[R,l={$r$}](3,3)--(6,3)to[R,l={$X$}](6,0)--(3,0)to[R,l_={$r$}](0,0);
+\draw(3,3)to[R,l={$r$}](3,0);
+\node[left]at(0,3){$A$};\node[left]at(0,0){$B$};
+\draw[guide](4,-.5)rectangle(7,3.5);\node[right]at(7.2,1.5){原网络的尾部};
+\draw[flow](.5,3.8)--(1.8,3.8)node[midway,above]{$I$};
+\draw[flow](1.8,-.8)--(.5,-.8)node[midway,below]{$I$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立固定点并选择正根}\par\nobreak
+乘以 $r+X$ 得 $Xr+X^2=2r^2+3rX$，所以 $X^2-2rX-2r^2=0$，取正根 $X=(1+\sqrt3)r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分本地横档端口和引线前端口}\par\nobreak
+第一横档节点处看入则为 $r\parallel X=X-2r=(\sqrt3-1)r$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两条引线的最低电阻检查}\par\nobreak
+如果忽略下导轨电阻，会误得到上一题的黄金比例。检查范围：两个输入引线已经贡献 $2r$，总电阻应大于 $2r$；$(1+\sqrt3)r\approx2.732r$ 满足。\end{solution}
+\begin{question}\begin{example}[双向无限梯形的横档端口]\label{c4:example:3}
+上下导轨和横档的每个电阻均为 $r$，网络向左右无限延伸。求同一横档两端 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:3:s}\fig{fig:c4:example:3:s}{题设：双向无限梯形的横档端口}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)to[R,l_={$r$}](1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)to[R,l_={$r$}](3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)to[R,l_={$r$}](5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\node[left]at(0,2){$A$};\node[left]at(0,0){$B$};\draw[dashed](-1,0)--(0,0)(-1,2)--(0,2);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{拆成中央横档及左右同型半网络}\par\nobreak
+图\ref{fig:c4:example:3:s} 的中央横档为 $r$，左右各是一条先经过上下两段导轨的半无限支路，每条输入电阻 $X=(1+\sqrt3)r$。图\ref{fig:c4:example:3:p} 将三条跨接同一端口的支路并列。
+\typeout{ECFIG:fig:c4:example:3:p}\fig{fig:c4:example:3:p}{解答过程：双向无限梯形的横档端口}{\begin{tikzpicture}[scale=.88]
+\foreach \x/\t in {0/X,2.4/r,4.8/X}{\draw(\x,0)to[R,l={$\t$}](\x,2.4);}\draw(0,0)--(4.8,0)(0,2.4)--(4.8,2.4);\node at(2.4,3.1){$X=(1+\sqrt3)r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按三条并联通道相加电导}\par\nobreak
+总电阻
+\[
+ R_{AB}=\left(\frac1r+\frac2{(1+\sqrt3)r}\right)^{-1}
+ =\frac r{\sqrt3}.
+\]
+因为 $2/(1+\sqrt3)=\sqrt3-1$，总电导为 $\sqrt3/r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回算三股电流并核对源节点}\par\nobreak
+若端口注入 $I$，中央横档流过 $I/\sqrt3$，左右支路各分得 $(1-1/\sqrt3)I/2$。三股电流之和为 $I$。左右两个半网络不能串联，它们和中央横档承受同一端电压。\end{solution}
+\begin{question}\begin{example}[双导轨中的电流空间分布]\label{c4:example:4}
+双向无限双导轨网络每边电阻 $r$，从第零横档上端注入 $I$、下端流出 $I$。求第 $n$ 横档电流与第 $n$ 到 $n+1$ 上导轨电流，$n\ge0$。
+\end{example}
+\typeout{ECFIG:fig:c4:example:4:s}\fig{fig:c4:example:4:s}{题设：双导轨中的电流空间分布}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)to[R,l_={$r$}](1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)to[R,l_={$r$}](3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)to[R,l_={$r$}](5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\node[left]at(0,2){$A$};\node[left]at(0,0){$B$};\draw[dashed](-1,0)--(0,0)(-1,2)--(0,2);\draw[flow](-.6,3)--(0,2);\draw[flow](0,0)--(-.6,-1);\node at(-1,1){$I$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由上下反对称和无源区递推确定衰减形式}\par\nobreak
+图\ref{fig:c4:example:4:s} 中上下电势反对称，令差电压 $V_n=V_n^{\text{上}}-V_n^{\text{下}}$。上轨电势是 $V_n/2$，无源上节点满足
+\[
+ \frac{V_n-V_{n-1}}{2r}+\frac{V_n-V_{n+1}}{2r}+\frac{V_n}{r}=0,
+ \qquad V_{n+1}-4V_n+V_{n-1}=0.
+\]
+代入 $V_n=C\lambda^n$ 并除以 $C\lambda^{n-1}$，得 $\lambda^2-4\lambda+1=0$，两根为 $(4\pm\sqrt{16-4})/2=2\pm\sqrt3$。远处衰减选 $\lambda=2-\sqrt3$，左右对称得 $V_n=V_0\lambda^{|n|}$。
+\typeout{ECFIG:fig:c4:example:4:p}\fig{fig:c4:example:4:p}{第 $n,n+1$ 两列的局部电路；虚线表示导轨继续连接，左右并非孤立闭环}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l_={$r$}](4,0);\draw(0,3.5)to[R,l={$r$}](4,3.5);
+\draw(0,3.5)to[R,l={$r$}](0,0);\draw(4,3.5)to[R,l={$r$}](4,0);
+\foreach \y in {0,3.5}{\draw[dashed](-1,\y)--(0,\y)(4,\y)--(5,\y);}
+\node[above=10pt]at(0,3.5){$V_n/2$};\node[above=10pt]at(4,3.5){$V_{n+1}/2$};
+\node[below=10pt]at(0,0){$-V_n/2$};\node[below=10pt]at(4,0){$-V_{n+1}/2$};
+\draw[flow](1,4.7)--(2.7,4.7)node[midway,above]{$K_n$};
+\draw[flow](-.7,2.8)--(-.7,.7)node[midway,left]{$J_n$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用源节点守恒确定电压幅度}\par\nobreak
+在 图\ref{fig:c4:example:4:p} 的零号上节点，横档流出 $V_0/r$，左右上轨各流出 $V_0(1-\lambda)/(2r)$。所以
+\[
+ I=\frac{V_0}{r}+\frac{V_0(1-\lambda)}r
+ =\frac{\sqrt3V_0}{r},\quad V_0=\frac{Ir}{\sqrt3}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按横档压降和单轨压降分别求电流}\par\nobreak
+第 $n$ 横档电流 $J_n=V_n/r=I\lambda^{|n|}/\sqrt3$，第 $n$ 到下一节点的上轨电流 $K_n=(V_n-V_{n+1})/(2r)=I(1-\lambda)\lambda^n/(2\sqrt3)$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用全部横档电流之和核对归一化}\par\nobreak
+核对横档总和：$J_0+2\sum_{n\ge1}J_n=(I/\sqrt3)(1+\lambda)/(1-\lambda)=I$。该核验同时检查了左右两侧的倍数。\end{solution}
+\begin{question}\begin{example}[公共回流线上的任意距离端口]\label{c4:example:5}
+单有阻上导轨网络向左右无限延伸，每段上轨及每横档均为 $r$，下导线理想。上轨节点 $A_0,A_n$ 间隔 $n$ 段。求 $R_n$、相邻端口值和 $n\to\infty$ 极限。
+\end{example}
+\typeout{ECFIG:fig:c4:example:5:s}\fig{fig:c4:example:5:s}{题设：公共回流线上的任意距离端口}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)--(1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)--(3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)--(5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\node[left]at(0,2){$A_0$};\node[left]at(0,0){$0$};\draw[dashed](-1,0)--(0,0)(-1,2)--(0,2);\node at(1.7,2.8){$A_1$};\node at(5.1,2.8){$A_n$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先解单源对公共回流线的响应}\par\nobreak
+在图\ref{fig:c4:example:5:s}中先向 $A_0$ 注入 $I$、从公共下导线流出。无源节点的三支路守恒为 $(V_k-V_{k-1})/r+(V_k-V_{k+1})/r+V_k/r=0$，即 $V_{k+1}-3V_k+V_{k-1}=0$。代入 $V_k=C\lambda^k$ 得 $\lambda^2-3\lambda+1=0$，取小于 $1$ 的根 $\lambda=(3-\sqrt5)/2$。左右对称及远处趋零给 $V_k=V_0\lambda^{|k|}$。源节点另外保留注入 $I$，
+\[
+ I=\frac{V_0}{r}+\frac{2(V_0-V_1)}r
+ =\frac{V_0}{r}(3-2\lambda)=\frac{\sqrt5V_0}{r}.
+\]
+因此 $V_0=Ir/\sqrt5$，单源响应为 $V_k=Ir\lambda^{|k|}/\sqrt5$。
+\typeout{ECFIG:fig:c4:example:5:p}\fig{fig:c4:example:5:p}{两个上轨端口的实际源汇；各横档与公共理想回流线完整保留}{\begin{tikzpicture}
+
+\draw(-2,2.5)to[R,l={$r$}](0,2.5)to[R,l={$r$}](2,2.5);
+\draw[dashed](2,2.5)--(5,2.5);
+\draw(5,2.5)to[R,l={$r$}](7,2.5)to[R,l={$r$}](9,2.5);
+\foreach \x in {-2,0,2,5,7,9}{\draw(\x,2.5)to[R](\x,0);}
+\draw(-2,0)--(9,0);\node[below]at(3.5,0){公共理想线，最终外部净注入为零};
+\draw[dashed](-3,2.5)--(-2,2.5)(9,2.5)--(10,2.5);
+\fill(0,2.5)circle(1.5pt)node[above right]{$A_0$};\fill(7,2.5)circle(1.5pt)node[above left]{$A_n$};
+\draw[flow](0,4)--(0,2.8)node[pos=0,above]{$I$};
+\draw[flow](7,2.8)--(7,4)node[above]{$I$};
+\node at(3.5,3.3){中间若干节省略};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加平移负源恢复两个上轨端口}\par\nobreak
+图\ref{fig:c4:example:5:p}再把一个平移到 $A_n$ 的相同解取负叠加。公共导线的外部电流抵消，$A_0,A_n$ 分别成为源汇。叠加后的任意节点电势为 $V_k=Ir[\lambda^{|k|}-\lambda^{|k-n|}]/\sqrt5$；分别代入 $k=0,n$ 得 $V_0=Ir(1-\lambda^n)/\sqrt5$、$V_n=-V_0$，于是
+\[
+ U_{0n}=\frac{2Ir}{\sqrt5}(1-\lambda^n),\qquad
+ R_n=\frac{2r}{\sqrt5}(1-\lambda^n).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相邻端口并检查远距极限}\par\nobreak
+$n=1$ 给出 $R_1=r(1-1/\sqrt5)=(5-\sqrt5)r/5$。当 $n\to\infty$，$R_n\to2r/\sqrt5$，是两个相隔很远节点各自对公共回流线电阻之和。原注入构造与最终两端问题的端口不同，叠加后应明确公共线外流已抵消。\end{solution}
+\begin{question}\begin{example}[无限方格相邻节点的电阻]\label{c4:example:6}
+无限方格每边为电阻 $r$，$A,B$ 为相邻节点。求端口电阻，并说明对无穷远电势的处理。
+\end{example}
+\typeout{ECFIG:fig:c4:example:6:s}\fig{fig:c4:example:6:s}{题设：无限方格相邻节点的电阻}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-2)--(0,2);\draw[world](0,-2)--(4,-2);\draw[world](1,-2)--(1,2);\draw[world](0,-1)--(4,-1);\draw[world](2,-2)--(2,2);\draw[world](0,0)--(4,0);\draw[world](3,-2)--(3,2);\draw[world](0,1)--(4,1);\draw[world](4,-2)--(4,2);\draw[world](0,2)--(4,2);\fill(1,0)circle(2pt)node[below left]{$A$};\fill(2,0)circle(2pt)node[below right]{$B$};\node at(2,2.7){每边 $r$，向四周无限延伸};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在源点和汇点分别设置相容的远边界}\par\nobreak
+第一辅助问题从 图\ref{fig:c4:example:6:s} 的 $A$ 注入 $I$，在很远且旋转对称的边界分散流出。极限中 $A$ 的四条相邻边等价，$AB$ 支路从 $A$ 向 $B$ 流 $I/4$。第二辅助问题在同一远边界注入、$B$ 流出 $I$，由 $B$ 的对称性，$AB$ 支路仍沿 $A\to B$ 流 $I/4$。
+\typeout{ECFIG:fig:c4:example:6:p}\fig{fig:c4:example:6:p}{解答过程：无限方格相邻节点的电阻}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-2)--(0,2);\draw[world](0,-2)--(4,-2);\draw[world](1,-2)--(1,2);\draw[world](0,-1)--(4,-1);\draw[world](2,-2)--(2,2);\draw[world](0,0)--(4,0);\draw[world](3,-2)--(3,2);\draw[world](0,1)--(4,1);\draw[world](4,-2)--(4,2);\draw[world](0,2)--(4,2);\fill(1,0)circle(2pt)node[below left]{$A$};\fill(2,0)circle(2pt)node[below right]{$B$};\node at(2,2.7){每边 $r$，向四周无限延伸};\draw[flow](1,.3)--(2,.3)node[midway,above]{$I/4+I/4$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加直接边电流并读取端口电压}\par\nobreak
+图\ref{fig:c4:example:6:p} 相加后边界注入抵消，$A,B$ 的端口电流为 $I$，直接边电流为 $I/2$。故 $U_{AB}=rI/2$，$R_{AB}=r/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明二维绝对电势与局部电势差的区别}\par\nobreak
+用到的是相邻电势差的有限极限，不要求单源对无穷远的电势有限。若题目改为有限方格或边缘节点，四方向的支路不再等价，不能直接沿用 $r/2$。\end{solution}
+\begin{question}\begin{example}[无限简单立方晶格的相邻电阻]\label{c4:example:7}
+无限简单立方晶格每条最近邻边为 $r$。求相邻节点间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:7:s}\fig{fig:c4:example:7:s}{题设：无限简单立方晶格的相邻电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \z in {0,1,2}{\begin{scope}[shift={(\z*.55,\z*.55)}]\draw[world](0,0)grid(3,3);\end{scope}}\foreach \x in {0,1,2,3}{\foreach \y in {0,1,2,3}{\draw[world](\x,\y)--(\x+1.1,\y+1.1);}}\foreach \z in {0,1,2}{\foreach \x in {0,1,2,3}{\foreach \y in {0,1,2,3}{\fill({\x+.55*\z},{\y+.55*\z})circle(.7pt);}}}\fill(1.55,1.55)circle(2pt)node[below left]{$A$};\fill(2.55,1.55)circle(2pt)node[above right]{$B$};\node at(2,-.7){每条最近邻边为 $r$，六个方向继续延伸，未标点处不连接};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{只在辅助边界中均分六个邻边电流}\par\nobreak
+图\ref{fig:c4:example:7:s} 的每个节点有六个等价最近邻方向。对一个源点注入 $I$、在对称远边界流出的辅助问题，源点六条边各流 $I/6$；将相邻汇点的反向辅助问题叠加，端口直接边电流为 $I/3$。
+\typeout{ECFIG:fig:c4:example:7:p}\fig{fig:c4:example:7:p}{实际端口的直接边电流为 $I/3$；节点其余五个方向仍接入完整晶格}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l={$r$}](5,0);
+\foreach \x/\sgn in {0/-1,5/1}{
+\draw[gray](\x,0)--({\x+\sgn*1.2},0);
+\draw[gray](\x,0)--(\x,1.5)(\x,0)--(\x,-1.5);
+\draw[gray](\x,0)--({\x+.8},.8)(\x,0)--({\x-.8},-.8);
+}
+\fill(0,0)circle(2pt)node[below left]{$A$};\fill(5,0)circle(2pt)node[below right]{$B$};
+\draw[flow](1.5,.8)--(3.5,.8)node[midway,above]{$I/6+I/6=I/3$};
+\node at(2.5,-2.2){灰线仅画各邻边的起始段；未标点的交叉处不连接};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加同一条边的两个贡献求电势差}\par\nobreak
+图\ref{fig:c4:example:7:p} 从直接电阻读出 $U=Ir/3$，所以 $R=r/3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对均分所用的边界和几何条件}\par\nobreak
+这不等于把六个 $r$ 直接并联：直接边只是一条，其余绕行路径仍存在；均分仅用于两个辅助问题中源或汇的局部相邻边。维数由二维变为三维，使等价方向从四个变六个，才导致相邻电阻由 $r/2$ 变成 $r/3$。\end{solution}
+\begin{question}\begin{example}[无限蜂窝的相邻与两步端口]\label{c4:example:8}
+无限蜂窝网络每边电阻 $r$。$A,B,C$ 依次沿两条边相连，求 $R_{AB}$ 与 $R_{AC}$。
+\end{example}
+\typeout{ECFIG:fig:c4:example:8:s}\fig{fig:c4:example:8:s}{题设：无限蜂窝的相邻与两步端口}{\begin{tikzpicture}[scale=.88]
+\draw[world](-0.5,-0.8660254037844386)--(-0.9999999999999999,0.0);\draw[world](-0.9999999999999999,0.0)--(-1.9999999999999998,1.1102230246251565e-16);\draw[world](-1.9999999999999998,1.1102230246251565e-16)--(-2.5,-0.8660254037844385);\draw[world](-2.5,-0.8660254037844385)--(-2.0000000000000004,-1.732050807568877);\draw[world](-2.0000000000000004,-1.732050807568877)--(-0.9999999999999999,-1.7320508075688772);\draw[world](-0.9999999999999999,-1.7320508075688772)--(-0.5,-0.8660254037844386);\draw[world](1.0,-1.7320508075688772)--(0.5000000000000001,-0.8660254037844386);\draw[world](0.5000000000000001,-0.8660254037844386)--(-0.49999999999999983,-0.8660254037844385);\draw[world](-1.0,-1.732050807568877)--(-0.5000000000000004,-2.5980762113533156);\draw[world](-0.5000000000000004,-2.5980762113533156)--(0.5000000000000001,-2.598076211353316);\draw[world](0.5000000000000001,-2.598076211353316)--(1.0,-1.7320508075688772);\draw[world](2.5,-0.8660254037844386)--(2.0,0.0);\draw[world](2.0,0.0)--(1.0000000000000002,1.1102230246251565e-16);\draw[world](1.0000000000000002,1.1102230246251565e-16)--(0.5,-0.8660254037844385);\draw[world](0.9999999999999996,-1.732050807568877)--(2.0,-1.7320508075688772);\draw[world](2.0,-1.7320508075688772)--(2.5,-0.8660254037844386);\draw[world](-0.5,0.8660254037844386)--(-0.9999999999999999,1.7320508075688772);\draw[world](-0.9999999999999999,1.7320508075688772)--(-1.9999999999999998,1.7320508075688772);\draw[world](-1.9999999999999998,1.7320508075688772)--(-2.5,0.8660254037844387);\draw[world](-2.5,0.8660254037844387)--(-2.0000000000000004,2.220446049250313e-16);\draw[world](-0.9999999999999999,0.0)--(-0.5,0.8660254037844386);\draw[world](1.0,0.0)--(0.5000000000000001,0.8660254037844386);\draw[world](0.5000000000000001,0.8660254037844386)--(-0.49999999999999983,0.8660254037844387);\draw[world](2.5,0.8660254037844386)--(2.0,1.7320508075688772);\draw[world](2.0,1.7320508075688772)--(1.0000000000000002,1.7320508075688772);\draw[world](1.0000000000000002,1.7320508075688772)--(0.5,0.8660254037844387);\draw[world](2.0,0.0)--(2.5,0.8660254037844386);\draw[world](-0.5,2.598076211353316)--(-0.9999999999999999,3.4641016151377544);\draw[world](-0.9999999999999999,3.4641016151377544)--(-1.9999999999999998,3.464101615137755);\draw[world](-1.9999999999999998,3.464101615137755)--(-2.5,2.598076211353316);\draw[world](-2.5,2.598076211353316)--(-2.0000000000000004,1.7320508075688776);\draw[world](-0.9999999999999999,1.7320508075688774)--(-0.5,2.598076211353316);\draw[world](1.0,1.7320508075688772)--(0.5000000000000001,2.598076211353316);\draw[world](0.5000000000000001,2.598076211353316)--(-0.49999999999999983,2.598076211353316);\draw[world](2.5,2.598076211353316)--(2.0,3.4641016151377544);\draw[world](2.0,3.4641016151377544)--(1.0000000000000002,3.464101615137755);\draw[world](1.0000000000000002,3.464101615137755)--(0.5,2.598076211353316);\draw[world](2.0,1.7320508075688774)--(2.5,2.598076211353316);\fill(-.5,-.866)circle(1.7pt)node[below left]{$A$};\fill(.5,-.866)circle(1.7pt)node[below right]{$B$};\fill(1,0)circle(1.7pt)node[right]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用三重旋转求相邻端口电阻}\par\nobreak
+图\ref{fig:c4:example:8:s} 的蜂窝每节点有三条等价边，故相邻源汇的直接边电流为 $2I/3$，得到 $R_{AB}=2r/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在第一辅助问题中用节点守恒确定分流}\par\nobreak
+求两步端口时，先向 $A$ 注入 $I$、远边界流出。$AB$ 中流 $I/3$。节点 $B$ 的另外两条远离 $A$ 的边可反射互换，无外部注入，故各分走 $I/6$，特别是 $BC$ 流 $I/6$。
+\typeout{ECFIG:fig:c4:example:8:p}\fig{fig:c4:example:8:p}{把路径 $A\to B\to C$ 按连接关系展平；保留 $B$ 的第三条邻边，防止误判为串联}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l={$r$}](3,0)to[R,l={$r$}](6,0);
+\draw(3,0)to[R,l={$r$}](3,-2.6);\draw[dashed](3,-2.6)--(3,-3.2);
+\draw[gray](0,0)--(-1,1)(0,0)--(-1,-1)(6,0)--(7,1)(6,0)--(7,-1);
+\fill(0,0)circle(1.5pt)node[below]{$A$};\fill(3,0)circle(1.5pt)node[above]{$B$};\fill(6,0)circle(1.5pt)node[below]{$C$};
+\draw[flow](.4,.8)--(2.2,.8)node[midway,above]{$I/2$};
+\draw[flow](3.8,.8)--(5.6,.8)node[midway,above]{$I/2$};
+\node[right]at(3.6,-1.4){叠加后此边电流为 $0$};
+\node at(3,-4){其余网络保持连接；中间节点存在分支，两个 $r$ 不能直接串联};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反转平移后叠加两条路径上的电流}\par\nobreak
+图\ref{fig:c4:example:8:p} 的第二辅助问题在 $C$ 流出 $I$，由对称性，$BC$ 流入 $I/3$、$AB$ 流 $I/6$，方向都为 $A\to B\to C$。两问题叠加后，$AB,BC$ 各流 $I/2$，所以沿这条实际路径
+\[
+ U_{AC}=\frac I2r+\frac I2r=Ir,\qquad R_{AC}=r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分路径压降相加与电阻串联}\par\nobreak
+计算路径电压可以只选两条边，但整个网络仍保留。不能将它们当作独立串联电阻 $2r$，因为沿途存在分流。\end{solution}
+\begin{question}\begin{example}[无限三角晶格的相邻电阻]\label{c4:example:9}
+无限正三角晶格每边为 $r$，求相邻节点间电阻，并与蜂窝网络比较。
+\end{example}
+\typeout{ECFIG:fig:c4:example:9:s}\fig{fig:c4:example:9:s}{题设：无限三角晶格的相邻电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \j in {-2,-1,0,1,2}{\foreach \i in {-2,-1,0,1,2}{\coordinate(P\i\j)at({\i+.5*\j},{.866*\j});\draw[world]({\i+.5*\j},{.866*\j})--({\i+1+.5*\j},{.866*\j})--({\i+.5+.5*\j},{.866*(\j+1)})--cycle;}}\fill(0,0)circle(2pt)node[below left]{$A$};\fill(1,0)circle(2pt)node[below right]{$B$};\node at(0,-2.8){各节点六条最近邻边};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在两个辅助问题中利用六重旋转}\par\nobreak
+图\ref{fig:c4:example:9:s} 中每节点的六条边由 $60^\circ$ 旋转互换。对相邻源汇，用同一远边界构造两个辅助问题，各自对直接边贡献 $I/6$，所以实际直接边电流为 $I/3$。
+\typeout{ECFIG:fig:c4:example:9:p}\fig{fig:c4:example:9:p}{解答过程：无限三角晶格的相邻电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \x/\sgn in {0/-1,3/1}{\draw[gray](\x,0)--({\x+\sgn*1.1},0);\foreach \dx/\dy in {.55/.95,-.55/.95,.55/-.95,-.55/-.95}{\draw[gray](\x,0)--({\x+\dx},\dy);}}
+\draw(0,0)to[R,l={$r$}](3,0);\node[left]at(0,0){$A$};\node[right]at(3,0){$B$};\draw[flow](.5,.8)--(2.5,.8)node[midway,above]{$I/3$};
+\node at(1.5,-1.65){灰线为其余五个方向的起始段，仍接完整晶格};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由直接边电流计算整个端口电阻}\par\nobreak
+由 图\ref{fig:c4:example:9:p} 的边压降 $U=Ir/3$，端口电阻为 $r/3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用连接规则比较不同平面晶格}\par\nobreak
+蜂窝每节点三条边，得到 $2r/3$；两者都是平面网络，结果仍不同，因为局部连接与绕行通道不同。不能仅凭“二维”判断所有平面网络都有 $r/2$ 的相邻电阻。\end{solution}
+\begin{question}\begin{example}[无限嵌套中点三角形]\label{c4:example:10}
+正三角形每边电阻 $r$。连接三边中点形成内三角形，再不断对内三角形作同样操作。所有线段用同材质、同截面导线构成，电阻与长度成正比，接触处均连接。求外顶点 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:10:s}\fig{fig:c4:example:10:s}{题设：无限嵌套中点三角形}{\begin{tikzpicture}[scale=.88]
+\coordinate(A)at(0,0);\coordinate(B)at(5,0);\coordinate(C)at(2.5,4.33);\draw[world](A)--(B)--(C)--cycle;\foreach \k in {1,...,5}{\coordinate(D)at($(A)!.5!(B)$);\coordinate(E)at($(B)!.5!(C)$);\coordinate(F)at($(C)!.5!(A)$);\draw[world](D)--(E)--(F)--cycle;\coordinate(A)at(D);\coordinate(B)at(E);\coordinate(C)at(F);}\node[left]at(0,0){$A$};\node[right]at(5,0){$B$};\node at(2.5,-.7){最外每边为 $r$};
+\fill(1.25,2.165)circle(1.5pt)node[left]{$P$};\fill(3.75,2.165)circle(1.5pt)node[right]{$Q$};\fill(2.5,0)circle(1.5pt)node[below]{$D$};\node[above]at(2.5,4.33){$C$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用端点交换证明拆开连接点不改变等势}\par\nobreak
+记左、右边中点为 $P,Q$，底边中点为 $D$。图\ref{fig:c4:example:10:s}关于外部 $A,B$ 的垂直平分线反射并交换端口。各级位于反射轴上的中点电势为 $U/2$。在把底边中点与内三角形对应顶点拆开后，两个部分各自仍有该对称性，所以拆开不引入电流，可保留端口等效。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按相似比例缩放内图并保留真实外侧路径}\par\nobreak
+设整个网络电阻为 $X$，内三角形尺度为一半，其两侧中点间等效为 $X/2$。外顶端绕行路径在这两个中点之间电阻为 $r$，故两中点间为 $r\parallel(X/2)$。经这一路径从外部 $A$ 到 $B$，还需串联左右各 $r/2$；外底边本身为 $r$。
+\typeout{ECFIG:fig:c4:example:10:p}\fig{fig:c4:example:10:p}{解答过程：无限嵌套中点三角形}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](5,0);\draw(0,0)--(0,2)to[R,l={$r/2$}](1.5,2);\draw(1.5,2)to[R,l={$r$}](3.5,2);\draw(1.5,2)--(1.5,3.5)to[R,l={$X/2$}](3.5,3.5)--(3.5,2);\draw(3.5,2)to[R,l={$r/2$}](5,2)--(5,0);
+\node[left]at(0,0){$A$};\node[right]at(5,0){$B$};\fill(1.5,2)circle(1.5pt)node[below]{$P$};\fill(3.5,2)circle(1.5pt)node[below]{$Q$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据串并联建立固定点方程}\par\nobreak
+图\ref{fig:c4:example:10:p} 得到
+\[
+ X=r\parallel\left[r+\left(r\parallel\frac X2\right)\right].
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求正根并用无内线截断检查}\par\nobreak
+先算内层并联 $r\parallel(X/2)=rX/(2r+X)$，再与两个外侧半段相加，得 $r+rX/(2r+X)=2r(r+X)/(2r+X)$。最后与底边 $r$ 并联，
+\[
+ X=\frac{2r(r+X)}{4r+3X}
+ \quad\Longrightarrow\quad4rX+3X^2=2r^2+2rX
+ \quad\Longrightarrow\quad3X^2+2rX-2r^2=0.
+\]
+二次公式给出 $X=[-2r\pm\sqrt{4r^2+24r^2}]/6$，保留正根 $X=(\sqrt7-1)r/3$。无内线时电阻为 $2r/3$，新增通道后所得约 $0.549r$ 更小，符合单调性。内图是三端网络，能够按两端处理的理由是对称拆点后的第三端没有净电流，不能省略这一步。\end{solution}
+\begin{question}\begin{example}[角部递归三角形的星形等效]\label{c4:example:11}
+一个正三角形边长所对应的导线电阻为 $3r$。在三个角各保留一个尺度为三分之一的相似递归三角形，相邻角部之间用长度对应电阻 $r$ 的中间线段连接。递归无限进行，连接规则如图。求外部任意两角间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:11:s}\fig{fig:c4:example:11:s}{题设：角部递归三角形的星形等效}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(6,0)--(3,5.196)--cycle;\draw[world](1,1.732)--(2,0)(4,0)--(5,1.732)(2,3.464)--(4,3.464);\foreach \x/\y in {0/0,4/0,2/3.464}{\begin{scope}[shift={(\x,\y)},scale=.333]\draw[world](0,0)--(6,0)--(3,5.196)--cycle;\draw[world](1,1.732)--(2,0)(4,0)--(5,1.732)(2,3.464)--(4,3.464);\end{scope}}\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node[above]at(3,5.196){$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选取完整三端星形作为递推参数}\par\nobreak
+图\ref{fig:c4:example:11:s} 三端完全对称，整个子网络可等效为三臂均为 $s$ 的星形。每个角部的相似子图尺度缩为三分之一，故对应星臂是 $s/3$，并非把整个子图只当成一个电阻。
+\typeout{ECFIG:fig:c4:example:11:p}\fig{fig:c4:example:11:p}{解答过程：角部递归三角形的星形等效}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$s/3$}](1.5,1)to[R,l={$r+2s/3$}](4.5,1)to[R,l={$s/3$}](6,0);\draw(1.5,1)to[R,l={$r+2s/3$}](3,3.5)to[R,l={$r+2s/3$}](4.5,1);\draw(3,3.5)to[R,l={$s/3$}](3,5);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node[above]at(3,5){$C$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿两个角部中心之间逐段计算电阻}\par\nobreak
+图\ref{fig:c4:example:11:p} 中三个角部中心之间，每条连接都含两段 $s/3$ 与中间的 $r$，所以中心三角形每边为 $r+2s/3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复原星臂并建立线性递推}\par\nobreak
+把这个等边三角形转成星形，每臂为 $(r+2s/3)/3$；再与外端到角部中心的 $s/3$ 串联，应恢复原星臂 $s$，
+\[
+ s=\frac s3+\frac13\left(r+\frac{2s}{3}\right)
+ =\frac{5s}{9}+\frac r3.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两端电阻并检查有限层收敛}\par\nobreak
+因此 $s=3r/4$，任意两外端电阻为 $2s=3r/2$。最外普通三角形若仅保留周边导线，端口电阻为 $2r$；递归连接提供内部通道，所得更小。由于递推 $s\mapsto5s/9+r/3$ 的斜率为 $5/9<1$，有限层数的星臂也确实收敛到此正固定点。\end{solution}
+\begin{question}\begin{example}[双导轨同一轨上的两端口]\label{c4:example:12}
+双向无限双导轨每边电阻 $r$。端口均在上轨，间隔 $n$ 段。求等效电阻，并给出相邻情形。
+\end{example}
+\typeout{ECFIG:fig:c4:example:12:s}\fig{fig:c4:example:12:s}{题设：双导轨同一轨上的两端口}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$r$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)to[R,l_={$r$}](1.7,0);\draw(1.7,0)to[R,l={$r$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)to[R,l_={$r$}](3.4,0);\draw(3.4,0)to[R,l={$r$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)to[R,l_={$r$}](5.1,0);\draw(5.1,0)to[R,l={$r$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\node[left]at(0,2){$A$};\node[left]at(0,0){$B$};\draw[dashed](-1,0)--(0,0)(-1,2)--(0,2);\node at(5.1,2.8){$A_n$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把真实上轨源汇分解成同向注入}\par\nobreak
+按 图\ref{fig:c4:example:12:s} 将实际源汇分成同向与反向两组。两轨同向激励在零列各注入 $I/2$、$n$ 列各流出 $I/2$，两轨之间无电流，每轨的端口压降为 $nIr/2$。
+\typeout{ECFIG:fig:c4:example:12:p}\fig{fig:c4:example:12:p}{同向与反向两组实际注入相加；中间若干单元省略，各横档仍保留}{\begin{tikzpicture}
+\begin{scope}[yshift=0cm]
+\draw(0,0)to[R,l={$r$}](2,0);\draw[dashed](2,0)--(4,0);\draw(4,0)to[R,l={$r$}](6,0);
+\draw(0,3)to[R,l={$r$}](2,3);\draw[dashed](2,3)--(4,3);\draw(4,3)to[R,l={$r$}](6,3);
+\draw(0,3)to[R](0,0);
+\draw(2,3)to[R](2,0);
+\draw(4,3)to[R](4,0);
+\draw(6,3)to[R](6,0);
+\draw[flow](-1.5,3)--(0,3)node[midway,above]{$I/2$};
+\draw[flow](-1.5,0)--(0,0)node[midway,below]{$I/2$};
+\draw[flow](6,3)--(7.5,3)node[midway,above]{$I/2$};
+\draw[flow](6,0)--(7.5,0)node[midway,below]{$I/2$};
+\node at(3,4.2){同向部分：两轨相同};\node[below]at(0,-.8){$0$ 列};\node[below]at(6,-.8){$n$ 列};\end{scope}
+\begin{scope}[yshift=-6.5cm]
+\draw(0,0)to[R,l={$r$}](2,0);\draw[dashed](2,0)--(4,0);\draw(4,0)to[R,l={$r$}](6,0);
+\draw(0,3)to[R,l={$r$}](2,3);\draw[dashed](2,3)--(4,3);\draw(4,3)to[R,l={$r$}](6,3);
+\draw(0,3)to[R](0,0);
+\draw(2,3)to[R](2,0);
+\draw(4,3)to[R](4,0);
+\draw(6,3)to[R](6,0);
+\draw[flow](-1.5,3)--(0,3)node[midway,above]{$I/2$};
+\draw[flow](0,0)--(-1.5,0)node[midway,below]{$I/2$};
+\draw[flow](6,3)--(7.5,3)node[midway,above]{$I/2$};
+\draw[flow](7.5,0)--(6,0)node[midway,below]{$I/2$};
+\node at(3,4.2){反向部分：上下相反};\node[below]at(0,-.8){$0$ 列};\node[below]at(6,-.8){$n$ 列};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两个反向横档源求差模电势}\par\nobreak
+图\ref{fig:c4:example:12:p} 的反向部分是零列强度 $I/2$ 的横档源与 $n$ 列强度 $-I/2$ 的横档源。单个强度 $J$ 的横档源差电势为 $(Jr/\sqrt3)\lambda^{|k|}$，上轨电势是其一半，其中 $\lambda=2-\sqrt3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将两组端口压降相加}\par\nobreak
+将两个源强分别代入，上轨零列的反向电势为
+$V_0^{(-)}=\dfrac{Ir}{4\sqrt3}(1-\lambda^n)$，上轨第 $n$ 列为
+$V_n^{(-)}=\dfrac{Ir}{4\sqrt3}(\lambda^n-1)=-V_0^{(-)}$。两者相减得到反向部分的端口压降 $Ir(1-\lambda^n)/(2\sqrt3)$。再加同向部分的 $nIr/2$ 并除以实际端口电流 $I$，总电阻
+\[
+ R_n^{\text{同轨}}=\frac{nr}{2}+\frac{r}{2\sqrt3}(1-\lambda^n).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相邻值并检查长距离纵向压降}\par\nobreak
+相邻 $n=1$ 时得到 $r-r/(2\sqrt3)$。当 $n\to\infty$，主项是 $nr/2$，与两条有阻导轨长距离并联一致；它不同于公共理想回流线模型中的有限饱和值。\end{solution}
+\begin{question}\begin{example}[三导轨同列的不同轨端口]\label{c4:example:13}
+三条无限导轨每段电阻 $r$，同一列三个节点两两以 $r$ 连接。求同列上、下两个节点间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:13:s}\fig{fig:c4:example:13:s}{题设：三导轨同列的不同轨端口}{\begin{tikzpicture}[scale=.88]
+\draw[dashed](-1.8,1)--(-.7,1)(5.3,1)--(6.4,1);
+\draw[world](0,2)--(0,0)--(-0.7,1)--(0,2);\fill(0,2)circle(1.2pt);\draw[world](0,2)--(2,2);\fill(-0.7,1)circle(1.2pt);\draw[world](-0.7,1)--(1.3,1);\fill(0,0)circle(1.2pt);\draw[world](0,0)--(2,0);\draw[world](2,2)--(2,0)--(1.3,1)--(2,2);\fill(2,2)circle(1.2pt);\draw[world](2,2)--(4,2);\fill(1.3,1)circle(1.2pt);\draw[world](1.3,1)--(3.3,1);\fill(2,0)circle(1.2pt);\draw[world](2,0)--(4,0);\draw[world](4,2)--(4,0)--(3.3,1)--(4,2);\fill(4,2)circle(1.2pt);\draw[world](4,2)--(6,2);\fill(3.3,1)circle(1.2pt);\draw[world](3.3,1)--(5.3,1);\fill(4,0)circle(1.2pt);\draw[world](4,0)--(6,0);\draw[world](6,2)--(6,0)--(5.3,1)--(6,2);\fill(6,2)circle(1.2pt);\fill(5.3,1)circle(1.2pt);\fill(6,0)circle(1.2pt);\draw[dashed](-1.8,2)--(0,2)(6,2)--(7.2,2)(-1.8,0)--(0,0)(6,0)--(7.2,0);\node at(3,-.9){每条线代表电阻 $r$，仅实心点相接，左右无限延伸};\node[above]at(0,2){$A$};\node[below]at(0,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由上下端点交换确定中间轨零电势}\par\nobreak
+图\ref{fig:c4:example:13:s} 取上端注入 $I$、下端流出 $I$，中间轨的所有节点在交换上下端并反转电势后保持，因此电势为零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留本列两条通路后合并横档}\par\nobreak
+每列上、下直接电阻为 $r$，经中间节点的两电阻串联为 $2r$，同列两者并联为 $R=2r/3$。
+\typeout{ECFIG:fig:c4:example:13:p}\fig{fig:c4:example:13:p}{解答过程：三导轨同列的不同轨端口}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[R,l={$2r/3$}](0.0,2);\draw(0.0,2)to[R,l={$r$}](1.7,2);\draw(0.0,0)to[R,l_={$r$}](1.7,0);\draw(1.7,0)to[R,l={$2r/3$}](1.7,2);\draw(1.7,2)to[R,l={$r$}](3.4,2);\draw(1.7,0)to[R,l_={$r$}](3.4,0);\draw(3.4,0)to[R,l={$2r/3$}](3.4,2);\draw(3.4,2)to[R,l={$r$}](5.1,2);\draw(3.4,0)to[R,l_={$r$}](5.1,0);\draw(5.1,0)to[R,l={$2r/3$}](5.1,2);\draw[dashed](5.1,0)--(6.1,0)(5.1,2)--(6.1,2);\node[left]at(0,2){$A$};\node[left]at(0,0){$B$};\draw[dashed](-1,0)--(0,0)(-1,2)--(0,2);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入一般双向梯形的端口电阻}\par\nobreak
+图\ref{fig:c4:example:13:p} 因此成为两条纵向每段 $r$、横档为 $2r/3$ 的双向梯形。代入一般横档输入式，
+\[
+ R_{AB}=\frac{r(2r/3)}{\sqrt{r^2+2r(2r/3)}}
+ =\frac{2r}{\sqrt{21}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对消去中间轨的适用边界}\par\nobreak
+中间轨没有纵向电流，折去它不会丢失该激励下的电流；若端口改在同一上轨，该零电势条件就不成立，需重新分析。\end{solution}
+\begin{question}\begin{example}[三导轨同轨相邻端口]\label{c4:example:14}
+三导轨网络规则与上一题相同。$A,C$ 位于同一导轨的相邻两列，求端口电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:14:s}\fig{fig:c4:example:14:s}{题设：三导轨同轨相邻端口}{\begin{tikzpicture}[scale=.88]
+\draw[dashed](-1.8,1)--(-.7,1)(5.3,1)--(6.4,1);
+\draw[world](0,2)--(0,0)--(-0.7,1)--(0,2);\fill(0,2)circle(1.2pt);\draw[world](0,2)--(2,2);\fill(-0.7,1)circle(1.2pt);\draw[world](-0.7,1)--(1.3,1);\fill(0,0)circle(1.2pt);\draw[world](0,0)--(2,0);\draw[world](2,2)--(2,0)--(1.3,1)--(2,2);\fill(2,2)circle(1.2pt);\draw[world](2,2)--(4,2);\fill(1.3,1)circle(1.2pt);\draw[world](1.3,1)--(3.3,1);\fill(2,0)circle(1.2pt);\draw[world](2,0)--(4,0);\draw[world](4,2)--(4,0)--(3.3,1)--(4,2);\fill(4,2)circle(1.2pt);\draw[world](4,2)--(6,2);\fill(3.3,1)circle(1.2pt);\draw[world](3.3,1)--(5.3,1);\fill(4,0)circle(1.2pt);\draw[world](4,0)--(6,0);\draw[world](6,2)--(6,0)--(5.3,1)--(6,2);\fill(6,2)circle(1.2pt);\fill(5.3,1)circle(1.2pt);\fill(6,0)circle(1.2pt);\draw[dashed](-1.8,2)--(0,2)(6,2)--(7.2,2)(-1.8,0)--(0,0)(6,0)--(7.2,0);\node at(3,-.9){每条线代表电阻 $r$，仅实心点相接，左右无限延伸};\node[above]at(0,2){$A$};\node[above]at(2,2){$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{交换另外两轨确定逐列等势合并}\par\nobreak
+图\ref{fig:c4:example:14:s} 的端口都在上轨，另两轨可互换，因此对应节点等势，可以合并。合并后下导轨每段为 $r/2$，上下连接的两条 $r$ 并联为横档 $r/2$，上导轨仍为 $r$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求尾部电阻和本地含横档的看入电阻}\par\nobreak
+设从某一截面先经过上下导轨段再进入尾部的输入电阻为 $X$，把本列横档与该尾部并联后的看入电阻另记为 $Y$。先在下图中识别两种切口，再建立方程。
+\fig{c4:e14:merged}{另两条轨逐列等势合并后，上轨为 $r$，下轨与横档分别为两个 $r$ 的并联}{\begin{tikzpicture}
+
+\foreach \x in {0,3,6}{\draw(\x,3)to[R,l={$r/2$}](\x,0);}
+\foreach \x in {0,3}{\draw(\x,3)to[R,l={$r$}]({\x+3},3);\draw(\x,0)to[R,l_={$r/2$}]({\x+3},0);}
+\foreach \y in {0,3}{\draw[dashed](-1,\y)--(0,\y)(6,\y)--(7,\y);}
+\fill(0,3)circle(1.5pt)node[above]{$A$};\fill(3,3)circle(1.5pt)node[above]{$C$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按不等纵向轨段建立尾部递推}\par\nobreak
+图\ref{c4:e14:merged}中，一对纵向轨段在差模回路中合计为 $r+r/2=3r/2$。尾部变量 $X$ 必须从这对轨段之前看入，因而
+\[
+ X=\frac{3r}{2}+\frac{rX}{r+2X}.
+\]
+两边乘以 $r+2X$，有 $rX+2X^2=3r^2/2+4rX$，整理为 $4X^2-6rX-3r^2=0$。二次公式给
+$X=[6r\pm\sqrt{36r^2+48r^2}]/8$，取正根 $X=(3+\sqrt{21})r/4$。本地含横档的看入电阻则为
+$Y=(r/2)\parallel X=X-3r/2=(\sqrt{21}-3)r/4$。
+
+\typeout{ECFIG:fig:c4:example:14:p}\fig{fig:c4:example:14:p}{解答过程：三导轨同轨相邻端口}{\begin{tikzpicture}[scale=.88]
+\draw(0,2)to[R,l={$r$}](4,2);\draw(0,2)to[R,l={$Y$}](0,0)to[R,l_={$r/2$}](4,0)to[R,l={$Y$}](4,2);\node[above]at(0,2){$A$};\node[above]at(4,2){$C$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把直接上边与绕行支路并联}\par\nobreak
+图\ref{fig:c4:example:14:p} 中直接上边 $r$ 与绕行通道 $Y+r/2+Y$ 并联，
+\[
+ R_{AC}=r\parallel(2Y+r/2)
+ =r\parallel\frac{\sqrt{21}-2}{2}r
+ =\left(1-\frac2{\sqrt{21}}\right)r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分本题与同列异轨端口的简化}\par\nobreak
+这次合并的是另外两条等价导轨，与上一题把中间轨置零的物理理由不同。改换端口后应重新判断，而不能继续使用横档 $2r/3$ 的简化。\end{solution}
+\begin{question}\begin{example}[三导轨跨列异轨端口]\label{c4:example:15}
+三导轨网络每边电阻 $r$，$A$ 为零列上轨节点，$D$ 为第一列中轨节点。求 $A,D$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:15:s}\fig{fig:c4:example:15:s}{题设：三导轨跨列异轨端口}{\begin{tikzpicture}[scale=.88]
+\draw[dashed](-1.8,1)--(-.7,1)(5.3,1)--(6.4,1);
+\draw[world](0,2)--(0,0)--(-0.7,1)--(0,2);\fill(0,2)circle(1.2pt);\draw[world](0,2)--(2,2);\fill(-0.7,1)circle(1.2pt);\draw[world](-0.7,1)--(1.3,1);\fill(0,0)circle(1.2pt);\draw[world](0,0)--(2,0);\draw[world](2,2)--(2,0)--(1.3,1)--(2,2);\fill(2,2)circle(1.2pt);\draw[world](2,2)--(4,2);\fill(1.3,1)circle(1.2pt);\draw[world](1.3,1)--(3.3,1);\fill(2,0)circle(1.2pt);\draw[world](2,0)--(4,0);\draw[world](4,2)--(4,0)--(3.3,1)--(4,2);\fill(4,2)circle(1.2pt);\draw[world](4,2)--(6,2);\fill(3.3,1)circle(1.2pt);\draw[world](3.3,1)--(5.3,1);\fill(4,0)circle(1.2pt);\draw[world](4,0)--(6,0);\draw[world](6,2)--(6,0)--(5.3,1)--(6,2);\fill(6,2)circle(1.2pt);\fill(5.3,1)circle(1.2pt);\fill(6,0)circle(1.2pt);\draw[dashed](-1.8,2)--(0,2)(6,2)--(7.2,2)(-1.8,0)--(0,0)(6,0)--(7.2,0);\node at(3,-.9){每条线代表电阻 $r$，仅实心点相接，左右无限延伸};\node[above]at(0,2){$A$};\node[above left]at(1.3,1){$D$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求三轨相同的平均电流与平均压降}\par\nobreak
+图\ref{fig:c4:example:15:s} 的零列上轨注入 $I$、第一列中轨流出 $I$。先分平均注入与偏差。每列平均电流为总注入的三分之一，同向部分在零列到第一列的每条轨上均产生电流 $I/3$，故端口平均电势差为 $Ir/3$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{列出两列偏差边界并用平移响应求电势}\par\nobreak
+零列偏差注入向量为 $(2I/3,-I/3,-I/3)$；第一列为 $(I/3,-2I/3,I/3)$。用正文求出的 $G_n=r\lambda^{|n|}/\sqrt{21}$，$\lambda=(5-\sqrt{21})/2$，
+\[
+ \delta_{A}=\frac{2I}3G_0+\frac I3G_1,\qquad
+ \delta_D=-\frac I3G_1-\frac{2I}3G_0.
+\]
+\typeout{ECFIG:fig:c4:example:15:p}\fig{fig:c4:example:15:p}{跨列异轨源汇的偏差边界；正值表示注入、负值表示流出，每列三分量之和为零}{\begin{tikzpicture}
+\draw[dashed](-2,1.5)--(-1,1.5)(4,1.5)--(5,1.5);
+
+\foreach \x in {0,5}{
+\draw[world](\x,3)--({\x-1},1.5)--(\x,0)--(\x,3);
+\foreach \dx/\y in {0/3,-1/1.5,0/0}{\fill({\x+\dx},\y)circle(1.6pt);}
+}
+\draw[world](0,3)--(5,3)(-1,1.5)--(4,1.5)(0,0)--(5,0);
+\node[above]at(0,3){$A:+2I/3$};\node[left]at(-1,1.5){$-I/3$};\node[below]at(0,0){$-I/3$};
+\node[above]at(5,3){$+I/3$};\node[above left]at(4,1.5){$D:-2I/3$};\node[below]at(5,0){$+I/3$};
+\node at(2.5,4.2){零列 \hspace{3cm} 第一列};
+\node at(2.5,-1.3){每条线为电阻 $r$，未标点的交叉处不连接；其余各列继续延伸};
+\draw[dashed](-1,3)--(0,3)(5,3)--(6,3)(-1,0)--(0,0)(5,0)--(6,0);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相加平均与偏差两部分的端口电压}\par\nobreak
+图\ref{fig:c4:example:15:p} 中两端偏差之差为 $I(4G_0+2G_1)/3$。所以
+\[
+ R_{AD}=\frac r3+\frac{r}{3\sqrt{21}}(4+2\lambda)
+ =\frac r3+\frac{r(9-\sqrt{21})}{3\sqrt{21}}
+ =\frac{3r}{\sqrt{21}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对跨列与异轨效应是否均被保留}\par\nobreak
+该结果同时保留平均纵向电流和横向不均匀部分；只按同列横档计算会遗漏跨列压降。\end{solution}
+\begin{question}\begin{example}[无限嵌套中点正方形]\label{c4:example:16}
+最外正方形每边电阻 $r$，连接各边中点形成内正方形并递归。导线电阻与长度成正比，所有接点连接。求最外一条对角线两端 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:16:s}\fig{fig:c4:example:16:s}{题设：无限嵌套中点正方形}{\begin{tikzpicture}[scale=.88]
+\coordinate(A)at(0,0);\coordinate(B)at(5,0);\coordinate(C)at(5,5);\coordinate(D)at(0,5);\draw[world](A)--(B)--(C)--(D)--cycle;\foreach \k in {1,...,6}{\coordinate(P)at($(A)!.5!(B)$);\coordinate(Q)at($(B)!.5!(C)$);\coordinate(S)at($(C)!.5!(D)$);\coordinate(T)at($(D)!.5!(A)$);\draw[world](P)--(Q)--(S)--(T)--cycle;\coordinate(A)at(P);\coordinate(B)at(Q);\coordinate(C)at(S);\coordinate(D)at(T);}\node[below left]at(0,0){$A$};\node[above right]at(5,5){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用保持端口的反射确定两组边中点等势}\par\nobreak
+图\ref{fig:c4:example:16:s} 中关于对角线 $AB$ 的反射保持端口，故靠近 $A$ 的两个边中点等势，靠近 $B$ 的两个中点也等势。外端 $A$ 到前一中点组的两段 $r/2$ 并联为 $r/4$，另一端同样为 $r/4$。外部另两个角各形成一条总电阻 $r$ 的中间通道，二者并联为 $r/2$。
+
+\fig{c4:e16:groups}{反射保持外端口 $A,B$，内正方形四端分成两个等势组}{\begin{tikzpicture}[scale=.88]
+\coordinate(A)at(0,0);\coordinate(B)at(5,0);\coordinate(C)at(5,5);\coordinate(D)at(0,5);\draw[world](A)--(B)--(C)--(D)--cycle;\foreach \k in {1,...,6}{\coordinate(P)at($(A)!.5!(B)$);\coordinate(Q)at($(B)!.5!(C)$);\coordinate(S)at($(C)!.5!(D)$);\coordinate(T)at($(D)!.5!(A)$);\draw[world](P)--(Q)--(S)--(T)--cycle;\coordinate(A)at(P);\coordinate(B)at(Q);\coordinate(C)at(S);\coordinate(D)at(T);}\node[below left]at(0,0){$A$};\node[above right]at(5,5){$B$};
+
+\fill[blue](2.5,0)circle(2pt)node[below]{$P$};\fill[blue](0,2.5)circle(2pt)node[left]{$T$};
+\fill[orange!80!black](5,2.5)circle(2pt)node[right]{$Q$};\fill[orange!80!black](2.5,5)circle(2pt)node[above]{$S$};
+\node at(2.5,-1.2){$P,T$ 等势，$Q,S$ 等势；每段外边半段为 $r/2$};
+\end{tikzpicture}}
+
+图\ref{c4:e16:groups}中 $A$ 接到 $P,T$，$B$ 接到 $Q,S$；不能把内正方形的任意一条对角线直接当成这两个双节点组之间的电阻。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用四端对称关系计算内图组间电阻}\par\nobreak
+设原对角线端口电阻为 $X$。内正方形尺度缩为 $1/\sqrt2$，其对角线电阻为 $D=X/\sqrt2$。在图\ref{c4:e16:groups}的内图上，先作从 $P$ 注入 $I$、从 $S$ 流出 $I$ 的辅助问题。以平均电势为零，令 $U=ID$，则按 $P,Q,S,T$ 次序的四端电势为 $(U/2,0,-U/2,0)$；另两端为零来自交换 $P,S$ 的反射。
+
+再作从 $T$ 注入 $I$、从 $Q$ 流出 $I$ 的辅助问题，电势依次为 $(0,-U/2,0,U/2)$。两组相加后，$P,T$ 同为 $U/2$，$Q,S$ 同为 $-U/2$，恰好允许所需合并。组间电压为 $U$，每组总电流为 $2I$，所以内图组间电阻为 $U/(2I)=D/2=X/(2\sqrt2)$。这里的 $1/2$ 来自两组实际源汇叠加，与几何缩放因子不同。
+\typeout{ECFIG:fig:c4:example:16:p}\fig{fig:c4:example:16:p}{解答过程：无限嵌套中点正方形}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/4$}](2,0);\draw(2,0)to[R,l={$Y$}](4,0);\draw(4,0)to[R,l={$r/4$}](6,0);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node at(3,1){$Y=(r/2)\parallel[X/(2\sqrt2)]$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按几何缩放建立固定点}\par\nobreak
+图\ref{fig:c4:example:16:p} 的串并联给出
+\[
+ X=\frac r2+\left(\frac r2\parallel\frac{X}{2\sqrt2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求正根并核对代数变形}\par\nobreak
+内层并联为 $rX/[2(\sqrt2r+X)]$，所以 $2X=r+rX/(\sqrt2r+X)$。去分母并展开，
+\[
+ 2X(\sqrt2r+X)=r(\sqrt2r+X)+rX,
+ \qquad X^2+(\sqrt2-1)rX-\frac{r^2}{\sqrt2}=0.
+\]
+判别式为 $[(\sqrt2-1)^2+4/\sqrt2]r^2=(3-2\sqrt2+2\sqrt2)r^2=3r^2$，正根
+\[
+ X=\frac{1+\sqrt3-\sqrt2}{2}r\approx0.658919r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以有限网络序列检验两个缩放因子}\par\nobreak
+有限截断依次为 $r,0.707107r,0.666667r,\ldots$，单调下降到上述值，核对了几何缩放和四端分组的因子。\end{solution}
+\begin{question}\begin{example}[有限双导轨的端口电阻]\label{c4:example:17}
+双导轨有节点 $n=0,1,\ldots,N$，各相邻轨段和各竖档电阻均为 $r$，$n=N$ 外不再延伸。电流从 $n=0$ 上节点流入、下节点流出。求两轨电势差分布和端口电阻，并取无限极限。
+\end{example}
+\typeout{ECFIG:fig:c4:example:17:s}\fig{fig:c4:example:17:s}{题设：有限双导轨的端口电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \x in{0,2,4,6}{\draw(\x,0)to[R,l={$r$}](\x,2);}\foreach \x in{0,2,4}{\draw(\x,0)to[R](\x+2,0);\draw(\x,2)to[R](\x+2,2);}\node at(0,2.7){$n=0$};\node at(6,2.7){$n=N$，远端开路};\node at(3,-.8){上下轨各段与竖档均为 $r$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{同时保留两个递推根并列真实远端边界}\par\nobreak
+在图\ref{fig:c4:example:17:s}中令第 $n$ 对节点势差为 $v_n$，上下对称使其相对平均值为 $\pm v_n/2$。
+先考虑 $N\ge1$。内部节点方程给 $v_{n+1}-4v_n+v_{n-1}=0$，特征根为 $\lambda=2-\sqrt3$ 与 $1/\lambda$。
+远端上节点只有一个轨段和一个竖档。取离开该节点为正，两个电流分别为
+$(v_N-v_{N-1})/(2r)$ 和 $v_N/r$，所以
+\[
+ \frac{v_N-v_{N-1}}{2r}+\frac{v_N}{r}=0,
+ \qquad 3v_N-v_{N-1}=0.
+\]
+这里系数由内部的4变为3，正是末端不再连接下一段导轨的结果。
+\typeout{ECFIG:fig:c4:example:17:p}\fig{fig:c4:example:17:p}{解答过程：有限双导轨的端口电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \x in{0,2,4,6}{\draw(\x,0)to[R,l={$r$}](\x,2);}\foreach \x in{0,2,4}{\draw(\x,0)to[R](\x+2,0);\draw(\x,2)to[R](\x+2,2);}\node at(0,2.7){$n=0$};\node at(6,2.7){$n=N$，远端开路};\node at(3,-.8){上下轨各段与竖档均为 $r$};\draw[flow](-1,2)--(0,2)node[midway,above]{$I$};\draw[flow](0,0)--(-1,0);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由远端条件确定增长解系数}\par\nobreak
+将通解 $v_n=A\lambda^n+B\lambda^{-n}$ 代入远端条件，分别合并两个系数：
+\[
+ A\lambda^{N-1}(3\lambda-1)+B\lambda^{-N}(3-\lambda)=0,
+\]
+\[
+ \frac BA=\lambda^{2N-1}\frac{1-3\lambda}{3-\lambda}
+ =\lambda^{2N+1}.
+\]
+最后一步用到 $\lambda^2=4\lambda-1$，它给出
+$1-3\lambda=\lambda^2(3-\lambda)$。有限网络中的增长解系数虽小，却不能提前删掉。
+于是
+\[
+ v_n=A[\lambda^n+\lambda^{2N+1-n}],\quad
+ I=\frac{v_0}{r}+\frac{v_0-v_1}{2r}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用入口守恒确定端口电阻}\par\nobreak
+在图\ref{fig:c4:example:17:p}中，入口电流既可走首竖档也可走上轨。
+代入 $v_0,v_1$，先保留电流与 $A$ 的关系：
+\begin{align*}
+ I&=\frac A{2r}\left[(3-\lambda)+\lambda^{2N}(3\lambda-1)\right]\\
+ &=\frac{A(1-\lambda)}{2r\lambda}(1-\lambda^{2N+2}).
+\end{align*}
+第二行分别用了 $3-\lambda=(1-\lambda)/\lambda$ 和
+$3\lambda-1=-\lambda(1-\lambda)$。因此
+\[
+ R_N=\frac{v_0}{I}
+ =\frac{2r\lambda(1+\lambda^{2N+1})}
+ {(1-\lambda)(1-\lambda^{2N+2})}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查最短截断与半无限极限}\par\nobreak
+题目要求的势差分布可直接用输入电流表示，不再留下未确定的系数 $A$：
+\[
+ \boxed{v_n=IR_N\frac{\lambda^n+\lambda^{2N+1-n}}
+ {1+\lambda^{2N+1}}},\qquad 0\le n\le N.
+\]
+$N=0$ 时没有轨段，应直接得到 $R_0=r$、$v_0=Ir$；上述最终通式用根关系化简也给出这一结果。
+$N\to\infty$ 时，$R_\infty=2r\lambda/(1-\lambda)=(\sqrt3-1)r$，
+并且对固定 $n$ 有 $v_n=IR_\infty\lambda^n$。
+这个端口包含首竖档，与先经过两根轨段才到首竖档的定义不同，两种结果相差的串联段必须在图中明确。\end{solution}
+\begin{question}\begin{example}[五个六电阻环的三端递推]\label{c4:example:18}
+五个相同六边形环每段电阻 $R$，节点依次 $1$ 至 $6$。$D_{j+1}$ 的 $1,3,5$ 分别与 $D_j$ 的 $2,4,6$ 以理想线相连，$j=1,\ldots,4$。求在 $D_1$ 和 $D_5$ 的 $1,3$ 间分别测得的电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:18:s}\fig{fig:c4:example:18:s}{题设：五个六电阻环的三端递推}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0)--(2.1,0);\draw[world](0.0,0)--(2.1,4);\draw[world](0.0,2)--(2.1,2);\draw[world](0.0,2)--(2.1,0);\draw[world](0.0,4)--(2.1,4);\draw[world](0.0,4)--(2.1,2);\draw[world](2.1,0)--(4.2,0);\draw[world](2.1,0)--(4.2,4);\draw[world](2.1,2)--(4.2,2);\draw[world](2.1,2)--(4.2,0);\draw[world](2.1,4)--(4.2,4);\draw[world](2.1,4)--(4.2,2);\draw[world](4.2,0)--(6.300000000000001,0);\draw[world](4.2,0)--(6.300000000000001,4);\draw[world](4.2,2)--(6.300000000000001,2);\draw[world](4.2,2)--(6.300000000000001,0);\draw[world](4.2,4)--(6.300000000000001,4);\draw[world](4.2,4)--(6.300000000000001,2);\draw[world](6.300000000000001,0)--(8.4,0);\draw[world](6.300000000000001,0)--(8.4,4);\draw[world](6.300000000000001,2)--(8.4,2);\draw[world](6.300000000000001,2)--(8.4,0);\draw[world](6.300000000000001,4)--(8.4,4);\draw[world](6.300000000000001,4)--(8.4,2);\draw[world](8.4,0)--(10.5,0);\draw[world](8.4,0)--(10.5,4);\draw[world](8.4,2)--(10.5,2);\draw[world](8.4,2)--(10.5,0);\draw[world](8.4,4)--(10.5,4);\draw[world](8.4,4)--(10.5,2);\fill(0.0,0)circle(1.5pt);\fill(0.0,2)circle(1.5pt);\fill(0.0,4)circle(1.5pt);\node[above]at(0.0,4.3){$0$};\fill(2.1,0)circle(1.5pt);\fill(2.1,2)circle(1.5pt);\fill(2.1,4)circle(1.5pt);\node[above]at(2.1,4.3){$1$};\fill(4.2,0)circle(1.5pt);\fill(4.2,2)circle(1.5pt);\fill(4.2,4)circle(1.5pt);\node[above]at(4.2,4.3){$2$};\fill(6.300000000000001,0)circle(1.5pt);\fill(6.300000000000001,2)circle(1.5pt);\fill(6.300000000000001,4)circle(1.5pt);\node[above]at(6.300000000000001,4.3){$3$};\fill(8.4,0)circle(1.5pt);\fill(8.4,2)circle(1.5pt);\fill(8.4,4)circle(1.5pt);\node[above]at(8.4,4.3){$4$};\fill(10.5,0)circle(1.5pt);\fill(10.5,2)circle(1.5pt);\fill(10.5,4)circle(1.5pt);\node[above]at(10.5,4.3){$5$};\node at(5.3,-.9){界面 $0$ 为 $D_1$ 奇数端组，界面 $4$ 为 $D_5$ 奇数端组};\node at(5.3,-1.6){每条线电阻 $R$，只有黑点相接};\node[left]at(0,0){$1$};\node[left]at(0,2){$3$};\node[left]at(0,4){$5$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{为六边形后续网络保留完整等臂星形}\par\nobreak
+图\ref{fig:c4:example:18:s} 每环奇数三点为输入、偶数三点为输出。设后续网络从偶数三点看入可等效为等臂星形，臂阻 $x$；添一个六边形后输入等效星臂为 $y$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际加载环求两个等势偶节点}\par\nobreak
+给三个输入势 $U,0,0$，与高势点邻接的两个偶点可反射互换，电势同为 $v$，第三偶点为 $w$，暂记负载星心势为 $s$。星心没有外部注入，故 $2v+w=3s$。把三个偶点的守恒方程相加：六条环边一共贡献 $[2(2v+w)-2U]/R$，三条星臂贡献 $(2v+w-3s)/x=0$。所以 $2v+w=U$，进而 $s=U/3$。这一步由实际守恒确定星心势，不能在不对称的 $U,0,0$ 激励下直接说三个偶点等势。
+
+对任一高势点旁的偶点列式，
+\[
+ \frac{v-U}{R}+\frac vR+\frac{v-U/3}{x}=0
+ \quad\Longrightarrow\quad(2x+R)v=U(x+R/3),
+\]
+从而 $v=U(x+R/3)/(2x+R)$。
+\typeout{ECFIG:fig:c4:example:18:p}\fig{fig:c4:example:18:p}{一个六电阻环的偶数三端接等臂星形；三个奇数输入势取 $U,0,0$}{\begin{tikzpicture}
+
+\coordinate(P1)at(0,0);\coordinate(P2)at(4,0);\coordinate(P3)at(6,3);
+\coordinate(P4)at(4,6);\coordinate(P5)at(0,6);\coordinate(P6)at(-2,3);\coordinate(O)at(2,3);
+\foreach \a/\b in {1/2,2/3,3/4,4/5,5/6,6/1}{\draw(P\a)to[R,l={$R$}](P\b);}
+\foreach \q in {2,4,6}{\draw(P\q)to[R,l={$x$}](O);}
+\foreach \q/\lab/\pos in {1/{1:U}/below left,2/{2:v}/below right,3/{3:0}/right,4/{4:w}/above right,5/{5:0}/above left,6/{6:v}/left}{\fill(P\q)circle(1.5pt)node[\pos]{$\lab$};}
+\fill(O)circle(1.5pt)node[above=10pt]{$O:U/3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由输入电流反求新星臂递推}\par\nobreak
+图\ref{fig:c4:example:18:p}输入电流为
+$I=2(U-v)/R=2U(x+2R/3)/[R(2x+R)]$。等臂星形对应电流 $2U/(3y)$。两式相等并约去 $2U$，得到
+$1/(3y)=(3x+2R)/[3R(2x+R)]$，所以
+\[
+ y=\frac{R(2x+R)}{3x+2R}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从一个环的真实边界逐层递推}\par\nobreak
+只有一个开环时 $x\to\infty$，首臂 $x_1=2R/3$。逐层递推
+\[
+ \frac{x_1}R=\frac23,\quad\frac{x_2}R=\frac7{12},\quad
+ \frac{x_3}R=\frac{26}{45},\quad\frac{x_4}R=\frac{97}{168},\quad
+ \frac{x_5}R=\frac{362}{627}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算首端测量的两星臂串联}\par\nobreak
+故 $D_1$ 的 $1,3$ 间为两星臂串联，$R_{13}^{(D_1)}=724R/627$。
+
+\fig{c4:e18:internal-interface}{$D_5$ 的奇数三端同时接向左四环和本环；每组保留全部三端}{\begin{tikzpicture}
+
+\coordinate(L)at(0,0);\coordinate(R)at(6,0);
+\foreach \y/\lab in {3/1,0/3,-3/5}{
+\draw(L)to[R,l={$x_4$}](3,\y)to[R,l={$x_1$}](R);
+\fill(3,\y)circle(1.5pt)node[above right]{$\lab$};}
+\fill(L)circle(1.5pt)node[left]{左侧四环星心};\fill(R)circle(1.5pt)node[right]{本环星心};
+\node at(3,-4.2){两个中心均为三端平均电势，合并后逐臂并联};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算内部界面左右三端网络的并联}\par\nobreak
+图\ref{c4:e18:internal-interface}的三个共享端点是 $D_5$ 的 $1,3,5$。
+
+$D_5$ 奇数端组三点同时接左侧四环和右侧本环，其等效星臂分别为 $x_4$ 与 $x_1$。两星心均为三端平均势，等势合并后逐臂并联，故 $R_{13}^{(D_5)}=2(x_4\parallel x_1)=388R/627$。端口位于首端还是内部界面，边界负载不同，结果不能照搬。\end{solution}
+\begin{question}\begin{example}[圆环式自相似网络的固定点]\label{c4:example:19}
+每层有端点 $A,B,M$，外三支路各为 $r/3$，另在 $M,B$ 间接串联的 $r$、下一层同型网络、$r$。各层不断重复。求最外 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c4:example:19:s}\fig{fig:c4:example:19:s}{题设：圆环式自相似网络的固定点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/3$}](3,2)to[R,l={$r/3$}](6,0)to[R,l_={$r/3$}](0,0);\draw(3,2)--(3,3.5)to[R,l={$r$}](6,3.5)to[R,l={$X$}](8.5,3.5)to[R,l={$r$}](8.5,0)--(6,0);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node[above]at(3,2){$M$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从内到外保留三个支路的实际连接}\par\nobreak
+图\ref{fig:c4:example:19:s} 下一层端口电阻仍为 $X$，它与两根连接电阻组成 $X+2r$，跨接 $M,B$。所以 $M,B$ 间等效为 $(r/3)\parallel(X+2r)$，再与 $A,M$ 的 $r/3$ 串联，最后与 $A,B$ 直接支路 $r/3$ 并联。
+\typeout{ECFIG:fig:c4:example:19:p}\fig{fig:c4:example:19:p}{解答过程：圆环式自相似网络的固定点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/3$}](6,0);\draw(0,0)--(0,2)to[R,l={$r/3$}](3,2)to[R,l={$(r/3)\parallel(X+2r)$}](6,2)--(6,0);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{依次作内层并联、串联及最外并联}\par\nobreak
+图\ref{fig:c4:example:19:p} 令 $x=X/r$，用并联公式逐步写出
+\[
+ x=\left[3+\frac1{1/3+1/(3+1/(x+2))}\right]^{-1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{去分母后求被动代数根}\par\nobreak
+内层先化为 $(x+2)/(3x+7)$，再加 $1/3$ 得 $(6x+13)/[3(3x+7)]$；最外并联给 $x=(6x+13)/(27x+60)$，故 $27x^2+54x-13=0$。取正根
+\[
+ X=\left(\frac{2\sqrt{30}}9-1\right)r\simeq0.21716r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用有限截断和收缩性验证可实现固定点}\par\nobreak
+另一个根为负，不能表示无源电阻。还可按有限层截断核对收敛：无下一层时 $X_0=2r/9$；递推函数 $f(x)=(6x+13)/(27x+60)$ 满足
+\begin{align*}
+ f'(x)&=\frac{6(27x+60)-27(6x+13)}{(27x+60)^2}\\
+ &=\frac{162x+360-162x-351}{(27x+60)^2}\\
+ &=\frac9{(27x+60)^2}\le\frac1{400}\qquad(x\ge0).
+\end{align*}
+因此有限正电阻截断确实收敛到该唯一被动固定点。$X<r/3$ 与直接支路并联降低电阻一致，也检验外层并联没有漏算。\end{solution}

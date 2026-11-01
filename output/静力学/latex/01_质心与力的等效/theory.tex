@@ -1,0 +1,196 @@
+\section{力的作用效果与质心}
+力是物体之间的相互作用，受力图只画研究对象受到的外力。每个力都要有施力者、作用点和方向。重力、弹力、摩擦力由相互作用性质命名；支持力、拉力、回复力等称呼强调作用方式或效果，不能把同一相互作用用两种名称重复计入。
+
+\fig{s1deep:weights}{质量加权使质心偏向较重的一端}{\begin{tikzpicture}
+\draw[world](0,0)--(5,0);\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(5pt)node[above]{$m_2$};\fill[red](3.4,0)circle(2pt)node[above]{$C$};\draw[axis](-.5,-.7)--(5.8,-.7)node[right]{$x$};\draw[guide](0,0)--(0,-.7) (3.4,0)--(3.4,-.7) (5,0)--(5,-.7);\node[below]at(0,-.7){$x_1$};\node[below]at(3.4,-.7){$x_C$};\node[below]at(5,-.7){$x_2$};\draw[dim](0,.8)--(3.4,.8)node[midway,above]{$x_C-x_1$};\draw[dim](3.4,.8)--(5,.8)node[midway,above]{$x_2-x_C$};
+\end{tikzpicture}}
+图\ref{s1deep:weights}中，两质点的一阶矩关系可改写为 $m_1(x_C-x_1)=m_2(x_2-x_C)$。所以质心到两点的距离与质量成反比：右端较重时，质心靠近右端。两质量相等才可取坐标的算术平均。把这两个点推广为许多质点，再令每一份质量变成微元，就得到下面统一的定义。
+
+质心由质量分布定义。对离散质点，总质量$M=\sum_i m_i$，位置矢量满足$M\boldsymbol r_C=\sum_i m_i\boldsymbol r_i$；连续体则把求和改为积分：
+\[
+M=\int\dd m,\qquad
+\boldsymbol r_C=\frac1M\int\boldsymbol r\,\dd m.
+\]
+这一加权点为什么能用于重力计算，需要检查力与力矩两种效果。在均匀重力场中，$\boldsymbol g$对所有微元相同，故合重力为$M\boldsymbol g$；关于任意原点$O$，
+\[
+\boldsymbol M_O=\sum_i\boldsymbol r_i\times m_i\boldsymbol g
+=\left(\sum_i m_i\boldsymbol r_i\right)\times\boldsymbol g
+=\boldsymbol r_C\times M\boldsymbol g.
+\]
+所以把总重力画在质心$C$，同时保持合力与合力矩。沿重力作用线移动这个等效力也不改变力矩，但质心作为质量加权点的位置已由上式确定。重心按重力等效定义，在均匀重力场中可取与质心重合；若$g$随位置显著改变，就不能从积分中提出同一个$\boldsymbol g$。质心还可能位于物体的空隙，例如圆环中心，等效受力点不要求那里实际存在材料。
+
+先利用对称性能减少积分：对称分布的质心必在对称轴或对称面上，多条对称轴相交时可直接确定交点。但形状对称而密度不对称时，不能仅凭边界判断。拆分法把各部分先等效成其质心处的质点，再对这些点作质量加权；不能用各部分质心的普通平均代替。
+
+\fig{fig:s1:centroid}{分布重力与集中重力保持相同的合力和力矩}{\begin{tikzpicture}
+\begin{scope}\draw[fill=blue!5](0,0)--(3,0)--(.75,2.25)--cycle;\foreach \x/\y/\l in {.45/.4/.7,1.2/.6/.85,1.9/.3/.6,.8/1.3/.65}{\fill(\x,\y)circle(1.5pt);\draw[force,blue](\x,\y)--++(0,-\l);}\node at(1.2,2.8){微元 $\dd m$ 各受 $g\dd m$};\node at(1.2,-1.2){$\sum\bm r_i\times m_i\bm g$};\end{scope}
+\begin{scope}[xshift=5cm]\draw[fill=blue!5](0,0)--(3,0)--(.75,2.25)--cycle;\fill(1.25,.75)circle(2pt)node[right]{$C_M$};\draw[force,red](1.25,.75)--(1.25,-.9)node[right]{$Mg$};\node at(1.2,2.8){均匀重力场的等效作用};\node at(1.2,-1.5){$\bm r_C\times M\bm g$};\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:s1:centroid}中每个质量元的重力沿同一竖直方向，合力大小等于总重，关于原点的力矩则按各元水平位置加权。两者共同确定质心的重力作用线；仅求出合力大小，尚不能确定等效作用位置。
+
+\section{微元的选择与挖补法}
+质量微元必须与几何维度匹配。细杆用$\dd m=\lambda\,\dd s$，薄板用$\dd m=\sigma\,\dd S$，立体用$\dd m=\rho\,\dd V$。对三角板，平行底边的细条长度随高度线性改变；对球面，等高细带面积$2\pi R\,\dd z$，与纬度无关。选择使密度和坐标最简单的微元，能把复杂图形化为一个一维积分。
+
+\fig{s1deep:hole}{孔的一阶矩从完整板中扣除，剩余质心向反侧偏移}{\begin{tikzpicture}
+\fill[blue!10](0,0)circle(1.8);\fill[white](.75,0)circle(.7);\draw[world](0,0)circle(1.8);\draw[dashed](.75,0)circle(.7);\draw[axis](-2.3,0)--(2.8,0)node[right]{$x$};\fill(0,0)circle(2pt)node[below]{$O$};\fill(.75,0)circle(2pt)node[right]{$H$};\fill[red](-.133636,0)circle(2pt);\draw[guide](-.133636,0)--(-.7,.8)node[left]{$C$};\draw[dim](0,-.9)--(.75,-.9)node[midway,below]{$d$};\node at(4,1){完整：$M_0,\ x_0=0$};\node at(4,0){孔：$m,\ x_h=d$};\node at(4,-1){剩余：$M_0-m,\ x_C<0$};
+\end{tikzpicture}}
+图\ref{s1deep:hole}以原板中心为原点。补回孔后，左右一阶矩应重新抵消，所以 $(M_0-m)x_C+md=0$。蓝色剩余材料的质量为正；虚线孔参与计算时才带减号。向右挖去质量，会减少右侧一阶矩，剩余质心因而移向左侧。
+
+从完整薄板挖去一块时，令完整质量$M_0$、被挖质量$m$、两者质心分别为$\boldsymbol r_0,\boldsymbol r_h$。由完整板等于剩余板加挖去部分，
+\[
+(M_0-m)\boldsymbol r_C=M_0\boldsymbol r_0-m\boldsymbol r_h.
+\]
+所谓负质量只是计算一阶矩的记号，不是真实物质有负质量。结果应偏向剩余较多的一侧；当孔面积趋零时应回到完整板质心。多次挖补可对质量和一阶矩分别作代数求和，但最后的总质量必须为正。
+
+连续分布不能只积分坐标而漏掉质量权重，弧与弦也不能混淆。半圆弧和半圆板有相同边界，却分别以弧长和面积加权，质心位置不同。完成积分后应检查所得点是否位于分布的凸包内。
+
+\subsection{积分中的坐标、权重和归一化}
+求质心并不是单独求一个积分，而是求质量一阶矩除以总质量。若换用角度参数$\theta$，应把线元$\dd s$或面积元$\dd S$一起变换。对圆弧$\dd s=R\dd\theta$，对圆板极坐标$\dd S=r\dd r\dd\theta$；漏掉后者的$r$会使结果的量纲、权重和数值同时错误。把密度和几何因子在草图中对应到微元，是比最后补单位更有效的检查。
+
+均匀三角板可以说明二维形状怎样化成一维权重。图\ref{fig:s1:trianglestrip}以底边为$y=0$、高为$h$，底宽$b$。高度$y$处的条带与整三角形相似，宽度$w(y)=b(1-y/h)$，所以$\dd m=\sigma b(1-y/h)\dd y$，不能把等高条带当成等质量条带。积分给出
+\[
+M=\sigma b\int_0^h(1-y/h)\,\dd y
+=\sigma b\left[y-\frac{y^2}{2h}\right]_0^h
+=\sigma b\left(h-\frac h2\right)=\frac12\sigma bh,
+\]
+\[
+\int y\,\dd m=\sigma b\int_0^h\left(y-\frac{y^2}{h}\right)\,\dd y
+=\sigma b\left[\frac{y^2}{2}-\frac{y^3}{3h}\right]_0^h
+=\frac16\sigma bh^2.
+\]
+两者相除，$y_C=(\sigma bh^2/6)/(\sigma bh/2)=h/3$。
+\fig{fig:s1:trianglestrip}{三角板的等高条带具有不同质量权重}{\begin{tikzpicture}[scale=.88]\draw[world](-2,0)--(2,0)--(0,3)--cycle;\fill[blue!15](-1.2,1.2)--(1.2,1.2)--(1.067,1.4)--(-1.067,1.4)--cycle;\draw[guide](0,0)--(0,3);\draw[dim](-2,-.5)--(2,-.5)node[midway,below]{$b$};\draw[dim](3.8,0)--(3.8,3)node[midway,right]{$h$};\draw[dim](-2.5,0)--(-2.5,1.2)node[midway,left]{$y$};\draw[dim](-1.2,1.7)--(1.2,1.7)node[midway,above]{$w(y)$};\draw[guide](1.2,1.2)--(3.1,1.2);\draw[guide](1.067,1.4)--(3.1,1.4);\node[right]at(3.1,1.3){$\dd y$};\fill(0,1)circle(2pt)node[below right]{$C$};\end{tikzpicture}}
+对称三角板的质心在竖直中线上，因而这一个坐标便确定了质心；一般斜三角板则还要求横坐标。条带法的作用是把一条连续宽度函数变成质量权重。非均匀杆中宽度不变而密度改变，质量权重的变化原因不同，仍应使用同一个质量一阶矩定义，后面将完整计算这种情形。
+
+分块选择可以不同，只要每块的质量、质心及相互重叠关系处理正确，最终结果应一致。遇到复杂轮廓，可先用完整规则图形加减，必要时再用积分独立核验。若两种方法不同，优先检查是否把重叠区域算了两次、是否将孔的中心错放在边界上，或是否在总质量中忘记减去孔。
+
+在均匀重力下，悬挂法通过不同悬点的竖直线交点定位重心。每次悬挂均需物体真正静止、悬线张力作用线过悬点；对悬点取矩，重力作用线也必须经过悬点。这个实验依据是力矩平衡，并非质量会自动集中到悬点下方。刚体内部质量分布没有改变，改变的是物体姿态。
+
+
+\subsection{非均匀杆的密度权重与坐标平移}
+一根杆几何上关于中点对称，并不保证质心在中点；还要检查密度分布。取长$L$的细杆，左端为原点，线密度$\lambda(x)=\lambda_0(1+\eta x/L)$，$0\le x\le L$、$\eta>-1$。总质量及质量一阶矩分别为
+\[
+\begin{aligned}
+M&=\lambda_0\int_0^L\left(1+\frac{\eta x}{L}\right)\,\dd x
+=\lambda_0\left[x+\frac{\eta x^2}{2L}\right]_0^L
+=\lambda_0L(1+\eta/2),\\
+J&=\lambda_0\int_0^L\left(x+\frac{\eta x^2}{L}\right)\,\dd x
+=\lambda_0\left[\frac{x^2}{2}+\frac{\eta x^3}{3L}\right]_0^L
+=\lambda_0L^2(1/2+\eta/3).
+\end{aligned}
+\]
+于是$x_C=J/M=L(3+2\eta)/[3(2+\eta)]$。$\eta=0$恢复$L/2$；$\eta>0$时右端更密，且$x_C-L/2=\eta L/[6(2+\eta)]>0$，偏向较重的一侧。图\ref{fig:s1:density}中的条带不能按等质量处理，必须乘其所在位置的$\lambda(x)$。
+\fig{fig:s1:density}{非均匀杆的线密度与质量微元}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,2.8)node[above]{$\lambda$};\draw[world](0,1)--(4,2.2);\fill[blue!10](2,0)--(2,1.6)--(2.3,1.69)--(2.3,0)--cycle;\node[left]at(0,1){$\lambda_0$};\node[below]at(4,0){$L$};\node[below]at(2.15,0){$\dd x$};\node at(3.3,2.8){$\dd m=\lambda(x)\dd x$};\end{tikzpicture}}
+若把原点改到杆中点，新坐标$x'=x-L/2$。质量不变，一阶矩则变为$J'=\int(x-L/2)\dd m=J-ML/2$，所以$x'_C=J'/M=x_C-L/2$。这说明一阶矩依赖原点，质心对应的物理点并不改变。将孔的偏心距、杆端位置和质心位置混用不同原点，是挖补题常见的符号错误。
+
+组合系统中，可先把每一部分按自身真实密度求出质量与质心，再把它们代入离散加权公式；这一步是质量一阶矩的可加性。若不同材料面密度不同，面积不能直接代替质量；例如补入小圆盘的面密度是大板两倍，它在一阶矩中也应乘两倍权重。负质量只是减去原有部分的计算记号，实际剩余总质量必须为正。
+
+\subsection{球面细带与实体薄片的区别}
+\fig{s1deep:slices}{薄球面的纬圈带和实心球的水平薄片采用不同质量微元}{\begin{tikzpicture}
+\begin{scope}\draw[world](0,0)circle(1.7);\draw[axis](0,-1.9)--(0,2.3)node[above]{$z$};\draw[blue](0,.7)ellipse(1.5492 and .25);\draw[blue](0,.9)ellipse(1.4422 and .25);\draw[blue,line width=1.7pt]({1.7*cos(24.3157)},{1.7*sin(24.3157)})arc(24.3157:31.9657:1.7);\draw[guide](0,0)--(1.4422,.9)node[midway,below]{$R$};\draw[guide](0,.9)--(1.4422,.9)node[midway,above]{$s$};\draw[dim](2.2,.7)--(2.2,.9);\node[right]at(2.2,.8){$\dd z$};\node at(1.6,1.5){$\dd l$};\node at(0,-2.5){薄壳：$\dd S=2\pi s\dd l$};\end{scope}
+\begin{scope}[xshift=5.5cm]\fill[blue!4](0,0)circle(1.7);\fill[blue!25](-1.5492,.7)--(1.5492,.7)--(1.4422,.9)--(-1.4422,.9)--cycle;\draw[world](0,0)circle(1.7);\draw[axis](0,-1.9)--(0,2.3)node[above]{$z$};\draw[world](-1.5492,.7)--(1.5492,.7);\draw[dim](0,.4)--(1.5492,.4)node[midway,below]{$s$};\draw[guide](1.5492,.7)--(2.1,.7) (1.4422,.9)--(2.1,.9);\node[right]at(2.1,.8){$\dd z$};\node at(0,-2.5){实体：$\dd V=\pi s^2\dd z$};\end{scope}
+\end{tikzpicture}}
+图\ref{s1deep:slices}左图的材料只在球面上，应沿纬圈周长乘斜向带宽；右图的材料填满截面，应取整个圆盘面积乘竖直厚度。两者共有 $s^2+z^2=R^2$，却不能因此使用相同权重。左图的 $\dd l$ 比 $\dd z$ 大，它与纬圈周长的变化恰好相抵，下面据此推导等高球带面积。
+
+球面与实心球有相同外轮廓，质量微元却不同。半径$R$的薄球面在极角$\theta$处，纬圈半径为$R\sin\theta$，沿经线的细带宽为$R|\dd\theta|$，所以$\dd S=2\pi R^2\sin\theta|\dd\theta|$。又有$z=R\cos\theta$、$|\dd z|=R\sin\theta|\dd\theta|$，于是$\dd S=2\pi R|\dd z|$。相同高度宽度的球面细带面积相等，原因是纬圈缩短恰被斜向带宽增大抵消。
+
+取球面上$z_0\le z\le R$的均匀薄球冠，面密度$\sigma$。沿图中的高度区间积分，质量与一阶矩分别为
+\begin{align*}
+M&=2\pi\sigma R\int_{z_0}^R\dd z
+=2\pi\sigma R[z]_{z_0}^R=2\pi\sigma R(R-z_0),\\
+J_z&=2\pi\sigma R\int_{z_0}^R z\,\dd z
+=2\pi\sigma R\left[\frac{z^2}{2}\right]_{z_0}^R
+=\pi\sigma R(R^2-z_0^2).
+\end{align*}
+利用 $R^2-z_0^2=(R-z_0)(R+z_0)$ 约去共同因子，得
+$z_C=J_z/M=(R+z_0)/2$。若球冠高$H=R-z_0$，质心距顶点为$H/2$。这里相当于把球面质量沿高度均匀投影，不能把它误当成实体球冠。
+
+实心球的水平薄片则有$\dd V=\pi(R^2-z^2)\dd z$，权重在赤道附近更大。例如实心上半球，逐项积分给
+\begin{align*}
+M&=\rho\pi\int_0^R(R^2-z^2)\,\dd z
+=\rho\pi\left[R^2z-\frac{z^3}{3}\right]_0^R
+=\frac{2\pi\rho R^3}{3},\\
+J_z&=\rho\pi\int_0^R(R^2z-z^3)\,\dd z
+=\rho\pi\left[\frac{R^2z^2}{2}-\frac{z^4}{4}\right]_0^R
+=\frac{\pi\rho R^4}{4}.
+\end{align*}
+所以 $z_C=J_z/M=(R/4)/(2/3)=3R/8$；薄半球面则为$R/2$。两者不同来自质量分布维度，而非积分技巧不同。读图时先识别薄壳、薄板、细弧或实体，再选择对应微元。
+
+
+\section{系统重排与无穷分布}
+系统各部分发生位移时，质心变化满足$M\Delta\boldsymbol r_C=\sum_i m_i\Delta\boldsymbol r_i$。求变化量常比先后求两个绝对位置更简洁，但所有位移必须相对同一参考系。若人为移动各部分，质心不必保持不变；质心守恒还需要外力冲量等动力学条件。
+
+无穷多个物体组成的模型，先检查总质量和一阶矩是否收敛，再求其比值。等比缩小的同材质立方块，其质量按边长的三次方缩小，不能按边长或面积缩小。自相似方法也要先确认余下部分的总质量、缩放比例及平移量，不能只看到图形相似就写相同的质心坐标。
+
+\subsection{收敛、缩放和质心位移的检查}
+若一列质量按$q^n$缩小而位置按常数加几何项变化，先分别计算$\sum q^n$和$\sum q^nx_n$，再作比值。即使总质量收敛，若位置增大过快，一阶矩仍可能发散，质心就不能用有限坐标表示。有限系统的公式直接推广到无穷系统时，必须说明求和次序和极限存在。
+
+三维物体整体按长度比例$a$缩小，同材质质量按$a^3$缩小；薄板按$a^2$，细杆按$a$。看起来相似的层叠图，若一个是空心壳、另一个是实心块，其加权级数不同。题干和图中应标明质量分布维度，解答再给出对应权重，而不能从圆形轮廓自动决定质量比例。
+
+求质心位移时，固定哪一部分等于指定外部参考。把木块全部向右靠拢和全部向中间靠拢，内部间距最后相同，却不具有相同的质心位移。系统内部几何关系只决定相对位置，不决定共同平移量。要得到绝对位移，需明确某块固定、某端点不动，或使用无外力条件给出质心守恒。
+
+
+\subsection{自相似质量分布的递推表达}
+\fig{s1deep:similar}{余下立方块整体缩小并平移，质量和坐标使用不同缩放因子}{\begin{tikzpicture}
+\foreach \x/\b in {0/2,1.5/1,2.25/.5,2.625/.25}{\draw[fill=blue!8]({\x-\b/2},0)rectangle({\x+\b/2},\b);\draw[world]({\x-\b/2},\b)--++({.2*\b},{.15*\b})--++(\b,0)--++({-.2*\b},{-.15*\b});\draw[world]({\x+\b/2},0)--++({.2*\b},{.15*\b})--++(0,\b);\fill(\x,{\b/2})circle(1.4pt);}
+\draw[axis](-1.4,-.5)--(3.5,-.5)node[right]{$x$};\draw[dim](0,-1)--(1.5,-1)node[midway,below]{$d$};\node at(0,3){首块：$m$};\draw[guide](1.02,-.15)rectangle(3.1,1.35);\node[right]at(3.1,1){余下整体：$qM$};\node at(1,-1.9){例示 $a=1/2$，实心块质量比 $q=a^3$};
+\end{tikzpicture}}
+图\ref{s1deep:similar}只画出前几块，虚框内的全部余项仍与原系统相似。把原系统中坐标 $x'$ 的点映到余项，对应坐标为 $x=d+ax'$；但它携带的质量按体积缩为 $q=a^3$ 倍。因此余项质心坐标是 $d+ax_C$，质量是 $qM$，这两个量应分别进入一阶矩，不能把 $a$ 同时当作质量公比。
+
+对自相似叠放，可以用一阶矩的可加性建立递推。设首块质量$m$、质心在$x=0$，余下所有块整体与原系统相似：质量缩为原系统的$q$倍，各点坐标按$x=d+ax'$变化，其中$0<a<1,0<q<1$。若总质量和质心为$M,x_C$，先由$M=m+qM$得$M=m/(1-q)$；余下部分的质心为$d+ax_C$，所以
+\[
+Mx_C=qM(d+ax_C),\qquad
+x_C=\frac{qd}{1-qa}.
+\]
+必须先确定$q$再求位置。相似实心块用$q=a^3$，相似薄板用$q=a^2$，细杆用$q=a$。几何缩放与质量缩放在上式承担不同作用。若余下系统没有统一的平移和缩放关系，便不能强行使用此递推，而应回到逐项求和。
+
+\section{弹力的方向和约束关系}
+理想弹簧的弹力沿轴线，大小为$k|\Delta l|$，方向阻碍形变增加；有向形式应先规定伸长量的符号。绳只能沿绳方向拉，不能推；光滑接触面的支持力沿公法线，且不能为负。铰链通常可以提供两个平面分量，不能预先把其方向沿杆画出，除非已证明该杆是仅受两端力的二力杆。
+
+\fig{s1deep:springs}{串联使用相同轴力，并联使用被约束的相同端点位移}{\begin{tikzpicture}
+\begin{scope}\draw[world](-1,3)--(1,3);\draw[spring](0,3)--(0,1.8)node[midway,right]{$k_1$};\fill(0,1.8)circle(2pt);\draw[spring](0,1.8)--(0,.6)node[midway,right]{$k_2$};\draw[force](0,.6)--(0,-.5)node[below]{$F$};\node at(0,-1.3){串联：$x=x_1+x_2$};\end{scope}
+\begin{scope}[xshift=5cm]\draw[world](-1.3,3)--(1.3,3);\draw[spring](-.8,3)--(-.8,.6)node[midway,left]{$k_1$};\draw[spring](.8,3)--(.8,.6)node[midway,right]{$k_2$};\draw[line width=1.5pt](-1.2,.6)--(1.2,.6);\draw[guide](-1.4,0)--(-1.4,2) (1.4,0)--(1.4,2);\draw[force](0,.6)--(0,-.5)node[below]{$F$};\node at(0,-1.3){导向板不倾斜：$x_1=x_2=x$};\end{scope}
+\end{tikzpicture}}
+图\ref{s1deep:springs}左侧中间连接点质量忽略，平衡给两段轴力同为 $F$，故 $x=F/k_1+F/k_2$，即 $k_{\rm eq}^{-1}=k_1^{-1}+k_2^{-1}$。右侧导向板只作竖直平移，几何约束使两端下降相同，故 $F=k_1x+k_2x$，即 $k_{\rm eq}=k_1+k_2$。力关系与位移关系分别来自平衡和约束，不能只按弹簧在图中并排或接续就套公式。
+
+均匀弹簧长度变为原来的$a$倍时，劲度变为$k/a$，因为相同轴向应力下形变量与长度成正比。含动滑轮的装置还要写轻绳长度约束，轴的下降量一般不同于每根弹簧的伸长量。
+
+弹簧自重不能忽略时，张力随高度变化。把弹簧等分为$N$段，每段劲度$Nk$，第$j$段所承受的是其下方部分的重量；求和极限给出自重伸长。这样处理既保留了局部胡克定律，也避免把全部自重错误地加在每一个截面上。
+
+\subsection{弹簧自重模型与支承力的分配}
+均匀弹簧原长$L_0$、整体劲度$k$、质量$M_s$，上端悬挂、下端另挂质量$m$。图\ref{fig:s1:springmass}用原长坐标$s$从弹簧下端向上量；截面下方弹簧质量为$M_ss/L_0$，局部张力便是$T(s)=g(m+M_ss/L_0)$。长度为$\dd s$的小段相当于整体弹簧的$\dd s/L_0$部分，劲度为$kL_0/\dd s$，所以局部伸长为
+\[
+\dd\ell=\frac{T(s)}{kL_0}\,\dd s.
+\]
+将各小段伸长相加，分别积分常量和一次项：
+\begin{align*}
+\Delta L&=\frac{g}{kL_0}\int_0^{L_0}
+\left(m+\frac{M_s}{L_0}s\right)\,\dd s\\
+&=\frac{g}{kL_0}\left[ms+\frac{M_s}{2L_0}s^2\right]_0^{L_0}
+=\frac{g}{kL_0}\left(mL_0+\frac{M_sL_0}{2}\right)
+=\frac{g}{k}\left(m+\frac{M_s}{2}\right).
+\end{align*}
+\fig{fig:s1:springmass}{按原长坐标统计截面下方的弹簧重量}{\begin{tikzpicture}[scale=.88]\draw[world](.3,3.5)--(2.5,3.5);\draw[spring](1.4,.6)--(1.4,3.5);\draw[world](1,.1)rectangle(1.8,.6);\node at(1.4,.35){$m$};\draw[guide](.7,1.7)--(2.1,1.7)node[right]{截面};\draw[axis](3.2,.6)--(3.2,3.4)node[above]{$s$};\node[right]at(3.2,.6){$0$};\draw[dim](.3,.6)--(.3,1.7)node[midway,left]{$s$};\draw[force](1.4,1.7)--(1.4,2.6)node[right]{$T(s)$};\end{tikzpicture}}
+自重贡献为$M_sg/(2k)$，等于局部承重从零至$M_sg$变化的积分结果，并非把一半弹簧质量真的集中在下端。$M_s\to0$时恢复轻弹簧伸长$mg/k$。采用原长坐标，是为保持线密度相对$s$均匀；若改用伸长后的坐标，密度随位置改变，须同时变换微元。此结果还要求弹簧各段保持线性弹性，不能外推到明显非线性形变。
+
+多个弹簧或绳段分担载荷时，单靠整体力平衡只能确定支承总和。相同伸长、相同张力、轻杆无转矩等附加关系来自具体装置。两个并联弹簧支承同一水平刚板，如果作用点不对称，还要由板的力矩平衡决定伸长是否真的相同；如果刚板可倾斜，不能直接用普通并联公式。
+
+轻绳绕轻且光滑的滑轮，绳上张力大小相同；有质量滑轮发生角加速度时，两侧张力一般不同，差值提供转矩；绳与轮间粗糙但静止时，也可能存在不同张力而由摩擦维持。所谓“绳上处处同张力”有明确条件。每次把几段绳的张力合成时，应先在图中确认它们作用于同一研究对象，避免把作用反作用重复加总。
+
+
+\section{力的合成与等效的边界}
+对质点，合力按矢量相加，正交分量可以逐项相加。对刚体，等效还必须保持力矩。沿原作用线滑移一个力不改变力矩；平移到平行的另一作用线时则必须同时补上一个力偶。只有合力相等而力矩不同的两组力，对刚体并不等效。
+
+正六边形等几何图中，若各力的方向和大小按同一比例对应有向线段，可以先用对称分量相消再求合力。前提是线段长度确实代表力大小；若题目只给方向而未给大小，几何形状本身不足以求合力。后续平衡问题将在此基础上同时要求合力与合力矩为零。
+
+\input{knowledge-force-couple}
+
+\section{等效点与质量分布的使用范围}
+将各部分先等效于自身质心，再计算整体质心，是一阶矩可加性的结果：各部分的 $M_j\bm r_{Cj}=\int_j\bm r\dd m$ 相加，就回到完整积分。但这种等效只保留所选物理量的作用效果。
+\fig{s1deep:inertia}{同质量、同质心的两圆环可以具有不同转动惯量}{\begin{tikzpicture}
+\begin{scope}\draw[line width=1.5pt](0,0)circle(1);\fill(0,0)circle(2pt)node[below]{$C$};\draw[dim](0,0)--(1,0)node[midway,above]{$r$};\node at(0,-2){$M,\ I_C=Mr^2$};\end{scope}
+\begin{scope}[xshift=4.5cm]\draw[line width=1.1pt](0,0)circle(1.6);\fill(0,0)circle(2pt)node[below]{$C$};\draw[dim](0,0)--(1.6,0)node[midway,above]{$R$};\node at(0,-2){$M,\ I_C=MR^2$};\end{scope}
+\end{tikzpicture}}
+图\ref{s1deep:inertia}两圆环质量相同，各自质心都在圆心。它们在均匀重力场中的等效重力都可画为 $C$ 处的 $M\bm g$；绕过圆心且垂直纸面的轴转动时，较大圆环的质量离轴更远，转动惯量也更大。求局部应力、接触形变或转动惯量时，仍须保留完整的质量分布。
+
+若质量从系统中移走，前后总质量改变，不能继续用同一个 $M\Delta\bm r_C$。应写 $M_{\rm after}\bm r_{\rm after}=M_{\rm before}\bm r_{\rm before}-m\bm r_{\rm removed}$；若只搬动系统内部的一部分而不移出，才可用质量不变的位移加权式。真实质量权重为正，质心必须位于分布的凸包内；超出凸包的结果应先核查总质量、坐标原点和挖补符号。

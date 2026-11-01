@@ -1,0 +1,850 @@
+\section{例题与分析}
+
+\begin{question}
+\begin{example}[平凸薄透镜]\label{ex:o31}
+空气中的平凸薄透镜折射率为 \(n>1\)，球面半径大小为 \(R\)。证明其物方、像方焦距相等，并求其值。
+\end{example}
+\fig{fig:o31q}{平面与球面分担两次折射；厚度在计算中趋于零}{
+\begin{tikzpicture}
+\fill[gray!12] (0,-1)--(0,1) .. controls (.75,.7) and (.75,-.7) .. cycle;
+\draw[world] (0,-1)--(0,1) .. controls (.75,.7) and (.75,-.7) .. cycle;
+\draw[axisline] (-2,0)--(3,0);\node at (.25,0) {$n$};
+\node at (-1.3,.6) {空气};\node at (2,.6) {空气};
+\node[left] at (-.2,-1.2) {平面};\node[right] at (.9,-1.2) {球面 \(R\)};
+\draw[ray] (-2,.4)--(0,.4);
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{按两面的介质顺序和曲率号求光焦度}\par\nobreak
+按图\ref{fig:o31q}从左向右追迹。第一面为平面，光焦度为零；第二面球心在入射侧，\(R_s=-R\)，所以
+\[
+ \Phi_1=0,\qquad \Phi_2=\frac{1-n}{-R}=\frac{n-1}{R}.
+\]
+两面厚度趋零时，高度相同，约化倾角的改变量相加，故
+\[
+ \frac1u+\frac1v=\frac{n-1}{R},\qquad
+ \boxed{f_u=f_v=\frac{R}{n-1}}.
+\]
+\fig{fig:o31s}{同一薄透镜的正向与反向平行光，焦距大小相同}{
+\begin{tikzpicture}
+\draw[axisline] (-3,0)--(3,0);\draw[<->,>=Stealth,world] (0,-1)--(0,1);
+\draw[ray] (-2.8,.6)--(0,.6);\draw[ray] (0,.6)--(2,0);
+\draw[ray] (2.8,-.6)--(0,-.6);\draw[ray] (0,-.6)--(-2,0);
+\fill (-2,0) circle(1pt) node[above] {$F$};
+\fill (2,0) circle(1pt) node[below] {$F'$};\node[above right] at (0,0) {$O$};
+\draw[dim] (-2,-1.35)--(0,-1.35) node[midway,below] {$f_u$};
+\draw[dim] (0,-1.35)--(2,-1.35) node[midway,below] {$f_v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别由正向与反向平行束定义两焦距}\par\nobreak
+图\ref{fig:o31s}分别把物距取到无穷远，正向平行光会聚于 \(F'\)，反向平行光会聚于 \(F\)。焦距相等依赖两侧介质相同；曲面和平面的先后顺序不影响薄透镜的一阶光焦度。令 \(n\to1\)，两焦点移向无穷远，与透镜失去聚焦作用一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以实际出射倾角核对焦点与薄镜近似}\par\nobreak
+为明确两面怎样进入焦距，取图\ref{fig:o31s}上方平行光高度为 \(y>0\)。平面正入射不改方向，球面出射后空气侧倾角为
+\(\theta_{\rm out}=-\Phi y=-(n-1)y/R\)。出射线方程
+\(y(x)=y+\theta_{\rm out}x\) 在 \(x=R/(n-1)\) 处交轴。反向追迹也在相同的外界折射率中用同一光焦度，因而两侧几何焦距相等；有限镜厚时还需保留内部传播，并从各主平面量有效焦距。
+\end{solution}
+
+\begin{question}
+\begin{example}[薄透镜紧贴]\label{ex:o32}
+两薄透镜放在同一均匀介质中，焦距分别为 \(f_1,f_2\)，紧贴且同轴。证明组合焦距满足 \(1/f=1/f_1+1/f_2\)。
+\end{example}
+\fig{fig:o32q}{两次折射发生在近似同一高度；焦距允许带负号}{
+\begin{tikzpicture}
+\draw[axisline] (-2,0)--(3.6,0);
+\draw[<->,>=Stealth,world] (0,-.9)--(0,.9);
+\draw[<->,>=Stealth,world] (.25,-.9)--(.25,.9);
+\node[above] at (-.25,1) {$L_1$};\node[above] at (.55,1) {$L_2$};
+\draw[ray] (-1.8,.5)--(0,.5);
+\node[below,align=center] at (.15,-1.2) {间隔 \(d\to0\)};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{把第一镜的像作为第二镜的物，按零间隔连接}\par\nobreak
+图\ref{fig:o32q}中，第一镜的像是第二镜的物。两镜重合时 \(u_2=-v_1\)，因此
+\[
+ \frac1u+\frac1{v_1}=\frac1{f_1},\qquad
+ -\frac1{v_1}+\frac1v=\frac1{f_2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求组合焦距，并用方向改变量解释相加}\par\nobreak
+相加消去中间像，得到
+\[
+ \frac1u+\frac1v=\frac1{f_1}+\frac1{f_2},\qquad
+ \boxed{\frac1f=\frac1{f_1}+\frac1{f_2}}.
+\]
+\fig{fig:o32s}{同一高度的两次方向改变；虚线是仅经第一镜的方向，图以两正镜为例}{\begin{tikzpicture}
+
+\draw[axisline](-2.5,0)--(3.3,0);\draw[world](0,-.6)--(0,1.5);\coordinate(P)at(0,.8);\draw[ray,blue](-2.3,.8)--(P);\draw[ray,red](P)--(3,-.4);\draw[virtual](P)--(3,.05);\draw[guide](P)--(3,.8);\draw[dim](-.5,0)--(-.5,.8)node[midway,left]{$y$};\node[above]at(0,1.5){$L_1,L_2$ 紧贴};\node[above]at(2,.8){原入射方向};\node[right]at(3,.05){仅第一镜};\node[right]at(3,-.4){两镜之后};\node at(.5,-1.3){$\theta_1=\theta-y/f_1,\quad\theta'=\theta_1-y/f_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留有限镜间传播，说明间距修正}\par\nobreak
+图\ref{fig:o32s}也说明了紧贴条件的作用。若两镜间距为有限的 \(d\)，第二镜处的高度已经改变，总光焦度成为
+\[
+ \frac1{f_{\mathrm{eff}}}=\frac1{f_1}+\frac1{f_2}-\frac{d}{f_1f_2}
+\]
+（两侧均为空气）。此时有效焦距一般不等于末面到后焦点的距离。若紧贴后 \(1/f_1+1/f_2=0\)，组合无焦，应直接追迹光束。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用倾角关系处理无穷远与光焦度相消}\par\nobreak
+若中间像恰在无穷远，不必把 \(u_2=-v_1\) 当作有限数作代数运算；图\ref{fig:o32s}的倾角法仍适用。对任意入射倾角 \(\theta\)，第二镜后
+\[
+ \theta'=\theta-y/f_1-y/f_2.
+\]
+所以两光焦度相消时 \(\theta'=\theta\)，紧贴薄镜组合对一阶光线的高度和方向均无净改变。这也给出了焦距无穷大的几何意义；两镜分开以后，镜间高度变化使这一抵消一般不再成立。
+\end{solution}
+
+\begin{question}
+\begin{example}[两侧介质不同的薄双凸透镜]\label{ex:o33}
+透镜折射率为 \(n\)，两个球面的半径大小为 \(R_1,R_2\)，左、右外界折射率分别为 \(n_1,n_2\)。求物方焦距、像方焦距及物像公式。
+\end{example}
+\fig{fig:o33q}{传播方向向右；两面的带符号曲率分别为 \(+R_1,-R_2\)}{
+\begin{tikzpicture}
+\draw[axisline] (-3,0)--(3,0);
+\fill[gray!12] (0,1.2) .. controls (-.7,.5) and (-.7,-.5) .. (0,-1.2) .. controls (.7,-.5) and (.7,.5) .. cycle;
+\draw[world] (0,1.2) .. controls (-.7,.5) and (-.7,-.5) .. (0,-1.2) .. controls (.7,-.5) and (.7,.5) .. cycle;
+\node at (-1.6,.5) {$n_1$};\node at (0,0) {$n$};\node at (1.6,.5) {$n_2$};
+\node[above left] at (-.3,.9) {$R_1$};\node[above right] at (.3,.9) {$R_2$};
+\draw[axis] (-2,-1.5)--(2,-1.5) node[right] {传播};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{对两面分别列式，保留不同外介质的权重}\par\nobreak
+对图\ref{fig:o33q}的左右面分别写折射成像式，再令镜厚趋零。第一面的像距为 \(v_1\)，第二面物距为 \(-v_1\)，有
+\[
+ \frac{n_1}{u}+\frac n{v_1}=\frac{n-n_1}{R_1},\qquad
+ -\frac n{v_1}+\frac{n_2}{v}=\frac{n_2-n}{-R_2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去中间像，定义组合光焦度}\par\nobreak
+于是令
+\[
+ \Phi=\frac{n-n_1}{R_1}+\frac{n-n_2}{R_2},
+ \qquad \boxed{\frac{n_1}{u}+\frac{n_2}{v}=\Phi}.
+\]
+\fig{fig:o33s}{物方焦距与像方焦距分别由两个无穷远条件定义}{
+\begin{tikzpicture}
+\draw[axisline] (-3.6,0)--(4.5,0);\draw[world] (0,-1.1)--(0,1.1);
+\draw[ray] (-3.3,.6)--(0,.6);\draw[ray] (0,.6)--(3,0);
+\draw[ray] (-2,0)--(0,-.6);\draw[ray] (0,-.6)--(4,-.6);
+\fill (-2,0) circle(1pt) node[above] {$F$};\fill (3,0) circle(1pt) node[below] {$F'$};
+\node[above left] at (0,0) {$O$};\node at (-2,1) {$n_1$};\node at (2,1) {$n_2$};
+\draw[dim] (-2,-1.4)--(0,-1.4) node[midway,below] {$f_u$};
+\draw[dim] (0,-1.4)--(3,-1.4) node[midway,below] {$f_v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两种平行条件分别求物方、像方焦距}\par\nobreak
+如图\ref{fig:o33s}，平行光的会聚位置给出 \(u\to\infty\) 时的 \(v=f_v\)；由 \(F\) 发出的光出射平行，则 \(v\to\infty,u=f_u\)。故
+\[
+ \boxed{f_u=\frac{n_1}{\Phi},\qquad f_v=\frac{n_2}{\Phi}},\qquad
+ \frac{f_v}{f_u}=\frac{n_2}{n_1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查光焦度正负、零值与相同外介质极限}\par\nobreak
+图按 \(\Phi>0\) 绘制。\(\Phi<0\) 时两焦点为虚焦点；\(\Phi=0\) 时不应使用有限焦距。若 \(n_1=n_2=1\)，便还原制镜公式
+\[
+ \boxed{\frac1f=(n-1)\left(\frac1{R_1}+\frac1{R_2}\right)}.
+\]
+双凹或弯月形透镜应先改用带符号的 \(R_{1s},R_{2s}\)，写成 \((n-n_1)/R_{1s}+(n_2-n)/R_{2s}\)，不能机械地把两个正半径相加。
+\end{solution}
+
+\begin{question}
+\begin{example}[光组的实物与虚物作图]\label{ex:o34}
+两侧介质相同，会聚光组的主平面为 \(H,H'\)，实焦点为 \(F,F'\)。在图示两种情况下，分别作出倾斜实物线段 \(AB\) 的像及虚物 \(AB\) 的像。只讨论近轴范围。
+\end{example}
+\fig{fig:o34q}{甲：逐点处理倾斜实物；乙：虚物表示入射光若不经过光组时的会聚目标}{
+\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[axisline] (-3.4,0)--(3,0);\draw[world] (0,-.8)--(0,1);\draw[world] (.4,-.8)--(.4,1);
+\draw[axis,thick] (-2.8,.25)--(-1.8,.65);
+\node[left] at (-2.8,.25) {$A$};\node[above] at (-1.8,.65) {$B$};
+\node[below] at (-1,0) {$F$};\node[below left] at (0,0) {$H$};\node[below right] at (.4,0) {$H'$};\node[below] at (1.4,0) {$F'$};
+\node[above] at (-1,1.35) {甲};
+\end{scope}
+\begin{scope}[yshift=-4cm]
+\draw[axisline] (-3.4,0)--(3,0);\draw[world] (0,-.8)--(0,1);\draw[world] (.1,-.8)--(.1,1);
+\draw[axis,thick,dashed] (1,0)--(1,.6) node[above] {$B$};\node[below] at (1,0) {$A$};
+\node[below] at (-2,0) {$F$};\node[below left] at (0,0) {$H$};\node[below right] at (.1,-.3) {$H'$};\node[below] at (2.1,0) {$F'$};
+\node[above] at (-1,1.35) {乙};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{对倾斜实物的两个端点分别作主平面等效光路}\par\nobreak
+先处理图\ref{fig:o34q}甲中的 \(B\)。从 \(B\) 画平行主轴的入射光，到 \(H\) 后等高转到 \(H'\)，出射线通过 \(F'\)；再画经 \(F\) 的入射光，转到 \(H'\) 后平行主轴。两条出射线的交点为 \(B'\)。对 \(A\) 重复此法，连接 \(A'B'\)。倾斜线段两端物距不同，不能给整段套用同一个放大率。
+\fig{fig:o34s}{甲的逐点作图：细虚线只表示两个主平面间的等效对应}{
+\begin{tikzpicture}[x=1.25cm,y=1cm]
+\draw[axisline] (-3.4,0)--(3.2,0);\draw[world] (0,-1)--(0,1);\draw[world] (.4,-1)--(.4,1);
+\draw[axis,thick] (-2.8,.25)--(-1.8,.65);
+\node[left] at (-2.8,.25) {$A$};\node[above] at (-1.8,.65) {$B$};
+\draw[ray] (-1.8,.65)--(0,.65);\draw[aux] (0,.65)--(.4,.65);\draw[ray] (.4,.65)--(2.65,-.8125);
+\draw[ray] (-1.8,.65)--(0,-.8125);\draw[aux] (0,-.8125)--(.4,-.8125);\draw[ray] (.4,-.8125)--(2.65,-.8125);
+\draw[gray] (-2.8,.25)--(0,.25)--(.4,.25)--(1.95556,-.13889);
+\draw[gray] (-2.8,.25)--(0,-.13889)--(.4,-.13889)--(1.95556,-.13889);
+\draw[axis,thick] (1.95556,-.13889)--(2.65,-.8125);
+\node[above right] at (1.95556,-.13889) {$A'$};\node[below right] at (2.65,-.8125) {$B'$};
+\node[below] at (-1,0) {$F$};\node[above left] at (0,0) {$H$};\node[above right] at (.4,0) {$H'$};\node[above] at (1.4,0) {$F'$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际出射线检验实像，并区分内部等效连线}\par\nobreak
+图\ref{fig:o34s}中的 \(A',B'\) 都由实际出射线相交确定，均为实像点。图上跨越 \(H,H'\) 的连接不是内部光线的真实轨迹。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把会聚目标作为虚物，求虚物距对应的像}\par\nobreak
+乙图中 \(u=-a<0\)。入射光是会聚光，虚物 \(B\) 在其向前延长线上。仍用平行光与经 \(F\) 的两条入射线，得到
+\[
+ v=\frac{af}{a+f},\qquad \beta=\frac f{a+f}>0.
+\]
+\fig{fig:o34v}{乙的入射会聚光被光组提前会聚；虚物与实像均在右侧，但距离从不同主平面量起}{
+\begin{tikzpicture}[x=1.5cm,y=1.5cm]
+\draw[axisline] (-2.8,0)--(2.7,0);\draw[world] (0,-.6)--(0,.9);\draw[world] (.1,-.6)--(.1,.9);
+\draw[ray] (-2.4,.6)--(0,.6);\draw[virtual] (0,.6)--(1,.6);
+\draw[ray] (-2.4,-.08)--(0,.4);\draw[virtual] (0,.4)--(1,.6);
+\draw[aux] (0,.6)--(.1,.6);\draw[aux] (0,.4)--(.1,.4);
+\draw[ray] (.1,.6)--(2.1,0);\draw[ray] (.1,.4)--(2.2,.4);
+\draw[axis,thick,dashed] (1,0)--(1,.6) node[above right] {$B$};
+\draw[axis,thick] (.76667,0)--(.76667,.4) node[below left] {$B'$};
+\node[below right] at (1,0) {$A$};\node[below left] at (.76667,0) {$A'$};
+\node[below] at (-2,0) {$F$};\node[above left] at (0,0) {$H$};\node[below right] at (.1,-.25) {$H'$};\node[below] at (2.1,0) {$F'$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别判实虚、正倒与缩小性质}\par\nobreak
+如图\ref{fig:o34v}，两条出射光在 \(B'\) 实际相交，因而为正立缩小实像。判别实虚看出射光怎样相交；判别正倒看带符号像高，而不是看像点在纸面的哪一侧。
+\end{solution}
+
+\begin{question}
+\begin{example}[平面镀银的平凸透镜]\label{ex:o35}
+空气中平凸薄透镜的焦距为 \(f>0\)，平面上镀银。凸面一侧、距透镜 \(2f\) 处有高为 \(H\) 的直立物，下端在主轴上。作出最终像，并求其位置、大小和实虚。
+\end{example}
+\fig{fig:o35q}{光先通过透镜，再由平面反射，返回时再次通过透镜；结构间隔放大示意}{
+\begin{tikzpicture}
+\draw[axisline] (-4,0)--(1.4,0);\draw[axis,thick] (-3,0)--(-3,.9) node[above] {$A$};
+\draw[world] (.2,-1.1)--(.2,1.1) .. controls (-.6,.6) and (-.6,-.6) .. cycle;
+\fill[pattern=north east lines] (.2,-1.1) rectangle (.36,1.1);
+\node[above] at (.2,1.25) {银层};\node[below] at (0,0) {$O$};
+\draw[dim] (-3,-1.4)--(0,-1.4) node[midway,below] {$2f$};
+\draw[dim] (-3.5,0)--(-3.5,.9) node[midway,left] {$H$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{计算第一次折射的会聚目标和像高}\par\nobreak
+先逐段追迹图\ref{fig:o35q}。第一次通过透镜，\(u_1=2f\)，故 \(v_1=2f\)，中间像高为 \(-H\)。若没有银层，光将向右会聚于这个中间像。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反转传播方向，确定回程透镜的虚物}\par\nobreak
+平面镜使这束光返回左侧；若先不计回程透镜，它将向左侧距镜 \(2f\)、高为 \(-H\) 的点会聚。于是回程透镜接收的是会聚光，其虚物距为 \(u_2=-2f\)。因此
+\[
+ -\frac1{2f}+\frac1{v_2}=\frac1f,
+ \qquad \boxed{v_2=\frac{2f}{3}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{换回实际左右位置，并连乘三段放大率}\par\nobreak
+这里 \(v_2>0\) 是沿回程方向的实像距，即像在透镜左侧。第二次透镜的放大率为 \(+1/3\)，乘上第一次的 \(-1\) 和平面反射的 \(+1\)，得到
+\[
+ \boxed{\beta=-\frac13,\qquad h'=-\frac H3}.
+\]
+\fig{fig:o35s}{薄透镜极限下的实际入射与最终反射光；像点 \(A'\) 在镜前实际会聚}{
+\begin{tikzpicture}[x=1.7cm,y=1.3cm]
+\draw[axisline] (-3.6,0)--(.65,0);\draw[world] (0,-1.1)--(0,1.15);
+\fill[pattern=north east lines] (0,-1.1) rectangle (.1,1.15);
+\draw[axis,thick] (-3,0)--(-3,.9) node[above] {$A$};
+\draw[axis,thick] (-1,0)--(-1,-.3) node[below left] {$A'$};
+\draw[ray] (-3,.9)--(0,.9);\draw[ray] (0,.9)--(-1.5,-.9);
+\draw[ray] (-3,.9)--(0,0);\draw[ray] (0,0)--(-2,-.6);
+\node[above left] at (0,0) {$O$};
+\draw[dim] (-1,-1.3)--(0,-1.3) node[midway,below] {$2f/3$};
+\end{tikzpicture}}
+图\ref{fig:o35s}可直接判定像为倒立缩小实像。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两次折射的等效凹镜核对最终成像}\par\nobreak
+作图时，平行入射线经过两次折射后的总偏折相当于焦距 \(f/2\) 的凹镜：\(1/u+1/v=2/f\)。代入 \(u=2f\) 同样得到 \(v=2f/3\)，这是对逐段计算的检查；若镜厚不能忽略，则须恢复两次传播距离。
+\end{solution}
+
+\begin{question}
+\begin{example}[由光斑反求焦距]\label{ex:o36}
+点光源 \(S\) 在薄透镜左侧主轴上，距透镜 \(a=30\,\mathrm{cm}\)。透镜恰好填满遮光板的圆孔，孔半径 \(r=1\,\mathrm{cm}\)；右侧屏距为 \(b\)，屏上圆光斑半径为 \(R=5\,\mathrm{cm}\)。取 \(0<b<4a\)。分别求会聚透镜和发散透镜的焦距，以 \(b\) 表示，并分析几何分支。
+\end{example}
+\fig{fig:o36q}{只给出孔径与屏上光斑大小时，尚不能判断光束是否已交叉}{
+\begin{tikzpicture}
+\draw[axisline] (-2.8,0)--(4.5,0);\fill (-2,0) circle(1.2pt) node[below] {$S$};
+\draw[world] (0,-1.3)--(0,-.35);\draw[world] (0,.35)--(0,1.3);
+\draw[<->,>=Stealth,world] (0,-.35)--(0,.35);\draw[world] (4,-1.4)--(4,1.4);
+\draw[ray] (-2,0)--(0,.35);\draw[ray] (-2,0)--(0,-.35);
+\draw[dim] (-2,-1.8)--(0,-1.8) node[midway,below] {$a$};
+\draw[dim] (0,-1.8)--(4,-1.8) node[midway,below] {$b$};
+\draw[dim] (.5,0)--(.5,.35) node[above right] {$r$};
+\draw[dim] (4.4,0)--(4.4,1.25) node[midway,right] {$R$};
+\node[above] at (4,1.5) {光屏};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{保留孔径边缘线在屏上的有向高度}\par\nobreak
+设出射光束的轴上像距为 \(v\)。如图\ref{fig:o36q}，上边缘点高度为 \(r\)，出射直线在屏上的带符号高度为
+\[
+ y_b=r\left(1-\frac bv\right),\qquad
+ \frac Rr=\left|1-\frac bv\right|=5.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按是否交轴拆出实像与虚像两种几何支路}\par\nobreak
+绝对值给出两个分支：
+\[
+ \text{交叉后到屏：}\quad v=\frac b6;
+ \qquad
+ \text{保持发散到屏：}\quad v=-\frac b4.
+\]
+\fig{fig:o36s}{上边缘光线到达屏的下侧或上侧，分别对应两个符号分支；纵向比例放大示意}{
+\begin{tikzpicture}[x=1.1cm,y=1cm]
+\begin{scope}
+\draw[axisline] (-2.4,0)--(4.2,0);\draw[<->,>=Stealth,world] (0,-.4)--(0,.4);\draw[world] (4,-1.2)--(4,1.2);
+\draw[ray] (-2,0)--(0,.2);\draw[ray] (0,.2)--(4,-1);
+\draw[ray] (-2,0)--(0,-.2);\draw[ray] (0,-.2)--(4,1);
+\fill (.66667,0) circle(1.2pt) node[above] {$I$};
+\node[above] at (2,1.5) {甲：\(v=b/6\)};
+\end{scope}
+\begin{scope}[yshift=-4cm]
+\draw[axisline] (-2.4,0)--(4.2,0);\draw[<->,>=Stealth,world] (0,-.4)--(0,.4);\draw[world] (4,-1.2)--(4,1.2);
+\draw[ray] (-2,0)--(0,.2);\draw[ray] (0,.2)--(4,1);
+\draw[ray] (-2,0)--(0,-.2);\draw[ray] (0,-.2)--(4,-1);
+\draw[virtual] (-1,0)--(0,.2);\draw[virtual] (-1,0)--(0,-.2);
+\fill (-1,0) circle(1.2pt) node[below] {$I$};
+\node[above] at (2,1.5) {乙：\(v=-b/4\)};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别代入成像式，按给定镜型筛选焦距}\par\nobreak
+图\ref{fig:o36s}甲实际会聚于 \(I\)，穿过后上下颠倒；乙的反向延长线交于 \(I\)，实际光束仍发散。分别代入透镜公式：
+\[
+ \boxed{f_1=\frac{ab}{b+6a}},\qquad
+ \boxed{f_2=\frac{ab}{b-4a}}.
+\]
+在题设 \(0<b<4a\) 下，\(f_1>0,f_2<0\)，两种透镜各对应一个分支。例如 \(b=60\,\mathrm{cm}\) 时，\(f_1=7.50\,\mathrm{cm},f_2=-30.0\,\mathrm{cm}\)。这个数值例仅用于展示通式，屏距改变时应重新代入。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{撤去屏距限制，检验分支与镜型并非固定对应}\par\nobreak
+若去掉 \(b<4a\) 的条件，\(b>4a\) 时乙分支也可能由会聚透镜产生：物在焦点内，出射虽发散，却比入射光更缓。\(b=4a\) 时乙分支的光焦度为零。可见光斑大小本身不够，还须知道光束交叉情况或透镜性质。
+\end{solution}
+
+\begin{question}
+\begin{example}[横向与纵向放大]\label{ex:o37}
+近轴成像系统的物方、像方介质折射率为 \(n_u,n_v\)，物像距为 \(u,v\)，光焦度固定。求带符号横向放大率 \(\beta=h'/h\) 和 \(\alpha=\dd v/\dd u\)，结果中不含焦距。再说明 \(\alpha\) 与物、像在统一轴坐标中的位移比有何区别。
+\end{example}
+\fig{fig:o37q}{图中 \(h'\) 带符号；倒立像对应 \(h'<0\)}{
+\begin{tikzpicture}[x=1.2cm,y=1cm]
+\draw[axisline] (-3.5,0)--(2.8,0);\draw[world] (0,-1)--(0,1);
+\draw[axis,thick] (-3,0)--(-3,.6) node[above] {$Q$};
+\draw[axis,thick] (2,0)--(2,-.2) node[below] {$Q'$};
+\draw[ray] (-3,.6)--(0,0);\draw[ray] (0,0)--(2,-.2);
+\node[above] at (-1.5,.9) {$n_u$};\node[above] at (1.5,.9) {$n_v$};
+\draw[dim] (-3,-1.35)--(0,-1.35) node[midway,below] {$u$};
+\draw[dim] (0,-1.35)--(2,-1.35) node[midway,below] {$v$};
+\node[above right] at (0,0) {$O$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由主平面轴上参考光线求带符号横向放大率}\par\nobreak
+图\ref{fig:o37q}中，过轴上参考点 \(O\) 的近轴光线在物方倾角为 \(-h/u\)，像方倾角为 \(h'/v\)。薄系统在 \(y=0\) 处不改变约化倾角，因此
+\[
+ n_u\left(-\frac hu\right)=n_v\frac{h'}v,
+ \qquad \boxed{\beta=-\frac{n_uv}{n_vu}}.
+\]
+有厚度的光组应改在主平面量距，结论不变。若用 \(h'_{\mathrm{abs}}>0\) 表示倒立像高的大小，则同一个结论写成 \(\beta=-h'_{\mathrm{abs}}/h\)，不可把大小和带符号量混用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定光焦度下微分物像关系}\par\nobreak
+对 \(n_u/u+n_v/v=\Phi\) 求微分：
+\[
+ -\frac{n_u}{u^2}\dd u-\frac{n_v}{v^2}\dd v=0,
+ \qquad \boxed{\alpha=-\frac{n_uv^2}{n_vu^2}}
+ =-\frac{n_v}{n_u}\beta^2.
+\]
+\fig{fig:o37s}{统一轴向坐标下，物向右移使 \(u\) 减小；实像通常也向右移}{
+\begin{tikzpicture}
+\draw[axis] (-3.4,0)--(3.5,0) node[right] {$x$};\draw[world] (0,-.6)--(0,.8);
+\fill (-2.7,0) circle(1.2pt) node[below] {$x=-u$};
+\fill (2,0) circle(1.2pt) node[below] {$x'=v$};
+\draw[axis,thick] (-2.7,.4)--(-1.9,.4) node[midway,above] {$\dd x>0$};
+\draw[axis,thick] (2,.4)--(3,.4) node[midway,above] {$\dd x'>0$};
+\node[draw] at (0,-1.5) {$\displaystyle\frac{\dd x'}{\dd x}=-\alpha=\frac{n_v}{n_u}\beta^2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把物像距离的导数换成同一轴坐标的位移比}\par\nobreak
+图\ref{fig:o37s}采用同一个向右坐标，故 \(\dd u=-\dd x,\dd v=\dd x'\)。\(\alpha<0\) 不等于物像反向运动。若两侧介质相同，纵向位移比为 \(\beta^2\)，通常也不等于横向放大率 \(\beta\)。
+\end{solution}
+
+\begin{question}
+\begin{example}[冕牌与火石玻璃胶合镜]\label{ex:o38}
+冕牌玻璃 \(n_c=1.499\)，平均色散率 \(\dd n_c/\dd\lambda=-4.74\times10^{-5}\,\mathrm{nm}^{-1}\)；火石玻璃 \(n_f=1.610\)，平均色散率 \(\dd n_f/\dd\lambda=-9.76\times10^{-5}\,\mathrm{nm}^{-1}\)。波长范围为 \(\Delta\lambda=170.0\,\mathrm{nm}\)。两种薄透镜在空气中紧贴，焦距分别为 \(f_c,f_f\)。令
+\[
+ D_j=\frac1{n_j-1}\frac{\dd n_j}{\dd\lambda}\Delta\lambda.
+\]
+证明一阶消色差条件为 \(D_c/f_c+D_f/f_f=0\)，并判断哪种玻璃应制成会聚透镜，才能得到会聚的消色差镜头。
+\end{example}
+\fig{fig:o38q}{胶合正、负透镜；两种材料的折射率均随波长变化}{
+\begin{tikzpicture}
+\draw[axisline] (-3,0)--(3,0);
+\fill[gray!10] (-.2,1.1) .. controls (-.6,.6) and (-.6,-.6) .. (-.2,-1.1)--(.2,-1.1) .. controls (.6,-.6) and (.6,.6) .. (.2,1.1)--cycle;
+\fill[gray!25] (.2,1.1) .. controls (.6,.6) and (.6,-.6) .. (.2,-1.1)--(.8,-1.1) .. controls (1,-.6) and (1,.6) .. (.8,1.1)--cycle;
+\draw[world] (-.2,1.1) .. controls (-.6,.6) and (-.6,-.6) .. (-.2,-1.1)--(.8,-1.1) .. controls (1,-.6) and (1,.6) .. (.8,1.1)--cycle;
+\draw[world] (.2,1.1) .. controls (.6,.6) and (.6,-.6) .. (.2,-1.1);
+\node[above,align=center] at (-1,1.3) {冕牌\\\(n_c(\lambda)\)};
+\node[above,align=center] at (1.4,1.3) {火石\\\(n_f(\lambda)\)};
+\draw[ray] (-2.5,.5)--(-.4,.5);
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{对固定形状透镜的光焦度求波长变化}\par\nobreak
+对图\ref{fig:o38q}中形状固定的每片薄透镜，\(1/f_j=(n_j-1)K_j\)，其中 \(K_j\) 只由两个曲率决定。因此
+\[
+ \Delta\!\left(\frac1{f_j}\right)
+ =\frac1{f_j}\frac{\Delta n_j}{n_j-1}
+ \simeq\frac{D_j}{f_j}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令两片光焦度的一阶变化相消}\par\nobreak
+一阶消色差要求组合光焦度随波长的一阶变化为零，故
+\[
+ \boxed{\frac{D_c}{f_c}+\frac{D_f}{f_f}=0}.
+\]
+\fig{fig:o38s}{以波长变化为横轴示意光焦度变化；两片斜率相反，和的一阶斜率为零}{
+\begin{tikzpicture}
+\draw[axis] (-2.8,0)--(3.1,0) node[right] {$\Delta\lambda$};
+\draw[axis] (0,-1.6)--(0,1.8) node[above] {$\Delta\Phi$};
+\draw[world] (-2,1.1)--(2,-1.1) node[right] {冕牌正镜};
+\draw[world,dashed] (-2,-1.1)--(2,1.1) node[right] {火石负镜};
+\draw[very thick,gray] (-2.1,0)--(2.1,0);\node at (0,-2) {组合：一阶变化为零};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由色散数据求两片焦距的比例与符号}\par\nobreak
+由数据得
+\[
+ D_c\simeq-0.01615,\qquad D_f=-0.02720,
+ \qquad \frac{f_f}{f_c}=-\frac{D_f}{D_c}\simeq-1.684.
+\]
+两片必须有相反光焦度。记 \(\Phi_c=1/f_c\)，则
+\[
+ \Phi_f=-\frac{D_c}{D_f}\Phi_c\simeq-0.5937\Phi_c,
+ \qquad \Phi_{\mathrm{tot}}\simeq0.4063\Phi_c.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再加正总光焦度条件，确定材料分工}\par\nobreak
+要使组合会聚，必须 \(\Phi_c>0\)：\(\boxed{\text{冕牌做会聚镜，火石做发散镜}}\)。图\ref{fig:o38s}中的两条斜线正对应一正一负光焦度对正常色散的响应。\(\Delta\lambda\) 必须与色散率使用同一波长单位；本题中为 \(\mathrm{nm}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明一阶消色差的波段和像差限制}\par\nobreak
+一阶相消只消除设计波段附近的主要色差。材料色散并非严格线性，有限波段仍可有二级光谱；球差等几何像差也不由这个条件自动消失。
+\end{solution}
+
+\begin{question}
+\begin{example}[弯月形透镜的齐明点]\label{ex:o39}
+空气中的弯月形透镜折射率为 \(n>1\)。入射面 \(\Sigma_1\) 的球心为 \(C_1\)，出射面 \(\Sigma_2\) 的球心为 \(C_2\)、半径为 \(R\)。两球心均位于透镜左侧，且 \(C_1\) 在 \(C_2\) 左侧，\(C_1C_2=R/n\)。点光源 \(Q=C_1\)。证明出射光具有同一像点 \(Q'\)，求像的位置与实虚。
+\end{example}
+\fig{fig:o39q}{第一面以物点为球心；第二面的球心与物点间距固定}{
+\begin{tikzpicture}[x=3cm,y=1.8cm]
+\fill[gray!15,domain=-.7:.7,samples=50,variable=\y] plot ({-.666667+sqrt(2.25-\y*\y)},\y)--plot[domain=.7:-.7] ({sqrt(1-\y*\y)},\y)--cycle;
+\draw[world,domain=-.7:.7,samples=50,variable=\y] plot ({-.666667+sqrt(2.25-\y*\y)},\y);
+\draw[world,domain=-.7:.7,samples=50,variable=\y] plot ({sqrt(1-\y*\y)},\y);
+\draw[axisline] (-1.1,0)--(1.35,0);
+\fill (-.666667,0) circle(.7pt) node[below left] {$Q=C_1$};
+\fill (0,0) circle(.7pt) node[below] {$C_2$};
+\draw[dim] (-.666667,-.85)--(0,-.85) node[midway,below] {$R/n$};
+\node[above] at (.55,.7) {$\Sigma_1$};\node[above right] at (.8,.65) {$\Sigma_2$};
+\node at (.86,0) {$n$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{利用第一面正入射，把问题化为第二面的精确折射}\par\nobreak
+先看图\ref{fig:o39q}的第一面。由 \(Q=C_1\) 发出的任一光线都沿该面的法线入射，因此方向不变；只需精确分析它在第二面的折射。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选候选虚像点，用球面方程证明距离比恒等式}\par\nobreak
+以 \(C_2\) 为原点，主轴向右，任取第二面上的点 \(M=(x,y)\)，满足 \(x^2+y^2=R^2\)。物点为 \(Q=(-R/n,0)\)。在轴上先取候选像点
+\[
+ Q'=(-nR,0).
+\]
+由距离平方可得
+\begin{align*}
+ MQ'^2&=(x+nR)^2+y^2
+       =R^2+2nRx+n^2R^2,\\
+ n^2MQ^2&=n^2\bigl[(x+R/n)^2+y^2\bigr]
+       =n^2R^2+2nRx+R^2.
+\end{align*}
+因此对任意这样的 \(M\)，都有 \(MQ'=nMQ\)。
+\fig{fig:o39s}{实线为实际出射光，虚线反向延长至同一 \(Q'\)；\(C_2M\) 是法线}{
+\begin{tikzpicture}[x=2.1cm,y=2.1cm]
+\draw[axisline] (-1.8,0)--(1.75,0);
+\draw[world,domain=-.65:.65,samples=50,variable=\y] plot ({sqrt(1-\y*\y)},\y);
+\coordinate (Q) at (-.666667,0);\coordinate (V) at (-1.5,0);\coordinate (M) at (.8660254,.5);
+\draw[ray] (Q)--(M);\draw[ray] (M)--(1.65,.665674);
+\draw[virtual] (V)--(M);\draw[normal] (0,0)--(1.1,.635085);
+\fill (Q) circle(.7pt) node[below] {$Q$};\fill (V) circle(.7pt) node[below] {$Q'$};
+\fill (0,0) circle(.7pt) node[below] {$C_2$};\node[above left] at (M) {$M$};
+\node[align=left] at (0,-1.1) {$i=\angle QMC_2$\\$r=\angle(\overrightarrow{C_2M},\overrightarrow{Q'M})$};
+\draw[dim] (-1.5,-.5)--(0,-.5) node[midway,below] {$nR$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以半径为法线核对精确斯涅尔关系}\par\nobreak
+在图\ref{fig:o39s}的三角形中，用叉积或正弦定理计算入射角 \(i\) 和候选折射角 \(r\)：
+\[
+ \sin i=\frac{(R/n)|y|}{R\,MQ},\qquad
+ \sin r=\frac{nR|y|}{R\,MQ'}=n\sin i.
+\]
+这正是从折射率 \(n\) 到空气的折射定律。取穿出右侧球面的传播支，出射方向就是从 \(Q'\) 指向 \(M\) 的方向。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按出射传播支判断共同像点的虚实}\par\nobreak
+由于 \(Q'\) 在透镜左侧，实际出射光不会向它会聚，而是其反向延长线相交，故
+\[
+ \boxed{Q'C_2=nR,\quad Q'\text{在 }C_2\text{左侧，为虚像}}.
+\]
+上述证明没有作小角近似，体现的是特殊共轭位置的精确成像；把物点挪离 \(C_1\)，或改变两球心间距后，距离比恒等式一般就不成立。
+\end{solution}
+
+\begin{question}
+\begin{example}[显微镜物镜中的齐明透镜]\label{ex:o310}
+某球面透镜的入射面球心为 \(C_1\)、半径为 \(R_1\)，出射面球心为 \(C_2\)、半径为 \(R_2\)，玻璃折射率为 \(n\)。几何配置如图，\(C_1C_2=R_2/n\)，物点在 \(C_1\)。证明可通过指定两面的光线具有同一像点 \(Q\)，并求 \(QC_2\)。
+\end{example}
+\fig{fig:o310q}{沿 \(C_1P\) 入射第一面，再在第二面 \(M\) 折射}{
+\begin{tikzpicture}[x=3cm,y=2cm]
+\draw[axisline] (-1.2,0)--(1.4,0);
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({-.666667+sqrt(2.25-\y*\y)},\y);
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({sqrt(1-\y*\y)},\y);
+\coordinate (A) at (-.666667,0);\coordinate (M) at (.8,.6);\coordinate (P) at (.72166,.567951);
+\draw[ray] (A)--(P);\draw[ray] (P)--(M);
+\fill (A) circle(.7pt) node[below left] {$C_1$};\fill (0,0) circle(.7pt) node[below] {$C_2$};
+\node[above left] at (P) {$P$};\node[above right] at (M) {$M$};
+\node[below] at (.85,-.7) {$S_1\quad S_2$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由第一面正入射确定玻璃内的实际传播段}\par\nobreak
+图\ref{fig:o310q}中，\(C_1P=R_1\)，光在 \(P\) 正入射，进入玻璃后仍沿 \(C_1M\) 传播。第\ref{ex:o39}题已经证明：若 \(C_1C_2=R_2/n\)，则取 \(Q\) 在 \(C_2\) 左侧、\(QC_2=nR_2\)，对第二面上任意可通光点 \(M\) 有
+\[
+ MQ=n\,MC_1.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把空气段与玻璃段分别加权}\par\nobreak
+这里再用光程检查这一结论。物点到 \(M\) 的累计光程为
+\[
+ \mathcal L_{C_1M}=C_1P+nPM
+ =R_1+n(MC_1-R_1)
+ =nMC_1-(n-1)R_1.
+\]
+\fig{fig:o310s}{物点到曲面 \(M\) 的光程，与来自虚像点的参考球面波只差一个常量}{
+\begin{tikzpicture}[x=2cm,y=2cm]
+\draw[axisline] (-1.9,0)--(1.8,0);
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({sqrt(1-\y*\y)},\y);
+\foreach \yy in {.2,.45,.65}{
+ \pgfmathsetmacro{\xx}{sqrt(1-\yy*\yy)}
+ \pgfmathsetmacro{\yo}{\yy*(1.7+1.5)/(\xx+1.5)}
+ \draw[ray] (-.666667,0)--(\xx,\yy);
+ \draw[ray] (\xx,\yy)--(1.7,\yo);
+ \draw[virtual] (-1.5,0)--(\xx,\yy);}
+\fill (-1.5,0) circle(.7pt) node[below] {$Q$};
+\fill (-.666667,0) circle(.7pt) node[below] {$C_1$};
+\fill (0,0) circle(.7pt) node[below] {$C_2$};
+\node[above] at (.7,.95) {不同高度的出射光};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用光程常量说明共同球面出射波前}\par\nobreak
+因此图\ref{fig:o310s}中
+\[
+ \mathcal L_{C_1M}-MQ=-(n-1)R_1
+\]
+与 \(M\) 无关，出射波前等效于以 \(Q\) 为中心的球面波，和精确折射定律的证明一致。
+
+故
+\[
+ \boxed{QC_2=nR_2},\qquad Q\text{为位于左侧的共同虚像点}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{界定第一面半径对孔径与光程常数的作用}\par\nobreak
+\(R_1\) 决定第一面的实际形状、可通光口径及整体光程常数，不进入这里的虚像位置。两题描述的是同一个齐明共轭模型；“所有出射光相交”在本配置中应理解为其反向延长线具有共同交点。
+\end{solution}
+
+\begin{question}
+\begin{example}[平行光精确会聚的平凸透镜]\label{ex:o311}
+空气中的平凸透镜折射率为 \(n>1\)，平的入射面位于 \(x=0\)，口径半径为 \(R\)，边缘厚度为零。主轴上焦点 \(F'=(f',0)\) 位于透镜右侧。平行光从左向右、垂直平面入射，要求通过孔径的所有光线经凸面后都到达 \(F'\)。求凸面的形状、中心厚度 \(OA\) 及口径限制。
+\end{example}
+\fig{fig:o311q}{图中 \(B=(0,R)\) 是口径边缘，\(A\) 是凸面顶点，\(N\) 与 \(M\) 等高}{
+\begin{tikzpicture}[x=1.5cm,y=1cm]
+\pgfmathsetmacro{\KK}{sqrt(13)}
+\draw[world] (0,-2)--(0,2);
+\draw[world,domain=-2:2,samples=100,variable=\y] plot ({(1.5*\KK-3-sqrt((4.5-\KK)^2+1.25*\y*\y))/1.25},\y);
+\draw[axis] (-1.1,0)--(3.6,0) node[right] {$x$};\draw[axis] (0,-2.5)--(0,2.6) node[above] {$y$};
+\coordinate (M) at ({(1.5*\KK-3-sqrt((4.5-\KK)^2+1.25*1.3^2))/1.25},1.3);
+\draw[ray] (-1,1.3)--(0,1.3);\draw[ray] (0,1.3)--(M);\draw[ray] (M)--(3,0);
+\node[above left] at (0,1.3) {$N$};\node[above right] at (M) {$M(x,y)$};
+\fill (3,0) circle(1pt) node[below] {$F'$};\node[below left] at (0,0) {$O$};
+\node[below right] at ({(sqrt(13)-3)/.5},0) {$A$};\node[above left] at (0,2) {$B$};
+\draw[dim] (0,-2.8)--(3,-2.8) node[midway,below] {$f'$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从同一入射波前计算玻璃段与空气段的总光程}\par\nobreak
+图\ref{fig:o311q}中，入射平面上的光同相，且在平面处不偏折。经任意 \(M=(x,y)\) 到 \(F'\) 的光程必须相同。边缘 \(B\) 的厚度为零，因此这个常量为
+\[
+ K=BF'=\sqrt{f'^2+R^2}.
+\]
+任意光线在玻璃内走过 \(NM=x\)，在空气内走过 \(MF'\)，故
+\[
+ \boxed{nx+\sqrt{(f'-x)^2+y^2}=K}. \tag{*}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留未平方的条件，并用轴上光路求中心厚度}\par\nobreak
+这同时给出曲面的物理分支：\(K-nx>0\)。在顶点 \(A=(t,0)\) 且 \(t<f'\)，有
+\[
+ nt+(f'-t)=K,\qquad
+ \boxed{OA=t=\frac{\sqrt{f'^2+R^2}-f'}{n-1}}.
+\]
+\fig{fig:o311s}{由同一等光程曲面折射的平行光，包含较大高度光线}{
+\begin{tikzpicture}[x=1.5cm,y=1cm]
+\pgfmathsetmacro{\KK}{sqrt(13)}
+\fill[gray!12] (0,-2)--(0,2)--plot[domain=2:-2,samples=100,variable=\y] ({(1.5*\KK-3-sqrt((4.5-\KK)^2+1.25*\y*\y))/1.25},\y)--cycle;
+\draw[world] (0,-2)--(0,2);
+\draw[world,domain=-2:2,samples=100,variable=\y] plot ({(1.5*\KK-3-sqrt((4.5-\KK)^2+1.25*\y*\y))/1.25},\y);
+\draw[axisline] (-1.2,0)--(3.5,0);
+\foreach \yy in {-1.6,-.8,.8,1.6}{
+ \pgfmathsetmacro{\xx}{(1.5*\KK-3-sqrt((4.5-\KK)^2+1.25*\yy*\yy))/1.25}
+ \draw[ray] (-1,\yy)--(0,\yy);\draw[ray] (0,\yy)--(\xx,\yy);\draw[ray] (\xx,\yy)--(3,0);}
+\fill (3,0) circle(1pt) node[below] {$F'$};\node[left] at (0,0) {$O$};
+\draw[dim] (0,-2.5)--({(sqrt(13)-3)/.5},-2.5) node[midway,below] {$t$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出曲面母线和接入孔径边缘的物理支}\par\nobreak
+为识别图\ref{fig:o311s}的曲线，把式 (*) 移项平方，得到
+\[
+ (n^2-1)x^2-2(nK-f')x+R^2-y^2=0.
+\]
+令 \(a=n^2-1>0\)，可改写为
+\[
+ \left(x-\frac{nK-f'}a\right)^2-\frac{y^2}a
+ =\frac{(nf'-K)^2}{a^2}.
+\]
+母线是一条双曲线，旋转后为双叶双曲面的一支。所需左支为
+\[
+ \boxed{x(y)=\frac{nK-f'-\sqrt{(nf'-K)^2+(n^2-1)y^2}}{n^2-1}},
+ \quad |y|\le R.
+\]
+它满足 \(x(\pm R)=0,x(0)=t\)，不能用任意球面代替。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用曲面法线核对精确折射方向}\par\nobreak
+还须检验折射确实能沿 \(MF'\) 射出。令 \(\boldsymbol e_x\) 为入射方向、\(\boldsymbol e_o\) 为 \(M\) 指向 \(F'\) 的单位向量。式 (*) 的梯度为
+\[
+ \boldsymbol\nabla(nx+MF')=n\boldsymbol e_x-\boldsymbol e_o,
+\]
+恰与曲面法线同向，因此切向分量满足 \(n\sin i=\sin r\)。这把等光程条件与精确折射定律联系起来，排除了仅靠平方方程得到的错误分支。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求顶点局部曲率，连接近轴球面公式}\par\nobreak
+由图\ref{fig:o311s}中轴上顶点附近的精确曲线还可求局部曲率。令 $A=nf'-K>0$、$a=n^2-1$。由左支的根式逐次求导，
+\begin{align*}
+ x'(y)&=-\frac1a\frac{2ay}{2\sqrt{A^2+ay^2}}
+       =-\frac y{\sqrt{A^2+ay^2}},\\
+ x''(y)&=-\frac1{\sqrt{A^2+ay^2}}
+         +\frac{ay^2}{(A^2+ay^2)^{3/2}}.
+\end{align*}
+在顶点 $x'(0)=0$、$x''(0)=-1/A$。由于 $x(y)$ 是偶函数，
+泰勒式的奇次项消失，从而
+\[
+x(y)=t-\frac{y^2}{2(nf'-K)}+O(y^4),\qquad
+\rho=nf'-K=(n-1)(f'-t).
+\]
+这里 $\rho$ 是凸面顶点的曲率半径大小。若只对近轴光线用球面近似，玻璃到空气的像方焦距应从 $A$ 量为 $\rho/(n-1)=f'-t$；题给 $f'=OF'$ 从入射平面量起。二者相差中心厚度，说明这一精确有限厚度设计不能不加判断地当作薄透镜。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查外部焦点、孔径上限与向外传播条件}\par\nobreak
+焦点在整个透镜外，要求 \(t<f'\)，等价于
+\[
+ K<nf',\qquad
+ \boxed{0<R<f'\sqrt{n^2-1}}.
+\]
+在这个范围内，\(n\boldsymbol e_x\cdot\boldsymbol e_o-1=(nf'-K)/MF'>0\)，出射方向位于曲面外侧，没有选到穿回玻璃的支。等号时顶点与焦点重合，已不符合题设；因此口径上限应取严格不等式。若另留非零边缘厚度，式 (*) 中的常量和中心厚度都会改变，须重新建模。
+\end{solution}
+
+\begin{question}
+\begin{example}[有效焦距与后焦距为何不同]\label{ex:r31}
+空气中两同轴薄凸透镜 \(L_1,L_2\) 的焦距依次为 \(10.0,20.0\,\mathrm{cm}\)，间距 \(5.00\,\mathrm{cm}\)。求系统有效焦距、两主平面及前后焦点。轴上实物在 \(L_1\) 前 \(20.0\,\mathrm{cm}\) 时，求最终像位置和横向放大率。
+\end{example}
+\fig{fig:r31q}{长度从透镜顶点量起；先保留两镜间有限传播}{
+\begin{tikzpicture}[x=.30cm,y=1cm]
+\draw[axisline](-22,0)--(17,0);
+\draw[<->,>=Stealth,world](0,-1)--(0,1)node[above]{$L_1$};
+\draw[<->,>=Stealth,world](5,-1)--(5,1)node[above]{$L_2$};
+\fill(-20,0)circle(2pt)node[above]{$A$};
+\draw[dim](-20,-.7)--(0,-.7)node[midway,below]{$20.0\,\mathrm{cm}$};
+\draw[dim](0,-1.4)--(5,-1.4)node[midway,below]{$5.00\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{按实际传播顺序求两镜间总矩阵与有效焦距}\par\nobreak
+按图\ref{fig:r31q}顺序，\(M=L(20)P(5)L(10)\)，故
+\[
+ M=\begin{pmatrix}0.50&5.00\,\mathrm{cm}\\
+ -0.125\,\mathrm{cm^{-1}}&0.75\end{pmatrix},
+ \qquad \boxed{F=8.00\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以首末透镜为参考，定位两主平面}\par\nobreak
+取 \(L_1\) 为 \(x=0,L_2\) 为 \(x=5.00\,\mathrm{cm}\)，由分解式
+\[
+ a=8(1-0.75)=2.00\,\mathrm{cm},\quad
+ b=8(1-0.50)=4.00\,\mathrm{cm},
+\]
+得 \(H:x=2.00\,\mathrm{cm},H':x=1.00\,\mathrm{cm}\)。
+\fig{fig:r31s}{甲为实际近轴追迹，乙列出主平面和焦点；两主平面的先后次序可互换}{
+\begin{tikzpicture}[x=.30cm,y=1cm]
+\draw[axisline](-22,0)--(17,0);
+\draw[world](0,-1.2)--(0,1.2);\draw[world](5,-1.2)--(5,1.2);
+\draw[ray](-20,0)--(0,1);\draw[ray](0,1)--(5,.75);
+\draw[ray](5,.75)--(13.57143,0);
+\draw[ray](-20,0)--(0,-1);\draw[ray](0,-1)--(5,-.75);
+\draw[ray](5,-.75)--(13.57143,0);
+\node[above]at(0,1.2){$L_1$};\node[above]at(5,1.2){$L_2$};
+\node[below]at(-20,0){$A$};\node[below]at(13.57143,0){$A'$};
+\node[left]at(-22,1){甲};
+\begin{scope}[yshift=-3.2cm]
+\draw[axisline](-9,0)--(12,0);
+\draw[world](0,-.4)--(0,.4);\draw[world](5,-.4)--(5,.4);
+\draw[dashed](2,-.7)--(2,1.1);\draw[dashed](1,-.7)--(1,.7);
+\node[above]at(2,1.1){$H:2$};\node[below]at(1,-.7){$H':1$};
+\fill(-6,0)circle(2pt)node[above]{$F_{\!o}:-6$};
+\fill(9,0)circle(2pt)node[above]{$F_{\!i}:9$};
+\node[below left]at(0,-.1){$L_1:0$};\node[below right]at(5,-.1){$L_2:5$};
+\node[left]at(-9,.8){乙};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从主平面求焦点，再与顶点焦距比较}\par\nobreak
+图\ref{fig:r31s}乙中，前焦点在 \(H\) 前 \(F\)，后焦点在 \(H'\) 后 \(F\)，因此
+\[
+ \boxed{x_{F_o}=-6.00\,\mathrm{cm},\qquad x_{F_i}=9.00\,\mathrm{cm}}.
+\]
+后焦距从 \(L_2\) 量起，仅为 \(4.00\,\mathrm{cm}\)，与有效焦距 \(8.00\,\mathrm{cm}\) 不同。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{补齐物、像两端传播，施加成像条件}\par\nobreak
+对有限物距，矩阵 \(P(v)MP(20)\) 的右上元为
+\[
+ (0.50\times20+5)+v(-0.125\times20+0.75)
+ =15-1.75v.
+\]
+令其为零得
+\[
+ \boxed{v=\frac{60}{7}\,\mathrm{cm}},\qquad
+ \boxed{\beta=0.50-0.125v=-\frac47}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用主平面距离独立核对最终像点}\par\nobreak
+像在第二镜右侧，为倒立缩小实像。图\ref{fig:r31s}甲两条出射线交于 \(x=5+60/7\)。也可用主平面核对：\(u_H=22\)，\(v_{H'}=88/7\)，满足 \(1/u_H+1/v_{H'}=1/8\)，给出同一像点。
+\end{solution}
+
+\begin{question}
+\begin{example}[凸透镜浸入液体后是否仍会聚]\label{ex:r32}
+薄双凸透镜折射率 \(n_\ell=1.50\)，两球面带符号曲率半径为 \(+10.0,-10.0\,\mathrm{cm}\)。把它分别置于两侧相同、折射率 \(n_m=1.00,4/3,1.60\) 的透明介质中，求焦距并判断会聚或发散性质。
+\end{example}
+\fig{fig:r32q}{透镜形状固定，改变的是两侧相同的环境折射率}{
+\begin{tikzpicture}
+\draw[axisline](-3,0)--(3,0);
+\draw[world](0,1.2)..controls(-.6,.5)and(-.6,-.5)..(0,-1.2)
+ ..controls(.6,-.5)and(.6,.5)..cycle;
+\node at(0,0){$n_\ell$};\node at(-1.8,.7){$n_m$};\node at(1.8,.7){$n_m$};
+\node[below]at(-1.4,-1.3){$R_{1s}=+10$};\node[below]at(1.4,-1.3){$R_{2s}=-10$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{固定几何形状，保留环境折射率进入光焦度}\par\nobreak
+对图\ref{fig:r32q}两面相加，介质中的光焦度为
+\[
+ \Phi=(n_\ell-n_m)\left(\frac1{R_{1s}}-\frac1{R_{2s}}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把约化光焦度换成介质中的几何焦距}\par\nobreak
+由于物方、像方均为 \(n_m\)，两侧焦距相等，\(f=n_m/\Phi\)，从而
+\[
+ \frac1f=\left(\frac{n_\ell}{n_m}-1\right)
+ \left(\frac1{10}-\frac1{-10}\right)\mathrm{cm^{-1}}.
+\]
+\fig{fig:r32s}{相对折射率决定平行束向轴偏折还是离轴偏折；虚焦点由延长线确定}{
+\begin{tikzpicture}
+\begin{scope}
+\draw[axisline](-2,0)--(3,0);\draw[world](0,-.8)--(0,.8);
+\draw[ray](-1.8,.5)--(0,.5);\draw[ray](0,.5)--(2,0);
+\draw[ray](-1.8,-.5)--(0,-.5);\draw[ray](0,-.5)--(2,0);
+\node[below]at(2,0){$F'$};\node[above]at(.3,1){$n_\ell>n_m$};
+\end{scope}
+\begin{scope}[yshift=-2.8cm]
+\draw[axisline](-2,0)--(3,0);\draw[world](0,-.8)--(0,.8);
+\draw[ray](-1.8,.5)--(0,.5);\draw[ray](0,.5)--(2.4,1.1);
+\draw[virtual](-2,0)--(0,.5);
+\draw[ray](-1.8,-.5)--(0,-.5);\draw[ray](0,-.5)--(2.4,-1.1);
+\draw[virtual](-2,0)--(0,-.5);
+\node[below]at(-2,0){$F'$};\node[above]at(.3,1.3){$n_\ell<n_m$};
+\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入三种环境，分别判会聚和发散}\par\nobreak
+图\ref{fig:r32s}对应的数值为
+\[
+ \boxed{f_{\rm air}=+10.0\,\mathrm{cm}},\quad
+ \boxed{f_{4/3}=+40.0\,\mathrm{cm}},\quad
+ \boxed{f_{1.60}=-80.0\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用折射率相同的零光焦度极限核对}\par\nobreak
+前两种情况会聚，后一种发散。若 \(n_m=n_\ell\)，两界面均不偏折，光焦度为零，焦点移至无穷远。透镜的会聚或发散性质由形状和相对折射率共同决定。
+\end{solution}

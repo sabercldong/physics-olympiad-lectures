@@ -1,0 +1,107 @@
+[
+  {
+    "id": "em3:example:1",
+    "title": "沿圆弧缓慢提升",
+    "check": "功与动能例1；第三讲同题"
+  },
+  {
+    "id": "em3:example:2",
+    "title": "弹簧小球下落到竖直位置",
+    "check": "功与动能例2"
+  },
+  {
+    "id": "em3:example:3",
+    "title": "两物块被弹簧推开",
+    "check": "功与动能例3"
+  },
+  {
+    "id": "em3:example:4",
+    "title": "阻力随深度增加的钉入过程",
+    "check": "功与动能例4"
+  },
+  {
+    "id": "em3:example:5",
+    "title": "双小环下滑与悬绳松弛",
+    "check": "功与动能例5"
+  },
+  {
+    "id": "em3:example:6",
+    "title": "有限容器中压沉浮木",
+    "check": "功与动能例6"
+  },
+  {
+    "id": "em3:example:7",
+    "title": "三角形脉冲力的功",
+    "check": "功与动能例7"
+  },
+  {
+    "id": "em3:example:8",
+    "title": "竖直圆轨道上的摩擦功",
+    "check": "功与动能例8"
+  },
+  {
+    "id": "em3:example:9",
+    "title": "动滑轮拉力的瞬时功率",
+    "check": "功与动能例9"
+  },
+  {
+    "id": "em3:example:10",
+    "title": "悬垂长绳与分段粗糙桌面",
+    "check": "功与动能例10"
+  },
+  {
+    "id": "em3:example:11",
+    "title": "船上抛球与内力做功",
+    "check": "功与动能例11"
+  },
+  {
+    "id": "em3:example:12",
+    "title": "喷漆装置的理想功率",
+    "check": "功与动能例12"
+  },
+  {
+    "id": "em3:example:13",
+    "title": "理想虹吸的排水时间",
+    "check": "功与动能例13"
+  },
+  {
+    "id": "em3:example:14",
+    "title": "均匀链条越过半圆拱",
+    "check": "手记7；链条越拱"
+  },
+  {
+    "id": "em3:example:15",
+    "title": "传送带加速物块的能量分配",
+    "check": "补充：作用点功与摩擦耗散"
+  },
+  {
+    "id": "em3:example:16",
+    "title": "摆球重力的最大功率",
+    "check": "手记8；功率极值"
+  },
+  {
+    "id": "em3:example:17",
+    "title": "固定球面上的脱离与落点",
+    "check": "手记8；轨道约束"
+  },
+  {
+    "id": "em3:example:18",
+    "title": "不能定义单值势能的平面力场",
+    "check": "补充：保守力的路径检验"
+  },
+  {
+    "id": "em3:drill:1",
+    "title": "运动员对传送带的功率",
+    "check": "功与动能练习1"
+  },
+  {
+    "id": "em3:drill:2",
+    "title": "偏置钉子的完整圆周条件",
+    "check": "功与动能练习2"
+  },
+  {
+    "id": "em3:drill:3",
+    "title": "绳松弛后击中钉子",
+    "check": "功与动能练习3；独立复算"
+  }
+]

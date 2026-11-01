@@ -1,0 +1,285 @@
+\section{电荷、电场与叠加}
+\subsection{研究对象与点电荷近似}
+
+摩擦、接触和静电感应都能改变局部电荷分布，但封闭系统的总电荷守恒。宏观物体带电，通常表示其中正负电荷数量略有失衡，并不意味着物体内部只有一种电荷。把物体当作点电荷，需要物体尺度远小于所考查距离，或者依靠严格的球对称性取得等效；两个相距很近的带电导体会发生显著电荷重排，不能总把各自总电荷集中在几何中心。
+
+真空中两个静止点电荷间的作用力，沿从源电荷 $q_1$ 指向受力电荷 $q_2$ 的单位矢量 $\hat{\bm r}_{12}$ 写成
+\[
+ \bm F_{1\to2}=k\frac{q_1q_2}{r_{12}^2}\hat{\bm r}_{12},\qquad
+ k=\frac1{4\pi\varepsilon_0}.
+\]
+电荷带符号代入后，同号相斥、异号相吸自然由正负体现。多电荷问题应先选定某一受力对象，把各力作为矢量相加；作用在不同物体上的力不能直接作为某一物体的合力。
+
+\fig{e1:coulomb-vector}{两正电荷的相互作用沿连线；对指定受力对象单独画力}{\begin{tikzpicture}
+
+\draw[guide](0,0)--(6,0);\fill(0,0)circle(3pt)node[below]{$q_1>0$};\fill(6,0)circle(3pt)node[below]{$q_2>0$};
+\draw[flow](1,1.3)--(3,1.3)node[midway,above]{$\hat{\bm r}_{12}$};
+\draw[force](6,0)--(8,0)node[right]{$\bm F_{1\to2}$};\draw[force](0,0)--(-2,0)node[left]{$\bm F_{2\to1}$};
+\draw[<->](0,-1)--(6,-1)node[midway,below]{$r_{12}$};
+
+\end{tikzpicture}}
+
+图\ref{e1:coulomb-vector}中的两力大小相等、方向相反，但分别作用在两个物体上。计算 $q_2$ 的运动只把 $\bm F_{1\to2}$ 加入其受力方程；不能把这对相互作用力在同一受力图中抵消。若改变 $q_2$ 的符号，源点到场点的几何矢量不变，乘积 $q_1q_2$ 变号，受力方向随之反转。
+
+\subsection{场强定义与试探电荷的限度}
+
+为了把空间中电场的性质与用来测量它的电荷分离，定义
+\[
+ \bm E(\bm r)=\lim_{q_0\to0}\frac{\bm F(\bm r)}{q_0}.
+\]
+试探电荷应足够小，避免明显扰动产生电场的电荷分布。场强方向按正试探电荷受力确定，负电荷所受力与场强相反。点电荷产生的场为 $\bm E=kq\bm r/r^3$，多个固定源电荷产生的场按矢量叠加。
+
+在某点放入电荷 $q$ 后计算其受力，应使用其他电荷在该点产生的外场，不能把该点电荷自身发散的场也加进去。对连续带电体的面元求力时，这个“排除自身场”的要求同样重要，是后面压力计算中出现因子 $1/2$ 的原因。
+
+\typeout{ECFIG:fig:e1:super}\fig{fig:e1:super}{先构造外电场，再求给定电荷受力}{\begin{tikzpicture}[scale=.88]
+\draw[world,fill=white](-1,0)circle(.12);\node[above]at(-1,0.15){$q_1$};\draw[world,fill=white](2,0)circle(.12);\node[above]at(2,0.15){$q_2$};\fill(.5,1.8)circle(1.5pt)node[above]{$P$};\draw[guide](-1,0)--(.5,1.8)(2,0)--(.5,1.8);\draw[flow](.5,1.8)--(1.2,2.6)node[right]{$\bm E_1$};\draw[flow](.5,1.8)--(-.2,2.6)node[left]{$\bm E_2$};\node at(.5,-.7){$q_1=q_2>0$};
+\end{tikzpicture}}
+图\ref{fig:e1:super}先在不放试探电荷时确定 $P$ 的场。两源等量且对称，横向分量抵消，竖直分量相加。放入小正电荷，受力沿合场；换成小负电荷，受力反向，外场本身不因此改变。这里的等量对称是图示例子，任意多源情形仍须逐分量求和。
+
+\subsection{电场线能说明什么}
+
+电场线在各点的切线方向与电场方向相同。按统一通量约定绘制时，线密处场强大，线疏处场强小。静电场线从正电荷出发、终止于负电荷或无穷远，不能相交；若同一点有两条不同切线，意味着场强方向不唯一。
+
+场线不是粒子轨迹。带电粒子的速度可以与受力方向不同，轨道由初速度和动力学共同决定。场线的疏密给出场强信息，不能仅由疏密直接比较电势高低；电势沿场线方向下降，跨不同场线时仍需积分或等势面信息。图示场线数量只有在每条代表相同电通量时才可用来比较电荷量大小，不能数任意示意图的几根线就作精确比例。
+
+
+\fig{e1:line-and-motion}{匀强电场中负电荷的加速度向下；初速度水平时轨迹为抛物线}{\begin{tikzpicture}
+
+\foreach \x in {0,2,4,6}{\draw[flow,gray](\x,-.5)--(\x,3);}
+\node[gray,right]at(6,2.7){$\bm E$};
+\draw[blue,thick,domain=0:4,samples=60]plot(\x,{2-.13*\x*\x});
+\fill(0,2)circle(2.5pt)node[left]{$q<0$};\draw[flow](0,2)--(1.3,2)node[above]{$\bm v_0$};
+\draw[force](0,2)--(0,.7)node[left]{$\bm F=q\bm E$};
+\node[blue,right]at(4,-.1){粒子轨迹};
+
+\end{tikzpicture}}
+
+图\ref{e1:line-and-motion}中速度最初垂直于场线，电场力改变速度的竖直分量而保留水平分量，故轨迹弯曲。场线只给出力的局部方向；在没有初速度条件时，不能由场线图唯一确定粒子运动。
+
+\section{连续电荷的微元积分}
+\subsection{从电荷分布到场的积分}
+
+线、面、体分布分别用线密度 $\lambda$、面密度 $\sigma$、体密度 $\rho$ 描述，电荷微元为 $\dd q=\lambda\dd l,\sigma\dd S,\rho\dd V$。场点固定、源点变化时，
+\[
+ \bm E(\bm r)=k\int\frac{\bm r-\bm r'}{|\bm r-\bm r'|^3}\dd q(\bm r').
+\]
+选择微元后，应先确定源点到场点的距离及方向，再投影积分。若对称性使某些分量成对抵消，可先说明抵消依据，只积分保留的分量。不能把所有微元电场大小相加后再讨论方向。
+
+\subsection{圆环、圆盘与有限直线的联系}
+
+均匀带电圆环半径 $R$、总电荷 $Q$，轴线上距环心 $x$ 的点到各微元距离相同，为 $\sqrt{R^2+x^2}$。环平面内分量抵消，轴向投影因子为 $x/\sqrt{R^2+x^2}$，所以
+\[
+ E_x=kQ\frac{x}{(R^2+x^2)^{3/2}}.
+\]
+远处 $|x|\gg R$ 时回到点电荷场；环心电场为零，但不能据此认为环附近所有位置电场都弱。轴向电场的大小先增后减，反映了投影因子增大与距离衰减的竞争。
+
+\typeout{ECFIG:fig:e1:ring}\fig{fig:e1:ring}{两个对径微元到场点距离相同，横向分量抵消，轴向分量相加}{\begin{tikzpicture}
+
+\draw(0,0)ellipse(.5 and 1.6);\draw[axis](-1,0)--(6,0)node[right]{$x$};
+\fill(0,0)circle(1.5pt)node[below left]{$O$};\fill(3.2,0)circle(2pt)node[below]{$P$};
+\fill(0,1.6)circle(2pt)node[above]{$\dd q$};\fill(0,-1.6)circle(2pt)node[below]{$\dd q$};
+\draw[guide](0,1.6)--(3.2,0)--(0,-1.6);\node at(1.5,1.1){$s$};
+\draw[force](3.2,0)--(4.6,-.7)node[right]{$\dd\bm E_1$};\draw[force](3.2,0)--(4.6,.7)node[right]{$\dd\bm E_2$};
+\draw[flow,blue](3.2,0)--(5.2,0)node[above right]{$2\dd E_x$};
+\draw[<->](0,-2.3)--(3.2,-2.3)node[midway,below]{$x$};\draw[<->](-.8,0)--(-.8,1.6)node[midway,left]{$R$};
+
+\end{tikzpicture}}
+
+图\ref{fig:e1:ring}的场点 $P$ 固定在轴上，$s=\sqrt{R^2+x^2}$ 在积分中不变；变化的是微元方位。成对相消之后，每个微元只贡献 $\dd E_x=k\dd q\,x/s^3$。若把 $k\dd q/s^2$ 直接相加，就遗漏投影因子，环心会错误地得到非零场。
+
+圆盘可分成同心细环，半径 $s$ 的细环电荷为 $\dd Q=\sigma2\pi s\dd s$。对 $x>0$，
+\[
+ E_x=2\pi k\sigma x\int_0^R\frac{s\dd s}{(s^2+x^2)^{3/2}}.
+\]
+积分时 $x$ 是固定场点坐标。令 $u=s^2+x^2$，$\dd u=2s\dd s$，
+上下限由 $s=0,R$ 变为 $u=x^2,x^2+R^2$，于是
+\begin{align*}
+ \int_0^R\frac{s\dd s}{(s^2+x^2)^{3/2}}
+ &=\frac12\int_{x^2}^{x^2+R^2}u^{-3/2}\dd u
+ =[-u^{-1/2}]_{x^2}^{x^2+R^2}\\
+ &=\frac1x-\frac1{\sqrt{x^2+R^2}}\qquad(x>0).
+\end{align*}
+乘回轴向投影中的常数因子，得到
+\[
+ E_x=2\pi k\sigma\left(1-\frac{x}{\sqrt{x^2+R^2}}\right).
+\]
+将两个不同半径圆盘相减，就得到环形平面的轴向场。令圆盘半径趋于无穷，则得到单个无限薄面的单侧场 $\sigma/(2\varepsilon_0)$，其大小与距离无关。有限带电直线则适合以源点坐标或夹角积分，投影距离和积分边界都需在图中标明。
+
+\fig{e1:disk-rings}{圆盘按同心细环分割；细环面积由周长与宽度相乘}{\begin{tikzpicture}
+
+\fill[gray!12](0,0)circle(2);\draw(0,0)circle(2);\draw[blue,thick](0,0)circle(1.2);\draw[blue,thick](0,0)circle(1.4);
+\draw[<->](0,0)--(1.2,0)node[midway,below]{$s$};\draw[<->](1.2,.4)--(1.4,.4);\draw[guide](1.3,.4)--(3,.8)node[right]{$\dd s$};
+\draw[<->](-1.414,1.414)--(0,0)node[midway,left]{$R$};\node at(5,-.4){$\dd S=2\pi s\dd s$};\node at(5,-1.3){$\dd Q=\sigma\dd S$};
+
+\end{tikzpicture}}
+
+图\ref{e1:disk-rings}把每一细环的轴向场相加，积分变量是源点半径 $s$，场点坐标 $x$ 保持不变。若保留内半径 $R_1$、外半径 $R_2$，只需把积分边界改为 $R_1,R_2$；若取有限直线，则不能沿用环形微元，应按下式重新投影。
+
+设均匀细线沿 $y$ 轴从 $-\ell$ 延伸到 $\ell$，场点为 $(x,0)$，$x>0$。对称微元消去 $y$ 分量，
+\[
+E_x=2k\lambda\int_0^\ell\frac{x\,\dd y}{(x^2+y^2)^{3/2}}.
+\]
+令 $y=x\tan\theta$，有 $\dd y=x\sec^2\theta\dd\theta$、
+$(x^2+y^2)^{3/2}=x^3\sec^3\theta$。
+当 $y:0\to\ell$ 时，$\theta:0\to\theta_0=\arctan(\ell/x)$。因此
+\begin{align*}
+ E_x&=\frac{2k\lambda}{x}\int_0^{\theta_0}\cos\theta\,\dd\theta
+ =\frac{2k\lambda}{x}[\sin\theta]_0^{\theta_0}\\
+ &=\frac{2k\lambda}{x}\frac{\ell}{\sqrt{x^2+\ell^2}}
+ =\frac{2k\lambda\ell}{x\sqrt{x^2+\ell^2}}.
+\end{align*}
+
+$x\gg\ell$ 时恢复总电荷 $2\lambda\ell$ 的点场；固定 $x$ 令 $\ell\to\infty$，才得到无限长直线的 $2k\lambda/x$。有限分布与无限分布的极限顺序不能混用。
+
+\section{电通量与高斯定律}
+\subsection{闭合面记录穿出场的通量}
+
+通过有向面积元的电通量为 $\dd\Phi=\bm E\cdot\dd\bm S$。闭合面的法向统一向外，场指向外侧时贡献正通量。点电荷位于球心时，球面通量为 $E4\pi r^2=q/\varepsilon_0$；对任意包围该点电荷的闭合面，通量可用立体角说明仍等于 $q/\varepsilon_0$。不包围点电荷时，进入与离开的通量抵消。
+
+由电场叠加得到高斯定律
+\[
+ \oint_S\bm E\cdot\dd\bm S=\frac{Q_{\text{内}}}{\varepsilon_0}.
+\]
+右端只含闭合面内电荷，而左端的电场由全部电荷产生，包含外部电荷的贡献。闭合面内净电荷为零，只说明总通量为零，不说明面上每点场强为零。
+
+高斯定律对任意静电分布成立，但要直接由它求 $E$，还需对称性使所选面的场强大小相同、方向与法向关系明确。例如球对称时球面上 $E$ 恒定且径向；无限圆柱对称时圆柱侧面上 $E$ 恒定、端面无通量；无限平面对称时柱形高斯面两端给出通量。若缺少这些条件，一条总通量方程不足以确定所有点的场。
+
+\fig{e1:zero-flux}{匀强场穿过空盒：左面负通量、右面正通量，净通量为零而场不为零}{\begin{tikzpicture}
+
+\draw[guide](0,-1)rectangle(4,1);
+\foreach \y in {-.6,0,.6}{\draw[flow](-1.5,\y)--(5.7,\y);}
+\draw[force](0,1.5)--(-1,1.5)node[left]{$\bm n_L$};\draw[force](4,1.5)--(5,1.5)node[right]{$\bm n_R$};
+\node at(.6,-1.7){$\Phi_L=-ES$};\node at(4.2,-1.7){$\Phi_R=+ES$};\node at(2,2.3){$Q_{\text{内}}=0$};
+
+\end{tikzpicture}}
+
+图\ref{e1:zero-flux}的四个侧面法向与场垂直，通量为零；左右两面各有非零通量，合计才为零。这说明“零包围电荷”只给出积分约束。圆环虽有轴对称性，在任意球面上场的大小仍不相同、方向也不处处径向，不能写 $E4\pi r^2=Q/\varepsilon_0$。
+
+\subsection{球壳、实心球与无限厚板}
+
+均匀带电球壳有球对称性。对半径 $r<R$ 的同心高斯面，包围电荷为零，因而 $E=0$；对 $r>R$，包围总电荷 $Q$，得 $E=kQ/r^2$。这里球内零场同时依靠球对称和零包围电荷，不能只写“没有包围电荷所以场为零”。
+
+均匀实心球体密度 $\rho$、半径 $R$。球内半径 $r$ 的高斯面包围电荷 $4\pi\rho r^3/3$，所以 $E(r)=\rho r/(3\varepsilon_0)$；球外仍等效为总电荷位于球心。球内场随位置矢量线性变化，这一性质使球形空腔和带电粒子振动问题特别简洁。
+
+\fig{e1:sphere-fields}{球壳与实心球的无量纲径向场；球壳表面两侧极限不同，实心球表面连续}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](0,0)--(4.4,0)node[right]{$r/R$};\draw[axis](0,0)--(0,2.9)node[above]{$E/(kQ/R^2)$};
+\draw[blue,thick](0,0)--(1.6,0);\draw[blue,thick,domain=1:2.5,samples=60]plot({1.6*\x},{2/(\x*\x)});
+\draw[guide](1.6,0)--(1.6,2);\draw[fill=white](1.6,0)circle(2pt);\draw[fill=white](1.6,2)circle(2pt);
+\node[below]at(1.6,-.15){$1$};\node[left]at(0,2){$1$};\node at(2,-1){均匀薄球壳};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis](0,0)--(4.4,0)node[right]{$r/R$};\draw[axis](0,0)--(0,2.9)node[above]{$E/(kQ/R^2)$};
+\draw[red,thick](0,0)--(1.6,2);\draw[red,thick,domain=1:2.5,samples=60]plot({1.6*\x},{2/(\x*\x)});
+\draw[guide](1.6,0)--(1.6,2);\fill(1.6,2)circle(2pt);\node[below]at(1.6,0){$1$};\node[left]at(0,2){$1$};\node at(2,-1){均匀实心球};
+\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{e1:sphere-fields}左图的薄壳是理想面电荷，径向场的跳变量为 $\sigma/\varepsilon_0$。右图只有体电荷、没有额外表面电荷，因此内外场在 $R$ 处连续。对实心球内一点，线性关系可写成 $\bm E=\rho\bm r/(3\varepsilon_0)$，后续补形法正是利用这个矢量形式。
+
+均匀无限厚板占 $-d\le x\le d$，对称性使场垂直板面且满足 $E_x(-x)=-E_x(x)$。在板内取两端为 $\pm x$ 的柱形面，通量为 $2E_xS$，包围电荷为 $2\rho xS$，得到 $E_x=\rho x/\varepsilon_0$。板外改用全部厚度，得 $E_x=\rho d\,\operatorname{sgn}(x)/\varepsilon_0$。板内外场在 $x=\pm d$ 连续，斜率却改变。
+
+\typeout{ECFIG:fig:e1:gauss}\fig{fig:e1:gauss}{厚板内高斯面端面位于 $\pm x$，两端通量同号，侧面通量为零}{\begin{tikzpicture}
+
+\fill[gray!12](-2,-1.5)rectangle(2,1.5);\draw(-2,-1.5)--(-2,1.5)(2,-1.5)--(2,1.5);
+\draw[axis](-4,0)--(4.6,0)node[right]{$x$};\draw[guide](-1,-.8)rectangle(1,.8);
+\draw[flow](1,.4)--(3,.4)node[right]{$\bm E(x)$};\draw[flow](-1,.4)--(-3,.4);
+\draw[force](1,-.5)--(1.8,-.5)node[midway,below]{$\bm n$};\draw[force](-1,-.5)--(-1.8,-.5)node[midway,below]{$\bm n$};
+\node[below]at(1,-.1){$x$};\node[below]at(-1,-.1){$-x$};\node[below]at(2,-.1){$d$};\node[below]at(-2,-.1){$-d$};
+\node at(0,2.2){每一端面面积 $S$};
+
+\end{tikzpicture}}
+
+图\ref{fig:e1:gauss}左右端面的场与外法向都同向，所以总通量为 $2E_xS$，不能因两处场矢量相反而相互抵消；标量积中的法向也反向。对板外场点，高斯柱必须包含整个厚度 $2d$，包围电荷不再随端面外移增加。
+
+\section{叠加中的补形与空腔}
+\subsection{去掉一部分电荷等于加入负分布}
+
+固定电荷分布挖去一块时，可以把余下分布表示为“完整正分布加上同形负分布”。这种数学叠加不表示真实存在一块负电荷，而是方便利用已知完整模型。半球、开孔球壳、带空腔实心球和环形平面都能由此处理。
+
+例如均匀带电实心球中挖去偏心球形空腔。对腔内点 $P$，设大球心为 $O$、空腔球心为 $O'$，$\bm a=\overrightarrow{OO'}$。完整正球在腔内产生 $\rho\overrightarrow{OP}/(3\varepsilon_0)$，补入负球产生 $-\rho\overrightarrow{O'P}/(3\varepsilon_0)$，二者相加为 $\rho\bm a/(3\varepsilon_0)$，与 $P$ 无关，说明腔内为匀强场。
+
+补形法要求补入分布的密度、位置和边界与被去掉部分完全一致。绝缘体中的固定电荷空腔与导体空腔不是同一模型；导体表面会重新分布电荷，不能用固定均匀体密度的结果直接代替。
+
+\fig{e1:cavity-vectors}{负密度球恰补去空腔；点 $P$ 同时位于正球和补入的负球内部}{\begin{tikzpicture}
+
+\fill[gray!10](0,0)circle(2);\draw(0,0)circle(2);\fill[white](.7,.3)circle(.85);\draw[blue](.7,.3)circle(.85);
+\fill(0,0)circle(1.8pt)node[below left]{$O$};\fill(.7,.3)circle(1.8pt)node[below right]{$O'$};\fill(.9,.8)circle(1.8pt)node[above]{$P$};
+\draw[flow](0,0)--(.7,.3);\draw[flow](0,0)--(.9,.8);\draw[flow](.7,.3)--(.9,.8);
+\node at(-1.1,1){$+\rho$};\draw[guide](1.3,.7)--(3.2,1.7)node[right]{$-\rho$ 补球};
+\draw[flow](3,-.8)--(4.4,-.2)node[right]{$\bm a$};
+\node at(4,1){$\bm r=\bm a+\bm r'$};
+
+\end{tikzpicture}}
+
+图\ref{e1:cavity-vectors}中两个矢量分别从各自球心量到同一场点。大球给 $+\rho\bm r/(3\varepsilon_0)$，补球给 $-\rho\bm r'/(3\varepsilon_0)$；负号来自被去掉的密度，并不来自距离向量反向。相减后只剩固定的心距矢量 $\bm a$，这才说明腔内任一点的场都相同。
+
+\subsection{偶极远场中的小参数}
+
+两个等量异号电荷间距 $2a$，定义偶极矩 $\bm p$ 从负电荷指向正电荷，大小 $p=2aq$。在远处 $L\gg a$，轴线上两点电荷的场几乎抵消，保留的首项随 $p/L^3$ 变化；中垂线上横向分量相加，方向与 $\bm p$ 相反。轴向和中垂线同距离处场强大小之比为 $2:1$。
+
+这一结论中的“远”要求场点距整个电荷系统的尺度都大，而不是只远离其中一个电荷。推导应先写精确式，再按 $a/L$ 展开到首个不抵消的阶。两电荷总量为零时，点电荷远场的 $1/L^2$ 首项已经消失，若仍保留它就不能表现偶极特征。
+
+
+\fig{e1:dipole-directions}{等量异号电荷的轴线与中垂线投影；偶极矩从负端指向正端}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(5.6,0)node[right]{$x$};\draw[axis](0,-.5)--(0,3.9)node[above]{$y$};
+\fill(-1,0)circle(2.5pt)node[below]{$-q$};\fill(1,0)circle(2.5pt)node[below]{$+q$};
+\draw[flow](-1,-1)--(1,-1)node[midway,below]{$\bm p=2aq\hat{\bm x}$};
+\fill(4,0)circle(2pt)node[below]{$M$};\draw[force](4,0)--(5.2,0)node[above]{$\bm E_M$};
+\fill(0,2.5)circle(2pt)node[right]{$N$};\draw[guide](-1,0)--(0,2.5)--(1,0);
+\draw[force](0,2.5)--(-.6,1)node[left]{$\bm E_-$};\draw[force](0,2.5)--(-.6,4)node[left]{$\bm E_+$};
+\draw[flow,blue](0,2.5)--(-1.4,2.5)node[left]{$\bm E_N$};
+
+\end{tikzpicture}}
+
+在图\ref{e1:dipole-directions}中取 $OM=ON=L>a$。轴线上先作带方向的差，中垂线上先消去竖直分量，得到精确式
+\[
+\begin{aligned}
+E_{Mx}&=kq\left[\frac1{(L-a)^2}-\frac1{(L+a)^2}\right]
+=\frac{4kqaL}{(L^2-a^2)^2},\\
+E_{Nx}&=-\frac{2kqa}{(L^2+a^2)^{3/2}},\qquad E_{Ny}=0.
+\end{aligned}
+\]
+再以 $a/L\ll1$ 展开，分别得到 $2kp/L^3$ 与 $-kp/L^3$。先相减再近似能保留首个非零项；若只把每个点电荷场写成 $kq/L^2$，恰好把要找的偶极项丢掉。
+
+\section{电场力与分布电荷的压力}
+\subsection{把自身场从受力计算中分离}
+
+两块很大、距离远小于板尺度的平行绝缘板带面电荷 $\pm\sigma$。每板独自产生单侧场 $\sigma/(2\varepsilon_0)$，板间同向叠加，得到 $E=\sigma/\varepsilon_0$，板外抵消。计算上板受力时，只能用下板在上板处产生的场，故单位面积吸引力为
+\[
+ p=\sigma\frac{\sigma}{2\varepsilon_0}
+ =\frac{\sigma^2}{2\varepsilon_0}=\frac12\varepsilon_0E^2.
+\]
+若把总场 $\sigma/\varepsilon_0$ 乘以上板电量，就把上板自身的场重复计入，结果多一倍。
+
+更一般地，理想导体表面内侧场为零，外侧法向场为 $E_{\text{外}}$。表面电荷自身在两侧产生大小相同、方向相反的场，故排除自身后，其他电荷产生的有效场等于两侧总场的平均，即 $E_{\text{外}}/2$。再用 $\sigma=\varepsilon_0E_{\text{外}}$，得到向外的电压力 $\varepsilon_0E_{\text{外}}^2/2$。这一结果会在电容与能量方法中继续使用。
+
+\fig{e1:pressure-fields}{总场由两板场叠加；正板受力只用负板产生的场}{\begin{tikzpicture}
+
+\draw[very thick](-2,1.5)--(2,1.5)(-2,-1.5)--(2,-1.5);\node[right]at(2,1.5){$+\sigma$};\node[right]at(2,-1.5){$-\sigma$};
+\draw[flow,blue](-.6,.9)--(-.6,-.8)node[below]{$E_+=\sigma/(2\varepsilon_0)$};
+\draw[flow,red](.7,.9)--(.7,-.8);\node[right,red]at(1,0){$E_-=\sigma/(2\varepsilon_0)$};
+\draw[force](0,1.5)--(0,.4);\node at(0,2.3){正板：$p=\sigma E_-$};
+
+\end{tikzpicture}}
+
+图\ref{e1:pressure-fields}中板间场 $E_++E_-$ 用于放在板间的小试探电荷；正板自身的受力却只使用 $E_-$。同样，导体表面求压力时所用的是排除面元自身场后的平均场，因而出现 $1/2$。边缘附近若场不均匀，应对局部压力积分，不能直接套用整板均匀值。
+
+\subsection{静电平衡不等于力学稳定}
+
+几个点电荷的合力都为零，只表示该配置满足瞬时平衡方程。稍作位移后，力可能使偏移进一步增大，平衡并不稳定。判断稳定性时需指定哪些电荷固定、运动允许的方向以及是否有机械约束。
+
+同样，某点电场为零不意味着该点附近也为零。圆环轴心、偶极外的某个抵消点、球壳内部各点的零场，其成因和邻域性质不同。应从场的空间变化或受力展开判断运动，而不能把“受力为零”直接写成“可以稳定停留”。
+
+对于正带电圆环中心，轴向有 $E_x\simeq(kQ/R^3)x$。正试探电荷轴向偏离后受到同向力，因而不稳定；负试探电荷若被轨道限制在轴上，则有回复力。没有轴向约束时，还须检查环平面内两个方向，不能把一维稳定推广为三维稳定。
+\fig{e1:stability-axis}{同一个零场点对两种试探电荷有相反的轴向稳定性；图示微小位移 $x>0$}{\begin{tikzpicture}
+
+\draw(0,0)ellipse(.35 and 1.4);\draw[axis](-1,0)--(5,0)node[right]{$x$};\node[below]at(0,0){$O$};
+\fill(1.5,0)circle(2pt)node[below]{$x$};\draw[flow](1.5,.8)--(3.2,.8)node[right]{$\bm E$};
+\draw[force](1.5,-.7)--(3.2,-.7)node[right]{$q>0$ 的力};\draw[force](1.5,-1.5)--(-.2,-1.5)node[left]{$q<0$ 的力};
+
+\end{tikzpicture}}
+图\ref{e1:stability-axis}只检验了允许的轴向自由度。无电荷区域的静电势满足拉普拉斯方程，不能在内部有严格的局部极大或极小，所以仅靠固定静电场不能使自由点电荷在三维空间中形成严格稳定平衡。轨道、接触支撑等约束改变了可动自由度，必须写进模型。

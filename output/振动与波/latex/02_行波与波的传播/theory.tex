@@ -1,0 +1,209 @@
+\section{从局部振动到波的传播}
+机械波是扰动通过介质相互作用逐步传播的过程。绳端振动时，相邻绳元受张力的横向分量而依次运动；在空气中，压缩和稀疏通过压强作用传递。振源和能够传递扰动的介质是机械波形成的基本条件。介质质点的振动速度与波形的传播速度是不同物理量，前者随时空位置改变，后者在给定线性介质中由介质参数决定。
+
+横波的振动方向垂直于传播方向，纵波的振动方向平行于传播方向。纵波也能用位移随平衡位置的函数表示，但图线上下的纵坐标只是有正负的纵向位移，不表示介质真的在空间上下摆动。研究密度和压强时，应看相邻质点间距的变化，而不能把位移波峰直接称为压缩最强处。
+
+\fig{fig:w2:polarization}{横波沿横向往复，纵波沿传播方向往复；标记的是同一材料点}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](0,0)--(5,0);\draw[world,domain=0:5,samples=90]plot(\x,{.5*sin(90*\x)});
+\fill[blue](1,.5)circle(.07)node[above left]{$P$};\draw[dim](1,-.5)--(1,.5)node[midway,right]{振动};\draw[flow](3,1.2)--(4.3,1.2)node[right]{$u$};\node at(2.5,-1){横波};
+\end{scope}
+\begin{scope}[yshift=-3.1cm]
+\draw[guide](0,0)--(5,0);\foreach \j in {0,...,20}{\pgfmathsetmacro{\xx}{\j/4}\fill({\xx+.13*cos(90*\xx)},0)circle(.045);}
+\fill[blue](1,0)circle(.08)node[above]{$Q$};\draw[dim](.6,-.6)--(1.4,-.6)node[midway,below]{振动};\draw[flow](3,1.2)--(4.3,1.2)node[right]{$u$};\node at(2.5,-1.5){纵波};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fig:w2:polarization}中，横波的$P$沿竖直线往复，纵波的$Q$沿水平线往复；箭头$u$追踪相位的传播。判断横波或纵波，应比较材料点的位移方向与$u$，不能只看纸面曲线向上还是向下。
+
+
+在线性小振幅模型中，质点在各自平衡位置附近往复，传递的是扰动和能量，不是整块介质随波形平移。真实水面波在高阶近似下可能存在漂移，破碎波还可输运水体，因此不能把线性模型中的结论推广成任何水波都绝无物质输运。
+
+\input{wave-delay-diagram}
+\subsection{振源、媒质与波形之间的因果联系}
+将介质想象为许多有弹性联系的小单元，先运动的单元通过相互作用推动相邻单元。相邻单元的振动并不是彼此无关地同时启动，启动延迟正是波向和波速得以定义的原因。一个质点的完整振动历程与某时刻整条介质的形状是不同截面：前者纵向沿时间观察，后者横向沿空间观察。两幅图看起来都像正弦曲线，横轴却记录不同信息。
+
+振幅小到使介质响应近似线性时，连续正弦驱动可形成同频率行波。对于球面波，即使没有耗散，能量也分散到不断增大的球面上，振幅通常随传播距离减小；平面波式中取常数$A$相当于忽略几何扩散。题目若由点源发波却又要求比较不同距离的强度，应说明是否将到达振幅近似相同，不能把几何振幅变化隐藏在程差讨论中。
+
+波形是否保持不变也有条件。无色散近似下，不同频率成分以相同速率前进，任意波包可以写成$f(x-ut)$。如果介质存在色散，不同成分逐渐分离，单一相速度仍可对简谐分量定义，但整个波包不再是刚性平移。竞赛中的基础弦波通常采用无色散模型；水面波则需说明浅水还是深水条件，不能把$\sqrt{gh}$当作所有水波的通用波速。
+
+
+\section{延迟时间与行波表达式}
+设原点的振动为$y_0(t)=A\cos(\omega t+\varphi_0)$，波沿正$x$方向以速率$u$传播。图\ref{fig:w2:delay}所标同一相位从源点到位置$x$所需时间为$\Delta t=x/u$。因此该处质点在时刻$t$重现的是源在$t-x/u$时刻的状态，应把源函数中的$t$替换为$t-x/u$：
+\[
+y(x,t)=A\cos[\omega(t-x/u)+\varphi_0]
+=A\cos(\omega t-kx+\varphi_0),
+\quad k=\omega/u=\frac{2\pi}{\lambda}.
+\]
+这一步替换的物理意义是，$x$处此刻重现振源在较早时刻的状态。它同时给出$u=\lambda/T=f\lambda$。向负方向传播时用$t+x/u$，于是相位为$\omega t+kx+\varphi_0$。若将整个相位乘以负一，余弦函数不变，因此不能仅凭$x$项前的孤立符号判断方向，应固定时间项的符号或直接令相位不变求$\dd x/\dd t$。
+
+对任意不变形波包，同样有$y=f(x-ut)$或$f(x+ut)$。若振源从$t=0$才开始振动，正向传播区域仅为$0\le x\le ut$，波前外仍未扰动。无限长正弦式描述已经建立的波列，不能不加说明地用于尚未到达的点。
+
+\section{波形图与振动图的转换}
+固定$t=t_0$得到波形图，横轴是各质点的平衡位置$x$；固定$x=x_0$得到振动图，横轴是时间$t$。从波形图读波长，从振动图读周期，二者不能互换。把波形稍向传播方向平移，就能看出某一固定位置的下一时刻位移。
+
+正向波满足
+\[
+\frac{\partial y}{\partial t}=-u\frac{\partial y}{\partial x},
+\]
+所以波形上斜率为正的点正在向负$y$方向运动；负向波的关系则为$\partial_ty=u\partial_xy$。这是波形平移法的定量形式。波峰波谷处斜率为零，质点瞬时速度为零，但加速度一般不为零；不能用它们的瞬时运动方向判断传播方向。
+
+对简谐波，$v_y=-A\omega\sin\psi$，$a_y=-\omega^2y$。因此给出同一时刻的位移和波形斜率，再给定波向，才能把速度和加速度符号完整确定。图的横轴单位若为厘米，代入以米定义的$k$前必须换算。
+
+\fig{fig:w2:slope}{正向波中波形斜率和质点速度反号}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(5.5,0)node[right]{$x$};\draw[axis](0,-1.4)--(0,2)node[above]{$y$};\draw[world,domain=0:5,samples=100]plot(\x,{sin(180*\x+0)});\draw[force](2,0)--(2,-.9)node[right]{$v_y$};\draw[guide](1.7,-.9)--(2.3,.9);\draw[flow](3,1.7)--(4,1.7)node[right]{$u$};\end{tikzpicture}}
+
+在图\ref{fig:w2:slope}的正向传播约定下，固定波形向右平移，某点将取得它左侧原有的位移。上升斜率处质点因而向下运动，这正对应 $\partial_t y=-u\partial_x y$；若波改向左传播，符号随之改变。
+
+\subsection{用导数逐步核对运动方向}
+对$y=A\cos(\omega t-kx+\varphi_0)$，令$\psi=\omega t-kx+\varphi_0$。固定位置时$\partial_t\psi=\omega$，固定时间时$\partial_x\psi=-k$；分别用链式法则，
+\[
+v_y=(-A\sin\psi)\partial_t\psi=-A\omega\sin\psi,
+\qquad \partial_xy=(-A\sin\psi)\partial_x\psi=Ak\sin\psi.
+\]
+消去$\sin\psi$才得到$v_y=-(\omega/k)\partial_xy=-u\partial_xy$。再固定$x$求一次时间导数，$a_y=(-A\omega\cos\psi)\partial_t\psi=-A\omega^2\cos\psi$。两个偏导分别在不同条件下求得，把$y$对$x$的导数直接当速度，会漏掉因子$u$并得到错误单位。
+
+如果题目给的是一张任意形状的瞬时波形，只要确认它向右不变形传播，上述斜率关系仍成立，无需先把它拟合成正弦函数。位移处在局部最大处时，一阶斜率为零，下一步可由曲率和波动方程判断加速度。对于简谐波$a_y=-\omega^2y$；对于一般波包则不能把这一关系套给整条曲线，只能用$a_y=u^2\partial_{xx}y$。
+
+从某一瞬时波形写出波动方程时，可以先求空间式$y(x,t_0)=f(x)$，再把$x$替换为$x-u(t-t_0)$。从某点振动图写波动方程时，则先写$g(t)$，再替换为$t-(x-x_0)/u$。两个入口等价，但替换的变量不同。完成后应代回已知时刻或已知位置，逐一验证幅度、相位和运动方向，不能只验证函数形状相似。
+
+
+\subsection{有限波列的前缘、后缘和空间长度}
+连续简谐波的公式默认振源已经持续工作；若振源只在$0\le t\le\tau_s$内振动，则还必须传递停止信息。向右传播时，某点开始运动的条件是$t-x/u=0$，停止条件是$t-x/u=\tau_s$。因此在时刻$t$，已经受到扰动且尚未接到停止信息的区域满足
+\[
+0\le t-\frac xu\le\tau_s,\qquad u(t-\tau_s)\le x\le ut.
+\]
+图\ref{fig:w2:packet}中前缘在$ut$，后缘在$u(t-\tau_s)$，两者均以相同波速前进；当$t>\tau_s$时，波列总长为$u\tau_s$，即使源已停，远处仍可能尚在振动。若$t<\tau_s$，后缘尚未形成，实际受扰区域应与绳的范围$x\ge0$取交集。
+\fig{fig:w2:packet}{源停止后的有限波列及前后边界}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(6,0)node[right]{$x$};\draw[world](0,0)--(1,0);\draw[world,domain=1:5,samples=100]plot(\x,{.6*sin(180*(\x-1))});\draw[world](5,0)--(5.8,0);\draw[guide](1,-.7)--(1,1.1);\draw[guide](5,-.7)--(5,1.1);\node[below]at(1,-.7){$u(t-\tau_s)$};\node[below]at(5,-.7){$ut$};\draw[dim](1,1.3)--(5,1.3)node[midway,above]{$u\tau_s$};\end{tikzpicture}}
+若源完成$N$个完整振动才停止，则$\tau_s=NT$，波列空间长度为$uNT=N\lambda$。波列内包含多少个周期，取决于源振动次数；某个质点经历多少次振动，也等于这个次数，而不是波列经过该点的空间长度除以质点振幅。介质点的横向运动距离与波列沿绳的长度是两种量。
+
+在前、后缘恰好出现位移不连续，会使理想弦斜率或速度含奇异变化。实际振源总有有限启动和停止过程，波列边缘因而较平滑；基础计算可使用分段函数，但应说明它是理想化。若源在$t=\tau_s$时不处于零位移，停止后端点究竟保持该位移还是回到零位，也必须给出，不能一律把后缘以后的位移写为零。
+
+有限波列遇到边界后，反射波列与入射波列只在时空重叠区域内叠加。用整条无限长驻波表达式描述尚未被反射信息到达的区域，会违反传播因果。处理启动题时，先由边缘定位受扰区，再在区内使用相位公式，最后检查边界上的位移和速度条件，这一顺序与无限波的参数识别不同。
+
+\section{相位差、整数分支与测量歧义}
+在同一时刻，正向波两点的相位差为$\psi_2-\psi_1=-k(x_2-x_1)$。但实验图像只能确定相位模$2\pi$的值，不能直接确定中间隔了几个完整波长。若两点相距$d$，测得相位滞后$\delta$，则$kd=\delta+2\pi n$，从而$\lambda=2\pi d/(\delta+2\pi n)$。只保留使$\lambda>0$的整数分支，并根据波向重新判断相位先后。
+
+“两点同相”只说明$d=n\lambda$；若没有相邻同相点的说明，不能认定$d=\lambda$。“两点反相”给出$d=(n+\frac12)\lambda$。知道周期仍可能对应多组波长和波速。额外的传播距离、到达时间、介质波速范围可以帮助选取唯一分支，不能用习惯取$n=0$代替这些条件。
+
+\section{波速的动力学依据与能流}
+波速由相邻介质微元之间的作用及其惯性决定。对平衡张力为$\mathcal T$、线密度为$\mu_\ell$的柔软细弦，取图\ref{fig:w2:stringelement}中从$x$至$x+\dd x$的微元。它受到左端向左下的张力、右端沿切线的张力，两者应分别画在微元的两个端点。小斜率时，真实弧长$\dd s=\sqrt{1+y_x^2}\dd x\simeq\dd x$，微元质量为$\mu_\ell\dd x$。
+\fig{fig:w2:stringelement}{弦微元两端张力的方向差产生横向合力}{\begin{tikzpicture}[scale=.88]\draw[world,domain=.5:3.4,samples=60]plot(\x,{.18*\x^2});\fill(1,.18)circle(2pt)node[below right]{$A$};\fill(2.8,1.4112)circle(2pt)node[below right]{$B$};\draw[force](1,.18)--(0,-.18)node[left]{$\mathcal T$};\draw[force](2.8,1.4112)--(3.5,2.1168)node[right]{$\mathcal T$};\draw[guide](1,.18)--(2,.18);\draw[guide](2.8,1.4112)--(4,1.4112);\node at(1.8,.45){$\alpha(x)$};\node[right]at(3.6,1.7){$\alpha(x+\dd x)$};\draw[guide](1,-.5)--(1,.02);\draw[guide](2.8,-.5)--(2.8,1.2);\draw[dim](1,-.55)--(2.8,-.55)node[midway,below]{$\dd x$};\end{tikzpicture}}
+沿竖直方向使用牛顿第二定律，
+\[
+\mu_\ell\dd x\,y_{tt}
+=\mathcal T[\sin\alpha(x+\dd x)-\sin\alpha(x)].
+\]
+将$\sin\alpha\simeq\tan\alpha=y_x$代入，再将两端斜率之差写为$y_{xx}\dd x$，约去$\dd x$，得到$y_{tt}=(\mathcal T/\mu_\ell)y_{xx}$。对不变形波$y=f(\eta)$、$\eta=x-ut$，有$\partial_t\eta=-u$、$\partial_x\eta=1$，因此
+\[
+y_t=-u f'(\eta),\quad y_{tt}=(-u)f''(\eta)(-u)=u^2f''(\eta),
+\qquad y_x=f'(\eta),\quad y_{xx}=f''(\eta).
+\]
+代入微元方程得$[u^2-\mathcal T/\mu_\ell]f''=0$；对有非零曲率的扰动，系数须为零，才得到$u=\sqrt{\mathcal T/\mu_\ell}$。张力提供回复作用，线密度提供惯性；量纲$[\mathcal T/\mu_\ell]={\rm m^2/s^2}$也与速率平方相符。
+
+这里把张力视为已存在的近似恒量，并忽略弦的弯曲刚度和耗散。大振幅引起明显伸长时，张力变化会反过来改变传播；坚硬杆的弯曲波也不能使用柔弦模型。振源频率给定时，增加张力使$u$增大，波长$\lambda=u/f$随之增大，频率仍由驱动决定。
+
+\subsection{弦微元方程中的近似与平均功率}
+弦元的动能为$\dd K=\mu_\ell y_t^2\dd x/2$。其弯曲使真实长度比水平投影增加
+\[
+\dd s-\dd x=\bigl(\sqrt{1+y_x^2}-1\bigr)\dd x
+\simeq\tfrac12y_x^2\dd x.
+\]
+在恒定预张力近似下，增加的势能为张力乘这段长度增量，故每单位水平长度$u_U=\mathcal T y_x^2/2$。对正向简谐行波，$y_t=-A\omega\sin\psi$、$y_x=Ak\sin\psi$，再用$\mathcal T k^2=\mu_\ell\omega^2$，可见动能与势能密度在同一点同时相等。求周期平均时，在固定位置取起始相位为$\psi_0$，换元$\psi=\omega t+\psi_0$、$\dd t=\dd\psi/\omega$，得到
+\[
+\frac1T\int_0^T\sin^2(\omega t+\psi_0)\,\dd t
+=\frac1{2\pi}\int_{\psi_0}^{\psi_0+2\pi}\frac{1-\cos2\psi}{2}\,\dd\psi
+=\frac1{2\pi}\left[\frac\psi2-\frac{\sin2\psi}{4}\right]_{\psi_0}^{\psi_0+2\pi}
+=\frac12.
+\]
+所以平均总密度为$\overline u_E=\mu_\ell\omega^2A^2/2$，不是把两种能量各自的最大值同时相加。
+
+弦张力在位置$x$传递的横向功率可写成$P=-\mathcal T(\partial_xy)(\partial_ty)$。代入正向行波，得$P=\mathcal T k\omega A^2\sin^2\psi\ge0$，时间平均为$\overline P=\mathcal T k\omega A^2/2$。利用$\mathcal T=\mu_\ell u^2$和$\omega=uk$，化为$\overline P=\mu_\ell u\omega^2A^2/2$，与能量密度乘波速一致。
+
+改变振幅到两倍，平均功率变为四倍；频率到两倍而振幅、张力、线密度保持不变，功率也变为四倍。这些比较必须写明哪些量固定。若振源输出功率本身固定，改变频率后振幅会相应变化，不能再把所有参数独立保持不变。
+
+\input{knowledge-string-element}
+
+\subsection{纵波的位移、密度和压强}
+纵波的图像要先分清横坐标是介质的平衡位置，纵坐标是沿传播方向的位移。记平衡位置为$x$，纵向位移为$\xi(x,t)$，质点真实位置为$X=x+\xi$。原来相邻的两个质点间隔$\dd x$，扰动后间隔变为
+\[
+\dd X=[1+\partial_x\xi]\dd x.
+\]
+横截面积固定时，质量守恒给出$\rho(x,t)[1+\partial_x\xi]=\rho_0$。在线性小形变下展开倒数，得$\Delta\rho=-\rho_0\partial_x\xi$。图\ref{fig:w2:longitudinalmap}中右端位移比左端更小，间距缩短，正对应$\partial_x\xi<0$、密度增加；位移的正负本身并不决定疏密。
+
+\fig{fig:w2:longitudinalmap}{相邻质点的间距变化决定压缩和稀疏}{\begin{tikzpicture}[scale=.88]\node[left]at(0,1.5){平衡};\node[left]at(0,0){压缩};\draw[guide](.2,1.5)--(5.4,1.5);\draw[guide](.2,0)--(5.4,0);\fill(1,1.5)circle(3pt)node[above]{$x$};\fill(4.5,1.5)circle(3pt)node[above]{$x+\dd x$};\fill(1.8,0)circle(3pt)node[below]{$X$};\fill(4.2,0)circle(3pt)node[below]{$X+\dd X$};\draw[flow](1,1.25)--(1.8,.25);\draw[flow](4.5,1.25)--(4.2,.25);\draw[dim](1,2.2)--(4.5,2.2)node[midway,above]{$\dd x$};\draw[dim](1.8,-.8)--(4.2,-.8)node[midway,below]{$\dd X<\dd x$};\end{tikzpicture}}
+介质的体积弹性模量记为$B$。小压缩引起的压强增量$p'=-B\partial_x\xi$，其中声波中的$B$应采用相应热过程的有效模量。截面积$S$的微元受到的纵向合力为$-S\partial_xp'\dd x$，质量为$\rho_0S\dd x$，于是
+\[
+\rho_0\partial_{tt}\xi=-\partial_xp'
+=B\partial_{xx}\xi,\qquad u=\sqrt{B/\rho_0}.
+\]
+柔弦和纵波的回复机制不同，但都由局部形变产生相邻微元的合力，再与惯性比较得到波速。这里未考虑黏滞耗散；对于气体的较快声学扰动，压缩通常接近绝热，不能直接将缓慢等温压缩测得的模量不加说明地代入。
+
+若$\xi=A\cos(\omega t-kx)$，则$p'=-BkA\sin(\omega t-kx)$。位移波峰处空间斜率为零，密度与压强扰动为零；位移过零且斜率最负处才是最强压缩。两类图相差四分之一波长。闭端要求空气不能纵向移动，故位移为零而压强可最大；开端近似与外界等压，情况相反，这为下一讲的声管边界提供依据。
+
+\fig{fig:w2:longphase}{同一时刻的纵向位移与压强；压缩峰在位移过零处}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[blue,thick,domain=0:4.4,samples=90]plot(\x,{cos(90*\x)});\node[left]at(0,1){$\xi/A$};
+\draw[axis](0,-3)--(4.8,-3)node[right]{$x$};\draw[red,thick,domain=0:4.4,samples=90]plot(\x,{-3+sin(90*\x)});\node[left]at(0,-2){$p'/(BkA)$};
+\draw[guide](1,1.2)--(1,-3.2);\fill(1,0)circle(.05);\fill(1,-2)circle(.05)node[above right]{最强压缩};
+\foreach \xx/\ll in {1/{\lambda/4},2/{\lambda/2},4/\lambda}{\node[below]at(\xx,-3){$\ll$};}
+\node at(2,-4){$t=0$};
+
+\end{tikzpicture}}
+图\ref{fig:w2:longphase}中竖虚线处，左邻点向右、右邻点向左，因而相邻点挤近。此处$\xi=0$，却有$p'=BkA$。用斜率解释压缩，比把两条曲线的峰值位置死记为相差四分之一波长更可靠。
+
+
+\section{反射、折射与衍射的几何解释}
+波阵面是同相位点组成的曲面，波线在各向同性均匀介质中与波面垂直。惠更斯作图把旧波面上的点看作子波中心，以$u\Delta t$为半径作子波，新波面取其前向包络。这种构造说明传播几何，具体振幅和后向波的抵消还要由波动方程和干涉分析决定。
+
+\fig{fig:w2:huygens}{平面波面上各子波的共同前向包络仍为平面}{\begin{tikzpicture}
+
+\draw[blue,thick](0,-.5)--(0,4.5);\foreach \yy in {0,1,2,3,4}{\fill(0,\yy)circle(.045);\draw[gray]({0},{\yy-1.2})arc(-90:90:1.2);}
+\draw[red,thick](1.2,-.5)--(1.2,4.5);\draw[flow](1.7,2)--(3.2,2)node[right]{$u$};
+\draw[dim](0,5)--(1.2,5)node[midway,above]{$u\Delta t$};\node[below]at(0,-1.5){旧波面};\node[below right]at(1.2,-1.5){新波面};
+
+\end{tikzpicture}}
+图\ref{fig:w2:huygens}中各圆弧半径相同，新波面是它们最右侧的公切线；垂直波面的间距才是$u\Delta t$。画斜入射时，子波在两介质中的半径分别为$u_1\Delta t$与$u_2\Delta t$，速度差便转化为波面的转向。
+
+
+斜入射到静止平直界面时，可沿界面取坐标$s$。入射和透射波在界面上的相位分别写成$\omega_1t-k_1s\sin i+\varphi_1$、$\omega_2t-k_2s\sin r+\varphi_2$，其中角均从法线量起。两侧边界关系要在所有$t,s$同时成立，时间系数首先要求$\omega_1=\omega_2$，空间系数再要求$k_1\sin i=k_2\sin r$。因此
+\[
+\frac{\sin i}{\sin r}=\frac{k_2}{k_1}=\frac{u_1}{u_2}.
+\]
+频率连续源于静止边界的时间一致性，波长改变则源于介质中波速不同。反射波仍在原介质，波数大小不变，切向分量相等便给出反射角等于入射角。若界面移动，时间条件须重新建立，不能直接沿用频率不变的结论。
+
+\fig{fig:w2:refraction}{射线相对法线转向，波面与各自射线垂直；图取$u_2=u_1/2$}{\begin{tikzpicture}
+
+\draw[world](-3,0)--(3.5,0)node[right]{界面};\draw[guide](0,-3.5)--(0,3.5)node[above]{法线};
+\draw[flow](-1.6,2.7713)--(0,0);\draw[flow](0,0)--(1.6,2.7713);\draw[flow](0,0)--(.8,-3.0984);
+\foreach \a in {1,2}{\draw[blue,thick]({-.5*\a-.55},{.8660254*\a-.31754})--({-.5*\a+.55},{.8660254*\a+.31754});\draw[red,thick]({.125*\a-.55},{-.4841229*\a-.14201})--({.125*\a+.55},{-.4841229*\a+.14201});}
+\draw(0,.8)arc(90:120:.8);\node at(-.27,1.1){$i$};\draw(0,-1.1)arc(-90:-75.52249:1.1);\node at(.28,-1.45){$r$};
+\node at(-2.2,2.9){入射};\node at(2.1,2.9){反射};\node at(1.5,-2.8){透射};\node at(-2.2,.5){$u_1,\lambda_1$};\node at(-2.2,-.7){$u_2,\lambda_2$};
+
+\end{tikzpicture}}
+图\ref{fig:w2:refraction}中蓝、红短线是波面截线。沿同一界面移动一段$s$，相位分别改变$-k_1s\sin i$和$-k_2s\sin r$；两侧须保持同样的切向相位变化，才导出折射定律。进入慢介质后，同频率要求$\lambda_2=\lambda_1/2$，因此红色波面更密，透射线更靠近法线。
+
+
+波由慢介质进入快介质时$r>i$；当$\sin r=(u_2/u_1)\sin i>1$时，不再有满足该几何关系的传播透射方向。具体边界附近的场还要由动力学条件决定，几何折射定律本身并不给反射率。绕障碍或穿缝后的衍射同样要求波的叠加分析；孔宽与波长相近时展开明显，但不存在“孔更宽就完全没有衍射”的硬性分界。
+
+\fig{fig:w2:diffraction}{窄缝后的波面展开；图仅示传播几何，不表示各方向振幅相同}{\begin{tikzpicture}
+
+\draw[world,very thick](0,-2.5)--(0,-.5) (0,.5)--(0,2.5);\foreach \xx in {-2.4,-1.6,-.8}{\draw[blue,thick](\xx,-2.3)--(\xx,2.3);}
+\foreach \rr in {1,1.8,2.6}{\draw[red,thick]({0},{-\rr})arc(-90:90:\rr);}
+\draw[flow](-2.2,2.9)--(-1,2.9)node[right]{$u$};\draw[dim](.25,-.5)--(.25,.5)node[midway,right]{$a$};\draw[dim](-2.4,-2.9)--(-1.6,-2.9)node[midway,below]{$\lambda$};
+
+\end{tikzpicture}}
+图\ref{fig:w2:diffraction}中缝内不同点发出的子波在缝后叠加。$a$与$\lambda$相近或更小时，出射方向范围较宽；$a\gg\lambda$时主要集中在前方，边缘仍有展开。不能把示意圆弧理解成严格均匀的半圆能量分布。
+
+
+\section{从观测数据重建传播过程}
+一列简谐波由振幅、角频率、波数、传播方向和一个参考相位共同确定。给出一张带空间刻度的波形图能确定振幅与波长，却不能单独确定周期；给出某点带时间刻度的振动图能确定振幅和周期，却不能单独确定波长。再给一个质点运动方向可判断波向，但仍不自动给出波速大小。应逐一说明每个观测条件限制的是哪个未知量。
+
+若两次瞬时波形相隔$\Delta t$，对应波峰的平移量看似为$\Delta x$，实际还可能多传播了$n\lambda$，所以$u=(\Delta x+n\lambda)/\Delta t$。若两图形状相反，还可能是半周期相位差。只有题目说明波峰对应关系、传播距离上界或时间小于某一周期范围时，才可选唯一分支。它和两点振动图的整数分支来自同一相位周期性。
+
+设由图像已知$\lambda$、波向，而某点在$\Delta t$内从零位移向上运动到正端点，如果说明是首次到达，才可取$\Delta t=T/4$；若没有“首次”，还有$\Delta t=T/4+nT$。从正端点到负端点同样可能历经多个周期。重建运动过程应先列事件顺序，把额外整周数保留到可由条件排除时再删除。
+
+在有限波列中，还要检查测量点是否都已经被波前扰动。第二点尚未启动时，它的零位移不能视为稳定正弦振动恰好过零；两者虽有同一瞬时位移，速度和此前历史完全不同。源只振动有限时间时，波尾也会传播，某点的受扰时间等于源持续时间，而不是波从源到该点的旅行时间。
+
+最终得到表达式后，应固定已知的$x$或$t$逐条代回数据，再求导核对速度符号，并用等相位线核对波向。振动位移的单位和空间坐标的单位可以不同，指数或三角函数的相位仍必须无量纲。通过这些独立条件交叉核对，能够发现仅凭曲线外观很难察觉的相位符号错误。
+

@@ -1,0 +1,11 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[axis](0,0)--(6.7,0);\draw[world](.2,0)rectangle(1.7,.6) (4.1,0)rectangle(5.6,.6);\node at(.9,.3){后车};\node at(4.8,.3){前车};\draw[dim](1.7,-.6)--(4.1,-.6)node[midway,below]{$d$};\draw[flow](1.8,1)--(2.6,1)node[right]{$v_0$};\end{tikzpicture}
+\end{document}

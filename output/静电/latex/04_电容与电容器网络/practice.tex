@@ -1,0 +1,80 @@
+\section{练习}
+
+\begin{question}\begin{drill}[球形电容器的薄隙极限]\label{e4:drill:1}
+球形电容器内半径 $R$、间隙 $d$。推导电容并求 $d/R$ 很小时的一阶修正。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:1:s}\fig{fig:e4:drill:1:s}{内球半径为 $R$，真空间隙宽度为 $d$}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.2);\draw[world](0,0)circle(1.8);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(-.85,.85)node[midway,below left]{$R$};\draw[dim](1.2,0)--(1.8,0)node[midway,below]{$d$};\node[above]at(0,1.85){外球内半径 $R+d$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:1}
+\begin{question}\begin{drill}[中性浮板的位移]\label{e4:drill:2}
+真空平行板间距 $d$、面积 $S$，插入厚度可忽略的中性浮板，距上板 $x$。求等效电容及浮板受力，忽略边缘。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:2:s}\fig{fig:e4:drill:2:s}{中性薄浮板与两侧真实间隙}{\begin{tikzpicture}
+
+\foreach \y/\n in{3/A,1.8/M,0/B}{\draw[world](0,\y)--(4.5,\y);\node[right]at(4.5,\y){$\n$};}\draw[dim](-.6,1.8)--(-.6,3)node[midway,left]{$x$};\draw[dim](-.6,0)--(-.6,1.8)node[midway,left]{$d-x$};\node at(2.2,2.15){$Q_M=0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:2}
+\begin{question}\begin{drill}[交错多片电容器]\label{e4:drill:3}
+共有 $n$ 块相同金属板，依次交替连接到端口 $A,B$，每个相邻间隙面积 $S$、宽 $d$。求电容。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:3:s}\fig{fig:e4:drill:3:s}{奇数片与偶数片分别相连，板号与端口名分开标注}{\begin{tikzpicture}
+\draw[world](0,4)--(4,4);\node[above]at(2,4){$1$};\draw(0,4)--(-.6,4);\draw[world](0,3)--(4,3);\node[above]at(2,3){$2$};\draw(4,3)--(4.6,3);\draw[world](0,2)--(4,2);\node[above]at(2,2){$3$};\draw(0,2)--(-.6,2);\draw[world](0,1)--(4,1);\node[above]at(2,1){$4$};\draw(4,1)--(4.6,1);\draw[world](0,0)--(4,0);\node[above]at(2,0){$5$};\draw(0,0)--(-.6,0);\draw(-.6,0)--(-.6,4)node[above]{$A$};\draw(4.6,1)--(4.6,3)node[above]{$B$};\draw[dim](5.4,2)--(5.4,3)node[midway,right]{$d$};\node at(2,-.8){以 $n=5$ 示意交错接线，间隙面积均为 $S$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:3}
+\begin{question}\begin{drill}[两只电容串联的耐压限制]\label{e4:drill:4}
+电容 $C_1=2\,\mu\mathrm F$、$C_2=3\,\mu\mathrm F$，耐压分别 $100\,\mathrm V$、$80\,\mathrm V$。中点原中性，求串联后最大安全电压及储能。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:4:s}\fig{fig:e4:drill:4:s}{题设：两只电容串联的耐压限制}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$C_1$}](2.5,0)to[C,l={$C_2$}](5,0);\node[left]at(0,0){$A$};\node[above]at(2.5,0){$M$};\node[right]at(5,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:4}
+\begin{question}\begin{drill}[两个等电容的连接耗散]\label{e4:drill:5}
+两只电容均为 $C$，一只电压 $U$，另一只未充电，同极相连。求末电压、连接释放能量和原充电电容的电量变化。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:5:s}\fig{fig:e4:drill:5:s}{接通前一只已充电，另一只未充电}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$C_1=C$}](0,3);\draw(5,0)to[C,l={$C_2=C$}](5,3);\draw(0,3)to[closing switch](5,3);\draw(0,0)--(5,0);\node at(2.5,3.8){初态：$U_1=U,\ U_2=0$};\node at(2.5,-.7){闭合开关后达到平衡};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:5}
+\begin{question}\begin{drill}[对称电容桥]\label{e4:drill:6}
+菱形桥四边电容均为 $C$，上下中点之间另接 $C_0$，左右为端口 $A,B$。所有中间导体组原中性。求等效电容。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:6:s}\fig{fig:e4:drill:6:s}{题设：对称电容桥}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$C$}](2.5,2)to[C,l={$C$}](5,0)to[C,l_={$C$}](2.5,-2)to[C,l_={$C$}](0,0);\draw(2.5,2)to[C,l={$C_0$}](2.5,-2);\node[left]at(0,0){$A$};\node[right]at(5,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:6}
+\begin{question}\begin{drill}[有限输入电容的电压测量]\label{e4:drill:7}
+电容 $C$ 初电压 $U_0$，断电后接入原未充电、输入电容 $C_m$ 的理想静电计，无漏电。求读数与相对扰动；要扰动不超过 $1\%$，需什么条件？
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:7:s}\fig{fig:e4:drill:7:s}{接入前输入电容未充电，开关尚未闭合}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$C$}](0,3);\draw(5,0)to[C,l={$C_m$}](5,3);\draw(0,3)to[closing switch](5,3);\draw(0,0)--(5,0);\node at(2.5,3.8){待测：$U_0$\hspace{2cm}仪器：$0$};\node at(2.5,-.7){仪器输入电阻视为无穷大};\draw[guide](4.2,.5)rectangle(6.3,2.5);
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:7}
+\begin{question}\begin{drill}[孤立电容器变间距的受力与功]\label{e4:drill:8}
+真空平行板面积 $S$、间距从 $d_1$ 增至 $d_2$，孤立后电量为 $\pm Q$。求吸引力及外力功，再用电场能密度积分验证。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:8:s}\fig{fig:e4:drill:8:s}{上板由虚线位置移到实线位置，电量保持不变}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.5,0)(0,2.6)--(4.5,2.6);\draw[guide](0,1.3)--(4.5,1.3);\node[right]at(4.5,2.6){$+Q$};\node[right]at(4.5,0){$-Q$};\draw[dim](-.6,0)--(-.6,1.3)node[midway,left]{$d_1$};\draw[dim](-1.4,0)--(-1.4,2.6)node[midway,left]{$d_2$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:8}
+\begin{question}\begin{drill}[十电容梯形的非相邻端口]\label{e4:drill:9}
+双轨有四列节点 $n=0,1,2,3$，相邻列上下各接电容 $C$，每一列上下也接 $C$，共十只。端口 $A$ 为第0列下节点，$B$ 为第3列上节点，其他导体组原中性。求等效电容。
+\end{drill}
+\typeout{ECFIG:fig:e4:drill:9:s}\fig{fig:e4:drill:9:s}{题设：十电容梯形的非相邻端口}{\begin{tikzpicture}[scale=.88]
+\foreach \x in{0,2.5,5,7.5}{\draw(\x,0)to[C](\x,2);}\foreach \x in{0,2.5,5}{\draw(\x,0)to[C](\x+2.5,0);\draw(\x,2)to[C](\x+2.5,2);}\node[left]at(0,0){$A$};\node[right]at(7.5,2){$B$};\node at(4,-.8){十只均为 $C$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e4:drill:9}

@@ -1,0 +1,15 @@
+\subsection{同心分区磁通与受约束粒子的切向响应}
+图\ref{fv:f1:field}取内盘半径 $a$，场变化率为 $\dot B_1$；外层变化率为 $\dot B_2$，均按 $+z$ 计有向量。对 $a<r<b$，不能只使用粒子所在外层的局部 $\dot B_2$，而应计算全部包围磁通：
+\[
+2\pi r E_\theta=-\pi\bigl[a^2\dot B_1+(r^2-a^2)\dot B_2\bigr].
+\]
+若两项恰好抵消，此圆周上的环向感生电场为零，即使两个区域的磁场分别都在变化，也没有净环流。
+\fig{fv:f1:field}{分区磁场按包围面积求环流；定半径粒子将切向加速与径向约束分开}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)circle(2);\fill[orange!12](0,0)circle(.9);\draw[world](0,0)circle(.9);\draw[world](0,0)circle(2);\draw[guide](0,0)circle(1.5);\node at(0,.35){$\dot B_1$};\node at(0,-1.8){$\dot B_2$};\draw[->](0,0)--(.9,0)node[midway,below]{$a$};\draw[->](0,0)--({1.5*cos(40)},{1.5*sin(40)})node[midway,left]{$r$};
+\begin{scope}[xshift=5.7cm]
+\draw[world](0,0)circle(1.5);\fill(1.5,0)circle(2pt)node[right]{$q>0$};\node at(0,-.65){$\odot B,\dot B>0$};\draw[->,blue,thick](1.5,-.15)--(1.5,-1.35)node[right]{$q\bm E_\theta,\ \bm v$};\draw[->,red,thick](1.35,0)--(.3,0)node[midway,above]{$\bm F_B$};\node at(0,2.1){从静止开始的切向加速};\node at(0,-2.1){径向另列 $F_r+qvB=-mv^2/r$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{fv:f1:field}右图选取均匀变场、正电荷从静止出发的情形。顺时针切向电场先给粒子顺时针速度，此后磁力指向圆心；轨道支持力的大小和方向再由径向方程确定。若改为自由粒子，不能继续强行维持这个半径，而应联立径向和切向运动方程。

@@ -1,0 +1,546 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[细杆绕不同轴的转动惯量]\label{em6:example:1}
+均匀细杆质量$m$、长$\ell$，求绕垂直于杆的质心轴、端点轴的转动惯量，并用平行轴定理核验。
+\end{example}
+\fig{fig:em6:example:1:s}{题设：细杆绕不同轴的转动惯量}{\begin{tikzpicture}[scale=.9]\draw[very thick](0,0)--(5,0);\draw[axis](0,-1)--(0,1.4)node[above]{$O$轴};\draw[axis](2.5,-1)--(2.5,1.4)node[above]{$C$轴};\draw[dim](0,-1.3)--(5,-1.3)node[midway,below]{$\ell$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用同一线密度分别对两条轴积分}\par\nobreak
+按图\ref{fig:em6:example:1:s}线密度$\lambda=m/\ell$，取沿杆的坐标。绕质心轴，
+\[I_C=\lambda\int_{-\ell/2}^{\ell/2}x^2\dd x=m\ell^2/12;\]
+绕端点轴，
+\[I_O=\lambda\int_0^\ell x^2\dd x=m\ell^2/3.\]
+
+\fig{fig:em6:example:1:p}{同一质量微元到两条平行轴的距离相差$\ell/2$}{\begin{tikzpicture}
+
+\draw[very thick](0,0)--(5,0);\fill[blue!25](3.4,-.12)rectangle(3.6,.12);\node[above]at(3.5,.25){$\dd m=\lambda\dd x$};
+\draw[axis](0,-.3)--(0,1)node[above]{$O$};\draw[axis](2.5,-.3)--(2.5,1)node[above]{$C$};
+\draw[dim](2.5,-.6)--(3.5,-.6)node[midway,below]{$x_C$};\draw[dim](0,-1.4)--(3.5,-1.4)node[midway,below]{$x_O=x_C+\ell/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对积分限与惯量量纲}\par\nobreak
+上述两个积分的原函数均为$x^3/3$。质心轴代入上下限得到$[(\ell/2)^3-(-\ell/2)^3]/3=\ell^3/12$，端点轴则为$\ell^3/3$；再乘线密度$m/\ell$。两者有同一$m\ell^2$量纲，但系数因轴到各质元距离不同而改变。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以质心为基准应用平行轴定理}\par\nobreak
+图\ref{fig:em6:example:1:p}两轴平行、相距$\ell/2$，平行轴定理给
+\[I_O=I_C+m(\ell/2)^2=(1/12+1/4)m\ell^2=\boxed{m\ell^2/3}.\]
+端点轴使全部质量的平均平方距离更大，因此惯量较大。比较的是同方向平行轴；若轴沿杆本身，理想细杆惯量近似为零，不能混为同一问题。\end{solution}
+\begin{question}\begin{example}[剪断一端悬绳的瞬间]\label{em6:example:2}
+质量$m$、长$\ell$的均匀细杆，两端由竖直轻绳悬挂，初始水平静止。突然剪断右绳，求左绳瞬间张力。绳不可伸长且当时保持绷紧。
+\end{example}
+\fig{fig:em6:example:2:s}{题设：剪断一端悬绳的瞬间}{\begin{tikzpicture}[scale=.9]\draw[world](0,2)--(0,0);\draw[guide](5,2)--(5,0);\draw[very thick](0,0)--(5,0);\node at(5,1.3){剪断};\node at(2.5,-.5){$m,\ell$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在剪断初瞬间应用等长绳的加速度约束}\par\nobreak
+图\ref{fig:em6:example:2:s}杆最初角速度为零，所以端点加速度没有向心项。左绳竖直且其下端初速度为零，绳长约束给左端竖直加速度为零。设质心向下加速度$a$，顺时针角加速度大小$\alpha$，由刚体运动学$a=\alpha\ell/2$。
+\fig{fig:em6:example:2:p}{初瞬间无向心加速度，绳长约束与质心受力共同确定张力}{\begin{tikzpicture}
+
+\draw[very thick](0,0)--(5,0);\fill(0,0)circle(.05)node[below]{$A$};\fill(2.5,0)circle(.05)node[above right]{$C$};\fill(5,0)circle(.05)node[below]{$B$};
+\draw[force](0,0)--(0,1.6)node[above]{$T$};\draw[force](2.5,0)--(2.5,-1.5)node[below]{$mg$};
+\draw[flow](3.3,0)--(3.3,-1)node[right]{$a_C$};\draw[flow](5,0)--(5,-1.4)node[right]{$a_B=2a_C$};\node at(1.3,1.2){$a_{Ay}=0,\ \omega_0=0$};
+\end{tikzpicture}}
+
+图中左端为$A$、右端为$B$、质心为$C$。绳长约束只给初瞬间$A$沿绳方向加速度为零，并没有说明它以后始终固定在同一地面位置。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立质心平动与绕质心转动求张力}\par\nobreak
+在图\ref{fig:em6:example:2:p}关于质心列$T\ell/2=I_C\alpha=(m\ell^2/12)(2a/\ell)$，得到$T=ma/3$。平动方程$mg-T=ma$，联立得
+\[\boxed{a=3g/4,\ T=mg/4}.\]
+这个瞬间不能把左端当作铰接固定点处理整个后续运动；本题只用到了它当时的竖直加速度约束。\end{solution}
+\begin{question}\begin{example}[水平纯滚动所需的摩擦力]\label{em6:example:3}
+圆轮质量$m$、半径$R$、质心转动惯量$I_C$，在固定水平地面上纯滚动。只有重力、支持力和接触摩擦，无空气阻力、形变或滚动阻力。求维持纯滚动所需的摩擦力与加速度。
+\end{example}
+\fig{fig:em6:example:3:s}{题设：水平纯滚动所需的摩擦力}{\begin{tikzpicture}[scale=.9]\draw[world](-1,0)--(5,0);\draw[world](1.5,1)circle(1);\draw[flow](1.5,1)--(3.2,1)node[above]{$v_C$};\draw[flow](1.5,2.2)arc(90:-30:1.2);\node at(3.6,2){纯滚动};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{给摩擦与角加速度规定同一符号}\par\nobreak
+按图\ref{fig:em6:example:3:s}向右为正，逆时针角加速度为正，设摩擦力有符号值$f$。平动给$ma=f$，关于质心的转动给$I_C\alpha=fR$。纯滚动约束为$a+R\alpha=0$。
+\fig{fig:em6:example:3:p}{解答过程：水平纯滚动所需的摩擦力}{\begin{tikzpicture}[scale=.9]\draw[world](-.2,0)--(4.5,0);\draw[world](2,1)circle(1);\fill(2,1)circle(.04)node[left]{$C$};\draw[force](2,1)--(2,2.6)node[above]{$N$};\draw[force](2,1)--(2,-.9)node[below]{$mg$};\draw[force](2,0)--(3.4,0)node[right]{$f$};\node at(4.4,1.8){$a+R\alpha=0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将平动、转动与无滑动三个条件联立}\par\nobreak
+由平动得$a=f/m$，由转动得$\alpha=fR/I_C$。代入$a+R\alpha=0$便得到$f(1/m+R^2/I_C)=0$。因为$m>0,I_C>0$，括号不可能为零，所以只能$f=0$；这一推理无需知道地面可提供的最大静摩擦是多少。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释粗糙地面为何仍可无摩擦匀速滚动}\par\nobreak
+因此图\ref{fig:em6:example:3:p}中的向右箭头仅定义$f$的正方向，解得
+\[\boxed{f=0,\ a=0,\ \alpha=0},\]
+圆轮保持匀速滚动。粗糙地面只表明允许提供静摩擦，并非必定有大小为$\mu mg$的阻力。真实轮子停下，需由本题排除的额外耗散解释。\end{solution}
+\begin{question}\begin{example}[实心球沿斜面滚下]\label{em6:example:4}
+质量$m$、半径$R$的均匀实心球，在倾角$\theta$的固定粗糙斜面上由静止纯滚下。求质心加速度、静摩擦力及不打滑所需的最小静摩擦因数。
+\end{example}
+\fig{fig:em6:example:4:s}{题设：实心球沿斜面滚下}{\begin{tikzpicture}[scale=.9]\draw[world](-.5,1.75)--(5,-1);\draw[world](1.5,1.5326)circle(.7);\draw[guide](3,-1)--(5,-1);\node at(3.6,-.7){$\theta$};\draw[flow](2.3,1.6)--(3.6,.95)node[right]{下坡};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按下坡平动和滚下转动分别列式}\par\nobreak
+图\ref{fig:em6:example:4:s}沿下坡为正，静摩擦力$f$向上坡。平动与绕质心转动方程为$mg\sin\theta-f=ma$、$fR=I_C\alpha$，取$\alpha$为顺下坡滚动的角加速度大小，纯滚动给$a=R\alpha$。本题$I_C=2mR^2/5$，下面将它代入转动方程。
+\fig{fig:em6:example:4:p}{解答过程：实心球沿斜面滚下}{\begin{tikzpicture}[scale=.9]\draw[world](-.5,1.75)--(5,-1);\draw[world](1.5,1.5326)circle(.7);\draw[force](1.187,.9065)--(.15,1.425)node[left]{$f$};\draw[force](1.5,1.5326)--(1.5,.1)node[below]{$mg$};\draw[force](1.187,.9065)--(1.72,1.9725)node[above]{$N$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去角加速度与摩擦求加速度}\par\nobreak
+转动式与无滑动条件给$fR=(2mR^2/5)(a/R)$，约去$R$得到$f=2ma/5$。代回平动式，$mg\sin\theta=a(m+2m/5)$，故$a=(5/7)g\sin\theta$；再回代摩擦力即可。静摩擦向上坡是为了使球获得顺下坡滚动所需的自转，不应当作预先给定的$\mu_sN$。
+
+由上述联立结果，
+\[\boxed{a=5g\sin\theta/7},\]
+
+\[\boxed{f=2mg\sin\theta/7}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向力检查静摩擦上限}\par\nobreak
+图\ref{fig:em6:example:4:p}法向平衡$N=mg\cos\theta$，检查$f\le\mu_sN$得
+\[\boxed{\mu_s\ge(2/7)\tan\theta}.\]
+若不足，球会同时滑动与转动，不能继续套用纯滚动加速度。\end{solution}
+\begin{question}\begin{example}[有惯量滑轮的阿特伍德装置]\label{em6:example:5}
+半径$r$、转动惯量$I$的定滑轮，两侧轻绳各连质量$m_1,m_2$的物体，$m_2>m_1$。轴无摩擦，绳不伸长且不打滑。求加速度、角加速度和两侧张力。
+\end{example}
+\fig{fig:em6:example:5:s}{右侧较重物体下降，滑轮顺时针加速，两侧绳均不打滑}{\begin{tikzpicture}
+
+\draw[world](2,2.5)circle(.65);\draw[world](2,2.5)--(2,3.6);\draw[world](1.4,3.6)--(2.6,3.6);
+\draw[world](1.35,.3)--(1.35,2.5)arc(180:0:.65)--(2.65,-.3);\draw[world](1,.3)rectangle(1.7,-.3);\draw[world](2.3,-.3)rectangle(3,-.9);
+\node at(1.35,0){$m_1$};\node at(2.65,-.6){$m_2$};\node at(2,2.5){$I$};\draw[flow](.6,-.1)--(.6,.9)node[left]{$a$};\draw[flow](3.5,.3)--(3.5,-.7)node[right]{$a$};\node[right]at(2.6,2.9){$r$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别选择两物体和滑轮作为受力对象}\par\nobreak
+按图\ref{fig:em6:example:5:s}右物体向下、左物体向上取加速度大小$a$，两侧分别有$T_1-m_1g=m_1a$、$m_2g-T_2=m_2a$。以下$\alpha$取顺时针角加速度的大小，滑轮净转矩$(T_2-T_1)r=I\alpha$，且$a=r\alpha$。
+\fig{fig:em6:example:5:p}{单独画滑轮与两悬挂物的受力，绳张力在不同对象上方向相反}{\begin{tikzpicture}
+
+\draw[world](0,1.5)circle(.7);\draw[force](-.7,1.5)--(-.7,.1)node[below]{$T_1$};\draw[force](.7,1.5)--(.7,-.2)node[below]{$T_2$};\node at(0,2.7){滑轮};
+\foreach \xx/\mass/\tn in {3/m_1/T_1,5.6/m_2/T_2}{\draw[world](\xx-.35,.5)rectangle(\xx+.35,1.2);\node at(\xx,.85){$\mass$};\draw[force](\xx,1.2)--(\xx,2.3)node[above]{$\tn$};\draw[force](\xx,.5)--(\xx,-.5)node[below]{$\mass g$};}
+\node at(2.8,-1.5){$(T_2-T_1)r=I\alpha,\quad a=r\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力并保留滑轮转动的惯性}\par\nobreak
+将图\ref{fig:em6:example:5:p}两悬挂物方程给出的$T_1=m_1(g+a)$、$T_2=m_2(g-a)$代入滑轮净转矩，左边除以$r$后为$T_2-T_1=(m_2-m_1)g-(m_1+m_2)a$；右边为$I a/r^2$。把所有含$a$的项移到右边，就得到分母中三个惯性贡献$m_1+m_2+I/r^2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求加速度和张力并核对轻滑轮极限}\par\nobreak
+因此
+\[\boxed{a=\frac{(m_2-m_1)g}{m_1+m_2+I/r^2},\quad\alpha=a/r},\qquad\boxed{T_1=m_1(g+a),\ T_2=m_2(g-a)}.\]
+$I\to0$时两张力趋于相等；$m_1=m_2$时加速度为零。$I/r^2$具有质量量纲，表明滑轮转动对加速产生额外惯性。\end{solution}
+\begin{question}\begin{example}[弹丸粘在悬杆末端]\label{em6:example:6}
+质量$m$、长$\ell$的均匀细杆竖直向下悬于端点固定轴。质量$M$的小球以速度$v$垂直杆撞到下端并粘合。求碰后角速度和碰撞损失的动能。
+\end{example}
+\fig{fig:em6:example:6:s}{题设：弹丸粘在悬杆末端}{\begin{tikzpicture}[scale=.9]\draw[world](1,2.5)--(1,-.5);\fill(1,2.5)circle(.06)node[above]{$O$};\draw[flow](4,-.5)--(1.4,-.5)node[above]{$M,v$};\node[left]at(1,1){$m,\ell$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{绕固定轴守恒角动量并更新惯量}\par\nobreak
+图\ref{fig:em6:example:6:s}短碰撞中绕$O$角动量守恒，初角动量大小$Mv\ell$，末转动惯量$I= m\ell^2/3+M\ell^2$。故
+\[\boxed{\omega=\frac{Mv}{\ell(M+m/3)}}.\]
+\fig{fig:em6:example:6:p}{碰后转动惯量同时计入均匀杆与粘在末端的球}{\begin{tikzpicture}
+
+\draw[line width=4pt,gray!35](0,3)--(0,0);\draw[world](0,3)--(0,0);\fill(0,3)circle(.06)node[above]{$O$};\fill(0,0)circle(.15)node[right]{$M$};
+\draw[flow](0,0)--(-1.7,0)node[left]{$\ell\omega$};\draw[dim](.8,0)--(.8,3)node[midway,right]{$\ell$};\node[align=left]at(4,1.8){$I_O=m\ell^2/3+M\ell^2$\\$K_f=I_O\omega^2/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以碰后定轴转动能量计算耗散}\par\nobreak
+碰后转动惯量可写成$I=\ell^2(M+m/3)$，故末动能$K_f=I\omega^2/2=M^2v^2/[2(M+m/3)]$。与初能量$Mv^2/2$作差，通分得到$Q=(Mv^2/2)[(m/3)/(M+m/3)]$，再约去分子、分母中的$1/3$得到下式。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对损失非负及线动量不守恒}\par\nobreak
+图\ref{fig:em6:example:6:p}绕轴总动能为$I\omega^2/2$，所以
+\[Q=Mv^2/2-I\omega^2/2=\boxed{Mm v^2/[2(3M+m)]}.\]
+它为正，与粘合条件一致。轴承冲量对$O$无力矩，但可改变系统线动量；若用线动量守恒会忽略轴的外作用。\end{solution}
+\begin{question}\begin{example}[两固定轴圆柱的摩擦同步]\label{em6:example:7}
+两均匀圆柱转轴固定且平行，质量、半径为$M_1,R_1$和$M_2,R_2$。以同一观察方向的逆时针为正，初角速度为$\omega_1,\omega_2$。使它们外切接触，摩擦至接触点不再相对滑动，求最终角速度和机械能损失。
+\end{example}
+\fig{fig:em6:example:7:s}{题设：两固定轴圆柱的摩擦同步}{\begin{tikzpicture}[scale=.9]\draw[world](1,0)circle(1);\draw[world](3.5,0)circle(1.5);\fill(1,0)circle(.04);\fill(3.5,0)circle(.04);\node at(1,-1.4){$R_1,I_1$};\node at(3.5,-1.9){$R_2,I_2$};\draw[flow](1,1.2)arc(90:190:1.2);\draw[flow](3.5,1.7)arc(90:180:1.7);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按接触滑速方向规定摩擦角冲量}\par\nobreak
+图\ref{fig:em6:example:7:s}接触点的切向相对速度为$u=R_1\omega_1+R_2\omega_2$。设摩擦冲量的有符号大小为$J$，取$u>0$时第一圆柱接触点受向下冲量，则两个圆柱的角动量变化分别为$-JR_1,-JR_2$。
+\[\omega'_1=\omega_1-\frac{JR_1}{I_1},\qquad\omega'_2=\omega_2-\frac{JR_2}{I_2}.\]
+\fig{fig:em6:example:7:p}{接触冲量互反，两轴承提供外冲量；各自绕轴积分后再应用无滑动条件}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1);\draw[world](2.5,0)circle(1.5);\fill(0,0)circle(.05);\fill(2.5,0)circle(.05);
+\draw[force](1,0)--(1,-1.3)node[left]{$-J$};\draw[force](1,0)--(1,1.4)node[right]{$+J$};
+\draw[force,blue](0,0)--(0,1.2)node[left]{$J_{O_1}$};\draw[force,blue](2.5,0)--(2.5,-1.2)node[right]{$J_{O_2}$};
+\node at(1.3,2.3){示意$u>0$};\node at(1.3,-2.3){$R_1\omega_1'+R_2\omega_2'=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用接触点无滑动条件求有符号冲量}\par\nobreak
+图\ref{fig:em6:example:7:p}末态不滑动要求$R_1\omega'_1+R_2\omega'_2=0$，于是
+\[\boxed{J=\frac{R_1\omega_1+R_2\omega_2}{R_1^2/I_1+R_2^2/I_2}},\quad I_i=M_iR_i^2/2.\]
+记$D=R_1^2/I_1+R_2^2/I_2$。为保留动能差的中间计算，对每个圆柱分别展开平方：
+\[
+ \begin{aligned}
+ \frac12 I_i(\omega_i^2-\omega_i'^2)
+ &=\frac12I_i\left[\omega_i^2-
+ \left(\omega_i-\frac{JR_i}{I_i}\right)^2\right]\\
+ &=JR_i\omega_i-\frac{J^2R_i^2}{2I_i}.
+ \end{aligned}
+\]
+两式相加给$Q=J(R_1\omega_1+R_2\omega_2)-J^2D/2=Ju-J^2D/2$。代入$J=u/D$，得到$Q=u^2/D-u^2/(2D)=u^2/(2D)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开动能差并解释轴承外力矩}\par\nobreak
+将$I_i=M_iR_i^2/2$代入$D$，得$D=2/M_1+2/M_2$，故$J=M_1M_2u/[2(M_1+M_2)]$。再代入两条角冲量式，分别得到
+\[
+ \begin{aligned}
+ \omega_1'&=\omega_1-\frac{M_2u}{(M_1+M_2)R_1}
+ =\frac{M_1R_1\omega_1-M_2R_2\omega_2}{(M_1+M_2)R_1},\\
+ \omega_2'&=\omega_2-\frac{M_1u}{(M_1+M_2)R_2}
+ =\frac{M_2R_2\omega_2-M_1R_1\omega_1}{(M_1+M_2)R_2}.
+ \end{aligned}
+\]
+负$J$自动表示摩擦方向相反，耗散始终为非负值：
+\[\boxed{Q=\tfrac12u^2/(R_1^2/I_1+R_2^2/I_2)}.\]
+两轴承的外力矩不能忽略，因此不能凭“摩擦是内力”就守恒两圆柱角动量的简单和。\end{solution}
+\begin{question}\begin{example}[人在自由转台边缘走一周]\label{em6:example:8}
+均匀圆盘转台质量$M$、半径$R$，可绕竖直中心轴无阻力转动。质量$m$的人视为质点，站在边缘，初始人、台均静止。人相对转台沿边缘走一整周，求人和台相对地面的角位移。
+\end{example}
+\fig{fig:em6:example:8:s}{题设：人在自由转台边缘走一周}{\begin{tikzpicture}[scale=.9]\draw[world](2,0)circle(1.6);\fill(3.6,0)circle(.1)node[right]{$m$};\fill(2,0)circle(.04)node[below]{$O$};\draw[flow](2,1.9)arc(90:250:1.9);\node at(2,-.6){$M,R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对固定竖直轴积分零总角动量关系}\par\nobreak
+图\ref{fig:em6:example:8:s}绕竖直轴无外力矩，总角动量为零。设人和台从初始位置量起的对地角位移为$\phi,\psi$，所以$\phi(0)=\psi(0)=0$。角动量关系为$I\dot\psi+mR^2\dot\phi=0$，其中$I=MR^2/2$。从初态积分到任意时刻，
+\[
+ I\int_0^t\dot\psi(\tau)\dd\tau
+ +mR^2\int_0^t\dot\phi(\tau)\dd\tau=0,
+\]
+即$I[\psi(t)-\psi(0)]+mR^2[\phi(t)-\phi(0)]=0$，代入两个零初始位移才得到$I\psi+mR^2\phi=0$。这里角位移持续累计，不能先按$2\pi$取余，否则会丢掉相对走过一整周的信息。
+\fig{fig:em6:example:8:p}{一整周相对角位移可由不同的对地角位移组成；示意取$M=4m$}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.6);\fill(0,0)circle(.04)node[above]{$O$};\fill(1.6,0)circle(.07)node[right]{初始};
+\draw[flow](1.6,0)arc(0:240:1.6);\draw[flow](1.95,0)arc(0:-120:1.95);
+\draw[guide](0,0)--(-1.1,-1.9053);\fill(-.8,-1.3856)circle(.08);\draw[guide](-.8,-1.3856)--(-2,-1.3856);\node[left]at(-2,-1.3856){最终重合};
+\node at(-1.5,1.7){$\phi=4\pi/3$};\node at(2,-1.5){$\psi=-2\pi/3$};\node at(0,-2.7){$\phi-\psi=2\pi$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相对一周约束求两者对地角位移}\par\nobreak
+把$\phi=\psi+2\pi$代入积分后的角动量关系，$(I+mR^2)\psi=-2\pi mR^2$。再用$I=MR^2/2$，约去共同的$R^2$，得到转台角位移；人的角位移则把它加上相对的一周$2\pi$。二者的正负表示对地转动方向。
+
+图\ref{fig:em6:example:8:p}中，人走完相对一周后与台上原标记再次重合，意味着$\phi-\psi=2\pi$，所以
+\[\boxed{\phi=\frac{2\pi M}{M+2m},\qquad\psi=-\frac{4\pi m}{M+2m}}.\]
+角位移不依赖走路速度变化，只要求人始终在相同半径上且没有外转矩。$M\gg m$时台几乎不转，人对地接近一周；很轻的台则向后转得更多。\end{solution}
+\begin{question}\begin{example}[不同质量分布的滚动速度]\label{em6:example:9}
+同质量$m$、同半径$R$的均匀实心圆柱、薄球壳、实心球，从同一高度$h$沿固定斜面由静止纯滚下。斜面足够粗糙，忽略耗散。求三者到底部的质心速度并比较。
+\end{example}
+\fig{fig:em6:example:9:s}{同样的初末质心高度差h，分别用各物体的惯量系数计算}{\begin{tikzpicture}
+
+\draw[world](.5,3.25)--(6.5,.25);\draw[world](1.723607,3.197214)circle(.5);\draw[guide](5.723607,1.197214)circle(.5);
+\fill(1.723607,3.197214)circle(.04);\fill(5.723607,1.197214)circle(.04);\draw[guide](0,3.197214)--(1.723607,3.197214) (0,1.197214)--(5.723607,1.197214);
+\draw[dim](0,1.197214)--(0,3.197214)node[midway,left]{$h$};\node at(4,3.6){$I_C=\beta mR^2$};\node at(4,.2){初、末圆表示同一物体的两个状态};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把滚动能量统一写成惯量系数的函数}\par\nobreak
+按图\ref{fig:em6:example:9:s}固定斜面纯滚动时静摩擦不做功，总能量$ mgh=\tfrac12mv_C^2+\tfrac12I_C\omega^2$，且$v_C=R|\omega|$。以下用同一个能量方程比较三种惯量。
+\fig{fig:em6:example:9:p}{精确速度比随惯量系数单调减小，三个质量分布对应曲线上不同点}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(8,0)node[right]{$\beta$};\draw[axis](0,0)--(0,3.8)node[above]{$v_C/\sqrt{2gh}$};
+\draw[blue,thick,domain=0:1,samples=100]plot({7*\x},{3/sqrt(1+\x)});\node[left]at(0,3){$1$};
+\foreach \xx/\yy/\lab in {2.8/2.53546/{2/5},3.5/2.44949/{1/2},4.666667/2.32379/{2/3}}{\draw[guide](\xx,0)--(\xx,\yy);\fill(\xx,\yy)circle(.055);\node[below]at(\xx,0){$\lab$};}
+\node at(5.5,3.6){$1/\sqrt{1+\beta}$};\node at(3.5,-.9){实心球、实心圆柱、薄球壳依次变慢};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明自转分配增加为何减小质心速度}\par\nobreak
+令$\beta=I_C/(mR^2)$，代入$\omega^2=v_C^2/R^2$，总动能为$m(1+\beta)v_C^2/2$。所以$v_C^2=2gh/(1+\beta)$；相同高度下，$\beta$越大，分给自转的比例越大，质心速率越小。下面只替换各物体的惯量系数，其他条件完全相同。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入三种质量分布并核对光滑极限}\par\nobreak
+图\ref{fig:em6:example:9:p}中实心圆柱$\beta=1/2$，
+\[\boxed{v_{\text{柱}}=\sqrt{4gh/3}};\]
+薄球壳$\beta=2/3$，
+\[\boxed{v_{\text{壳}}=\sqrt{6gh/5}};\]
+实心球$\beta=2/5$，
+\[\boxed{v_{\text{球}}=\sqrt{10gh/7}}.\]
+因此实心球最快，薄球壳最慢。纯滚动需要足够的静摩擦；若初始无自转且斜面完全光滑，三者只滑不转，都会以$\sqrt{2gh}$到达底部。\end{solution}
+\begin{question}\begin{example}[反向自转乒乓球的滑动与回滚]\label{em6:example:10}
+薄球壳乒乓球质量$m$、半径$R$，初始质心以$v_0>0$向右，角速度$\omega_0>0$逆时针，且$v_0<2R\omega_0/3$。水平面动摩擦因数$\mu$，忽略滚动阻力。求运动各阶段及最终纯滚动速度。
+\end{example}
+\fig{fig:em6:example:10:s}{题设：反向自转乒乓球的滑动与回滚}{\begin{tikzpicture}[scale=.9]\draw[world](-1,0)--(5,0);\draw[world](1.5,1)circle(1);\draw[flow](1.5,1)--(3.2,1)node[above]{$v_0$};\draw[flow](1.5,2.2)arc(90:190:1.2);\node at(.6,2.6){$\omega_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由底点滑速确定全过程初始摩擦方向}\par\nobreak
+按图\ref{fig:em6:example:10:s}取右、逆时针为正。初始底部滑速$u_s(0)=v_0+R\omega_0>0$，故摩擦向左。本题取$\mu>0$，薄球壳的$I_C=2mR^2/3$，所以滑动阶段$\dot v=-\mu g$、$\dot\omega=-\mu mgR/I_C=-3\mu g/(2R)$。保留两个初值积分：
+\[
+ \begin{aligned}
+ \int_{v_0}^{v(t)}\dd v'&=-\mu g\int_0^t\dd\tau,
+ &v(t)-v_0&=-\mu gt,\\
+ \int_{\omega_0}^{\omega(t)}\dd w&=-\frac{3\mu g}{2R}\int_0^t\dd\tau,
+ &\omega(t)-\omega_0&=-\frac{3\mu g}{2R}t.
+ \end{aligned}
+\]
+从而
+\[v=v_0-\mu gt,\qquad\omega=\omega_0-\frac{3\mu g}{2R}t.\]
+纯滚动只能从接触点滑速$v+R\omega$归零时开始，不能从质心速度归零时开始。
+\fig{fig:em6:example:10:p}{示意取$R\omega_0=2v_0$：质心先反向，接触点滑速到零后才结束滑动}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.3,0)node[right]{$t$};\draw[axis](0,-.7)--(0,3.6)node[above]{速度};
+\draw[world,thick](0,1)--(4.8,-.2)--(5.8,-.2);\draw[red,dashed,thick](0,2)--(4.8,.2)--(5.8,.2);\draw[blue,thick](0,3)--(4.8,0)--(5.8,0);
+\draw[guide](4,-.6)--(4,1);\draw[guide](4.8,-.6)--(4.8,1);\node[below]at(4,-.6){$t_v$};\node[below]at(4.8,-.6){$t_*$};
+\node[left]at(0,1){$v_0$};\node[left]at(0,2){$2v_0$};\node[left]at(0,3){$3v_0$};
+\node[align=left]at(8,2){蓝实线：$u_s=v+R\omega$\\红虚线：$R\omega$\\黑实线：$v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较质心停止与接触停止的先后}\par\nobreak
+将两速度式相加，接触滑速为$u_s=v_0+R\omega_0-(5/2)\mu gt$。令它首次为零，得到
+\[
+ t_* =\frac{2(v_0+R\omega_0)}{5\mu g}.
+\]
+而$v=0$给质心停止时刻$t_v=v_0/(\mu g)$。比较$t_v<t_*$等价于$5v_0<2v_0+2R\omega_0$，即题设$3v_0<2R\omega_0$。因此$0\le t<t_v$时质心向右减速，$t_v<t<t_*$时质心向左加速，两段底点都向右滑；到$t_*$才开始纯滚动。若$\mu=0$，速度和角速度均保持初值，以上转换不会发生。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求回滚速度并切换到无摩擦纯滚动}\par\nobreak
+图\ref{fig:em6:example:10:p}中，质心在$t_v=v_0/(\mu g)$停止后继续向左加速，接触点却仍向右滑，所以摩擦方向暂不改变。到$t_*$时
+\[\boxed{v_*=(3v_0-2R\omega_0)/5<0,\quad\omega_*=(2R\omega_0-3v_0)/(5R)>0}.\]
+两者满足$v_*=-R\omega_*$，此后摩擦为零，向左匀速纯滚。不能在质心反向时就把摩擦反向；应一直检查接触点的相对滑速。\end{solution}
+\begin{question}\begin{example}[自由细杆的端点弹性冲击]\label{em6:example:11}
+均匀细杆质量$M$、长$2\ell$，静止在光滑水平面上。质量$m$的小球以$v$垂直杆撞到端点，碰撞光滑且完全弹性，杆可自由平动转动。求球末速度、杆质心速度及角速度。
+\end{example}
+\fig{fig:em6:example:11:s}{题设：自由细杆的端点弹性冲击}{\begin{tikzpicture}[scale=.9]\draw[very thick](2,-1.5)--(2,1.5);\fill(2,0)circle(.05)node[right]{$C$};\draw[flow](-1,1.5)--(1.6,1.5)node[above]{$m,v$};\node[right]at(2,-.7){$2\ell,M$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由线冲量与偏心角冲量求杆的运动}\par\nobreak
+图\ref{fig:em6:example:11:s}以入射为$+x$，设球给杆冲量$J$。球末速度$v'=v-J/m$，杆质心速度$V=J/M$。关于质心的冲量矩为$-J\ell$，而$I_C=M\ell^2/3$，所以$\omega=-3J/(M\ell)$。恢复条件还需要用这一平动与转动合成杆端的速度。
+\fig{fig:em6:example:11:p}{杆端速度增量是质心的四倍，恢复条件作用于球与杆端之间}{\begin{tikzpicture}
+
+\draw[very thick](0,-1.5)--(0,1.5);\fill(0,0)circle(.05)node[left]{$C$};\fill(0,1.5)circle(.05)node[left]{$P$};
+\draw[flow](0,0)--(.8,0)node[right]{$V=J/M$};\draw[flow](0,1.5)--(3.2,1.5)node[right]{$v_P=4J/M$};
+\draw[->](.7,.9)arc(50:-60:.8);\node at(2,-1){$\omega=-3J/(M\ell)$};\draw[dim](-.7,0)--(-.7,1.5)node[midway,left]{$\ell$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成受击端点速度}\par\nobreak
+上端接触点相对质心的位置为$(0,\ell)$，其转动速度水平分量为$-\omega\ell$，所以接触点速率$V-\omega\ell=J/M+3J/M=4J/M$。恢复系数应施加在球与这个端点之间，不能把杆端点替换为质心。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在端点应用弹性恢复条件并求末速度}\par\nobreak
+图\ref{fig:em6:example:11:p}恢复条件是接触点速度差反号：$v'-(4J/M)=-v$。恢复式展开为$v-J/m-4J/M=-v$，所以$J(1/m+4/M)=2v$。
+
+故$J=2mMv/(M+4m)$，得到
+\[\boxed{v'=\frac{4m-M}{M+4m}v,\quad V=\frac{2m}{M+4m}v,\quad\omega=-\frac{6m}{(M+4m)\ell}v}.\]
+角速度负号表示顺时针。若$m=M/4$，球碰后停止；小球很轻时近似反弹。核验能量时必须同时计入杆的平动与转动。\end{solution}
+\begin{question}\begin{example}[无摩擦地面上倒下的细杆]\label{em6:example:12}
+均匀细杆质量$m$、长$\ell$，从几乎竖直的位置静止释放，下端与光滑水平地面接触，允许水平滑动。以杆与向上竖直方向夹角$\theta$表示姿态，求角速度与地面对杆的支持力，并检查杆是否提前离地。
+\end{example}
+\fig{fig:em6:example:12:s}{图示运动中的姿态$\theta$，下端可在地面滑动，质心横坐标保持固定}{\begin{tikzpicture}
+
+\draw[world](-1,0)--(5,0);\draw[very thick](0,0)--(2,3.464102);\draw[guide](0,0)--(0,3.5);\draw(0,.8)arc(90:60:.8);\node at(.3,1.1){$\theta$};
+\node[right]at(1.3,2.25){$\ell$};\fill(1,1.732051)circle(.055)node[left]{$C$};\draw[guide](1,-.3)--(1,3.8);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用固定质心横坐标与能量求角速度}\par\nobreak
+按图\ref{fig:em6:example:12:s}地面无水平力，杆质心水平坐标保持不变。质心高度$y_C=\ell\cos\theta/2$，竖直速度$\dot y_C=-\ell\sin\theta\dot\theta/2$。用$I_C=m\ell^2/12$，能量式给
+\[\frac12mg\ell(1-\cos\theta)=\frac{m\ell^2}{24}(1+3\sin^2\theta)\dot\theta^2,\]
+所以
+\[\boxed{\dot\theta^2=12g(1-\cos\theta)/[\ell(1+3\sin^2\theta)]}.\]
+
+\fig{fig:em6:example:12:p}{同一长度的杆继续倒下，支持力虽变化但始终为正}{\begin{tikzpicture}
+
+\draw[world](-1.5,0)--(3.5,0);\draw[very thick](-.732051,0)--(2.732051,2);\fill(1,1)circle(.06)node[right]{$C$};\draw[guide](1,-.3)--(1,3.2);
+\draw[force](-.732051,0)--(-.732051,1.4)node[above]{$N$};\draw[force](1,1)--(1,-.3)node[below]{$mg$};
+\begin{scope}[xshift=5.6cm]\draw[axis](0,0)--(3.6,0)node[right]{$c$};\draw[axis](0,0)--(0,2.8)node[above]{$N/(mg)$};
+\draw[blue,thick,domain=0:1,samples=100]plot({3*\x},{2.2*(4-6*\x+3*\x*\x)/(4-3*\x*\x)^2});
+\node[left]at(0,.55){$1/4$};\node[below]at(3,0){$1$};\node[left]at(0,2.2){$1$};\draw[flow](2.7,1.2)--(1.5,1.2)node[midway,above]{倒下};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对能量速度关系求导得到角加速度}\par\nobreak
+为核验图\ref{fig:em6:example:12:p}下端接触，令$c=\cos\theta$、$D=4-3c^2$，并将已得速度关系记为$\dot\theta^2=f(\theta)$。先对时间使用链式法则：
+\[
+ 2\dot\theta\ddot\theta=f'(\theta)\dot\theta.
+\]
+运动段$\dot\theta\ne0$时可约去它，得到$\ddot\theta=f'(\theta)/2$；端点由连续极限求得。再对角度求导，
+\[
+ \frac{\dd c}{\dd\theta}=-\sin\theta,
+ \qquad
+ \frac{\dd D}{\dd\theta}=-6c\frac{\dd c}{\dd\theta}=6c\sin\theta.
+\]
+按商的求导法则，
+\[
+ \begin{aligned}
+ \frac{\dd}{\dd\theta}\frac{1-c}{D}
+ &=\frac{\sin\theta\,D-(1-c)6c\sin\theta}{D^2}\\
+ &=\frac{\sin\theta[D-6c(1-c)]}{D^2},\\
+ \ddot\theta&=\frac{6g}{\ell}\frac{\sin\theta[D-6c(1-c)]}{D^2}.
+ \end{aligned}
+\]
+最后对质心竖直速度再用乘积法则，保留两个贡献：
+\[
+ \ddot y_C=-\frac\ell2\frac{\dd}{\dd t}(\sin\theta\dot\theta)
+ =-\frac\ell2\left(\cos\theta\dot\theta^2+\sin\theta\ddot\theta\right).
+\]
+完全竖直且严格静止是一个不稳定平衡解，并不会自行倒下；本题采用从微小倾角静止释放、再令该倾角趋零的能量极限。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由质心竖直加速度求支持力}\par\nobreak
+代入$\ddot y_C=-\ell(c\dot\theta^2+\sin\theta\ddot\theta)/2$及$N-mg=m\ddot y_C$，先将两项加速度分别代入，得
+\[\frac{N}{mg}=1-\frac{6c(1-c)}D-\frac{3(1-c^2)[D-6c(1-c)]}{D^2}.\]
+统一分母为$D^2$，将$D=4-3c^2$展开，分子中四次项抵消，剩余$4-6c+3c^2$，因此得到
+\[\boxed{N=mg\frac{4-6c+3c^2}{(4-3c^2)^2}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查整个下降区间支持力均为正}\par\nobreak
+分子$3(c-1)^2+1>0$，故从竖直到水平一直保持接触；到水平瞬间$N=mg/4$。下端不是固定支点，若按固定端惯量计算，会得到错误速度和支持力。\end{solution}
+\begin{question}\begin{example}[球沿大球外表面纯滚下]\label{em6:example:13}
+小实心球质量$m$、半径$r$，从固定大球顶端由微小扰动纯滚下，大球半径$R$。先在理想始终无滑动的模型中求脱离角；再讨论有限静摩擦因数时，能否一直纯滚到该点。
+\end{example}
+\fig{fig:em6:example:13:s}{题设：球沿大球外表面纯滚下}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)arc(180:0:2.4);\draw[world](0,0)--(4.8,0);\coordinate(O)at(2.4,0);\coordinate(C)at(3.9,2.598076);\coordinate(P)at(3.6,2.078461);\draw[world](C)circle(.6);\fill(C)circle(.04)node[right]{$C$};\draw[guide](O)--(C);\draw[guide](O)--(2.4,3.4);\draw(2.4,.7)arc(90:60:.7);\node at(2.72,1){$\theta$};\draw[world](C)--(P)node[midway,right]{$r$};\node at(1.1,.8){$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在形式无滑动模型中求速度和压力}\par\nobreak
+图\ref{fig:em6:example:13:s}小球质心绕大球心的轨迹半径为$a=R+r$。设$I_C=\beta mr^2$，纯滚动时$v=r|\omega|$，能量给$v^2=2ga(1-\cos\theta)/(1+\beta)$。径向方程$mg\cos\theta-N=mv^2/a$，因此
+\[N=\frac{mg}{1+\beta}\bigl[(3+\beta)\cos\theta-2\bigr].\]
+\fig{fig:em6:example:13:p}{摩擦在接触点提供自转力矩，法向力沿两球心连线不提供绕小球心的力矩}{\begin{tikzpicture}
+
+\coordinate(O)at(0,0);\coordinate(C)at(1.5,2.598076);\coordinate(P)at(1.2,2.078461);
+\draw[world](-2.4,0)arc(180:0:2.4);\draw[world](C)circle(.6);\fill(C)circle(.045)node[right]{$C$};\fill(P)circle(.045)node[below]{$P$};\draw[guide](O)--(C);
+\draw[force](C)--(1.5,1.3)node[right]{$mg$};\draw[force](P)--(1.95,3.3775)node[above]{$N$};\draw[force](P)--(.1608,2.6785)node[left]{$f$};
+\draw[flow](C)--(2.5392,1.9981)node[right]{$v$};\node at(-.7,3.2){$OC=R+r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{单独求维持自转所需的上坡摩擦}\par\nobreak
+纯滚动的切向方程为$mg\sin\theta-f=ma_t$，转动方程为$fr=I_C\alpha$，并有$a_t=r\alpha$。于是$f=\beta ma_t$，$a_t=g\sin\theta/(1+\beta)$，从而得到后面核验静摩擦所需的$f=\beta mg\sin\theta/(1+\beta)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较形式脱离点与有限摩擦的可实现范围}\par\nobreak
+形式上令图\ref{fig:em6:example:13:p}$N=0$，对实心球$\beta=2/5$，得到
+\[\boxed{\cos\theta_d=10/17}.\]
+但纯滚动所需上坡摩擦为$f=\beta mg\sin\theta/(1+\beta)$，故
+\[\mu_s\ge\frac{f}{N}=\frac{\beta\sin\theta}{(3+\beta)\cos\theta-2}.\]
+接近上述脱离角时分母趋零而分子不为零，任何有限$\mu_s$都会先发生滑动。所以$10/17$是无限制无滑动约束下的形式结果；真实库仑摩擦模型应在先滑动的角度切换方程，再求最终脱离。这一检查防止把能量与纯滚动公式外推到不可能维持的接触状态。\end{solution}
+\begin{question}\begin{example}[自转圆盘落到粗糙地面]\label{em6:example:14}
+均匀圆盘质量$m$、半径$R$，初始质心静止，角速度大小$\Omega$为顺时针。把它轻放到水平粗糙地面，动摩擦因数$\mu$，求到纯滚动时的质心速度、角速度、时间及损失动能。
+\end{example}
+\fig{fig:em6:example:14:s}{题设：自转圆盘落到粗糙地面}{\begin{tikzpicture}[scale=.9]\draw[world](-1,0)--(5,0);\draw[world](1.5,1)circle(1);\draw[flow](1.5,2.2)arc(90:-50:1.2);\node at(3.2,2){$\Omega$};\node at(1.5,.7){$v_C=0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从负底点滑速确定向右摩擦}\par\nobreak
+按图\ref{fig:em6:example:14:s}，初始底点向左滑，摩擦向右。取向右、逆时针为正，初态为$v(0)=0$、$\omega(0)=-\Omega$。应分别求出平动与转动变化，直到$v+R\omega=0$，再切换为纯滚动。
+\fig{fig:em6:example:14:p}{解答过程：自转圆盘落到粗糙地面}{\begin{tikzpicture}[scale=.9]\draw[world](-.5,0)--(6,0);\draw[world](1,1)circle(1);\draw[flow](1,1)--(2.1,1)node[above]{$v(t)$};\draw[force](1,0)--(2.2,0)node[below]{$f=\mu mg$};\node at(1,2.5){滑动阶段};\draw[world](4.5,1)circle(1);\draw[flow](4.5,1)--(5.7,1)node[above]{$v_*$};\draw[flow](4.5,2.2)arc(90:-25:1.2);\node at(5.9,1.9){$\omega_*<0$};\node at(4.5,-.65){纯滚动：$f=0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别积分平动与转动直到接触滑速为零}\par\nobreak
+滑动期间$N=mg$，摩擦恒为$\mu mg$向右，所以$a_C=\mu g$。它对质心的力矩为$+\mu mgR$，由$I_C=mR^2/2$得$\alpha=2\mu g/R$。以$v(0)=0$、$\omega(0)=-\Omega$作定积分：
+\[
+ \begin{aligned}
+ \int_0^{v(t)}\dd v'&=\mu g\int_0^t\dd\tau,
+ &v(t)&=\mu gt,\\
+ \int_{-\Omega}^{\omega(t)}\dd w&=\frac{2\mu g}{R}\int_0^t\dd\tau,
+ &\omega(t)+\Omega&=\frac{2\mu g}{R}t.
+ \end{aligned}
+\]
+角速度因此从负值逐渐增大。接触滑速为$u_s=v+R\omega=-R\Omega+3\mu gt$，故在$\mu>0$时首次为零发生在$t_*=R\Omega/(3\mu g)$。若没有摩擦，圆盘仍在原地自转，不能取有限的纯滚动时刻。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求滚动末态并核对能量损失}\par\nobreak
+图\ref{fig:em6:example:14:p}由此得到
+\[\boxed{t_*=R\Omega/(3\mu g),\ v_*=R\Omega/3,\ \omega_*=-\Omega/3}.\]
+初能量$mR^2\Omega^2/4$，末能量$\tfrac12m(R\Omega/3)^2+\tfrac14mR^2(\Omega/3)^2=mR^2\Omega^2/12$，故
+\[\boxed{Q=mR^2\Omega^2/6}.\]
+自转角速度降为原来的$1/3$，而不是把线速度与角速度同时保持原值。\end{solution}
+\begin{question}\begin{example}[沿固定绳下落的圆盘]\label{em6:example:15}
+均匀圆盘质量$m$、半径$R$，轻绳绕在圆盘外缘，绳上端固定。圆盘由静止释放，绳不滑动，盘竖直下落并转动，求加速度、张力以及下落$h$后的速度。
+\end{example}
+\fig{fig:em6:example:15:s}{绳上端固定，圆盘沿绳下落；h表示质心相对初态的高度变化}{\begin{tikzpicture}
+
+\draw[world](0,4)--(4,4);\draw[world](1,4)--(1,0);\draw[guide](2,2.3)circle(1);\draw[world](2,0)circle(1);
+\fill(2,2.3)circle(.04)node[above right]{初态};\fill(2,0)circle(.04)node[right]{$C$};\draw[guide](2,2.3)--(4.4,2.3) (2,0)--(4.4,0);
+\draw[dim](4.2,0)--(4.2,2.3)node[midway,right]{$h$};\node at(2,-1.6){$m,R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{联立下落、转动与绳不滑动方程}\par\nobreak
+按图\ref{fig:em6:example:15:s}向下为正，$mg-T=ma$，绳张力对质心的力矩$TR=I_C\alpha$，取$\alpha$为顺时针角加速度大小，无滑动给$a=R\alpha$。用$I_C=mR^2/2$，得到$T=ma/2$。
+\fig{fig:em6:example:15:p}{张力的作用点瞬时静止，轮心下移与顺时针转动共同满足不滑动}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.2);\draw[world](-1.2,0)--(-1.2,2.7);\fill(-1.2,0)circle(.04)node[left]{$P$};\fill(0,0)circle(.04)node[right]{$C$};
+\draw[force](-1.2,0)--(-1.2,1.7)node[left]{$T$};\draw[force](0,0)--(0,-1.5)node[below]{$mg$};\draw[flow](.6,0)--(.6,-1)node[right]{$v$};
+\draw[guide](-1.2,0)--(0,0)node[midway,above]{$R$};\node[align=left]at(3,1.4){$v_P=0$\\$a=R\alpha$\\$K=mv^2/2+I_C\omega^2/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求恒加速度和绳张力}\par\nobreak
+按图\ref{fig:em6:example:15:p}联立得
+\[\boxed{a=2g/3,\ T=mg/3}.\]
+张力小于重力，圆盘保持向下加速。设向下位移为$y$，则$\dot y=v$。链式法则给$a=\dd v/\dd t=(\dd v/\dd y)\dot y=v\,\dd v/\dd y$，故$v\dd v=(2g/3)\dd y$。从初始$y=0,v=0$积分到$y=h,v$，
+\[
+ \int_0^v v'\dd v'=\frac{2g}{3}\int_0^h\dd y,
+ \qquad
+ \left[\frac{v'^2}{2}\right]_0^v=\frac{2g}{3}[y]_0^h,
+ \qquad \frac{v^2}{2}=\frac{2gh}{3}.
+\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由下落高度求速度并核对张力总功}\par\nobreak
+下降$h$后
+\[\boxed{v=\sqrt{4gh/3}}.\]
+也可由$mgh=mv^2/2+I_C(v/R)^2/2$核验。绳的受力点相对固定绳瞬时静止，张力对盘总功为零，但它使平动、转动的能量分配发生变化。\end{solution}
+\begin{question}\begin{example}[线轴的滚动方向]\label{em6:example:16}
+线轴总质量$m$，外半径$R$，内轴半径$r<R$，质心惯量$I_C$。放于粗糙水平面，绳从内轴下侧引出，与水平成向右上方$0\le\theta\le\pi/2$角，用力$F$沿绳拉。绳对轴的力矩取逆时针$+Fr$，假设不打滑，求质心加速度、摩擦力和方向改变条件。
+\end{example}
+\fig{fig:em6:example:16:s}{题设：线轴的滚动方向}{\begin{tikzpicture}[scale=.9]\draw[world](-.8,0)--(5.2,0);\draw[world](1.5,1.2)circle(1.2);\draw[world](1.5,1.2)circle(.55);\fill(1.5,1.2)circle(.035)node[above left]{$C$};\coordinate(Q)at(1.775,.724);\draw[guide](1.5,1.2)--(Q)node[midway,left]{$r$};\draw[world](Q)--(4.1,2.067);\draw[force](4.1,2.067)--(5,2.587)node[above]{$F$};\draw[guide](3.1,1.49)--(4.3,1.49);\draw(3.9,1.49)arc(0:30:.8);\node at(4.15,1.72){$\theta$};\node[left]at(.3,1.2){$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{为拉力和摩擦写有符号转矩}\par\nobreak
+按图\ref{fig:em6:example:16:s}向右为正、逆时针为正，设摩擦$f$向右为正。平动式$ma=F\cos\theta+f$，转动式$I_C\alpha=Fr+fR$，纯滚动要求$\alpha=-a/R$。
+\fig{fig:em6:example:16:p}{解答过程：线轴的滚动方向}{\begin{tikzpicture}[scale=.9]\draw[world](-.2,0)--(4.6,0);\draw[world](2,1.2)circle(1.2);\draw[world](2,1.2)circle(.55);\fill(2,1.2)circle(.04)node[above left]{$C$};\coordinate(Q)at(2.275,.724);\draw[guide](2,1.2)--(Q);\draw[force](Q)--(4.18,1.824)node[right]{$F$};\draw[force](2,0)--(.6,0)node[midway,below]{$f<0$};\draw[force](2,1.2)--(2,2.8)node[above]{$N$};\draw[force](2,1.2)--(2,-1.1)node[below]{$mg$};\node at(4,2.7){$\tau_F=+Fr$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用无滑动约束消去角加速度}\par\nobreak
+把图\ref{fig:em6:example:16:p}的平动、转动和滚动约束联立。
+消元时将$\alpha=-a/R$代入转动式，再除以$R$，有$-I_Ca/R^2=Fr/R+f$。由平动式$f=ma-F\cos\theta$代入，移项得$(m+I_C/R^2)a=F(\cos\theta-r/R)$。摩擦还可显式写成$f=-F[mr/R+(I_C/R^2)\cos\theta]/(m+I_C/R^2)$，在通常$0\le\theta\le\pi/2$范围内指向左，与图中的假设一致。
+
+\fig{fig:em6:example:16:critical}{临界角时拉力作用线通过地面接触点，图示取内半径为外半径的一半}{\begin{tikzpicture}
+
+\draw[world](-1.8,0)--(2.7,0);\draw[world](0,1.2)circle(1.2);\draw[world](0,1.2)circle(.6);\coordinate(Q)at(.519615,.9);\fill(0,0)circle(.045)node[below]{$P$};\fill(Q)circle(.045)node[right]{$Q$};
+\draw[guide](0,1.2)--(Q)node[midway,left]{$r$};\draw[guide](0,0)--(Q);\draw[force](Q)--(1.519615,2.632051)node[right]{$F$};
+\node[align=left]at(4.6,1.5){$\tau_P=F(r-R\cos\theta)$\\临界：$\cos\theta_c=r/R$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{结合力作用线检查方向改变和接触上限}\par\nobreak
+\[\boxed{a=\frac{F(\cos\theta-r/R)}{m+I_C/R^2},\qquad f=ma-F\cos\theta}.\]
+
+所以$\cos\theta>r/R$向右加速，$\cos\theta<r/R$向左加速，图\ref{fig:em6:example:16:critical}中临界$\cos\theta=r/R$时拉力作用线通过接触点，质心不加速。法向力$N=mg-F\sin\theta$还需为正，且$|f|\le\mu_sN$。这些条件不满足时，单凭纯滚动方程给出的方向不能直接当实际结果。\end{solution}
+\begin{question}\begin{example}[使台球立即纯滚动的击打高度]\label{em6:example:17}
+实心球质量$m$、半径$R$，静止于水平桌面。球杆给予水平短冲量$J$，作用线位于球心上方$h$，忽略击球期间桌面的切向冲量。求使球刚受击后立即纯滚动的$h$，以及球杆作用线离桌面的高度。
+\end{example}
+\fig{fig:em6:example:17:s}{题设：使台球立即纯滚动的击打高度}{\begin{tikzpicture}[scale=.9]\draw[world](-1,0)--(5,0);\draw[world](2,1.3)circle(1.3);\draw[guide](.2,1.3)--(4,1.3);\draw[guide](.81,1.82)--(3.6,1.82);\draw[force](-1,1.82)--(.81,1.82)node[above]{$J$};\draw[dim](4,1.3)--(4,1.82)node[midway,right]{$h$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由偏心击打求线速度和有符号角速度}\par\nobreak
+按图\ref{fig:em6:example:17:s}取右为正、逆时针为正。线冲量给$v_C=J/m$，关于球心角冲量给$\omega=-Jh/I_C$。刚受击后底点速度为$v_C+R\omega$，要求立即纯滚动就令它为零。
+\fig{fig:em6:example:17:p}{底点的平动与自转速度恰好抵消，所求偏置h从球心算起}{\begin{tikzpicture}
+
+\draw[world](-1.5,0)--(2,0);\draw[world](0,1)circle(1);\fill(0,1)circle(.04)node[left]{$C$};\fill(0,0)circle(.045)node[below]{$P$};
+\draw[flow](0,1)--(1.4,1)node[right]{$V_C=J/m$};\draw[guide](0,1.4)--(1.7,1.4);\draw[dim](-.6,1)--(-.6,1.4)node[midway,left]{$h$};
+\begin{scope}[xshift=4cm]\draw[flow](0,.6)--(1.3,.6)node[right]{$V_C$};\draw[flow](0,0)--(-1.3,0)node[left]{$R|\omega|$};\node at(0,-1){$v_P=V_C-R|\omega|=0$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令底点速度为零求偏置}\par\nobreak
+按图\ref{fig:em6:example:17:p}有$J/m-RJh/I_C=0$，所以
+\[\boxed{h=I_C/(mR)=2R/5},\]
+两项速度都与冲量$J$成正比，故纯滚动条件中$J$可约去，所需高度与击打强弱无关。这里的$h$是相对球心的偏心距，离桌高度必须再加$R$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把偏心距换成离桌高度并判断前后滑动}\par\nobreak
+作用线离桌面高度为$\boxed{R+h=7R/5}$。若击打过低，底点初始向前滑，若过高则底点可能向后滑，随后摩擦才把它带到纯滚动。图中的$h$从球心算，不能直接作为离桌高度。\end{solution}

@@ -1,0 +1,98 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{w2:drill:1}\textbf{先由波前求到达时间，再定义本地时间}\par\nobreak
+图\ref{fig:w2:drill:1:s}中波前位于$x=ut$。固定$x>0$，先求信息从源到该点的时间$t_a=x/u$，再在本地点累计振动时间。
+把源的时间写成局部时间$\tau=t-x/u$。$\tau<0$时对应源尚未启动的过去，不能把正弦公式延长到这段时间；$\tau\ge0$才可照搬源函数。因而
+\[
+y(x,t)=\begin{cases}0,&t<x/u,\\A\sin[\omega(t-x/u)],&t\ge x/u.\end{cases}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在已到达区间内选择首次正端点}\par\nobreak
+启动后第一正端点要求位移为$+A$且首次到达，即相位$\pi/2$，不是$3\pi/2$的负端点。
+\fig{fig:w2:drill:1:p}{固定$x$处的完整时间图：到达前平直，到达后才开始正弦振动}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(5,0)node[right]{$t$};\draw[axis](-1.5,-1.3)--(-1.5,1.7)node[above]{$y/A$};\draw[blue,thick](-1.5,0)--(0,0);\draw[blue,thick,domain=0:4.4,samples=100]plot(\x,{sin(90*\x)});
+\draw[guide](0,-1.4)--(0,1.4);\node[below]at(0,-1.4){$t_a=x/u$};\fill(1,1)circle(.06)node[above right]{首次$+A$};\draw[dim](0,1.9)--(1,1.9)node[midway,above]{$T/4$};\node[above]at(-.75,0){未到达};\node[below]at(-1.5,0){$0$};
+
+\end{tikzpicture}}
+
+图\ref{fig:w2:drill:1:p}在到达时刻$t_a$之后标出第一个正端点。其条件为$\omega\tau=\pi/2$，故$t=x/u+T/4$。在波前处位移连续为零，但理想化瞬时启动会使速度发生突变，这由源启动方式决定。\end{drillsolution}
+\begin{drillsolution}{w2:drill:2}\textbf{用波形斜率和位移预判速度、加速度方向}\par\nobreak
+图\ref{fig:w2:drill:2:s}中$P$在正位移、负斜率处。右行波应使它向上运动，而回复加速度向下；先用图判断符号，再进行求导。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定材料点求时间导数并代入相位}\par\nobreak
+先算相位$\psi=0-(2\pi/\lambda)(\lambda/8)=-\pi/4$。固定$x$对时间求导，而不是沿着波峰求导：
+\[
+\partial_ty=(-A\sin\psi)\underbrace{\partial_t\psi}_{\omega}
+=-A\omega\sin\psi,\qquad
+\partial_t^2y=(-A\omega\cos\psi)\omega=-A\omega^2\cos\psi.
+\]
+分别代入$\sin(-\pi/4)=-1/\sqrt2$、$\cos(-\pi/4)=1/\sqrt2$，得$y=A/\sqrt2$、$v_y=A\omega/\sqrt2$、$a_y=-A\omega^2/\sqrt2$，与图上的符号判断一致。
+\fig{fig:w2:drill:2:p}{同一材料点此刻向上运动、向下加速；波形仍沿水平方向平移}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$x/\lambda$};\draw[axis](0,-1.4)--(0,2)node[above]{$y/A$};\draw[world,domain=0:4.3,samples=90]plot(\x,{cos(90*\x)});\fill(.5,.7071068)circle(.06)node[below left]{$P$};
+\draw[flow](.5,.7071068)--(.5,1.8)node[above]{$v_y>0$};\draw[force](.75,.7071068)--(.75,-.45)node[right]{$a_y<0$};\draw[flow](2.7,1.55)--(3.8,1.55)node[right]{$u$};\node[below]at(4,0){$1$};
+
+\end{tikzpicture}}
+
+图\ref{fig:w2:drill:2:p}的箭头向上，和波形负斜率一致。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用振幅与波长构成两种速率的比值}\par\nobreak
+最大振动速度为$A\omega$，波速为$\omega/k$，二者之比$Ak=2\pi A/\lambda$。小斜率近似要求$Ak\ll1$，所以此时最大振动速度远小于波速；它们的单位虽相同，含义和决定因素不同。\end{drillsolution}
+\begin{drillsolution}{w2:drill:3}\textbf{由介质张力和惯性求初始波速}\par\nobreak
+在图\ref{fig:w2:drill:3:s}采用张力近似恒定、线密度均匀的柔弦模型，$u=\sqrt{\mathcal T/\mu_\ell}$。
+波速由介质参数决定，线密度与张力先统一为国际单位；代入$16/0.01=1600\,\mathrm{m^2/s^2}$后再开平方，得$u=40\,\mathrm{m/s}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用固定的振源周期求波长}\par\nobreak
+波长是同一波峰在一个振源周期$T=1/20\,\mathrm s$内前进的距离，所以$\lambda=uT=40/20=2\,\mathrm m$。
+\fig{fig:w2:drill:3:p}{相同振源周期内，张力变为四倍后波峰前进距离加倍；图示同一时刻的两种波长}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$x/\mathrm m$};\draw[blue,thick,domain=0:4.5,samples=110]plot(\x,{.5*cos(180*\x)});\node[left]at(0,1.2){$16\,\mathrm N$};\draw[dim](0,1.1)--(2,1.1)node[midway,above]{$\lambda=2\,\mathrm m$};
+\begin{scope}[yshift=-3.1cm]\draw[axis](0,0)--(5,0)node[right]{$x/\mathrm m$};\draw[red,thick,domain=0:4.5,samples=110]plot(\x,{.5*cos(90*\x)});\node[left]at(0,1.2){$64\,\mathrm N$};\draw[dim](0,1.1)--(4,1.1)node[midway,above]{$\lambda'=4\,\mathrm m$};\end{scope}
+
+\end{tikzpicture}}
+
+图\ref{fig:w2:drill:3:p}中同一时间$T=1/f$内波峰移动距离为$\lambda$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对张力取平方根，再保持频率重算波长}\par\nobreak
+张力增为$64\,\mathrm N$时，$u'=80\,\mathrm{m/s}$；振源频率仍为$20\,\mathrm{Hz}$，故$\lambda'=4\,\mathrm m$。张力改变的是介质响应，不能据$u=f\lambda$把三个量同时任意改变。\end{drillsolution}
+\input{solution-longitudinal-density}
+\begin{drillsolution}{w2:drill:5}\textbf{从静止界面的时间相位匹配确定同频}\par\nobreak
+图\ref{fig:w2:drill:5:s}中的界面静止，两侧的振动通过边界条件持续耦合。先匹配时间相位，再匹配沿界面的空间相位。
+在固定界面上比较同一位置、不同时刻的相位，时间变化率必须一致，故$\omega_1=\omega_2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{匹配切向波数并计算法线夹角}\par\nobreak
+再沿界面比较两位置，得$k_1\sin i=k_2\sin r$。由$k_j=\omega/u_j$约去公共$\omega$，
+\[
+\frac{\sin i}{u_1}=\frac{\sin r}{u_2},\quad
+\sin r=\frac12\sin30^\circ=\frac14.
+\]
+角度从法线量起，$r\simeq14.48^\circ$，比入射角小。
+\fig{fig:w2:drill:5:p}{角度从法线量起；慢介质中的波面间距减半，传播方向靠近法线}{\begin{tikzpicture}
+
+\draw[world](-2.5,0)--(3,0);\draw[guide](0,-3.4)--(0,3.2)node[above]{法线};\draw[flow](-1.5,2.598)--(0,0)--(.75,-2.90474);
+\draw(0,.8)arc(90:120:.8);\node at(-.35,1.2){$30^\circ$};\draw(0,-1)arc(-90:-75.52249:1);\node[right]at(.3,-1.3){$r$};
+\foreach \j in {1,2}{\draw[blue,thick]({-.5*\j-.5},{.8660254*\j-.288675})--({-.5*\j+.5},{.8660254*\j+.288675});\draw[red,thick]({.125*\j-.5},{-.4841229*\j-.129099})--({.125*\j+.5},{-.4841229*\j+.129099});}
+\node at(-2,1){$u_1,\lambda_1$};\node at(-2,-1){$u_2,\lambda_2$};\node at(1.8,-2.8){$r\simeq14.48^\circ$};
+
+\end{tikzpicture}}
+
+图\ref{fig:w2:drill:5:p}的折射线更靠近法线，因为$u_2<u_1$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由同频率下的速度比求波长比}\par\nobreak
+频率不变，$\lambda_1/\lambda_2=u_1/u_2=2$。若将角度误从界面量起，会把正弦关系误写成余弦关系。\end{drillsolution}
+\begin{drillsolution}{w2:drill:6}\textbf{分清波峰传播与浮球材料点运动}\par\nobreak
+图\ref{fig:w2:drill:6:s}中的波峰向岸传播，并不意味着浮球沿波向以波速运动。在线性小振幅、无背景流的近似中，浮球随局部水质点作往复运动，不能仅由波向推出持续位移。
+\fig{fig:w2:drill:6:p}{线性水波中同一浮球的往复轨迹示意；一个周期后回到原位置，波峰仍继续向前}{\begin{tikzpicture}
+
+\draw[guide](0,0)--(5,0);\draw[world](2,0)ellipse(1.3 and .5);\coordinate(P)at(3.3,0);\fill(P)circle(.07)node[right]{$P(t)=P(t+T)$};\draw[flow](P)arc(0:-110:1.3 and .5);
+\draw[flow](.7,0)arc(180:100:1.3 and .5);\node at(2,1.1){局部轨迹};\draw[flow](2,-1.3)--(4,-1.3)node[right]{相位与能量传播};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较一周期前后位置，说明线性模型的限制}\par\nobreak
+图\ref{fig:w2:drill:6:p}把一次往复与持续输运分开：线性位移在周期平均后为零。真实水面可出现高阶漂移、风生流或破碎波输运，实际浮球也可能受到这些作用。因此题目所给的小振幅线性机制本身不能保证将球送岸，但“任何水波绝不输运物质”也不是正确结论。\end{drillsolution}

@@ -1,0 +1,25 @@
+\section{本讲小结}
+分离边界由单向接触力到零确定，但候选位置还要能在真实运动中到达。轻物模型要求有限加速度下合力和合力矩趋零；附着在轻杆上的有限质量仍决定整体平动与转动。运动约束、力的大小条件和初态必须共同使用。
+
+转动系与加速容器把牛顿定律推广到不同坐标描述：离心项决定相对平衡的径向需求，压强梯度平衡有效体积力。连续弹簧则以材料微元保留非均匀轴力。静摩擦欠定、流体近似及线弹性范围都是模型的一部分，应同计算式一起说明。
+\section{练习}
+\begin{question}\begin{drill}[电梯中的有质量弹簧]\label{n3d1}
+自然长 $L_0$、质量 $m_0$、劲度系数 $k$ 的均匀弹簧上端固定在电梯顶，末端挂质量 $M$。电梯以恒加速度 $a_0$ 向上运动，系统相对电梯静止。求轴力分布和总伸长。
+\fig{n3d1q}{末端重物与弹簧自重同时贡献轴力}{\begin{tikzpicture}
+\draw[world](-1,3)--(1,3);\draw[spring](0,3)--(0,.3);\node[draw,anchor=north]at(0,.3){$M$};\draw[flow](1.5,.5)--(1.5,2)node[above]{$a_0$};\draw[axis](-1,3)--(-1,.2)node[below]{$u$};
+\end{tikzpicture}}\answerlink{n3d1}\end{drill}\end{question}
+\begin{question}\begin{drill}[不等截面旋转U形管]\label{n3d2}
+旋转U形管两支管截面分别为 $S_1,S_2$，距轴分别 $r_1<r_2$，静止时液深均为 $h$。求旋转后两液深之差、轴处压强和内侧支管刚好见底的角速度，假定未溢出。
+\fig{n3d2q}{液量守恒由截面积加权，而非两高度简单相加}{\begin{tikzpicture}
+\draw[world](-1.5,2.5)--(-1.5,0)--(2.5,0)--(2.5,2.5);\draw[world](-1.1,2.5)--(-1.1,.2)--(1.8,.2)--(1.8,2.5);\draw[axis](0,-.2)--(0,2.9)node[above]{$\omega$};\draw[world](-1.5,1.1)--(-1.1,1.1) (1.8,1.9)--(2.5,1.9);\node[left]at(-1.5,1.6){$S_1$};\node[right]at(2.5,1.5){$S_2$};\node at(-.7,-.4){$r_1$};\node at(1.3,-.4){$r_2$};
+\end{tikzpicture}}\answerlink{n3d2}\end{drill}\end{question}
+\begin{question}\begin{drill}[非零离口速率的加速桶水流]\label{n3d3}
+水平向右加速度为 $a$ 的桶，向下射出质量流率 $Q$ 的细水流，相对桶的离口竖直速率 $v_e>0$。求距桶底竖直距离 $h$ 处的水流实际线密度，说明水流相对桶是否仍为直线。
+\fig{n3d3q}{水滴离口时继承桶的水平速度，并有额外竖直速度}{\begin{tikzpicture}
+\draw[world](-.7,2)--(-.7,1)--(.7,1)--(.7,2);\draw[flow](0,1)--(0,.1)node[right]{$v_e$};\draw[flow](.9,1.5)--(2.2,1.5)node[right]{$a$};\draw[guide](0,1)--(0,-1.5);\draw[world](0,1)..controls(-.1,-.1)and(-.6,-1)..(-1,-1.5);\draw[dim](.6,1)--(.6,-1.5)node[midway,right]{$h$};
+\end{tikzpicture}}\answerlink{n3d3}\end{drill}\end{question}
+\begin{question}\begin{drill}[旋转弹簧末端加挂小球]\label{n3d4}
+均匀有质量弹簧自然长 $L_0$、质量 $m_0$、劲度系数 $k$，水平旋转，一端固定，另一端连接质量 $M$ 的球，角速度 $\omega$。在稳定线弹性分支内求长度，检验 $M\to0$ 与 $m_0\to0$ 两个极限。
+\fig{n3d4q}{自由端边界改为给末端小球提供向心力}{\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[below]{$O$};\draw[spring](0,0)--(4,0);\fill(4,0)circle(5pt)node[right]{$M$};\draw[axis](0,0)--(0,1.7)node[above]{$\omega$};\draw[dim](0,-.6)--(4,-.6)node[midway,below]{$L$};
+\end{tikzpicture}}\answerlink{n3d4}\end{drill}\end{question}

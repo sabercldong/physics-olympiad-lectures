@@ -1,0 +1,53 @@
+\section{练习}
+
+\begin{question}\begin{drill}[不均匀杆的重心位置]\label{s2:drill:1}
+长$l$、质量$m$的杆由两端轻绳悬挂成水平，左绳与竖直夹角$\theta$，右绳与竖直夹角$\varphi$。两绳分别向左上、右上，求重心距右端距离$d$。
+\end{drill}
+\fig{fig:s2:drill:1:s}{两绳方向、杆长与待求重心位置}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0);\draw[world](0,0)--(-.8,1.6);\draw[world](4,0)--(5.2,1.6);\draw[guide](0,0)--(0,1.8);\draw[guide](4,0)--(4,1.8);\node[above left]at(0,.7){$\theta$};\node[above right]at(4,.7){$\varphi$};\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\fill(1.8,0)circle(2pt)node[above]{$C$};\draw[dim](1.8,-.7)--(4,-.7)node[midway,below]{$d$};\draw[dim](0,-1.4)--(4,-1.4)node[midway,below]{$l$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:1}
+\begin{question}\begin{drill}[相斥悬球的质量比]\label{s2:drill:2}
+两等长轻绳从同点悬挂质量$m_1,m_2$的球，两球相互排斥，绳与竖直分别成$45^\circ,30^\circ$。求质量比。
+\end{drill}
+\fig{fig:s2:drill:2:s}{等长悬线造成两球不等高，斥力沿连心线}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(A)at(-1.6971,1.3029);\coordinate(B)at(1.2,.9215);\draw[world](A)--(O)node[midway,left]{$l$}--(B)node[midway,right]{$l$};\draw[guide](O)--(0,0);\draw[guide](A)--(B);\fill(O)circle(2pt)node[above]{$O$};\fill(A)circle(3pt)node[left]{$m_1$};\fill(B)circle(3pt)node[right]{$m_2$};\draw(0,2.3)arc(-90:-135:.7);\node at(-.5,2){$45^\circ$};\draw(0,2)arc(-90:-60:1);\node at(.5,1.8){$30^\circ$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:2}
+\begin{question}\begin{drill}[两运动板间的滑动摩擦]\label{s2:drill:3}
+下板以速率$v$向北运动，上木块以同速率$v$向东运动，两者间动摩擦系数$\mu$。求木块所受摩擦的大小和方向。
+\end{drill}
+\fig{fig:s2:drill:3:s}{题设：两运动板间的滑动摩擦}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)rectangle(4,3);\draw[world](1.5,1)rectangle(2.3,1.8);\draw[flow](.5,2)--(.5,3.2)node[above]{$v$，北};\draw[flow](2.3,1.4)--(3.5,1.4)node[right]{$v$，东};\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:3}
+\begin{question}\begin{drill}[传送带与光滑挡板]\label{s2:drill:4}
+传送带向右速度$v$，木块质量$m$受光滑直挡板约束，沿与带速垂直的方向以$v'$匀速运动。驱动力沿挡板，摩擦系数$\mu$，求驱动力。
+\end{drill}
+\fig{fig:s2:drill:4:s}{题设：传送带与光滑挡板}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)rectangle(4,2.5);\draw[world](2,-.2)--(2,3);\fill(1.7,1)circle(3pt);\draw[flow](.3,.5)--(1.2,.5)node[below]{$v$};\draw[flow](1.7,1)--(1.7,2)node[left]{$v'$};\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:4}
+\begin{question}\begin{drill}[斜向拉箱的最小力]\label{s2:drill:5}
+重$G$的箱在水平面上匀速滑动，动摩擦系数$\mu$。拉力与水平成$\alpha$向上，求最小拉力及角度。
+\end{drill}
+\fig{fig:s2:drill:5:s}{题设：斜向拉箱的最小力}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,0);\draw[world](1,0)rectangle(2.3,1);\draw[force](2.3,.8)--(3.6,1.6)node[right]{$F$};\draw[guide](2.3,.8)--(3.6,.8);\draw(2.85,.8)arc(0:31.61:.55);\node at(3.1,1.02){$\alpha$};\node at(1.65,.5){$G$};\draw[flow](4,.3)--(5,.3)node[right]{$v$};\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:5}
+\begin{question}\begin{drill}[挡板支持力的最小值]\label{s2:drill:6}
+重$G$的小球位于倾角$\beta$的光滑斜面和可转动光滑挡板之间。保持接触，挡板法线可在允许方向内变化。求挡板力最小时的方向和大小。
+\end{drill}
+\fig{fig:s2:drill:6:s}{题设：挡板支持力的最小值}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,2);\draw[world](2,1.608)circle(.75);\draw[world](.932,2.258)--(1.675,.401);\draw[guide](0,0)--(4,0);\draw(1,0)arc(0:21.8:1);\node at(1.4,.23){$\beta$};\node at(3,2.5){球重 $G$};\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:6}
+\begin{question}\begin{drill}[斜板上三个相切圆柱]\label{s2:drill:7}
+轻板长$l$，下端铰接于竖直墙，板与墙夹角$\theta$，上端由水平绳向墙拉。三个半径$r$、各重$G$的光滑圆柱依次相切放在板上，最下圆柱还接触墙。求水平绳力。
+\end{drill}
+\fig{fig:s2:drill:7:s}{墙、斜板与三个等半径圆柱的接触几何}{\begin{tikzpicture}
+
+\draw[world](0,3.3)--(0,0)--(5,2)node[midway,below]{$l$};\draw[world](0,2)--(5,2);\foreach \xx/\yy/\lab in {.5/.7385/1,1.4285/1.1099/2,2.357/1.4813/3}{\draw[world](\xx,\yy)circle(.5);\node at(\xx,\yy){$C_\lab$};}\draw[guide](0,0)--(0,1.2);\draw(0,.3)arc(90:21.8:.3);\node[left]at(-.1,.4){$\theta$};\node[above]at(5,2){$B$};\node[below]at(0,0){$A$};\draw[force](4.5,2)--(3.4,2)node[above]{$P$};\node at(3.9,3.2){每个圆柱半径 $r$、重 $G$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{s2:drill:7}

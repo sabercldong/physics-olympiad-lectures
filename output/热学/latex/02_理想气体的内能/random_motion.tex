@@ -1,0 +1,26 @@
+\subsection{整体流动与无规则运动的分离}
+压强、温度与分子速度的关系中，速度应相对气体的局部平均运动来定义。若气体具有整体流速 $\bm U$，把第 $j$ 个分子的实验室速度分解为
+\[
+ \bm v_j=\bm U+\bm w_j,\qquad
+ \bm U=\langle\bm v\rangle,\qquad\langle\bm w\rangle=0.
+\]
+图\ref{fig:random-velocity}中，$\bm U$ 是所有分子共有的整体运动部分，$\bm w_j$ 是该分子相对整体的无规则运动。单个分子的 $\bm w_j$ 不必为零，为零的是许多分子的矢量平均。
+\fig{fig:random-velocity}{实验室速度由整体流速与相对整体的无规则速度组成}{
+\begin{tikzpicture}[x=1.3cm,y=1.3cm]
+\draw[axis] (0,0)--(3.6,0);\draw[axis] (0,0)--(0,1.8);
+\draw[axis,thick,blue] (0,0)--(2,0) node[midway,below]{$\bm U$};
+\draw[axis,thick] (2,0)--(3,1.2) node[midway,right]{$\bm w_j$};
+\draw[axis,thick] (0,0)--(3,1.2) node[midway,above left]{$\bm v_j$};
+\node[align=left] at (5.3,.7){$\langle\bm w\rangle=0$\\$\langle w^2\rangle>0$};
+\end{tikzpicture}}
+平方取平均后，交叉项因 $\langle\bm w\rangle=0$ 消失，得到
+\[
+ \langle v^2\rangle=U^2+\langle w^2\rangle,\qquad
+ \sum_j\frac12mv_j^2=\frac12NmU^2+\sum_j\frac12mw_j^2.
+\]
+右侧第一项是气体整体的动能，第二项才是平动热内能。在局部平衡、无规则运动各向同性的条件下，热力学压强与温度满足
+\[
+ p=\frac13\rho\langle w^2\rangle,\qquad
+ \frac12m\langle w^2\rangle=\frac32kT.
+\]
+因此，一团气体整体运动得快并不自动表示温度高。若要计算流动撞击器壁的作用，还须计入整体动量通量；不能把实验室的 $\langle v^2\rangle$ 全部代入热压强公式。静止密闭容器中的平衡气体 $\bm U=0$，上述关系才回到前面的常见形式。这个分解也解释了为什么充气入口的动能与焓需要分别讨论，以及为什么整体机械能不能一律并入 $nC_VT$。

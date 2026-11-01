@@ -1,0 +1,33 @@
+\fig{em6:ampere-surfaces}{同一安培环路的两种张面；蓝色面截导线，红色面从极板外绕入间隙（示意剖面）}{
+\begin{tikzpicture}[scale=.95]
+\fill[blue!12](-2,0)ellipse(.35 and 1.05);
+\draw[red,dashed](-2,1.05)..controls(-1.3,2.2)and(.4,2.2)..(.4,1.1)
+ ..controls(.7,.6)and(.7,-.6)..(.4,-1.1)
+ ..controls(.4,-2.2)and(-1.3,-2.2)..(-2,-1.05);
+\draw[world,very thick](-.6,-1.4)--(-.6,1.4) (.9,-1.4)--(.9,1.4);
+\draw[world](-3.4,0)--(-.6,0) (.9,0)--(2.6,0);
+\draw[world,blue](-2,0)ellipse(.35 and 1.05);
+\draw[flow](-3.1,0)--(-2.5,0)node[midway,above]{$I$};
+\foreach \y in {-.7,0,.7}
+ \draw[flow,red](-.4,\y)--(.7,\y);
+\node at(.15,1.75){$\bm E$};
+\node[left,blue]at(-2.35,-.75){$S_1$};
+\node[red]at(-.2,-2){$S_2$};
+\node[left]at(-2.35,1){$\Gamma$};
+\node[above]at(-.6,1.4){$+q$};
+\node[above]at(.9,1.4){$-q$};
+\node at(2.2,1){电容间隙};
+\end{tikzpicture}}
+
+图\ref{em6:ampere-surfaces}中两张面共有同一边界$\Gamma$，曲面的正向均由同一环路方向确定。$S_1$截过充电导线，$S_2$避开导线并穿过极板间电场。忽略边缘场、取极板面积$A$时，间隙内$q=\varepsilon_0EA$，所以
+\[
+ I=\dot q=\varepsilon_0A\dot E
+   =\varepsilon_0\frac{\dd\Phi_E}{\dd t}=I_d.
+\]
+安培—麦克斯韦关系
+\[
+ \oint_\Gamma\bm B\cdot\dd\bm l
+ =\mu_0\left(I_{\text{传导}}+
+             \varepsilon_0\frac{\dd\Phi_E}{\dd t}\right)
+\]
+对两张面给出相同结果：前者主要由传导项贡献，后者由位移项贡献。这里是同一充电过程的两种张面选择，不能把两项当成两股沿同一导线叠加的传导电流。若电场不均匀，右端通量仍须按所选曲面实际积分。

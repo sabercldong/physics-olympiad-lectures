@@ -1,0 +1,132 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{k4p6}\textbf{用任意顶点位置同时约束两条屋沿}\par\nobreak
+以图\ref{k4p6q}屋顶中点为水平原点，设抛物线顶点横坐标为 $s$、高度为 $H$，令 $p=v_x^2/g>0$。轨迹可写成 $y=H-(x-s)^2/(2p)$。两个屋沿 $x=\pm20$都需不低于20m，因此
+\[H\ge20+\frac{\max\{(20-s)^2,(-20-s)^2\}}{2p}=20+\frac{(20+|s|)^2}{2p}.\]
+\fig{k4p6s}{越过有限宽仓库：解答过程}{\begin{tikzpicture}\draw[world](-1.47,0)--(5.47,0);\draw[world](0,0)rectangle(4,2);\draw[blue,world]plot[domain=-1.464:5.464,samples=70]({\x},{3-(\x-2)^2/4});\draw[guide](2,0)--(2,3);\node[above]at(2,3){顶点 $30$m};\draw[dim](-1.464,-.6)--(0,-.6)node[midway,below]{$d$};\draw[dim](4,-.6)--(5.464,-.6)node[midway,below]{$d$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求所有可行轨迹共同满足的初速下界}\par\nobreak
+因为从地面起抛，竖直初速平方为 $v_y^2=2gH$。由图\ref{k4p6s}的顶点与屋沿关系，任意可行射法都满足
+\[\frac{v_0^2}{g}=p+2H\ge p+40+\frac{(20+|s|)^2}{p}\ge p+40+\frac{400}{p}\ge80.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复实现下界的发射位置与角度}\par\nobreak
+等号同时要求 $s=0,p=20,H=30$，因此轨迹确实关于屋顶中点对称。初速 $\boxed{v_{\min}=20\sqrt2\ \mathrm{m/s}}$。顶点到发射点的水平距离由 $0=30-q^2/40$得 $q=20\sqrt3$，故 $\boxed{d=20(\sqrt3-1)\ \mathrm m}$。发射角满足 $\tan\alpha=\sqrt{2H/p}=\sqrt3$，所以 $\boxed{\alpha=60^\circ}$。两屋沿高均为20m，落点在后墙之外同样距离，等号构形可以实现。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回屋顶整个区间与地面交点}\par\nobreak
+等号构形的轨迹为 $y=30-x^2/40$，其中 $x$仍从屋顶中点计。代入前后屋沿 $x=\pm20$均得20m；区间内 $y\ge20$m，所以整个屋顶净空满足条件。两个地面交点为 $x=\pm20\sqrt3$，确在仓库之外。由发射点到顶点的高度30m还得竖直初速 $10\sqrt6$m/s，而水平分量为 $10\sqrt2$m/s，合成恰为 $20\sqrt2$m/s。\end{drillsolution}
+
+\begin{drillsolution}{k4p7}\textbf{先用反弹次数确定各自总时间}\par\nobreak
+由图\ref{k4p7q}，起抛高度为 $H=5\,\mathrm m$，取 $g=10\,\mathrm{m/s^2}$，首次触地时间
+\[
+ T=\sqrt{\frac{2H}{g}}=1\,\mathrm s.
+\]
+弹性反弹后竖直初速恢复为 $gT$。从一次触地开始计局部时间 $\tau$，高度为 $gT\tau-g\tau^2/2=H[2\tau/T-(\tau/T)^2]$，相邻触地的间隔为 $2T$。因此第一次、第二次、第三次触地分别在 $T,3T,5T$。两球走过9m的总时间为 $3T,5T$，水平速度为
+\[
+ \boxed{v_1=\frac9{3T}=3\,\mathrm{m/s}},\qquad
+ \boxed{v_2=\frac9{5T}=1.8\,\mathrm{m/s}}.
+\]
+令 $s=t/T$，初次下落段有 $y/H=1-s^2$；第一次反弹段由 $\tau/T=s-1$得到 $y/H=1-(s-2)^2$，第二次反弹段同理为 $1-(s-4)^2$。
+
+以下按实际碰撞次数选择表达式。
+\fig{k4p7s}{两面矮墙与多次反弹：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(6.5,0);\draw[blue,world]plot[domain=0:2,samples=25]({\x},{2*(1-(\x/2)^2)});\draw[blue,world]plot[domain=2:6,samples=50]({\x},{2*(1-(\x/2-2)^2)});\draw[red,world]plot[domain=0:1.2,samples=20]({\x},{2*(1-(\x/1.2)^2)});\draw[red,world]plot[domain=1.2:3.6,samples=35]({\x},{2*(1-(\x/1.2-2)^2)});\draw[red,world]plot[domain=3.6:6,samples=35]({\x},{2*(1-(\x/1.2-4)^2)});\foreach \x/\s in {1.5/A,4.5/B}\draw[guide](\x,0)--(\x,2.3)node[above]{$\s$};\node[below,blue]at(2,0){$3$};\node[below,red]at(1.2,-.4){$1.8$};\node[below,red]at(3.6,0){$5.4$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{第一面墙：选择初落段与一次反弹段}\par\nobreak
+图\ref{k4p7s}中，令墙的相对位置为 $z=x/9$，两球到墙时各自的无量纲时间是 $s_1=3z,s_2=5z$。第一面墙处，第一球尚未触地，第二球已经反弹一次，等高条件为
+\[
+ (3z)^2=(5z-2)^2.
+\]
+分别取 $3z=5z-2$和 $3z=-(5z-2)$，得到 $z=1$与 $z=1/4$。前者不在第一球初次下落段，舍去；后者给出
+\[
+ \boxed{x_A=\frac94\,\mathrm m},\qquad
+ h_A=5\left[1-\left(\frac34\right)^2\right]
+ =\boxed{\frac{35}{16}\,\mathrm m}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{第二面墙：选择一次与两次反弹段}\par\nobreak
+第二面墙处，第一球反弹一次，第二球反弹两次，故
+\[
+ (3z-2)^2=(5z-4)^2.
+\]
+取同号得到 $z=1$，这是两球共同的终点触地处，不能作为有正高度的墙；取异号得 $8z=6$，所以
+\[
+ \boxed{x_B=\frac{27}{4}\,\mathrm m},\qquad
+ h_B=5\left[1-\left(\frac94-2\right)^2\right]
+ =\boxed{\frac{75}{16}\,\mathrm m}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将所有根回代实际碰撞区间}\par\nobreak
+最后按图\ref{k4p7s}核对分段：第一球首次触地在3m，第二球前两次触地在1.8m、5.4m。
+
+第一墙的2.25m位于1.8m与3m之间，第二墙的6.75m位于5.4m与9m之间，均符合所选反弹阶段；两墙高度也都介于地面与最高点之间。
+\end{drillsolution}
+
+\begin{drillsolution}{k4p8}\textbf{以瞄准线确定到靶时间和重力下落量}\par\nobreak
+图\ref{k4p8q}中瞄准线长 $OB=\sqrt{d^2+Y^2+Z^2}$，故初速度 $x$分量为 $v_0d/OB$，到靶时间为 $t=OB/v_0$。弹丸相对瞄准点只产生竖直下落，击中水平线要求 $Y-gt^2/2=h$，因此
+\[d^2+Y^2+Z^2=\frac{2v_0^2}{g}(Y-h).\]
+\fig{k4p8s}{瞄准点的空间轨迹：解答过程}{\begin{tikzpicture}\draw[axis](-2,0)--(2.5,0)node[right]{$Z$};\draw[axis](0,-.6)--(0,3.8)node[above]{$Y$};\draw[world](0,2)circle(1.2);\fill(0,2)circle(2pt)node[right]{$v_0^2/g$};\draw[blue,world](-2,.3)--(2,.3)node[right]{$h$};\fill(.9,2.794)circle(2pt)node[right]{$B$};\draw[flow,red](.9,2.794)--(.9,.3)node[midway,right]{$gt^2/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在靶平面识别圆及其存在条件}\par\nobreak
+配方得 $\boxed{(Y-v_0^2/g)^2+Z^2=v_0^4/g^2-2hv_0^2/g-d^2}$。图\ref{k4p8s}所示瞄准点在靶平面内构成圆，圆心为 $(d,v_0^2/g,0)$。右边为正时有圆，为零时退化为一点，为负时没有可行瞄准方向。该圆表示枪口的直线指向，不是子弹在靶面上的落点轨迹；实际命中点均在下方的水平线上。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到未配方式核对时间和瞄准高度}\par\nobreak
+圆方程只是对 $Y,Z$配方后的结果，还应验证时间方向。由未配方的式子，$Y-h=g(d^2+Y^2+Z^2)/(2v_0^2)>0$，所以瞄准点总高于实际命中线；又因 $d>0$，初速度水平指向靶面，$t=OB/v_0>0$。这两个条件均由方程自动保证，不需再取另一时间分支。圆半径趋零时也仍有一个有限的临界瞄准方向。\end{drillsolution}
+
+\begin{drillsolution}{k4p9}\textbf{分别求水平与竖直状态的恢复时间}\par\nobreak
+设图\ref{k4p9q}的发射点为 $A=(0,h)$，初速度分量为 $u>0,w>0$。右墙碰撞只使水平分量反号，地面碰撞只使竖直分量反号。触地前的竖直速率由竖直运动公式得到
+\[W=\sqrt{w^2+2gh}>w.\]
+从 $h$下降到地面，取 $h+wt-gt^2/2=0$的正根，所需时间为 $t_g=(w+W)/g$。触地后向上速度为 $W$；回到高度 $h$且竖直速度恢复为 $w$，再需 $\tau=(W-w)/g$。因此竖直状态恢复所需时间为
+\[T_y=t_g+\tau=\frac{2W}{g}.\]
+水平方向从左墙到右墙 $B$再回左墙，时间为 $T_x=2L/u$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用周期相等消去一个初速度分量}\par\nobreak
+两者同周期且每周期一次触地，必须有
+\[\frac{2L}{u}=\frac{2W}{g},\qquad
+uW=gL,\qquad u^2=\frac{g^2L^2}{w^2+2gh}.\]
+\fig{k4p9s}{两墙之间的周期抛射：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$q=w^2$};\draw[axis](0,0)--(0,3.5)node[above]{$v_0^2$};\draw[world]plot[domain=0:4,samples=50]({\x},{.45*\x+2.4/(\x+.7)});\draw[guide](1.61,0)--(1.61,1.76);\node[below]at(1.61,0){$g(L-2h)$};\node[right]at(3,2.8){$L>2h$时内部极小};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在正竖直初速度范围内优化}\par\nobreak
+由此将初速的最小化化为单变量问题。令 $q=w^2>0$，则
+\[v_0^2=F(q)=q+\frac{g^2L^2}{q+2gh},\]
+把分式写成 $g^2L^2(q+2gh)^{-1}$，内层对 $q$的导数为1，逐次求导得
+\begin{align*}
+ F'(q)&=1+g^2L^2[-(q+2gh)^{-2}]\cdot1
+ =1-\frac{g^2L^2}{(q+2gh)^2},\\
+ F''(q)&=-g^2L^2[-2(q+2gh)^{-3}]\cdot1
+ =\frac{2g^2L^2}{(q+2gh)^3}>0.
+\end{align*}
+图\ref{k4p9s}画出 $L>2h$时的内部极小值。令 $F'=0$，由于 $q+2gh>0$，有 $q+2gh=gL$。当 $L>2h$时，该根 $q_*=g(L-2h)>0$属于允许区间，故
+\[\boxed{w^2=g(L-2h),\quad u^2=gL,\quad
+v_{\min}=\sqrt{2g(L-h)}}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查先碰墙后触地及触地点位置}\par\nobreak
+还需验证碰撞顺序和触地点位置。到右墙的时刻为 $t_B=L/u=W/g$，而 $t_g=(w+W)/g>t_B$，故球先撞右墙再触地。触地前水平方向已向左，触地点 $C$的坐标为
+\[x_C=L-u(t_g-t_B)
+     =L-\frac{uw}{g}=L\left(1-\frac wW\right).\]
+因为 $0<w<W$，所以 $0<x_C<L$，内部触地条件确实满足；回到左墙前向上运动，不会再次触地。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{边界最优趋向墙角时只能取下确界}\par\nobreak
+当 $L\le2h$时，对任意 $q>0$都有 $q+2gh>gL$，所以 $F'(q)>0$。此时初速平方的下确界在 $q\to0^+$取得极限
+\[\inf v_0^2=\frac{gL^2}{2h},\qquad
+\boxed{\inf v_0=L\sqrt{\frac{g}{2h}}}.\]
+然而 $w\to0$时 $x_C\to L$，触地点逼近右墙与地面的角点。题设要求向右上发射并在两墙内部触地，因此该极限不属于允许构形，只有下确界而没有达到它的最小初速。\end{drillsolution}

@@ -1,0 +1,594 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[导线跨接后的三个电阻]\label{c3:example:1}
+电阻链依次为 $A-R-P-R-Q-R-B$。另用理想导线连接 $A,Q$ 及 $P,B$。求 $A,B$ 间等效电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:1:s}\fig{fig:c3:example:1:s}{题设：导线跨接后的三个电阻}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](2,0)to[R,l={$R$}](4,0)to[R,l={$R$}](6,0);\draw(0,0)--(0,1)--(4,1)--(4,0);\draw(2,0)--(2,-1)--(6,-1)--(6,0);\node[left]at(0,0){$A$};\node[above]at(2,0){$P$};\node[below]at(4,0){$Q$};\node[right]at(6,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{沿理想导线辨认两个实际节点}\par\nobreak
+沿 图\ref{fig:c3:example:1:s} 的上跨线可知 $Q$ 与 $A$ 为同一节点；沿下跨线可知 $P$ 与 $B$ 为同一节点。因此第一只电阻跨接 $A,B$，第二只跨接 $B,A$，第三只跨接 $A,B$。
+\typeout{ECFIG:fig:c3:example:1:p}\fig{fig:c3:example:1:p}{解答过程：导线跨接后的三个电阻}{\begin{tikzpicture}[scale=.88]
+\foreach \y in {0,1.3,2.6}{\draw(0,\y)to[R,l={$R$}](3,\y);}\draw(0,0)--(0,2.6)(3,0)--(3,2.6);\node[left]at(0,1.3){$A$};\node[right]at(3,1.3){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按同一对端点重画并联电路}\par\nobreak
+图\ref{fig:c3:example:1:p} 依节点重新绘图，三只电阻均跨接同一对端口，属于并联。若端电压为 $U$，每支路电流大小为 $U/R$，总电流 $I=3U/R$，所以 $R_{AB}=U/I=R/3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对原参考方向和并联判断}\par\nobreak
+第二只电阻沿原来从左到右的参考电流方向实际为负，这并不妨碍它与另外两只电阻并联。外观上连续排列并不构成串联。\end{solution}
+\begin{question}\begin{example}[完全四节点网络]\label{c3:example:2}
+四个节点 $A,B,P,Q$ 两两以电阻 $r$ 相连。求 $A,B$ 间等效电阻与 $P,Q$ 间电流。
+\end{example}
+\typeout{ECFIG:fig:c3:example:2:s}\fig{fig:c3:example:2:s}{题设：完全四节点网络}{\begin{tikzpicture}[scale=.88]
+\draw[world](1.8,0.0)--(1.1021821192326179e-16,1.8);\draw[world](1.8,0.0)--(-1.8,2.2043642384652358e-16);\draw[world](1.8,0.0)--(-3.3065463576978537e-16,-1.8);\draw[world](1.1021821192326179e-16,1.8)--(-1.8,2.2043642384652358e-16);\draw[world](1.1021821192326179e-16,1.8)--(-3.3065463576978537e-16,-1.8);\draw[world](-1.8,2.2043642384652358e-16)--(-3.3065463576978537e-16,-1.8);\fill(1.8,0.0)circle(2pt)node[above right]{$A$};\fill(1.1021821192326179e-16,1.8)circle(2pt)node[above right]{$B$};\fill(-1.8,2.2043642384652358e-16)circle(2pt)node[above right]{$P$};\fill(-3.3065463576978537e-16,-1.8)circle(2pt)node[above right]{$Q$};\node at(0,-2.5){每条连线为电阻 $r$，交叉处不连接};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用保持端口的节点置换确定等势}\par\nobreak
+在 图\ref{fig:c3:example:2:s} 中交换 $P,Q$，端点 $A,B$ 和所有阻值都不变，故 $V_P=V_Q$。再交换 $A,B$，可知这两个内部节点电势为端电势中点。令 $V_A=U,V_B=0$，即 $V_P=V_Q=U/2$。
+\typeout{ECFIG:fig:c3:example:2:p}\fig{fig:c3:example:2:p}{解答过程：完全四节点网络}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](4,0);\draw(0,0)--(0,1.4)to[R,l={$2r$}](4,1.4)--(4,0);\draw(0,0)--(0,-1.4)to[R,l={$2r$}](4,-1.4)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{删去零流支路并计算总电导}\par\nobreak
+图\ref{fig:c3:example:2:p} 中 $PQ$ 支路无电流，剩余 $APB,AQB$ 两条 $2r$ 通道与直接支路 $AB$ 的 $r$ 并联，
+\[
+ \frac1{R_{AB}}=\frac1r+\frac1{2r}+\frac1{2r}=\frac2r,\qquad R_{AB}=\frac r2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由端口总电流检查结果}\par\nobreak
+两内部通道电流均为 $U/(2r)$，直接支路为 $U/r$，流出 $A$ 的总电流为 $2U/r$，与等效电阻一致。删除 $PQ$ 只对当前端口无影响，不能据此断言这条边在其他供电方式下也无电流。\end{solution}
+\begin{question}\begin{example}[共底面双四面体]\label{c3:example:3}
+三角形 $ABC$ 的每边均为电阻 $r$。顶点 $D,E$ 分别与 $A,B,C$ 各以电阻 $r$ 相连，$D,E$ 不直接连接。求 $D,E$ 间及 $A,B$ 间的等效电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:3:s}\fig{fig:c3:example:3:s}{题设：共底面双四面体}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(4,0)--(2,3.5)--cycle;\foreach \x/\y in {0/0,4/0,2/3.5}{\draw[world](-2,1.6)--(\x,\y);\draw[world](6,1.6)--(\x,\y);}\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};\node[above]at(2,3.5){$C$};\node[left]at(-2,1.6){$D$};\node[right]at(6,1.6){$E$};\node at(2,-1){每条连线电阻为 $r$，交叉处不连接};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先以两个顶点为端口划分等势层}\par\nobreak
+先以 图\ref{fig:c3:example:3:s} 的 $D,E$ 为端点。置换 $A,B,C$ 不改变边界，三节点等势，底面三条边无电流。$D$ 到中间层有三个 $r$ 并联，$E$ 到该层也有三个，故 $R_{DE}=r/3+r/3=2r/3$。
+\typeout{ECFIG:fig:c3:example:3:p}\fig{fig:c3:example:3:p}{解答过程：共底面双四面体}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/3$}](2,0);\draw(2,0)to[R,l={$r/3$}](4,0);\node[left]at(0,0){$D$};\node[right]at(4,0){$E$};\node at(2,1){$D,E$ 端口};\begin{scope}[yshift=-2cm]\draw(0,0)to[R,l={$r$}](4,0);\draw(0,0)--(0,-1.3)to[R,l={$2r/3$}](4,-1.3)--(4,0);\node at(2,.6){$A,B$ 端口};\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{更换端口后重新判断各内部节点电势}\par\nobreak
+图\ref{fig:c3:example:3:p} 分别画出两种端口。改以 $A,B$ 供电时，交换 $A,B$ 并将电势变为 $U-V$ 后，$C,D,E$ 的位置都保持，因此三者均为 $U/2$。$A,B$ 直接边为 $r$，经 $C,D,E$ 有三条 $2r$ 通道；内部等势边不通电，故
+\[
+ R_{AB}=\left(\frac1r+\frac3{2r}\right)^{-1}=\frac{2r}{5}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查等势分组所依赖的边界}\par\nobreak
+同一个网络更换端口后等势分组和结果都不同。第二种分组并非因为 $C,D,E$ 的度数相同，而是由交换端点的电势互补关系推出。\end{solution}
+\begin{question}\begin{example}[立方体体对角线端口]\label{c3:example:4}
+立方体十二条棱各为电阻 $r$，$A,B$ 为体对角线两端。求等效电阻和三类棱上的电流。
+\end{example}
+\typeout{ECFIG:fig:c3:example:4:s}\fig{fig:c3:example:4:s}{题设：立方体体对角线端口}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.6,0.0);\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$A$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$001$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$011$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$B$};\node at(2.5,-.9){各棱电阻均为 $r$，未标点的交叉处不接通};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按二进制距离划分四个等势层}\par\nobreak
+在 图\ref{fig:c3:example:4:s} 中从 $A$ 出发，按最少经过的棱数分成 $0,1,2,3$ 层。绕体对角线的转动可互换每层中的三个点，故各层等势。
+\typeout{ECFIG:fig:c3:example:4:p}\fig{fig:c3:example:4:p}{解答过程：立方体体对角线端口}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/3$}](2,0);\draw(2,0)to[R,l={$r/6$}](4,0);\draw(4,0)to[R,l={$r/3$}](6,0);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node at(1,-.8){$I/3$ 每棱};\node at(3,-.8){$I/6$ 每棱};\node at(5,-.8){$I/3$ 每棱};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{数清跨层边并求三段串联电阻}\par\nobreak
+图\ref{fig:c3:example:4:p}按层间边数 $3,6,3$ 合并，对应电阻 $r/3,r/6,r/3$ 串联，得 $R_{AB}=5r/6$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求每条实际棱的电流与层间电压降}\par\nobreak
+若总电流为 $I$，首尾三条棱各通过 $I/3$，中间六条棱各通过 $I/6$。各层电势降依次为 $Ir/3,Ir/6,Ir/3$，总和 $5Ir/6$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原节点核对电流守恒}\par\nobreak
+以 $V_B=0,V_A=U$ 检查，$I=6U/(5r)$，第一层电势为 $3U/5$，第二层为 $2U/5$。第一层每节点流入 $2U/(5r)$，向第二层的两条边各流出 $U/(5r)$，满足节点守恒。\end{solution}
+\begin{question}\begin{example}[立方体相邻顶点端口]\label{c3:example:5}
+立方体每棱电阻 $r$，$A=000,B=001$ 为相邻顶点。求等效电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:5:s}\fig{fig:c3:example:5:s}{题设：立方体相邻顶点端口}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.6,0.0);\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$A$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$B$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$011$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$111$};\node at(2.5,-.9){各棱电阻均为 $r$，未标点的交叉处不接通};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{辨认保持端口的置换和电势互补关系}\par\nobreak
+图\ref{fig:c3:example:5:s} 中把端点电势设为 $V_A=U,V_B=0$。交换另两坐标，$010,100$ 等势，记为 $x$；$011,101$ 等势，记为 $y$。另外两节点为 $110$，电势 $z$，及 $111$，电势 $w$。交换端点所在坐标会互换两端，故 $y=U-x,w=U-z$。
+\typeout{ECFIG:fig:c3:example:5:p}\fig{fig:c3:example:5:p}{相邻端口下的等势合并：两条相同跨组边并联为 $r/2$，单边仍为 $r$}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);\coordinate(X)at(0,2.6);\coordinate(Z)at(0,5.2);
+\coordinate(B)at(6,0);\coordinate(Y)at(6,2.6);\coordinate(W)at(6,5.2);
+\draw(A)to[R,l={$r/2$}](X)to[R,l={$r/2$}](Z)to[R,l={$r$}](W)to[R,l={$r/2$}](Y)to[R,l={$r/2$}](B)to[R,l_={$r$}](A);
+\draw(X)to[R,l={$r/2$}](Y);
+\foreach \q/\lab/\pos in {A/{A:U}/below left,B/{B:0}/below right,X/{x}/left,Y/{y=U-x}/right,Z/{z}/above left,W/{w=U-z}/above right}{\fill(\q)circle(1.5pt)node[\pos]{$\lab$};}
+\node at(3,6.2){$x:\{010,100\},\quad y:\{011,101\}$};
+\node at(3,-1){$z:110,\quad w:111$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留跨组电导并列节点方程}\par\nobreak
+图\ref{fig:c3:example:5:p}把四类内部节点合并，同时保留各类之间的实际电导。例如两个 $x$ 节点各有一条边通向 $z$，合并后为 $r/2$；$z,w$ 间只有一条 $r$。对 $010$ 有 $(x-U)+(x-y)+(x-z)=0$，即 $3x=U+y+z$；对 $110$ 有 $2(z-x)+(z-w)=0$，即 $3z=2x+w$。代入互补关系得到
+\[
+ 4x=2U+z,\qquad 4z=2x+U.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求内部电势}\par\nobreak
+第二式给 $z=x/2+U/4$，代入第一式得 $7x/2=9U/4$，故 $x=9U/14,z=4U/7$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算总输出电流和端口电阻}\par\nobreak
+$A$ 流出电流包括直接边 $U/r$ 及通向两 $x$ 节点的电流，
+\[
+ I=\frac Ur+\frac{2(U-x)}r=\frac{12U}{7r},\qquad R_{AB}=\frac{7r}{12}.
+\]
+结果小于直接边 $r$，且大于体对角线问题中的单段并联电阻；不能沿用上一题的三层分组。\end{solution}
+\begin{question}\begin{example}[立方体面对角线端口]\label{c3:example:6}
+立方体每棱电阻 $r$，$A=000,B=011$ 为同一面对角线两端。求等效电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:6:s}\fig{fig:c3:example:6:s}{题设：立方体面对角线端口}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.6,0.0);\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$A$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$001$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$B$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$111$};\node at(2.5,-.9){各棱电阻均为 $r$，未标点的交叉处不接通};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两种对称变换求四个中间节点电势}\par\nobreak
+在 图\ref{fig:c3:example:6:s} 中令 $V_A=U,V_B=0$。交换后两个坐标，并结合将这两位同时取反的端点交换，可知同一面的另外两点 $001,010$ 电势为 $U/2$，背面的 $101,110$ 也为 $U/2$。背面的对应端点 $100,111$ 分别记为 $x,y$，由互补关系 $x+y=U$。
+\typeout{ECFIG:fig:c3:example:6:p}\fig{fig:c3:example:6:p}{四个中间节点电势均为 $U/2$，合并为 $H$；原无流边删去，其余支路按条数并联}{\begin{tikzpicture}
+
+\coordinate(A)at(0,3);\coordinate(B)at(7,3);\coordinate(X)at(0,-1);\coordinate(Y)at(7,-1);\coordinate(H)at(3.5,1);
+\draw(A)to[R,l_={$r$}](X);\draw(B)to[R,l={$r$}](Y);
+\draw(A)to[R,l={$r/2$}](H)to[R,l={$r/2$}](B);
+\draw(X)to[R,l_={$r/2$}](H)to[R,l_={$r/2$}](Y);
+\foreach \q/\lab/\pos in {A/{A:U}/above left,B/{B:0}/above right,X/{100:x}/below left,Y/{111:y}/below right,H/{H:U/2}/below}{\fill(\q)circle(1.5pt)node[\pos]{$\lab$};}
+\node at(3.5,4.2){$H=\{001,010,101,110\}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合并等势节点后求背面两节点电势}\par\nobreak
+图\ref{fig:c3:example:6:p}中，四个 $U/2$ 节点合并为 $H$，两条并行跨组边各折合为 $r/2$。原节点 $100$ 与 $A$、两个电势为 $U/2$ 的背面节点相连，故 $3x=U+U/2+U/2=2U$，即 $x=2U/3$，$y=U/3$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到三条实际棱计算总电流}\par\nobreak
+从 $A$ 流出的三条棱电流为
+\[
+ I=\frac{U-U/2}{r}+\frac{U-U/2}{r}+\frac{U-2U/3}{r}
+ =\frac{4U}{3r}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较三种端口并检查适用边界}\par\nobreak
+因此 $R_{AB}=3r/4$。给定端口分别为棱端点、面对角线端点、体对角线端点时，结果依次是 $7r/12,3r/4,5r/6$；三者来自不同边界，不能只凭“都是立方体”相互套用。\end{solution}
+\begin{question}\begin{example}[完全连接的任意多节点网络]\label{c3:example:7}
+$N$ 个节点两两由电阻 $r$ 连接。任选两节点作为端口。求等效电阻；若端电压为 $U$，求直接边和其余通向端口的边的电流。
+\end{example}
+\typeout{ECFIG:fig:c3:example:7:s}\fig{fig:c3:example:7:s}{题设：完全连接的任意多节点网络}{\begin{tikzpicture}[scale=.88]
+\draw[world](1.8,0.0)--(0.9000000000000002,1.5588457268119895);\draw[world](1.8,0.0)--(-0.8999999999999997,1.5588457268119897);\draw[world](1.8,0.0)--(-1.8,2.2043642384652358e-16);\draw[world](1.8,0.0)--(-0.9000000000000008,-1.558845726811989);\draw[world](1.8,0.0)--(0.9000000000000002,-1.5588457268119895);\draw[world](0.9000000000000002,1.5588457268119895)--(-0.8999999999999997,1.5588457268119897);\draw[world](0.9000000000000002,1.5588457268119895)--(-1.8,2.2043642384652358e-16);\draw[world](0.9000000000000002,1.5588457268119895)--(-0.9000000000000008,-1.558845726811989);\draw[world](0.9000000000000002,1.5588457268119895)--(0.9000000000000002,-1.5588457268119895);\draw[world](-0.8999999999999997,1.5588457268119897)--(-1.8,2.2043642384652358e-16);\draw[world](-0.8999999999999997,1.5588457268119897)--(-0.9000000000000008,-1.558845726811989);\draw[world](-0.8999999999999997,1.5588457268119897)--(0.9000000000000002,-1.5588457268119895);\draw[world](-1.8,2.2043642384652358e-16)--(-0.9000000000000008,-1.558845726811989);\draw[world](-1.8,2.2043642384652358e-16)--(0.9000000000000002,-1.5588457268119895);\draw[world](-0.9000000000000008,-1.558845726811989)--(0.9000000000000002,-1.5588457268119895);\fill(1.8,0.0)circle(2pt)node[above right]{$A$};\fill(0.9000000000000002,1.5588457268119895)circle(2pt)node[above right]{$B$};\fill(-0.8999999999999997,1.5588457268119897)circle(2pt)node[above right]{$P_1$};\fill(-1.8,2.2043642384652358e-16)circle(2pt)node[above right]{$P_2$};\fill(-0.9000000000000008,-1.558845726811989)circle(2pt)node[above right]{$P_3$};\fill(0.9000000000000002,-1.5588457268119895)circle(2pt)node[above right]{$P_4$};\node at(0,-2.5){每条连线为电阻 $r$，交叉处不连接};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{证明所有内部节点等势且为端电势中点}\par\nobreak
+图\ref{fig:c3:example:7:s} 用六节点示意一般连接规则，所有交叉处均不接通。交换任意两个内部节点而保持端口，说明内部节点等势；再用端点交换可知内部电势为 $U/2$。
+\typeout{ECFIG:fig:c3:example:7:p}\fig{fig:c3:example:7:p}{解答过程：完全连接的任意多节点网络}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](4,0);\draw(0,0)--(0,-1.5)to[R,l={$2r/(N-2)$}](4,-1.5)--(4,0);\node at(2,1){$N-2$ 条 $2r$ 通道合并};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐通道求电流并合成端口电阻}\par\nobreak
+当 $N>2$ 时，图\ref{fig:c3:example:7:p}中直接边电流为 $U/r$，经每个内部节点的两边通道电流为 $U/(2r)$，内部节点之间电流为零。总电流
+\[
+ I=\frac Ur+(N-2)\frac{U}{2r}=\frac{NU}{2r},\qquad R=\frac{2r}{N}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用低节点数与单调性检查}\par\nobreak
+若 $N=2$，仅剩一条边，电阻为 $r$；$N=4$ 回到四面体结果 $r/2$。随着节点增加，新增并联通道使电阻下降，符合网络单调性。\end{solution}
+\begin{question}\begin{example}[五维超立方体的体对角线]\label{c3:example:8}
+节点用五位二进制数标记，仅相差一位的两个节点由电阻 $r$ 相连。求全零节点 $A$ 与全一节点 $B$ 间电阻，并比较四维情形。
+\end{example}
+\typeout{ECFIG:fig:c3:example:8:s}\fig{fig:c3:example:8:s}{题设：五维超立方体的体对角线}{\begin{tikzpicture}[scale=.88]
+\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.46);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.23);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.0);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.23);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.46);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-1.0350000000000001);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-0.805);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-1.0350000000000001);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,-0.805);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,0.805);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,1.0350000000000001);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.805);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,1.0350000000000001);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](3.9000000000000004,-1.0350000000000001)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-1.0350000000000001)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.805)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.805)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,-0.5750000000000001)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.5750000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.34500000000000003)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.34500000000000003)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.115)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.115)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.115)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.115)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.34500000000000003)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.34500000000000003)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,0.5750000000000001)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.5750000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.805)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.805)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,1.0350000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,1.0350000000000001)--(5.2,0.46);\draw[gray,line width=.3pt](5.2,-0.46)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,-0.23)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.0)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.23)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.46)--(6.5,0.0);\fill(0.0,0.0)circle(.9pt);\fill(1.3,-0.46)circle(.9pt);\fill(1.3,-0.23)circle(.9pt);\fill(1.3,0.0)circle(.9pt);\fill(1.3,0.23)circle(.9pt);\fill(1.3,0.46)circle(.9pt);\fill(2.6,-1.0350000000000001)circle(.9pt);\fill(2.6,-0.805)circle(.9pt);\fill(2.6,-0.5750000000000001)circle(.9pt);\fill(2.6,-0.34500000000000003)circle(.9pt);\fill(2.6,-0.115)circle(.9pt);\fill(2.6,0.115)circle(.9pt);\fill(2.6,0.34500000000000003)circle(.9pt);\fill(2.6,0.5750000000000001)circle(.9pt);\fill(2.6,0.805)circle(.9pt);\fill(2.6,1.0350000000000001)circle(.9pt);\fill(3.9000000000000004,-1.0350000000000001)circle(.9pt);\fill(3.9000000000000004,-0.805)circle(.9pt);\fill(3.9000000000000004,-0.5750000000000001)circle(.9pt);\fill(3.9000000000000004,-0.34500000000000003)circle(.9pt);\fill(3.9000000000000004,-0.115)circle(.9pt);\fill(3.9000000000000004,0.115)circle(.9pt);\fill(3.9000000000000004,0.34500000000000003)circle(.9pt);\fill(3.9000000000000004,0.5750000000000001)circle(.9pt);\fill(3.9000000000000004,0.805)circle(.9pt);\fill(3.9000000000000004,1.0350000000000001)circle(.9pt);\fill(5.2,-0.46)circle(.9pt);\fill(5.2,-0.23)circle(.9pt);\fill(5.2,0.0)circle(.9pt);\fill(5.2,0.23)circle(.9pt);\fill(5.2,0.46)circle(.9pt);\fill(6.5,0.0)circle(.9pt);\node at(0.0,1.65){$1$};\node at(1.3,1.65){$5$};\node at(2.6,1.65){$10$};\node at(3.9000000000000004,1.65){$10$};\node at(5.2,1.65){$5$};\node at(6.5,1.65){$1$};\node[left]at(0,0){$A$};\node[right]at(6.5,0.0){$B$};\node at(3.25,-1.7){每条边为 $r$；上方为每层节点数};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按汉明重量分层并数清跨层边}\par\nobreak
+图\ref{fig:c3:example:8:s} 按二进制中 $1$ 的数量将节点排列。任意坐标置换保持端口，因此同层等势，层节点数为 $1,5,10,10,5,1$。从第 $k$ 层通向下一层的边数为 $(5-k)\binom5k$，依次为 $5,20,30,20,5$。
+\typeout{ECFIG:fig:c3:example:8:p}\fig{fig:c3:example:8:p}{解答过程：五维超立方体的体对角线}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/5$}](2,0);\draw(2,0)to[R,l={$r/20$}](4,0);\draw(4,0)to[R,l={$r/30$}](6,0);\draw(6,0)to[R,l={$r/20$}](8,0);\draw(8,0)to[R,l={$r/5$}](10,0);\node[left]at(0,0){$A$};\node[right]at(10,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把同层间的并联电阻串联求和}\par\nobreak
+图\ref{fig:c3:example:8:p} 中各层间电阻依次为这些边数的倒数乘 $r$，串联得到
+\[
+ R_5=r\left(\frac15+\frac1{20}+\frac1{30}+\frac1{20}+\frac15\right)=\frac{8r}{15}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用四维结果区分节点数和边数}\par\nobreak
+四维时边数为 $4,12,12,4$，故 $R_4=r(1/4+1/12+1/12+1/4)=2r/3$。这里 $2^d$ 个节点和 $d2^{d-1}$ 条边全部由分层计数保留，没有把每层节点数误当成边数。\end{solution}
+\begin{question}\begin{example}[不等电阻三角形的星形表示]\label{c3:example:9}
+三角形边 $R_{12}=2\,\Omega,R_{23}=3\,\Omega,R_{31}=6\,\Omega$。求等效星形三臂；再把第三端悬空，用两种结构核对 $1,2$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:9:s}\fig{fig:c3:example:9:s}{题设：不等电阻三角形的星形表示}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R](4.6,0)to[R](2.3,4)to[R](0,0);\node at(2.3,-.5){$2$};\node at(4.2,2.1){$3$};\node at(.35,2.1){$6$};\node[left]at(0,0){$1$};\node[right]at(4.6,0){$2$};\node[above]at(2.3,4){$3$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对应端点计算三条星臂}\par\nobreak
+图\ref{fig:c3:example:9:s} 中与端口 $1$ 相邻的边是 $2,6$，与端口 $2$ 相邻的边是 $2,3$，三边之和为 $11\,\Omega$。故
+\[
+ r_1=\frac{2\times6}{11}=\frac{12}{11}\,\Omega,\quad
+ r_2=\frac{2\times3}{11}=\frac6{11}\,\Omega,\quad
+ r_3=\frac{3\times6}{11}=\frac{18}{11}\,\Omega.
+\]
+\typeout{ECFIG:fig:c3:example:9:p}\fig{fig:c3:example:9:p}{解答过程：不等电阻三角形的星形表示}{\begin{tikzpicture}[scale=.88]
+\draw(2.3,1.6)to[R](0,0);\draw(2.3,1.6)to[R](4.6,0);\draw(2.3,1.6)to[R](2.3,4.2);\node at(.75,1.35){$12/11$};\node at(3.85,1.35){$6/11$};\node at(1.7,3){$18/11$};\node[left]at(0,0){$1$};\node[right]at(4.6,0){$2$};\node[above]at(2.3,4.2){$3$};\node[right]at(2.3,1.6){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{第三端悬空后求星形的两端电阻}\par\nobreak
+在 图\ref{fig:c3:example:9:p} 中第三端悬空，$r_3$ 无电流，$R_{12}^{\rm eq}=r_1+r_2=18/11\,\Omega$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原三角形独立核验}\par\nobreak
+原三角形的 $1,2$ 直接边 $2$ 与绕行边 $6+3=9$ 并联，也得到 $2\times9/(2+9)=18/11\,\Omega$。其余两对端口也满足同样关系。注意 $r_3$ 并非总能删除，仅在第三端悬空的本次测试中无电流。\end{solution}
+\begin{question}\begin{example}[利用星三角化简非平衡桥]\label{c3:example:10}
+电桥 $AM,MB,AN,NB,MN$ 的电阻分别为 $r,r,r,2r,r$。求 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:10:s}\fig{fig:c3:example:10:s}{题设：利用星三角化简非平衡桥}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](2.4,1.5)to[R,l={$r$}](4.8,0)to[R,l_={$2r$}](2.4,-1.5)to[R,l_={$r$}](0,0);\draw(2.4,1.5)to[R,l={$r$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选取三条等阻边组成的三端子网络}\par\nobreak
+图\ref{fig:c3:example:10:s} 左侧三角形 $AMN$ 三条边均为 $r$。将其换成以 $O$ 为中心、三臂均为 $r/3$ 的星形，端口 $A,M,N$ 保持对应。
+\fig{c3:e10:star-first}{只替换 $AMN$ 三角形；$M,B$ 与 $N,B$ 两条原桥臂保留}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);\coordinate(O)at(2.5,0);\coordinate(M)at(5,2);\coordinate(N)at(5,-2);\coordinate(B)at(8,0);
+\draw(A)to[R,l={$r/3$}](O)to[R,l={$r/3$}](M)to[R,l={$r$}](B);
+\draw(O)to[R,l_={$r/3$}](N)to[R,l_={$2r$}](B);
+\foreach \q/\pos in {A/left,O/below,M/above,N/below,B/right}{\fill(\q)circle(1.5pt)node[\pos]{$\q$};}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留三个端点后再作串并联}\par\nobreak
+图\ref{c3:e10:star-first}中的 $M,N$ 已各只连接两条有阻支路，因此才可分别合成 $4r/3,7r/3$。
+
+\typeout{ECFIG:fig:c3:example:10:p}\fig{fig:c3:example:10:p}{解答过程：利用星三角化简非平衡桥}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r/3$}](2,0);\draw(2,0)--(2,1.5)to[R,l={$4r/3$}](5,1.5)--(5,0);\draw(2,0)--(2,-1.5)to[R,l={$7r/3$}](5,-1.5)--(5,0);\node[left]at(0,0){$A$};\node[above]at(2,0){$O$};\node[right]at(5,0){$B$};
+\end{tikzpicture}}
+
+图\ref{fig:c3:example:10:p} 中从 $O$ 经 $M$ 到 $B$ 为 $r/3+r=4r/3$，经 $N$ 到 $B$ 为 $r/3+2r=7r/3$，二者并联后再与 $AO$ 的 $r/3$ 串联，
+\[
+ R_{AB}=\frac r3+
+ \frac{(4r/3)(7r/3)}{4r/3+7r/3}
+ =\frac r3+\frac{28r}{33}=\frac{13r}{11}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原电桥求真实电势核对结果}\par\nobreak
+可用节点法独立核验：令 $V_A=U,V_B=0$，得 $3V_M-V_N=U$、$-V_M+(5/2)V_N=U$。第一式给出 $V_N=3V_M-U$，代入第二式，
+\[
+ -V_M+\frac52(3V_M-U)=U
+ \quad\Longrightarrow\quad\frac{13}{2}V_M=\frac72U.
+\]
+所以 $V_M=7U/13$，回代得 $V_N=3(7U/13)-U=8U/13$，总电流 $(2U-V_M-V_N)/r=11U/(13r)$。两种方法分别验证端口等效和真实电势。\end{solution}
+\begin{question}\begin{example}[嵌套三角形的三端等效]\label{c3:example:11}
+外三角形 $ABC$ 的三边 $AC,BC,AB$ 分别为 $r,2r,3r$。内三角形三边均为 $3r$，内三个顶点各与对应外顶点用 $2r$ 电阻相连。求 $A,B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:11:s}\fig{fig:c3:example:11:s}{题设：嵌套三角形的三端等效}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(8,0)--(4,7)--cycle;\draw[world](2,1.4)--(6,1.4)--(4,4.8)--cycle;\draw[world](0,0)--(2,1.4)(8,0)--(6,1.4)(4,7)--(4,4.8);\foreach \x/\y in{0/0,8/0,4/7,2/1.4,6/1.4,4/4.8}{\fill(\x,\y)circle(1.5pt);}\node[left]at(0,0){$A$};\node[right]at(8,0){$B$};\node[above]at(4,7){$C$};\node at(1.3,3.8){$r$};\node at(6.7,3.8){$2r$};\node at(4,-.5){$3r$};\node at(2.6,3.1){$3r$};\node at(5.4,3.1){$3r$};\node at(4,.9){$3r$};\node at(.8,1){$2r$};\node at(7.2,1){$2r$};\node at(4.7,5.9){$2r$};\node at(4,-1.2){每条线代表标注的电阻};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把内三角形化成保留三个外接端的星形}\par\nobreak
+图\ref{fig:c3:example:11:s} 内三角形的每边 $3r$，等效星臂均为 $(3r)^2/(9r)=r$。各星臂再与连接对应外顶点的 $2r$ 串联，成为三臂各 $3r$ 的星形，三个外端仍为 $A,B,C$。
+\fig{c3:e11:inner-star}{内三角形先化成星形，再与三条外接 $2r$ 串联；外三角形保留}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);\coordinate(B)at(8,0);\coordinate(C)at(4,6);\coordinate(O)at(4,2.2);
+\draw(A)to[R,l_={$3r$}](B)to[R,l={$2r$}](C)to[R,l={$r$}](A);
+\draw(A)to[R,l={$3r$}](O)to[R,l={$3r$}](B);\draw(O)to[R,l_={$3r$}](C);
+\foreach \q/\pos in {A/left,B/right,C/above,O/below}{\fill(\q)circle(1.5pt)node[\pos]{$\q$};}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{串联合并后变回三角形}\par\nobreak
+图\ref{c3:e11:inner-star}中，三条 $3r$ 星臂转回三角形后，各边为 $3r+3r+(3r)^2/(3r)=9r$。这三条新边分别与原外边跨接同一对节点，才可逐边并联。
+
+\typeout{ECFIG:fig:c3:example:11:p}\fig{fig:c3:example:11:p}{解答过程：嵌套三角形的三端等效}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(6,0)--(3,5)--cycle;\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};\node[above]at(3,5){$C$};\node at(.6,2.7){$9r/10$};\node at(5.4,2.7){$18r/11$};\node at(3,-.6){$9r/4$};\node at(3,-1.3){每条线代表标注的电阻};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{与原外三角形逐边并联合成}\par\nobreak
+图\ref{fig:c3:example:11:p} 将两套跨同一端口的边分别并联，得 $AC$ 边为 $r\parallel9r=9r/10$，$BC$ 为 $2r\parallel9r=18r/11$，$AB$ 为 $3r\parallel9r=9r/4$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算第三端悬空时的两端电阻}\par\nobreak
+因此
+\[
+ R_{AB}=\left(\frac{9r}{10}+\frac{18r}{11}\right)\parallel\frac{9r}{4}
+ =\frac{279r}{110}\parallel\frac{9r}{4}
+ =\frac{31r}{26}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查新增网络后的单调性}\par\nobreak
+原直接边为 $3r$，加入内网络后结果明显小于 $3r$，符合单调性。转换过程中保留了三个外端口，不能把内三角形先当成某一对端口间的单个电阻。\end{solution}
+\begin{question}\begin{example}[非均匀方格网络的等势对角线]\label{c3:example:12}
+九节点方格网络的各边阻值如图。求左上角 $A$ 与右下角 $B$ 间电阻，说明哪条对角线的节点等势。
+\end{example}
+\typeout{ECFIG:fig:c3:example:12:s}\fig{fig:c3:example:12:s}{题设：非均匀方格网络的等势对角线}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$1r$}](2,0);\draw(2,0)to[R,l={$1r$}](4,0);\draw(0,2)to[R,l={$1r$}](2,2);\draw(2,2)to[R,l={$2r$}](4,2);\draw(0,4)to[R,l={$2r$}](2,4);\draw(2,4)to[R,l={$2r$}](4,4);\draw(0,0)to[R,l={$1r$}](0,2);\draw(2,0)to[R,l={$1r$}](2,2);\draw(4,0)to[R,l={$2r$}](4,2);\draw(0,2)to[R,l={$1r$}](0,4);\draw(2,2)to[R,l={$2r$}](2,4);\draw(4,2)to[R,l={$2r$}](4,4);\fill(0,4)circle(1.3pt)node[above right]{$A$};\fill(4,0)circle(1.3pt)node[above right]{$B$};\fill(2,2)circle(1.3pt)node[above right]{$O$};\fill(2,4)circle(1.3pt)node[above right]{$T$};\fill(0,2)circle(1.3pt)node[above right]{$L$};\fill(4,2)circle(1.3pt)node[above right]{$P$};\fill(2,0)circle(1.3pt)node[above right]{$M$};\fill(0,0)circle(1.3pt)node[above right]{$D$};\fill(4,4)circle(1.3pt)node[above right]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以交换端点的反射确定三节点电势}\par\nobreak
+在 图\ref{fig:c3:example:12:s} 中反射 $x=y$ 对角线会交换 $A,B$，但保留每条边的阻值。取 $V_A=U,V_B=0$，位于反射轴上的 $D,O,C$ 都满足 $V=U-V$，所以为 $U/2$。不能选经过端口的另一对角线随意合并节点，其两侧阻值并不对应。
+\typeout{ECFIG:fig:c3:example:12:p}\fig{fig:c3:example:12:p}{合并 $D,O,C$ 为 $X$ 后保留上下两条分流路径；左右各等效为 $r$}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);\coordinate(X)at(6,0);\coordinate(B)at(12,0);
+\coordinate(T)at(3,2);\coordinate(L)at(3,-2);\coordinate(P)at(9,2);\coordinate(M)at(9,-2);
+\draw(A)to[R,l={$2r$}](T)to[R,l={$r$}](X)to[R,l={$r$}](P)to[R,l={$2r$}](B);
+\draw(A)to[R,l_={$r$}](L)to[R,l_={$r/2$}](X)to[R,l_={$r/2$}](M)to[R,l_={$r$}](B);
+\foreach \q/\pos in {A/left,B/right,T/above,P/above,L/below,M/below}{\fill(\q)circle(1.5pt)node[\pos]{$\q$};}
+\fill(X)circle(1.5pt)node[below=12pt]{$X:U/2$};
+\node at(6,3.3){$TX,XP:\ 2r\parallel2r=r$};
+\node at(6,-3.3){$LX,XM:\ r\parallel r=r/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留中间分流节点计算两侧电阻}\par\nobreak
+图\ref{fig:c3:example:12:p} 合并 $D,O,C$ 为节点 $X$。由 $A$ 经 $T$ 到 $X$，电阻为 $2r+(2r\parallel2r)=3r$；经 $L$ 到 $X$，为 $r+(r\parallel r)=3r/2$。所以 $A,X$ 间等效为 $3r\parallel(3r/2)=r$。另一侧由端点交换对称性得到同样的 $r$，故 $R_{AB}=2r$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对分流比例及等势条件的范围}\par\nobreak
+核查 $A,X$ 总电流 $U/(2r)$，上、下两通道分流比为 $1:2$。同一对角线上的三节点取相同电势，不代表它们在其他端口激励下也可永久合并。\end{solution}
+\begin{question}\begin{example}[等比例网络中的等势检验]\label{c3:example:13}
+九节点方格各边电阻如图。该图不具备交换 $A,B$ 的几何等阻对称性。求 $A,B$ 间电阻，并验证将 $D,O,C$ 合并是否成立。
+\end{example}
+\typeout{ECFIG:fig:c3:example:13:s}\fig{fig:c3:example:13:s}{题设：等比例网络中的等势检验}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2r$}](2,0);\draw(2,0)to[R,l={$2r$}](4,0);\draw(0,2)to[R,l={$1r$}](2,2);\draw(2,2)to[R,l={$4r$}](4,2);\draw(0,4)to[R,l={$2r$}](2,4);\draw(2,4)to[R,l={$2r$}](4,4);\draw(0,0)to[R,l={$1r$}](0,2);\draw(2,0)to[R,l={$2r$}](2,2);\draw(4,0)to[R,l={$4r$}](4,2);\draw(0,2)to[R,l={$1r$}](0,4);\draw(2,2)to[R,l={$2r$}](2,4);\draw(4,2)to[R,l={$4r$}](4,4);\fill(0,4)circle(1.3pt)node[above right]{$A$};\fill(4,0)circle(1.3pt)node[above right]{$B$};\fill(2,2)circle(1.3pt)node[above right]{$O$};\fill(2,4)circle(1.3pt)node[above right]{$T$};\fill(0,2)circle(1.3pt)node[above right]{$L$};\fill(4,2)circle(1.3pt)node[above right]{$P$};\fill(2,0)circle(1.3pt)node[above right]{$M$};\fill(0,0)circle(1.3pt)node[above right]{$D$};\fill(4,4)circle(1.3pt)node[above right]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先按假设合并求出候选等效电阻}\par\nobreak
+在 图\ref{fig:c3:example:13:s} 中先提出待检验的等势组合 $D,O,C=X$。合并后 $A\to X$ 的两条通道为 $3r$、$3r/2$，并联为 $r$；$B\to X$ 的通道为 $6r$、$3r$，并联为 $2r$。若等势假设成立，应有 $V_X=2U/3$、总电阻 $3r$。
+\typeout{ECFIG:fig:c3:example:13:p}\fig{fig:c3:example:13:p}{将待验证电势放回原十二条支路；不能用合并后的总电流代替被合并节点的逐点守恒}{\begin{tikzpicture}
+\draw(0.0,0.0)to[R](3.6,0.0);
+\draw(3.6,0.0)to[R](7.2,0.0);
+\draw(0.0,3.6)to[R](3.6,3.6);
+\draw(3.6,3.6)to[R](7.2,3.6);
+\draw(0.0,7.2)to[R](3.6,7.2);
+\draw(3.6,7.2)to[R](7.2,7.2);
+\draw(0.0,0.0)to[R](0.0,3.6);
+\draw(0.0,3.6)to[R](0.0,7.2);
+\draw(3.6,0.0)to[R](3.6,3.6);
+\draw(3.6,3.6)to[R](3.6,7.2);
+\draw(7.2,0.0)to[R](7.2,3.6);
+\draw(7.2,3.6)to[R](7.2,7.2);
+\fill(0.0,7.2)circle(1.6pt)node[above left,fill=white,inner sep=1pt]{$A:U$};
+\fill(3.6,7.2)circle(1.6pt)node[above,fill=white,inner sep=1pt]{$T:7U/9$};
+\fill(7.2,7.2)circle(1.6pt)node[above right,fill=white,inner sep=1pt]{$C:2U/3$};
+\fill(0.0,3.6)circle(1.6pt)node[left,fill=white,inner sep=1pt]{$L:7U/9$};
+\fill(3.6,3.6)circle(1.6pt)node[above right,fill=white,inner sep=1pt]{$O:2U/3$};
+\fill(7.2,3.6)circle(1.6pt)node[right,fill=white,inner sep=1pt]{$P:4U/9$};
+\fill(0.0,0.0)circle(1.6pt)node[below left,fill=white,inner sep=1pt]{$D:2U/3$};
+\fill(3.6,0.0)circle(1.6pt)node[below,fill=white,inner sep=1pt]{$M:4U/9$};
+\fill(7.2,0.0)circle(1.6pt)node[below right,fill=white,inner sep=1pt]{$B:0$};
+\node at(3.6,-1.3){支路阻值与题设图相同，电势标注用于逐节点核验};
+\draw[flow](4.4,7.9)--(6.2,7.9)node[midway,above]{$U/(18r)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把候选电势放回每个实际节点}\par\nobreak
+图\ref{fig:c3:example:13:p} 给出回到真实网络的检验电势。由各通道分压，$V_T=V_L=7U/9$，$V_P=V_M=4U/9$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别核对三个被合并节点的守恒}\par\nobreak
+检查被合并节点：$C$ 从 $T$ 流入 $(7U/9-2U/3)/(2r)=U/(18r)$，向 $P$ 流出 $(2U/3-4U/9)/(4r)=U/(18r)$；$D$ 两侧相应电流均为 $U/(9r)$。$O$ 从 $T,L$ 流入总量 $U/(18r)+U/(9r)=U/(6r)$，流向 $P,M$ 的总量也为 $U/(6r)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用唯一性确认候选电势并非假对称}\par\nobreak
+其余节点已由分压满足守恒，因此整组电势满足全部真实方程，由解的唯一性，等势假设成立，$R_{AB}=3r$。这里靠的是电阻比例与方程检验，不能写成没有依据的“由对称可知”。\end{solution}
+\begin{question}\begin{example}[九节点均匀方格的中心到边中点]\label{c3:example:14}
+九节点方格每边电阻 $r$。求中心 $O$ 与下边中点 $M$ 之间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:14:s}\fig{fig:c3:example:14:s}{题设：九节点均匀方格的中心到边中点}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$1r$}](2,0);\draw(2,0)to[R,l={$1r$}](4,0);\draw(0,2)to[R,l={$1r$}](2,2);\draw(2,2)to[R,l={$1r$}](4,2);\draw(0,4)to[R,l={$1r$}](2,4);\draw(2,4)to[R,l={$1r$}](4,4);\draw(0,0)to[R,l={$1r$}](0,2);\draw(2,0)to[R,l={$1r$}](2,2);\draw(4,0)to[R,l={$1r$}](4,2);\draw(0,2)to[R,l={$1r$}](0,4);\draw(2,2)to[R,l={$1r$}](2,4);\draw(4,2)to[R,l={$1r$}](4,4);\fill(0,4)circle(1.3pt)node[above right]{$A$};\fill(4,0)circle(1.3pt)node[above right]{$B$};\fill(2,2)circle(1.3pt)node[above right]{$O$};\fill(2,4)circle(1.3pt)node[above right]{$T$};\fill(0,2)circle(1.3pt)node[above right]{$L$};\fill(4,2)circle(1.3pt)node[above right]{$P$};\fill(2,0)circle(1.3pt)node[above right]{$M$};\fill(0,0)circle(1.3pt)node[above right]{$D$};\fill(4,4)circle(1.3pt)node[above right]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保持端口作左右反射并定义四类电势}\par\nobreak
+图\ref{fig:c3:example:14:s} 在保持 $O,M$ 的左右反射下，底角两点同电势 $x$、左右边中点同电势 $y$、顶角同电势 $z$，顶边中点为 $u$。取 $V_O=U,V_M=0$，
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对实际邻边逐点列方程}\par\nobreak
+由各类节点守恒，
+\[
+ 2x=y,\quad 3y=U+x+z,\quad 2z=y+u,\quad 3u=U+2z.
+\]
+\typeout{ECFIG:fig:c3:example:14:p}\fig{fig:c3:example:14:p}{以实际九节点方格标记四类未知电势；每个节点仍按原有邻边列守恒式}{\begin{tikzpicture}
+\draw(0.0,0.0)to[R](3.6,0.0);
+\draw(3.6,0.0)to[R](7.2,0.0);
+\draw(0.0,3.6)to[R](3.6,3.6);
+\draw(3.6,3.6)to[R](7.2,3.6);
+\draw(0.0,7.2)to[R](3.6,7.2);
+\draw(3.6,7.2)to[R](7.2,7.2);
+\draw(0.0,0.0)to[R](0.0,3.6);
+\draw(0.0,3.6)to[R](0.0,7.2);
+\draw(3.6,0.0)to[R](3.6,3.6);
+\draw(3.6,3.6)to[R](3.6,7.2);
+\draw(7.2,0.0)to[R](7.2,3.6);
+\draw(7.2,3.6)to[R](7.2,7.2);
+\fill(0.0,7.2)circle(1.6pt)node[above left,fill=white,inner sep=1pt]{$A:z$};
+\fill(3.6,7.2)circle(1.6pt)node[above,fill=white,inner sep=1pt]{$T:u$};
+\fill(7.2,7.2)circle(1.6pt)node[above right,fill=white,inner sep=1pt]{$C:z$};
+\fill(0.0,3.6)circle(1.6pt)node[left,fill=white,inner sep=1pt]{$L:y$};
+\fill(3.6,3.6)circle(1.6pt)node[above right,fill=white,inner sep=1pt]{$O:U$};
+\fill(7.2,3.6)circle(1.6pt)node[right,fill=white,inner sep=1pt]{$P:y$};
+\fill(0.0,0.0)circle(1.6pt)node[below left,fill=white,inner sep=1pt]{$D:x$};
+\fill(3.6,0.0)circle(1.6pt)node[below,fill=white,inner sep=1pt]{$M:0$};
+\fill(7.2,0.0)circle(1.6pt)node[below right,fill=white,inner sep=1pt]{$B:x$};\draw[guide](3.6,-.8)--(3.6,-.4)(3.6,7.6)--(3.6,8.2);\node at(3.6,-1.4){每条边电阻 $r$；左右反射保持 $O,M$ 不动};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求四类电势}\par\nobreak
+按图\ref{fig:c3:example:14:p}，角点各有两条邻边，边中点各有三条；同一类节点的电势相等，并不把一个节点的方程额外乘上该类点数。先消去 $x=y/2$。由后两式得 $u=(U+y)/2$、$z=(U+3y)/4$。代入第二式，
+\[
+ 3y=U+\frac y2+\frac{U+3y}{4}
+ \ \Longrightarrow\ 12y=5U+5y
+ \ \Longrightarrow\ y=\frac{5U}{7}.
+\]
+进而 $x=5U/14,z=11U/14,u=6U/7$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐条计算中心的四条输出支路}\par\nobreak
+从中心流出的电流为
+\[
+ I=\frac Ur+\frac{2(U-y)}r+\frac{U-u}r
+ =\frac{12U}{7r},
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端口电阻并区分数值相同的不同模型}\par\nobreak
+所以 $R_{OM}=7r/12$。此数值恰与立方体棱端口电阻相同，但两网络的连接和等势分组不同，不能把相同数值当成同一网络的证明。\end{solution}
+\begin{question}\begin{example}[九节点均匀方格的一条外边]\label{c3:example:15}
+九节点方格每边电阻 $r$。求下边中点 $M$ 与右下角 $B$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:15:s}\fig{fig:c3:example:15:s}{题设：九节点均匀方格的一条外边}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$1r$}](2,0);\draw(2,0)to[R,l={$1r$}](4,0);\draw(0,2)to[R,l={$1r$}](2,2);\draw(2,2)to[R,l={$1r$}](4,2);\draw(0,4)to[R,l={$1r$}](2,4);\draw(2,4)to[R,l={$1r$}](4,4);\draw(0,0)to[R,l={$1r$}](0,2);\draw(2,0)to[R,l={$1r$}](2,2);\draw(4,0)to[R,l={$1r$}](4,2);\draw(0,2)to[R,l={$1r$}](0,4);\draw(2,2)to[R,l={$1r$}](2,4);\draw(4,2)to[R,l={$1r$}](4,4);\fill(0,4)circle(1.3pt)node[above right]{$A$};\fill(4,0)circle(1.3pt)node[above right]{$B$};\fill(2,2)circle(1.3pt)node[above right]{$O$};\fill(2,4)circle(1.3pt)node[above right]{$T$};\fill(0,2)circle(1.3pt)node[above right]{$L$};\fill(4,2)circle(1.3pt)node[above right]{$P$};\fill(2,0)circle(1.3pt)node[above right]{$M$};\fill(0,0)circle(1.3pt)node[above right]{$D$};\fill(4,4)circle(1.3pt)node[above right]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{只消去没有外部注入的三个角点}\par\nobreak
+图\ref{fig:c3:example:15:s} 中除端口 $B$ 外，其他三个角点各只有两条边，可以消去为相邻边中点之间的 $2r$。取 $V_M=U,V_B=0$，右边中点 $P$ 电势为 $x$，中心 $O$ 为 $y$，上边中点 $T$ 为 $z$，左边中点 $L$ 为 $w$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对保留的四个未知电势列方程}\par\nobreak
+节点方程化为
+\[
+ 5x-2y-z=0,\quad4y=U+x+z+w,\quad4z=x+w+2y,\quad4w=U+z+2y.
+\]
+\typeout{ECFIG:fig:c3:example:15:p}\fig{fig:c3:example:15:p}{保留端口角点 $B$；另三个角点消去后，外围三条边各为 $2r$，中心四条边仍为 $r$}{\begin{tikzpicture}
+
+\coordinate(M)at(0,-1);\coordinate(B)at(4,-1);\coordinate(P)at(4,3);\coordinate(T)at(0,5);\coordinate(L)at(-4,3);\coordinate(O)at(0,2);
+\draw(M)to[R,l_={$r$}](B)to[R,l={$r$}](P)to[R,l={$2r$}](T)to[R,l={$2r$}](L)to[R,l_={$2r$}](M);
+\draw(O)to[R,l_={$r$}](M);\draw(O)to[R,l={$r$}](P);\draw(O)to[R,l_={$r$}](T);\draw(O)to[R,l={$r$}](L);
+\foreach \n/\lab/\pos in {M/{M:U}/below,B/{B:0}/below right,P/{P:x}/right,T/{T:z}/above,L/{L:w}/left,O/{O:y}/above right}{\fill(\n)circle(1.5pt)node[\pos]{$\lab$};}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{依照简化网络消元求内部电势}\par\nobreak
+图\ref{fig:c3:example:15:p} 保留中心四条 $r$ 辐条与外围串联边。先用第一、四式表示 $x=(2y+z)/5,w=(U+z+2y)/4$，代入第二、三式并去分母：
+\[
+ 62y=25U+29z,\qquad71z=58y+5U.
+\]
+用第一式的 $y$ 代入第二式，得到 $2720z=1760U$，所以 $z=11U/17$；回代得 $y=12U/17,x=7U/17,w=13U/17$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按端口实际相接的三条通道求电流}\par\nobreak
+从 $M$ 流出的电流为
+\[
+ I=\frac Ur+\frac{U-y}{r}+\frac{U-w}{2r}
+ =\frac{24U}{17r},
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查端口角点为何必须保留}\par\nobreak
+故 $R_{MB}=17r/24$。保留端口角点 $B$ 不能像其他角点一样消去，否则会丢失外部电流注入位置。\end{solution}
+\begin{question}\begin{example}[五维网络中相距两步的端口]\label{c3:example:16}
+五维超立方体每边电阻 $r$。$A=00000,C=00011$。用虚拟注入电流求 $A,C$ 间电阻。
+\end{example}
+\typeout{ECFIG:fig:c3:example:16:s}\fig{fig:c3:example:16:s}{题设：五维网络中相距两步的端口}{\begin{tikzpicture}[scale=.88]
+\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.46);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.23);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.0);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.23);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.46);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-1.0350000000000001);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-0.805);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.46)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-1.0350000000000001);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,-0.23)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,-0.805);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,0.0)--(2.6,0.805);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,0.23)--(2.6,1.0350000000000001);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,0.805);\draw[gray,line width=.3pt](1.3,0.46)--(2.6,1.0350000000000001);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-1.0350000000000001)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.805)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-1.0350000000000001);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,-0.805);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,-0.5750000000000001);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.805)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,0.5750000000000001);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,0.805);\draw[gray,line width=.3pt](2.6,1.0350000000000001)--(3.9000000000000004,1.0350000000000001);\draw[gray,line width=.3pt](3.9000000000000004,-1.0350000000000001)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-1.0350000000000001)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.805)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.805)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,-0.5750000000000001)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.5750000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.34500000000000003)--(5.2,-0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.34500000000000003)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,-0.115)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,-0.115)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.115)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.115)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.34500000000000003)--(5.2,-0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.34500000000000003)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,0.5750000000000001)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.5750000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,0.805)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.805)--(5.2,0.46);\draw[gray,line width=.3pt](3.9000000000000004,1.0350000000000001)--(5.2,0.23);\draw[gray,line width=.3pt](3.9000000000000004,1.0350000000000001)--(5.2,0.46);\draw[gray,line width=.3pt](5.2,-0.46)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,-0.23)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.0)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.23)--(6.5,0.0);\draw[gray,line width=.3pt](5.2,0.46)--(6.5,0.0);\fill(0.0,0.0)circle(.9pt);\fill(1.3,-0.46)circle(.9pt);\fill(1.3,-0.23)circle(.9pt);\fill(1.3,0.0)circle(.9pt);\fill(1.3,0.23)circle(.9pt);\fill(1.3,0.46)circle(.9pt);\fill(2.6,-1.0350000000000001)circle(.9pt);\fill(2.6,-0.805)circle(.9pt);\fill(2.6,-0.5750000000000001)circle(.9pt);\fill(2.6,-0.34500000000000003)circle(.9pt);\fill(2.6,-0.115)circle(.9pt);\fill(2.6,0.115)circle(.9pt);\fill(2.6,0.34500000000000003)circle(.9pt);\fill(2.6,0.5750000000000001)circle(.9pt);\fill(2.6,0.805)circle(.9pt);\fill(2.6,1.0350000000000001)circle(.9pt);\fill(3.9000000000000004,-1.0350000000000001)circle(.9pt);\fill(3.9000000000000004,-0.805)circle(.9pt);\fill(3.9000000000000004,-0.5750000000000001)circle(.9pt);\fill(3.9000000000000004,-0.34500000000000003)circle(.9pt);\fill(3.9000000000000004,-0.115)circle(.9pt);\fill(3.9000000000000004,0.115)circle(.9pt);\fill(3.9000000000000004,0.34500000000000003)circle(.9pt);\fill(3.9000000000000004,0.5750000000000001)circle(.9pt);\fill(3.9000000000000004,0.805)circle(.9pt);\fill(3.9000000000000004,1.0350000000000001)circle(.9pt);\fill(5.2,-0.46)circle(.9pt);\fill(5.2,-0.23)circle(.9pt);\fill(5.2,0.0)circle(.9pt);\fill(5.2,0.23)circle(.9pt);\fill(5.2,0.46)circle(.9pt);\fill(6.5,0.0)circle(.9pt);\node at(0.0,1.65){$1$};\node at(1.3,1.65){$5$};\node at(2.6,1.65){$10$};\node at(3.9000000000000004,1.65){$10$};\node at(5.2,1.65){$5$};\node at(6.5,1.65){$1$};\node[left]at(0,0){$A$};\node[right]at(2.6,-1.0350000000000001){$C$};\node at(3.25,-1.7){每条边为 $r$；上方为每层节点数};\node at(3.25,-2.3){$C$ 位于含两个 $1$ 的一层};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{设置对其余三十一点均匀抽取的辅助边界}\par\nobreak
+在 图\ref{fig:c3:example:16:s} 上作第一辅助问题：$A$ 注入 $I$，其余 $31$ 点各流出 $I/31$。首层五条边各通过 $I/5$，所以第一层电压降为 $Ir/5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由分层守恒计算前两层的电压降}\par\nobreak
+第一层五点共抽取 $5I/31$，流向第二层的总电流为 $26I/31$，这 $20$ 条边并联为 $r/20$。故 $A$ 到第二层任一点 $C$ 的电势差为
+\[
+ U_{AC}^{(1)}=\frac{Ir}{5}+\frac{26I}{31}\frac r{20}=\frac{15Ir}{62}.
+\]
+\typeout{ECFIG:fig:c3:example:16:p}\fig{fig:c3:example:16:p}{第一辅助问题的前两层：$5$ 个第一层节点共抽取 $5I/31$，跨下一层的电流因而减小}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l={$r/5$}](4,0)to[R,l={$r/20$}](8,0)--(10,0);
+\fill(0,0)circle(1.5pt)node[below]{$A$};
+\fill(4,0)circle(1.5pt);\node at(4,2.2){第一层：5点};
+\fill(8,0)circle(1.5pt);\node at(8.7,2.2){第二层：10点，含 $C$};
+\draw[flow](-1.4,0)--(-.1,0)node[pos=0,left]{$I$};
+\draw[flow](.8,.9)--(2.4,.9)node[midway,above]{$I$};
+\draw[flow](4.7,.9)--(6.5,.9)node[midway,above]{$26I/31$};
+\draw[flow](4,-.2)--(4,-1.8)node[below]{$5I/31$};
+\draw[flow](8,-.2)--(8,-1.8)node[below]{$10I/31$};
+\draw[flow](8.8,0)--(10.3,0)node[right]{$16I/31$};
+\node at(5,-2.8){合并仅针对本辅助边界；第二层各点均流出 $I/31$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向平移构造第二辅助问题}\par\nobreak
+图\ref{fig:c3:example:16:p}所示第一辅助问题中，两段等效电阻通过的总电流分别为 $I,26I/31$，不能按同一串联电流计算。第二辅助问题将注入、流出位置关于 $A,C$ 对换：$C$ 流出 $I$，其余点各注入 $I/31$。由超立方体平移对称性，它给出的 $U_{AC}^{(2)}$ 与第一问题相同。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加外部电流后再求端口电阻}\par\nobreak
+相加后只有 $A,C$ 存在外部电流，端口电流是 $32I/31$，电势差是 $15Ir/31$，因此
+\[
+ R_{AC}=\frac{15Ir/31}{32I/31}=\frac{15r}{32}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对叠加后的电流归一化}\par\nobreak
+叠加后端口电流比辅助电流大，分母若误用 $I$ 会得到错误结果。\end{solution}
+\begin{question}\begin{example}[四角小四面体的四端等效]\label{c3:example:17}
+正四面体每条原棱均匀电阻 $r$。在每条棱从两端各量取比例 $0<t<1/2$ 的长度为分点。每个顶角的三个分点两两用同材质同截面导线连接，构成与原四面体相似的小四面体，接点均导通。求原顶点 $A,B$ 间电阻，并算 $t=1/4$。
+\end{example}
+\typeout{ECFIG:fig:c3:example:17:s}\fig{fig:c3:example:17:s}{题设：四角小四面体的四端等效}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(7,0);\draw[world](0,0)--(3.5,6);\draw[world](0,0)--(3.5,2.1);\draw[world](7,0)--(3.5,6);\draw[world](7,0)--(3.5,2.1);\draw[world](3.5,6)--(3.5,2.1);\draw[world](1.54,0.0)--(0.77,1.32)--(0.77,0.462)--cycle;\fill(1.54,0.0)circle(1.2pt);\fill(0.77,1.32)circle(1.2pt);\fill(0.77,0.462)circle(1.2pt);\fill(0,0)circle(1.6pt)node[above left]{$A$};\draw[world](5.46,0.0)--(6.23,1.32)--(6.23,0.462)--cycle;\fill(5.46,0.0)circle(1.2pt);\fill(6.23,1.32)circle(1.2pt);\fill(6.23,0.462)circle(1.2pt);\fill(7,0)circle(1.6pt)node[above left]{$B$};\draw[world](2.73,4.68)--(4.27,4.68)--(3.5,5.1419999999999995)--cycle;\fill(2.73,4.68)circle(1.2pt);\fill(4.27,4.68)circle(1.2pt);\fill(3.5,5.1419999999999995)circle(1.2pt);\fill(3.5,6)circle(1.6pt)node[above left]{$C$};\draw[world](2.73,1.6380000000000001)--(4.27,1.6380000000000001)--(3.5,2.958)--cycle;\fill(2.73,1.6380000000000001)circle(1.2pt);\fill(4.27,1.6380000000000001)circle(1.2pt);\fill(3.5,2.958)circle(1.2pt);\fill(3.5,2.1)circle(1.6pt)node[above left]{$D$};\node at(3.5,-1){空间正四面体的投影：每角保留比例 $t$ 的小四面体};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由四端电流关系证明角部星形等效}\par\nobreak
+图\ref{fig:c3:example:17:s} 每个角部小四面体六边电阻均为 $tr$。它是四端完全连接网络，特殊的全置换对称允许等效为四个相同星臂。对任意四端电势 $V_i$，原网络电流 $I_i=[4V_i-\sum_jV_j]/(tr)$；取星臂 $tr/4$、中心势 $\bar V=\sum V_j/4$，星形电流 $(V_i-\bar V)/(tr/4)$ 与原式相同。因此这个四端等效对任意外接条件成立。
+\fig{c3:e17:star-centres}{沿一条原棱看两个角部星心：端部星臂、中段电阻与另一端星臂依次串联}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l={$tr/4$}](2.4,0)to[R,l={$(1-2t)r$}](5.4,0)to[R,l={$tr/4$}](7.8,0);
+\fill(0,0)circle(1.5pt)node[left]{$O_A$};\fill(7.8,0)circle(1.5pt)node[right]{$O_B$};
+\fill(2.4,0)circle(1.5pt)node[below]{$P_{AB}$};\fill(5.4,0)circle(1.5pt)node[below]{$P_{BA}$};
+\draw(0,0)to[R,l_={$tr/4$}](0,-2)node[below]{$A$};
+\draw(7.8,0)to[R,l={$tr/4$}](7.8,-2)node[below]{$B$};
+\draw[guide](-.3,.5)--(-.3,1.1)--(8.1,1.1)--(8.1,.5);
+\node[above]at(3.9,1.1){星心间每条边合计 $(1-3t/2)r$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿原棱连接两个星心并核对电阻}\par\nobreak
+图\ref{c3:e17:star-centres}中的 $P_{AB},P_{BA}$ 是原棱上的两个分点，不能把它们直接当成星心。其余五条原棱同样处理，四个星心之间仍有六条边，构成完全连接网络。
+
+\typeout{ECFIG:fig:c3:example:17:p}\fig{fig:c3:example:17:p}{解答过程：四角小四面体的四端等效}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$tr/4$}](2,0);\draw(2,0)to[R,l={$(1-3t/2)r/2$}](4,0);\draw(4,0)to[R,l={$tr/4$}](6,0);\node[left]at(0,0){$A$};\node[right]at(6,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把四星心完全网络化成两端电阻}\par\nobreak
+图\ref{fig:c3:example:17:p} 每个原顶点到其角部星心有 $tr/4$。相邻两星心之间还经过两条星臂与原棱中段，总阻为
+$tr/4+(1-2t)r+tr/4=(1-3t/2)r$。四星心仍完全连接，$A,B$ 对应星心间电阻为此值的一半；再加两个外端星臂，
+\[
+ R_{AB}=\frac{tr}4+\frac r2\left(1-\frac{3t}2\right)+\frac{tr}4
+ =\frac{(2-t)r}{4}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入参数并检查无附加连线的极限}\par\nobreak
+$t=1/4$ 时为 $7r/16$；$t\to0$ 回到未加角部连线的 $r/2$，且随 $t$ 增大电阻降低，符合新增正电阻通道的单调性。这个星形替换利用了特定的四端完全对称，不能推广为任意四端网络都有四臂星形。\end{solution}

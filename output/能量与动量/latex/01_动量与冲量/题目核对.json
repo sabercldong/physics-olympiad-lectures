@@ -1,0 +1,112 @@
+[
+  {
+    "id": "em1:example:1",
+    "title": "落球反弹的平均冲击力",
+    "check": "第一讲例1；手记1"
+  },
+  {
+    "id": "em1:example:2",
+    "title": "抽纸时的作用时间",
+    "check": "第一讲例2；手记1"
+  },
+  {
+    "id": "em1:example:3",
+    "title": "分段推力与全过程冲量",
+    "check": "第一讲例3"
+  },
+  {
+    "id": "em1:example:4",
+    "title": "飞船吸附微尘",
+    "check": "第一讲例4；手记1"
+  },
+  {
+    "id": "em1:example:5",
+    "title": "反射分子束的压强",
+    "check": "第一讲例5；手记1"
+  },
+  {
+    "id": "em1:example:6",
+    "title": "断绳后的整体动量",
+    "check": "第一讲例6"
+  },
+  {
+    "id": "em1:example:7",
+    "title": "碰撞前后滑行的时间",
+    "check": "第一讲例7"
+  },
+  {
+    "id": "em1:example:8",
+    "title": "折线绳的冲量传递",
+    "check": "第一讲例9；两绳示意"
+  },
+  {
+    "id": "em1:example:9",
+    "title": "松绳绷紧与槽的约束冲量",
+    "check": "第一讲例10"
+  },
+  {
+    "id": "em1:example:10",
+    "title": "下落链条对秤盘的作用",
+    "check": "手记2、4；连续链条"
+  },
+  {
+    "id": "em1:example:11",
+    "title": "链条跨轮的支承力",
+    "check": "手记3；链条跨轮"
+  },
+  {
+    "id": "em1:example:12",
+    "title": "漏水容器与秤盘的总示数",
+    "check": "手记2；落水冲击与总体受力"
+  },
+  {
+    "id": "em1:example:13",
+    "title": "逆风航行的帆角优化",
+    "check": "手记2、3；逆风帆角"
+  },
+  {
+    "id": "em1:example:14",
+    "title": "从地面连续拉起链条",
+    "check": "手记2；拉起链条"
+  },
+  {
+    "id": "em1:example:15",
+    "title": "匀速收拢水平链条的功率",
+    "check": "手记9；链串接入"
+  },
+  {
+    "id": "em1:example:16",
+    "title": "恒力牵引逐个粘合的圆环",
+    "check": "手记9；离散接入模型"
+  },
+  {
+    "id": "em1:example:17",
+    "title": "移动反射板受到的水流推力",
+    "check": "手记2、3；相对流量"
+  },
+  {
+    "id": "em1:example:18",
+    "title": "有阻力的风帆小车",
+    "check": "手记3；风力与阻力"
+  },
+  {
+    "id": "em1:drill:1",
+    "title": "斜碰墙面的冲量",
+    "check": "补充：二维冲量"
+  },
+  {
+    "id": "em1:drill:2",
+    "title": "线性阻力下的返回时刻",
+    "check": "手记1；线性阻力"
+  },
+  {
+    "id": "em1:drill:3",
+    "title": "匀速喷流的偏转力",
+    "check": "手记3；连续流偏转"
+  },
+  {
+    "id": "em1:drill:4",
+    "title": "绳冲击的能量核验",
+    "check": "补充：约束与耗散"
+  }
+]

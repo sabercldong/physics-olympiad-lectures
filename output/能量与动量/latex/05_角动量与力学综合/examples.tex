@@ -1,0 +1,462 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[撞到轻杆末端的小球]\label{em5:example:1}
+长$2a$的轻杆竖直悬于固定铰点$O$，中点$A$固定质量$2m$的小球，末端$B$固定质量$m$的小球。另一质量$m$的小球$C$以水平速度$v$撞到$B$并粘合，求碰后$A$速度。
+\end{example}
+\fig{fig:em5:example:1:s}{题设：撞到轻杆末端的小球}{\begin{tikzpicture}[scale=.9]\draw[world](1,2.5)--(1,-1.5);\fill(1,2.5)circle(.07)node[left]{$O$};\fill(1,.5)circle(.11)node[left]{$A:2m$};\fill(1,-1.5)circle(.11)node[left]{$B:m$};\fill(4,-1.5)circle(.11)node[above]{$C:m$};\draw[flow](3.6,-1.5)--(2,-1.5)node[above]{$v$};\node[right]at(1,1.5){$a$};\node[right]at(1,-.5){$a$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以固定铰点消去未知的约束冲量}\par\nobreak
+图\ref{fig:em5:example:1:s}铰点冲量对$O$的力矩为零，重力在短碰撞中的角冲量可略。碰前只有$C$贡献角动量，大小$mv(2a)$；碰后转动惯量为$I_O=2ma^2+(m+m)(2a)^2=10ma^2$。
+\fig{fig:em5:example:1:p}{碰后两处均为质量2m的点质量，速度大小正比于到铰点的距离}{\begin{tikzpicture}
+
+\draw[world](0,3)--(0,-1);\fill(0,3)circle(.06)node[right]{$O$};\fill(0,1)circle(.11)node[right]{$A:2m$};\fill(0,-1)circle(.13)node[right]{$B+C:2m$};
+\draw[flow](0,1)--(-1,1)node[left]{$a\omega$};\draw[flow](0,-1)--(-2,-1)node[left]{$2a\omega$};
+\draw[dim](1.4,3)--(1.4,1)node[midway,right]{$a$};\draw[dim](1.4,1)--(1.4,-1)node[midway,right]{$a$};\node at(4.4,1){$I_O=2ma^2+2m(2a)^2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分碰前力臂与碰后质量分布}\par\nobreak
+碰前入射球的作用线距$O$为$2a$，所以它的角动量为$mv\cdot2a$，而不是$mv\cdot a$。碰后$B,C$粘合质量为$2m$、转动半径为$2a$，中点$A$质量为$2m$、半径为$a$；轻杆不贡献惯量。将这两个点质量的惯量相加才得到$10ma^2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由角动量求角速度并核对耗散}\par\nobreak
+在图\ref{fig:em5:example:1:p}中，取$\omega$为顺时针角速度的大小，有$2mva=10ma^2\omega$，故$\omega=v/(5a)$，
+\[\boxed{v_A=a\omega=v/5},\]
+方向与入射球相同。固定铰点提供外冲量，故不能对全部球写水平线动量守恒。碰后动能为$mv^2/5$，小于碰前$mv^2/2$，与粘合碰撞的耗散一致。\end{solution}
+\begin{question}\begin{example}[小孔两侧的相连物体]\label{em5:example:2}
+光滑水平桌上的质量$m$小球经小孔与桌下质量$m$物体用轻绳相连。初始桌上绳长$r_0$，球切向速率$v_0=\tfrac32\sqrt{2gr_0}$，桌下物体被握住。放手后求桌上绳长的最大、最小值，假定绳始终绷紧且桌下有足够空间。
+\end{example}
+\fig{fig:em5:example:2:s}{题设：小孔两侧的相连物体}{\begin{tikzpicture}[scale=.9]\draw[world](-2,0)--(3.5,0);\fill(0,0)circle(.05)node[above]{$O$};\draw[world](0,0)--(2,0);\fill(2,0)circle(.09);\draw[flow](2,0)--(2,1.2)node[above]{$v_0$};\draw[world](0,0)--(0,-1.7);\draw[world](-.3,-1.7)rectangle(.3,-2.2);\node[right]at(.3,-2){$m$};\node at(1,.4){$r_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用竖直轴角动量和绳长约束列能量}\par\nobreak
+图\ref{fig:em5:example:2:s}张力对孔的竖直角动量矩为零，故$r v_\theta=r_0v_0$。桌上球的径向速率与悬挂物竖直速率大小同为$|\dot r|$，总径向动能为$m\dot r^2$；$r$增加时桌下物体上升$r-r_0$。
+\[\frac12mv_0^2=m\dot r^2+\frac12m\frac{r_0^2v_0^2}{r^2}+mg(r-r_0).\]
+\fig{fig:em5:example:2:p}{解答过程：小孔两侧的相连物体}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(5,0)node[right]{$r/r_0$};\draw[axis](0,0)--(0,3.5)node[above]{$U_{\rm eff}/(mgr_0)$};\draw[world,domain=.8:3.4,samples=80]plot({1.3*\x},{.9*(\x-1+9/(4*\x*\x))});\draw[guide](.5,2.025)--(4.5,2.025)node[right]{$E/(mgr_0)=9/4$};\draw[guide](1.3,0)--(1.3,2.025);\draw[guide](3.9,0)--(3.9,2.025);\node[below]at(1.3,0){$1$};\node[below]at(3.9,0){$3$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求径向能量方程的候选零点}\par\nobreak
+转折方程除以$mgr_0$后为$9/4=9/(4z^2)+z-1$；再乘$4z^2$，得到$9z^2=9+4z^3-4z^2$。移项才形成下面的三次多项式，其中$z=0$不在绳长范围内，负根也应排除。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始运动方向确定最大和最小绳长}\par\nobreak
+在图\ref{fig:em5:example:2:p}的径向转折点令$\dot r=0$，取$z=r/r_0$并代入$v_0^2=9gr_0/2$，得$4z^3-13z^2+9=(z-1)(4z+3)(z-3)=0$。正根为$z=1,3$；初态所需向心张力$mv_0^2/r_0=4.5mg>mg$，放手后半径先增大，故
+\[\boxed{r_{\min}=r_0,\ r_{\max}=3r_0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别列径向动力学核对可达区间}\par\nobreak
+初始径向加速度也可由两个物体分别列式核对：桌上球有$m(\ddot r-v_\theta^2/r)=-T$，桌下物体向上加速度为$\ddot r$，有$T-mg=m\ddot r$。相加得$2\ddot r=v_\theta^2/r-g$，初始$\ddot r=7g/4>0$，确实由$r_0$向较大的半径运动。
+
+\fig{fig:em5:example:2:motion}{径向伸长时悬挂物上升，两个径向速度大小相同}{\begin{tikzpicture}
+
+\draw[world](-1,0)--(4.5,0);\fill(0,0)circle(.05)node[above left]{$O$};\draw[world](0,0)--(2.5,0);\fill(2.5,0)circle(.1)node[below]{$m$};
+\draw[world](0,0)--(0,-1.4);\draw[world](-.3,-1.4)rectangle(.3,-2);\node at(0,-1.7){$m$};
+\draw[flow](2.5,.4)--(3.7,.4)node[right]{$\dot r$};\draw[flow](2.5,.4)--(2.5,1.6)node[above]{$v_\theta$};\draw[flow](.7,-1.8)--(.7,-.7)node[right]{$\dot r$};
+\node at(2.8,-1.5){$K_r=m\dot r^2$};\node at(2.8,-2.2){$v_\theta=r_0v_0/r\ne0$};
+\end{tikzpicture}}
+
+图\ref{fig:em5:example:2:motion}中，径向和切向应分别计入动能；转折处仍有切向速度，不能把整个动能设为零。\end{solution}
+\begin{question}\begin{example}[斜置双球杆撞墙]\label{em5:example:3}
+两个质量均为$m$的小球由长$\ell$的轻刚杆连接，整体以速度$v$垂直撞向光滑竖直墙面。杆与墙成$45^\circ$，较低的右端球$B$先触墙。碰撞完全弹性，求首轮冲击刚结束时两球速度。
+\end{example}
+\fig{fig:em5:example:3:s}{题设：斜置双球杆撞墙}{\begin{tikzpicture}[scale=.9]\draw[world](3,-1.3)--(3,2.8);\draw[world](1.3,1.7)--(3,0);\fill(1.3,1.7)circle(.07)node[above left]{$A$};\fill(3,0)circle(.07)node[below left]{$B$};\draw[flow](.5,.8)--(1.8,.8)node[midway,above]{$v$};\draw[guide](3,0)--(3,1);\node at(2.7,.7){$45^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将墙冲量分成质心平动与绕质心转动}\par\nobreak
+按图\ref{fig:em5:example:3:s}取向墙为$+x$、向上为$+y$。设墙给$B$向左冲量$J$。质心速度$V_x=v-J/(2m)$；质心转动惯量$I_C=m\ell^2/2$，故顺时针角速度$\omega=-J/(\sqrt2m\ell)$。$B$相对质心位置为$(\ell/(2\sqrt2),-\ell/(2\sqrt2))$，所以$v_{Bx}=v-3J/(4m)$。
+\fig{fig:em5:example:3:p}{首轮墙冲量使质心反向并引起顺时针转动，两个端点速度需分别合成}{\begin{tikzpicture}
+
+\draw[world](3,-1.6)--(3,3.3);\draw[world](1,2)--(3,0);\fill(1,2)circle(.075)node[left]{$A$};\fill(3,0)circle(.075)node[right]{$B$};
+\fill(2,1)circle(.045)node[right]{$C$};\draw[force](3,0)--(1.6,0)node[above]{$J$};
+\draw[flow](1,2)--(1.5,3)node[above]{$(v/3,2v/3)$};\draw[flow](3,0)--(1.5,-1)node[below]{$(-v,-2v/3)$};
+\draw[flow](2,1)--(1.1,1)node[above]{$V_x=-v/3$};\draw[->](2.5,1.9)arc(60:-30:.7);\node at(4.5,2){$\omega<0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在接触点而非质心应用恢复条件}\par\nobreak
+用平面刚体速度公式展开$B$的分量：$v_{Bx}=V_x-\omega r_{By}=v-J/(2m)+\omega\ell/(2\sqrt2)=v-3J/(4m)$。其中最后一项是转动带来的接触点速度，若恢复条件只对质心速度写$v_C'=-v$，就会漏掉这部分。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成两端点速度并核对能量}\par\nobreak
+固定墙完全弹性要求接触点法向速度反号，$v_{Bx}=-v$，得到$J=8mv/3$。于是$V_x=-v/3$、$\omega=-4\sqrt2v/(3\ell)$。按图\ref{fig:em5:example:3:p}用$\bm v_i=\bm V_C+\bm\omega\times\bm r_i$，得
+\[\boxed{\bm v_A=(v/3,\ 2v/3),\qquad\bm v_B=(-v,\ -2v/3)}.\]
+另一个端点$A$的相对坐标与$B$相反，故$v_{Ax}=V_x-\omega\ell/(2\sqrt2)=v/3$、$v_{Ay}=-\omega\ell/(2\sqrt2)=2v/3$；$B$的竖直分量为$\omega\ell/(2\sqrt2)=-2v/3$。这样图中四个分量均由同一角速度符号得到。
+
+两球速率分别为$\sqrt5v/3$、$\sqrt{13}v/3$，总动能仍为$mv^2$。首轮以后杆继续转动，可能还有后续接触；题问的瞬时结果不应外推成全程末态。\end{solution}
+\begin{question}\begin{example}[运动系统中弹簧的功]\label{em5:example:4}
+质量$M,m$的两箱被压缩轻弹簧推开，初始共同以$v_1$匀速运动。无外力，弹簧恢复自然长时小箱向右的速度为$v_2>v_1$。求弹簧释放能量，以及弹簧对两箱分别做的功；最后取$M\gg m$近似。
+\end{example}
+\fig{fig:em5:example:4:s}{题设：运动系统中弹簧的功}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$M$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$v_1$};\draw[spring](1,0)--(4.2,0);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由总动量求大箱末速度与个体功}\par\nobreak
+设$\delta=v_2-v_1$。按图\ref{fig:em5:example:4:s}总动量守恒，$MV+mv_2=(M+m)v_1$，所以$V=v_1-(m/M)\delta$。弹簧对各箱的功等于各自动能变化：
+\[W_m=\frac12m(v_2^2-v_1^2),\qquad W_M=\frac12M\bigl[(v_1-m\delta/M)^2-v_1^2\bigr].\]
+\fig{fig:em5:example:4:p}{弹簧推开两箱时，对地速度可增可减，两个功相加才等于释放能量}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(1.4,.9);\node at(.7,.45){$M$};\draw[world](4,0)rectangle(4.8,.9);\node at(4.4,.45){$m$};\draw[spring](1.4,.45)--(4,.45);
+\draw[force](.7,1.3)--(-.5,1.3)node[left]{$F_M$};\draw[force](4.4,1.3)--(5.6,1.3)node[right]{$F_m$};
+\draw[axis](-.3,-.9)--(5.8,-.9)node[right]{速度};\fill(2,-.9)circle(.055)node[below]{$v_1$};\fill(.6,-.9)circle(.055)node[above]{$V$};\fill(4.5,-.9)circle(.055)node[above]{$v_2$};
+\draw[flow](2,-1.7)--(.6,-1.7)node[midway,below]{$-m\delta/M$};\draw[flow](2,-1.7)--(4.5,-1.7)node[midway,below]{$\delta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相加时消去依赖整体平动的交叉项}\par\nobreak
+展开大箱功，$W_M=-mv_1\delta+m^2\delta^2/(2M)$；小箱功为$W_m=mv_1\delta+m\delta^2/2$。相加后只剩二次项$[m/2+m^2/(2M)]\delta^2$。大箱功可能为负，这不妨碍弹簧对两箱总功为正。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求释放能量并检查大质量极限}\par\nobreak
+按图\ref{fig:em5:example:4:p}相加后，含$v_1\delta$的交叉项相消，得到
+\[\boxed{E_s=W_m+W_M=\tfrac12m(1+m/M)\delta^2}.\]
+大质量极限给$E_s\simeq m(v_2-v_1)^2/2$、$W_M\simeq-mv_1\delta$。即使重箱速度变化很小，它受力作用点仍移动，弹簧对它的功未必可忽略。\end{solution}
+\begin{question}\begin{example}[赤道发射的最低有用能量]\label{em5:example:5}
+在忽略空气阻力、发射损失及轨道高度相对地球半径的变化时，赤道地面相对地轴速率$0.46\,\mathrm{km/s}$，近地圆轨道速率$7.9\,\mathrm{km/s}$。将$1000\,\mathrm{kg}$航天器顺地球自转方向送入该轨道，至少需增加多少机械能？
+\end{example}
+\fig{fig:em5:example:5:s}{题设：赤道发射的最低有用能量}{\begin{tikzpicture}[scale=.9]\draw[world](1.8,0)circle(1.5);\draw[guide](1.8,0)circle(1.8);\fill(3.3,0)circle(.08);\draw[flow](3.3,0)--(3.3,1.1)node[right]{$v_e$};\draw[flow](3.6,0)--(3.6,1.8)node[right]{$v_o$};\node at(1.8,0){地球};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在地心惯性系比较同一质量的两个状态}\par\nobreak
+在图\ref{fig:em5:example:5:s}地心惯性系中，航天器初始已随地球转动，具有动能$mv_e^2/2$。在忽略高度变化的近地极限下，引力势能的初、末差可忽略，所需最低有用能量为
+\[\Delta E=\frac12m(v_o^2-v_e^2)=\frac12(1000)\bigl(7900^2-460^2\bigr)=\boxed{3.11\times10^{10}\,\mathrm J}.\]
+\fig{fig:em5:example:5:p}{在地心惯性系中画出初末速度，能量增加是两个动能之差}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.6);\draw[guide](0,0)circle(1.9);\node at(0,0){地球};\fill(1.6,0)circle(.06);\fill(1.9,0)circle(.06);
+\draw[flow](1.6,0)--(1.6,.55)node[left]{$v_e$};\draw[flow](1.9,0)--(1.9,2)node[right]{$v_o$};
+\node[align=left]at(5.2,.8){$K_i=mv_e^2/2$\\$K_f=mv_o^2/2$\\$\Delta E=K_f-K_i$};\node at(2.5,-2.5){轨道高度仅作近地极限示意};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分动能差与相对速度平方}\par\nobreak
+速度须先统一换算成$\mathrm{m/s}$再平方。若误写为$\tfrac12m(v_o-v_e)^2$，会多出$-mv_ov_e$交叉项，计算的已经不是惯性系动能差。本题忽略高度变化只是一个近地极限约定；圆轨道所需速度并不因此改成相对地面的速度差。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明高度近似和最低有用能量的含义}\par\nobreak
+图\ref{fig:em5:example:5:p}表示的是惯性系中的动能差，不是先算速度差再平方。若轨道半径为$r>R$，则应再用完整引力势能：$\Delta E=-GMm/(2r)-[mv_e^2/2-GMm/R]$。实际燃料能量还涉及喷气和效率，不能把本题最低有用机械能当作燃料化学能。\end{solution}
+\begin{question}\begin{example}[自由小车上的弹簧发射器]\label{em5:example:6}
+小车与发射器总质量$3m$，发射筒与水平成$45^\circ$，置于光滑水平面。质量$m$小球压缩弹簧$L$后由静止弹出，抛出后相对出射点最高上升$H$。忽略筒内重力势能变化，求弹簧劲度系数。
+\end{example}
+\fig{fig:em5:example:6:s}{题设：自由小车上的弹簧发射器}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(4,.4);\draw[very thick](1,.4)--(3,2.4);\fill(2.7,2.1)circle(.1);\draw[flow](2.9,2.3)--(3.8,3.2)node[right]{$w$};\node at(3,1){$45^\circ$};\node at(1,-.5){$3m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由相对出射速度与水平动量求对地速度}\par\nobreak
+按图\ref{fig:em5:example:6:s}令球相对筒的出射速率为$w$、车对地速度为$V$，则球对地速度为$(V+w/\sqrt2,w/\sqrt2)$。水平方向动量守恒$3mV+m(V+w/\sqrt2)=0$，故$V=-w/(4\sqrt2)$。球的水平分量为$3w/(4\sqrt2)$，竖直分量为$w/\sqrt2$。
+\fig{fig:em5:example:6:p}{水平反冲只改变球的水平分量，最高上升高度由竖直分量决定}{\begin{tikzpicture}
+
+\draw[flow](.5,0)--(0,0)node[midway,below]{$\bm V$};\draw[flow](0,0)--(2,2)node[midway,left]{$\bm w$};\draw[flow](.5,0)--(2,2)node[midway,right]{$\bm v_b$};
+\node at(1,-.9){$v_{bx}:v_{by}=3:4$};
+\begin{scope}[xshift=5cm]\draw[axis](0,0)--(4.3,0);\draw[blue,thick,domain=0:2,samples=70]plot({1.5*\x},{2*\x-.5*\x*\x});
+\draw[dim](3.6,0)--(3.6,2)node[midway,right]{$H$};\draw[guide](3,2)--(3.8,2);\draw[flow](0,0)--(0,1.4)node[left]{$v_{by}$};
+\node at(2,-.9){$v_{by}^2=2gH$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在速度三角形中检查出射方向}\par\nobreak
+这里$V+w/\sqrt2=-w/(4\sqrt2)+w/\sqrt2=3w/(4\sqrt2)$。球的水平和竖直分量比为$3/4$，所以对地出射方向与筒轴$45^\circ$不同；过程图的矢量三角形正表示水平反冲怎样改变出射方向，而不改变其竖直速度。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由抛体高度确定速度并计算总储能}\par\nobreak
+图\ref{fig:em5:example:6:p}抛体最高点给$H=(w/\sqrt2)^2/(2g)$，所以$w^2=4gH$。弹簧能量变为球、车的总动能：
+\[\frac12kL^2=\frac12(3m)\frac{w^2}{32}+\frac12m\left(\frac{9w^2}{32}+\frac{w^2}{2}\right)=\frac7{16}mw^2.\]
+因此
+\[\boxed{k=7mgH/(2L^2)}.\]
+把球的出射角对地也设为$45^\circ$会忽略车的反冲，导致能量分配错误。\end{solution}
+\begin{question}\begin{example}[大炮反冲对射程的影响]\label{em5:example:7}
+质量$M$的炮车发射质量$m$的炮弹，炮口仰角$\theta$，发射前静止。固定炮车时射程为$s$。若炮车改置于光滑水平面，假定每次发射转为炮车、炮弹机械能的总量相同，忽略筒内高度变化，求新射程。
+\end{example}
+\fig{fig:em5:example:7:s}{题设：大炮反冲对射程的影响}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(3,.4);\draw[very thick](1,.4)--(3,1.6);\draw[flow](3,1.6)--(4,2.2)node[right]{$w$};\draw[flow](1,-.6)--(-.3,-.6)node[left]{反冲};\node at(2,.7){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以相同总有用能量比较固定和自由炮车}\par\nobreak
+固定时炮弹出速$u$满足$s=u^2\sin2\theta/g$，对应能量$E=mu^2/2$。自由炮车时令炮弹相对炮筒出速为$w$，车速$V=-mw\cos\theta/(M+m)$。按图\ref{fig:em5:example:7:s}炮弹对地分量为$Mw\cos\theta/(M+m)$与$w\sin\theta$。
+\fig{fig:em5:example:7:p}{解答过程：大炮反冲对射程的影响}{\begin{tikzpicture}[scale=.9]\draw[world](-.3,0)--(4.5,0);\draw[guide,domain=0:2,samples=60]plot({2*\x},{2*(\x-.5*\x*\x)});\draw[world,domain=0:2.13809,samples=60]plot({1.603567*\x},{2*(1.069045*\x-.5*\x*\x)});\node[right]at(3.2,1.2){固定时};\node[left]at(1.1,1.7){自由时};\draw[dim](0,-.45)--(3.42857,-.45)node[midway,below]{$S$};\draw[dim](0,-1.05)--(4,-1.05)node[midway,below]{$s$};\node at(2,-1.9){示意取$M=3m,\ \theta=45^\circ$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由水平反冲和飞行时间写出新射程}\par\nobreak
+水平方向动量为$MV+m(V+w\cos\theta)=0$，因而$V=-mw\cos\theta/(M+m)$；炮弹水平速度随之为$Mw\cos\theta/(M+m)$。炮弹仍以$w\sin\theta$竖直分量起飞，落回同高处所需时间为$2w\sin\theta/g$。这两项相乘，才得到后面的新射程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量分配消去相对出速}\par\nobreak
+由图\ref{fig:em5:example:7:p}两部分动能相加，$E=\tfrac12mw^2[\sin^2\theta+M\cos^2\theta/(M+m)]$，所以$w^2=u^2(M+m)/(M+m\sin^2\theta)$。新射程
+\[S=\frac{M}{M+m}\frac{w^2\sin2\theta}{g}=\boxed{\frac{M}{M+m\sin^2\theta}s}.\]
+若另行假定“相对炮筒出速不变”而非总有用能量不变，则得到$S=Ms/(M+m)$。两者对应不同发射模型，必须明确条件，不能把它们混合使用。\end{solution}
+\begin{question}\begin{example}[竖直杆与活动半球碗]\label{em5:example:8}
+半球碗质量$m_B=2m_A$、半径$R$，由理想导轨限制为在光滑水平面上平动，碗口始终水平。细杆$A$被固定光滑套管约束，只能竖直平动；杆下端从碗口边缘静止释放并沿碗内面运动。以球心到接触点的半径与竖直向下方向夹角$\theta$描述位置，求杆与碗的速率。
+\end{example}
+\fig{fig:em5:example:8:s}{题设：竖直杆与活动半球碗}{\begin{tikzpicture}[scale=.9]\draw[world](-2,1)arc(180:360:2);\draw[world](1.4,1.7)--(1.4,-.43);\draw[world](1.1,1.4)rectangle(1.7,1.8);\draw[guide](0,1)--(1.4,-.43);\draw[guide](0,1)--(0,-1);\node at(.4,.1){$\theta$};\node at(2.4,1.6){固定套管};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别判断套管外力对动量和能量的作用}\par\nobreak
+图\ref{fig:em5:example:8:s}固定套管对杆有水平外力，故杆碗整体的水平动量不守恒。不过此力垂直杆位移，不做功。接触点相对球心坐标为$(R\sin\theta,-R\cos\theta)$，杆横坐标不变，故碗速率$v_B=R\cos\theta|\dot\theta|$，杆速率$v_A=R\sin\theta|\dot\theta|$。
+\fig{fig:em5:example:8:p}{杆横坐标固定，碗心右移与杆端下降由同一个角度变化决定}{\begin{tikzpicture}
+
+\coordinate(O)at(0,1);\coordinate(P)at(1.4,-.428286);\draw[world](-2,1)arc(180:360:2);\draw[world](P)--(1.4,2.5);
+\draw[world](1.15,1.8)--(1.15,2.3) (1.65,1.8)--(1.65,2.3);\draw[guide](0,-1)--(O)--(P);\fill(O)circle(.045)node[left]{$O$};\fill(P)circle(.07)node[right]{$P$};
+\draw(0,.4)arc(-90:-45.573:.6);\node at(.28,.15){$\theta$};\draw[flow](P)--(1.4,-1.4)node[right]{$v_A$};\draw[flow](O)--(1.1,1)node[above]{$v_B$};
+\draw[dim](0,-1.8)--(1.4,-1.8)node[midway,below]{$R\sin\theta$};\node[align=left]at(5,.2){$X_B+R\sin\theta=\text{常量}$\\$v_A/v_B=\tan\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由接触几何微分得到两部分速度}\par\nobreak
+将固定的杆横坐标写成$x_A=X_B+R\sin\theta$，微分得$\dot X_B=-R\cos\theta\dot\theta$；杆下端高度$y_A=-R\cos\theta$，故$\dot y_A=R\sin\theta\dot\theta$。下降过程中$\dot\theta<0$，这同时给出杆向下、碗向右的方向。题目求速率时才取这些速度的绝对值。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立能量求速率并核对碗口与碗底}\par\nobreak
+按图\ref{fig:em5:example:8:p}杆下降$R\cos\theta$，能量式为$m_AgR\cos\theta=\tfrac12m_AR^2\dot\theta^2(\sin^2\theta+2\cos^2\theta)$。所以
+\[\boxed{v_A=\sin\theta\sqrt{\frac{2gR\cos\theta}{1+\cos^2\theta}},\qquad v_B=\cos\theta\sqrt{\frac{2gR\cos\theta}{1+\cos^2\theta}}}.\]
+碗口$\theta=\pi/2$时均为零；到碗底$\theta=0$时杆速率为零而碗速率为$\sqrt{gR}$。这并不违反运动约束：该处杆的竖直位移对角度的一阶变化恰为零。\end{solution}
+\begin{question}\begin{example}[跳到自由小车另一端]\label{em5:example:9}
+质量$m$的人站在质量$M$、长$L$小车左端，整个系统最初静止于光滑水平面。人跳起后刚好落到车右端，起落时质心等高，忽略空气阻力。求人的最小对地起跳速率。
+\end{example}
+\fig{fig:em5:example:9:s}{起落高度相同，落点是运动小车的右端}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(5,.3);\fill(0,.9)circle(.1);\draw[world](0,.8)--(0,.3);\draw[flow](0,1.1)--(1.2,2.3)node[right]{$v_0$};
+\node at(2.5,.7){小车$M$};\draw[dim](0,-.5)--(5,-.5)node[midway,below]{$L$};\node[above]at(5,.3){目标端};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用水平动量和同高飞行时间列落点关系}\par\nobreak
+设图\ref{fig:em5:example:9:s}人的对地水平、竖直初速度为$u,w>0$，小车水平速度为$V$。水平动量给$V=-mu/M$，飞行时间$T=2w/g$。人相对车向右的速度为$u-V=(M+m)u/M$，因此
+\[L=\frac{M+m}{M}u\frac{2w}{g},\qquad2uw=\frac{MLg}{M+m}.\]
+\fig{fig:em5:example:9:p}{小车后退使人的对地射程小于L，最小起跳速率要求u等于w}{\begin{tikzpicture}
+
+\draw[guide](0,-.3)rectangle(4,0);\draw[world](-1,-.3)rectangle(3,0);\fill(0,0)circle(.06);\fill(3,0)circle(.06);
+\draw[blue,thick,domain=0:2.44949,samples=80]plot({1.224745*\x},{1.224745*\x-.5*\x*\x});
+\draw[dim](-1,-.9)--(3,-.9)node[midway,below]{$L$};\draw[flow](.5,-.55)--(-.5,-.55)node[left]{$V$};
+\node at(1.5,1.3){$M=3m$的最优起跳示意};\node[above]at(4,0){原右端};
+\begin{scope}[xshift=6.4cm]\draw[flow](0,0)--(1.5,0)node[midway,below]{$u$};\draw[flow](1.5,0)--(1.5,1.5)node[right]{$w$};\draw[flow](0,0)--(1.5,1.5)node[left]{$v_0$};
+\node at(.8,-1){$u^2+w^2\ge2uw$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把落点条件写成人车相对位移}\par\nobreak
+在飞行段，人与车的水平速度分别保持$u$和$V$，所以落点条件应写成$uT=VT+L$。把$V=-mu/M$移入左边，正得到图中的相对速度$(M+m)u/M$。给定$L$后只约束乘积$uw$，最小速率再由$(u-w)^2\ge0$确定。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定速度乘积下求最小速率}\par\nobreak
+按图\ref{fig:em5:example:9:p}起跳速率平方$v_0^2=u^2+w^2\ge2uw$，等号在$u=w$时成立。所以
+\[\boxed{v_{0,\min}=\sqrt{MLg/(M+m)}},\]
+对地起跳角为$45^\circ$。使用的是人与车的相对水平位移$L$；若直接设$uT=L$，会漏掉小车后退。\end{solution}
+\begin{question}\begin{example}[活动板上倒下的轻杆]\label{em5:example:10}
+质量$M$的水平板在光滑水平面上，板上铰接长$L$轻杆，杆端质量$m$的小球最初在铰点正上方。由微小扰动使杆倒下，求杆第一次水平时对球的拉力。板只平动，忽略杆重。
+\end{example}
+\fig{fig:em5:example:10:s}{题设：活动板上倒下的轻杆}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(4,.3);\fill(2,.3)circle(.06)node[right]{$O$};\draw[world](2,.3)--(2,2.7);\fill(2,2.7)circle(.11)node[right]{$m$};\node at(1.7,1.5){$L$};\node at(3,-.4){$M$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在水平瞬间由动量和能量确定速度}\par\nobreak
+图\ref{fig:em5:example:10:s}杆水平时，球相对板的速度竖直。板、球共同的水平速度由零总水平动量决定，恰为零。下降高度$L$，故$mgL=\tfrac12mv_{\text{相}}^2$，即$v_{\text{相}}^2=2gL$。
+\fig{fig:em5:example:10:p}{水平瞬间铰点速度为零但加速度向右，径向方程必须使用相对加速度}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,.3);\coordinate(O)at(1,.3);\coordinate(B)at(4,.3);\draw[world](O)--(B);\fill(O)circle(.06)node[below]{$O$};\fill(B)circle(.1)node[right]{$m$};
+\draw[force](4,.7)--(2.8,.7)node[above]{$T$};\draw[force](1,.9)--(2.2,.9)node[above]{$T$};
+\draw[flow](4,0)--(4,-1.3)node[right]{$v_{\text{相}}$};\draw[force](4,.3)--(4,-.6)node[right]{$mg$};
+\draw[flow](.7,-.7)--(2,-.7)node[right]{$a_O=T/M$};\node at(1.5,-1.7){$a_{Bx}-a_{Ox}=-v_{\text{相}}^2/L$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明零水平速度不等于零加速度}\par\nobreak
+对任意角度，整体水平方向均有$M\dot X+m\dot x_B=0$；到杆水平时球对铰点的速度竖直，所以$\dot x_B=\dot X$。联立便知二者水平速度同时为零。这个结论只消去该时刻的水平动能，并未把铰点的水平加速度也设为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对球和板分别列水平动力学并相减}\par\nobreak
+按图\ref{fig:em5:example:10:p}取杆水平向右为正，杆拉球向左，故$a_{Bx}=-T/m$；杆对板向右，$a_{Ox}=T/M$。两者相对径向加速度为$a_{Bx}-a_{Ox}=-v_{\text{相}}^2/L=-2g$，因此
+\[T\left(\frac1m+\frac1M\right)=2g,\qquad\boxed{T=\frac{2mMg}{M+m}}.\]
+不能把铰点当固定而直接写$T=mv^2/L$，因为它在该瞬间虽速度为零，加速度仍不为零。$M\to\infty$时结果才趋于固定铰点的$2mg$。\end{solution}
+\begin{question}\begin{example}[滑轮托盘与弹簧分离]\label{em5:example:11}
+一根轻绳经两定滑轮并绕过中间动滑轮，两端各悬挂质量$m$的砝码；动滑轮连接质量$m$的托盘，托盘内竖直弹簧上放质量$m$的砝码1。弹簧劲度系数$k$，初始被内部锁线压缩$\ell_0$，系统静止。烧断锁线，砝码1被推出，假定$k\ell_0>2mg$，且不碰托盘顶部。求从砝码1脱离弹簧到再次接触弹簧的时间。
+\end{example}
+\fig{fig:em5:example:11:s}{一根绳连续绕过两个定滑轮和中间动滑轮，托盘与两侧砝码反向同速率}{\begin{tikzpicture}
+
+\draw[world](.4,3.65)--(3.6,3.65);\draw[world](1,3.65)--(1,3) (3,3.65)--(3,3);
+\draw[world](1,3)circle(.3);\draw[world](3,3)circle(.3);\draw[world](2,1)circle(.7);
+\draw[thick](.7,-.3)--(.7,3)arc(180:0:.3)--(1.3,1)arc(180:360:.7)--(2.7,3)arc(180:0:.3)--(3.3,-.3);
+\draw[world](.4,-.3)rectangle(1,-.8);\node at(.7,-.55){2};\draw[world](3,-.3)rectangle(3.6,-.8);\node at(3.3,-.55){3};
+\draw[world](2,1)--(2,.1)--(1.5,0)--(1.5,-1.8)--(2.5,-1.8)--(2.5,0)--(2,.1);
+\draw[spring](2,-1.8)--(2,-.8);\draw[world](1.75,-.8)rectangle(2.25,-.3);\node at(2,-.55){1};
+\draw[guide](1.7,-1.8)--(1.7,-.8);\node[left]at(1.7,-1.3){锁线};\node[right]at(2.6,-1.4){托盘$m$};\node[right]at(2.25,-1.2){$k$};
+\node[above left]at(1,3.3){$B$};\node[above right]at(3,3.3){$C$};\node[right]at(2.7,1){$D$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由绳长和三个受力方程确定速度分配}\par\nobreak
+在图\ref{fig:em5:example:11:s}对称运动中，托盘向上位移$Y$时两侧砝码各向下同样距离，故它们与托盘的动能和为$\tfrac12(3m)\dot Y^2$。设弹簧压缩量为$x$，砝码1的向上坐标可写$Z=Y+\ell-x$。令绳张力为$T$、弹簧对砝码1向上弹力为$F_s$。侧砝码向下加速度为$\ddot Y$，托盘与砝码1向上加速度分别为$\ddot Y,\ddot Z$，逐个列式：
+\[mg-T=m\ddot Y,\qquad2T-mg-F_s=m\ddot Y,\qquad F_s-mg=m\ddot Z.\]
+后两式相加并用第一式消去$T$，得$3\ddot Y+\ddot Z=0$。
+几何式 $Z=Y+\ell-x$ 连续求导给 $\dot Z=\dot Y-\dot x$、
+$\ddot Z=\ddot Y-\ddot x$，代入得到 $4\ddot Y-\ddot x=0$。
+从释放时刻 $0$ 积到 $t$：
+\[
+\int_0^t(4\ddot Y-\ddot x)\dd\tau
+=[4\dot Y-\dot x]_0^t=0.
+\]
+由初始 $\dot Y(0)=\dot x(0)=0$，才得到 $4\dot Y-\dot x=0$。
+
+这里$\ell$表示弹簧自然长，$x$表示相对自然长的压缩量。由$Z=Y+\ell-x$知$\dot Z=\dot Y-\dot x$，结合$4\dot Y=\dot x$得$\dot Z=-3\dot x/4$。因此分离时两速度方向相反，托盘向下而砝码1向上，不能在图中把二者都画成向上。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用整体能量求自然长处分离速率}\par\nobreak
+令分离时相对上升速率$w=-\dot x>0$，于是托盘速度$-w/4$，砝码1速度$3w/4$，总动能为$3mw^2/8$。弹簧由压缩$\ell_0$回到自然长，砝码1相对托盘上升$\ell_0$，系统重力势能净增加$mg\ell_0$，所以
+\[\frac38mw^2=E_*=\frac12k\ell_0^2-mg\ell_0>0.\]
+动能分配可逐项核对：托盘和两侧砝码三份质量的速率大小相同，合计$3m$，其动能为$3mw^2/32$；砝码1动能为$9mw^2/32$，和为$3mw^2/8$。重力势能变化为$mgZ-mgY=mg(\ell-x)$加常量，故从$x=\ell_0$到$0$恰增加$mg\ell_0$。
+
+\fig{fig:em5:example:11:p}{分离瞬间托盘向下、砝码1向上；分离后的加速度使两者重新接近}{\begin{tikzpicture}
+
+\fill(0,2.1)circle(.085)node[left]{砝码1};\draw[flow](0,2.1)--(0,3.3)node[above]{$3w/4$};\draw[force](.8,2.1)--(.8,1.1)node[right]{$a_1=-g$};
+\draw[world](-.7,0)--(.7,0);\draw[spring](0,0)--(0,1);\node[left]at(-.7,0){托盘};
+\draw[flow](-.2,0)--(-.2,-1)node[below]{$w/4$};\draw[force](1.5,0)--(1.5,1.1)node[right]{$a_A=g/3$};
+\foreach \xx/\num in {-2.1/2,3.2/3}{\draw[world](\xx-.25,.1)rectangle(\xx+.25,.6);\node at(\xx,.35){\num};\draw[flow](\xx,.6)--(\xx,1.6)node[above]{$w/4$};}
+\node at(.6,-1.8){$a_{1/A}=-(g+g/3)=-4g/3$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新列托盘动力学并求相对返回时间}\par\nobreak
+分离后，图\ref{fig:em5:example:11:p}砝码1加速度向下$g$；托盘与两侧砝码组成质量$m$对$2m$的约束系统。若托盘向上加速度为$a$，侧砝码向下加速度也是$a$，由$mg-T=ma$、$2T-mg=ma$，得$a=g/3$。因此砝码1相对托盘加速度向下$4g/3$，从自然长位置出发的相对位移为$z=wt-\tfrac23gt^2$。再次$z=0$的非零根为
+\[\boxed{T=\frac{3w}{2g}=\frac1g\sqrt{\frac{6E_*}{m}}}.\]
+条件$E_*>0$保证能以正速率脱离；若不满足，则题设的分离阶段并不存在。\end{solution}
+\begin{question}\begin{example}[半球碗内的三维回转]\label{em5:example:12}
+固定光滑半球碗半径$R$，质量$m$的小球从碗口一点以水平沿碗口切向速率$v_0>0$进入碗内。以从向下竖直线计的极角$\theta$描述位置，求小球达到的最小极角及全过程最大速率。
+\end{example}
+\fig{fig:em5:example:12:s}{初速度沿水平碗口切向；纸面内的子午运动与纸面法向的方位运动要区分}{\begin{tikzpicture}
+
+\draw[world](-2,1.5)arc(180:360:2);\draw[guide](0,1.5)ellipse(2 and .35);\fill(2,1.5)circle(.08)node[above]{$A$};\node[right]at(2.1,1.5){$\otimes\ v_0$};
+\draw[axis](0,-.8)--(0,2.7)node[above]{$z$};\draw[guide](0,1.5)--(1.3,-.01987);\draw(0,.9)arc(-90:-49.458:.6);\node at(.25,.6){$\theta$};\node[left]at(0,1.5){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{只守恒竖直角动量并分解球面速度}\par\nobreak
+按图\ref{fig:em5:example:12:s}碗心为$O$、竖直轴为$z$。支持力过$O$，重力没有竖直轴力矩，故$L_z=mRv_0$守恒。任意纬圈半径$r=R\sin\theta$，方位速度$v_\phi=v_0/\sin\theta$；沿经线速度记$v_\theta=R\dot\theta$。能量给
+\[v_\theta^2+v_\phi^2=v_0^2+2gR\cos\theta.\]
+\fig{fig:em5:example:12:p}{最低高度处经向速度为零，沿水平纬圈的方位速度仍然非零}{\begin{tikzpicture}
+
+\draw[world](-2,1.5)arc(180:360:2);\draw[axis](0,-.8)--(0,2.7)node[above]{$z$};
+\draw[guide](0,.1)ellipse(1.428286 and .27);\coordinate(P)at(1.428286,.1);\fill(P)circle(.08);\node[right]at(1.55,.1){$\otimes\ v_\phi$};
+\draw[guide](0,1.5)--(P);\draw[dim](0,-.45)--(1.428286,-.45)node[midway,below]{$R\sin\theta$};
+\node at(0,-1.5){转折仅要求$v_\theta=0$，仍有$L_z=mRv_0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明极角转折时仍有方位运动}\par\nobreak
+守恒角动量给$m(R\sin\theta)v_\phi=mRv_0$，所以$\sin\theta$越小，方位速度越大。在纬度最低处只要求经向速度$v_\theta=0$，球仍沿该纬圈切向运动；若把总速率设成零，会与非零角动量直接矛盾。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立极角转折条件与能量选取正根}\par\nobreak
+图\ref{fig:em5:example:12:p}最低纬度处$\dot\theta=0$，但$v_\phi$非零。令$c=\cos\theta_{\min}>0$，代入$v_\phi=v_0/\sqrt{1-c^2}$，得到$v_0^2c=2gR(1-c^2)$。解得
+\[\boxed{c=\frac{\sqrt{v_0^4+16g^2R^2}-v_0^2}{4gR}}.\]
+转折方程先为$v_0^2/(1-c^2)=v_0^2+2gRc$；移项并除以非零的$c$，得到$2gRc^2+v_0^2c-2gR=0$。负根小于零，所求$c>0$取正根。初始碗口的$c=0$是另一转折，已在除以$c$时明确排除，不能当作最低点的解。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最大总速率并检查接触压力}\par\nobreak
+小球在该处高度最低，能量式说明总速率最大，故
+\[\boxed{v_{\max}=\sqrt{\frac{v_0^2+\sqrt{v_0^4+16g^2R^2}}2}}.\]
+球面内侧支持力$N=m(v^2/R+g\cos\theta)>0$，接触可维持。有限的非零$L_z$使球无法到达轴线上；若仅守恒能量而忽略角动量，就会错误地让球直接穿过碗底。\end{solution}
+\begin{question}\begin{example}[圆锥摆关于不同点的角动量]\label{em5:example:13}
+质量$m$的小球由长$\ell$的轻绳悬于固定点$O$，以半顶角$0<\theta<\pi/2$作圆锥摆。水平轨道圆心为$B$。求角速度、相对$O$和$B$的角动量大小及竖直分量，并判断哪些量守恒。
+\end{example}
+\fig{fig:em5:example:13:s}{圆锥摆绕固定竖直轴回转，右端位置的正方位速度指向纸面里}{\begin{tikzpicture}
+
+\fill(0,2.5)circle(.06)node[above]{$O$};\draw[world](0,2.5)--(2,0)node[midway,above]{$\ell$};
+\draw[guide](0,2.5)--(0,0)node[below]{$B$};\draw[guide](0,0)ellipse(2 and .35);\fill(2,0)circle(.1)node[below right]{$m$};\node[right]at(2.1,.25){$\otimes\ v$};
+\draw(0,1.8)arc(-90:-51.34:.7);\node at(.25,1.5){$\theta$};\draw[dim](0,-.7)--(2,-.7)node[midway,below]{$r=\ell\sin\theta$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用竖直平衡和水平向心力求角速度}\par\nobreak
+按图\ref{fig:em5:example:13:s}轨道半径$r=\ell\sin\theta$，竖直平衡$T\cos\theta=mg$，水平向心$T\sin\theta=m\omega^2r$。消去张力得
+\[\boxed{\omega^2=g/(\ell\cos\theta)},\]
+$v=\omega r$。
+\fig{fig:em5:example:13:p}{同一位置关于O和B的角动量，竖直分量相等而完整矢量不同}{\begin{tikzpicture}
+
+\coordinate(O)at(0,2.5);\coordinate(B)at(0,0);\coordinate(P)at(2,0);\draw[guide](O)--(B)--(P)--cycle;
+\fill(O)circle(.04)node[left]{$O$};\fill(B)circle(.04)node[left]{$B$};\fill(P)circle(.07)node[below]{$P$};\node[right]at(2,0){$\otimes\ mv$};
+\draw[flow](O)--(1.5,3.7)node[right]{$\bm L_O$};\draw[guide](O)--(0,3.7)--(1.5,3.7);\draw[flow](B)--(0,1.2)node[left]{$\bm L_B$};
+\node[align=left]at(5,2){$L_{Oz}=L_{Bz}=mrv$\\$L_{Ox}=m\ell v\cos\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确非退化摆角与共同速率}\par\nobreak
+消元过程为$T=mg/\cos\theta$，代入水平式得$mg\tan\theta=m\omega^2\ell\sin\theta$；对非退化的$0<\theta<\pi/2$约去$m\sin\theta$，才得$\omega^2=g/(\ell\cos\theta)$。后面的角动量均使用这一相同的水平速率$v=\omega\ell\sin\theta$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算两参考点的角动量并判断矢量守恒}\par\nobreak
+图\ref{fig:em5:example:13:p}速度垂直$O$到球的半径，因此$|\bm L_O|=m\ell v$，竖直分量$L_{Oz}=mr v=m\ell^2\sin^2\theta\omega$。关于$B$，半径水平，$\bm L_B=mr v\,\bm e_z$。球的合力水平指向$B$，所以$\bm L_B$完整矢量守恒；$\bm L_O$的水平分量随球转动，完整矢量不守恒，只有$L_{Oz}$保持不变。角动量大小保持不变，并不等于完整矢量守恒，必须同时看方向。\end{solution}
+\begin{question}\begin{example}[可转动螺旋导线上的小环]\label{em5:example:14}
+均匀螺旋形细导线质量$m$，各点到竖直轴距离均为$R$，螺距为$H=\pi R$。导线可绕该轴无摩擦转动、不能上下移动。质量也为$m$的小环套在导线上，由静止释放，接触光滑。求小环相对地面下落$h$时的竖直速率、导线角速度及导线对环的支持力。
+\end{example}
+\fig{fig:em5:example:14:s}{螺旋半径$R$、每转下降$\pi R$，小环与导线可相对转动}{\begin{tikzpicture}
+
+\draw[axis](0,-.6)--(0,5.3)node[above]{$z$};\draw[world,domain=0:540,samples=150]plot({cos(\x)},{4.5-pi*\x/360+.25*sin(\x)});
+\fill(1,4.5)circle(.09)node[right]{$m$};\draw[dim](0,4.9)--(1,4.9)node[midway,above]{$R$};
+\draw[dim](1.6,1.358407)--(1.6,4.5)node[midway,right]{$H=\pi R$};\node at(0,-1.1){导线$m$，$I=mR^2$};\node at(4,1.2){相对转角$\chi=2h/R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用螺距与轴向角动量确定两个角速度}\par\nobreak
+按图\ref{fig:em5:example:14:s}导线转动惯量$I=mR^2$。令小环向下位移$z$，相对导线绕轴转角为$\chi$，螺距约束给$z=R\chi/2$。设小环绝对角速度为$\omega$、导线为$\Omega$，则$\dot z=R(\omega-\Omega)/2$。绕轴无外力矩且初始静止，$mR^2\omega+mR^2\Omega=0$，故$\Omega=-\omega$、$\dot z=R\omega$。
+\fig{fig:em5:example:14:p}{在小环的局部柱坐标中分解支持力，水平切向用纸面法向表示}{\begin{tikzpicture}
+
+\fill(0,0)circle(.1)node[below right]{$m$};\draw[force](0,0)--(0,1.7)node[above]{$N_z=2mg/3$};\draw[force](0,0)--(-1.8,0)node[left]{$N_r=2mgh/(3R)$};
+\node[right]at(.6,.25){$\otimes\ N_t=mg/3$};\draw[force](.3,-.1)--(.3,-1.4)node[below]{$mg$};
+\node[align=left]at(4.5,1.8){$a_z=-g/3$\\$a_t=R\dot\omega=g/3$\\$a_r=-R\omega^2$};\node at(1,-2.2){$N^2=N_z^2+N_t^2+N_r^2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把三部分动能与下降势能联立}\par\nobreak
+按图\ref{fig:em5:example:14:p}总动能含小环竖直、环的水平回转、导线自转三项，各为$m\dot z^2/2$，所以$mgh=3m\dot z^2/2$，得到
+\[\boxed{\dot z=\sqrt{2gh/3},\quad|\Omega|=R^{-1}\sqrt{2gh/3}}.\]
+由能量也可写$\dot z^2=2gz/3$，对时间求导，$2\dot z\ddot z=(2g/3)\dot z$，在下落段约去$\dot z$得$\ddot z=g/3$。又因$\omega=\dot z/R$，切向加速度为$R\dot\omega=\ddot z$，向心加速度为$R\omega^2=\dot z^2/R$。因此三个支持力分量分别来自三个相互垂直的加速度方程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在三个正交方向求支持力并核对光滑约束}\par\nobreak
+由$\ddot z=g/3$，小环支持力的竖直向上分量$N_z=2mg/3$；水平切向分量$N_t=mR|\dot\omega|=mg/3$；水平向心分量$N_r=mR\omega^2=2mgh/(3R)$。相对螺旋切线的速度分量为水平$2\dot z$与竖直向下$\dot z$，而$2N_t-N_z=0$，也核验了支持力与相对运动垂直。三分量互相垂直，故
+\[\boxed{N=\frac{mg}{3}\sqrt{5+\frac{4h^2}{R^2}}}.\]
+导线上的光滑接触力分别交换环与导线的能量，只有两者整体的机械能守恒；把导线误当固定会漏掉一项转动动能。\end{solution}
+\begin{question}\begin{example}[竖直滑杆与自由斜面]\label{em5:example:15}
+质量$m$的细杆只能在固定光滑竖直套管内平动，杆下端支在倾角$\alpha$、质量$M$的斜面上。斜面在光滑水平面上自由移动，初始全体静止。杆与斜面接触光滑，求斜面与杆的加速度及支持力。
+\end{example}
+\fig{fig:em5:example:15:s}{题设：竖直滑杆与自由斜面}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(4,0)--(0,2)--cycle;\draw[world](2,1)--(2,3.2);\draw[world](1.7,2.3)rectangle(2.3,2.7);\node at(1,.5){$M$};\node[right]at(2,3){$m$};\node at(3.2,.2){$\alpha$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用位移约束消去杆的独立坐标}\par\nobreak
+图\ref{fig:em5:example:15:s}固定套管可给水平外力，不能对杆与斜面守恒水平动量。设斜面向左位移为$X$、杆下降$q$，几何给$q=X\tan\alpha$。能量为$mgX\tan\alpha=\tfrac12(M+m\tan^2\alpha)\dot X^2$。
+\fig{fig:em5:example:15:p}{斜面左移使固定横坐标处的杆端下降，法向力对杆向右上而对斜面向左下}{\begin{tikzpicture}
+
+\draw[guide](0,0)--(4,0)--(0,2)--cycle;\draw[world](-.8,0)--(3.2,0)--(-.8,2)--cycle;
+\draw[guide](2,1)--(2,3);\draw[world](2,.6)--(2,2.6);\fill(2,.6)circle(.07);
+\draw[force](2,.6)--(2.5,1.6)node[right]{$N$};\draw[force](2,.6)--(2,-.5)node[right]{$mg$};
+\draw[world](1.85,2.1)--(1.85,2.65) (2.15,2.1)--(2.15,2.65);\draw[force](2,2.5)--(1,2.5)node[midway,above]{套管水平力};\draw[flow](.8,-.5)--(0,-.5)node[midway,below]{$X$};
+\draw[dim](2.9,.6)--(2.9,1)node[right]{$q$};\node at(1,-1.3){$q=X\tan\alpha$};\node at(4.8,2.4){$a_A=a_B\tan\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量导数求恒加速度}\par\nobreak
+令$M_{\text{等}}=M+m\tan^2\alpha$，它是常量。能量式求导时
+$\dd(\dot X^2)/\dd t=2\dot X\ddot X$，故
+$mg\tan\alpha\,\dot X=(M_{\text{等}}/2)(2\dot X\ddot X)$。
+在开始运动后的区间消去 $\dot X$；由连续性可将所得恒定加速度延续到初始时刻。
+再由 $q=X\tan\alpha$ 依次求导，
+$\dot q=\dot X\tan\alpha$、$\ddot q=\ddot X\tan\alpha$，
+得到杆加速度 $a_A=a_B\tan\alpha$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别列杆与斜面受力方程核对支持力}\par\nobreak
+对图\ref{fig:em5:example:15:p}等式求时间导数并在连续运动段消去$\dot X$，得
+\[\boxed{a_B=\frac{mg\tan\alpha}{M+m\tan^2\alpha},\qquad a_A=\frac{mg\tan^2\alpha}{M+m\tan^2\alpha}}.\]
+以上$a_B$向左、$a_A$向下。杆竖直方程$mg-N\cos\alpha=ma_A$，故
+\[\boxed{N=mgM/[\cos\alpha(M+m\tan^2\alpha)]}.\]
+再用斜面水平式$N\sin\alpha=Ma_B$可独立核验。套管水平力不做功，但使水平总动量发生变化，这说明能量和动量的适用条件必须分开检查。\end{solution}

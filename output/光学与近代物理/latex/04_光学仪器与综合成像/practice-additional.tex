@@ -1,0 +1,21 @@
+\begin{question}
+\begin{drill}[望远镜的孔径与观察位置]\label{d:44}
+开普勒望远镜物镜焦距 $f_o=20.0\,\mathrm{cm}$、直径 $D_o=4.00\,\mathrm{cm}$，目镜焦距 $f_e=5.00\,\mathrm{cm}$，镜间距为 $25.0\,\mathrm{cm}$。目镜通光直径足够大，忽略镜框及衍射。求轴上观察时出瞳的位置和直径、视角放大率。若直径 $0.800\,\mathrm{cm}$ 的眼瞳准确放在出瞳平面并与轴同心，求有效入射口径，以及相对整个出射光束被接收的光通量比例；入射照度均匀。
+\end{drill}
+\fig{fig:d44q}{物镜口径和两镜焦距已知，眼睛的合适位置待求}{\begin{tikzpicture}
+\draw[axisline](-1,0)--(8,0);\draw[<->,>=Stealth,world](0,-1)--(0,1)node[above]{物镜};\draw[<->,>=Stealth,world](5,-.8)--(5,.8)node[above]{目镜};
+\draw[dim](-.6,-1)--(-.6,1)node[midway,left]{$D_o$};\draw[dim](0,-1.6)--(5,-1.6)node[midway,below]{$25.0\,\mathrm{cm}$};
+\draw[ray](-1,.5)--(0,.5);\node at(6.7,.7){眼瞳 $0.800\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{question}
+\begin{drill}[固定镜筒的两种观察状态]\label{d:45}
+复合显微镜的物镜焦距 $f_o=1.00\,\mathrm{cm}$，目镜焦距 $f_e=5.00\,\mathrm{cm}$，两镜相距 $L=18.0\,\mathrm{cm}$。眼睛紧贴目镜，明视距离 $D=25.0\,\mathrm{cm}$。先使最终像在无穷远，再移动物体使最终虚像位于近点，两透镜位置保持不变。求物体应移动的方向和距离，并比较两种状态相对于裸眼在明视距离观察同一物体的视角放大率。忽略元件厚度。
+\end{drill}
+\fig{fig:d45q}{镜筒长度固定，仅物体沿轴移动}{\begin{tikzpicture}
+\draw[axisline](-2,0)--(6.5,0);\draw[<->,>=Stealth,world](0,-1)--(0,1)node[above]{物镜};\draw[<->,>=Stealth,world](4.5,-1)--(4.5,1)node[above]{目镜};
+\draw[axis,thick](-1,0)--(-1,.45)node[above]{$B$};\node[below]at(-1,0){$A$};\draw[dim](-1,-.8)--(0,-.8)node[midway,below]{$u_o$};
+\draw[dim](0,-1.6)--(4.5,-1.6)node[midway,below]{$L=18.0\,\mathrm{cm}$};\node at(5.5,.8){眼};
+\end{tikzpicture}}
+\end{question}

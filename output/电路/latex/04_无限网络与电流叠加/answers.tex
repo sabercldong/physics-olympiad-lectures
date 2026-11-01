@@ -1,0 +1,145 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c4:drill:1}\textbf{由无源区递推选取衰减根}\par\nobreak
+图\ref{fig:c4:drill:1:s}中无源上节点电势为差电势的一半，故
+\[
+ \frac{V_n-V_{n-1}}{2r}+\frac{V_n-V_{n+1}}{2r}+\frac{V_n}{R}=0.
+\]
+乘以 $2r$ 后，将 $V_n=C\lambda^n$ 代入，得到 $\lambda^2-(2+2r/R)\lambda+1=0$。二次公式的两根为 $1+r/R\pm\sqrt{(1+r/R)^2-1}$，其中正号根大于 $1$，不满足远处电势趋零；所以保留
+$\lambda=1+r/R-\sqrt{r^2/R^2+2r/R}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用源节点守恒确定幅度}\par\nobreak
+取 $V_n=V_0\lambda^{|n|}$，源节点守恒为 $I=V_0/R+V_0(1-\lambda)/r$。
+\typeout{ECFIG:fig:c4:drill:1:p}\fig{fig:c4:drill:1:p}{解答过程：横档阻值改变的双向梯形}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](0,2);\draw(0,2)--(3,2)to[R,l={$X$}](3,0)--(0,0);\draw(0,2)--(-3,2)to[R,l={$X$}](-3,0)--(0,0);\node at(0,3){每侧输入 $X$ 含两条导轨};
+\end{tikzpicture}}
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用侧向半网络的等效作独立核对}\par\nobreak
+图\ref{fig:c4:drill:1:p}中，每个侧向半网络先经过两条 $r$ 轨段，其输入 $X$ 满足
+\[
+ X=2r+\frac{RX}{R+X}.
+\]
+两边乘以 $R+X$，得 $RX+X^2=2rR+2rX+RX$，即 $X^2-2rX-2rR=0$。两根为 $r\pm\sqrt{r^2+2rR}$，负号根小于零，故 $X=r+\sqrt{r^2+2rR}$。
+中央的 $R$ 与左右两个 $X$ 并联，与源节点递推给出的结果相同。令 $a=r/R$，还可直接在归一化式中看见消项：
+\[
+ \frac I{V_0}=\frac1R+\frac{\sqrt{a^2+2a}-a}{r}
+ =\frac{\sqrt{a^2+2a}}r.
+\]
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端口电阻并检验横档的短路与断路极限}\par\nobreak
+图\ref{fig:c4:drill:1:p} 的中央横档与左右尾部形成等效，代入根式简化得
+\[
+ R_{\text{入}}=\frac{V_0}{I}=\frac{rR}{\sqrt{r^2+2rR}}.
+\]
+$R\to0$ 时，$R_{\text{入}}\sim R$，中央横档近似短路；$R\to\infty$ 时，$R_{\text{入}}\sim\sqrt{rR/2}\to\infty$，两轨间连接逐渐消失，不能在无横档情况下形成有限两端电阻。$R=r$ 回到 $r/\sqrt3$。\end{drillsolution}
+\begin{drillsolution}{c4:drill:2}\textbf{补回直接边后按端口拆分并联网络}\par\nobreak
+先把图\ref{fig:c4:drill:2:s}的断口补回，完整方格网络的端口电阻为 $r/2$。把直接边 $r$ 和其余绕行网络 $X$ 分开，它们跨接同一端口，故 $r/2=r\parallel X$。
+\typeout{ECFIG:fig:c4:drill:2:p}\fig{fig:c4:drill:2:p}{解答过程：无限方格去掉直接边}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](4,0);\draw(0,0)--(0,-1.5)to[R,l={$X$}](4,-1.5)--(4,0);\node at(2,1){完整网络：$r\parallel X=r/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从总电导减去直接边电导}\par\nobreak
+图\ref{fig:c4:drill:2:p} 的电导关系为 $2/r=1/r+1/X$，得到 $X=r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查单调性及删边后的对称条件}\par\nobreak
+断开原本有电流的一条边，使端口电阻由 $r/2$ 增为 $r$，符合单调性。去边后源点相邻三条剩余边不等价，不能把“节点度数变三”代入蜂窝的 $2r/3$ 公式。\end{drillsolution}
+\begin{drillsolution}{c4:drill:3}\textbf{从原蜂窝的相邻电阻反求绕行部分}\par\nobreak
+图\ref{fig:c4:drill:3:s} 的完整蜂窝相邻电阻为 $2r/3$。记绕行部分为 $X$，由 $2r/3=r\parallel X$，得 $1/X=3/(2r)-1/r=1/(2r)$，所以 $X=2r$。
+\typeout{ECFIG:fig:c4:drill:3:p}\fig{fig:c4:drill:3:p}{解答过程：无限蜂窝的一条边改变}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](4,0);\draw(0,0)--(0,-1.4)to[R,l={$2r$}](4,-1.4)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留绕行网络并接入新电阻}\par\nobreak
+图\ref{fig:c4:drill:3:p} 接回新直接边 $R$ 后，总电阻为 $R\parallel2r=2rR/(R+2r)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查恢复原边、短路与断路三个极限}\par\nobreak
+$R=r$ 时恢复 $2r/3$；$R\to0$ 时趋零；$R\to\infty$ 时趋 $2r$。绕行部分不变，因此不必重新求无限网络全部电流。\end{drillsolution}
+\begin{drillsolution}{c4:drill:4}\textbf{从开路末端向输入逐节化简}\par\nobreak
+图\ref{fig:c4:drill:4:s} 的有限截断应明确保留首两段上轨。末端开路时，末节输入为 $r+r=2r$，首节输入 $r+(r\parallel2r)=5r/3$。
+\typeout{ECFIG:fig:c4:drill:4:p}\fig{fig:c4:drill:4:p}{解答过程：有限梯形末端边界的作用}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,2)to[R,l={$r$}](1.8,2);\draw(1.8,2)to[R,l={$r$}](1.8,0);\draw(1.8,2)to[R,l={$r$}](3.6,2);\draw(3.6,2)--(3.6,0);\draw(0,0)--(3.6,0);\node[left]at(0,2){$A$};\node[left]at(0,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一截断位置改接短路后重新化简}\par\nobreak
+图\ref{fig:c4:drill:4:p} 若末横档之后直接接上下理想短路，末横档被旁路，末节输入只剩 $r$，首节为 $r+(r\parallel r)=3r/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{与无限固定点比较并检查边界依赖}\par\nobreak
+两结果不同，且夹住无限值 $(1+\sqrt5)r/2$。只有不断增加节数并证明极限时，才可用自相似固定点取代真实末端；两节网络不能假装余部仍与自身相同。\end{drillsolution}
+\begin{drillsolution}{c4:drill:5}\textbf{用单源与平移负源恢复两个上轨端口}\par\nobreak
+图\ref{fig:c4:drill:5:s}中，先从零号上节点注入 $I$、由公共下导线流出。由例\ref{c4:example:5}的三支路守恒与源点归一化，单源电势为 $Ir\lambda^{|k|}/\sqrt5$，其中 $\lambda=(3-\sqrt5)/2$。再叠加位于第 $n$ 点的负源，
+\[
+ V_k=\frac{Ir}{\sqrt5}\bigl(\lambda^{|k|}-\lambda^{|k-n|}\bigr).
+\]
+代入两个端点，$V_0=Ir(1-\lambda^n)/\sqrt5$，$V_n=-V_0$；两端压差除以 $I$ 得 $R_n=2r(1-\lambda^n)/\sqrt5$。
+\typeout{ECFIG:fig:c4:drill:5:p}\fig{fig:c4:drill:5:p}{两上轨端口相隔两段；所有横档和公共下导线保留，不能把两只上轨电阻直接串联}{\begin{tikzpicture}
+
+\foreach \x in {-3,0,3,6,9}{\draw(\x,3)to[R,l={$r$}](\x,0);}
+\foreach \x in {-3,0,3,6}{\draw(\x,3)to[R,l={$r$}]({\x+3},3);}
+\draw(-3,0)--(9,0);
+\draw[dashed](-4,3)--(-3,3)(9,3)--(10,3)(-4,0)--(-3,0)(9,0)--(10,0);
+\fill(0,3)circle(1.5pt)node[above right]{$A_0$};\fill(6,3)circle(1.5pt)node[above left]{$A_2$};
+\draw[flow](0,4.6)--(0,3.3)node[pos=0,above]{$I$};
+\draw[flow](6,3.3)--(6,4.6)node[above]{$I$};
+\node at(3,-1){下导线理想，最终无外部净注入};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留公共回流支路后代入两段距离}\par\nobreak
+图\ref{fig:c4:drill:5:p} 的 $n=2$ 时，$\lambda^2=(7-3\sqrt5)/2$，所以
+\[
+ R_2=\frac{2r}{\sqrt5}\left(1-\frac{7-3\sqrt5}{2}\right)
+ =(3-\sqrt5)r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较相邻值与远距离饱和值}\par\nobreak
+它大于相邻电阻 $(1-1/\sqrt5)r$，小于饱和值 $2r/\sqrt5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用实际回流路径解释有限饱和}\par\nobreak
+远离源点后电势按 $\lambda^n$ 衰减，两端各经附近横档将电流导向公共理想线，端口不必沿整条上轨逐段串联，故结果可趋有限值。\end{drillsolution}
+\begin{drillsolution}{c4:drill:6}\textbf{拆分平均纵向电流与两个同号反向源}\par\nobreak
+图\ref{fig:c4:drill:6:s} 的实际注入分为：零列上下各注入 $I/2$、$n$ 列上下各流出 $I/2$ 的同向部分；以及零列和第 $n$ 列均为上轨注入、下轨流出 $I/2$ 的反向部分。平均纵向压降仍为 $nIr/2$。
+\typeout{ECFIG:fig:c4:drill:6:p}\fig{fig:c4:drill:6:p}{反向部分的两个同号横档源；上下电流相反，中间若干单元省略}{\begin{tikzpicture}
+\begin{scope}[yshift=0cm]
+\draw(0,0)to[R,l={$r$}](2,0);\draw[dashed](2,0)--(4,0);\draw(4,0)to[R,l={$r$}](6,0);
+\draw(0,3)to[R,l={$r$}](2,3);\draw[dashed](2,3)--(4,3);\draw(4,3)to[R,l={$r$}](6,3);
+\draw(0,3)to[R](0,0);
+\draw(2,3)to[R](2,0);
+\draw(4,3)to[R](4,0);
+\draw(6,3)to[R](6,0);
+\draw[flow](-1.5,3)--(0,3)node[midway,above]{$I/2$};
+\draw[flow](0,0)--(-1.5,0)node[midway,below]{$I/2$};
+\draw[flow](7.5,3)--(6,3)node[midway,above]{$I/2$};
+\draw[flow](6,0)--(7.5,0)node[midway,below]{$I/2$};
+\node at(3,4.2){反向部分：上下相反};\node[below]at(0,-.8){$0$ 列};\node[below]at(6,-.8){$n$ 列};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加异轨端口两端的偏差电势}\par\nobreak
+图\ref{fig:c4:drill:6:p}的两个反向源均为 $I/2$。利用例\ref{c4:example:4}的单个横档源响应，差电势为
+$v_k=Ir[\lambda^{|k|}+\lambda^{|k-n|}]/(2\sqrt3)$，其中 $\lambda=2-\sqrt3$。零列上端的偏差是 $v_0/2=Ir(1+\lambda^n)/(4\sqrt3)$；第 $n$ 列下端则为 $-v_n/2=-Ir(1+\lambda^n)/(4\sqrt3)$。两者相减，得到偏差压降 $Ir(1+\lambda^n)/(2\sqrt3)$。再加平均压降并除以 $I$，故
+\[
+ R_n^{\text{异轨}}=\frac{nr}{2}+\frac{r}{2\sqrt3}(1+\lambda^n).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相邻异轨值并以同列端口检验}\par\nobreak
+$n=1$ 得 $R=r/2+r(3-\sqrt3)/(2\sqrt3)=\sqrt3r/2$；$n=0$ 得 $r/\sqrt3$，恢复同一横档端口。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按汇点所在导轨核对反向源的符号}\par\nobreak
+与同轨问题相比，反向部分的负号变为正号，来自汇点换到另一导轨后偏差激励的符号改变。\end{drillsolution}

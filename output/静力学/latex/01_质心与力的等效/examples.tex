@@ -1,0 +1,184 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[均匀三角板的质心]\label{s1:example:1}
+均匀薄三角板顶点为$A(0,0),B(b,0),C(p,h)$。求质心，证明它在三条中线交点。
+\end{example}
+\fig{fig:s1:example:1:s}{题设：均匀三角板的质心}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,0)--(1,3)--cycle;\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\node[above]at(1,3){$C$};\draw[dim](0,-.55)--(4,-.55)node[midway,below]{$b$};\draw[dim](4.6,0)--(4.6,3)node[midway,right]{$h$};\draw[guide](1,3)--(1,0);\node at(.6,-.2){$p$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由相似关系确定水平细条及其中心}\par\nobreak
+在图\ref{fig:s1:example:1:s}距底边高$y$处取水平细条，宽$\dd y$。两端横坐标为$py/h$及$b+(p-b)y/h$，条长$b(1-y/h)$，条中心横坐标$b/2+(p-b/2)y/h$。
+\fig{fig:s1:example:1:p}{解答过程：均匀三角板的质心}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,0)--(1,3)--cycle;\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\node[above]at(1,3){$C$};\draw[world](.33,1)--(3,1);\draw[guide](1,3)--(2,0);\fill(1.667,1)circle(2pt)node[above right]{$C_M$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先求竖直一阶矩}\par\nobreak
+图\ref{fig:s1:example:1:p}中总面积$S=bh/2$，因此
+\[
+\int_0^h yb(1-y/h)\,\dd y
+=b\int_0^h\left(y-\frac{y^2}{h}\right)\,\dd y
+=b\left[\frac{y^2}{2}-\frac{y^3}{3h}\right]_0^h
+=\frac{bh^2}{6}.
+\]
+再除以总面积，$y_C=(bh^2/6)/(bh/2)=h/3$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再求横坐标并核验中线交点}\par\nobreak
+细条中心的坐标可写为$x_{\rm strip}=b/2+(p-b/2)y/h$。将它代入$x_C=S^{-1}\int x_{\rm strip}\,\dd S$，常数项积分为$bS/2$，含$y$项积分为$(p-b/2)Sy_C/h$。除以$S$后，故$x_C=b/2+(p-b/2)(y_C/h)=(b+p)/3$。即$\boldsymbol r_C=(\boldsymbol r_A+\boldsymbol r_B+\boldsymbol r_C^{\,\rm vertex})/3$，位于顶点到底边中点连线的三分之二处。三条中线给出同一点。\end{solution}
+\begin{question}\begin{example}[三根杆组成的三角框]\label{s1:example:2}
+三根相同线密度的均匀细杆围成三角形，边$a=BC,b=CA,c=AB$。求质心的矢量表达式；直角情形取$A=(0,0),B=(b_0,0),C=(0,a_0)$。
+\end{example}
+\fig{fig:s1:example:2:s}{题设：三根杆组成的三角框}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,0)--(1,3)--cycle;\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\node[above]at(1,3){$C$};\node[below]at(2,0){$c$};\node[left]at(.5,1.5){$b$};\node[right]at(2.5,1.5){$a$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把三根杆分别集中在各自中点}\par\nobreak
+图\ref{fig:s1:example:2:s}每根杆可等效集中在其中点，质量分别为$\lambda a,\lambda b,\lambda c$。令周长$P=a+b+c$，则
+\[
+\boldsymbol r_M=\frac{a(\boldsymbol r_B+\boldsymbol r_C)+b(\boldsymbol r_C+\boldsymbol r_A)+c(\boldsymbol r_A+\boldsymbol r_B)}{2P}.
+\]
+各边中点分别为$(\boldsymbol r_B+\boldsymbol r_C)/2$、$(\boldsymbol r_C+\boldsymbol r_A)/2$、$(\boldsymbol r_A+\boldsymbol r_B)/2$。以杆长作质量权重时，分母是$\lambda(a+b+c)$，分子每项含同一个$\lambda$，可以约去，得到上式。取中点的原因是每根杆均匀，而不是三根杆的质量相等。
+\fig{fig:s1:example:2:p}{各杆的中点是等效质量点，质量权重仍按杆长分配}{\begin{tikzpicture}
+\draw[world](0,0)--(4,0)--(1,3)--cycle;\draw[guide](2,0)--(2.5,1.5)--(.5,1.5)--cycle;\fill(2,0)circle(2pt)node[below]{$\lambda c$};\fill(2.5,1.5)circle(2pt)node[right]{$\lambda a$};\fill(.5,1.5)circle(2pt)node[left]{$\lambda b$};\fill[red](1.770091,0.973911)circle(2pt)node[above]{$M$};\node[below left]at(0,0){$A$};\node[below right]at(4,0){$B$};\node[above]at(1,3){$C$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释边长权重与中位三角形的关系}\par\nobreak
+图\ref{fig:s1:example:2:p}中的三个中点以对应边长为质量权重。它们组成的中位三角形，其对边长度分别为$a/2,b/2,c/2$，所以加权点也是该小三角形的内心，并非大三角形的面积质心。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐边代入坐标并作对称性检查}\par\nobreak
+直角情形$c_0=\sqrt{a_0^2+b_0^2}$，三根杆的质量权重依次为$b_0,a_0,c_0$，对应中点为$(b_0/2,0),(0,a_0/2),(b_0/2,a_0/2)$。因此横向一阶矩是$[b_0^2+b_0c_0]/2$，纵向一阶矩是$[a_0^2+a_0c_0]/2$；分别除以总权重$a_0+b_0+c_0$，得到$x_M=b_0(b_0+c_0)/[2(a_0+b_0+c_0)]$，$y_M=a_0(a_0+c_0)/[2(a_0+b_0+c_0)]$。当$a_0=b_0$，两坐标相等，符合对称性。\end{solution}
+\begin{question}\begin{example}[偏心圆孔薄板]\label{s1:example:3}
+半径$R$的均匀圆板挖去半径$r$的圆孔，孔心在原圆心右方$d$处，$d+r\le R$。求剩余板质心。
+\end{example}
+\fig{fig:s1:example:3:s}{题设：偏心圆孔薄板}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.6);\draw[world](2.6,0)circle(.6);\draw[axis](.1,0)--(4.3,0)node[right]{$x$};\fill(2,0)circle(2pt)node[below]{$O$};\fill(2.6,0)circle(2pt)node[above]{$O'$};\draw[dim](2,-.7)--(2.6,-.7)node[midway,below]{$d$};\draw[guide](2,0)--(.869,1.131)node[midway,above]{$R$};\draw[guide](2.6,0)--(2.6,.6)node[right]{$r$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{统一原点并区分完整板、孔与剩余板}\par\nobreak
+图\ref{fig:s1:example:3:s}取完整圆心为原点。完整板质量$\sigma\pi R^2$，孔的质量$\sigma\pi r^2$、坐标$d$。对称性给$y_C=0$。
+设剩余质量为$M_r$、孔质量为$M_h$。补回圆孔后完整板的质心在原点，因此$M_rx_C+M_hd=0$。这里孔的一阶矩必须从完整板中减去；若把孔当成仍留在板上的正质量，会得到相反的偏移方向。
+\fig{fig:s1:example:3:p}{解答过程：偏心圆孔薄板}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.6);\draw[world](2.6,0)circle(.6);\draw[axis](.1,0)--(4.3,0)node[right]{$x$};\fill(2,0)circle(1.2pt)node[below]{$O$};\fill(2.6,0)circle(1.2pt)node[above]{$O^\prime$};\fill(1.9018,0)circle(1.2pt);\draw[guide](1.9018,.05)--(1.4,.7)node[left]{$C$};\draw[flow](1.9,-.7)--(.9,-.7)node[midway,below]{偏移方向};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用补回后的零一阶矩求剩余质心}\par\nobreak
+图\ref{fig:s1:example:3:p}按“剩余加孔等于完整”写一阶矩：
+\[
+\sigma\pi(R^2-r^2)x_C+\sigma\pi r^2d=0,
+\qquad x_C=-\frac{r^2d}{R^2-r^2}.
+\]
+负号表示向孔的反侧移动。$d=0$时仍居圆心；$r\to0$时偏移趋零。若孔不完全位于板内，上式所减去的面积便不对，必须重新求交叠区域。\end{solution}
+\begin{question}\begin{example}[均匀半圆弧与半圆板]\label{s1:example:4}
+分别求半径$R$的均匀上半圆细弧和上半圆薄板质心距直径的高度。
+\end{example}
+\fig{fig:s1:example:4:s}{相同外轮廓分别承载线质量和面质量}{\begin{tikzpicture}
+\begin{scope}\draw[line width=1.5pt](-1.8,0)arc(180:0:1.8);\draw[guide](-1.8,0)--(1.8,0);\node[below]at(0,0){$O$};\node at(0,2.3){均匀细弧，线密度 $\lambda$};\draw[dim](0,-.5)--(1.8,-.5)node[midway,below]{$R$};\end{scope}
+\begin{scope}[xshift=5cm]\fill[blue!10](-1.8,0)arc(180:0:1.8)--cycle;\draw[world](-1.8,0)arc(180:0:1.8)--cycle;\node[below]at(0,0){$O$};\node at(0,2.3){均匀薄板，面密度 $\sigma$};\draw[dim](0,-.5)--(1.8,-.5)node[midway,below]{$R$};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{沿半圆弧采用弧长质量微元}\par\nobreak
+图\ref{fig:s1:example:4:s}关于竖直轴对称。弧上取角度$\theta$，$y=R\sin\theta$，$\dd m=\lambda R\dd\theta$，故
+\[
+\int y\,\dd m=\lambda R^2\int_0^\pi\sin\theta\,\dd\theta
+=\lambda R^2[-\cos\theta]_0^\pi
+=2\lambda R^2.
+\]
+弧长为 $\pi R$，质量为 $\lambda\pi R$，因此
+\[
+y_{\rm arc}=\frac{2\lambda R^2}{\lambda\pi R}=\frac{2R}{\pi}.
+\]
+\fig{fig:s1:example:4:p}{弧元固定半径，板的极坐标微元还要沿半径积分}{\begin{tikzpicture}
+\begin{scope}\draw[world](-1.8,0)arc(180:0:1.8);\draw[axis](-2,0)--(2.1,0);\draw[axis](0,0)--(0,2.2);\draw[blue,line width=2pt]({1.8*cos(40)},{1.8*sin(40)})arc(40:53:1.8);\draw[guide](0,0)--({1.8*cos(40)},{1.8*sin(40)})node[midway,below]{$R$};\draw(.55,0)arc(0:40:.55);\node at(.8,.25){$\theta$};\node[blue]at(1.5,1.7){$R\dd\theta$};\fill(0,1.1459)circle(2pt)node[left]{$2R/\pi$};\end{scope}
+\begin{scope}[xshift=5.3cm]\draw[world](-1.8,0)arc(180:0:1.8)--cycle;\fill[blue!25](40:.9)--(40:1.15)arc(40:55:1.15)--(55:.9)arc(55:40:.9)--cycle;\draw[guide](0,0)--(40:1.8) (0,0)--(55:1.8);\draw[dim](0,0)--(40:.9)node[midway,below]{$r$};\node at(1.6,.8){$\dd r$};\node at(1.6,1.6){$r\dd\theta$};\fill(0,.76394)circle(2pt)node[left]{$4R/(3\pi)$};\node at(0,-.7){$\dd S=r\dd r\dd\theta$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用面积微元计算半圆板}\par\nobreak
+图\ref{fig:s1:example:4:p}薄板中的半径也变化，不能用固定的$R$替换所有质点的径向坐标。取$0\le r\le R$、$0\le\theta\le\pi$，每个面积元的高度为$r\sin\theta$，$\dd m=\sigma r\dd r\dd\theta$，于是
+\[
+\begin{aligned}
+\int y\,\dd m
+&=\sigma\int_0^\pi\sin\theta\,\dd\theta\int_0^Rr^2\,\dd r\\
+&=\sigma[-\cos\theta]_0^\pi\left[\frac{r^3}{3}\right]_0^R
+=\sigma\cdot2\cdot\frac{R^3}{3}=\frac{2\sigma R^3}{3}.
+\end{aligned}
+\]
+薄板质量为 $\sigma\pi R^2/2$，故
+\[
+y_{\rm plate}=\frac{2\sigma R^3/3}{\sigma\pi R^2/2}
+=\frac{4R}{3\pi}.
+\]
+薄板的质量更多地分布在靠近直径的内部，故其质心低于半圆弧，结果顺序合理。\end{solution}
+\begin{question}\begin{example}[薄球冠的质心]\label{s1:example:5}
+半径$R$的均匀薄球面，取顶端向下高度为$H$的球冠。求其面积和质心位置，并求它在球心所张的立体角。
+\end{example}
+\fig{fig:s1:example:5:s}{题设：薄球冠的质心}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.7);\draw[world](.6,.965)--(3.4,.965);\draw[guide](2,0)--(2,1.7);\draw[dim](4,.965)--(4,1.7)node[midway,right]{$H$};\draw[guide](2,0)--(.8,-1.2)node[midway,left]{$R$};\fill(2,0)circle(2pt)node[below]{$O$};\draw[guide](2,0)--(3.4,.965);\draw[guide](2,.55)arc(90:34.58:.55);\node at(2.45,.65){$\theta_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由纬圈几何确定等高球带的面积}\par\nobreak
+图\ref{fig:s1:example:5:s}以球心为$z=0$，球冠范围为$R-H\le z\le R$。半径为$s$的纬圈带，其母线宽$\dd l$，满足$s=R\sin\theta$、$|\dd z|=R\sin\theta\dd\theta$、$\dd l=R\dd\theta$，故$\dd S=2\pi s\dd l=2\pi R\dd z$。
+\fig{fig:s1:example:5:p}{解答过程：薄球冠的质心}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.7);\draw[world](.5,.8)--(3.5,.8);\draw[world](.6,.95)--(3.4,.95);\draw[guide](2,0)--(3.4,.95);\node at(2,2.4){$\dd S=2\pi R\dd z$};\draw[dim](4,.8)--(4,.95)node[right]{$\dd z$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分球带的一阶矩求面积与质心}\par\nobreak
+图\ref{fig:s1:example:5:p}等高球带面积相等，因此
+\[
+S=2\pi R\int_{R-H}^R\dd z
+=2\pi R[z]_{R-H}^R=2\pi RH.
+\]
+面积一阶矩中的积分为
+\[
+\int_{R-H}^R z\,\dd z
+=\left[\frac{z^2}{2}\right]_{R-H}^R
+=\frac{R^2-(R-H)^2}{2}=RH-\frac{H^2}{2}.
+\]
+面密度 $\sigma$ 在质量与一阶矩中约去，因此
+\[
+z_C=\frac{2\pi R(RH-H^2/2)}{2\pi RH}=R-\frac H2.
+\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用径向面积换算立体角}\par\nobreak
+球冠边缘满足$H=R(1-\cos\theta_0)$。因球面上每个面元都与径向垂直，球心立体角$\Omega=S/R^2=2\pi H/R=2\pi(1-\cos\theta_0)$。这些结论针对薄球面，实心球冠的截面积不恒定，不能照搬。\end{solution}
+\begin{question}\begin{example}[动滑轮与两弹簧的静伸长]\label{s1:example:6}
+两轻弹簧劲度$k_1,k_2$，由跨过轻动滑轮的轻绳连接。初始无载荷，轴下挂重物$G$，求滑轮下降距离及等效劲度。
+\end{example}
+\fig{fig:s1:example:6:s}{题设：动滑轮与两弹簧的静伸长}{\begin{tikzpicture}[scale=.88]\draw[world](0,2.5)--(4,2.5);\draw[spring](1,2.5)--(1,1)node[left]{$k_1$};\draw[spring](3,2.5)--(3,1)node[right]{$k_2$};\draw[world](1,1)--(1,.2)arc(180:360:1)--(3,1);\draw[world](2,.2)circle(1);\draw[force](2,.2)--(2,-1.4)node[below]{$G$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{隔离轻滑轮求张力和两弹簧伸长}\par\nobreak
+图\ref{fig:s1:example:6:s}中滑轮受两段张力支持，$2T=G$。两弹簧伸长分别为$x_1=T/k_1$、$x_2=T/k_2$。
+张力求出后先分别应用胡克定律，$x_1=G/(2k_1)$、$x_2=G/(2k_2)$。它们是弹簧末端的移动量，不等于滑轮轴的移动量；只有把不可伸长绳的几何约束加入，才能求$x$。
+\fig{fig:s1:example:6:p}{两端下降量的和补偿滑轮下降引起的两段绳长增加}{\begin{tikzpicture}
+\begin{scope}\draw[world](-1.5,3.5)--(1.5,3.5);\draw[spring](-1,3.5)--(-1,1.9)node[midway,left]{$k_1$};\draw[spring](1,3.5)--(1,1.5)node[midway,right]{$k_2$};\draw[guide](-1.5,2.2)--(1.5,2.2);\draw[world](-1,1.9)--(-1,.3)arc(180:360:1)--(1,1.5);\draw[world](0,.3)circle(1);\draw[guide](0,.8)circle(1);\fill(0,.3)circle(2pt);\draw[dim](-2,2.2)--(-2,1.9)node[midway,left]{$x_1$};\draw[dim](2,2.2)--(2,1.5)node[midway,right]{$x_2$};\draw[dim](0,.8)--(0,.3)node[midway,right]{$x$};\node at(0,-1.4){虚线为无载荷位置};\end{scope}
+\begin{scope}[xshift=5.5cm,yshift=1cm]\draw[world](0,0)circle(.7);\draw[force,blue](-.7,0)--(-.7,1.4)node[above]{$T$};\draw[force,blue](.7,0)--(.7,1.4)node[above]{$T$};\draw[force,red](0,0)--(0,-1.6)node[below]{$G$};\node at(0,2){轻滑轮受力};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把端点位移与轴心位移联系起来}\par\nobreak
+图\ref{fig:s1:example:6:p}由绳长约束，轴下降$x$使两绳直段总长度增加$2x$，须由两弹簧端下降补偿，所以$2x=x_1+x_2$。于是
+\[
+x=\frac G4\left(\frac1{k_1}+\frac1{k_2}\right),\qquad
+k_{\rm eq}=\frac Gx=\frac{4k_1k_2}{k_1+k_2}.
+\]
+系数四来自两倍受力和两倍位移约束，不能把它当普通串联。\end{solution}
+\begin{question}\begin{example}[三个零原长弹簧的合力]\label{s1:example:7}
+三个劲度均为$k$、原长可忽略的轻弹簧，固定端在圆周三等分点$A,B,C$，另一端连在圆内质点$P$。求弹簧合力。
+\end{example}
+\fig{fig:s1:example:7:s}{题设：三个零原长弹簧的合力}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.7);\foreach \a/\l in {0/A,120/B,240/C}{\coordinate(\l)at({2+1.7*cos(\a)},{1.7*sin(\a)});\fill(\l)circle(2pt)node[above]{$\l$};\draw[spring](\l)--(2.5,.2);}\fill(2.5,.2)circle(3pt)node[below right]{$P$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用零原长把弹力写成位移矢量}\par\nobreak
+在图\ref{fig:s1:example:7:s}以圆心为原点。零原长使第$i$根弹簧的力矢量直接等于$k(\boldsymbol r_i-\boldsymbol r_P)$，无需分别求长度再投影。
+设第$i$根弹簧长度为$\ell_i$、从$P$指向固定端的单位向量为$\boldsymbol e_i$。零原长时$\boldsymbol F_i=k\ell_i\boldsymbol e_i$，而$\ell_i\boldsymbol e_i=\boldsymbol r_i-\boldsymbol r_P$，所以长度和单位向量的乘积可直接合并为位移矢量。三等分固定点关于圆心对称，其位置矢量和为零。
+\fig{fig:s1:example:7:p}{三根弹力从同一点作矢量和，合力指向圆心}{\begin{tikzpicture}
+\draw[guide](0,0)circle(1.7);\coordinate(P)at(.5,.2);\foreach \a/\n in {0/A,120/B,240/C}{\coordinate(\n)at(\a:1.7);\draw[force,blue](P)--(\n);\fill(\n)circle(2pt)node[above]{$\n$};}\fill(P)circle(2pt)node[above right]{$P$};\fill(0,0)circle(2pt)node[below right]{$O$};\draw[force,red](P)--(-1,-.4)node[below left]{$\bm F=-3k\bm r_P$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用固定端对称性合成三弹力}\par\nobreak
+图\ref{fig:s1:example:7:p}中三等分点满足$\boldsymbol r_A+\boldsymbol r_B+\boldsymbol r_C=0$，故
+\[
+\boldsymbol F=k(\boldsymbol r_A+\boldsymbol r_B+\boldsymbol r_C-3\boldsymbol r_P)
+=-3k\boldsymbol r_P.
+\]
+合力始终指向圆心。若弹簧有不可忽略的原长，力将含$\ell_0(\boldsymbol r_i-\boldsymbol r_P)/|\boldsymbol r_i-\boldsymbol r_P|$，上述全平面线性关系不再成立。\end{solution}

@@ -1,0 +1,153 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{s3:drill:1}\textbf{用法向分量减轻摩擦并列上坡平衡}\par\nobreak
+图\ref{fig:s3:drill:1:s}令外力相对上坡方向向斜面外侧偏$\delta$，则$N=Mg\cos15^\circ-F\sin\delta$。上坡平衡为$F\cos\delta=Mg\sin15^\circ+\mu N$。
+物块向上缓慢滑动，摩擦沿下坡，大小为$\mu N$。外力向外的分量$F\sin\delta$减小支持力，向上的分量$F\cos\delta$直接推动物块；两种作用都必须进入方程。用法向式消去$N$后，可将质量写成$M=F(\cos\delta+\mu\sin\delta)/[g(\sin15^\circ+\mu\cos15^\circ)]$，再同时优化力大小与方向。
+\fig{fig:s3:drill:1:p}{解答过程：抬举能力有限的斜面推物}{\begin{tikzpicture}[scale=.88]\begin{scope}\fill(0,0)circle(2pt);\draw[force](0,0)--(1.2,0)node[right]{$F\cos\delta$};\draw[force](0,0)--(-1.2,0)node[left]{$Mg\sin15^\circ+f$};\node at(0,1){切向投影};\end{scope}\begin{scope}[yshift=-2.4cm]\fill(0,0)circle(2pt);\draw[force](0,0)--(0,1)node[right]{$N+F\sin\delta$};\draw[force](0,0)--(0,-1)node[right]{$Mg\cos15^\circ$};\node at(2,0){法向投影};\end{scope}\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在总力限制内优化方向并验接触}\par\nobreak
+图\ref{fig:s3:drill:1:p}整理得
+\[
+M=\frac{F(\cos\delta+\mu\sin\delta)}{g(\sin15^\circ+\mu\cos15^\circ)}.
+\]
+由$\cos\delta+\mu\sin\delta\le\sqrt{1+\mu^2}$，最优$\delta=\arctan\mu=30^\circ$，取$F=mg$，代入得$M_{\max}=\sqrt2m$。此时力与水平成$45^\circ$。法向力$N=\sqrt2mg\cos15^\circ-mg\sin30^\circ>0$，未脱离。若另限制只能向面内压，最优方向和上限会改变，不能采用本题自由施力的结果。\end{drillsolution}
+\begin{drillsolution}{s3:drill:2}\textbf{由真实力臂求绳力和支承力}\par\nobreak
+图\ref{fig:s3:drill:2:s}对杆底取矩，$Tl\cos\theta=Fh$。水平平衡给$f=F-T\cos\theta=F(1-h/l)$，竖直平衡给$N=G+T\sin\theta=G+F(h/l)\tan\theta$。
+绳的水平分量$T\cos\theta$在高度$l$处向左，与高度$h$处向右的$F$产生反向力矩；因此先由力矩解$T\cos\theta=Fh/l$。$h\le l$确保剩余水平力$F(1-h/l)$向右，所需地面摩擦向左；若超出此高度区间，应先改用摩擦绝对值再分类。
+\fig{fig:s3:drill:2:p}{必须保留施力高度才能正确求绳力与地面反力}{\begin{tikzpicture}
+
+\draw[world](-1,0)--(3,0);\draw[world](0,0)--(0,3);\node[above]at(0,3){$B$};\node[below]at(0,0){$A$};\draw[force](0,3)--(-1,1.8)node[left]{$T$};\draw[force](0,1.7)--(1.3,1.7)node[right]{$F$};\draw[force](0,0)--(-.9,0)node[below]{$f$};\draw[force](0,-1)--(0,0)node[midway,left]{$N$};\draw[force](0,1.5)--(0,.5)node[right]{$G$};\draw[dim](2.5,0)--(2.5,3)node[midway,right]{$l$};\draw[dim](1.8,0)--(1.8,1.7)node[midway,right]{$h$};\draw[guide](0,3)--(-1.5,3);\node at(-.65,2.7){$\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用外力系数判定自锁高度}\par\nobreak
+图\ref{fig:s3:drill:2:p}施加$f\le\mu N$，得到$F[1-(h/l)(1+\mu\tan\theta)]\le\mu G$。对所有$F$成立要求
+\[
+h\ge\frac{l}{1+\mu\tan\theta}.
+\]
+同时$T\ge0,N>0$，满足单向约束。绳的角度是固定几何条件，不能在增大$F$时把它也任意改变。\end{drillsolution}
+\begin{drillsolution}{s3:drill:3}\textbf{由偏心力矩建立法向力偶}\par\nobreak
+在图\ref{fig:s3:drill:3:s}忽略重力且两法向力相等为$N$。若所需两摩擦相等，则它们的合力通过中线，关于中点总转矩为零。法向力偶平衡$NL=F|e|$。
+忽略重力使竖直平衡给上下两法向力大小相同。选择中心对称的两接触点，两处等摩擦的转矩互相抵消，但两个法向力方向相反、作用线相距$L$，形成力偶$NL$。由$NL=F|e|$得$N=F|e|/L$。若能取$f_1=f_2=F/2\le\mu N$，各方向的力和力矩都可满足，因此所列条件同时给出必要性和可实现性。
+\fig{fig:s3:drill:3:p}{偏心拉力与法向力偶相反；两摩擦在中线两侧等量分配}{\begin{tikzpicture}
+
+\draw[world](0,1)--(4,1);\draw[world](0,-1)--(4,-1);\draw[guide](0,0)--(5,0);\draw[world](.5,1)--(3.5,.8)--(3.5,-1)--(.5,-.8)--cycle;
+\draw[force](.5,1)--(.5,0)node[left]{$N$};\draw[force](3.5,-1)--(3.5,0)node[right]{$N$};\draw[force](.5,1)--(-.5,1)node[left]{$F/2$};\draw[force](3.5,-1)--(2.5,-1)node[below]{$F/2$};\draw[world](3.5,.8)--(3.5,1.8);\draw[force](3.5,1.8)--(4.7,1.8)node[right]{$F$};\draw[dim](.5,-1.7)--(3.5,-1.7)node[midway,below]{$L$};\draw[dim](5.4,0)--(5.4,1.8)node[midway,right]{$|e|$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验两处摩擦容量及接触对角}\par\nobreak
+图\ref{fig:s3:drill:3:p}沿水平方向需总摩擦$F$，而上限为$2\mu N=2\mu F|e|/L$。因此自锁条件为$2\mu|e|\ge L$。这要求拉力偏置激发的正是图中那一对对角接触；偏置反号时应交换接触角。若重力不可忽略，两法向力不再相等，须保留竖直力平衡，不能直接套本式。\end{drillsolution}
+\begin{drillsolution}{s3:drill:4}\textbf{由整体平衡比较两脚法向力}\par\nobreak
+图\ref{fig:s3:drill:4:s}以整个梯和人为对象，水平外力只有两脚摩擦，故两者大小相等为$f$，方向相向。
+令两脚间距为$d$，人重为$G$，人在地面的竖直投影距$A$为$x$。忽略梯重后，整体竖直平衡$N_A+N_B=G$；关于$A$取矩，地面摩擦均与地面共线，没有力矩，故$N_Bd=Gx$。这就给出两脚承重的差异，不需先求铰链内力。
+\fig{fig:s3:drill:4:p}{整体取矩确定两脚支持力，再比较同一摩擦需求}{\begin{tikzpicture}
+
+\draw[world](0,0)--(2,3)--(4,0);\node[above]at(2,3){$O$};\draw[world](-.5,0)--(5.5,0);\draw[guide](2,3)--(5.2,3);\draw[dim](5.2,0)--(5.2,3)node[midway,right]{$H$};\draw[force](0,0)--(0,1.6)node[left]{$N_A$};\draw[force](4,0)--(4,1)node[right]{$N_B$};\draw[force](0,0)--(1,0)node[below]{$f$};\draw[force](4,0)--(3,0)node[below]{$f$};\fill(1,1.5)circle(2pt);\draw[force](1,1.5)--(1,.4)node[left]{$G$};\draw[guide](1,1.5)--(1,-.7);\draw[dim](0,-.7)--(1,-.7)node[midway,below]{$x$};\draw[dim](0,-1.4)--(4,-1.4)node[midway,below]{$d$};\node[below left]at(0,0){$A$};\node[below right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离未载人的梯腿求实际摩擦需求}\par\nobreak
+图\ref{fig:s3:drill:4:p}中，设铰链$O$离地高度为$H$。未载人的轻梯腿$OB$仅受铰链力和地面接触力。对$O$取矩，铰链力没有力矩，故
+\[
+N_B\frac d2-fH=0,\qquad
+f=\frac{d}{2H}N_B.
+\]
+结合整体平衡，得到
+\[
+N_B=\frac{Gx}{d},\qquad N_A=\frac{G(d-x)}d,\qquad
+f=\frac{Gx}{2H}.
+\]
+上行时$N_B$与$f$同比例增大，不能仅由$N_B<N_A$断言上行必然触发滑动。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较摩擦裕度并判断是否会失稳}\par\nobreak
+对题设$0<x<d/2$，两脚所需的摩擦比为
+\[
+\frac f{N_B}=\frac d{2H},\qquad
+\frac f{N_A}=\frac d{2H}\frac{x}{d-x}<\frac d{2H}.
+\]
+因此$B$脚的摩擦裕度较小，整架梯能够平衡的条件是$\mu\ge d/(2H)$。在梯形状保持不变的前提下，若$\mu>d/(2H)$，人向上移动至中点前两脚始终满足静摩擦约束；若$\mu=d/(2H)$，$B$脚在所有这些位置都处于临界状态；若$\mu<d/(2H)$，任意$x>0$都不能维持题设的静平衡。故本题可以确定哪一脚的约束更严格，却不能把“上行必然使$B$脚由静止转为滑动”作为结论。\end{drillsolution}
+\begin{drillsolution}{s3:drill:5}\textbf{由实际滑动方向建立斜面内三力平衡}\par\nobreak
+图\ref{fig:s3:drill:5:s}重力沿坡向下分量$G\sin\theta$与摩擦大小$\mu G\cos\theta$相等。设木块速度单位向量为$\boldsymbol t$，绳指向$O$的单位向量为$-\boldsymbol e_r$，平衡可写$-T\boldsymbol e_r+G\sin\theta(-\boldsymbol e_y-\boldsymbol t)=0$。
+\fig{fig:s3:drill:5:p}{解答过程：斜面缓拉轨迹}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,-2.8)node[below]{$y_d$};\draw[world](4,0)arc(0:-180:2);\node[above left]at(0,0){$O$};\node[above]at(4,0){$P_0$};\draw[guide](0,0)--(3,-1.732)node[midway,above right]{$\rho$};\draw[guide](.7,0)arc(0:-30:.7);\node at(.95,-.25){$\phi$};\fill(3,-1.732)circle(2pt)node[above right]{$P$};\draw[flow](3,-1.732)--(2.134,-2.232)node[below left]{$\boldsymbol t$};\draw[guide](3,-1.732)--(4,-1.732);\draw[guide](3.55,-1.732)arc(0:-150:.55);\node at(3.5,-2.32){$\beta$};\end{tikzpicture}}
+
+\fig{s3deep:trajectoryforces}{斜面内三力闭合，摩擦始终反向于实际切向速度}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt)node[below right]{$P$};\draw[force](0,0)--(-1.5,.866)node[left]{$T$，指向 $O$};\draw[force](0,0)--(0,-1.732)node[right]{$G\sin\theta$};\draw[force](0,0)--(1.5,.866)node[right]{$f=G\sin\theta$};\draw[flow](0,0)--(-1,-.5774)node[left]{$\bm t$};\node at(0,1.7){按图中 $\phi=30^\circ$ 示意，三力首尾相接可闭合};
+\end{tikzpicture}}
+图\ref{s3deep:trajectoryforces}把重力沿坡分量与滑动摩擦画成等长矢量，它们的合力必须与绳力反向。由此确定速度切线与径向的夹角，再写极坐标微分关系；不能把绳方向当作速度方向。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把力三角形转换为极坐标微分方程}\par\nobreak
+图\ref{fig:s3:drill:5:p}由等大两力合成关系，径向收缩方向平分重力与摩擦的夹角。为展开轨迹计算，令$y_d$沿下坡为正，极角$\phi$从正$x$向下量。设速度方向与正$x$夹角为$\beta$，力的两个分量为$T\cos\phi=-G\sin\theta\cos\beta$、$T\sin\phi=G\sin\theta(1-\sin\beta)$。当$\phi>0$时相除，并用半角恒等式化简：
+\[
+\tan\phi
+=\frac{1-\sin\beta}{-\cos\beta}
+=-\frac{\cos\beta}{1+\sin\beta}
+=\tan\left(\frac\beta2-\frac\pi4\right).
+\]
+初态$\phi\to0^+$时，木块从沿下坡方向开始缓动，即$\beta\to\pi/2$。选择与此初态连续且绳长逐渐减小的分支，得到$\beta/2-\pi/4=\phi$，即$\beta=\pi/2+2\phi$；起点分量式相除时出现的零比零由该连续极限处理。速度与径向的夹角为$\beta-\phi=\pi/2+\phi$，所以
+\[
+\frac{\dot\rho}{\rho\dot\phi}
+=\cot(\beta-\phi)=\cot(\pi/2+\phi)=-\tan\phi.
+\]
+由此得到$\dd\rho/\rho=-\tan\phi\,\dd\phi$。用初态$\rho(0)=\rho_0$确定积分上下限：
+\[
+\int_{\rho_0}^{\rho}\frac{\dd r}{r}
+=-\int_0^\phi\frac{\sin\psi}{\cos\psi}\,\dd\psi.
+\]
+左侧为$[\ln r]_{\rho_0}^{\rho}=\ln(\rho/\rho_0)$。右侧令$u=\cos\psi$，则$\dd u=-\sin\psi\,\dd\psi$，当$\psi=0,\phi$时分别有$u=1,\cos\phi$，所以
+\[
+-\int_0^\phi\frac{\sin\psi}{\cos\psi}\,\dd\psi
+=\int_1^{\cos\phi}\frac{\dd u}{u}
+=[\ln u]_1^{\cos\phi}=\ln\cos\phi.
+\]
+在$0\le\phi<\pi/2$的运动分支上$\rho>0$、$\cos\phi>0$，两侧取指数，得到$\rho=\rho_0\cos\phi$。代入水平力平衡还可得$T=2G\sin\theta\sin\phi\ge0$，与绳只能施加拉力一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释圆弧分支与端点适用范围}\par\nobreak
+因此 $x^2+y_d^2=\rho_0x$，换回题设向上坡为正的 $y=-y_d$，即 $x^2+y^2=\rho_0x$，轨迹为直径 $OP_0$ 的下半圆。木块先下移，经过圆弧最低点后再上移；“缓拉”并不要求全过程向下坡运动。起点处绳力趋零，是从微小缓动建立的极限；终点接近滑轮时实际装置尺寸会限制轨迹。\end{drillsolution}
+\Needspace{26\baselineskip}
+\begin{drillsolution}{s3:drill:6}\textbf{判断旋转趋势对应的两处摩擦方向}\par\nobreak
+图\ref{fig:s3:drill:6:s}逆时针趋势使地面摩擦向左、墙摩擦向上。记地面摩擦$f$、墙摩擦$h$，水平平衡$N_w=f$，竖直$N_g+h=G+F$，抵抗力矩$r(f+h)$。
+\fig{fig:s3:drill:6:p}{解答过程：墙角圆球的偏心下压力}{\begin{tikzpicture}[scale=.88]\draw[world](.3,2.5)--(.3,0)--(3,0);\draw[world](1.5,1.2)circle(1.2);\fill(1.5,1.2)circle(2pt)node[above right]{$C$};\draw[force](1.5,0)--(1.5,.5)node[right]{$N_g$};\draw[force](1.5,0)--(.5,0)node[below]{$f$};\draw[force](.3,1.2)--(1.1,1.2)node[midway,below]{$N_w$};\draw[force](.3,1.2)--(.3,2.1)node[left]{$h$};\draw[force](1.5,1.2)--(1.5,.75)node[midway,right]{$G$};\draw[force](1,3.1)--(1,2.291)node[above,pos=0]{$F$};\draw[guide](1.5,2.4)--(1.5,3.55);\draw[guide](1,3.1)--(1,3.55);\draw[dim](1,3.5)--(1.5,3.5)node[midway,above]{$s$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在摩擦可行域内求最大抵抗力矩}\par\nobreak
+图\ref{fig:s3:drill:6:p}静摩擦约束是$f\le\mu(G+F-h)$、$h\le\mu f$，且两者均非负。先将两个约束联立：
+\[
+h\le\mu f\le\mu^2(G+F-h)
+\quad\Longrightarrow\quad
+h\le\frac{\mu^2(G+F)}{1+\mu^2}.
+\]
+另一方面，
+\[
+f+h\le\mu(G+F-h)+h
+=\mu(G+F)+(1-\mu)h.
+\]
+因$0<\mu<1$，右侧随$h$增大而增大；代入上式的$h$上限，得到
+\[
+f+h\le\frac{\mu(1+\mu)}{1+\mu^2}(G+F).
+\]
+当$f=\mu N_g$、$h=\mu N_w=\mu f$时等号同时成立，且
+\[
+N_g=\frac{G+F}{1+\mu^2}>0,\qquad
+N_w=f=\frac{\mu(G+F)}{1+\mu^2}>0.
+\]
+这证明两处极限组合属于接触可行域，并确实给出最大抵抗力矩。令偏心力矩$Fs_c=r(f+h)_{\max}$，故临界
+\[
+s_c=\frac{\mu(1+\mu)}{1+\mu^2}\frac{G+F}{F}\,r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把力矩阈值与球面偏置范围取交集}\par\nobreak
+要启动需$s>s_c$，还必须$s\le r$，否则球面范围内根本达不到所需偏置。$\mu<1$保证两处极限组合确给该方向最大阻力矩；不可不说明范围地外推。\end{drillsolution}

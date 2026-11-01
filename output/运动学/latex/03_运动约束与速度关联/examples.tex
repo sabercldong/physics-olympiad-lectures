@@ -1,0 +1,266 @@
+\section{例题与分析}
+\begin{question}\begin{example}[沿斜壁移动的滑轮]\label{k3p1}
+忽略滑轮尺寸。绳的一端固定在斜壁左下方，沿倾角 $\theta$ 的斜壁向右上方绕过滑轮，再竖直向下连接物体 $M$。滑轮以速率 $v_0$ 沿斜壁向上运动，绳始终绷紧，求 $M$ 的对地速度。\end{example}
+\fig{k3p1q}{沿斜壁移动的滑轮：题设关系}{\begin{tikzpicture}\draw[world](-2,-1)--(1.5,1.1);\coordinate(P)at(1,.8);\draw[very thick](-1.5,-.7)--(P)--(1,-1.5);\fill(P)circle(3pt)node[above]{$P$};\node[draw]at(1,-1.7){$M$};\draw[flow,blue](1.2,.8)--(2.2,1.4)node[right]{$v_0$};\node at(-.7,-.6){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求沿壁段与竖直段的长度变化率}\par\nobreak
+取竖直向上为正。图\ref{k3p1q}中沿壁绳段增长率为 $v_0$；竖直段长为 $y_P-y_M$，增长率为 $v_0\sin\theta-v_M$。绳长不变给出
+\[v_0+v_0\sin\theta-v_M=0,\qquad \boxed{v_M=v_0(1+\sin\theta)}.\]
+\fig{k3p1s}{沿斜壁移动的滑轮：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(2,1.2)--(2,-1.5);\node[above]at(2,1.2){$P$};\node[below]at(2,-1.5){$M$};\draw[flow,blue](2.6,.8)--(2.6,1.8)node[right]{$v_0\sin\theta$};\draw[flow,red](2.6,-1.5)--(2.6,.2)node[right]{$v_M$};\node[left]at(.6,.7){沿壁段增长};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以滑轮和物体的相对位移复核方向}\par\nobreak
+图\ref{k3p1s}把竖直段上端的上升和该段本身的缩短分别标出：沿壁段变长，竖直段必须以 $v_0$ 缩短；上端还在上升，故物体上升得更快。$\theta=0$ 时物体上升速率为 $v_0$，$\theta\to90^\circ$ 时趋近 $2v_0$。把“竖直段缩短率”当成物体对地速度会漏掉滑轮的竖直运动。
+
+设滑轮沿斜面位移为 $\Delta s$、物体竖直向上位移为 $\Delta y_M$，两段绳长改变量分别为 $\Delta s$与 $\Delta s\sin\theta-\Delta y_M$。总和为零直接给出 $\Delta y_M=(1+\sin\theta)\Delta s$，固定倾角下求导即恢复速度式。图中物体与滑轮不作同方向运动，应用活动滑轮平均关系时必须先确认两绳段是否平行，本题不能套竖直双段的固定倍数。\end{solution}
+
+\begin{question}\begin{example}[碗内小球与弦长]\label{k3p2}
+半径 $R$ 的光滑半圆碗固定，绳从碗内小球 $m_1$ 经右侧碗沿 $A$ 连到竖直悬挂的 $m_2$。绳在碗内为直线且绷紧。令 $\angle AOm_1=\alpha$，$0<\alpha<\pi$；当 $m_2$ 向下速率为 $v_0$ 时，求 $m_1$ 的速率和方向。\end{example}
+\fig{k3p2q}{碗内小球与弦长：题设关系}{\begin{tikzpicture}\draw[world](-2,0)arc(180:360:2);\coordinate(O)at(0,0);\coordinate(A)at(2,0);\coordinate(M)at(1,-1.732);\draw[very thick](M)--(A)--(2,-2.5);\fill(M)circle(3pt)node[left]{$m_1$};\node[draw]at(2,-2.7){$m_2$};\draw[guide](O)--(M) (O)--(A);\node[above]at(O){$O$};\node[above]at(A){$A$};\node at(.55,-.3){$\alpha$};\draw[flow](2.7,-1.5)--(2.7,-2.3)node[right]{$v_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从圆心角求弦长再微分}\par\nobreak
+图\ref{k3p2q}中的绳段 $Am_1$是弦，记其长为 $\ell$。连接 $OA,Om_1$，等腰三角形的顶角平分线把弦分成相等两段，因此
+\[
+ \frac{\ell}{2}=R\sin\frac\alpha2,
+ \qquad \ell=2R\sin\frac\alpha2.
+\]
+悬物 $m_2$向下使悬挂段以速率 $v_0$增长。总绳长不变，故弦段满足 $\dot\ell=-v_0$。对上式求导，
+\[
+ \dot\ell=2R\cos\frac\alpha2\cdot\frac{\dot\alpha}{2}
+ =R\cos\frac\alpha2\,\dot\alpha=-v_0,
+ \qquad \dot\alpha=-\frac{v_0}{R\cos(\alpha/2)}.
+\]
+给定 $0<\alpha<\pi$使分母为正，负号表示夹角减小，小球朝碗沿 $A$运动。它沿圆周的速率应由弧长求导，得到
+\[
+ v_1=R|\dot\alpha|=\boxed{\frac{v_0}{\cos(\alpha/2)}}.
+\]
+\fig{k3p2s}{碗内小球与弦长：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(3,0)node[right]{沿绳};\draw[flow,blue](0,0)--(3,1.5)node[right]{$v_1$};\draw[guide](3,1.5)--(3,0);\draw[flow,red](0,0)--(3,0)node[midway,below]{$v_0$};\node at(1,.25){$\alpha/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用切向速度在弦上的投影复核}\par\nobreak
+图\ref{k3p2s}改用速度投影核验：切向速度与弦方向的夹角为 $\alpha/2$，所以 $v_1\cos(\alpha/2)=v_0$，与长度微分一致。
+
+质量不进入瞬时几何约束，但会影响绳是否绷紧、小球能否保持接触。$\alpha\to\pi$时分母趋零，理想关系不能延伸为有限作用下可持续的运动；$\alpha\to0$时小球接近碗沿，虽速率极限有限，越过边缘后也须另建模型。
+\end{solution}
+
+\begin{question}\begin{example}[平移斜面顶起竖杆]\label{k3p3}
+斜面向右下方倾斜，倾角为 $\theta$，整体以速率 $v_0$ 向右平移。一根细杆受导轨限制只能竖直运动，下端与斜面光滑接触。求杆的速度。\end{example}
+\fig{k3p3q}{平移斜面顶起竖杆：题设关系}{\begin{tikzpicture}\draw[world](-2,1.5)--(2,-.5)--(-2,-.5)--cycle;\draw[very thick](0,.5)--(0,2.5);\draw[world](-.25,1.8)--(.25,1.8);\draw[flow](.5,-.9)--(1.8,-.9)node[right]{$v_0$};\node at(1,-.25){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{写出移动斜面与固定竖直线的交点高度}\par\nobreak
+以图\ref{k3p3q}中的杆所在竖直线为 $x=0$，斜面高度可写成 $y=(X(t)-x)\tan\theta+C$，其中 $\dot X=v_0$。杆端高度为 $y_P=X\tan\theta+C$，故 $\boxed{\dot y_P=v_0\tan\theta}$，向上。
+\fig{k3p3s}{平移斜面顶起竖杆：解答过程}{\begin{tikzpicture}\draw[world](-2,1)--(2,-1);\draw[blue,world](-2,1.35)--(2,-.65);\draw[world](0,-.2)--(0,2);\draw[guide](-2,1)--(-2.6,1) (-2,1.35)--(-2.6,1.35);\draw[dim](-2.6,1)--(-2.6,1.35)node[midway,left]{$\dd y$};\draw[dim](1,-1.4)--(1.7,-1.4)node[midway,below]{$v_0\dd t$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以小位移三角形及法向接触条件复核}\par\nobreak
+图\ref{k3p3s}表示斜面在一小段时间内向右移动 $v_0\dd t$，杆端上升量为 $v_0\dd t\tan\theta$。这与接触法向速度相等的投影法一致。杆端与斜面允许切向滑动，不能把杆的速度直接设为斜面的平动速度；水平和竖直速度之所以能相关，是接触高度随斜面位置变化。
+
+取斜面外法线为 $(\sin\theta,\cos\theta)$。杆速 $(0,u)$与斜面速 $(v_0,0)$的相对速度投影为 $-v_0\sin\theta+u\cos\theta$，接触持续要求它为零，再得 $u=v_0\tan\theta$。切向相对分量并不为零，恰表示杆端在斜面上滑动。$\theta\to0$时斜面水平移动不改变高度，杆速趋零；接近竖直的斜面则使高度对平移极敏感。\end{solution}
+
+\begin{question}\begin{example}[斜绳牵引小船]\label{k3p4}
+岸上定滑轮高出船上系绳点 $h$。收绳速率恒为 $v$，某瞬间绳与水平线成 $\theta$，求船向岸的速率。忽略滑轮尺寸及船的竖直运动。\end{example}
+\fig{k3p4q}{斜绳牵引小船：题设关系}{\begin{tikzpicture}\coordinate(O)at(0,2);\coordinate(B)at(3.5,0);\draw[world](-.5,0)--(4.5,0);\draw[very thick](O)--(B);\draw[world](0,0)--(O);\node[above]at(O){$O$};\node[below]at(B){$B$};\node[left]at(0,1){$h$};\node at(2.8,.2){$\theta$};\draw[flow,blue](3.5,-.6)--(2.2,-.6)node[left]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先对斜绳长求导再换成船的水平速度}\par\nobreak
+设图\ref{k3p4q}中水平距离为 $x$，绳长为 $\ell=\sqrt{x^2+h^2}$。对平方根使用链式法则，
+\[\dot\ell=\frac{1}{2\sqrt{x^2+h^2}}\,2x\dot x=\frac{x\dot x}{\ell}.\]
+代入 $\dot\ell=-v$ 和 $u=-\dot x$，有 $-v=(x/\ell)(-u)$。图中的 $x/\ell=\cos\theta$，因此 $\boxed{u=v\sec\theta}$。
+\fig{k3p4s}{斜绳牵引小船：解答过程}{\begin{tikzpicture}\draw[flow](0,0)--(-3,0)node[left]{$u$};\draw[flow,blue](0,0)--(-2.261538,1.292308)node[above]{$v=u\cos\theta$};\draw[guide](-3,0)--(-2.261538,1.292308);\node at(-.7,.17){$\theta$};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用沿绳投影检查速度放大和终止边界}\par\nobreak
+图\ref{k3p4s}中小船速度在绳方向的投影为 $u\cos\theta$，正是绳的缩短速率。船靠岸时 $\theta$ 增大，保持恒定收绳速率将导致船速增加；不能因绳速恒定就说船做匀速运动。当 $x\to0$ 时该模型出现速度发散，实际船体、绳的弹性和收绳机构都会使理想条件失效。
+
+收绳开始后，斜绳剩余长度在有效阶段为 $\ell(t)=\ell_0-vt$，故 $x(t)=\sqrt{(\ell_0-vt)^2-h^2}$。对它求导，外层平方根与内层平方分别给出
+\[\dot x=\frac{2(\ell_0-vt)(-v)}{2\sqrt{(\ell_0-vt)^2-h^2}}
+ =-\frac{v\ell}{x},\]
+与投影法相同。这个显式函数还给出有效区间 $\ell_0-vt>h$；不能把恒定收绳延长到根号内为负的时刻。速度较绳速大是几何投影结果，不代表能无代价地产生更大的功率。\end{solution}
+
+\begin{question}\begin{example}[半圆柱与竖直从动杆]\label{k3p5}
+半径 $R$ 的半圆柱在水平面上向右平移，某瞬间速度为 $v$、加速度为 $a$。细杆只能竖直运动，下端接触圆柱右上侧。令接触点相对圆心的半径与竖直向上方向夹角为 $\theta\in(0,\pi/2)$。求杆的速度和加速度。\end{example}
+\fig{k3p5q}{半圆柱与竖直从动杆：题设关系}{\begin{tikzpicture}\draw[world](-2,0)arc(180:0:2);\draw[guide](0,0)--(1.2,1.6)node[midway,right]{$R$};\draw[very thick](1.2,1.6)--(1.2,3);\draw[guide](0,0)--(0,2);\node at(.3,.8){$\theta$};\draw[flow](0,-.5)--(1.5,-.5)node[right]{$v,a$};\node[below]at(0,0){$O$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由圆周位置约束求接触角变化率}\par\nobreak
+设图\ref{k3p5q}中竖直杆的水平坐标为常量 $x_P$，圆心横坐标为 $X$，以半圆柱底面为高度零点。接触点的坐标满足
+\[x_P-X=R\sin\theta,\qquad y_P=R\cos\theta.\]
+因为 $\dot X=v$，对第一式求导得 $-v=R\cos\theta\dot\theta$，故
+\[\dot\theta=-\frac{v}{R\cos\theta}.\]
+对第二式求导，再代入上式，得到杆的竖直速度
+\[\dot y_P=-R\sin\theta\dot\theta
+             =\boxed{v\tan\theta}.\]
+\fig{k3p5s}{半圆柱与竖直从动杆：解答过程}{\begin{tikzpicture}
+\draw[world](-1.4,0)arc(180:0:1.4);
+\coordinate(O)at(0,0);\coordinate(P)at(.7,1.212436);
+\draw[world](.7,1.212436)--(.7,2.8);
+\draw[guide](O)--(0,1.7) (O)--(P);
+\draw(0,.65)arc(90:60:.65)node[midway,above]{$\theta$};
+\fill(O)circle(1.3pt)node[below]{$O$};
+\fill(P)circle(1.3pt)node[right]{$P$};
+\draw[flow,blue](0,-.4)--(1,-.4)node[right]{$v$};
+\begin{scope}[xshift=5cm]
+\fill(0,1.2)circle(1.3pt)node[left]{杆端};
+\draw[flow,blue](0,1.2)--(0,2.6)node[right]{$a\tan\theta$};
+\draw[flow,red](.15,1.2)--(.15,-.3)node[midway,right,xshift=3pt]{$-\dfrac{v^2}{R\cos^3\theta}$};
+\node at(.5,-.9){分项作图，合量取代数和};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留角度变化后求导得到两项加速度}\par\nobreak
+图\ref{k3p5s}将加速度分成驱动变化和几何变化两项。不能把瞬时的 $\theta$当作常量；对速度式应用乘积法则与链式法则，逐项得到
+\begin{align*}
+\ddot y_P
+ &=\dot v\tan\theta+v\sec^2\theta\dot\theta\\
+ &=a\tan\theta+\frac{v}{\cos^2\theta}
+                  \left(-\frac{v}{R\cos\theta}\right)\\
+ &=\boxed{a\tan\theta-\frac{v^2}{R\cos^3\theta}}.
+\end{align*}
+图中上箭头表示 $a>0$时第一项的方向；若 $a<0$，该项也向下。
+
+第二项始终非正，它来自圆心前移时 $\theta$减小、投影比例改变。合加速度的方向须由两项的代数和判断，不能由杆此时向上运动便认定它向上加速。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查圆弧顶点与接触边界}\par\nobreak
+当圆心匀速向右时，$a=0$，杆向上运动却减速。趋近圆弧顶端 $\theta\to0$时，杆速趋于零而加速度趋于 $-v^2/R$，与顶端向下弯曲的局部几何一致。$\theta\to\pi/2$时分母趋零，理想点接触关系出现奇异；公式只适用于题设接触仍保持的区间。\end{solution}
+
+\begin{question}\begin{example}[沿不同射线运动的最近距离]\label{k3p6}
+甲乙初始分别在 $A=(-l,0)$ 和 $B=(0,0)$。甲以 $v_1$ 向右运动，乙以 $v_2$ 沿上半平面内与向左水平线成角 $\alpha\in(0,\pi)$ 的射线运动。两者沿各自射线持续运动，求最近距离及其出现时刻。\end{example}
+\fig{k3p6q}{沿不同射线运动的最近距离：题设关系}{\begin{tikzpicture}\draw[world](-3,0)node[below]{$A$}--(0,0)node[below]{$B$};\draw[ray](0,0)--(-1.7,2.5)node[above]{$C$方向};\draw[flow,blue](-2.7,.4)--(-1.4,.4)node[above]{$v_1$};\draw[flow,red](-.2,.3)--(-.9,1.3)node[left]{$v_2$};\node at(-.5,.2){$\alpha$};\node[below]at(-1.5,0){$l$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把两体运动化为相对轨迹的二次距离函数}\par\nobreak
+在图\ref{k3p6q}中取乙相对甲的位置 $\bm R=(l-(v_1+v_2\cos\alpha)t,\ v_2\sin\alpha\,t)$，令 $W^2=v_1^2+v_2^2+2v_1v_2\cos\alpha$。将两个分量平方相加，再对时间求导：
+\begin{align*}
+ R^2&=l^2-2l(v_1+v_2\cos\alpha)t+W^2t^2,\\
+ \frac{\dd R^2}{\dd t}&=-2l(v_1+v_2\cos\alpha)+2W^2t.
+\end{align*}
+令导数为零，距离平方的驻点为
+\[t_*=\frac{l(v_1+v_2\cos\alpha)}{W^2}.\]
+\fig{k3p6s}{沿不同射线运动的最近距离：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4.7,0);\draw[world](4,0)--(.3,2.2);\node[below]at(4,0){$\bm R(0)$};\draw[blue,very thick](0,0)--(1.04,1.76);\node[left]at(.5,.9){$d_{\min}$};\draw[flow](3, .6)--(2.1,1.13)node[above]{$\bm W$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查垂足是在未来还是过去}\par\nobreak
+图\ref{k3p6s}将原点到相对轨迹的垂线画出。若 $v_1+v_2\cos\alpha>0$，垂足在未来，$\boxed{d_{\min}=lv_2\sin\alpha/W}$；否则最近时刻为 $t=0$，距离为 $l$。若轨道只允许有限时段，还应把 $t_*$限制在该时段内再与端点比较。仅求一条无限直线到原点的距离，会把过去的垂足误认为未来的最接近状态。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回驻点并检查相对速度的退化情形}\par\nobreak
+距离平方的二阶导数为 $2W^2>0$，故内部驻点确为最小。代入驻点后得到 $d_{\min}^2=l^2[W^2-(v_1+v_2\cos\alpha)^2]/W^2$，分子化为 $v_2^2\sin^2\alpha$，才得距离表达式。在给定 $\alpha\in(0,\pi)$和正速度下 $W>0$，若另讨论退化共线情形，仍应检查相对速度是否为零。\end{solution}
+
+\begin{question}\begin{example}[三组铰接菱形的速度]\label{k3p7}
+三组边长比为 $3:2:1$ 的菱形首尾铰接，其共同水平对角线端点依次为 $A_0,A_1,A_2,A_3$；各边与水平线的锐角始终相同，记为 $\theta$。$A_0$固定，$A_3$向右速率为 $v$。求 $\theta=45^\circ$ 时 $A_1,A_2$及第二组上顶点 $B_2$ 的速度。\end{example}
+\fig{k3p7q}{三组铰接菱形的速度：题设关系}{\begin{tikzpicture}\foreach \a/\b/\h in {0/3/1.5,3/5/1,5/6/.5}\draw[world](\a,0)--({(\a+\b)/2},\h)--(\b,0)--({(\a+\b)/2},-\h)--cycle;\foreach \x/\n in {0/0,3/1,5/2,6/3}\node[below]at(\x,-.1){$A_\n$};\node[above]at(4,1){$B_2$};\draw[flow](6,.4)--(7,.4)node[right]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{累加水平投影后用驱动端确定角速度}\par\nobreak
+把最小菱形的边长记为 $s$。图\ref{k3p7q}中每个菱形的水平对角线等于其边长的 $2\cos\theta$倍，所以从固定端 $A_0$累加，得到
+\[x_{A_1}=6s\cos\theta,\qquad
+x_{A_2}=10s\cos\theta,\qquad x_{A_3}=12s\cos\theta.\]
+由已知 $\dot x_{A_3}=v$求出参数的变化率：
+\[-12s\sin\theta\dot\theta=v,\qquad
+\dot\theta=-\frac{v}{12s\sin\theta}.\]
+分别代回另外两个横坐标的导数，得
+\[v_{A_1}=-6s\sin\theta\dot\theta=\boxed{\frac v2},\qquad
+v_{A_2}=-10s\sin\theta\dot\theta=\boxed{\frac{5v}6},\]
+方向均向右。
+\fig{k3p7s}{三组铰接菱形的速度：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,2.7)node[above]{$y$};\fill(2,1.8)circle(2pt)node[above]{$B_2$};\draw[flow,blue](2,1.8)--(3.6,1.4);\draw[guide](2,1.8)--(3.6,1.8)--(3.6,1.4);\node[above]at(2.8,1.8){$2v/3$};\node[right]at(3.6,1.5){$-v/6$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求上顶点的水平与竖直分量}\par\nobreak
+图\ref{k3p7s}中第二组的上顶点 $B_2$在 $A_1,A_2$的水平中点上方；该组边长为 $2s$，故
+\[x_{B_2}=\frac{6s\cos\theta+10s\cos\theta}{2}=8s\cos\theta,
+\qquad y_{B_2}=2s\sin\theta.\]
+两分量分别求导，再代入 $\dot\theta$，得到
+\[v_{B_2,x}=-8s\sin\theta\dot\theta=\frac{2v}3,\qquad
+v_{B_2,y}=2s\cos\theta\dot\theta=-\frac v6\cot\theta.\]
+在 $\theta=45^\circ$时，$\cot\theta=1$，所以
+\[\boxed{\bm v_{B_2}=(2v/3,-v/6)},\qquad
+|\bm v_{B_2}|=\sqrt{\frac{4v^2}{9}+\frac{v^2}{36}}
+               =\boxed{\frac{\sqrt{17}}6v}.\]
+水平伸展使 $\theta$减小、上顶点下降，负的竖直分量与图示展开方向一致。边长比例能给水平坐标的比例，但不能直接给上顶点的总速率比例。
+
+% thirty-k3-rhombuspath
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以椭圆切线独立检验方向}\par\nobreak
+还可以由顶点的几何轨迹检验竖直速度。消去共同角度，$B_2$满足
+\[\frac{x_{B_2}^2}{(8s)^2}+\frac{y_{B_2}^2}{(2s)^2}=1,
+\qquad x_{B_2}>0,\quad y_{B_2}>0.\]
+沿这个固定椭圆求导，
+\[\frac{x_{B_2}v_{B_2,x}}{64s^2}
+ +\frac{y_{B_2}v_{B_2,y}}{4s^2}=0,
+\qquad v_{B_2,y}=-\frac{x_{B_2}}{16y_{B_2}}v_{B_2,x}.
+\]
+在 $45^\circ$处 $x_{B_2}/y_{B_2}=4$，所以 $v_{B_2,y}=-v_{B_2,x}/4=-v/6$，与图\ref{k3p7s}的下降分量一致。
+\fig{k3p7path}{上顶点沿椭圆运动，速度必须沿局部切线}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.7,0)node[right]{$x$};\draw[axis](0,0)--(0,2)node[above]{$y$};
+\draw[world](0,1)arc(90:0:4 and 1);
+\coordinate(P)at(2.828427,.707107);\fill(P)circle(1.4pt)node[above right]{$B_2$};
+\draw[flow,blue](P)--++(1.2,-.3)node[below]{$\bm v_{B_2}$};
+\node[below]at(4,0){$8s$};\node[left]at(0,1){$2s$};
+\end{tikzpicture}}
+图\ref{k3p7path}保留实际横纵比例，故所画切向斜率正是 $-1/4$。这条轨迹由铰接形状决定；端点以怎样的速率运动只影响沿轨迹前进的快慢。若把图形两个方向任意拉伸后直接量角，就不能再据图中角度判断真实速度方向。
+\end{solution}
+
+\begin{question}\begin{example}[滑杆上任一点的运动]\label{k3p8}
+长为 $L$ 的杆，端点 $A$ 沿竖直导轨向下速率为 $v_A$，端点 $B$ 沿水平导轨向右运动。杆与竖直线成 $\theta\in(0,\pi/2)$，点 $P$ 位于杆上且 $AP=\lambda L$。求 $B,P$ 的速度及 $P$ 的轨迹。\end{example}
+\fig{k3p8q}{滑杆上任一点的运动：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0);\draw[axis](0,0)--(0,3);\draw[world](0,2.6)node[left]{$A$}--(3.3,0)node[below]{$B$};\fill(1.32,1.56)circle(2pt)node[above right]{$P$};\draw[flow,blue](-.5,2.4)--(-.5,1.5)node[left]{$v_A$};\node at(.3,1.9){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由竖直端的驱动速度求杆的角速度}\par\nobreak
+按图\ref{k3p8q}以导轨交点为原点，端点坐标为 $A=(0,L\cos\theta)$、$B=(L\sin\theta,0)$。竖直向上为正，故 $\dot y_A=-v_A$，于是
+\[-L\sin\theta\dot\theta=-v_A,\qquad
+\dot\theta=\frac{v_A}{L\sin\theta}.\]
+对 $B$的横坐标求导，得到
+\[\dot x_B=L\cos\theta\dot\theta
+ =\boxed{v_A\cot\theta},\]
+为正，方向向右。
+\fig{k3p8s}{滑杆上任一点的运动：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(3.8,0)node[right]{$x_P$};\draw[axis](0,0)--(0,2.7)node[above]{$y_P$};\draw[world](0,2.2)arc(90:0:3 and 2.2);\fill(1.8,1.76)circle(2pt)node[above right]{$P$};\draw[flow,blue](1.8,1.76)--(2.6,1.32);\node[below]at(3,0){$\lambda L$};\node[left]at(0,2.2){$(1-\lambda)L$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用固定分点关系求杆上物质点速度}\par\nobreak
+图\ref{k3p8s}中点 $P$为同一杆上的固定物质点，$AP/AB=\lambda$恒定，所以分点关系为
+\[\bm r_P=(1-\lambda)\bm r_A+\lambda\bm r_B,
+\qquad P=(\lambda L\sin\theta,(1-\lambda)L\cos\theta).\]
+逐项求导，使用同一个 $\dot\theta$，有
+\[\dot x_P=\lambda L\cos\theta\dot\theta
+           =\lambda v_A\cot\theta,\qquad
+\dot y_P=-(1-\lambda)L\sin\theta\dot\theta
+           =-(1-\lambda)v_A.\]
+因此
+\[\boxed{\bm v_P=(\lambda v_A\cot\theta,-(1-\lambda)v_A)}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去参数后筛选实际椭圆弧}\par\nobreak
+当 $0<\lambda<1$，将坐标分别除以相应的常量，得 $x_P/(\lambda L)=\sin\theta$、$y_P/[(1-\lambda)L]=\cos\theta$；平方相加消去参数：
+\[\boxed{\frac{x_P^2}{(\lambda L)^2}
+       +\frac{y_P^2}{[(1-\lambda)L]^2}=1}.\]
+给定角区间确定它为第一象限椭圆弧。$\lambda=0,1$应直接恢复端点的直线轨迹，不能代入含零分母的椭圆式。若点沿杆滑动，则 $\lambda$不再恒定，速度还须增加 $\dot\lambda(\bm r_B-\bm r_A)$，不能沿用固定分点公式。
+
+% thirty-k3-slideraccel
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{补足驱动加速度再作二阶微分}\par\nobreak
+如果还要进一步求加速度，瞬时给定 $v_A$并不足够，必须知道其变化率。定义竖直端向下的加速度为 $a_A=\dot v_A$，则
+\[a_{B,x}=\frac{\dd}{\dd t}(v_A\cot\theta)
+ =a_A\cot\theta-v_A\csc^2\theta\dot\theta
+ =a_A\cot\theta-\frac{v_A^2}{L\sin^3\theta}.\]
+固定分点的二次求导仍可按同一比例相加：
+\[\bm a_P=\left(\lambda a_{B,x},-(1-\lambda)a_A\right).\]
+图\ref{k3p8acceleration}特取 $a_A=0$，竖直端匀速下降时，水平端仍有向左加速度。由于它正向右运动，此时在减速，不能把“一个端点匀速”推广成整根杆各点都匀速。
+\fig{k3p8acceleration}{竖直端匀速时，水平端向右运动而减速}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.1,0);\draw[axis](0,0)--(0,3.2);
+\draw[world](0,2.5)--(3.3,0);\node[left]at(0,2.5){$A$};\node[below]at(3.3,0){$B$};
+\draw[flow,blue](0,2.5)--(0,1.6)node[left]{$v_A$};
+\draw[flow,blue](3.3,.5)--(4.3,.5)node[right]{$v_B$};
+\draw[flow,red](3.3,0)--(2,0)node[midway,below,yshift=-8pt]{$a_{B,x}<0$};
+\node at(2,2.4){$a_A=0$};
+\end{tikzpicture}}
+\end{solution}

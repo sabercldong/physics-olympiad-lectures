@@ -1,0 +1,105 @@
+\section{练习}
+
+\begin{question}\begin{drill}[平衡三相星形与三角形]\label{em6:drill:1}
+平衡三相电源线电压380V，每相相同负载阻抗 $Z=8+6\mathrm j\,\Omega$。分别按星形和三角形连接，求相电流、线电流、有功功率及星形中性线电流。
+\end{drill}
+\fig{fig:em6:drill:1:s}{题设：星形与三角形负载及线电流、支路电流正向}{\input{three-phase-tikz}}
+\end{question}
+\answerlink{em6:drill:1}
+\begin{question}\begin{drill}[半波整流的平均值与有效值]\label{em6:drill:2}
+理想二极管使负载 $R$ 上电压为 $u_o=U_m\sin\omega t$（正半周），负半周为零。求周期平均电压、有效电压和平均热功率。
+\end{drill}
+\fig{fig:em6:drill:2:s}{理想半波整流的负载电压，负半周输出为零，平均值须按整个周期计算}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\varphi=\omega t$};\draw[axis](0,-.2)--(0,1.7)node[above]{$u_o/U_m$};\draw[world,blue,domain=0:3.141593,samples=70]plot(\x,{sin(\x r)});\draw[world,blue](3.141593,0)--(6.283185,0);\node[below]at(3.141593,0){$\pi$};\node[below]at(6.283185,0){$2\pi$};\node[left]at(0,1){$1$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:2}
+\begin{question}\begin{drill}[并联谐振与支路大电流]\label{em6:drill:3}
+理想电感 $L$、电容 $C$ 和电阻 $R$ 并联，接有效电压 $U$、角频率 $\omega$ 的电源。求总电流相量、谐振频率和谐振时功率，说明支路电流是否为零。
+\end{drill}
+\fig{fig:em6:drill:3:s}{三个支路跨接同一正弦电源，电感和电容支路电流均以从上到下为正}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(6,0) (0,2.4)--(6,2.4) (0,0)--(0,.7) (0,1.7)--(0,2.4);\draw[world](-.2,.7)rectangle(.2,1.7);\node[left]at(-.3,1.2){$R$};
+\draw[world](3,0)--(3,.35) (3,1.95)--(3,2.4);\foreach\j in {0,...,3}{\draw[world](3,{.35+.4*\j})arc(-90:90:.2);}\node[left]at(2.8,1.2){$L$};\draw[world](6,0)--(6,.9) (6,1.3)--(6,2.4);\draw[world](5.55,.9)--(6.45,.9) (5.55,1.3)--(6.45,1.3);\node[right]at(6.55,1.1){$C$};
+\draw[flow,red](1.3,3.2)--(1.3,2.5)node[midway,right]{$\underline I$};\draw[flow](3.7,2.1)--(3.7,1.5)node[right]{$\underline I_L$};\draw[flow](6.9,2.1)--(6.9,1.5)node[right]{$\underline I_C$};\node at(3,-.7){共同端压 $\underline U$，$\underline I=\underline U/R+\underline I_L+\underline I_C$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:3}
+\begin{question}\begin{drill}[充电电容间隙的磁场与波长]\label{em6:drill:4}
+半径 $a$ 的平行圆板电容缓慢充电，电流为 $I$，忽略边缘效应，极板间电场均匀。求同轴半径 $s$ 的圆周上磁场（$s<a$ 及 $s>a$）。设电容的电容为 $C$，若它与电感 $L$ 组成理想 LC 回路，真空中对应频率的电磁波波长是多少？
+\end{drill}
+\fig{fig:em6:drill:4:s}{左为正向充电的极板间隙，右为从下极板向上观察的截面，位移电流向纸外}{\begin{tikzpicture}
+
+\draw[world,very thick](-1.5,.6)--(1.5,.6) (-1.5,-.6)--(1.5,-.6);\draw[world](0,.6)--(0,1.7) (0,-.6)--(0,-1.7);\draw[flow,red](0,1.6)--(0,.85)node[midway,right]{$I$};\draw[flow,blue](0,.35)--(0,-.35)node[right]{$E$};\node[left]at(-1.6,.6){$+Q$};\node[left]at(-1.6,-.6){$-Q$};
+\begin{scope}[xshift=5cm]\draw[world](0,0)circle(1.3);\draw[guide](0,0)circle(.7)(0,0)circle(1.8);\node at(0,0){$\odot J_d$};\draw[dim](0,-.2)--(1.3,-.2)node[midway,below]{$a$};\node at(.5,.8){$s<a$};\node at(1.8,1.7){$s>a$};\draw[flow,blue](.495,.495)arc(45:145:.7);\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:4}
+\begin{question}\begin{drill}[固定铁损和铜损下的最佳负载]\label{em6:drill:5}
+一台变压器次级有效电压近似恒定 $U=220\,\mathrm V$，负载功率因数为1。空载铁损 $P_0=20\,\mathrm W$，折算到次级的总绕组电阻 $r_e=0.20\,\Omega$，其他损耗忽略。求效率随负载电流变化关系及最高效率点；说明空载和大电流时效率的变化。
+\end{drill}
+\fig{fig:em6:drill:5:s}{有损变压器的输出及损耗模型，次级有效电压近似保持 $220\mathrm V$}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3.4,2.2);\node[align=center]at(1.7,1.1){变压器\\固定铁损 $20\,\mathrm W$\\铜损 $r_eI^2$};\draw[world](3.4,2.2)--(6,2.2)--(6,1.6) (6,.6)--(6,0)--(3.4,0);\draw[world](5.8,.6)rectangle(6.2,1.6);\node[right]at(6.3,1.1){负载};\draw[flow,red](3.8,2.2)--(5,2.2)node[midway,above]{$I$};\node at(4.7,-.7){$U=220\,\mathrm V$};\node at(1.7,-.7){$r_e=0.20\,\Omega$};\draw[flow](-1.5,1.1)--(-.1,1.1)node[midway,above]{$P_{\rm in}$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:5}
+\begin{question}\begin{drill}[传输线波前的速度与特性阻抗]\label{em6:drill:6}
+理想无损长双导体线路的单位长度电感和电容分别为 $L',C'$。一个电压由零升到 $U$ 的阶跃波前向右传播，波前后电流为 $I$、前方未受扰动。用给新线路段充电及建立磁场的过程求波速、$U/I$ 和能流。再求均匀介质同轴线半径 $a,b$ 时的结果。
+\end{drill}
+\fig{fig:em6:drill:6:s}{无损长线由连续分布的串联电感与并联电容组成；图只画一微段，不能把全线同时当成集中元件}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(7.1,0)
+ (0,2.2)--(2,2.2) (3.6,2.2)--(7.1,2.2);
+\foreach\j in {0,...,3}{\draw[world]({2+.4*\j},2.2)arc(180:0:.2);}
+\node[above]at(2.8,2.55){$L'\dd x$};
+\draw[world](4.5,2.2)--(4.5,1.3) (4.5,.9)--(4.5,0);
+\draw[world](4.1,1.3)--(4.9,1.3) (4.1,.9)--(4.9,.9);
+\node[right]at(5,1.1){$C'\dd x$};
+\draw[flow](.3,2.6)--(1.5,2.6)node[midway,above]{$i(x,t)$};
+\draw[flow](5.6,2.6)--(6.8,2.6)node[midway,above]{$i(x+\dd x,t)$};
+\draw[dim](-.4,0)--(-.4,2.2)node[midway,left]{$u(x,t)$};
+\draw[dim](7.5,0)--(7.5,2.2)node[midway,right]{$u(x+\dd x,t)$};
+\draw[dim](0,-.7)--(7.1,-.7)node[midway,below]{$\dd x$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:6}
+\begin{question}\begin{drill}[非均匀变化电场中的磁场最大值]\label{em6:drill:7}
+轴对称缓变电场沿 $z$ 轴，在圆形区域 $r<a$ 内为 $E_z(r,t)=E_0(t)(1-r^2/a^2)$，外区电场变化可忽略。无传导电流，忽略边缘及高阶传播效应。求同轴圆周磁场的内外分布，并找出磁场大小最大的半径，设 $\dot E_0>0$。
+\end{drill}
+\fig{fig:em6:drill:7:s}{题设：非均匀变化电场中的磁场最大值}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(2);\draw[guide](0,0)circle(1.1);\foreach\x/\y in{0/0,.7/.3,-.7/.3,0/1.1,0/-1.1}{\node at(\x,\y){$\odot$};}\draw[dim](0,-.3)--(2,-.3)node[midway,below]{$a$};\node at(0,2.7){$\dot E_z$ 向外，径向逐渐减小};\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:7}
+\begin{question}\begin{drill}[并联电容补偿功率因数与线路损耗]\label{em6:drill:8}
+单相负载接 $U=220\,\mathrm V,f=50\,\mathrm{Hz}$ 稳压电源，有功功率 $P=2.2\,\mathrm{kW}$，滞后功率因数0.60。用理想并联电容把总功率因数提高到0.90，仍保持滞后。求电容、补偿前后源电流及同一线路电阻下损耗之比。负载电压与自身参数保持。
+\end{drill}
+\fig{fig:em6:drill:8:s}{感性负载与补偿电容并联，稳压源使负载端电压及负载自身的有功、无功保持}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(6,0)--(6,.9) (6,1.3)--(6,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0) (3,0)--(3,.7) (3,1.7)--(3,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$U$};\draw[world](2.7,.7)rectangle(3.3,1.7);\node at(3,1.2){$Z_L$};\draw[world](5.55,.9)--(6.45,.9) (5.55,1.3)--(6.45,1.3);\node[right]at(6.55,1.1){$C$};
+\draw[flow,red](.7,2.4)--(1.8,2.4)node[midway,above]{$\underline I$};\draw[flow,blue](3.7,2.2)--(3.7,1.5)node[right]{$\underline I_L$};\draw[flow,blue](6.9,2.2)--(6.9,1.5)node[right]{$\underline I_C$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:8}
+\begin{question}\begin{drill}[恒功率输电的端压与负载极限]\label{em6:drill:9}
+理想单相送端电压有效值 $U_s$，线路总电阻 $R_\ell>0$，受端功率因数为1，调节负载使其吸收恒定有功功率 $P>0$。忽略电抗。求受端电压的可能值、存在稳态的条件和线路效率，并比较轻载时两支解的物理含义。
+\end{drill}
+\fig{fig:em6:drill:9:s}{送端电压固定，线路电阻与恒功率负载串联；负载的电流随其端压改变}{\begin{tikzpicture}
+
+\draw[world](0,0)--(6,0)--(6,.7) (6,1.7)--(6,2.4)--(3.5,2.4) (2.5,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$U_s$};\draw[world](2.5,2.2)rectangle(3.5,2.6);\node[above]at(3,2.65){$R_\ell$};\draw[world](5.6,.7)rectangle(6.4,1.7);\node[align=center]at(6,1.2){恒功率\\$P$};\draw[dim](4.7,0)--(4.7,2.4)node[midway,left]{$U$};\draw[flow,red](.7,2.4)--(1.8,2.4)node[midway,above]{$I=P/U$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em6:drill:9}

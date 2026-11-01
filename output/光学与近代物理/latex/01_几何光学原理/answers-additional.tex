@@ -1,0 +1,78 @@
+\begin{drillsolution}{d:14}\textbf{由两个透射条件判断光路能否存在}\par\nobreak
+按图\ref{fig:d14q}，两侧外部介质相同，令相对折射率 $N=n_g/n_m>1$。内角满足 $r_1+r_2=A$；两面均为非掠射透射，要求 $0\le r_1,r_2<r_c=\arcsin(1/N)$。因此必须有 $A<2r_c$，即 $N\sin(A/2)<1$；反过来，此条件成立时取 $r_1=r_2=A/2$ 即可实现，故它也是充分条件。
+
+在空气中，$1.80\sin40^\circ\simeq1.157>1$，不存在题设双面透射光路。在液体中 $N=1.50$，$1.50\sin40^\circ\simeq0.9642<1$，光路存在。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在可行区间证明最小偏向的对称条件}\par\nobreak
+令 $g(r)=\arcsin(N\sin r)$，则 $i_1=g(r_1)$、$i_2=g(r_2)$，偏向角为 $\delta=g(r_1)+g(A-r_1)-A$。在 $0<r<r_c$，
+\[
+g''(r)=\frac{N(N^2-1)\sin r}{(1-N^2\sin^2r)^{3/2}}>0.
+\]
+因此和式关于 $r_1=A/2$ 对称且严格凸，唯一最小值在 $r_1=r_2=40^\circ$。图\ref{fig:d14s}的内部线段平行底面，两次折射关于棱镜对称轴互为逆过程。
+\fig{fig:d14s}{液体中的最小偏向光路，两内部角均从各自法线量起}{\begin{tikzpicture}
+\pgfmathsetmacro{\ii}{asin(1.5*sin(40))}
+\draw[world](-2.517,0)--(0,3)--(2.517,0)--cycle;
+\coordinate(P)at(-1.34256,1.4);\coordinate(Q)at(1.34256,1.4);
+\draw[normal]($(P)+(-40:1)$)--($(P)+(140:1)$);\draw[normal]($(Q)+(40:1)$)--($(Q)+(220:1)$);
+\draw[ray]($(P)+({180+\ii-40}:2.1)$)--(P);\draw[ray](P)--(Q);\draw[ray](Q)--($(Q)+({40-\ii}:2.1)$);
+\node[above left]at(P){$P$};\node[above right]at(Q){$Q$};
+\node at(-.7,1.13){$40^\circ$};\node at(.7,1.13){$40^\circ$};\node at(0,.45){$N=1.50$};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求角度并检查环境变化的作用}\par\nobreak
+由图\ref{fig:d14s}两面的折射定律，
+\[
+i_*=\arcsin(1.50\sin40^\circ),\qquad
+\boxed{\delta_{\min}=2\arcsin(1.50\sin40^\circ)-80^\circ}.
+\]
+数值约为 $i_*=74.62^\circ$、$\delta_{\min}=69.24^\circ$。玻璃折射率没有改变，液体使相对折射率降低，双面透射才从不可行变为可行；不能只把液体中的入射角沿用空气结果。
+\end{drillsolution}
+
+\begin{drillsolution}{d:15}\textbf{用界面交点表示完整光程}\par\nobreak
+令图\ref{fig:d15q}的界面交点为 $X=(x,0)$，并记 $b=(1+1/\sqrt3)h$。两段实际长度分别为 $\sqrt{h^2+x^2}$ 和 $\sqrt{h^2+(b-x)^2}$，光程为
+\[
+\mathcal L(x)=\sqrt{h^2+x^2}+\sqrt2\sqrt{h^2+(b-x)^2}.
+\]
+对两个根式分别用链式法则，得到
+\[
+ \mathcal L'(x)=\frac{2x}{2\sqrt{h^2+x^2}}
+ +\sqrt2\frac{2(b-x)(-1)}{2\sqrt{h^2+(b-x)^2}}.
+\]
+令 $\mathcal L'(x)=0$，驻值条件为
+\[
+\frac{x}{\sqrt{h^2+x^2}}
+=\frac{\sqrt2(b-x)}{\sqrt{h^2+(b-x)^2}}.
+\]
+两边就是 $n_1\sin\theta_1$ 与 $n_2\sin\theta_2$，角度均按图\ref{fig:d15s}从法线量起。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{验证交点并求传播时间}\par\nobreak
+代入 $x=h$，有 $b-x=h/\sqrt3$，故 $\theta_1=45^\circ$、$\theta_2=30^\circ$，满足上式。为检查这个驻点是否唯一，将一阶导数的两个分式逐项求导：
+\begin{align*}
+ \frac{\dd}{\dd x}\frac{x}{\sqrt{h^2+x^2}}
+ &=\frac1{\sqrt{h^2+x^2}}-\frac{x^2}{(h^2+x^2)^{3/2}}
+ =\frac{h^2}{(h^2+x^2)^{3/2}},\\
+ \frac{\dd}{\dd x}\frac{-(b-x)}{\sqrt{h^2+(b-x)^2}}
+ &=\frac1{\sqrt{h^2+(b-x)^2}}
+ -\frac{(b-x)^2}{[h^2+(b-x)^2]^{3/2}}.
+\end{align*}
+第二行通分后分子也是 $h^2$，所以
+\[
+\mathcal L''(x)=\frac{h^2}{(h^2+x^2)^{3/2}}
++\frac{\sqrt2h^2}{[h^2+(b-x)^2]^{3/2}}>0,
+\]
+所以这个交点唯一。两段长度为 $\sqrt2h$、$2h/\sqrt3$，得到
+\[
+\boxed{X=(h,0)},\qquad
+\boxed{T=\frac hc\left(\sqrt2+2\sqrt{\frac23}\right)}.
+\]
+\fig{fig:d15s}{唯一直接折射光路在 $x=h$ 处通过界面，交点落在窗口之外}{\begin{tikzpicture}[scale=1.6]
+\draw[world](-.3,0)--(2,0);\draw[very thick,blue](0,0)--(.8,0);
+\draw[normal](1,-1.1)--(1,1.1);\draw[ray](0,1)--(1,0);\draw[ray](1,0)--(1.57735,-1);
+\fill(0,1)circle(1.2pt)node[above]{$A$};\fill(1,0)circle(1.2pt)node[above right]{$X$};\fill(1.57735,-1)circle(1.2pt)node[below]{$B$};
+\node at(.73,.65){$45^\circ$};\node at(1.22,-.6){$30^\circ$};
+\node[below]at(.35,0){窗口};\node[right]at(1.7,.6){$x_X=h$};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查透光边界是否允许该光路}\par\nobreak
+图\ref{fig:d15s}中 $h>4h/5$，唯一交点被遮蔽，所以第二种条件下 $B$ 收不到题设的直接折射光。将折线强行改为通过窗口边缘，会破坏该处的折射定律，不能作为另一条几何光路。边缘衍射已被题设排除。
+\end{drillsolution}

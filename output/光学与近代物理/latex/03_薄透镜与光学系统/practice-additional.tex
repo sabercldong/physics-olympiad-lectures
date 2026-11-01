@@ -1,0 +1,23 @@
+\begin{question}
+\begin{drill}[分离双透镜的出射光束]\label{d:34}
+空气中两薄凸透镜同轴，焦距分别为 $f_1=10.0\,\mathrm{cm}$、$f_2=20.0\,\mathrm{cm}$。平行于轴的近轴光束由左向右入射。分别取镜间距 $d=15.0\,\mathrm{cm}$ 和 $30.0\,\mathrm{cm}$，求系统的等效光焦度，判断出射束的会聚性质；若有有限的后焦点，求它相对第二镜的位置。说明等效焦距能否直接作为从第二镜量起的后焦距。
+\end{drill}
+\fig{fig:d34q}{两镜焦距已知，镜间距分别取两种数值}{\begin{tikzpicture}
+\draw[axisline](-2,0)--(6,0);\draw[<->,>=Stealth,world](0,-1.2)--(0,1.2)node[above]{$L_1$};\draw[<->,>=Stealth,world](3,-1.2)--(3,1.2)node[above]{$L_2$};
+\draw[ray](-2,.6)--(0,.6);\draw[ray](-2,-.6)--(0,-.6);
+\draw[dim](0,-1.7)--(3,-1.7)node[midway,below]{$d$};
+\node at(0,2){$f_1=10.0\,\mathrm{cm}$};\node at(3.8,2){$f_2=20.0\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{question}
+\begin{drill}[两侧介质不同的薄透镜]\label{d:35}
+薄玻璃透镜的折射率为 $n_\ell=1.50$，两面曲率半径为 $R_{1s}=+10.0\,\mathrm{cm}$、$R_{2s}=-10.0\,\mathrm{cm}$。左侧为空气，右侧为折射率 $4/3$ 的透明液体，两介质由透镜隔开。求物方和像方焦距的大小。若实物在透镜左侧 $30.0\,\mathrm{cm}$，求像距和横向放大率。均采用近轴、零厚度近似。
+\end{drill}
+\fig{fig:d35q}{同一薄透镜连接两种不同的外部介质}{\begin{tikzpicture}
+\fill[cyan!7](0,-1.3)rectangle(4,1.3);\draw[axisline](-4,0)--(4.5,0);
+\draw[world](0,-1.2)..controls(-.45,-.4)and(-.45,.4)..(0,1.2)..controls(.45,.4)and(.45,-.4)..cycle;
+\draw[axis,thick](-3,0)--(-3,.5)node[above]{$B$};\node[below]at(-3,0){$A$};\node[below]at(0,-1.35){$n_\ell=1.50$};
+\node at(-1.8,1){$n_1=1$};\node at(2,1){$n_2=4/3$};\draw[dim](-3,-.7)--(0,-.7)node[midway,below]{$30.0\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}

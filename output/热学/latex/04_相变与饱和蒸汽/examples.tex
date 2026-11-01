@@ -1,0 +1,410 @@
+\section{例题与分析}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[水蒸气凝结的内能变化]\label{t4-1}
+1kg水蒸气在100$^\circ$C、约101kPa下恒压凝结为水。该温度汽化潜热 $L_m=40.668\,\mathrm{kJ/mol}$，水的摩尔质量 $0.018\,\mathrm{kg/mol}$。忽略液体体积，蒸气按理想气体，求 $Q,W,\Delta U$。取 $R=8.31$。见图\ref{fig:t4-1q}。
+\end{example}
+\fig{fig:t4-1q}{同一份水在恒压下由蒸气凝结为液水；活塞下移，示意不按体积比例}{\begin{tikzpicture}
+
+\foreach \a in {0,5.5}{\draw[world](\a,3.6)--(\a,0)--(\a+3,0)--(\a+3,3.6);}
+\fill[blue!6](.02,.02)rectangle(2.98,2.8);\draw[very thick](0,2.8)--(3,2.8);
+\fill[blue!20](5.52,.02)rectangle(8.48,.4);\draw[very thick](5.5,.4)--(8.5,.4);
+\node[align=center]at(1.5,1.4){蒸气 $m=1\,\mathrm{kg}$\\$V_i\simeq nRT/p$};
+\node at(7,1.2){液水，$V_f\ll V_i$};
+\foreach \a in {1.5,7}{\draw[force](\a,4.4)--(\a,3.7)node[pos=0,above]{$p\simeq101\,\mathrm{kPa}$};}
+\draw[flow](3.4,1.7)--(5.1,1.7)node[midway,above]{凝结};
+\node at(4.25,-.6){两态温度均为 $100^\circ\mathrm C$};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{固定水的总量并求凝结放热}\par\nobreak
+取1kg水蒸气及其凝结液为同一封闭系统。100$^\circ$C恒压凝结时，系统放热，故热量为负。摩尔数为 $n=m/\mu=1/0.018=55.5556\,\mathrm{mol}$，于是
+\[Q=-nL_m=-55.5556\times40668=-2.259333\times10^6\,\mathrm J.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由活塞向内移动求有符号的边界功}\par\nobreak
+凝结时体积明显减小，气体对外做功也为负。忽略液体末体积，初态水蒸气近似理想气体，有 $pV_i=nRT$，所以 $W=p(V_f-V_i)\simeq-nRT$。图\ref{fig:t4-1s}中热量与体积功两条箭头应同时计入。\fig{fig:t4-1s}{凝结时边界内缩，向外放热与外界压缩功同时存在}{\begin{tikzpicture}
+
+\draw[world](0,3.6)--(0,0)--(3.2,0)--(3.2,3.6);
+\draw[guide](0,2.9)--(3.2,2.9)node[right]{初活塞};
+\fill[blue!20](.02,.02)rectangle(3.18,.5);\draw[very thick](0,.5)--(3.2,.5)node[right]{末活塞};
+\draw[flow](-.6,2.8)--(-.6,.6)node[midway,left]{$\Delta V<0$};
+\draw[force](1.6,3.8)--(1.6,1.9)node[midway,right]{$p$};
+\draw[->,red,thick](0,1.1)--(-2.3,1.1)node[pos=1,below,align=center]{放热\\$Q=-2.2593\,\mathrm{MJ}$};
+\draw[->,blue,thick](6.8,2.7)--(3.4,2.7)node[pos=0,above,align=center]{外界输入压缩功\\$-W=0.1723\,\mathrm{MJ}$};
+\node[align=center]at(5.6,-.8){封闭系统：同一份水\\$\Delta U=Q-W<0$};
+
+\end{tikzpicture}}
+
+取 $T=373.15\,\mathrm K$、$R=8.31\,\mathrm{J/(mol\,K)}$，
+\[W\simeq-55.5556\times8.31\times373.15=-1.72271\times10^5\,\mathrm J.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合并放热与外界压缩功，检查能量差}\par\nobreak
+第一定律给
+\[\boxed{\Delta U=Q-W=-2.08706\times10^6\,\mathrm J\simeq-2.087\,\mathrm{MJ}}.\]
+内能减少量小于放热量的绝对值，因为外界在凝结收缩中又向系统输入约0.1723MJ压缩功。这也是潜热对应恒压焓差、不能直接作为内能差的具体体现；若错误地令 $W=0$，就会把两种能量混同。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[液体刚尽前后的总压]\label{t4-2}
+活塞缸中有2mol空气、少量水及水蒸气，温度恒定。体积为 $V$ 时总压3atm，膨胀到 $2V$ 时水恰好全部汽化，总压2atm。求温度、初体积，以及体积为 $V/2,4V$ 时总压。已知水在约100$^\circ$C时饱和压为1atm，取1atm为 $1.01\times10^5$Pa。见图\ref{fig:t4-2q}。
+\end{example}
+\fig{fig:t4-2q}{液体刚尽前后的总压：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(4,0) (0,2)--(4,2);\draw[very thick] (3,0)--(3,2);\fill[blue!15] (.03,.03) rectangle (2.97,.3);\node at (1.5,1.1){空气＋水蒸气};\node[right] at (4,1){$T$恒定};\node[below] at (1.5,0){体积 $V$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{用液水尚存与刚尽两态分离空气分压}\par\nobreak
+设初态空气分压为 $p_{a0}$、饱和蒸气压为 $p_s$。初体积为 $V$，总压3atm，故 $p_{a0}+p_s=3\,\mathrm{atm}$。定温膨胀到 $2V$ 时液体恰好耗尽，蒸气仍恰好饱和，而固定空气量的分压减半；于是
+\[\frac12p_{a0}+p_s=2\,\mathrm{atm}.\]
+相减得 $p_{a0}=2\,\mathrm{atm}$、$p_s=1\,\mathrm{atm}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由饱和压确定温度、体积及水的总量}\par\nobreak
+水的正常沸点对应 $T\simeq373.15\,\mathrm K$。由题给空气为2mol，
+\[V=\frac{2RT}{2p_{\mathrm{atm}}}=\frac{RT}{p_{\mathrm{atm}}}\simeq3.07\times10^{-2}\,\mathrm{m^3}.\]
+初态蒸气量为1mol，而在 $2V$ 时全部水为2mol气态，故初液水为1mol。这个分配说明液体耗尽的折点为何位于 $2V$。\fig{fig:t4-2s}{总压曲线在最后一滴液水消失处改变斜率，水蒸气分压随之改变}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$u/V$};\draw[axis](0,0)--(0,5.7)node[above]{$p/p_{\mathrm{atm}}$};
+\draw[blue,thick,domain=.45:2,samples=70]plot(\x,{1+2/\x});
+\draw[blue,thick,domain=2:4.7,samples=60]plot(\x,{4/\x});
+\draw[orange!80!black,thick](.4,1)--(2,1);\draw[orange!80!black,thick,domain=2:4.7]plot(\x,{2/\x});
+\foreach \x/\y/\lab in {.5/5/{1/2},1/3/1,2/2/2,4/1/4}{\fill(\x,\y)circle(1.4pt);\draw[guide](\x,0)--(\x,\y);\node[below]at(\x,0){$\lab$};\node[above right]at(\x,\y){$\y$};}
+\node[align=center]at(3.45,4.7){蓝：总压\\橙：水蒸气分压};
+\node[align=center]at(3.55,3.1){$u=2V$：液水刚尽\\$n_v=2\,\mathrm{mol}$};
+\draw[flow](3.1,2.65)--(2.07,2.08);
+\node[below,align=center]at(2.4,-.65){左段：蒸发补充气相；右段：气相水量固定};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按是否仍有液水分别求两端总压}\par\nobreak
+图\ref{fig:t4-2s}中体积减到 $V/2$ 时液水仍存在，蒸气分压保持1atm，空气分压增到4atm，故 $\boxed{p(V/2)=5\,\mathrm{atm}}$。体积增到 $4V$ 时，超过液体耗尽点；空气2mol与水蒸气2mol都固定，所以 $\boxed{p(4V)=1\,\mathrm{atm}}$。
+若用 $u$ 表示当前体积，全过程写成
+\[\boxed{\frac{p(u)}{p_{\mathrm{atm}}}=\begin{cases}2V/u+1,&u\le2V,\\4V/u,&u\ge2V.\end{cases}}\]
+在 $u=2V$ 处两式均给2，压强连续；左边通过汽化维持蒸气分压，右边通过固定气体量稀释，斜率因物理条件改变而发生变化。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[倒扣气管加热后的液面]\label{t4-3}
+一端封闭的细管倒扣水槽，管顶高出槽面 $2H$；初温 $T_0$ 时管内空气柱长 $H$，忽略初态水蒸气。大气压 $p_0$，$\rho gH<p_0$。加热到正常沸点 $T_b$，此时 $p_s(T_b)=p_0$。管口浸没足够深，槽面不变，求末态管内水面相对槽面的高度。见图\ref{fig:t4-3q}。
+\end{example}
+\fig{fig:t4-3q}{同一静水槽内，初始空气柱位于槽面上方；管口预留足够浸没深度}{\begin{tikzpicture}
+
+\fill[blue!12](-1.2,-2.4)rectangle(4.8,0);\draw[blue!60](-1.2,0)--(0,0)(1.4,0)--(4.8,0);
+\draw[world](0,-2.2)--(0,3)--(1.4,3)--(1.4,-2.2);\node at(3.6,.35){槽面 $z=0$};
+\draw[dim](-.55,0)--(-.55,3)node[midway,left]{$2H$};
+\draw[guide](1.4,3)--(2.1,3);\node at(.7,3.4){封闭端};
+
+\fill[white](.02,1.5)rectangle(1.38,2.98);\draw[blue,thick](0,1.5)--(1.4,1.5);
+\node[align=center]at(.7,2.25){空气\\$T_0$};\draw[dim](2,1.5)--(2,3)node[midway,right]{$H$};
+\node[align=center]at(3,-1.4){管口始终浸没\\空气不逸出};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{沿静水列初态压强与末态总压}\par\nobreak
+以槽面为高度零点。图\ref{fig:t4-3q}初态管顶在 $2H$，空气柱长 $H$，故内液面位于 $z_i=H$。沿同一静水向上走，初空气压强为 $p_{a0}=p_0-\rho gH$。
+末态设气体空间总长为 $x$，则内液面高度 $z=2H-x$。气液接触面处水蒸气饱和，且题给 $p_s(T_b)=p_0$。液柱平衡必须使用总压：
+\[p_a+p_s=p_0-\rho gz,\qquad p_a=\rho g(x-2H).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先由正分压判断液面的移动方向}\par\nobreak
+空气分压应为正，因此 $x>2H$，液面已降到槽面下方。这一方向由方程决定，图\ref{fig:t4-3s}相应标出下凹深度 $h=x-2H$。\fig{fig:t4-3s}{末态水面与槽面之间的深度决定空气分压，初液面用虚线标出}{\begin{tikzpicture}
+
+\fill[blue!12](-1.2,-2.4)rectangle(4.8,0);\draw[blue!60](-1.2,0)--(0,0)(1.4,0)--(4.8,0);
+\draw[world](0,-2.2)--(0,3)--(1.4,3)--(1.4,-2.2);\node at(3.6,.35){槽面 $z=0$};
+\draw[dim](-.55,0)--(-.55,3)node[midway,left]{$2H$};
+\draw[guide](1.4,3)--(2.1,3);\node at(.7,3.4){封闭端};
+
+\fill[white](.02,-1)rectangle(1.38,2.98);\draw[blue,thick](0,-1)--(1.4,-1);
+\draw[guide](0,1.5)--(1.4,1.5);\node[align=center]at(.7,2.1){$p_a+p_0$\\$T_b$};
+\draw[dim](2,0)--(2,-1)node[midway,right]{$h$};\draw[dim](3,3)--(3,-1)node[midway,right]{$x=2H+h$};
+\node[align=center]at(3.2,-1.8){内液面低于槽面\\$p_a=\rho gh>0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对固定的空气量列温度与体积关系}\par\nobreak
+空气量固定、管截面不变，故对空气单独使用状态方程：
+\[\frac{(p_0-\rho gH)H}{T_0}=\frac{\rho g(x-2H)x}{T_b}.\]
+整理为
+\[x^2-2Hx-H\left(\frac{p_0}{\rho g}-H\right)\frac{T_b}{T_0}=0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取物理解并检查管口浸没条件}\par\nobreak
+负根不满足正的气柱长度及 $x>2H$，取正根后得到
+\[\boxed{h=\sqrt{H^2+H\left(\frac{p_0}{\rho g}-H\right)\frac{T_b}{T_0}}-H}.\]
+若以向上高度表示，末态 $z=-h$。再检查图中的开口：必须在此液面以下，才能维持空气不逸出的守恒条件；题给“浸没足够深”保证了这一点。不能对空气加水蒸气的总量使用固定摩尔数关系，因为加热时有水不断汽化进入管内。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[水银封气管与蒸气分压]\label{t4-4}
+等截面细管一端封闭，10cm长水银柱封住空气与饱和水银蒸气。管水平时气柱长17cm，竖直且开口向下时气柱长20cm。温度恒定，始终有液态水银，大气压76cmHg。求该温度下水银饱和蒸气压。见图\ref{fig:t4-4q}。
+\end{example}
+\fig{fig:t4-4q}{同一支管的两种姿态；同一比例尺表示气柱和汞柱长度}{\begin{tikzpicture}
+
+\draw[world](0,1.7)--(0,1.1)--(3.5,1.1)(0,1.7)--(3.5,1.7);
+\fill[gray!45](1.7,1.12)rectangle(2.7,1.68);\draw(1.7,1.1)--(1.7,1.7)(2.7,1.1)--(2.7,1.7);
+\draw[dim](0,.65)--(1.7,.65)node[midway,below]{$17\,\mathrm{cm}$};\draw[dim](1.7,2.1)--(2.7,2.1)node[midway,above]{$10\,\mathrm{cm}$};
+\node at(1.6,3){水平};\node[right]at(3.6,1.4){$p_0=76\,\mathrm{cmHg}$};
+\begin{scope}[xshift=7.6cm]
+\draw[world](0,0)--(0,3.5)--(.65,3.5)--(.65,0);
+\fill[gray!45](.02,.5)rectangle(.63,1.5);\draw(0,.5)--(.65,.5)(0,1.5)--(.65,1.5);
+\draw[dim](1.05,1.5)--(1.05,3.5)node[midway,right]{$20\,\mathrm{cm}$};\draw[dim](-.5,.5)--(-.5,1.5)node[midway,left]{$10\,\mathrm{cm}$};
+\node[below,align=center]at(.3,-.2){开口向下\\$p_0=76\,\mathrm{cmHg}$};\node at(.3,4){竖直};
+\end{scope}
+
+\node at(.8,1.4){气体};\node at(7.925,2.5){气体};\node at(4.3,-.4){灰色为液汞，气体中含空气和饱和汞蒸气};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{沿液汞的实际高度差求两种总压}\par\nobreak
+先分别求两姿态的气体总压。水平放置时水银柱两端没有高度差，封闭气体总压等于大气压76cmHg。竖直且开口向下时，气体在水银柱上方、开口在下方，沿汞柱从下往上压强减少10cmHg，所以气体总压为66cmHg。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从总压中分离固定空气量的分压}\par\nobreak
+温度恒定且始终有液汞，两姿态的水银蒸气分压均为未知常量 $p_s$。空气的分压分别为 $76-p_s$、$66-p_s$，这才是可以用于空气量守恒的压强。图\ref{fig:t4-4s}中，水平汞柱没有高度差，竖直汞柱的上端总压比下端开口压强低10cmHg；两姿态均保留同一饱和蒸气分压。\fig{fig:t4-4s}{分别从开口沿汞柱求总压，再扣除同一蒸气分压}{\begin{tikzpicture}
+
+\draw[world](0,1.7)--(0,1.1)--(3.5,1.1)(0,1.7)--(3.5,1.7);
+\fill[gray!45](1.7,1.12)rectangle(2.7,1.68);\draw(1.7,1.1)--(1.7,1.7)(2.7,1.1)--(2.7,1.7);
+\draw[dim](0,.65)--(1.7,.65)node[midway,below]{$17\,\mathrm{cm}$};\draw[dim](1.7,2.1)--(2.7,2.1)node[midway,above]{$10\,\mathrm{cm}$};
+\node at(1.6,3){水平};\node[right]at(3.6,1.4){$p_0=76\,\mathrm{cmHg}$};
+\begin{scope}[xshift=7.6cm]
+\draw[world](0,0)--(0,3.5)--(.65,3.5)--(.65,0);
+\fill[gray!45](.02,.5)rectangle(.63,1.5);\draw(0,.5)--(.65,.5)(0,1.5)--(.65,1.5);
+\draw[dim](1.05,1.5)--(1.05,3.5)node[midway,right]{$20\,\mathrm{cm}$};\draw[dim](-.5,.5)--(-.5,1.5)node[midway,left]{$10\,\mathrm{cm}$};
+\node[below,align=center]at(.3,-.2){开口向下\\$p_0=76\,\mathrm{cmHg}$};\node at(.3,4){竖直};
+\end{scope}
+
+\node[above,align=center]at(.8,1.7){总压 $76$\\空气 $76-p_s$};
+\node[left,align=center]at(7.4,2.5){总压 $66$\\空气 $66-p_s$};
+\node[align=center]at(4.7,-.65){同温、同截面、空气量不变\\两态水银蒸气分压均为 $p_s$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用气柱长度代替体积并检查正分压}\par\nobreak
+等截面意味着空气与蒸气共同占据的体积正比于气柱长，空气自身的量不变，因此
+\[(76-p_s)\times17=(66-p_s)\times20.\]
+解得 $3p_s=28$，即
+\[\boxed{p_s=\frac{28}{3}\,\mathrm{cmHg}}.\]
+验算空气分压：水平为 $200/3$cmHg，竖直为 $170/3$cmHg，均为正，且二者与17cm、20cm相乘相等。蒸气量则随气相体积增大而增加，来自液汞的蒸发；若对总压写玻意耳定律，便错误地把这部分可变的气相量也固定了。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[含空气时的压力阈值]\label{t4-5}
+理想化密闭刚性容器中有水和水蒸气，压力调节阈值 $P_*=200$kPa，对纯水蒸气约对应120$^\circ$C。若10$^\circ$C时封入空气，总压101kPa，水始终足量，缓慢均匀加热。给定 $p_s(10)=1.2$、$p_s(80)=47.4$、$p_s(90)=70.1$、$p_s(100)=101$、$p_s(110)=143$、$p_s(120)=200$，单位kPa。估计首次达到阈值的温度，并解释随后排出空气时温度如何变化。见图\ref{fig:t4-5q}。
+\end{example}
+\fig{fig:t4-5q}{密闭刚性容器内液水持续供给饱和蒸气，达到阈值后调节阀才开启}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(4,3.5);\fill[blue!18](.02,.02)rectangle(3.98,.65);\draw[blue](0,.65)--(4,.65);
+\node at(2,.3){足量液水};\node[align=center]at(2,1.9){空气与水蒸气\\初温 $10^\circ\mathrm C$\\初总压 $101\,\mathrm{kPa}$};
+\draw[world](4,2.7)--(5.4,2.7);\draw[world](4,3)--(5.4,3);\draw[thick](4.7,2.6)--(4.7,3.1);
+\draw[flow](5.5,2.85)--(6.6,2.85);\node[above,align=center]at(5.1,3.5){调节阈值\\$P_*=200\,\mathrm{kPa}$};
+\draw[->,red,thick](2,-1.1)--(2,-.1)node[pos=0,below]{缓慢加热};
+\node[align=center]at(6,1.1){阈值前空气量固定\\阈值后允许排气};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{在阀门开启前固定空气量并求其分压}\par\nobreak
+最初总压101kPa包含空气与水蒸气，故空气分压为 $p_{a0}=101-1.2=99.8\,\mathrm{kPa}$。在首次达到阈值前，容器密闭、刚性，空气量不变，空气分压按绝对温度增加：
+\[p_a(t)=99.8\frac{t+273.15}{283.15}\,\mathrm{kPa}.\]
+水始终足量，所以蒸气分压取给定的 $p_s(t)$，达到阈值的条件是 $p_a(t)+p_s(t)=200\,\mathrm{kPa}$，不是单独令 $p_s=200$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把空气分压加到饱和压，确定阈值区间}\par\nobreak
+在90$^\circ$C时，总压约为 $128.0+70.1=198.1\,\mathrm{kPa}$，尚略低于阈值；100$^\circ$C时约232.5kPa，已经超过。因此首次达到阈值在90至100$^\circ$C之间且靠近90$^\circ$C。\fig{fig:t4-5s}{密闭总压先达到阈值；排气阶段沿等总压线升温，水蒸气分压逐渐占满总压}{\begin{tikzpicture}
+
+\begin{scope}[x=.06cm,y=.017cm]
+\draw[axis](0,0)--(130,0)node[right]{$t/{}^\circ\mathrm C$};\draw[axis](0,0)--(0,255)node[above]{$p/\mathrm{kPa}$};
+\draw[orange!80!black,thick]plot coordinates{(10,1.2)(80,47.4)(90,70.1)(100,101)(110,143)(120,200)};
+\draw[blue,thick]plot coordinates{(10,101)(80,171.870)(90,198.093)(90.554,200)};
+\draw[blue,dashed,thick]plot coordinates{(90.554,200)(100,232.517)};
+\draw[guide](0,200)--(125,200);\node[left]at(0,200){$200$};
+\draw[->,red,thick](90.554,200)--(119,200);
+\foreach \t in {10,80,100,120}{\draw(\t,0)--(\t,-3)node[below]{$\t$};}
+\fill(90.554,200)circle(1.5pt);\draw[guide](90.554,0)--(90.554,200);
+\node[above,align=center]at(67,238){蓝：密闭总压试算};\node[orange!80!black,align=center]at(61,82){橙：$p_s(t)$};
+\node[right,align=center]at(126,177){红：排气\\$p_a\to0$};
+\draw[flow](62,155)--(88,198);\node[align=center]at(48,144){首次达到阈值\\$t_*\simeq90.6^\circ\mathrm C$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对饱和压插值求首次达到阈值的温度}\par\nobreak
+在该区间把表中饱和压作线性插值，$p_s(t)\simeq70.1+3.09(t-90)$。代入空气分压式，解得
+\[\boxed{t_*\simeq90.6^\circ\mathrm C}.\]
+这一小数来自插值近似，按表格精度可概括为约90$^\circ$C。图\ref{fig:t4-5s}中蓝色总压曲线先达到200kPa，纯蒸气曲线到120$^\circ$C附近才达到同一高度。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用排气后的等总压条件解释继续升温}\par\nobreak
+调节开始后，总压若被维持在200kPa，逸出的混合气体会逐渐带走空气，$p_a$ 减小。此时 $p_s=200-p_a$ 可随继续加热而增大，液水温度逐步接近纯水蒸气在该压力下的约120$^\circ$C。只要还有液水并维持相平衡，温度不能超过 $p_s(T)=200\,\mathrm{kPa}$ 对应值；首次达到压力阈值并不说明液体已到该温度。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[冷热两容器与二次连通]\label{t4-6}
+连通管容积忽略，两个刚性容器体积均821L，$A$ 保持57$^\circ$C、$B$ 保持27$^\circ$C，按330K与300K计算。两者最初仅有各自的饱和水蒸气、无液水，饱和压分别为0.1708atm、0.0352atm。先连通至平衡，求凝结量；再关阀，把 $B$ 中所有水（含凝结液）抽走至真空，然后重新连通，求最后压强及是否仍有凝结。取 $R=0.0821\,\mathrm{L\,atm/(mol\,K)}$。见图\ref{fig:t4-6q}。
+\end{example}
+\fig{fig:t4-6q}{两只等容刚性容器分别恒温，初态均只有饱和蒸气；阀门控制连通}{\begin{tikzpicture}
+
+\foreach \a in {0,5.8}{\draw[world](\a,0)rectangle(\a+3,2.8);\draw[red,dashed](\a-.15,-.15)rectangle(\a+3.15,2.95);}
+\draw[world](3,1.2)--(5.8,1.2)(3,1.6)--(5.8,1.6);\draw[thick](4.2,1.2)--(4.6,1.6)(4.2,1.6)--(4.6,1.2);\node[above]at(4.4,1.9){阀 $K$};
+\node[align=center]at(1.5,1.4){$A:330\,\mathrm K$\\$p_{sA}=0.1708\,\mathrm{atm}$\\$V=821\,\mathrm L$};
+\node[align=center]at(7.3,1.4){$B:300\,\mathrm K$\\$p_{sB}=0.0352\,\mathrm{atm}$\\$V=821\,\mathrm L$};
+\node at(4.4,-.65){红虚线表示各自的恒温装置，初态两端均无液水};
+
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{分别用各自的温度求初始水量}\par\nobreak
+两个容器有各自恒温装置，连通后温度仍分别为330K和300K；只能要求机械平衡时压强相同，不能再令两端温度相同。利用 $V/R=821/0.0821=10000\,\mathrm{mol\,K/atm}$，初态蒸气量为
+\[n_{Ai}=\frac{0.1708\times10000}{330}=5.17576\,\mathrm{mol},\quad
+n_{Bi}=\frac{0.0352\times10000}{300}=1.17333\,\mathrm{mol}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{试算全气态压强，判断冷端是否凝结}\par\nobreak
+若全部水保持气态，共同压强试算为 $p^*=(n_{Ai}+n_{Bi})/[10000(1/330+1/300)]\simeq0.09977\,\mathrm{atm}$，高于冷端饱和压0.0352atm，故冷端 $B$ 必有凝结。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按冷端饱和压分配第一次平衡的气液水量}\par\nobreak
+第一次平衡压强因此为 $p_1=0.0352\,\mathrm{atm}$。气相量分别为 $n_{A1}=1.06667\,\mathrm{mol}$、$n_{B1}=1.17333\,\mathrm{mol}$，凝结量为
+\[\boxed{n_{\text{凝}}=n_{Ai}+n_{Bi}-n_{A1}-n_{B1}=4.10909\,\mathrm{mol}},\]
+约73.96g。图\ref{fig:t4-6s}第一行显示冷端液水保留、热端蒸气不饱和；沿箭头进入下一行时，关闭阀门才把保留的 $A$ 与待抽空的 $B$ 分开。\fig{fig:t4-6s}{逐次操作后的水量分配；第二次连通只使用抽空后保留下来的水量}{\begin{tikzpicture}
+
+\foreach \b/\title in {0/{第一次平衡},-3.7/{关阀并抽空 $B$},-7.4/{第二次平衡}}{
+\node[left]at(-.3,\b+1){\title};\draw[world](0,\b)rectangle(2.8,\b+2)(5.5,\b)rectangle(8.3,\b+2);
+\draw[world](2.8,\b+.8)--(5.5,\b+.8)(2.8,\b+1.2)--(5.5,\b+1.2);}
+\fill[blue!18](5.52,.02)rectangle(8.28,.45);\node at(6.9,.23){液水 $4.1091\,\mathrm{mol}$};
+\node[align=center]at(1.4,1.15){$A:330\,\mathrm K$\\$n_{A1}=1.0667\,\mathrm{mol}$};
+\node[align=center]at(6.9,1.35){$B:300\,\mathrm K$\\$n_{B1}=1.1733\,\mathrm{mol}$};
+\node[above]at(4.15,1.5){开};\node at(4.15,-.55){$p_1=0.0352\,\mathrm{atm}$};
+\draw[thick](4.15,-2.95)--(4.15,-2.45);\node[above]at(4.15,-2.2){关};
+\node[align=center]at(1.4,-2.7){$A$ 保留\\$1.0667\,\mathrm{mol}$};\node[align=center]at(6.9,-2.7){$B$ 内无气、无液\\真空};
+\draw[->,blue,thick](8.4,-2.7)--(9.4,-2.7)node[right,align=center]{抽走\\全部水};
+\node[align=center]at(1.4,-6.4){$A:330\,\mathrm K$\\不饱和蒸气};\node[align=center]at(6.9,-6.4){$B:300\,\mathrm K$\\不饱和蒸气};
+\node[above]at(4.15,-5.9){再开};\node at(4.15,-7.95){$p_2=0.01676\,\mathrm{atm}<p_{sB}$};
+\draw[flow](1.4,-.8)--(1.4,-1.5);\draw[flow](1.4,-4.45)--(1.4,-5.2);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐项扣除被抽走的水，再检查第二次连通}\par\nobreak
+关闭阀门并抽走 $B$ 中全部水后，系统只保留 $A$ 中的1.06667mol水蒸气。不能把 $A$ 的压强重新设为最初的0.1708atm，它在第一次连通中已失去大部分水。
+第二次开阀，先假定无凝结，按总水量守恒求公共压强：
+\[n_{A1}=\frac{p_2V}{R}\left(\frac1{330}+\frac1{300}\right),\]
+\[\boxed{p_2=0.0352\frac{300}{330+300}=0.0167619\,\mathrm{atm}}.\]
+该值低于冷端0.0352atm，也低于热端0.1708atm，两端均不饱和，假设成立，故 $\boxed{\text{无新凝结}}$。若抽空时留下凝结液，这份液水会再次蒸发，第二次总水量和末压便都改变；题设“所有水”决定了此处所用的分支。
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[互不相溶液体的界面沸腾]\label{t4-7}
+两种互不相溶液体分层，缓慢均匀加热。忽略液柱和气泡曲率压差，两种液体在界面均可供给蒸气。解释为何界面处可能先出现持续长大的气泡，并写出平衡温度的条件。两种液体的饱和压为 $p_{s1}(T),p_{s2}(T)$，外压 $p_0$。见图\ref{fig:t4-7q}。
+\end{example}
+\fig{fig:t4-7q}{互不相溶液体的界面沸腾：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3)--(0,0)--(5,0)--(5,3);\fill[blue!9] (.02,.02) rectangle (4.98,1.4);\fill[orange!9] (.02,1.4) rectangle (4.98,2.5);\draw[world] (0,1.4)--(5,1.4);\draw[world,fill=white] (2.5,1.4) circle(.4);\node at (4,.6){液体2};\node at (4,2){液体1};\node[above] at (2.5,3){$p_0$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{分别建立两种液体与泡内蒸气的相平衡}\par\nobreak
+界面处的气泡可同时与两种互不相溶液体交换分子。两种液体都足量、且各自蒸发凝结达到平衡时，气泡内两组分的分压分别为 $p_{s1}(T)$、$p_{s2}(T)$；互不相溶使每种液体可近似保持自身纯液体的饱和压关系。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对同一气泡叠加分压并列机械平衡}\par\nobreak
+图\ref{fig:t4-7s}用两条供给箭头表示两种蒸气进入同一气泡，总蒸气压为两分压之和。忽略液柱与曲率压差，气泡能够持续长大的临界条件为
+\[\boxed{p_{s1}(T)+p_{s2}(T)=p_0}.\]\fig{fig:t4-7s}{界面气泡与两种液体接触，两种蒸气共同承担泡内压强}{\begin{tikzpicture}
+
+\fill[orange!12](-2.6,0)rectangle(2.6,1.8);\fill[blue!12](-2.6,-1.8)rectangle(2.6,0);
+\draw[guide](-2.6,0)--(2.6,0);\filldraw[fill=white,thick](0,0)circle(1.2);
+\node[align=center]at(0,0){界面气泡\\$p=p_{s1}+p_{s2}$};
+\draw[flow](-2.2,.65)--(-1.03,.65);\node[above]at(-1.9,.7){$p_{s1}$};
+\draw[flow](-2.2,-.65)--(-1.03,-.65);\node[below]at(-1.9,-.7){$p_{s2}$};
+\node at(1.9,1.4){液体1};\node at(1.9,-1.4){液体2};
+\draw[force](3.8,0)--(1.25,0)node[midway,above]{$p_0$};
+\node at(.5,-2.25){临界：$p_{s1}(T)+p_{s2}(T)=p_0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较纯液体沸点并说明近似的边界}\par\nobreak
+在这一温度，两分压都为正且各自小于 $p_0$。若两饱和压均随温度单调增大，该温度便低于两种纯液体各自满足 $p_{si}(T)=p_0$ 的正常沸点。界面远处若只能由一种液体持续供给蒸气，要单靠该种蒸气克服外压，通常需要更高温度，所以界面处可能先沸腾。
+
+“可能”仍依赖题设近似。真实界面气泡还需克服所在深度的液体静压与界面张力，成核条件、两种蒸气的供给速率也会改变观察到的位置与温度。若纳入这些效应，应重新列泡内外机械平衡，不能把简化的分压和无条件延伸到所有分层液体。
+
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[管口水银柱的小位移稳定性]\label{t4-8}
+开口向上的等截面管下端封闭，气柱长30cm，其上水银柱高60cm，水银上表面恰到管口。外压75cmHg，初温恒定。若气体使水银界面向上微移 $x>0$，水银溢出，分析是否有恢复作用；再说明向下微移时的区别。见图\ref{fig:t4-8q}。
+\end{example}
+\fig{fig:t4-8q}{管口水银柱的小位移稳定性：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,4.5)--(0,0)--(1,0)--(1,4.5);\fill[gray!30] (0,1.5) rectangle (1,4.5);\node at (.5,.7){气体};\draw[dim] (1.6,0)--(1.6,1.5) node[midway,right]{30cm};\draw[dim] (1.6,1.5)--(1.6,4.5) node[midway,right]{60cm};\node at (.5,5){管口};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{先求初态气压，固定界面位移的正方向}\par\nobreak
+初态气体托住60cm水银柱，故气压为 $p_i=75+60=135\,\mathrm{cmHg}$。规定气液界面向上位移为 $x>0$，下式以cm表示长度、cmHg表示压强。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按溢出后的几何关系分别求气压与负载}\par\nobreak
+图\ref{fig:t4-8s}中管口固定，向上移动会使水银溢出，故气柱长由30变成 $30+x$，剩余汞柱高由60变成 $60-x$。等温时气体压强与负载要求的压强分别为
+\[p_g(x)=\frac{135\times30}{30+x},\qquad p_\ell(x)=75+(60-x)=135-x.\]
+两者相减才决定界面的净推力方向。\fig{fig:t4-8s}{分别从初态施加向上或向下的微扰；仅向上分支有汞溢出}{\begin{tikzpicture}
+
+\foreach \a in {0,5.7}{\draw[world](\a,4.5)--(\a,0)--(\a+1,0)--(\a+1,4.5);\draw[guide](\a,1.5)--(\a+1,1.5);}
+\fill[gray!30](.02,1.7)rectangle(.98,4.5);\draw(0,1.7)--(1,1.7);\draw[guide](0,1.5)--(1.4,1.5);
+\draw[dim](-.5,0)--(-.5,1.7)node[midway,left]{$30+x$};\draw[dim](1.7,1.7)--(1.7,4.5)node[midway,right]{$60-x$};
+\draw[flow](.5,4.5)..controls(1.3,5.2)and(1.7,4.8)..(2.2,4.1)node[right]{溢出};
+\draw[force](.5,2.9)--(.5,1.9);\node[align=center]at(.5,-.8){上移：$p_g<p_\ell$\\净力向下};
+\fill[gray!30](5.72,1.3)rectangle(6.68,4.3);\draw(5.7,1.3)--(6.7,1.3)(5.7,4.3)--(6.7,4.3);
+\draw[dim](5.15,0)--(5.15,1.3)node[midway,left]{$30-|x|$};\draw[dim](7.4,1.3)--(7.4,4.3)node[midway,right]{$60$};
+\draw[force](6.2,2.2)--(6.2,3.2);\node[align=center]at(6.2,-.8){下移：$p_g>135$\\净力向上};
+\node at(3.8,5.5){长度用 cm 表示；虚线为初界面，微位移已放大};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两个压降的一阶项，判定恢复方向}\par\nobreak
+先求初态附近的斜率：$p_g'(x)=-135\times30/(30+x)^2$，所以$p_g'(0)=-135/30=-4.5$；负载斜率为$p_\ell'(x)=-1$。对小$x$保留一阶项，
+\[p_g-p_\ell\simeq135\left(1-\frac x{30}\right)-135+x
+=-3.5x<0.\]
+向上偏离后气体压降比水银负载压降更大，净力向下，因此具有恢复趋势。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另列不溢液分支，区分恢复性与周期运动}\par\nobreak
+再单独考虑初态向下微移。这时水银不溢出，整段汞柱长度仍为60cm，上表面也随之下降，所以负载压强仍为135cmHg；气体受压使压强升高，净力向上，也有恢复趋势。
+
+不能把上移分支的 $60-x$ 关系直接延长到此分支。
+因此初态在两侧均有局部恢复作用。但上移已使部分汞永久离开管内，原有水银量不再恢复，后续平衡位置可能改变，不能宣称装置必作无耗散周期振动。若扰动很快近似绝热，上移气体压降系数改为 $\gamma135/30$，仍大于1，向上的扰动同样受到恢复作用。
+
+\end{solution}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{example}[绝热喷管的出口速度]\label{t4-9}
+大容器内理想气体入口温度 $T_1$、压强 $p_1$、速度可忽略，经绝热无摩擦喷管稳态流出。给定可实现的等熵出口压强 $p_2<p_1$，气体摩尔质量 $\mu$、摩尔定容热容 $C_V$ 为常量。忽略势能变化和轴功，求出口温度与速率。见图\ref{fig:t4-9q}。
+\end{example}
+\fig{fig:t4-9q}{绝热喷管的出口速度：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(1.2,2)--(3,.6)--(5,1.4) (0,-2)--(1.2,-2)--(3,-.6)--(5,-1.4);\draw[flow] (.5,0)--(2,0);\draw[flow] (3.3,0)--(5.5,0) node[right]{$v_2$};\node[align=center] at (.4,2.7){入口 $p_1,T_1$\\$v_1\simeq0$};\node[above] at (4.8,1.8){出口 $p_2,T_2$};
+\end{tikzpicture}}
+\end{minipage}
+\begin{solution}\textbf{选择有质量进出的稳态控制体}\par\nobreak
+取入口到出口之间的喷管为固定稳态控制体。图\ref{fig:t4-9q}中的管壁不移动，气体却持续流入流出，入口和出口压力功必须与内能合并为焓；不能只写某一团气体的 $C_V\Delta T$ 等于出口动能。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等熵关系确定出口温度}\par\nobreak
+气体无摩擦且绝热，沿流线可用等熵状态关系，$C_p=C_V+R$，故
+\[\frac{T_2}{T_1}=\left(\frac{p_2}{p_1}\right)^{(\gamma-1)/\gamma}
+=\left(\frac{p_2}{p_1}\right)^{R/C_p}.\]
+因此 $\boxed{T_2=T_1(p_2/p_1)^{R/(C_V+R)}}$。出口低压对应降温。\fig{fig:t4-9s}{稳态控制体的焓流与动能流在入口、出口处同时计入}{\begin{tikzpicture}[scale=.9]
+\draw[thick](0,-1.4)..controls(2,-.4)and(4,-.4)..(6,-.8);\draw[thick](0,1.4)..controls(2,.4)and(4,.4)..(6,.8);
+\draw[dashed](-.3,-1.8)rectangle(6.3,1.8);
+\draw[->,blue,thick](-1,0)--(1.2,0)node[midway,above]{$\dot m$};\draw[->,red,thick](4.8,0)--(7,0)node[midway,above]{$\dot m$};
+\node at(.3,2.3){$h_1+v_1^2/2$};\node at(5.7,2.3){$h_2+v_2^2/2$};\node at(3,-2.4){绝热、无轴功：$h_1+v_1^2/2=h_2+v_2^2/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把焓差转为出口动能}\par\nobreak
+图\ref{fig:t4-9s}中 $\dot m$ 是质量流率，$h_i=C_pT_i/\mu$ 是单位质量的焓，两端焓流与动能流均按同一质量流率计入。除以 $\dot m$ 后，稳态能量式为
+\[\frac{C_pT_1}{\mu}+\frac{v_1^2}{2}=\frac{C_pT_2}{\mu}+\frac{v_2^2}{2}.\]
+忽略 $v_1$，代入温度比得
+\[\boxed{v_2=\sqrt{\frac{2(C_V+R)T_1}{\mu}
+\left[1-\left(\frac{p_2}{p_1}\right)^{R/(C_V+R)}\right]}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对量纲、极限与出口状态的实现条件}\par\nobreak
+摩尔质量 $\mu$ 必须用kg/mol，使 $C_pT/\mu$ 为J/kg。$p_2\to p_1$ 时速度趋零；压强下降越多，焓转化为动能越多。题目给定的是可实现的等熵出口状态，具体喷管还受面积比、喉部阻塞和激波等条件限制，不能仅由本式再推定质量流率或任意出口压强。
+\end{solution}

@@ -1,0 +1,101 @@
+\section{练习}
+
+\begin{question}\begin{drill}[霍尔测量反求载流子密度]\label{mg4:drill:1}
+矩形样品沿电流方向长 $L$，截面宽 $w$、厚 $t$。电流沿长方向，磁场垂直宽面，霍尔电压跨宽 $w$ 测量。测得纵向电阻 $R$ 与霍尔电压大小 $U_H$。在单一电子载流模型中求 $n$、电导率与迁移率。
+\end{drill}
+\fig{fig:mg4:drill:1:s}{霍尔电压跨宽度 $w$，磁场沿厚度 $t$；纵向电阻沿 $L$ 测量}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(4,1.6);\draw[world](0,1.6)--(.6,2.1)--(4.6,2.1)--(4.6,.5)--(4,0) (4,1.6)--(4.6,2.1);
+\draw[flow](.4,.8)--(1.7,.8)node[above]{$I,\ +x$};\node at(3,.8){$\odot B,\ +z$};
+\draw[dim](0,-.55)--(4,-.55)node[midway,below]{$L$};\draw[dim](-.55,0)--(-.55,1.6)node[midway,left]{$w$};
+\draw[dim](4.35,1.4)--(4.95,1.9)node[midway,right]{$t$};
+\draw(2,1.6)--(2,2.65) (2,0)--(2,-1.1);\node[right]at(2,2.65){横向电压端};\node[right]at(2,-1.1){电压大小 $U_H$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:1}
+\begin{question}\begin{drill}[电荷反向与速度反向的偏转]\label{mg4:drill:2}
+正粒子在给定电场、磁场中以速度 $\bm v_0$ 无偏转通过，且 $\bm E\perp\bm B$。分别将电荷反向、将速度反向、同时将两者反向，判断初始合力。
+\end{drill}
+\fig{fig:mg4:drill:2:s}{统一采用 $\bm v_0$ 向右、$\bm E$ 向上、$\bm B$ 向外的方向约定}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(3.2,0)node[right]{$x$};\draw[axis](0,-.3)--(0,2.3)node[above]{$y$};\fill(0,0)circle(2pt)node[below left]{$q>0$};
+\draw[flow](0,0)--(1.7,0)node[below]{$\bm v_0$};\draw[->,blue,thick](.7,.6)--(.7,1.8)node[above]{$\bm E$};\node at(2.4,1.4){$\odot\bm B$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:2}
+\begin{question}\begin{drill}[摆线运动一周期的位移与电功]\label{mg4:drill:3}
+正粒子从静止释放于 $\bm E=E\bm e_x,\bm B=B\bm e_z$。求首次速度再次为零时的位移及电场净功；说明在此前动能是否始终为零。
+\end{drill}
+\fig{fig:mg4:drill:3:s}{题设：摆线运动一周期的位移与电功}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-2.5)--(0,1.5)node[above]{$y$};\draw[axis](-.3,0)--(3,0)node[right]{$x,E$};\node at(1.5,1.5){$\odot B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:3}
+\begin{question}\begin{drill}[水平圆轨道的存在性检验]\label{mg4:drill:4}
+正电荷在正中心电荷、向上均匀磁场及重力中作水平圆周运动。角速度为 $\omega$，定义 $D=qB\omega-m\omega^2$。已由平衡式得到 $h=mg/D$、$s=(k_eQq/D)^{1/3}$。求非零半径存在的约束，并说明 $D>0$ 是否已经足够。
+\end{drill}
+\fig{fig:mg4:drill:4:s}{圆半径 $\rho$、高度 $h$ 和到中心电荷的距离 $s$ 构成直角三角形}{\begin{tikzpicture}
+
+\draw[axis](0,-.3)--(0,3.4)node[above]{$y,\ \bm B$};\draw[world](0,2)ellipse(1.8 and .45);
+\fill(0,0)circle(2pt)node[below]{$Q>0$};\fill(1.8,2)circle(2pt)node[right]{$q>0$};
+\draw[guide](0,0)--(1.8,2);\node[below right]at(.9,1){$s$};\draw[dim](-.55,0)--(-.55,2)node[midway,left]{$h$};
+\draw[dim](0,2)--(1.8,2)node[midway,above]{$\rho$};\draw(0,1.8)--(.2,1.8)--(.2,2);
+\draw[->,blue,thick](1.8,2)--(2.45,2.72)node[above]{$\bm F_C$};\draw[->,red,thick](1.8,2)--(.7,2)node[below]{$\bm F_B$};\draw[->,thick](1.8,2)--(1.8,.8)node[right]{$m\bm g$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:4}
+\begin{question}\begin{drill}[旋轮线有无回绕的条件]\label{mg4:drill:5}
+在垂直均匀电磁场中，以 $x$ 方向作为漂移正向，漂移速率为 $V=E/B$。粒子初速度也沿 $x$，大小 $v_0\ge0$。求实验室轨迹沿 $x$ 的速度是否会反向，区分平滑推进、尖点和回绕三种情形。
+\end{drill}
+\fig{fig:mg4:drill:5:s}{在漂移系中分解初速度，再将相对圆周运动叠加到向右平移的导引中心上}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(4.8,0)node[right]{$x$};\draw[axis](0,-.4)--(0,2.2)node[above]{$y$};\node at(3.7,1.7){$\odot B$};\draw[->,blue](3, .5)--(3,1.5)node[above]{$\bm E$};
+\draw[flow](.2,.5)--(1.9,.5)node[midway,above]{$\bm v_0$};\draw[flow](.2,-.65)--(1.45,-.65)node[midway,below]{$\bm v_D=V\bm e_x$};
+\draw[world](2,-2.4)circle(.8);\fill(2,-2.4)circle(1.5pt)node[below]{$C$};\draw[flow](2,-2.4)--(3.5,-2.4)node[right]{$V$};\draw[flow](2,-1.6)--(3,-1.6)node[right]{$\bm u$};\draw[guide](2,-2.4)--(2,-1.6)node[midway,left]{$u/\Omega$};
+\node at(0,-2.4){$u=|v_0-V|$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:5}
+\begin{question}\begin{drill}[各向同性粒子的磁瓶损失比例]\label{mg4:drill:6}
+磁瓶中央场为 $B_0$，两端最大场均为 $B_m$。初始速度方向在空间各向同性，速率相同。在绝热近似下，求能从任一端逃逸的初始方向比例，忽略碰撞补充损失锥。
+\end{drill}
+\fig{fig:mg4:drill:6:s}{两端场强升高；中央速度与左右轴向的夹角分别决定两端的损失锥}{\begin{tikzpicture}
+
+\draw[axis](-3.6,0)--(3.8,0)node[right]{$z$};
+\foreach \h in {-.9,-.45,.45,.9}{\draw[blue](-3,{.45*\h})..controls(-1.2,\h)and(1.2,\h)..(3,{.45*\h});}
+\node[above]at(-3,1){$B_m$};\node[above]at(0,1.1){$B_0$};\node[above]at(3,1){$B_m$};
+\draw[->,red,thick](0,0)--(1.25,.72)node[above]{$\bm v_0$};\draw(.55,0)arc(0:30:.55)node[midway,right]{$\alpha_0$};
+\draw[guide](0,0)--(2,1.15) (0,0)--(2,-1.15) (0,0)--(-2,1.15) (0,0)--(-2,-1.15);
+\node at(0,-1.7){中央速度方向在整个球面上均匀分布};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:6}
+\begin{question}\begin{drill}[反转磁场分离霍尔电压]\label{mg4:drill:7}
+测量横向电压含固定偏置 $U_0$ 与霍尔项 $kIB$，即 $U(I,B)=U_0+kIB$。给出 $\pm I,\pm B$ 四组测量值，构造能够消去固定偏置并保留霍尔项的组合，说明能否同时消去任意随 $I^2$ 变化的偶项。
+\end{drill}
+\fig{fig:mg4:drill:7:s}{电流与磁场反向时，横向电压始终采用同一对端子的 $U=V_A-V_C$}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(4,1.5);\draw[flow](.4,.75)--(1.7,.75)node[above]{$+I$};\node at(3,.75){$\odot +B$};
+\draw(2,1.5)--(2,2.2)node[above]{$A\ (+)$};\draw(2,0)--(2,-.7)node[below]{$C\ (-)$};
+\node[right]at(4.5,.75){$U=V_A-V_C$};\node at(2,-1.5){四组输入：$(+I,+B),(+I,-B),(-I,+B),(-I,-B)$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:7}
+\begin{question}\begin{drill}[磁镜与缓变静电势共同反射]\label{mg4:drill:8}
+粒子进入缓变磁场，初场 $B_0$，初平行能量 $K_{\parallel0}$，磁矩不变量为 $\mu>0$。沿途电势满足 $\varphi-\varphi_0=\lambda(B-B_0)$，粒子带有符号电荷 $q$。求镜点场强及能够反射的条件。
+\end{drill}
+\fig{fig:mg4:drill:8:s}{沿导引中心路径同时记录 $B(z)$ 与电势；电荷 $q$ 保留符号}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$z$};\foreach \h in {-.8,-.4,.4,.8}{\draw[blue](0,\h)..controls(2,\h)and(2.7,{.4*\h})..(4.5,{.4*\h});}
+\fill(0,0)circle(2pt);\draw[flow](0,0)--(1.3,0)node[below]{$v_{\parallel0}>0$};\node[above]at(0,1){$B_0,\ \varphi_0$};\node[above]at(4,1){$B,\ \varphi$};
+\node at(2.2,-1.45){$\varphi-\varphi_0=\lambda(B-B_0)$};\node at(2.2,-2.05){图示为向强场运动；弱场方向另行判断};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg4:drill:8}

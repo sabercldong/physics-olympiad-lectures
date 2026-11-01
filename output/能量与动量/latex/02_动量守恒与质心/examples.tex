@@ -1,0 +1,634 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[车厢内的多次碰撞]\label{em2:example:1}
+质量$M$的车厢静止在光滑水平面上，厢内质量$m$的物体以对地速度$v_0$向右运动。经历若干次碰撞后物体静止于厢内，求最终车厢速度。
+\end{example}
+\fig{fig:em2:example:1:s}{题设：车厢内的多次碰撞}{\begin{tikzpicture}[scale=.9]\draw[world](-.4,-.3)--(5.5,-.3);\draw[world](0,1.6)--(0,0)--(5,0)--(5,1.6);\node at(3.5,.45){车厢$M$};\draw[world](1,.03)rectangle(1.6,.65);\node at(1.3,.34){$m$};\draw[flow](1.3,1)--(2.7,1)node[midway,above]{$v_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{取车厢与物体整体，使用水平动量守恒}\par\nobreak
+对图\ref{fig:em2:example:1:s}的车厢和物体取整体，水平方向没有外冲量。物体最终相对厢静止，故图\ref{fig:em2:example:1:p}中两者对地速度同为$V$，于是
+\[mv_0=(M+m)V,\qquad\boxed{V=\frac{mv_0}{M+m}}.\]
+\fig{fig:em2:example:1:p}{解答过程：车厢内的多次碰撞}{\begin{tikzpicture}[scale=.9]\draw[world](0,1.5)--(0,0)--(5,0)--(5,1.5);\draw[world](1,0)rectangle(1.6,.6);\node at(1.3,.3){$m$};\node at(3.7,.5){$M$};\draw[flow](1.3,1)--(2.6,1)node[above]{$V$};\draw[flow](3.6,1)--(4.9,1)node[above]{$V$};\node at(2.5,-.65){末态相对静止};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把相对静止换成共同的对地速度}\par\nobreak
+这时物体“静止于厢内”表示相对车厢速度为零，并不是对地速度为零。若把末态写成车厢独自具有动量$MV$，便会少计物体已随车运动的$mV$。图中的共同速度箭头属于两者相同的末态。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查速度范围与末态能够形成的条件}\par\nobreak
+碰撞次数和车厢长度只影响到达共速状态的过程，不进入最终速度。若碰撞完全弹性且没有任何耗散，则不能保证最后相对静止；这里末态条件本身已经意味着存在使相对运动衰减的机制。最终速度始终介于$0$与$v_0$之间。\end{solution}
+\begin{question}\begin{example}[迎面碰撞的方向判断]\label{em2:example:2}
+质量$1500\,\mathrm{kg}$的客车以$20\,\mathrm{m/s}$向南运动，与质量$3000\,\mathrm{kg}$、向北运动的卡车碰撞后连在一起，并先向南滑行。忽略碰撞期间道路阻力冲量，求卡车碰前速率的范围。
+\end{example}
+\fig{fig:em2:example:2:s}{题设：迎面碰撞的方向判断}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$1500$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$3000$};\draw[flow](0.6,0.8)--++(1,0)node[above]{$20$};\draw[flow](4.6,0.8)--++(-1,0)node[above]{$u$};\node at(2.7,-1){向右表示南};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{规定南向为正并列带符号的动量式}\par\nobreak
+按图\ref{fig:em2:example:2:s}取向南为正，设卡车速率$u>0$，碰后共同速度为$V$。动量守恒给$1500\times20-3000u=4500V$。
+\fig{fig:em2:example:2:p}{碰后共同速度的符号由两初动量之差决定，边界$u=10$须排除}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(2.2,.7);\draw[guide](.75,0)--(.75,.7);\node at(1.1,.35){$4500\,\mathrm{kg}$};
+\draw[flow](2.5,.35)--(4,.35)node[right]{$V>0$，向南};
+\begin{scope}[xshift=5.7cm]
+\draw[axis](0,0)--(3.4,0)node[right]{$u$};\draw[axis](0,-1)--(0,2)node[above]{$V$};
+\draw[world,blue](0,1.6)--(3.2,-.96);\draw[guide](2,0)--(2,1.2);\draw[white,fill=white](2,0)circle(.055);\draw(2,0)circle(.055);
+\node[below left]at(2,0){$10\,\mathrm{m/s}$};\node at(1,2.4){可行区间$0<u<10$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将碰后方向化为分子符号条件}\par\nobreak
+把速度显式解出，$V=(30000-3000u)/4500$。分母始终为正，因此碰后方向由分子唯一决定；当$u=10\,\mathrm{m/s}$时两车刚碰后恰静止，不符合“先向南滑行”，所以上端点必须排除。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{排除零速边界并区分后续滑行}\par\nobreak
+图\ref{fig:em2:example:2:p}所示碰后先向南，意味着$V>0$，所以$30000-3000u>0$，即
+\[\boxed{0<u<10\,\mathrm{m/s}}.\]
+后续滑行至停不属于碰撞守恒的时间段：道路摩擦在那一段提供了有限的外冲量。若只知道最终停下而不知刚碰后的方向，就无法得到上述不等式。\end{solution}
+\begin{question}\begin{example}[车内敲击能否持续推进]\label{em2:example:3}
+人、锤和平板车组成的系统最初静止在光滑水平面上。人不断用锤敲打车的一端，能否在每个内部运动完全复原的循环后，使车获得持续向同一方向的位移或非零速度？
+\end{example}
+\fig{fig:em2:example:3:s}{题设：车内敲击能否持续推进}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\draw[world](.3,.3)--(.3,1.8);\fill(2,1)circle(.15);\draw[world](2,.85)--(2,.3);\draw[world](1.7,1.1)--(1,1.3);\draw[very thick](.9,1.15)--(.9,1.55);\node at(3.6,1.1){人、锤、车};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把挥锤与敲击都纳入同一物质系统}\par\nobreak
+图\ref{fig:em2:example:3:s}整个系统无水平外力，总动量始终为零，质心固定。挥锤时锤向左，人与车可以向右；敲击时又通过内部冲量重新分配动量，所以过程中车并非时刻静止。
+\fig{fig:em2:example:3:p}{内部挥锤可使车暂时移动，完全复原后位置与速度都恢复}{\begin{tikzpicture}
+
+\foreach \y/\shift/\hx/\lab in {3/0/2/初态,1/.3/.8/中间态,-1/0/2/复原后}{
+\begin{scope}[yshift=\y cm]
+\draw[world](\shift,0)rectangle(\shift+5,.3);\draw[world](\hx,.5)--(\hx,1);\draw[world,line width=1.5pt](\hx-.3,1)--(\hx+.3,1);
+\node[left]at(-.7,.4){\lab};\node at(\shift+3.8,.75){人与车};
+\end{scope}}
+\draw[guide,blue](2.4,-1.4)--(2.4,4.7)node[above]{$X_C$固定};
+\draw[flow,red](0,1.65)--(.8,1.65)node[right]{车向右};\draw[flow,red](1.8,2.3)--(.7,2.3)node[left]{锤向左};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用质心固定排除循环后的净平移}\par\nobreak
+若完全复原的循环仍使整车平移$\Delta X$，各部分的末位置便都是初位置加$\Delta X$，因此质心也应平移$\Delta X$。这与无水平外力、初始静止所要求的$\Delta X_C=0$矛盾。位置论证和动量论证分别排除了循环后的净位移与净速度。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总动量与末态共速排除净推进}\par\nobreak
+图\ref{fig:em2:example:3:p}的末态中，各部分相对位置与最初相同，且内部相对速度全部为零。此时系统只能整体具有同一速度。总动量为零使此速度为零；质心固定又使系统整体平移量为零。因此不能以完全复原的内部循环实现持续推进。若某部分留在不同位置，车可获得一次有限位移；若把锤或物质抛出系统，则已经改变了系统边界。\end{solution}
+\begin{question}\begin{example}[车内单摆的瞬时碰撞]\label{em2:example:4}
+车架质量$M$，车内悬挂质量$m_0$的单摆，摆线最初竖直。车与摆一起以$v$运动，车架与正前方静止的质量$m$木块发生极短碰撞。求摆球的瞬时水平速度，并分别写出一般碰撞及车、木块粘合时的水平动量关系。
+\end{example}
+\fig{fig:em2:example:4:s}{题设：车内单摆的瞬时碰撞}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(3,.25);\draw[world](.3,.25)--(.3,2)--(2.7,2);\draw[world](1.8,2)--(1.8,.8);\fill(1.8,.8)circle(.12)node[right]{$m_0$};\draw[world](3.8,0)rectangle(4.8,.8);\node at(4.3,.4){$m$};\draw[flow](.3,2.4)--(1.5,2.4)node[above]{$v$};\node at(.6,.3){$M$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用竖直绳确定摆球水平冲量为零}\par\nobreak
+图\ref{fig:em2:example:4:s}中绳竖直。碰撞时间趋于零时，有限摆角变化趋于零，绳的约束冲量竖直，不能改变摆球的水平动量，所以$\boxed{v_{0x}'=v}$。这不要求摆球随后始终保持该速度，只描述碰撞刚结束的瞬间。
+\fig{fig:em2:example:4:p}{碰撞刚结束时摆球仍保留原水平速度，车架与木块另有末速度}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,.3);\draw[world](.3,.3)--(.3,2.2)--(2.7,2.2);
+\draw[world](1.8,2.2)--(1.8,.9);\draw[world](1.8,.75)circle(.15);\node[left]at(1.5,.75){$m_0$};\node at(.6,.15){$M$};
+\draw[world](3.8,0)rectangle(4.9,.8);\node at(4.35,.4){$m$};
+\draw[flow,blue](1.8,.75)--(3.2,.75)node[right]{$v$};\draw[flow](.4,-.6)--(1.3,-.6)node[right]{$V$};\draw[flow](4,-.6)--(5,-.6)node[right]{$U$};
+\node at(2.4,2.8){绳竖直，水平约束冲量为零};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别审查摆球及车块子系统}\par\nobreak
+对摆球单独取水平分量，有$m_0(v_{0x}'-v)=I_{{\text{绳}},x}=0$。对车架与木块组成的子系统，摆绳在该瞬间也不传递水平冲量，故这一子系统的水平动量也可单独守恒；这说明消去摆球动量并不是把摆球质量随意忽略。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{写一般碰撞关系，再加入粘合条件}\par\nobreak
+设图\ref{fig:em2:example:4:p}车架、木块末速度为$V,U$。整个系统水平方向动量守恒为$(M+m_0)v=MV+mU+m_0v$，消去摆球相同的初、末动量得$\boxed{Mv=MV+mU}$。若车和木块粘合，$V=U$，故$V=Mv/(M+m)$。摆球一般不会在这一瞬间与车同速，碰撞之后才发生摆动。\end{solution}
+\begin{question}\begin{example}[从滑板车上向前跳出]\label{em2:example:5}
+质量$m$的人与质量$M$的滑板车以速度$v$向前运动。人以相对车的水平速度$u$向前跳离，忽略外部水平冲量。求人和车的对地末速度，并判断车何时后退。
+\end{example}
+\fig{fig:em2:example:5:s}{题设：从滑板车上向前跳出}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(4,.25);\node[below]at(2,0){$M$};\fill(1.5,1.5)circle(.12);\draw[world](1.5,1.38)--(1.5,.6)--(1.15,.25);\draw[world](1.5,.6)--(1.85,.25);\draw[flow](2.3,1.3)--(3.8,1.3)node[above]{$v$};\node[left]at(1.3,1){$m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将相对车的跳速换成对地末速度}\par\nobreak
+图\ref{fig:em2:example:5:s}的共同初动量为$(M+m)v$。设车对地速度为$V$，则人对地速度为$V+u$。所以
+\[(M+m)v=MV+m(V+u),\quad\boxed{V=v-\frac{m}{M+m}u}.\]
+\fig{fig:em2:example:5:p}{对地速度按同一正方向取符号；图示跳速足够大时车后退的情形}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,.3);\node at(1.5,.15){$M$};
+\draw[world](4.7,1.4)circle(.16);\draw[world](4.7,1.24)--(4.7,.6);\node[right]at(4.9,1){$m$};
+\draw[flow,blue](0,-.6)--(-1.2,-.6)node[left]{$V<0$};\draw[flow,blue](4.7,1.9)--(6.2,1.9)node[right]{$V+u$};
+\draw[axis](3,-.6)--(4.3,-.6)node[right]{$+x$};
+\node at(2.8,2.9){$u=v_{\text{人}}-V$，相对速度向前};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求车与人的两个速度表达式}\par\nobreak
+展开动量式右边为$(M+m)V+mu$，移项得$(M+m)(V-v)=-mu$。人的对地速度则由$V+u=v-mu/(M+m)+u$得到；合并$u$项后系数为$M/(M+m)$，而不是$1$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以车速符号判断是否真正后退}\par\nobreak
+图\ref{fig:em2:example:5:p}示出车已后退的一种情形，通式中的$V$始终是有符号的对地速度。速度相加，人的末速度为
+\[\boxed{v_{\text{人}}=v+Mu/(M+m)}.\]
+当$u>(M+m)v/m$时车相对地面后退；否则仍向前或恰好静止。“反冲”只表示车的速度发生反向增量，并不保证它最终反向运动。\end{solution}
+\begin{question}\begin{example}[抛沙袋避免相撞]\label{em2:example:6}
+甲质量$45\,\mathrm{kg}$，携带$5\,\mathrm{kg}$沙袋，以$1\,\mathrm{m/s}$向右滑行；乙质量$40\,\mathrm{kg}$，以$0.5\,\mathrm{m/s}$向左滑行。甲把沙袋向右抛给乙并被接住。忽略冰面阻力，求使两人此后不再接近的沙袋最小对地速度，以及乙接袋后的速度。
+\end{example}
+\fig{fig:em2:example:6:s}{题设：抛沙袋避免相撞}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$\text{甲}$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$\text{乙}$};\draw[flow](0.6,0.8)--++(1.2,0)node[above]{$1$};\draw[flow](4.6,0.8)--++(-1,0)node[above]{$0.5$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对抛袋与接袋两个阶段分别列式}\par\nobreak
+按图\ref{fig:em2:example:6:s}取向右为正，设沙袋对地速度为$u$。抛袋瞬间$50\times1=45V_A+5u$；乙接袋时$40(-0.5)+5u=45V_B$。故$V_A=(50-5u)/45$，$V_B=(-20+5u)/45$。
+\fig{fig:em2:example:6:p}{先抛出、再接住分别涉及不同系统；接袋后比较两人的速度差}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)rectangle(1,.7);\node at(.5,.35){甲};\draw[world](3.7,0)rectangle(4.7,.7);\node at(4.2,.35){乙};
+\draw[world](1.8,.3)rectangle(2.2,.7);\draw[flow,blue](2,1.1)--(3.3,1.1)node[right]{$u$};
+\draw[flow](.2,1.6)--(1.2,1.6)node[right]{$V_A$};\node at(.5,-.5){$45\,\mathrm{kg}$};\node at(2,-.5){$5\,\mathrm{kg}$};
+\node at(4.2,-.5){$40\,\mathrm{kg}$};
+\end{scope}
+\begin{scope}[yshift=-2.2cm]
+\draw[world](0,0)rectangle(1,.7);\draw[world](3.7,0)rectangle(4.7,.7);\draw[guide](4.1,0)--(4.1,.7);
+\draw[flow,blue](.2,1.1)--(1.2,1.1)node[right]{$V_A$};\draw[flow,blue](3.9,1.1)--(4.9,1.1)node[right]{$V_B$};
+\draw[dim](1,-.5)--(3.7,-.5)node[midway,below]{$\dot D=V_B-V_A\ge0$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分两次冲量对应的研究对象}\par\nobreak
+两个动量式对应不同时间段：甲抛袋时乙尚未受到冲量，乙接袋时甲已与袋分离；因此应分别求$V_A,V_B$，再比较二人距离的变化率$\dot D=V_B-V_A$。这一变化率非负才表示接袋后不再接近。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以间距变化率求不再接近的边界}\par\nobreak
+在图\ref{fig:em2:example:6:p}中甲仍在乙左侧，不再接近要求$V_A\le V_B$。于是$50-5u\le-20+5u$，即
+\[\boxed{u_{\min}=7\,\mathrm{m/s}};\]
+临界时两人速度同为
+\[\boxed{V_A=V_B=1/3\,\mathrm{m/s}}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对不同参照下的抛袋速度}\par\nobreak
+这个值指沙袋的对地速度；相对抛袋前的甲为$6\,\mathrm{m/s}$，相对抛袋后的甲为$20/3\,\mathrm{m/s}$，三个参照不能混用。沙袋速度远大于接袋前乙的速度，能够追上乙。\end{solution}
+\begin{question}\begin{example}[物块滑上自由木板]\label{em2:example:7}
+质量$m$的小物块以$v_0$滑上静止、质量$M$的长木板。板下光滑，块板间动摩擦因数$\mu$，木板足够长。求共速时间、共同速度及保证物块不滑出的最小板长。
+\end{example}
+\fig{fig:em2:example:7:s}{题设：物块滑上自由木板}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\node at(4,.55){$M$};\draw[world](.5,.3)rectangle(1.3,1);\node at(.9,.65){$m$};\draw[flow](.5,1.4)--(2,1.4)node[above]{$v_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两物体加速度求相对减速率}\par\nobreak
+图\ref{fig:em2:example:7:s}中滑动时摩擦力$f=\mu mg$，对块向左、对板向右。两者加速度分别为$-\mu g$、$\mu mg/M$，相对加速度为$-\mu g(1+m/M)$。相对速度由$v_0$减为零，因此
+\[\boxed{t_* =\frac{Mv_0}{\mu g(M+m)}}.\]
+\fig{fig:em2:example:7:p}{共速前两速度之差始终为正，两条速度线之间的面积是相对滑程}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$t$};\draw[axis](0,0)--(0,2.9)node[above]{$v$};
+\fill[blue!12](0,0)--(0,2.4)--(3.6,.8)--cycle;
+\draw[world,blue](0,2.4)--(3.6,.8);\draw[world,red](0,0)--(3.6,.8);\draw[guide](3.6,0)--(3.6,.8);
+\node[left]at(0,2.4){$v_0$};\node[below]at(3.6,0){$t_*$};\node[right]at(3.6,.8){$V$};
+\node[blue]at(1.1,2.4){物块};\node[red]at(1.3,.05){木板};\node at(1.2,1.1){$L_{\min}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求共同速度并检查摩擦方向}\par\nobreak
+在共速前，块与板的速度为$v_m=v_0-\mu gt$、$v_M=(\mu mg/M)t$。令两者相等，得$v_0=\mu g(1+m/M)t_*$；代入板的速度式便得到共同速度$mv_0/(M+m)$。两条直线在$t_*$以前没有交点，故摩擦方向在整段内一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两速度线间的面积求最小板长}\par\nobreak
+由图\ref{fig:em2:example:7:p}两条速度线相交，或由总动量守恒，得到$\boxed{V=mv_0/(M+m)}$。相对位移等于相对速度图下的三角形面积，故
+\[\boxed{L_{\min}=\frac12v_0t_* =\frac{Mv_0^2}{2\mu g(M+m)}}.\]
+实际板长应不小于此值，并留意题目对“刚好到边缘”是否容许。两物体对地位移均不是这个最小长度；板在接收动量的同时已经向前移动。\end{solution}
+\begin{question}\begin{example}[活动半圆槽中的位移]\label{em2:example:8}
+质量$M$的半圆槽放在光滑水平面上，半径$R$，槽内无摩擦。质量$m$的小球从左侧槽口由静止开始滑下，求它第一次到达右侧最高位置时槽的速度和小球对地水平位移。
+\end{example}
+\fig{fig:em2:example:8:s}{题设：活动半圆槽中的位移}{\begin{tikzpicture}[scale=.9]\draw[world](0,1.5)arc(180:360:2);\draw[world](-.3,-.7)--(4.3,-.7);\fill(0,1.5)circle(.1)node[left]{$A$};\node at(2,-.2){$M$};\draw[guide](0,1.5)--(4,1.5);\node[above]at(2,1.5){$2R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定右端转折事件的共同速度}\par\nobreak
+图\ref{fig:em2:example:8:s}整体初始静止，水平动量为零。右侧最高位置是相对槽的转折点，小球与槽的水平速度相同；总动量为零使共同速度$V=0$。机械能无损失，因此右侧转折点与初始槽口等高，小球相对槽水平前进$2R$。
+\fig{fig:em2:example:8:p}{槽向左平移而小球相对槽跨过直径，两个对地位移的差为$2R$}{\begin{tikzpicture}
+
+\draw[guide](0,2)arc(180:360:2);\draw[world](-.8,2)arc(180:360:2);
+\fill(0,2)circle(2pt)node[above left]{$A_0$};\fill(3.2,2)circle(2pt)node[above right]{$A_1$};
+\draw[flow,blue](0,2.7)--(3.2,2.7)node[midway,above]{$\Delta x$};
+\draw[flow,red](2,-.7)--(1.2,-.7)node[midway,below]{$\Delta X<0$};
+\draw[dim](-.8,1.45)--(3.2,1.45)node[midway,below]{$2R=\Delta x-\Delta X$};
+\node at(1.3,-1.8){两端都瞬时静止，途中质心水平位置不变};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用能量确定相对水平位移}\par\nobreak
+转折时相对速度$\bm v_{\text{球}}-\bm v_{\text{槽}}=0$，所以球和槽瞬间共同静止；这只描述最右端事件，不表示途中球或槽不运动。总动能在初态、这一末态均为零，能量守恒才使两端高度相等，从而允许把相对水平位移取成直径$2R$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立质心不动与相对位移求对地位移}\par\nobreak
+按图\ref{fig:em2:example:8:p}设槽位移$\Delta X$，小球位移$\Delta x$。质心水平位置不变，且$\Delta x-\Delta X=2R$，所以$m\Delta x+M\Delta X=0$。联立得
+\[\boxed{\Delta X=-\frac{2mR}{M+m},\qquad\Delta x=\frac{2MR}{M+m}},\qquad\boxed{V=0}.\]
+球并非在地面系完整横移$2R$，因为槽在同一时间向左移动。这里用能量只说明转折点的相对高度，不需要求途中的速度函数。\end{solution}
+\begin{question}\begin{example}[弹簧释放与悬绳张力]\label{em2:example:9}
+水平长板长$L$、质量$M_{\text{板}}$，其质心距左端$x_{\text{板}}$；左端在$O$铰接、右端由竖直轻绳悬住，板保持水平。板上质量$m_A,m_B$的两物块间有压缩轻弹簧，释放后分别向两端运动。板面光滑，忽略物块滑出前的振动，判断悬绳张力怎样变化。
+\end{example}
+\fig{fig:em2:example:9:s}{题设：弹簧释放与悬绳张力}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\fill(0,0)circle(.08)node[left]{$O$};\draw[world](5,0)--(5,2.2)node[above]{$C$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};\draw[world](1,.0)rectangle(1.7,.6);\node at(1.35,.3){$A$};\draw[spring](1.7,.3)--(3.3,.3);\draw[world](3.3,0)rectangle(4,.6);\node at(3.65,.3){$B$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{隔离两物块，确定给板的竖直载荷}\par\nobreak
+图\ref{fig:em2:example:9:s}的弹簧力水平且内部成对，故对两物块组成的系统，$m_Ax_A+m_Bx_B$保持不变。它们没有竖直加速度，各自给板的向下作用力分别为$m_Ag,m_Bg$。
+\fig{fig:em2:example:9:p}{解答过程：弹簧释放与悬绳张力}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\fill(0,0)circle(.04)node[left]{$O$};\draw[force](1,0)--(1,-1.15)node[below]{$m_Ag$};\draw[force](2.5,0)--(2.5,-1.15)node[below]{$M_{\text{板}}g$};\draw[force](4,0)--(4,-1.15)node[below]{$m_Bg$};\draw[force](5,0)--(5,1.5)node[above]{$T$};\draw[dim](0,.55)--(1,.55)node[midway,above]{$x_A$};\draw[dim](0,1.1)--(2.5,1.1)node[midway,above]{$x_{\text{板}}$};\draw[dim](0,1.65)--(4,1.65)node[midway,above]{$x_B$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由水平总动量零证明加权位置不变}\par\nobreak
+若弹簧释放前两块均静止，水平合动量为零，故对任意时刻都有$m_A\dot x_A+m_B\dot x_B=0$。从初态积分便得$m_Ax_A+m_Bx_B$不变。这项加权和恰好出现在两块重力对铰点的力矩中，因此不需要知道弹簧力随时间的具体变化。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将加权位置代入板的力矩方程}\par\nobreak
+按图\ref{fig:em2:example:9:p}对保持水平的板绕$O$列力矩平衡：$TL=m_Agx_A+m_Bgx_B+M_{\text{板}}gx_{\text{板}}$。右端是$g(m_Ax_A+m_Bx_B)$加固定板重力矩，均不变，故$\boxed{T\text{保持不变}}$。个别物块离铰点的距离在变，但两者的质量加权位置不变。结论仅适用于两块仍在板上、板保持水平的阶段。\end{solution}
+\begin{question}\begin{example}[航行中的人船位移]\label{em2:example:10}
+质量$m$的人站在质量$M$、长$L$的船尾，人与船以$v$在无阻力水面匀速航行。人用时间$T$走到船头，求这段时间船的对地位移。
+\end{example}
+\fig{fig:em2:example:10:s}{题设：航行中的人船位移}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(.5,-.5)--(4.5,-.5)--(5,0)--cycle;\fill(.6,.5)circle(.12);\draw[world](.6,.4)--(.6,0);\draw[flow](1,1)--(3.8,1)node[midway,above]{相对船走$L$};\draw[flow](5,.4)--(6,.4)node[above]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把人的对地位移写成船移加船长}\par\nobreak
+按图\ref{fig:em2:example:10:s}取船头方向为正，设船的位移为$X$。人的对地位移为$X+L$，整个系统质心以初始速度$v$匀速前进，故
+\[MX+m(X+L)=(M+m)vT.\]
+\fig{fig:em2:example:10:p}{用同一地面参考系比较船和人的初末位置，质心保留原有匀速位移}{\begin{tikzpicture}
+
+\draw[guide](0,2)--(5,2);\fill(0,2)circle(2pt)node[above]{$m$初态};
+\draw[world](.8,0)--(5.8,0);\fill(5.8,0)circle(2pt)node[right]{$m$末态};
+\draw[guide](0,2)--(0,-.6);\draw[guide](.8,0)--(.8,-.6);
+\draw[flow,red](0,-.5)--(.8,-.5)node[midway,below]{$X$};
+\draw[flow,blue](0,2.8)--(5.8,2.8)node[midway,above]{$X+L$};
+\draw[dim](.8,.8)--(5.8,.8)node[midway,above]{$L$};\node at(2.9,-1.5){$MX+m(X+L)=(M+m)vT$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在位移式中保留质心的匀速前进}\par\nobreak
+先展开位移式：$(M+m)X+mL=(M+m)vT$，再移去相对行走产生的$mL$，最后除以总质量。右边的$vT$是质心位移，而不是船的位移；把它直接当船位移会遗漏人和船之间的动量交换。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求船位移并检查初始静止极限}\par\nobreak
+图\ref{fig:em2:example:10:p}明确区分相对与对地位移，解得
+\[\boxed{X=vT-mL/(M+m)}.\]
+人若在船内加速、减速，船的瞬时速度也会变化，但上述结果不依赖行走速度的具体变化。若初始静止，船后退$mL/(M+m)$；若$vT$足够大，船在地面系仍向前。\end{solution}
+\begin{question}\begin{example}[移动半球上的轨迹]\label{em2:example:11}
+质量$M$、半径$R$的光滑半球置于光滑水平面上。质量$m$的小球从顶端受微小扰动后沿外表面下滑。以半球初始球心为原点，求小球离开球面以前的轨迹方程。
+\end{example}
+\fig{fig:em2:example:11:s}{球沿移动球面下滑，球心$O$相对初始位置$O_0$向左平移}{\begin{tikzpicture}
+
+\draw[guide](-2,0)arc(180:0:2);\draw[world](-2.4285,0)arc(180:0:2);\draw[world](-2.9,0)--(2.6,0);
+\fill(0,2)circle(2pt)node[above]{$A_0$};\fill(.8571,1.5321)circle(2pt)node[above right]{$A$};
+\draw[world](-.4285,0)--(.8571,1.5321)node[midway,below right]{$R$};\draw[guide](-.4285,0)--(-.4285,2.3);
+\draw[world](-.4285,.7)arc(90:50:.7);\node at(-.06,.95){$\theta$};
+\fill(-.4285,0)circle(2pt)node[below left]{$O$};\fill(0,0)circle(2pt)node[below right]{$O_0$};
+\draw[flow,red](0,-.9)--(-.4285,-.9)node[midway,below]{$X$};\node at(-1.25,.45){$M$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用接触几何和质心不动写参数方程}\par\nobreak
+按图\ref{fig:em2:example:11:s}令半球球心横坐标为$X$，小球相对竖直轴转角为$\theta$。球的坐标是$x=X+R\sin\theta$、$y=R\cos\theta$。水平质心不动，$MX+mx=0$，所以
+\[X=-\frac{m}{M+m}R\sin\theta,\qquad x=\frac{M}{M+m}R\sin\theta.\]
+\fig{fig:em2:example:11:p}{接触几何给出椭圆，真正运动只取到支持力第一次降为零的部分}{\begin{tikzpicture}
+
+\draw[axis](-1.8,0)--(2.3,0)node[right]{$x$};\draw[axis](0,-.4)--(0,2.7)node[above]{$y$};
+\draw[guide](0,0)ellipse(1.3333 and 2);\draw[world,blue,domain=0:45.1122,samples=60]plot({1.3333*sin(\x)},{2*cos(\x)});
+\fill(.9446,1.4114)circle(2pt)node[above right]{$D$：$N=0$};\fill(0,2)circle(2pt)node[above left]{$A_0$};
+\draw[guide](.9446,0)--(.9446,1.4114)--(0,1.4114);\node[right]at(1.3333,.25){$MR/(M+m)$};
+\node[left]at(0,2){$R$};\node at(0,-.95){虚线是几何延拓，蓝线才是接触轨迹};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去参数得到接触轨迹的几何形状}\par\nobreak
+消去图\ref{fig:em2:example:11:p}中的参数$\theta$，得到椭圆弧
+\[\boxed{\frac{x^2}{[MR/(M+m)]^2}+\frac{y^2}{R^2}=1}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时计入球与半球的动能}\par\nobreak
+椭圆只表示保持接触时的几何关系。为确定图\ref{fig:em2:example:11:p}中蓝线的终点$D$，令$\eta=m/(M+m)$。坐标依赖时间是通过 $\theta(t)$ 实现的，链式法则给
+$\dd(\sin\theta)/\dd t=\cos\theta\,\dot\theta$、
+$\dd(\cos\theta)/\dd t=-\sin\theta\,\dot\theta$。
+代入前面的位移式，
+\[
+\dot X=-\eta R\cos\theta\dot\theta,\quad
+\dot x=(1-\eta)R\cos\theta\dot\theta,\quad
+\dot y=-R\sin\theta\dot\theta.
+\]
+两物体的动能必须一起计入。将它们相加并合并$\cos^2\theta$项，得
+\[
+K=\frac12M\dot X^2+\frac12m(\dot x^2+\dot y^2)
+=\frac12mR^2\dot\theta^2(1-\eta\cos^2\theta).
+\]
+能量守恒$K=mgR(1-\cos\theta)$，所以
+\[
+R\dot\theta^2=\frac{2g(1-\cos\theta)}{1-\eta\cos^2\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以单向接触条件截取实际轨迹}\par\nobreak
+脱离边界$N=0$时，半球水平加速度也为零，球相对球心的向心方程才化为$R\dot\theta^2=g\cos\theta$。令$c=\cos\theta_d$，联立两式，$2(1-c)=c(1-\eta c^2)$。
+
+
+所以离开角满足
+\[\eta\cos^3\theta_d-3\cos\theta_d+2=0.\]
+当$0<\eta<1$时，令 $f(c)=\eta c^3-3c+2$。求导得 $f'(c)=3\eta c^2-3<0$，因为 $0<c<1$ 使 $\eta c^2<1$。又有 $f(0)=2>0,f(1)=\eta-1<0$，故恰有一个物理解。$M\to\infty$时椭圆恢复圆，且$\cos\theta_d\to2/3$，与固定球面结果一致。\end{solution}
+\begin{question}\begin{example}[斜射入摆球的子弹]\label{em2:example:12}
+质量$20\,\mathrm g$的子弹以$400\,\mathrm{m/s}$的速度射入静止、质量$980\,\mathrm g$的摆球并留在其中。碰撞时摆绳竖直，入射方向与竖直方向成$30^\circ$、斜向下。求碰后球与子弹共同速度。
+\end{example}
+\fig{fig:em2:example:12:s}{题设：斜射入摆球的子弹}{\begin{tikzpicture}[scale=.9]\draw[world](3,2.5)--(3,0);\fill(3,0)circle(.16);\draw[flow](1.6,2.425)--(2.8,.346)node[midway,left]{$400$};\draw[guide](3,0)--(3,1.5);\node at(2.65,1){$30^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定绳冲量方向和入射水平分量}\par\nobreak
+图\ref{fig:em2:example:12:s}中摆线在极短碰撞中保持竖直，其冲量竖直。水平方向没有外冲量，而子弹的水平速度为$400\sin30^\circ=200\,\mathrm{m/s}$。
+\fig{fig:em2:example:12:p}{绳冲量补足竖直动量变化，水平方向动量直接传给粘合体}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,2.4)--(0,.16);\draw[world](0,0)circle(.16);
+\draw[force,red](0,.2)--(0,1.8)node[right]{$J_T$};\draw[flow,blue](0,0)--(1.8,0)node[right]{$V$};
+\node at(.5,-.7){粘合体竖直速度为零};
+\end{scope}
+\begin{scope}[xshift=5cm,yshift=1.8cm]
+\draw[flow](0,0)--(1.2,-2.078)node[midway,left]{$m\bm v$};
+\draw[force,red](1.2,-2.078)--(1.2,0)node[midway,right]{$\bm J_T$};
+\draw[flow,blue](0,0)--(1.2,0)node[midway,above]{$(M+m)\bm V$};
+\draw[guide](0,0)--(0,-1.3);\draw[world](0,-.6)arc(-90:-60:.6);\draw[guide](.14,-.55)--(-.2,-.7);\node[left]at(-.2,-.7){$30^\circ$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把速度约束与可守恒分量对应}\par\nobreak
+绳不伸长使粘合体在最低点的速度必须水平，其竖直分量为零。绳冲量承担了子弹竖直动量的改变，不能在竖直方向额外写守恒；在水平方向则总质量为$1.000\,\mathrm{kg}$，入射水平动量为$4.0\,\mathrm{kg\,m/s}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求共同水平速度并核验竖直冲量}\par\nobreak
+按图\ref{fig:em2:example:12:p}仅对水平方向写守恒：$0.020\times200=(0.020+0.980)V$，得到
+\[\boxed{V=4.0\,\mathrm{m/s}},\]
+方向沿入射水平分量。还可由图\ref{fig:em2:example:12:p}的动量三角形核验$J_T=mv\cos30^\circ=4\sqrt3\,\mathrm{N\,s}$，方向向上。竖直动量不守恒，因为绳的约束冲量使粘合体竖直速度立即为零。若误用总速率$400$，会得到$8\,\mathrm{m/s}$，等于把不可守恒的分量也算入了。\end{solution}
+\begin{question}\begin{example}[二维散射的分量合成]\label{em2:example:13}
+质量$m$的粒子以$v_0$沿$x$轴正方向撞向静止、质量$2m$的粒子。碰后第一粒子以$v_0/2$、偏向$x$轴上方$45^\circ$运动。求第二粒子的速率与偏转角。
+\end{example}
+\fig{fig:em2:example:13:s}{两粒子初态只有入射粒子具有动量，末态第一粒子偏向上方}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$x$};\draw[world](.4,0)circle(.1)node[below]{$m$};
+\draw[world](2,0)circle(.14)node[below]{$2m$};\draw[flow,blue](.4,.5)--(1.6,.5)node[midway,above]{$v_0$};
+\draw[flow,red](2,0)--(3.5,1.5)node[right]{$v_0/2$};\draw[world](2.6,0)arc(0:45:.6);\node at(2.9,.35){$45^\circ$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对两粒子整体分解水平与竖直动量}\par\nobreak
+对图\ref{fig:em2:example:13:s}两粒子取整体，没有外冲量。第一粒子末速度分量均为$v_0/(2\sqrt2)$，所以
+\[mv_0=m\frac{v_0}{2\sqrt2}+2mV_x,\qquad0=m\frac{v_0}{2\sqrt2}+2mV_y.\]
+\fig{fig:em2:example:13:p}{末态两个动量矢量首尾相接，应等于原来的水平总动量}{\begin{tikzpicture}
+
+\draw[flow,blue](0,0)--(4,0)node[midway,below]{$m\bm v_0$};
+\draw[flow,red](0,0)--(1.4142,1.4142)node[midway,left]{$m\bm v_1$};
+\draw[flow](1.4142,1.4142)--(4,0)node[midway,above right]{$2m\bm V$};
+\draw[guide](1.4142,1.4142)--(1.4142,0);\draw[world](3.3,0)arc(180:151.32:.7);\node at(2.85,.3){$\beta$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先求第二粒子的两个速度分量}\par\nobreak
+于是$V_x=v_0(1-1/(2\sqrt2))/2$，$V_y=-v_0/(4\sqrt2)$。先把分量统一写成$V_x=v_0(2\sqrt2-1)/(4\sqrt2)$、$V_y=-v_0/(4\sqrt2)$。于是$V^2=v_0^2[(2\sqrt2-1)^2+1]/32=v_0^2(5-2\sqrt2)/16$；角度由$\tan\beta=|V_y|/V_x$求出，负的$V_y$确定偏向下方。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成速率并由符号确定偏转方向}\par\nobreak
+依图\ref{fig:em2:example:13:p}合成得到
+\[\boxed{V=\frac{v_0}{4}\sqrt{5-2\sqrt2}},\qquad\boxed{\tan\beta=\frac1{2\sqrt2-1}}.\]
+第二粒子偏向$x$轴下方，$\beta\approx28.7^\circ$。方向与第一粒子的横向动量相反，才能使总横向动量为零。本题未说明弹性，不应再额外强加动能守恒。\end{solution}
+\begin{question}\begin{example}[给定末速度与粘合碰撞]\label{em2:example:14}
+光滑水平面上，质量$2\,\mathrm{kg}$的$A$以$10\,\mathrm{m/s}$撞向静止、质量$1\,\mathrm{kg}$的$B$。分别求：（1）碰后$A$速度为$5\,\mathrm{m/s}$时$B$速度；（2）两箱粘合时共同速度。
+\end{example}
+\fig{fig:em2:example:14:s}{题设：给定末速度与粘合碰撞}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$A$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$B$};\draw[flow](0.6,0.8)--++(1.7,0)node[above]{$10$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在给定第一粒子末速度时求另一速度}\par\nobreak
+图\ref{fig:em2:example:14:s}初始水平总动量为$20\,\mathrm{kg\,m/s}$。若$A$碰后仍向前且速度为$5\,\mathrm{m/s}$，则$20=2\times5+v_B$，得到
+\[\boxed{v_B=10\,\mathrm{m/s}}.\]
+
+\fig{fig:em2:example:14:p}{两个附加末态条件分别使用同一个初始总动量，不能混为一次碰撞}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)rectangle(1,.7);\draw[world](2.6,0)rectangle(3.6,.7);\node at(.5,.35){$A,2$};\node at(3.1,.35){$B,1$};
+\draw[flow,blue](.2,1.2)--(1.2,1.2)node[right]{$5$};\draw[flow,blue](2.8,1.2)--(4.8,1.2)node[right]{$10$};
+\node at(2,2){给定$A$的末速度};
+\end{scope}
+\begin{scope}[yshift=-2.3cm]
+\draw[world](.7,0)rectangle(2.7,.7);\draw[guide](1.7,0)--(1.7,.7);\node at(1.7,.35){$A+B$};
+\draw[flow,blue](3,.35)--(4.5,.35)node[right]{$20/3$};\node at(1.7,-.6){粘合：末速度相等};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分给定速度与永久粘合两个末态}\par\nobreak
+两种末态分别补充了不同的一条关系：第一问给定$v_A=5$，第二问给定$v_A=v_B$。因此每问都只需一条总动量方程，不能把第一问所得$v_B=10$带入第二问的共同末态。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求粘合速度并检查两种动能}\par\nobreak
+若按图\ref{fig:em2:example:14:p}粘合，则$20=3V$，得到
+\[\boxed{V=20/3\,\mathrm{m/s}}.\]
+两个问法的共同依据是总动量守恒，但附加末态条件不同。第一问碰后动能为$75\,\mathrm J$，第二问为$200/3\,\mathrm J$，都小于初始$100\,\mathrm J$；不能把第一问擅自按完全弹性碰撞处理。\end{solution}
+\begin{question}\begin{example}[火箭的质量比]\label{em2:example:15}
+火箭初始质量$M_0$，相对惯性系初始速度$V_0$。燃气以相对火箭恒定速率$u$向后喷出，忽略外力。求质量降到$M$时火箭速度，并与分为$N$次等质量喷射、一次抛出全部燃料比较。有限次抛出时，约定每团燃料相对该次抛出后的火箭向后速率为$u$，且均无外力。
+\end{example}
+\fig{fig:em2:example:15:s}{题设：火箭的质量比}{\begin{tikzpicture}[scale=.9]\draw[world](2,-.6)--(3.5,-.6)--(4.2,0)--(3.5,.6)--(2,.6)--cycle;\node at(3,0){$M,V$};\draw[flow](1.5,0)--(0,0)node[midway,above]{相对喷速$-u$};\node at(2,-1.25){喷气对地速度$V-u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留喷出燃料，写封闭微元动量式}\par\nobreak
+对图\ref{fig:em2:example:15:s}喷出一小团质量$\delta m$的过程，取喷出前全部火箭物质为系统。动量式为$MV=(M-\delta m)(V+\dd V)+\delta m(V-u)$，舍去$\delta m\dd V$，得到$M\dd V=u\delta m=-u\dd M$。
+\fig{fig:em2:example:15:p}{相同相对喷速约定下，有限次喷射介于一次抛出与连续喷射之间}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$r=M_0/M$};\draw[axis](0,0)--(0,3.4)node[above]{$(V-V_0)/u$};
+\draw[world,blue,domain=1:4,samples=70]plot({1.2*(\x-1)},{2*ln(\x)});
+\draw[world,red,domain=1:4,samples=70]plot({1.2*(\x-1)},{2*(1-1/\x)});
+\draw[world,orange,domain=1:4,samples=70]plot({1.2*(\x-1)},{2*(.5*(1-1/\x)+(.5*(1-1/\x))/(1-.5*(1-1/\x)))});
+\node[below]at(0,0){$1$};\node[below]at(3.6,0){$4$};
+\node[right,blue]at(3.6,2.7726){连续：$\ln r$};\node[right,orange]at(3.6,1.95){示例：$N=2$};\node[right,red]at(3.6,1.5){一次：$1-1/r$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对变质量微分式积分并检查符号}\par\nobreak
+按图\ref{fig:em2:example:15:p}从$M_0$积分至$M$：
+\[\int_{V_0}^V\dd V=-u\int_{M_0}^M\dd M/M,\]
+故
+\[\boxed{V=V_0+u\ln(M_0/M)}.\]
+积分右边为$-u[\ln M-\ln M_0]=u\ln(M_0/M)$；质量下降时括号内的对数为负，因此速度增量为正。对数的自变量必须是无量纲质量比，不能单独把有单位的$M$写进最终对数。若只喷出很少燃料$\Delta M\ll M_0$，可用$\ln(M_0/M)\simeq\Delta M/M_0$核对单次微元式。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按末态相对喷速逐次列动量关系}\par\nobreak
+有限次喷射必须使用题设的末态相对速度约定。令$\delta m=(M_0-M)/N$、$M_j=M_0-j\delta m$，第$j$次前后速度为$V_{j-1},V_j$。该次动量守恒为
+\[
+M_{j-1}V_{j-1}=M_jV_j+\delta m(V_j-u),
+\quad V_j-V_{j-1}=\frac{u\delta m}{M_{j-1}}.
+\]
+逐次累加得
+\[
+\Delta V_N=u\delta m\sum_{j=1}^{N}\frac1{M_0-(j-1)\delta m}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较一次、有限次与连续喷射}\par\nobreak
+一次抛出对应$N=1$，所以$\Delta V_1=u(1-M/M_0)$。把总燃料细分时，每一后续小团都从质量更小、已经加速的火箭上离开。由递增函数$1/(M_0-s)$的左端点和与积分比较，
+\[
+\Delta V_1\le\Delta V_N<u\int_0^{M_0-M}\frac{\dd s}{M_0-s}
+=-u\left[\ln\frac{M_0-s}{M_0}\right]_0^{M_0-M}
+=u\ln\frac{M_0}{M},
+\]
+其中$N>1$时有$\Delta V_N>\Delta V_1$；$N\to\infty$时有限和趋于连续结果。图\ref{fig:em2:example:15:p}还画出$N=2$作为中间情形。这里比较的是同一相对喷速约定，未要求三种过程消耗同样能量。
+\end{solution}
+\begin{question}\begin{example}[木板上两人互换位置]\label{em2:example:16}
+质量$M$、长$L$的木板在光滑水平面上静止，左端站质量$m_1$的人，右端站质量$m_2$的人。两人缓慢互换到对方初始所占的板端，最后相对板静止。求木板位移，讨论两人质量相等时的结果。
+\end{example}
+\fig{fig:em2:example:16:s}{题设：木板上两人互换位置}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\fill(.2,.7)circle(.1)node[above]{$m_1$};\fill(4.8,.7)circle(.1)node[above]{$m_2$};\draw[flow](.5,1.3)--(4.5,1.3);\draw[flow](4.5,2)--(.5,2);\node at(2.5,-.5){$M,L$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用共同板位移表示两人的对地位移}\par\nobreak
+按图\ref{fig:em2:example:16:s}取向右为正，木板位移$X$。两人的对地位移分别为$X+L$与$X-L$，木板自身位移为$X$。质心水平位置不变，故$MX+m_1(X+L)+m_2(X-L)=0$。
+\fig{fig:em2:example:16:p}{对同一板端跟踪平移，再给两人分别加上有符号的相对位移}{\begin{tikzpicture}
+
+\draw[guide](0,2)rectangle(5,2.3);\fill(.2,2.5)circle(2pt)node[above]{$m_1$};\fill(4.8,2.5)circle(2pt)node[above]{$m_2$};
+\draw[world](.7,0)rectangle(5.7,.3);\fill(.9,.5)circle(2pt)node[above]{$m_2$};\fill(5.5,.5)circle(2pt)node[above]{$m_1$};
+\draw[flow,red](0,-.5)--(.7,-.5)node[midway,below]{$X$};\draw[flow,blue](.2,3.3)--(5.5,3.3)node[midway,above]{$X+L$};
+\draw[flow,blue](4.8,1.4)--(.9,1.4)node[midway,above]{$X-L$};
+\node at(6.5,1.1){$+x$向右};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留两个相对位移相反的符号}\par\nobreak
+展开质心位移式，$(M+m_1+m_2)X+(m_1-m_2)L=0$。两人各移动一个板长，但方向相反，故相对位移项为一正一负；若把两个位移都记为$+L$，将不能通过等质量时$X=0$的对称性检查。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求板位移并检查等质量情形}\par\nobreak
+由图\ref{fig:em2:example:16:p}得
+\[\boxed{X=(m_2-m_1)L/(M+m_1+m_2)}.\]
+右端的人若较重，向左走的质量更多，木板最终向右移。$m_1=m_2$时最终位移为零，但若两人不同步行走，木板中途仍可移动，最终再回到初始位置。\end{solution}
+\begin{question}\begin{example}[接收竖直落雨的小车]\label{em2:example:17}
+质量$M_0$的小车在光滑水平面以$v_0$运动，雨滴相对地面的水平速度为零，以恒定质量流率$q$被车接住而不流走。忽略其他水平作用，求时间$t$时车速及保持$v_0$所需的推力。
+\end{example}
+\fig{fig:em2:example:17:s}{题设：接收竖直落雨的小车}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.8);\foreach \x in {1,2,3,4}\draw[flow](\x,2.3)--(\x,1.2);\draw[flow](.2,-.5)--(1.8,-.5)node[above]{$v_0$};\node at(5.5,1.8){$q$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将已接雨水计入车的运动质量}\par\nobreak
+图\ref{fig:em2:example:17:s}雨滴进入前不带水平动量，车与已接收雨水的水平动量始终等于$M_0v_0$。质量为$M(t)=M_0+qt$，所以
+\[\boxed{V(t)=M_0v_0/(M_0+qt)}.\]
+
+\fig{fig:em2:example:17:p}{雨滴入车前没有水平动量，车把它加速后自身速度降低}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](-.5,-.4)rectangle(3.4,2.6);\draw[world](0,0)rectangle(2.7,.8);\node at(1.35,.4){$M(t)$};
+\fill(1.3,2)circle(2pt)node[right]{$\dd m=q\dd t$};\draw[flow,blue](1.3,1.9)--(1.3,1)node[left]{$u_x=0$};
+\draw[flow](.5,-.9)--(2,-.9)node[right]{$V$};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+\draw[axis](0,0)--(4.3,0)node[right]{$s=qt/M_0$};\draw[axis](0,0)--(0,2.7)node[above]{$V/v_0$};
+\draw[world,blue,domain=0:3,samples=60]plot({1.2*\x},{2/(1+\x)});\node[left]at(0,2){$1$};
+\node at(2.2,2.4){$V/v_0=1/(1+s)$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同一封闭微元验证变质量方程}\par\nobreak
+在$\dd t$内取车、已有水和即将落入的$q\dd t$雨滴为封闭系统，水平式为$MV+F\dd t=(M+q\dd t)(V+\dd V)$。展开后舍去$q\dd t\dd V$，得到$M\dd V+qV\dd t=F\dd t$。
+对前面的自由小车速度求导，常分子与倒数的链式法则给
+\[
+\dot V=-M_0v_0(M_0+qt)^{-2}q
+=-\frac{qV}{M_0+qt}=-\frac{qV}{M}.
+\]
+这恰好满足 $F=0$ 时的微元动量方程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求匀速推力并解释自由车减速}\par\nobreak
+按图\ref{fig:em2:example:17:p}微元动量式，若另有推力$F$，则$M\dot V=F-qV$。要保持$V=v_0$，需$\boxed{F=qv_0}$。自由小车减速并非受到向后的普通外阻力，而是不断把原来没有水平速度的雨滴加速；若把车和将来接入的雨全部作为封闭系统，水平动量仍守恒。\end{solution}
+\begin{question}\begin{example}[最高点爆炸的抛体]\label{em2:example:18}
+质点以水平分量$u$、竖直分量$w$从水平地面抛出。在最高点瞬时爆炸为两个等质量碎片，其中一片爆炸后相对地面瞬时静止，另一片水平运动。忽略空气阻力，求两碎片落地点，并核对质心轨迹。
+\end{example}
+\fig{fig:em2:example:18:s}{题设：最高点爆炸的抛体}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(6,0);\draw[guide](0,0)parabola bend(2.5,2)(5,0);\fill(2.5,2)circle(.08)node[above]{爆炸点};\draw[flow](2.5,2)--(4,2)node[above]{$u$};\node[below]at(5,0){原射程$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在爆炸瞬间守恒动量，确定两片速度}\par\nobreak
+图\ref{fig:em2:example:18:s}原射程$R=2uw/g$，最高点在$x=R/2$，余下自由落体时间为$T=w/g$。爆炸外冲量可忽略，水平方向$2mu=m\times0+mv_2$，所以另一碎片速度为$2u$；两片竖直初速度均为零。
+\fig{fig:em2:example:18:p}{两碎片竖直初速度相同，故同时落地；同一时刻质心仍在原轨迹上}{\begin{tikzpicture}
+
+\draw[world](0,0)--(7.2,0);\coordinate(E)at(2.2,2);\fill(E)circle(2pt)node[above left]{$E$};
+\draw[world,red](E)--(2.2,0);\draw[world,blue,domain=2.2:6.6,samples=70]plot(\x,{2-2*((\x-2.2)/4.4)^2});
+\draw[guide,domain=2.2:4.4,samples=60]plot(\x,{2-2*((\x-2.2)/2.2)^2});
+\draw[flow,blue](E)--(3.7,2)node[above]{$2u$};\node[left]at(2.2,1){$m_1$};\node[blue]at(5.4,1.35){$m_2$};
+\foreach \x/\lab in {2.2/R\!/2,4.4/R,6.6/3R\!/2}{\fill(\x,0)circle(2pt);\node[below]at(\x,0){$\lab$};}
+\draw[dim](2.2,-.8)--(6.6,-.8)node[midway,below]{两落点的中点为$x_C=R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先检验两片是否同时触地}\par\nobreak
+最高点的高度为$H=w^2/(2g)$，从该高度竖直初速度为零落下需$\sqrt{2H/g}=w/g$。两片在爆炸后都没有竖直速度，因此确实同时触地；只有在这个前提下，才可用两落地点的质量加权平均检查质心轨迹。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求落点并在同一时刻核对质心}\par\nobreak
+按图\ref{fig:em2:example:18:p}两片同时落地，第一片在$\boxed{x_1=R/2}$，第二片在
+\[\boxed{x_2=R/2+2uT=3R/2}.\]
+落地前质心水平位置为$(x_1+x_2)/2=R$，正好在未爆炸抛体落地点。若两片有不同竖直速度而先后落地，则不能把第一片落地后的质心继续当自由抛体。\end{solution}
+\begin{question}\begin{example}[两个物块在板内移动的统一位移式]\label{em2:example:19}
+光滑水平面上一块质量$M$的长板，板上两物块质量为$m_1,m_2$，全体最初以$v$匀速运动。时间$T$内两块相对板的位移分别为$\ell_1,\ell_2$，取向右为正，之后相对板静止。求板的对地位移及最终速度。
+\end{example}
+\fig{fig:em2:example:19:s}{题设：两个物块在板内移动的统一位移式}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(6,.3);\draw[world](.4,.3)rectangle(1.2,.9);\draw[world](3.7,.3)rectangle(4.5,.9);\node at(.8,.6){$m_1$};\node at(4.1,.6){$m_2$};\draw[flow](.8,1.3)--(2.3,1.3)node[above]{$\ell_1$};\draw[flow](4.1,1.3)--(3,1.3)node[above]{$\ell_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把三个对地位移统一写到同一基体上}\par\nobreak
+图\ref{fig:em2:example:19:s}系统总动量不变，质心在时间$T$前进$vT$。令板位移为$X$，两块位移为$X+\ell_1,X+\ell_2$，故$(M+m_1+m_2)X+m_1\ell_1+m_2\ell_2=(M+m_1+m_2)vT$。
+\fig{fig:em2:example:19:p}{先随板平移$X$，再按各物块相对位移的方向到达实际末位置}{\begin{tikzpicture}
+
+\draw[guide](0,2.2)rectangle(6,2.5);\fill(1,2.8)circle(2pt)node[above]{$m_1$初态};\fill(5,2.8)circle(2pt)node[above]{$m_2$初态};
+\draw[world](.6,0)rectangle(6.6,.3);\draw[world](2.95,.3)rectangle(3.45,.9);\draw[world](3.75,.3)rectangle(4.25,.9);
+\node at(3.2,.6){$m_1$};\node at(4,.6){$m_2$};\node at(6.1,.7){$M$};
+\draw[guide](1.6,.3)--(1.6,1.8);\draw[guide](5.6,.3)--(5.6,1.8);
+\draw[flow,blue](1.6,1.5)--(3.2,1.5)node[midway,above]{$\ell_1>0$};\draw[flow,red](5.6,1.5)--(4,1.5)node[midway,above]{$\ell_2<0$};
+\draw[flow](0,-.5)--(.6,-.5)node[midway,below]{$X$};
+\node at(3,-1.4){$\Delta x_1=X+\ell_1,\quad\Delta x_2=X+\ell_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以质量加权相对位移求板的补偿}\par\nobreak
+位移式两边先除以总质量，得到$X+[m_1\ell_1+m_2\ell_2]/(M+m_1+m_2)=vT$。若某块向左移动，其$\ell_i$为负，该项会使板向右补偿；若加权相对位移和为零，板的位移恰好为原来的$vT$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求末位置与末速度，说明二者不同}\par\nobreak
+按图\ref{fig:em2:example:19:p}得到
+\[\boxed{X=vT-(m_1\ell_1+m_2\ell_2)/(M+m_1+m_2)}.\]
+末态三者同速，总动量给共同速度仍为$\boxed{v}$。位移可以变化而末速度回到初值；这两个问题分别由位置和速度的质心关系确定。\end{solution}
+\begin{question}\begin{example}[匀速整体中的相对速度突变]\label{em2:example:20}
+位于左、右两侧的物体质量分别为$m_1,m_2$，原来共同以$V$匀速运动。内部装置瞬时释放能量$E$，全部转化为两物体的平动动能，使它们沿原运动直线分离。无外冲量，求两者末速度，并说明为何释放能量与$V$无关。
+\end{example}
+\fig{fig:em2:example:20:s}{题设：匀速整体中的相对速度突变}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m_1$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m_2$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$V$};\draw[flow](4.6,.8)--++(1.5,0)node[above]{$V$};\draw[spring](1,0)--(4.2,0)node[midway,below]{$E$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定质心速度，使用分离速率表示末速度}\par\nobreak
+图\ref{fig:em2:example:20:s}初始相对速度为零，质心速度始终为$V$。令两者的末相对分离速率为$u>0$，则$v_1=V-m_2u/(m_1+m_2)$、$v_2=V+m_1u/(m_1+m_2)$，这些表达已满足动量守恒。
+\fig{fig:em2:example:20:p}{解答过程：匀速整体中的相对速度突变}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m_1$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m_2$};\draw[flow](0.6,0.8)--++(-1,0)node[above]{$v_1-V$};\draw[flow](4.6,0.8)--++(1.4,0)node[above]{$v_2-V$};\node at(2.7,-1){质心系：$m_1(v_1-V)+m_2(v_2-V)=0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开动能并消去质心与相对运动交叉项}\par\nobreak
+令$\mu=m_1m_2/(m_1+m_2)$。总动能展开时，$V^2$项为$(m_1+m_2)V^2/2$，两个交叉项为$-\mu Vu$与$+\mu Vu$，恰好相消；$u^2$项的系数为$\mu/2$。这样才得到只含相对速率的新增动能。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由释放能量求相对速率和两个末速度}\par\nobreak
+按图\ref{fig:em2:example:20:p}把速度代入总动能，新增部分为$\mu u^2/2$，所以$u=\sqrt{2E/\mu}$，$\mu=m_1m_2/(m_1+m_2)$。最终
+\[\boxed{v_1=V-\frac{m_2}{m_1+m_2}\sqrt{\frac{2E}{\mu}},\quad v_2=V+\frac{m_1}{m_1+m_2}\sqrt{\frac{2E}{\mu}}}.\]
+整体匀速运动并不改变内部可释放的能量；$V$只平移两个末速度。若左物体末速度仍为正，它依然与右物体相互分离，分离不要求一物体必须相对地面反向。\end{solution}

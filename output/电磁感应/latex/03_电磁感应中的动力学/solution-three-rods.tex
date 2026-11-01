@@ -1,0 +1,90 @@
+\begin{solution}\textbf{由下滑高度与短碰撞动量求电磁阶段初态}\par\nobreak
+图\ref{fig:em3:example:3:s}中$A_3$下落高度为$H/2$，由机械能守恒得碰前速度$u=\sqrt{gH}$。碰撞时间很短，沿水平动量守恒：
+\[
+ mu=2mV,\qquad V=\frac u2.
+\]
+\fig{fig:em3:example:3:collision}{先在短碰撞中守恒水平动量，再以粘连后的状态开始计算电磁发热}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(.7,.7);\node at(.35,.35){$m$};\draw[flow](0,1.1)--(1,1.1)node[midway,above]{$u$};\draw[world](1.6,0)rectangle(2.3,.7);\node at(1.95,.35){$m$};\node at(1.95,1.3){初始静止};\draw[flow](2.9,.35)--(3.9,.35);\draw[world](4.5,0)rectangle(5.9,.7);\node at(5.2,.35){$2m$};\draw[flow](4.5,1.1)--(5.8,1.1)node[midway,above]{$u/2$};\node at(2.8,-.8){碰撞损失 $mu^2/4$，随后回路发热 $mu^2/12$};
+
+\end{tikzpicture}}
+
+图\ref{fig:em3:example:3:collision}把碰撞前的两个质量 $m$ 与碰后质量 $2m$ 分开，速度箭头由 $u$ 变为 $u/2$；因此碰撞损失为
+$\frac12mu^2-\frac12(2m)(u/2)^2=mu^2/4$。
+这部分机械能损失发生在碰撞中，不计入随后回路的焦耳热。
+粘连后的$A_2,A_3$并联，电阻为$\lambda l/2$；它们再与$A_1$串联，故$R_\Sigma=3\lambda l/2$。后续焦耳热的计算从粘连完成时开始。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对碰后的两部分列电流和有向动力学}\par\nobreak
+\fig{fig:em3:example:3:p}{从上方投影的两部分受力；竖直向上的磁场在图中向纸外}{
+\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(4.5,0) (0,2)--(4.5,2);
+\draw[world,very thick](.6,0)node[below]{$d$}--(.6,2)node[above]{$c$}
+ (3.4,0)node[below]{$b$}--(3.4,2)node[above]{$a$};
+\node at(.6,2.7){$A_1:\ m$};\node at(3.4,2.7){$A_2+A_3:\ 2m$};
+\draw[flow,blue](.6,-.7)--(1.5,-.7)node[right]{$v_1$};
+\draw[flow,blue](3.4,-.7)--(4.5,-.7)node[right]{$v_2$};
+\draw[force](.6,1.4)--(1.65,1.4)node[midway,above]{$Bli$};
+\draw[force](3.4,1.4)--(2.35,1.4)node[midway,above]{$Bli$};
+\draw[flow,red](.6,.2)--(.6,.9)node[left]{$i$};
+\draw[flow,red](3.4,.9)--(3.4,.2)node[right]{$i$};
+\node at(2,.5){$\odot B$};
+\draw[dim](5,0)--(5,2)node[midway,right]{$l$};
+\end{tikzpicture}}
+
+图\ref{fig:em3:example:3:p}中取向右为正，系统水平合外力为零。令$w=v_2-v_1$，分别写动量、电流及受力关系：
+\begin{align*}
+ mv_1+2mv_2&=mu, & i&=\frac{Bl}{R_\Sigma}w,\\
+ m\dot v_1&=Bli, & 2m\dot v_2&=-Bli.
+\end{align*}
+将后两式相减，得到
+\[
+ \dot w=-\frac{3B^2l^2}{2mR_\Sigma}w,\qquad
+ w(0)=\frac u2.
+\]
+令 $\tau_r=2mR_\Sigma/(3B^2l^2)=m\lambda/(B^2l)$，分离积分得
+\[
+\int_{u/2}^{w(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau_r},
+\qquad w(t)=\frac u2\e^{-t/\tau_r}.
+\]
+衰减系数为正，故$w$始终为正并单调趋零，图示两力始终使两部分速度靠近。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由相对速度单调衰减判断最大电流}\par\nobreak
+电流正比于$w$，因此粘连后立即最大：
+\[
+ \boxed{I_{\max}=\frac{Bl(u/2)}{3\lambda l/2}
+                    =\frac{B\sqrt{gH}}{3\lambda}}.
+\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求共同末态并只计算电流产生的热}\par\nobreak
+在动量关系中令$v_1=v_2=v_f$，得$v_f=u/3$。从碰撞后到这一末态，机械能的减少全部成为回路热量：
+\[
+ \boxed{Q=\frac12(2m)\left(\frac u2\right)^2
+           -\frac12(3m)\left(\frac u3\right)^2
+          =\frac{mu^2}{12}=\frac{mgH}{12}}.
+\]
+碰撞本身损失的机械能没有计入这部分电流产生的热量。末态仍有共同平动，不能把碰后动能全部当成焦耳热。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求指定速度比的磁力并检查事件可达性}\par\nobreak
+将$v_2=3v_1$代入动量式，依次求得
+\[
+ v_1=\frac u7,\quad v_2=\frac{3u}7,\quad
+ i=\frac{Bl(2u/7)}{3\lambda l/2}=\frac{4Bu}{21\lambda}.
+\]
+所以$A_1$的磁力为
+\[
+ \boxed{F_{A_1}=Bli=\frac{4B^2l\sqrt{gH}}{21\lambda}},
+\]
+该速度比确实能达到：此时 $w=2u/7$，小于初始 $w_0=u/2$ 而大于零。由指数衰减有 $t=\tau_r\ln(7/4)>0$，其中 $\tau_r=m\lambda/(B^2l)$，属于碰撞后的正常演化阶段。
+
+
+
+方向按图\ref{fig:em3:example:3:p}为向右，与较慢的$A_1$加速方向一致。
+\end{solution}

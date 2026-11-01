@@ -1,0 +1,333 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[不同电阻的两段半圆]\label{em2:example:1}
+半径 $a$ 的圆环上、下半圆电阻分别为 $R_1,R_2$。圆心为 $O$，右端为 $P$，左端为 $Q$，均匀磁场垂直纸面向里，以速率 $b>0$ 增大。求电流与 $V_P-V_Q$；再取 $R_1=R,R_2=2R$，求上半圆上极角为 $45^\circ,135^\circ$ 的 $M,N$ 间电势差。
+\end{example}
+\fig{fig:em2:example:1:s}{题设：不同电阻的两段半圆}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$a$};\draw[flow](1.5*.707,1.5*.707)arc(45:110:1.5);\node[right]at(1.5,0){$P$};\node[left]at(-1.5,0){$Q$};\node at(0,1.9){$R_1$};\node at(0,-1.9){$R_2$};\node at(2.6,1){$\otimes\dot B=b$};\fill(1.061,1.061)circle(1.6pt)node[above right]{$M$};\fill(-1.061,1.061)circle(1.6pt)node[above left]{$N$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按圆周正向求环流并列上半圆端压}\par\nobreak
+图\ref{fig:em2:example:1:s}给出逆时针正向，上半圆从 $P$ 到 $Q$。外场向里增大，感生场沿逆时针，因此总电动势 $\varepsilon=b\pi a^2$，每个半圆的电动势均为 $\varepsilon/2$。闭合回路有 $i(R_1+R_2)=\varepsilon$，所以
+\[i=\frac{\varepsilon}{R_1+R_2},\qquad V_P-V_Q=iR_1-\frac\varepsilon2=\frac{\varepsilon(R_1-R_2)}{2(R_1+R_2)}.\]
+\fig{fig:em2:example:1:p}{上半圆中感生作用超过电阻降，电势沿实际电流方向升高}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](1.6,0)arc(0:180:1.6);\node[right]at(1.6,0){$P$};\node[left]at(-1.6,0){$Q$};\draw[->,blue,very thick](1.13137,1.13137)arc(45:135:1.6);\fill(1.13137,1.13137)circle(2pt)node[right]{$M$};\fill(-1.13137,1.13137)circle(2pt)node[left]{$N$};\draw[guide](0,0)--(1.13137,1.13137) (0,0)--(-1.13137,1.13137);\node at(0,2.3){$M\to N:\ R/2,\ \varepsilon/4$};\node at(0,-.8){$i=\varepsilon/(3R)$};
+\end{scope}
+\begin{scope}[xshift=4.8cm]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$\varphi/\pi$};\draw[axis](0,-.2)--(0,2.5)node[above]{$[V(\varphi)-V_P]/\varepsilon$};\draw[world](0,0)--(4,2);\draw[guide](1,0)--(1,.5) (3,0)--(3,1.5);\node[below]at(1,0){$1/4$};\node[below]at(3,0){$3/4$};\node[below]at(4,0){$1$};\node[left]at(0,2){$1/6$};\draw[dim](3.5,.5)--(3.5,1.5)node[midway,left]{$1/12$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在均匀半圆上按角度分配电阻与电动势}\par\nobreak
+图\ref{fig:em2:example:1:p}将上半圆与电势随极角的变化对应，明确电阻降和分布电动势的方向。特殊情形中 $i=\varepsilon/(3R)$，$M\to N$ 占上半圆一半，故其电阻为 $R/2$、电动势为 $\varepsilon/4$。逐项代入得
+\[V_M-V_N=\frac{\varepsilon}{3R}\frac R2-\frac\varepsilon4=-\frac\varepsilon{12}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以电势沿电流上升及对称极限复核符号}\par\nobreak
+右侧电势曲线沿 $\varphi$ 单调上升，$V_Q-V_P=\varepsilon/6$，而 $M,N$ 的高度差对应 $V_N-V_M=\varepsilon/12$。电流从 $M$ 流向 $N$，但 $N$ 的静电势更高，因为该段感生作用超过电阻降。令 $R_1=R_2$，两端电势差为零而环流仍不为零，说明端电压不能代替闭合电动势。\end{solution}
+\begin{question}\begin{example}[感生电场沿延长弦的积分]\label{em2:example:2}
+圆形磁区半径 $a$，内部磁场向纸外且 $\dot B=K>0$，外部磁场忽略。水平弦 $AC$ 距圆心 $h=a/\sqrt2$。在整条直线上取任意点 $P$，令沿 $AC$ 向右为有向距离 $s$ 的正向。求 $\varepsilon_{AP}$ 及其大小。
+\end{example}
+\fig{fig:em2:example:2:s}{延长弦上的有向距离从 $A$ 计起，$P$ 可在左右延长线或弦内}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)circle(1.414214);\draw[world](0,0)circle(1.414214);\draw[axis](-2.7,1)--(3.3,1)node[right]{$s$};\fill(-1,1)circle(2pt)node[above]{$A$};\fill(1,1)circle(2pt)node[above]{$C$};\fill(2.5,1)circle(2pt)node[above]{$P$};\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(0,1)node[midway,left]{$h$};\draw[dim](-1,2)--(2.5,2)node[midway,above]{$s=AP$};\node at(0,-2){$h=a/\sqrt2,\quad\odot\dot B=K$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{投影感生场并先积分弦内路径}\par\nobreak
+沿图\ref{fig:em2:example:2:s}建立 $Oxy$，弦为 $y=h$，$A=(-h,h)$。外场增大产生顺时针电场。磁区内 $E_x=Kh/2$，故当 $0\le s\le2h$，
+\[\varepsilon_{AP}=\int_{-h}^{s-h}\frac{Kh}{2}\dd x=\left[\frac{Khx}{2}\right]_{-h}^{s-h}=\frac{Kh[(s-h)-(-h)]}{2}=\frac{Khs}{2}.\]
+\fig{fig:em2:example:2:p}{同一水平路径的三个位置区间，给出连续的有向感生积分}{\begin{tikzpicture}
+
+\draw[axis](-3.6,0)--(5.7,0)node[right]{$s/h$};\draw[axis](0,-1.2)--(0,2.5)node[above]{$\varepsilon_{AP}/(Kh^2)$};
+\draw[blue,thick,domain=-3:0,samples=70]plot(\x,{(atan(\x-1)+45)*pi/180});\draw[world](0,0)--(2,1);\draw[red,thick,domain=2:5,samples=70]plot(\x,{1+(atan(\x-1)-45)*pi/180});
+\draw[guide](2,0)--(2,1)--(0,1);\node[below]at(2,0){$2$};\node[left]at(0,1){$1$};\node[blue]at(-2.2,.6){$P$ 在 $A$ 左侧};\node[red]at(3.8,2.1){$P$ 在 $C$ 右侧};\node at(1,-1.4){弦内为直线，两侧外区为反正切函数};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分开积分右侧延长线并检查边界连续}\par\nobreak
+图\ref{fig:em2:example:2:p}把 $A\to C$ 与 $C\to P$ 分开。区外场为 $E_\theta=-Ka^2/(2r)$，其水平投影为 $E_x=Ka^2h/[2(x^2+h^2)]$。令 $z=x/h$，则 $\dd x=h\dd z$，
+$h\dd x/(x^2+h^2)=\dd z/(1+z^2)$；上下限由 $h,s-h$ 变为 $1,(s-h)/h$。
+因 $\dd(\arctan z)/\dd z=1/(1+z^2)$，
+\[
+ \int_h^{s-h}\frac{h\dd x}{x^2+h^2}
+ =[\arctan z]_1^{(s-h)/h}
+ =\arctan\frac{s-h}{h}-\frac\pi4.
+\]
+于是 $s\ge2h$ 时
+\begin{align*}\varepsilon_{AP}&=Kh^2+\frac{Ka^2}{2}\int_h^{s-h}\frac{h\dd x}{x^2+h^2}\\&=\frac{Ka^2}{2}\left[1+\arctan\frac{s-h}{h}-\frac\pi4\right].\end{align*}
+在 $s=2h$ 两式均为 $Ka^2/2$，边界连续。$s\to\infty$ 时结果趋于 $Ka^2(1+\pi/4)/2$；电场虽延伸到无穷远，沿此直线的投影衰减为 $x^{-2}$，积分仍收敛。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{补全左侧有向积分及电动势大小}\par\nobreak
+若 $P$ 在 $A$ 左侧，即 $s<0$，路径全在磁区外，积分上限 $s-h<-h$。同样令 $z=x/h$，上下限变成 $-1,(s-h)/h$；
+$[\arctan z]_{-1}^{(s-h)/h}=\arctan[(s-h)/h]+\pi/4$，于是
+\[\varepsilon_{AP}=\frac{Ka^2}{2}\int_{-h}^{s-h}\frac{h\dd x}{x^2+h^2}=\frac{Ka^2}{2}\left[\arctan\frac{s-h}{h}+\frac\pi4\right].\]
+该值为负，表示沿向左路径的电场积分反向；大小取绝对值。在 $s=0$ 时与内部表达式同时为零。这补齐了直线上位于两个延长方向的全部点。\end{solution}
+\begin{question}\begin{example}[方框中的端电势与三种测量]\label{em2:example:3}
+方框如图，上下边电阻为零，两竖边电阻分别为 $3\,\mathrm{k}\Omega,7\,\mathrm{k}\Omega$。磁场向里均匀增大，产生逆时针 $1\,\mathrm{mA}$ 电流。外加磁场及方框的几何具有四重旋转对称性；导线电阻不对称。先求沿逆时针各边的静电势差；再用大内阻电压表，引线紧贴被测边且不围成额外磁通，分别测 $A_4\to A_1$、$A_2\to A_3$、$A_3\to A_4$ 的有向读数。
+\end{example}
+\fig{fig:em2:example:3:s}{题设：方框中的端电势与三种测量}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)node[below]{$A_3$}--(3,0)node[below]{$A_4$}--(3,1) (3,2)--(3,3)node[above]{$A_1$}--(0,3)node[above]{$A_2$}--(0,2) (0,1)--(0,0);\draw[world](0,1.0)--(0,1.2) (-0.18,1.2)rectangle(0.18,1.8) (0,1.8)--(0,2.0);\node[left]at(-.3,1.5){$7\,\mathrm{k}\Omega$};\draw[world](3,1.0)--(3,1.2) (2.82,1.2)rectangle(3.18,1.8) (3,1.8)--(3,2.0);\node[right]at(3.25,1.5){$3\,\mathrm{k}\Omega$};\node at(1.5,1.5){$\otimes\dot B$};\draw[flow](2.6,2.7)--(1.4,2.7)node[midway,below]{$i$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用总电阻降确定整圈与每边的感生积分}\par\nobreak
+图\ref{fig:em2:example:3:s}以 $A_1\to A_2\to A_3\to A_4\to A_1$ 为正向。沿此方向电流为1mA，总电阻 $(7+3)\,\mathrm{k}\Omega=10\,\mathrm{k}\Omega$，所以整圈电动势 $\varepsilon=iR_\Sigma=10\,\mathrm V$。外场的四重对称性使每边感生积分同为 $e_s=\varepsilon/4=2.5\,\mathrm V$；电阻不对称不改变这一外场积分。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐边计算静电势差并检查闭合和为零}\par\nobreak
+对任意边使用 $U_{ab}=iR_{ab}-e_{ab}$。上、下边理想导线无电阻，两竖边分别为7kΩ与3kΩ，因此
+\begin{align*}U_{12}&=0-2.5=-2.5\,\mathrm V,&U_{23}&=(10^{-3})(7\times10^3)-2.5=4.5\,\mathrm V,\\U_{34}&=0-2.5=-2.5\,\mathrm V,&U_{41}&=(10^{-3})(3\times10^3)-2.5=0.5\,\mathrm V.\end{align*}
+这四段静电势差相加为零，整圈感应电动势却为10V，二者含义不同。
+\fig{fig:em2:example:3:p}{三条被测边分别旋转展开；表支路紧贴相应边，积分与该边相同}{\begin{tikzpicture}
+
+\foreach \xx/\aa/\bb/\rr/\mm in {0/4/1/{3\,\mathrm{k}\Omega}/3,4.2/2/3/{7\,\mathrm{k}\Omega}/7,8.4/3/4/0/0}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,2.5)--(0,1.65) (0,.85)--(0,0);\draw[world](-.2,.85)rectangle(.2,1.65);\node[left]at(-.3,1.25){$\rr$};\fill(0,2.5)circle(2pt)node[above]{$A_\aa$};\fill(0,0)circle(2pt)node[below]{$A_\bb$};
+\draw[world](0,2.5)--(.85,2.5)--(.85,1.65) (.85,.85)--(.85,0)--(0,0);\draw[world](.85,1.25)circle(.4)node{$V$};\node[right]at(1,2.1){$+$};\node[right]at(1,.4){$-$};\draw[flow](1.8,2.3)--(1.8,1.3)node[right]{$g$};\node at(.5,3.3){$M_{\aa\bb}=\mm\,\mathrm V$};\node at(.5,-.9){$e_g=2.5\,\mathrm V$};\end{scope}}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿三条真实测量路径分别求表内电阻降}\par\nobreak
+图\ref{fig:em2:example:3:p}中的表引线紧贴被测边且不反穿磁区，故沿相同端点方向的引线积分也是2.5V。高内阻表不改变原电流，表体有向读数为端电势差加引线积分。题目三次读数按给定方向分别为
+\[U_{41}+e_g=3\,\mathrm V,\qquad U_{23}+e_g=7\,\mathrm V,\qquad U_{34}+e_g=0.\]
+它们恰等于对应边的电阻降。若引线改围额外面积，$e_g$ 需重新积分，此时不能仍用这三个数；若表内阻有限，还需重算分流后的节点电势。\end{solution}
+\begin{question}\begin{example}[移动圆弧与随动电压表]\label{em2:example:4}
+在 $yz$ 平面内，半径 $a$ 的四分之三圆弧端点 $a,d$ 位于极角 $225^\circ,315^\circ$；$b,c$ 位于 $135^\circ,45^\circ$，$e,f$ 为左右端。弧总电阻 $3R$。弧沿纸外 $+x$ 方向以速率 $v$ 平移，静磁场沿图中竖直向上方向。静止零电阻接触板跨接 $a,d$，宽 $l=\sqrt2a$。电阻为 $nR$ 的小表体在圆心，以随弧运动的径向引线接 $b,c$。求表的读数大小及 $V_e-V_f$。
+\end{example}
+\fig{fig:em2:example:4:s}{题设：移动圆弧与随动电压表}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\draw[world,white,line width=3pt](-1.06,-1.06)arc(225:315:1.5);\draw[world](-1.06,-1.06)--(1.06,-1.06);\node[left]at(-1.06,-1.06){$a$};\node[right]at(1.06,-1.06){$d$};\node[above left]at(-1.06,1.06){$b$};\node[above right]at(1.06,1.06){$c$};\node[left]at(-1.5,0){$e$};\node[right]at(1.5,0){$f$};\draw[guide](-1.06,1.06)--(0,0)--(1.06,1.06);\node at(0,-2){$\odot\bm v,\quad\bm B\uparrow$};\draw[world](-1.061,1.061)--(-.22,.22) (.22,.22)--(1.061,1.061);\draw[world](0,0)circle(.3);\node at(0,0){$V$};\node[below left]at(-.25,-.25){$O$};\draw[guide](0,.3)--(0,1.5);\node[right]at(0,1){$a$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按端点投影逐支路求动生电动势}\par\nobreak
+图\ref{fig:em2:example:4:s}中 $\bm v\times\bm B$ 指向图左，令 $E=Blv$。按各点的水平坐标计算端点投影，弧 $a\to b,c\to d$ 的动生电动势均为零，电阻各为 $R$；弧 $b\to c$ 电动势为 $-E$，电阻为 $R$。径向表支路 $b\to O\to c$ 同样随动，电动势也是 $-E$，电阻为 $nR$。
+\fig{fig:em2:example:4:p}{三条 $b\to c$ 支路中，两条随动路径有相同的负电动势，静止接触板所在外路径无净电动势}{\begin{tikzpicture}
+
+\draw[world](0,-2)--(0,2) (6,-2)--(6,2);\fill(0,0)circle(2pt)node[left]{$b$};\fill(6,0)circle(2pt)node[right]{$c$};
+\foreach \yy/\rr in {2/R,0/{nR}}{\draw[world](0,\yy)--(1,\yy) (2,\yy)--(3,\yy) (4,\yy)--(6,\yy);\draw[world](1,{\yy-.22})rectangle(2,{\yy+.22});\node[above]at(1.5,{\yy+.22}){$\rr$};\draw[world](3.5,\yy)circle(.5);\draw[flow](3.85,\yy)--(3.15,\yy);\node[above]at(3.5,{\yy+.5}){$E$};\draw[->,blue,thick](5.4,\yy)--(4.4,\yy);}
+\draw[world](0,-2)--(2,-2) (3,-2)--(6,-2);\draw[world](2,-2.22)rectangle(3,-1.78);\node[below]at(2.5,-2.22){$2R$};\draw[->,red,thick](4,-2)--(5.4,-2)node[midway,below]{$J$};\node at(3,3.1){两源的参考积分均为 $\varepsilon_{b\to c}=-E$};\node at(3,-3.1){外路径 $b\to a\to d\to c$：$\varepsilon=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合并相同驱动支路后求外路径电流}\par\nobreak
+图\ref{fig:em2:example:4:p}的中间两支路具有相同电动势，故等效电阻 $nR/(n+1)$、电动势 $-E$。外回路其余电阻为 $2R$，于是流经 $b\to a\to d\to c$ 的电流
+\[J=\frac{E}{2R+nR/(n+1)}=\frac{E(n+1)}{R(3n+2)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用节点守恒还原随动表支路的实际电流}\par\nobreak
+求电流方向时，把中间两条电流均按 $b\to c$ 计。外路径电流 $J$ 从 $b$ 流出，所以节点方程为 $i_{bc}+i_V=-J$。
+
+两中间支路的电动势均为 $-E$，故
+\[
+i_{bc}=\frac{U_{bc}-E}{R},\qquad i_V=\frac{U_{bc}-E}{nR}.
+\]
+代入节点方程，先得 $U_{bc}-E=-JnR/(n+1)$，再解出
+\[
+U_{bc}=E-\frac{JnR}{n+1}=\frac{2E(n+1)}{3n+2}.
+\]
+
+因此表电流为 $(U_{bc}-E)/(nR)=-E/[R(3n+2)]$。读数大小为 $nE/(3n+2)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿局部圆弧求左右端电势并检查大表阻极限}\par\nobreak
+取接触板电势为零。弧$a\to e$电阻$R/2$，并取水平向右为$x$正向。圆半径为$a$，对应端点坐标$x_a=-a/\sqrt2$、$x_e=-a$，而$\bm v\times\bm B=-Bv\bm e_x$，故
+\begin{align*}
+\varepsilon_{ae}
+&=\int_{-a/\sqrt2}^{-a}(-Bv)\,\dd x
+=-Bv[x]_{-a/\sqrt2}^{-a}\\
+&=Bva(1-1/\sqrt2)
+=E(1/\sqrt2-1/2),
+\end{align*}
+最后用了$l=\sqrt2a$和$E=Blv$。沿$a\to e$的电流为$-J$，所以$V_a-V_e=(-J)R/2-\varepsilon_{ae}$；由$V_a=0$得到$V_e=JR/2+E(1/\sqrt2-1/2)$。对称地 $V_f=-V_e$，所以
+\[V_e-V_f=E\left[\frac{n+1}{3n+2}+\sqrt2-1\right].\]
+表体读数与 $U_{bc}$ 不相等，差别来自随动引线。令 $n\to\infty$，表电流趋零，但读数仍趋 $E/3$，不能删掉引线的动生项。\end{solution}
+\begin{question}\begin{example}[取走直径导体后的电荷分配]\label{em2:example:5}
+半径 $a$ 的圆形回路左右两弧分别串有电容 $C_1,C_2$，其余导线电阻很小。竖直直径 $AB$ 为可取走的导体。向里磁场以速率 $B_0/T$ 增大并已达到充电平衡；先取走直径导体，随即让磁场停止变化。忽略导线寄生电容及取走导体携带的电荷，允许微小电阻使系统最终稳定。求最终两电容上极板的有向电荷。
+\end{example}
+\fig{fig:em2:example:5:s}{题设：取走直径导体后的电荷分配}{\begin{tikzpicture}[scale=.88]\draw[world](0,1.5)node[above]{$A$}arc(90:170:1.5) (0,1.5)arc(90:10:1.5);\draw[world](0,-1.5)node[below]{$B$}arc(270:190:1.5) (0,-1.5)arc(270:350:1.5);\draw[world](-1.48,-.26)--(-1.48,-.12) (-1.48,.12)--(-1.48,.26) (-1.7,-.12)--(-1.26,-.12) (-1.7,.12)--(-1.26,.12);\draw[world](1.48,-.26)--(1.48,-.12) (1.48,.12)--(1.48,.26) (1.26,-.12)--(1.7,-.12) (1.26,.12)--(1.7,.12);\draw[world](0,-1.5)--(0,1.5);\node[left]at(-1.8,0){$C_1$};\node[right]at(1.8,0){$C_2$};\node at(3,-1){$\otimes\dot B$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留直径短接时分别确定初始极板电荷}\par\nobreak
+在图\ref{fig:em2:example:5:s}中，取走前 $V_A=V_B$，每半圆感应电动势大小 $e=\pi a^2B_0/(2T)$。左半圆正向 $A\to B$，故左电容上极板电荷为 $-C_1e$；右半圆正向 $B\to A$，右电容上极板电荷为 $+C_2e$。
+\fig{fig:em2:example:5:p}{先确定两块上极板的初始异号电荷，再在取走导体后守恒新孤立上节点的总电荷}{\begin{tikzpicture}
+
+\foreach \xx/\lab in {0/{取走前：仍有变场},6/{取走并停止变场后}}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,2.5)--(3.5,2.5) (0,0)--(3.5,0);\foreach \x/\jj in {.5/1,3/2}{\draw[world](\x,2.5)--(\x,1.45) (\x,1.05)--(\x,0);\draw[world]({\x-.35},1.45)--({\x+.35},1.45) ({\x-.35},1.05)--({\x+.35},1.05);\node[below]at(\x,.8){$C_\jj$};}\node at(1.75,4.1){\lab};\end{scope}}
+\draw[world](1.75,0)--(1.75,2.5);\node[left]at(.3,2){$-C_1e$};\node[right]at(3.2,2){$+C_2e$};\draw[blue,dashed,rounded corners](5.9,1.25)rectangle(9.6,2.9);\node at(7.75,3.3){$Q_{\rm upper}=(C_2-C_1)e$};\node at(7.75,-.7){$U=q_1/C_1=q_2/C_2$};\draw[flow](4.1,1.2)--(5.3,1.2);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取走导体后守恒新孤立节点的总电荷}\par\nobreak
+图\ref{fig:em2:example:5:p}把取走直径后彼此绝缘的上、下导体分开。上导体所带总电荷守恒，为 $(C_2-C_1)e$。磁场停止后没有持续感应电动势，两电容并联，最终共同电压 $U=V_A-V_B$ 满足
+\[(C_1+C_2)U=(C_2-C_1)e.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两电容最终电荷并检查等电容极限}\par\nobreak
+所以 $q_1=C_1(C_2-C_1)e/(C_1+C_2)$，$q_2=C_2(C_2-C_1)e/(C_1+C_2)$。负号表示上极板带负电。$C_1=C_2$ 时最终两电容均放电，电场能经微小电阻耗散；不能再要求电场能守恒。\end{solution}
+\begin{question}\begin{example}[有限内阻表与两条引线路径]\label{em2:example:6}
+均匀圆环半径 $a$、总电阻 $r$，端点 $A,B$ 的逆时针圆心角为 $0<\theta<\pi$。圆环内外满足轴对称感生场，圆环内部均匀磁场向里以速率 $k$ 增大。电阻为 $R$ 的小表体分别用径向折线 $AOB$ 或直弦 $AB$ 接入，表支路总电动势按这两条路径计算。求两次表读数。
+\end{example}
+\fig{fig:em2:example:6:s}{题设：有限内阻表与两条引线路径}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$a$};\draw[flow](1.5*.707,1.5*.707)arc(45:110:1.5);\draw[guide](1.5,0)--(0,0)--(.75,1.299);\draw[world](1.5,0)--(.75,1.299);\node[right]at(1.5,0){$A$};\node[above]at(.75,1.299){$B$};\draw[world](.4,0)arc(0:60:.4);\node at(.55,.35){$\theta$};\node at(2.6,-.7){$\otimes\dot B=k$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两圆弧节点方程求未接表端口电压}\par\nobreak
+图\ref{fig:em2:example:6:s}两圆弧电阻为 $r_1=r\theta/(2\pi)$、$r_2=r(2\pi-\theta)/(2\pi)$。取两支路均由 $A$ 走向 $B$，电动势分别为 $k a^2\theta/2$ 与 $-k a^2(2\pi-\theta)/2$。设未接表时 $U=V_A-V_B$，两支路电流为 $(U+\varepsilon_1)/r_1$、$(U+\varepsilon_2)/r_2$，节点电流和为零。代入有 $\varepsilon_1/r_1=k\pi a^2/r$、$\varepsilon_2/r_2=-k\pi a^2/r$，驱动项抵消，剩下 $U(1/r_1+1/r_2)=0$，故 $U=0$。
+\fig{fig:em2:example:6:p}{弦与径向线围成的三角形决定引线源，有限内阻则与圆环端口电阻串联}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[blue!8](0,0)--(2,0)--(1,1.732)--cycle;\draw[world](0,0)node[below]{$O$}--(2,0)node[right]{$A$}--(1,1.732)node[above]{$B$}--cycle;\draw[->,blue,thick](1.8,.346)--(1.3,1.212);\draw(.55,0)arc(0:60:.55);\node at(.8,.3){$\theta$};\node at(1,-1){$e_g=k(\tfrac12a^2\sin\theta)$};\node at(1,2.5){沿 $A\to B\to O\to A$ 为逆时针};
+\end{scope}
+\begin{scope}[xshift=5.3cm]
+\draw[world](0,0)--(0,1) (0,1.8)--(0,3.5)--(3.5,3.5)--(3.5,3) (3.5,2.2)--(3.5,1.6) (3.5,.6)--(3.5,0)--(0,0);\draw[world](-.2,1)rectangle(.2,1.8);\node[left]at(-.25,1.4){$r_p$};\draw[world](3.5,2.6)circle(.4);\draw[flow](3.5,2.85)--(3.5,2.35);\node[right]at(4,2.6){$e_g$};\draw[world](3.5,1.1)circle(.5)node{$V$};\node[right]at(4.1,1.1){$R$};\draw[->,blue,thick](2.3,3.5)--(3.2,3.5)node[midway,above]{$i_V$};\node[above]at(0,3.5){$A$};\node[below]at(0,0){$B$};\node at(1.7,-1){$(R+r_p)i_V=e_g$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端口内阻并判断径向接线}\par\nobreak
+图\ref{fig:em2:example:6:p}把圆环对外端口等效为零电压源与 $r_p=r_1r_2/(r_1+r_2)=r\theta(2\pi-\theta)/(4\pi^2)$。径向路径感应积分为零，所以表电流、读数都为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由三角形磁通求弦路驱动并计入表的分流}\par\nobreak
+直弦路径与径向路径围成三角形 $AOB$，按逆时针取向，弦的积分为 $e_g=ka^2\sin\theta/2$。表支路闭合后，圆环端口电势成为 $U=-i_Vr_p$，表体电阻满足 $Ri_V=U+e_g$，消去 $U$ 得 $(R+r_p)i_V=e_g$。所以
+\[i_V=\frac{e_g}{R+r_p},\qquad |U_V|=\frac{Rka^2\sin\theta}{2(R+r_p)}.\]
+有限内阻造成分流，已通过 $r_p$ 计入。$R\to\infty$ 时读数趋于 $e_g$，$R\to0$ 时表体电压趋零；两种极限都与含源支路的关系相容。\end{solution}
+\begin{question}\begin{example}[三个感应支路中的环流与供能]\label{em2:example:7}
+三条支路同接节点 $A,B$，电阻依次为 $R,2R,R$。从 $A$ 到 $B$ 的分布电动势为 $e,-2e,0$，$e>0$，各感应驱动由外部维持，支路自感忽略。求端电势差、各支路电流和总发热率；再接电阻 $R_L$ 于端口，求端口等效。
+\end{example}
+\fig{fig:em2:example:7:s}{题设：三个感应支路中的环流与供能}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4.8,0) (0,3.6)--(4.8,3.6);\node[above left]at(0,3.6){$A$};\node[below left]at(0,0){$B$};\draw[world](0.0,0)--(0.0,.8) (-0.18,.8)rectangle(0.18,1.6) (0.0,1.6)--(0.0,2.35) (0.0,3.05)--(0.0,3.6);\node[left]at(-0.25,1.2){$R$};\draw[world](0.0,2.7)circle(.35);\draw[flow](0.0,2.92)--(0.0,2.48);\node[right]at(0.45,2.7){$e$};\draw[flow](0.7,1.7)--(0.7,.6)node[midway,right]{$i_1$};\draw[world](2.4,0)--(2.4,.8) (2.2199999999999998,.8)rectangle(2.58,1.6) (2.4,1.6)--(2.4,2.35) (2.4,3.05)--(2.4,3.6);\node[left]at(2.15,1.2){$2R$};\draw[world](2.4,2.7)circle(.35);\draw[flow](2.4,2.92)--(2.4,2.48);\node[right]at(2.85,2.7){$-2e$};\draw[flow](3.0999999999999996,1.7)--(3.0999999999999996,.6)node[midway,right]{$i_2$};\draw[world](4.8,0)--(4.8,.8) (4.62,.8)rectangle(4.9799999999999995,1.6) (4.8,1.6)--(4.8,2.35) (4.8,3.05)--(4.8,3.6);\node[left]at(4.55,1.2){$R$};\draw[world](4.8,2.7)circle(.35);\draw[flow](4.8,2.92)--(4.8,2.48);\node[right]at(5.25,2.7){$0$};\draw[flow](5.5,1.7)--(5.5,.6)node[midway,right]{$i_3$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{统一三支路正向后解节点电势}\par\nobreak
+图\ref{fig:em2:example:7:s}已把三条参考电流统一向下，故每一支路使用 $i_jR_j=U+e_j$。开路端口没有取流，节点条件给出
+\[\frac{U+e}{R}+\frac{U-2e}{2R}+\frac U R=0.\]
+电动势项恰好抵消，而总电导为 $5/(2R)$，所以 $U=0$。逐一代回得到 $i_1=e/R,i_2=-e/R,i_3=0$；负号说明第二支路真实电流从 $B$ 向 $A$，不能把三个电流大小直接相加。
+\fig{fig:em2:example:7:p}{解答过程：三个感应支路中的环流与供能}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4.8,0) (0,3.6)--(4.8,3.6);\node[above left]at(0,3.6){$A$};\node[below left]at(0,0){$B$};\draw[world](0.0,0)--(0.0,.8) (-0.18,.8)rectangle(0.18,1.6) (0.0,1.6)--(0.0,2.35) (0.0,3.05)--(0.0,3.6);\node[left]at(-0.25,1.2){$R$};\draw[world](0.0,2.7)circle(.35);\draw[flow](0.0,2.92)--(0.0,2.48);\node[right]at(0.45,2.7){$e$};\draw[flow](0.7,1.7)--(0.7,.6)node[midway,right]{$i_1$};\draw[world](2.4,0)--(2.4,.8) (2.2199999999999998,.8)rectangle(2.58,1.6) (2.4,1.6)--(2.4,2.35) (2.4,3.05)--(2.4,3.6);\node[left]at(2.15,1.2){$2R$};\draw[world](2.4,2.7)circle(.35);\draw[flow](2.4,2.92)--(2.4,2.48);\node[right]at(2.85,2.7){$-2e$};\draw[flow,red](3.1,.6)--(3.1,1.7)node[midway,right]{$|i_2|$};\draw[world](4.8,0)--(4.8,.8) (4.62,.8)rectangle(4.9799999999999995,1.6) (4.8,1.6)--(4.8,2.35) (4.8,3.05)--(4.8,3.6);\node[left]at(4.55,1.2){$R$};\draw[world](4.8,2.7)circle(.35);\draw[flow](4.8,2.92)--(4.8,2.48);\node[right]at(5.25,2.7){$0$};\node[right]at(5.35,1.15){$i_3=0$};\node at(2.4,-.8){$i_1=e/R,\quad i_2=-e/R,\quad i_3=0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原真实环流并用总驱动功率校验发热}\par\nobreak
+图\ref{fig:em2:example:7:p}明确第二支路电流的负号，第一、第二支路形成环流。总发热率为 $i_1^2R+i_2^2(2R)=3e^2/R$。外驱动功率为 $e i_1+(-2e)i_2=3e^2/R$，与发热一致。第三支路无电流并不意味着两条有源支路也无电流。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端口等效并区分内部耗散与输出功率}\par\nobreak
+接入负载后，端口开路电压仍为零，内阻为 $r_p=[1/R+1/(2R)+1/R]^{-1}=2R/5$。因此任意纯电阻负载中仍没有电流，内部环流却保持存在。此例表明，端口没有输出功率与内部没有能量消耗是两个不同判断。\end{solution}
+\begin{question}\begin{example}[相邻磁区驱动的电桥]\label{em2:example:8}
+菱形网络 $ACBD$ 的边电阻如图，对角线 $AB$ 电阻为 $r$。上、下三角回路均按顺时针选向，其感应电动势都为 $e>0$。几何和外场使对角支路的分布电动势为零。沿上外路径 $A\to C\to B$ 的积分为 $e$，沿下外路径 $A\to D\to B$ 的积分为 $-e$。求各路径电流及 $U_{AB}$，再判断沿对角线接表的读数。
+\end{example}
+\fig{fig:em2:example:8:s}{题设：相邻磁区驱动的电桥}{\begin{tikzpicture}[scale=.88]\coordinate(A)at(0,2);\coordinate(B)at(4,2);\coordinate(C)at(2,4);\coordinate(D)at(2,0);\draw[world](A)--(C)--(B)--(D)--cycle;\draw[world](A)--(B);\foreach\p in{A,B,C,D}{\fill(\p)circle(1.5pt)node[above right]{$\p$};}\node[fill=white]at(1,3){$R$};\node[fill=white]at(3,3){$2R$};\node[fill=white]at(1,1){$2R$};\node[fill=white]at(3,1){$R$};\node[fill=white]at(2,2){$r$};\node at(5,3){上环 $e$};\node at(5,1){下环 $e$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将两外路径和对角线化成三个并联支路}\par\nobreak
+图\ref{fig:em2:example:8:s}的三条 $A\to B$ 路径电阻分别为 $3R,3R,r$，电动势分别为 $e,-e,0$。把两串联外路径各视为一条支路，得到
+\[i_u=(U+e)/(3R),\quad i_d=(U-e)/(3R),\quad i_m=U/r.\]
+节点方程 $i_u+i_d+i_m=0$ 化为 $U[2/(3R)+1/r]=0$，所以 $U=0$。因此上路径电流从 $A$ 经 $C$ 到 $B$，为 $e/(3R)$；下路径从 $B$ 经 $D$ 回 $A$，同样为 $e/(3R)$；对角线无电流。
+\fig{fig:em2:example:8:p}{实际环流沿外框闭合；对角支路零电流并不消除外框发热}{\begin{tikzpicture}
+
+\draw[world](0,1.6)--(2,3.2)--(4,1.6)--(2,0)--cycle;\draw[world](0,1.6)--(4,1.6);\node[left]at(0,1.6){$A$};\node[right]at(4,1.6){$B$};\node[above]at(2,3.2){$C$};\node[below]at(2,0){$D$};
+\foreach \xx/\yy/\lab in {1/2.4/R,3/2.4/{2R},1/.8/{2R},3/.8/R}{\node[fill=white]at(\xx,\yy){$\lab$};}\node[fill=white]at(2,1.6){$r,\ i_m=0$};
+\draw[->,blue,thick](.15,1.72)--(.7,2.16);\draw[->,blue,thick](2.15,3.08)--(2.7,2.64);\draw[->,blue,thick](3.85,1.48)--(3.3,1.04);\draw[->,blue,thick](1.85,.12)--(1.3,.56);\node at(6,2.5){$i=e/(3R)$};\node at(6,1.2){$U_{AB}=0$};\node at(2,-1){沿对角线接表：$\varepsilon_g=0$，读数为零};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用零电流支路判断沿对角线的测量}\par\nobreak
+图\ref{fig:em2:example:8:p}中的对角线是一条零电流支路，沿它放置的静止表引线感应积分为零，故读数为零。两外路径仍持续发热，总功率 $2e^2/(3R)$。虽然两条边在不同位置的电阻不相等，两外路径的总电阻恰相等，足以使端口 $A,B$ 平衡。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确其他节点电势需要补充的空间场信息}\par\nobreak
+如果改问 $C,D$ 的电势差，就不能只用两外路径的总电阻，因为还需要四条边各自的分布电动势。给定两个三角回路的总电动势尚不足以唯一分配每条边的感应积分。能确定 $AB$ 读数，不等于能在缺少空间场信息时确定网络中任意两点的静电势差。\end{solution}
+\begin{question}\begin{example}[转棒的中间电刷与分段负载]\label{em2:example:9}
+均匀导棒 $OA$ 长 $a$，绕 $O$ 在纸面内逆时针转动，角速度 $\omega$，磁场向纸外。每单位长度电阻为 $\lambda$，在半径 $b$ 处有电刷 $P$。固定导线将 $O,P,A$ 分别引出，负载 $R_1$ 接 $O,P$，$R_2$ 接 $P,A$；两负载引线相互贴近且固定。求两段电流、$V_P-V_O,V_A-V_P$，以及维持转动所需的电磁功率。
+\end{example}
+\fig{fig:em2:example:9:s}{题设：转棒的中间电刷与分段负载}{\begin{tikzpicture}[scale=.88]\draw[world,very thick](0,0)node[below]{$O$}--(2,0)node[below]{$P$}--(4,0)node[below]{$A$};\draw[guide](0,0)circle(.5);\draw[flow](.5,0)arc(0:80:.5);\node at(1,1.1){$\omega$};\node at(3,1.1){$\odot B$};\draw[world](0,0)--(0,-1)--(2,-1)--(2,0) (2,0)--(2,-2)--(4,-2)--(4,0);\node[draw,fill=white]at(1,-1){$R_1$};\node[draw,fill=white]at(3,-2){$R_2$};\node at(1,.4){$b$};\node at(3,.4){$a-b$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别积分两段转棒的驱动与内阻}\par\nobreak
+在图\ref{fig:em2:example:9:s}中，转棒各点 $\bm v\times\bm B$ 沿径向向外。用径向坐标 $r$ 分别积分，
+\begin{align*}
+e_1&=B\omega\int_0^b r\,\dd r
+=B\omega[r^2/2]_0^b=\frac{B\omega b^2}{2},\\
+e_2&=B\omega\int_b^a r\,\dd r
+=B\omega[r^2/2]_b^a=\frac{B\omega(a^2-b^2)}2.
+\end{align*}两段棒电阻为 $r_1=\lambda b,r_2=\lambda(a-b)$。节点 $P$ 是两闭合子回路的公共节点，但固定负载各与相应棒段成闭合回路，另一端没有额外短接。
+\fig{fig:em2:example:9:p}{两段棒各经自己的负载返回；电刷承担两段电流之差}{\begin{tikzpicture}
+
+\draw[world,very thick](0,0)--(2,0)--(4,0);\foreach \xx/\lab in {0/O,2/P,4/A}{\fill(\xx,0)circle(2pt)node[above]{$\lab$};}\draw[world](0,0)--(0,-1.2)--(.6,-1.2) (1.4,-1.2)--(2,-1.2)--(2,0) (2,-1.2)--(2,-2.4)--(2.6,-2.4) (3.4,-2.4)--(4,-2.4)--(4,0);\draw[world](.6,-1.4)rectangle(1.4,-1);\node[below]at(1,-1.4){$R_1$};\draw[world](2.6,-2.6)rectangle(3.4,-2.2);\node[below]at(3,-2.6){$R_2$};
+\draw[flow,blue](.3,.65)--(1.6,.65)node[midway,above]{$i_1,e_1$};\draw[flow,red](2.3,.65)--(3.6,.65)node[midway,above]{$i_2,e_2$};\draw[flow,blue](1.6,-1.2)--(1.45,-1.2);\draw[flow,red](3.65,-2.4)--(3.45,-2.4);\draw[flow](2,-1)--(2,-.2)node[midway,right]{$i_2-i_1$};\node at(2,-3.3){$P$ 电刷的参考方向为固定网络指向棒};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两条负载回路求电流与电刷分流}\par\nobreak
+图\ref{fig:em2:example:9:p}分别标出两段的发电方向。令棒段电流向外为正，负载电流从高电势外端返回内端，因而
+\[i_1=\frac{e_1}{R_1+r_1},\qquad i_2=\frac{e_2}{R_2+r_2}.\]
+节点 $P$ 的电刷从固定网络流入棒的有向电流为 $i_2-i_1$，这正是不能强行令 $i_1=i_2$ 的原因。两负载的端电势差分别为
+\[
+V_P-V_O=i_1R_1=e_1-i_1r_1,\qquad
+V_A-V_P=i_2R_2=e_2-i_2r_2.
+\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分段积分磁阻力矩并核对总发热功率}\par\nobreak
+棒内一段长 $\dd r$ 的磁阻力矩为 $Bi_jr\dd r$，在两段电流各自保持不变的区间内积分，
+\[
+ \tau_B=Bi_1\int_0^b r\dd r+Bi_2\int_b^a r\dd r
+ =Bi_1[r^2/2]_0^b+Bi_2[r^2/2]_b^a
+ =\frac{Bi_1b^2+Bi_2(a^2-b^2)}2.
+\]机械功率 $\omega\tau_B=e_1i_1+e_2i_2=i_1^2(R_1+r_1)+i_2^2(R_2+r_2)$，包括负载与棒内发热。电刷改变的不只是测量点，也改变了真实电流分配。\end{solution}
+\begin{question}\begin{example}[有负载时导棒内部的电势极值]\label{em2:example:10}
+长 $l$ 的直棒沿垂直棒的方向以速率 $v$ 平移，磁场垂直运动平面，沿棒坐标 $s\in[0,l]$ 有 $B(s)=B_0s/l$，且 $\bm v\times\bm B$ 沿 $s$ 增加方向。单位长度电阻为 $\lambda$，两端经静止、无动生作用的负载 $R$ 闭合。求电流与棒内部相对 $s=0$ 端的电势分布，讨论极值位置。
+\end{example}
+\fig{fig:em2:example:10:s}{题设：有负载时导棒内部的电势极值}{\begin{tikzpicture}[scale=.88]\draw[world,very thick](0,0)node[left]{$a$}--(4,0)node[right]{$b$};\draw[flow](2,.5)--(2,1.7)node[above]{$v$};\node at(3,1.2){$\odot B$};\draw[axis](0,-.6)--(4.5,-.6)node[right]{$s$};\node at(2,-1){长度 $l$};\node at(2,2.3){$B(s)=B_0s/l$，驱动沿 $a\to b$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对非均匀磁场积分整棒电动势}\par\nobreak
+图\ref{fig:em2:example:10:s}规定的推动方向为正，局部电动势密度 $e(s)=vB_0s/l$。整棒电动势 $e=(B_0v/l)\int_0^l s\dd s=(B_0v/l)[s^2/2]_0^l=B_0vl/2$，棒内阻 $r=\lambda l$，故 $i=B_0vl/[2(R+\lambda l)]$，沿棒 $a\to b$。
+\fig{fig:em2:example:10:p}{对同一局部驱动分别减去不同电阻降，得到开路、有限负载和短接的电势分布}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.5,0)node[right]{$s/l$};\draw[axis](0,-1.2)--(0,3)node[above]{$[V(s)-V(0)]/(B_0vl)$};\draw[blue,thick,domain=0:1,samples=70]plot({4*\x},{5*.5*(\x)^2});\draw[world,domain=0:1,samples=70]plot({4*\x},{5*(.5*(\x)^2-.25*\x)});\draw[red,thick,domain=0:1,samples=70]plot({4*\x},{5*(.5*(\x)^2-.5*\x)});\draw[guide](1,0)--(1,-.15625) (2,0)--(2,-.625);\node[below]at(1,-1.05){$1/4$};\node[below]at(2,-.7){$1/2$};\node[below]at(4,0){$1$};\node[left]at(0,2.5){$1/2$};\node[blue,right]at(4,2.5){$R\to\infty$};\node[right]at(4,1.25){$R=\lambda l$};\node[red,right]at(4,-.3){$R=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分局部电势梯度并求内部最小值}\par\nobreak
+由图\ref{fig:em2:example:10:p}的局部关系，$\dd V/\dd s=e(s)-i\lambda$，从 $0$ 积分到 $s$ 得
+\[V(s)-V(0)=\int_0^s\left(\frac{B_0v}{l}\sigma-i\lambda\right)\dd\sigma
+=\left[\frac{B_0v}{2l}\sigma^2-i\lambda\sigma\right]_0^s
+=\frac{B_0v}{2l}s^2-i\lambda s.\]
+逐项求导得 $V'(s)=B_0vs/l-i\lambda$、$V''(s)=B_0v/l>0$。曲线开口向上，导数在 $s_*=i\lambda l/(B_0v)=\lambda l^2/[2(R+\lambda l)]$ 为零，因此这里是最小电势，且 $0<s_*\le l/2$。两端的电势差为 $V(l)-V(0)=e-ir=iR$，与负载关系一致。最小值为 $-B_0vs_*^2/(2l)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查开路和短接时的电势分布}\par\nobreak
+当 $R\to\infty$，$i\to0$、$s_*\to0$，棒内电势沿驱动方向单调上升；当 $R\to0$，两端电势相等，但内部电势先降后升，最低点在中间。把整个运动导体当成等电势体，会同时算错中间点电压与局部静电场方向。\end{solution}
+\begin{question}\begin{example}[磁通已知的开路电容支路]\label{em2:example:11}
+三支路并联于 $A,B$。前两支路电阻为 $R,2R$，从 $A$ 到 $B$ 的感应电动势分别为 $e,0$；第三支路串联电容 $C$，其引线从 $A$ 到 $B$ 的感应积分为 $e/4$，电容上极板接 $A$ 一侧。变化率恒定且已稳定。求电容的电压、电荷与两电阻支路电流；说明换一条引线后哪些量改变。
+\end{example}
+\fig{fig:em2:example:11:s}{题设：磁通已知的开路电容支路}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4.8,0) (0,3.6)--(4.8,3.6);\node[above left]at(0,3.6){$A$};\node[below left]at(0,0){$B$};\draw[world](0.0,0)--(0.0,.8) (-0.18,.8)rectangle(0.18,1.6) (0.0,1.6)--(0.0,2.35) (0.0,3.05)--(0.0,3.6);\node[left]at(-0.25,1.2){$R$};\draw[world](0.0,2.7)circle(.35);\draw[flow](0.0,2.92)--(0.0,2.48);\node[right]at(0.45,2.7){$e$};\draw[flow](0.7,1.7)--(0.7,.6)node[midway,right]{$i_1$};\draw[world](2.4,0)--(2.4,.8) (2.2199999999999998,.8)rectangle(2.58,1.6) (2.4,1.6)--(2.4,2.35) (2.4,3.05)--(2.4,3.6);\node[left]at(2.15,1.2){$2R$};\draw[world](2.4,2.7)circle(.35);\draw[flow](2.4,2.92)--(2.4,2.48);\node[right]at(2.85,2.7){$0$};\draw[flow](3.0999999999999996,1.7)--(3.0999999999999996,.6)node[midway,right]{$i_2$};\draw[world](4.8,0)--(4.8,1.6) (4.8,2)--(4.8,2.35) (4.8,3.05)--(4.8,3.6) (4.45,1.6)--(5.1499999999999995,1.6) (4.45,2)--(5.1499999999999995,2);\node[right]at(5.2,1.8){$C$};\draw[world](4.8,2.7)circle(.35);\draw[flow](4.8,2.92)--(4.8,2.48);\node[right]at(5.25,2.7){$e/4$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先利用稳态电容支路零电流求网络端压}\par\nobreak
+图\ref{fig:em2:example:11:s}中稳定电容支路没有电流，故先在前两支路应用节点方程：$(U+e)/R+U/(2R)=0$，得到 $U=V_A-V_B=-2e/3$。因此 $i_1=e/(3R),i_2=-e/(3R)$，实际环流经第一支路向下、第二支路向上。
+\fig{fig:em2:example:11:p}{解答过程：磁通已知的开路电容支路}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4.8,0) (0,3.6)--(4.8,3.6);\node[above left]at(0,3.6){$A$};\node[below left]at(0,0){$B$};\draw[world](0.0,0)--(0.0,.8) (-0.18,.8)rectangle(0.18,1.6) (0.0,1.6)--(0.0,2.35) (0.0,3.05)--(0.0,3.6);\node[left]at(-0.25,1.2){$R$};\draw[world](0.0,2.7)circle(.35);\draw[flow](0.0,2.92)--(0.0,2.48);\node[right]at(0.45,2.7){$e$};\draw[flow](0.7,1.7)--(0.7,.6)node[midway,right]{$i_1$};\draw[world](2.4,0)--(2.4,.8) (2.2199999999999998,.8)rectangle(2.58,1.6) (2.4,1.6)--(2.4,2.35) (2.4,3.05)--(2.4,3.6);\node[left]at(2.15,1.2){$2R$};\draw[world](2.4,2.7)circle(.35);\draw[flow](2.4,2.92)--(2.4,2.48);\node[right]at(2.85,2.7){$0$};\draw[flow,red](3.1,.6)--(3.1,1.7)node[midway,right]{$|i_2|$};\draw[world](4.8,0)--(4.8,1.6) (4.8,2)--(4.8,2.35) (4.8,3.05)--(4.8,3.6) (4.45,1.6)--(5.1499999999999995,1.6) (4.45,2)--(5.1499999999999995,2);\node[right]at(5.2,1.8){$C$};\node at(4.8,4.2){$i_C=0,\quad u_C=-5e/12$};\node[right]at(5.3,2){$-\,5Ce/12$};\node[right]at(5.3,1.6){$+\,5Ce/12$};\draw[world](4.8,2.7)circle(.35);\draw[flow](4.8,2.92)--(4.8,2.48);\node[right]at(5.25,2.7){$e/4$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把引线感应积分加入电容电压与极板电荷}\par\nobreak
+图\ref{fig:em2:example:11:p}把第三支路的引线作用与电容电压分开。沿 $A\to B$，电容电压降 $u_C$ 应与节点电势差和引线驱动之和相等，所以 $u_C=U+e/4=-5e/12$。上极板有向电荷 $q=Cu_C=-5Ce/12$，负号表示它带负电。不能直接令电容电压等于节点静电势差，因为这一支路还包含给定的感应积分。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断改线路径后保持和改变的稳态量}\par\nobreak
+若只把第三支路改走感应积分为零的路径，并等待新的充电稳定，前两支路环流与节点电势均不变，而 $u_C$ 改为 $-2e/3$。电容电压的改变量为 $-e/4$。真实改线期间有充电暂态和外场做功，最终场能的变化不必等于所产生热量的负值。\end{solution}

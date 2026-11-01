@@ -1,0 +1,949 @@
+\section{例题与分析}
+
+\begin{question}
+\begin{example}[玻璃板中的像与凸面镜中的像重合]\label{ex:o41}
+观察者的眼睛距凸面镜顶点 \(O\) 为 \(40\,\mathrm{cm}\)，凸面镜焦距大小为 \(10\,\mathrm{cm}\)。在眼睛与镜之间放一薄玻璃板，使玻璃板反射所成的眼睛像与凸面镜中的眼睛像重合。求眼睛到玻璃板的距离。忽略玻璃板厚度及其前后两反射面的分离。
+\end{example}
+\fig{fig:o41q}{玻璃板在眼睛与凸面镜之间移动，比较两个虚像的位置}{
+\begin{tikzpicture}
+\draw[axisline] (-4.8,0)--(1.8,0);
+\fill (-4,0) circle(2pt) node[above] {$E$（眼睛）};
+\draw[world] (-1.8,-.85)--(-1.8,.85) node[above] {$P$（玻璃板）};
+\draw[world] (.2,1)..controls(-.066667,.333333)and(-.066667,-.333333)..(.2,-1);
+\node[below right] at(0,0){$O$};\node[above]at(.8,1.1){凸面镜};
+\draw[dim] (-4,-1.4)--(0,-1.4) node[midway,below] {$40\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先求凸面镜虚像的带符号像距}\par\nobreak
+按图\ref{fig:o41q}，凸面镜的带符号焦距为 \(f=-10\,\mathrm{cm}\)，实物距 \(u=40\,\mathrm{cm}\)。因此
+\[
+ \frac1{40}+\frac1v=-\frac1{10},\qquad v=-8\,\mathrm{cm}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用同一坐标轴连接两种虚像位置}\par\nobreak
+图\ref{fig:o41s}取镜顶点 \(O\) 为坐标原点，向右为正。眼睛 \(E\) 在 \(-40\,\mathrm{cm}\)，凸面镜虚像 \(I\) 在镜后 \(+8\,\mathrm{cm}\)。玻璃板反射近似为平面镜反射，因此 $x_I=2x_P-x_E$。要求该像也在 $+8\,\mathrm{cm}$，就等价于让 $E,I$ 关于板面 $P$ 对称。
+\fig{fig:o41s}{同一虚像点 \(I\) 要求玻璃板位于 \(EI\) 的中点；坐标单位为厘米}{
+\begin{tikzpicture}[x=.13cm,y=1cm]
+\draw[axis] (-46,0)--(16,0) node[right] {$x$};
+\fill(-40,0)circle(1.5pt)node[above]{$E:-40$};
+\draw[world](-16,-.7)--(-16,.7)node[above]{$P:-16$};
+\fill(0,0)circle(1pt)node[below]{$O:0$};
+\fill(8,0)circle(1pt)node[above]{$I:+8$};
+\draw[dim](-40,-1.1)--(-16,-1.1)node[midway,below]{$24$};
+\draw[dim](-16,-1.1)--(8,-1.1)node[midway,below]{$24$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由镜面对称求板位，再换算眼到板距离}\par\nobreak
+于是 \(x_P=(-40+8)/2=-16\,\mathrm{cm}\)，眼睛到板的距离为
+\[
+ \boxed{EP=40-16=24\,\mathrm{cm}}.
+\]
+板位于眼睛与凸面镜之间，且它的虚像在板后 \(24\,\mathrm{cm}\)，即镜后 \(8\,\mathrm{cm}\)，位置与前一步相符。求的是眼到板距离，不能把板到镜的 \(16\,\mathrm{cm}\) 当作答案。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对两类像距的量距起点}\par\nobreak
+两种成像的像点坐标相等才叫重合；各自像距从凸面镜和玻璃板两个不同位置量起，不能直接令像距数值相等。
+\end{solution}
+
+\begin{question}
+\begin{example}[斟酒前后的杯底图像]\label{ex:o42}
+高脚杯杯内底面为向上凸起的球面，顶点为 \(O\)，球心 \(C\) 在下方玻璃中，半径 \(R=1.50\,\mathrm{cm}\)。杯口平面高于 \(O\) 点 \(8.0\,\mathrm{cm}\)，画片中心 \(P\) 位于 \(O\) 下方 \(6.3\,\mathrm{cm}\)。玻璃折射率 \(n_g=1.56\)，酒的折射率 \(n_w=1.34\)。观察者在杯口附近沿轴向下看，空杯时难以看清画片，斟满酒后则较容易看清。用近轴成像说明这一变化，忽略侧壁对所取近轴光束的影响。
+
+进一步设眼睛的最近清晰距离为 \(D=25.0\,\mathrm{cm}\)，远点在无穷远，眼位于杯口上方 \(h\geqslant0\) 处。只考虑调焦条件，求满杯可看清而空杯不能看清的 \(h\) 范围，并判断 \(h=10.0\,\mathrm{cm}\) 时的情况。
+\end{example}
+\fig{fig:o42q}{向上为传播方向；轴向距离压缩示意，第一面球心在入射侧}{
+\begin{tikzpicture}[x=1cm,y=.35cm]
+\draw[axisline] (0,-7.2)--(0,12.3);
+\draw[world,domain=-1.2:1.2,samples=50]plot(\x,{-1.5+sqrt(2.25-\x*\x)});
+\draw[world] (-1.7,0)--(-2.2,8) (1.7,0)--(2.2,8);
+\draw[world] (-2.2,8)--(2.2,8) node[right]{杯口、酒面};
+\fill(0,0)circle(1.3pt)node[right]{$O$};
+\fill(0,-1.5)circle(1pt)node[right]{$C$};
+\fill(0,-6.3)circle(1.5pt)node[right]{$P$};
+\draw[dim](-2.8,0)--(-2.8,8)node[midway,left]{$8.0\,\mathrm{cm}$};
+\draw[dim](-2.8,-6.3)--(-2.8,0)node[midway,left]{$6.3\,\mathrm{cm}$};
+\node at(1,-3.4){玻璃};\node at(1.1,4){空气或酒};
+\fill(0,11.4)circle(1.3pt)node[right]{眼 $E$};
+\draw[dim](2.8,8)--(2.8,11.4)node[midway,right]{$h$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{空杯时求玻璃到空气球面形成的实像}\par\nobreak
+图\ref{fig:o42q}中物距 \(u=6.3\,\mathrm{cm}\)，向上出射时曲率半径为 \(-1.50\,\mathrm{cm}\)。玻璃到空气的成像式为
+\[
+ \frac{1.56}{6.3}+\frac1{v_a}=\frac{1-1.56}{-1.50},
+ \qquad \boxed{v_a=7.9545\,\mathrm{cm}}.
+\]
+因此空杯内的近轴光束先在杯口下方约 \(0.0455\,\mathrm{cm}=0.455\,\mathrm{mm}\) 处形成实像，再发散进入眼睛。眼睛若恰在杯口附近，所需调焦距离过短。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{满杯时先求玻璃到酒的中间虚像}\par\nobreak
+第一面改为玻璃到酒：
+\[
+ \frac{1.56}{6.3}+\frac{1.34}{v_w}=\frac{1.34-1.56}{-1.50},
+ \qquad \boxed{v_w=-13.2736\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以酒面为第二顶点计算空气中的最终虚像}\par\nobreak
+第一面所成虚像 \(I_w\) 在 \(O\) 下方。到杯口酒面时，入射光仍发散，其物距为 \(u_s=8-v_w=21.2736\,\mathrm{cm}\)。平面折射给出
+\[
+ \frac{1.34}{u_s}+\frac1{v_s}=0,\qquad
+ v_s=-15.8758\,\mathrm{cm}.
+\]
+最终虚像 \(I\) 在酒面下方约 \(15.9\,\mathrm{cm}\)，即相对 \(O\) 的坐标 \(z_I=8+v_s=-7.8758\,\mathrm{cm}\)。
+\fig{fig:o42s}{两次成像的位置比较；右图的虚像均由光线反向延长得到，距离示意}{
+\begin{tikzpicture}[x=1cm,y=.21cm]
+\begin{scope}
+\node at(0,13){空杯};\draw[axisline](0,-8)--(0,10);
+\draw[world](-1.2,0)--(1.2,0);\draw[world](-1.2,8)--(1.2,8);
+\fill(0,-6.3)circle(1.2pt)node[right]{$P$};
+\fill(0,7.9545)circle(1.2pt);\draw[thin](0,7.9545)--(-.55,6.4)node[left]{$I_a$};
+\draw[ray](0,-6.3)--(.6,0);\draw[ray](.6,0)--(-.154286,10);
+\draw[ray](0,-6.3)--(-.6,0);\draw[ray](-.6,0)--(.154286,10);
+\node[right]at(1.2,8){杯口};\node[right]at(1.2,0){$O$};
+\end{scope}
+\begin{scope}[xshift=4.3cm]
+\node at(0,13){满杯};\draw[axisline](0,-15)--(0,11);
+\draw[world](-1.2,0)--(1.2,0);\draw[world](-1.2,8)--(1.2,8);
+\fill(0,-13.2736)circle(1pt)node[left]{$I_w$};
+\fill(0,-7.8758)circle(1pt)node[left]{$I$};
+\draw[ray](.4,0)--(.64108,8);\draw[ray](.64108,8)--(.72185,10);
+\draw[virtual](0,-13.2736)--(.4,0);\draw[virtual](0,-7.8758)--(.64108,8);
+\draw[ray](-.4,0)--(-.64108,8);\draw[ray](-.64108,8)--(-.72185,10);
+\draw[virtual](0,-13.2736)--(-.4,0);\draw[virtual](0,-7.8758)--(-.64108,8);
+\node[right]at(1.2,8){酒面};\node[right]at(1.2,0){$O$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两种像位置换为眼到像的观察距离}\par\nobreak
+图\ref{fig:o42s}给出空杯实像 \(I_a\) 与满杯虚像 \(I\) 的位置。到达眼睛的光均为发散光，眼睛应分别对准这两个像调焦。
+
+结合图\ref{fig:o42q}中眼位 \(E\)，眼到像的距离为
+\[
+ \ell_a=h+(8-v_a)=h+0.04545,\qquad
+ \ell_w=h-v_s=h+15.8758,
+\]
+式中长度统一用厘米。按题设眼睛模型，清晰条件为 \(\ell\geqslant D\)。所以满杯清晰要求 \(h\geqslant9.1242\)，空杯不能清晰要求 \(h<24.9545\)。两者取交集：
+\[
+ \boxed{9.12\,\mathrm{cm}\leqslant h<24.95\,\mathrm{cm}}.
+\]
+\fig{fig:o42obs}{调焦条件的交集；实心端点计入，空心端点不计入，右向射线继续延伸}{
+\begin{tikzpicture}[x=.23cm,y=.85cm]
+\draw[axis](0,0)--(34,0)node[right]{$h/\mathrm{cm}$};
+\draw[thick](9.1242,2)--(32,2);\draw[->,thick](30,2)--(33,2);
+\fill(9.1242,2)circle(2pt);\node[left]at(0,2){满杯可清晰};
+\draw[thick](0,1)--(24.9545,1);\draw[fill=white](24.9545,1)circle(2pt);
+\fill(0,1)circle(2pt);\node[left]at(0,1){空杯不清晰};
+\draw[line width=2pt](9.1242,-1)--(24.9545,-1);
+\fill(9.1242,-1)circle(2pt);\draw[fill=white](24.9545,-1)circle(2pt);
+\node[left]at(0,-1){同时满足};
+\foreach \x/\t in {0/0,9.1242/9.12,24.9545/24.95}{\draw[aux](\x,-.9)--(\x,2.3);\node[below]at(\x,0){$\t$};}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将具体眼位代入两个调焦条件}\par\nobreak
+在 \(h=10.0\,\mathrm{cm}\) 时，\(\ell_a=10.0455\,\mathrm{cm}<D\)，\(\ell_w=25.8758\,\mathrm{cm}>D\)，因此落在图\ref{fig:o42obs}的交集内。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对近点模型和实际通光的适用范围}\par\nobreak
+像的位置与眼位共同确定观察距离，应将它们先合并，再施加眼睛的调焦条件。\(25\,\mathrm{cm}\) 在这里是题设给定的最近清晰距离。对其他眼睛和观察位置，应重新代入相应的近点、远点；通光孔径和侧壁遮挡也可能影响实际观察。
+\end{solution}
+
+\begin{question}
+\begin{example}[凸面镀银的平凸透镜]\label{ex:o43}
+空气中一薄平凸透镜的折射率 \(n=1.5\)，平行光通过它后会聚在 \(f=48\,\mathrm{cm}\) 处。现将凸面镀银，光从平面一侧入射，物位于平面前 \(12\,\mathrm{cm}\)。求最终像的位置、实虚和横向放大率。
+\end{example}
+\fig{fig:o43q}{这次银层在凸面；光从左侧平面进入玻璃后再反射}{
+\begin{tikzpicture}
+\draw[axisline](-3.6,0)--(1.7,0);
+\draw[axis,thick](-2.3,0)--(-2.3,.6)node[above]{$B$};
+\node[below]at(-2.3,0){$A$};
+\draw[world](0,-1)--(0,1)..controls(.9,.6)and(.9,-.6)..cycle;
+\draw[line width=2pt,gray](0,1)..controls(.9,.6)and(.9,-.6)..(0,-1);
+\node[above]at(.7,1.2){凸面银层};\node at(.3,0){$n$};
+\draw[dim](-2.3,-1.4)--(0,-1.4)node[midway,below]{$12\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从原透镜焦距还原球面半径，求玻璃内等效物点}\par\nobreak
+先由未镀银的薄透镜求球面半径：\(f=R/(n-1)\)，所以 \(R=24\,\mathrm{cm}\)。图\ref{fig:o43q}的入射面是平面，光由空气进入玻璃后，来自物点的发散光在玻璃内相当于来自距平面 \(nu=18\,\mathrm{cm}\) 的虚像点。
+
+\fig{o4:e3:planes}{两次平面折射的光束不同：先将空气物点化为玻璃内等效位置，回程再将玻璃中的会聚目标折到空气中}{\begin{tikzpicture}
+
+\begin{scope}[scale=.85]
+\draw[axisline](-2.4,0)--(2.1,0);\draw[world](0,-.6)--(0,.85);\draw[ray,blue](-1.2,0)--(0,.24);\draw[ray,red](0,.24)--(1.6,.45333);\draw[virtual](-1.8,0)--(0,.24);\fill(-1.2,0)circle(1.5pt)node[below]{$S$};\fill(-1.8,0)circle(1.5pt)node[above left]{$S_g$};\node at(-1.2,1.4){空气 $\to$ 玻璃};\node at(.8,-1){$u_g=nu=18\,\mathrm{cm}$};\node[above right]at(0,.24){$P$};\end{scope}
+\begin{scope}[xshift=5.2cm,scale=.85]
+\draw[axisline](-4,0)--(2.1,0);\draw[world](0,-.6)--(0,.85);\draw[ray,blue](1.6,.34667)--(0,.24);\draw[ray,blue](1.6,-.34667)--(0,-.24);\draw[virtual](-3.6,0)--(0,.24);\draw[virtual](-3.6,0)--(0,-.24);\draw[ray,red](0,.24)--(-2.4,0);\draw[ray,red](0,-.24)--(-2.4,0);\fill(-3.6,0)circle(1.5pt)node[below]{$F_g$};\fill(-2.4,0)circle(1.5pt)node[above]{$F$};\node at(-1.2,1.4){玻璃 $\to$ 空气（回程）};\node at(-1,-1){$v=v_g/n=24\,\mathrm{cm}$};\end{scope}
+
+\end{tikzpicture}}
+图\ref{o4:e3:planes}左图的 $S_g$ 是第一次平面折射后，玻璃中发散束的反向延长交点。右图的 $F_g$ 则是回程会聚束在没有最后折射时本将到达的点，属于平面折射的虚物；同一“平面折射”不能把两束光都当成实物入射。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在玻璃中按球面镜计算回程会聚距离}\par\nobreak
+薄镜极限中凸面银层与平面顶点重合。对玻璃内的反射，银层从入射侧看是凹面镜，几何焦距 \(R/2=12\,\mathrm{cm}\)。故玻璃内回程会聚距离 \(v_g\) 为
+\[
+ \frac1{18}+\frac1{v_g}=\frac2{24},\qquad v_g=36\,\mathrm{cm}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把回程目标作平面折射的虚物，求空气实像}\par\nobreak
+返回光通过玻璃到空气的平面时，这个会聚目标是平面折射的虚物，\(u_s=-v_g\)。因此
+\[
+ \frac n{-v_g}+\frac1v=0,\qquad
+ \boxed{v=\frac{v_g}{n}=24\,\mathrm{cm}}.
+\]
+\fig{fig:o43s}{最终光线在左侧实际相交；图按等效凹镜绘制，焦距为 \(8\,\mathrm{cm}\)}{
+\begin{tikzpicture}[x=2cm,y=1cm]
+\draw[axisline](-2.8,0)--(.45,0);\draw[world](0,-1.4)--(0,1);
+\draw[axis,thick](-1.2,0)--(-1.2,.6)node[above]{$B$};
+\draw[axis,thick](-2.4,0)--(-2.4,-1.2)node[below]{$B'$};
+\draw[ray](-1.2,.6)--(0,.6);\draw[ray](0,.6)--(-2.4,-1.2);
+\draw[ray](-1.2,.6)--(0,0);\draw[ray](0,0)--(-2.4,-1.2);
+\node[below]at(-.8,0){$F_{\rm eq}$};\node[above right]at(0,0){$O$};
+\node[above]at(-2.4,0){$A'$};\node[below left]at(-1.2,0){$A$};
+\draw[dim](-2.4,-1.8)--(0,-1.8)node[midway,below]{$24\,\mathrm{cm}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别核对最终位置与三段横向放大率}\par\nobreak
+图\ref{fig:o43s}中的像在平面前 \(24\,\mathrm{cm}\)，是倒立放大实像。两次平面折射的横向放大率均为 \(+1\)，玻璃内球面镜放大率为 \(-v_g/(nu)=-2\)，所以 \(\boxed{\beta=-2}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等效反射关系检查银层位置的影响}\par\nobreak
+把三段式合并还得到
+\[
+ \frac1u+\frac1v=\frac{2n}{R},\qquad f_{\rm eq}=\frac R{2n}=8\,\mathrm{cm}.
+\]
+这与平面镀银的平凸透镜不同：银层位置决定了光实际经历哪些折射面。计算时应按图中的界面顺序列式。
+\end{solution}
+
+\begin{question}
+\begin{example}[方格纸的两个自成像位置]\label{ex:o44}
+凸透镜后方 \(L=4\,\mathrm{cm}\) 处有一平面镜，且 \(L>f\)。透镜前的方格纸沿轴移动，在相距 \(l=9\,\mathrm{cm}\) 的两个位置，纸面都能承接自身经该系统形成的清晰像。求透镜焦距。
+\end{example}
+\fig{fig:o44q}{纸面既是物平面也是接像屏；两次透镜成像之间有一次平面反射}{
+\begin{tikzpicture}
+\draw[axisline](-3.4,0)--(3,0);
+\draw[world](-2.5,-.9)--(-2.5,.9)node[above]{方格纸};
+\draw[<->,>=Stealth,world](0,-1)--(0,1)node[above right]{$L_1$};
+\draw[world](2,-1)--(2,1);\fill[pattern=north east lines](2,-1)rectangle(2.15,1);
+\draw[dim](0,-1.4)--(2,-1.4)node[midway,below]{$L=4\,\mathrm{cm}$};
+\draw[dim](-2.5,-1.4)--(0,-1.4)node[midway,below]{$u$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{识别前焦平面产生的第一种自成像}\par\nobreak
+图\ref{fig:o44q}有两个不同的自成像条件。第一种是纸在透镜前焦平面，\(u_1=f\)：透镜后光束平行，平面镜反射后再次经透镜，返回前焦平面。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{识别中间像落在平面镜上的第二种自成像}\par\nobreak
+第二种是第一次透镜像恰在平面镜上，\(v_1=L\)。平面镜关于自身平面对该像点的映射不改变其位置，回程透镜把它重新成像到纸上。因此
+\[
+ \frac1{u_2}+\frac1L=\frac1f,\qquad
+ u_2=\frac{fL}{L-f}>f.
+\]
+\fig{fig:o44s}{轴上物点的两种往返光路；甲中双向箭头表示重合的去、回光线，乙中光在镜面交叉}{
+\begin{tikzpicture}
+\begin{scope}
+\draw[axisline](-3.5,0)--(2.6,0);
+\draw[world](-1.5,-.7)--(-1.5,.7);\draw[<->,>=Stealth,world](0,-.75)--(0,.75);
+\draw[world](2,-.75)--(2,.75);
+\draw[<->,>=Stealth](-1.5,0)--(0,.45);\draw[<->,>=Stealth](0,.45)--(2,.45);
+\draw[<->,>=Stealth](-1.5,0)--(0,-.45);\draw[<->,>=Stealth](0,-.45)--(2,-.45);
+\node[left]at(-1.5,0){$S$};\node[above]at(-.3,1.05){甲：\(u_1=f\)};
+\end{scope}
+\begin{scope}[yshift=-3.2cm]
+\draw[axisline](-3.5,0)--(2.6,0);
+\draw[world](-3,-.7)--(-3,.7);\draw[<->,>=Stealth,world](0,-.75)--(0,.75);
+\draw[world](1,-.75)--(1,.75);
+\draw[ray](-3,0)--(0,.5);\draw[ray](0,.5)--(1,0);
+\draw[ray](1,0)--(0,-.5);\draw[ray](0,-.5)--(-3,0);
+\node[left]at(-3,0){$S$};\node[right]at(1,0){$I_1$};
+\node[above]at(-.3,1.05){乙：\(v_1=L\)};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两个位置之差化为焦距方程并筛选正根}\par\nobreak
+由图\ref{fig:o44s}的两条件，纸面间距为
+\[
+ l=u_2-u_1=\frac{f^2}{L-f}=9\,\mathrm{cm}.
+\]
+统一以厘米计算，\(f^2+9f-36=0\)，两根为 \(3,-12\)。凸透镜要求 \(f>0\)，并须满足 \(f<L=4\)，故
+\[
+ \boxed{f=3\,\mathrm{cm}},\qquad u_1=3\,\mathrm{cm},\quad u_2=12\,\mathrm{cm}.
+\]
+还可检查是否遗漏其他位置。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用完整往返矩阵检验是否遗漏其他位置}\par\nobreak
+把平面反射展开，两次透镜间的传播长度为 \(2L\)，令 \(P(a)=\begin{psmallmatrix}1&a\\0&1\end{psmallmatrix}\)、\(T=\begin{psmallmatrix}1&0\\-1/f&1\end{psmallmatrix}\)，往返矩阵为 \(P(u)TP(2L)TP(u)\)。其成像条件
+\[
+ B=\frac{2(f-u)\,[fL+fu-Lu]}{f^2}=0
+\]
+恰给出上述两位置。第一位置的横向放大率为 \(-1\)，第二位置为 \(+1\)；方格纸都能承接清晰像，并不要求两次的正倒相同。
+\end{solution}
+
+\begin{question}
+\begin{example}[玻璃板上方透镜使像回到物点]\label{ex:o45}
+一水平平行玻璃板厚 \(t=3.0\,\mathrm{cm}\)，折射率 \(n=1.5\)。小物 \(S\) 在下表面下方 \(s=2.0\,\mathrm{cm}\) 处，上方有焦距 \(f=30\,\mathrm{cm}\) 的薄凸透镜，主轴竖直且通过 \(S\)。从透镜上方观察，最终像恰在 \(S\) 处。求透镜到玻璃板上表面的距离 \(a\)。
+\end{example}
+\fig{fig:o45q}{图将竖直光轴横放，向右对应实际向上；透镜接收已通过玻璃板的光}{
+\begin{tikzpicture}
+\draw[axisline](-2.6,0)--(4.4,0);
+\fill[gray!12](0,-1)rectangle(1.6,1);\draw[world](0,-1)--(0,1)(1.6,-1)--(1.6,1);
+\draw[<->,>=Stealth,world](3,-1)--(3,1)node[above]{$L$};
+\fill(-1.8,0)circle(1.5pt)node[above]{$S$};\node at(.8,.5){$n=1.5$};
+\draw[dim](-1.8,-1.4)--(0,-1.4)node[midway,below]{$s=2.0$};
+\draw[dim](0,-1.4)--(1.6,-1.4)node[midway,below]{$t=3.0$};
+\draw[dim](1.6,-1.4)--(3,-1.4)node[midway,below]{$a$};
+\node[right]at(3.5,.6){观察侧};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先求平行板造成的表观轴向移动}\par\nobreak
+图\ref{fig:o45q}的平板使 \(S\) 向观察侧的表观移动量为
+\[
+ \delta=t\left(1-\frac1n\right)=1.0\,\mathrm{cm}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从实际光束确定透镜物距和最终虚像距}\par\nobreak
+设平板后的空气中，光线反向延长相交于 \(S_1\)，则透镜的实际入射光相当于从 \(S_1\) 发出。透镜物距与 \(S\) 到透镜的几何距离分别为
+\[
+ u=a+s+\frac tn=a+4,\qquad \ell=a+s+t=a+5
+\]
+（长度单位均为厘米）。最终像须在透镜的入射侧 \(S\)，故像距应取 \(v=-\ell\)。透镜式给出
+\[
+ \frac1{a+4}-\frac1{a+5}=\frac1{30}
+ \quad\Longrightarrow\quad (a+4)(a+5)=30.
+\]
+根为 \(a=1\,\mathrm{cm}\) 或 \(-10\,\mathrm{cm}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选允许的透镜位置}\par\nobreak
+透镜在板上方要求 \(a\ge0\)，故
+\[
+ \boxed{a=1.0\,\mathrm{cm}}.
+\]
+\fig{fig:o45s}{平板后延长线交于 \(S_1\)，透镜后延长线交回 \(S\)；光线高度放大示意}{
+\begin{tikzpicture}[x=.85cm,y=1cm]
+\fill[gray!10](2,-.45)rectangle(5,1.1);
+\draw[world](2,-.45)--(2,1.1)(5,-.45)--(5,1.1);
+\draw[axisline](-.5,0)--(8.6,0);\draw[<->,>=Stealth,world](6,-.45)--(6,1.2);
+\fill(0,0)circle(1.5pt)node[below]{$S$};\fill(1,0)circle(1pt)node[below]{$S_1$};
+\draw[ray](0,0)--(2,.4);\draw[ray](2,.4)--(5,.8);\draw[ray](5,.8)--(6,1);
+\draw[ray](6,1)--(8,1.333333);
+\draw[virtual](1,0)--(5,.8);\draw[virtual](0,0)--(6,1);
+\node[above]at(3.5,1.1){玻璃};\node[above]at(6,1.4){透镜};
+\draw[dim](0,-.9)--(6,-.9)node[midway,below]{$\ell=6\,\mathrm{cm}$};
+\draw[dim](1,-1.5)--(6,-1.5)node[midway,below]{$u=5\,\mathrm{cm}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用各段斜率与像距代回检查方向和尺寸}\par\nobreak
+图\ref{fig:o45s}中，玻璃内斜率是空气内的 \(1/n\)，两平面折射后光线平行于入射线。透镜进一步减小光束发散角，使最终虚像从 \(S_1\) 后退到 \(S\)。代回 \(u=5\)、\(v=-6\)，确有 \(1/5-1/6=1/30\)。这里相同的是轴上像点位置，不意味着画片的横向大小也完全不变；透镜横向放大率为 \(+6/5\)。
+
+\end{solution}
+
+\begin{question}
+\begin{example}[全反射棱镜与正负透镜组合]\label{ex:o46}
+直角等腰棱镜折射率 \(n=1.5\)，两直角边均长 \(6\,\mathrm{cm}\)。小物 \(AB\) 在上直角面上方 \(6\,\mathrm{cm}\)，中心近轴光在棱镜中被斜面折转 \(90^\circ\) 后从右直角面出射。右面外 \(10\,\mathrm{cm}\) 处放焦距 \(f_1=+10\,\mathrm{cm}\) 的凸透镜；其右侧 \(15\,\mathrm{cm}\) 处放焦距 \(f_2=-10\,\mathrm{cm}\) 的凹透镜。求最终像的位置和放大率。取足够窄的近轴光束，使斜面反射均满足全反射条件。
+\end{example}
+\fig{fig:o46q}{中心光在斜面反射，玻璃内两段长度之和为 \(6\,\mathrm{cm}\)；距离示意}{
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[gray!12](-1.8,.9)--(0,.9)--(0,-.9)--cycle;
+\draw[world](-1.8,.9)--(0,.9)--(0,-.9)--cycle;
+\draw[axis,thick](-.9,2.2)--(-1.6,2.2)node[left]{$B$};\node[right]at(-.9,2.2){$A$};
+\draw[ray](-.9,2.2)--(-.9,0);\draw[ray](-.9,0)--(2.4,0);
+\draw[aux](-.9,2.5)--(-.9,-.4);\draw[axisline](0,0)--(6.5,0);
+\draw[<->,>=Stealth,world](2.4,-1)--(2.4,1)node[above]{$L_1$};
+\draw[>-<,>=Stealth,world](5.1,-1)--(5.1,1)node[above]{$L_2$};
+\draw[dim](.35,-.9)--(.35,.9)node[midway,right]{$6$};
+\draw[dim](-2.1,.9)--(-2.1,2.2)node[midway,left]{$6$};
+\draw[dim](0,-1.5)--(2.4,-1.5)node[midway,below]{$10$};
+\draw[dim](2.4,-1.5)--(5.1,-1.5)node[midway,below]{$15\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{展开棱镜折线，按约化长度求第一镜物距}\par\nobreak
+图\ref{fig:o46q}中，把斜面反射后的区域关于斜面展开，入射面与出射面成为等效平行面。中心光在玻璃内的总路程为 \(6\,\mathrm{cm}\)，其近轴传播对后续空气中成像距离的贡献为 \(6/n=4\,\mathrm{cm}\)。所以第一镜接收的等效物距为
+\[
+ u_1=6+\frac6{1.5}+10=20\,\mathrm{cm}.
+\]
+这里的 \(6/n\) 是约化传播长度，不是光程；若误用 \(6n\)，后续两镜的物距都会改变。
+
+\fig{o4:e6:unfold}{棱镜折线展开成平行板中的直线段；入射横向的左方向经反射对应出射横向的上方向}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-1.8,.9)--(0,.9)--(0,-.9)--cycle;\draw[ray,blue](-.9,2)--(-.9,0);\draw[ray,red](-.9,0)--(1.2,0);\fill(-.9,0)circle(1.5pt)node[below left]{$M$};\node[above right]at(-.9,.9){$P_1$};\node[above right]at(0,0){$P_2$};\draw[axis](-.9,1.6)--(-1.6,1.6)node[left]{$+y_{\rm in}$};\draw[axis](.7,0)--(.7,.7)node[above]{$+y_{\rm out}$};\node at(-.5,-1.5){实际折转};\end{scope}
+\begin{scope}[xshift=4.6cm]
+\fill[blue!8](-1.8,-.9)rectangle(0,.9);\node at(-1.5,0){$n$};\draw[world](-1.8,-.9)rectangle(0,.9);\draw[guide](-1.8,.9)--(0,-.9);\draw[ray,blue](-.9,2)--(-.9,-1.8);\node[above right]at(-.9,.9){$P_1$};\node[below right]at(-.9,-.9){$P_2'$};\draw[dim](.5,-.9)--(.5,.9)node[midway,right]{$6\,\mathrm{cm}$};\node at(-.9,-2.2){空气中等效传播 $6/n=4\,\mathrm{cm}$};\end{scope}
+
+\end{tikzpicture}}
+图\ref{o4:e6:unfold}中，反射把出射面映成 $P_2'$ 所在的平面，两段玻璃路程合并为 $P_1P_2'=6\,\mathrm{cm}$。接入第一镜的物距时，空气段保持几何长度，玻璃段才除以 $n$；横向坐标随反射一起展开，大小保持不变。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算第一镜中间像与横向放大率}\par\nobreak
+第一镜成像为
+\[
+ \frac1{20}+\frac1{v_1}=\frac1{10},\qquad v_1=20\,\mathrm{cm},
+ \qquad\beta_1=-1.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{辨认第二镜的虚物并求最终会聚位置}\par\nobreak
+它的会聚目标 \(I_1\) 位于第二镜后 \(5\,\mathrm{cm}\)。第二镜截获的是尚未会聚的光束，因此 \(u_2=15-v_1=-5\,\mathrm{cm}\)，是虚物，而凹透镜焦距为 \(-10\,\mathrm{cm}\)：
+\[
+ -\frac15+\frac1{v_2}=-\frac1{10},\qquad
+ \boxed{v_2=10\,\mathrm{cm}},\qquad \beta_2=-\frac{v_2}{u_2}=+2.
+\]
+\fig{fig:o46s}{展开后的两镜光路：虚线给出第一镜的会聚目标，第二镜把会聚位置推远}{
+\begin{tikzpicture}[x=1cm,y=1.4cm]
+\draw[axisline](-4.5,0)--(5.7,0);
+\draw[<->,>=Stealth,world](0,-1)--(0,1);
+\draw[>-<,>=Stealth,world](3,-1)--(3,1);
+\draw[axis,thick](-4,0)--(-4,.4)node[above]{$B$};\node[below]at(-4,0){$A$};
+\draw[ray](-4,.4)--(0,.4);\draw[ray](0,.4)--(3,-.2);\draw[ray](3,-.2)--(5,-.8);
+\draw[ray](-4,.4)--(0,0);\draw[ray](0,0)--(3,-.3);\draw[ray](3,-.3)--(5,-.8);
+\draw[virtual](3,-.2)--(4,-.4);\draw[virtual](3,-.3)--(4,-.4);
+\fill(4,-.4)circle(1pt)node[above]{$I_1$};
+\draw[axis,thick](5,0)--(5,-.8)node[below]{$B'$};\node[above]at(5,0){$A'$};
+\node[above]at(0,1.1){$L_1$};\node[above]at(3,1.1){$L_2$};
+\draw[dim](0,-1.4)--(3,-1.4)node[midway,below]{$15$};
+\draw[dim](3,-1.4)--(5,-1.4)node[midway,below]{$10\,\mathrm{cm}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{连乘放大率，并按折转后的横向坐标解释符号}\par\nobreak
+图\ref{fig:o46s}中实际光线在 \(A'B'\) 会聚，故最终是凹透镜右侧 \(10\,\mathrm{cm}\) 的实像。棱镜本身在随中心光转向的横向坐标中不改变一阶横向大小，所以
+\[
+ \boxed{\beta=\beta_1\beta_2=-2},\qquad |\beta|=2.
+\]
+符号应连同坐标方向理解：图\ref{fig:o46q}中把入射横向正向取为向左，斜面反射后对应出射横向向上。
+
+\(\beta=-2\) 表示 \(B\) 在入射轴左侧时，\(B'\) 在出射轴下方，不能把转向前后的“上、下”直接比较。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对近轴束的全反射条件与通光范围}\par\nobreak
+中心光在斜面的入射角为 \(45^\circ\)，临界角 \(\theta_c=\arcsin(1/1.5)\approx41.8^\circ\)。本题只取偏角足够小的光束，使各光线入射角仍大于临界角；大孔径光束须另检验全反射范围和孔径遮挡。
+\end{solution}
+
+\begin{question}
+\begin{example}[固定物屏间的两个透镜位置]\label{ex:o48}
+小光源位于焦距 \(f=30\,\mathrm{mm}\) 的薄凸透镜前 \(40\,\mathrm{mm}\)。求接到清晰实像的屏位置和横向放大率。保持光源、光屏不动，透镜还可移至何处再次在屏上成清晰像？求第二位置的放大率。
+\end{example}
+\fig{fig:o48q}{物点与屏固定，先由第一透镜位置确定屏的位置}{
+\begin{tikzpicture}
+\draw[axisline](-.5,0)--(6.5,0);\draw[axis,thick](0,0)--(0,.6)node[above]{$B$};
+\node[below]at(0,0){$A$};\draw[<->,>=Stealth,world](1.7,-.8)--(1.7,.9)node[above]{$L$};
+\draw[world](5.8,-1)--(5.8,1)node[above]{光屏};
+\draw[dim](0,-1.3)--(1.7,-1.3)node[midway,below]{$40\,\mathrm{mm}$};
+\draw[dim](1.7,-1.3)--(5.8,-1.3)node[midway,below]{$v$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先由第一透镜位置确定屏距和横向放大率}\par\nobreak
+图\ref{fig:o48q}中 \(u_1=40\,\mathrm{mm}\)，因此
+\[
+ \frac1{40}+\frac1{v_1}=\frac1{30},\qquad
+ \boxed{v_1=120\,\mathrm{mm}},\qquad \boxed{\beta_1=-3}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留固定物屏总距，交换物像距求第二位置}\par\nobreak
+屏在透镜后 \(120\,\mathrm{mm}\)，物屏总距为 \(D=u_1+v_1=160\,\mathrm{mm}\)。物屏固定时 \(u+v=D\)，而透镜式对 \(u,v\) 对称，交换二者仍然成像。第二位置为
+\[
+ \boxed{u_2=120\,\mathrm{mm},\quad v_2=40\,\mathrm{mm},\quad\beta_2=-\frac13}.
+\]
+透镜从原位置向屏移动 \(80\,\mathrm{mm}\)。
+\fig{fig:o48s}{同一物屏间的两套近轴光路；上下两图使用相同的横向比例}{
+\begin{tikzpicture}[x=.9cm,y=1cm]
+\begin{scope}
+\draw[axisline](-.4,0)--(6.8,0);\draw[<->,>=Stealth,world](1.6,-1.1)--(1.6,.7);\draw[world](6.4,-1.2)--(6.4,.7);
+\draw[axis,thick](0,0)--(0,.3)node[above]{$B$};\draw[axis,thick](6.4,0)--(6.4,-.9)node[below]{$B'_1$};
+\draw[ray](0,.3)--(1.6,.3);\draw[ray](1.6,.3)--(6.4,-.9);
+\draw[ray](0,.3)--(1.6,0);\draw[ray](1.6,0)--(6.4,-.9);
+\node[above]at(3.8,.9){第一位置：放大实像};
+\end{scope}
+\begin{scope}[yshift=-3.6cm]
+\draw[axisline](-.4,0)--(6.8,0);\draw[<->,>=Stealth,world](4.8,-1.1)--(4.8,.7);\draw[world](6.4,-1.2)--(6.4,.7);
+\draw[axis,thick](0,0)--(0,.3)node[above]{$B$};\draw[axis,thick](6.4,0)--(6.4,-.1)node[below right]{$B'_2$};
+\draw[ray](0,.3)--(4.8,.3);\draw[ray](4.8,.3)--(6.4,-.1);
+\draw[ray](0,.3)--(4.8,0);\draw[ray](4.8,0)--(6.4,-.1);
+\node[above]at(2.6,.9){第二位置：缩小实像};
+\draw[dim](0,-1.5)--(6.4,-1.5)node[midway,below]{$D=160\,\mathrm{mm}$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由二次方程检查两个位置的存在条件和位移法公式}\par\nobreak
+图\ref{fig:o48s}中两次像都倒立，大小互为倒数，\(\beta_1\beta_2=1\)。若用代数检查，令 \(v=D-u\)，则
+\[
+ u^2-Du+fD=0.
+\]
+有两个不同的实透镜位置要求 \(D>4f\)。两位置间距 \(d=\sqrt{D(D-4f)}\)，因此还可用位移法公式 \(f=(D^2-d^2)/(4D)\) 检查，本题确得 \(30\,\mathrm{mm}\)。
+\end{solution}
+
+\begin{question}
+\begin{example}[天文望远镜的放大率]\label{ex:o49}
+开普勒望远镜由焦距 \(f_o>0\) 的物镜和焦距 \(f_e>0\) 的目镜组成，两镜间距为 \(f_o+f_e\)。远处物体上一点发出的光在物镜处可看作与轴成小角 \(\alpha\) 的平行束。证明视角放大倍数为 \(f_o/f_e\)，并说明像的正倒。
+\end{example}
+\fig{fig:o49q}{物镜后焦平面与目镜前焦平面重合，末态为平行光束}{
+\begin{tikzpicture}
+\draw[axisline](-1.4,0)--(6,0);
+\draw[<->,>=Stealth,world](0,-1)--(0,1.1)node[above]{物镜};
+\draw[<->,>=Stealth,world](4,-1)--(4,1.1)node[above]{目镜};
+\draw[aux](3,-1)--(3,1.6);\node[above]at(2.6,1.7){共同焦平面};
+\draw[ray](-1.3,.15)--(0,.345);\draw[ray](-1.3,.7)--(0,.895);
+\node[left]at(-1.4,.45){$\alpha$};
+\draw[dim](0,-1.4)--(3,-1.4)node[midway,below]{$f_o$};
+\draw[dim](3,-1.4)--(4,-1.4)node[midway,below]{$f_e$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{把远物点的平行入射束成像到共同焦平面}\par\nobreak
+对图\ref{fig:o49q}中的同一远物点，物镜把所有近轴入射光会聚于共同焦平面的 \(B_1\)，像高为 \(h_1=f_o\tan\alpha\approx f_o\alpha\)。由 \(B_1\) 指向目镜光心 \(O_e\) 的光线，斜率为 \(-h_1/f_e\)。它通过薄透镜光心方向不变，因此也给出了整个出射平行束的有向倾角。
+\fig{fig:o49s}{两条出射线平行且倾角反向；图以 \(f_o:f_e=3:1\) 示意近轴斜率关系}{
+\begin{tikzpicture}[x=1.1cm,y=1cm]
+\draw[axisline](-1.5,0)--(6.2,0);
+\draw[<->,>=Stealth,world](0,-.9)--(0,1.15);
+\draw[<->,>=Stealth,world](4,-.9)--(4,1.15);
+\draw[ray](-1.3,.705)--(0,.9);\draw[ray](0,.9)--(4,.3);\draw[ray](4,.3)--(6,-.6);
+\draw[ray](-1.3,-.495)--(0,-.3);\draw[ray](0,-.3)--(4,.7);\draw[ray](4,.7)--(6,-.2);
+\draw[aux](3,0)--(3,.45);\fill(3,.45)circle(1pt)node[above]{$B_1$};
+\node[below]at(0,0){$O_o$};\node[below]at(4,0){$O_e$};\node[below]at(3,0){$F'_o=F_e$};
+\node[right]at(6,-.55){$\alpha'$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以目镜光心光线确定出射倾角和放大率}\par\nobreak
+因此图\ref{fig:o49s}给出
+\[
+ \alpha'\approx-\frac{h_1}{f_e}=-\frac{f_o}{f_e}\alpha,
+ \qquad\boxed{M=\frac{\alpha'}\alpha=-\frac{f_o}{f_e}},
+ \qquad\boxed{|M|=\frac{f_o}{f_e}}.
+\]
+负号表示倒像。若把 \(\alpha,\alpha'\) 仅作为角度大小，则所报“放大率”通常指最后一个正值。物镜横向成像与目镜视角放大分属不同环节，不能把目镜到远物的距离代入普通横向放大率去替代此推导。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用不同入射高度核对无焦条件}\par\nobreak
+图\ref{fig:o49s}还给出无焦条件的检查：共同焦平面中的 \(B_1\) 到目镜的距离正好是 \(f_e\)，所以来自同一远物点的不同入射高度最后都具有同一出射倾角。若两镜距离偏离 \(f_o+f_e\)，该平行出射条件就不再满足，眼睛必须调节，不能继续直接套用本题的无焦放大率。负号描述方向反转，不能通过把两镜距离取绝对值来消去。
+\end{solution}
+
+\begin{question}
+\begin{example}[玻璃棒制成无焦望远系统]\label{ex:o410}
+空气中玻璃棒折射率 \(n=1.5\)，两端轴上顶点距离 \(L=45\,\mathrm{cm}\)，左端磨成半径 \(R_1=10\,\mathrm{cm}\) 的凸球面。光从左向右传播。
+\begin{enumerate}
+\item 右端应磨成怎样的球面，才能使轴上平行入射光仍平行出射？
+\item 若入射平行束与轴成带符号小角 \(\varphi_1\)，求出射束的小角 \(\varphi_2\) 与之的比值。
+\end{enumerate}
+\end{example}
+\fig{fig:o410q}{左面球心 \(C_1\) 在其右方；右端形状待定，\(L\) 是顶点间距}{
+\begin{tikzpicture}
+\draw[axisline](-1.2,0)--(7.2,0);
+\draw[world](.25,1)..controls(-.083333,.333333)and(-.083333,-.333333)..(.25,-1);
+\draw[world](.25,1)--(6,1)(.25,-1)--(6,-1);\draw[world,dashed](6,-1)--(6,1);
+\node[below left]at(0,0){$A$};\node[right]at(6,0){$B$};
+\fill(1.33,0)circle(1pt)node[below]{$C_1$};\node at(3,.5){$n=1.5$};
+\draw[dim](0,-1.4)--(6,-1.4)node[midway,below]{$L=45\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{求第一球面的像方焦点，定位棒内交叉点}\par\nobreak
+图\ref{fig:o410q}的第一面半径带符号为 \(+10\,\mathrm{cm}\)，空气到玻璃的折射式给出
+\[
+ \frac n{AF}=\frac{n-1}{R_1},\qquad
+ \boxed{AF=\frac{nR_1}{n-1}=30\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{辨认右端面的实物，求所需曲率号}\par\nobreak
+右端顶点 \(B\) 位于 \(45\,\mathrm{cm}\)，因此入射到右端面的光在到达之前已经越过 \(F\)，相当于来自左侧距该面 \(BF=15\,\mathrm{cm}\) 的实物点。要求出射平行，右端折射满足
+\[
+ \frac{1.5}{15}=\frac{1-1.5}{R_{2s}},\qquad
+ \boxed{R_{2s}=-5\,\mathrm{cm}}.
+\]
+右端球心 \(C_2\) 在顶点 \(B\) 左侧 \(5\,\mathrm{cm}\)，故从棒外右侧看是凸面，半径大小为 \(5\,\mathrm{cm}\)。
+
+\fig{fig:o410s}{轴上平行束在玻璃内交叉于 \(F\)，再由右端面准直；按顶点平面近轴追迹，高度放大示意}{
+\begin{tikzpicture}[x=.8cm,y=1cm]
+\draw[axisline](-1.3,0)--(11.5,0);
+\draw[world](.15,.9)..controls(-.05,.3)and(-.05,-.3)..(.15,-.9);
+\draw[world](8.85,.9)..controls(9.05,.3)and(9.05,-.3)..(8.85,-.9);
+\draw[world](.15,.9)--(8.85,.9)(.15,-.9)--(8.85,-.9);
+\draw[ray](-1,.4)--(0,.4);\draw[ray](0,.4)--(9,-.2);\draw[ray](9,-.2)--(11,-.2);
+\draw[ray](-1,-.4)--(0,-.4);\draw[ray](0,-.4)--(9,.2);\draw[ray](9,.2)--(11,.2);
+\fill(2,0)circle(1pt)node[below]{$C_1$};\fill(6,0)circle(1pt)node[above]{$F$};
+\fill(8,0)circle(1pt)node[below]{$C_2$};\node[below left]at(0,0){$A$};\node[below right]at(9,0){$B$};
+\draw[dim](0,-1.3)--(6,-1.3)node[midway,below]{$30$};
+\draw[dim](6,-1.3)--(9,-1.3)node[midway,below]{$15\,\mathrm{cm}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选过第一顶点的斜光线，计算右端高度}\par\nobreak
+在图\ref{fig:o410s}所确定的两曲面系统中，令入射线在 \(A\) 处的高度为零、倾角为 \(\varphi_1\)。第一次近轴折射使玻璃内倾角为 \(\varphi_1/n\)，到右端顶点平面的高度为 \(y_B=L\varphi_1/n\)。右面的光焦度
+\[
+ \Phi_2=\frac{1-n}{R_{2s}}=0.1\,\mathrm{cm}^{-1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求第二次折射后的角放大率}\par\nobreak
+约化倾角关系为 \(\varphi_2=n(\varphi_1/n)-\Phi_2y_B\)，所以
+\[
+ \boxed{\frac{\varphi_2}{\varphi_1}
+ =1-\frac{\Phi_2L}{n}=1-3=-2}.
+\]
+\fig{fig:o410angle}{过第一顶点的斜光线用于求角放大率；高度比例放大，倾角由公式定义}{
+\begin{tikzpicture}[x=.8cm,y=3cm]
+\draw[axisline](-1.3,0)--(11.5,0);\draw[world](0,-.12)--(0,.25)(9,-.12)--(9,.25);
+\draw[ray](-1,-.02)--(0,0);\draw[ray](0,0)--(9,.12);\draw[ray](9,.12)--(11,.04);
+\node[above left]at(0,0){$A$};\node[below]at(9,0){$B$};
+\draw[aux](9,.12)--(11.8,.12);
+\draw[dim](11.8,0)--(11.8,.12)node[midway,right]{$y_B$};
+\node[below]at(4.5,-.12){玻璃内倾角 \(\varphi_1/n\)};
+\node[above]at(10.8,.15){$\varphi_2<0$};\node[above]at(-.9,.07){$\varphi_1>0$};
+\end{tikzpicture}}
+图\ref{fig:o410angle}中的斜率关系说明，出射倾角反向且大小变为两倍。若只报视角放大倍数，则为 \(2\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以完整矩阵同时检查平行出射与角放大率}\par\nobreak
+该系统的约化角矩阵可独立写成
+\[
+ \begin{pmatrix}1&0\\-0.1&1\end{pmatrix}
+ \begin{pmatrix}1&30\\0&1\end{pmatrix}
+ \begin{pmatrix}1&0\\-0.05&1\end{pmatrix}
+ =\begin{pmatrix}-\frac12&30\\0&-2\end{pmatrix}.
+\]
+左下元为零保证同一方向的平行入射束仍平行出射；右下元给出角放大率 \(-2\)，与选定光线的计算相同。它是近轴无焦系统，不表示任意大孔径或任意大倾角下都无像差。
+\end{solution}
+
+\begin{question}
+\begin{example}[不同外界介质中的焦距与中心光线]\label{ex:o411}
+一薄会聚透镜两侧介质折射率分别为 \(n_1,n_2\)，物方、像方实焦点为 \(F_1,F_2\)，到中心 \(O\) 的距离为 \(f_1,f_2>0\)。求：
+\begin{enumerate}
+\item 物距 \(u\)、像距 \(v\) 与两个焦距的关系；
+\item 射向中心 \(O\) 的傍轴入射线倾角为 \(\theta_1\) 时，出射倾角 \(\theta_2\)；
+\item 两个焦距与两侧折射率之间的关系。
+\end{enumerate}
+\end{example}
+\fig{fig:o411q}{会聚光组的两个实焦距分别从 \(O\) 向两侧量取，二者通常不等}{
+\begin{tikzpicture}
+\draw[axisline](-3.6,0)--(4,0);\draw[<->,>=Stealth,world](0,-1)--(0,1);
+\fill(-2,0)circle(1pt)node[above]{$F_1$};\fill(3,0)circle(1pt)node[above]{$F_2$};
+\node[above left]at(0,0){$O$};\node at(-2,1){$n_1$};\node at(2.5,1){$n_2$};
+\draw[dim](-2,-1.3)--(0,-1.3)node[midway,below]{$f_1$};
+\draw[dim](0,-1.3)--(3,-1.3)node[midway,below]{$f_2$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从两个无穷远条件分别定义两侧焦距}\par\nobreak
+对图\ref{fig:o411q}的薄系统，光焦度为 \(\Phi\)，一般成像式为
+\[
+ \frac{n_1}{u}+\frac{n_2}{v}=\Phi.
+\]
+当 \(v\to\infty\)，有 \(u=f_1=n_1/\Phi\)；当 \(u\to\infty\)，有 \(v=f_2=n_2/\Phi\)。因此
+\[
+ \boxed{\frac{f_1}{u}+\frac{f_2}{v}=1},\qquad
+ \boxed{\frac{f_2}{f_1}=\frac{n_2}{n_1}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以中心高度为零求两侧倾角的关系}\par\nobreak
+在 \(O\) 处高度为零，薄系统的 \(-\Phi y\) 项为零，故 \(n_2\theta_2=n_1\theta_1\)，即
+\[
+ \boxed{\theta_2=\frac{n_1}{n_2}\theta_1=\frac{f_1}{f_2}\theta_1}.
+\]
+\fig{fig:o411s}{不等介质中的中心线一般折转；三条辅助光线仍交于同一个像点}{
+\begin{tikzpicture}[x=1.25cm,y=1cm]
+\draw[axisline](-3.6,0)--(2.9,0);\draw[world](0,-.8)--(0,1);
+\draw[axis,thick](-3,0)--(-3,.6)node[above]{$B$};\node[below]at(-3,0){$A$};
+\draw[axis,thick](2.25,0)--(2.25,-.3)node[below]{$B'$};\node[above]at(2.25,0){$A'$};
+\draw[ray](-3,.6)--(0,0);\draw[ray](0,0)--(2.25,-.3);
+\draw[ray](-3,.6)--(0,.6);\draw[ray](0,.6)--(2.25,-.3);
+\draw[ray](-3,.6)--(0,-.3);\draw[ray](0,-.3)--(2.25,-.3);
+\node[below]at(-1,0){$F_1$};\node[above]at(1.5,0){$F_2$};\node[above left]at(0,0){$O$};
+\node at(-1.8,1.1){$n_1$};\node at(1.7,1.1){$n_2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对中心光线折转和不同介质的放大率}\par\nobreak
+图\ref{fig:o411s}以 \(n_2/n_1=3/2\) 示意；中心光线在右侧倾角减小为左侧的 \(2/3\)，所以不能按同一直线贯穿 \(O\)。在题设近轴范围，以上关系足以确定放大率
+\[
+ \beta=-\frac{n_1v}{n_2u}=-\frac{f_1v}{f_2u}.
+\]
+两侧介质相同时，\(f_1=f_2\)、\(\theta_1=\theta_2\)，才还原为常见的同焦距透镜式和中心光线方向不变的作图规则。
+\end{solution}
+
+\begin{question}
+\begin{example}[锥面镜、球面镜与环形准直光]\label{ex:o47}
+给定焦距为 \(f\) 的凸透镜、母线与轴成 \(45^\circ\) 的锥面反射镜，以及曲率半径为 \(R\)、中央有入射圆孔的凹球面镜。设计同轴光路，把很细的实心圆柱入射光束变为圆柱形空心出射光束，空腔半径为 \(r>0\)。画出光路，并求锥面镜顶点 \(S\) 到球面镜球心 \(C\) 的距离 \(x\)。采用细束极限，忽略束宽；凸透镜按理想近轴透镜处理，取 \(r/f\ll1\)。
+\end{example}
+\fig{fig:o47q}{三个给定元件；锥面角为母线与轴的夹角，球面镜中心孔供入射束通过}{
+\begin{tikzpicture}
+\draw[axisline](-1.1,0)--(1.1,0);\draw[<->,>=Stealth,world](0,-1)--(0,1);
+\node[below]at(0,-1.2){凸透镜 \(f\)};
+\begin{scope}[xshift=3.3cm]
+\draw[world](-.8,-.3)--(0,.5)--(.8,-.3);\draw[axisline](0,-.6)--(0,.9);
+\draw (0,.17) arc[start angle=-90,end angle=-45,radius=.33];
+\node[right]at(.4,.3){$45^\circ$};\node[below]at(0,-1.2){锥面镜};
+\end{scope}
+\begin{scope}[xshift=6.6cm]
+\draw[world,domain=-1:-.15,samples=30]plot(\x,{sqrt(1.44-\x*\x)});
+\draw[world,domain=.15:1,samples=30]plot(\x,{sqrt(1.44-\x*\x)});
+\fill(0,0)circle(1pt)node[below]{$C$};\draw[normal](0,0)--(.8,.894427)node[midway,right]{$R$};
+\node[below]at(0,-1.2){带孔球面镜};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{选定球面镜、锥镜与入射孔的同轴布置}\par\nobreak
+根据图\ref{fig:o47q}给出的透镜、锥面镜与球面镜，令球心 \(C\) 为原点，竖直向上为 \(z\) 正向。凹球面镜在上方，反射面朝下；锥面镜顶点 \(S\) 位于轴上 \(z=x>0\)，尖端朝上。入射光从球面镜中央小孔向下照到锥面，反射为近似径向外射的薄环形光。选取经球面镜后向下会聚于轴上 \(Q\) 的支，再用透镜准直。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把球面反射的会聚目标作为透镜前焦点}\par\nobreak
+将凸透镜放在 \(Q\) 下方 \(f\) 处。光线越过 \(Q\) 后发散，到透镜时恰好是来自前焦点的光，出射平行于轴；绕轴旋转后得到空心圆柱。锥面镜只需截获很细的入射束，其底座和支架应避开返回的环形光。
+\fig{fig:o47s}{一个可行的同轴方案；图取细束极限，把锥面反射区缩至 \(S\) 附近}{
+\begin{tikzpicture}[x=2cm,y=1.05cm]
+\draw[axisline](0,-5.4)--(0,1.9);
+\draw[world,domain=-.95:-.08,samples=50]plot(\x,{sqrt(1-\x*\x)});
+\draw[world,domain=.08:.95,samples=50]plot(\x,{sqrt(1-\x*\x)});
+\draw[world](-.1,.533989)--(0,.633989)--(.1,.533989);
+\draw[ray](0,1.8)--(0,.633989);
+\draw[ray](0,.633989)--(.773342,.633989);
+\draw[ray](0,.633989)--(-.773342,.633989);
+\draw[ray](.773342,.633989)--(0,-3.232722);
+\draw[ray](-.773342,.633989)--(0,-3.232722);
+\draw[ray](0,-3.232722)--(-.2,-4.232722);
+\draw[ray](0,-3.232722)--(.2,-4.232722);
+\draw[<->,>=Stealth,world](-.65,-4.232722)--(.65,-4.232722);
+\draw[ray](-.2,-4.232722)--(-.2,-5.3);\draw[ray](.2,-4.232722)--(.2,-5.3);
+\fill(0,0)circle(.8pt)node[right]{$C$};\node[left]at(0,.68){$S$};
+\node[above right]at(.773342,.633989){$M$};\fill(0,-3.232722)circle(.8pt)node[left]{$Q$};
+\node[right]at(.65,-4.232722){透镜};
+\draw[dim](1.15,0)--(1.15,.633989)node[midway,right]{$x$};
+\draw[dim](.9,-4.232722)--(.9,-3.232722)node[midway,right]{$f$};
+\draw[dim](0,-5.05)--(.2,-5.05);\node[right]at(.25,-5.05){$r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由交叉后的实际路径说明空心出射束}\par\nobreak
+图\ref{fig:o47s}中的两条截面光线在 \(Q\) 交叉，所以右侧球面反射的光最终从左侧半径 \(r\) 处出射，左侧则相反。这个中途会聚点不妨碍末端光束为空心圆柱。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在实际球面点按精确法线求反射矢量}\par\nobreak
+细束极限中可取 \(M=(\rho,x)\)，\(\rho^2+x^2=R^2\)。图\ref{fig:o47local}的入射单位向量为径向 \(\boldsymbol e_\rho\)，球面单位法线为 \(\boldsymbol n=(\rho,x)/R\)。反射后的单位方向为
+\[
+ \boldsymbol k_{\rm out}
+ =\boldsymbol e_\rho-2(\boldsymbol e_\rho\!\cdot\!\boldsymbol n)\boldsymbol n
+ =\left(1-\frac{2\rho^2}{R^2},\ -\frac{2\rho x}{R^2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选向轴会聚的分支并求出射斜率}\par\nobreak
+会聚支要求径向分量小于零，即 \(0<x<R/\sqrt2\)。设出射光与向下轴向的锐角为 \(\theta\)，则
+\[
+ \tan\theta=\frac{R^2-2x^2}{2x\sqrt{R^2-x^2}}.
+\]
+\fig{fig:o47local}{球面法线为 \(CM\)；入射光水平向外，出射光向下且向轴靠拢}{
+\begin{tikzpicture}[scale=2]
+\draw[axisline](0,-.4)--(0,1.35);\draw[aux](0,.633989)--(1.15,.633989);
+\draw[world,domain=.3:.9,samples=50,variable=\y]plot({sqrt(1-\y*\y)},\y);
+\fill(0,0)circle(.8pt)node[below]{$C$};\fill(0,.633989)circle(.8pt)node[left]{$S$};
+\draw[normal](0,0)--(1.05,.860803)node[above]{$CM$ 法线};
+\draw[ray](.05,.633989)--(.773342,.633989);
+\draw[ray](.773342,.633989)--(.573342,-.366011);
+\draw[aux](.773342,.633989)--(.773342,-.4);
+\node[above right]at(.773342,.633989){$M$};
+\node at(.70,.04){$\theta$};\node[above]at(.4,.633989){$\rho$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用环半径连接透镜前焦点，解出锥镜顶点位置}\par\nobreak
+末端透镜的前焦点为 \(Q\)，光在透镜处的高度大小为 \(r\)，所以在理想薄透镜模型内 \(\tan\theta=r/f\)。令 \(x=R\sin\alpha\)，\(0<\alpha<\pi/4\)，则
+\[
+ \tan\theta=\cot 2\alpha=\frac rf,
+ \qquad \boxed{x=R\sin\!\left(\frac12\arctan\frac fr\right)}.
+\]
+等价地，
+\[
+ \boxed{x=R\sqrt{\frac{1-r/\sqrt{f^2+r^2}}{2}}}.
+\]
+当 \(r/f\ll1\)，\(x\approx(R/\sqrt2)(1-r/(2f))\)。这里不能把球面镜简单替成焦距 \(R/2\) 的近轴镜，因为反射点 \(\rho\) 约为 \(R/\sqrt2\)，镜面入射并不近轴；小角条件只用于末端透镜准直。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对会聚点、透镜位置和允许的细束光路}\par\nobreak
+作为布置检查，由图\ref{fig:o47s}可得 \(z_Q=x-\rho f/r\)，透镜位置 \(z_L=z_Q-f\)。两者都在选定反射点下方，光能按所画次序传播。有限束宽会带来环宽和剩余像差；有限孔径、锥镜支架及中心孔还须留出实际通光空间。本题给出的是细束、理想透镜模型下的一种设计。
+\end{solution}
+
+\begin{question}
+\begin{example}[开普勒望远镜的出瞳]\label{ex:r41}
+空气中开普勒望远镜的物镜焦距为 \(100\,\mathrm{cm}\)、直径为 \(5.00\,\mathrm{cm}\)，目镜焦距为 \(5.00\,\mathrm{cm}\)，两镜相距 \(105\,\mathrm{cm}\)。设物镜为孔径光阑，其余元件不遮光，求出瞳位置和直径，并检验其与视角放大率的关系。
+\end{example}
+\fig{fig:r41q}{出瞳是物镜孔径经目镜所成的像；这里求的是孔径的像}{
+\begin{tikzpicture}
+\draw[axisline](-.5,0)--(8,0);
+\draw[world](0,-1)--(0,1)node[above]{物镜 \(L_o\)};
+\draw[world](5,-.7)--(5,.7)node[above]{目镜 \(L_e\)};
+\draw[dim](-.5,-1)--(-.5,1)node[midway,left]{$5.00\,\mathrm{cm}$};
+\draw[dim](0,-1.6)--(5,-1.6)node[midway,below]{$105\,\mathrm{cm}$};
+\node at(7,.4){眼瞳应放何处？};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{把物镜孔径作为目镜的物，求孔径像距}\par\nobreak
+图\ref{fig:r41q}的孔径光阑在目镜前 \(u_p=105\,\mathrm{cm}\)，不是目镜前焦面。用目镜对物镜孔径成像：
+\[
+ \frac1{105}+\frac1{v_p}=\frac15,\qquad
+ \boxed{v_p=5.25\,\mathrm{cm}},\qquad
+ \beta_p=-\frac{5.25}{105}=-0.0500.
+\]
+\fig{fig:r41s}{上孔径边缘 \(T\) 的两条光线在 \(T'\) 相交；出瞳直径由孔径横向放大率求得}{
+\begin{tikzpicture}[x=.07cm,y=.6cm]
+\draw[axisline](-110,0)--(22,0);
+\draw[world](-105,-2.5)--(-105,2.5);
+\draw[world](0,-3)--(0,3);
+\draw[ray](-105,2.5)--(0,0);\draw[ray](0,0)--(15,-.357143);
+\draw[ray](-105,2.5)--(0,2.5);\draw[ray](0,2.5)--(9,-2);
+\draw[thick](5.25,-.125)--(5.25,.125);
+\node[above]at(-105,2.5){$T$};\node[below]at(-105,-2.5){$L_o$};
+\node[above]at(0,3){$L_e$};
+\node[above right]at(5.25,.125){出瞳};
+\draw[->,>=Stealth](18,-1.1)--(5.25,-.125);
+\node[right]at(18,-1.1){$T'$};
+\draw[dim](0,-3.6)--(5.25,-3.6)node[midway,below]{$5.25\,\mathrm{cm}$};
+\begin{scope}[x=1cm,y=1cm,xshift=-3.8cm,yshift=-4.4cm]
+\draw[thick](0,0)circle(1.05);
+\draw[aux](-1.3,0)--(1.3,0);\draw[aux](0,-1.3)--(0,1.3);
+\draw[dim](-1.05,-1.4)--(1.05,-1.4)node[midway,below]{$D_p=2.50\,\mathrm{mm}$};
+\node[right,align=left]at(1.5,.3){出瞳截面放大\\径向尺度另取};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断实出瞳，并按孔径横向放大率求直径}\par\nobreak
+图\ref{fig:r41s}中 \(T'\) 在目镜后，是实像点；整个孔径的像即为实出瞳。其直径为
+\[
+ \boxed{D_p=|\beta_p|D_o=0.250\,\mathrm{cm}=2.50\,\mathrm{mm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{与角放大率的倒数关系核对}\par\nobreak
+望远镜视角放大率 \(M=-f_o/f_e=-20\)，所以
+\[
+ \boxed{D_p=\frac{D_o}{|M|}}.
+\]
+图\ref{fig:r41s}下方放大了出瞳的圆形截面，直径为 \(2.50\,\mathrm{mm}\)，径向尺度与上方光路另取。眼瞳放在目镜后约 \(5.25\,\mathrm{cm}\) 的出瞳平面附近。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分孔径截光与远物成像的正倒}\par\nobreak
+如果眼瞳小于 \(2.50\,\mathrm{mm}\)，它还会限制轴上通光量。孔径像的倒立只交换圆孔边缘，不应与远物像的倒立混为同一个放大过程。
+\end{solution}
+
+\begin{question}
+\begin{example}[显微镜在近点观察时的严格调焦]\label{ex:r42}
+简化显微镜物镜、目镜焦距为 \(f_o=1.00\,\mathrm{cm}\)、\(f_e=5.00\,\mathrm{cm}\)，两镜间距固定为 \(d=26.0\,\mathrm{cm}\)。眼睛贴近目镜，明视距离 \(D=25.0\,\mathrm{cm}\)。求最终像在近点时的物距及总视角放大率，并与最终像在无穷远时比较。忽略眼睛到目镜的间隔。
+\end{example}
+\fig{fig:r42q}{先确定目镜物面 \(A_1B_1\)，再由固定镜距反求物镜物距}{
+\begin{tikzpicture}
+\draw[axisline](-1.7,0)--(7.8,0);
+\draw[world](0,-1)--(0,1)node[above]{$L_o$};
+\draw[world](6,-1)--(6,1)node[above]{$L_e$};
+\draw[axis,thick](-1.1,0)--(-1.1,.4)node[above]{$B$};
+\node[below]at(-1.1,0){$A$};
+\draw[axis,thick](4.7,0)--(4.7,-.7)node[below]{$B_1$};
+\node[above]at(4.7,0){$A_1$};
+\draw[dim](0,-1.4)--(6,-1.4)node[midway,below]{$d=26.0\,\mathrm{cm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从最终近点虚像反求目镜物距}\par\nobreak
+以图\ref{fig:r42q}中最终虚像在目镜左侧 \(D\) 处为条件，\(v_e=-D\)。由目镜公式得
+\[
+ u_e=\frac{f_eD}{D+f_e}=\frac{25}{6}\,\mathrm{cm}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按固定镜距确定物镜像距、物距与横向放大率}\par\nobreak
+物镜必须把像成在该物面，故
+\[
+ \begin{aligned}
+ v_o&=d-u_e=\frac{131}{6}\,\mathrm{cm},\\
+ u_o&=\frac{f_ov_o}{v_o-f_o}
+ =\boxed{\frac{131}{125}\,\mathrm{cm}=1.048\,\mathrm{cm}},\\
+ \beta_o&=-\frac{v_o}{u_o}=-\frac{125}{6}.
+ \end{aligned}
+\]
+\fig{fig:r42s}{目镜解答局部图：实际出射线发散，其反向延长线交于近点虚像 \(B'\)}{
+\begin{tikzpicture}[x=.3cm,y=1cm]
+\draw[axisline](-27,0)--(7,0);\draw[world](0,-1)--(0,1);
+\draw[axis,thick](-4.166667,0)--(-4.166667,-.416667);
+\node[above left]at(-4.166667,0){$A_1$};
+\node[below left]at(-4.166667,-.416667){$B_1$};
+\draw[ray](-4.166667,-.416667)--(0,-.416667);
+\draw[ray](0,-.416667)--(6,.083333);
+\draw[ray](-4.166667,-.416667)--(0,0);
+\draw[ray](0,0)--(6,.6);
+\draw[virtual](-25,-2.5)--(0,-.416667);
+\draw[virtual](-25,-2.5)--(0,0);
+\draw[axis,thick,dashed](-25,0)--(-25,-2.5)node[below]{$B'$};
+\node[above]at(-25,0){$A'$};\node[above]at(0,1){$L_e$};
+\draw[dim](-25,1.5)--(0,1.5)node[midway,above]{$D=25.0\,\mathrm{cm}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由眼处视角与裸眼参照角计算总放大率}\par\nobreak
+图\ref{fig:r42s}中示意取物高 \(h=0.020\,\mathrm{cm}\)，则中间像高 \(-0.4167\,\mathrm{cm}\)、最终虚像高 \(-2.50\,\mathrm{cm}\)。两条延长线确在同一 \(B'\) 相交。按裸眼在 \(D\) 处观察同一物体的视角 \(h/D\) 比较，
+\[
+ M=\beta_o\frac{D}{u_e}
+ =-\frac{125}{6}\times6=\boxed{-125}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新计算放松观察的物距与放大率}\par\nobreak
+若最终像在无穷远，则 \(u_e=f_e=5\)，\(v_o=21\)，
+\[
+ \boxed{u_{o,\infty}=\frac{21}{20}=1.050\,\mathrm{cm}},\qquad
+ \boxed{M_\infty=-20\times\frac{25}{5}=-100}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两次调焦，核对物镜放大率的改变}\par\nobreak
+近点观察时需把物体稍移近物镜，物距减小 \(0.002\,\mathrm{cm}\)。只把目镜倍数由 \(5\) 改为 \(6\) 而保持物镜倍数为 \(-20\)，会漏掉这次调焦对物镜成像的影响。
+\end{solution}

@@ -1,0 +1,429 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[三个共线点电荷的同时平衡]\label{e1:example:1}
+点电荷 $q_1,q_2,q_3$ 依次位于 $x=0,L,3L$，$q_2>0$，三个电荷均受力平衡。求带符号的电荷量之比。
+\end{example}
+\typeout{ECFIG:fig:e1:example:1:s}\fig{fig:e1:example:1:s}{题设：三个共线点电荷的同时平衡}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(5,0)node[right]{$x$};\draw[axis](0,-.2)--(0,0.2)node[above]{$$};\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$q_1$};\draw[world,fill=white](1.5,0)circle(.12);\node[above]at(1.5,0.15){$q_2$};\draw[world,fill=white](4.5,0)circle(.12);\node[above]at(4.5,0.15){$q_3$};\draw[dim](0,-.7)--(1.5,-.7)node[midway,below]{$L$};\draw[dim](1.5,-.7)--(4.5,-.7)node[midway,below]{$2L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用两端电荷的受力方向确定符号}\par\nobreak
+按 图\ref{fig:e1:example:1:s} 的顺序，两个外侧电荷必须与中间电荷异号：若 $q_1$ 与 $q_2$ 同号，$q_1$ 所受 $q_2$ 的力向左，平衡就要求 $q_3$ 与 $q_1$ 异号；此时对最右的 $q_3$，左侧两个电荷的力却同向，不能同时平衡。因此 $q_1,q_3<0$。
+\typeout{ECFIG:fig:e1:example:1:p}\fig{fig:e1:example:1:p}{分别画三个电荷的两项受力；箭头按平衡条件画成等长，位置间距仍为 $L,2L$}{\begin{tikzpicture}
+
+\foreach \x/\lab in {0/{q_1<0},2/{q_2>0},6/{q_3<0}}{\fill(\x,0)circle(2.5pt);\node[above]at(\x,.2){$\lab$};}
+\draw[force](0,-.5)--(1.3,-.5)node[right]{$\bm F_{2\to1}$};\draw[force](0,-1.2)--(-1.3,-1.2)node[left]{$\bm F_{3\to1}$};
+\draw[force](2,.9)--(.7,.9)node[left]{$\bm F_{1\to2}$};\draw[force](2,1.6)--(3.3,1.6)node[right]{$\bm F_{3\to2}$};
+\draw[force](6,-.5)--(7.3,-.5)node[right]{$\bm F_{1\to3}$};\draw[force](6,-1.2)--(4.7,-1.2)node[left]{$\bm F_{2\to3}$};
+\draw[<->](0,-2.1)--(2,-2.1)node[midway,below]{$L$};\draw[<->](2,-2.1)--(6,-2.1)node[midway,below]{$2L$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用中间电荷平衡求两端电荷比}\par\nobreak
+图\ref{fig:e1:example:1:p} 对中间正电荷，左右吸引力相等，
+\[
+ \frac{|q_1|q_2}{L^2}=\frac{|q_3|q_2}{(2L)^2}
+ \quad\Rightarrow\quad |q_3|=4|q_1|.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再用左端平衡确定相对量}\par\nobreak
+再对左侧电荷，来自 $q_2$ 的向右吸引与来自 $q_3$ 的向左排斥平衡：
+\[
+ \frac{|q_1|q_2}{L^2}=\frac{|q_1q_3|}{(3L)^2}
+ \quad\Rightarrow\quad |q_3|=9q_2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回右端受力并区分平衡与稳定}\par\nobreak
+所以 $q_1:q_2:q_3=-9:4:-36$。代回最右电荷，$|q_1q_3|/(3L)^2=q_2|q_3|/(2L)^2$，两边都为 $9q_2^2/(4L^2)$，第三个平衡方程提供核验；本题没有给出稳定性，不能据合力为零断言三者能稳定保持。\end{solution}
+\begin{question}\begin{example}[电场线与电荷量的判断]\label{e1:example:2}
+图中两固定电荷分别为 $+Q_+$、$-Q_-$，$Q_\pm>0$，场线中有一部分从正电荷通往无穷远。$P$ 处场线明显较密，$Q$ 处较疏。比较 $E_P,E_Q$ 及 $Q_+,Q_-$，并说明可否据此把场线当作电子轨迹。
+\end{example}
+\typeout{ECFIG:fig:e1:example:2:s}\fig{fig:e1:example:2:s}{题设：电场线与电荷量的判断}{\begin{tikzpicture}[scale=1.55]
+\tikzset{fieldline/.style={line width=.7pt,postaction={decorate},decoration={markings,mark=at position .58 with{\arrow{Stealth[length=2.3mm,width=1.5mm]}}}}}
+\draw[fieldline]plot coordinates{(-0.853,0.031)(-0.785,0.046)(-0.716,0.060)(-0.648,0.074)(-0.579,0.088)(-0.510,0.101)(-0.442,0.114)(-0.373,0.127)(-0.304,0.138)(-0.234,0.149)(-0.165,0.158)(-0.095,0.165)(-0.026,0.171)(0.044,0.175)(0.114,0.176)(0.184,0.175)(0.254,0.171)(0.324,0.165)(0.393,0.156)(0.462,0.144)(0.531,0.131)(0.599,0.115)(0.667,0.098)(0.734,0.079)(0.802,0.060)(0.869,0.040)};\draw[fieldline]plot coordinates{(-0.879,0.088)(-0.822,0.129)(-0.765,0.170)(-0.708,0.210)(-0.650,0.250)(-0.592,0.289)(-0.533,0.327)(-0.473,0.363)(-0.413,0.399)(-0.351,0.432)(-0.289,0.463)(-0.225,0.492)(-0.160,0.517)(-0.093,0.538)(-0.025,0.555)(0.044,0.568)(0.114,0.574)(0.184,0.575)(0.253,0.569)(0.322,0.556)(0.389,0.537)(0.454,0.511)(0.517,0.479)(0.576,0.443)(0.633,0.401)(0.687,0.357)(0.738,0.309)(0.786,0.258)(0.833,0.206)(0.878,0.153)(0.922,0.098)};\draw[fieldline]plot coordinates{(-0.925,0.130)(-0.890,0.190)(-0.854,0.251)(-0.818,0.311)(-0.781,0.370)(-0.743,0.429)(-0.705,0.487)(-0.665,0.545)(-0.624,0.602)(-0.581,0.657)(-0.537,0.712)(-0.491,0.765)(-0.444,0.816)(-0.394,0.865)(-0.342,0.912)(-0.288,0.956)(-0.231,0.998)(-0.173,1.036)(-0.112,1.070)(-0.049,1.101)(0.016,1.126)(0.083,1.147)(0.152,1.162)(0.221,1.171)(0.291,1.173)(0.361,1.168)(0.430,1.156)(0.497,1.136)(0.562,1.110)(0.623,1.076)(0.680,1.036)(0.733,0.989)(0.780,0.938)(0.822,0.882)(0.859,0.823)(0.891,0.760)(0.918,0.696)(0.940,0.629)(0.958,0.562)(0.972,0.493)(0.982,0.424)(0.990,0.354)(0.995,0.284)(0.998,0.214)(1.000,0.144)};\draw[fieldline]plot coordinates{(-0.984,0.149)(-0.977,0.219)(-0.969,0.288)(-0.960,0.358)(-0.951,0.427)(-0.941,0.496)(-0.930,0.566)(-0.918,0.635)(-0.905,0.703)(-0.891,0.772)(-0.875,0.840)(-0.859,0.908)(-0.840,0.976)(-0.821,1.043)(-0.800,1.110)(-0.777,1.176)(-0.753,1.242)(-0.727,1.307)(-0.700,1.371)(-0.671,1.435)(-0.640,1.498)(-0.607,1.560)(-0.573,1.621)(-0.537,1.681)(-0.499,1.740)(-0.460,1.797)(-0.418,1.854)(-0.376,1.909)(-0.331,1.963)(-0.285,2.016)(-0.237,2.067)(-0.187,2.116)(-0.136,2.164)(-0.084,2.210)(-0.029,2.254)(0.026,2.297)(0.084,2.337)(0.142,2.376)(0.202,2.412)};\draw[fieldline]plot coordinates{(-1.046,0.143)(-1.068,0.209)(-1.089,0.276)(-1.109,0.343)(-1.130,0.410)(-1.149,0.477)(-1.168,0.545)(-1.187,0.612)(-1.204,0.680)(-1.222,0.748)(-1.238,0.816)(-1.254,0.884)(-1.268,0.952)(-1.282,1.021)(-1.296,1.090)(-1.308,1.159)(-1.320,1.228)(-1.331,1.297)(-1.341,1.366)(-1.350,1.435)(-1.358,1.505)(-1.366,1.574)(-1.373,1.644)(-1.379,1.714)(-1.384,1.784)(-1.389,1.854)(-1.392,1.923)(-1.395,1.993)(-1.398,2.063)(-1.399,2.133)(-1.400,2.203)(-1.400,2.273)(-1.399,2.343)(-1.398,2.413)};\draw[fieldline]plot coordinates{(-1.100,0.111)(-1.147,0.164)(-1.194,0.216)(-1.240,0.268)(-1.286,0.321)(-1.332,0.374)(-1.377,0.427)(-1.423,0.481)(-1.468,0.534)(-1.512,0.588)(-1.556,0.642)(-1.600,0.697)(-1.644,0.752)(-1.688,0.806)(-1.731,0.862)(-1.773,0.917)(-1.816,0.973)(-1.858,1.029)(-1.899,1.085)(-1.941,1.142)(-1.982,1.198)(-2.023,1.255)(-2.063,1.312)(-2.103,1.370)(-2.143,1.427)(-2.182,1.485)(-2.222,1.543)(-2.261,1.601)(-2.299,1.659)(-2.338,1.718)(-2.376,1.777)(-2.414,1.836)(-2.451,1.895)(-2.489,1.954)(-2.526,2.013)(-2.563,2.073)(-2.599,2.132)(-2.636,2.192)(-2.672,2.252)(-2.708,2.312)(-2.743,2.372)(-2.761,2.403)};\draw[fieldline]plot coordinates{(-1.137,0.061)(-1.201,0.090)(-1.265,0.118)(-1.329,0.147)(-1.392,0.176)(-1.456,0.205)(-1.520,0.234)(-1.583,0.264)(-1.647,0.293)(-1.710,0.323)(-1.773,0.353)(-1.836,0.383)(-1.900,0.413)(-1.963,0.444)(-2.026,0.474)(-2.089,0.505)(-2.151,0.536)(-2.214,0.567)(-2.277,0.598)(-2.339,0.629)(-2.402,0.661)(-2.464,0.692)(-2.527,0.724)(-2.589,0.756)(-2.651,0.788)(-2.713,0.820)(-2.776,0.853)(-2.838,0.885)(-2.900,0.918)(-2.961,0.950)(-3.023,0.983)(-3.085,1.016)(-3.147,1.049)(-3.208,1.082)(-3.270,1.115)(-3.332,1.149)(-3.393,1.182)(-3.455,1.216)(-3.516,1.249)};\draw[fieldline]plot coordinates{(-1.150,0.000)(-1.220,0.000)(-1.290,0.000)(-1.360,0.000)(-1.430,0.000)(-1.500,0.000)(-1.570,0.000)(-1.640,0.000)(-1.710,0.000)(-1.780,0.000)(-1.850,0.000)(-1.920,0.000)(-1.990,0.000)(-2.060,0.000)(-2.130,0.000)(-2.200,0.000)(-2.270,0.000)(-2.340,0.000)(-2.410,0.000)(-2.480,0.000)(-2.550,0.000)(-2.620,0.000)(-2.690,0.000)(-2.760,0.000)(-2.830,0.000)(-2.900,0.000)(-2.970,0.000)(-3.040,0.000)(-3.110,0.000)(-3.180,0.000)(-3.250,0.000)(-3.320,0.000)(-3.390,0.000)(-3.460,0.000)(-3.530,0.000)};\draw[fieldline]plot coordinates{(-1.137,-0.061)(-1.201,-0.090)(-1.265,-0.118)(-1.329,-0.147)(-1.392,-0.176)(-1.456,-0.205)(-1.520,-0.234)(-1.583,-0.264)(-1.647,-0.293)(-1.710,-0.323)(-1.773,-0.353)(-1.836,-0.383)(-1.900,-0.413)(-1.963,-0.444)(-2.026,-0.474)(-2.089,-0.505)(-2.151,-0.536)(-2.214,-0.567)(-2.277,-0.598)(-2.339,-0.629)(-2.402,-0.661)(-2.464,-0.692)(-2.527,-0.724)(-2.589,-0.756)(-2.651,-0.788)(-2.713,-0.820)(-2.776,-0.853)(-2.838,-0.885)(-2.900,-0.918)(-2.961,-0.950)(-3.023,-0.983)(-3.085,-1.016)(-3.147,-1.049)(-3.208,-1.082)(-3.270,-1.115)(-3.332,-1.149)(-3.393,-1.182)(-3.455,-1.216)(-3.516,-1.249)};\draw[fieldline]plot coordinates{(-1.100,-0.111)(-1.147,-0.164)(-1.194,-0.216)(-1.240,-0.268)(-1.286,-0.321)(-1.332,-0.374)(-1.377,-0.427)(-1.423,-0.481)(-1.468,-0.534)(-1.512,-0.588)(-1.556,-0.642)(-1.600,-0.697)(-1.644,-0.752)(-1.688,-0.806)(-1.731,-0.862)(-1.773,-0.917)(-1.816,-0.973)(-1.858,-1.029)(-1.899,-1.085)(-1.941,-1.142)(-1.982,-1.198)(-2.023,-1.255)(-2.063,-1.312)(-2.103,-1.370)(-2.143,-1.427)(-2.182,-1.485)(-2.222,-1.543)(-2.261,-1.601)(-2.299,-1.659)(-2.338,-1.718)(-2.376,-1.777)(-2.414,-1.836)(-2.451,-1.895)(-2.489,-1.954)(-2.526,-2.013)(-2.563,-2.073)(-2.599,-2.132)(-2.636,-2.192)(-2.672,-2.252)(-2.708,-2.312)(-2.743,-2.372)(-2.761,-2.403)};\draw[fieldline]plot coordinates{(-1.046,-0.143)(-1.068,-0.209)(-1.089,-0.276)(-1.109,-0.343)(-1.130,-0.410)(-1.149,-0.477)(-1.168,-0.545)(-1.187,-0.612)(-1.204,-0.680)(-1.222,-0.748)(-1.238,-0.816)(-1.254,-0.884)(-1.268,-0.952)(-1.282,-1.021)(-1.296,-1.090)(-1.308,-1.159)(-1.320,-1.228)(-1.331,-1.297)(-1.341,-1.366)(-1.350,-1.435)(-1.358,-1.505)(-1.366,-1.574)(-1.373,-1.644)(-1.379,-1.714)(-1.384,-1.784)(-1.389,-1.854)(-1.392,-1.923)(-1.395,-1.993)(-1.398,-2.063)(-1.399,-2.133)(-1.400,-2.203)(-1.400,-2.273)(-1.399,-2.343)(-1.398,-2.413)};\draw[fieldline]plot coordinates{(-0.984,-0.149)(-0.977,-0.219)(-0.969,-0.288)(-0.960,-0.358)(-0.951,-0.427)(-0.941,-0.496)(-0.930,-0.566)(-0.918,-0.635)(-0.905,-0.703)(-0.891,-0.772)(-0.875,-0.840)(-0.859,-0.908)(-0.840,-0.976)(-0.821,-1.043)(-0.800,-1.110)(-0.777,-1.176)(-0.753,-1.242)(-0.727,-1.307)(-0.700,-1.371)(-0.671,-1.435)(-0.640,-1.498)(-0.607,-1.560)(-0.573,-1.621)(-0.537,-1.681)(-0.499,-1.740)(-0.460,-1.797)(-0.418,-1.854)(-0.376,-1.909)(-0.331,-1.963)(-0.285,-2.016)(-0.237,-2.067)(-0.187,-2.116)(-0.136,-2.164)(-0.084,-2.210)(-0.029,-2.254)(0.026,-2.297)(0.084,-2.337)(0.142,-2.376)(0.202,-2.412)};\draw[fieldline]plot coordinates{(-0.925,-0.130)(-0.890,-0.190)(-0.854,-0.251)(-0.818,-0.311)(-0.781,-0.370)(-0.743,-0.429)(-0.705,-0.487)(-0.665,-0.545)(-0.624,-0.602)(-0.581,-0.657)(-0.537,-0.712)(-0.491,-0.765)(-0.444,-0.816)(-0.394,-0.865)(-0.342,-0.912)(-0.288,-0.956)(-0.231,-0.998)(-0.173,-1.036)(-0.112,-1.070)(-0.049,-1.101)(0.016,-1.126)(0.083,-1.147)(0.152,-1.162)(0.221,-1.171)(0.291,-1.173)(0.361,-1.168)(0.430,-1.156)(0.497,-1.136)(0.562,-1.110)(0.623,-1.076)(0.680,-1.036)(0.733,-0.989)(0.780,-0.938)(0.822,-0.882)(0.859,-0.823)(0.891,-0.760)(0.918,-0.696)(0.940,-0.629)(0.958,-0.562)(0.972,-0.493)(0.982,-0.424)(0.990,-0.354)(0.995,-0.284)(0.998,-0.214)(1.000,-0.144)};\draw[fieldline]plot coordinates{(-0.879,-0.088)(-0.822,-0.129)(-0.765,-0.170)(-0.708,-0.210)(-0.650,-0.250)(-0.592,-0.289)(-0.533,-0.327)(-0.473,-0.363)(-0.413,-0.399)(-0.351,-0.432)(-0.289,-0.463)(-0.225,-0.492)(-0.160,-0.517)(-0.093,-0.538)(-0.025,-0.555)(0.044,-0.568)(0.114,-0.574)(0.184,-0.575)(0.253,-0.569)(0.322,-0.556)(0.389,-0.537)(0.454,-0.511)(0.517,-0.479)(0.576,-0.443)(0.633,-0.401)(0.687,-0.357)(0.738,-0.309)(0.786,-0.258)(0.833,-0.206)(0.878,-0.153)(0.922,-0.098)};\draw[fieldline]plot coordinates{(-0.853,-0.031)(-0.785,-0.046)(-0.716,-0.060)(-0.648,-0.074)(-0.579,-0.088)(-0.510,-0.101)(-0.442,-0.114)(-0.373,-0.127)(-0.304,-0.138)(-0.234,-0.149)(-0.165,-0.158)(-0.095,-0.165)(-0.026,-0.171)(0.044,-0.175)(0.114,-0.176)(0.184,-0.175)(0.254,-0.171)(0.324,-0.165)(0.393,-0.156)(0.462,-0.144)(0.531,-0.131)(0.599,-0.115)(0.667,-0.098)(0.734,-0.079)(0.802,-0.060)(0.869,-0.040)};\draw[world,fill=white](-1,0)circle(.12);\node[above,fill=white,inner sep=1pt]at(-1,.25){$+Q_+$};\draw[world,fill=white](1,0)circle(.12);\node[above,fill=white,inner sep=1pt]at(1,.25){$-Q_-$};\fill(-.6,-.45)circle(1.6pt)node[below,fill=white,inner sep=1pt]{$P$};\fill(1.8,-1)circle(1.6pt)node[right]{$Q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由场线的起止与疏密判断电荷和场强}\par\nobreak
+图\ref{fig:e1:example:2:s} 中场线箭头从正电荷出发，一部分终止于负电荷，另一些通向无穷远。按统一通量约定，正电荷发出的总通量大于负电荷吸收的总通量，因此 $Q_+>Q_-$。$P$ 的邻近场线较密，故 $E_P>E_Q$。
+\typeout{ECFIG:fig:e1:example:2:p}\fig{fig:e1:example:2:p}{解答过程：电场线与电荷量的判断}{\begin{tikzpicture}[scale=.88]
+\draw[flow](-2,0)..controls(-.6,1)and(.6,1)..(2,0)node[right]{$\bm E$ 切向};\fill(0,.75)circle(2pt)node[above]{$-e$};\draw[flow](0,.75)--(.5,1.7)node[right]{$\bm v$};\draw[force](0,.75)--(-1,.75)node[left]{$\bm F=-e\bm E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把电子受力与初速度分别表示}\par\nobreak
+图\ref{fig:e1:example:2:p} 在同一场中示意电子某瞬间的速度可以不沿场线切向，而电场力始终与局部场强反向。轨道还由初速度决定，所以场线一般不是电子轨迹。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明定性图与定量通量刻度的区别}\par\nobreak
+场线的数量和间距在本图中只承担定性比较，不能从绘制线条的数目直接报出精确电荷比；要作数值比较需给出统一通量刻度。\end{solution}
+\begin{question}\begin{example}[均匀球壳开小孔后的中心场]\label{e1:example:3}
+半径 $R$ 的绝缘薄球壳均匀带电 $+Q$，球心放正电荷 $q$。球壳上去掉一个半径 $a\ll R$ 的小圆孔，求中心电荷受力的首阶近似及方向。
+\end{example}
+\typeout{ECFIG:fig:e1:example:3:s}\fig{fig:e1:example:3:s}{题设：均匀球壳开小孔后的中心场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.2pt)node[below]{$O$};\draw[dim](0,0)--(-1.06,1.06)node[midway,left]{$R$};\draw[white,line width=3pt](1.47,-.3)arc(-12:12:1.5);\draw[guide](0,0)--(1.8,0);\node[right]at(1.8,0){小孔};\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用完整球壳减去小孔电荷}\par\nobreak
+图\ref{fig:e1:example:3:s} 的完整球壳在球心场为零。将开孔后的分布写成完整球壳加上孔位置的一小块负电荷。孔面积首阶为 $\pi a^2$，原面密度 $\sigma=Q/(4\pi R^2)$，故被移除电荷大小
+\[
+ \Delta Q\simeq\sigma\pi a^2=\frac{Qa^2}{4R^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先固定补片场的方向}\par\nobreak
+取孔轴从球心指向孔心为 $+x$。被去掉的正面元原本在球心产生向 $-x$ 的场，因此移去它会留下向 $+x$ 的合场。这个方向判断应先于用小片近似点电荷，避免把“减去一块正电荷”误认为受力背离孔。
+
+\typeout{ECFIG:fig:e1:example:3:p}\fig{fig:e1:example:3:p}{完整球壳加上负补片；右图放大小孔的局部面积，不按全图比例}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.7);\fill(0,0)circle(2pt)node[below]{$O$};
+\draw[blue,very thick](1.663,-.353)arc(-12:12:1.7);\node[blue,right]at(1.9,.8){$-\Delta Q$};
+\draw[force](0,0)--(1.1,0)node[midway,above]{$\bm F$};\draw[<->](0,-.8)--(1.5,-.8)node[midway,below]{$\simeq R$};
+\begin{scope}[xshift=6cm]
+\draw[blue](0,0)circle(1);\draw[<->](0,0)--(1,0)node[midway,above]{$a$};\node at(0,-1.6){$\Delta S\simeq\pi a^2$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按小孔首阶近似求中心受力}\par\nobreak
+图\ref{fig:e1:example:3:p} 的等效负补片在距球心近似为 $R$ 的位置，对中心正电荷产生指向孔的吸引。因而
+\[
+ E_O\simeq k\frac{\Delta Q}{R^2}=\frac{kQa^2}{4R^4},\qquad
+ F\simeq\frac{kQqa^2}{4R^4}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用孔径趋零检验近似}\par\nobreak
+力指向小孔。极限 $a\to0$ 时结果趋零。该表达保留 $a/R$ 的首个非零项；若孔不再很小，必须对弯曲缺口作精确积分，不能仍把补片全部视为一点。\end{solution}
+\begin{question}\begin{example}[圆环轴线上的场强与极值]\label{e1:example:4}
+均匀圆环半径 $R$、总电荷 $Q>0$。求轴线上 $x$ 处的场强，并求 $x>0$ 区域最大场强及其位置。
+\end{example}
+\typeout{ECFIG:fig:e1:example:4:s}\fig{fig:e1:example:4:s}{题设：圆环轴线上的场强与极值}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)ellipse(.5 and 1.4);\draw[axis](-1,0)--(4.5,0)node[right]{$x$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(3,0)circle(1.6pt)node[above]{$P$};\draw[dim](0,-1.8)--(3,-1.8)node[midway,below]{$x$};\draw[dim](0,0)--(0,1.4)node[midway,left]{$R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先配对微元并保留轴向投影}\par\nobreak
+图\ref{fig:e1:example:4:s} 中各微元到 $P$ 的距离为 $s=\sqrt{R^2+x^2}$，轴向投影因子为 $x/s$。对径微元的环面内分量抵消，所以
+\[
+ E_x=\int k\frac{\dd q}{s^2}\frac{x}{s}
+ =\frac{kQx}{(R^2+x^2)^{3/2}}.
+\]
+\typeout{ECFIG:fig:e1:example:4:p}\fig{fig:e1:example:4:p}{轴向场以 $kQ/R^2$ 为单位；正半轴有一个极大点}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.3,0)node[right]{$x/R$};\draw[axis](0,0)--(0,2.9)node[above]{$E_x/(kQ/R^2)$};
+\draw[thick,domain=0:4.5,samples=100]plot(\x,{5*\x/(1+\x*\x)^1.5});
+\draw[guide](.707107,0)--(.707107,1.9245)--(0,1.9245);
+\fill(.707107,1.9245)circle(2pt);\node[below]at(.707107,-.1){$1/\sqrt2$};\node[left]at(0,1.9245){$2/(3\sqrt3)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求导确定极值位置}\par\nobreak
+图\ref{fig:e1:example:4:p} 给出轴向场的变化。对 $x>0$ 求导，
+\[
+ \begin{aligned}
+ \frac{\dd E_x}{\dd x}
+ &=kQ\left[(R^2+x^2)^{-3/2}
+       +x\left(-\frac32\right)(R^2+x^2)^{-5/2}(2x)\right]\\
+ &=kQ\frac{R^2+x^2-3x^2}{(R^2+x^2)^{5/2}}
+ =kQ\frac{R^2-2x^2}{(R^2+x^2)^{5/2}}.
+\end{aligned}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入最大值并核对两端极限}\par\nobreak
+导数在 $x=R/\sqrt2$ 两侧由正变负，故最大场强为 $2kQ/(3\sqrt3R^2)$。$x=0$ 时场为零；$x\gg R$ 时 $E_x\simeq kQ/x^2$，与总电荷点模型一致。带符号表达式 $E_x=kQx/(R^2+x^2)^{3/2}$ 同样适用于负轴，$E_x(-x)=-E_x(x)$；若只求大小，分子应取 $kQ|x|$。\end{solution}
+\begin{question}\begin{example}[环形平面电荷的轴向电场]\label{e1:example:5}
+内外半径 $R_1,R_2$ 的环形平面均匀带面电荷密度 $\sigma>0$。求垂直轴线上 $x>0$ 处电场，利用量纲和极限检查公式。
+\end{example}
+\typeout{ECFIG:fig:e1:example:5:s}\fig{fig:e1:example:5:s}{环形面电荷的两条边界与轴线场点；内外半径分别为 $R_1,R_2$}{\begin{tikzpicture}
+
+\draw(0,0)ellipse(.65 and 1.7);\draw(0,0)ellipse(.3 and .8);\draw[axis](-1.3,0)--(5,0)node[right]{$x$};
+\fill(0,0)circle(1.5pt)node[below left]{$O$};\fill(3.5,0)circle(2pt)node[above]{$P$};
+\draw[<->](0,0)--(0,.8)node[midway,right]{$R_1$};\draw[<->](-.9,0)--(-.9,1.7)node[midway,left]{$R_2$};
+\draw[<->](0,-2.3)--(3.5,-2.3)node[midway,below]{$x$};\node at(0,2.4){$\sigma$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以同心细环作为积分微元}\par\nobreak
+在 图\ref{fig:e1:example:5:s} 的环形区域中取半径 $s$、宽度 $\dd s$ 的细环，其电荷 $\dd q=2\pi\sigma s\dd s$。由圆环轴向结果，
+\[
+ E_x=2\pi k\sigma x\int_{R_1}^{R_2}\frac{s\dd s}{(s^2+x^2)^{3/2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按内外半径计算积分}\par\nobreak
+令 $u=s^2+x^2$，则 $\dd u=2s\dd s$，上下限分别为
+$R_1^2+x^2$ 和 $R_2^2+x^2$。把换元与原函数代入连续写出：
+\begin{align*}
+ \int_{R_1}^{R_2}\frac{s\dd s}{(s^2+x^2)^{3/2}}
+ &=\frac12\int_{R_1^2+x^2}^{R_2^2+x^2}u^{-3/2}\dd u\\
+ &=[-u^{-1/2}]_{R_1^2+x^2}^{R_2^2+x^2}
+ =\frac1{\sqrt{x^2+R_1^2}}-\frac1{\sqrt{x^2+R_2^2}}.
+\end{align*}
+乘回 $2\pi k\sigma x$，得到
+\[
+ E_x=2\pi k\sigma x\left(\frac1{\sqrt{x^2+R_1^2}}-\frac1{\sqrt{x^2+R_2^2}}\right)>0.
+\]
+\typeout{ECFIG:fig:e1:example:5:p}\fig{fig:e1:example:5:p}{解答过程：环形平面电荷的轴向电场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\draw[world](0,0)circle(.65);\draw[guide](0,0)circle(1.05);\draw[guide](0,0)circle(1.18);\draw[dim](0,0)--(1.05,0)node[midway,above]{$s$};\node at(3.8,.4){$\dd q=2\pi\sigma s\dd s$};\node at(3.8,-.5){$R_1\le s\le R_2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用量纲、退化区域与远场检查}\par\nobreak
+图\ref{fig:e1:example:5:p}中的细环从内边界 $R_1$ 扫到外边界 $R_2$；也可把整个区域理解为外圆盘减内圆盘。$k\sigma$ 已有场强量纲，括号乘 $x$ 必须无量纲。令 $R_2=R_1$，电荷区域消失，场为零；$x\to0$ 且 $R_1>0$ 时场也趋零。远处展开括号为 $(R_2^2-R_1^2)/(2x^3)$，得 $E_x\simeq k[\pi\sigma(R_2^2-R_1^2)]/x^2$，回到总电荷的点电荷场。\end{solution}
+\begin{question}\begin{example}[偶极轴线与中垂线的远场]\label{e1:example:6}
+电荷 $-q,+q$ 位于 $x=-a,+a$。$M=(L,0),N=(0,L)$，$L\gg a$。求两点电场首阶远场、大小比与方向。
+\end{example}
+\typeout{ECFIG:fig:e1:example:6:s}\fig{fig:e1:example:6:s}{题设：偶极轴线与中垂线的远场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-1.8,0)--(4.3,0)node[right]{$x$};\draw[axis](0,-.2)--(0,3)node[above]{$y$};\draw[world,fill=white](-0.8,0)circle(.12);\node[above]at(-0.8,0.15){$-q$};\draw[world,fill=white](0.8,0)circle(.12);\node[above]at(0.8,0.15){$+q$};\fill(3.4,0)circle(2pt)node[above]{$M$};\fill(0,2.5)circle(2pt)node[right]{$N$};\node at(2,-.8){$OM=ON=L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在轴线上先作两个反向场的差}\par\nobreak
+图\ref{fig:e1:example:6:s} 中偶极矩 $\bm p=2aq\,\hat{\bm x}$。在 $M$，正电荷场向右、负电荷场向左，
+\[
+ E_M=kq\left[\frac1{(L-a)^2}-\frac1{(L+a)^2}\right]
+ =\frac{4kqaL}{(L^2-a^2)^2}\simeq\frac{4kqa}{L^3}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在中垂线上先消去竖直分量}\par\nobreak
+在 $N$ 两电场竖直分量抵消，水平分量都向左，
+\[
+ E_{Nx}=-\frac{2kqa}{(L^2+a^2)^{3/2}}\simeq-\frac{2kqa}{L^3}.
+\]
+\typeout{ECFIG:fig:e1:example:6:p}\fig{fig:e1:example:6:p}{两点距偶极中心相同，远场合矢量的长度按 $2:1$ 示意；分量图先于远场近似}{\begin{tikzpicture}
+
+\fill(-1,0)circle(2pt)node[below]{$-q$};\fill(1,0)circle(2pt)node[below]{$+q$};
+\fill(4,0)circle(2pt)node[above]{$M$};\fill(0,2.5)circle(2pt)node[above]{$N$};\node[below]at(0,0){$O$};
+\draw[guide](-1,0)--(0,2.5)--(1,0);\draw[force,gray](0,2.5)--(-.5,1.25);\draw[force,gray](0,2.5)--(-.5,3.75);
+\draw[force,blue](4,0)--(6.4,0)node[right]{$\bm E_M$};\draw[force,blue](0,2.5)--(-1.2,2.5)node[left]{$\bm E_N$};
+\draw[flow](-1,-1)--(1,-1)node[midway,below]{$\bm p$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较方向、比例与近似阶次}\par\nobreak
+图\ref{fig:e1:example:6:p} 中 $M$ 场沿 $\bm p$，$N$ 场反向于 $\bm p$，所以大小比为 $2:1$，方向相反。两者都随 $a$ 成正比、随 $L^{-3}$ 衰减。$a=0$ 时两个电荷在同一点抵消，电场趋零，检查通过。不能分别把两点电荷都只保留 $kq/L^2$，因为这一阶恰好相消，须保留下一阶。\end{solution}
+\begin{question}\begin{example}[加速金属板中的电荷分离]\label{e1:example:7}
+一厚度为 $h$ 的大金属板沿法线 $+x$ 以加速度 $a$ 平动。采用固定晶格、忽略形变的模型，电子质量 $m$、电荷 $-e$，已达到无相对漂移的状态。求板内电场和两大面的电荷面密度。
+\end{example}
+\typeout{ECFIG:fig:e1:example:7:s}\fig{fig:e1:example:7:s}{题设：加速金属板中的电荷分离}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-1.2)rectangle(2,1.2);\draw[force](2.6,.5)--(4,.5)node[right]{$a$};\draw[axis](-1,0)--(4.5,0)node[right]{$x$};\draw[dim](0,-1.7)--(2,-1.7)node[midway,below]{$h$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在实验室系对随板加速的电子列方程}\par\nobreak
+图\ref{fig:e1:example:7:s} 中电子与晶格有相同加速度 $a$，在实验室系对电子列力学方程：$-eE_x=ma$，故 $E_x=-ma/e$，内部电场与加速度反向。
+\typeout{ECFIG:fig:e1:example:7:p}\fig{fig:e1:example:7:p}{解答过程：加速金属板中的电荷分离}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,-1.2)rectangle(2,1.2);\node[left]at(0,1.5){$-\sigma$};\node[right]at(2,1.5){$+\sigma$};\draw[flow](1.7,.5)--(.3,.5)node[midway,above]{$\bm E$};\fill(1,-.3)circle(1.7pt)node[below]{$-e$};\draw[force](1,-.3)--(2.3,-.3)node[right]{$-e\bm E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两个表面的场反求面密度}\par\nobreak
+图\ref{fig:e1:example:7:p} 中右表面带正电、左表面带负电，两个大面近似构成平行薄面电荷。板内场从右向左，大小 $\sigma/\varepsilon_0$，所以
+\[
+ \sigma_{\text{右}}=+\frac{\varepsilon_0ma}{e},\qquad
+ \sigma_{\text{左}}=-\frac{\varepsilon_0ma}{e}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对中性、电势差与参考系}\par\nobreak
+两大面的总附加电荷为零，符合整板中性条件。两端电势差 $V_{\text{右}}-V_{\text{左}}=mah/e$。这里不是电子合力为零，而是电子随板加速；若在板参考系写平衡，须同时加入惯性力 $-ma$。\end{solution}
+\begin{question}\begin{example}[球壳内外电场与高斯面的条件]\label{e1:example:8}
+绝缘薄球壳半径 $R$，均匀带电 $Q>0$。证明球内处处零场，求球外电场，并说明净包围电荷为零为何一般不能推出零场。
+\end{example}
+\typeout{ECFIG:fig:e1:example:8:s}\fig{fig:e1:example:8:s}{题设：球壳内外电场与高斯面的条件}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.2pt)node[below]{$O$};\draw[dim](0,0)--(-1.06,1.06)node[midway,left]{$R$};\draw[guide](0,0)circle(.8);\draw[guide](0,0)circle(2);\node at(3,0){$Q$ 均匀分布};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用球对称把通量约束化成点的场强}\par\nobreak
+图\ref{fig:e1:example:8:s} 的完整球壳具有球对称性，因此任意同心球面上的场强大小相等、方向径向。取半径 $r<R$ 的高斯面，包围电荷为零，故 $4\pi r^2E_r=0$，得到该球面上每点 $E_r=0$。对任意 $0<r<R$ 都成立，球心再由对称性为零，所以整个内部零场。
+\typeout{ECFIG:fig:e1:example:8:p}\fig{fig:e1:example:8:p}{球壳内外高斯面与表面两侧的径向场；外部图线表示 $Q>0$ 时的向外场}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)circle(1.4);\draw[guide](0,0)circle(.75);\draw[guide](0,0)circle(2.1);
+\node at(0,.1){$E=0$};\node[below]at(0,-.2){$O$};
+\foreach \a in {0,60,120,180,240,300}{\draw[flow](\a:1.65)--(\a:2.4);}
+\node at(0,-2.8){$r<R$ 与 $r>R$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](0,0)--(4,0)node[right]{$r$};\draw[axis](0,0)--(0,2.6)node[above]{$E_r$};
+\draw[blue,thick](0,0)--(1.3,0);\draw[blue,thick,domain=1.3:3.7,samples=60]plot(\x,{3.38/(\x*\x)});
+\draw[guide](1.3,0)--(1.3,2);\node[below]at(1.3,-.1){$R$};\draw[fill=white](1.3,0)circle(2pt);\draw[fill=white](1.3,2)circle(2pt);
+\node[left]at(0,2){$kQ/R^2$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分球壳表面的两侧极限}\par\nobreak
+图\ref{fig:e1:example:8:p}右图在理想电荷面处标出两个单侧极限。内部 $E_r(R^-)=0$，外部 $E_r(R^+)=kQ/R^2$，跳变恰为 $\sigma/\varepsilon_0$；不把带面电荷的奇点本身当作普通光滑场点。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求球外场并说明零通量的反例}\par\nobreak
+图\ref{fig:e1:example:8:p} 的外部高斯面包围全部 $Q$，有 $4\pi r^2E_r=Q/\varepsilon_0$，即 $E_r=kQ/r^2$ 向外。若高斯面不具备球对称，零通量可能是各处正、负通量抵消，例如匀强电场穿过一个无电荷球面，穿入和穿出相等而场并不为零。因此球内零场的证明必须同时说明对称性和包围电荷，不能漏掉前者。\end{solution}
+\begin{question}\begin{example}[均匀带电球中的偏心空腔]\label{e1:example:9}
+半径 $R$、体密度 $\rho>0$ 的绝缘球中挖去半径 $R^\prime$ 的球形空腔。大球心 $O$，空腔心 $O^\prime$，$\bm a=\overrightarrow{OO^\prime}$。求腔内电场，证明其均匀。
+\end{example}
+\typeout{ECFIG:fig:e1:example:9:s}\fig{fig:e1:example:9:s}{固定体电荷中挖去偏心球形空腔；两球心和内外半径分别标出}{\begin{tikzpicture}
+
+\fill[gray!12](0,0)circle(2.5);\draw(0,0)circle(2.5);\fill[white](.9,.5)circle(1);\draw(.9,.5)circle(1);
+\fill(0,0)circle(2pt)node[below left]{$O$};\fill(.9,.5)circle(2pt)node[above left]{$O'$};
+\draw[flow](0,0)--(.9,.5);\node at(.6,-.3){$\bm a$};
+\draw[<->](0,0)--(-1.768,1.768)node[midway,left]{$R$};\draw[<->](.9,.5)--(1.9,.5)node[midway,below]{$R'$};
+\node at(-1.3,-1.2){$\rho>0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用相同密度的正球与负球补形}\par\nobreak
+把 图\ref{fig:e1:example:9:s} 的余下分布分成以 $O$ 为心的完整正球与以 $O'$ 为心、体密度 $-\rho$ 的补充球。先由高斯定律，均匀实心球内部的场为 $\rho\bm r/(3\varepsilon_0)$。
+\typeout{ECFIG:fig:e1:example:9:p}\fig{fig:e1:example:9:p}{解答过程：均匀带电球中的偏心空腔}{\begin{tikzpicture}[scale=.88]
+\fill(0,0)circle(1.5pt)node[below]{$O$};\fill(1.8,.4)circle(1.5pt)node[below]{$O^\prime$};\fill(2.4,1.8)circle(1.5pt)node[right]{$P$};\draw[flow](0,0)--(1.8,.4)node[midway,below]{$\bm a$};\draw[flow](0,0)--(2.4,1.8)node[midway,above left]{$\bm r$};\draw[flow](1.8,.4)--(2.4,1.8)node[midway,right]{$\bm r^\prime$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把同一场点相对两球心的矢量相减}\par\nobreak
+对 图\ref{fig:e1:example:9:p} 的任意腔内点 $P$，它同时处于这两个完整球内部，所以
+\[
+ \bm E(P)=\frac{\rho}{3\varepsilon_0}\overrightarrow{OP}
+ -\frac{\rho}{3\varepsilon_0}\overrightarrow{O'P}
+ =\frac{\rho}{3\varepsilon_0}\overrightarrow{OO'}
+ =\frac{\rho\bm a}{3\varepsilon_0}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断匀强性并检验同心极限}\par\nobreak
+用的是矢量关系 $\overrightarrow{OP}=\overrightarrow{OO'}+\overrightarrow{O'P}$。结果与 $P$ 无关，故腔内为匀强场，方向从大球心指向空腔心。若空腔同心，$\bm a=0$，场退化为零；与同心挖球后的球对称情形相符。该结论适用于固定均匀体电荷的绝缘体，不用于导体空腔。\end{solution}
+\begin{question}\begin{example}[均匀厚板内的场与振动时间]\label{e1:example:10}
+均匀正体电荷密度 $\rho$ 分布在 $-d\le x\le d$ 的无限厚板中。求全空间电场。质量 $m$、电荷 $-q$ 的质点从 $x=d$ 静止释放，求首次到达 $x=0$ 的时间。
+\end{example}
+\typeout{ECFIG:fig:e1:example:10:s}\fig{fig:e1:example:10:s}{题设：均匀厚板内的场与振动时间}{\begin{tikzpicture}[scale=.88]
+\fill[gray!12](-1.5,-1.3)rectangle(1.5,1.3);\draw[world](-1.5,-1.3)--(-1.5,1.3)(1.5,-1.3)--(1.5,1.3);\draw[axis](-3,0)--(3.5,0)node[right]{$x$};\node[below]at(-1.5,0){$-d$};\node[below]at(1.5,0){$d$};\node[below]at(0,0){$O$};\fill(1.5,0)circle(2pt)node[above right]{$-q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用平面对称与端面通量求分段电场}\par\nobreak
+图\ref{fig:e1:example:10:s} 的平面对称性给出电场沿 $x$，关于原点反向。取半厚为 $|x|$、面积 $S$ 的柱形高斯面，板内有 $2E_xS=2\rho xS/\varepsilon_0$（先取 $x>0$），故
+\[
+ E_x=\begin{cases}\rho x/\varepsilon_0,&|x|\le d,\\
+ (\rho d/\varepsilon_0)\operatorname{sgn}x,&|x|\ge d.\end{cases}
+\]
+\typeout{ECFIG:fig:e1:example:10:p}\fig{fig:e1:example:10:p}{左图保留电场在正负两侧的方向；右图负电荷从边界走过四分之一周期到中面}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-3.4,0)--(3.6,0)node[right]{$x/d$};\draw[axis](0,-2.4)--(0,2.6)node[above]{$E_x/(\rho d/\varepsilon_0)$};
+\draw[thick](-3,-1.6)--(-1.5,-1.6)--(1.5,1.6)--(3,1.6);
+\draw[guide](-1.5,0)--(-1.5,-1.6);\draw[guide](1.5,0)--(1.5,1.6);
+\node[below]at(-1.5,0){$-1$};\node[below]at(1.5,0){$1$};\node[left]at(0,1.6){$1$};\node[left]at(0,-1.6){$-1$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw[axis](0,0)--(4,0)node[right]{$\omega t$};\draw[axis](0,0)--(0,2.8)node[above]{$x/d$};
+\draw[blue,thick,domain=0:1.570796,samples=70]plot({2*\x},{2*cos(\x r)});
+\node[left]at(0,2){$1$};\node[below]at(3.14159,0){$\pi/2$};\fill(3.14159,0)circle(2pt);
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把负电荷所受力写成回复力}\par\nobreak
+图\ref{fig:e1:example:10:p} 中板内电场随 $x$ 线性增长，负电荷受力指向原点，
+\[
+ m\ddot x=-qE_x=-\frac{q\rho}{\varepsilon_0}x,\qquad
+ \omega=\sqrt{\frac{q\rho}{m\varepsilon_0}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接入初值求首次过中面的时刻}\par\nobreak
+运动方程为 $\ddot x+\omega^2x=0$。
+取指数试解 $x=e^{st}$，代入得 $(s^2+\omega^2)e^{st}=0$，
+所以 $s=\pm i\omega$，实通解为
+\[
+ x=A\cos\omega t+B\sin\omega t,\qquad
+ \dot x=-A\omega\sin\omega t+B\omega\cos\omega t.
+\]
+由 $x(0)=d$ 得 $A=d$，由 $\dot x(0)=0$ 得 $B\omega=0$、$B=0$，
+故 $x=d\cos\omega t$。首次到 $0$ 时 $\omega t=\pi/2$，故 $t=\frac\pi2\sqrt{m\varepsilon_0/(q\rho)}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对整个运动是否满足场的适用范围}\par\nobreak
+运动始终位于板内，使用线性场的范围得到满足；若从板外释放，须先计算板外匀加速阶段再接续振动。\end{solution}
+\begin{question}\begin{example}[均匀半球面在球心的电场]\label{e1:example:11}
+半径 $R$ 的上半球薄壳均匀带正面电荷密度 $\sigma$，对称轴为 $z$。求球心电场。
+\end{example}
+\typeout{ECFIG:fig:e1:example:11:s}\fig{fig:e1:example:11:s}{题设：均匀半球面在球心的电场}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.6,0)arc(180:0:1.6);\draw[world](0,0)ellipse(1.6 and .35);\draw[axis](0,-1.1)--(0,2.1)node[above]{$z$};\fill(0,0)circle(1.4pt)node[below right]{$O$};\node at(2,1){$\sigma$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按纬线窄带计算电荷微元}\par\nobreak
+在 图\ref{fig:e1:example:11:s} 中按极角 $\theta$ 取纬线窄带，宽度为 $R\dd\theta$，周长 $2\pi R\sin\theta$，电荷
+\[
+ \dd q=2\pi\sigma R^2\sin\theta\,\dd\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先消去水平分量再作竖直投影}\par\nobreak
+窄带各微元到球心距离均为 $R$，水平分量抵消，竖直分量向下，故
+\[
+ \dd E_z=-\frac{k\dd q}{R^2}\cos\theta
+ =-2\pi k\sigma\sin\theta\cos\theta\,\dd\theta.
+\]
+\typeout{ECFIG:fig:e1:example:11:p}\fig{fig:e1:example:11:p}{纬线窄带上微元的水平场抵消，轴向投影均为负；极角从正 $z$ 轴量起}{\begin{tikzpicture}
+
+\draw(-2,0)arc(180:0:2);\draw(0,0)ellipse(2 and .3);\draw[axis](0,-2)--(0,2.8)node[above]{$z$};
+\draw[blue](0,1.414)ellipse(1.414 and .15);\draw[guide](0,0)--(1.414,1.414);
+\draw[->](90:.7)arc(90:45:.7);\node at(.5,1){$\theta$};
+\draw[force](0,0)--(-1,-1)node[left]{$\dd\bm E$};\draw[flow,blue](0,0)--(0,-1.5)node[right]{$\dd E_z<0$};
+\node at(4.5,1.4){$\dd q=2\pi\sigma R^2\sin\theta\,\dd\theta$};\node at(4.5,.4){$0\le\theta\le\pi/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用上半球的极角边界积分}\par\nobreak
+按 图\ref{fig:e1:example:11:p}，上半球对应 $\theta:0\to\pi/2$。令 $u=\sin\theta$，
+$\dd u=\cos\theta\dd\theta$，新上下限为 $0,1$，所以
+\begin{align*}
+ E_z&=-2\pi k\sigma\int_0^{\pi/2}\sin\theta\cos\theta\,\dd\theta\\
+ &=-2\pi k\sigma\int_0^1u\,\dd u
+ =-2\pi k\sigma\left[\frac{u^2}{2}\right]_0^1
+ =-\pi k\sigma=-\frac{\sigma}{4\varepsilon_0}.
+\end{align*}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查固定面密度与固定总电荷的区别}\par\nobreak
+方向向下、远离上半球电荷。$R^2$ 在面积与距离平方中抵消，所以固定面密度时结果不依赖 $R$；若固定总电荷 $Q=2\pi R^2\sigma$，则 $E=Q/(8\pi\varepsilon_0R^2)$，仍随 $R^{-2}$ 变化。\end{solution}
+\begin{question}\begin{example}[两带电平板间的场与相互吸引力]\label{e1:example:12}
+两大平行薄板面积 $S$、相距 $d$，上板带 $+Q$、下板带 $-Q$，$d$ 远小于板的线度。求板间、板外电场及两板吸引力。
+\end{example}
+\typeout{ECFIG:fig:e1:example:12:s}\fig{fig:e1:example:12:s}{题设：两带电平板间的场与相互吸引力}{\begin{tikzpicture}[scale=.88]
+\draw[world,very thick](-2,1.2)--(2,1.2)(-2,-1.2)--(2,-1.2);\node[right]at(2,1.2){$+Q$};\node[right]at(2,-1.2){$-Q$};\draw[dim](-2.6,-1.2)--(-2.6,1.2)node[midway,left]{$d$};\node at(0,1.7){面积 $S$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别叠加两块平板的电场}\par\nobreak
+图\ref{fig:e1:example:12:s} 中令 $\sigma=Q/S$。每板独自产生大小 $\sigma/(2\varepsilon_0)$ 的场，正板场远离正板、负板场指向负板。在板间两场都向下，故 $E_{\text{内}}=\sigma/\varepsilon_0=Q/(\varepsilon_0S)$；板外方向相反，近似抵消。
+\typeout{ECFIG:fig:e1:example:12:p}\fig{fig:e1:example:12:p}{解答过程：两带电平板间的场与相互吸引力}{\begin{tikzpicture}[scale=.88]
+\draw[world,very thick](-2,1.2)--(2,1.2)(-2,-1.2)--(2,-1.2);\node[right]at(2,1.2){$+Q$};\node[right]at(2,-1.2){$-Q$};\draw[dim](-2.6,-1.2)--(-2.6,1.2)node[midway,left]{$d$};\node at(0,1.7){面积 $S$};\draw[force](0,1.2)--(0,.15)node[right]{$F_+$};\draw[force](0,-1.2)--(0,-.15)node[right]{$F_-$};\node at(4,.2){$E_{\text{他板}}=\sigma/(2\varepsilon_0)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{排除自身场再求相互作用力}\par\nobreak
+求上板受力时，图\ref{fig:e1:example:12:p} 只保留下板在上板处的外场，大小 $\sigma/(2\varepsilon_0)$，所以
+\[
+ F=Q\frac{\sigma}{2\varepsilon_0}
+ =\frac{Q^2}{2\varepsilon_0S}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用作用反作用与固定条件检验}\par\nobreak
+下板受力大小相同、向上，满足相互作用力成对。固定 $Q,S$ 时结果不依赖小间距 $d$，这是忽略边缘效应的模型结论；若两板接电源使电压固定，$Q$ 会随 $d$ 改变，不能仍认定力不变。使用板间总场直接计算 $QE$ 会把自身场也计入，错误多一倍。\end{solution}

@@ -1,0 +1,72 @@
+\begin{drillsolution}{em3:drill:7}\textbf{按两条有效横边的位置分别建立空间方程}\par\nobreak
+图\ref{fig:em3:drill:7:s}的磁区宽$d\ge a$，$a$为线框沿运动方向的边长。取前边自左磁界前进的距离为$x$，令$\gamma=B^2l^2/R$。仅一条横边在磁区内时，电流大小为$Blv/R$，合磁力为$-\gamma v$，故在$v>0$的实际运动段
+\[
+ m\dot v=-\gamma v,\qquad
+ m\frac{\dd v}{\dd x}=-\gamma.
+\]
+全部进入时两边动生作用相消，速度保持不变；退出时电流反向，但合磁力仍阻碍运动。在进入段，以 $x=0,v=v_0$ 为初态积分，$m(v-v_0)=-\gamma x$；在退出段，以 $x=d,v=v_1$ 为初态积分，$m(v-v_1)=-\gamma(x-d)$。若能够穿出，连续接续得到
+\[
+ v(x)=
+ \begin{cases}
+ v_0-\gamma x/m,&0\le x\le a,\\
+ v_1=v_0-\gamma a/m,&a\le x\le d,\\
+ v_1-\gamma(x-d)/m,&d\le x\le d+a.
+ \end{cases}
+\]
+某段内若速度先趋零，后续分段不再被实际到达，应在相应位置截断。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按初速度区间判断三种结局并排除不可达分段}\par\nobreak
+\fig{fig:em3:drill:7:p}{三个不同初速度对应的结局；空心点表示无限时间的位置极限，曲线不延伸到负速度}{
+\begin{tikzpicture}[x=1.35cm,y=1.2cm]
+\draw[axis](0,0)--(5,0)node[right]{$x/a$};
+\draw[axis](0,0)--(0,3)node[above]{$mv/(\gamma a)$};
+\draw[guide](1,0)--(1,2.8) (3,0)--(3,2.8) (4,0)--(4,2.8);
+\draw[world,red](0,.7)--(.7,0);
+\draw[world,red,fill=white](.7,0)circle(2pt);
+\draw[world,blue,dashed](0,1.5)--(1,.5)--(3,.5)--(3.5,0);
+\draw[world,blue,fill=white](3.5,0)circle(2pt);
+\draw[world](0,2.5)--(1,1.5)--(3,1.5)--(4,.5)--(4.7,.5);
+\node[below]at(1,0){$1$};
+\node[below]at(3,0){$d/a=3$};
+\node[below]at(4.35,0){$(d+a)/a$};
+\node[red]at(1,-.9){进入时渐近停止};
+\node[blue]at(3.9,-.9){退出时渐近停止};
+\node at(2.6,2.6){实线黑：有限时间穿出};
+\end{tikzpicture}}
+
+图\ref{fig:em3:drill:7:p}用$d/a=3$作示意，三个初速度的归一化值分别为$0.7,1.5,2.5$。一般判据为
+\[
+ \begin{array}{c|c}
+ \text{初速度范围}&\text{运动结局}\\ \hline
+ 0<v_0\le\gamma a/m&\text{进入阶段渐近停止}\\
+ \gamma a/m<v_0\le2\gamma a/m&\text{退出阶段渐近停止}\\
+ v_0>2\gamma a/m&\text{有限时间完整穿出}
+ \end{array}
+\]
+第一类的极限位置为$x_s=mv_0/\gamma\le a$。第二类先以正速度$v_1$进入匀速段，再在$x_s=d+mv_0/\gamma-a\le d+a$趋零。两种停止都服从指数衰减，空心点仅表示位置极限；等号边界也不能视为有限时间恰好到达。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分段积分穿出时间并用动能差求热量}\par\nobreak
+此时$v_1>0$，穿出速度$v_2=v_0-2\gamma a/m>0$。分别用 $\dd t=\dd x/v(x)$ 积分。进入段令 $z=v_0-\gamma x/m$，则 $\dd x=-m\dd z/\gamma$，上下限 $x=0,a$ 对应 $z=v_0,v_1$，故
+\[
+t_1=-\frac m\gamma\int_{v_0}^{v_1}\frac{\dd z}{z}
+=-\frac m\gamma[\ln z]_{v_0}^{v_1}.
+\]
+匀速段直接积 $\int_a^d\dd x/v_1$。退出段同样用 $z=v_1-\gamma(x-d)/m$，上下限为 $v_1,v_2$，所以
+$t_3=-(m/\gamma)[\ln z]_{v_1}^{v_2}$。合并各段得
+\[
+ t_1=\frac m\gamma\ln\frac{v_0}{v_1},\quad
+ t_2=\frac{d-a}{v_1},\quad
+ t_3=\frac m\gamma\ln\frac{v_1}{v_2}.
+\]
+所以
+\[
+ \boxed{t=\frac m\gamma\ln\frac{v_0}{v_2}+\frac{d-a}{v_1}},
+ \qquad
+ \boxed{Q_J=\frac m2(v_0^2-v_2^2)}.
+\]
+在$d\ge a$的前提下，改变$d$只改变无磁通变化的匀速中段，因而不改变$v_2$。两类渐近停止的末动能均趋零，最终热量为$mv_0^2/2$，但不存在有限的“停止所需总时间”。
+\end{drillsolution}

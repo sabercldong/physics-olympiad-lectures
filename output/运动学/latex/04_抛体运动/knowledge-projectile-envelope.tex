@@ -1,0 +1,6 @@
+\fig{fv:k4:envelope}{固定初速的一族轨迹共同受包络线限制}{\begin{tikzpicture}[x=1.5cm,y=1.2cm]
+\draw[->](0,0)--(3.1,0)node[right]{$gx/v_0^2$};\draw[->](0,0)--(0,1.5)node[above]{$gy/v_0^2$};
+\foreach \p in {.5,1,1.7,2.5}{\draw[blue!65,domain=0:{2*\p/(1+\p*\p)},samples=50]plot(\x,{\p*\x-(1+\p*\p)*\x*\x/2});}
+\draw[red,thick,domain=0:1.7,samples=60]plot(\x,{.5-.5*\x*\x});\node[red]at(1.5,1.05){包络线};
+\end{tikzpicture}}
+图\ref{fv:k4:envelope}中的蓝线对应不同发射角，红线给同一横坐标可达到的最大高度。配方法中被减去的平方项表示具体射法相对上界的差；令其为零才找到相切的发射角。因此目标在红线下方只说明有代数候选角，还须核对发射方向、正的飞行时间及中途障碍。若发射角被限制在一个区间，上界也应在该区间内重新求，不能继续沿用全部角度的包络。

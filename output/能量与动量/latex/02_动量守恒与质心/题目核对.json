@@ -1,0 +1,122 @@
+[
+  {
+    "id": "em2:example:1",
+    "title": "车厢内的多次碰撞",
+    "check": "第二讲例1"
+  },
+  {
+    "id": "em2:example:2",
+    "title": "迎面碰撞的方向判断",
+    "check": "第二讲例2"
+  },
+  {
+    "id": "em2:example:3",
+    "title": "车内敲击能否持续推进",
+    "check": "第二讲例3"
+  },
+  {
+    "id": "em2:example:4",
+    "title": "车内单摆的瞬时碰撞",
+    "check": "第二讲例4"
+  },
+  {
+    "id": "em2:example:5",
+    "title": "从滑板车上向前跳出",
+    "check": "第二讲例5；手记4"
+  },
+  {
+    "id": "em2:example:6",
+    "title": "抛沙袋避免相撞",
+    "check": "第二讲例6"
+  },
+  {
+    "id": "em2:example:7",
+    "title": "物块滑上自由木板",
+    "check": "第二讲例7；手记4"
+  },
+  {
+    "id": "em2:example:8",
+    "title": "活动半圆槽中的位移",
+    "check": "第二讲例8；手记5"
+  },
+  {
+    "id": "em2:example:9",
+    "title": "弹簧释放与悬绳张力",
+    "check": "第二讲例9"
+  },
+  {
+    "id": "em2:example:10",
+    "title": "航行中的人船位移",
+    "check": "第二讲例10；手记5"
+  },
+  {
+    "id": "em2:example:11",
+    "title": "移动半球上的轨迹",
+    "check": "第二讲例11；手记5、8"
+  },
+  {
+    "id": "em2:example:12",
+    "title": "斜射入摆球的子弹",
+    "check": "第二讲例12"
+  },
+  {
+    "id": "em2:example:13",
+    "title": "二维散射的分量合成",
+    "check": "第二讲例13；手记11"
+  },
+  {
+    "id": "em2:example:14",
+    "title": "给定末速度与粘合碰撞",
+    "check": "第一讲例8"
+  },
+  {
+    "id": "em2:example:15",
+    "title": "火箭的质量比",
+    "check": "手记4；变质量喷射"
+  },
+  {
+    "id": "em2:example:16",
+    "title": "木板上两人互换位置",
+    "check": "手记5；多物体人船"
+  },
+  {
+    "id": "em2:example:17",
+    "title": "接收竖直落雨的小车",
+    "check": "手记4；变质量的质心理解"
+  },
+  {
+    "id": "em2:example:18",
+    "title": "最高点爆炸的抛体",
+    "check": "补充：质心与爆炸"
+  },
+  {
+    "id": "em2:example:19",
+    "title": "两个物块在板内移动的统一位移式",
+    "check": "手记5；多自由部分的位移"
+  },
+  {
+    "id": "em2:example:20",
+    "title": "匀速整体中的相对速度突变",
+    "check": "补充：守恒量与参考系"
+  },
+  {
+    "id": "em2:drill:1",
+    "title": "摆球粘到车上的泥团",
+    "check": "第二讲练习1"
+  },
+  {
+    "id": "em2:drill:2",
+    "title": "反复向墙抛球",
+    "check": "第二讲练习2；手记5"
+  },
+  {
+    "id": "em2:drill:3",
+    "title": "相向弹簧碰撞的速度区间",
+    "check": "第二讲练习3；手记5、10"
+  },
+  {
+    "id": "em2:drill:4",
+    "title": "风扇、船帆与动量流",
+    "check": "手记2；风扇船帆"
+  }
+]

@@ -1,0 +1,19 @@
+\fig{fig:phase-amounts}{定温改变气体空间时，气相与液相水量之和保持不变}{
+\begin{tikzpicture}[x=3cm,y=2.2cm]
+\draw[axis] (0,0)--(2.4,0) node[right]{$V/V_*$};
+\draw[axis] (0,0)--(0,1.4) node[above]{物质的量$/n_w$};
+\draw[world,blue] (.05,.05)--(1,1)--(2.2,1);
+\draw[thick,dashed] (.05,.95)--(1,0)--(2.2,0);
+\draw[guide] (1,0)--(1,1);\node[below] at (1,0){$1$};\node[left] at (0,1){$1$};
+\node[above,blue] at (1.7,1){气相 $n_v/n_w$};
+\node[above right] at (.15,.85){液相 $n_l/n_w$};
+\node[below,align=center] at (.55,-.3){气液共存\\$p_v=p_s$};
+\node[below,align=center] at (1.7,-.3){液体已尽\\$p_v<p_s$};
+\end{tikzpicture}}
+图\ref{fig:phase-amounts}与压强图描述同一个过程，横坐标 $V_*=n_wRT/p_s$ 由水量、温度共同决定。在共存段，$n_v/n_w=V/V_*$ 随体积线性增加，$n_l/n_w=1-V/V_*$ 同时减少；液体恰尽后，$n_v=n_w$、$n_l=0$，再膨胀不能继续增加气相水量。每一个状态都同时满足
+\[
+ n_v+n_l=n_w,\qquad n_l\ge0,\qquad p_v\le p_s(T).
+\]
+若计算得到负的剩余液量，说明错误地把共存分支延伸过了 $V_*$；若全部气态试算得到 $p_v>p_s$，则应考虑凝结分支。这两个检验分别排除两种相反的错误。含空气时图中的水量关系仍成立，空气只需另用自身守恒关系求分压。
+
+以上分支图以温度已知为前提。若容器绝热或温度也待求，$p_s(T)$、气相量、液相量与温度须同时满足能量守恒，不能先把温度固定，再用一个与实际端点不相容的饱和压。决定相态、写物质守恒和写能量守恒应相互校验。

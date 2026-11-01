@@ -1,0 +1,63 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{n2d1}\textbf{从共同运动求所需的压力和摩擦}\par\nobreak
+图\ref{n2d1q}物块随斜面共同水平加速时，$N=m(g\cos\theta+A\sin\theta)>0$，所需沿面向上摩擦 $f=m(g\sin\theta-A\cos\theta)$。因此条件为
+\[-\mu_s(g\cos\theta+A\sin\theta)\le g\sin\theta-A\cos\theta\le\mu_s(g\cos\theta+A\sin\theta).\]
+\fig{n2d1s}{两侧临界对应相反的相对滑动趋势}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$A$};\draw[very thick,blue](1,0)--(4,0);\draw(1,-.15)--(1,.15) (4,-.15)--(4,.15);\node[above]at(1,.2){向下滑动边界};\node[below]at(4,-.2){向上滑动边界};\node at(2.5,.8){相对静止区间};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别解两侧摩擦边界并与驱动范围取交集}\par\nobreak
+右侧不等式给 $A\ge g(\sin\theta-\mu_s\cos\theta)/(\cos\theta+\mu_s\sin\theta)$；左侧在题设 $\mu_s<\cot\theta$ 下给 $A\le g(\sin\theta+\mu_s\cos\theta)/(\cos\theta-\mu_s\sin\theta)$。与 $A\ge0$ 取交集，得到图\ref{n2d1s}的区间
+\[
+ \max\left\{0,\frac{g(\sin\theta-\mu_s\cos\theta)}{\cos\theta+\mu_s\sin\theta}\right\}
+ \le A\le\frac{g(\sin\theta+\mu_s\cos\theta)}{\cos\theta-\mu_s\sin\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验零加速度及分母条件}\par\nobreak
+当 $\mu_s\ge\tan\theta$ 时零加速度也在区间内，正对应斜面静止时摩擦能够防止下滑。分母为零或负的情形须回到原始不等式，不能继续用同一个上界公式。
+\end{drillsolution}
+
+\begin{drillsolution}{n2d2}\textbf{令下滑轮不动，先解下绳两个物体}\par\nobreak
+图\ref{n2d2q}若下滑轮中心不动，下绳加速度满足 $a_A=-a_B$。约定 $A$ 向下为正，列 $m_Ag-T=m_Aa$、$T-m_Bg=m_Ba$，相加得 $a=(m_A-m_B)g/(m_A+m_B)$，代回得 $T=2m_Am_Bg/(m_A+m_B)$。
+\fig{n2d2s}{上绳平衡条件决定所需悬重}{\begin{tikzpicture}
+\draw[world](0,0)circle(.4);\draw[force,blue](0,0)--(0,1.3)node[above]{$m_Cg$};\draw[force,red](-.4,0)--(-.4,-1.2)node[below]{$T$};\draw[force,red](.4,0)--(.4,-1.2)node[below]{$T$};\node at(2.7,0){$m_Cg=2T$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用轻轮的张力倍数确定上绳悬重}\par\nobreak
+由图\ref{n2d2s}隔离轻动滑轮，上绳张力$T_1=2T$；再隔离静止的$C$，$m_Cg=T_1=2T$。代入下绳张力并约去$g$，得$m_C=4m_Am_B/(m_A+m_B)$。取此值且初始滑轮与$C$静止，它们可保持静止，而下绳两球反向加速。若$m_A<m_B$，上述$a<0$，表示实际是$A$向上，质量条件不变。$m_A=m_B$时三物体均可静止。
+\end{drillsolution}
+
+\begin{drillsolution}{n2d3}\textbf{用前轴实际载荷限制驱动力}\par\nobreak
+图\ref{n2d3q}不俯仰时，前后载荷仍满足 $N_f+N_r=mg$、$N_r-N_f=mah/l$，故 $N_f=mg/2-mah/(2l)$。前轮摩擦提供 $f=ma$，不打滑条件 $ma\le\mu_sN_f$。
+\fig{n2d3s}{前轮驱动同时受到驱动力需求和前轴减载限制}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$a$};\draw[axis](0,0)--(0,2.1)node[above]{力};\draw[world](0,0)--(4,1.8)node[right]{$ma$};\draw[world,blue](0,1.8)--(4,0)node[above right]{$\mu_sN_f$};\fill(2,.9)circle(2pt);\node[below]at(2,0){$a_{\max}$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两曲线交点求最大加速度并核查接触}\par\nobreak
+由图\ref{n2d3s}两线交点，$a(2l+\mu_sh)\le\mu_sgl$，所以 $a_{\max}=\mu_sgl/(2l+\mu_sh)$。这个值小于 $gl/h$，因而在摩擦上限达到之前前轮不会先失去接触。相同 $\mu_s$ 下，前轮驱动加速时载荷减小，所能提供的驱动力随之降低。
+\end{drillsolution}
+
+\begin{drillsolution}{n2d4}\textbf{先求保持接触时的加速度与支持力}\par\nobreak
+图\ref{n2d4q}向右为正，水平力$F=-P$。先分别对斜面和导向块列式：
+\[
+-P-N\sin\theta=MA,\qquad N\cos\theta-mg=mb.
+\]
+固定导轨处的斜面高度为$z=z_0+X\tan\theta$，依次求导得$\dot z=\dot X\tan\theta$、$b=\ddot z=A\tan\theta$。由竖直式$N\cos\theta=m(g+A\tan\theta)$，乘$\tan\theta$后代入水平式，得到$-P-mg\tan\theta=(M+m\tan^2\theta)A$。所以$A=(-P-mg\tan\theta)/(M+m\tan^2\theta)$；再回代竖直式，支持力为
+\[N=\frac{m(Mg-P\tan\theta)}{(M+m\tan^2\theta)\cos\theta}.\]
+\fig{n2d4s}{斜面退得更快时，滑块不能被表面向下拉}{\begin{tikzpicture}
+\draw[world](-2,0)--(1,0)--(-2,1.9)--cycle;\draw[guide](-2.7,0)--(.3,0)--(-2.7,1.9)--cycle;\fill(.2,1)circle(3pt)node[right]{$m$};\draw[flow](.2,1)--(.2,-.2)node[right]{$g$};\draw[flow](-1,.5)--(-2.3,.5)node[left]{$P/M$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定失去接触阈值并重建分离运动}\par\nobreak
+$N\ge0$ 给 $0\le P\le Mg\cot\theta$。超过阈值后，图\ref{n2d4s}滑块与斜面分离，释放瞬间 $A=-P/M$，滑块 $b=-g$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以间隙加速度检验分离的方向}\par\nobreak
+斜面在导轨处的高度加速度为 $A\tan\theta=-P\tan\theta/M<-g$，因此表面下降比滑块快，二者间隙确实增加，验证分离假设。
+\end{drillsolution}

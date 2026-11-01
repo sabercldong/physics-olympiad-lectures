@@ -1,0 +1,472 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[半面积填充的自由电荷与极化电荷]\label{e5:example:1}
+平行板面积 $S$、间距 $d$，一半面积为真空，另一半填满相对介电常数 $\kappa$ 的介质。两板自由电量为 $\pm Q$。求两区场、自由电荷分配以及介质两端的束缚电荷。
+\end{example}
+\typeout{ECFIG:fig:e5:example:1:s}\fig{fig:e5:example:1:s}{相同间距、各占半面积的真空区与介质区}{\begin{tikzpicture}
+\fill[blue!12](0,0)rectangle(2.5,3);\draw[world](0,0)--(5,0)(0,3)--(5,3);\draw[guide](2.5,0)--(2.5,3);\node at(1.25,1.8){$\kappa,S/2$};\node at(3.75,1.8){真空，$S/2$};\draw[dim](5.7,0)--(5.7,3)node[midway,right]{$d$};\node at(2.5,3.6){上板自由电量 $+Q$};\node at(2.5,-.6){下板自由电量 $-Q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由共同电压确定两区同场}\par\nobreak
+图\ref{fig:e5:example:1:s} 两区并联，电势差相同，场同为 $E$。正极自由电量分别为 $Q_v=\varepsilon_0ES/2$、$Q_d=\kappa\varepsilon_0ES/2$，故 $Q=\varepsilon_0ES(1+\kappa)/2$。
+\typeout{ECFIG:fig:e5:example:1:p}\fig{fig:e5:example:1:p}{金属自由电荷与介质端面束缚电荷分别标注}{\begin{tikzpicture}
+\fill[blue!12](0,0)rectangle(2.5,3);\draw[world](0,0)--(5,0)(0,3)--(5,3);\draw[guide](2.5,0)--(2.5,3);\node at(1.25,1.8){$\kappa,S/2$};\node at(3.75,1.8){真空，$S/2$};\draw[dim](5.7,0)--(5.7,3)node[midway,right]{$d$};\node at(1.25,3.6){自由 $+Q_d$};\node at(3.75,3.6){自由 $+Q_v$};\node at(1.25,2.6){束缚 $-Q_b$};\node at(1.25,.4){束缚 $+Q_b$};\draw[flow](.6,2.1)--(.6,.9)node[midway,left]{$\bm P$};\draw[flow](3.75,1.2)--(3.75,.5)node[midway,right]{$E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总自由电量求场强及分配}\par\nobreak
+由 图\ref{fig:e5:example:1:p} 得
+\[
+ E=\frac{2Q}{\varepsilon_0S(1+\kappa)},\quad
+ Q_v=\frac Q{1+\kappa},\quad Q_d=\frac{\kappa Q}{1+\kappa},\quad
+ C=\frac{\varepsilon_0S(1+\kappa)}{2d}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按介质外法向求束缚面电荷}\par\nobreak
+介质极化强度 $P=\varepsilon_0(\kappa-1)E$。若场从上板指向下板，介质上端法向向上，所以其束缚电荷为 $-PS/2=-Q(\kappa-1)/(1+\kappa)$，下端相反。介质与真空的竖直界面法向水平，$P_n=0$，无束缚面电荷。正极板上自由电荷分配不均匀，但两区电场相同。\end{solution}
+\begin{question}\begin{example}[抽出介质后平衡质子的运动]\label{e5:example:2}
+两水平极板带固定的等量异号自由电荷，半面积填入介质 $\kappa>1$。真空区中正电质子原在重力与电力作用下平衡，下板正、上板负。缓慢抽出介质，忽略质子自身对场的扰动，判断质子随后运动。
+\end{example}
+\typeout{ECFIG:fig:e5:example:2:s}\fig{fig:e5:example:2:s}{题设：抽出介质后平衡质子的运动}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.25)--(4.5,1.25);\node[right]at(4.5,1.25){$A$};\draw[world](0,0.0)--(4.5,0.0);\node[right]at(4.5,0.0){$B$};\fill[blue!12](0,0)rectangle(2.2,1.25);\draw[guide](2.2,0)--(2.2,1.25);\node at(1,.6){$\kappa$};\node at(3.4,.6){};\draw[world,fill=white](3.3,0.6)circle(.12);\node[above]at(3.3,0.75){$+q$};\node at(-1,1.25){$-Q$};\node at(-1,0){$+Q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用初始平衡确定电场与重力的关系}\par\nobreak
+在 图\ref{fig:e5:example:2:s} 初态真空区 $E_i=2Q/[(1+\kappa)\varepsilon_0S]$ 向上，平衡给 $qE_i=mg$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由断电约束求抽出后的场}\par\nobreak
+两板电量固定，抽出后 $E_f=Q/(\varepsilon_0S)=(1+\kappa)E_i/2$，比初场强。
+\typeout{ECFIG:fig:e5:example:2:p}\fig{fig:e5:example:2:p}{抽出后质子的向上电力增大，重力保持不变}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)(0,3)--(4,3);\node[left]at(0,3){$-Q$};\node[left]at(0,0){$+Q$};\fill(2,1.5)circle(2pt);\draw[force](2,1.5)--(2,2.8)node[right]{$qE_f$};\draw[force](2,1.5)--(2,.7)node[right]{$mg$};\draw[flow](.7,.7)--(.7,2.1)node[midway,left]{$E_f$};\node at(2,3.7){完全抽出后的状态};\node[right]at(5,1.8){$E_f/E_i=(1+\kappa)/2>1$};\node[right]at(5,.8){上行途中碰板即结束此模型};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较电力与重力并说明运动阶段}\par\nobreak
+图\ref{fig:e5:example:2:p} 最终向上合力 $qE_f-mg=mg(\kappa-1)/2>0$，故向上加速。抽出进行时电容已逐渐减小，质子一般已开始上行；若完全抽出前尚未碰板，此后的加速度为 $a=(\kappa-1)g/2$，直到碰到上板或条件改变。若改成恒压连接，抽出前后真空区场均为 $U/d$，质子仍可平衡。决定结论的是自由电量固定这一条件，不是抽出介质这一动作本身。\end{solution}
+\begin{question}\begin{example}[并联电容器接电源后插入介质]\label{e5:example:3}
+两电容器 $C_1,C_2$ 并联接恒压源 $U$，在第一只中完全插入介质使电容变为 $\kappa C_1$，第二只不变。求各自电量变化、电源输送电量、场能增量和可输出机械功。
+\end{example}
+\typeout{ECFIG:fig:e5:example:3:s}\fig{fig:e5:example:3:s}{两只电容与恒压电源的实际并联接线}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$C_1$}](0,3)--(4,3)to[C,l={$C_2$}](4,0)--(0,0);\draw(4,3)--(7,3)to[battery1,l={$U$}](7,0)--(4,0);\node at(2,3.8){$A$};\node at(2,-.7){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按实际接源条件求两支电量变化}\par\nobreak
+图\ref{fig:e5:example:3:s} 两电容电压始终为 $U$。第一只电量由 $C_1U$ 增到 $\kappa C_1U$，第二只仍为 $C_2U$；所以电源向正极组输送 $\Delta Q=(\kappa-1)C_1U$。
+\typeout{ECFIG:fig:e5:example:3:p}\fig{fig:e5:example:3:p}{第一支电容增大，所需额外电荷由电源补充}{\begin{tikzpicture}
+\draw(0,0)to[C,l_={$\kappa C_1$}](0,3)--(4,3)to[C,l={$C_2$}](4,0)--(0,0);\draw(4,3)--(7,3)to[battery1,l={$U$}](7,0)--(4,0);\node at(2,3.8){$A$};\node at(2,-.7){$B$};\draw[flow](6.5,3.25)--(4.7,3.25)node[midway,above]{$\Delta Q$};\draw[flow](2.8,3.25)--(.8,3.25);\node at(2,-1.5){第二支电量不变};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算电源功与场能变化}\par\nobreak
+在 图\ref{fig:e5:example:3:p} 电源功 $W_s=U\Delta Q=(\kappa-1)C_1U^2$，场能增加 $\Delta W=\tfrac12(\kappa-1)C_1U^2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用能量差求场力输出的机械功}\par\nobreak
+理想缓慢插入时，场力向外输出的机械功为 $W_s-\Delta W=\tfrac12(\kappa-1)C_1U^2$；外力作等值负功。第二只虽与第一只相连，其电量并不因此减少，原因是电源补充了所需电荷。\end{solution}
+\begin{question}\begin{example}[断电后插入厚金属片]\label{e5:example:4}
+平行板电容器面积 $S$、间距 $d$，先充至 $U_0$ 后断电。插入厚 $t<d$、面积同极板的中性金属片，不接触两极。求电容、场、电压与场能变化，并讨论金属片位置。
+\end{example}
+\typeout{ECFIG:fig:e5:example:4:s}\fig{fig:e5:example:4:s}{中性金属片不接触两极，厚度 $t$ 小于原间距 $d$}{\begin{tikzpicture}
+
+\fill[gray!20](0,1)rectangle(5,1.8);\draw[world](0,0)--(5,0)(0,3)--(5,3)(0,1)rectangle(5,1.8);\node at(2.5,1.4){金属片};\draw[dim](5.6,1)--(5.6,1.8)node[midway,right]{$t$};\draw[dim](-.6,0)--(-.6,3)node[midway,left]{$d$};
+\node at(2.5,3.6){断电后 $Q$ 固定};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留断电后的自由电量}\par\nobreak
+图\ref{fig:e5:example:4:s} 初电量 $Q=\varepsilon_0SU_0/d$，断电后保持。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由中性与片内零场确定两隙场}\par\nobreak
+金属片两面感应等量异号电荷，片内场零，两个真空间隙仍有同样场 $E=Q/(\varepsilon_0S)=U_0/d$。
+\typeout{ECFIG:fig:e5:example:4:p}\fig{fig:e5:example:4:p}{电压只降在两侧真空间隙，片内场为零}{\begin{tikzpicture}
+
+\fill[gray!20](0,1)rectangle(5,1.8);\draw[world](0,0)--(5,0)(0,3)--(5,3)(0,1)rectangle(5,1.8);\node at(2.5,1.4){金属片};\draw[dim](5.6,1)--(5.6,1.8)node[midway,right]{$t$};\draw[dim](-.6,0)--(-.6,3)node[midway,left]{$d$};
+\draw[flow](3.7,2.8)--(3.7,2)node[midway,right]{$E$};\draw[flow](3.7,.8)--(3.7,.2)node[midway,right]{$E$};\node at(1,2.05){$-Q$};\node at(1,.75){$+Q$};\node at(2.5,-.7){两隙总厚度 $d-t$，片内 $E=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电压、电容及能量并讨论位置}\par\nobreak
+图\ref{fig:e5:example:4:p} 电压只跨剩余总厚度 $d-t$，所以 $U=U_0(d-t)/d$，电容 $C=\varepsilon_0S/(d-t)$，储能 $W=Q^2(d-t)/(2\varepsilon_0S)$。场能减少 $Q^2t/(2\varepsilon_0S)$，与片在法向放置的位置无关。这里保持不变的是间隙场，不是总电压；若片接触其中一极，连接组的定义发生改变，需要重新写条件。\end{solution}
+\begin{question}\begin{example}[孤立平行板拉开到原来的多倍]\label{e5:example:5}
+电容为 $C$ 的真空平行板充至 $U$ 后断电，准静态将间距变为原来的 $n>1$ 倍。求外力功，并说明为什么它不是 $CU^2(n^2-1)/2$。
+\end{example}
+\typeout{ECFIG:fig:e5:example:5:s}\fig{fig:e5:example:5:s}{上板从初始虚线位置准静态移到最终实线位置}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)(0,3)--(4,3);\draw[guide](0,1)--(4,1);\draw[dim](-.5,0)--(-.5,1)node[midway,left]{$d$};\draw[dim](-1.2,0)--(-1.2,3)node[midway,left]{$nd$};\node[right]at(4,3){$+Q$};\node[right]at(4,0){$-Q$};\node at(2,3.7){$Q=CU$ 固定};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把初态和末态的电容与电压分别列出}\par\nobreak
+图\ref{fig:e5:example:5:s} 保持 $Q=CU$，间距增大使末电容 $C_f=C/n$，末电压 $U_f=nU$。外力克服吸引，所作功等于场能增加。
+\typeout{ECFIG:fig:e5:example:5:p}\fig{fig:e5:example:5:p}{拉开时场强与力不变，新增体积带来场能增加}{\begin{tikzpicture}
+
+\fill[blue!12](0,1)rectangle(4,3);\draw[world](0,0)--(4,0)(0,3)--(4,3);\draw[guide](0,1)--(4,1);\draw[force](1,3)--(1,4)node[right]{$F_{\text{外}}$};\draw[force](3,3)--(3,2)node[right]{$F_{\text{电}}$};\draw[flow](1.8,.8)--(1.8,.2)node[midway,right]{$E$};\node at(2,1.6){新增体积 $S(n-1)d$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一状态内使用储能公式}\par\nobreak
+图\ref{fig:e5:example:5:p} 中 $W_i=Q^2/(2C)$，$W_f=Q^2/(2C_f)=nQ^2/(2C)$，故
+\[
+ W_{\text{外}}=\frac12(n-1)CU^2.
+\]
+错误的 $n^2$ 因子来自只替换电压，却把电容仍当作原值；储能式中的 $C,U$ 必须属于同一状态。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恒力乘位移独立核对}\par\nobreak
+也可用固定场 $E=Q/(\varepsilon_0S)$ 所产生的恒定吸引力 $F=Q^2/(2\varepsilon_0S)$ 乘位移 $(n-1)d$ 验证。\end{solution}
+\begin{question}\begin{example}[两层介质的场与界面束缚电荷]\label{e5:example:6}
+两板面积 $S$、间距 $d$，厚度各 $d/2$ 的两层介质相对介电常数为 $\kappa_1,\kappa_2$，两极电压 $U$，界面无自由电荷。求各层场、自由电量及界面束缚密度。
+\end{example}
+\typeout{ECFIG:fig:e5:example:6:s}\fig{fig:e5:example:6:s}{题设：两层介质的场与界面束缚电荷}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.25)--(4.5,1.25);\node[right]at(4.5,1.25){$A$};\draw[world](0,0.0)--(4.5,0.0);\node[right]at(4.5,0.0){$B$};\fill[blue!12](0,0)rectangle(4.5,.65);\draw[guide](0,.65)--(4.5,.65);\node at(2,.3){$\kappa_2$};\node at(2,.95){$\kappa_1$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用界面无自由电荷确定共同电位移}\par\nobreak
+图\ref{fig:e5:example:6:s} 沿场方向从第一层指向第二层。界面法向电位移连续，$D=\kappa_1\varepsilon_0E_1=\kappa_2\varepsilon_0E_2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两层电压相加求场和自由电量}\par\nobreak
+电压 $U=(E_1+E_2)d/2$，故
+\[
+ D=\frac{2\varepsilon_0U}{d(1/\kappa_1+1/\kappa_2)},\quad
+ E_i=\frac D{\kappa_i\varepsilon_0},\quad Q_f=DS.
+\]
+\typeout{ECFIG:fig:e5:example:6:p}\fig{fig:e5:example:6:p}{贴邻端面的外法向相反，束缚密度必须代数相加}{\begin{tikzpicture}
+
+\fill[blue!10](0,1.5)rectangle(5,3);\fill[orange!10](0,0)rectangle(5,1.5);\draw[world](0,0)--(5,0)(0,3)--(5,3);\draw[guide](0,1.5)--(5,1.5);\node at(1,2.3){$\kappa_1$};\node at(1,.7){$\kappa_2$};\draw[flow](2,2.8)--(2,1.8)node[midway,left]{$\bm P_1$};\draw[flow](2,1.2)--(2,.2)node[midway,left]{$\bm P_2$};\draw[axis](4.3,2.5)--(4.3,1.65)node[pos=.2,right]{$\bm n_1$};\draw[axis](4.3,.5)--(4.3,1.35)node[pos=.2,right]{$\bm n_2$};\node at(2.5,3.8){两层共享 $D$，各厚 $d/2$};\node at(2.5,-.7){界面总束缚密度 $P_1-P_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两侧相反外法向合计束缚密度}\par\nobreak
+图\ref{fig:e5:example:6:p} 界面第一层的外法向顺场，第二层外法向逆场，两个贴邻束缚面电荷相加，
+\[
+ \sigma_b=P_1-P_2
+ =D\left(\frac1{\kappa_2}-\frac1{\kappa_1}\right)
+ =\varepsilon_0(E_2-E_1).
+\]
+它通常不为零，而自由界面密度为零；把这两个不同概念混同会误写成场连续。取 $\kappa_1=\kappa_2$，界面束缚电荷相消、两层场相同，回到均匀介质。\end{solution}
+\begin{question}\begin{example}[部分插入介质的两种受力过程]\label{e5:example:7}
+矩形极板长 $L$、宽 $b$、间距 $d$，介质 $\kappa$ 恰填满间隙，已从一侧插入 $x$。分别在定电压 $U$、定电量 $Q$ 下求吸入力和从 $0$ 插到 $L$ 的场力功。
+\end{example}
+\typeout{ECFIG:fig:e5:example:7:s}\fig{fig:e5:example:7:s}{题设：部分插入介质的两种受力过程}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.25)--(4.5,1.25);\node[right]at(4.5,1.25){$A$};\draw[world](0,0.0)--(4.5,0.0);\node[right]at(4.5,0.0){$B$};\fill[blue!12](0,0)rectangle(2.2,1.25);\draw[guide](2.2,0)--(2.2,1.25);\node at(1,.6){$\kappa$};\node at(3.4,.6){真空};\draw[dim](0,-.8)--(2.2,-.8)node[midway,below]{$x$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由已插入与未插入面积建立电容函数}\par\nobreak
+图\ref{fig:e5:example:7:s} 已插入与未插入部分并联，$C(x)=\alpha[L+(\kappa-1)x]$，其中 $\alpha=\varepsilon_0b/d$。图\ref{fig:e5:example:7:p} 将 $x$ 增加作为吸入方向。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在恒压条件下计算力与功}\par\nobreak
+定压时
+\[
+ F_U=\tfrac12U^2\alpha(\kappa-1).
+\]
+从完全未插入 $x=0$ 到完全插入 $x=L$，恒力作功为
+\[
+W_U=\int_0^L F_U\,\dd x
+=\frac12U^2\alpha(\kappa-1)[x]_0^L
+=\frac12U^2\alpha(\kappa-1)L.
+\]
+这是电源功减场能增量的结果，不能用负的场能导数漏掉电源。
+\typeout{ECFIG:fig:e5:example:7:p}\fig{fig:e5:example:7:p}{以相同初态比较定压恒力与定量递减力，曲线面积表示功}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)rectangle(4,2);\draw[axis](0,0)--(4.8,0)node[right]{$x/L$};\draw[axis](0,0)--(0,2.8)node[above]{$F/F_0$};\draw[world](0,2)--(4,2)node[right]{定压};\draw[world,domain=0:1,samples=60]plot({4*\x},{2/(1+2*\x)^2});\node at(2,.7){定量};\node[below]at(4,0){$1$};\node[left]at(0,2){$1$};\node at(2.8,2.8){示意取 $\kappa=3$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定电量条件下积分或取能量差}\par\nobreak
+定量时 $F_Q=Q^2\alpha(\kappa-1)/(2C(x)^2)$，沿插入方向为正，且随 $x$ 增大而减小。这次力随位置变化。令 $u=C(x)$，则 $\dd u=\alpha(\kappa-1)\dd x$；当 $x$ 从 $0$ 变到 $L$ 时，$u$ 从 $\alpha L$ 变到 $\alpha\kappa L$。于是
+\begin{align*}
+W_Q&=\int_0^L\frac{Q^2\alpha(\kappa-1)}{2C(x)^2}\,\dd x
+=\frac{Q^2}{2}\int_{\alpha L}^{\alpha\kappa L}u^{-2}\,\dd u\\
+&=\frac{Q^2}{2}[-u^{-1}]_{\alpha L}^{\alpha\kappa L}
+=\frac{Q^2}2\left[\frac1{\alpha L}-\frac1{\alpha\kappa L}\right]
+=\frac{Q^2(\kappa-1)}{2\alpha\kappa L}.
+\end{align*}
+结果也等于定量条件下场能的减少。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查瞬时力的一致性与过程差别}\par\nobreak
+同一瞬时状态若 $Q=C(x)U$，两种力式给出相同数值；两条过程从此以后因约束不同而沿不同的 $U(x)$ 演化。\end{solution}
+\begin{question}\begin{example}[介电常数渐变的平板]\label{e5:example:8}
+介质填满间隙，$\varepsilon(x)=\varepsilon_0(1+\alpha x/d)$，$0<x<d$、$\alpha>0$。板面积 $S$、自由电量 $\pm Q$，求电容、场、势及体束缚电荷密度。
+\end{example}
+\typeout{ECFIG:fig:e5:example:8:s}\fig{fig:e5:example:8:s}{坐标从正极指向负极，介电常数沿 $x$ 递增}{\begin{tikzpicture}
+
+\fill[left color=blue!4,right color=blue!30](0,0)rectangle(5,2);\draw[world](0,0)--(0,2)(5,0)--(5,2);\node[above]at(0,2){$A:+Q$};\node[above]at(5,2){$B:-Q$};\draw[axis](0,-.5)--(5.7,-.5)node[right]{$x$};\node[below]at(0,-.5){$0$};\node[below]at(5,-.5){$d$};\node at(2.5,1){$\varepsilon_0(1+\alpha x/d)$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求不随位置变化的电位移}\par\nobreak
+图\ref{fig:e5:example:8:s} 介质体内无自由电荷，$D=Q/S$ 为常数，所以 $E(x)=Q/[\varepsilon_0S(1+\alpha x/d)]$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分电场求电压、电容与电势}\par\nobreak
+沿图\ref{fig:e5:example:8:p}的 $+x$ 方向积分。用 $s$ 表示积分变量，令 $u=1+\alpha s/d$，则 $\dd s=(d/\alpha)\dd u$，两端对应 $u=1$ 和 $u=1+\alpha x/d$：
+\begin{align*}
+V(0)-V(x)
+&=\int_0^x \frac{Q\,\dd s}{\varepsilon_0S(1+\alpha s/d)}
+=\frac{Qd}{\varepsilon_0S\alpha}\int_1^{1+\alpha x/d}\frac{\dd u}{u}\\
+&=\frac{Qd}{\varepsilon_0S\alpha}[\ln u]_1^{1+\alpha x/d}
+=\frac{Qd}{\varepsilon_0S\alpha}\ln(1+\alpha x/d).
+\end{align*}
+令 $x=d$ 得两板电压，再用 $C=Q/U$：
+\[
+U=\frac{Qd}{\varepsilon_0S\alpha}\ln(1+\alpha),\qquad
+C=\frac{\varepsilon_0S\alpha}{d\ln(1+\alpha)}.
+\]
+\typeout{ECFIG:fig:e5:example:8:p}\fig{fig:e5:example:8:p}{$D$ 不变，$E$ 递减，增加的极化对应负体束缚电荷}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$x/d$};\draw[axis](0,0)--(0,3)node[above]{$E/(Q/\varepsilon_0S)$};\draw[world,domain=0:1,samples=50]plot({4*\x},{2.4/(1+2*\x)});\node[below]at(4,0){$1$};\node[left]at(0,2.4){$1$};\draw[guide](4,0)--(4,.8);\node[right]at(4,.8){$1/(1+\alpha)$};\node at(2.7,2.6){曲线示意 $\alpha=2$};\node at(2.6,-1){$\rho_b<0$，末端正面电荷补足总量};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由极化梯度求体束缚密度}\par\nobreak
+极化 $P=D-\varepsilon_0E=(Q/S)[1-1/(1+\alpha x/d)]$，固定 $Q,S,d,\alpha$，对倒数项使用链式法则：
+\[
+\frac{\dd P}{\dd x}
+=\frac QS\left[-(-1)(1+\alpha x/d)^{-2}\frac{\alpha}{d}\right]
+=\frac{Q\alpha}{Sd(1+\alpha x/d)^2}.
+\]
+所以 $\rho_b=-\dd P/\dd x=-Q\alpha/[Sd(1+\alpha x/d)^2]$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把全部端面与体电荷合计核验}\par\nobreak
+上端 $P(0)=0$，下端束缚密度 $P(d)=Q\alpha/[S(1+\alpha)]$；体束缚量仍用 $u=1+\alpha x/d$ 积分：
+\[
+Q_{b,\text{体}}=\int_0^d \rho_b S\,\dd x
+=-Q\int_1^{1+\alpha}u^{-2}\,\dd u
+=Q[u^{-1}]_1^{1+\alpha}
+=-\frac{Q\alpha}{1+\alpha}.
+\]
+下端面电量为 $SP(d)=Q\alpha/(1+\alpha)$，上端面为零，三者之和为零，满足电荷守恒。$\alpha\to0$ 时 $\ln(1+\alpha)\sim\alpha$，电容回到真空结果。\end{solution}
+\begin{question}\begin{example}[连续介质参数改变的定量与定压能量]\label{e5:example:9}
+电容器几何不变，介电常数缓慢从 $\varepsilon_0$ 增至 $\kappa\varepsilon_0$，初电容 $C_0$、初电压 $U_0$。分别在孤立和始终接电源的条件下，求电场能、电源功与可对外作的机械功。
+\end{example}
+\typeout{ECFIG:fig:e5:example:9:s}\fig{fig:e5:example:9:s}{题设：连续介质参数改变的定量与定压能量}{\begin{tikzpicture}[scale=.88]
+\fill[blue!12](0,0)rectangle(4.5,1.25);\draw[world](0,1.25)--(4.5,1.25);\node[right]at(4.5,1.25){$A$};\draw[world](0,0.0)--(4.5,0.0);\node[right]at(4.5,0.0){$B$};\node at(2.25,.6){$\kappa:1\to\kappa$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定电量时由场能降低求理想输出}\par\nobreak
+图\ref{fig:e5:example:9:s} 孤立时 $Q=C_0U_0$，末电压 $U_0/\kappa$，初末场能为 $W_0=C_0U_0^2/2$ 与 $W_0/\kappa$。无电源功，若该参数变化可由理想可逆机械过程实现，场对外作功为 $W_0(1-1/\kappa)$。
+\typeout{ECFIG:fig:e5:example:9:p}\fig{fig:e5:example:9:p}{两条实际约束路径：同电量时降压，同电压时补充电荷}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.8,0)node[right]{$U$};\draw[axis](0,0)--(0,4.8)node[above]{$Q$};\fill(4,2)circle(2pt)node[right]{初态};\draw[guide](0,0)--(4,2);\draw[guide](0,0)--(4,4);\draw[flow](4,2)--(2,2)node[midway,below]{孤立};\draw[flow](4,2)--(4,4)node[midway,right]{定压};\node[below]at(2,0){$U_0/\kappa$};\node[below]at(4,0){$U_0$};\node[left]at(0,2){$C_0U_0$};\node[left]at(0,4){$\kappa C_0U_0$};\draw[guide](0,2)--(2,2)--(2,0);\draw[guide](0,4)--(4,4);\node at(2,5.4){示意取 $\kappa=2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定电压时同时计入电源功}\par\nobreak
+在 图\ref{fig:e5:example:9:p} 定压时末电量 $\kappa C_0U_0$，场能变为 $\kappa W_0$；电源功 $C_0U_0^2(\kappa-1)=2W_0(\kappa-1)$，可输出机械功为 $W_0(\kappa-1)$。两者差别来自电源。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确参数变化对应的物理过程}\par\nobreak
+这里“介电常数改变”必须有具体物理过程。若通过温度变化、相变或外界化学过程改变材料，其热力学能量交换也应计入；仅由电容变化所求的是电场部分及其理想电机械交换，不能无条件说剩余能量全是某个物块动能。\end{solution}
+\begin{question}\begin{example}[同轴分层介质的电容与耐压]\label{e5:example:10}
+同轴电容长度 $l$，内外半径 $a,b$，介质1在 $a<r<c$、介质2在 $c<r<b$，介电常数 $\varepsilon_1,\varepsilon_2$，击穿场 $E_{b1},E_{b2}$。求电容及最大安全电压。
+\end{example}
+\typeout{ECFIG:fig:e5:example:10:s}\fig{fig:e5:example:10:s}{两层同轴介质的真实半径与分区}{\begin{tikzpicture}
+
+\fill[orange!10](0,0)circle(2);\fill[blue!15](0,0)circle(1.2);\fill[gray!20](0,0)circle(.55);\draw[world](0,0)circle(.55);\draw[guide](0,0)circle(1.2);\draw[world](0,0)circle(2);\draw[dim](0,0)--(.39,.39)node[midway,above left]{$a$};\draw[dim](0,0)--(-.85,.85)node[pos=.75,above right]{$c$};\draw[dim](0,0)--(1.41,-1.41)node[pos=.85,above right]{$b$};\node at(-.85,-.3){$\varepsilon_1$};\node at(-1.6,-.3){$\varepsilon_2$};\node[right]at(2.7,.7){柱长 $l$};\node[right]at(2.7,-.2){内极线密度 $\lambda$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由同轴高斯面求各层径向场}\par\nobreak
+图\ref{fig:e5:example:10:s} 由圆柱高斯面 $D(r)=\lambda/(2\pi r)$。两区场分别为 $\lambda/(2\pi\varepsilon_i r)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分段积分建立电容}\par\nobreak
+沿图中从内极 $a$ 到外极 $b$ 的径向路径，分界 $c$ 两侧的介电常数不同，
+必须分别积分：
+\[
+ U=\int_a^c\frac{\lambda}{2\pi\varepsilon_1r}\dd r
+   +\int_c^b\frac{\lambda}{2\pi\varepsilon_2r}\dd r.
+\]
+因 $r>0$，$1/r$ 的原函数为 $\ln r$，两项分别给出
+\[
+ [\ln r]_a^c=\ln c-\ln a=\ln(c/a),\qquad
+ [\ln r]_c^b=\ln b-\ln c=\ln(b/c).
+\]
+因此用内极总电量 $Q=\lambda l$ 求得
+\[
+ U=\frac{\lambda}{2\pi}\left[\frac{\ln(c/a)}{\varepsilon_1}
+ +\frac{\ln(b/c)}{\varepsilon_2}\right],\quad
+ C=\frac{2\pi l}{\ln(c/a)/\varepsilon_1+\ln(b/c)/\varepsilon_2}.
+\]
+\typeout{ECFIG:fig:e5:example:10:p}\fig{fig:e5:example:10:p}{分区内按 $1/r$ 衰减，两层的峰值分别在 $a$、$c$ 的右侧}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$r$};\draw[axis](0,0)--(0,3.2)node[above]{$|E|$};\draw[world,domain=.8:2,samples=40]plot(\x,{2/\x});\draw[world,domain=2:4.5,samples=40]plot(\x,{3.2/\x});\draw[guide](2,1)--(2,1.6);\foreach \x/\n in{.8/a,2/c,4.5/b}{\node[below]at(\x,0){$\n$};}\fill(.8,2.5)circle(2pt);\fill(2,1.6)circle(2pt);\node[right]at(2.2,2.8){两峰分别与本层击穿场比较};\node at(2.5,-1){图示 $\varepsilon_1>\varepsilon_2$，跳变方向由实际材料决定};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐层检查最大局部场并求安全电压}\par\nobreak
+图\ref{fig:e5:example:10:p} 各区最大场分别在其最小半径处，即第一层 $r=a$、第二层 $r=c$，所以
+\[
+ |\lambda|\le2\pi\varepsilon_1aE_{b1},\qquad
+ |\lambda|\le2\pi\varepsilon_2cE_{b2}.
+\]
+同时满足两层条件，允许的最大线电荷密度大小为
+$\lambda_{\max}=2\pi\min(\varepsilon_1aE_{b1},\varepsilon_2cE_{b2})$。
+势差大小随 $|\lambda|$ 单调增加，代入前面的势差积分，所求耐压上限为
+\[
+ \boxed{U_{\max}=\min(\varepsilon_1aE_{b1},\varepsilon_2cE_{b2})
+ \left[\frac{\ln(c/a)}{\varepsilon_1}+\frac{\ln(b/c)}{\varepsilon_2}\right]}.
+\]
+等号表示至少一层刚达到击穿阈值；严格不发生击穿时应取 $|U|<U_{\max}$。
+两层界面的 $D_n$ 连续，但 $E$ 可跳变；只比较内金属表面场可能漏掉第二层界面先击穿的情况。\end{solution}
+\begin{question}\begin{example}[介质球在均匀外场中的极化]\label{e5:example:11}
+半径 $R$、相对介电常数 $\kappa$ 的均匀绝缘球放在真空中，远处均匀电场 $E_0\hat{\bm z}$，无自由表面电荷。求内场、外势、偶极矩和束缚面密度。
+\end{example}
+\typeout{ECFIG:fig:e5:example:11:s}\fig{fig:e5:example:11:s}{外场与 $+z$ 轴向上，极角从 $+z$ 轴起算}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)circle(1.6);\draw[world](0,0)circle(1.6);\draw[axis](0,-2.1)--(0,2.6)node[above]{$+z$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\draw[dim](0,0)--(1.13,1.13)node[midway,below right]{$R$};\draw(0,.6)arc(90:45:.6);\node at(.35,.8){$\theta$};\foreach \x in{-2.5,2.5}{\draw[flow](\x,-1.3)--(\x,1.3)node[above]{$E_0$};}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由均匀极化球的电荷构造确定势函数形式}\par\nobreak
+图\ref{fig:e5:example:11:s}的外场沿 $+z$。知识正文图\ref{fig:e5:shifted-spheres}的移位球构造说明：均匀极化在球内产生均匀场，在球外产生沿 $z$ 的偶极势。因此可试取内部均匀总场与外部“均匀场加偶极场”，写成
+\[
+ V_{\text{外}}=-E_0r\cos\theta+A\cos\theta/r^2,\qquad
+ V_{\text{内}}=-Br\cos\theta.
+\]
+其中 $r\cos\theta=z$，所以内部电场为 $B\hat{\bm z}$，并在原点有限；外部修正项随 $r^{-2}$ 衰减，不改变远处外场。均匀场和源位于球内的偶极场在各自使用区域均无体电荷。接下来必须使两种势在整个球面满足边界条件，不能仅凭对称性就认定系数。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在球面逐项匹配两种边界条件}\par\nobreak
+在 $r=R$ 处令两个势相等，并比较 $\cos\theta$ 的系数：
+\[
+-E_0R+\frac A{R^2}=-BR,\qquad B=E_0-\frac A{R^3}.
+\]
+求法向场时固定 $\theta$，对 $r$ 求偏导：
+\begin{align*}
+E_{r,\text{外}}
+&=-\frac{\partial V_{\text{外}}}{\partial r}
+=-\left[-E_0\cos\theta-2Ar^{-3}\cos\theta\right]
+=\left(E_0+\frac{2A}{r^3}\right)\cos\theta,\\
+E_{r,\text{内}}
+&=-\frac{\partial V_{\text{内}}}{\partial r}=B\cos\theta.
+\end{align*}
+球面没有自由面电荷，故 $\varepsilon_0E_{r,\text{外}}=\kappa\varepsilon_0E_{r,\text{内}}$；比较角度系数得到 $\kappa B=E_0+2A/R^3$。把第一式代入第二式，得 $(\kappa+2)A/R^3=(\kappa-1)E_0$。
+\typeout{ECFIG:fig:e5:example:11:p}\fig{fig:e5:example:11:p}{球内极化均匀，但球面电荷按极角变化}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)circle(1.6);\draw[world](0,0)circle(1.6);\draw[axis](0,-2.1)--(0,2.6)node[above]{$+z$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\draw[dim](0,0)--(1.13,1.13)node[midway,below right]{$R$};\draw(0,.6)arc(90:45:.6);\node at(.35,.8){$\theta$};\foreach \x in{-2.5,2.5}{\draw[flow](\x,-1.3)--(\x,1.3)node[above]{$E_0$};}
+\node at(-.7,1){$+$};\node at(.7,-1){$-$};\draw[flow](-.6,-.5)--(-.6,.5)node[midway,left]{$P$};\node[right]at(3.1,.6){上半球：$\sigma_b>0$};\node[right]at(3.1,-.4){下半球：$\sigma_b<0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求内部场、偶极矩与表面极化电荷}\par\nobreak
+由 图\ref{fig:e5:example:11:p}
+\[
+ A=E_0R^3\frac{\kappa-1}{\kappa+2},\quad
+ \bm E_{\text{内}}=\frac{3E_0}{\kappa+2}\hat{\bm z},\quad
+ p=4\pi\varepsilon_0R^3E_0\frac{\kappa-1}{\kappa+2}.
+\]
+内部 $\bm P$ 均匀，体束缚电荷零，表面 $\sigma_b=3\varepsilon_0(\kappa-1)E_0\cos\theta/(\kappa+2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查总量和两个介电常数极限}\par\nobreak
+正负半球总量相消。$\kappa=1$ 时附加偶极场消失；$\kappa\to\infty$ 时内场趋零、外势趋于导体球解，两个极限都正确。\end{solution}
+\begin{question}\begin{example}[电容器吸起介质液体]\label{e5:example:12}
+竖直平行板宽 $b$、间距 $d$，下部浸入大液槽，液体密度 $\rho$、相对介电常数 $\kappa$。恒压 $U$ 使板间液面比槽面升高 $x$，忽略表面张力、边缘、液槽液面下降与上端限制。求 $x$，再讨论定电量时的平衡和稳定性。
+\end{example}
+\typeout{ECFIG:fig:e5:example:12:s}\fig{fig:e5:example:12:s}{题设：电容器吸起介质液体}{\begin{tikzpicture}[scale=.88]
+\fill[blue!10](-1,-1)rectangle(5,0);\draw[world](0,-1)--(0,3)(3,-1)--(3,3);\fill[blue!20](0,0)rectangle(3,1.8);\draw[guide](-1,0)--(5,0);\draw[dim](4,0)--(4,1.8)node[midway,right]{$x$};\node at(1.5,2.5){板宽 $b$，间距 $d$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由液面位移求电容增量和电吸力}\par\nobreak
+图\ref{fig:e5:example:12:s} 液面升高 $\dd x$，一段真空被介质替换，$\dd C=\varepsilon_0(\kappa-1)b\dd x/d$。恒压吸入力向上，$F_e=U^2C^\prime/2=\varepsilon_0(\kappa-1)bU^2/(2d)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分液柱重力势能建立恢复力}\par\nobreak
+以外部大液池液面为零高度，图中的液柱截面积为 $bd$，高度 $z$ 处薄层的质量为 $\rho bd\,\dd z$。其势能为 $\rho gbdz\,\dd z$，所以
+\[
+W_g=\int_0^x\rho gbd\,z\,\dd z
+=\rho gbd\left[\frac{z^2}{2}\right]_0^x
+=\frac12\rho gbdx^2.
+\]
+恢复力的大小为 $\dd W_g/\dd x=(\rho gbd/2)\cdot2x=\rho gbdx$，方向向下。
+\typeout{ECFIG:fig:e5:example:12:p}\fig{fig:e5:example:12:p}{电力与液柱恢复力的交点：定压电力恒定，定量电力递减}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$x$};\draw[axis](0,0)--(0,3.7)node[above]{$F$};\draw[world](0,2.4)--(4.7,2.4)node[right]{$F_U$};\draw[world](0,0)--(4.5,3.4)node[above]{$\rho gbdx$};\draw[world,domain=0:4.7,samples=50]plot(\x,{2.4/(1+.2*\x)^2});\node[right]at(4.7,.64){$F_Q$};\node at(2.8,-.8){位移增大时，合力向下恢复};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求恒压平衡并由斜率判断稳定}\par\nobreak
+图\ref{fig:e5:example:12:p} 两力平衡得
+\[
+ x=\frac{\varepsilon_0(\kappa-1)U^2}{2\rho gd^2}.
+\]
+电力在此模型下恒定，恢复力随 $x$ 增大，故平衡稳定。若板间已全部被液体填满或液面达到上端，原 $C^\prime$ 不再适用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新按固定电量约束求唯一稳定平衡}\par\nobreak
+定量时写 $C(x)=C_b+\alpha x$，$\alpha=\varepsilon_0(\kappa-1)b/d$，平衡为
+\[
+ \rho gbdx=\frac{Q^2\alpha}{2(C_b+\alpha x)^2}.
+\]
+左侧的导数为 $\rho gbd>0$。右侧电力的导数由链式法则给出：
+\[
+F_e'(x)=\frac{Q^2\alpha}{2}[-2(C_b+\alpha x)^{-3}\alpha]
+=-\frac{Q^2\alpha^2}{(C_b+\alpha x)^3}<0.
+\]
+所以电力减去重力的导数为 $F_e'-\rho gbd<0$。在理想模型允许的高度范围内若两力相交，交点唯一且稳定；若交点超过极板上端，实际先到达几何边界。它不能用定压的升高量直接替换一个固定的初电压求得，因为运动中电压在下降。\end{solution}
+\begin{question}\begin{example}[弹簧支撑的极板失稳]\label{e5:example:13}
+平行板面积 $S$，初始间距 $d_0$，一板固定，另一板由劲度 $K$ 的弹簧支撑。位移 $x$ 朝向固定板，弹簧恢复力 $Kx$，忽略重力。接恒压 $U$，求平衡条件、稳定区与最大稳定电压。
+\end{example}
+\typeout{ECFIG:fig:e5:example:13:s}\fig{fig:e5:example:13:s}{下板向上位移 $x$，弹簧向下恢复，电源保持两板电压}{\begin{tikzpicture}
+
+\draw[world](0,3)--(4,3)(0,1)--(4,1);\draw[guide](0,0)--(4,0);\draw[spring](2,1)--(2,-1.6);\draw[world](1,-1.6)--(3,-1.6);\node[right]at(2.3,-.8){$K$};\draw[dim](-.6,1)--(-.6,3)node[midway,left]{$d_0-x$};\draw[dim](-1.4,0)--(-1.4,3)node[midway,left]{$d_0$};\draw[flow](.6,0)--(.6,1)node[midway,right]{$x$};\draw(4,3)--(5.5,3)to[battery1,l={$U$}](5.5,1)--(4,1);\node at(2,3.7){固定板};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用实际间隙建立恒压平衡方程}\par\nobreak
+图\ref{fig:e5:example:13:s} 实际间距为 $d_0-x$，吸力 $F_e=\varepsilon_0SU^2/[2(d_0-x)^2]$。平衡要求
+$Kx=\varepsilon_0SU^2/[2(d_0-x)^2]$，即 $U^2=2Kx(d_0-x)^2/(\varepsilon_0S)$。
+\typeout{ECFIG:fig:e5:example:13:p}\fig{fig:e5:example:13:p}{解答过程：弹簧支撑的极板失稳}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,0)--(5,0)node[right]{$x/d_0$};\draw[axis](0,0)--(0,2.5)node[above]{$U^2$};\draw[world,domain=0:1,samples=80]plot({4.5*\x},{12*\x*(1-\x)^2});\draw[guide](1.5,0)--(1.5,1.78);\node[below]at(1.5,0){$1/3$};\node at(3,2.5){左支稳定，右支不稳定};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较电力增长率与弹簧恢复率}\par\nobreak
+按 图\ref{fig:e5:example:13:p} 合力 $F_e-Kx$ 的导数必须为负。固定 $U$，逐项求导得
+\[
+F_e'(x)=\frac{\varepsilon_0SU^2}{2}
+\bigl[-2(d_0-x)^{-3}(-1)\bigr]
+=\frac{\varepsilon_0SU^2}{(d_0-x)^3}.
+\]
+平衡处代入 $\varepsilon_0SU^2=2Kx(d_0-x)^2$，于是
+\[
+F_e^\prime-K=\frac{2Kx}{d_0-x}-K<0
+ \quad\Longleftrightarrow\quad x<d_0/3.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在稳定分支端点求临界电压}\par\nobreak
+对 $f(x)=x(d_0-x)^2$ 使用乘积法则与链式法则：
+\[
+f'(x)=(d_0-x)^2+x\cdot2(d_0-x)(-1)
+=(d_0-x)(d_0-3x).
+\]
+它在稳定支上升，极值出现在 $x=d_0/3$，故临界电压
+\[
+ U_c=\sqrt{\frac{8Kd_0^3}{27\varepsilon_0S}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查临界点与断电情形的区别}\par\nobreak
+严格稳定要求 $U<U_c$；临界点恢复斜率为零，超过后无稳定静态支，板会向内吸合。若断电固定 $Q$，忽略边缘的吸力恒为 $Q^2/(2\varepsilon_0S)$，不会出现相同的平方反馈失稳机制，但仍可能因位移到边界发生接触。\end{solution}

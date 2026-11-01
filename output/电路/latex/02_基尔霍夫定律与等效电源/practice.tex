@@ -1,0 +1,97 @@
+\section{练习}
+
+\begin{question}\begin{drill}[等电阻分流中的电压表读数]\label{c2:drill:1}
+理想电源电压 $4\,\mathrm V$。从 $A$ 经 $1\,\Omega$ 到 $M$，$M,B$ 间并联两支路：一支为两只 $1\,\Omega$ 串联，中点为 $N$；另一支为 $2\,\Omega$。理想电压表接在 $A,N$ 间。求读数及各支路电流。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:1:s}\fig{fig:c2:drill:1:s}{题设：等电阻分流中的电压表读数}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)--(0,2)to[R,l={$1$}](2,2)to[R,l={$1$}](4,2)to[R,l={$1$}](6,2)--(6,0)to[battery1,invert,l={$4\,\mathrm V$}](0,0);\draw(2,2)--(2,1)to[R,l={$2$}](6,1);\draw(0,2)--(0,3)to[voltmeter](4,3)--(4,2);\node[left]at(0,2){$A$};\node[above]at(2,2){$M$};\node[below]at(4,2){$N$};\node[right]at(6,2){$B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:1}
+\begin{question}\begin{drill}[三并联电池接入负载]\label{c2:drill:2}
+三个电池电动势依次为 $1,2,3\,\mathrm V$，内阻为 $3,2,1\,\Omega$，同极性并联后接 $2\,\Omega$ 负载。求等效电源、负载电流与各电池输出电流。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:2:s}\fig{fig:c2:drill:2:s}{题设：三并联电池接入负载}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$1\,\mathrm V$}](0.0,1.5)to[R,l={$3\,\Omega$}](0.0,3);\draw(2.3,0)to[battery1,invert,l={$2\,\mathrm V$}](2.3,1.5)to[R,l={$2\,\Omega$}](2.3,3);\draw(4.6,0)to[battery1,invert,l={$3\,\mathrm V$}](4.6,1.5)to[R,l={$1\,\Omega$}](4.6,3);\draw(0,0)--(4.6,0)(0,3)--(4.6,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};\draw(4.6,3)--(6.8999999999999995,3)to[R,l={$2\,\Omega$}](6.8999999999999995,0)--(4.6,0);
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:2}
+\begin{question}\begin{drill}[双电源电路的负载功率]\label{c2:drill:3}
+某 $2\,\Omega$ 电阻在电源一单独作用时参考电流为 $3\,\mathrm A$，电源二单独作用时为 $-1\,\mathrm A$，网络为线性电路。求共同作用时的功率，并说明为何不能把两个单独功率相加。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:3:s}\fig{fig:c2:drill:3:s}{题设：双电源电路的负载功率}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2\,\Omega$}](4,0);\draw[flow](.5,1)--(2,1)node[midway,above]{$I_1=3$};\draw[flow](3.5,-1)--(2,-1)node[midway,below]{$|I_2|=1$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:3}
+\begin{question}\begin{drill}[惠斯登电桥的平衡与扰动]\label{c2:drill:4}
+电桥 $AM,MB,AN,NB$ 电阻为 $R,2R,3R,6R$，桥臂为有限电阻 $r>0$，两端电压 $V_A-V_B=U>0$。求等效电阻；再将 $NB$ 电阻增加 $\delta R>0$，判断桥电流方向。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:4:s}\fig{fig:c2:drill:4:s}{题设：惠斯登电桥的平衡与扰动}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](2.4,1.5)to[R,l={$2R$}](4.8,0)to[R,l_={$6R$}](2.4,-1.5)to[R,l_={$3R$}](0,0);\draw(2.4,1.5)to[R,l={$r$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:4}
+\begin{question}\begin{drill}[两个电源的并联环流]\label{c2:drill:5}
+两个电池同极性并联，电动势 $\mathcal E_1>\mathcal E_2$、内阻 $r_1,r_2>0$，没有外负载。求环流、共同端电压和能量关系。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:5:s}\fig{fig:c2:drill:5:s}{题设：两个电源的并联环流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E_1$}](0,1.5)to[R,l={$r_1$}](0,3)--(3,3)to[R,l={$r_2$}](3,1.5)to[battery1,l={$\mathcal E_2$}](3,0)--(0,0);
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:5}
+\begin{question}\begin{drill}[等效电源与内部电流]\label{c2:drill:6}
+电源电动势 $6\,\mathrm V$、内阻 $1\,\Omega$，端口并联一个内部 $2\,\Omega$ 电阻，再接外负载 $3\,\Omega$。求等效电源、负载电流、真实电池电流，说明二者为何不同。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:6:s}\fig{fig:c2:drill:6:s}{题设：等效电源与内部电流}{\begin{tikzpicture}[scale=.88]
+\draw(0.0,0)to[battery1,invert,l={$6\,\mathrm V$}](0.0,1.5)to[R,l={$1\,\Omega$}](0.0,3);\node[above]at(0,3){$A$};\node[below]at(0,0){$B$};\draw(0.0,3)--(2.3,3)to[R,l={$2\,\Omega$}](2.3,0)--(0.0,0);\draw(2.3,3)--(4.6,3)to[R,l={$3\,\Omega$}](4.6,0)--(2.3,0);
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:6}
+\begin{question}\begin{drill}[功率相同的两个负载]\label{c2:drill:7}
+电源 $\mathcal E,r$ 接纯电阻 $R_1,R_2$ 时，负载功率相同且 $R_1\ne R_2$。证明 $R_1R_2=r^2$，并比较两次供电效率。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:7:s}\fig{fig:c2:drill:7:s}{题设：功率相同的两个负载}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,2.6)--(3.4,2.6)to[R,l={$R$}](3.4,0)to[R,l_={$r$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:7}
+\begin{question}\begin{drill}[理想电流源的关闭方式]\label{c2:drill:8}
+端口 $A,B$ 内部有一个从 $B$ 指向 $A$ 的 $I_0$ 理想电流源和并联电阻 $r$。外接负载 $R$。求端电压、负载电流及等效电压源，并说明求看入电阻时为何应断开电流源。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:8:s}\fig{fig:c2:drill:8:s}{题设：理想电流源的关闭方式}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[isource,l={$I_0$}](0,2.6)--(2.6,2.6)to[R,l={$r$}](2.6,0)--(0,0);\draw(2.6,2.6)--(5,2.6)to[R,l={$R$}](5,0)--(2.6,0);\node[above]at(2.6,2.6){$A$};\node[below]at(2.6,0){$B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:8}
+\begin{question}\begin{drill}[电桥中有限内阻电源的影响]\label{c2:drill:9}
+平衡电桥四臂为 $R,2R,3R,6R$，桥臂任意，电源电动势 $\mathcal E$、内阻 $r$，接在 $A,B$ 两端。求总电流和两中点电势差；再说明内阻是否改变平衡条件。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:9:s}\fig{fig:c2:drill:9:s}{题设：电桥中有限内阻电源的影响}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](2.4,1.5)to[R,l={$2R$}](4.8,0)to[R,l_={$6R$}](2.4,-1.5)to[R,l_={$3R$}](0,0);\draw(2.4,1.5)to[R,l={$R_g$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\draw(0,0)--(-1.5,0)--(-1.5,-3.5)to[battery1,l_={$\mathcal E$}](1,-3.5)to[R,l_={$r$}](4.8,-3.5)--(6.3,-3.5)--(6.3,0)--(4.8,0);
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:9}
+\begin{question}\begin{drill}[整数电池组的选择]\label{c2:drill:10}
+有 $12$ 节相同电池，每节电动势 $1.5\,\mathrm V$、内阻 $0.50\,\Omega$，外电阻 $2.0\,\Omega$。所有电池须组成相同串联组再并联。选择负载电流最大的组合，并求该电流。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:10:s}\fig{fig:c2:drill:10:s}{题设：整数电池组的选择}{\begin{tikzpicture}[scale=.88]
+\node[draw,minimum width=2.6cm,minimum height=1.2cm]at(0,0){$n$ 串、$m$ 并};\draw(1.3,.4)--(3,.4)to[R,l={$2\,\Omega$}](3,-1.5)--(-1.3,-1.5)--(-1.3,-.4);\node at(0,1.1){$mn=12$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:10}
+\begin{question}\begin{drill}[两个电源支路的端口检验]\label{c2:drill:11}
+电路如图，各电阻和电源数值已标出。取 $V_A=0\,\mathrm V$。求各未知节点电势与各有阻支路电流，并核对电流守恒。
+\end{drill}
+\typeout{ECFIG:fig:c2:drill:11:s}\fig{fig:c2:drill:11:s}{两含源支路与两纯电阻支路共同确定 $B,C$ 的电势}{\begin{tikzpicture}
+
+\draw(0,1.8)to[R,l={$10$}](3.5,1.8)to[R,l={$5$}](7,1.8);
+\draw(0,1.8)--(0,4.5)to[battery1,invert,l={$3\,\mathrm V$}](2.3,4.5)to[R,l={$39/2$}](7,4.5)--(7,1.8);
+\draw(0,1.8)--(0,-.8)to[battery1,invert,l={$1\,\mathrm V$}](1.4,-.8)to[R,l={$11/2$}](3.5,-.8)--(3.5,1.8);
+\fill(0,1.8)circle(1.5pt)node[left]{$A:0$};\fill(3.5,1.8)circle(1.5pt)node[below right]{$B$};\fill(7,1.8)circle(1.5pt)node[right]{$C$};
+\node[right]at(4.5,-.8){电阻单位 $\Omega$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c2:drill:11}

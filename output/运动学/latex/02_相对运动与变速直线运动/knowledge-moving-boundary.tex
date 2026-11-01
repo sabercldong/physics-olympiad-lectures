@@ -1,0 +1,8 @@
+\fig{fv:k2:flux}{移动平面扫过的是相对法向薄柱，而非粒子的全部路程}{\begin{tikzpicture}[scale=.9]
+\fill[blue!9](1,-1)rectangle(3,1.5);
+\draw[thick](3,-1.5)--(3,2);\draw[dashed](1,-1.5)--(1,1.5);
+\node at(3,2.5){随平面平移的坐标系};
+\draw[->,blue,thick](0,.1)--(2,.9)node[midway,above left]{$\bm v_{\rm rel}$};
+\draw[->](3,.1)--(4.5,.1)node[right]{$\bm n$};
+\draw[<->](1,-.7)--(3,-.7)node[midway,below]{$|v_{{\rm rel},n}|\dd t$};\end{tikzpicture}}
+图\ref{fv:k2:flux}先把观察区域随平面平移，粒子的速度相应减去平面速度。只有相对速度在法线 $\bm n$上的投影决定是否穿面，平行于面的分量只改变落点。故薄柱体积为 $S|v_{{\rm rel},n}|\dd t$。若两者法向速度相等，粒子可以在面前迅速横向移动，却不会穿过它；这能检查流量式中是否误用了总速率。

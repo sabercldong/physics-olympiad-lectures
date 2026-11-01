@@ -1,0 +1,319 @@
+\section{储能元件与初始条件}
+\subsection{电荷、磁通与参考方向}
+
+稳恒电路的电阻关系只需要同时刻的电流和电压；电容、电感还保存先前状态。理想电容两极板等量异号电荷的参考量为 $q$，端电压为 $u_C=q/C$。把电流方向选为流入所标记 $q$ 极板，才有 $i=\dot q$；若电流从该极板流出，关系应改为 $i=-\dot q$。
+
+理想线性电感的磁链与电流成正比，$\Psi=Li$。采用电流流入电压正参考端的关联方向，电压为 $u_L=L\dot i$，表示增加电流所需的端电压。它与“电感内部感应电动势 $-L\dot i$”采用的描述对象不同，沿回路列式时不能把两种符号重复计入。
+
+以无场状态为能量零点，图中的关联正向给出 $\dd W_C=u_C\,\dd q$、$\dd W_L=u_Li\,\dd t=Li\,\dd i$，故
+\begin{align*}
+W_C&=\int_0^q\frac zC\,\dd z
+=\left[\frac{z^2}{2C}\right]_0^q=\frac{q^2}{2C}=\frac12Cu_C^2,\\
+W_L&=\int_0^i Lz\,\dd z
+=\left[\frac12Lz^2\right]_0^i=\frac12Li^2.
+\end{align*}
+即使最终的代数电荷或电流为负，定积分仍给出非负储能。它们分别依赖电荷或电流的平方，因此相同电荷符号相反、或电流方向相反时，储能大小仍相同。能量式需要 $C,L$ 在所讨论过程中恒定；若极板运动导致 $C$ 变化，还应计入力学功。
+
+\fig{c5:passive-directions}{电容与电感都按电流流入电压正参考端取向；正、负号规定电压坐标，并不预先断言实际高低电势}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,3)to[C,l={$C$}](0,0);
+\fill(0,3)circle(1.5pt)node[left]{$A$};\fill(0,0)circle(1.5pt)node[left]{$B$};
+\node[right]at(.5,2.5){$+$};\node[right]at(.5,.5){$-$};
+\node[left]at(-.4,2.1){$q$};\node[right]at(1,1.5){$u_C=q/C$};
+\draw[flow](0,4.2)--(0,3.2)node[pos=0,above]{$i=\dot q$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw(0,3)to[L,l={$L$}](0,0);
+\fill(0,3)circle(1.5pt)node[left]{$A$};\fill(0,0)circle(1.5pt)node[left]{$B$};
+\node[right]at(.5,2.5){$+$};\node[right]at(.5,.5){$-$};
+\node[right]at(1,1.5){$u_L=L\dot i$};
+\draw[flow](0,4.2)--(0,3.2)node[pos=0,above]{$i$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c5:passive-directions}的电压均定义为 $V_A-V_B$。左图正向电流增加上极板的代数电荷；右图正向电流若正在减小，则 $\dot i<0$、$u_L<0$，实际是 $B$ 的电势较高。这样可以统一写功率 $p_C=u_Ci=\dot W_C$、$p_L=u_Li=\dot W_L$，正值表示场能增加，负值表示储能元件向外供能。
+
+\subsection{开关前后哪些量连续}
+
+若电流没有冲激，短时间内电容电荷变化 $\Delta q=\int i\dd t$ 趋零，所以电容电压连续。若电感端电压没有冲激，磁链变化 $\Delta(Li)=\int u_L\dd t$ 趋零，恒定 $L$ 时电流连续。因此一般电阻开关电路满足 $u_C(0^+)=u_C(0^-)$、$i_L(0^+)=i_L(0^-)$。
+
+连续的是储能状态，并非每个支路电流、电压都连续。RC 接通瞬间电流可突然从零变为有限值，RL 切换瞬间电感电压可跳变。若把初始带电电容直接与不同电压的理想源短接，或强行断开理想电感全部通路，理想模型可能要求冲激或无限电压，不能继续套用普通连续过程。应保留真实电阻、寄生电容或其他明确的物理约束。
+
+\fig{c5:continuous-states}{有限开关过程中的示意曲线：储能状态连续，相关支路量可以有限跳变}{\begin{tikzpicture}
+
+\foreach \shift/\lab in {0/C,7/L}{\begin{scope}[xshift=\shift cm,scale=.75]
+\draw[axis](-1.2,0)--(4.5,0)node[right]{$t$};\draw[axis](0,-.2)--(0,3.6);
+\draw[thick](-1,1)--(0,1);\draw[thick,domain=0:4,samples=70]plot(\x,{3-2*exp(-\x)});
+\draw[guide](0,3)--(4,3);
+\if C\lab \node[above]at(0,3.7){$u_C$};\node[left]at(-1,1){$U_0$};\else \node[above]at(0,3.7){$i_L$};\node[left]at(-1,1){$I_0$};\fi
+\begin{scope}[yshift=-4.2cm]
+\draw[axis](-1.2,0)--(4.5,0)node[right]{$t$};\draw[axis](0,-.2)--(0,2.8);
+\draw[thick](-1,0)--(0,0);\draw[thick,domain=0:4,samples=70]plot(\x,{2*exp(-\x)});
+\draw[guide](0,0)--(0,2);\fill(0,2)circle(1.6pt);\draw[fill=white](0,0)circle(1.6pt);
+\if C\lab \node[above]at(0,2.9){$i_C$};\else \node[above]at(0,2.9){$u_L$};\fi
+\end{scope}\end{scope}}
+
+\end{tikzpicture}}
+图\ref{c5:continuous-states}中，开关位于 $t=0$。上排曲线继承 $0^-$ 的状态值，下排在切换后立即取由新回路决定的有限值。图中的不同初值、终值仅作连续性示意，具体幅度必须由题设的电源和支路连接求出。
+
+\typeout{ECFIG:fig:c5:sign}\fig{fig:c5:sign}{充电电流流入参考电荷极板}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+
+作图应先标明切换前后电流实际闭合路径，再确定哪些元件仍在同一回路。二极管续流、开关电弧、寄生电容等会提供实际通路，理想题目如未给出这些元件，应避免对未定义的开路瞬间作有限电压断言。
+
+\section{一阶RC过程}
+\subsection{从回路方程到完整响应}
+
+图\ref{fig:c5:sign}中沿电流参考方向，电源提供 $\mathcal E$，电阻降 $Ri$，电容降 $q/C$，所以
+\[
+ R\dot q+\frac qC=\mathcal E.
+\]
+常数外加电源对应终态 $q_\infty=C\mathcal E$。令偏差 $u=q-q_\infty$，常数项抵消，得到 $\dot u=-u/(RC)$。对非零初始偏差分离变量，
+\[
+\int_{q_0-q_\infty}^{u(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{RC},
+\quad \ln\left|\frac{u(t)}{q_0-q_\infty}\right|=-\frac t{RC}.
+\]
+偏差保持原符号，所以 $u=(q_0-q_\infty)\e^{-t/(RC)}$。初始偏差为零时直接取 $u=0$，不作除法。加回稳态电荷，再用链式法则 $\dd\e^{-t/\tau}/\dd t=-\e^{-t/\tau}/\tau$ 求电流，
+\[
+ q(t)=q_\infty+(q_0-q_\infty)\e^{-t/\tau},\quad
+ i(t)=\frac{q_\infty-q_0}{RC}\e^{-t/\tau},\quad\tau=RC.
+\]
+这同时覆盖从零充电、部分充电后继续充电、反向接源及断源放电。初始电流的正负由 $q_\infty-q_0$ 决定，不能一见电路接着电源就认定电容一定在吸收电能。
+
+\fig{c5:rc-two-directions}{以 $\mathcal E>0$ 为例：初电荷在终值两侧时分别上升、下降，二者均向同一终态趋近}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$t/\tau$};\draw[axis](0,-.1)--(0,2.6)node[above]{$q/(C\mathcal E)$};
+\draw[guide](0,1)--(5,1);\node[left]at(0,1){$1$};\node[left]at(0,2){$2$};
+\draw[blue,thick,domain=0:5,samples=90]plot(\x,{1-exp(-\x)});
+\draw[red,thick,domain=0:5,samples=90]plot(\x,{1+exp(-\x)});
+\node[blue]at(2,.25){$q_0=0,\quad i>0$};\node[red]at(2,2.2){$q_0=2C\mathcal E,\quad i<0$};
+\node[right]at(5,1){终态};
+
+\end{tikzpicture}}
+图\ref{c5:rc-two-directions}的纵向偏差分别是 $-\e^{-t/\tau}$、$+\e^{-t/\tau}$，其绝对值按同一时间常数衰减。曲线斜率等于 $i/(C\mathcal E)$，所以高于终态的电容虽然仍接恒压源，电流却反向流回电源。
+
+时间常数描述偏离终态的量降到初值的 $1/\mathrm e$ 所需时间，并非严格完成充电的时间。有限时间内指数项通常不为零，实际可按允许误差规定达到终态的程度。求某一电压时，应先确认该数值位于初值与终值之间，再解对数；否则可能得到无物理意义的负时间。
+
+\subsection{通过复杂电阻网络的充放电}
+
+若一个电容接在线性有源电阻网络端口，先把电容取出，求开路电压 $U_{\rm th}$ 和看入电阻 $R_{\rm th}$，再接回。电容电压满足
+\[
+ R_{\rm th}C\dot u_C+u_C=U_{\rm th},
+\]
+故终态为 $U_{\rm th}$、时间常数为 $R_{\rm th}C$。求看入电阻时所有独立电源强度置零，电容自身排除在等效网络外，其他电阻仍保留。若有多个独立储能状态，一般不能仅用一个时间常数描述全部响应。
+
+\fig{c5:thevenin-capacitor}{电容端口的具体分压网络与等效回路；电容始终属于外接储能元件}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R_1$}](3,3)--(5.5,3)to[C,l={$C$}](5.5,0)--(0,0);
+\draw(3,3)to[R,l={$R_2$}](3,0);\fill(3,3)circle(1.5pt)node[above]{$A$};
+\node[below]at(3,0){$B:0$};
+\end{scope}
+\begin{scope}[xshift=7cm,scale=.8]
+\draw(0,0)to[battery1,invert,l={$U_{\rm th}$}](0,3)to[R,l={$R_{\rm th}$}](4,3)to[C,l={$C$}](4,0)--(0,0);
+\node[above]at(4,3){$A$};\node[below]at(4,0){$B$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c5:thevenin-capacitor}左侧在 $A$ 列守恒，有
+\[
+ C\dot u_C+\frac{u_C-\mathcal E}{R_1}+\frac{u_C}{R_2}=0.
+\]
+把电阻项合并，正得到 $R_{\rm th}C\dot u_C+u_C=U_{\rm th}$，其中 $R_{\rm th}=R_1\parallel R_2$、$U_{\rm th}=\mathcal E R_2/(R_1+R_2)$。初态电容约束上节点电压，终态电容支路无直流电流，故左侧两种时刻的分流关系不同。
+
+当驱动电压随时间变化，一阶方程仍可用积分因子。先除以 $R$，再乘积分因子 $\e^{t/(RC)}$。由乘积法则，
+\[
+\frac{\dd}{\dd t}\left(q\e^{t/\tau}\right)
+=\e^{t/\tau}\left(\dot q+\frac q\tau\right)
+=\frac{\mathcal E(t)}R\e^{t/\tau}.
+\]
+从 $0$ 到 $t$ 积分，$q(t)\e^{t/\tau}-q_0
+=R^{-1}\int_0^t\mathcal E(s)\e^{s/\tau}\dd s$，再乘 $\e^{-t/\tau}$，得到
+\[
+ q(t)=q_0\e^{-t/\tau}+\frac1R\int_0^t
+ \e^{-(t-s)/\tau}\mathcal E(s)\dd s.
+\]
+该积分把每一小段外部驱动对以后状态的影响按指数衰减累加。常电源时可回到上一式，线性斜坡驱动则多出随时间变化的特解。
+
+\subsection{RC过程中的能量与焦耳热}
+
+电容从初始电压 $U_0$ 经电阻接到恒定电源 $\mathcal E$，终态电压为 $\mathcal E$。电源做功为电动势乘通过电源的净电荷：
+\[
+ W_{\text{源}}=\mathcal E C(\mathcal E-U_0).
+\]
+电容储能增加 $\Delta W_C=C(\mathcal E^2-U_0^2)/2$，所以电阻热为
+\[
+ Q_R=W_{\text{源}}-\Delta W_C=\frac C2(\mathcal E-U_0)^2.
+\]
+它总非负，即使电源实际吸收能量也成立。电阻值改变响应快慢，却不改变固定初、终态下总热量；令电阻趋零不能因此说热消失，而是普通有限电流暂态的持续时间趋零，真实寄生电感、辐射和接触过程需要重新处理。
+
+
+\fig{c5:charging-energy}{从零充电时的累计能量；三条曲线分别表示电源功、电容储能和电阻热}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,3.5)node[above]{$W/(C\mathcal E^2)$};
+\node[left]at(0,3){$1$};\node[left]at(0,1.5){$1/2$};\draw[guide](0,1.5)--(4.5,1.5);
+\draw[red,thick,domain=0:4.5,samples=90]plot(\x,{3*(1-exp(-\x))});
+\draw[blue,thick,domain=0:4.5,samples=90]plot(\x,{1.5*(1-exp(-2*\x))});
+\draw[black,thick,domain=0:4.5,samples=90]plot(\x,{1.5*(1-exp(-\x))^2});
+\draw[red,thick](5.3,3)--(5.8,3)node[right]{$W_{\text{源}}$};
+\draw[blue,thick](5.3,2.2)--(5.8,2.2)node[right]{$Q_R$};
+\draw[black,thick](5.3,1.4)--(5.8,1.4)node[right]{$W_C$};
+
+\end{tikzpicture}}
+图\ref{c5:charging-energy}取 $U_0=0$，用 $x=t/\tau$ 表示时间时，
+\[
+ \frac{W_{\text{源}}}{C\mathcal E^2}=1-\e^{-x},\quad
+ \frac{W_C}{C\mathcal E^2}=\frac12(1-\e^{-x})^2,\quad
+ \frac{Q_R}{C\mathcal E^2}=\frac12(1-\e^{-2x}).
+\]
+任一时刻红线的纵坐标等于另外两线之和。早期电容电压小，电源输入能量中转为热的比例较大；充电完成后的两项各占电源总功的一半，不能把“电荷完成一半”当成相同的能量比例。
+
+\section{一阶RL过程}
+\subsection{电流向稳态的过渡}
+
+恒电源、电阻与电感串联时，
+\[
+ L\dot i+Ri=\mathcal E.
+\]
+稳态 $i_\infty=\mathcal E/R$，令 $v=i-i_\infty$ 得 $\dot v=-(R/L)v$。当 $v(0)\ne0$ 时，
+\[
+\int_{i_0-i_\infty}^{v(t)}\frac{\dd z}{z}
+=-\frac RL\int_0^t\dd s,\qquad
+\ln\left|\frac{v(t)}{i_0-i_\infty}\right|=-\frac{Rt}{L}.
+\]
+指数化时保留初始偏差的符号；$v(0)=0$ 则从开始就是稳态。因此
+\[
+ i(t)=i_\infty+(i_0-i_\infty)\e^{-t/\tau_L},\qquad
+ \tau_L=\frac LR.
+\]
+电感端电压为 $L\dot i=R(i_\infty-i_0)\e^{-t/\tau_L}$。接通初态 $i_0=0$ 时电感先承担全部电源电压；长时间后电感电压趋零，相当于稳恒短路，但不能据此把整个暂态期间的电感都当成导线。
+
+电源切除后若电感与电阻仍构成闭合放电通路，$i=i_0\e^{-Rt/L}$，初始磁场能 $Li_0^2/2$ 最终全部转为电阻热。不同电阻串、并联改变看入电阻，就改变 $\tau_L$。对复杂网络同样可先取电感为负载，求 $U_{\rm th},R_{\rm th}$，再解 $L\dot i+R_{\rm th}i=U_{\rm th}$。
+
+\subsection{电流连续与支路重分配}
+
+开关切换时，电感电流作为初始条件继承下来，电阻支路电流则立刻按新节点电势分配。求 $0^+$ 时可把电感暂以已知电流源表示；求 $\infty$ 时若达到直流稳态，可把理想电感短接。电容在相同两个时刻则分别用继承的电压约束和直流断路处理。
+
+\fig{c5:terminal-state-models}{储能元件在初态与直流终态的端口表示；这些替换不用于中间暂态}{\begin{tikzpicture}
+
+\foreach \sx/\mode in {0/1,5/2}{\begin{scope}[xshift=\sx cm]
+\draw(0,3)node[above]{$A$}--(0,2.7);\draw(0,0)node[below]{$B$}--(0,.3);
+\ifnum\mode=1 \draw(0,.3)to[battery1,invert,l={$U_0$}](0,2.7);\node at(1.7,1.5){电容 $0^+$};\else
+\draw(0,2.7)to[I,l={$I_0$}](0,.3);\node at(1.7,1.5){电感 $0^+$};\fi
+\begin{scope}[yshift=-5cm]
+\draw(0,3)node[above]{$A$}--(0,2);\draw(0,0)node[below]{$B$}--(0,1);
+\ifnum\mode=1 \draw[fill=white](0,2)circle(1.5pt);\draw[fill=white](0,1)circle(1.5pt);\node at(1.7,1.5){电容稳态断路};\else \draw(0,1)--(0,2);\node at(1.7,1.5){电感稳态短路};\fi
+\end{scope}\end{scope}}
+
+\end{tikzpicture}}
+图\ref{c5:terminal-state-models}的电容初态用已知 $V_A-V_B=U_0$ 约束外电路，其瞬时电流由新网络求出；电感初态则用已知 $A\to B$ 电流 $I_0$ 约束外电路，其瞬时电压仍可改变。直流终态对应导数为零，才分别得到断路、短路。
+
+图\ref{fig:c5:rl}给出实际闭合的电源—电阻—电感回路，参考电流 $i$ 从正极经 $R$ 流向 $L$。其中电感电压随 $L\dot i$ 变化，不能把整段过程都画成导线。“初态等效”和“终态等效”只用于这两个时刻，不能代替中间的微分方程。解完响应后，应把初值、终值代回原电路，分别检查储能连续和稳恒节点条件。若二者之一不满足，通常是看入电阻、等效电源或电流方向出现了错误。
+
+\typeout{ECFIG:fig:c5:rl}\fig{fig:c5:rl}{电感从零电流接通恒电源}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[L,l={$L$}](3.5,0)--(0,0);\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i$};
+\end{tikzpicture}}
+
+\section{LC振荡与两个初值}
+\subsection{二阶方程的相位由初态确定}
+
+图\ref{fig:c5:lc}的闭合LC回路中，取电流沿上导线向右、流入标记 $q$ 的电容极板，使 $i=\dot q$。回路方程为 $L\dot i+q/C=0$，所以
+\[
+ \ddot q+\omega_0^2q=0,\qquad\omega_0=\frac1{\sqrt{LC}}.
+\]
+试取 $q=\e^{st}$，则 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$，代入得到特征方程 $s^2+\omega_0^2=0$。共轭根 $\pm\mathrm j\omega_0$ 给出实通解
+$q=A\cos\omega_0t+B\sin\omega_0t$，求导为
+$i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$。
+二阶方程需要两个初值：$q(0)=q_0$ 给出 $A=q_0$，$i(0)=i_0$ 给出 $B=i_0/\omega_0$，则
+\[
+ q(t)=q_0\cos\omega_0t+\frac{i_0}{\omega_0}\sin\omega_0t,
+\]
+\[
+ i(t)=-\omega_0q_0\sin\omega_0t+i_0\cos\omega_0t.
+\]
+只写 $q=Q\cos\omega t$ 会隐含 $i_0=0$，不适合一般开关切换问题。电荷为零时电感电流最大，电流为零时电容电荷达到极值，二者相差四分之一周期。
+
+\typeout{ECFIG:fig:c5:lc}\fig{fig:c5:lc}{电荷与电流的关联参考方向}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[L,l={$L$}](0,2.8)--(3.2,2.8)to[C,l={$C$}](3.2,0)--(0,0);\node[right]at(3.2,2){$q$};\draw[flow](.6,3.3)--(2.6,3.3)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\subsection{电能与磁能的相互转换}
+
+对 $W=q^2/(2C)+Li^2/2$ 求导，
+\[
+ \dot W=\frac qC\dot q+Li\dot i=i\left(\frac qC+L\dot i\right)=0.
+\]
+因此总能量守恒。初始总能量给出 $Q_{\max}=\sqrt{q_0^2+LCi_0^2}$，$I_{\max}=\sqrt{i_0^2+q_0^2/(LC)}$。这些量确定振幅，不独立确定相位，仍需两个初始符号来判断最初运动方向。
+
+\fig{c5:lc-phase-plane}{归一化场能平面中的LC轨道；横纵坐标平方和等于两倍总能量}{\begin{tikzpicture}
+
+\draw[axis](-2.9,0)--(3.3,0)node[right]{$q/\sqrt C$};
+\draw[axis](0,-2.9)--(0,3.2)node[above]{$\sqrt L\,i$};
+\draw[thick](0,0)circle(2.3);
+\draw[flow,blue](40:2.3)arc[start angle=40,end angle=10,radius=2.3];
+\draw[flow,blue](-90:2.3)arc[start angle=-90,end angle=-120,radius=2.3];
+\fill(40:2.3)circle(2pt);\draw[guide](40:2.3)--(3.2,2.5);
+\node[right]at(3.2,2.5){$P_0:(q_0/\sqrt C,\sqrt L\,i_0)$};
+\draw[guide](0,0)--(40:2.3);\node at(.9,.3){$\sqrt{2W}$};
+
+\end{tikzpicture}}
+图\ref{c5:lc-phase-plane}中，若记横、纵坐标为 $X,Y$，方程给出 $\dot X=\omega_0Y,\dot Y=-\omega_0X$，所以沿圆顺时针运动。由右端电荷最大点出发，最初向下，表示 $i<0$、电荷从原正极板流出。半径由总能量决定，初始点所在象限则由 $q_0,i_0$ 的符号共同确定。
+
+真实电路有电阻，振幅会下降。若在LC中串入 $R$，方程变为 $L\ddot q+R\dot q+q/C=0$，总能量满足 $\dot W=-Ri^2$。它不是每一时刻都按固定指数衰减的纯常数倍，因为电阻耗散与瞬时电流有关；在弱阻尼近似下，平均能量具有简洁指数包络。
+
+\subsection{阻尼的三种参数区间}
+
+设特征解为 $q\propto\e^{st}$，特征方程 $Ls^2+Rs+1/C=0$。令 $\gamma=R/(2L)$，根为 $s=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$。当 $R<2\sqrt{L/C}$，根有虚部，电荷为衰减振荡，角频率 $\omega=\sqrt{\omega_0^2-\gamma^2}$；等号对应临界阻尼。此时令 $q=y\e^{-\gamma t}$，依次求导为
+$\dot q=(\dot y-\gamma y)\e^{-\gamma t}$、
+$\ddot q=(\ddot y-2\gamma\dot y+\gamma^2y)\e^{-\gamma t}$。
+代入方程后只余 $\ddot y=0$，积分两次得 $y=A+Bt$，所以解为 $(A+Bt)\e^{-\gamma t}$；大于时两根都为负实数，通常不发生周期振荡。
+
+\fig{c5:damping-regimes}{相同 $q(0)=q_0>0,i(0)=0$ 下的三类响应；横轴采用 $\omega_0t$}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.1,0)node[right]{$\omega_0t$};\draw[axis](0,-1.2)--(0,2.8)node[above]{$q/q_0$};
+\node[left]at(0,2){$1$};
+\draw[blue,thick,domain=0:8,samples=160]plot({.7*\x},{2*exp(-.3*\x)*(cos(.953939*\x r)+.314485*sin(.953939*\x r))});
+\draw[black,thick,domain=0:8,samples=120]plot({.7*\x},{2*(1+\x)*exp(-\x)});
+\draw[red,thick,domain=0:8,samples=120]plot({.7*\x},{2*(1.170820*exp(-.381966*\x)-.170820*exp(-2.618034*\x))});
+\foreach \x in {2,4,6,8}{\draw({.7*\x},0)--({.7*\x},-.1)node[below]{$\x$};}
+\draw[blue,thick](6.6,2.3)--(7.1,2.3)node[right]{$\gamma/\omega_0=0.3$};
+\draw[black,thick](6.6,1.5)--(7.1,1.5)node[right]{$\gamma/\omega_0=1$};
+\draw[red,thick](6.6,.7)--(7.1,.7)node[right]{$\gamma/\omega_0=1.5$};
+
+\end{tikzpicture}}
+图\ref{c5:damping-regimes}三条曲线初始斜率都为零；欠阻尼曲线可以反复变号，另两条在本初态下单调趋零。一般初始电流不为零时，非周期响应也可能先增后减或过零一次，不能把“不发生周期振荡”理解为任意初态下一定单调。
+
+上述区间来自特征根，不是按图形外观任意分类。写具体响应仍需代入 $q_0,i_0$。在弱阻尼时可近似把频率视为 $\omega_0$，但若要比较一周期衰减或临界条件，就应保留 $R$ 对频率和包络的影响。
+
+
+\section{振荡模型与实际能量通道}
+\subsection{电路与力学的对应有初条件限制}
+
+串联RLC自由过程的方程 $L\ddot q+R\dot q+q/C=0$ 与阻尼弹簧振子 $m\ddot x+b\dot x+kx=0$ 形式相同，对应为 $q\leftrightarrow x$、$L\leftrightarrow m$、$R\leftrightarrow b$、$1/C\leftrightarrow k$。电感能 $Li^2/2$ 对应动能，电场能 $q^2/(2C)$ 对应弹性势能。只有把电流定义为同一个电荷坐标的导数时，这组对应才连贯。
+
+改变回路连接后，应按新回路重新选择电荷坐标。两电容经电感交换电荷时，总电量约束提供一个常量模，振动发生在电压差模；不能直接把任意一只电容的全部初电荷当成振幅。初始电流不为零时，振幅还含磁场能，最大电荷也可能大于任一只原有电荷。
+
+\fig{c5:two-capacitor-coordinate}{两个电容经电感相连时，转移量 $x$ 改变差电压；两只下极板共接}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C_1$}](0,3)to[L,l={$L$}](6,3)to[C,l={$C_2$}](6,0)--(0,0);
+\fill(0,3)circle(1.5pt)node[above=18pt]{$C_1U_1-x$};
+\fill(6,3)circle(1.5pt)node[above=18pt]{$C_2U_2+x$};
+\draw[flow](2,4)--(4,4)node[midway,above]{$i=\dot x$};
+\node[left]at(-1.4,1.5){$u_1$};\node[right]at(7.4,1.5){$u_2$};
+\node at(3,-1){两上极板总电荷 $C_1U_1+C_2U_2$ 守恒};
+
+\end{tikzpicture}}
+图\ref{c5:two-capacitor-coordinate}取 $x(0)=0$，则 $u_1=U_1-x/C_1,u_2=U_2+x/C_2$。由电感端电压 $L\ddot x=u_1-u_2$，
+\[
+ L\ddot x+\frac{x}{C_s}=U_1-U_2,\qquad
+ C_s=\frac{C_1C_2}{C_1+C_2}.
+\]
+平衡转移量为 $x_{\rm eq}=C_s(U_1-U_2)$，真正振荡的坐标是 $x-x_{\rm eq}$，而非两电容总电量。两上极板总电量所决定的共同电压为 $U_f=(C_1U_1+C_2U_2)/(C_1+C_2)$，把能量配方后可写成
+\[
+ W=\frac12(C_1+C_2)U_f^2+
+ \frac{(x-x_{\rm eq})^2}{2C_s}+\frac12Li^2.
+\]
+第一项恒定，后两项交换。若初电感电流为 $i_0$，相对平衡的振幅为 $\sqrt{x_{\rm eq}^2+LC_si_0^2}$；$i_0=0$ 时转移量仍可越过 $x_{\rm eq}$，这正是理想LC过程与电阻耗散过程的区别。
+
+理想LC把场能限制在电容和电感内，忽略电阻热和向空间辐射。实际高频或尺寸接近波长时，电压、电流的集中参数近似会失效，开口结构可向外辐射。把理想LC结论用于实际振荡，需要确认耗散在所研究的几个周期内足够小；若能量逐周减小，应由阻尼模型而非改变守恒式中的任意系数解释。

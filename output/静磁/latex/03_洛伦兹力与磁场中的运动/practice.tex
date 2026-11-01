@@ -1,0 +1,69 @@
+\section{练习}
+
+\begin{question}\begin{drill}[异号粒子再次相遇]\label{mg3:drill:1}
+两粒子从原点以相同速度 $v\bm e_x$ 同时出发，电量分别为 $+q,-q$，质量分别为 $m,2m$，空间中均匀磁场向纸外。忽略相互作用，求除初态外最早相遇的时间。
+\end{drill}
+\fig{fig:mg3:drill:1:s}{题设：异号粒子再次相遇}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2.5,0)--(2.8,0)node[right]{$x$};\draw[axis](0,-2.5)--(0,2.8)node[above]{$y$};\draw[flow](0,0)--(1.2,0)node[right]{$v$};\node at(-1.5,1.5){$\odot B$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:1}
+\begin{question}\begin{drill}[圆弧的最小覆盖圆盘]\label{mg3:drill:2}
+场内轨道半径为 $r$，需要圆形区域几何覆盖一段转角 $0<\delta\le2\pi$ 的圆弧，允许圆弧落在圆盘边界上。求最小覆盖圆盘半径，区分 $\delta\le\pi$ 与 $\delta\ge\pi$。
+\end{drill}
+\fig{fig:mg3:drill:2:s}{题设：圆弧的最小覆盖圆盘}{\begin{tikzpicture}[scale=.88]
+\draw[world](1.5,0)arc(0:140:1.5);\draw[guide](0,0)--(1.5,0) (0,0)--(140:1.5);\draw[dim](.5,0)arc(0:140:.5);\node at(.5,.5){$\delta$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$r$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:2}
+\begin{question}\begin{drill}[有限条形场的斜入射]\label{mg3:drill:3}
+正粒子从原点进入 $0<x<d$ 的向纸内磁场，初速度与 $+x$ 夹角 $\alpha\in(-\pi/2,\pi/2)$。速率为 $v$，回旋半径 $r$。求穿出右边界的条件与首次穿出时刻；若不穿出，求返回左边界的时刻。
+\end{drill}
+\fig{fig:mg3:drill:3:s}{题设：有限条形场的斜入射}{\begin{tikzpicture}[scale=.88]
+\fill[gray!12](0,-.5)rectangle(2.4,3.3);\draw[guide](0,-.5)--(0,3.3);\fill(0,0)circle(2pt)node[left]{$O$};\draw[flow](-1.2,-.84)--(0,0)node[midway,above]{$v$};\node at(1.5,2.6){$\otimes B$};\draw[guide](2.4,-.5)--(2.4,3.3);\node[below]at(2.4,-.5){$d$};\draw[flow](0,0)--(1,.7);\node at(.5,.15){$\alpha$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:3}
+\begin{question}\begin{drill}[由两条切线反求磁场]\label{mg3:drill:4}
+正粒子以速率 $v$ 从 $P=(0,0)$ 沿 $+x$ 进入匀强磁区，首次从 $Q=(a,a)$ 沿 $+y$ 离开。已知仅经过小于半周的一段弧，求磁场方向、大小及在场时间。
+\end{drill}
+\fig{fig:mg3:drill:4:s}{题设：由两条切线反求磁场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(3,0)node[right]{$x$};\draw[axis](0,-0.2)--(0,3)node[above]{$y$};\fill(0,0)circle(2pt)node[below]{$P$};\fill(2,2)circle(2pt)node[right]{$Q(a,a)$};\draw[flow](0,0)--(1,0);\draw[flow](2,2)--(2,3);
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:4}
+\begin{question}\begin{drill}[圆锥上的两种允许速度]\label{mg3:drill:5}
+球在尖顶向上的圆锥外表面运动，条件与前述圆锥例题相同。给定 $R>R_{\min}$，求两个允许速度，并比较它们的和、积及临界合并情形。
+\end{drill}
+\fig{fig:mg3:drill:5:s}{沿用尖顶向上圆锥的外表面与向下磁场，支持力方向及转向均保持不变}{\begin{tikzpicture}
+
+\draw[world](-2,-1.464102)--(0,2)--(2,-1.464102);\draw[guide](0,2)--(0,-1.8);\draw[guide](0,-.078461)ellipse(1.2 and .3);
+\node at(1.2,-.078461){$\otimes$};\node[right]at(1.5,-.078461){$v$ 向纸内};\draw[dim](0,-.6)--(1.2,-.6)node[midway,below]{$R$};\draw[flow](3,1.7)--(3,.2)node[below]{$B$};\draw[dim](0,1.1)arc(-90:-60:.9)node[midway,below]{$\theta$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:5}
+\begin{question}\begin{drill}[非相对论周期的适用精度]\label{mg3:drill:6}
+粒子质量 $m$、电荷大小 $q$，其动量满足 $p=\gamma mv$，$\gamma=(1-v^2/c_0^2)^{-1/2}$。在垂直匀强磁场中求周期；若动能为 $K=(\gamma-1)mc_0^2$，将非相对论周期的偏差用 $K$ 表示。
+\end{drill}
+\fig{fig:mg3:drill:6:s}{题设：非相对论周期的适用精度}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$r$};\draw[flow](1.5*.707,1.5*.707)arc(45:115:1.5);\node at(2.4,1){$\otimes B$};\node at(0,-2.2){图示正电荷，周期只取电荷大小};\node at(0,2.2){$p=\gamma mv$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:6}
+\begin{question}\begin{drill}[任意两侧磁场的界面漂移]\label{mg3:drill:7}
+界面 $x=0$ 右侧磁场 $B_1$、左侧 $B_2$，均向纸内。质量 $m$、正电荷 $q$ 的粒子从界面沿 $+x$ 进入右区，速率恒为 $v$。求完整往返的界面位移、时间及平均速度，并检查两场相等时的结果。
+\end{drill}
+\fig{fig:mg3:drill:7:s}{题设：任意两侧磁场的界面漂移}{\begin{tikzpicture}[scale=.88]
+\draw[guide](0,-1)--(0,3);\node at(-1.3,2){$\otimes B_2$};\node at(1.3,2){$\otimes B_1$};\draw[flow](0,0)--(1,0);
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:7}
+\begin{question}\begin{drill}[宽角粒子束的最大穿透尺度]\label{mg3:drill:8}
+正粒子均从同一点进入 $x>0$ 的向纸内匀强场，速率都为 $v$，初始方向角可取 $-\pi/2<\alpha<\pi/2$。求所有轨道的右向最大穿透深度的上确界，并说明能否由严格入射的一条轨道达到。
+\end{drill}
+\fig{fig:mg3:drill:8:s}{题设：宽角粒子束的最大穿透尺度}{\begin{tikzpicture}[scale=.88]
+\fill[gray!12](0,-.5)rectangle(4,3.3);\draw[guide](0,-.5)--(0,3.3);\fill(0,0)circle(2pt)node[left]{$O$};\draw[flow](-1.2,0)--(0,0)node[midway,above]{$v$};\node at(3,2.6){$\otimes B$};\draw[flow](0,0)--(.8,-.9);\draw[flow](0,0)--(.8,.9);
+\end{tikzpicture}}
+\end{question}
+\answerlink{mg3:drill:8}

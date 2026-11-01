@@ -1,0 +1,2714 @@
+[
+  {
+    "id": "cover",
+    "title": "运动学基础",
+    "columns": [
+      [],
+      []
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "model",
+    "title": "质点、参考系与时间区间",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "质点模型取决于所求问题"
+        },
+        {
+          "kind": "text",
+          "text": "研究两城间行程时，车长通常可忽略。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "研究列车完全通过桥梁时，车长参与总距离。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "选定质点以后，仍应明确代表车头、质心还是其他点。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "参考系确定运动描述"
+        },
+        {
+          "kind": "text",
+          "text": "乘客相对车厢静止，相对站台运动。两个结论采用不同参照。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "先选参考系，再规定原点、坐标正向和计时起点。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "物体大小并非唯一判据，所求结果对形状和转动是否敏感也很重要。"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "时刻对应状态，区间对应过程"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\text{第3秒末：}\\ t=3\\,\\mathrm s",
+          "size": 30,
+          "asset": "eq-001"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\text{第3秒内：}\\ 2\\le t\\le3\\,\\mathrm s",
+          "size": 30,
+          "asset": "eq-002"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\text{前3秒：}\\ 0\\le t\\le3\\,\\mathrm s",
+          "size": 30,
+          "asset": "eq-003"
+        },
+        {
+          "kind": "text",
+          "text": "位置与速度是时刻的函数。平均速度和路程都必须附带所考察的区间。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "参考系与坐标系的区别"
+        },
+        {
+          "kind": "text",
+          "text": "参考系是描述位置变化所依据的物体或物体组，坐标系是附着其上的数学工具。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "更换坐标原点改变位置数值；更换参考系还可能改变速度。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "coordinates",
+    "title": "直角坐标与极坐标",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "固定直角坐标中的位矢"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol r=x\\boldsymbol e_x+y\\boldsymbol e_y",
+          "size": 30,
+          "asset": "eq-004"
+        },
+        {
+          "kind": "figure",
+          "key": "k1theory-path",
+          "label": "图3(a) 起终位置与坐标正方向",
+          "height": 270
+        },
+        {
+          "kind": "text",
+          "text": "图3(a)中，P₁、P₂是两个时刻的位置。位矢从同一原点量起，位移从P₁指向P₂。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "极坐标的径向与横向"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol e_\\rho=(\\cos\\theta,\\sin\\theta)",
+          "size": 30,
+          "asset": "eq-005"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol e_\\theta=(-\\sin\\theta,\\cos\\theta)",
+          "size": 30,
+          "asset": "eq-006"
+        },
+        {
+          "kind": "figure",
+          "key": "k1t-polar-coach",
+          "label": "图3(b) 两个基矢随方位角转动",
+          "height": 230
+        },
+        {
+          "kind": "text",
+          "text": "图3(b)中径向沿OP，横向沿角度增加方向。ρ＝0时应改用直角坐标或分段描述。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "trajectory",
+    "title": "位矢、运动方程与轨迹方程",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "运动方程保留时间规律"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol r=\\boldsymbol r(t),\\qquad x=x(t),\\quad y=y(t)",
+          "size": 30,
+          "asset": "eq-007"
+        },
+        {
+          "kind": "heading",
+          "text": "消去时间得到轨迹方程"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=A\\cos\\omega t,\\qquad y=B\\sin\\omega t",
+          "size": 30,
+          "asset": "eq-008"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{x^2}{A^2}+\\frac{y^2}{B^2}=1",
+          "size": 30,
+          "asset": "eq-009"
+        },
+        {
+          "kind": "text",
+          "text": "改变ω，轨迹仍为同一椭圆，但通过各点的快慢发生变化。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "轨迹方程通常已不包含完整的时间规律。"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "一般参数还需要q(t)"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol r=\\boldsymbol R(q)",
+          "size": 30,
+          "asset": "eq-010"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol v=\\boldsymbol R^{\\prime}(q)\\dot q",
+          "size": 30,
+          "asset": "eq-011"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol a=\\boldsymbol R^{\\prime\\prime}(q)\\dot q^{\\,2} +\\boldsymbol R^{\\prime}(q)\\ddot q",
+          "size": 30,
+          "asset": "eq-012"
+        },
+        {
+          "kind": "text",
+          "text": "轨迹导数确定切线，参数的变化率决定通过快慢与方向。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "由速度反求位置须保留初值"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t)=x(t_0)+\\int_{t_0}^t v_x(\\tau)\\,\\mathrm d\\tau",
+          "size": 30,
+          "asset": "eq-013"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "displacement",
+    "title": "位移与路程",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "位移由起终点确定"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta\\boldsymbol r=\\boldsymbol r_2-\\boldsymbol r_1",
+          "size": 30,
+          "asset": "eq-014"
+        },
+        {
+          "kind": "equation",
+          "latex": "s=\\int_{t_1}^{t_2}|\\boldsymbol v|\\,\\mathrm dt",
+          "size": 30,
+          "asset": "eq-015"
+        },
+        {
+          "kind": "text",
+          "text": "图5中，位移对应P₁P₂的直箭头，路程沿弯曲轨迹累计。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\bigl||\\boldsymbol r_2|-|\\boldsymbol r_1|\\bigr|\\le|\\Delta\\boldsymbol r|\\le s",
+          "size": 30,
+          "asset": "eq-016"
+        },
+        {
+          "kind": "text",
+          "text": "右侧等号要求沿两点连线单向运动。往返运动应在转向处分段。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x=\\sum_i\\Delta x_i,\\qquad s=\\sum_i|\\Delta x_i|",
+          "size": 30,
+          "asset": "eq-017"
+        },
+        {
+          "kind": "key",
+          "text": "回到出发点时，位移为零，路程仍可非零。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1theory-path",
+          "label": "图5 起终点的直箭头与真实轨迹",
+          "height": 390
+        },
+        {
+          "kind": "text",
+          "text": "位矢、位移和路程分别对应不同的几何对象。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "velocity",
+    "title": "平均速度与瞬时速度",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "平均量对应一段时间"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline{\\boldsymbol v}=\\frac{\\Delta\\boldsymbol r}{\\Delta t}",
+          "size": 30,
+          "asset": "eq-018"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline u=\\frac{s}{\\Delta t}\\ge|\\overline{\\boldsymbol v}|",
+          "size": 30,
+          "asset": "eq-019"
+        },
+        {
+          "kind": "figure",
+          "key": "k1theory-path",
+          "label": "图6 位移方向与实际轨迹",
+          "height": 250
+        },
+        {
+          "kind": "text",
+          "text": "平均速度为矢量，平均速率为标量。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "瞬时量是时间间隔的极限"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol v=\\lim_{\\Delta t\\to0} \\frac{\\Delta\\boldsymbol r}{\\Delta t}=\\frac{\\mathrm d\\boldsymbol r}{\\mathrm dt}",
+          "size": 30,
+          "asset": "eq-020"
+        },
+        {
+          "kind": "equation",
+          "latex": "u=|\\boldsymbol v|=\\frac{\\mathrm ds}{\\mathrm dt}",
+          "size": 30,
+          "asset": "eq-021"
+        },
+        {
+          "kind": "text",
+          "text": "时间间隔趋零时，瞬时位移方向趋向轨迹切线。位置时间图的割线趋向切线。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "平均量与瞬时量的区别"
+        },
+        {
+          "kind": "text",
+          "text": "同一路程与总时间可以对应不同的中间过程。仅有平均速度，不能恢复任意时刻的瞬时速度。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "经过同一位置的速度，还应明确运动分支。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "weights",
+    "title": "分段平均与统计权重",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "先分别相加位移、路程与时间"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline u=\\frac{\\sum s_i}{\\sum t_i},\\qquad t_i=\\frac{s_i}{v_i}",
+          "size": 30,
+          "asset": "eq-022"
+        },
+        {
+          "kind": "heading",
+          "text": "等时间采用算术平均"
+        },
+        {
+          "kind": "equation",
+          "latex": "t_1=t_2\\quad\\Longrightarrow\\quad\\overline u=\\frac{v_1+v_2}{2}",
+          "size": 30,
+          "asset": "eq-023"
+        },
+        {
+          "kind": "heading",
+          "text": "等路程采用调和平均"
+        },
+        {
+          "kind": "equation",
+          "latex": "s_1=s_2\\quad\\Longrightarrow\\quad\\overline u=\\frac{2v_1v_2}{v_1+v_2}",
+          "size": 30,
+          "asset": "eq-024"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{v_1+v_2}{2}-\\frac{2v_1v_2}{v_1+v_2} =\\frac{(v_1-v_2)^2}{2(v_1+v_2)}\\ge0",
+          "size": 30,
+          "asset": "eq-025"
+        },
+        {
+          "kind": "key",
+          "text": "包含反向运动时，位移带符号，路程始终取正。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p1q",
+          "label": "图7(a) 两段等路程",
+          "height": 190
+        },
+        {
+          "kind": "figure",
+          "key": "k1p1s",
+          "label": "图7(b) 时间逐段相加",
+          "height": 210
+        },
+        {
+          "kind": "text",
+          "text": "图7(b)中，慢的一段占用更多时间，因此平均速率更偏向较小值。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "acceleration",
+    "title": "速度变化量与加速度",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "初末速度移到同一起点，再作矢量差"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta\\boldsymbol v=\\boldsymbol v_2-\\boldsymbol v_1",
+          "size": 30,
+          "asset": "eq-026"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol a=\\frac{\\mathrm d\\boldsymbol v}{\\mathrm dt}",
+          "size": 30,
+          "asset": "eq-027"
+        },
+        {
+          "kind": "heading",
+          "text": "点积决定速率的变化率"
+        },
+        {
+          "kind": "equation",
+          "latex": "u^2=\\boldsymbol v\\cdot\\boldsymbol v",
+          "size": 30,
+          "asset": "eq-028"
+        },
+        {
+          "kind": "equation",
+          "latex": "2u\\dot u=2\\boldsymbol v\\cdot\\boldsymbol a",
+          "size": 30,
+          "asset": "eq-029"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot u=\\frac{\\boldsymbol v\\cdot\\boldsymbol a}{u}\\qquad(u>0)",
+          "size": 30,
+          "asset": "eq-030"
+        },
+        {
+          "kind": "text",
+          "text": "沿速度方向的加速度分量改变速率，垂直分量改变方向。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "一维运动中，va＞0时加速，va＜0时减速。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1theory-dv",
+          "label": "图8 红箭头从初速度端点指向末速度端点",
+          "height": 330
+        },
+        {
+          "kind": "text",
+          "text": "图8即使满足两速度等大，方向改变仍使速度差非零。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "匀速圆周运动的速率恒定，但加速度非零。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "turn",
+    "title": "零速度处的转向判断",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "加速度非零时的局部展开"
+        },
+        {
+          "kind": "equation",
+          "latex": "v(t_*)=0,\\qquad a(t_*)\\ne0",
+          "size": 30,
+          "asset": "eq-031"
+        },
+        {
+          "kind": "equation",
+          "latex": "v(t_*+\\delta t)=a(t_*)\\delta t+o(\\delta t)",
+          "size": 30,
+          "asset": "eq-032"
+        },
+        {
+          "kind": "text",
+          "text": "零点两边速度异号，因此必定转向。位置在该时刻出现局部极值。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\delta t<0\\text{与}\\delta t>0:\\quad v\\text{异号}",
+          "size": 30,
+          "asset": "eq-033"
+        },
+        {
+          "kind": "key",
+          "text": "转向的判据是速度换号。"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "加速度也为零时检查更高阶项"
+        },
+        {
+          "kind": "equation",
+          "latex": "v(t)=c(t-t_*)^2\\quad(c>0)",
+          "size": 30,
+          "asset": "eq-034"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t)=x_*+\\frac c3(t-t_*)^3",
+          "size": 30,
+          "asset": "eq-035"
+        },
+        {
+          "kind": "text",
+          "text": "零点两边速度均为正，质点瞬停后仍继续前进。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "v(t_*)=0,\\qquad a(t_*)=0",
+          "size": 30,
+          "asset": "eq-036"
+        },
+        {
+          "kind": "key",
+          "text": "位置图斜率为零，也可对应继续单调通过的平稳点。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "straight",
+    "title": "一般直线运动的求解关系",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "已知位置随时间变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=x(t):\\quad v=\\frac{\\mathrm dx}{\\mathrm dt},\\qquad a=\\frac{\\mathrm d^2x}{\\mathrm dt^2}",
+          "size": 30,
+          "asset": "eq-037"
+        },
+        {
+          "kind": "heading",
+          "text": "已知速度随时间变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "a=\\frac{\\mathrm dv}{\\mathrm dt}",
+          "size": 30,
+          "asset": "eq-038"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t)=x_0+\\int_{t_0}^t v(\\tau)\\,\\mathrm d\\tau",
+          "size": 30,
+          "asset": "eq-039"
+        },
+        {
+          "kind": "text",
+          "text": "积分给出位移增量，初始位置决定积分常数。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "初值必须与计时起点对应"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t_0)=x_0,\\qquad v(t_0)=v_0",
+          "size": 30,
+          "asset": "eq-040"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "已知加速度随时间变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "v(t)=v_0+\\int_{t_0}^t a(\\tau)\\,\\mathrm d\\tau",
+          "size": 30,
+          "asset": "eq-041"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t)=x_0+\\int_{t_0}^t v(\\tau)\\,\\mathrm d\\tau",
+          "size": 30,
+          "asset": "eq-039"
+        },
+        {
+          "kind": "heading",
+          "text": "已知速度随位置变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\mathrm dt=\\frac{\\mathrm dx}{v(x)}",
+          "size": 30,
+          "asset": "eq-042"
+        },
+        {
+          "kind": "equation",
+          "latex": "t-t_0=\\int_{x_0}^x\\frac{\\mathrm d\\xi}{v(\\xi)}",
+          "size": 30,
+          "asset": "eq-043"
+        },
+        {
+          "kind": "key",
+          "text": "位置作积分变量时，先选定单调运动的分支。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "position-variable",
+    "title": "位置变量积分与端点可达性",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "先写每一微小位移的用时"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\mathrm dt=\\frac{\\mathrm dx}{v(x)}",
+          "size": 30,
+          "asset": "eq-042"
+        },
+        {
+          "kind": "equation",
+          "latex": "t_2-t_1=\\int_{x_1}^{x_2}\\frac{\\mathrm dx}{v(x)}",
+          "size": 30,
+          "asset": "eq-044"
+        },
+        {
+          "kind": "text",
+          "text": "位置在积分段内应单调。转向时须先选定不同分支。",
+          "size": 28
+        },
+        {
+          "kind": "figure",
+          "key": "k1k-elements",
+          "label": "图11 等位移微元在慢区占用更多时间",
+          "height": 250
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "端点速度趋零，仍须检查积分"
+        },
+        {
+          "kind": "equation",
+          "latex": "u\\sim C|x_*-x|^p,\\qquad C>0",
+          "size": 30,
+          "asset": "eq-045"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta t\\sim\\frac1C\\int_0^\\varepsilon \\xi^{-p}\\,\\mathrm d\\xi",
+          "size": 30,
+          "asset": "eq-046"
+        },
+        {
+          "kind": "equation",
+          "latex": "p<1:\\quad\\Delta t<\\infty",
+          "size": 30,
+          "asset": "eq-047"
+        },
+        {
+          "kind": "equation",
+          "latex": "p\\ge1:\\quad\\Delta t\\to\\infty",
+          "size": 30,
+          "asset": "eq-048"
+        },
+        {
+          "kind": "text",
+          "text": "速度同样趋于零，可分别对应有限时刻停住，或无限接近而永不到达。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "量纲检验：速度倒数乘位移才具有时间的量纲。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "graphs",
+    "title": "图像中的斜率与面积",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "斜率取决于纵轴的物理量"
+        },
+        {
+          "kind": "equation",
+          "latex": "x\\text{-}t:\\quad v=\\frac{\\mathrm dx}{\\mathrm dt}; \\qquad v\\text{-}t:\\quad a=\\frac{\\mathrm dv}{\\mathrm dt}",
+          "size": 30,
+          "asset": "eq-049"
+        },
+        {
+          "kind": "text",
+          "text": "位置图水平表示静止；速度图水平表示匀速。位置图的折点与速度图的折点含义不同。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "位移累计有向面积，路程累计绝对面积"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x=\\int v\\,\\mathrm dt,\\qquad s=\\int |v|\\,\\mathrm dt",
+          "size": 30,
+          "asset": "eq-050"
+        },
+        {
+          "kind": "text",
+          "text": "图12(b)中，S₊、S₋都表示面积的正数值。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{\\Delta x=S_+-S_-},\\qquad\\boxed{s=S_++S_-}",
+          "size": 30,
+          "asset": "eq-051"
+        },
+        {
+          "kind": "key",
+          "text": "求路程先在速度换号处分段，再累加各段绝对面积。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1k-threegraphs",
+          "label": "图12(a) 位置图与速度图的斜率",
+          "height": 220
+        },
+        {
+          "kind": "figure",
+          "key": "k1theory-area",
+          "label": "图12(b) 时间轴上下的两块面积",
+          "height": 220
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "piecewise",
+    "title": "分段运动与局部计时",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "刹停模型在速度降至零时改变"
+        },
+        {
+          "kind": "equation",
+          "latex": "v=v_0-at,\\qquad t_*=\\frac{v_0}{a}",
+          "size": 30,
+          "asset": "eq-052"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=v_0t-\\frac12at^2,\\qquad x_*=\\frac{v_0^2}{2a}",
+          "size": 30,
+          "asset": "eq-053"
+        },
+        {
+          "kind": "text",
+          "text": "图13(a)的实线表示停后静止，虚线表示同一负加速度继续作用并导致转向。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "第二段继承第一段末态"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\tau=t-t_1,\\qquad v=v_1+a_2\\tau",
+          "size": 30,
+          "asset": "eq-054"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=x_1+v_1\\tau+\\frac12a_2\\tau^2",
+          "size": 30,
+          "asset": "eq-055"
+        },
+        {
+          "kind": "text",
+          "text": "图13(b)的t₁与τ＝0是同一事件。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "全局时刻恢复t＝t₁＋τ。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1k-threegraphs",
+          "label": "图13(a) 停后静止与继续转向",
+          "height": 220
+        },
+        {
+          "kind": "figure",
+          "key": "k1k-localtime",
+          "label": "图13(b) 同一事件的两种时间读数",
+          "height": 200
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "constraint",
+    "title": "几何约束与几何交点",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "先列每一时刻都成立的位置关系"
+        },
+        {
+          "kind": "equation",
+          "latex": "F(x,y,t)=0",
+          "size": 30,
+          "asset": "eq-056"
+        },
+        {
+          "kind": "equation",
+          "latex": "F_x\\dot x+F_y\\dot y+F_t=0",
+          "size": 30,
+          "asset": "eq-057"
+        },
+        {
+          "kind": "text",
+          "text": "图14的交点C同时满足两杆的位置方程。显含时间项反映杆本身的运动。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "加速度需要再次求导"
+        },
+        {
+          "kind": "equation",
+          "latex": "x^2+y^2=R^2\\quad\\Longrightarrow\\quad xv_x+yv_y=0",
+          "size": 30,
+          "asset": "eq-058"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_x^2+v_y^2+xa_x+ya_y=0",
+          "size": 30,
+          "asset": "eq-059"
+        },
+        {
+          "kind": "heading",
+          "text": "固定物质点与几何位置应区分"
+        },
+        {
+          "kind": "equation",
+          "latex": "(\\boldsymbol v_P-\\boldsymbol V_{\\rm boundary})\\cdot\\boldsymbol n=0",
+          "size": 30,
+          "asset": "eq-060"
+        },
+        {
+          "kind": "key",
+          "text": "允许沿边界滑动时，只约束相对速度的法向分量。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p7q",
+          "label": "图14 两条移动直杆共同确定交点C",
+          "height": 350
+        },
+        {
+          "kind": "text",
+          "text": "交点可沿两杆滑动，其速度一般不等于任一杆上固定物质点的速度。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "polar-v",
+    "title": "极坐标的基矢与速度",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "基矢长度不变，方向随方位角变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol e_\\rho=(\\cos\\theta,\\sin\\theta)",
+          "size": 30,
+          "asset": "eq-005"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol e_\\theta=(-\\sin\\theta,\\cos\\theta),\\qquad\\omega=\\dot\\theta",
+          "size": 30,
+          "asset": "eq-061"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot{\\boldsymbol e}_\\rho=\\omega\\boldsymbol e_\\theta,\\qquad \\dot{\\boldsymbol e}_\\theta=-\\omega\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-062"
+        },
+        {
+          "kind": "heading",
+          "text": "对位矢使用乘积法则"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol r=\\rho\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-063"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{\\boldsymbol v=\\dot\\rho\\boldsymbol e_\\rho+\\rho\\omega\\boldsymbol e_\\theta}",
+          "size": 30,
+          "asset": "eq-064"
+        },
+        {
+          "kind": "equation",
+          "latex": "u=\\sqrt{\\dot\\rho^{\\,2}+\\rho^2\\omega^2}",
+          "size": 30,
+          "asset": "eq-065"
+        },
+        {
+          "kind": "key",
+          "text": "横向分速度为ρω；只有半径不变时，速率才等于ρ|ω|。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1t-polar-coach",
+          "label": "图15 相邻径向基矢的转动与横向正方向",
+          "height": 360
+        },
+        {
+          "kind": "text",
+          "text": "图15中两个单位矢量的长度不变，方向随方位角改变。横向也通常不沿实际轨迹的切线。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "polar-a",
+    "title": "极坐标加速度的推导",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "两个速度乘积分别求导"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{\\mathrm d}{\\mathrm dt}(\\dot\\rho\\boldsymbol e_\\rho) =\\ddot\\rho\\boldsymbol e_\\rho+\\dot\\rho\\omega\\boldsymbol e_\\theta",
+          "size": 30,
+          "asset": "eq-066"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{\\mathrm d}{\\mathrm dt}(\\rho\\omega\\boldsymbol e_\\theta) =(\\dot\\rho\\omega+\\rho\\dot\\omega)\\boldsymbol e_\\theta-\\rho\\omega^2\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-067"
+        },
+        {
+          "kind": "heading",
+          "text": "按同一基矢合并"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{a_\\rho=\\ddot\\rho-\\rho\\omega^2}",
+          "size": 30,
+          "asset": "eq-068"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{a_\\theta=2\\dot\\rho\\omega+\\rho\\dot\\omega}",
+          "size": 30,
+          "asset": "eq-069"
+        },
+        {
+          "kind": "text",
+          "text": "横向系数2来自两个乘积中相同的项。径向速度为零，径向加速度仍可非零。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p12s",
+          "label": "图16 各项按实际符号确定方向",
+          "height": 300
+        },
+        {
+          "kind": "text",
+          "text": "图16径向的两项可彼此抵消。ω在一段时间内恒为零时，恢复固定射线上的直线运动。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\rho=R:\\ a_\\rho=-R\\omega^2,\\quad a_\\theta=R\\dot\\omega",
+          "size": 30,
+          "asset": "eq-070"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "elements",
+    "title": "微元近似与积分累积",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "局部关系保留到所需阶数"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\begin{aligned} \\boldsymbol r(t+\\delta t)-\\boldsymbol r(t) &=\\boldsymbol v(t)\\delta t\\\\ &\\quad+\\tfrac12\\boldsymbol a(t)(\\delta t)^2+o((\\delta t)^2) \\end{aligned}",
+          "size": 30,
+          "asset": "eq-071"
+        },
+        {
+          "kind": "text",
+          "text": "用当前速度代替小段内的变化速度，省略的是二阶小量。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "总误差随细分趋于零"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\delta t=\\frac TN,\\qquad \\text{总误差}\\le NC(\\delta t)^2=\\frac{CT^2}{N}\\to0",
+          "size": 30,
+          "asset": "eq-072"
+        },
+        {
+          "kind": "heading",
+          "text": "从微元的物理意义确定积分"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x=\\int v(t)\\,\\mathrm dt,\\qquad \\Delta t=\\int\\frac{\\mathrm dh}{v(h)}",
+          "size": 30,
+          "asset": "eq-073"
+        },
+        {
+          "kind": "key",
+          "text": "两个积分的变量与被积量不同，量纲可以帮助判断。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1k-elements",
+          "label": "图17 等高度微元在慢区占用更多时间",
+          "height": 350
+        },
+        {
+          "kind": "text",
+          "text": "图17中条形面积是用时。离散速度点可用梯形面积估算位移；求路程要先分段。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ellipse-check",
+    "title": "椭圆运动的分量与方向核验",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "同一时间参数下逐次求导"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=A\\cos\\omega t,\\qquad y=B\\sin\\omega t",
+          "size": 30,
+          "asset": "eq-008"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol v=\\omega(-A\\sin\\omega t,\\ B\\cos\\omega t)",
+          "size": 30,
+          "asset": "eq-074"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol a=-\\omega^2(x,y)",
+          "size": 30,
+          "asset": "eq-075"
+        },
+        {
+          "kind": "text",
+          "text": "加速度指向原点。仅由这一方向条件，还不能断定匀速或轨迹为圆。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "再按正交分量合成速率"
+        },
+        {
+          "kind": "equation",
+          "latex": "u^2=\\omega^2(A^2\\sin^2\\omega t+B^2\\cos^2\\omega t)",
+          "size": 30,
+          "asset": "eq-076"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "用点积核对快慢的变化"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot u=\\frac{\\boldsymbol v\\cdot\\boldsymbol a}{u}\\qquad(u\\ne0)",
+          "size": 30,
+          "asset": "eq-077"
+        },
+        {
+          "kind": "text",
+          "text": "A≠B时，速率一般随时间变化。A＝B时才退化为匀速圆周运动。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "由三个信息相互检查"
+        },
+        {
+          "kind": "text",
+          "text": "位置满足轨迹方程。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "速度沿轨迹切线。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "速度与加速度的点积符合速率增减。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "零速度处回到分量或局部展开，不能继续除以速率。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex1",
+    "title": "例1　等路程两段的平均速度",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：总路程除以总时间"
+        },
+        {
+          "kind": "text",
+          "text": "图19(a)中AM＝MB＝s/2；图19(b)将两段用时相加。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "t_1=\\frac{s}{2v_1},\\quad t_2=\\frac{s}{2v_2},\\qquad\\frac{s}{v}=\\frac{s}{2v_1}+\\frac{s}{2v_2}",
+          "size": 30,
+          "asset": "eq-078"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{v_2=\\frac{vv_1}{2v_1-v}},\\qquad t_2>0\\ \\Longrightarrow\\ \\boxed{0<v<2v_1}",
+          "size": 30,
+          "asset": "eq-079"
+        },
+        {
+          "kind": "heading",
+          "text": "边界与推广"
+        },
+        {
+          "kind": "text",
+          "text": "v＝v₁时恢复v₂＝v₁；v趋近2v₁时，所需v₂趋于无穷。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\text{路程占比为}\\lambda,1-\\lambda\\text{时：}\\quad\\frac1{\\overline v}=\\frac{\\lambda}{v_1}+\\frac{1-\\lambda}{v_2}",
+          "size": 30,
+          "asset": "eq-080"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p1q",
+          "label": "图19(a) 题设：前后两段等路程",
+          "height": 160
+        },
+        {
+          "kind": "figure",
+          "key": "k1p1s",
+          "label": "图19(b) 解：先求两段用时",
+          "height": 190
+        }
+      ]
+    ],
+    "question": "质点沿直线单向运动，前一半路程的恒定速度为v₁＞0，全程平均速度为v＞0。求后一半速度v₂及其存在条件。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex2",
+    "title": "例2　一圈赛跑的平均量",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：起终点相同，位移为零"
+        },
+        {
+          "kind": "text",
+          "text": "图20(a)中从A出发又回到A，路程为400 m。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline{\\boldsymbol v}=\\boldsymbol0,\\qquad\\overline u=\\frac{400}{40}=10\\,\\mathrm{m/s}",
+          "size": 30,
+          "asset": "eq-081"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\int_0^{40}u(t)\\,\\mathrm dt=400\\,\\mathrm m",
+          "size": 30,
+          "asset": "eq-082"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\int_0^{t_{50}}u(t)\\,\\mathrm dt=50\\,\\mathrm m",
+          "size": 30,
+          "asset": "eq-083"
+        },
+        {
+          "kind": "text",
+          "text": "图20(b)的两条曲线面积相同，中途速率不同。仅由总成绩不能确定t₅₀或u(t₅₀)。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p2q",
+          "label": "图20(a) 题设：一圈回到出发点",
+          "height": 175
+        },
+        {
+          "kind": "figure",
+          "key": "k1p2s",
+          "label": "图20(b) 解：等面积的不同过程",
+          "height": 210
+        }
+      ]
+    ],
+    "question": "运动员沿400 m跑道运动，40 s后恰好跑完一圈。求平均速度和平均速率，并判断能否确定跑到50 m处的瞬时速度。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex3",
+    "title": "例3　速度图中的位移与路程",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：在3 s换号处分开正负面积"
+        },
+        {
+          "kind": "equation",
+          "latex": "S_+=3\\times1+\\tfrac12\\times2\\times3=6\\,\\mathrm m",
+          "size": 30,
+          "asset": "eq-084"
+        },
+        {
+          "kind": "equation",
+          "latex": "S_-=\\tfrac12\\times3\\times3=4.5\\,\\mathrm m",
+          "size": 30,
+          "asset": "eq-085"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x_3=s_3=6\\,\\mathrm m",
+          "size": 30,
+          "asset": "eq-086"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{\\Delta x_6=1.5\\,\\mathrm m},\\qquad \\boxed{s_6=10.5\\,\\mathrm m}",
+          "size": 30,
+          "asset": "eq-087"
+        },
+        {
+          "kind": "text",
+          "text": "图21(b)中，位移用两块面积之差，路程用两块面积之和。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline v_6=\\frac{1.5}{6}=0.25\\,\\mathrm{m/s},\\qquad\\overline u_6=\\frac{10.5}{6}=1.75\\,\\mathrm{m/s}",
+          "size": 30,
+          "asset": "eq-088"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p3q",
+          "label": "图21(a) 题设：分段速度图",
+          "height": 180
+        },
+        {
+          "kind": "figure",
+          "key": "k1p3s",
+          "label": "图21(b) 解：分别计算两块面积",
+          "height": 210
+        }
+      ]
+    ],
+    "question": "0～1 s速度为3 m/s；1～3 s线性降至0；3～6 s线性降至−3 m/s。求前3 s、前6 s的位移与路程，并求前6 s的两种平均量。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex4",
+    "title": "例4　由分段速度重建位置图",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：逐段积分，保留前段末位置"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(t)=\\begin{cases} v_0t,&0\\le t\\le T,\\\\ v_0T,&T\\le t\\le2T,\\\\ v_0T-v_0(t-2T),&2T\\le t\\le3T. \\end{cases}",
+          "size": 30,
+          "asset": "eq-089"
+        },
+        {
+          "kind": "equation",
+          "latex": "x(3T)=0,\\qquad\\Delta x=0,\\qquad s=2v_0T",
+          "size": 30,
+          "asset": "eq-090"
+        },
+        {
+          "kind": "text",
+          "text": "图22(b)中，各段斜率依次为v₀、0、−v₀，位置在交界处连续。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "末段的时间增量是t−2T，初始位置是v₀T。"
+        },
+        {
+          "kind": "text",
+          "text": "速度可按理想模型跳变，位置图仍不能出现竖直跳跃。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p4q",
+          "label": "图22(a) 题设：三个等长时间段",
+          "height": 180
+        },
+        {
+          "kind": "figure",
+          "key": "k1p4s",
+          "label": "图22(b) 解：位置连续连接",
+          "height": 210
+        }
+      ]
+    ],
+    "question": "x(0)＝0。三个连续时间段各长T，速度依次为v₀、0、−v₀，且v₀＞0。写出位置函数并画图，求总位移与总路程。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex5",
+    "title": "例5　延迟刹车的安全间距",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：先求制动时间和距离"
+        },
+        {
+          "kind": "equation",
+          "latex": "T=\\frac{v_0}{a},\\qquad s=\\frac{v_0^2}{2a}=\\frac{v_0T}{2}",
+          "size": 30,
+          "asset": "eq-091"
+        },
+        {
+          "kind": "text",
+          "text": "图23(b)中，两阶段各接近s：前车制动时后车多走s，后车制动时再接近s。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x_{\\rm approach}=s+s=2s,\\qquad D_{\\min}=d-2s",
+          "size": 30,
+          "asset": "eq-092"
+        },
+        {
+          "kind": "heading",
+          "text": "全过程中净间距单调减小"
+        },
+        {
+          "kind": "text",
+          "text": "后车始终不慢于前车，最小间距在两车均停住时出现。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{d>2s}\\quad\\text{严格不接触};\\qquad d=2s\\quad\\text{临界接触}",
+          "size": 30,
+          "asset": "eq-093"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p5q",
+          "label": "图23(a) 题设：车尾与车头的净间距",
+          "height": 150
+        },
+        {
+          "kind": "figure",
+          "key": "k1p5s",
+          "label": "图23(b) 解：两车速度差对应接近量",
+          "height": 210
+        }
+      ]
+    ],
+    "question": "两车以v₀同向行驶，初始净间距d。前车以恒定减速度a刹车，停车距离s；前车刚停，后车才以同样减速度刹车。两车停后不倒退，求严格避免接触的条件。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex5-process",
+    "title": "例5解　全程间距与一般反应延迟",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：逐段扣除累计接近量"
+        },
+        {
+          "kind": "equation",
+          "latex": "D(t)=\\begin{cases}d-\\frac12at^2,&0\\le t\\le T,\\\\d-s-v_0(t-T)+\\frac12a(t-T)^2,&T\\le t\\le2T.\\end{cases}",
+          "size": 30,
+          "asset": "eq-094"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\begin{aligned} \\dot D&=-at\\le0,&&0\\le t\\le T,\\\\ \\dot D&=-v_0+a(t-T)\\le0,&&T\\le t\\le2T \\end{aligned}",
+          "size": 30,
+          "asset": "eq-095"
+        },
+        {
+          "kind": "equation",
+          "latex": "D(T)=d-s,\\qquad D(2T)=d-2s",
+          "size": 30,
+          "asset": "eq-096"
+        },
+        {
+          "kind": "heading",
+          "text": "一般延迟τ，制动性能保持相同"
+        },
+        {
+          "kind": "equation",
+          "latex": "s_{\\rm rear}=v_0\\tau+s,\\qquad s_{\\rm front}=s,\\qquad\\Delta x_{\\rm approach}=v_0\\tau",
+          "size": 30,
+          "asset": "eq-097"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{d>v_0\\tau}\\quad\\text{严格不接触};\\qquad\\tau=T\\ \\Longrightarrow\\ v_0T=2s",
+          "size": 30,
+          "asset": "eq-098"
+        },
+        {
+          "kind": "key",
+          "text": "停车后速度置零，才能得到正确的累计接近量。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p5s",
+          "label": "图24 前后两车速度差对应的累计接近量",
+          "height": 360
+        },
+        {
+          "kind": "text",
+          "text": "图24中蓝色区域的面积始终增加，证明只查前车刚停时，会漏掉后车继续接近的部分。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex6",
+    "title": "例6　定时发车与途中的相遇",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：统一采用km、min"
+        },
+        {
+          "kind": "equation",
+          "latex": "T=60\\,\\mathrm{min},\\quad\\tau=10\\,\\mathrm{min},\\quad u=1\\,\\mathrm{km/min}",
+          "size": 30,
+          "asset": "eq-099"
+        },
+        {
+          "kind": "equation",
+          "latex": "x_A=u(t-k\\tau),\\qquad x_B=uT-u(t-t_b)",
+          "size": 30,
+          "asset": "eq-100"
+        },
+        {
+          "kind": "equation",
+          "latex": "t=\\frac{T+t_b+k\\tau}{2}",
+          "size": 30,
+          "asset": "eq-101"
+        },
+        {
+          "kind": "heading",
+          "text": "两车都在途中，才能计入"
+        },
+        {
+          "kind": "equation",
+          "latex": "k\\tau<t<k\\tau+T,\\qquad t_b<t<t_b+T",
+          "size": 30,
+          "asset": "eq-102"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{t_b-T<k\\tau<t_b+T},\\qquad k\\ge0",
+          "size": 30,
+          "asset": "eq-103"
+        },
+        {
+          "kind": "text",
+          "text": "图25(b)只计内部交点。等号对应站内相遇，须排除。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p6q",
+          "label": "图25(a) 题设：两站与发车方向",
+          "height": 150
+        },
+        {
+          "kind": "figure",
+          "key": "k1p6s",
+          "label": "图25(b) 解：内部交点与站点端点",
+          "height": 235
+        }
+      ]
+    ],
+    "question": "A、B相距60 km。A从t＝0起每隔10 min发一辆车，以60 km/h驶向B。B车以同速驶向A，且与A某次发车同时出发。只计途中相遇，求最多遇车数和最早出发时刻。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex6-count",
+    "title": "例6解　整数计数与最早出发时刻",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：令t_b＝mτ，T＝6τ"
+        },
+        {
+          "kind": "equation",
+          "latex": "m-6<k<m+6,\\qquad k\\in\\mathbb Z_{\\ge0}",
+          "size": 30,
+          "asset": "eq-104"
+        },
+        {
+          "kind": "equation",
+          "latex": "k=\\max(0,m-5),\\ldots,m+5",
+          "size": 30,
+          "asset": "eq-105"
+        },
+        {
+          "kind": "equation",
+          "latex": "N=\\begin{cases}m+6,&0\\le m<5,\\\\11,&m\\ge5.\\end{cases}",
+          "size": 30,
+          "asset": "eq-106"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{N_{\\max}=11},\\qquad \\boxed{t_b=50\\,\\mathrm{min}}",
+          "size": 30,
+          "asset": "eq-107"
+        },
+        {
+          "kind": "heading",
+          "text": "代回相遇时刻核对端点"
+        },
+        {
+          "kind": "equation",
+          "latex": "t_k=55+5k\\ \\mathrm{min},\\qquad k=0,\\ldots,10",
+          "size": 30,
+          "asset": "eq-108"
+        },
+        {
+          "kind": "text",
+          "text": "11次相遇均在(50,110) min内部，相邻间隔5 min。k＝11对应110 min时在A站相见，不计入。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p6s",
+          "label": "图26 11个内部交点，空心端点排除",
+          "height": 400
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex7",
+    "title": "例7　两根平移直杆的交点",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：图27(a)取初始交点为原点"
+        },
+        {
+          "kind": "equation",
+          "latex": "y=\\frac{x+v_At}{\\sqrt3},\\qquad y=-\\sqrt3(x-v_Bt)",
+          "size": 30,
+          "asset": "eq-109"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_y=\\frac{v_x+v_A}{\\sqrt3}=\\sqrt3(v_B-v_x)",
+          "size": 30,
+          "asset": "eq-110"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{v_x=\\frac{3v_B-v_A}{4}},\\qquad\\boxed{v_y=\\frac{\\sqrt3(v_A+v_B)}4}",
+          "size": 30,
+          "asset": "eq-111"
+        },
+        {
+          "kind": "text",
+          "text": "图27(b)按两个正交分量合成。v_y＞0，水平分量的符号由两杆速率决定。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "v_A<3v_B:\\ v_x>0;\\quad v_A=3v_B:\\ v_x=0",
+          "size": 30,
+          "asset": "eq-112"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p7q",
+          "label": "图27(a) 题设：两杆向相反方向平移",
+          "height": 190
+        },
+        {
+          "kind": "figure",
+          "key": "k1p7s",
+          "label": "图27(b) 解：交点速度的分量",
+          "height": 190
+        }
+      ]
+    ],
+    "question": "A杆向右上倾斜30°，以v_A向左平移；B杆向右下倾斜60°，以v_B向右平移。求交点C的速度，并讨论其中一杆静止的情形。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex7-check",
+    "title": "例7解　速率与一杆静止的检验",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：分量平方相加，交叉项抵消"
+        },
+        {
+          "kind": "equation",
+          "latex": "|\\boldsymbol v_C|^2 =\\frac{(3v_B-v_A)^2+3(v_A+v_B)^2}{16}",
+          "size": 30,
+          "asset": "eq-113"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{|\\boldsymbol v_C|=\\frac12\\sqrt{v_A^2+3v_B^2}}",
+          "size": 30,
+          "asset": "eq-114"
+        },
+        {
+          "kind": "heading",
+          "text": "一杆静止时，交点沿静止杆运动"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_A=0:\\quad (v_x,v_y)=\\left(\\frac{3v_B}4,\\frac{\\sqrt3v_B}4\\right)",
+          "size": 30,
+          "asset": "eq-115"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_B=0:\\quad (v_x,v_y)=\\left(-\\frac{v_A}4,\\frac{\\sqrt3v_A}4\\right)",
+          "size": 30,
+          "asset": "eq-116"
+        },
+        {
+          "kind": "text",
+          "text": "图28(a)中，交点应沿静止杆运动。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p7q",
+          "label": "图28(a) 静止杆的倾角提供方向检查",
+          "height": 235
+        },
+        {
+          "kind": "figure",
+          "key": "k1p7s",
+          "label": "图28(b) 由速度分量判断运动方向",
+          "height": 220
+        },
+        {
+          "kind": "key",
+          "text": "交点可沿杆滑动，速度由几何约束确定。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex8",
+    "title": "例8　速度随高度变化的爬行",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "逐段累计时间"
+        },
+        {
+          "kind": "equation",
+          "latex": "v(h)=\\frac{l v_0}{l+h},\\qquad \\mathrm dt=\\frac{l+h}{l v_0}\\,\\mathrm dh",
+          "size": 30,
+          "asset": "eq-117"
+        },
+        {
+          "kind": "equation",
+          "latex": "t=\\int_0^l\\frac{l+h}{l v_0}\\,\\mathrm dh =\\frac{3l}{2v_0}=\\boxed{15\\,\\mathrm s}",
+          "size": 30,
+          "asset": "eq-118"
+        },
+        {
+          "kind": "heading",
+          "text": "速度倒数图的梯形面积"
+        },
+        {
+          "kind": "equation",
+          "latex": "t=\\frac{0.5+1}{2}\\times20=\\boxed{15\\,\\mathrm s}",
+          "size": 30,
+          "asset": "eq-119"
+        },
+        {
+          "kind": "text",
+          "text": "图29(b)的纵轴单位为s/cm，面积单位为s。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "速度由2降至1 cm/s，用时应在10与20 s之间。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p8q",
+          "label": "图29(a) 题设：沿杆向上爬行",
+          "height": 165
+        },
+        {
+          "kind": "figure",
+          "key": "k1p8s",
+          "label": "图29(b) 解：速度倒数的梯形面积",
+          "height": 210
+        }
+      ]
+    ],
+    "question": "蜗牛从杆底向上爬，v(h)＝lv₀/(l＋h)，其中l＝20 cm，v₀＝2 cm/s。求爬高20 cm的时间，并用图像解释。",
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "ex8-function",
+    "title": "例8解　位置函数与全过程核验",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：由时间高度关系取物理解"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_0t=h+\\frac{h^2}{2l},\\qquad (h+l)^2=l^2+2l v_0t",
+          "size": 30,
+          "asset": "eq-120"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{h(t)=l\\left(\\sqrt{1+\\frac{2v_0t}{l}}-1\\right)}",
+          "size": 30,
+          "asset": "eq-121"
+        },
+        {
+          "kind": "heading",
+          "text": "求导代回题设，再次求导检验减速"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot h=\\frac{v_0}{\\sqrt{1+2v_0t/l}} =\\frac{l v_0}{l+h}>0",
+          "size": 30,
+          "asset": "eq-122"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\ddot h=-\\frac{v_0^2}{l} \\left(1+\\frac{2v_0t}{l}\\right)^{-3/2}<0",
+          "size": 30,
+          "asset": "eq-123"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p8history",
+          "label": "图30 高度增加而曲线斜率递减",
+          "height": 280
+        },
+        {
+          "kind": "text",
+          "text": "图30高度增加而斜率递减。代入h＝l，恢复t＝3l/(2v₀)。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "h远小于l时，才可近似按初速匀速计算。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "summary",
+    "title": "本讲小结",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "运动的描述"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol r=\\boldsymbol r(t),\\quad \\boldsymbol v=\\dot{\\boldsymbol r},\\quad \\boldsymbol a=\\dot{\\boldsymbol v}",
+          "size": 30,
+          "asset": "eq-124"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\overline{\\boldsymbol v}=\\frac{\\Delta\\boldsymbol r}{\\Delta t}, \\qquad\\overline u=\\frac s{\\Delta t}",
+          "size": 30,
+          "asset": "eq-125"
+        },
+        {
+          "kind": "text",
+          "text": "平均量附带区间；瞬时量由局部变化率确定。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "图像与积分"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta x=\\int v\\,\\mathrm dt,\\qquad s=\\int|v|\\,\\mathrm dt",
+          "size": 30,
+          "asset": "eq-126"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta t=\\int\\frac{\\mathrm dx}{v(x)}",
+          "size": 30,
+          "asset": "eq-127"
+        },
+        {
+          "kind": "text",
+          "text": "换号处分段，积分保留初值，并检查端点可达性。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "方向与基矢"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot u=\\frac{\\boldsymbol v\\cdot\\boldsymbol a}{u}\\quad(u>0)",
+          "size": 30,
+          "asset": "eq-128"
+        },
+        {
+          "kind": "equation",
+          "latex": "a_\\rho=\\ddot\\rho-\\rho\\omega^2,\\qquad a_\\theta=2\\dot\\rho\\omega+\\rho\\dot\\omega",
+          "size": 30,
+          "asset": "eq-129"
+        },
+        {
+          "kind": "heading",
+          "text": "几何约束"
+        },
+        {
+          "kind": "equation",
+          "latex": "F_x\\dot x+F_y\\dot y+F_t=0",
+          "size": 30,
+          "asset": "eq-057"
+        },
+        {
+          "kind": "text",
+          "text": "几何位置与固定物质点分别辨认，转动基矢也要参与求导。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "结果应同时满足初值、量纲、方向、边界和退化情形。"
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "practice12",
+    "title": "独立练习1、2",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "练习1　路灯与太阳形成的影子"
+        },
+        {
+          "kind": "text",
+          "text": "光源S高h，人高l＜h，以速度v背离灯柱匀速行走。脚距灯柱x，头顶影子在地面的位置为X。求影端速度、影长变化率，再讨论方向固定的太阳光。",
+          "size": 27
+        },
+        {
+          "kind": "figure",
+          "key": "k1p9q",
+          "label": "图32(a) 题设：光源、头顶与影端共线",
+          "height": 255
+        },
+        {
+          "kind": "text",
+          "text": "x、X均从灯柱脚量起，影长为X−x。",
+          "size": 26
+        },
+        {
+          "kind": "links",
+          "items": [
+            [
+              "提示",
+              34
+            ],
+            [
+              "详解",
+              35
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "练习2　两圆上部交点的运动"
+        },
+        {
+          "kind": "text",
+          "text": "两圆半径均为R，左圆心O₁固定，右圆心O₂水平运动。圆心距d满足0＜d＜2R，规定ḋ＝v。求上交点P的速度分量与速率，并讨论相切端点。",
+          "size": 27
+        },
+        {
+          "kind": "figure",
+          "key": "k1p10q",
+          "label": "图32(b) 题设：交点同时在两个圆上",
+          "height": 255
+        },
+        {
+          "kind": "text",
+          "text": "v带正负，正号对应两圆心距离增加。",
+          "size": 26
+        },
+        {
+          "kind": "links",
+          "items": [
+            [
+              "提示",
+              34
+            ],
+            [
+              "详解",
+              36
+            ]
+          ]
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "practice34",
+    "title": "独立练习3、4",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "练习3　斜绳牵引的水平速度"
+        },
+        {
+          "kind": "text",
+          "text": "物体M沿水平面向右运动。绳由B连至高处固定滑轮C，越过滑轮后以速率v收绳。绳不可伸长，忽略滑轮大小。BC与水平成α时，求物体速度。",
+          "size": 27
+        },
+        {
+          "kind": "figure",
+          "key": "k1p11q",
+          "label": "图33(a) 题设：水平运动与固定滑轮",
+          "height": 270
+        },
+        {
+          "kind": "links",
+          "items": [
+            [
+              "提示",
+              34
+            ],
+            [
+              "详解",
+              37
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "练习4　极坐标速度的矢量求导"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol v=\\dot\\rho\\boldsymbol e_\\rho+ \\rho\\omega\\boldsymbol e_\\theta,\\qquad\\omega=\\dot\\theta",
+          "size": 28,
+          "asset": "eq-130"
+        },
+        {
+          "kind": "text",
+          "text": "推导加速度的径向与横向分量，并用直线匀速运动检验各项的抵消。",
+          "size": 27
+        },
+        {
+          "kind": "figure",
+          "key": "k1p12q",
+          "label": "图33(b) 题设：两个基矢都随方位角转动",
+          "height": 270
+        },
+        {
+          "kind": "links",
+          "items": [
+            [
+              "提示",
+              34
+            ],
+            [
+              "详解",
+              38
+            ]
+          ]
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "hints",
+    "title": "练习提示",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "练习1"
+        },
+        {
+          "kind": "text",
+          "text": "光源、头顶和影端共线，找出相似三角形。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "先写X与x的比例，再对时间求导。平行光下先判断影长是否变化。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "练习2"
+        },
+        {
+          "kind": "text",
+          "text": "两圆方程相减，先确定P的横坐标。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "同时对两个位置约束求导，再由正交分量合成速率。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "x=\\frac d2,\\qquad x^2+y^2=R^2",
+          "size": 30,
+          "asset": "eq-131"
+        }
+      ],
+      [
+        {
+          "kind": "heading",
+          "text": "练习3"
+        },
+        {
+          "kind": "text",
+          "text": "斜绳长度、水平距离和固定高度差构成直角三角形。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "水平速度沿绳方向的投影等于收绳速度。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "练习4"
+        },
+        {
+          "kind": "text",
+          "text": "求导时也要对基矢求导。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot{\\boldsymbol e}_\\rho=\\omega\\boldsymbol e_\\theta, \\qquad\\dot{\\boldsymbol e}_\\theta=-\\omega\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-132"
+        },
+        {
+          "kind": "text",
+          "text": "先展开两个乘积，再按径向、横向合并。",
+          "size": 28
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.5,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": null
+  },
+  {
+    "id": "sol1",
+    "title": "练习1解　路灯与平行光的影子",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：路灯投影由相似三角形确定"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{l}{X-x}=\\frac hX\\quad\\Longrightarrow\\quad X=\\frac h{h-l}x",
+          "size": 30,
+          "asset": "eq-133"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{\\dot X=\\frac h{h-l}v},\\qquad \\boxed{\\dot\\ell=\\frac{l}{h-l}v}",
+          "size": 30,
+          "asset": "eq-134"
+        },
+        {
+          "kind": "text",
+          "text": "图35(a)中影端位移始终是人的位移的固定倍数，故影端匀速且比人快。",
+          "size": 28
+        },
+        {
+          "kind": "heading",
+          "text": "方向固定的太阳光"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\ell=l\\cot\\gamma,\\qquad \\boxed{\\dot\\ell=0,\\quad\\dot X=v}",
+          "size": 30,
+          "asset": "eq-135"
+        },
+        {
+          "kind": "text",
+          "text": "图35(b)中太阳光倾角γ固定，影长保持不变。若倾角随时间变化：",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot X=v-l\\csc^2\\gamma\\,\\dot\\gamma",
+          "size": 30,
+          "asset": "eq-136"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p9s",
+          "label": "图35(a) 解：人和影端的位移对应",
+          "height": 215
+        },
+        {
+          "kind": "figure",
+          "key": "k1p9sun",
+          "label": "图35(b) 解：平行光下的等长影子",
+          "height": 225
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": 32
+  },
+  {
+    "id": "sol2",
+    "title": "练习2解　圆约束与交点速度",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：取O₁为原点，上交点y＞0"
+        },
+        {
+          "kind": "equation",
+          "latex": "x^2+y^2=R^2,\\qquad(x-d)^2+y^2=R^2",
+          "size": 30,
+          "asset": "eq-137"
+        },
+        {
+          "kind": "equation",
+          "latex": "x=\\frac d2,\\qquad y=\\sqrt{R^2-\\frac{d^2}4}",
+          "size": 30,
+          "asset": "eq-138"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_x=\\frac v2,\\qquad xv_x+yv_y=0",
+          "size": 30,
+          "asset": "eq-139"
+        },
+        {
+          "kind": "equation",
+          "latex": "v_y=-\\frac{dv}{4y},\\qquad \\boxed{u_P=\\frac{|v|R}{\\sqrt{4R^2-d^2}}}",
+          "size": 30,
+          "asset": "eq-140"
+        },
+        {
+          "kind": "text",
+          "text": "图36中速度与O₁P垂直。v＞0时向右下，v＜0时反向。",
+          "size": 28
+        },
+        {
+          "kind": "text",
+          "text": "d＝0时两圆重合，交点不唯一。交点是几何位置，其速度不属于某个固定物质点。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p10s",
+          "label": "图36 交点切向速度与相切前的剩余圆弧",
+          "height": 255
+        },
+        {
+          "kind": "heading",
+          "text": "相切端点的检验"
+        },
+        {
+          "kind": "equation",
+          "latex": "s_{PQ}=R\\arccos\\frac d{2R}",
+          "size": 30,
+          "asset": "eq-141"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\Delta t=\\frac{2R-d}{v}\\qquad(v>0)",
+          "size": 30,
+          "asset": "eq-142"
+        },
+        {
+          "kind": "text",
+          "text": "图中θ从竖直方向量起。至Q的剩余弧长和时间有限，但几何速度发散。",
+          "size": 26
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": 32
+  },
+  {
+    "id": "sol3",
+    "title": "练习3解　绳长变化与速度投影",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "长度关系求导"
+        },
+        {
+          "kind": "text",
+          "text": "图37(a)中，取B到C正下方的水平距离为x，高度差H固定，斜绳长为ℓ。",
+          "size": 28
+        },
+        {
+          "kind": "equation",
+          "latex": "\\ell=\\sqrt{x^2+H^2},\\qquad u=-\\dot x,\\qquad \\dot\\ell=-v",
+          "size": 30,
+          "asset": "eq-143"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot\\ell=\\frac{x\\dot x}{\\ell} =-u\\cos\\alpha=-v",
+          "size": 30,
+          "asset": "eq-144"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{u=\\frac v{\\cos\\alpha}}",
+          "size": 30,
+          "asset": "eq-145"
+        },
+        {
+          "kind": "heading",
+          "text": "微小位移沿绳方向投影"
+        },
+        {
+          "kind": "equation",
+          "latex": "u\\cos\\alpha\\,\\mathrm dt=v\\,\\mathrm dt",
+          "size": 30,
+          "asset": "eq-146"
+        },
+        {
+          "kind": "text",
+          "text": "图37(b)中只有沿绳方向的投影是一阶绳长变化。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "0≤α＜π/2，且u≥v。α趋近π/2时，当前理想模型出现奇异。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p11q",
+          "label": "图37(a) 解：斜边与水平边的几何关系",
+          "height": 215
+        },
+        {
+          "kind": "figure",
+          "key": "k1p11s",
+          "label": "图37(b) 解：沿绳方向投影",
+          "height": 225
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": 33
+  },
+  {
+    "id": "sol4",
+    "title": "练习4解　转动基矢参与求导",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：从基矢的直角坐标分量开始"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boldsymbol e_\\rho=(\\cos\\theta,\\sin\\theta),\\qquad \\boldsymbol e_\\theta=(-\\sin\\theta,\\cos\\theta)",
+          "size": 30,
+          "asset": "eq-147"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot{\\boldsymbol e}_\\rho=\\omega\\boldsymbol e_\\theta,\\qquad \\dot{\\boldsymbol e}_\\theta=-\\omega\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-062"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{\\mathrm d}{\\mathrm dt}(\\dot\\rho\\boldsymbol e_\\rho) =\\ddot\\rho\\boldsymbol e_\\rho+\\dot\\rho\\omega\\boldsymbol e_\\theta",
+          "size": 30,
+          "asset": "eq-066"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\frac{\\mathrm d}{\\mathrm dt}(\\rho\\omega\\boldsymbol e_\\theta) =(\\dot\\rho\\omega+\\rho\\dot\\omega)\\boldsymbol e_\\theta-\\rho\\omega^2\\boldsymbol e_\\rho",
+          "size": 30,
+          "asset": "eq-067"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\boxed{a_\\rho=\\ddot\\rho-\\rho\\omega^2},\\qquad \\boxed{a_\\theta=2\\dot\\rho\\omega+\\rho\\dot\\omega}",
+          "size": 30,
+          "asset": "eq-148"
+        },
+        {
+          "kind": "text",
+          "text": "图38按同一基矢收集各项。ρ恒定时恢复圆周运动，ω恒为零时恢复固定射线上的运动。",
+          "size": 28
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p12s",
+          "label": "图38 径向与横向各项的合成",
+          "height": 380
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": 33
+  },
+  {
+    "id": "sol4-check",
+    "title": "练习4检验　直线匀速运动中的抵消",
+    "columns": [
+      [
+        {
+          "kind": "heading",
+          "text": "解：取P＝(a,ut)，a、u均为正常量"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\rho=\\sqrt{a^2+u^2t^2},\\quad \\theta=\\arctan\\frac{ut}{a},\\quad\\omega=\\frac{au}{\\rho^2}",
+          "size": 30,
+          "asset": "eq-149"
+        },
+        {
+          "kind": "equation",
+          "latex": "\\dot\\rho=\\frac{u^2t}{\\rho},\\quad \\ddot\\rho=\\frac{a^2u^2}{\\rho^3},\\quad \\dot\\omega=-\\frac{2au^3t}{\\rho^4}",
+          "size": 30,
+          "asset": "eq-150"
+        },
+        {
+          "kind": "heading",
+          "text": "代入两个分量，分别抵消"
+        },
+        {
+          "kind": "equation",
+          "latex": "a_\\rho=\\frac{a^2u^2}{\\rho^3} -\\rho\\frac{a^2u^2}{\\rho^4}=0",
+          "size": 30,
+          "asset": "eq-151"
+        },
+        {
+          "kind": "equation",
+          "latex": "a_\\theta=2\\frac{u^2t}{\\rho}\\frac{au}{\\rho^2} -\\rho\\frac{2au^3t}{\\rho^4}=0",
+          "size": 30,
+          "asset": "eq-152"
+        },
+        {
+          "kind": "text",
+          "text": "图39虽然ρ和θ都变化，真实加速度仍为零。",
+          "size": 28
+        },
+        {
+          "kind": "key",
+          "text": "径向各项与横向各项应分别合并以后，再解释物理意义。"
+        }
+      ],
+      [
+        {
+          "kind": "figure",
+          "key": "k1p12straight",
+          "label": "图39 同一直线运动的极坐标描述",
+          "height": 400
+        }
+      ]
+    ],
+    "question": null,
+    "ratio": 0.6,
+    "note": "内容与配图：output/运动学/latex/01_运动学基础。对应讲义：output/运动学/pdf/运动学第一讲_运动学基础.pdf。",
+    "back": 33
+  }
+]

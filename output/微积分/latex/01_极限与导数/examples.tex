@@ -1,0 +1,569 @@
+\section{例题与分析}
+\begin{question}
+\begin{example}[反复对半与误差标准]
+长度 $L_0>0$ 的线段，每次取去余下的一半。求 $n$ 次后余长的极限，并求余长小于给定 $\varepsilon\in(0,L_0)$ 所需的操作次数条件。
+\end{example}
+\fig{c1e1q}{相继保留的半段}{\begin{tikzpicture}
+\draw[world] (0,0)--(6,0);\foreach \x/\s in {0/0,3/{L_0/2},6/{L_0}}{\draw(\x,-.08)--(\x,.08)node[above=3pt]{$\s$};}
+\draw[very thick,blue](0,-.55)--(3,-.55);\draw[very thick,blue](0,-1)--(1.5,-1);
+\node[right]at(3,-.55){一次后};\node[right]at(1.5,-1){两次后};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由反复对半建立余长数列}\par\nobreak
+图 \ref{c1e1q} 中每条蓝段都是上一条的一半，因此 $L_n=L_0 2^{-n}$，其中 $n=0$ 表示尚未操作。要求 $L_n<\varepsilon$，等价于
+\[
+ n>\frac{\ln(L_0/\varepsilon)}{\ln2}.
+\]
+\fig{c1e1s}{给定误差后，后续各项都落入误差带}{\begin{tikzpicture}[x=.65cm,y=1.8cm]
+\draw[axis](0,0)--(8,0)node[right]{$n$};\draw[axis](0,0)--(0,1.2)node[above]{$L_n/L_0$};
+\fill[blue!8](0,0)rectangle(7.5,.18);\draw[guide](0,.18)--(7.5,.18)node[right]{$\varepsilon/L_0$};
+\foreach \n in {0,...,7}{\fill(\n,{2^(-\n)})circle(1.2pt);}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把严格误差要求转成整数次数}\par\nobreak
+因为 $\ln2>0$，取对数并除以 $\ln2$ 不改变不等号方向。满足条件的最小非负整数为
+\[
+ n_{\min}=\left\lfloor\frac{\ln(L_0/\varepsilon)}{\ln2}\right\rfloor+1.
+\]
+加一保证严格小于 $\varepsilon$，即使对数比值恰为整数也不能省略。如图 \ref{c1e1s}，全部 $n\ge n_{\min}$ 都在误差带内，这就证明 $\lim L_n=0$。有限 $n$ 时 $L_n>0$，与极限等于零并无矛盾。
+\end{solution}
+
+\begin{question}
+\begin{example}[反复弹跳的总路程]
+球从 $H=5\,\mathrm m$ 高处静止释放。运动时阻力大小恒为 $mg/2$、方向与速度相反，落地碰撞不损失机械能。忽略球的大小，求反复弹跳的总路程。
+\end{example}
+\fig{c1e2q}{下降与上升时阻力方向相反}{\begin{tikzpicture}
+\draw[world](-.7,0)--(5.5,0);\fill(0,2.5)circle(2pt)node[left]{$H$};
+\draw[flow](0,2.3)--(0,.4)node[midway,right]{下降};\draw[flow](2,.2)--(2,1.25)node[midway,right]{上升};
+\draw[force](.6,1.8)--(.6,2.4)node[right]{$mg/2$};\draw[force](3.3,1.2)--(3.3,.6)node[right]{$mg/2$};
+\draw[dim](4.6,0)--(4.6,2.5)node[midway,right]{$H$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别计算下降与上升的能量变化}\par\nobreak
+图 \ref{c1e2q} 的下降过程中，重力功为 $mgH$，阻力功为 $-(mg/2)H$。初速度为零，由动能定理，落地前 $K=mgH-(mg/2)H=mgH/2$。碰撞不损能，反弹后的初动能仍为此值。上升到第一最高点 $h_1$ 时，末动能为零，重力功与阻力功分别为 $-mgh_1$、$-(mg/2)h_1$，因而
+\[
+ \frac12mgH=\frac32mgh_1,\qquad h_1=\frac H3.
+\]
+对任意一次从最高点开始的完整弹跳，同理 $h_{j+1}=h_j/3$。注意阻力大小相同并不意味着上下两个过程的净力相同。
+
+\fig{c1e2s}{各次最高点构成等比数列}{\begin{tikzpicture}[x=1.15cm,y=.5cm]
+\draw[axis](-.3,0)--(5.4,0)node[right]{次序};\draw[axis](0,0)--(0,5.8)node[above]{高度};
+\foreach \x/\h/\lab in {0/5/H,1/1.6667/{H/3},2/.5556/{H/9},3/.1852/{H/27}}{\draw[blue,thick](\x,0)--(\x,\h);\node[above]at(\x,\h){$\lab$};}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按每段路程的实际次数求和}\par\nobreak
+图 \ref{c1e2s} 中，初次高度 $H$ 只走下降一次，其余每个高度均上、下各走一次。计入前 $N$ 个反弹高度时，$s_N=H+2H\sum_{j=1}^{N}3^{-j}$。有限等比和为 $\sum_{j=1}^{N}3^{-j}=\tfrac12(1-3^{-N})$，令 $N\to\infty$ 后，
+\[
+ s=H+2\sum_{j=1}^\infty\frac H{3^j}
+ =H+2\frac{H/3}{1-1/3}=2H=\boxed{10\,\mathrm m}.
+\]
+若把碰撞也误认为耗能，会改变公比；本题的耗能全部来自运动中的阻力。
+
+% thirty-c1-energy
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用全程耗能独立核验}\par\nobreak
+也可从整个过程的能量消耗独立验证总路程。每段运动的阻力功均为 $-(mg/2)\Delta s$，而每次碰撞不损能。因此到累计路程为 $s$的某个状态时，机械能满足
+\[E(s)=mgH-\frac{mg}{2}s.\]
+图\ref{c1e2energy}中的机械能随累计路程线性减少。经过越来越多次弹跳，最高点 $h_j=H/3^j$趋零，速度也趋零，所以机械能极限为零。于是 $0=mgH-(mg/2)s_\infty$，直接得到 $s_\infty=2H$。这个方法对全程使用同一个阻力大小，前面的等比求和则逐段处理高度，两条路径给出同一结果。
+\fig{c1e2energy}{机械能与累计路程的关系提供独立检查}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$s$};\draw[axis](0,0)--(0,2.8)node[above]{$E$};
+\draw[blue,world](0,2.2)--(4.6,0);\node[left]at(0,2.2){$mgH$};\node[below]at(4.6,0){$2H$};
+\node[above right]at(1.5,1.48){斜率 $-mg/2$};
+\end{tikzpicture}}
+\end{solution}
+
+\begin{question}
+\begin{example}[用夹逼确定三角极限]
+用单位圆的几何关系证明 $\lim_{x\to0}\sin x/x=1$，并求 $\lim_{x\to0}(1-\cos x)/x^2$。
+\end{example}
+\fig{c1e3q}{单位圆、扇形和两侧三角形}{\begin{tikzpicture}[scale=2]
+\coordinate(O)at(0,0);\coordinate(A)at(1,0);\coordinate(P)at(35:1);\coordinate(T)at(1,.7002);
+\draw[world](0,0)--(1.12,0);\draw[world](O)--(T)--(A);
+\draw[blue](1,0)arc(0:60:1);\draw(O)--(P)--(A);
+\draw(.25,0)arc(0:35:.25)node[midway,right]{$x$};
+\node[below]at(O){$O$};\node[below]at(A){$A$};\node[above left]at(P){$P$};\node[right]at(T){$T$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把面积的包含关系变成不等式}\par\nobreak
+先取 $0<x<\pi/2$。图 \ref{c1e3q} 中 $\triangle OAP$ 包含于扇形 $OAP$，扇形又包含于 $\triangle OAT$。比较面积有
+\[
+ \tfrac12\sin x<\tfrac12x<\tfrac12\tan x
+ \ \Longrightarrow\ \cos x<\frac{\sin x}x<1.
+\]
+弧度制使单位圆扇形面积恰为 $x/2$。从 $\sin x<x$ 除以正数 $x$，得到 $\sin x/x<1$；从 $x<\tan x=\sin x/\cos x$ 乘以正数 $\cos x/x$，得到 $\cos x<\sin x/x$。当 $x\to0^+$ 时两侧都趋于 $1$。又因 $\sin(-x)/(-x)=\sin x/x$，负侧极限相同。
+\fig{c1e3s}{上下界同时收拢到一}{\begin{tikzpicture}[x=2.5cm,y=2cm]
+\draw[axis](-.9,0)--(.9,0)node[right]{$x$};\draw[axis](0,0)--(0,1.3);
+\draw[guide](-.8,1)--(.8,1)node[right]{$1$};
+\draw[blue,domain=-.8:.8,samples=45]plot(\x,{cos(\x r)});\node[left]at(-.8,.62){$\cos x$};
+\fill(0,1)circle(1pt);\node[above right]at(0,1){共同极限};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把二阶小量化成已知极限}\par\nobreak
+图 \ref{c1e3s} 的界限给出第一问。第二问先用 $1-\cos x=2\sin^2(x/2)$，再把分母写成 $x^2=4(x/2)^2$：
+\[
+ \frac{1-\cos x}{x^2}
+ =\frac12\left(\frac{\sin(x/2)}{x/2}\right)^2
+ \longrightarrow\boxed{\frac12}.
+\]
+因此分子在零点附近是二阶小量，不能仅凭分子、分母都趋零判断结果。
+\end{solution}
+
+\begin{question}
+\begin{example}[不同形式的极限]
+判断并计算
+$\displaystyle\lim_{x\to5}\frac1{x-5}$、
+$\displaystyle\lim_{x\to0}\frac{x^2}{\sin x}$、
+$\displaystyle\lim_{x\to+\infty}\frac{\sin x}x$、
+$\displaystyle\lim_{x\to+\infty}\frac{x^2}{x^2+x+1}$，
+并比较 $\displaystyle\lim_{x\to+\infty}\frac{10x^2+203x}{3x^2+5x+7}$。
+\end{example}
+\fig{c1e4q}{极点两侧与无穷远处的考察方向}{\begin{tikzpicture}
+\draw[axis](0,0)--(6.5,0)node[right]{$x$};\draw[guide](2,-.6)--(2,1.3);
+\node[below]at(2,0){$5$};\draw[flow](.5,.5)--(1.8,.5)node[midway,above]{左侧};
+\draw[flow](3.6,.5)--(2.2,.5)node[midway,above]{右侧};\draw[flow](4.3,-.5)--(6,-.5)node[midway,below]{$x\to+\infty$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在极点处分别判断左右极限}\par\nobreak
+图 \ref{c1e4q} 的左右两条箭头必须分别考察。第一式在 $x\to5^-$ 时趋于 $-\infty$，在 $x\to5^+$ 时趋于 $+\infty$，所以双侧有限极限不存在。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在零点处提取基本三角极限}\par\nobreak
+第二式在足够小且非零的 $x$ 处可改写为
+\[
+ \frac{x^2}{\sin x}=\frac{x}{\sin x/x}\longrightarrow0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在无穷远处利用趋零包络}\par\nobreak
+第三式分子虽然振荡，却始终满足 $|\sin x|\le1$。图 \ref{c1e4s} 的包络给出 $-1/x\le\sin x/x\le1/x$。两侧在 $x\to+\infty$ 时都趋于零，夹在中间的函数也趋于零。分子本身没有极限，并不妨碍整个商收敛。
+\fig{c1e4s}{振荡函数受到趋零包络约束}{\begin{tikzpicture}[x=.55cm,y=1.7cm]
+\draw[axis](0,0)--(9,0)node[right]{$x$};
+\draw[guide,domain=1:8,samples=40]plot(\x,{1/\x});\draw[guide,domain=1:8,samples=40]plot(\x,{-1/\x});
+\draw[blue,domain=1:8,samples=100]plot(\x,{sin(\x r)/\x});
+\node[right]at(8,.25){$1/x$};\node[right]at(8,-.25){$-1/x$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较分子分母的最高次项}\par\nobreak
+第四式同时除以 $x^2$：
+\[
+ \frac1{1+1/x+1/x^2}\longrightarrow\boxed1.
+\]
+同理，
+\[
+ \frac{10x^2+203x}{3x^2+5x+7}
+ =\frac{10+203/x}{3+5/x+7/x^2}\longrightarrow\frac{10}3.
+\]
+一次项系数虽大，仍不改变无穷远处由二次项决定的结果。这些式子分别需要左右极限、基本三角极限、夹逼和主导项比较，不能由表面形式统一作代入处理。
+\end{solution}
+
+\begin{question}
+\begin{example}[基本求导与定义域]
+设 $a>0$，求 $x^2-a^2$、$\sqrt{x^2-a^2}$、$\sin(ax+b)$、$\cot x$、$(a^2-x^2)^{-1/2}$ 的导数，并说明可导区间。另求 $3\cos x$、$5\sqrt x$、$9/x^3$的导数。
+\end{example}
+\fig{c1e5q}{根式在实轴上的可导区间}{\begin{tikzpicture}
+\draw[axis](-3.5,0)--(3.5,0)node[right]{$x$};
+\draw[very thick,blue](-3,0)--(-1.3,0);\draw[very thick,blue](1.3,0)--(3,0);
+\fill[white](-1.3,0)circle(2pt);\draw(-1.3,0)circle(2pt);\fill[white](1.3,0)circle(2pt);\draw(1.3,0)circle(2pt);
+\node[below]at(-1.3,0){$-a$};\node[below]at(1.3,0){$a$};\node[above]at(0,.5){$\sqrt{x^2-a^2}$：内部可导区间};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先判定根式区间，再作链式求导}\par\nobreak
+多项式对所有实数可导，$(x^2-a^2)'=2x$。第二式先把外层看成平方根、内层看成 $u=x^2-a^2$：
+\[
+ (\sqrt{x^2-a^2})'=\frac1{2\sqrt{x^2-a^2}}\,2x
+ =\frac{x}{\sqrt{x^2-a^2}},\quad |x|>a.
+\]
+图 \ref{c1e5q} 的端点虽属于函数定义域，却不是上式的有限导数适用点。第三式令 $u=ax+b$，外层导数为 $\cos u$，内层导数为 $u'=a$，所以 $[\sin(ax+b)]'=\cos(ax+b)\,a=a\cos(ax+b)$，对所有实数 $x$ 成立。
+\fig{c1e5s}{内层为正给出可导区间，外层负幂使两端斜率急剧增大}{\begin{tikzpicture}
+
+\begin{scope}[scale=.9]
+\draw[axis](-1.7,0)--(1.7,0)node[right]{$x/a$};\draw[axis](0,-.5)--(0,2)node[above]{$u/a^2$};
+\draw[blue,thick,domain=-1.2:1.2,samples=70]plot(\x,{1-\x*\x});\draw[blue,very thick](-1,0)--(1,0);
+\node[below]at(-1,0){$-1$};\node[below]at(1,0){$1$};\node at(0,-1.1){$u=a^2-x^2>0$};
+\end{scope}
+\begin{scope}[xshift=5cm,scale=.9]
+\draw[axis](-1.7,0)--(1.7,0)node[right]{$x/a$};\draw[axis](0,0)--(0,3.3)node[above]{$ay$};
+\draw[guide](-1,0)--(-1,3) (1,0)--(1,3);\draw[red,thick,domain=-.94:.94,samples=80]plot(\x,{1/sqrt(1-\x*\x)});
+\node[below]at(-1,0){$-1$};\node[below]at(1,0){$1$};\node at(0,-1.1){$y=u^{-1/2}$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按商法则处理余切函数}\par\nobreak
+把 $\cot x$ 写成 $\cos x/\sin x$，商法则给出
+\[
+(\cot x)'=\frac{(-\sin x)\sin x-\cos^2x}{\sin^2x}.
+\]
+再用 $\sin^2x+\cos^2x=1$，得到 $(\cot x)'=-1/\sin^2x$，要求 $x\ne n\pi$，$n\in\mathbb Z$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对负幂根式逐层求导}\par\nobreak
+图 \ref{c1e5s} 左侧给出内层为正的区间，右侧显示最终函数在两端发散。按这两层关系，最后一式外层导数为 $-\tfrac12u^{-3/2}$，内层导数为 $-2x$，相乘得到
+\[
+ -\tfrac12(a^2-x^2)^{-3/2}(-2x)
+ =\boxed{\frac{x}{(a^2-x^2)^{3/2}}},\quad |x|<a.
+\]
+结果必须连同区间一起使用；尤其两类根式的允许区间恰好相反。
+
+% thirty-c1-coefficients
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留系数并核对幂次及端点}\par\nobreak
+再把常系数法则应用到三个指定函数。系数保持不变，幂次按幂函数法则改变，得到
+\begin{align*}
+\frac{\dd}{\dd x}(3\cos x)&=3(-\sin x)=-3\sin x,\qquad x\in\mathbb R,\\
+\frac{\dd}{\dd x}(5\sqrt x)&=5\frac{\dd}{\dd x}x^{1/2}
+ =\frac52x^{-1/2}=\frac5{2\sqrt x},\qquad x>0,\\
+\frac{\dd}{\dd x}\frac9{x^3}&=9\frac{\dd}{\dd x}x^{-3}
+ =-27x^{-4}=-\frac{27}{x^4},\qquad x\ne0.
+\end{align*}
+平方根在 $x=0$有函数值，却没有有限的右导数，故不能把导数公式的区间写成 $x\ge0$。负幂求导后指数应减一，从 $-3$变为 $-4$，不是变成 $-2$。图\ref{c1e5q}对根式端点的检查方法，同样适用于这三个算式的定义域检查。
+\end{solution}
+
+% thirty-c1-algebra
+\begin{question}
+\begin{example}[求和与商的逐项求导]
+求 $F(x)=3x^2+2\sin x+7\ln x$及 $G(x)=\cos x/(3x^2+\sin x)$的导数，并说明所用定义域。
+\end{example}
+\fig{c1extraq}{和函数与商函数的局部图像，求导前先辨认运算结构}{\begin{tikzpicture}
+
+\begin{scope}[x=.85cm,y=.08cm]
+\draw[axis](0,0)--(3.6,0)node[right]{$x$};\draw[axis](0,-7)--(0,40)node[above]{$F$};
+\draw[blue,thick,domain=.45:3,samples=70]plot(\x,{3*\x*\x+2*sin(\x r)+7*ln(\x)});
+\node[below]at(1.6,-10){和函数，$x>0$};
+\end{scope}
+\begin{scope}[xshift=5cm,x=.85cm,y=.9cm]
+\draw[axis](0,0)--(3.6,0)node[right]{$x$};\draw[axis](0,-.6)--(0,3)node[above]{$G$};
+\draw[red,thick,domain=.28:3,samples=80]plot(\x,{cos(\x r)/(3*\x*\x+sin(\x r))});
+\node[below]at(1.6,-.9){商函数，图示 $x>0$ 部分};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{逐项求导并保留对数的定义域}\par\nobreak
+图\ref{c1extraq}左侧先对三个加项分别求导。常系数留在导数外面，有
+\[F'(x)=3(2x)+2\cos x+7\frac1x
+      =\boxed{6x+2\cos x+\frac7x},\qquad x>0.\]
+条件 $x>0$来自实数对数；导数公式不能扩大函数的定义域。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{跟踪分子和分母的共同变化}\par\nobreak
+右侧先记 $N=\cos x$、$D=3x^2+\sin x$，分别求得 $N'=-\sin x$、$D'=6x+\cos x$。对恒等式 $GD=N$ 求导，得到 $G'D+GD'=N'$。移项再除以 $D$，得到
+\[\boxed{G'(x)=\frac{-\sin x(3x^2+\sin x)-\cos x(6x+\cos x)}{(3x^2+\sin x)^2}}.\]
+\fig{c1extras}{商的变化分成分子变化和分母变化，两者在图像上对应同一切线斜率}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.4,0)node[right]{$x$};\draw[axis](0,-.6)--(0,3.2)node[above]{$G$};
+\draw[blue,thick,domain=.25:2.8,samples=100]plot({1.6*\x},{1.3*cos(\x r)/(3*\x*\x+sin(\x r))});
+\pgfmathsetmacro{\gzero}{cos(.8 r)/(3*.8*.8+sin(.8 r))}\pgfmathsetmacro{\gprime}{(-sin(.8 r)*(3*.8*.8+sin(.8 r))-cos(.8 r)*(6*.8+cos(.8 r)))/((3*.8*.8+sin(.8 r))^2)}\coordinate(P)at(1.28,{1.3*\gzero});\fill(P)circle(1.7pt)node[above right]{$P$};
+\draw[red,thick,domain=.45:1.2,samples=2]plot({1.6*\x},{1.3*(\gzero+\gprime*(\x-.8))});\draw[guide](1.28,0)--(P);
+\node[below]at(1.28,0){$x_0$};\node[blue,right]at(3.2,.6){$G=N/D$};
+\node[align=left]at(3.5,2.3){$\displaystyle G'=\frac{N'}D-\frac{ND'}{D^2}$\\[5pt]分子变化\qquad 分母变化};
+\end{tikzpicture}}
+图\ref{c1extras}的曲线只画出 $x>0$ 的一段，红线是其中一点的切线。斜率由两个贡献相加决定；仅保留 $N'/D$ 会遗漏分母改变所造成的影响。分母不为零是应用商法则的前提，因此 $G$及其上述导数的定义域均为 $3x^2+\sin x\ne0$。若要化简分子，可用 $\sin^2x+\cos^2x=1$，得到 $-3x^2\sin x-6x\cos x-1$；两个形式完全相同。不能在求导前把一个和式分母分别除到各项上，这会改变函数本身。
+\end{solution}
+
+\begin{question}
+\begin{example}[三次位置函数]
+质点沿 $x$ 轴运动，$x(t)=\alpha t^3$，其中 $\alpha>0,t\ge0$。从导数定义求 $v(t)$，再求 $a(t)$，并比较 $[0,t]$ 内的平均速度与末速度。
+\end{example}
+\fig{c1e6q}{同一运动的起点与末点}{\begin{tikzpicture}
+\draw[axis](-.3,0)--(6,0)node[right]{$x$};\fill(0,0)circle(2pt)node[below]{$O$};
+\fill(4.5,0)circle(2pt)node[below]{$P:\alpha t^3$};\draw[flow](4.5,.25)--(5.5,.25)node[above]{$v(t)$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用位置的差商求瞬时速度}\par\nobreak
+对图 \ref{c1e6q} 的位置，在时刻 $t$ 到 $t+h$ 间有
+\[
+ \frac{x(t+h)-x(t)}h
+ =\alpha(3t^2+3th+h^2).
+\]
+令 $h\to0$，得 $v=3\alpha t^2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度的差商求加速度}\par\nobreak
+再对速度取差商，
+\[
+ \frac{v(t+h)-v(t)}h
+ =3\alpha\frac{(t+h)^2-t^2}{h}
+ =6\alpha t+3\alpha h\longrightarrow6\alpha t,
+\]
+所以 $a=6\alpha t$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用割线与切线比较平均和瞬时速度}\par\nobreak
+对 $t>0$，平均速度由总位移除以时间得到：
+$\bar v=[x(t)-x(0)]/t=\alpha t^2$，故 $\bar v=v(t)/3$。
+\fig{c1e6s}{割线斜率与末点切线斜率}{\begin{tikzpicture}[x=1.3cm,y=.6cm]
+\draw[axis](0,0)--(3,0)node[right]{$t$};\draw[axis](0,0)--(0,6.5)node[above]{$x$};
+\draw[blue,domain=0:1.8,samples=40]plot(\x,{(\x)^3});
+\draw[guide](0,0)--(1.6,4.096);\draw[world](1.2,1.024)--(1.85,6.016);
+\fill(1.6,4.096)circle(2pt)node[left]{$P$};\node[right]at(.55,.85){割线};\node[right]at(1.82,5.5){切线};
+\end{tikzpicture}}
+图 \ref{c1e6s} 中割线连接起、末位置，切线只描述末时刻附近的变化。$\alpha$ 的量纲为 $\mathrm L/\mathrm T^3$，因此速度、加速度的量纲分别正确。$t=0$ 时二者都为零，也符合位置函数在起点的平坦程度。
+\end{solution}
+
+\begin{question}
+\begin{example}[圆周运动的分量求导]
+质点在半径 $R$ 的圆上以恒定角速度 $\omega>0$ 逆时针运动，$t=0$ 时位于 $(R,0)$。求位置、速度和加速度，说明加速度方向。
+\end{example}
+\fig{c1e7q}{位置角与固定直角坐标}{\begin{tikzpicture}[scale=1.15]
+\draw[world](0,0)circle(1.5);\draw[axis](-1.8,0)--(2,0)node[right]{$x$};\draw[axis](0,-1.7)--(0,1.9)node[above]{$y$};
+\draw[world](0,0)--(40:1.5)node[midway,above]{$R$};\fill(40:1.5)circle(1.6pt)node[right]{$P$};
+\draw(.5,0)arc(0:40:.5)node[midway,right]{$\omega t$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把圆周位置写成两个时间函数}\par\nobreak
+先在图 \ref{c1e7q} 所用的固定直角坐标系中求位置，再对同一时间求导。这里 $R,\omega$ 都是常数，角度才随时间变化；因此速度来自角度的变化，不来自半径长度的变化。求得两个分量后应先合成矢量，再讨论速率，不能把某一个分量的导数当作全部加速度。
+
+图 \ref{c1e7q} 中 $\theta=\omega t$，故
+\[
+ \bm r=(R\cos\omega t,R\sin\omega t).
+\]
+\fig{c1e7s}{切向速度与指向圆心的加速度}{\begin{tikzpicture}[scale=1.15]
+\draw[world](0,0)circle(1.5);\coordinate(P)at(40:1.5);\fill(P)circle(1.8pt)node[right]{$P$};\node[left]at(0,0){$O$};
+\draw[force,blue](P)--++(130:1.1)node[above]{$\bm v$};\draw[force,red](P)--++(220:1)node[below]{$\bm a$};\draw[guide](0,0)--(P);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐次求导，确定速度和加速度方向}\par\nobreak
+每次求导都要乘内层导数 $\dd(\omega t)/\dd t=\omega$。例如 $\dot x=-R\omega\sin\omega t$，再求导为 $\ddot x=-R\omega^2\cos\omega t$。将两个分量分别求导并合成，得到
+\begin{align*}
+ \bm v&=R\omega(-\sin\omega t,\cos\omega t),\\
+ \bm a&=-R\omega^2(\cos\omega t,\sin\omega t)=-\omega^2\bm r.
+\end{align*}
+图\ref{c1e7s}中蓝箭头沿切线，红箭头由 $P$ 指回圆心，与矢量式中的负号相符。两速度分量的平方和为
+\[
+ v^2=R^2\omega^2(\sin^2\omega t+\cos^2\omega t)=R^2\omega^2.
+\]
+因此图 \ref{c1e7s} 的加速度大小为 $R\omega^2=v^2/R$，方向由 $\bm a=-\omega^2\bm r$ 确定，指向圆心。同时
+
+\[
+\bm r\cdot\bm v=R^2\omega\bigl(-\cos\omega t\sin\omega t+\sin\omega t\cos\omega t\bigr)=0.
+\]
+这又从代数上验证了速度沿切线。速率恒定使 $\dot v=0$，却不能使 $\bm a$ 为零。
+
+% thirty-c1-angular
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验角速度不恒定时新增的切向项}\par\nobreak
+若圆周上的角度不再与时间成正比，而是一般的 $\theta(t)$，应在同一分量计算中保留 $\dot\theta$和 $\ddot\theta$。由 $x=R\cos\theta$、$y=R\sin\theta$，先得
+\[\bm v=R\dot\theta(-\sin\theta,\cos\theta).\]
+再用乘积法则分别对 $\dot\theta$和三角函数求导，得到
+\[\bm a=R\ddot\theta(-\sin\theta,\cos\theta)
+          -R\dot\theta^2(\cos\theta,\sin\theta).\]
+图\ref{c1e7angular}中第一项沿角度增加的切向，第二项沿内法线。只有 $\ddot\theta=0$时才没有切向项；本题的恒定角速度条件使一般公式退化为已求的向心加速度。
+\fig{c1e7angular}{角速度变化时，切向与向心项必须同时保留}{\begin{tikzpicture}
+\draw[world](0,0)circle(1.5);\coordinate(P)at(40:1.5);
+\draw[guide](0,0)--(P);\fill(P)circle(1.4pt)node[right]{$P$};
+\draw[flow,blue](P)--++(130:1.2)node[above]{$R\ddot\theta\bm e_\theta$};
+\draw[flow,red](P)--++(220:1.2)node[below right,xshift=6pt,yshift=-4pt]{$-R\dot\theta^2\bm e_r$};
+\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+\end{solution}
+
+\begin{question}
+\begin{example}[曲柄连杆与滑块]
+曲柄 $OP=R$ 以 $\dot\theta=\omega>0$ 匀速逆时针转动，连杆 $PB=l>R$，滑块 $B$ 受限于 $x$ 轴，始终位于 $P$ 右侧。求 $B$ 的位置、速度和加速度，并给出 $R/l\ll1$ 时的位置近似。
+\end{example}
+\fig{c1e8q}{右侧装配支路的曲柄滑块}{\begin{tikzpicture}
+\draw[axis](-.4,0)--(6,0)node[right]{$x$};\draw[guide](0,0)circle(1.2);
+\coordinate(P)at(.8,.8944);\coordinate(B)at(4.7,0);\draw[world](0,0)--(P)node[midway,left]{$R$}--(B)node[midway,above]{$l$};
+\draw[world](4.45,-.25)rectangle(4.95,.25);\node[below]at(0,0){$O$};\node[above]at(P){$P$};\node[below=8pt]at(B){$B$};
+\draw(.45,0)arc(0:48.2:.45)node[midway,right]{$\theta$};
+\draw[flow](65:1.2)arc(65:125:1.2)node[midway,above]{$\omega$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由杆长约束选择右侧装配支路}\par\nobreak
+图 \ref{c1e8q} 中 $P=(R\cos\theta,R\sin\theta)$。连杆长度给出
+\[
+ (x-R\cos\theta)^2+R^2\sin^2\theta=l^2.
+\]
+因 $B$ 位于右侧，应取正根。记 $D=\sqrt{l^2-R^2\sin^2\theta}>0$，则
+\[
+ x=R\cos\theta+D,
+\]
+\fig{c1e8s}{将连杆分解为水平投影和竖直投影}{\begin{tikzpicture}
+\draw[world](0,1.1)--(4,0)node[midway,above]{$l$};
+\draw[guide](0,1.1)--(0,0)--(4,0);
+\draw[dim](0,-.4)--(4,-.4)node[midway,below]{$D=x-R\cos\theta$};
+\node[left]at(0,.6){$R\sin\theta$};\node[above]at(0,1.1){$P$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把水平投影的变化计入速度和加速度}\par\nobreak
+图 \ref{c1e8s} 的水平投影也在变化，不能只对 $R\cos\theta$ 求导。利用
+\[
+ D_\theta=\frac{1}{2\sqrt{l^2-R^2\sin^2\theta}}
+ (-2R^2\sin\theta\cos\theta)
+ =-\frac{R^2\sin\theta\cos\theta}{D},
+\]
+先由 $v_B=\omega x_\theta$ 得到
+\[
+ v_B=-R\omega\sin\theta-\frac{R^2\omega\sin\theta\cos\theta}{D}.
+\]
+第一项来自曲柄端点的水平运动，第二项来自图\ref{c1e8s}中连杆水平投影的伸缩。为展开第二次求导，记 $Q=\sin\theta\cos\theta$，则 $Q_\theta=\cos^2\theta-\sin^2\theta=\cos2\theta$，并且
+\[
+ \left(\frac QD\right)_\theta
+ =\frac{Q_\theta}{D}-\frac{QD_\theta}{D^2}
+ =\frac{\cos2\theta}{D}+\frac{R^2Q^2}{D^3}.
+\]
+再用 $\dd/\dd t=\omega\,\dd/\dd\theta$ 对速度的两项分别求导，得到
+\[
+ a_B=-R\omega^2\cos\theta
+ -\frac{R^2\omega^2\cos2\theta}{D}
+ -\frac{R^4\omega^2\sin^2\theta\cos^2\theta}{D^3}.
+\]
+当 $\theta=0$，速度为零、加速度为 $-R\omega^2-R^2\omega^2/l$，符合右死点开始向左运动的方向。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{控制小参数，展开有限连杆修正}\par\nobreak
+若 $R/l\ll1$，
+\[
+ x=l+R\cos\theta-\frac{R^2}{2l}\sin^2\theta
+ +O(R^4/l^3).
+\]
+此处先写成 $D=l\sqrt{1-\varepsilon}$，$\varepsilon=(R/l)^2\sin^2\theta$，再用
+$\sqrt{1-\varepsilon}=1-\varepsilon/2+O(\varepsilon^2)$。被舍去的长度项为 $l\,O(\varepsilon^2)=O(R^4/l^3)$。只保留 $l+R\cos\theta$ 会漏掉有限连杆长度产生的二倍频修正。
+
+% thirty-c1-crank
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释二倍频项为何更影响加速度}\par\nobreak
+进一步把位置近似整理成各个转动频率的形式。由 $\sin^2\theta=(1-\cos2\theta)/2$，有
+\[x_B=l-\frac{R^2}{4l}+R\cos\theta+\frac{R^2}{4l}\cos2\theta
+       +O(R^4/l^3).\]
+在 $l,R$固定、$\theta=\omega t$的运动中，对保留的两项逐次求导，得到
+\[v_B\simeq-R\omega\sin\theta-\frac{R^2\omega}{2l}\sin2\theta,\]
+\[a_B\simeq-R\omega^2\cos\theta-\frac{R^2\omega^2}{l}\cos2\theta.\]
+图\ref{c1e8s}中的连杆水平投影因此带来二倍频修正。
+
+其位置振幅相对主项为 $R/(4l)$，加速度振幅相对主项却为 $R/l$，因为两次求导使二倍频项多乘 $2^2$。这说明在比较加速度精度时，不能仅凭位置修正看起来很小便直接删去它。本题根号在 $l>R$时全周期光滑，且按 $R/l$的展开可逐项求导；对于缺乏这种光滑控制的一般误差项，不能仅由函数误差小就断定其导数误差也小。
+\end{solution}
+
+\begin{question}
+\begin{example}[抛物面镜的平行出射]
+在截面内，镜面为 $y=ax^2$，$a>0$，焦点 $F=(0,f)$，$f=1/(4a)$。证明由焦点射向镜面的光线反射后沿 $+y$ 方向传播。
+\end{example}
+\fig{c1e9q}{焦点入射光与沿轴出射光}{\begin{tikzpicture}[scale=1.1]
+\draw[axis](-2,0)--(2,0)node[right]{$x$};\draw[axis](0,-.2)--(0,2.7)node[above]{$y$};
+\draw[world,domain=-1.8:1.8,samples=60]plot(\x,{.65*\x*\x});
+\coordinate(F)at(0,.3846);\coordinate(P)at(1.2,.936);\fill(F)circle(1.5pt)node[left]{$F$};\fill(P)circle(1.5pt)node[right]{$P$};
+\draw[ray,blue](F)--(P);\draw[ray,red](P)--(1.2,2.3);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由焦点距离确定入射单位矢量}\par\nobreak
+图 \ref{c1e9q} 中取任意 $P=(x,ax^2)$。先计算
+\[
+ |FP|^2=x^2+(ax^2-f)^2
+ =a^2x^4+(1-2af)x^2+f^2.
+\]
+由于 $4af=1$，有 $1-2af=2af$，右侧等于 $(ax^2+f)^2$。再由 $ax^2+f>0$，取正根得到 $|FP|=ax^2+f=:D$，所以入射单位方向为
+\[
+ \bm u=\frac{(x,ax^2-f)}D.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用导数构造切向与法向}\par\nobreak
+镜面切向量可取 $(1,2ax)$，与之垂直的非单位法向量可取 $\bm n=(-2ax,1)$。矢量反射公式是
+$\bm u_{\rm out}=\bm u-2(\bm u\cdot\bm n)\bm n/|\bm n|^2$。
+\fig{c1e9s}{把入射方向分成切向与法向}{\begin{tikzpicture}
+\coordinate(P)at(0,0);\draw[world](-1,-1.56)--(1,1.56)node[above]{$\bm t$};
+\draw[guide](-1.7,1.09)--(1.7,-1.09)node[right]{$\bm n$};
+\draw[ray,blue](-1.8,-.82708)--(P)node[pos=.1,above]{$\bm u$};
+\draw[ray,red](P)--(0,2)node[right]{$\bm u_{\rm out}$};
+\fill(P)circle(1.8pt)node[below right]{$P$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反转法向分量，核对出射方向}\par\nobreak
+图 \ref{c1e9s} 中反射保持切向分量、反转法向分量。具体地，
+$\bm u\cdot\bm n=[-2ax^2+(ax^2-f)]/D=-(ax^2+f)/D=-1$；
+而 $4aD=4a^2x^2+4af=1+4a^2x^2$，所以
+\[
+ \bm u\cdot\bm n=-1,\quad |\bm n|^2=1+4a^2x^2=4aD.
+\]
+代回可得
+\[
+ \bm u_{\rm out}
+ =\frac{(x,ax^2-f)}D+\frac{(-2ax,1)}{2aD}
+ =(0,1).
+\]
+最后一个向量等式的横分量是 $x/D-x/D=0$，纵分量是
+$(ax^2-f+1/(2a))/D=(ax^2+f)/D=1$，这里用了 $1/(2a)=2f$。因此全部出射方向均平行于轴，且朝 $+y$。此证明同时检查了出射的正负方向，在顶点 $x=0$ 时也适用。
+\end{solution}
+
+\begin{question}
+\begin{example}[下降直杆与圆的交点]
+水平细杆以恒速 $u>0$ 下移，与固定圆 $x^2+y^2=R^2$ 相交。取右交点 $P$，以杆经过圆顶端为 $t=0$，故 $y=R-ut$。求 $P$ 的速度、加速度和切向、法向加速度。
+\end{example}
+\fig{c1e10q}{右交点由圆与水平杆共同确定}{\begin{tikzpicture}[scale=1.1]
+\draw[world](0,0)circle(1.5);\draw[axis](-1.8,0)--(2,0)node[right]{$x$};\draw[axis](0,-1.7)--(0,2)node[above]{$y$};
+\draw[very thick](-1.8,.9)--(1.8,.9);\fill(1.2,.9)circle(1.8pt)node[above right]{$P$};
+\draw[flow](2.4,.9)--(2.4,.25)node[right]{$u$};\draw[guide](0,0)--(1.2,.9);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定交点的支路和存在时间}\par\nobreak
+图 \ref{c1e10q} 的右交点满足
+\[
+ x=\sqrt{R^2-y^2}>0,\qquad 0<t<2R/u.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对圆约束连续求导，得到矢量运动量}\par\nobreak
+因为 $\dot y=-u$，对 $x^2+y^2=R^2$ 求导得到 $2x\dot x+2y\dot y=0$，所以 $x\dot x=uy$、$\dot x=uy/x$。速度的分量与大小为
+\[
+ \bm v_P=(uy/x,-u),\qquad v_P=uR/x.
+\]
+这里 $v_P^2=(uy/x)^2+u^2=u^2(x^2+y^2)/x^2=u^2R^2/x^2$，用 $u,R,x>0$ 取正根才得到速率 $uR/x$。再次求导，保留商中分子、分母的变化：
+\[
+ a_x=u\frac{\dot y\,x-y\dot x}{x^2}
+ =-\frac{u^2(x^2+y^2)}{x^3}
+ =-\frac{u^2R^2}{x^3},\qquad a_y=0.
+\]
+\fig{c1e10s}{交点的合加速度与切法向分解}{\begin{tikzpicture}[scale=1.15]
+\draw[world](0,0)circle(1.5);\coordinate(P)at(1.2,.9);\fill(P)circle(1.5pt)node[above right]{$P$};
+\draw[force,blue](P)--++(.6,-.8)node[right]{$\bm v_P$};
+\draw[force,red](P)--++(-1.2,0)node[left]{$\bm a_P$};
+\draw[flow](P)--++(-.768,-.576)node[below left]{$a_n$};
+\draw[flow](P)--++(-.432,.576)node[above left]{$a_\tau<0$};
+\draw[guide](.432,.324)--(0,.9)--(.768,1.476);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际运动方向作切向和法向投影}\par\nobreak
+图 \ref{c1e10s} 画的是上半圆 $y>0$ 的状态：速度向右下，合加速度水平向左。切向单位矢量为 $\bm e_\tau=(y/R,-x/R)$，内法线单位矢量为 $\bm e_n=(-x/R,-y/R)$。将 $\bm a_P=(-u^2R^2/x^3,0)$ 向它们投影，分别得到
+\[
+ a_\tau=\dot v_P=-\frac{u^2Ry}{x^3},\qquad
+ a_n=\frac{v_P^2}R=\frac{u^2R}{x^2}.
+\]
+直接求 $\dd(uR/x)/\dd t=-uR\dot x/x^2=-u^2Ry/x^3$，与切向投影一致。两个正交分量的平方和为 $u^4R^2(y^2+x^2)/x^6=u^4R^4/x^6$，开方后恰为 $|\bm a_P|$。过赤道时 $a_\tau=0$，下半圆时 $a_\tau>0$。端点 $x=0$ 使交点速度发散，这是理想几何交点的奇异性；杆上物质点始终只有向下速度 $u$。
+
+% thirty-c1-circle
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{换用角度参数核验，并解释端点奇异性}\par\nobreak
+还可把上述结论写成手算中常用的角度形式。令半径与向上竖直线的夹角为 $\theta\in(0,\pi)$，则 $x=R\sin\theta$、$y=R\cos\theta$。由 $\dot y=-R\sin\theta\dot\theta=-u$，求出
+\[\dot\theta=\frac{u}{R\sin\theta},\qquad
+v_P=R\dot\theta=\frac{u}{\sin\theta}.\]
+对速率求导时，$\theta$也变化，所以
+\[a_\tau=\frac{\dd}{\dd t}(u\csc\theta)
+ =-u\csc\theta\cot\theta\dot\theta
+ =-\frac{u^2\cos\theta}{R\sin^3\theta},\qquad
+a_n=\frac{u^2}{R\sin^2\theta}.\]
+图\ref{c1e10s}所示的上半圆对应 $\cos\theta>0$，切向分量为负；到下半圆时符号反转，而法向分量始终朝圆心。按勾股关系合成，
+\[|\bm a_P|=\sqrt{a_\tau^2+a_n^2}
+ =\frac{u^2}{R\sin^3\theta}\sqrt{\cos^2\theta+\sin^2\theta}
+ =\frac{u^2}{R\sin^3\theta}.\]
+因此对速率求导只得到切向加速度，不能把 $\dot v_P$称为整个加速度。直角坐标计算与切法向计算在这里互相核验，尤其能检查二阶求导时最容易遗漏的角度导数。
+\end{solution}

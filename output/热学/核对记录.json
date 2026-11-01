@@ -1,0 +1,238 @@
+{
+  "books": [
+    {
+      "book": 1,
+      "examples": 9,
+      "drills": 4,
+      "figures": 31,
+      "question_figures": 13,
+      "solution_figures": 13,
+      "undefined_refs": [],
+      "duplicate_labels": 0,
+      "pages": 28,
+      "page_edge_issues": [],
+      "practice_links": 4,
+      "unique_solution_destinations": 4,
+      "compiler_issues": [],
+      "formula_typography_issues": []
+    },
+    {
+      "book": 2,
+      "examples": 10,
+      "drills": 4,
+      "figures": 32,
+      "question_figures": 14,
+      "solution_figures": 14,
+      "undefined_refs": [],
+      "duplicate_labels": 0,
+      "pages": 28,
+      "page_edge_issues": [],
+      "practice_links": 4,
+      "unique_solution_destinations": 4,
+      "compiler_issues": [],
+      "formula_typography_issues": []
+    },
+    {
+      "book": 3,
+      "examples": 9,
+      "drills": 4,
+      "figures": 31,
+      "question_figures": 13,
+      "solution_figures": 13,
+      "undefined_refs": [],
+      "duplicate_labels": 0,
+      "pages": 28,
+      "page_edge_issues": [],
+      "practice_links": 4,
+      "unique_solution_destinations": 4,
+      "compiler_issues": [],
+      "formula_typography_issues": []
+    },
+    {
+      "book": 4,
+      "examples": 9,
+      "drills": 4,
+      "figures": 32,
+      "question_figures": 13,
+      "solution_figures": 13,
+      "undefined_refs": [],
+      "duplicate_labels": 0,
+      "pages": 29,
+      "page_edge_issues": [],
+      "practice_links": 4,
+      "unique_solution_destinations": 4,
+      "compiler_issues": [],
+      "formula_typography_issues": []
+    }
+  ],
+  "total_examples": 37,
+  "total_drills": 16,
+  "total_figures": 126,
+  "total_pages": 113,
+  "forbidden_terms": [],
+  "numerical_checks": {
+    "摆钟日差": {
+      "value": 12.957084728802926,
+      "pass": true
+    },
+    "溢汞极限温度": {
+      "value": 484.0,
+      "pass": true
+    },
+    "电磁加热能量分配": {
+      "value": 1.0,
+      "pass": true
+    },
+    "弹簧活塞热量": {
+      "value": 7000.0,
+      "pass": true
+    },
+    "充气末温": {
+      "value": 353.67499999999995,
+      "pass": true
+    },
+    "双缸总熵": {
+      "value": -0.8504228182937723,
+      "pass": true
+    },
+    "凝结内能_MJ": {
+      "value": -2.087062416666667,
+      "pass": true
+    },
+    "二次连通末压": {
+      "value": 0.016761904761904763,
+      "pass": true
+    },
+    "冷却末气柱高_L": {
+      "value": 1.8,
+      "pass": true
+    },
+    "双缸等温位移": {
+      "value": -0.19999999999999996,
+      "pass": true
+    },
+    "Brayton压比": {
+      "value": 2.0528,
+      "pass": true
+    },
+    "Carnot闭合": {
+      "value": 1.373838081640799,
+      "pass": true
+    },
+    "冰水混合能量守恒_E-45": {
+      "value": -65.0,
+      "pass": true
+    },
+    "冰水混合能量守恒_E-15": {
+      "value": -35.0,
+      "pass": true
+    },
+    "冰水混合能量守恒_E10": {
+      "value": -10.0,
+      "pass": true
+    },
+    "冰水混合能量守恒_E35": {
+      "value": 15.0,
+      "pass": true
+    },
+    "多方过程_等压热容": {
+      "value": 3.5,
+      "pass": true
+    },
+    "多方过程_绝热热量系数": {
+      "value": -4.440892098500626e-16,
+      "pass": true
+    },
+    "多方过程_直线过程热容": {
+      "value": 3.0,
+      "pass": true
+    },
+    "首次压力阈值_线性插值摄氏温度": {
+      "value": 90.55278186293998,
+      "pass": true
+    },
+    "冷热容器_全气态试算压强": {
+      "value": 0.09977142857142857,
+      "pass": true
+    }
+  },
+  "date": "2026-10-26",
+  "all_projects_xelatex_compile": true,
+  "additional_physics_checks": {
+    "single_slit_amplitude_q_0": {
+      "value": 1.0,
+      "expected": 1.0,
+      "pass": true
+    },
+    "single_slit_amplitude_q_0.25": {
+      "value": 0.9003163161571061,
+      "expected": 0.9003163161571061,
+      "pass": true
+    },
+    "single_slit_amplitude_q_0.5": {
+      "value": 0.6366197723675814,
+      "expected": 0.6366197723675814,
+      "pass": true
+    },
+    "single_slit_amplitude_q_1": {
+      "value": 2.0021139594298242e-17,
+      "expected": 3.8981718325193755e-17,
+      "pass": true
+    },
+    "single_slit_amplitude_q_2": {
+      "value": -8.630900620794932e-17,
+      "expected": -3.8981718325193755e-17,
+      "pass": true
+    },
+    "natural_light_projection_average": {
+      "value": 0.5,
+      "expected": 0.5,
+      "pass": true
+    },
+    "double_slit_peak_derivative_r2.5_y1.88941013": {
+      "value": -9.087310259836556e-08,
+      "expected": 0.0,
+      "pass": true
+    },
+    "double_slit_peak_derivative_r2.5_y3.68427188": {
+      "value": -1.2748679445451216e-08,
+      "expected": 0.0,
+      "pass": true
+    },
+    "double_slit_peak_derivative_r1.25_y1.58596901": {
+      "value": 1.0028595731625956e-08,
+      "expected": 0.0,
+      "pass": true
+    },
+    "inverse_slit_width_mm": {
+      "value": 0.225,
+      "expected": 0.225,
+      "pass": true
+    },
+    "inverse_double_slit_spacing_mm": {
+      "value": 0.9,
+      "expected": 0.9,
+      "pass": true
+    },
+    "near_point_magnification_with_eye_offset": {
+      "value": 5.4,
+      "expected": 5.4,
+      "pass": true
+    },
+    "remaining_vapor_fraction": {
+      "value": 0.44642857142857145,
+      "expected": 0.44642857142857145,
+      "pass": true
+    },
+    "condensed_water_fraction": {
+      "value": 0.5535714285714286,
+      "expected": 0.5535714285714286,
+      "pass": true
+    }
+  },
+  "visual_review": {
+    "full_document_pages": 115,
+    "method": "Full-document contact sheets and full-page inspection of changed TikZ diagrams."
+  },
+  "suite_consolidation": "保留全部题图与题目顺序；另作17项公式核验；统一版式与跨专题衔接。"
+}

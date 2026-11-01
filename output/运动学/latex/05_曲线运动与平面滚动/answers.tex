@@ -1,0 +1,93 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{k5p18}\textbf{按左侧装配选择连杆水平投影的根号符号}\par\nobreak
+以图\ref{k5p18q}的 $O$为原点，曲柄端为 $B=(-r\cos\alpha,r\sin\alpha)$。滑块位于左侧，所以杆的水平投影取正根
+\[AB_x=\sqrt{l^2-r^2\sin^2\alpha}.\]
+于是
+\[x_A=-r\cos\alpha-\sqrt{l^2-r^2\sin^2\alpha}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用链式法则求滑块速度}\par\nobreak
+顺时针转动在本角度定义下给 $\dot\alpha=\omega$。第一项求导为 $r\omega\sin\alpha$；根号项求导时要保留内函数导数，故
+\[\frac{\dd}{\dd t}\sqrt{l^2-r^2\sin^2\alpha}
+=\frac{-2r^2\sin\alpha\cos\alpha\,\dot\alpha}{2\sqrt{l^2-r^2\sin^2\alpha}}
+=-\frac{r^2\omega\sin\alpha\cos\alpha}{\sqrt{l^2-r^2\sin^2\alpha}}.
+\]
+代入 $x_A$的导数得到
+\[\boxed{v_A=r\omega\sin\alpha
+\left(1+\frac{r\cos\alpha}{\sqrt{l^2-r^2\sin^2\alpha}}\right)}.
+\]
+\fig{k5p18s}{曲柄滑块机构：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(2.8,1.6);\draw[flow,blue](0,0)--(2.285714,0)node[midway,below]{$v_A$};\draw[flow,red](2.8,1.6)--(4.4,2.8)node[right]{$\bm v_B$};\draw[guide](0,0)--(4.2,2.4);\node at(.8,.2){$\theta$};\node[above left]at(2,1.142857){沿杆投影相等};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用沿杆速度投影独立核验}\par\nobreak
+图\ref{k5p18s}给出另一种计算：杆的单位方向为 $(\cos\theta,\sin\theta)$，曲柄端速度为 $(r\omega\sin\alpha,r\omega\cos\alpha)$。定长杆要求两端沿杆投影相同，因此
+\[v_A\cos\theta=r\omega(\sin\alpha\cos\theta+\cos\alpha\sin\theta),
+\quad v_A=\frac{r\omega\sin(\alpha+\theta)}{\cos\theta}.
+\]
+由 $l\sin\theta=r\sin\alpha$及 $l\cos\theta=\sqrt{l^2-r^2\sin^2\alpha}$，可逐项恢复前式。$l>r$保证根号在图示构形有定义；$\alpha\to0$时滑块到达死点、瞬时速度趋零。若改选右侧装配，位置式的根号符号改变，必须重新求导。\end{drillsolution}
+
+\begin{drillsolution}{k5p19}\textbf{对斜绳长度取两端相对速度的投影}\par\nobreak
+取图\ref{k5p19q}的 $O=(0,0)$、$B=(0,h)$、$A=(x,y)$，令 $\ell=BA$。杆端速度为 $(\omega y,-\omega x)$，所以
+\[\dot\ell=\frac{(x,y-h)\cdot(\omega y,-\omega x)}\ell=\frac{\omega hx}{\ell}=\omega h\sin\alpha.\]
+\fig{k5p19s}{转杆通过绳牵引悬物：解答过程}{\begin{tikzpicture}\draw[world](0,2.5)--(2.3,.8);\fill(2.3,.8)circle(1.3pt)node[above right]{$A$};\draw[flow,blue](2.3,.8)--(2.7,-.3)node[right]{$\bm v_A$};\draw[guide](2.3,.8)--(3.2,.14)node[right]{沿 $BA$};\draw[flow,red](-.7,-.2)--(-.7,1)node[left]{$v_M=\dot\ell$};\node[above]at(0,2.5){$B$};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由斜段增长确定悬物升降并检验特殊构形}\par\nobreak
+绳长 $BA+BM$恒定，斜段增长多少，悬挂段便缩短多少，因此 $\boxed{v_M=\omega h\sin\alpha}$，向上。图\ref{k5p19s}的沿绳投影与绳长微分给同一结果；杆长在 $x/\ell=\sin\alpha$中消去。若反转杆的转向，符号反转、悬物下降，而不能仍称上升。
+
+绳长微分中的两个点积项为 $x\dot x=\omega xy$与 $(y-h)\dot y=-\omega xy+\omega hx$，前后两项抵消后只剩 $\omega hx$。这解释了杆长为何从最终表达式消去。$h=0$时滑轮与转轴重合，$BA$就是固定杆长，悬物不动；$\alpha=0$时杆端沿绳投影瞬间为零，悬物也瞬间静止，均与答案一致。\end{drillsolution}
+
+\begin{drillsolution}{k5p20}\textbf{以杆的纵坐标驱动圆周参数}\par\nobreak
+图\ref{k5p20q}中交点纵坐标随杆下降，$\dot y=-v$。由 $y=r\cos\varphi$，链式求导给 $-r\sin\varphi\,\dot\varphi=-v$，即 $\dot\varphi=v/(r\sin\varphi)$。横坐标 $x=r\sin\varphi$给 $\dot x=r\cos\varphi\,\dot\varphi=v\cot\varphi$。再对余切用链式法则，
+\[\ddot x=-v\csc^2\varphi\,\dot\varphi
+ =-\frac{v^2}{r\sin^3\varphi},\qquad\ddot y=0.\]
+所以
+\[\boxed{\bm v_M=(v\cot\varphi,-v)},\qquad\boxed{\bm a_M=(-v^2/(r\sin^3\varphi),0)}.\]
+\fig{k5p20s}{水平杆与圆的移动交点：解答过程}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\fill(1.2,.9)circle(2pt)node[above]{$M$};\draw[flow,blue](1.2,.9)--(1.95,-.1)node[right]{$\bm v_M$};\draw[flow,red](1.2,.9)--(.1,.9)node[above]{$\bm a_M$};\draw[guide](0,0)--(1.2,.9);\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分交点与杆上物质点，并复核二阶约束}\par\nobreak
+图\ref{k5p20s}中交点沿圆周切向运动，但杆上各物质点只向下平移。上半圆交点向右，下半圆向左，经过最右端 $\varphi=\pi/2$时速度竖直向下、加速度指向圆心。加速度没有竖直分量并不表示没有法向分量；法向是相对曲线切线定义，不能与固定竖直方向混同。
+
+将速度代入圆的切向条件 $x\dot x+y\dot y=0$，将加速度代入 $x\ddot x+y\ddot y+\dot x^2+\dot y^2=0$，两式都成立，说明交点确实持续在固定圆上。顶、底切触处 $\sin\varphi\to0$为分支端点，不是可继续跨越的普通位置。\end{drillsolution}
+
+\begin{drillsolution}{k5p21}\textbf{由对称性确定交点位置再求一阶导数}\par\nobreak
+由图\ref{k5p21q}的左右对称关系，上交点 $P=(X,Y)$位于两圆心连线的垂直平分线上，故
+\[X=\frac{x_1+x_2}{2},\qquad
+Y^2+\frac{d^2}{4}=r^2,\qquad
+Y=\sqrt{r^2-d^2/4}>0.\]
+记 $w=\dot d=v_2-v_1$、$b=\ddot d=a_2-a_1$。第一式给 $\dot X=(v_1+v_2)/2$；对第二式求导，有
+\[2Y\dot Y+\frac{dw}{2}=0,\qquad
+\dot Y=-\frac{dw}{4Y}.\]
+\fig{k5p21s}{两移动圆的交点加速度：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4.8,0)node[right]{$d$};\draw[axis](0,0)--(0,2.4)node[above]{$Y$};\draw[world](0,2)arc(90:0:4 and 2);\fill(2,1.732)circle(2pt)node[above]{$P$高度};\node[below]at(4,0){$2r$};\node[left]at(0,2){$r$};\node at(3,2.4){$Y^2+d^2/4=r^2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用高度随间距的斜率解释竖直速度}\par\nobreak
+图\ref{k5p21s}的曲线给出交点高度如何随间距改变，其斜率 $-d/(4Y)$再乘间距变化率 $w$便是竖直速度。因此
+\[\boxed{\bm v_P=((v_1+v_2)/2,-dw/(4Y))}.\]
+\Needspace{24\baselineskip}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对未相除的约束二次求导}\par\nobreak
+为了求加速度，直接对未除以 $Y$的关系再次求导，避免漏掉分母随时间的变化：
+\[2Y\ddot Y+2\dot Y^2+\frac{w^2+db}{2}=0.\]
+代入一阶结果，再用 $4Y^2+d^2=4r^2$合并，得到
+\begin{align*}
+\ddot Y
+ &=-\frac{w^2+db}{4Y}-\frac{d^2w^2}{16Y^3}\\
+ &=-\frac{(4Y^2+d^2)w^2}{16Y^3}-\frac{db}{4Y}
+  =-\frac{r^2w^2}{4Y^3}-\frac{db}{4Y}.
+\end{align*}
+横向加速度为两圆心加速度的平均，故
+\[\boxed{\bm a_P=((a_1+a_2)/2,-r^2w^2/(4Y^3)-db/(4Y))}.\]
+若 $w=b=0$，交点随圆心中点整体平移。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查匀速驱动和内外切退化端点}\par\nobreak
+若 $b=0,w\ne0$，竖直加速度恒向下；两圆接近时交点向上减速，两圆远离时向下加速。趋近外切 $Y\to0$时出现几何奇异；而 $d=0$时两圆重合，交点不再唯一。因此结论限定在 $0<d<2r$，不能直接延拓到两个退化端点。\end{drillsolution}

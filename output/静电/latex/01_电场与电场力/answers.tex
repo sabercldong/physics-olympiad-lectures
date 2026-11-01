@@ -1,0 +1,246 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e1:drill:1}\textbf{利用中垂线对称性写合场及导数}\par\nobreak
+图\ref{fig:e1:drill:1:s} 中距中点 $y$ 的点，两电场横向分量抵消，竖直分量相加。对 $y>0$，
+\[
+ E_y=\frac{2kqy}{(a^2+y^2)^{3/2}}.
+\]
+这里导数的计算须对 $y(a^2+y^2)^{-3/2}$ 同时求两因子的导数：
+\[
+ \begin{aligned}
+ \frac{\dd E_y}{\dd y}
+ &=2kq\left[(a^2+y^2)^{-3/2}-3y^2(a^2+y^2)^{-5/2}\right]\\
+ &=2kq\frac{a^2-2y^2}{(a^2+y^2)^{5/2}}.
+\end{aligned}
+\]
+\typeout{ECFIG:fig:e1:drill:1:p}\fig{fig:e1:drill:1:p}{用两点电荷的合场作无量纲曲线，最大点由导数符号改变确定}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$y/a$};\draw[axis](0,0)--(0,2.9)node[above]{$E_y/(2kq/a^2)$};
+\draw[thick,domain=0:4.5,samples=90]plot(\x,{5*\x/(1+\x*\x)^1.5});
+\draw[guide](.707107,0)--(.707107,1.9245)--(0,1.9245);\fill(.707107,1.9245)circle(2pt);
+\node[below]at(.707107,-.1){$1/\sqrt2$};\node[left]at(0,1.9245){$2/(3\sqrt3)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求正负两侧最大场的位置与大小}\par\nobreak
+图\ref{fig:e1:drill:1:p} 的大小曲线在 $y=a/\sqrt2$ 取得最大值 $4kq/(3\sqrt3a^2)$。中垂线负侧有对称位置 $y=-a/\sqrt2$，场方向向下、大小相同。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查中点与远处的极限}\par\nobreak
+$y\to0$ 时对称抵消，$|y|\to\infty$ 时回到总电荷 $2q$ 的远场，均可核对曲线两端。\end{drillsolution}
+\begin{drillsolution}{e1:drill:2}\textbf{展开环心附近的场并确定电荷符号}\par\nobreak
+图\ref{fig:e1:drill:2:s} 的轴向场为 $E_x=kQx/(R^2+x^2)^{3/2}$。在 $|x|\ll R$ 时，展开分母首项得到 $E_x\simeq kQx/R^3$。力为 $F_x=qE_x$，要成为指向原点的回复力，需 $q<0$。
+\typeout{ECFIG:fig:e1:drill:2:p}\fig{fig:e1:drill:2:p}{解答过程：绝缘球环中的轴向小振动}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2,0)--(2,0)node[right]{$x$};\fill(1,0)circle(2pt)node[above]{$q<0$};\draw[force](1,0)--(.1,0)node[midway,below]{$F_x$};\node[below]at(0,0){$O$};\node at(0,1){$F_x\simeq-kQ|q|x/R^3$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立简谐运动方程并求周期}\par\nobreak
+图\ref{fig:e1:drill:2:p} 对小位移写出 $m\ddot x=-(kQ|q|/R^3)x$，令 $\omega^2=kQ|q|/(mR^3)$，方程写成 $\ddot x+\omega^2x=0$。
+代入试解 $e^{st}$ 得特征方程 $s^2+\omega^2=0$，根为 $\pm i\omega$。
+因此 $x=C\cos\omega t+D\sin\omega t$；
+若初始位置、速度为 $x_0,v_0$，则 $C=x_0$、$D=v_0/\omega$。
+两项都在相位增加 $2\pi$ 后恢复，故
+\[
+ \omega=\sqrt{\frac{kQ|q|}{mR^3}},\qquad
+ T=\frac{2\pi}{\omega}=2\pi\sqrt{\frac{mR^3}{kQ|q|}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对小振幅与轴向约束}\par\nobreak
+振幅 $A\ll R$ 是近似成立条件。题中有明确轴向约束，不能把轴向稳定外推为三维自由运动中的稳定；若允许偏离轴线，还需另查横向场和受力。\end{drillsolution}
+\begin{drillsolution}{e1:drill:3}\textbf{对两非零电荷分别写外场抵消条件}\par\nobreak
+令 图\ref{fig:e1:drill:3:s} 中另一位置为 $x\ne r$。环在正轴上的场为 $E(s)=kQs/(R^2+s^2)^{3/2}>0$。对两点电荷分别除以非零的受力电荷，外场抵消条件为
+\[
+ E(r)+kq_2\frac{r-x}{|r-x|^3}=0,\qquad
+ E(x)+kq_1\frac{x-r}{|x-r|^3}=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去受力电荷并保留位置差的符号}\par\nobreak
+因此严格的参数关系为
+\[
+ q_1=Q\frac{x(r-x)|r-x|}{(R^2+x^2)^{3/2}},\qquad
+ q_2=-Q\frac{r(r-x)|r-x|}{(R^2+r^2)^{3/2}}.
+\]
+\typeout{ECFIG:fig:e1:drill:3:p}\fig{fig:e1:drill:3:p}{两个分支中环场均指向正轴；受力方向随点电荷符号改变，相互吸引力成对出现}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,0)ellipse(.3 and 1);\draw[axis](-.5,0)--(5.2,0);
+\fill(2,0)circle(2pt)node[above]{$q_2<0$};\fill(4,0)circle(2pt)node[above]{$q_1>0$};\node[below]at(2,0){$x$};\node[below]at(4,0){$r$};
+\draw[force](2,-.8)--(.9,-.8);\draw[force](2,-1.4)--(3.1,-1.4);
+\draw[force](4,-.8)--(5.1,-.8);\draw[force](4,-1.4)--(2.9,-1.4);\node at(2.5,-2.2){$0<x<r$};
+\end{scope}
+\begin{scope}[xshift=7.5cm]
+\draw(0,0)ellipse(.3 and 1);\draw[axis](-.5,0)--(5.2,0);
+\fill(2,0)circle(2pt)node[above]{$q_1<0$};\fill(4,0)circle(2pt)node[above]{$q_2>0$};\node[below]at(2,0){$r$};\node[below]at(4,0){$x$};
+\draw[force](2,-.8)--(.9,-.8);\draw[force](2,-1.4)--(3.1,-1.4);
+\draw[force](4,-.8)--(5.1,-.8);\draw[force](4,-1.4)--(2.9,-1.4);\node at(2.5,-2.2){$x>r$};
+\end{scope}
+\node at(6,-3){上排箭头为环的力，下排为另一个点电荷的力};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在内侧分支判断符号和受力}\par\nobreak
+图\ref{fig:e1:drill:3:p}左图对应 $0<x<r$ 分支：外侧 $q_1>0$、内侧 $q_2<0$。外侧正电荷受环向右排斥及内负电荷向左吸引，内侧负电荷受环向左吸引及外正电荷向右吸引，方向可以平衡。令
+\[
+ f(x)=\frac{x(r-x)^2}{(R^2+x^2)^{3/2}}\quad(0<x<r).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求内侧函数唯一极大值并分类解数}\par\nobreak
+其两端都趋零，且在区间内 $f>0$，可先写
+\[
+ \ln f=\ln x+2\ln(r-x)-\frac32\ln(R^2+x^2).
+\]
+逐项求导，并保留内函数导数 $-1$、$2x$，得
+\begin{align*}
+ \frac{f'}f
+ &=\frac1x+\frac{2(-1)}{r-x}-\frac32\frac{2x}{R^2+x^2}\\
+ &=\frac{(r-x)(R^2+x^2)-2x(R^2+x^2)-3x^2(r-x)}
+         {x(r-x)(R^2+x^2)}\\
+ &=\frac{rR^2-3R^2x-2rx^2}{x(r-x)(R^2+x^2)}.
+\end{align*}
+分母在 $0<x<r$ 为正。分子关于 $x$ 严格递减，在区间内只通过一次零点，
+\[
+ x_*=\frac{R\sqrt{9R^2+8r^2}-3R^2}{4r}.
+\]
+故当 $0<q_1<Qf(x_*)$ 时有两个内侧位置；相等时一个；大于时没有。每个位置对应的 $q_2$ 由上式确定。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在外侧分支证明存在唯一解的范围}\par\nobreak
+若 $x>r$，图\ref{fig:e1:drill:3:p}右图则要求 $q_1<0,q_2>0$。函数 $g(x)=x(x-r)^2/(R^2+x^2)^{3/2}$ 从 $0$ 严格增至 $1$，为验证单调性，先写
+$\ln g=\ln x+2\ln(x-r)-\tfrac32\ln(R^2+x^2)$，
+逐项求导、通分得
+\[
+ \frac{g'}g=\frac1x+\frac2{x-r}-\frac{3x}{R^2+x^2}
+ =\frac{2rx^2+3R^2x-rR^2}{x(x-r)(R^2+x^2)}.
+\]
+在 $x>r$ 时，分母为正，分子中 $2rx^2>0$、
+$3R^2x-rR^2>2rR^2>0$，故 $g'>0$。因此 $-Q<q_1<0$ 时有唯一外侧位置；$q_1\le -Q$ 时没有有限解。这说明答案取决于给定电荷的符号及大小，不能仅凭 $r>R$ 报出唯一位置。\end{drillsolution}
+\begin{drillsolution}{e1:drill:4}\textbf{先由导体内外场跳变确定面密度}\par\nobreak
+图\ref{fig:e1:drill:4:s} 的导体内外电场法向分量满足 $E_{\text{外}}-E_{\text{内}}=\sigma/\varepsilon_0$，所以 $\sigma=\varepsilon_0E$。把极小表面元的场与其余电荷的场分开：面元自身在两侧的场为 $\pm\sigma/(2\varepsilon_0)$，其余电荷的场在跨越该面元时连续，记为 $E_{\text{他}}$。
+\typeout{ECFIG:fig:e1:drill:4:p}\fig{fig:e1:drill:4:p}{在一个小面元两侧分开表示自身场与其他电荷场，取外法线向上}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[gray!12](-2,-1.2)rectangle(2,0);\draw(-2,0)--(2,0);\draw[blue,very thick](-.5,0)--(.5,0);
+\draw[flow,blue](0,.2)--(0,1.6)node[right]{$+\sigma/(2\varepsilon_0)$};
+\draw[flow,blue](0,-.2)--(0,-1.6)node[right]{$-\sigma/(2\varepsilon_0)$};\node at(0,2.4){面元自身场};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\fill[gray!12](-2,-1.2)rectangle(2,0);\draw(-2,0)--(2,0);
+\draw[flow,red](-.6,.2)--(-.6,1.6);\draw[flow,red](.6,-1.6)--(.6,-.2);\node[red,right]at(1,.9){$E_{\text{他}}=E/2$};
+\draw[force](0,0)--(0,1.2);\node at(0,2.4){其他电荷场与向外压力};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两侧总场联立分离自身场}\par\nobreak
+按 图\ref{fig:e1:drill:4:p}，外侧 $E=E_{\text{他}}+\sigma/(2\varepsilon_0)$，内侧 $0=E_{\text{他}}-\sigma/(2\varepsilon_0)$，因此 $E_{\text{他}}=E/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算向外压力并检查二分之一因子}\par\nobreak
+单位面积力为 $\sigma E_{\text{他}}=\varepsilon_0E^2/2$，沿外法线。不能让面元受它自身的场作用。由总场平方得到压力时，因子 $1/2$ 已包含这种自身场排除。\end{drillsolution}
+\begin{drillsolution}{e1:drill:5}\textbf{标出源点坐标、距离与投影因子}\par\nobreak
+图\ref{fig:e1:drill:5:s} 中 $y$ 与 $-y$ 两微元的竖直分量抵消。位于 $y$ 的微元 $\dd q=\lambda\dd y$，到 $P$ 距离 $\sqrt{x^2+y^2}$，水平方向投影为 $x/\sqrt{x^2+y^2}$。
+\typeout{ECFIG:fig:e1:drill:5:p}\fig{fig:e1:drill:5:p}{对称微元的横向投影相加；积分上下限在原线段两端}{\begin{tikzpicture}
+
+\draw[very thick](0,-2.3)--(0,2.3);\draw[axis](-.6,0)--(5.3,0)node[right]{$x$};
+\node[left]at(0,2.3){$l$};\node[left]at(0,-2.3){$-l$};
+\fill(3,0)circle(2pt)node[below]{$P$};\fill(0,1.2)circle(2pt)node[left]{$y$};\fill(0,-1.2)circle(2pt)node[left]{$-y$};
+\draw[guide](0,1.2)--(3,0)--(0,-1.2);\draw[force,gray](3,0)--(4,-.4);\draw[force,gray](3,0)--(4,.4);
+\draw[flow,blue](3,0)--(4.5,0);\node[blue,above]at(4.3,.3){$2\dd E_x$};\draw[<->](0,-2.9)--(3,-2.9)node[midway,below]{$x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按线段真实边界积分}\par\nobreak
+由 图\ref{fig:e1:drill:5:p}，
+\[
+ E_x=k\lambda x\int_{-l}^{l}\frac{\dd y}{(x^2+y^2)^{3/2}}.
+\]
+令 $y=x\tan\theta$，则 $\dd y=x\sec^2\theta\dd\theta$，
+分母为 $x^3\sec^3\theta$。上下限成为
+$-\theta_0,\theta_0$，其中 $\theta_0=\arctan(l/x)$，于是
+\begin{align*}
+ E_x&=\frac{k\lambda}{x}\int_{-\theta_0}^{\theta_0}\cos\theta\,\dd\theta
+ =\frac{k\lambda}{x}[\sin\theta]_{-\theta_0}^{\theta_0}\\
+ &=\frac{2k\lambda}{x}\sin\theta_0
+ =\frac{2k\lambda l}{x\sqrt{x^2+l^2}}.
+\end{align*}
+最后一步的正弦由图中两直角边 $x,l$ 与斜边 $\sqrt{x^2+l^2}$ 给出。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检验无限线与有限总电荷远场}\par\nobreak
+$l\to\infty$ 时 $E_x=2k\lambda/x=\lambda/(2\pi\varepsilon_0x)$；$x\gg l$ 时 $E_x\simeq k(2\lambda l)/x^2$，总电荷为 $2\lambda l$。两个极限分别回到无限直线和有限总电荷点模型。\end{drillsolution}
+\begin{drillsolution}{e1:drill:6}\textbf{先按圆心到微元的方向确定场的负号}\par\nobreak
+图\ref{fig:e1:drill:6:s} 中角度 $\theta$ 的正微元在圆心产生的场指向微元的反方向。电荷 $\dd q=\lambda R\dd\theta$，故轴向分量 $\dd E_x=-k\lambda\cos\theta\,\dd\theta/R$，竖直分量关于 $x$ 轴抵消。
+\typeout{ECFIG:fig:e1:drill:6:p}\fig{fig:e1:drill:6:p}{正微元在圆心的场背离该微元；对称的两个微元只留下负 $x$ 分量}{\begin{tikzpicture}
+
+\draw[axis](-2.5,0)--(4,0)node[right]{$x$};\draw(1.026,-2.819)arc(-70:70:3);
+\fill(2.121,2.121)circle(2pt)node[right]{$\dd q$};\fill(2.121,-2.121)circle(2pt);
+\draw[guide](0,0)--(2.121,2.121)(0,0)--(2.121,-2.121);\draw[->](.8,0)arc(0:45:.8);\node at(1.1,.45){$\theta$};
+\draw[force,gray](0,0)--(-1,-1);\draw[force,gray](0,0)--(-1,1);\draw[flow,blue](0,0)--(-1.7,0)node[left]{$\bm E$};\node[below]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在实际极角边界内积分}\par\nobreak
+按 图\ref{fig:e1:drill:6:p}，
+\[
+ E_x=-\frac{k\lambda}{R}\int_{-\alpha}^{\alpha}\cos\theta\dd\theta
+ =-\frac{k\lambda}{R}[\sin\theta]_{-\alpha}^{\alpha}
+=-\frac{k\lambda}{R}\bigl(\sin\alpha-\sin(-\alpha)\bigr).
+\]
+使用 $\sin(-\alpha)=-\sin\alpha$ 后，
+\[
+ E_x=-\frac{2k\lambda}{R}\sin\alpha,\qquad E_y=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查半圆、整圆及保持量的区别}\par\nobreak
+半圆弧对应 $\alpha=\pi/2$，场大小 $2k\lambda/R$，指向没有电荷的一侧。整圆 $\alpha=\pi$ 时场为零，符合对称性；$\alpha\to0$ 时圆弧电荷量趋零，场也趋零。固定总电荷而非固定线密度时，应先用 $Q=2\alpha R\lambda$ 改写后再作极限。\end{drillsolution}
+\begin{drillsolution}{e1:drill:7}\textbf{用柱对称说明场方向和高斯面通量}\par\nobreak
+图\ref{fig:e1:drill:7:s} 的无限长及轴对称使电场径向，且仅依赖 $r$。选同轴半径 $r$、长 $h$ 的柱形高斯面，两端面无通量，侧面通量为 $E2\pi rh$。
+\typeout{ECFIG:fig:e1:drill:7:p}\fig{fig:e1:drill:7:p}{左图为柱内高斯面的横截面；右图为柱外高斯面，端面无通量、侧面有通量}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[gray!12](0,0)circle(1.5);\draw(0,0)circle(1.5);\draw[guide](0,0)circle(.8);\draw[<->](0,0)--(.8,0)node[midway,below]{$r$};\node at(0,2.1){$r<R$};
+\draw[<->](0,0)--(-1.06,1.06)node[midway,left]{$R$};\node at(0,-2.3){$Q_{\text{内}}=\rho\pi r^2h$};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+\draw(0,0)ellipse(.3 and 1);\draw(4,0)ellipse(.3 and 1);\draw(0,1)--(4,1)(0,-1)--(4,-1);
+\draw[guide](0,0)ellipse(.5 and 1.8);\draw[guide](4,0)ellipse(.5 and 1.8);\draw[guide](0,1.8)--(4,1.8)(0,-1.8)--(4,-1.8);
+\draw[<->](0,-2.4)--(4,-2.4)node[midway,below]{$h$};\draw[flow](2,1.8)--(2,2.7)node[right]{$\bm E\parallel\bm n$};
+\node at(2,0){$r>R$};\node at(2,3.4){端面上 $\bm E\perp\bm n$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算柱内与柱外包围电荷}\par\nobreak
+图\ref{fig:e1:drill:7:p} 中当 $r<R$ 时包围电荷 $\rho\pi r^2h$，故 $E=\rho r/(2\varepsilon_0)$；当 $r>R$ 时包围 $\rho\pi R^2h$，故 $E=\rho R^2/(2\varepsilon_0r)$，均向外。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查表面连续、中心与远场}\par\nobreak
+两式在 $r=R$ 都给 $\rho R/(2\varepsilon_0)$，场连续。中心 $r=0$ 场为零；远处相当于线密度 $\lambda=\rho\pi R^2$ 的无限线电荷，$E=\lambda/(2\pi\varepsilon_0r)$。\end{drillsolution}
+\begin{drillsolution}{e1:drill:8}\textbf{按同心高斯面求球内外分段电场}\par\nobreak
+对 图\ref{fig:e1:drill:8:s} 作同心高斯面。球内包围电荷 $Q_r=4\pi\rho r^3/3$，所以 $4\pi r^2E=Q_r/\varepsilon_0$，得到 $E_{\text{内}}=\rho r/(3\varepsilon_0)$。球外包围 $Q=4\pi\rho R^3/3$，故 $E_{\text{外}}=kQ/r^2=\rho R^3/(3\varepsilon_0r^2)$。
+\typeout{ECFIG:fig:e1:drill:8:p}\fig{fig:e1:drill:8:p}{解答过程：均匀实心球的内外场与最大值}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(4.7,0)node[right]{$r$};\draw[axis](0,-.2)--(0,2.5)node[above]{$E$};\draw[world](0,0)--(1.5,2);\draw[world,domain=1.5:4.3,samples=60]plot(\x,{4.5/(\x*\x)});\draw[guide](1.5,0)node[below]{$R$}--(1.5,2);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由增减性确定表面最大场}\par\nobreak
+图\ref{fig:e1:drill:8:p} 中场在球内线性上升、球外按平方反比下降，最大值在表面 $r=R$，为 $E_{\max}=\rho R/(3\varepsilon_0)=kQ/R^2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别比较固定体密度与固定总电荷}\par\nobreak
+保持 $\rho$ 且半径加倍，最大场加倍；保持 $Q$ 且半径加倍，最大场变为四分之一。比较前必须说明保持哪个量，否则“半径增大场变大还是变小”没有统一答案。\end{drillsolution}

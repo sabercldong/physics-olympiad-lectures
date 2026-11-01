@@ -1,0 +1,116 @@
+\section{练习}
+
+\begin{question}\begin{drill}[充电的能量与极限]\label{em5:drill:1}
+未充电电容 $C$ 经电阻 $R$ 接恒压 $E$，求 $q(t),i(t)$，以及全过程电源功、储能、热量；讨论 $R\to0^+$。
+\end{drill}
+\fig{fig:em5:drill:1:s}{恒压源经电阻给电容充电，电流参考取充入上极板}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)--(4,.9) (4,1.3)--(4,2.4)--(2,2.4) (1.2,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$E$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\draw[world](3.55,.9)--(4.45,.9) (3.55,1.3)--(4.45,1.3);\node[right]at(4.55,1.1){$C$};\node[left]at(3.5,1.6){$+q$};\draw[flow,red](2.5,2.4)--(3.5,2.4)node[midway,above]{$i=\dot q$};\node at(2,-.7){$q(0)=0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:1}
+\begin{question}\begin{drill}[一般初态的LC振荡]\label{em5:drill:2}
+理想 LC 回路中，上极板初电荷 $Q_0$，沿其放电方向初电流 $I_0$。求电荷、电流、周期与最大电流，并给出初相位的确定方法。
+\end{drill}
+\fig{fig:em5:drill:2:s}{上极板电荷作为 $q$，从该极板流出为正电流；一般初态包括电荷和电流}{\begin{tikzpicture}
+
+\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);
+\draw[world](0,0)--(3.5,0) (0,2.4)--(3.5,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4);\draw[world](-.45,.9)--(.45,.9) (-.45,1.3)--(.45,1.3);
+\node[left]at(-.55,1.1){$C$};\node[right]at(.5,1.5){$+q$};\node[right]at(.5,.6){$-q$};\node[right]at(3.9,1.1){$L$};\node[right]at(3.6,2.25){$+$};\node[right]at(3.6,.1){$-$};\draw[flow,red](1,2.4)--(2.4,2.4)node[midway,above]{$i$};
+
+
+\node at(1.75,-.9){$q(0)=Q_0,\quad i(0)=I_0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:2}
+\begin{question}\begin{drill}[开关换接后的最大自感电动势]\label{em5:drill:3}
+电感 $L$ 切换前与 $R_1,R_2$ 及电源内阻 $r$ 串联接电动势 $E$，已稳定。切换后电源和 $R_1$ 被断开，电感经 $R_2,R_3$ 串联续流。求最大自感电动势及总热。
+\end{drill}
+\fig{fig:em5:drill:3:s}{切换前后分别画回路，电感保留同一电流方向；电源内阻只在前一阶段参与}{\begin{tikzpicture}
+\node at(2.25,3.7){切换前稳态};\draw[world](4.5,2.4)--(4.5,1.95);\draw[world](4.5,0.35)arc(-90:90:.2);\draw[world](4.5,0.75)arc(-90:90:.2);\draw[world](4.5,1.15)arc(-90:90:.2);\draw[world](4.5,1.5500000000000003)arc(-90:90:.2);\draw[world](4.5,.35)--(4.5,0);
+\draw[world](0,0)--(4.5,0) (0,2.4)--(.8,2.4) (1.5,2.4)--(2.4,2.4) (3.1,2.4)--(4.5,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$E,r$};\draw[world](.8,2.2)rectangle(1.5,2.6)(2.4,2.2)rectangle(3.1,2.6);\node[above]at(1.15,2.65){$R_1$};\node[above]at(2.75,2.65){$R_2$};\node[right]at(4.9,1.1){$L$};
+\begin{scope}[xshift=7cm]\node at(2.25,3.7){切换后续流};\draw[world](4.5,2.4)--(4.5,1.95);\draw[world](4.5,0.35)arc(-90:90:.2);\draw[world](4.5,0.75)arc(-90:90:.2);\draw[world](4.5,1.15)arc(-90:90:.2);\draw[world](4.5,1.5500000000000003)arc(-90:90:.2);\draw[world](4.5,.35)--(4.5,0);
+\draw[world](0,0)--(4.5,0) (0,0)--(0,2.4)--(.8,2.4) (1.5,2.4)--(2.4,2.4) (3.1,2.4)--(4.5,2.4);\draw[world](.8,2.2)rectangle(1.5,2.6)(2.4,2.2)rectangle(3.1,2.6);\node[above]at(1.15,2.65){$R_2$};\node[above]at(2.75,2.65){$R_3$};\node[right]at(4.9,1.1){$L$};\draw[flow,red](4.5,3.2)--(4.5,2.5)node[midway,right]{$i$};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:3}
+\begin{question}\begin{drill}[同一斜面导棒接R、C、L的比较]\label{em5:drill:4}
+质量 $m$、长度 $l$ 的导棒沿倾角 $\theta$ 的无摩擦导轨下滑，磁场垂直轨面，令 $F=mg\sin\theta,k=Bl$。初态静止，分别接电阻 $R$、未充电电容 $C$ 或零电阻理想电感 $L$，求运动规律并比较能量去向。
+\end{drill}
+\fig{fig:em5:drill:4:s}{三种元件各自独立接入；上排沿轨面展开，右方为下滑方向，下图给出倾角与垂直轨面的磁场}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw[world](0,0)--(2.2,0)--(2.2,2)--(0,2)--(0,1.5) (0,.5)--(0,0);\draw[world,very thick](2.2,0)--(2.2,2);\node at(1,1){$\otimes B$};\node at(1.1,2.7){接 $R$};\draw[flow](2.2,3.3)--(3,3.3)node[right]{$+x$};\draw[world](-.2,.5)rectangle(.2,1.5);\draw[dim](2.7,0)--(2.7,2)node[midway,right]{$l$};\end{scope}\begin{scope}[xshift=3.5cm]\draw[world](0,0)--(2.2,0)--(2.2,2)--(0,2)--(0,1.5) (0,.5)--(0,0);\draw[world,very thick](2.2,0)--(2.2,2);\node at(1,1){$\otimes B$};\node at(1.1,2.7){接 $C$};\draw[flow](2.2,3.3)--(3,3.3)node[right]{$+x$};\draw[world](0,.5)--(0,.85) (0,1.15)--(0,1.5) (-.4,.85)--(.4,.85) (-.4,1.15)--(.4,1.15);\draw[dim](2.7,0)--(2.7,2)node[midway,right]{$l$};\end{scope}\begin{scope}[xshift=7cm]\draw[world](0,0)--(2.2,0)--(2.2,2)--(0,2)--(0,1.5) (0,.5)--(0,0);\draw[world,very thick](2.2,0)--(2.2,2);\node at(1,1){$\otimes B$};\node at(1.1,2.7){接 $L$};\draw[flow](2.2,3.3)--(3,3.3)node[right]{$+x$};\draw[world](0,.5)--(0,.6);\foreach\j in {0,1,2}{\draw[world](0,{.6+.3*\j})arc(-90:90:.15);}\draw[dim](2.7,0)--(2.7,2)node[midway,right]{$l$};\end{scope}
+\begin{scope}[shift={(3,-3)}]\draw[world](0,1.2)--(3,0);\draw[guide](1,0)--(3.5,0);\fill(1.5,.6)circle(2pt);\draw[flow](1.5,.6)--(2.3,.28)node[above right]{$v$};\draw[flow,blue](1.5,.6)--(1.9,1.6)node[above]{$B$};\draw[world](2.443,.223)arc(158.2:180:.6);\node[left]at(2.4,.12){$\theta$};\node at(1.5,-.7){侧视：$F=mg\sin\theta$};\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:4}
+\begin{question}\begin{drill}[欠阻尼电路的初态与能量下降]\label{em5:drill:5}
+串联 RLC 回路初始电荷 $Q_0$、电流为零，$0<R<2\sqrt{L/C}$。求电荷规律并证明能量单调减少。
+\end{drill}
+\fig{fig:em5:drill:5:s}{欠阻尼串联RLC自由回路，初始电感无流，初始电容带电}{\begin{tikzpicture}
+
+\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);
+\draw[world](0,0)--(3.5,0) (0,2.4)--(1,2.4) (1.8,2.4)--(3.5,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4);\draw[world](1,2.2)rectangle(1.8,2.6);\node[above]at(1.4,2.65){$R$};\draw[world](-.45,.9)--(.45,.9) (-.45,1.3)--(.45,1.3);\node[left]at(-.55,1.1){$C$};\node[right]at(.5,1.5){$+q$};\node[right]at(.5,.6){$-q$};\node[right]at(3.9,1.1){$L$};\draw[flow,red](2,2.4)--(3,2.4)node[midway,above]{$i$};
+
+
+\node at(1.75,-.8){$q(0)=Q_0,\quad i(0)=0,\quad 0<R<2\sqrt{L/C}$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:5}
+\begin{question}\begin{drill}[并联理想电感的换接过程]\label{em5:drill:6}
+理想且无互感的电感 $L_1,L_2$ 与电阻 $R$ 并联，不接外源。自上节点 $A$ 向下节点 $B$ 取两电感电流为正，初流 $I_{10},I_{20}$ 可正可负。求全过程电流、剩余磁能和电阻热。
+\end{drill}
+\fig{fig:em5:drill:6:s}{无外源、无互感的两电感与电阻并联；三支路均以下行为正}{\begin{tikzpicture}
+
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,2.4)--(0,2.8)--(6,2.8)--(6,1.5) (0,0)--(0,-.4)--(6,-.4)--(6,.8) (3,2.4)--(3,2.8) (3,0)--(3,-.4);
+\draw[world](5.8,.8)rectangle(6.2,1.5);\node[right]at(6.3,1.15){$R$};\node[left]at(0,1.1){$L_1$};\node[left]at(3,1.1){$L_2$};
+\draw[flow,red](-.6,2.5)--(-.6,1.8)node[left]{$i_1$};\draw[flow,red](3.8,2.5)--(3.8,1.8)node[right]{$i_2$};\draw[flow,blue](6.7,2.5)--(6.7,1.8)node[right]{$i_R$};
+\fill(4.8,2.8)circle(2pt)node[above]{$A$};\fill(4.8,-.4)circle(2pt)node[below]{$B$};\node at(3,-1.1){$i_R=-(i_1+i_2),\quad u=V_A-V_B$};
+
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:6}
+\begin{question}\begin{drill}[开关触点的寄生电容与击穿判据]\label{em5:drill:7}
+电感 $L$ 初流 $I_0$，断开电源后，其电流只能给开关两触点间的寄生电容 $C_p$ 充电，初始触点电压为零。忽略电阻及辐射，把初次过电压形成过程视为 LC 自由交换。触点击穿阈值 $U_b$，求最大电压及是否击穿，若会击穿求首次到阈值的时刻。
+\end{drill}
+\fig{fig:em5:drill:7:s}{开关两触点间的寄生电容保留电感续流路径；参考电流给上侧触点充正电}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);
+\draw[world](0,0)--(5,0)--(5,.9) (5,1.3)--(5,2.4)--(0,2.4) (3,0)--(3,1) (3,1.4)--(3,2.4);\fill(3,1)circle(2pt);\fill(3,1.4)circle(2pt);\draw[world](3,1)--(3.3,1.3);\node[left]at(2.7,1.2){开关触点};
+\draw[world](4.55,.9)--(5.45,.9) (4.55,1.3)--(5.45,1.3);\node[right]at(5.55,1.1){$C_p$};\node[left]at(-.1,1.1){$L$};\draw[flow,red](-.7,.6)--(-.7,1.4)node[left]{$i$};\node[right]at(5.2,1.7){$+$};\node[right]at(5.2,.5){$-$};\node at(2.5,-.8){$u(0)=0,\quad i(0)=I_0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:7}
+\begin{question}\begin{drill}[临界阻尼电路的电流峰值与热量]\label{em5:drill:8}
+串联 RLC 回路无外源，$R=2\sqrt{L/C}$，初始电容电荷 $Q_0>0$、电流为零。取放电方向电流为正，求电荷、电流、最大电流及其发生时刻，求到这一时刻已放出的热占初始电能的比例。
+\end{drill}
+\fig{fig:em5:drill:8:s}{临界阻尼自由回路的放电方向与两项初态}{\begin{tikzpicture}
+
+\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);
+\draw[world](0,0)--(3.5,0) (0,2.4)--(1,2.4) (1.8,2.4)--(3.5,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4);\draw[world](1,2.2)rectangle(1.8,2.6);\node[above]at(1.4,2.65){$R$};\draw[world](-.45,.9)--(.45,.9) (-.45,1.3)--(.45,1.3);\node[left]at(-.55,1.1){$C$};\node[right]at(.5,1.5){$+q$};\node[right]at(.5,.6){$-q$};\node[right]at(3.9,1.1){$L$};\draw[flow,red](2,2.4)--(3,2.4)node[midway,above]{$i$};
+
+
+\node at(1.75,-.8){$R=2\sqrt{L/C},\quad q(0)=Q_0>0,\quad i(0)=0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:8}
+\begin{question}\begin{drill}[阈值复位电路的重复周期]\label{em5:drill:9}
+电容 $C$ 经电阻 $R$ 由恒压源 $E$ 充电。当电容电压到 $U_h$ 时，控制开关将电源支路断开，经另一个耗散支路快速放电到 $U_l$，再恢复充电。$0\le U_l<U_h<E$，放电和切换时间可忽略。求重复周期、充电阶段电源功及两个耗散支路每周期总热，解释平均功率。
+\end{drill}
+\fig{fig:em5:drill:9:s}{控制开关只接通充电或复位其中一条支路；复位耗散支路不能同时接在电源上}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.5,0)--(4.5,.9) (4.5,1.3)--(4.5,2)--(3,2) (0,0)--(0,.85) (0,1.55)--(0,2.4)--(.8,2.4) (1.5,2.4)--(2.1,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$E$};\draw[world](.8,2.2)rectangle(1.5,2.6);\node[above]at(1.15,2.65){$R$};
+\draw[world](4.05,.9)--(4.95,.9) (4.05,1.3)--(4.95,1.3);\node[right]at(5.05,1.1){$C$};\node[right]at(4.7,1.7){$+$};
+\draw[world](2.1,0)--(2.1,.6) (2.1,1.2)--(2.1,1.6);\draw[world](1.9,.6)rectangle(2.3,1.2);\node[right]at(2.4,.9){复位支路};\foreach\x/\y in {2.1/2.4,2.1/1.6,3/2}{\fill(\x,\y)circle(2pt);}\draw[world](3,2)--(2.15,2.4);\draw[guide](3,2)--(2.15,1.6);\node[above]at(3,2.2){$S$};\node at(2.5,-.7){$u=U_h$ 时转接复位，$u=U_l$ 时恢复充电};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em5:drill:9}

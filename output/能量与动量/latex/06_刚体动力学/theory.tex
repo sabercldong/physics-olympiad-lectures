@@ -1,0 +1,294 @@
+\section{刚体运动与质心分解}
+
+刚体模型规定任意两质元间距离不变。平面刚体上任一点$P$的速度为$\bm v_P=\bm V_C+\bm\omega\times\bm r_{CP}$。这是一条同时适用于接触点、端点与内部质点的运动学关系；纯滚动、偏心冲击和滑倒杆，只是对其中某些点再附加约束。虽然$CP$的长度不变，图\ref{fig:em6:velocities}中的矢量$\bm r_{CP}$仍随刚体转向，其惯性系导数为$\dot{\bm r}_{CP}=\bm\omega\times\bm r_{CP}$。对速度式用乘积法则求导，先有
+\[
+ \frac{\dd}{\dd t}(\bm\omega\times\bm r_{CP})
+ =\dot{\bm\omega}\times\bm r_{CP}+\bm\omega\times\dot{\bm r}_{CP},
+ \qquad \bm\alpha=\dot{\bm\omega},
+\]
+再代入相对位置的导数，得到
+\[\bm a_P=\bm A_C+\bm\alpha\times\bm r_{CP}+\bm\omega\times(\bm\omega\times\bm r_{CP}).\]
+最后一项是向心加速度，方向指向质心。在刚从静止释放的瞬间$\omega=0$，这一项消失；在已经滚动或转动的过程中一般不能删去。剪绳题只在初瞬间使用简化关系，倒杆题则要保留随姿态变化的速度和加速度。
+
+由各质元速度的平方求和，先保留交叉项：
+\[
+ \begin{aligned}
+ K&=\frac12\sum_i m_i|\bm V_C+\bm\omega\times\bm r_{Ci}|^2\\
+ &=\frac12MV_C^2
+ +\bm V_C\cdot\left(\bm\omega\times\sum_i m_i\bm r_{Ci}\right)
+ +\frac12\sum_i m_i|\bm\omega\times\bm r_{Ci}|^2.
+ \end{aligned}
+\]
+质心定义使$\sum_i m_i\bm r_{Ci}=0$，平面运动中最后一项为$\tfrac12\omega^2\sum_i m_ir_{Ci}^2=\tfrac12I_C\omega^2$，于是
+\begin{equation}K=\frac12MV_C^2+\frac12I_C\omega^2.\label{eq:em6:kinetic}\end{equation}
+这称质心动能分解，也常称柯尼希定理。定轴转动时，质心可能绕轴运动，整体验算可直接写$K=I_O\omega^2/2$，其中$I_O$已经包含质心平动的贡献，不能再额外加一次$MV_C^2/2$。
+
+\fig{fig:em6:velocities}{刚体各点速度等于质心平动加相对转动}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(4,1.4);\fill(2,.7)circle(.06)node[below]{$C$};\fill(4,1.4)circle(.06)node[right]{$P$};\draw[flow](2,.7)--(3.5,.7)node[below]{$\bm V_C$};\draw[flow](4,1.4)--(3.4,3.1)node[above]{$\bm\omega\times\bm r_{CP}$};\draw[flow](4,1.4)--(5.5,1.4)node[right]{$\bm V_C$};\draw[guide](3.4,3.1)--(4.9,3.1);\draw[flow](4,1.4)--(4.9,3.1)node[right]{$\bm v_P$};\end{tikzpicture}}
+
+图\ref{fig:em6:velocities}的相对转动箭头垂直于各点到质心的连线，再与共同平动速度作矢量和。只有质心一阶矩为零，系统动能中的交叉项才相消；换成任意普通点，不能直接沿用同一分解式。
+
+
+瞬时速度为零的接触点可用来表示动能，但不必是固定转轴。纯滚动圆轮有$K=I_P\omega^2/2$，其中$I_P=I_C+mR^2$；这是将$v_C=R|\omega|$代入质心分解的结果。图\ref{fig:em6:contact-acceleration}显示底点的法向加速度为$R\omega^2$，并未随其瞬时速度一起变为零。若进一步直接写$\tau_P=I_P\alpha$，还需检查参考点的运动及角动量定理条件，不能仅凭“这一瞬间不动”便把整个后续运动都当绕固定点转动。
+
+\fig{fig:em6:contact-acceleration}{纯滚动的接触点速度为零，法向加速度仍指向轮心}{\begin{tikzpicture}
+
+\draw[world](-1.8,0)--(3,0);\draw[world](0,1.2)circle(1.2);\fill(0,1.2)circle(.04)node[above left]{$C$};\fill(0,0)circle(.05)node[below]{$P$};
+\draw[flow](0,1.2)--(1.6,1.2)node[right]{$V_C$};\draw[flow](0,2.4)--(2,2.4)node[right]{$v_{\text{顶}}=2V_C$};\draw[force](0,0)--(0,.9);\node[left]at(-.3,.45){$a_{Pn}=R\omega^2$};
+\draw[->](.7,1.9)arc(45:-65:1);\node at(1.8,.4){$\omega<0$};\node[align=left]at(6.1,1.1){$v_P=V_C+R\omega=0$\\$a_{Px}=A_C+R\alpha=0$\\$a_{Py}=R\omega^2$};
+\end{tikzpicture}}
+
+\section{转动惯量的积分与移轴}
+
+绕指定轴的转动惯量定义为$I=\int r_\perp^2\dd m$，距离必须取质元到轴的垂距。它取决于质量分布与转轴，不能只凭总质量、外轮廓判断。图\ref{fig:em6:inertia-integrals}左侧的均匀细杆取线密度$M/\ell$，微元质量为$(M/\ell)\dd x$。以质心为坐标原点时，杆两端是$-\ell/2,\ell/2$；以端点为原点时，两端是$0,\ell$。由$\dd(x^3/3)/\dd x=x^2$，分别有
+\[
+ \begin{aligned}
+ I_C&=\frac M\ell\int_{-\ell/2}^{\ell/2}x^2\dd x
+ =\frac M\ell\left[\frac{x^3}{3}\right]_{-\ell/2}^{\ell/2}
+ =\frac M{3\ell}\left[\left(\frac\ell2\right)^3-\left(-\frac\ell2\right)^3\right]
+ =\frac{M\ell^2}{12},\\
+ I_O&=\frac M\ell\int_0^\ell x^2\dd x
+ =\frac M\ell\left[\frac{x^3}{3}\right]_0^\ell
+ =\frac M\ell\frac{\ell^3-0}{3}=\frac{M\ell^2}{3}.
+ \end{aligned}
+\]
+
+\fig{fig:em6:inertia-integrals}{细杆按长度微元积分，圆盘按同心细环积分，距离均取到所求轴的垂距}{\begin{tikzpicture}
+
+\draw[world](-2,0)rectangle(2,.25);\fill[blue!25](.85,0)rectangle(1.05,.25);\draw[axis](0,-.8)--(0,1.2)node[above]{$C$};\draw[axis](-2,-.8)--(-2,1.2)node[above]{$O$};
+\draw[dim](0,-.5)--(.95,-.5)node[midway,below]{$x$};\node at(1.4,.8){$\dd m=(M/\ell)\dd x$};\node at(0,-1.4){$I_C=\int x^2\dd m$};
+\begin{scope}[xshift=6cm]\draw[world](0,0)circle(1.6);\fill[blue!20,even odd rule](0,0)circle(1.1)(0,0)circle(.95);\draw[guide](0,0)--(1.6,0);\node[below]at(.5,0){$r$};
+\draw[dim](.95,.4)--(1.1,.4)node[above]{$\dd r$};\node at(0,-2.1){$\dd m=2\pi r\sigma\dd r$};\node at(0,2.1){圆盘面密度$\sigma$};\end{scope}
+\end{tikzpicture}}
+
+对两条相距$d$的平行轴，一条过质心，把质元坐标写成$\bm r_\perp=\bm r_{C\perp}+\bm d$。平方积分为
+\[I_O=\int|\bm r_{C\perp}+\bm d|^2\dd m=I_C+2\bm d\cdot\int\bm r_{C\perp}\dd m+Md^2.\]
+由于第一条轴过质心，积分一阶矩为零，故$I_O=I_C+Md^2$。图\ref{fig:em6:inertia-integrals}中$OC=\ell/2$，端轴惯量为$M\ell^2/12+M(\ell/2)^2=M\ell^2/3$，与直接积分一致。使用平行轴定理时两轴必须平行，不能拿它转换方向不同的轴。平面薄片还满足$I_z=I_x+I_y$，因为每个质元有$r_z^2=x^2+y^2$，其中$x,y$轴在片面内且相交，$z$轴垂直片面。
+
+\textbf{圆盘的同心细环积分。}图\ref{fig:em6:inertia-integrals}右侧圆盘的面密度为$\sigma=M/(\pi R^2)$。半径$r$、宽$\dd r$的细环面积是$2\pi r\dd r$，所以$\dd m=2Mr\dd r/R^2$，到垂直盘面的中心轴距离都是$r$。从盘心$r=0$累加到边缘$r=R$，由$\dd(r^4/4)/\dd r=r^3$得
+\[
+ I_z=\frac{2M}{R^2}\int_0^R r^3\dd r
+ =\frac{2M}{R^2}\left[\frac{r^4}{4}\right]_0^R
+ =\frac{2M}{R^2}\frac{R^4-0}{4}=\frac12MR^2.
+\]
+对称性使两条互相垂直的过心直径轴惯量相等，结合$I_z=I_x+I_y$才有$I_x=I_y=MR^2/4$。
+
+\fig{fig:em6:spherical-elements}{球壳的纬带到转轴距离为$R\sin\theta$，实心球再由同心球壳累加}{\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[world](0,0)circle(1.65);\draw[axis](0,-2)--(0,2.2)node[above]{$z$};
+\draw[blue!65!black,line width=2pt](-1.35,.95)--(1.35,.95);
+\coordinate(P)at(1.35,.95);\draw[guide](0,0)--(P)node[midway,below right]{$R$};
+\draw(0,.6)arc(90:35.1:.6);\node at(.3,.82){$\theta$};
+\draw[dim](0,1.35)--(1.35,1.35)node[midway,above]{$R\sin\theta$};
+\node[align=center]at(0,-2.5){纬带宽$R\dd\theta$\\$\dd A=2\pi R^2\sin\theta\dd\theta$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[world](0,0)circle(1.65);\fill[blue!15,even odd rule](0,0)circle(1.1)(0,0)circle(.95);
+\draw[guide](0,0)--(1.65,0);\draw[dim](0,-.35)--(.95,-.35)node[midway,below]{$r$};
+\draw[dim](.95,.4)--(1.1,.4)node[above]{$\dd r$};\node[above right]at(1.2,1.1){$R$};
+\node[align=center]at(0,-2.5){同心薄壳体积$4\pi r^2\dd r$\\$\dd m=(3M/R^3)r^2\dd r$};
+\end{scope}
+\end{tikzpicture}}
+
+\textbf{薄球壳的纬带积分。}图\ref{fig:em6:spherical-elements}左侧以极角$\theta$标记纬带，其周长为$2\pi R\sin\theta$、沿球面的宽为$R\dd\theta$。乘面密度$M/(4\pi R^2)$，得到$\dd m=(M/2)\sin\theta\dd\theta$；到$z$轴的垂距为$R\sin\theta$，不能用球半径$R$代替。因此
+\[
+ I_z=\frac{MR^2}{2}\int_0^\pi\sin^3\theta\dd\theta.
+\]
+令$u=\cos\theta$，$\dd u=-\sin\theta\dd\theta$，且$\sin^2\theta=1-u^2$；北极$\theta=0$对应$u=1$，南极$\theta=\pi$对应$u=-1$。换元并代入端点：
+\[
+ \begin{aligned}
+ \int_0^\pi\sin^3\theta\dd\theta
+ &=-\int_1^{-1}(1-u^2)\dd u
+ =\left[u-\frac{u^3}{3}\right]_{-1}^{1}\\
+ &=\left(1-\frac13\right)-\left(-1+\frac13\right)=\frac43,
+ \qquad I_z=\frac23MR^2.
+ \end{aligned}
+\]
+这里原函数的导数$\dd(u-u^3/3)/\dd u=1-u^2$，使纬带积分转为多项式积分。
+
+\textbf{实心球的同心薄壳积分。}图\ref{fig:em6:spherical-elements}右侧实心球的体密度为$3M/(4\pi R^3)$，故半径$r$的薄壳质量为$\dd m=3Mr^2\dd r/R^3$。每个薄壳可用刚求出的球壳结果$\dd I_z=(2/3)r^2\dd m$，但此处半径随积分微元变化。由$\dd(r^5/5)/\dd r=r^4$，
+\[
+ I_z=\frac{2M}{R^3}\int_0^R r^4\dd r
+ =\frac{2M}{R^3}\left[\frac{r^5}{5}\right]_0^R
+ =\frac{2M}{R^3}\frac{R^5-0}{5}=\frac25MR^2.
+\]
+这些结果的差别来自更多质量处于离轴较远的位置，而不是材料名称本身。
+
+因此任意两条平行轴之间，不能不经质心就直接写$I_2=I_1+Md^2$；应分别相对质心轴计算，再相减。对挖孔物体，质心会因扣除质量而移动，更需要先计算剩余质心，再把惯量移到所求轴。
+
+\section{挖孔组合体的质心与惯量}
+
+组合体计算需要先统一密度，再区分“完整物体质量”与“剩余质量”。以半径$R$、完整质量$M_0$的均匀圆盘为例，从中挖去半径$R/2$、圆心在原盘心右侧$R/2$处的小圆。被挖圆质量为$M_0/4$，剩余质量为$3M_0/4$。关于原盘心的一阶矩减少$M_0R/8$，所以剩余质心向左偏移$R/6$，而不是仍在几何大圆中心。
+
+关于原盘心垂直轴，先计算被挖部分的惯量。用小圆自身中心轴惯量，加上平行轴位移项，得到
+\[I_{\text{孔},O}=\frac12\frac{M_0}{4}\left(\frac R2\right)^2+\frac{M_0}{4}\left(\frac R2\right)^2=\frac3{32}M_0R^2.\]
+从完整盘的$M_0R^2/2$中扣除，得到$I_O=13M_0R^2/32$。最后若要求剩余物体自身质心轴惯量，还需再减去剩余质量乘质心偏移平方：
+\[I_C=I_O-\frac{3M_0}{4}\left(\frac R6\right)^2=\frac{37}{96}M_0R^2.\]
+若题目把剩余质量记为$M$，则$M_0=4M/3$，应改写$I_C=37MR^2/72$。这一步不应省略，否则同一个符号会在计算中悄悄代表不同质量。
+
+\fig{fig:em6:cutout}{扣除质量时同时扣除一阶矩与惯量}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)circle(2);\draw[world,fill=gray!15](1,0)circle(1);\fill(0,0)circle(.05)node[above left]{$O$};\fill(-.333,0)circle(.05)node[below left]{$C$};\fill(1,0)circle(.05)node[right]{$O_h$};\draw[dim](0,-2.5)--(2,-2.5)node[midway,below]{$R$};\node at(4,1.2){孔：$M_0/4$};\node at(4,0){剩余：$3M_0/4$};\end{tikzpicture}}
+
+图\ref{fig:em6:cutout}把孔洞看成负质量分布。总质量、一次矩、关于指定轴的惯量都应扣除同一孔洞贡献；先求新质心，再用移轴定理，不能只扣质量而继续沿用原几何中心作为质心轴。
+
+\section{平动、转动与约束方程}
+
+平面刚体动力学可用$M\bm A_C=\bm F_{\text{外}}$和$I_C\alpha=\tau_{C,\text{外}}$描述。若绕固定轴转动，则可用$I_O\alpha=\tau_{O,\text{外}}$。把轴承反力的作用点选为矩心，能消掉它的未知力矩，但其力仍可能影响质心平动和轴承受力。
+
+绳绕有惯量的滑轮时，两侧张力一般不同。若两侧张力始终相同，净力矩为零，轮就不能获得所需角加速度。轻绳不可伸长且不打滑给$a=r\alpha$，这只是运动学关系，还必须配合两个悬挂物的平动方程与滑轮转动方程。
+
+\fig{fig:em6:massive-pulley}{绳不打滑只给加速度约束，滑轮转动还需两张力的差产生力矩}{\begin{tikzpicture}
+
+\draw[world](2,2.5)circle(.7);\draw[world](2,2.5)--(2,3.6);\draw[world](1.4,3.6)--(2.6,3.6);
+\draw[world](1.3,.6)--(1.3,2.5)arc(180:0:.7)--(2.7,.6);\draw[world](.95,0)rectangle(1.65,.6);\draw[world](2.35,0)rectangle(3.05,.6);
+\node at(1.3,.3){$m_1$};\node at(2.7,.3){$m_2$};\draw[force](1.3,.8)--(1.3,1.8)node[left]{$T_1$};\draw[force](2.7,.8)--(2.7,1.8)node[right]{$T_2$};
+\draw[flow](.5,1)--(.5,.1)node[left]{$a$};\draw[flow](3.5,.1)--(3.5,1)node[right]{$a$};\node[right]at(2.8,2.7){$I,R$};
+\node at(2,-.8){$m_1>m_2,\quad (T_1-T_2)R=I\alpha,\quad a=R\alpha$};
+\end{tikzpicture}}
+图\ref{fig:em6:massive-pulley}中分别列$m_1g-T_1=m_1a$、$T_2-m_2g=m_2a$和滑轮转动式。前两式给$T_1=m_1(g-a)$、$T_2=m_2(g+a)$，代入$(T_1-T_2)R=I\alpha$并用$\alpha=a/R$，有
+\[
+ (m_1-m_2)g-(m_1+m_2)a=\frac{I}{R^2}a.
+\]
+把各项加速度移到同侧，得到
+\[
+ a=\frac{(m_1-m_2)g}{m_1+m_2+I/R^2}.
+\]
+分母中的$I/R^2$表现为额外惯性；只有$I\to0$的轻滑轮极限，才能在有角加速度时仍近似令两侧张力相等。
+
+
+纯滚动的约束是接触点相对地面速度为零。若$x$向右、逆时针角速度为正，则$v_C+R\omega=0$，相应加速度切向条件为$a_C+R\alpha=0$。接触点在该瞬间速度为零，并不表示它的加速度为零，也不表示可以任意把它当固定轴计算一切动力学关系。使用质心方程和滚动约束通常最稳妥。
+
+\section{静摩擦怎样联系平动与转动能量}
+
+静摩擦对纯滚动刚体总功率为零，并不意味着它在平动、转动两个方程中都没有作用。取圆轮向右速度$v_C$，逆时针角速度$\omega$，摩擦力有符号值$f$，其对质心平动部分的功率为$fv_C$，对绕质心转动部分的功率为$(fR)\omega$。纯滚动约束$v_C+R\omega=0$使两者之和恰为零。
+
+因此在某个过程中，摩擦可以减少平动动能、增加相同数量的转动动能，也可以反过来分配，而不产生总机械能耗散。滑动时则$v_C+R\omega$不为零，摩擦力与此接触点滑速相反，总摩擦功率$f(v_C+R\omega)<0$，转入内能。是否有耗散应从接触点相对速度判断，不能只看到“摩擦力存在”就直接扣除$\mu N$乘质心位移。
+
+若圆轮还受作用于质心的水平外力$F$与外力偶矩$\tau$，把平动式$m\dot v_C=F+f$、转动式$I_C\dot\omega=\tau+fR$分别乘$v_C,\omega$。利用平方函数求导，有
+\[
+ \begin{aligned}
+ \dot K&=\frac m2(2v_C\dot v_C)+\frac{I_C}{2}(2\omega\dot\omega)\\
+ &=(F+f)v_C+(\tau+fR)\omega\\
+ &=Fv_C+\tau\omega+f(v_C+R\omega).
+ \end{aligned}
+\]
+纯滚动时最后一项消失，输入功率由真实外力作用点和外力偶提供。这个功率式同时给出动力学、运动学和能量之间的交叉检验；若算出的摩擦功率为正而接触点正在滑动，通常说明摩擦方向或角速度符号出了错。
+
+\input{knowledge-rolling-energy}
+
+\section{静摩擦、滑动与纯滚动的转变}
+
+从滑动转为纯滚动时，必须切换动力学模型，静摩擦应由无滑动约束重新求解。其大小应由运动方程求得，再检查$|f_s|\le\mu_sN$，不能先令$f_s=\mu_sN$。匀质球沿粗糙斜面滚下时，摩擦指向上坡，原因是它需要提供使球转起来的力矩，而非“摩擦总反向于质心速度”。
+
+滑动时应看底部接触点的相对速度$u_s=v_C+R\omega$。若$u_s>0$，底部相对地面向右滑，摩擦向左；若$u_s<0$则相反。质心可能向右而摩擦也向右，例如一只顺时针高速空转的轮子放上地面。摩擦同时改变$v_C$与$\omega$，到$u_s=0$后切换为纯滚动模型，不能继续沿用动摩擦而把接触点推成反向滑动。
+
+\fig{fig:em6:slip}{用接触点速度决定摩擦方向}{\begin{tikzpicture}[scale=.9]\draw[world](-1,0)--(5,0);\draw[world](1.5,1)circle(1);\fill(1.5,1)circle(.04);\draw[flow](1.5,1)--(3.2,1)node[above]{$v_C$};\draw[flow](2.6,1.4)arc(20:140:1.1);\node at(.8,2.4){$\omega>0$};\draw[flow](1.5,.15)--(3,.15)node[right]{$u_s=v_C+R\omega$};\draw[force](1.5,-.25)--(.2,-.25)node[below]{$f$};\end{tikzpicture}}
+
+图\ref{fig:em6:slip}沿用向右和逆时针为正的约定，决定摩擦方向的是接触点对地速度$v_P=V_C+R\omega$。它为正时摩擦向后，为负时摩擦向前；到零后只能把纯滚动当作候选状态，还要检查维持该状态所需静摩擦是否在上限内。
+
+
+在水平面上统一取向右与逆时针为正，底点相对地面的速度为$u_s=v_C+R\omega$。滑动时摩擦力$f=-\mu mg\,\operatorname{sgn}(u_s)$，平动、转动给$\dot v_C=f/m$、$\dot\omega=fR/I_C$，因此
+\[\dot u_s=f\left(\frac1m+\frac{R^2}{I_C}\right).\]
+右侧始终与$u_s$反向，所以滑速大小持续减小。设滑动开始时$v_C(0)=v_0$、$\omega(0)=\omega_0$，且$u_0=v_0+R\omega_0\ne0$。在接触滑速首次到零前，记常量$s=\operatorname{sgn}(u_0)$，则$f=-s\mu mg$。分别作有初值的定积分：
+\[
+ \begin{aligned}
+ \int_{v_0}^{v_C(t)}\dd v&=-s\mu g\int_0^t\dd\tau,
+ &v_C(t)-v_0&=-s\mu gt,\\
+ \int_{\omega_0}^{\omega(t)}\dd w&=-\frac{s\mu mgR}{I_C}\int_0^t\dd\tau,
+ &\omega(t)-\omega_0&=-\frac{s\mu mgR}{I_C}t.
+ \end{aligned}
+\]
+这里$\int\dd v=v$、$\int\dd w=w$，上下限保留了初始速度。将两式组合得到
+\[
+ u_s(t)=u_0-s\mu g\left(1+\frac{mR^2}{I_C}\right)t,
+ \qquad
+ t_* =\frac{|u_0|}{\mu g(1+mR^2/I_C)}.
+\]
+上述时间要求$\mu>0$，且公式只用于$0\le t\le t_*$。若$u_0=0$，应直接检查纯滚动条件；若$\mu=0$且$u_0\ne0$，滑速保持不变。质心速度先归零时，只是平动方向改变；只要$u_s$还未过零，摩擦方向就保持不变。
+
+到$u_s=0$以后，应重新按静摩擦约束求所需$f$。水平面上若没有其他水平力和外力偶，纯滚动只需$f=0$；若仍有外力，则需检查$|f|\le\mu_sN$。不能把滑动阶段的$\mu mg$继续作用到纯滚动阶段，也不能预先假设摩擦总是阻碍质心运动。
+
+\section{纯滚动中的能量与摩擦上限}
+
+对半径$R$、$I_C=\beta mR^2$的圆轮，纯滚动使总动能为$\tfrac12m(1+\beta)v_C^2$。这一表达把转动贡献写成等效质量的增加，适合用能量求速度；但它没有单独给出静摩擦力。求静摩擦仍须平动、转动方程，检查其方向与大小是否可实现。只有通过这一检查，能量计算对应的纯滚动轨迹才真正存在。
+
+外力作用在轮心、轮缘或内部卷轴上时，同样大小的外力会产生不同力矩。摩擦力甚至可以在外拉力朝右时指向左，也可以与拉力同向。先画作用线和力臂，再用有符号转矩列式，能避免凭直觉给摩擦定向。若假设纯滚动算出的$|f|$超过$\mu_sN$，应转为滑动方程，摩擦方向改由接触点滑速决定。
+
+\fig{fig:em6:force-torque}{相同水平外力放在不同高度时，转矩与所需静摩擦不同}{\begin{tikzpicture}
+
+\draw[world](-1.8,0)--(3.5,0);\draw[world](0,1.3)circle(1.3);\fill(0,1.3)circle(.04)node[left]{$C$};\draw[force](0,2)--(2.2,2)node[right]{$F$};
+\draw[dim](-.55,1.3)--(-.55,2)node[midway,left]{$b$};\draw[guide](-.2,1.3)--(1.1,1.3);\draw[force](0,0)--(1.5,0)node[midway,below]{$f\text{的正方向}$};
+\node[align=left]at(5.5,1.5){$ma=F+f$\\$I_C\alpha=\tau+Rf$\\$a+R\alpha=0$};\node at(1,-.8){力在轮心上方：$\tau=-bF$};
+\end{tikzpicture}}
+若圆轮还受水平力$F$和有符号的外力矩$\tau$，由图\ref{fig:em6:force-torque}的平动式先取$f=ma-F$，再由滚动约束取$\alpha=-a/R$。代入转动式并除以$R$，得到
+\[
+ -\frac{I_C}{R^2}a=\frac\tau R+ma-F,
+ \qquad
+ \left(m+\frac{I_C}{R^2}\right)a=F-\frac\tau R.
+\]
+用$I_C=\beta mR^2$求出$a$并回代$f=ma-F$，三个方程给出
+\[
+ a=\frac{F-\tau/R}{m(1+\beta)},\qquad
+ f=-\frac{\beta F+\tau/R}{1+\beta},\qquad I_C=\beta mR^2.
+\]
+这里$f$可正可负，图上的向右箭头仅定义正方向。若$F$沿轮心上方$b$处向右，$\tau=-bF$，则$f=F(b/R-\beta)/(1+\beta)$，在$b=\beta R$两侧改变方向。还须检查$|f|\le\mu_sN$；不满足时，以上纯滚动解不可实现。
+
+
+对撞击后立即纯滚动的球，还可以反过来设计冲击高度，使线冲量与角冲量的比例恰满足$v_C+R\omega=0$。这类问题不需要先经历摩擦耗散，却依然必须在冲击后核对接触速度。图\ref{fig:em6:force-torque}中的$b$从质心向上计，离地高度为$H=R+b$。冲量$J$造成$V_C=J/m$、$\omega=-bJ/I_C$，使$V_C+R\omega=0$的条件为$b=\beta R$，即$H=(1+\beta)R$。因此计算前必须分清离地高度与相对质心的偏置。
+
+\section{角冲量与刚体碰撞}
+
+刚体冲击中位置和姿态近似不变，速度与角速度可突变。对自由刚体，$M(\bm V_C^+-\bm V_C^-)=\bm J$。平面运动的有符号角冲量式为$I_C(\omega^+-\omega^-)=(\bm r_{CP}\times\bm J)\cdot\bm e_z$，其中$P$为受冲击点，$\bm e_z$指向规定的转动正轴。接触点速度由质心平动与自转共同决定，因此恢复系数应作用在两个接触点的法向相对速度上，不能直接用两质心速度代替。
+
+对固定轴刚体受弹丸粘合冲击，轴承冲量对轴力矩为零，可以守恒绕轴角动量；碰后转动惯量应包含粘上的弹丸。对两个圆柱相摩擦而转轴固定的过程，轴承可能对任意公共原点提供外力矩，不应直接声称两圆柱角动量之和守恒。应分别写摩擦角冲量及接触点不再滑动的条件。
+
+冲击结束后也要检查接触点是否正在分离。求得冲量$J\ge0$且法向分离速度符合所给恢复系数，才与单侧接触一致。若多个点可能随后触墙，应把刚得到的刚体平动、角速度作为下一段初态，沿运动继续追踪；首轮冲击解不能自动代替所有后续碰撞的最终状态。
+
+\section{惯量、有效质量与接触点}
+
+图\ref{fig:em6:effective-mass}中冲量 $J$ 沿水平作用于高于质心 $C$ 的点 $P$。质心向右获得 $J/M$，刚体顺时针转动又使 $P$ 向右增加 $Jb^2/I_C$；两项在接触点相加。偏心冲击时，一个接触点获得的速度变化既来自质心平动，也来自绕质心转动。设冲量沿$x$方向、作用线离质心的垂距为$b$，则接触点沿冲量方向的速度增量为$J/M+Jb^2/I_C$。因此沿该方向可定义接触点的有效逆质量$1/M_{\mathrm{eff}}=1/M+b^2/I_C$。它是动力学响应的简写，并非物体真实质量发生变化。打在质心时只有平动；打得越偏，越容易通过自转改变接触点速度。
+
+\fig{fig:em6:effective-mass}{偏心冲量使受冲击点的速度变化同时包含平动与转动}{\begin{tikzpicture}
+
+\draw[world](0,-1.5)--(0,2);\fill(0,0)circle(.055)node[left]{$C$};\fill(0,1.3)circle(.07)node[left]{$P$};\draw[force](0,1.3)--(2,1.3)node[right]{$J$};
+\draw[flow](0,0)--(1.3,0)node[right]{$\Delta V_C=J/M$};\draw[dim](-.8,0)--(-.8,1.3)node[midway,left]{$b$};
+\draw[->](.7,.9)arc(50:-60:.8);\node at(3.6,2.1){$\Delta\omega=-bJ/I_C$};\node at(2.3,-1.4){$\Delta v_{Px}=J/M+Jb^2/I_C$};
+\end{tikzpicture}}
+
+这一关系还能解释自由杆端点碰撞中出现的$4/M$：长$2\ell$的均匀杆有$I_C=M\ell^2/3$，端点$b=\ell$，故$1/M+\ell^2/I_C=4/M$。若只用质心质量$M$计算恢复条件，实际漏掉了接触点由转动得到的三倍平动速度增量。对不在杆端的冲击，可直接用实际$b$替换，不必重新背一套速度公式。
+
+固定轴与自由刚体的区别也由此清楚。自由刚体允许质心动量改变；固定轴则通过外约束冲量去掉某些平动自由度，接触点响应由绕轴惯量决定。对同一杆同一入射粒子，这两种边界条件给出的反弹速度不同，不能仅因外形相同就共用一个碰撞公式。
+
+\section{转矩做功与复摆}
+
+定轴刚体转过$\dd\theta$时，外力对各质元的总功为$\dd W=\tau_O\dd\theta$。在运动段用链式法则$\alpha=\dd\omega/\dd t=(\dd\omega/\dd\theta)\dot\theta=\omega\,\dd\omega/\dd\theta$，转动方程化为$\tau_O\dd\theta=I_O\omega\dd\omega$。因此从状态$(\theta_1,\omega_1)$到$(\theta_2,\omega_2)$，
+\[
+ W=\int_{\theta_1}^{\theta_2}\tau_O\dd\theta
+ =I_O\int_{\omega_1}^{\omega_2}\omega\dd\omega
+ =I_O\left[\frac{\omega^2}{2}\right]_{\omega_1}^{\omega_2}
+ =\frac12I_O(\omega_2^2-\omega_1^2).
+\]
+原函数$\omega^2/2$的导数为$\omega$；若过程包含转向，可分运动段积分，功和动能变化仍可相加。若轴无摩擦，重力势能减少可直接等于$I_O\omega^2/2$的增加。自由平面运动则用式\eqref{eq:em6:kinetic}，不应遗漏平动或重复计入。
+
+\fig{fig:em6:physical-pendulum}{复摆的重力作用在质心，回复力矩使用轴到质心的距离d}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(C)at(.7,1.75);\draw[line width=5pt,gray!35](O)--(1.4,.5);\draw[world](O)--(1.4,.5);\fill(O)circle(.06)node[above]{$O$};\fill(C)circle(.06)node[right]{$C$};
+\draw[guide](O)--(0,.1);\draw(0,2.3)arc(-90:-60.75:.7);\node at(.25,2){$\theta$};\node[left]at(.35,2.375){$d$};
+\draw[force](C)--(.7,.5)node[right]{$Mg$};\node[align=left]at(4,2){$\tau_O=-Mgd\sin\theta$\\$I_O=I_C+Md^2$};
+\end{tikzpicture}}
+
+图\ref{fig:em6:physical-pendulum}中重力作用于质心 $C$，对固定轴 $O$ 的力臂是 $d\sin\theta$，从而回复力矩为 $-Mgd\sin\theta$。质量$M$的刚体悬于固定水平轴，质心在轴下距离$d>0$。转角$\theta$满足$I_O\ddot\theta=-Mgd\sin\theta$。小角度近似$\sin\theta\simeq\theta$后，记$\omega_p^2=Mgd/I_O$，得到
+\[
+ \ddot\theta+\omega_p^2\theta=0.
+\]
+为求解而试取$\theta=e^{\lambda t}$，两次求导分别给$\dot\theta=\lambda e^{\lambda t}$、$\ddot\theta=\lambda^2e^{\lambda t}$，代入得$\lambda^2+\omega_p^2=0$，两个根为$\lambda=\pm i\omega_p$。等价的实通解及其导数为
+\[
+ \theta=A\cos\omega_pt+B\sin\omega_pt,
+ \qquad
+ \dot\theta=-A\omega_p\sin\omega_pt+B\omega_p\cos\omega_pt.
+\]
+这里三角函数求导中的因子$\omega_p$来自相位$\omega_pt$的导数。若初始摆角为$\theta_0$、初始角速度为$w_0$，代入$t=0$给$A=\theta_0$、$B=w_0/\omega_p$，所以
+\[
+ \theta(t)=\theta_0\cos\omega_pt+\frac{w_0}{\omega_p}\sin\omega_pt,
+ \qquad T=\frac{2\pi}{\omega_p}=2\pi\sqrt{\frac{I_O}{Mgd}}.
+\]
+小角度条件应覆盖整个振动，亦即振幅$\sqrt{\theta_0^2+(w_0/\omega_p)^2}\ll1$。转轴过质心时$d=0$，原方程是$\ddot\theta=0$，无回复力矩；积分初值得$\dot\theta=w_0$、$\theta=\theta_0+w_0t$，不存在有限重力摆周期。较大振幅时，周期会依赖振幅，不能继续使用小角度结果。
+

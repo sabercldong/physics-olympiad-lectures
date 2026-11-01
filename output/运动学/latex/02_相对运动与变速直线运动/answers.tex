@@ -1,0 +1,110 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{k2p15}\textbf{以同一计时原点连接下滑和水平追及}\par\nobreak
+设图\ref{k2p15q}中 $B$下滑用时为 $T$，到达底端的速率 $u=g\sin\theta\,T$。在 $t\ge T$ 时，用向左的路程比较位置：$x_A=a_0t^2/2$，$x_B=u(t-T)$。追上要求 $F(t)=x_B-x_A$ 能达到非负值。
+\fig{k2p15s}{斜面下滑后追及加速物体：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[axis](0,-1)--(0,2.6)node[above]{$F$};\draw[world](1,-.7)..controls(2,1.4)and(3.5,1.4)..(4.5,-.7);\node[below]at(1,0){$T$};\node[above]at(2.75,.9){$t_*=u/a_0$};\node[right]at(4.4,1.8){检验顶点值};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验相对位置顶点能否达到零}\par\nobreak
+对 $F(t)=u(t-T)-a_0t^2/2$ 逐项求导，$F'(t)=u-a_0t$、$F''(t)=-a_0<0$。解 $F'=0$ 得图\ref{k2p15s}的抛物线顶点 $t_*=u/a_0$，代回得 $F(t_*)=u(u/a_0-T)-a_0(u/a_0)^2/2=u^2/(2a_0)-uT$。当顶点在 $t\ge T$ 内时，要追上须该值非负，即 $u\ge2a_0T$，所以 $\boxed{a_0\le g\sin\theta/2}$。此条件也使 $t_*\ge2T$，确实属于下滑结束后的阶段；若顶点早于 $T$，$F$ 在允许区间只会下降，且 $F(T)=-a_0T^2/2<0$，不可能追上。等号时在 $t=2T$ 刚好追上且速度相同；若要求随后超过，应取严格小于。条件与斜面长度无关，因为速度 $u$ 与下滑用时 $T$ 成同一比例。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用最早交点核对追及发生的时段}\par\nobreak
+联立位置也可写成 $a_0t^2-2ut+2uT=0$。判别式非负等价于 $u\ge2a_0T$。取最早根 $t_-=[u-\sqrt{u^2-2a_0uT}]/a_0$，通过有理化可见 $T<t_-\le2T$，所以它确实在 $B$到达底端之后；大根代表 $A$继续加速后再次追上 $B$。临界时两根合并，恰是相切的同速相遇。\end{drillsolution}
+
+\begin{drillsolution}{k2p16}\textbf{先寻找两车仍在制动时的最大闭合量}\par\nobreak
+对图\ref{k2p16q}先设 $\Delta v=v_1-v_2$。若最危险状态发生在汽车停住前，此时闭合速率为 $\Delta v-(a-a_2)t$；要在这段内由接近转为远离，须 $a>a_2$，过零时刻为 $t_* =\Delta v/(a-a_2)$。从初始时刻积分到它，
+\begin{align*}
+ C(t_*)&=\int_0^{t_*}[\Delta v-(a-a_2)\tau]\dd\tau
+ =\left[\Delta v\tau-\frac{a-a_2}{2}\tau^2\right]_0^{t_*}\\
+ &=\frac{\Delta v^2}{a-a_2}-\frac{\Delta v^2}{2(a-a_2)}
+ =\frac{\Delta v^2}{2(a-a_2)}.
+\end{align*}
+临界时令 $C(t_*)=s$，得到 $a=a_2+\Delta v^2/(2s)$。但必须有 $t_*\le v_2/a_2$。代入刚求的 $a-a_2=\Delta v^2/(2s)$，该条件化为 $2s/\Delta v\le v_2/a_2$，即 $s\le s_*=v_2\Delta v/(2a_2)$。
+\fig{k2p16s}{前后车同时制动的分支：解答过程}{\begin{tikzpicture}\begin{scope}[x=.8cm,y=.7cm]\draw[axis](0,0)--(3.1,0)node[right]{$t$};\draw[axis](0,0)--(0,2.3)node[above]{$v$};\draw[blue,world](0,2)--(2.4,0);\draw[red,world](0,1.2)--(3,0);\node at(1.3,-.6){停车前相等};\end{scope}\begin{scope}[shift={(4,0)},x=.8cm,y=.7cm]\draw[axis](0,0)--(3.2,0)node[right]{$t$};\draw[axis](0,0)--(0,2.3)node[above]{$v$};\draw[blue,world](0,2)--(3,0);\draw[red,world](0,1.2)--(1.9,0)--(3,0);\node at(1.5,-.6){前车先停};\end{scope}\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{前车先停时改用停车距离差}\par\nobreak
+图\ref{k2p16s}区分提前速度相等和前车先停车的情形。若 $s\ge s_*$，最大闭合量在两车均停住后取得，此时用停车距离差：$v_1^2/(2a)-v_2^2/(2a_2)=s$。综上
+\[\boxed{a_{\min}=\begin{cases}a_2+\dfrac{(v_1-v_2)^2}{2s},&s\le s_*,\\[3pt]\dfrac{v_1^2}{2s+v_2^2/a_2},&s\ge s_* .\end{cases}}\]
+两分支在 $s=s_*$ 都给 $a_2v_1/v_2$，连续相接。这里的等号是临界接触极限，严格不接触需略增 $a$。若忽略前车停车后的阶段，小加速度、大间距分支就会被误判。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查停车先后与两分支的衔接}\par\nobreak
+大间距分支也要检验停车先后。把该分支所得 $a$与 $a_2v_1/v_2$比较，$s\ge s_*$恰给 $a\le a_2v_1/v_2$，所以后车停车时间 $v_1/a$不早于前车停车时间 $v_2/a_2$。前车停住后，后车继续前进使间距减小，直到后车停车才达到最小；这证明用停车距离差成立，补足了该分支的全程判断。\end{drillsolution}
+
+\begin{drillsolution}{k2p17}\textbf{由前两车的约束确定中车最有利制动}\par\nobreak
+取图\ref{k2p17q}中 $A$初位为0，$B,C$初位为5、10m。先约束前两车：$B,C$的分支阈值为 $6(8-6)/(2\times1)=6$m，大于实际5m，由近距分支得到
+\[b\ge1+\frac{(8-6)^2}{2\times5}=\frac75\ \mathrm{m/s^2}.
+\]
+取等号时，两车均在制动阶段的间距为 $D_{BC}=5-2t+t^2/5=(t-5)^2/5$，5s处达到零；此时早于两车停车，临界条件有效。固定初速度下，增大 $b$会使中车全程更靠后，对 $A$更不利，所以最有利策略就是 $b=7/5$。
+
+\fig{k2p17s}{三车制动与中车策略：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6.2,0)node[right]{$t$};\draw[axis](0,0)--(0,2.8)node[above]{$v$};\draw[world,blue](0,2.25)--(5.57,0);\draw[world,red](0,2)--(5.14,0);\draw[world](0,1.5)--(5.4,0);\node[left]at(0,2.25){$9$};\node[left]at(0,2){$8$};\node[left]at(0,1.5){$6$};\node at(3.8,2.2){$b=7/5$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断后两车属于哪一个制动分支}\par\nobreak
+图\ref{k2p17s}给出三车速度图。对 $A,B$，阈值为 $8(9-8)/(2b)=20/7$m，小于实际5m，应采用最终停车距离差：
+\[\frac{9^2}{2a}-\frac{8^2}{2b}=5,\qquad
+\boxed{a_{A,\min}=\frac{81}{10+64/(7/5)}=\frac{189}{130}\ \mathrm{m/s^2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按各自危险时刻复查三车间距}\par\nobreak
+代回得 $T_B=40/7$s、$T_A=130/21$s，前车先停，符合该分支。最终位置是 $x_A=x_B=195/7$m、$x_C=28$m，$B,C$最终仍隔 $1/7$m；最危险时刻并非同时发生。严格无接触时应使前后两个临界条件都留出余量。这里优化的是题定的恒减速度策略，不能省略中车可选策略的限制。
+
+\end{drillsolution}
+
+\begin{drillsolution}{k2p18}\textbf{求首次碰撞的时刻和速度}\par\nobreak
+由图\ref{k2p18q}，首碰前 $B$静止，$A$的位移满足 $at_1^2/2=l$，故 $t_1=\sqrt{2l/a}$，碰前速度 $u=at_1=\sqrt{2al}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从交换后的相对初值求重复间隔}\par\nobreak
+交换后两者相对速度是 $-u$，随后相对加速度为 $a$。再相遇要求 $-u\tau+a\tau^2/2=0$，排除刚碰后的零根，得到 $\tau=2u/a$。碰前相对速度又恢复为 $u$，所以这个间隔逐次重复：
+\[\boxed{t_{n+1}-t_n=2\sqrt{2l/a}},\qquad t_n=(2n-1)t_1.
+\]
+\fig{k2p18s}{交换速度的连续碰撞：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6.4,0)node[right]{$t$};\draw[axis](0,0)--(0,3.6)node[above]{$v$};\draw[world,blue](0,0)--(1,1);\draw[world,blue](1,0)--(3,2);\draw[world,blue](3,1)--(5,3);\draw[world,red](1,1)--(3,1) (3,2)--(5,2) (5,3)--(6,3);\draw[guide](1,0)--(1,1) (3,1)--(3,2) (5,2)--(5,3);\node[below]at(1,0){$t_1$};\node[below]at(3,0){$t_2$};\node[below]at(5,0){$t_3$};\node[above]at(4,3){蓝：$A$\quad 红：$B$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按每段恒速累加前块位移}\par\nobreak
+图\ref{k2p18s}中，第 $k$与第 $k+1$次碰撞间 $B$带速 $ku$，于是从自身初位置累计的位移为
+\[\Delta x_B(n)=\sum_{k=1}^{n-1}ku\frac{2u}{a}
+=\frac{u^2}{a}n(n-1)=\boxed{2ln(n-1)}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广到两块均有加速度：先比较停车时刻}\par\nobreak
+推广情形先记首碰速度 $u_1=\sqrt{2a_1l}$。当 $a_1\ge a_2$，相对加速度是 $a_1+a_2$，交换后的速度差大小逐次仍为 $u_1$，相邻间隔为 $2u_1/(a_1+a_2)$。首个间隔末 $B$速度为 $u_1(a_1-a_2)/(a_1+a_2)\ge0$，以后其初速度不减，所以无需插入先停车阶段。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{前块先停车时重新建立下一段追及方程}\par\nobreak
+当 $a_1<a_2$，第 $n$次碰后 $A$静止、$B$带速 $u_n$。$B$先停在前方 $u_n^2/(2a_2)$处，$A$追到此处的时间为 $u_n/\sqrt{a_1a_2}>u_n/a_2$，确实晚于 $B$停车。碰前 $A$速率为 $u_n\sqrt{a_1/a_2}$，交换后成为下一段的 $u_{n+1}$。因此
+\[\boxed{t_{n+1}-t_n=\begin{cases}
+\dfrac{2u_1}{a_1+a_2},&a_1\ge a_2,\\[5pt]
+\dfrac{u_1}{\sqrt{a_1a_2}}\left(\sqrt{\dfrac{a_1}{a_2}}\right)^{n-1},&a_1<a_2.
+\end{cases}}
+\]
+两支在 $a_1=a_2$处一致。后一支间隔的等比递减依赖点状滑块与瞬时交换的理想模型，停车后不能把制动继续外推为反向加速。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用间距图检验阶段接续与模型边界}\par\nobreak
+图\ref{k2p18branches}表示每次交换速度以后、到下一次碰撞以前的间距。左图在同一个相对加速度阶段内回到零；右图在 $t_s=u_n/a_2$处先发生 $B$停车，之后只由 $A$继续加速缩小间距。停车时位置和速度连续，因此间距及其斜率连续，但二阶变化规律改变；求下次碰撞时间时必须使用右侧的新阶段。
+\fig{k2p18branches}{相邻碰撞之间的间距与先停车的阶段切换}{\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[axis](0,0)--(3.7,0)node[right]{$\tau$};\draw[axis](0,0)--(0,2.2)node[above]{$D$};
+\draw[blue,world]plot[domain=0:1,samples=45]({3*\x},{6*\x*(1-\x)});
+\node[below]at(0,0){$0$};\node[below]at(3,0){$\Delta t$};\node[above]at(1.5,2){$a_1\ge a_2$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](0,0)--(3.7,0)node[right]{$\tau$};\draw[axis](0,0)--(0,2.2)node[above]{$D$};
+\draw[world]plot[domain=0:.5,samples=25]({3*\x},{8*\x-10*(\x)^2});
+\draw[blue,world]plot[domain=.5:1,samples=30]({3*\x},{2*(1-(\x)^2)});
+\draw[guide](1.5,0)--(1.5,1.5);\node[below]at(0,0){$0$};\node[below]at(1.5,0){$t_s$};\node[below]at(3,0){$\Delta t$};\node[above]at(1.5,2){$a_1<a_2$};
+\end{scope}
+\end{tikzpicture}}
+\end{drillsolution}

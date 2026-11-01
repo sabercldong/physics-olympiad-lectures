@@ -1,0 +1,48 @@
+\section{练习}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[相对湿度与开始凝结]\label{t4-10}
+刚性容器内空气及水蒸气初温300K，水蒸气分压2.4kPa，$p_s(300\,\mathrm K)=3.2$kPa。冷却到280K，已知 $p_s(280\,\mathrm K)=1.0$kPa，体积 $V$ 固定。求初相对湿度、末态水蒸气物质的量及凝结量。见图\ref{fig:t4-10q}，水蒸气按理想气体。
+\end{drill}
+\fig{fig:t4-10q}{同一密闭刚性容器由初温冷却到末温；先判断是否出现液相}{\begin{tikzpicture}
+
+\foreach \b/\T in {0/300,5.4/280}{\draw[world](\b,0)rectangle(\b+3,2.5);\node at(\b+1.5,1.8){$T=\T\,\mathrm K$};\node at(\b+1.5,.55){气体空间 $V$};}
+\node at(1.5,1.1){$p_{vi}=2.4\,\mathrm{kPa}$};\node at(6.9,1.1){$p_s=1.0\,\mathrm{kPa}$};
+\draw[flow](3.3,1.3)--(5.1,1.3)node[midway,above]{冷却};\node at(4.2,-.6){初温饱和压 $p_s(300\,\mathrm K)=3.2\,\mathrm{kPa}$};
+
+\end{tikzpicture}}
+\hyperref[sol:t4-10]{详解见第\pageref{sol:t4-10}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[定温蒸发到液体刚尽]\label{t4-11}
+定温 $T$ 的缸中初有 $n_a$ mol不凝结空气与总计 $n_w$ mol水，水蒸气饱和压为 $p_s$。液体体积忽略，活塞缓慢膨胀。求液体刚好全汽化的体积 $V_*$ 和任意体积 $u$ 下总压。见图\ref{fig:t4-11q}。
+\end{drill}
+\fig{fig:t4-11q}{定温蒸发到液体刚尽：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,2)--(0,0)--(4,0) (0,2)--(4,2);\draw[very thick] (3,0)--(3,2);\fill[blue!15] (.02,.02) rectangle (2.98,.3);\node at (1.5,1.1){$n_a$空气＋水};\draw[flow] (3.2,2.5)--(4.5,2.5);
+\end{tikzpicture}}
+\hyperref[sol:t4-11]{详解见第\pageref{sol:t4-11}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[汽化潜热与内能差]\label{t4-12}
+$n=1\,\mathrm{mol}$ 液体在温度 $T$、外压 $p_s(T)$ 下恒压汽化，摩尔汽化潜热为 $L_m$。蒸气理想、液体体积可忽略。求外功和内能增量；若全过程改在刚性容器中进行，能否仍直接把输入热量写成 $nL_m$？见图\ref{fig:t4-12q}。
+\end{drill}
+\fig{fig:t4-12q}{恒压汽化推动活塞；摩尔潜热需乘物质的量才是总热量}{\begin{tikzpicture}
+
+\foreach \b in {0,5.4}{\draw[world](\b,3.4)--(\b,0)--(\b+2.8,0)--(\b+2.8,3.4);}
+\fill[blue!20](.02,.02)rectangle(2.78,.4);\draw[very thick](0,.4)--(2.8,.4);\node at(1.4,1.25){液体 $n=1\,\mathrm{mol}$};
+\fill[blue!6](5.42,.02)rectangle(8.18,2.6);\draw[very thick](5.4,2.6)--(8.2,2.6);\node[align=center]at(6.8,1.3){理想蒸气\\$V_v=nRT/p_s$};
+\foreach \x in {1.4,6.8}{\draw[force](\x,4.1)--(\x,3.5)node[pos=0,above]{$p_s(T)$};}
+\draw[->,red,thick](3.1,1.9)--(5.1,1.9)node[midway,above]{$Q=nL_m$};
+\node at(4.1,-.6){两态同温同压，液体体积忽略；体积差示意};
+
+\end{tikzpicture}}
+\hyperref[sol:t4-12]{详解见第\pageref{sol:t4-12}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[一般溢液平衡的稳定条件]\label{t4-13}
+开口向上细管中气柱长 $\ell$，上方液柱恰到管口，液体密度 $\rho$，气体平衡压强 $p$。向上微移 $x$ 后液体溢出，气体压力响应为 $\delta p_g=-\kappa p x/\ell$，其中等温 $\kappa=1$，可逆绝热 $\kappa=\gamma$。求向上扰动具有恢复性的条件。见图\ref{fig:t4-13q}。
+\end{drill}
+\fig{fig:t4-13q}{一般溢液平衡的稳定条件：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3.5)--(0,0)--(1,0)--(1,3.5);\fill[gray!20] (0,1.5) rectangle (1,3.5);\draw[dim] (1.7,0)--(1.7,1.5) node[midway,right]{$\ell$};\draw[force] (2.8,1.5)--(2.8,2) node[right]{$x$};\node at (.5,.7){$p$};
+\end{tikzpicture}}
+\hyperref[sol:t4-13]{详解见第\pageref{sol:t4-13}页}。
+\end{minipage}

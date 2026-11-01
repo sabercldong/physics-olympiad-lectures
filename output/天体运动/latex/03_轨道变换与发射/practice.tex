@@ -1,0 +1,74 @@
+\section{独立练习}
+
+\begin{question}\begin{drill}[一般双切转移的速度增量]\label{at3:drill:1}
+从半径 $r_1$ 的圆轨道转到外侧 $r_2=qr_1$，$q>1$。推导两次速度增量之和，并检验 $q\to1$ 的极限。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:1:s}\fig{fig:at3:drill:1:s}{题设：一般双切转移的速度增量}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(1.5);\draw[guide](0,0)circle(3);\draw[world](-0.75,0)ellipse(2.25 and 2.1213203435596424);\fill(0,0)circle(2pt)node[below]{$F$};\fill(1.5,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:1}
+\begin{question}\begin{drill}[远地点圆化的额外能量]\label{at3:drill:2}
+卫星在椭圆轨道的远地点 $r_a$，近地点为 $r_p<r_a$。在远地点一次顺行脉冲使轨道圆化，求速度增量和单位质量能量增加。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:2:s}\fig{fig:at3:drill:2:s}{题设：远地点圆化的额外能量}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[flow](-4.5,0)--(-4.5,-1)node[left]{远点};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:2}
+\begin{question}\begin{drill}[等待下一次转移窗口]\label{at3:drill:3}
+两行星同向圆轨道，角速度 $n_1>n_2$，所需出发领先角为 $\phi_*$。当前领先角 $\phi_0<\phi_*$，均取 $[0,2\pi)$。求第一次未来窗口等待时间及重复间隔。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:3:s}\fig{fig:at3:drill:3:s}{题设：等待下一次转移窗口}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.6);\draw[world](0,0)circle(3);\fill(0,0)circle(2pt)node[below]{$O$};\node[below]at(1.4,-.8){$r_1$};\node[below]at(2.8,-1.1){$r_2$};\node at(0,3.7){$\phi_0<\phi_*$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:3}
+\begin{question}\begin{drill}[一次变轨能否直接到另一圆轨道]\label{at3:drill:4}
+卫星原在半径 $r_1$ 圆轨道，目标为同心半径 $r_2\ne r_1$ 的圆轨道。仅在原轨道某点作一次瞬时脉冲，此后无推力，能否最终直接沿目标圆轨道长期运行？
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:4:s}\fig{fig:at3:drill:4:s}{题设：一次变轨能否直接到另一圆轨道}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.6);\draw[world](0,0)circle(3);\fill(0,0)circle(2pt)node[below]{$O$};\node[below]at(1.4,-.8){$r_1$};\node[below]at(2.8,-1.1){$r_2$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:4}
+\begin{question}\begin{drill}[小幅升轨的能量与耗油]\label{at3:drill:5}
+半径 $r$ 圆轨道升到 $r(1+\epsilon)$，$0<\epsilon\ll1$。比较单位质量能量增加和双切转移总速度增量的最低阶，并求恒定喷速 $u$ 下燃料比例。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:5:s}\fig{fig:at3:drill:5:s}{题设：小幅升轨的能量与耗油}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(1.5);\draw[guide](0,0)circle(3);\draw[world](-0.75,0)ellipse(2.25 and 2.1213203435596424);\fill(0,0)circle(2pt)node[below]{$F$};\fill(1.5,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:5}
+\begin{question}\begin{drill}[给定亚圆速的最大射程角]\label{at3:drill:6}
+球形天体半径 $R$，地表发射速率 $v<\sqrt{\mu/R}$，可自由选择朝外仰角。忽略自转和大气，求可达到的最大较小圆心夹角 $\beta$。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:6:s}\fig{fig:at3:drill:6:s}{题设：给定亚圆速的最大射程角}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[flow](1.3,0)--(1.9,.7)node[right]{$v$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:6}
+\begin{question}\begin{drill}[近地点与远地点相同增速的能量收益]\label{at3:drill:7}
+同一椭圆近、远点速率分别 $v_p,v_a$，在任一点施加相同大小的顺行速度增量 $d>0$。求两种能量收益之差，说明为什么不能由此直接比较到同一目标轨道的总燃料。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:7:s}\fig{fig:at3:drill:7:s}{题设：近地点与远地点相同增速的能量收益}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[flow](1.5,0)--(1.5,1)node[right]{$d$};\draw[flow](-4.5,0)--(-4.5,-1)node[left]{$d$};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:7}
+\begin{question}\begin{drill}[双椭圆转移与无限时间极限]\label{at3:drill:8}
+内外圆半径为 $r_0,16r_0$。比较双切两脉冲方案，与先把远地点升至 $Br_0$、在远地点调整近点至 $16r_0$、再在该近点圆化的三脉冲方案，$B>16$。写出总速度增量并讨论 $B\to\infty$。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:8:s}\fig{fig:at3:drill:8:s}{题设：双椭圆转移与无限时间极限}{\begin{tikzpicture}[scale=.85]
+\draw[axis](0,0)--(7.2,0)node[right]{半径};\fill(.8,0)circle(2pt)node[below]{$r_0$};\fill(3.3,0)circle(2pt)node[above=5pt]{$16r_0$};\fill(6.3,0)circle(2pt)node[below=5pt,xshift=11pt]{$Br_0$};\draw[white,line width=5pt](1.8,0)--(2.2,0)(4.4,0)--(4.8,0);\draw[world](1.8,-.12)--(1.95,.12)--(2.1,-.12)--(2.25,.12);\draw[world](4.4,-.12)--(4.55,.12)--(4.7,-.12)--(4.85,.12);\draw[flow,blue](.8,.2)..controls(2,2)and(5,2)..(6.3,.2);\draw[flow](6.3,-.2)..controls(5.5,-1.3)and(4,-1.3)..(3.3,-.2);\node[above]at(3.4,1.5){第一段椭圆端点配对};\node at(4.8,-1.6){第二段椭圆端点配对};\node at(3.4,2.4){断轴表示半径跨度，不画作实际轨道};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:8}
+\begin{question}\begin{drill}[瞬时脉冲近似的量级检查]\label{at3:drill:9}
+半径 $r$ 的近圆轨道上，点火持续 $\tau$，推力产生速度增量量级 $\Delta v$，当地圆速为 $v_c$、引力加速度为 $g_c$。给出将整段近似为固定点瞬时变速的两个充分小量条件，并说明它们分别控制什么。
+\end{drill}
+\typeout{ASTROFIG:fig:at3:drill:9:s}\fig{fig:at3:drill:9:s}{题设：瞬时脉冲近似的量级检查}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(2);\fill(2,0)circle(2pt);\draw[very thick,blue](2,0)arc(0:25:2);\node[right]at(2,1){点火弧};
+\end{tikzpicture}}
+\end{question}
+\hintlink{at3:drill:9}

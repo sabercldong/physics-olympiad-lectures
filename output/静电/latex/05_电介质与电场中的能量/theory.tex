@@ -1,0 +1,286 @@
+\section{极化与电场的自洽}
+\subsection{束缚电荷并不是新的自由电荷}
+
+绝缘介质内部的电荷不能像金属中的自由电子那样宏观迁移，但正负电荷的中心可发生微小相对位移，或原有电偶极子可转向。单位体积的电偶极矩定义为极化强度 $\bm P$。均匀极化介质内部相邻偶极子的正负端相互抵消，表面留下束缚电荷；非均匀极化时内部也可出现净束缚电荷。
+
+先看真实介质边界：单位面积上没有被邻近偶极端抵消的电荷，等于极化强度沿外法向的分量，所以表面密度为 $\sigma_b=\bm P\cdot\bm n$，其中 $\bm n$ 从介质指向外部。以沿右方向极化的平板为例，左表面负、右表面正；束缚电荷形成的场通常与原外场相反，使介质中的总场减弱。这个减弱不能靠把自由电荷“变少”解释，自由电荷与束缚电荷应分别记录。
+
+图\ref{fig:e5:polarization}把介质看成一列列偶极子。内部相邻的正负端抵消，左、右边界才留下与外法向对应的束缚电荷；箭头 $\bm E_b$ 指向左，体现极化反馈。
+\fig{fig:e5:polarization}{沿右极化的介质：内部偶极端电荷相消，边界保留负、正束缚电荷}{\begin{tikzpicture}
+
+\fill[blue!8](0,0)rectangle(5,2);\draw[world](0,0)rectangle(5,2);\foreach \y in{.5,1.5}{\foreach \x in{.4,2,3.6}{\node at(\x,\y){$-$};\node at(\x+1,\y){$+$};\draw[flow](\x+.2,\y)--(\x+.8,\y);}}\node[left]at(0,1){$\sigma_b<0$};\node[right]at(5,1){$\sigma_b>0$};\draw[flow](1,2.7)--(4,2.7)node[midway,above]{$\bm P,\ \bm E$};\draw[force](4,-.7)--(1,-.7)node[midway,below]{$\bm E_b$};\node at(2.5,3.5){$\sigma_b=\bm P\cdot\bm n$};
+
+\end{tikzpicture}}
+
+再看介质内部，设 $\bm P=P_x(x)\bm e_x$ 随 $x$ 缓慢变化。
+图\ref{fig:e5:polarization-gradient}取截面积为 $S$、厚度为 $\Delta x$ 的薄柱。
+两端邻接偶极的端电荷不能完全抵消，留在薄柱内部的净束缚电荷为
+\[
+ \Delta Q_b=S[P_x(x)-P_x(x+\Delta x)],\qquad
+ \rho_b=\lim_{\Delta x\to0}\frac{\Delta Q_b}{S\Delta x}
+       =-\frac{\dd P_x}{\dd x}.
+\]
+这里的两截面是计算用的内部截面，不是新增的真实介质边界；
+不能再把它们各自当作带有独立表面电荷的外表面。
+\fig{fig:e5:polarization-gradient}{极化端电荷的抵消差：右端极化较强时，薄柱内部留下负束缚电荷}{\begin{tikzpicture}
+\fill[blue!8](0,0)rectangle(4,1.5);
+\draw[dashed](0,-.2)--(0,1.8) (4,-.2)--(4,1.8);
+\draw[flow](.1,.8)--(1.1,.8)node[midway,above]{$P_x(x)$};
+\draw[flow](2.3,.8)--(4.2,.8)node[midway,above]{$P_x(x+\Delta x)$};
+\node at(2,.3){$\Delta Q_b<0$};
+\node[below]at(0,-.2){$x$};\node[below]at(4,-.2){$x+\Delta x$};
+\draw[<->](0,2.1)--(4,2.1)node[midway,above]{$\Delta x$};
+\node[left]at(-.3,.7){截面积 $S$};
+\end{tikzpicture}}
+若 $P_x$ 沿 $x$ 增大，上式为负，与图中的剩余负端电荷一致。
+对三维小长方体的三对面分别作同样的相消计算，再除以体积，得到
+\[
+ \rho_b=-\left(\frac{\partial P_x}{\partial x}
+ +\frac{\partial P_y}{\partial y}+\frac{\partial P_z}{\partial z}\right)
+ \equiv-\nabla\cdot\bm P.
+\]
+括号内称为极化强度的散度，比较的是各分量沿自身方向的变化，
+并非只看 $\bm P$ 的大小是否随位置变化。
+例如纯球对称径向极化 $\bm P=P_r(r)\bm e_r$，薄球壳两面的面积也随 $r$ 改变，故
+\[
+ \Delta Q_b=4\pi r^2P_r(r)
+ -4\pi(r+\Delta r)^2P_r(r+\Delta r),\qquad
+ \rho_b=-\frac1{r^2}\frac{\dd(r^2P_r)}{\dd r}.
+\]
+因此 $P_r\propto r^{-2}$ 时，远离原点的体束缚电荷仍为零；真实内、外表面的束缚电荷应另用外法向公式计算。
+
+线性、各向同性介质在适当场强和温度范围内可写 $\bm P=\varepsilon_0\chi_e\bm E$，从而 $\bm D=\varepsilon_0\bm E+\bm P=\varepsilon\bm E$，$\varepsilon=\varepsilon_0(1+\chi_e)=\kappa\varepsilon_0$。这里 $\bm E$ 是极化建立后的总场。若用未极化外场代替右端的总场，就会把反馈关系算错。对于各向异性、非线性或有明显滞后的介质，单一常数 $\kappa$ 不足以描述行为，本讲不使用这些简化式。
+
+\subsection{电位移的高斯定理与边界条件}
+
+把 $\nabla\cdot(\varepsilon_0\bm E)=\rho_f+\rho_b$ 与束缚电荷关系合并，得到 $\nabla\cdot\bm D=\rho_f$，积分形式 $\oint\bm D\cdot\dd\bm S=Q_f$。电位移的通量只对应自由电荷，而电场的高斯通量对应全部电荷。只有在介质均匀、对称性足以确定场分布时，才能方便地从 $\bm D$ 直接求 $\bm E$。
+
+\fig{fig:e5:boundary}{跨界面高斯柱确定法向跳变，窄回路确定切向连续}{\begin{tikzpicture}
+
+\fill[blue!10](-1,-1.5)rectangle(9,0);\draw[world](-1,0)--(9,0);\node[left]at(-1,1){介质1};\node[left]at(-1,-1){介质2};\draw[guide](.5,-.5)rectangle(2.5,.5);\draw[axis](1.5,0)--(1.5,-1.3)node[right]{$\bm n:1\to2$};\node at(1.5,1.2){薄高斯柱};\node[right]at(2.6,.2){$\sigma_f$};\draw[guide](5,-.25)rectangle(8,.25);\draw[flow](5.3,.25)--(7.5,.25);\node at(6.5,1.2){窄回路};\draw[flow](5.4,-1)--(7.6,-1)node[midway,below]{$+t$};
+
+\end{tikzpicture}}
+
+按图\ref{fig:e5:boundary}把 $\bm n$ 从介质1指向介质2。高斯柱两端通量为 $D_{2n}\Delta S-D_{1n}\Delta S$，所以 $D_{2n}-D_{1n}=\sigma_f$；沿界面取窄闭合回路，静电场环流零，得 $E_{2t}=E_{1t}$。若界面无自由面电荷，法向 $D$ 连续，切向 $E$ 连续，但法向 $E$ 一般不连续。例如场垂直两层介质时 $\varepsilon_1E_1=\varepsilon_2E_2$；场平行界面时两侧 $E$ 相同而 $D$ 不同。所谓“介质中场除以 $\kappa$”必须说明自由电荷与几何约束，不能在任何接线下无条件套用。
+
+金属表面与介质相邻时，金属内部场零，介质侧 $D_n=\sigma_f$；介质表面的 $\sigma_b$ 与金属自由电荷不是同一个量。两者可能贴近，却应按各自定义和法向分别求符号。
+
+
+\typeout{ECFIG:fig:e5:polarization}
+\section{分区介质的电容}
+\fig{fig:e5:regions}{场平行分区界面时同电压，场垂直分层界面时同法向电位移}{\begin{tikzpicture}
+
+\fill[blue!13](0,0)rectangle(2,2.4);\draw[world](0,0)--(4,0)(0,2.4)--(4,2.4);\draw[guide](2,0)--(2,2.4);\node at(1,1.6){$\varepsilon_1,S_1$};\node at(3,1.6){$\varepsilon_2,S_2$};\foreach \x in{1,3}{\draw[flow](\x,1.2)--(\x,.3)node[midway,right]{$E$};}\node at(2,3.1){并联：$U_1=U_2=U$};\draw[dim](-.6,0)--(-.6,2.4)node[midway,left]{$d$};
+\begin{scope}[xshift=7cm]\fill[blue!13](0,0)rectangle(4,1.2);\draw[world](0,0)--(4,0)(0,2.4)--(4,2.4);\draw[guide](0,1.2)--(4,1.2);\node at(1,1.8){$\varepsilon_1,d_1$};\node at(1,.6){$\varepsilon_2,d_2$};\draw[flow](3,2.2)--(3,1.4)node[midway,right]{$E_1$};\draw[flow](3,1)--(3,.2)node[midway,right]{$E_2$};\node at(2,3.1){串联：$D_{1n}=D_{2n}$};\end{scope}
+
+\end{tikzpicture}}
+
+\subsection{平行于场的界面与并联分区}
+
+图\ref{fig:e5:regions}左图中，不同介质各占极板的一部分面积，并都贯穿同一间距 $d$，各部分跨同一电势差 $U$，所以场同为 $E=U/d$。第 $i$ 区自由电量为 $Q_i=\varepsilon_iS_iE$，总量相加给 $C=\sum_i\varepsilon_iS_i/d$。介电常数较大的区域在相同电压下分得更多自由电荷，不能仍把自由面密度设为全板均匀。
+
+这相当于各区电容并联，但其依据是每区电压相同，且忽略交界附近的边缘效应。界面与场平行时，均匀极化的 $\bm P$ 与界面法向垂直，该界面没有由 $\bm P\cdot\bm n$ 产生的束缚面电荷；介质与极板相接的端面则有束缚电荷。
+
+\subsection{垂直于场的界面与串联分层}
+
+图\ref{fig:e5:regions}右图中，介质沿厚度分层，各层面积 $S$、厚 $d_i$，界面无自由面电荷，则各层 $D=Q/S$ 相同，$E_i=Q/(\varepsilon_iS)$。电压逐层相加，
+\[
+ U=\frac QS\sum_i\frac{d_i}{\varepsilon_i},\qquad
+ C=\frac S{\sum_i d_i/\varepsilon_i}.
+\]
+介电常数小的一层承担更大的场强。薄空气隙即使厚度很小，也可能先达到击穿场；评估耐压应逐层求 $E_i$，不能只比较总平均场 $U/d$。
+
+\fig{fig:e5:graded}{连续分层的薄片微元与沿法向变化的电场}{\begin{tikzpicture}
+
+\fill[left color=blue!5,right color=blue!30](0,0)rectangle(5,2);\draw[world](0,0)--(0,2)(5,0)--(5,2);\draw[guide](2.3,0)rectangle(2.5,2);\draw[axis](0,-.5)--(5.7,-.5)node[right]{$x$};\node[below]at(0,-.5){$0$};\node[below]at(5,-.5){$d$};\draw[flow](.4,1)--(1.7,1)node[midway,above]{$D$};\node at(2.4,2.5){薄片 $\dd x$};\node at(4,1){$\varepsilon(x)$};\node at(2.5,-1.3){$\dd U=E(x)\dd x=D\dd x/\varepsilon(x)$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:graded}中每片共享相同 $D$，其微小电压降相加形成总电压。
+
+若介电常数沿法向连续变化，分层极限给
+\[
+ C=\frac S{\int_0^d\dd x/\varepsilon(x)},\qquad
+ V(0)-V(x)=\frac QS\int_0^x\frac{\dd x^\prime}{\varepsilon(x^\prime)}.
+\]
+连续变化时还可由 $P=D-\varepsilon_0E$ 求 $\rho_b=-\dd P/\dd x$，这展示了体束缚电荷与非均匀场之间的联系。
+
+
+\typeout{ECFIG:fig:e5:regions}
+\section{插入过程的约束与能量}
+\subsection{先判断电源是否仍相连}
+
+一只电容从 $C_0$ 变为 $C_1>C_0$，若断开电源，$Q$ 固定，电压按 $Q/C$ 降低，场能由 $Q^2/(2C_0)$ 降到 $Q^2/(2C_1)$。若始终接恒压源，$U$ 固定，电量由 $C_0U$ 增至 $C_1U$，场能反而增加 $\tfrac12(C_1-C_0)U^2$；但电源作功 $(C_1-C_0)U^2$，另一半可转为机械功。因此两种情况下介质都可被吸入，不能仅凭场能增减判断力的方向。
+
+\fig{fig:e5:constraints}{同样插入介质，断电和接源决定不同的电荷流动}{\begin{tikzpicture}
+
+\foreach \x in{0,6}{\begin{scope}[xshift=\x cm]\fill[blue!15](0,0)rectangle(1.3,2);\draw[world](0,0)--(3,0)(0,2)--(3,2);\draw[force](.5,1)--(1.8,1)node[right]{$+x$};\end{scope}}\node at(1.5,3){断电：$Q$ 固定};\node at(7.5,3){接源：$U$ 固定};\draw(9,2)--(10,2)to[battery1,l={$U$}](10,0)--(9,0);\draw[flow](9.2,2.2)--(8,2.2);\node at(1.5,-.7){$W_f<W_i$};\node at(7.5,-.7){$W_s=\Delta W+W_{\text{机}}$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:constraints}右侧源向正极补充电荷；两种条件下 $C$ 都增大，故都可吸入介质，但场能变化的符号不同。
+
+对理想刚性、无损介质，建立场的微功密度为 $\bm E\cdot\dd\bm D$。对于各向同性线性介质，固定介电常数 $\varepsilon$，并沿固定方向从零缓慢建立电位移，则 $E'=D'/\varepsilon$，所以
+\[
+w=\int_0^D E'\,\dd D'
+=\frac1\varepsilon\int_0^D D'\,\dd D'
+=\frac1\varepsilon\left[\frac{D'^2}{2}\right]_0^D
+=\frac{D^2}{2\varepsilon}
+=\frac12\bm E\cdot\bm D.
+\]
+一半的乘积来自线性关系下的这个积分；非线性介质须使用实际的 $E(D)$。介质的极化响应已含在此能量中，不能又另加一份同样的“极化能”而重复计算。
+
+\subsection{用电容随位置的变化求吸入力}
+
+介质沿 $x$ 方向插入，令插入深度增大对应 $x$ 增大。理想平行板矩形板宽 $b$、长 $L$、间距 $d$，厚度恰填满间隙的介质相对介电常数 $\kappa$，忽略边缘后
+\[
+ C(x)=\frac{\varepsilon_0b}{d}[L+(\kappa-1)x],\qquad
+ C^\prime(x)=\frac{\varepsilon_0b(\kappa-1)}d>0.
+\]
+定压时 $F_x=U^2C^\prime/2$ 为常数，定量时 $F_x=Q^2C^\prime/(2C^2)$ 随插入逐渐减小。这个受力虽由电容整体变化求得，真实力主要与入口附近的非均匀场有关；“忽略边缘对电容的微小修正”不等于入口没有力。
+
+\fig{fig:e5:insertion}{插入几何决定电容的导数，定量与定压的力沿不同曲线变化}{\begin{tikzpicture}
+
+\fill[blue!15](-1,0)rectangle(2,1.8);\draw[world](0,0)--(5,0)(0,1.8)--(5,1.8);\draw[guide](2,0)--(2,1.8);\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$x$};\draw[dim](0,2.4)--(5,2.4)node[midway,above]{$L$};\draw[dim](5.6,0)--(5.6,1.8)node[midway,right]{$d$};\node at(.6,1){$\kappa$};\node at(3.6,1){真空};\draw[force](-.8,1)--(.2,1);
+\begin{scope}[xshift=8cm]\draw[axis](0,0)--(3.2,0)node[right]{$x/L$};\draw[axis](0,0)--(0,2.6)node[above]{$F/F_0$};\draw[world](0,2)--(2.8,2);\draw[world,domain=0:1,samples=40]plot({2.8*\x},{2/(1+2*\x)^2});\node[right]at(2.8,2){定压};\node[right]at(2.8,.3){定量};\node[below]at(2.8,0){$1$};\end{scope}
+
+\end{tikzpicture}}\par 图\ref{fig:e5:insertion}以相同初态比较，示意取 $\kappa=3$；定压力不变，定量力随 $C(x)$ 增大而减小。入口附近的非均匀场承担实际吸入力。
+
+准静态拉出时外力与吸入力反向，外功可由对应势能或电源功求得。若释放介质并让它加速，应明确是否仍接电源、是否有电阻损耗、是否忽略介质形变。把准静态外功直接等同于任何真实快速过程的动能，可能遗漏其他能量通道。
+
+\subsection{导体插片与介质插片的区别}
+
+导体内部静电场为零，厚度 $t$ 的中性金属板完全插入板间且不接触两极时，电压只降在剩余总厚度 $d-t$ 的真空间隙上，故 $C=\varepsilon_0S/(d-t)$。它可视为 $\kappa\to\infty$ 的理想分层极限，但其自由电荷会迁移到两面，与有限 $\kappa$ 介质的微观极化机制不同。
+
+\fig{fig:e5:metal}{中性金属片的两面感应电荷与剩余真空间隙}{\begin{tikzpicture}
+
+\fill[gray!20](0,1)rectangle(5,1.8);\draw[world](0,0)--(5,0)(0,3)--(5,3)(0,1)rectangle(5,1.8);\node at(2.5,1.4){金属：$E=0$};\node at(1,2.05){$-Q$};\node at(1,.75){$+Q$};\draw[dim](5.6,1)--(5.6,1.8)node[midway,right]{$t$};\draw[dim](-.6,1.8)--(-.6,3)node[midway,left]{$d_1$};\draw[dim](-.6,0)--(-.6,1)node[midway,left]{$d_2$};\draw[flow](3.5,2.8)--(3.5,2);\draw[flow](3.5,.8)--(3.5,.2);\node at(2.5,-.7){$d_1+d_2=d-t$，两隙场同为 $E$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:metal}中金属片内不承担电压，$U=E(d_1+d_2)$，因此只剩两侧真空厚度之和进入电容。
+
+只要金属插片保持中性、面积与极板相同、忽略边缘，插片在法向的位置不改变两真空间隙厚度之和，也不改变电容。若插片带净电荷，两侧电场不等，位置可影响势差与受力；若横向只插入一部分面积，则应把已插入区与未插入区并联，不能把整板间距直接改成 $d-t$。
+
+
+\section{极化方程的积分检查}
+\subsection{束缚总电荷与各界面符号}
+
+有限介质本来中性，极化只分离内部正负电荷，不会凭空增加净量。由 $\rho_b=-\nabla\cdot\bm P$ 与 $\sigma_b=\bm P\cdot\bm n$，体束缚量和全部边界束缚量之和为零。这提供一个实用核验：若某题求得一面正、另一面负且大小不同，就要检查是否遗漏体束缚电荷或另一个边界。
+
+\fig{fig:e5:bound-charge}{非均匀一维极化的体电荷必须和两端面一起求和}{\begin{tikzpicture}
+
+\fill[blue!10](0,0)rectangle(5,2);\draw[world](0,0)rectangle(5,2);\draw[flow](.4,.7)--(1.2,.7);\draw[flow](2,.7)--(3.2,.7);\draw[flow](3.6,.7)--(4.8,.7);\node at(2.5,1.4){$\rho_b=-\dd P/\dd x$};\draw[axis](-.2,-.7)--(5.8,-.7)node[right]{$x$};\node[left]at(0,1){$-P(0)$};\node[right]at(5,1){$+P(d)$};\node at(2.5,2.7){$\bm P=P(x)\hat{\bm x}$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:bound-charge}中，截面积为 $S$，沿 $x$ 方向把体密度逐层相加：
+\[
+Q_{b,\text{体}}=\int_0^d\rho_b(x)S\,\dd x
+=-S\int_0^d P'(x)\,\dd x
+=-S[P(x)]_0^d=-S[P(d)-P(0)].
+\]
+左端外法向沿 $-x$，面电量为 $-SP(0)$；右端外法向沿 $+x$，面电量为 $SP(d)$。两端面之和与体电量恰好相消。
+
+均匀介质并不保证 $\bm P$ 空间均匀。带点电荷的均匀介质中，$\bm P$ 随半径变化；在无自由体电荷的区域，$\nabla\cdot\bm D=0$，均匀 $\varepsilon$ 又使 $\nabla\cdot\bm E=0$，因此 $\rho_b$ 在该区域为零，尽管 $P(r)$ 不恒定。这与一维渐变介质的体束缚密度不同，应使用散度而不是只凭某个分量随位置变化判断。
+
+介质在金属内外的法向也不可混用。金属自由电荷公式用从金属指向介质的法向，介质束缚面电荷用从介质指向金属的法向，两者方向相反。正极板附近常出现正自由电荷与负束缚电荷，它们不相等，差额共同形成真空电场的法向跳变。
+
+\subsection{等效介电常数依赖场的方向}
+
+将两种材料作细密层状复合时，场平行分层面，两种材料同 $E$，平均 $D$ 给 $\varepsilon_\parallel=f\varepsilon_1+(1-f)\varepsilon_2$；场垂直层面，两者同 $D$，平均 $E$ 给 $1/\varepsilon_\perp=f/\varepsilon_1+(1-f)/\varepsilon_2$。即使每种材料各自各向同性，层状组合的整体响应仍可具有方向差异。
+
+本讲按面积和厚度的电容公式就是这两种平均的直接表现。只有明确外场方向与层状结构，才能谈某一等效介电常数。把体积分数简单加权用于任意方向，会高估垂直层面的电容，并低估低介电常数层的局部场。
+
+\subsection{机械运动中的能量函数选择}
+
+把场能写为 $W(Q,x)=Q^2/[2C(x)]$。分别固定另一个自变量求偏导：
+\begin{align*}
+\left(\frac{\partial W}{\partial Q}\right)_x
+&=\frac{2Q}{2C(x)}=\frac Q{C(x)}=U,\\
+\left(\frac{\partial W}{\partial x}\right)_Q
+&=\frac{Q^2}{2}\bigl[-C(x)^{-2}C'(x)\bigr]
+=-\frac{Q^2C'(x)}{2C(x)^2}.
+\end{align*}
+因此
+\[
+\dd W=U\,\dd Q-\frac{Q^2C'(x)}{2C(x)^2}\,\dd x
+=U\,\dd Q-F_x\,\dd x.
+\]
+第一项是电源输入，第二项是场对机械的输出。定量时第一项为零。定压时令 $G=W-UQ$，逐项微分得
+\[
+\dd G=\dd W-U\,\dd Q-Q\,\dd U=-F_x\,\dd x-Q\,\dd U.
+\]
+代入 $Q=CU$，有 $G=-C(x)U^2/2$；固定 $U$ 后，
+\[
+F_x=-\left(\frac{\partial G}{\partial x}\right)_U
+=-\left[-\frac{U^2}{2}C'(x)\right]=\frac{U^2}{2}C'(x).
+\]这个变换并没有说场能为负，而是把外电源在固定电压条件下的能量交换计入了有效函数。
+
+\fig{fig:e5:state-path}{相同初态出发的两种约束在电荷—电压平面上的路径}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6,0)node[right]{$U$};\draw[axis](0,0)--(0,4)node[above]{$Q$};\draw[guide](0,0)--(4,2);\draw[guide](0,0)--(2,2);\draw[guide](0,0)--(4,4);\fill(4,2)circle(2pt)node[right]{初态};\draw[flow](4,2)--(2,2)node[midway,below]{$Q$ 固定};\draw[flow](4,2)--(4,3.6)node[midway,right]{$U$ 固定};\node[left]at(0,2){$Q_0$};\node[below]at(4,0){$U_0$};\node at(1.4,3.5){电容增大，$Q/U$ 增大};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:state-path}显示，定量路径上电压降低，定压路径上电量增加；两者不能在同一个微分中同时固定。
+
+在计算吸力时，定量与定压给相同瞬时物理力；在计算整个过程的功时，必须沿对应的约束曲线积分。把 $U$ 当常量对 $Q^2/(2C)$ 求导，或把 $Q$ 当常量对 $CU^2/2$ 求导却同时让另一个量保持不变，都是把不相容条件放在同一个微分中。
+
+
+\section{非平面介质的边界模型}
+\subsection{介质球的退极化作用}
+
+均匀、线性、各向同性介质球放入均匀外场后，先检验均匀极化能否与内部总场自洽。沿极化轴取极角 $\theta$，若 $\bm P$ 均匀，则体束缚电荷为零，球面有 $\sigma_b=\bm P\cdot\bm n=P\cos\theta$。仅凭正负分区能够判断反馈场的方向，却还不能得到球内场的大小。
+
+为求这个场，将均匀极化球表示成两个半径 $R$、体密度分别为 $+\rho$ 和 $-\rho$ 的球，球心由同一点分别平移 $+\bm\delta/2$ 和 $-\bm\delta/2$。图\ref{fig:e5:shifted-spheres}将位移放大画出。重叠区域正负电荷抵消；表面沿法向留下的薄层厚度为 $\bm\delta\cdot\bm n$，因此在 $\delta\to0$、$\rho\bm\delta=\bm P$ 保持不变的极限中，恰好得到 $\sigma_b=\bm P\cdot\bm n$。
+\fig{fig:e5:shifted-spheres}{微小错位的均匀正负带电球构成均匀极化球}{\begin{tikzpicture}
+\fill[blue!7](0,-.3)circle(1.5);\fill[red!7,opacity=.6](0,.3)circle(1.5);
+\draw[world,blue](0,-.3)circle(1.5);\draw[world,red](0,.3)circle(1.5);
+\draw[axis](0,-2.1)--(0,2.4)node[above]{$z$};
+\fill(0,.3)circle(1.4pt)node[left,xshift=-5pt]{$O_+$};\fill(0,-.3)circle(1.4pt)node[left,xshift=-5pt]{$O_-$};
+\fill(0,0)circle(1pt)node[right]{$O$};\coordinate(M)at(1,.65);\fill(M)circle(1.5pt);
+\draw[guide](M)--(1.7,1.15);\node[right]at(1.7,1.15){$M(\bm r)$};
+\draw[guide](0,.3)--(M);\draw[guide](0,-.3)--(M);
+\draw[dim](-2,-.3)--(-2,.3)node[midway,left]{$\delta$};
+\node[red,right]at(1.4,1.55){$+\rho$};\node[blue,right]at(1.4,-1.55){$-\rho$};
+\draw[flow](4.3,-.8)--(4.3,.8)node[midway,right]{$\bm P=\rho\bm\delta$};
+\end{tikzpicture}}
+均匀带电实心球内的场可由高斯定理得到：半径 $s$ 的高斯面包围电荷 $\rho(4\pi s^3/3)$，故 $E\,4\pi s^2=\rho(4\pi s^3/3)/\varepsilon_0$，即 $\bm E=\rho\bm s/(3\varepsilon_0)$。对图中的内部任意点 $M$，相对两个球心的位矢分别为 $\bm r-\bm\delta/2$、$\bm r+\bm\delta/2$，叠加得到
+\[
+\bm E_b=\frac{\rho}{3\varepsilon_0}
+ (\bm r-\bm\delta/2)
+-\frac{\rho}{3\varepsilon_0}(\bm r+\bm\delta/2)
+=-\frac{\bm P}{3\varepsilon_0}.
+\]
+位置 $\bm r$ 被消去，所以该场在球内均匀；负号表示它反抗极化，系数 $1/3$ 来自实心球的体积与高斯面的面积之比。这就是球形边界的退极化场。
+
+\fig{fig:e5:sphere}{介质球的极化方向、表面正负区域与反向退极化场}{\begin{tikzpicture}
+
+\fill[blue!9](0,0)circle(1.6);\draw[world](0,0)circle(1.6);\draw[axis](0,-2)--(0,2.6)node[above]{$z,\bm E_0$};\foreach \x/\y in{-1/1,0/1.45,1/1}{\node at(\x,\y){$+$};\node at(\x,-\y){$-$};}\draw[flow](-.6,-.6)--(-.6,.6)node[midway,left]{$\bm P$};\draw[force](.6,.6)--(.6,-.6)node[midway,right]{$\bm E_b$};\draw[guide](0,0)--(1.13,1.13);\draw(.0,.6)arc(90:45:.6);\node at(.4,.85){$\theta$};\node[right]at(2,1){$\sigma_b=P\cos\theta$};\node[right]at(2,-.3){$\bm E_b=-\bm P/(3\varepsilon_0)$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:sphere}中外法向沿径向，因此正、负半球由 $\cos\theta$ 的符号区分；该表面分布的球内场与极化相反。
+
+内部总场为 $\bm E_{\text{内}}=\bm E_0+\bm E_b$。代入线性介质关系 $\bm P=\varepsilon_0(\kappa-1)\bm E_{\text{内}}$，得到
+\[
+\left[1+\frac{\kappa-1}{3}\right]\bm E_{\text{内}}=\bm E_0,
+\qquad \bm E_{\text{内}}=\frac{3\bm E_0}{\kappa+2}.
+\]
+所得内部场均匀，确实产生起初采用的均匀极化，完成自洽检验。它通常不是 $\bm E_0/\kappa$，因为球形边界与无限介质平板的退极化几何不同。
+
+同一个构造还能确定球外势的形式。每个均匀带电球在球外等效为球心点电荷 $\pm Q$，其中 $Q=4\pi R^3\rho/3$。两球心间距趋零时，电势差的一阶项为偶极势：
+\[
+V_b=\frac{\bm p\cdot\bm e_r}{4\pi\varepsilon_0r^2},\qquad
+\bm p=Q\bm\delta=\frac{4\pi R^3}{3}\bm P.
+\]
+因此外部总势由均匀外场势 $-E_0r\cos\theta$ 与 $\cos\theta/r^2$ 项组成；内部均匀场势正比于 $r\cos\theta$。这里的形式来自电荷构造，原点有限和远处条件则用于核对它们。例\ref{e5:example:11}将把这两种形式代入球面边界条件，求系数并检查内外连接。在线性介电常数为正的静电边值问题中，满足全部场方程和边界条件的场是唯一的，因而这一自洽构造足以确定实际解。
+
+\subsection{电场力与弹性、重力的竞争}
+
+电容随位置增大常使电场力沿同方向增大，外部弹簧或重力可提供反向恢复作用。平衡要求两力相等，稳定还要求稍偏离后合力指向平衡位置。恒压平行板的吸力按隙宽平方的倒数增加，可能比弹簧恢复力增长更快，导致静态失稳；线性弹簧并不能在任意电压下保持平衡。
+
+\fig{fig:e5:force-balance}{平衡须比较力的交点，稳定须比较交点附近的斜率}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,3.7)node[above]{$F$};\draw[world](0,0)--(4.5,3.3)node[above]{$Kx$};\draw[world,domain=0:4.1,samples=60]plot(\x,{.42/(1-.16*\x)^2});\node[right]at(3.7,2.8){$F_e(x)$};\node at(2.5,-.8){稳定条件：$F'_e<K$};
+
+\end{tikzpicture}}\par 图\ref{fig:e5:force-balance}中，若电力曲线在交点处比恢复力更陡，向吸合方向的小位移会进一步增大合力，平衡便不稳定。
+
+若介质液体被吸进板间，电场机械功转成液柱重力势能。求升高量时，以外部大液池液面为高度零点。板间截面积为 $bd$，高度 $z$ 处的薄层质量为 $\dd m=\rho bd\,\dd z$，从液池进入该处增加势能 $gz\,\dd m$。把 $0$ 到 $x$ 的各薄层相加：
+\[
+W_g=\int_0^x \rho gbd\,z\,\dd z
+=\rho gbd\left[\frac{z^2}{2}\right]_0^x
+=\frac12\rho gbdx^2.
+\]
+被抬高的体积和各部分的最终高度都在变化，不能把全部液体当作升高同一距离。液面曲率和表面张力可改变边界条件；理想电容法常假设这些影响相对电场和重力可以忽略。
+
+

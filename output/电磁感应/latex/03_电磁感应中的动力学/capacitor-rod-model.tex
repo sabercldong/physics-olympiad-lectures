@@ -1,0 +1,21 @@
+\fig{em3:capacitor-rod-model}{电容导棒的充电正向和机械反作用}{
+\begin{tikzpicture}[scale=.9]
+\draw[world](-.3,0)--(5,0)--(5,.8)
+ (5,1.2)--(5,2)--(3.8,2)
+ (2.7,2)--(-.3,2);
+\draw[world](2.7,1.82)rectangle(3.8,2.18);
+\node[above]at(3.25,2.25){$R$};
+\draw[world,very thick](.6,0)--(.6,2);
+\draw[world](4.65,.8)--(5.35,.8) (4.65,1.2)--(5.35,1.2);
+\node[right]at(5.45,1){$C$};
+\node[left]at(4.65,1.4){$+q$};
+\node[left]at(4.65,.6){$-q$};
+\draw[flow,red](4.3,2)--(4.9,2)node[midway,above]{$i=\dot q$};
+\draw[flow,blue](.6,2.7)--(1.8,2.7)node[right]{$v$};
+\draw[force](.6,1)--(-.7,1)node[left]{$ki$};
+\draw[flow](.6,-.7)--(1.8,-.7)node[right]{$F$};
+\node at(1.35,.6){$\otimes\ B$};
+\draw[dim](2.1,0)--(2.1,2)node[midway,right]{$l$};
+\end{tikzpicture}}
+
+图\ref{em3:capacitor-rod-model}约定电容上极板电荷为$q$，电流正向为向该极板充电，故$i=\dot q$。向右运动的棒产生向上的动生作用，沿图示电流方向绕回路一周，电阻降与电容电压之和等于$kv$；棒中正向电流受到向左安培力。电路和机械方程的符号因而来自同一张图。

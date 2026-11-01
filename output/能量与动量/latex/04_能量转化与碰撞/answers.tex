@@ -1,0 +1,94 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em4:drill:1}\textbf{把平衡和斜率条件联立求幂指数}\par\nobreak
+图\ref{fig:em4:drill:1:s}小角度下绳的水平回复力为$mg s/\ell$。平衡时$K/d^n=mg s/\ell$。固定外部磁铁位置，记其到初始竖线距离为 $d_0$，则 $d=d_0-s$，$\dd d/\dd s=-1$。吸力对位移的链式导数为
+\[
+\frac{\dd}{\dd s}\left[K(d_0-s)^{-n}\right]
+=-nK(d_0-s)^{-n-1}(-1)=\frac{nK}{d^{n+1}}.
+\]
+恰失稳时此增长率等于回复力斜率 $mg/\ell$，所以
+\[\frac{nK}{d^{n+1}}=\frac{mg}{\ell},\quad\frac{ns}{d}=1,\quad\boxed{n=4}.\]
+\fig{fig:em4:drill:1:p}{解答过程：磁吸平衡的失稳条件}{\begin{tikzpicture}[scale=.9]\draw[world](1,0)rectangle(2,.4);\draw[world](1,2)rectangle(2,2.4);\node[right]at(2,0){固定磁铁};\node[right]at(2,2.2){$m$};\draw[force](1.5,2.4)--(1.5,3.4)node[above]{$K/z^4$};\draw[force](1.5,2)--(1.5,.9)node[below]{$mg$};\draw[dim](.5,.4)--(.5,2)node[midway,left]{$z$};\end{tikzpicture}}
+
+\fig{fig:em4:drill:1:critical}{临界平衡处吸力曲线与线性回复力相切，一阶斜率相同}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$s/s_*$};\draw[axis](0,0)--(0,3.5)node[above]{力的大小};
+\draw[blue,thick,domain=0:1.7,samples=100]plot({2.5*\x},{1.4*256/(5-\x)^4});\draw[red](0,0)--(4.5,2.52);
+\fill(2.5,1.4)circle(.055);\draw[guide](2.5,0)--(2.5,1.4);\node[below]at(2.5,0){$1$};
+\node[right]at(4.25,3){$K/(d_0-s)^4$};\node[right]at(4.5,2.52){$mgs/\ell$};\node at(2.5,-.8){$s_*=1\,\mathrm{cm},\ d_0=5s_*$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用净力导数解释恰失稳}\par\nobreak
+图\ref{fig:em4:drill:1:critical}用相切关系表示临界。失稳条件也可以从净力说明：向右净力$F(s)=K/(d_0-s)^n-mgs/\ell$，平衡点有$F=0$。小位移稳定要求$F'(s)<0$，恰失稳对应$F'=0$。把导数条件除以平衡条件，常量$K,m,g$都消去，才得到$ns/d=1$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由同一作用力模型求竖直平衡间距}\par\nobreak
+图\ref{fig:em4:drill:1:p}的竖直排斥平衡满足$K/z^4=mg$。由水平实验$K=mg s d^4/\ell$，得到
+\[\boxed{z=d(s/\ell)^{1/4}=1.3\,\mathrm{cm}}.\]
+竖直平衡附近的力导数为$-4K/z^5<0$，故在题设的一维竖直模型内有回复作用。此处“恰失稳”提供了导数条件，仅知道某次静态平衡不足以确定幂指数。\end{drillsolution}
+\begin{drillsolution}{em4:drill:2}\textbf{从短碰撞后的共速态计算原弹簧储能}\par\nobreak
+图\ref{fig:em4:drill:2:s}锁定期间三块先共速，$U=v_0/3$；此后弹簧释放只改变相对运动。最终$2mV_{AB}+mv_0=mv_0$，所以$V_{AB}=0$，释放能量$\boxed{E=mv_0^2/3}$。
+\fig{fig:em4:drill:2:p}{先形成共速态再释放弹簧，释放后的C必须向右离开AB}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {4/释放前,2/原弹簧首次实验,0/{原弹簧且$v=4v_0$}}{\begin{scope}[yshift=\yy cm]
+\draw[world](0,0)rectangle(1.6,.7);\node at(.8,.35){$AB:2m$};\draw[world](3.8,0)rectangle(4.6,.7);\node at(4.2,.35){$C:m$};\node[left]at(-.4,.35){\lab};\end{scope}}
+\draw[spring](1.6,4.35)--(3.8,4.35);\draw[flow](.8,5.1)--(1.9,5.1)node[right]{$v/3$};\draw[flow](4.2,5.1)--(5.3,5.1)node[right]{$v/3$};
+\node[above]at(.8,3.1){$0$};\draw[flow](4.2,3.1)--(5.3,3.1)node[right]{$v_0$};
+\draw[flow](.8,1.1)--(1.5,1.1)node[above]{$v_0$};\draw[flow](4.2,1.1)--(5.6,1.1)node[right]{$2v_0$};
+\node at(2.8,-.9){$V_C-V_{AB}>0$，压缩弹簧才能释放后分离};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对释放能量从哪一个初态算起}\par\nobreak
+第一问释放前动能为$(3m)(v_0/3)^2/2=mv_0^2/6$，释放后为$mv_0^2/2$，两者相差$mv_0^2/3$。必须从三块碰撞后的共速态起算弹簧释放，不能把碰撞前$A$的初动能与弹簧释放后的总动能直接作差。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对指定C末速写出所需储能}\par\nobreak
+按图\ref{fig:em4:drill:2:p}第二种情况，释放前共同速度$v/3$，释放后$V_{AB}=v/2-v_0$。因此
+\begin{align*}
+E'&=\frac12(2m)(v/2-v_0)^2+\frac12m(2v_0)^2
+-\frac12(3m)(v/3)^2\\
+&=m(v^2/4-vv_0+v_0^2)+2mv_0^2-\frac16mv^2\\
+&=m(v^2/12-vv_0+3v_0^2)
+=\boxed{\frac m{12}(v-6v_0)^2}.
+\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先限定分离方向，再筛选初速度根}\par\nobreak
+所需能量虽是平方式，但压缩弹簧必须使$C$快于$AB$：$2v_0>v/2-v_0$，即$v<6v_0$（若要求$A$向右入射，再取$v>0$）。$v=6v_0$仅是零储能、无相对分离的退化情形。令$E'=E$得$v=4v_0$或$8v_0$。弹簧向右推$C$、向左推$AB$，末态必须$V_C>V_{AB}$。$v=8v_0$时$V_{AB}=3v_0>2v_0$，与分离方向矛盾；故只有$\boxed{v=4v_0}$。这个舍根条件来自过程方向，不能仅靠平方能量方程选择。\end{drillsolution}
+\begin{drillsolution}{em4:drill:3}\textbf{由总动量确定最后共同速度}\par\nobreak
+图\ref{fig:em4:drill:3:s}中挡板属于木板系统，碰撞时也会反冲。全过程水平动量守恒，最后块与板共速，故
+\[
+ V=\frac{mv_0}{M+m}=\boxed{1\,\mathrm{m/s}}.
+\]
+把相对运动单独分出，约化质量$\mu_r=mM/(m+M)=3m/4$。初始相对动能$\mu_rv_0^2/2$，最后为零；挡板处完全弹性碰撞不损失相对动能，只有两段滑动耗散。
+\fig{fig:em4:drill:3:p}{挡板处相对速度瞬时反号；返程从负相对速度逐渐回到零}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.8,0)node[right]{$q$};\draw[axis](0,-1.7)--(0,2.4)node[above]{$u_{\text{相}}$};
+\draw[blue,thick,domain=0:1,samples=80]plot({5*\x},{.4*sqrt(16-8*\x)});
+\draw[red,thick,domain=0:1,samples=80]plot({5*\x},{-.4*sqrt(8*\x)});
+\draw[->,blue,thick](1.5,1.475)--(2.5,1.386);\draw[->,red,thick](3.5,-.9466)--(2,-.7155);
+\draw[->,dashed](5,1.1314)--(5,-1.1314);\node[right]at(5,1.1314){$+\sqrt8\,\mathrm{m/s}$};\node[right]at(5,-1.1314){$-\sqrt8\,\mathrm{m/s}$};
+\node[below]at(5,0){$L$};\node[left]at(0,1.6){$v_0$};\node at(2.5,2.4){前进段};\node at(2.4,-1.6){返回段};\node at(2.7,-2.3){$q$是块相对木板左端的位置};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两段相对滑程求摩擦因数}\par\nobreak
+由图\ref{fig:em4:drill:3:p}，相对路程为$L+L=2L$，因此
+\[
+ \tfrac12\mu_rv_0^2=2\mu mgL,
+ \qquad \mu=\frac{M}{M+m}\frac{v_0^2}{4gL}=\boxed{0.30}.
+\]
+也可核对整个系统：初动能减去末动能为$mv_0^2/2-(M+m)V^2/2$，数值等于$(6\,\mathrm{J/kg})m$，与$2\mu mgL$一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对到达挡板和返回左端的可达性}\par\nobreak
+最后检查途中能否实现。前进段的耗散为$\mu mgL=(3\,\mathrm{J/kg})m$，小于初始相对动能$(6\,\mathrm{J/kg})m$，到挡板仍有正相对动能，碰前相对速率为$\sqrt8\,\mathrm{m/s}$。弹性碰撞把相对速度反号；返程再耗散同样能量，恰在$q=0$处共速。图中两支满足前进段$u_{\text{相}}^2=v_0^2-2\mu g(1+m/M)q$，返回段$u_{\text{相}}^2=2\mu g(1+m/M)q$，全过程与两个边界事件相符。
+\end{drillsolution}

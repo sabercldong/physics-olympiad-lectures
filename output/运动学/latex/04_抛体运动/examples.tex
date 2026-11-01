@@ -1,0 +1,222 @@
+\section{例题与分析}
+\begin{question}\begin{example}[从时间方程到轨迹再返回]\label{k4p1}
+取 $a,v_0,v>0$。（1）$x=v_0t+at^2/2,y=at^2/2$，$t\ge0$，求轨迹。（2）已知轨迹 $(x-y)^2=2yv^2/a$，且 $y=vt$，求可能的 $x(t)$，说明能否唯一确定运动。\end{example}
+\fig{k4p1q}{从时间方程到轨迹再返回：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{$y$};\draw[world]plot[domain=0:1.4,samples=40]({\x+.5*\x*\x},{.5*\x*\x});\draw[flow,blue](1.3,.4)--(2.2,.85);\node at(2.3,2){$t\ge0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{消去时间时同时保留分支不等式}\par\nobreak
+（1）在图\ref{k4p1q}中作差得 $x-y=v_0t\ge0$，所以 \[\boxed{(x-y)^2=2v_0^2y/a,\ x-y\ge0,\ y\ge0}.\]平方后的抛物线还包含另一支，必须保留不等式才能表示实际轨迹。
+\fig{k4p1s}{从时间方程到轨迹再返回：解答过程}{\begin{tikzpicture}\draw[axis](-1.2,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,3)node[above]{$y$};\draw[world]plot[domain=0:1.4,samples=60]({\x+sqrt(2*\x)},{\x});\draw[blue,world]plot[domain=0:1.4,samples=60]({\x-sqrt(2*\x)},{\x});\node[right]at(3,1.4){$+$支};\node[left]at(-.3,1.5){$-$支};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入新的时间规律后逐支检查初值}\par\nobreak
+（2）代入 $y=vt$ 得 $\boxed{x=vt\pm v\sqrt{2vt/a}}$。图\ref{k4p1s}画出的两支都满足空间方程和给定的 $y(t)$，若没有额外方向条件就不能唯一选根。对 $t>0$，用平方根的链式法则，
+\[\dot x=v\pm v\frac{1}{2\sqrt{2vt/a}}\frac{2v}{a}
+ =v\pm v\sqrt{\frac{v}{2at}}.\]
+在 $t\to0^+$ 时水平速度发散，因此若还要求从原点以有限速度开始，这组额外条件不相容。轨迹满足并不自动保证时间规律符合题目所需的物理初值。
+
+第一问从 $x-y=v_0t$反求 $t=(x-y)/v_0$，再代回 $y=at^2/2$，就能验证不等式所选的曲线分支与全部 $t\ge0$一一对应。第二问则额外指定另一种 $y(t)$，即使轨迹形状相同，也已改变通过曲线的时间规律。两问不能互相借用初速度条件；平方关系中“看上去相同的一条抛物线”并不代表相同运动。
+
+% thirty-k4-speedminimum
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在速度平面用垂足判断速率最小值}\par\nobreak
+作为第（1）问的比较情形，若只将初始水平速度改为向左，位置便为 $x=at^2/2-v_0t$、$y=at^2/2$，所以 $v_x=at-v_0$、$v_y=at$。速度平方配方为
+\[v^2=(at-v_0)^2+(at)^2
+ =2a^2\left(t-\frac{v_0}{2a}\right)^2+\frac{v_0^2}{2}.\]
+因此最小速率出现在 $t=v_0/(2a)$，为 $v_0/\sqrt2$，此时速度 $(-v_0/2,v_0/2)$与加速度 $(a,a)$垂直。它不同于 $v_x=0$的时刻 $t=v_0/a$；后者只表示水平运动方向正在改变，竖直速度并不为零。
+\fig{k4p1velocityspace}{速度平面上的垂足决定速率最小值}{\begin{tikzpicture}
+\draw[axis](-2.5,0)--(1,0)node[right]{$v_x$};\draw[axis](0,-.3)--(0,2.8)node[above]{$v_y$};
+\draw[blue,world](-2,0)--(.5,2.5);\fill(-2,0)circle(1.3pt)node[below]{$-v_0$};
+\fill(-1,1)circle(1.4pt)node[left]{$M$};\draw[guide](0,0)--(-1,1);
+\node[below right]at(0,0){$O$};\draw[flow,red](-1,1)--(-.3,1.7)node[right]{$\bm a$};
+\end{tikzpicture}}
+图\ref{k4p1velocityspace}把同一加速度下的速度端点画成直线，原点到该直线的最短距离即最小速率。这个表示把“速度某一分量为零”和“速度大小最小”清楚地区分开，也能独立检验轨迹消元后恢复的时间规律。
+\end{solution}
+
+\begin{question}\begin{example}[水平抛出后离斜面最远]\label{k4p2}
+从向右下倾角 $\theta\in(0,\pi/2)$ 的斜面上一点，以水平速率 $v_0$ 抛出小球。求再次落到斜面前，小球到斜面的最大垂直距离及出现时刻。\end{example}
+\fig{k4p2q}{水平抛出后离斜面最远：题设关系}{\begin{tikzpicture}\draw[world](-.5,.25)--(5,-2.5);\draw[world]plot[domain=0:4,samples=50]({\x},{-.15*\x*\x});\draw[flow,blue](0,0)--(1.5,0)node[above]{$v_0$};\node[above left]at(0,0){$O$};\draw[guide](0,0)--(1.7,0);\draw(.9,0)arc(0:-26.565:.9);\node at(1.1,-.2){$\theta$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{沿斜面法向建立距离函数并确定飞行区间}\par\nobreak
+沿图\ref{k4p2q}斜面的外法向取正坐标 $n$。水平初速度在此方向的分量为 $u_n=v_0\sin\theta$，重力加速度的法向分量为 $-g_n=-g\cos\theta$，故
+\[n(t)=u_nt-\frac12g_nt^2,\qquad
+\dot n=u_n-g_nt,\qquad g_n>0.\]
+先用位置条件确定飞行区间：由 $n=0$得到发射时刻0和再次落面时刻 $T=2u_n/g_n$；两根之间 $n>0$。再令 $\dot n=0$，得内部驻点 $t_m=u_n/g_n=T/2$。将该时刻代回距离式，
+\[n_{\max}=\frac{u_n^2}{g_n}-\frac{u_n^2}{2g_n}
+ =\boxed{\frac{v_0^2\sin^2\theta}{2g\cos\theta}},
+\qquad\boxed{t_m=\frac{v_0\tan\theta}{g}}.\]
+\fig{k4p2s}{水平抛出后离斜面最远：解答过程}{\begin{tikzpicture}\draw[world](-1,.5)--(4,-2);\fill(1.66667,-.416667)circle(2pt)node[above]{$P_m$};\draw[dim,blue](1.66667,-.416667)--(1.5,-.75)node[left]{$n_{\max}$};\draw[flow,red](1.66667,-.416667)--(2.66667,-.916667)node[right]{$\bm v\parallel$斜面};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由凹二次式证明是全程最大值}\par\nobreak
+图\ref{k4p2s}中的蓝线沿斜面法线，才是题目所问距离。
+
+为确认这是整个飞行区间内的最大值，将同一距离函数配方为
+\[n(t)=n_{\max}-\frac{g_n}{2}(t-t_m)^2.\]
+平方项非负且 $g_n>0$，所以任意允许时刻均有 $n\le n_{\max}$。此时实际速度为 $(v_0,-gt_m)=(v_0,-v_0\tan\theta)$，其斜率等于斜面的 $-\tan\theta$，因而图中的红色速度箭头平行斜面。最远条件对应法向速度为零，不能误用竖直速度为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{起点离面时重算落面时间}\par\nobreak
+$t_m=T/2$依赖起点就在斜面上。若改为从离斜面法向距离 $n_0>0$处出发，初始法向速度仍为 $u_n>0$，则
+\[n(t)=n_0+u_nt-\frac12g_nt^2,\qquad
+t_m=\frac{u_n}{g_n},\qquad
+n_{\max}=n_0+\frac{u_n^2}{2g_n}.\]
+落面时刻应取二次方程的正根，
+\[T=\frac{u_n+\sqrt{u_n^2+2g_nn_0}}{g_n}
+ >\frac{2u_n}{g_n}=2t_m.\]
+\fig{k4p2offset}{起点离面时，距离最大值不再位于总飞行时间的中点}{\begin{tikzpicture}[x=1.7cm,y=1.5cm]
+\draw[axis](0,0)--(3.3,0)node[right]{$t$};\draw[axis](0,0)--(0,1.75)node[above]{$n$};
+\draw[world,blue]plot[domain=0:2.824808,samples=65]({\x},{.6+1.2*\x-.5*\x*\x});
+\draw[guide](1.2,0)--(1.2,1.32);\node[below]at(1.2,0){$t_m$};\node[below]at(2.824808,0){$T$};
+\node[left]at(0,.6){$n_0$};\node at(1.6,-.6){$T>2t_m$};
+\end{tikzpicture}}
+图\ref{k4p2offset}说明，多出的初始高度延长了下降到斜面的时间，却不改变法向速度归零的时刻。令 $n_0\to0$才恢复本题的时间对称性；改变初始位置后，不能继续将总时间直接对半。
+\end{solution}
+
+\begin{question}\begin{example}[斜面上的最大射程]\label{k4p3}
+从向右下倾角 $\theta$ 的无限长斜面上一点，以给定速率 $v_0$ 发射小球。发射角 $\alpha$ 相对水平线计，取能离开斜面并向右飞行的分支。求沿斜面的最大射程及最优发射角。\end{example}
+\fig{k4p3q}{斜面上的最大射程：题设关系}{\begin{tikzpicture}\draw[world](-.5,.25)--(5,-2.5);\draw[ray](0,0)--(1.8,1.4)node[above]{$v_0$};\draw[guide](0,0)--(2,0);\node at(.7,.25){$\alpha$};\node at(1,-.2){$\theta$};\draw[world]plot[domain=0:4,samples=50]({\x},{.8*\x-.325*\x*\x});\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{联立轨迹与斜面并排除零时刻}\par\nobreak
+取图\ref{k4p3q}的发射点为原点，向右、向上为正。在落到斜面之前，$x=v_0\cos\alpha\,t$、$y=v_0\sin\alpha\,t-gt^2/2$。落面条件 $y=-x\tan\theta$给
+\[t\left[v_0(\sin\alpha+\cos\alpha\tan\theta)-\frac{gt}{2}\right]=0.
+\]
+零根是发射时刻，应取另一个正根。用 $\sin\alpha\cos\theta+\cos\alpha\sin\theta=\sin(\alpha+\theta)$，得到
+\[T=\frac{2v_0\sin(\alpha+\theta)}{g\cos\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把水平位移换成沿面射程}\par\nobreak
+水平位移为 $v_0\cos\alpha\,T$，而沿面射程是它除以 $\cos\theta$，因此
+\[S=\frac{2v_0^2\cos\alpha\sin(\alpha+\theta)}{g\cos^2\theta}
+=\frac{v_0^2[\sin(2\alpha+\theta)+\sin\theta]}{g\cos^2\theta}.
+\]
+\fig{k4p3s}{斜面上的最大射程：解答过程}{\begin{tikzpicture}
+\draw[axis](0,0)--(3.65,0)node[right]{$2\alpha+\theta$};
+\draw[axis](0,0)--(0,1.5)node[above]{$\sin(2\alpha+\theta)$};
+\draw[world]plot[domain=0:180,samples=80]({rad(\x)},{sin(\x)});
+\draw[guide](1.570796,0)--(1.570796,1)--(0,1);
+\node[left]at(0,1){$1$};\node[below]at(1.570796,0){$\pi/2$};
+\node[below]at(3.141593,0){$\pi$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在可行角区间取得三角函数的上界}\par\nobreak
+题设离面且向右的条件给 $-\theta<\alpha<\pi/2$。在此区间内，$\sin(2\alpha+\theta)\le1$且等号确能达到，所以
+\[\boxed{\alpha_m=\frac\pi4-\frac\theta2},\qquad
+\boxed{S_{\max}=\frac{v_0^2}{g(1-\sin\theta)}}.
+\]
+最后一步使用 $\cos^2\theta=(1-\sin\theta)(1+\sin\theta)$约去 $1+\sin\theta$。图\ref{k4p3s}的纵坐标取到1时，最优初速度与斜面夹角为 $\pi/4+\theta/2$，并非与水平成45°。
+
+$\theta=0$时两种角度才重合；向下的斜面使球可以多飞一段时间，因此最优水平仰角降低而最大射程增加。上述最优角位于可行区间，故这是可取得的最大值。
+
+% thirty-k4-impact
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向速度反号和能量检验落面状态}\par\nobreak
+最优轨迹的入射方向也能由同一时间式求出。记 $\alpha_m=\pi/4-\theta/2$，则
+$\alpha_m+\theta=\pi/2-\alpha_m$，因而
+\[\sin(\alpha_m+\theta)=\cos\alpha_m,\qquad
+T_m=\frac{2v_0\cos\alpha_m}{g\cos\theta}.\]
+落面速度的水平分量不变，竖直分量为
+\[v_x=v_0\cos\alpha_m,\qquad
+v_y=v_0\sin\alpha_m-\frac{2v_0\cos\alpha_m}{\cos\theta}.\]
+取沿斜面向右下的单位向量 $\bm e_s=(\cos\theta,-\sin\theta)$，朝斜面外的单位法向 $\bm e_n=(\sin\theta,\cos\theta)$。任意发射角在起落同一斜面时都有
+\[v_{n,0}=v_0\sin(\alpha+\theta),\qquad
+v_{n,T}=v_{n,0}-gT\cos\theta=-v_{n,0}.\]
+因此法向速度大小在起落时相等、方向相反，但沿面速度增加了 $gT\sin\theta$，总速率一般不相等。
+
+\fig{k4p3normal}{斜面坐标下，法向速度反号而沿面速度增加}{\begin{tikzpicture}
+\draw[world](-.4,.2)--(4.6,-2.3);
+\coordinate(P)at(2.7,-1.35);\fill(P)circle(1.4pt)node[below]{$P$};
+\draw[flow,blue](P)--++(1.2,-.6)node[right]{$v_s\bm e_s$};
+\draw[flow,red](P)--++(-.45,-.9)node[below left]{$v_n\bm e_n$};
+\draw[guide,->](0,0)--(.55,1.1)node[above]{$\bm e_n$};
+\node[above]at(0,0){$O$};
+\end{tikzpicture}}
+图\ref{k4p3normal}中落面时法向分量朝面内，是下一次碰撞前的状态。还可用能量检查：落点比起点低 $S\sin\theta$，故 $v_T^2=v_0^2+2gS\sin\theta$。当 $\theta\to0$时沿面加速消失，才恢复等高抛射起落速率相同的结论。
+\end{solution}
+
+\begin{question}\begin{example}[两种射法共越一面矮墙]\label{k4p4}
+同一高度 $H$ 处水平抛球，地面落点距抛出点水平距离为 $X$。第一球直接落在该点；第二球先与地面完全弹性碰撞一次，再落在同一点。求两球初速之比及两球均恰好掠过同一个中间墙顶时，该墙的高度与位置。\end{example}
+\fig{k4p4q}{两种射法共越一面矮墙：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(6.5,0);\draw[world](0,0)--(0,2);\node[above]at(0,2){$A$};\node[below]at(6,0){$B$};\draw[blue,world]plot[domain=0:6,samples=60]({\x},{2*(1-(\x/6)^2)});\draw[red,world]plot[domain=0:2,samples=25]({\x},{2*(1-(\x/2)^2)});\draw[red,world]plot[domain=2:6,samples=50]({\x},{2*(1-(\x/2-2)^2)});\draw[very thick](3,0)--(3,1.5);\node[below]at(3,0){墙};\node[left]at(0,1){$H$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用首次落地与反弹周期确定两球初速}\par\nobreak
+首次落地时间 $T=\sqrt{2H/g}$。图\ref{k4p4q}中第一球总飞行时间为 $T$，第二球为 $3T$，故 $v_1=X/T$、$v_2=X/(3T)$，$\boxed{v_1:v_2=3:1}$。
+\fig{k4p4s}{两种射法共越一面矮墙：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6.5,0)node[right]{$x$};\draw[blue,world]plot[domain=0:6,samples=60]({\x},{2*(1-(\x/6)^2)});\draw[red,world]plot[domain=2:6,samples=50]({\x},{2*(1-(\x/2-2)^2)});\fill(3,1.5)circle(2pt)node[above right,xshift=4pt,yshift=8pt,fill=white,inner sep=1pt]{$(X/2,3H/4)$};\draw[guide](3,1.5)--(3,0);\node[below]at(2,0){反弹点};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按各自飞行阶段联立墙顶高度}\par\nobreak
+在墙处令 $z=x/X$。直接抛球高度为 $H(1-z^2)$；反弹球在第二段的高度为 $H[1-(3z-2)^2]$，有效区间为 $1/3<z<1$。联立得 $z^2=(3z-2)^2$，解为 $z=1/2,1$，其中共同落点 $z=1$不作中间墙。因此 $\boxed{x=X/2,\ h=3H/4}$。图\ref{k4p4s}标出相交前后谁的轨迹较低，墙高要同时不超过两条曲线，共同交点给出这处墙的临界高度。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较交点两侧的轨迹并限定结论范围}\par\nobreak
+在 $1/3<z<1/2$，反弹球的高度较低且随 $z$增加；在 $1/2<z<1$，直接抛球较低且随 $z$减小，因此在这段比较区间，共同掠顶的交点也是两条高度下包线的峰值。题目要求两球都恰掠同一墙顶，故必须联立高度；如果只要求两球都能越过任意位置的小墙，而不要求共同掠顶，就不能把这个交点误称为所有墙址的全局最高墙。\end{solution}
+
+\begin{question}\begin{example}[打到高处目标的最小初速]\label{k4p5}
+从地面原点发射质点，使其经过水平距离3m、高度4m的目标点。忽略空气阻力，求最小初速与对应发射方向，取 $g=10$m/s$^2$。\end{example}
+\fig{k4p5q}{打到高处目标的最小初速：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,4.8)node[above]{$y$};\fill(3,4)circle(3pt)node[right]{$P(3,4)$};\draw[guide](3,4)--(3,0) (3,4)--(0,4);\draw[ray](0,0)--(1,3)node[above]{$v_0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将命中条件写成发射角正切的二次方程}\par\nobreak
+取图\ref{k4p5q}目标坐标为 $(x,y)=(3,4)$m，发射角为 $\alpha$，初速为 $v_0$。由于目标在右方，取 $\cos\alpha>0$并令 $p=\tan\alpha$。用水平式消去时间后，目标必须满足
+\[y=xp-\frac{gx^2}{2v_0^2}(1+p^2).
+\]
+整理为 $gx^2p^2-2v_0^2xp+gx^2+2v_0^2y=0$。这不是任意角度都能满足的条件；关于 $p$有实根才存在射法。其判别式为
+\[\Delta=4x^2(v_0^4-2gyv_0^2-g^2x^2).
+\]
+\fig{k4p5s}{打到高处目标的最小初速：解答过程}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.3,0)node[right]{$x$};
+\draw[axis](0,0)--(0,5.1)node[above]{$y$};
+\draw[world]plot[domain=0:3.8,samples=80]({\x},{3*\x-5*(\x)^2/9});
+\draw[guide](0,0)--(1.5,4.5);
+\fill(2.7,4.05)circle(1.6pt)node[above left]{$M$};
+\fill(3,4)circle(1.6pt)node[below,yshift=-12pt]{$P(3,4)$};
+\draw[guide](3,4)--(3,3.7);
+\draw[flow,blue](3,4)--(4,3.666667)node[right]{$\bm v_P=(3,-1)$};
+\node at(.55,1.1){$\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由有实根的条件求初速下界}\par\nobreak
+令 $z=v_0^2>0$，解 $z^2-2gyz-g^2x^2\ge0$。另一根 $g(y-\sqrt{x^2+y^2})$为负，所以有效条件是 $z\ge g(y+\sqrt{x^2+y^2})$。本题距离为5m，故
+\[\boxed{v_{\min}^2=90\ \mathrm{m^2/s^2}},\qquad
+\boxed{v_{\min}=3\sqrt{10}\ \mathrm{m/s}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复唯一发射方向并回代目标坐标}\par\nobreak
+等号时二次方程只有一个角度根，由此确定发射方向：
+\[p=\frac{v_{\min}^2}{gx}=3,\qquad \boxed{\alpha=\arctan3\approx71.6^\circ}.\]
+用 $v_{\min}/\sqrt{1+p^2}$求得初速度分量 $v_{0x}=3\,\mathrm{m/s}$、$v_{0y}=9\,\mathrm{m/s}$。水平到达时间为 $t_P=3/3=1\,\mathrm s$，竖直位移为 $9\times1-5\times1^2=4\,\mathrm m$，确实通过目标 $P$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{定位顶点并核对到达时的速度方向}\par\nobreak
+还要检查经过目标时的运动方向：$v_y(t_P)=9-10\times1=-1\,\mathrm{m/s}$，所以球已在下降。图\ref{k4p5s}中最高点记为 $M$，其时刻为 $t_M=9/10=0.9\,\mathrm s$，坐标为
+\[x_M=3\times0.9=2.7\,\mathrm m,\qquad
+y_M=\frac{9^2}{2\times10}=4.05\,\mathrm m.\]
+最高点比目标略高，目标处速度为 $(3,-1)\,\mathrm{m/s}$，图中箭头应向右下。最小初速要求关于发射方向的可达条件取等号，并不要求目标正好位于最高点。
+
+% thirty-k4-wall
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分命中目标与严格越过墙顶}\par\nobreak
+把目标换成顶点为 $P(3,4)$的竖直薄墙时，图\ref{k4p5wall}展示同一临界轨迹。对固定初速 $v_0$，墙面横坐标 $X=3$处能达到的最高高度，由关于 $p=\tan\alpha$的二次式配方得到
+\[y(3)=\frac{v_0^2}{2g}-\frac{9g}{2v_0^2}
+ -\frac{9g}{2v_0^2}\left(p-\frac{v_0^2}{3g}\right)^2.
+\]
+所以允许掠过墙顶的条件为 $v_0^2/(2g)-9g/(2v_0^2)\ge4$。乘以正数 $2gv_0^2$并整理，有 $v_0^4-8gv_0^2-9g^2\ge0$；以 $g=10$代入，正根仍为 $v_0^2=90$。若严格要求不接触墙顶，则应取 $v_0>3\sqrt{10}\,\mathrm{m/s}$，临界值只是下确界。
+\fig{k4p5wall}{点目标的临界射法也对应掠过同位置墙顶}{\begin{tikzpicture}[x=1cm,y=.65cm]
+\draw[axis](0,0)--(4.4,0)node[right]{$x$};\draw[axis](0,0)--(0,5.2)node[above]{$y$};
+\draw[very thick](3,0)--(3,4);\draw[blue,world]plot[domain=0:4,samples=70]({\x},{3*\x-5*(\x)^2/9});
+\fill(3,4)circle(1.5pt)node[above right]{$P$};\node[right]at(3,1.8){薄墙};
+\draw[flow,blue](3,4)--(4,3.666667);\node[below]at(3,0){$3\,\mathrm m$};
+\end{tikzpicture}}
+\end{solution}

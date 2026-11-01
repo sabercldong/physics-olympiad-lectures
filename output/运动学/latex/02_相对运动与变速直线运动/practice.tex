@@ -1,0 +1,29 @@
+\section{本讲小结}
+相对运动先写清每个速度的参照，再作矢量加减。渡河的时间最短、路程最短和相对风雨方向，分别对应速度圆上的不同几何条件。匀变速公式必须配合恒定加速度及有效时间区间使用。
+
+分段运动继承位置与速度初值，停车与碰撞会改变随后采用的方程。追及和安全距离需要在全程上比较间距，既检查内部驻点，也检查每个阶段的边界。
+\section{练习}
+\nopagebreak[4]
+\begin{question}\begin{drill}[斜面下滑后追及加速物体]\label{k2p15}
+$A$从斜面底端沿水平面向左由静止以加速度 $a_0>0$ 运动。$B$同时从倾角 $\theta$ 的斜面上由静止下滑，沿斜面加速度 $g\sin\theta$，到达底端后保持所得速率向左匀速运动。忽略转接时的速度损失，求 $B$能追上 $A$的条件。\end{drill}
+\fig{k2p15q}{斜面下滑后追及加速物体：题设关系}{\begin{tikzpicture}\draw[world](-3,0)--(0,0)--(2.2,2.8);\draw[world](-.5,0)rectangle(0,.4);\draw[world](1.8,2.3)rectangle(2.15,2.65);\node[above]at(-.2,.4){$A$};\node[right]at(2.15,2.6){$B$};\draw[flow](-.7,.6)--(-1.8,.6)node[left]{$a_0$};\node at(.65,.3){$\theta$};\end{tikzpicture}}
+\answerlink{k2p15}
+\end{question}
+
+\begin{question}\begin{drill}[前后车同时制动的分支]\label{k2p16}
+摩托车以 $v_1>v_2>0$ 在后，前方净距离 $s>0$ 处汽车以速率 $v_2$ 行驶。此刻汽车以减速度 $a_2>0$制动，摩托车同时以恒定减速度 $a$ 制动，两者停住后均不倒退。求摩托车避免接触的临界最小 $a$。\end{drill}
+\fig{k2p16q}{前后车同时制动的分支：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(6.5,0);\fill(.6,.3)circle(.18);\node[above]at(.6,.6){$v_1$};\draw[world](4,.1)rectangle(5,.7);\node[above]at(4.5,.8){$v_2$};\draw[dim](.8,-.5)--(4,-.5)node[midway,below]{$s$};\draw[flow](4,1.4)--(3,1.4)node[left]{$a_2$};\end{tikzpicture}}
+\answerlink{k2p16}
+\end{question}
+
+\begin{question}\begin{drill}[三车制动与中车策略]\label{k2p17}
+三辆点状小车从左至右为 $A,B,C$，初始相邻净间距均为5m，速度依次为9、8、6m/s。$C$从此刻以1m/s$^2$制动；$A,B$也从此刻分别选择恒定制动减速度，停车后不倒退。允许选择 $B$的减速度，求使全程不相撞的 $A$最小临界减速度。\end{drill}
+\fig{k2p17q}{三车制动与中车策略：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(7,0);\foreach \x/\s/\v in {.5/A/9,3/B/8,5.5/C/6}{\draw[world](\x,0)rectangle({\x+.8},.5);\node[above]at(\x,.7){$\s:\v$};}\draw[dim](1.3,-.5)--(3,-.5)node[midway,below]{$5\,\mathrm m$};\draw[dim](3.8,-.5)--(5.5,-.5)node[midway,below]{$5\,\mathrm m$};\end{tikzpicture}}
+\answerlink{k2p17}
+\end{question}
+
+\begin{question}\begin{drill}[交换速度的连续碰撞]\label{k2p18}
+同一直线上，点状滑块 $A$在后、$B$在前，初距 $l$，初速均为0。$A$始终受恒加速度 $a>0$，$B$在两次碰撞间匀速；每次碰撞瞬间交换两者速度。求第 $n$次与第 $n+1$次碰撞间隔，以及第 $n$次碰撞时 $B$相对其初位置的位移。再改为 $A$恒加速 $a_1$，$B$以 $a_2>0$制动且停住后不反向，求碰撞间隔。\end{drill}
+\fig{k2p18q}{交换速度的连续碰撞：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(6.5,0)node[right]{$x$};\fill(.5,0)circle(2pt)node[above]{$A$};\fill(4.5,0)circle(2pt)node[above]{$B$};\draw[dim](.5,-.6)--(4.5,-.6)node[midway,below]{$l$};\draw[flow](.5,.7)--(2,.7)node[right]{$a$};\end{tikzpicture}}
+\answerlink{k2p18}
+\end{question}

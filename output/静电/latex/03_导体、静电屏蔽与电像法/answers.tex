@@ -1,0 +1,192 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e3:drill:1}\textbf{用边界线性把中心势写成响应系数之和}\par\nobreak
+图\ref{fig:e3:drill:1:s} 中电势对边界值线性，中心可写为 $V_O=\sum_i c_iV_i$。四面体的转动对称性使中心对各面的响应系数相同，即 $c_i=c$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用常势解把四个相等权重归一化}\par\nobreak
+把四面同时置为同一电势 $V$，腔内常势解为 $V$，所以 $4cV=V$，得 $c=1/4$。
+\typeout{ECFIG:fig:e3:drill:1:p}\fig{fig:e3:drill:1:p}{左图仅一面置为 $V$，其余三面为零；右图四面同势给出中心响应权重的归一化}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[blue!8](.5,1.6)--(1.5,-1)--(-1.5,-1)--cycle;
+\coordinate(A)at(.5,1.6);\coordinate(B)at(1.5,-1);\coordinate(C)at(-1.5,-1);\coordinate(D)at(-.5,.4);\draw(A)--(B)--(C)--cycle;\draw[guide](A)--(D)--(B)(D)--(C);\fill[white](0,0)circle(.09);\fill(0,0)circle(1.6pt)node[below]{$O$};
+\draw[guide](.8,.2)--(2.5,.7)node[right]{一面 $V$};\node at(0,2.4){中心贡献 $cV$};\node at(0,-1.8){其余三面为零};
+\end{scope}\begin{scope}[xshift=7.5cm]
+\coordinate(A)at(.5,1.6);\coordinate(B)at(1.5,-1);\coordinate(C)at(-1.5,-1);\coordinate(D)at(-.5,.4);\draw(A)--(B)--(C)--cycle;\draw[guide](A)--(D)--(B)(D)--(C);\fill[white](0,0)circle(.09);\fill(0,0)circle(1.6pt)node[below]{$O$};
+\node at(0,2.4){四面全为 $V$};\node at(0,-1.8){常势解 $V_O=V$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加四个单面解并说明对称性的作用范围}\par\nobreak
+图\ref{fig:e3:drill:1:p} 分别只令一面电势为 $V_i$、其余为零，四个解在中心的贡献相加，得到 $V_O=(V_1+V_2+V_3+V_4)/4$。这个平均来自线性与正四面体中心对称性，换成一般不规则四面体，四个权重不再相等。\end{drillsolution}
+\begin{drillsolution}{e3:drill:2}\textbf{只对内壳与远球组成的连通体守恒电荷}\par\nobreak
+按 图\ref{fig:e3:drill:2:s} 令远球取得 $q$，内壳剩 $Q_1-q$，外壳净量仍 $Q_2$。球壳叠加使内壳电势为 $k[(Q_1-q)/R_1+Q_2/R_2]$，远球电势为 $kq/r$。导线连通要求两势相等。
+\typeout{ECFIG:fig:e3:drill:2:p}\fig{fig:e3:drill:2:p}{内壳通过绝缘小孔接远球，外壳与导线保持绝缘；只在连通的内壳与远球之间守恒电量}{\begin{tikzpicture}
+
+\draw(0,0)circle(1);\draw(0,0)circle(1.9);\fill[white](1.7,-.18)rectangle(2.1,.18);\draw(1.7,-.18)rectangle(2.1,.18);
+\draw(1,0)--(5.2,0);\draw(5.8,0)circle(.6);\node at(0,.4){$R_1$};\node at(-1.7,1.4){$R_2$};\node at(5.8,0){$r$};
+\draw[guide](1.9,.18)--(3.2,1.3)node[above]{绝缘孔};\node at(0,-2.6){内壳 $Q_1-q$，外壳净量 $Q_2$};\node at(5.8,-1.4){远球 $q$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等势联立解远球所得电量}\par\nobreak
+由 图\ref{fig:e3:drill:2:p} 的守恒与等势关系，
+\[
+ \frac{Q_1}{R_1}+\frac{Q_2}{R_2}
+ =q\left(\frac1{R_1}+\frac1r\right),\qquad
+ q=\frac r{R_1+r}\left(Q_1+\frac{R_1Q_2}{R_2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查外壳常势项、零外壳量与小半径极限}\par\nobreak
+$q$ 可以与 $Q_1$ 异号，外壳常电势项也参与电荷转移。取 $Q_2=0$ 可回到远隔两球的半径比分配；$r\to0$ 时远球电量趋零。\end{drillsolution}
+\begin{drillsolution}{e3:drill:3}\textbf{先用两像满足中性约束并求精确合力}\par\nobreak
+图\ref{fig:e3:drill:3:s} 的球净量为零，偏心像为 $-qR/d$，中心像为 $+qR/d$。用前述两像力相加而不重复求边界，得
+\[
+ F_r=\frac{kq^2R}{d^3}-\frac{kq^2Rd}{(d^2-R^2)^2}
+ =-\frac{kq^2R^3(2d^2-R^2)}{d^3(d^2-R^2)^2}<0.
+\]
+\typeout{ECFIG:fig:e3:drill:3:p}\fig{fig:e3:drill:3:p}{中性条件由两像总量为零实现；对外点电荷，两项力的首阶远处部分相消}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.8);\draw[blue,dashed](0,0)circle(.1);\draw[guide,blue](0,0)--(0,-.6);\node[blue]at(0,-.95){$q_0=+qR/d$};\draw[blue,dashed](.81,0)circle(.1);\draw[guide,blue](.81,0)--(.5,.5);\node[blue]at(.5,.8){$q'=-qR/d$};
+\fill(4,0)circle(2pt)node[above]{$q$};\draw[force](4,-.4)--(2.7,-.4)node[midway,below]{$F_r<0$};\draw[<->](0,-2.6)--(4,-2.6)node[midway,below]{$d$};
+\node at(2,2.6){$q_0+q'=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把首阶相消后的远距离主项保留下来}\par\nobreak
+在 图\ref{fig:e3:drill:3:p} 中两个像合量为零，远场主要表现为极化。$d\gg R$ 时分子主要为 $2d^2$，分母主要为 $d^7$，故 $F_r\simeq-2kq^2R^3/d^5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{与接地球比较衰减幂次并解释物理来源}\par\nobreak
+接地球允许取得净量，力主要为 $-kq^2R/d^3$。两种条件都吸引，却有不同的衰减幂次；把接地像直接用于中性孤立球，会漏掉中心像的抵消。\end{drillsolution}
+\begin{drillsolution}{e3:drill:4}\textbf{把像放在真实空腔区域之外}\par\nobreak
+在 图\ref{fig:e3:drill:4:s} 球腔内，像需放在真实求解区域之外，即沿电荷方向距心 $R^2/b$ 处，像量为 $-qR/b$。球面到真、像距离比仍为 $b/R$，所以零势边界满足。像虽位于金属一侧，只用于求腔内场。
+\typeout{ECFIG:fig:e3:drill:4:p}\fig{fig:e3:drill:4:p}{球腔内像法：像点位于腔外，真像间距由 $R^2/b-b$ 给出，实际力指向近侧腔壁}{\begin{tikzpicture}
+
+\fill[gray!10](-2.4,-2.4)rectangle(5,2.4);\fill[white](0,0)circle(1.8);\draw(0,0)circle(1.8);
+\fill(0,0)circle(1.5pt)node[below left]{$O$};\fill(.8,0)circle(2pt)node[above]{$q$};\draw[blue,dashed](4.05,0)circle(.12);\node[blue,above]at(4.05,.2){$-qR/b$};
+\draw[force](.8,-.4)--(1.55,-.4)node[midway,below]{$F$};\draw[<->](0,-1.2)--(.8,-1.2)node[midway,below]{$b$};
+\draw[<->](0,1.5)--(4.05,1.5)node[midway,above]{$R^2/b$};\draw(0,-2.4)--(0,-3.2)node[ground]{};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按真像实际距离求近壁方向的力}\par\nobreak
+图\ref{fig:e3:drill:4:p} 真、像间距为 $(R^2-b^2)/b$，吸引方向从腔心指向近侧腔壁，力大小
+\[
+ F=\frac{kq^2R/b}{[(R^2-b^2)/b]^2}
+ =\frac{kq^2Rb}{(R^2-b^2)^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用小偏心和近壁极限检查}\par\nobreak
+$b\ll R$ 时 $F\simeq kq^2b/R^3$，与偏移同向，故球心零力位置不稳定。$b=R-a$ 且 $a\ll R$ 时回到平面吸引 $kq^2/(4a^2)$，方向与近壁检验相符。\end{drillsolution}
+\begin{drillsolution}{e3:drill:5}\textbf{逐次镜像并补上对角像，满足两边界}\par\nobreak
+图\ref{fig:e3:drill:5:s} 中先对 $x=0$ 反射，需 $-q$ 于 $(-a,b)$；再对 $y=0$ 反射，需 $-q$ 于 $(a,-b)$。为同时抵消第一像在另一平面产生的势，还需 $+q$ 于 $(-a,-b)$。任一轴上，关于该轴的两对电荷各自相消，故两边界均为零势。
+\typeout{ECFIG:fig:e3:drill:5:p}\fig{fig:e3:drill:5:p}{三个像均在真实第一象限之外；两负像分别吸引，对角同号像产生斜向排斥}{\begin{tikzpicture}
+
+\fill[blue!4](0,0)rectangle(3.1,2.7);\draw[thick](0,0)--(3.1,0)(0,0)--(0,2.7);\draw[guide](-2.6,0)--(0,0)(0,-2.2)--(0,0);
+\fill(1.6,1.3)circle(2pt)node[above]{$q:(a,b)$};
+\foreach \x/\y/\lab in {-1.6/1.3/{-q},1.6/-1.3/{-q},-1.6/-1.3/{+q}}{\draw[blue,dashed](\x,\y)circle(.1);\node[blue,below]at(\x,\y){$\lab$};}
+\draw[force](1.6,1.3)--(.6,1.3);\draw[force](1.6,1.3)--(1.6,.45);\draw[force](1.6,1.3)--(2.5,2.03125);
+\draw[guide](-1.6,-1.3)rectangle(1.6,1.3);\node[right]at(3.1,0){$x$};\node[above]at(0,2.7){$y$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把三个像的库仑力分别投影到两轴}\par\nobreak
+图\ref{fig:e3:drill:5:p} 的水平负像距真电荷 $2a$，只给负 $x$ 力；竖直负像只给负 $y$ 力；对角正像给斥力，其分量用位移 $(2a,2b)$ 除以距离 $2\sqrt{a^2+b^2}$ 投影。因此
+\[
+ F_x=-\frac{kq^2}{4a^2}+\frac{kq^2a}{4(a^2+b^2)^{3/2}},\quad
+ F_y=-\frac{kq^2}{4b^2}+\frac{kq^2b}{4(a^2+b^2)^{3/2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查合力方向与远离另一平面的极限}\par\nobreak
+两个分量均为负，电荷受力趋向两平面。$b\to\infty$ 时与另一平面有关的分量趋零，剩单平面结果，验证像电荷数量与符号。\end{drillsolution}
+\begin{drillsolution}{e3:drill:6}\textbf{以中心像把接地零势解升到指定电势}\par\nobreak
+图\ref{fig:e3:drill:6:s} 中接地球像 $q^\prime=-qR/d$ 已使表面零势。向 图\ref{fig:e3:drill:6:p} 的球心加像 $q_0=RV_0/k$，就使球面整体升至 $V_0$，且不破坏等势。因此球净量
+\[
+ Q=q_0+q^\prime=\frac{RV_0}{k}-\frac{qR}{d}.
+\]
+\typeout{ECFIG:fig:e3:drill:6:p}\fig{fig:e3:drill:6:p}{指定电势由外电源维持；球外的等效解仍由偏心像与中心像共同组成}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.8);\draw[blue,dashed](0,0)circle(.1);\draw[guide,blue](0,0)--(0,-.6);\node[blue]at(0,-.95){$q_0=RV_0/k$};\draw[blue,dashed](.81,0)circle(.1);\node[blue,above]at(.81,.2){$q'$};
+\fill(4,0)circle(2pt)node[above]{$q$};\draw[<->](0,1.4)--(4,1.4)node[midway,above]{$d$};
+\draw(0,-4.3)to[battery1,invert,l={$V_0$}](0,-2.8)--(0,-1.8);\node[ground]at(0,-4.3){};\node at(3,-2.7){球表面 $V=V_0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算两像作用力并求和}\par\nobreak
+真电荷受到中心像与偏心像的力之和为
+\[
+ F_r=\frac{kqq_0}{d^2}-\frac{kq^2Rd}{(d^2-R^2)^2}
+ =\frac{qRV_0}{d^2}-\frac{kq^2Rd}{(d^2-R^2)^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查零电势极限与外电源的电荷交换}\par\nobreak
+它可正可负。$V_0=0$ 回到接地球；$d$ 改变时 $Q$ 随之改变，外电源与球交换电荷。求系统能量变化时必须计入电源功，不能把这个过程当作球净量固定。\end{drillsolution}
+\begin{drillsolution}{e3:drill:7}\textbf{按同心圆环积分局部面密度}\par\nobreak
+图\ref{fig:e3:drill:7:s} 的圆域利用面密度 $\sigma(\rho)=-qd/[2\pi(d^2+\rho^2)^{3/2}]$，按同心圆环积分，
+\[
+ Q(s)=-qd\int_0^s\frac{\rho\dd\rho}{(d^2+\rho^2)^{3/2}}.
+\]
+换元时 $s$ 为固定圆域半径，$\rho$ 为积分变量。
+令 $u=d^2+\rho^2$、$\dd u=2\rho\dd\rho$，可逐步算得
+\[
+ \int_0^s\frac{\rho\dd\rho}{(d^2+\rho^2)^{3/2}}
+ =\frac12\int_{d^2}^{d^2+s^2}u^{-3/2}\dd u
+ =[-u^{-1/2}]_{d^2}^{d^2+s^2}
+ =\frac1d-\frac1{\sqrt{d^2+s^2}}.
+\]
+将该结果乘 $-qd$，便得到
+\[
+ Q(s)=-q+\frac{qd}{\sqrt{d^2+s^2}}.
+\]
+\typeout{ECFIG:fig:e3:drill:7:p}\fig{fig:e3:drill:7:p}{解答过程：感应面密度的半量半径}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,0)--(4.5,0)node[right]{$s/d$};\draw[axis](0,0)--(0,2.5)node[above]{$|Q(s)|/q$};\draw[world,domain=0:4,samples=60]plot(\x,{2*(1-1/sqrt(1+\x*\x))});\draw[guide](1.732,0)--(1.732,1)--(0,1);\draw[guide](0,2)--(4,2);\node[left]at(0,2){$1$};\node[below]at(1.732,0){$\sqrt3$};\node[left]at(0,1){$1/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由累计一半电量反求半径}\par\nobreak
+图\ref{fig:e3:drill:7:p} 要求 $Q(s)=-q/2$，即 $d/\sqrt{d^2+s^2}=1/2$，平方得到 $s^2=3d^2$，所以 $s=\sqrt3d$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查零半径和无穷大极限}\par\nobreak
+$s=0$ 电量零、$s\to\infty$ 电量 $-q$，两端检查正确。感应电荷高度集中在垂足附近，却没有有限的严格截止半径。\end{drillsolution}
+\begin{drillsolution}{e3:drill:8}\textbf{先由孤立电容与原势确定环的守恒电量}\par\nobreak
+图\ref{fig:e3:drill:8:s} 环原电量 $q=C_rU_0$，孤立移动使净量不变。环上电荷可以重新分布，但每个环点到球心仍为相同 $D$，每个微元的接地球像量都是 $-b\dd q/D$，所以无须先求环的局部分布。
+\typeout{ECFIG:fig:e3:drill:8:p}\fig{fig:e3:drill:8:p}{环上每个微元到球心距离均为 $D$；其球面像按同一比例缩放，形成球外真环对应的球内像环}{\begin{tikzpicture}
+
+\draw(0,0)circle(1.2);\draw(0,2.6)ellipse(2 and .4);\draw[blue,dashed](0,.347955)ellipse(.267658 and .053532);
+\fill(2,2.6)circle(2pt)node[right]{$\dd q$};\draw[guide](0,0)--(2,2.6)node[midway,right]{$D$};\fill[blue](.267658,.347955)circle(1.5pt);
+\draw(0,-1.2)--(0,-2)node[ground]{};\draw[<->](-2.7,0)--(-2.7,2.6)node[midway,left]{$h$};
+\draw[<->](0,2.6)--(2,2.6)node[midway,above]{$a$};\draw[<->](0,0)--(-.849,-.849)node[midway,left]{$b$};
+\draw[guide](.3,.3)--(2.7,.1)node[right]{像微元 $-b\dd q/D$};\node[below]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等距微元的同一像量比例积分}\par\nobreak
+由 图\ref{fig:e3:drill:8:p} 微元像量积分，
+\[
+ Q_g=-\frac bD\int\dd q
+ =-\frac{bC_rU_0}{\sqrt{a^2+h^2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明线截面与孤立电容为何不可省略}\par\nobreak
+若只给环半径和原电势而不说明细线截面，不能唯一算出 $q$：细环孤立电容还与导线粗细有关。应保留 $C_r$ 或补充初始总电量，不能把环误当作半径 $a$ 的金属球而使用 $4\pi\varepsilon_0a$。\end{drillsolution}

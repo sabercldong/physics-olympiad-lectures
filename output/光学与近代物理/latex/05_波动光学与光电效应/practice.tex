@@ -1,0 +1,154 @@
+\section{练习}
+
+\begin{question}
+\begin{drill}[插入薄片后的条纹移动]\label{d:51}
+双缝间距 \(d=0.300\,\mathrm{mm}\)，屏距 \(L=1.50\,\mathrm m\)，波长 \(600\,\mathrm{nm}\)。在上缝 \(S_1\) 后紧贴厚 \(t=3.00\,\mu\mathrm m\)、折射率 \(1.50\) 的薄片，忽略倾斜与反射。求条纹间距、零级明纹的移动方向及距离，并判断原中心 \(O\) 的明暗。
+\end{drill}
+\fig{fig:d51q}{练习：插入薄片后的条纹移动}{
+\begin{tikzpicture}
+\draw[world](0,-1)--(0,1) (6,-1.5)--(6,1.5);
+\fill(0,.4)circle(1.5pt)node[left]{$S_1$};\fill(0,-.4)circle(1.5pt)node[left]{$S_2$};
+\fill[gray!20](.3,.1)rectangle(.6,.7);\node[above]at(.45,.7){薄片};
+\draw[ray](.6,.4)--(6,.9);\draw[ray](0,-.4)--(6,.9);
+\node[right]at(6,.9){$P(y)$};\node[right]at(6,0){$O$};\draw[axis](6,0)--(6,1.8)node[above]{$+y$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[增透膜的两个条件]\label{d:52}
+空气、薄膜、基底折射率依次为 \(1.00,1.40,1.96\)，波长 \(\lambda_0=560\,\mathrm{nm}\) 的光正入射。求使两束主要反射光相消的最小非零膜厚，并检查该膜是否满足零反射所需的振幅条件。
+\end{drill}
+\fig{fig:d52q}{练习：增透膜的两个条件}{
+\begin{tikzpicture}
+\fill[gray!10](-2,-1)rectangle(2,0);\fill[gray!25](-2,-2)rectangle(2,-1);
+\draw[world](-2,0)--(2,0) (-2,-1)--(2,-1);
+\draw[ray](-.6,1.4)--(-.6,0);
+\node[right]at(.5,.7){空气 \(1.00\)};\node[right]at(.5,-.5){膜 \(1.40\)};
+\node[right]at(.5,-1.5){基底 \(1.96\)};
+\draw[dim](-1.5,-1)--(-1.5,0)node[midway,left]{$t$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[双缝条纹与单缝包络]\label{d:53}
+波长 \(500\,\mathrm{nm}\) 的光照射双缝，每缝宽 \(a=0.200\,\mathrm{mm}\)，中心距 \(d=0.500\,\mathrm{mm}\)，屏距 \(L=2.00\,\mathrm m\)。按近轴远场模型求单缝中央包络宽度、干涉因子的空间周期及中央包络内的干涉因子极大级次数。若每缝宽度加倍，波长、中心距和屏距不变，结论怎样改变？说明这些级次位置与总强度实际峰位的区别。
+\end{drill}
+\fig{fig:d53q}{等宽双缝与观察屏的几何参数；图中不标出待求条纹}{
+\begin{tikzpicture}
+\draw[world] (0,-1.8)--(0,-1.2) (0,-.8)--(0,.8) (0,1.2)--(0,1.8);
+\draw[world] (5,-1.8)--(5,1.8);\node[above] at (5,1.8){屏};
+\draw[axis] (5,-1.6)--(5,1.6) node[right]{$y$};
+\draw[aux] (0,0)--(5,0);\node[right] at (5,0){$O$};
+\draw[dim] (-.5,.8)--(-.5,1.2) node[midway,left]{$a$};
+\draw[dim] (-1,-1)--(-1,1) node[midway,left]{$d$};
+\draw[dim] (0,-2.1)--(5,-2.1) node[midway,below]{$L$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[正交偏振片之间插入第三片]\label{d:55}
+自然光强度为 \(I_0\)，先后通过透振方向互相垂直的两片理想偏振片，出射强度是多少？现于两者之间插入透振方向与第一片成 \(45^\circ\) 的第三片，求最终强度。忽略吸收以外的损失。
+\end{drill}
+\fig{fig:d55q}{练习：正交偏振片之间插入第三片}{
+\begin{tikzpicture}
+\draw[axis](-.7,0)--(6.5,0)node[right]{传播};
+\foreach \x in {0,5}{\draw[world](\x,-.9)--(\x,.9);}
+\node[above]at(0,.9){第一片：竖};\node[above]at(5,.9){末片：横};
+\draw[dashed](2.5,-.9)--(2.5,.9)node[above]{插入片：\(45^\circ\)};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[用两组截止电压求材料参数]\label{d:54}
+某光电管在频率 \(6.00\times10^{14}\,\mathrm{Hz}\)、\(8.00\times10^{14}\,\mathrm{Hz}\) 下的截止电压大小分别为 \(0.480\,\mathrm V,1.310\,\mathrm V\)。取 \(e=1.602\times10^{-19}\,\mathrm C\)，求普朗克常量的测量值、逸出功和截止频率。固定频率把光强加倍，截止电压怎样变化？
+\end{drill}
+\fig{fig:d54q}{练习：用两组截止电压求材料参数}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$\nu$};
+\draw[axis](0,0)--(0,2.5)node[above]{$U_s$};
+\fill(2,1)circle(2pt)node[left]{实验1};
+\fill(4,2)circle(2pt)node[above]{实验2};
+\draw[aux](2,1)--(4,1);\draw[dim](4.3,1)--(4.3,2)node[midway,right]{$0.830\,\mathrm V$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[圆孔逐渐闭合]\label{hw:m21}
+在亮着的小电珠与光屏之间放一带圆孔的遮光板，孔径由约 \(1\,\mathrm{cm}\) 逐渐缩小直至闭合。设光源包含可分辨的灯丝形状，光屏距离和观察条件合适。将以下主要现象按出现顺序排列：
+a. 完全黑暗；b. 小孔成像；c. 明显衍射图样；d. 主要由孔形决定的亮斑。
+\end{drill}
+\fig{fig:mh21q}{孔径改变，而光源与屏的位置不变}{
+\begin{tikzpicture}
+\node[draw] at (-1,0) {灯丝};
+\draw[world] (1,-1.2)--(1,-.35);\draw[world] (1,.35)--(1,1.2);
+\draw[world] (5,-1.5)--(5,1.5);
+\draw[ray] (-.5,.2)--(1,.25)--(5,.383);
+\draw[ray] (-.5,-.2)--(1,-.25)--(5,-.383);
+\draw[dim] (1.6,-.35)--(1.6,.35) node[midway,right] {$D\downarrow$};
+\node[right] at (5,1) {屏};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[增大双缝条纹间距]\label{hw:m22}
+用黄光观察双缝干涉，要增大条纹间距，下列措施哪一项有效？
+A. 换绿光；B. 换红光；C. 增大光强；D. 使光屏靠近双缝。其余条件保持不变。
+\end{drill}
+\fig{fig:mh22q}{比较同一对相邻亮纹中心的位置}{
+\begin{tikzpicture}
+\draw[world] (0,-1)--(0,1);\draw[world] (5,-1)--(5,1.6);
+\draw[axisline] (0,0)--(5,0);
+\draw[ray] (0,.3)--(5,1);\draw[ray] (0,-.3)--(5,1);
+\node[right] at (5,0) {零级};\node[right] at (5,1) {一级};
+\draw[dim] (6,0)--(6,1) node[midway,right] {$\Delta x$};
+\draw[dim] (0,-1.4)--(5,-1.4) node[midway,below] {$L$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[锌板与验电器]\label{hw:m23}
+清洁锌板与起初不带电的验电器相连，分别用足以引起锌板光电发射的紫外线、不能引起发射的红光照射，忽略漏电。判断：
+A. 紫外线可使指针偏转；B. 红光也可使指针偏转；
+C. 发射后锌板带负电；D. 指针与金属杆因带同种正电荷而排斥。
+\end{drill}
+\fig{fig:mh23q}{逸出电子离开锌板，锌板与验电器构成同一导体}{
+\begin{tikzpicture}
+\draw[world] (0,0)--(0,2)--(3,2)--(3,2.6);
+\draw[world,line width=2pt] (2.5,2.6)--(3.5,2.6);
+\draw (0,-.6) circle(.65);
+\draw[world] (0,0)--(0,-1.1);
+\draw[world] (0,-.3)--(.5,-.9);
+\draw[ray] (4.5,3.5)--(3.3,2.6) node[pos=0,above] {入射光};
+\draw[axis] (2.8,2.65)--(2.3,3.3) node[above] {$e^-$};
+\node[below] at (3,1.5) {锌板};
+\node[left] at (-.8,-.5) {验电器};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[改变波长测电子电荷量]\label{hw:m24}
+用 \(\lambda_1=3500\times10^{-10}\,\mathrm m\) 的光照射某金属，测得截止电压 \(U_1\)。光波长改变 \(500\times10^{-10}\,\mathrm m\) 后，截止电压增加 \(0.59\,\mathrm V\)。已知 \(h=6.63\times10^{-34}\,\mathrm{J\,s}\)，取 \(c=3.00\times10^8\,\mathrm{m/s}\)。求波长改变的方向及电子电荷量的大小。
+\end{drill}
+\fig{fig:mh24q}{同一阴极分别受两种波长照射，均调节反向电压直至电流截止}{\begin{tikzpicture}
+
+\foreach \x/\j/\l in {0/1/350,5.5/2/\lambda_2}{\begin{scope}[xshift=\x cm]
+\draw[world](-.3,-.6)rectangle(3.3,.6);
+\draw[very thick](0,-.4)--(0,.4)node[above]{$K$};
+\draw[very thick](3,-.4)--(3,.4)node[above]{$A$};
+\draw[ray](-.8,1.8)--(0,.1);\node[above]at(.3,1.4){$\lambda_{\j}$};
+\draw[axis](.6,0)--(2.2,0)node[midway,above]{$e^-$};
+\node[below]at(1.5,-.8){$V_K-V_A=U_{\j},\ I=0$};
+\end{scope}}
+\node[below,align=center]at(4.2,-1.5){$|\lambda_2-\lambda_1|=50\,\mathrm{nm}$\\$U_2-U_1=0.59\,\mathrm V$};
+
+\end{tikzpicture}}
+\end{question}
+

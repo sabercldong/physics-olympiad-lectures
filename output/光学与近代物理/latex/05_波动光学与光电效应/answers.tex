@@ -1,0 +1,313 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:51}\textbf{按下路减上路建立有符号光程差}\par\nobreak
+图\ref{fig:d51q}中 $y$ 向上为正，总光程差取下路减上路。玻璃取代同厚度空气，上路增加的是 $(n-1)t$，在总差中带负号。几何路程差为 \(r_2-r_1\simeq dy/L\)。上路增加 \(q=(n-1)t=1.50\,\mu\mathrm m=2.50\lambda\)，因此
+\[
+ \delta=\frac{dy}{L}-q,\qquad y_k=\frac{L}{d}(k\lambda+q).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求周期和新零级位置}\par\nobreak
+故 \(\boxed{\Delta y=\lambda L/d=3.00\,\mathrm{mm}}\)，
+\(\boxed{y_0=Lq/d=+7.50\,\mathrm{mm}}\)，向上缝即薄片一侧移动。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回原中心检验明暗和移动方向}\par\nobreak
+图\ref{fig:d51s}中整个条纹序列平移，周期保持不变。原中心 \(y=0\) 的总相位差为 \(-5\pi\)，在两路振幅相等时为 \(\boxed{\text{暗纹}}\)。正负号决定移动方向，不能只算附加光程的绝对值。
+\fig{fig:d51s}{练习\ref{d:51}的解答图：新零级向薄片所在侧移动；纵向屏坐标用毫米}{
+\begin{tikzpicture}
+\draw[axis](0,-2)--(0,2)node[above]{$y$};
+\foreach \y in {-1.5,-.75,0,.75,1.5}{\draw[thick](-.3,\y)--(.3,\y);}
+\node[below]at(0,-2.2){插片前};
+\begin{scope}[xshift=4.5cm]
+\draw[axis](0,-2)--(0,2)node[above]{$y$};
+\foreach \y in {-1.875,-1.125,-.375,.375,1.125,1.875}{\draw[thick](-.3,\y)--(.3,\y);}
+\node[right]at(.3,1.875){新零级 \(+7.50\)};
+\node[right]at(.3,0){原中心：暗};
+\node[below]at(0,-2.2){插片后};\end{scope}
+\draw[->,>=Stealth](1.1,.2)--(3.4,1.4)node[midway,above]{向上平移};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:52}\textbf{分别记录两个界面的反射相位}\par\nobreak
+图\ref{fig:d52q}的两个界面各产生一次 \(\pi\) 反射相位变化，二者相减为零。因此相消的最小非零厚度满足
+\[
+ 2n_ft=\frac{\lambda_0}{2},\qquad
+ \boxed{t=\frac{560}{4\times1.40}\,\mathrm{nm}=100\,\mathrm{nm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用正入射往返光程核对膜厚}\par\nobreak
+图\ref{fig:d52s}分辨了两个反射界面。计算按正入射，膜内往返的额外光程为 $2n_ft$，传播相位差正好为 $\pi$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查总反射系数的振幅匹配}\par\nobreak
+仅有相消相位仍不保证零反射；严格零反射还须将多次反射求和。本题
+\(n_f^2=1.40^2=1.96=n_0n_s\)，满足正入射无吸收单层膜的振幅匹配条件，所以设计波长下可实现零反射。
+直接用正文的总反射系数核对：$r_{0f}=(1-1.4)/(1+1.4)=-1/6$，$r_{fs}=(1.4-1.96)/(1.4+1.96)=-1/6$。四分之一波长厚度使传播因子为 $-1$，故总反射系数的分子 $r_{0f}-r_{fs}$ 为零。这一结论并非忽略透射系数后，把两个近似反射光束简单设为严格等幅。
+
+该结论限于给定波长及正入射。
+\fig{fig:d52s}{练习\ref{d:52}的解答图：两次反射相位相同，差异来自膜内往返传播}{
+\begin{tikzpicture}
+\draw[world](-2,0)--(2,0) (-2,-1.4)--(2,-1.4);
+\draw[ray](-1.4,1)--(-.6,0);\draw[ray](-.6,0)--(.2,1);
+\draw[ray](-.6,0)--(.3,-1.4);\draw[ray](.3,-1.4)--(1.2,0);
+\draw[ray](1.2,0)--(2,1);
+\node[above]at(.2,1){反射1：\(\pi\)};\node[above right]at(2,1){反射2：\(\pi\)};
+\draw[dim](-1.6,-1.4)--(-1.6,0)node[midway,left]{$t$};
+\node[below,align=center]at(.3,-1.7){路径为辨认界面而倾斜示意\\计算按正入射，额外光程为 \(2n_ft\)};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:53}\textbf{由第一暗纹求包络宽度和细纹周期}\par\nobreak
+图\ref{fig:d53q}给出缝板与屏的尺度。单缝第一暗纹满足 \(a\sin\theta=\pm\lambda\)，近轴时 \(y\simeq L\theta\)，所以中央包络的两边界为 \(y=\pm\lambda L/a\)，其宽度与干涉因子的空间周期分别为
+\[
+ \boxed{w_0=\frac{2\lambda L}{a}=10.0\,\mathrm{mm}},\qquad
+ \boxed{\Delta y=\frac{\lambda L}{d}=2.00\,\mathrm{mm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用严格不等式数出中央包络级次}\par\nobreak
+干涉因子在 \(y_k=k\lambda L/d\) 处取极大。该位置位于中央包络内的条件是 \(|y_k|<\lambda L/a\)，即 \(|k|<d/a=2.50\)，故 \(k=-2,-1,0,1,2\)，共 \(\boxed{5}\) 个级次。严格不等号排除了包络零点，不能把边界上的零强度算为亮纹。
+
+图\ref{fig:d53s}把包络边界与这些级次位置放在同一屏坐标中，计数由不等式得到，再用图检查。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新计算包络边界和级次数}\par\nobreak
+若 \(a\) 加倍，则 \(w_0=5.00\,\mathrm{mm}\)，干涉因子周期仍为 \(2.00\,\mathrm{mm}\)，\(|k|<1.25\)，仅剩 \(k=-1,0,1\)，共 \(\boxed{3}\) 个级次。缝宽改变包络，中心距决定干涉因子的周期，两种尺度不应混用。
+\fig{fig:d53s}{虚线为包络边界，短竖线为干涉因子的极大位置；不表示总强度严格峰位}{
+\begin{tikzpicture}
+\begin{scope}[x=.8cm]
+\draw[axis](-5.8,1)--(5.8,1)node[right]{$y/\mathrm{mm}$};
+\foreach \x in {-5,5}{\draw[dashed](\x,.8)--(\x,2);}
+\foreach \x in {-4,-2,0,2,4}{\draw[thick](\x,1)--(\x,1.6);\node[below]at(\x,1){\(\x\)};}
+\node[left]at(-5.8,1.6){原缝宽};
+\draw[axis](-5.8,-1)--(5.8,-1)node[right]{$y/\mathrm{mm}$};
+\foreach \x in {-2.5,2.5}{\draw[dashed](\x,-1.2)--(\x,0);}
+\foreach \x in {-2,0,2}{\draw[thick](\x,-1)--(\x,-.4);\node[below]at(\x,-1){\(\x\)};}
+\node[left]at(-5.8,-.4){缝宽加倍};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对总强度求导区别实际峰位}\par\nobreak
+有限缝宽时，总强度是两个因子的乘积，
+\[
+ I(y)=I(0)\left[\frac{\sin(\pi ay/\lambda L)}{\pi ay/\lambda L}\right]^2
+ \cos^2\!\left(\frac{\pi dy}{\lambda L}\right).
+\]
+在非中心的 \(y_k\) 处，干涉因子的导数为零，但包络的导数一般不为零，故乘积的导数未必为零。
+
+求实际峰位时，令 \(q=ay/(\lambda L)\)、\(r=d/a\)，在 $q\ne0$ 且光强非零处取对数：
+\[
+ \ln I=\ln I(0)+2\ln|\sin(\pi q)|-2\ln|\pi q|
+       +2\ln|\cos(\pi rq)|.
+\]
+逐项使用 $\dd\ln|f|/\dd q=f'/f$，有
+\begin{align*}
+ \frac1I\frac{\dd I}{\dd q}
+ &=2\frac{\pi\cos(\pi q)}{\sin(\pi q)}
+   -\frac2q+2\frac{-\pi r\sin(\pi rq)}{\cos(\pi rq)}\\
+ &=2\pi\cot(\pi q)-\frac2q-2\pi r\tan(\pi rq).
+\end{align*}
+又因 $\dd q/\dd y=a/(\lambda L)>0$，对 $y$ 求导为零等价于对 $q$ 求导为零。
+将上式除以2，实际非零峰位满足
+\[
+ \pi\cot(\pi q)-\frac1q-\pi r\tan(\pi rq)=0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用局部强度曲线核对峰的偏移}\par\nobreak
+数值求解给出原缝宽的正侧峰位约为 \(1.889\,\mathrm{mm}\)、\(3.684\,\mathrm{mm}\)，而非严格的2mm、4mm；缝宽加倍后，正侧峰位约为 \(1.586\,\mathrm{mm}\)。图\ref{fig:d53peak}放大后一情形右侧的一条亮纹，可直接看出实际峰偏向包络较高的一侧。这里的级次数仍分别为5和3，但总强度的各峰不再严格等间隔，\(\Delta y\) 应解释为干涉因子的周期。
+
+\fig{fig:d53peak}{缝宽加倍后右侧亮纹的局部放大；纵轴以该局部峰强度归一化}{
+\begin{tikzpicture}[x=3.6cm,y=2cm]
+\draw[axis] (.9,0)--(2.65,0) node[right]{$y/\mathrm{mm}$};
+\draw[axis] (1,-.05)--(1,1.2) node[above]{$I/I_{\text{局部峰}}$};
+\draw[world,domain=1:2.5,samples=160] plot(\x,{(sin(72*\x)/(.4*pi*\x))^2*cos(90*\x)^2/0.13269223});
+\draw[aux] (2,0)--(2,1.1);\draw[aux] (1.585969,0)--(1.585969,1);
+\foreach \x in {1,2,2.5}{\draw (\x,0)--(\x,-.035) node[below]{$\x$};}
+\node[above,align=center] at (1.59,1.05){实际峰\\$1.586$};
+\node[above,align=center] at (2.24,1.12){干涉因子极大\\$2.000$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:55}\textbf{先计算未插片时的正交通道}\par\nobreak
+未插片时，图\ref{fig:d55q}中第一片将自然光变为强度 \(I_0/2\) 的竖直线偏振光，末片与它正交，所以 \(\boxed{I_{\rm out}=0}\)。
+\fig{fig:d55s}{练习\ref{d:55}的解答图：每一步使用刚刚形成的偏振方向}{\begin{tikzpicture}
+
+\foreach \x/\lab in {0/竖直,3/斜向,6/水平}{
+\draw[world](\x,0)circle(.8);\node[below]at(\x,-1){\lab};}
+\draw[thick](0,-.7)--(0,.7);
+\draw[thick](2.5,-.5)--(3.5,.5);
+\draw[thick](5.3,0)--(6.7,0);
+\draw[axis](.9,0)--(2.1,0);\draw[axis](3.9,0)--(5.1,0);
+\node[above]at(0,1){$I_0/2$};\node[above]at(3,1){$I_0/4$};\node[above]at(6,1){$I_0/8$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿新的相邻透振方向逐片投影}\par\nobreak
+插入第三片后，必须按新的相邻透振方向逐片计算：
+\[
+ I_1=I_0/2,\qquad
+ I_2=(I_0/2)\cos^245^\circ=I_0/4,\qquad
+ \boxed{I_3=(I_0/4)\cos^245^\circ=I_0/8}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查末片面对的入射偏振已改变}\par\nobreak
+图\ref{fig:d55s}中线偏振方向依次从竖直变为 \(45^\circ\)，再变为水平。末片面对的已不是最初的竖直偏振，因此不能继续把首末片之间的 \(90^\circ\) 当作最后一次马吕斯定律的夹角。
+
+\end{drillsolution}
+
+\begin{drillsolution}{d:54}\textbf{两式相减消去同一材料的逸出功}\par\nobreak
+图\ref{fig:d54q}两次实验使用同一阴极，逸出功相同。分别写 \(eU_s=h\nu-W\)，相减得
+\[
+ \boxed{h=\frac{e(1.310-0.480)}{(8.00-6.00)\times10^{14}}
+ =6.65\times10^{-34}\,\mathrm{J\,s}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以斜率和一个测量点求逸出功}\par\nobreak
+先保留未取整的 \(h/e=4.150\times10^{-15}\,\mathrm{V\,s}\)，回代可得
+\[
+ \boxed{W/e=4.150\times10^{-15}(6.00\times10^{14})-0.480=2.01\,\mathrm V},
+ \quad\boxed{W=2.01\,\mathrm{eV}},
+\]
+\[
+ \boxed{\nu_0=W/h=4.84\times10^{14}\,\mathrm{Hz}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查阈频与光强改变的不同作用}\par\nobreak
+图\ref{fig:d54s}中的频率截距为 \(\nu_0\)，图线不经过原点。固定频率改变光强不改变单个光子的能量，故 \(\boxed{U_s\text{ 不变}}\)；在收集和量子效率相同的条件下饱和电流加倍。
+\fig{fig:d54s}{两测量点确定同一直线；以真实频率刻度表示横截距}{\begin{tikzpicture}
+
+\begin{scope}[x=.8cm,y=1.5cm]
+\draw[axis](0,0)--(9.4,0)node[right]{$\nu/(10^{14}\,\mathrm{Hz})$};
+\draw[axis](0,0)--(0,2.1)node[above]{$U_s/\mathrm V$};
+\draw[thick](4.843373,0)--(8.8,1.642);
+\fill(6,.480)circle(1.6pt);\fill(8,1.310)circle(1.6pt);
+\draw[aux](6,0)--(6,.480)--(0,.480);\draw[aux](8,0)--(8,1.310)--(0,1.310);
+\node[below]at(4.843373,0){$4.84$};\node[below]at(6,0){$6.00$};\node[below]at(8,0){$8.00$};
+\node[left]at(0,.480){$0.480$};\node[left]at(0,1.310){$1.310$};
+\node[above,align=center]at(5,2.15){斜率 $h/e=4.150\times10^{-15}\,\mathrm{V\,s}$};
+\end{scope}
+
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{hw:m21}\textbf{沿孔径减小的次序判断主要现象}\par\nobreak
+图\ref{fig:mh21q}只改变孔径，光源与屏的位置固定。孔大时，多个发光点的几何投影大范围叠加，主要表现为孔形亮斑；缩小到合适孔径后，不同物点的模糊斑变小，可见倒立灯丝像。继续缩小，衍射扩展成为限制分辨率的主因，几何小孔模型失效；孔完全闭合后无光到达屏。
+
+\fig{fig:mh21s}{固定物屏距离时，孔径决定两类模糊尺度；示意曲线不表示精确点扩散函数}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.5,0)node[right]{$D$};
+\draw[axis](0,0)--(0,3.7)node[above]{屏上模糊尺度};
+\draw[blue,thick,domain=.45:6,samples=80]plot(\x,{1.3/\x});
+\draw[red,thick](.3,.12)--(6,2.4);
+\node[blue,right]at(.5,3.1){衍射 $\sim\lambda v/D$};
+\node[red,above]at(4.8,2.4){几何 $\sim D(1+v/u)$};
+\draw[aux](1.8,0)--(1.8,2.7);
+\node[below]at(1.8,0){中间孔径};
+\node[above,align=center]at(3.4,4.2){大孔：孔形斑 $d$\ $\longrightarrow$ 合适孔径：倒像 $b$\\继续缩小：衍射 $c$\ $\longrightarrow$ 闭合：无光 $a$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较几何模糊与衍射模糊的尺度}\par\nobreak
+令物到孔的距离为 $u$、孔到屏的距离为 $v$。同一物点经孔内不同位置的几何投影，形成尺度约 $D(1+v/u)$ 的模糊斑；圆孔衍射尺度则约为 $\lambda v/D$。图\ref{fig:mh21s}的两条曲线一增一减，因此孔径存在折中范围。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定四种现象的顺序并检查极限}\par\nobreak
+故顺序为 \(\boxed{\mathrm{d\to b\to c\to a}}\)。图\ref{fig:mh21s}上方的顺序表示各阶段的主导特征，不意味着在某一孔径之前完全不存在衍射。圆孔的角分辨尺度约为 \(\lambda/D\)，因此孔并非越小像越清晰。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:m22}\textbf{以相邻同级中心的距离写干涉周期}\par\nobreak
+图\ref{fig:mh22q}以零级、一级亮纹中心的距离表示 \(\Delta x\)。由 \(\Delta x=\lambda L/d\)，换红光增大 \(\lambda\)，条纹变疏，所以选 \(\boxed{\mathrm B}\)。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐项检查波长、光强和屏距}\par\nobreak
+绿光波长更短，使间距减小；增大光强只改变强度；屏靠近双缝使 \(L\) 减小，也会使间距减小。
+\fig{fig:mh22s}{同一 \(L,d\) 下，红光的一级亮纹距中心更远}{
+\begin{tikzpicture}
+\draw[axis] (-3,0)--(3,0) node[right] {$x$};
+\draw[very thick] (0,-.25)--(0,1.2);
+\draw[very thick] (-1.3,0)--(-1.3,.5);\draw[very thick] (1.3,0)--(1.3,.5);
+\draw[very thick,dashed] (-2,0)--(-2,.9);\draw[very thick,dashed] (2,0)--(2,.9);
+\node[above] at (1.3,.5) {黄};\node[above] at (2,.9) {红};
+\node[above] at (0,1.2) {零级共点};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区别周期展宽与条纹整体平移}\par\nobreak
+图\ref{fig:mh22s}中的中央亮纹不移动，改变的是各级条纹距中心的位置，不是把全部条纹整体向同一方向平移。
+
+\end{drillsolution}
+
+\begin{drillsolution}{hw:m23}\textbf{用阈值判断紫外线和红光的作用}\par\nobreak
+图\ref{fig:mh23q}的锌板与验电器构成同一导体。题设紫外线满足 \(h\nu>W\)，电子可以逸出；红光低于阈值，不能通过延长通常照射时间产生同样效果。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据电子缺失判断导体净电荷}\par\nobreak
+失去电子后，导体中留下净正电荷，所以 A、D 对，B、C 错。
+\fig{fig:mh23s}{紫外线使电子逸出；同一导体上的净正电荷分布导致指针偏转}{\begin{tikzpicture}
+
+\draw[world] (0,0)--(0,2)--(3,2)--(3,2.6);
+\draw[world,line width=2pt](2.3,2.6)--(3.7,2.6);
+\draw(0,-.6)circle(.8);\draw[world](0,0)--(0,-1.1) (0,-.3)--(.6,-.95);
+\draw[ray,blue](4.8,3.7)--(3.4,2.6)node[pos=0,right]{紫外光 $h\nu>W$};
+\draw[axis,thick](2.8,2.7)--(1.8,3.6)node[above]{$e^-$ 逸出};
+\foreach \x in {2.5,3,3.5}{\node[above]at(\x,2.6){$+$};}
+\node[left]at(-.1,-.7){$+$};\node[right]at(.45,-.65){$+$};
+\draw[axis](.7,-.5)arc(-15:-55:.65);
+\node[right,align=left]at(1,-.65){指针与金属杆\\同种电荷排斥};
+\node[below,align=center]at(3,1.5){电子缺失后留下净正电荷\\不是正离子从板上流到指针};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿图核对指针排斥与电荷分布}\par\nobreak
+故选 \(\boxed{\mathrm{A,D}}\)。图\ref{fig:mh23s}中导体内部重新分布的是电子。实验常用紫外线而不能把普通紫色可见光一概视为足以使锌板发射的光。
+
+\end{drillsolution}
+
+\Needspace{10\baselineskip}
+
+\begin{drillsolution}{hw:m24}\textbf{由截止电压增大确定波长缩短}\par\nobreak
+图\ref{fig:mh24q}的两次测量使用同一金属，逸出功相同。截止电压增大意味着最大初动能增大，因此光子频率增大、波长缩短。故
+\[
+ \boxed{\lambda_2=350-50=300\,\mathrm{nm}}.
+\]
+\fig{fig:mh24s}{差分测量消去材料参数，斜率只包含 \(h/e\)}{
+\begin{tikzpicture}[y=.7cm]
+\draw[axis] (0,0)--(5.6,0) node[right] {$\nu$};
+\draw[axis] (0,0)--(0,3.3) node[above] {$U_s$};
+\draw[world] (1,0)--(4.8,2.85);
+\fill (2.6,1.2) circle(1.5pt) node[left] {$1$};
+\fill (4.2,2.4) circle(1.5pt) node[right] {$2$};
+\draw[aux] (2.6,1.2)--(4.2,1.2)--(4.2,2.4);
+\node[right] at (4.2,1.7) {$\Delta U=0.59\,\mathrm V$};
+\node[below] at (3.4,1.2) {$\Delta\nu>0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去逸出功并计算电荷量}\par\nobreak
+两次光电方程相减，逸出功消去：
+\[
+ e(U_2-U_1)
+ =hc\left(\frac1{\lambda_2}-\frac1{\lambda_1}\right).
+\]
+所以
+\[
+ \boxed{e=\frac{hc}{0.59}
+ \left(\frac1{300\times10^{-9}}-\frac1{350\times10^{-9}}\right)
+ \simeq1.61\times10^{-19}\,\mathrm C}.
+\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对差分所用坐标和电荷量纲}\par\nobreak
+图\ref{fig:mh24s}的两点位于同一条直线上；差分使用的是纵坐标之差，并不需要先知道阈值频率。量纲为 \((\mathrm{J\,s})(\mathrm{s^{-1}})/\mathrm V=\mathrm C\)，与电荷量一致。
+
+\end{drillsolution}

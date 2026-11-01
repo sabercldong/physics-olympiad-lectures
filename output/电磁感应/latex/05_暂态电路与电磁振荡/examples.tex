@@ -1,0 +1,560 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[电感电流的建立与有限时间电量]\label{em5:example:1}
+恒压源电动势 $E$、内阻 $r$，与电阻 $R$、理想电感 $L$ 串联，初始电流为零。求电流、到时刻 $T$ 的电量及相对于稳态电流少通过的总电量；判断“到完全稳定为止的总电量”是否有限。
+\end{example}
+\fig{fig:em5:example:1:s}{电源内阻与外电阻均在电感建立电流的串联通路中}{\begin{tikzpicture}
+\draw[world](4.5,2.4)--(4.5,1.95);\draw[world](4.5,0.35)arc(-90:90:.2);\draw[world](4.5,0.75)arc(-90:90:.2);\draw[world](4.5,1.15)arc(-90:90:.2);\draw[world](4.5,1.5500000000000003)arc(-90:90:.2);\draw[world](4.5,.35)--(4.5,0);
+\draw[world](0,0)--(4.5,0) (0,2.4)--(.8,2.4) (1.5,2.4)--(2.4,2.4) (3.1,2.4)--(4.5,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$E$};\draw[world](.8,2.2)rectangle(1.5,2.6)(2.4,2.2)rectangle(3.1,2.6);\node[above]at(1.15,2.65){$r$};\node[above]at(2.75,2.65){$R$};\node[right]at(4.9,1.1){$L$};\draw[flow,red](3.3,2.4)--(4,2.4)node[midway,above]{$i$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把内阻计入总电阻并解电流建立方程}\par\nobreak
+图\ref{fig:em5:example:1:s}中总电阻为 $R_\Sigma=R+r$，$L\dot i+R_\Sigma i=E$。令 $\tau=L/R_\Sigma$，先减去新稳态电流 $I_\infty=E/R_\Sigma$，令 $j=i-I_\infty$，则 $\dot j=-j/\tau$。分离变量，
+\[
+\int_{j(0)}^{j(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau},
+\qquad \ln\left|\frac{j(t)}{j(0)}\right|=-\frac t\tau,
+\]
+保持初始偏差的符号，得 $j(t)=j(0)\e^{-t/\tau}$；接通前电流为零，故 $j(0)=-I_\infty$，代回得 $i=E(1-\e^{-t/\tau})/R_\Sigma$。
+\fig{fig:em5:example:1:p}{有限时间的通过电量和暂态欠额对应不同面积；横轴以 $\tau=L/(R+r)$ 归一化}{\begin{tikzpicture}
+
+
+
+\draw[axis](-.2,0)--(5.6,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,2.6)node[above]{$i/I_\infty$};
+\fill[blue!15](0,0)--plot[domain=0:2,samples=50](\x,{2*(1-exp(-\x))})--(2,0)--cycle;
+\fill[red!12](0,2)--(5,2)--plot[domain=5:0,samples=90](\x,{2*(1-exp(-\x))})--cycle;
+\draw[world,blue,domain=0:5,samples=80]plot(\x,{2*(1-exp(-\x))});\draw[guide](0,2)--(5.1,2);\draw[guide](2,0)--(2,{2*(1-exp(-2))});
+\node[left]at(0,2){$1$};\node[below]at(2,0){$T/\tau$};\node at(1.3,.55){$Q(T)$};\node at(3,3.3){$\Delta Q$：上方面积延伸至无穷};
+
+
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对实际电流积分求有限时间电量}\par\nobreak
+图\ref{fig:em5:example:1:p}中曲线下面积给出通过电量。逐项积分 $Q(T)=\int_0^T (E/R_\Sigma)(1-\e^{-t/\tau})\dd t$，其中常量项为 $(E/R_\Sigma)[t]_0^T=ET/R_\Sigma$，指数项的原函数是 $-\tau\e^{-t/\tau}$，故其定积分为 $(E/R_\Sigma)[-\tau\e^{-t/\tau}]_0^T=(E\tau/R_\Sigma)(1-\e^{-T/\tau})$，相减得 $Q(T)=E[T-\tau(1-\e^{-T/\tau})]/R_\Sigma$；
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另积暂态欠额并判断无限时间总电量}\par\nobreak
+渐近水平线与曲线之间的面积为
+\[\Delta Q=\int_0^\infty\frac E{R_\Sigma}\e^{-t/\tau}\dd t
+=\frac E{R_\Sigma}\left[-\tau\e^{-t/\tau}\right]_0^\infty
+=\frac{E\tau}{R_\Sigma}=\frac{EL}{R_\Sigma^2}.\]
+前者随 $T$ 线性增长而发散，后者有限。不能把 $\Delta Q$ 写成接通到无穷时刻的总电量。电源内阻与外电阻都影响时间常量，不能漏掉 $r$。\par 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用起点斜率与短时间面积检查结果}\par\nobreak
+可进一步直接检查初始斜率：$\dot i(0)=E/L$，由此在图\ref{fig:em5:example:1:p}起点应画非零正切线；稳态处斜率趋零。短时间 $T\ll\tau$ 时，$Q(T)\simeq ET^2/(2L)$，与近似线性增长的电流所围三角形面积一致。\end{solution}
+\begin{question}\begin{example}[并联双灯的接通与续流]\label{em5:example:2}
+两个相同灯泡电阻均为 $R_d$。灯 $A_1$ 与理想电感 $L$ 串联后，与灯 $A_2$ 并联，接电动势 $E$、串联总内阻 $r$ 的电源。先接通至稳定，再断开电源支路，但保留两灯与电感组成的闭合回路。求两灯电流的变化并比较断开瞬间亮度。
+\end{example}
+\fig{fig:em5:example:2:s}{开关只断开电源支路；右侧的两灯与电感始终保有闭合通路}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3,0) (0,2.9)--(3,2.9);
+\draw[world](0,0)--(0,.25) (0,.85)--(0,1.3) (0,2.38)--(0,2.9);\draw[world](0,.55)circle(.3);\node at(0,.55){$A_1$};
+\foreach\j in {0,1,2}{\draw[world](0,{1.3+.36*\j})arc(-90:90:.18);}\node[left]at(-.35,1.8){$L$};
+\draw[world](3,0)--(3,1.1) (3,1.8)--(3,2.9);\draw[world](3,1.45)circle(.35);\node at(3,1.45){$A_2$};
+
+\draw[world](0,0)--(-3,0)--(-3,.55) (-3,1.25)--(-3,1.9) (-3,2.5)--(-3,2.9)--(-2.1,2.9) (-1.5,2.9)--(0,2.9);
+\draw[world](-3,.9)circle(.35);\node at(-3,1.05){$+$};\node at(-3,.7){$-$};\node[left]at(-3.4,.9){$E$};\draw[world](-3.2,1.9)rectangle(-2.8,2.5);\node[left]at(-3.3,2.2){$r$};
+\fill(-2.1,2.9)circle(1.5pt);\fill(-1.5,2.9)circle(1.5pt);\draw[world](-2.1,2.9)--(-1.5,2.9);\node[above]at(-1.8,3.1){$S$};
+
+\draw[flow,red](.7,2.5)--(.7,1.8)node[right]{$i_1$};\draw[flow,red](3.7,2.5)--(3.7,1.8)node[right]{$i_2$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由接通初态和公共端压列两支路关系}\par\nobreak
+图\ref{fig:em5:example:2:s}的两灯电流统一取自上而下。本步从接通电源的时刻计时。电感没有电压冲激，故初流 $i_1(0^+)=0$，此刻只有 $r$ 和第二只灯通流，$i_2(0^+)=E/(r+R_d)$。为避免把端口等效当作未经说明的结论，记共同端压为 $u$，由电源与第二支路有
+\[u=E-r(i_1+i_2)=R_di_2,\qquad i_2=\frac{E-ri_1}{r+R_d}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去公共端压求电感支路电流与稳态}\par\nobreak
+第一支路则满足 $L\dot i_1+R_di_1=u$。消去 $u,i_2$，得到
+\[L\dot i_1+\left(R_d+\frac{rR_d}{r+R_d}\right)i_1=\frac{ER_d}{r+R_d}.\]
+令括号为 $R_t$，右端为 $E_t$，再令 $j=i_1-E_t/R_t$。方程成为 $\dot j=-(R_t/L)j$，从 $j(0)=-E_t/R_t$ 积分，
+\[
+\int_{-E_t/R_t}^{j(t)}\frac{\dd z}{z}
+=-\frac{R_t}{L}\int_0^t\dd s,\qquad
+j(t)=-\frac{E_t}{R_t}\e^{-R_tt/L}.
+\]
+加回稳态项，解出 $i_1=(E_t/R_t)(1-\e^{-R_tt/L})$。其中 $E_t/R_t=E/(2r+R_d)$，所以稳态两灯电流同为 $I=E/(2r+R_d)$。
+\fig{fig:em5:example:2:p}{断开电源后，电感原方向电流经两只灯续流，第二灯的实际电流反向}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3,0) (0,2.9)--(3,2.9);
+\draw[world](0,0)--(0,.25) (0,.85)--(0,1.3) (0,2.38)--(0,2.9);\draw[world](0,.55)circle(.3);\node at(0,.55){$A_1$};
+\foreach\j in {0,1,2}{\draw[world](0,{1.3+.36*\j})arc(-90:90:.18);}\node[left]at(-.35,1.8){$L$};
+\draw[world](3,0)--(3,1.1) (3,1.8)--(3,2.9);\draw[world](3,1.45)circle(.35);\node at(3,1.45){$A_2$};
+
+\draw[flow,red](.7,2.5)--(.7,1.8)node[right]{$I_c=i_1$};\draw[flow,blue](3.7,.6)--(3.7,1.3)node[right]{$I_c=-i_2$};\node at(1.5,3.6){续流电阻 $2R_d$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{断开电源后按真实续流通路求两灯电流}\par\nobreak
+图\ref{fig:em5:example:2:p}表示断开后保留的真实续流回路，以下重新从断开瞬间计时。电感电流仍沿原第一支路向下，节点电流要求第二支路向上，故 $i_1=I_c,i_2=-I_c$。电感沿这条闭合路径克服两只灯的电阻降，有 $L\dot I_c+2R_dI_c=0$。用连续初值 $I_c(0)=I$ 积分，
+$\int_I^{I_c(t)}\dd z/z=-(2R_d/L)\int_0^t\dd s$，
+即 $\ln(I_c/I)=-2R_dt/L$，得 $I_c=I\e^{-2R_dt/L}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以电流平方比较亮度并核对全部磁能释放}\par\nobreak
+断开前各灯功率均为 $I^2R_d$，断开后瞬间仍为同一数值；方向反转不会改变平方热功率，因此两灯不会瞬间闪得更亮，而是随后一起变暗。总热
+\[
+Q_J=2R_dI^2\int_0^\infty\e^{-4R_dt/L}\dd t
+=2R_dI^2\left[-\frac L{4R_d}\e^{-4R_dt/L}\right]_0^\infty
+=\frac12LI^2,
+\]与断开前电感储能相等。\end{solution}
+\begin{question}\begin{example}[电感旁路灯泡的断开闪亮]\label{em5:example:3}
+理想电感 $L$ 与灯 $D_1$ 并联后，再与相同的灯 $D_2$ 串联接理想电源 $E$。两灯电阻均为 $R_d$。开关在电源与 $D_2$ 所在支路，断开后只留下 $L,D_1$ 组成的闭合回路。求接通瞬间、稳态和断开后的灯电流。
+\end{example}
+\fig{fig:em5:example:3:s}{电感旁路第一灯；开关断开后仅将电源和第二灯支路移出}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(3,0) (0,2.4)--(3,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$D_1$};\node[right]at(3.4,1.1){$L$};
+
+\draw[world](3,0)--(6,0)--(6,.35) (6,1.05)--(6,1.55) (6,2.25)--(6,2.4)--(4.8,2.4) (4.2,2.4)--(3,2.4);\draw[world](6,.7)circle(.35);\node at(6,.85){$+$};\node at(6,.5){$-$};\node[right]at(6.4,.7){$E$};\draw[world](6,1.9)circle(.35);\node at(6,1.9){$D_2$};\fill(4.2,2.4)circle(1.5pt);\fill(4.8,2.4)circle(1.5pt);\draw[world](4.2,2.4)--(4.8,2.4);\node[above]at(4.5,2.6){$S$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{接通时用零电感初流确定两灯初始电流}\par\nobreak
+图\ref{fig:em5:example:3:s}接通瞬间 $i_L=0$，电感支路不允许电流立即增大，两灯串联，各电流为 $E/(2R_d)$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立支路关系求两灯的建立过程}\par\nobreak
+在接通后的整个建立阶段，节点与回路方程为 $i_{D_2}=i_L+i_{D_1}$、$u=R_di_{D_1}=L\dot i_L$、$E=R_di_{D_2}+u$。消去两灯电流得
+\[L\dot i_L+\frac{R_d}{2}i_L=\frac E2.\]
+令 $\tau_{\mathrm{on}}=2L/R_d$、$j=i_L-E/R_d$，有
+$\dd j/j=-\dd t/\tau_{\mathrm{on}}$。由 $j(0)=-E/R_d$，
+\[
+\ln\left|\frac{j(t)}{-E/R_d}\right|=-\frac t{\tau_{\mathrm{on}}},
+\qquad j=-\frac E{R_d}\e^{-t/\tau_{\mathrm{on}}}.
+\]
+再用 $i_{D_1}=L\dot i_L/R_d$、$i_{D_2}=i_L+i_{D_1}$，逐项求导 $\dot i_L=(E/R_d)\e^{-t/\tau_{\mathrm{on}}}/\tau_{\mathrm{on}}$，解出
+\[i_L=\frac E{R_d}(1-\e^{-t/\tau_{\mathrm{on}}}),\quad
+i_{D_1}=\frac E{2R_d}\e^{-t/\tau_{\mathrm{on}}},\quad
+i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
+两灯的不同变化来自支路连接，不能只凭电感存在就一概判断一起渐亮。
+
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求切断前的电感储流与两灯状态}\par\nobreak
+稳态电感端电压为零，$D_1$ 被旁路而熄灭，$D_2$ 电流为 $E/R_d$，同样的电流经电感返回。
+\fig{fig:em5:example:3:p}{续流仍向下经过电感，随后向上经过 $D_1$，电源与 $D_2$ 已移出闭合路径}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(3,0) (0,2.4)--(3,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$D_1$};\node[right]at(3.4,1.1){$L$};
+
+\draw[flow,red](3,3.2)--(3,2.5)node[midway,right]{$i_L>0$};\draw[flow,blue](-.7,.5)--(-.7,1.3)node[left]{$|i_{D_1}|$};\node at(1.5,-.7){$i_L(0^+)=E/R_d$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿续流通路确定闪亮灯的方向、功率与衰减}\par\nobreak
+图\ref{fig:em5:example:3:p}断开后 $D_2$ 支路没有闭合通路而立即熄灭，$L$ 中原有 $I_0=E/R_d$ 电流经 $D_1$ 续流，方向与接通初刻 $D_1$ 中电流相反。故 $D_1$ 由断开前的熄灭变为瞬时功率 $E^2/R_d$，是最初两灯串联时功率的四倍，随后续流回路满足 $L\dot i+R_di=0$，以断开瞬间为$t=0$，分离变量并使用$i(0)=I_0>0$：
+\[
+\int_{I_0}^{i(t)}\frac{\dd \xi}{\xi}
+=-\frac{R_d}{L}\int_0^t\dd s,\qquad
+[\ln\xi]_{I_0}^{i(t)}=-\frac{R_d}{L}[s]_0^t.
+\]
+所以$\ln(i/I_0)=-R_dt/L$，取指数得$i=I_0\e^{-R_dt/L}$，保持原电流方向并衰减。释放总热 $LI_0^2/2$ 与原磁能相等。\end{solution}
+\begin{question}\begin{example}[电容并联电感的极性演变]\label{em5:example:4}
+理想电感 $L$ 与电容 $C$ 并联在 $A,B$ 两端，电容电压取 $u=V_A-V_B$。它们与 $R_1=3\,\Omega,R_2=6\,\Omega$ 的并联组串联，接 $E=5\,\mathrm V,r=1\,\Omega$ 电源。稳态后断开电源，电阻组接在悬空端而不再通流，仅余理想 LC 闭合。求电感初流及电容极性、振幅。
+\end{example}
+\fig{fig:em5:example:4:s}{开关在电源返回支路；断开后电阻组一端悬空，$A,B$ 之间的LC通路仍闭合}{\begin{tikzpicture}
+\draw[world](6,2.4)--(6,1.95);\draw[world](6,0.35)arc(-90:90:.2);\draw[world](6,0.75)arc(-90:90:.2);\draw[world](6,1.15)arc(-90:90:.2);\draw[world](6,1.5500000000000003)arc(-90:90:.2);\draw[world](6,.35)--(6,0);
+\draw[world](0,0)--(1,0) (1.6,0)--(7.8,0) (0,0)--(0,.85) (0,1.55)--(0,2.4)--(.7,2.4) (1.4,2.4)--(2,2.4) (4.5,2.4)--(7.8,2.4);
+\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$5\,\mathrm V$};\draw[world](.7,2.2)rectangle(1.4,2.6);\node[above]at(1.05,2.65){$r=1\,\Omega$};
+\draw[world](2,2.4)--(2,3.2)--(3,3.2) (3.7,3.2)--(4.5,3.2)--(4.5,2.4)--(4.5,1.6)--(3.7,1.6) (3,1.6)--(2,1.6)--(2,2.4);
+\draw[world](3,3)rectangle(3.7,3.4)(3,1.4)rectangle(3.7,1.8);\node[above]at(3.35,3.45){$R_1=3\,\Omega$};\node[below]at(3.35,1.35){$R_2=6\,\Omega$};
+\draw[world](7.8,0)--(7.8,.9) (7.8,1.3)--(7.8,2.4);\draw[world](7.35,.9)--(8.25,.9) (7.35,1.3)--(8.25,1.3);\node[right]at(8.35,1.1){$C$};\node[left]at(5.9,1.1){$L$};\fill(6,2.4)circle(2pt)node[above]{$A$};\fill(6,0)circle(2pt)node[below]{$B$};
+\fill(1,0)circle(1.5pt);\fill(1.6,0)circle(1.5pt);\draw[world](1,0)--(1.6,0);\node[below]at(1.3,-.2){$S$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求断开前的直流稳态电流与电容电压}\par\nobreak
+图\ref{fig:em5:example:4:s}中切换前电感稳态相当于导线，电容电压为零，电感电流 $I_0=E/[r+(R_1\parallel R_2)]=5/3\,\mathrm A$，由 $A$ 流向 $B$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留两个连续状态并用节点关系确定初始导数}\par\nobreak
+切换后约定 $u=V_A-V_B$，电感流向仍取 $A\to B$，节点方程 $i_L+C\dot u=0$，电感关系 $L\dot i_L=u$。
+\fig{fig:em5:example:4:p}{小正时间内电感电流仍向下，电容上极板先带负电；电压曲线从零向负值发展}{\begin{tikzpicture}
+\draw[world](2.5,2.4)--(2.5,1.95);\draw[world](2.5,0.35)arc(-90:90:.2);\draw[world](2.5,0.75)arc(-90:90:.2);\draw[world](2.5,1.15)arc(-90:90:.2);\draw[world](2.5,1.5500000000000003)arc(-90:90:.2);\draw[world](2.5,.35)--(2.5,0);
+\draw[world](0,0)--(2.5,0) (0,2.4)--(2.5,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4);\draw[world](-.4,.9)--(.4,.9) (-.4,1.3)--(.4,1.3);\node[left]at(-.5,1.1){$C$};\node[right]at(2.9,1.1){$L$};\node[left]at(0,2.4){$A$};\node[left]at(0,0){$B$};\node[right]at(.45,1.5){$-q$};\node[right]at(.45,.6){$+q$};\draw[flow,red](2.5,3.2)--(2.5,2.5)node[midway,right]{$i_L$};
+\begin{scope}[xshift=5.5cm]\draw[axis](-.2,0)--(6.8,0)node[right]{$\omega_0t$};\draw[axis](0,-1.5)--(0,1.6)node[above]{$u/[I_0\sqrt{L/C}]$};\draw[world,domain=0:6.283,samples=100]plot(\x,{-sin(\x r)});\node[below]at(1.571,0){$\pi/2$};\node[below]at(3.142,0){$\pi$};\node[below]at(6.283,0){$2\pi$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解电压振荡方程并还原电感电流}\par\nobreak
+图\ref{fig:em5:example:4:p}给出 $u(0)=0,\dot u(0)=-I_0/C$，对节点方程求导，并用 $\dot i_L=u/L$，得到 $C\ddot u+u/L=0$，即 $\ddot u+\omega_0^2u=0$。试取 $u=\e^{st}$，特征方程为 $s^2+\omega_0^2=0$，根 $s=\pm\mathrm j\omega_0$ 给出实通解 $u=A\cos\omega_0t+D\sin\omega_0t$。求导为 $\dot u=-A\omega_0\sin\omega_0t+D\omega_0\cos\omega_0t$，初压使 $A=0$，初始导数使 $D\omega_0=-I_0/C$。因此
+\[u=-I_0\sqrt{L/C}\sin(t/\sqrt{LC}),\quad i_L=I_0\cos(t/\sqrt{LC}).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由初始导数判断最先出现的极性并检查振幅}\par\nobreak
+切换的严格瞬间电容仍未带电；紧接着 $u<0$，接 $A$ 的极板带负电，接 $B$ 的极板带正电。最大电压 $I_0\sqrt{L/C}$ 来自初始磁能全部转化为电场能。不能把“瞬间”与“瞬间以后”混用，也不能说电感电流不变而保持到所有后续时刻。\end{solution}
+\begin{question}\begin{example}[双电源切换后的自感电动势]\label{em5:example:5}
+电感 $L=2\,\mathrm H$，切换前由两个同向供电的 $12\,\mathrm V$ 电源并联供电：一路串联内阻 $1\,\Omega$ 和 $2\,\Omega,9\,\Omega$，另一路仅串内阻 $1\,\Omega$。稳态后移去第一电源，把其 $9\,\Omega$ 电阻改与 $15\,\Omega$ 串联并接在电感两端，第二电源保留。求切换后电流及初始自感电动势。
+\end{example}
+\fig{fig:em5:example:5:s}{切换前两电源经各自串联电阻供电，稳态电感电流为两路电流之和}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(6,0) (0,2.4)--(6,2.4);
+\foreach\x in {0,6}{\draw[world](\x,0)--(\x,.25) (\x,.95)--(\x,1.3) (\x,2)--(\x,2.4);\draw[world](\x,.6)circle(.35);\node at(\x,.75){$+$};\node at(\x,.4){$-$};\draw[world]({\x-.2},1.3)rectangle({\x+.2},2);\node at(\x,-.6){$12\,\mathrm V$};}
+\node[left]at(-.3,1.65){$(1+2+9)\,\Omega$};\node[right]at(6.3,1.65){$1\,\Omega$};\node[right]at(3.4,1.1){$L=2\,\mathrm H$};\draw[flow,red](3,3.2)--(3,2.5)node[midway,right]{$i(0^-)$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在切换前电路求两电源分别提供的电流}\par\nobreak
+图\ref{fig:em5:example:5:s}稳态电感短接，两电源各供 $12/12=1\,\mathrm A$ 与 $12/1=12\,\mathrm A$，故 $i(0^-)=13\,\mathrm A$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对切换后的网络分别求开路端压与等效电阻}\par\nobreak
+图\ref{fig:em5:example:5:p}给出切换后的实际网络。求端口等效时暂将电感开路，其余网络是12V电源及1Ω内阻向24Ω支路供电，开路端压由分压得到 $12\times24/(1+24)$。再把独立电压源置零，端口看见1Ω与24Ω并联，故电感端口的戴维南电压为 $E_t=12\times24/25=288/25\,\mathrm V$，等效电阻 $R_t=1\parallel24=24/25\,\Omega$，新稳态电流为 $12\,\mathrm A$。
+\fig{fig:em5:example:5:p}{切换后的实际网络：保留第二电源，$9\Omega$ 与 $15\Omega$ 串联负载接到电感两端}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(6,0) (0,2.4)--(6,2.4) (0,0)--(0,.25) (0,.95)--(0,1.3) (0,2)--(0,2.4) (6,0)--(6,.8) (6,1.5)--(6,2.4);
+\draw[world](0,.6)circle(.35);\node at(0,.75){$+$};\node at(0,.4){$-$};\node[left]at(-.4,.6){$12\,\mathrm V$};\draw[world](-.2,1.3)rectangle(.2,2);\node[left]at(-.3,1.65){$1\,\Omega$};\draw[world](5.8,.8)rectangle(6.2,1.5);\node[right]at(6.3,1.15){$(9+15)\,\Omega$};\node[right]at(3.4,1.1){$L$};\draw[flow,red](3,3.2)--(3,2.5)node[midway,right]{$i$};\node at(3,-.7){$E_t=288/25\,\mathrm V,\quad R_t=24/25\,\Omega$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留电感初流并区分被动端压与自感电动势}\par\nobreak
+图\ref{fig:em5:example:5:p}按流入电感端定义电压，$u_L=E_t-R_ti$，因此 $u_L(0^+)=-24/25\,\mathrm V$，自感电动势为 $+24/25\,\mathrm V$，维持原电流方向。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{写出完整暂态并检查连续性和终态}\par\nobreak
+时间常量 $\tau=L/R_t=25/12\,\mathrm s$。把电流数值以安培计，令 $j=i-12$，则 $\dot j=-12j/25$、$j(0)=1$。分离变量积分，
+\[
+\int_1^{j(t)}\frac{\dd z}{z}=-\frac{12}{25}\int_0^t\dd s,
+\qquad j(t)=\e^{-12t/25}.
+\]
+自感电动势由 $-L\dot i=-2(-12/25)\e^{-12t/25}$ 还原，所以
+\[i(t)=12+\e^{-12t/25}\,\mathrm A,\qquad\varepsilon_L(t)=\frac{24}{25}\e^{-12t/25}\,\mathrm V.\]
+自感电动势在切换后最大，随后衰减为零；电感电流始终连续，电压则可以在切换时改变。\end{solution}
+\begin{question}\begin{example}[两根零电阻导棒的相对振荡]\label{em5:example:6}
+两根质量均为 $m$、长度均为 $l$ 的棒在水平导轨上，初始位置 $x_2=x_0,x_1=0$，均静止。回路零电阻、恒定自感 $L$，磁场向纸里。瞬时冲量使右棒获得速度 $v_0$。忽略冲量期间磁作用的冲量，求以后两棒位置和电流；要求间距变化远小于 $x_0$。
+\end{example}
+\fig{fig:em5:example:6:s}{冲量结束后的初态：左棒静止、右棒速度 $v_0$，回路初始无流}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0) (0,2.2)--(1.2,2.2) (2.8,2.2)--(4,2.2);\foreach\n in {0,...,3}{\draw[world]({1.2+.4*\n},2.2)arc(180:0:.2);}\draw[world,very thick](0,0)--(0,2.2) (4,0)--(4,2.2);\node at(2,1.1){$\otimes B$};\node at(2,2.9){$L,\ R=0$};
+\node[left]at(0,1.1){$m$};\node[right]at(4,1.1){$m$};\draw[dim](0,-.6)--(4,-.6)node[midway,below]{$x_0$};\node at(0,3.6){$v_1(0)=0$};\draw[flow](4,3.6)--(5.2,3.6)node[right]{$v_0$};\draw[dim](5.2,0)--(5.2,2.2)node[midway,right]{$l$};\node[below]at(0,-1.2){$x_1(0)=0$};\node[below]at(4,-1.2){$x_2(0)=x_0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定顺时针参考并由总磁链求相对位移回复力}\par\nobreak
+在图\ref{fig:em5:example:6:s}中令 $k=Bl$，$\xi=x_2-x_1-x_0$，回路正向取顺时针。冲量后初始电流仍为零，磁链守恒给出 $Li+k\xi=0$。右棒受力 $ki$、左棒受力 $-ki$，分别写 $m\ddot x_2=ki$、$m\ddot x_1=-ki$，相减得到 $\ddot\xi=2ki/m$；移项后，约化质量 $\mu=m/2$ 满足 $\mu\ddot\xi=ki=-k^2\xi/L$。
+\fig{fig:em5:example:6:p}{间距增加时电流逆时针，两棒受力相反；相对振荡与质心匀速同时存在}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(4,0) (0,2.2)--(1.2,2.2) (2.8,2.2)--(4,2.2);\foreach\n in {0,...,3}{\draw[world]({1.2+.4*\n},2.2)arc(180:0:.2);}
+\draw[world,very thick](0,0)--(0,2.2) (4,0)--(4,2.2);\node at(2,2.9){$L,\ R=0$};\node at(2,1.1){$\otimes B$};
+\draw[flow,red](0,1.7)--(0,1)node[left]{$-i>0$};\draw[flow,red](4,.5)--(4,1.2)node[right]{$-i>0$};
+\draw[force,blue](0,.55)--(1.1,.55)node[midway,below]{$-ki$};\draw[force,blue](4,1.75)--(2.9,1.75)node[midway,above]{$ki$};
+\node[above]at(0,2.4){$m$};\node[above]at(4,2.4){$m$};\draw[dim](0,-.8)--(4,-.8)node[midway,below]{$x_2-x_1=x_0+\xi,\quad\xi>0$};
+
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用冲量后的相对初速求相对振荡}\par\nobreak
+图\ref{fig:em5:example:6:p}中 $\Omega=k\sqrt{2/(mL)}$，$\xi(0)=0,\dot\xi(0)=v_0$。由 $\ddot\xi+\Omega^2\xi=0$ 的特征方程 $s^2+\Omega^2=0$，写 $\xi=A\cos\Omega t+D\sin\Omega t$；其导数为 $-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。两初态依次给出 $A=0,D=v_0/\Omega$，故 $\xi=v_0\sin\Omega t/\Omega$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另求质心匀速运动，再还原两棒位置与电流}\par\nobreak
+先把两受力式相加，可得 $\ddot X=0$，其中 $X=(x_1+x_2)/2$。冲量后 $X(0)=x_0/2,\dot X(0)=v_0/2$，先积 $\dot X(t)-v_0/2=\int_0^t0\,\dd s=0$，再积 $X(t)-x_0/2=\int_0^t(v_0/2)\dd s=v_0t/2$，所以质心位置为 $x_0/2+v_0t/2$，因此
+\begin{align*}x_2&=x_0+v_0t/2+\frac{v_0}{2\Omega}\sin\Omega t,\\x_1&=v_0t/2-\frac{v_0}{2\Omega}\sin\Omega t,\\i&=-\frac{kv_0}{L\Omega}\sin\Omega t.\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查初速度、总动量及固定自感近似的范围}\par\nobreak
+检查 $\dot x_2(0)=v_0,\dot x_1(0)=0$，且 $mv_1+mv_2=mv_0$。固定自感近似要求 $v_0/\Omega\ll x_0$；没有电阻，运动不会自动变成两棒共同匀速。\end{solution}
+\begin{question}\begin{example}[有限充电脉冲后的反向换接]\label{em5:example:7}
+电容 $C$ 初始无电，经 $R$ 接恒压 $+E$，在 $t=T$ 时将电源反接为 $-E$，电阻和电容接线不变。求电容电压、换接后第一次电压为零的时间，以及两个阶段的电阻热。电压与电流均按充入电容上极板为正。
+\end{example}
+\fig{fig:em5:example:7:s}{电源参考端压在 $T$ 时由 $+E$ 改为 $-E$；电容上端电压和充入电流的参考不变}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)--(4,.9) (4,1.3)--(4,2.4)--(2,2.4) (1.2,2.4)--(0,2.4)--(0,1.55) (0,.85)--(0,0);
+\draw[world](0,1.2)circle(.35);\node at(0,1.35){$+$};\node at(0,1){$-$};\node[left]at(-.4,1.2){$e_s$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};
+\draw[world](3.55,.9)--(4.45,.9) (3.55,1.3)--(4.45,1.3);\node[right]at(4.55,1.1){$C$};\node[left]at(3.5,1.6){$+$};\node[left]at(3.5,.6){$-$};\draw[flow,red](2.5,2.4)--(3.5,2.4)node[midway,above]{$i$};\node at(2,-.7){$e_s=+E\ (0<t<T),\quad e_s=-E\ (t>T)$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求有限充电脉冲末端的真实电压}\par\nobreak
+由图\ref{fig:em5:example:7:s}的上极板参考方向，回路满足 $RC\dot u+u=e_s$。令 $\tau=RC$，第一阶段从 $u(0)=0$ 出发，
+\[
+\int_0^{u(t)}\frac{\dd z}{E-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad -\ln\frac{E-u}{E}=\frac t\tau,
+\]
+所以 $u=E(1-\e^{-t/\tau})$，故切换电压 $U_T=E(1-\e^{-T/\tau})$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以同一电压初值接续反向电源阶段}\par\nobreak
+电压连续，第二阶段以 $s=t-T$ 计时。方程变为 $\tau\dot u+u=-E$，令 $w=u+E$，此时$\dd w/w=-\dd s/\tau$，初值为$w(0)=U_T+E$。因此
+\[
+\int_{U_T+E}^{w(s)}\frac{\dd \xi}{\xi}
+=-\int_0^s\frac{\dd \sigma}{\tau},
+\qquad
+[\ln\xi]_{U_T+E}^{w(s)}=-\frac{s}{\tau}.
+\]
+即$\ln[w(s)/(U_T+E)]=-s/\tau$。还原电压并用链式法则求导，
+\[u=-E+(U_T+E)\e^{-s/\tau},\qquad i=C\dot u=-\frac{U_T+E}{R}\e^{-s/\tau}.\]
+\fig{fig:em5:example:7:p}{示例取 $T=\tau$：电源端压阶跃反号，电容电压连续并稍后过零}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.5,0)node[right]{$t/\tau$};\draw[axis](0,-1.6)--(0,1.8)node[above]{$u/E,\ e_s/E$};
+\draw[guide](0,1)--(1,1) (1,-1)--(5,-1);\draw[world,blue,domain=0:1,samples=40]plot(\x,{1-exp(-\x)});\draw[world,blue,domain=1:5,samples=80]plot(\x,{-1+(2-exp(-1))*exp(-(\x-1))});
+\fill(1,{1-exp(-1)})circle(2pt);\draw[guide](1,0)--(1,{1-exp(-1)});\draw[guide]({1+ln(2-exp(-1))},0)--({1+ln(2-exp(-1))},-1.4);
+\node at(1.7,1.05){$U_T/E$};\node[below]at(1,-.1){$T/\tau$};\node[below]at({1+ln(2-exp(-1))},-1.4){$(T+s_0)/\tau$};\node[left]at(0,1){$1$};\node[left]at(0,-1){$-1$};\node[blue]at(3,.8){电容电压};\node at(3,1.5){虚线：电源端压};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分电流立即反向与电容稍后过零的时刻}\par\nobreak
+图\ref{fig:em5:example:7:p}中反向电源并不使电容电压瞬间反号，而是使电流立即改为负值。令第二阶段 $u=0$，得到 $s_0=\tau\ln[(U_T+E)/E]$；若从最初接通计时，应再加 $T$。$T\to0$ 时 $s_0\to0$，长脉冲时趋于 $\tau\ln2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分阶段积分焦耳热并核对反接电源的有向功}\par\nobreak
+指数项的原函数为 $-(\tau/2)\e^{-2t/\tau}$，因为求导时指数的 $-2/\tau$ 与前系数相消。两阶段分别使用有限终点和无穷终点：
+\begin{align*}
+Q_1&=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^T
+=\frac{CE^2}{2}(1-\e^{-2T/\tau}),\\
+Q_2&=\frac{(U_T+E)^2}{R}
+\left[-\frac\tau2\e^{-2s/\tau}\right]_0^\infty
+=\frac C2(U_T+E)^2.
+\end{align*}反向电源做功为 $(-E)C(-E-U_T)=CE(E+U_T)>0$，且它加上初始电能 $CU_T^2/2$，减去最终 $CE^2/2$，正好等于 $Q_2$。反接阶段电源依然供能，不能因电源符号负就判断其吸收能量。\end{solution}
+\begin{question}\begin{example}[限压续流的终止时刻与能量分配]\label{em5:example:8}
+电感初流 $I_0>0$。移去原电源后，电流沿原方向经电阻 $R$ 和理想限压支路续流。限压支路导通时沿电流方向恒有压降 $V_c>0$，电流降为零后截止，不允许反向。求续流持续时间、流经限压支路的电量及其吸收能量，讨论 $R\to0$。
+\end{example}
+\fig{fig:em5:example:8:s}{续流经电阻与单向限压元件；导通时沿电流方向的限压端压为正}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);
+\draw[world](0,0)--(3.5,0)--(3.5,.65) (3.5,1.75)--(3.5,2.4)--(2,2.4) (1.2,2.4)--(0,2.4);\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\node[left]at(-.2,1.1){$L$};
+\draw[world](3.15,.65)rectangle(3.85,1.75);\node at(3.5,1.2){$V_c$};\node[right]at(3.9,1.65){$+$};\node[right]at(3.9,.75){$-$};\node at(3.5,-.7){限压支路：$i=0$ 后截止};\draw[flow,red](2.3,2.4)--(3.2,2.4)node[midway,above]{$i$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{只在正电流导通阶段求续流解}\par\nobreak
+图\ref{fig:em5:example:8:s}的电流沿顺时针流动，电感端电压必须补偿两个被动压降，因此 $L\dot i+Ri+V_c=0$。只在 $i>0$ 的导通阶段，分离变量得
+\[
+\int_{I_0}^{i(t)}\frac{\dd z}{Rz+V_c}=-\int_0^t\frac{\dd s}{L},
+\qquad \frac1R\ln\frac{Ri+V_c}{RI_0+V_c}=-\frac tL.
+\]
+这里以 $y=Rz+V_c$ 换元，$\dd z=\dd y/R$，因此对数前有 $1/R$。指数化并移项，得
+\[i=(I_0+V_c/R)\e^{-Rt/L}-V_c/R.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求第一次到零的截止事件并终止原方程}\par\nobreak
+令它第一次到零，$t_c=(L/R)\ln(1+RI_0/V_c)$。到这一时刻限压支路截止，此后 $i=0$，不能继续沿指数公式算出负电流。
+\fig{fig:em5:example:8:p}{归一化示例 $RI_0/V_c=3$：电流到零即截止，指数解的负值延拓不再适用}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(3.9,0)node[right]{$t/(L/R)$};\draw[axis](0,-.8)--(0,1.4)node[above]{$i/I_0$};
+\draw[world,blue,domain=0:1.386294,samples=60]plot(\x,{(4*exp(-\x)-1)/3});\draw[world,blue](1.386294,0)--(3.5,0);\draw[red,dashed,domain=1.386294:3.5,samples=50]plot(\x,{(4*exp(-\x)-1)/3});
+\draw[guide](1.386294,0)--(1.386294,-.6);\node[left]at(0,1){$1$};\node[below]at(1.386294,-.6){$t_c/(L/R)=\ln4$};\node[red]at(3.1,-1.4){原公式延拓};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分有效电流求限压吸能与电阻热}\par\nobreak
+图\ref{fig:em5:example:8:p}标出的曲线在 $t_c$ 截断。只对有效导通时间积分，
+\[
+Q_e=\left[-\frac LR\left(I_0+\frac{V_c}{R}\right)\e^{-Rt/L}
+-\frac{V_c}{R}t\right]_0^{t_c}.
+\]
+用截止条件 $(I_0+V_c/R)\e^{-Rt_c/L}=V_c/R$ 化简，得 $Q_e=(L/R)I_0-(V_c/R)t_c$，故限压元件吸收 $W_c=V_cQ_e$。初始磁能全部耗散，电阻热为 $Q_R=LI_0^2/2-W_c$。也可用原方程乘以 $i$ 后积分，逐项得到 $\Delta(Li^2/2)+Q_R+W_c=0$，说明没有遗漏截止事件的能量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在原方程中检查零电阻极限及能量去向}\par\nobreak
+当 $R\to0$，直接在微分方程中取极限得 $i=I_0-V_ct/L$、$t_c=LI_0/V_c$、$Q_e=LI_0^2/(2V_c)$。此时全部磁能由限压支路吸收，电阻热趋零。对有限 $R$，提高限压值会缩短续流时间，但也提高开关承受的端电压。\end{solution}
+\begin{question}\begin{example}[正弦电源接通相位决定的暂态电流]\label{em5:example:9}
+串联 $R,L$ 接电压 $e=E_m\sin(\omega t+\beta)$，$t=0$ 接通前电流为零。求完整电流，找出不产生指数暂态的接通相位，并讨论 $R\to0$ 时从电压过零点接通的最大电流。
+\end{example}
+\fig{fig:em5:example:9:s}{正弦源、串联电阻与电感；电压和电流沿同一供电参考方向取值}{\begin{tikzpicture}
+\draw[world](4,2.4)--(4,1.95);\draw[world](4,0.35)arc(-90:90:.2);\draw[world](4,0.75)arc(-90:90:.2);\draw[world](4,1.15)arc(-90:90:.2);\draw[world](4,1.5500000000000003)arc(-90:90:.2);\draw[world](4,.35)--(4,0);
+\draw[world](0,0)--(4,0) (0,2.4)--(1.2,2.4) (2,2.4)--(4,2.4) (0,0)--(0,.85) (0,1.55)--(0,2.4);\draw[world](0,1.2)circle(.35);\node at(0,1.2){$\sim$};\node[left]at(-.4,1.2){$e$};\node[left]at(-.1,1.8){$+$};\draw[world](1.2,2.2)rectangle(2,2.6);\node[above]at(1.6,2.65){$R$};\node[right]at(4.4,1.1){$L$};\draw[flow,red](2.4,2.4)--(3.4,2.4)node[midway,above]{$i$};\node at(2,-.7){$e=E_m\sin(\omega t+\beta),\quad i(0)=0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求正弦特解并用零初流确定自然项}\par\nobreak
+图\ref{fig:em5:example:9:s}按电源供电方向写 $L\dot i+Ri=E_m\sin(\omega t+\beta)$。令 $Z=\sqrt{R^2+\omega^2L^2}$、$I_m=E_m/Z$、$\phi=\arctan(\omega L/R)$，设 $\theta=\omega t+\beta$，用待定系数取特解 $a\sin\theta+b\cos\theta$。其导数为 $\omega a\cos\theta-\omega b\sin\theta$；代入方程后比较同类项，
+\[
+Ra-\omega Lb=E_m,\qquad \omega La+Rb=0.
+\]
+解得 $a=E_mR/Z^2$、$b=-E_m\omega L/Z^2$。用 $\cos\phi=R/Z,\sin\phi=\omega L/Z$ 合成，特解为 $I_m\sin(\omega t+\beta-\phi)$。齐次方程$L\dot j+Rj=0$对$j\ne0$分离为$\dd j/j=-(R/L)\dd t$，于是
+\[
+\int\frac{\dd j}{j}=-\frac RL\int\dd t,\qquad
+\ln|j|=-\frac RLt+C_0.
+\]
+取指数后将常数与正负号合并，得$j=A\e^{-Rt/L}$；零解也包含在$A=0$中。由初态 $A=-I_m\sin(\beta-\phi)$，于是
+\[i=I_m\left[\sin(\omega t+\beta-\phi)-\sin(\beta-\phi)\e^{-Rt/L}\right].\]
+\fig{fig:em5:example:9:p}{纯电感极限、$\beta=0$：完整响应具有常量偏置，峰值是正弦特解幅值的两倍}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(6.9,0)node[right]{$\omega t$};\draw[axis](0,-1.4)--(0,2.6)node[above]{$i/(E_m/\omega L)$};
+\draw[world,blue,domain=0:6.283,samples=100]plot(\x,{1-cos(\x r)});\draw[guide,red,domain=0:6.283,samples=100]plot(\x,{-cos(\x r)});\draw[guide](0,2)--(3.141593,2)--(3.141593,0);\fill(3.141593,2)circle(2pt);
+\node[left]at(0,2){$2$};\node[left]at(0,-1){$-1$};\node[below]at(3.141593,0){$\pi$};\node[blue]at(3.5,2.65){完整响应};\node[red]at(3.5,-1.4){正弦特解};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从自然项系数判断没有暂态的接通相位}\par\nobreak
+图\ref{fig:em5:example:9:p}以 $R\to0$、$\beta=0$ 的极限显示偏置。要消去指数项，应有 $\sin(\beta-\phi)=0$，即接通时刻的稳态电流本来就为零，而不是简单要求电压为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留积分初值求纯电感过零接通的峰值}\par\nobreak
+$R\to0$ 时 $\phi\to\pi/2$，若 $\beta=0$，原方程可直接积分：
+\[
+i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
+=\frac{E_m}{L}\left[-\frac{\cos\omega s}{\omega}\right]_0^t,
+\]
+所以完整解成为 $i=E_m(1-\cos\omega t)/(\omega L)$，最大值 $2E_m/(\omega L)$，是正弦特解幅值的两倍。这个无衰减偏置由积分初值决定，理想纯电感没有损耗来消除它。真实线圈电阻使偏置逐渐消失；不能在小电阻条件下从接通瞬间就用稳态峰值校核电流。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将初始斜率代回原微分方程检查}\par\nobreak
+代 $t=0$ 得 $\dot i(0)=E_m\sin\beta/L$，也与原微分方程一致。\end{solution}
+\begin{question}\begin{example}[振荡过程中并入未充电电容]\label{em5:example:10}
+电容 $C_1$ 初压 $U_0$，与理想 $L$ 自由振荡，初流为零。在 $t_s$ 时把未充电的 $C_2$ 经很小接触电阻并到 $C_1$ 两端。快过程远短于振荡周期，其间电感电流近似不变。求快过程前后状态、热量及新振荡电压的振幅；特别讨论第一次电压为零时并入。
+\end{example}
+\fig{fig:em5:example:10:s}{第二电容经开关与很小接触电阻接入，不能跳过快过程直接令两电容电压各自连续}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(6,0) (0,2.4)--(3,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4) (6,0)--(6,.9) (6,1.3)--(6,2.4);
+\foreach\x in {0,6}{\draw[world]({\x-.4},.9)--({\x+.4},.9) ({\x-.4},1.3)--({\x+.4},1.3);}
+\node[left]at(-.5,1.1){$C_1$};\node[right]at(6.5,1.1){$C_2$};\node[left]at(2.9,1.1){$L$};\fill(3,2.4)circle(2pt)node[above]{$A$};\fill(3,0)circle(2pt)node[below]{$B$};\draw[flow,red](3.6,2.2)--(3.6,1.5)node[right]{$i$};
+
+\draw[world](3,2.4)--(3.8,2.4) (4.4,2.4)--(4.8,2.4) (5.4,2.4)--(6,2.4);\draw[world](3.8,2.2)rectangle(4.4,2.6);\node[above]at(4.1,2.65){$r\to0^+$};\fill(4.8,2.4)circle(1.5pt);\fill(5.4,2.4)circle(1.5pt);\draw[world](4.8,2.4)--(5.35,2.7);\node[above]at(5.1,2.85){$S$};\node at(3,-1){初始 $u_{C_1}=U_0,\ u_{C_2}=0,\ i=0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由原振荡求快切换前的两项状态}\par\nobreak
+在图\ref{fig:em5:example:10:s}中，上端对下端电压为 $u$，电感电流从上端经电感流向下端，故原回路满足 $C_1\dot u=-i$、$L\dot i=u$。消元后 $\ddot u+\omega_1^2u=0$ 的特征根为 $\pm\mathrm j\omega_1$，写 $u=A\cos\omega_1t+D\sin\omega_1t$；$u(0)=U_0$、$\dot u(0)=0$ 给出 $A=U_0,D=0$。再用 $i=-C_1\dot u=C_1U_0\omega_1\sin\omega_1t$，得接入前 $u_-=U_0\cos\omega_1t_s$，$i_-=U_0\sqrt{C_1/L}\sin\omega_1t_s$，其中 $\omega_1=1/\sqrt{LC_1}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总电荷守恒和电感电流连续连接快过程}\par\nobreak
+快过程中上导体总电荷守恒，$(C_1+C_2)u_+=C_1u_-$；电感电流来不及改变，$i_+=i_-$。
+\fig{fig:em5:example:10:p}{快过程结束后两电容同压并联，电感电流保留，之后以新的总电容振荡}{\begin{tikzpicture}
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);
+\draw[world](0,0)--(6,0) (0,2.4)--(3,2.4) (0,0)--(0,.9) (0,1.3)--(0,2.4) (6,0)--(6,.9) (6,1.3)--(6,2.4);
+\foreach\x in {0,6}{\draw[world]({\x-.4},.9)--({\x+.4},.9) ({\x-.4},1.3)--({\x+.4},1.3);}
+\node[left]at(-.5,1.1){$C_1$};\node[right]at(6.5,1.1){$C_2$};\node[left]at(2.9,1.1){$L$};\fill(3,2.4)circle(2pt)node[above]{$A$};\fill(3,0)circle(2pt)node[below]{$B$};\draw[flow,red](3.6,2.2)--(3.6,1.5)node[right]{$i$};
+
+\draw[world](3,2.4)--(6,2.4);\node at(0,3.1){$q_1=C_1u_+$};\node at(6,3.1){$q_2=C_2u_+$};\node at(3,-1){$u_+=C_1u_-/(C_1+C_2),\quad i_+=i_-$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由快过程前后电能差求热量}\par\nobreak
+图\ref{fig:em5:example:10:p}中两个电容并联以后共同电压 $u_+=C_1u_-/(C_1+C_2)$，快过程热量为前后电能差：
+\[Q_J=\frac12C_1u_-^2-\frac12(C_1+C_2)u_+^2=\frac{C_1C_2}{2(C_1+C_2)}u_-^2.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用快过程末态求新振荡及其振幅}\par\nobreak
+令 $C_\Sigma=C_1+C_2$、$\omega_2=1/\sqrt{LC_\Sigma}$，以接入后时间 $s$ 计，$C_\Sigma\dot u=-i$，与 $L\dot i=u$ 联立得 $\ddot u+\omega_2^2u=0$。写 $u=A\cos\omega_2s+D\sin\omega_2s$，则 $A=u_+$、$\omega_2D=\dot u(0)=-i_-/C_\Sigma$，所以 $u(s)=u_+\cos\omega_2s-i_-\sin\omega_2s/(C_\Sigma\omega_2)$。振幅 $U_2=\sqrt{u_+^2+Li_-^2/C_\Sigma}$，直接由剩余总能也能得到同一结果。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查零电压接入为何降振幅而不损失能量}\par\nobreak
+第一次电压为零时 $t_s=\pi/(2\omega_1)$，此时两只电容都无电，快过程无电荷重新分配，$Q_J=0$，新振幅 $U_2=U_0\sqrt{C_1/C_\Sigma}$。振幅下降与能量损失不是等价命题：这里电容增大，电压振幅下降，但磁能完全保留。\end{solution}
+\begin{question}\begin{example}[两个耦合振荡回路的频率与拍]\label{em5:example:11}
+两个相同理想 LC 回路，自感均 $L$、电容均 $C$，互感 $0<M<L$。两电流参考方向都流入同名端，取 $i_j=-\dot q_j$。初始 $q_1=Q_0,q_2=0$，两电流为零。求两个电荷的完整变化，说明弱耦合时慢包络的形成。
+\end{example}
+\fig{fig:em5:example:11:s}{两个电容—电感回路各自闭合，电流参考均流入同名端，互感取正}{\begin{tikzpicture}
+
+\draw[world](3,2.4)--(3,1.95);\draw[world](3,0.35)arc(-90:90:.2);\draw[world](3,0.75)arc(-90:90:.2);\draw[world](3,1.15)arc(-90:90:.2);\draw[world](3,1.5500000000000003)arc(-90:90:.2);\draw[world](3,.35)--(3,0);\draw[world](6.3,2.4)--(6.3,1.95);\draw[world](6.3,0.35)arc(-90:90:.2);\draw[world](6.3,0.75)arc(-90:90:.2);\draw[world](6.3,1.15)arc(-90:90:.2);\draw[world](6.3,1.5500000000000003)arc(-90:90:.2);\draw[world](6.3,.35)--(6.3,0);
+\foreach\x/\j in {0/1,9.3/2}{\draw[world](\x,0)--(\x,.9) (\x,1.3)--(\x,2.4);\draw[world]({\x-.4},.9)--({\x+.4},.9) ({\x-.4},1.3)--({\x+.4},1.3);\node[above]at(\x,1.5){$+q_{\j}$};\node[below]at(\x,.7){$-q_{\j}$};\node at(\x,-.6){$C$};}
+\draw[world](0,0)--(3,0) (0,2.4)--(3,2.4) (6.3,0)--(9.3,0) (6.3,2.4)--(9.3,2.4);
+\fill(2.75,2.15)circle(2pt);\fill(6.05,2.15)circle(2pt);\node[left]at(3,1.1){$L$};\node[right]at(6.7,1.1){$L$};\draw[<->](3.5,1.1)--(5.7,1.1)node[midway,above]{$M>0$};
+\draw[flow,red](1,2.4)--(2.2,2.4)node[midway,above]{$i_1$};\draw[flow,red](8.5,2.4)--(7.3,2.4)node[midway,above]{$i_2$};
+
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由同名端列出两回路的耦合微分方程}\par\nobreak
+由图\ref{fig:em5:example:11:s}同名端，两个回路方程为 $L\ddot q_1+M\ddot q_2+q_1/C=0$ 与 $M\ddot q_1+L\ddot q_2+q_2/C=0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离两个独立组合并分别使用初态}\par\nobreak
+相加和相减，令 $q_\pm=q_1\pm q_2$，得
+\[(L+M)\ddot q_++q_+/C=0,\qquad(L-M)\ddot q_-+q_-/C=0.\]
+因此 $\omega_\pm=1/\sqrt{(L\pm M)C}$。每个方程试取 $\e^{st}$，得到 $s^2+\omega_\pm^2=0$，所以 $q_\pm=A_\pm\cos\omega_\pm t+B_\pm\sin\omega_\pm t$。两个初电荷组合都为 $Q_0$、导数都为零，分别给出 $A_\pm=Q_0$、$\omega_\pm B_\pm=0$，故 $q_\pm=Q_0\cos\omega_\pm t$。
+\fig{fig:em5:example:11:p}{精确频率下的两电荷及慢包络，示例取 $M/L=0.1$；包络须与磁能共同解释}{\begin{tikzpicture}
+
+\pgfmathsetmacro{\wp}{1/sqrt(1.1)}\pgfmathsetmacro{\wm}{1/sqrt(.9)}\pgfmathsetmacro{\av}{(\wp+\wm)/2}\pgfmathsetmacro{\de}{(\wm-\wp)/2}
+\begin{scope}[xscale=.12]
+\draw[axis](-1,0)--(73,0);\draw[axis](0,-1.4)--(0,1.5)node[above]{$q_1/Q_0$};
+\draw[blue,thick,domain=0:70,samples=700]plot(\x,{cos(\av*\x r)*cos(\de*\x r)});\draw[guide,domain=0:70,samples=120]plot(\x,{cos(\de*\x r)});\draw[guide,domain=0:70,samples=120]plot(\x,{-cos(\de*\x r)});\draw[guide]({pi/(2*\de)},-1.4)--({pi/(2*\de)},1.4);
+\end{scope}
+\begin{scope}[yshift=-3.6cm,xscale=.12]
+\draw[axis](-1,0)--(73,0)node[right]{$\omega_0t$};\draw[axis](0,-1.4)--(0,1.5)node[above]{$q_2/Q_0$};
+\draw[red,thick,domain=0:70,samples=700]plot(\x,{sin(\av*\x r)*sin(\de*\x r)});\draw[guide,domain=0:70,samples=120]plot(\x,{sin(\de*\x r)});\draw[guide,domain=0:70,samples=120]plot(\x,{-sin(\de*\x r)});\draw[guide]({pi/(2*\de)},-1.4)--({pi/(2*\de)},1.4);\foreach\x in {30,60}{\node[below]at(\x,-1.6){$\x$};}
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原两电荷并化成快振荡乘慢包络}\par\nobreak
+按图\ref{fig:em5:example:11:p}重新相加和相减，
+\[q_1=\frac{Q_0}{2}(\cos\omega_+t+\cos\omega_-t),\qquad q_2=\frac{Q_0}{2}(\cos\omega_+t-\cos\omega_-t).\]
+设 $\bar\omega=(\omega_++\omega_-)/2$、$\delta=(\omega_--\omega_+)/2>0$，则 $q_1=Q_0\cos\bar\omega t\cos\delta t$，$q_2=Q_0\sin\bar\omega t\sin\delta t$。弱耦合 $M/L\ll1$ 时 $\delta\simeq\omega_0M/(2L)$，慢包络在约 $\pi/(2\delta)$ 内由第一回路转向第二回路。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留互感交叉项判断能量交换及近似范围}\par\nobreak
+总能必须写成 $W=(q_1^2+q_2^2)/(2C)+L(i_1^2+i_2^2)/2+Mi_1i_2$，逐项求导并用 $\dot q_j=-i_j$，
+\[
+\dot W=i_1\left(L\dot i_1+M\dot i_2-\frac{q_1}{C}\right)
++i_2\left(M\dot i_1+L\dot i_2-\frac{q_2}{C}\right)=0.
+\]
+两个括号分别是原回路电压方程，说明互感项不能省去。包络接近零的某瞬间，电流仍可能非零，不能只看一只电容的电荷就断言该回路能量严格为零；弱耦合近似下可谈缓慢的近乎完全交换，精确状态应由上述四个变量共同判断。\end{solution}
+\begin{question}\begin{example}[含回路自感的恒力导棒]\label{em5:example:12}
+导棒质量 $m$、长度 $l$，在垂直轨面的匀强磁场 $B$ 中水平运动，回路总电阻 $R>0$、恒定自感 $L>0$。恒力 $F$ 自 $t=0$ 起向右作用，初始棒静止、回路无流。令 $k=Bl$，求欠阻尼情况下速度和终态，解释初始加速度为什么不是零。
+\end{example}
+\fig{fig:em5:example:12:s}{恒力驱动含电阻与自感的导棒，磁场向里，正电流在棒中向上}{\begin{tikzpicture}
+
+
+\draw[world](0,0)--(4,0) (0,2.2)--(1.2,2.2) (2.8,2.2)--(4,2.2) (0,0)--(0,.8) (0,1.5)--(0,2.2);
+\foreach\n in {0,...,3}{\draw[world]({1.2+.4*\n},2.2)arc(180:0:.2);}\node at(2,2.8){$L$};\draw[world](-.2,.8)rectangle(.2,1.5);\node[left]at(-.3,1.15){$R$};
+\draw[world,very thick](3.5,0)--(3.5,2.2);\node at(1.7,1){$\otimes B$};\draw[flow,red](3.5,.3)--(3.5,1)node[right]{$i$};\draw[flow](3.5,3.2)--(4.6,3.2)node[right]{$v$};
+\draw[force](3.5,1.7)--(4.8,1.7)node[right]{$F$};\draw[force,blue](3.5,1.7)--(2.2,1.7)node[midway,above]{$ki$};\node at(1.9,-.7){$m\dot v=F-ki,\quad L\dot i+Ri=kv$};
+
+
+\draw[dim](5.6,0)--(5.6,2.2)node[midway,right]{$l$};\node at(3.5,2.55){$m$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别列机械与电路方程，保留两个初始状态}\par\nobreak
+图\ref{fig:em5:example:12:s}取棒向右为正，右棒中电流向上为正；磁力向左，故 $m\dot v=F-ki$。回路中动生电动势 $kv$ 驱动电流，$L\dot i+Ri=kv$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去电流得到速度二阶方程并求终态}\par\nobreak
+由第一式 $i=(F-m\dot v)/k$，代第二式得
+\[mL\ddot v+mR\dot v+k^2v=RF.\]
+稳态 $v_\infty=RF/k^2,i_\infty=F/k$。初始 $i=0$ 决定 $\dot v(0)=F/m$，这是二阶速度方程需要的第二个初态。
+\fig{fig:em5:example:12:p}{欠阻尼示例 $R/(2L\Omega)=0.2$：速度围绕终值衰减，起点斜率非零}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(10.4,0)node[right]{$\Omega t$};\draw[axis](0,-.3)--(0,3.5)node[above]{$v/[F/(m\Omega)]$};
+\draw[world,blue,domain=0:14,samples=180]plot({.7*\x},{2.5*(.4+exp(-.2*\x)*(-.4*cos(sqrt(.96)*\x r)+.92/sqrt(.96)*sin(sqrt(.96)*\x r)))});
+\draw[guide](0,1)--(9.8,1)node[right]{$v_\infty$};\draw[guide](0,0)--(.7,2.5);\node at(5.2,3.3){$\Omega=k/\sqrt{mL}$};\node at(5.2,-.9){初始 $\dot v=F/m$，初始 $\dot i=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初速度和初加速度确定欠阻尼解的两项系数}\par\nobreak
+图\ref{fig:em5:example:12:p}中磁能与动能可相互交换。设 $\alpha=R/(2L)$、$\omega_d=\sqrt{k^2/(mL)-\alpha^2}>0$，令 $y=v-v_\infty$，得到 $\ddot y+2\alpha\dot y+k^2y/(mL)=0$。试取 $y=\e^{st}$，特征方程 $(s+\alpha)^2+\omega_d^2=0$，根为 $-\alpha\pm\mathrm j\omega_d$，因此自然解为指数乘正弦、余弦。令 $v=v_\infty+\e^{-\alpha t}(A\cos\omega_dt+D\sin\omega_dt)$，初速给出 $A=-v_\infty$；用乘积法则，
+\[
+\dot v=\e^{-\alpha t}
+[(-\alpha A+\omega_dD)\cos\omega_dt
++(-\alpha D-\omega_dA)\sin\omega_dt].
+\]
+在 $t=0$ 代入 $\dot v(0)=F/m$ 得
+$\alpha v_\infty+\omega_dD=F/m$，即 $D=(F/m-\alpha v_\infty)/\omega_d$。因此
+\[v=v_\infty+\e^{-\alpha t}\left[-v_\infty\cos\omega_dt+\frac{F/m-\alpha v_\infty}{\omega_d}\sin\omega_dt\right].\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原电流并检查两条一阶方程的初值}\par\nobreak
+由 $i=(F-m\dot v)/k$ 还原电流，亦可写成
+\[i(t)=\frac Fk\left[1-\e^{-\alpha t}\left(\cos\omega_dt+\frac\alpha{\omega_d}\sin\omega_dt\right)\right].\]
+代回可检验 $i(0)=0,\dot i(0)=0$，且 $\dot v(0)=F/m$。这些条件分别来自原来的两个一阶方程。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分零电感近似并用完整功率平衡检验}\par\nobreak
+当忽略电感时电流立即跟随速度，得到单指数建立；保留电感则存在两个状态，可能超越终速再衰减返回。将两条一阶式分别乘 $v,i$ 相加，$Fv=\dd(mv^2/2+Li^2/2)/\dd t+Ri^2$，明确外力功同时进入机械能、磁能与电阻热。\end{solution}

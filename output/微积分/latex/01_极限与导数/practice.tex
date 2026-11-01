@@ -1,0 +1,43 @@
+\section{本讲小结}
+极限需要先判断趋近方式与定义域，再选择变形或夹逼。导数把局部增量转化为变化率；链式法则则把几何约束、位置关系与运动联系起来。求运动量时应先明确自变量，区分对位置求导与对时间求导，并始终保留速度、加速度的矢量性质。处理交点时，还应检查其是否代表同一物质点。
+
+\section{练习}
+\begin{question}
+\begin{drill}[乘积函数的变化率]\label{c1d1}
+求 $f(x)=x\sin x\,\e^x$ 的导数，并在 $x=0$ 处写出切线方程。
+\end{drill}
+\fig{c1d1q}{三个因子的乘积在零点附近的图像与待求切线位置}{\begin{tikzpicture}
+
+\draw[axis](-2,0)--(2,0)node[right]{$x$};\draw[axis](0,-.5)--(0,3.1)node[above]{$f(x)$};
+\draw[blue,thick,domain=-1.5:.95,samples=100]plot(\x,{\x*sin(\x r)*exp(\x)});\fill(0,0)circle(1.6pt)node[below left]{$O$};
+\node at(4.4,1.8){$f(x)=x\sin x\,\e^x$};\node[align=left]at(4.3,.6){同一个 $x$ 改变\\三个因子同时变化};
+\end{tikzpicture}}\answerlink{c1d1}
+\end{question}
+\begin{question}
+\begin{drill}[连续与可导]\label{c1d2}
+函数 $f(x)=|x|$ 在零点连续吗？可导吗？函数 $g(x)=x|x|$ 呢？
+\end{drill}
+\fig{c1d2q}{零点两侧的函数形状}{\begin{tikzpicture}[scale=.8]
+\draw[axis](-2,0)--(2,0)node[right]{$x$};\draw[axis](0,-.3)--(0,2)node[above]{$f$};\draw[blue,thick](-1.6,1.6)--(0,0)--(1.6,1.6);
+\end{tikzpicture}}\answerlink{c1d2}
+\end{question}
+\begin{question}
+\begin{drill}[对时间的二次求导]\label{c1d3}
+质点满足 $y=\beta x^2$，$\beta>0$，且 $x=ut$，$u>0$。求速度、加速度，并说明 $\ddot y$ 为什么不等于 $\dd^2y/\dd x^2$。
+\end{drill}
+\fig{c1d3q}{匀速水平投影下的抛物线路径}{\begin{tikzpicture}
+\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,2.6)node[above]{$y$};
+\draw[blue,domain=0:3,samples=40]plot(\x,{.22*\x*\x});\draw[flow](1.5,.2)--(2.5,.2)node[midway,below]{$u$};
+\end{tikzpicture}}\answerlink{c1d3}
+\end{question}
+\begin{question}
+\begin{drill}[无穷小量之比]\label{c1d4}
+不用洛必达法则，求 $\displaystyle\lim_{x\to0}\frac{\sin 3x}{x}$、
+$\displaystyle\lim_{x\to0}\frac{1-\cos2x}{x^2}$，
+以及 $\displaystyle\lim_{x\to+\infty}\frac{x+\sin x}{2x-\cos x}$。
+\end{drill}
+\fig{c1d4q}{趋近零点和趋向无穷远是两种过程}{\begin{tikzpicture}
+\draw[axis](-3,0)--(3.8,0)node[right]{$x$};\fill(0,0)circle(1.5pt)node[below]{$0$};
+\draw[flow](-2,.4)--(-.3,.4);\draw[flow](2,.4)--(.3,.4);\draw[flow](1.7,-.6)--(3.5,-.6)node[midway,below]{$+\infty$};
+\end{tikzpicture}}\answerlink{c1d4}
+\end{question}

@@ -1,0 +1,178 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{s4:drill:1}\textbf{统一杆力符号，先解载荷节点}\par\nobreak
+图\ref{fig:s4:drill:1:s}各节点只受沿杆的力。统一假设杆受拉为正。在$C$，水平平衡给$T_{CA}+T_{CB}=0$；竖直平衡$(-T_{CA}+T_{CB})/2=G$，故$T_{CB}=G,T_{CA}=-G$。
+两斜杆在$C$处的水平分量系数均为$\sqrt3/2$，竖直分量系数则分别为$-1/2,+1/2$。所以先由水平式除去公共$\sqrt3/2$，再把$T_{CA}=-T_{CB}$代入竖直式，得到$T_{CB}=G$。负号$T_{CA}=-G$表示实际压力，与假设拉力方向相反。
+\fig{fig:s4:drill:1:p}{先隔离载荷节点$C$，再把杆力传到节点$B$；箭头为求出后的实际方向}{\begin{tikzpicture}
+
+\begin{scope}
+\fill(0,0)circle(2pt)node[below left]{$C$};
+\draw[force](0,0)--(-1.299,.75)node[left]{$CA:\ G$};
+\draw[force](0,0)--(1.299,.75)node[right]{$CB:\ G$};
+\draw[force](0,0)--(0,-1.5)node[below]{$G$};\node at(0,1.6){$CA$受压，$CB$受拉};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\fill(0,0)circle(2pt)node[above right]{$B$};
+\draw[force](0,0)--(-1.299,-.75)node[left]{$BC:\ G$};
+\draw[force](0,0)--(1.299,-.75)node[right]{$BO:\ G$};
+\draw[force](0,0)--(0,1.5)node[above]{$AB:\ G$};\node at(0,-1.6){$AB$须向上推节点$B$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{传递到上节点，判断竖杆拉压}\par\nobreak
+图\ref{fig:s4:drill:1:p}在$B$，水平平衡得$T_{BO}=G$，两斜杆竖直分量均向下，各为$G/2$，所以$-T_{AB}=G$，即$T_{AB}=-G$，杆受压，压力为$G$。这也说明墙上$OE$只是固定支座间连线，不能误数成第七根自由杆。\end{drillsolution}
+\begin{drillsolution}{s4:drill:2}\textbf{由弦长求质心相对碗口的高度}\par\nobreak
+图\ref{fig:s4:drill:2:s}中，圆心$O$到弦$AB$的垂线平分弦，右半弦在水平半径上的投影给出$AB/2=r\cos\theta$。因此内部杆段$AB$是圆的一条弦，长$2r\cos\theta$。取右碗口$B$高度为零，杆质心高度$z_C=(l/2-2r\cos\theta)\sin\theta$。
+\fig{fig:s4:drill:2:p}{内部弦长与杆的半长分别决定质心相对碗口的位置}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:360:2);\draw[guide](-2,0)--(3.4,0);
+\draw[world](-1,-1.732)--(3,.577);\fill(-1,-1.732)circle(2pt)node[left]{$A$};
+\fill(2,0)circle(2pt)node[above]{$B$};\fill(1,-.577)circle(2pt)node[below]{$C$};
+\fill(0,0)circle(2pt)node[above]{$O$};\draw[guide](0,0)--(-1,-1.732)node[midway,left]{$r$};
+\draw[world](2.6,0)arc(0:30:.6);\node at(2.9,.23){$\theta$};
+\draw[dim](-.75,-2.165)--(2.25,-.433)node[midway,below right]{$AB=2r\cos\theta$};
+\node at(.5,1.2){$AC=l/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{令势能一阶变化为零}\par\nobreak
+对图\ref{fig:s4:drill:2:p}中的高度式用乘积法则，
+\begin{align*}
+ \frac{\dd z_C}{\dd\theta}
+ &=2r\sin^2\theta+(l/2-2r\cos\theta)\cos\theta\\
+ &=\frac l2\cos\theta-2r(\cos^2\theta-\sin^2\theta)
+ =\frac l2\cos\theta-2r\cos2\theta.
+\end{align*}
+令此式为零，得$(l/2)\cos\theta=2r\cos2\theta$，所以$l=4r\cos2\theta/\cos\theta$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用接触构型限制杆长范围}\par\nobreak
+还需$l\ge AB=2r\cos\theta$，把$l=4r\cos2\theta/\cos\theta$代入$l\ge2r\cos\theta$，由于$\cos\theta>0$，得$2\cos2\theta\ge\cos^2\theta$。再用$\cos2\theta=2\cos^2\theta-1$，整理为$3\cos^2\theta\ge2$，即$\cos^2\theta\ge2/3$。因此这一构型允许
+\[
+\sqrt{\frac83}\,r\le l<4r.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查端点与平衡稳定性}\par\nobreak
+在允许区间内，$l(\theta)=4r(2\cos\theta-\sec\theta)$的导数为 $4r(-2\sin\theta-\sec\theta\tan\theta)<0$，所以杆长随角度严格减小。下界对应杆的外端恰到碗口、$l=AB$，严格伸出时应取$l>\sqrt{8/3}\,r$；上界$\theta\to0$，应另外讨论水平双边支承。
+判断给定杆长的稳定性时应固定 $l$，对高度再求一次导数：
+\[z_C''=-\frac l2\sin\theta+4r\sin2\theta.\]
+在驻点代入 $l/2=2r\cos2\theta/\cos\theta$，得到
+\[z_C''=2r\tan\theta[-\cos2\theta+4\cos^2\theta]
+ =2r\tan\theta(2\cos^2\theta+1)>0.\]
+因此非退化分支稳定。再检查支持力：碗内端 $A$的法线向圆心，碗口 $B$的支持力垂直杆。水平、竖直平衡给
+\[N_A\cos2\theta=N_B\sin\theta,\qquad
+ N_A\sin2\theta+N_B\cos\theta=G.\]
+消去 $N_B$得到 $N_A=G\tan\theta$，再得 $N_B=G\cos2\theta/\cos\theta$，在上述角度区间均为正，所用接触约束可以维持。\end{drillsolution}
+\input{solution-five-balls}
+\begin{drillsolution}{s4:drill:4}\textbf{先求整体力矩的必要条件}\par\nobreak
+细线只能受拉，因此须同时满足整体平衡和张力 $T\ge0$。下面先保留题设的非退化夹角 $0<\alpha<\pi$，求绷紧时的候选构型，再逐环检查张力。图\ref{fig:s4:drill:4:s}将两环及绳整体取矩，圆轨法向力均过圆心，不产生力矩。设弦中点半径相对竖直向下偏$\gamma$，两端半径角分别为 $\theta_1=\gamma-\alpha/2,\theta_2=\gamma+\alpha/2$。
+\fig{fig:s4:drill:4:p}{两环的重力对圆心取矩，力臂由相对竖直方向的角度确定}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\draw[guide](0,0)--(0,-2.6);
+\draw[guide](0,0)--(-.845,-1.813);\draw[guide](0,0)--(1.414,-1.414);\draw[guide](0,0)--(.2845,-1.6135);
+\draw[world](-.845,-1.813)--(1.414,-1.414);\fill(.2845,-1.6135)circle(2pt)node[above right]{$M$};
+\draw[force](-.845,-1.813)--(-.845,-3.2)node[below]{$m_1g$};\draw[force](1.414,-1.414)--(1.414,-2.5)node[below]{$m_2g$};
+\draw[world](0,-.85)arc(-90:-80:.85);\node at(.22,-.6){$\gamma$};\node[above]at(0,0){$O$};
+\node[align=left]at(4.4,-.6){左环：$\gamma-\alpha/2$\\右环：$\gamma+\alpha/2$\\$OM$垂直于弦};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开两重力矩并求有向倾角}\par\nobreak
+图\ref{fig:s4:drill:4:p}力矩平衡$m_1\sin(\gamma-\alpha/2)+m_2\sin(\gamma+\alpha/2)=0$，分别使用$\sin(\gamma\pm\alpha/2)=\sin\gamma\cos(\alpha/2)\pm\cos\gamma\sin(\alpha/2)$，把两质量加权后整理为
+\[
+(m_1+m_2)\sin\gamma\cos\frac\alpha2
++(m_2-m_1)\cos\gamma\sin\frac\alpha2=0.
+\]
+在所选下半圈非退化构型中除以$(m_1+m_2)\cos\gamma\cos(\alpha/2)$，展开得
+\[
+\tan\gamma=\frac{m_1-m_2}{m_1+m_2}\tan\frac\alpha2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐环检查切向平衡与张力正负}\par\nobreak
+上述公式只给整体力矩的候选解。由于两质量均为正，$|(m_1-m_2)/(m_1+m_2)|<1$，在下半圈的角度分支上必有 $|\gamma|<\alpha/2$，所以 $\theta_1<0<\theta_2$：两环分处最低点两侧。还须有 $|\gamma|+\alpha/2<\pi/2$，才都在下半圈。
+令沿角度增大的单位切向为 $\boldsymbol e_{t,i}=(\cos\theta_i,\sin\theta_i)$。弦从环1指向环2的方向为 $(\cos\gamma,\sin\gamma)$，其在两端切向上的投影因子都是 $\cos(\alpha/2)>0$。图\ref{fig:s4:drill:4:tension}画出两端实际的拉力方向，切向平衡分别要求
+\[T\cos\frac\alpha2-m_1g\sin\theta_1=0,\qquad
+ -T\cos\frac\alpha2-m_2g\sin\theta_2=0.\]
+于是
+\[T=\frac{m_1g\sin\theta_1}{\cos(\alpha/2)}
+ =-\frac{m_2g\sin\theta_2}{\cos(\alpha/2)}<0.\]
+\fig{fig:s4:drill:4:tension}{两环的重力切向分量与细线拉力同向，无法在绷紧条件下平衡}{\begin{tikzpicture}
+\begin{scope}
+\draw[world](-2,0)arc(180:360:2);
+\coordinate(A)at(-1,-1.732);\coordinate(B)at(1,-1.732);
+\draw[world](A)--(B);\draw[guide](0,0)--(A);\draw[guide](0,0)--(B);
+\fill(A)circle(2pt)node[left]{$1$};\fill(B)circle(2pt)node[right]{$2$};
+\draw[force,blue](A)--(-.15,-1.732)node[midway,above]{$T$};
+\draw[force,blue](B)--(.15,-1.732)node[midway,above]{$T$};
+\draw[force](A)--(-1,-3)node[below]{$m_1g$};
+\draw[force](B)--(1,-3)node[below]{$m_2g$};
+\draw[force,red](A)--(-.22,-2.182);
+\draw[force,red](B)--(.22,-2.182);
+\node[red,align=center]at(0,-4){红箭头为重力切向分量\\两端均朝最低点};
+\node at(0,.5){等质量情形的方向示意};
+\end{scope}
+\begin{scope}[xshift=5.5cm,yshift=-1.3cm]
+\draw[axis](-.1,0)--(2.7,0)node[right]{$\boldsymbol e_{t,1}$};
+\draw[force,blue](0,.6)--(2,.6)node[midway,above]{$T\cos(\alpha/2)$};
+\draw[force,red](0,-.6)--(2,-.6)node[midway,below]{$-m_1g\sin\theta_1>0$};
+\node[align=center]at(1.2,-2){左环切向两力同向\\$T\ge0$时不能相消};
+\end{scope}
+\end{tikzpicture}}
+因此题设细线模型在两环均位于下半圈、$\alpha>0$且细线绷紧时\textbf{不存在静平衡}，不能给出可实现的弦倾角。等质量时形式解虽给 $\gamma=0$、弦水平，张力仍为负；实际细线将松弛，原来的固定夹角不能保持。若连接物改成可受压的轻杆，上面的倾角公式才可作为下半圈构型的平衡结果。\end{drillsolution}
+\begin{drillsolution}{s4:drill:5}\textbf{由无滑动关系求轮自身转角}\par\nobreak
+图\ref{fig:s4:drill:5:s}令轮心连线偏角$\theta$。轮心高度增加$(a-R)(1-\cos\theta)$，内滚使轮相对初态转角大小为$(a-R)\theta/R$、方向与轮心绕行相反。
+内滚的几何约束可由接触点速度为零得到。轮心沿轨道切向速度为$(a-R)\dot\theta$，轮缘相对轮心的切向速度应与它抵消，因此轮的自转角速度为 $\dot\varphi=-(a-R)\dot\theta/R$。取初态 $\theta=0,\varphi=0$，积分得到
+\[\varphi=\int_0^\theta-\frac{a-R}{R}\dd\eta
+ =-\frac{a-R}{R}[\eta]_0^\theta=-\frac{a-R}{R}\theta,\]
+而不是直接取$\theta$。
+\fig{fig:s4:drill:5:p}{左图确定轮心轨道，右图放大偏心矢量相对竖直方向的转动}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-2.598,1.5)arc(210:330:3);\draw[guide](0,3)--(0,0);
+\draw[world](.9298,1.0061)circle(.8);\draw[guide](0,3)--(1.2679,.2811);
+\fill(0,3)circle(2pt)node[above]{$K$};\fill(.9298,1.0061)circle(2pt)node[right]{$O$};
+\draw[world](0,2.3)arc(-90:-65:.7);\node[right]at(.3,2.45){$\theta$};
+\node[left]at(.3,2.2){$a-R$};
+\end{scope}
+\begin{scope}[xshift=5.6cm,yshift=1.1cm]
+\draw[world](0,0)circle(1.2);\fill(0,0)circle(2pt)node[above]{$O$};
+\draw[guide](0,0)--(0,-1.6);\draw[world,red](0,0)--(-.746,-.29);
+\fill(-.746,-.29)circle(2pt)node[left]{$C$};\node[above left,red]at(-.35,-.14){$h$};
+\draw[world](0,-.55)arc(-90:-158.75:.55);\node at(-.5,-.85){$|\varphi|$};
+\node at(0,1.8){$\varphi=-\dfrac{a-R}{R}\theta$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成轮心与偏心矢量的高度变化}\par\nobreak
+图\ref{fig:s4:drill:5:p}中，轮心的升高为第一项，偏心矢量转动引起的升高为第二项。质心初始低于轮心$h$，因此
+\[
+\Delta z_C=(a-R)(1-\cos\theta)
++h\left[1-\cos\frac{(a-R)\theta}{R}\right].
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先判断非临界参数的稳定性}\par\nobreak
+令 $d=a-R>0$。由 $1-\cos u=u^2/2-u^4/24+O(u^6)$，分别代入 $u=\theta$与 $u=d\theta/R$，得到
+\[\Delta z_C=\frac d2\left(1+\frac{hd}{R^2}\right)\theta^2
+ -\frac d{24}\left(1+\frac{hd^3}{R^4}\right)\theta^4+O(\theta^6).\]
+二阶系数为 $d(1+hd/R^2)/2$。下偏$h>0$总稳定；上偏令$h=-b<0$，严格二阶稳定条件为 $d<R^2/b$，即$a<R+R^2/b=R(R+b)/b$。超过此值时二阶项为负；等号需继续检查。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查临界四阶项与退化边界}\par\nobreak
+临界 $d=R^2/b$时，四阶系数代入 $h=-b$后为
+\[-\frac d{24}+\frac{bd^4}{24R^4}
+ =-\frac{R^2}{24b}+\frac{R^4}{24b^3}
+ =\frac{R^2}{24b}\left(\frac{R^2}{b^2}-1\right).\]
+因此高度增量为
+\[
+\Delta z_C=\frac{R^2}{24b}\left(\frac{R^2}{b^2}-1\right)\theta^4+O(\theta^6).
+\]
+因此通常质心在轮内的$0<b<R$情形，临界仍为较弱的稳定平衡；$b=R$时完整高度式恒定，才是随遇平衡；若允许附加外部质量使$b>R$，临界不稳定。平地极限$a\to\infty$时上偏轮不稳定。\end{drillsolution}

@@ -1,0 +1,283 @@
+\section{连续体中的局部平衡}
+重绳各截面承担的载荷不同，张力大小会变化；绳被弯成曲线时，张力方向也会变化。图\ref{fig:s4:element}截取凸曲面上的一小段绳：两端张力均沿当地切线向外，重力竖直向下，光滑面的支持力沿法线。先把这些方向画清，再分别处理大小变化和方向变化。
+\fig{fig:s4:element}{曲线微元的张力、重力和光滑面支持力}{\begin{tikzpicture}[scale=.88]\draw[world](3.532,1.286)arc(40:80:2);\draw[force](3.532,1.286)--(4.175,.52)node[right]{$T$};\draw[force](2.347,1.970)--(1.067,2.196)node[left]{$T+\dd T$};\draw[force](3,1.732)--(3,.15)node[below]{$\lambda g\dd s$};\draw[force](3,1.732)--(3.6,2.7712)node[above]{$\dd N$};\end{tikzpicture}}
+取弧长坐标$s$朝高处增加，$\boldsymbol t$为切向单位矢量，$\boldsymbol n$指向曲率中心。两端张力合力的一阶表达为
+\[
+\dd(T\boldsymbol t)=\boldsymbol t\,\dd T+T\kappa\boldsymbol n\,\dd s.
+\]
+第一项来自大小差，第二项来自切线转过的小角$\dd\psi=\kappa\dd s$。图中两张力即使大小几乎相等，仍有指向曲率中心的合力，不能把它们画成一对相消的平行力。
+
+光滑支持力没有切向分量。取$z$向上，重力在$\boldsymbol t$上的投影是$-\lambda g\dd s\,(\dd z/\dd s)$，所以
+\[
+\dd T=\lambda g\dd z.
+\]
+从已知截面 $(z_0,T_0)$积分，使用哑变量 $\zeta$区分积分变量与上限：
+\[\int_{T_0}^{T(z)}\dd\mathcal T
+ =\lambda g\int_{z_0}^z\dd\zeta
+ =\lambda g[\zeta]_{z_0}^z,\qquad
+ \boxed{T(z)=T_0+\lambda g(z-z_0)}.\]
+这里$T_0$是高度$z_0$处的已知边界张力。关系决定的是张力差：自由端给$T_0=0$，若末端挂质量$M$的静止物体，则给$T_0=Mg$。图\ref{fig:s4:tension-height}把同样的高度变化与两种不同边界分开表示。
+\fig{fig:s4:tension-height}{张力的变化取决于高度差，绝对值还取决于端部边界}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,2.8)--(0,0);\draw[world](-.3,-.6)rectangle(.3,0);
+\node at(0,-.3){$M$};\fill(0,0)circle(2pt)node[right]{$z_0$};
+\fill(0,2.3)circle(2pt)node[right]{$z$};
+\draw[dim](-.8,0)--(-.8,2.3)node[midway,left]{$z-z_0$};
+\draw[force](0,2.8)--(0,3.6)node[above]{$T$};
+\node at(0,-1.1){边界张力$T_0=Mg$};
+\end{scope}
+\begin{scope}[xshift=4.8cm]
+\draw[axis](0,0)--(3.7,0)node[right]{$z-z_0$};
+\draw[axis](0,0)--(0,3.7)node[above]{$T$};
+\draw[world,blue](0,0)--(3,1.7)node[right]{$T_0=0$};
+\draw[world,red](0,1.2)--(3,2.9)node[right]{$T_0=Mg$};
+\node[left]at(0,1.2){$Mg$};\node at(1.9,-.7){两条直线斜率均为$\lambda g$};
+\end{scope}
+\end{tikzpicture}}
+同一均匀、无摩擦的连续绳段上，同高处张力相同。跨过集中外力、线密度突变或粗糙接触区时，须重新列条件，不能跨过这些边界沿用同一个积分常数。
+
+再看图\ref{fig:s4:element}的法向：在凸圆柱上，张力曲率合力与重力的向心分量同向，支持力向外。若半径为$R$、当地半径与竖直夹角为$\theta$，则
+\[
+\frac{\dd N}{\dd s}=\frac TR+\lambda g\cos\theta.
+\]
+凹槽中的支持力指向另一侧，必须重画法线再投影。任何接触解都应检查$\dd N\ge0$；负值表示面需要“拉住”绳，所假定的接触构型不能成立。
+
+\section{离散链环与连续绳的区别}
+链环铰接处可传力但不传力矩，每一节均应视作小刚体。整体平衡可以求端点反力，某一节再用力矩平衡求它的倾角。不能把端点节的全部重量集中到其下端，或把一节的转动平衡替换成一条轻绳的方向条件。节数趋多且节长趋小时，才逐渐接近连续悬链模型。
+
+均匀绳跨光滑滑轮，两边自由悬垂且对称时，竖直段端部张力等于该段重量，轮顶张力还要增加从接触边缘到顶端的高度差所对应的$\lambda gR$。把接触弧自身重力全加到轮顶是错误的，因为轮面对它还提供分布支持力。
+
+\fig{fig:s4:link-rod}{单个刚性链节的重量作用在中点，必须保留它对端铰的力矩}{\begin{tikzpicture}
+
+\coordinate(A)at(0,2.8);\coordinate(B)at(1.6,0);\coordinate(C)at(.8,1.4);
+\draw[world](A)--(B);\fill(A)circle(2pt)node[above left]{$A$};\fill(B)circle(2pt)node[below]{$B$};
+\draw[force](A)--(-1,3.5)node[left]{$\boldsymbol F_A$};
+\draw[force](B)--(2.7,.5)node[right]{$\boldsymbol F_B$};
+\draw[force](C)--(.8,.2)node[left]{$mg$};\node[right]at(C){$C$};
+\draw[guide](.8,1.4)--(.8,-.55);\draw[guide](1.6,0)--(1.6,-.55);
+\draw[dim](.8,-.45)--(1.6,-.45)node[midway,below]{$d$};
+\node[align=left]at(5,1.4){对$B$取矩：\\$\boldsymbol F_B$无力矩\\重力矩大小为$mgd$};
+
+\end{tikzpicture}}
+图\ref{fig:s4:link-rod}中，铰链$B$虽不传递力偶，作用在$A$的端力与中点重力仍须满足力矩平衡。柔绳只能沿当地切线传张力，刚性链节却可以由两端不同方向的力共同支承；有限节长时，二者的端部角度关系并不相同。
+
+
+\subsection{自由悬绳从整体分量到局部曲线}
+均匀柔绳不接触支承面而自由悬挂时，绳内张力大小虽变，水平分量却保持不变。以最低点为$x=0,y=0$，线密度$\lambda$，最低处水平张力为$H>0$。取最低点到右侧某点的一段，弧长$s$，整体平衡给$T_x=H$、$T_y=\lambda gs$。张力沿该点切线，故
+\[
+\frac{\dd y}{\dd x}=\frac{T_y}{T_x}=\frac{\lambda g}{H}s.
+\]
+再由弧长关系$\dd s/\dd x=\sqrt{1+y'^2}$，令$a=H/(\lambda g)$，得到$y''=\sqrt{1+y'^2}/a$。图\ref{fig:s4:catenary}的重力与端点张力对应这一段绳，而不是单个质量点。
+\fig{fig:s4:catenary}{最低点至任一点的绳段平衡}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(4.2,0)node[right]{$x$};\draw[axis](0,-.3)--(0,3.6)node[above]{$y$};\draw[world,domain=0:2.5,samples=70]plot(\x,{exp(\x/2)+exp(-\x/2)-2});\fill(2.5,1.7768)circle(2pt)node[left]{$P$};\draw[force](0,0)--(-1,0)node[left]{$H$};\draw[force](2.5,1.7768)--(3.5,3.3787)node[right]{$T$};\draw[force](1.3908,.6687)--(1.3908,-.9332)node[right]{$\lambda gs$};\end{tikzpicture}}
+令$p=y'$，分离变量$\dd p/\sqrt{1+p^2}=\dd x/a$，并从最低点初值$p(0)=0$积分：
+\[\int_0^{p(x)}\frac{\dd u}{\sqrt{1+u^2}}=\int_0^x\frac{\dd\xi}{a}=\frac xa.\]
+左侧令 $u=\sinh v$，则 $\dd u=\cosh v\dd v$，且 $\sqrt{1+\sinh^2v}=\cosh v>0$；上下限由 $0,p(x)$变为 $0,\operatorname{arsinh}p(x)$，于是该积分为 $[v]_0^{\operatorname{arsinh}p(x)}$。所以 $p(x)=\sinh(x/a)$。再由 $y(0)=0$积分，令 $v=\xi/a$，$\dd\xi=a\dd v$，上下限变为 $0,x/a$：
+\[y(x)=\int_0^x\sinh(\xi/a)\dd\xi
+ =a\int_0^{x/a}\sinh v\dd v
+ =a[\cosh v]_0^{x/a}.\]
+因此
+\[
+y=a\left(\cosh\frac xa-1\right),\qquad
+T=H\sqrt{1+y'^2}=H\cosh\frac xa.
+\]
+这里$\sinh z=(e^z-e^{-z})/2$、$\cosh z=(e^z+e^{-z})/2$，由指数求导可直接核验 $\sinh' z=\cosh z,\cosh' z=\sinh z$。所求曲线满足 $y'=a\sinh(x/a)/a=\sinh(x/a)$及 $y''=\cosh(x/a)/a=\sqrt{1+y'^2}/a$，也满足两个最低点初值。消去$\cosh(x/a)$，得到$T=H+\lambda gy$，与光滑接触绳的张力高度差规律一致，但最低点张力不再为零。边界不同，积分常数就不同。
+
+悬链线在$|x|\ll a$时有$y\simeq x^2/(2a)$，局部近似抛物线。这个近似来自小斜率展开；完整曲线仍由真实弧长上的均匀载荷决定。
+
+\subsection{悬绳的长度和端点怎样确定张力}
+悬链线中的$a=H/(\lambda g)$并非任意可取，它必须由悬点和绳长确定。图\ref{fig:s4:span}中，两悬点等高、水平间距$d$，绳总长$L>d$，取最低点为原点。对称性给两端横坐标$\pm d/2$，弧长微元为
+\[
+\dd s=\sqrt{1+\sinh^2(x/a)}\dd x
+=\cosh(x/a)\dd x.
+\]
+因此半条绳长由积分确定。令 $u=x/a$，$\dd x=a\dd u$，上下限 $0,d/2$变为 $0,d/(2a)$，得
+\[\frac L2=\int_0^{d/2}\cosh(x/a)\dd x
+ =a\int_0^{d/(2a)}\cosh u\dd u
+ =a[\sinh u]_0^{d/(2a)}=a\sinh\frac d{2a}.\]
+先解
+\[
+L=2a\sinh\frac d{2a},
+\]
+再由$H=\lambda ga$求最低处张力，由$h=a[\cosh(d/(2a))-1]$求垂度，端点张力则为$T_A=H\cosh[d/(2a)]$。端点张力的竖直分量为$H\sinh[d/(2a)]=\lambda gL/2$，恰等于半条绳重，可独立检查边界是否满足。
+
+\fig{fig:s4:span}{等高悬点、跨度、垂度与最低点张力}{\begin{tikzpicture}[scale=.88]\draw[world,domain=-2.5:2.5,samples=100]plot(\x,{exp(\x/2)+exp(-\x/2)-2});\fill(-2.5,1.7768)circle(2pt)node[left]{$A$};\fill(2.5,1.7768)circle(2pt)node[right]{$B$};\fill(0,0)circle(2pt)node[below]{$O$};\draw[guide](-2.5,1.7768)--(2.5,1.7768);\draw[dim](-2.5,2.4)--(2.5,2.4)node[midway,above]{$d$};\draw[guide](0,0)--(3.1,0);\draw[dim](3.1,0)--(3.1,1.7768)node[midway,right]{$h$};\draw[force](0,0)--(1.2,0)node[midway,above]{$H$};\node at(-1.7,-.65){总弧长$L$};\end{tikzpicture}}
+令$z=d/(2a)>0$，绳长方程化为$L/d=\sinh z/z$。当$z\to0$，右侧趋$1$。按商法则，
+\[\frac{\dd}{\dd z}\frac{\sinh z}{z}
+ =\frac{z\cosh z-\sinh z}{z^2}.\]
+记分子为 $f(z)$，乘积法则给 $f'(z)=\cosh z+z\sinh z-\cosh z=z\sinh z>0$，且 $f(0)=0$，所以该比值严格增加；当 $z\to\infty$时它趋于无穷。故每个$L/d>1$对应唯一正$a$。若绳长小于跨度，几何上无解；绳长恰等于跨度又有非零自重时，需要$a\to\infty$、水平张力无限大，不能以有限拉力把重绳完全拉直。
+
+小垂度下$z\ll1$，展开得$h\simeq d^2/(8a)$、$L-d\simeq d^3/(24a^2)$，从而$h^2\simeq3d(L-d)/8$。这两个近似应由同一个小参数控制。只在形状上把曲线画得接近直线，却仍采用任意大垂度的近似公式，会使长度和张力不能同时满足。
+
+\fig{fig:s4:load-measure}{相同水平宽度内，按弧长均匀与按水平投影均匀是两种载荷模型}{\begin{tikzpicture}
+
+\foreach \shift/\title in {0/重绳自重,5/水平投影均布载荷}{
+\begin{scope}[xshift=\shift cm]
+\draw[world,domain=0:2.6]plot(\x,{.3*(\x)^2});
+\draw[guide](.8,.192)--(.8,-.6);\draw[guide](2,1.2)--(2,-.6);
+\draw[dim](.8,-.45)--(2,-.45)node[midway,below]{$\dd x$};
+\node at(1.3,2.7){\title};
+\end{scope}}
+\draw[force](1.4,.588)--(1.4,-.2);
+\node[right]at(1.7,1.1){$\dd s$};\node at(1.3,-1.3){$\dd W=\lambda g\dd s$};
+\foreach \x in {.4,.8,1.2,1.6,2,2.4}{\draw[force,blue](\x+5,{.3*(\x)^2})--++(0,-.6);}
+\node at(6.3,-1.3){$\dd W=w\dd x$};
+
+\end{tikzpicture}}
+图\ref{fig:s4:load-measure}左侧微段有$\dd s=\sqrt{1+y'^2}\dd x$，右侧载荷直接按$\dd x$计量。相同$\dd x$内，左图越陡，包含的绳越长、重量越大；右图的载荷则不随斜率改变。
+
+
+如果载荷按水平长度均匀分布、每单位水平长度重$w$，最低点到$x$的竖直载荷为$wx$，切线斜率为$y'=wx/H$。由最低点 $y(0)=0$积分，
+\[y(x)=\frac wH\int_0^x\xi\dd\xi
+ =\frac wH\left[\frac{\xi^2}{2}\right]_0^x=\frac{wx^2}{2H},\]
+这时严格为抛物线。悬链线的载荷则是$\lambda gs(x)$，因为真实弧长随斜率增大；两种模型只在小垂度时近似接近。题目中的“均匀”必须落实到按弧长还是按水平投影计量。
+
+\section{弹性圈与曲率约束}
+\input{ring-element}
+图\ref{s4:ring-element}确定几何和受力以后，再使用材料关系。若圈的整体劲度定义为$\tau=k\Delta L$，自然半径为$a$，整圈伸长应取$\Delta L=2\pi(b-a)$。若给定单位长度弹性模量，系数含义不同，必须先转换，不能把微段长度变化代作整圈伸长。
+
+薄圈在球面上的静平衡还要检查纬度、接触方向及弹性张力正值。图\ref{s4:ring-element}的球面法线沿球心$O$指向微段$P$，并不沿圈心$C$到$P$的水平半径；两者混同会改变竖直、水平分量的比例。
+
+\subsection{曲率力、薄圈与单位长度参数}
+微段的圆心角$\dd\phi$虽小，两端张力仍是有限量；它们的合力是$\tau\dd\phi$量级，与微段重量同阶。不能因两张力“几乎相反”就直接删去合力。微元法正是比较这些一阶小量，积分后保留有限的整体效果。两端张力大小的差与方向的差可能同时出现，应分别展开到相同阶数。
+
+薄圈位于球面纬度时，球面法线的水平、竖直分量之比由纬度角决定。先由竖直平衡消去支持力，再由水平径向平衡求张力，可以避开直接计算接触压强。整圈质量均匀意味着每个角元质量为$M\dd\phi/(2\pi)$，与受力图的角元范围必须一致。
+
+若细绳的杨氏模量为$E$、截面积为$S$、原长为$L_0$，则轴向张力$\tau=ES\Delta L/L_0$，整体劲度为$ES/L_0$。把材料参数$ES$直接代作$k$，会丢失长度因子。零原长弹簧是数学理想化，与具有有限$L_0$的弹性绳圈不是同一模型。
+
+
+\section{平衡存在与稳定性的判别}
+满足静力方程只说明某一构型可以静止。稳定性还要问：在约束允许的小扰动后，是否出现回复趋势？对保守系统和理想约束，可以沿允许构型比较势能。图\ref{fig:s4:pendulum-stability}把同一根铰接杆放在悬点下方和上方：质心偏移方向相似，重力矩的作用却相反。
+\fig{fig:s4:pendulum-stability}{下垂杆偏转后质心升高；倒立杆偏转后质心降低}{\begin{tikzpicture}
+
+\begin{scope}
+\coordinate(O)at(0,2.8);\coordinate(C)at(.8,1.1);
+\draw[guide](O)--(0,0);\draw[world](O)--(1.2,.25);
+\fill(O)circle(2pt)node[above]{$O$};\fill(C)circle(2pt)node[right]{$C$};
+\draw[force](C)--(.8,-.15)node[right]{$mg$};
+\draw[world](0,2.1)arc(-90:-64.8:.7);\node at(.27,1.75){$\theta$};
+\node at(.4,-.75){力矩使$\theta$减小};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\coordinate(O)at(0,0);\coordinate(C)at(.8,1.7);
+\draw[guide](O)--(0,2.8);\draw[world](O)--(1.2,2.55);
+\fill(O)circle(2pt)node[below]{$O$};\fill(C)circle(2pt)node[right]{$C$};
+\draw[force](C)--(.8,.45)node[right]{$mg$};
+\draw[world](0,.7)arc(90:64.8:.7);\node at(.27,1.05){$\theta$};
+\node at(.4,-.75){力矩使$\theta$增大};
+\end{scope}
+\end{tikzpicture}}
+设质心到悬点距离$d$。左图$\Delta U=mgd(1-\cos\theta)$，右图$\Delta U=mgd(\cos\theta-1)$，因而小角度下分别为$\pm mgd\theta^2/2$。回复力矩由$-\dd U/\dd\theta$确定，符号直接对应图中的升高或降低。
+
+一般地，在内部平衡位置$q=0$，先有$U'(0)=0$，再展开
+\[
+U(q)-U(0)=\frac12U''(0)q^2+\cdots.
+\]
+二阶系数为正时局部势能极小，为负时局部极大；若二阶为零，须保留首个非零高阶项。随遇平衡要求势能在一段允许构型中恒定，不能由某一阶导数为零推出。稳定保守系统通常在附近振动；有耗散时才可能逐渐静止在平衡位置。
+
+\subsection{滚动时应先确定允许构型}
+势能必须沿真实约束计算。纯滚动使固定面上的接触弧长等于物体表面滚过的长度，却不意味着物体绕初始接触点作有限转动。图\ref{fig:s4:rolling-contact}中圆轮由碗底移到右侧，轮心$O$沿半径$a-R$的圆运动，当前接触点$P$也随之移动。
+\fig{fig:s4:rolling-contact}{内滚时轮心绕行与轮自身转动方向相反，接触点随位置改变}{\begin{tikzpicture}
+
+\coordinate(K)at(0,3);\coordinate(O)at(.845,1.187);\coordinate(P)at(1.268,.281);
+\draw[world](-2.598,1.5)arc(210:330:3);
+\draw[guide](K)--(0,0);\draw[guide](K)--(P);
+\draw[world,dashed](0,1)circle(1);\draw[world](O)circle(1);
+\fill(K)circle(2pt)node[above]{$K$};\fill(O)circle(2pt)node[right]{$O$};
+\fill(P)circle(2pt)node[below right]{$P$};
+\draw[world](0,2.3)arc(-90:-65:.7);\node[right]at(.28,2.38){$\theta$};
+\node[left]at(.2,2.65){$a-R$};\node[right]at(1.1,.75){$R$};
+\draw[force,blue](O)--++(.906,.423)node[right]{$v_O$};
+\draw[axis,red](.245,1.187)arc(180:70:.6);\node[left]at(.05,1.65){$\omega<0$};
+\node[align=left]at(5,1.1){$v_O=(a-R)\dot\theta$\\接触点速度为零\\$\omega R=-v_O$};
+
+\end{tikzpicture}}
+以逆时针为正，图中轮心向右绕行时$\dot\theta>0$，轮自转满足$\omega=-(a-R)\dot\theta/R$。后续求偏心质心的高度，必须使用这一自转角，不能直接以$\theta$代替。长方体在圆柱顶滚动则要跟踪底面材料点与接触点的距离$R\theta$，具体几何见例题。
+
+\subsection{临界二阶项为零时的实际运动}
+势能最低阶项还决定能否使用简谐近似。二阶回复项消失时，须先确定高阶项的符号，再判断相应的实际运动。
+
+图\ref{fig:s4:quartic}比较$U-U_0=aq^4$与$-aq^4$，其中$a>0$。两者二阶导数在$q=0$都为零，但前者离开原点需要增加势能，后者则释放势能。若首个非零项为奇数次，例如$aq^3$，一侧下降就足以破坏双向扰动下的稳定；若约束只允许$q\ge0$，则必须只在允许的一侧检查。这解释了接触边界与普通内部平衡点为何不能完全采用同一个判别条件。
+
+\fig{fig:s4:quartic}{二阶项同为零的两种势能具有不同稳定性}{\begin{tikzpicture}[scale=.88]\begin{scope}\draw[axis](-1.65,0)--(1.8,0)node[right]{$q$};\draw[axis](0,-2.3)--(0,2.5)node[above]{$U-U_0$};\draw[world,domain=-1.3:1.3,samples=80]plot(\x,{.65*(\x)^4});\node at(.9,2.1){$aq^4$};\node at(0,-2.9){局部极小};\end{scope}\begin{scope}[xshift=5cm]\draw[axis](-1.65,0)--(1.8,0)node[right]{$q$};\draw[axis](0,-2.3)--(0,2.5)node[above]{$U-U_0$};\draw[world,domain=-1.3:1.3,samples=80]plot(\x,{-.65*(\x)^4});\node at(.9,-2.1){$-aq^4$};\node at(0,-2.9){局部极大};\end{scope}\end{tikzpicture}}
+在$U=aq^4$的稳定情形，回复力为$-4aq^3$，并非线性力。若惯性参数为常数$M$、振幅为$A$，能量$M\dot q^2/2+aq^4=aA^4$给出从原点到端点的时间，完整周期为
+\[
+T=4\sqrt{\frac{M}{2a}}\int_0^A\frac{\dd q}{\sqrt{A^4-q^4}}
+=\frac4A\sqrt{\frac{M}{2a}}\int_0^1\frac{\dd s}{\sqrt{1-s^4}}.
+\]
+最后一步令$q=As$，则 $\dd q=A\dd s$，$q=0,A$分别变为 $s=0,1$，分母变为 $A^2\sqrt{1-s^4}$，故整体提出因子 $1/A$。在 $s\to1^-$时，$1-s^4=(1-s)(1+s+s^2+s^3)\sim4(1-s)$；对应的原函数比较式为 $\int\dd s/[2\sqrt{1-s}]=-\sqrt{1-s}$，端点积分有限。因此无量纲积分为有限常数，$T\propto1/A$，振幅越小恢复越慢；不能把$U''(0)=0$代入简谐公式后，把无穷周期解释成物体在任何小扰动下都不动。四阶临界分析是对真实回复趋势的判断，不只是给临界参数补一个标签。
+
+\section{虚位移与曲面设计}
+虚位移是在同一时刻、满足几何约束的一次假想微小位移，不是随意给各点独立移动。光滑固定面上的接触点只能沿切向作允许位移，而支持力沿法线，因此$\boldsymbol N\cdot\delta\boldsymbol r=0$。不伸长的轻杆两端约束力成对出现，它们在相容虚位移中的总功也为零，故可以用虚功消去某些未知反力。
+
+\fig{fig:s4:virtual-rod}{允许虚位移沿各自接触面的切线，杆长约束把两端位移联系起来}{\begin{tikzpicture}
+
+\draw[world](0,3.7)--(0,0)--(4.5,0);
+\draw[world](0,3)--(4,0);\draw[world,dashed](0,2.7)--(4.21,0);
+\fill(0,3)circle(2pt)node[left]{$A$};\fill(4,0)circle(2pt)node[below]{$B$};
+\draw[force,blue](0,3)--(1,3)node[right]{$N_A$};
+\draw[force,blue](4,0)--(4,1.1)node[above]{$N_B$};
+\draw[axis,red](-.5,3)--(-.5,2.2)node[left]{$\delta Y$};
+\draw[axis,red](4,-.55)--(4.8,-.55)node[right]{$\delta x$};
+\draw[guide](2,1.5)--(2,0);\fill(2,1.5)circle(2pt)node[right]{$C$};
+\draw[force](2,1.5)--(2,.5)node[right]{$Mg$};
+\node at(2,4.3){$x^2+Y^2=L^2\ \Rightarrow\ x\delta x+Y\delta Y=0$};
+
+\end{tikzpicture}}
+图\ref{fig:s4:virtual-rod}以两端靠光滑墙、地面的杆说明“相容”：端点$B$向右时，$A$须同时下降，不能把$\delta x$和$\delta Y$任意独立指定。两支持力与各自位移垂直，虚功为零；质心下降，重力作正虚功，说明这一倾斜构型不能仅靠两个光滑支承静止。约束力不做功并不意味着系统必然平衡。
+
+
+设系统只有一个自由坐标$q$，各作用点位置为$\boldsymbol r_i(q)$，则$\delta\boldsymbol r_i=(\partial\boldsymbol r_i/\partial q)\delta q$。平衡条件$\sum_i\boldsymbol F_i\cdot\delta\boldsymbol r_i=0$变成$q$方向的一个标量关系。若仅有重力和理想约束，重力虚功为$-Mg\delta z_C=-Mg z_C'(q)\delta q$，所以内部平衡要求$z_C'(q)=0$。要在一段连续构型中都平衡，必须在该段保持$z_C$恒定，这才可以反求支承曲线。
+
+虚功只消去了已知不做功的约束力，并未自动证明它们方向可实现。求得构型后，还要回到受力图检验支持力非负、绳张力非负。若边界运动或存在滑动摩擦，其作用点虚位移与约束力未必垂直，相关功项必须保留。
+
+若用质心高度反求支承曲线，杆必须有质量。完全无质量、又无外载荷的轻杆，其势能恒为零，不能由重力条件唯一确定支承曲线。
+
+\section{稳定平衡与小振动的衔接}
+若一个保守系统在稳定平衡附近只有一个独立坐标$q$，势能增量可写成$\kappa q^2/2$，动能可写成$M_q\dot q^2/2$，其中此近似下 $M_q,\kappa$均为正常数。能量守恒逐项求导给
+\[0=\frac{\dd}{\dd t}\left(\frac12M_q\dot q^2+\frac12\kappa q^2\right)
+ =M_q\dot q\ddot q+\kappa q\dot q
+ =\dot q(M_q\ddot q+\kappa q).\]
+在 $\dot q\ne0$的运动区间约去 $\dot q$，并由运动方程的连续性延伸到转折时刻，得到 $M_q\ddot q+\kappa q=0$。也可由广义回复力 $-\dd U/\dd q=-\kappa q$直接写出此式，避免在转折点相除。令 $\omega_0^2=\kappa/M_q$，试取 $q=\e^{rt}$，代入得到 $r^2+\omega_0^2=0$，两根为 $r=\pm\mathrm i\omega_0$，所以实通解为 $q=A\cos\omega_0t+B\sin\omega_0t$。若 $q(0)=q_0,\dot q(0)=v_q$，则
+\[\dot q=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t,
+ \qquad A=q_0,\quad B=\frac{v_q}{\omega_0}.\]
+再求导即有 $\ddot q=-\omega_0^2q$，核验了方程与初值。因此静力学中求出的二阶势能系数，还决定邻近小振动的频率$\sqrt{\kappa/M_q}$。单有回复力矩不够，必须同时确定该坐标对应的惯性参数。
+
+均匀杆绕端点转动时，$q$若取转角，惯性参数是$I=mL^2/3$；若改取杆顶水平位移$x\simeq Lq$，有效质量变为$I/L^2$，有效劲度也同时按$1/L^2$转换。两种坐标给出的周期必须相同。坐标改变后只转换劲度、却仍使用原质量，是复杂装置等效计算的常见错误。
+
+\fig{fig:s4:coordinate-inertia}{同一偏转可用转角或端点位移描述，惯性参数与势能系数必须一起变换}{\begin{tikzpicture}
+
+\draw[guide](0,0)--(0,3);\draw[world](0,0)--(1,2.828);
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(1,2.828)circle(2pt)node[right]{$B$};
+\draw[world](0,.8)arc(90:70.53:.8);\node at(.26,1.15){$q$};
+\draw[dim](0,3.35)--(1,3.35)node[midway,above]{$x\simeq Lq$};
+\node[right]at(.5,1.414){$L$};
+\node[align=left]at(4.8,1.8){$K=\frac12I\dot q^2=\frac12\frac I{L^2}\dot x^2$\\[6pt]$\Delta U=\frac12\kappa q^2=\frac12\frac\kappa{L^2}x^2$\\[6pt]$\omega^2=\kappa/I$};
+
+\end{tikzpicture}}
+图\ref{fig:s4:coordinate-inertia}中的两个表达描述同一运动，因此有效惯性与有效刚度都除以$L^2$，频率比值保持不变。转角坐标中的$I$不能直接作为位移坐标中的质量。
+
+
+若有两个独立坐标，小扰动的稳定性由二次型共同决定。沿每个坐标轴看都上升，仍可能沿某个混合方向下降，例如$U=x^2+y^2-3xy$在$x=y$方向为负。因此单自由度的判别不能无条件推广到可侧翻、可滑移、可转动的多自由度物体。题目说摩擦足够大时，正是通过滚动约束减少了独立运动方式。
+
+接触约束是单向的，允许虚位移也应单向检查。物体在平面上不能穿入支承面，但可能向上离开；把不允许的穿透方向纳入势能判断，可能得出没有物理意义的极值。势能法给出构型平衡后，还应检查法向反力正值与摩擦足够条件，两者保证所使用的约束确实持续。
+
+临界参数附近，线性频率可能趋零，意味着小扰动恢复变慢，也意味着高阶项更容易影响运动。此时应降低对线性周期公式的适用范围，不能把趋于无穷的周期解释成物体一定永久静止。先完成稳定性和约束判别，再进入振动分析，才能保证两个专题之间的推理连贯。
+
+\fig{fig:s4:two-coordinate}{沿两个坐标轴上升的势能，仍可能沿混合方向下降}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-1.7,0)--(1.9,0)node[right]{$x$};\draw[axis](0,-1.6)--(0,1.8)node[above]{$y$};
+\draw[world,red](-1.3,-1.3)--(1.3,1.3)node[right]{$x=y=s$};
+\draw[axis,red](0,0)--(.9,.9);\node at(0,-2.2){允许的混合扰动};
+\end{scope}
+\begin{scope}[xshift=5.1cm]
+\draw[axis](-1.7,0)--(1.9,0)node[right]{$s$};\draw[axis](0,-1.7)--(0,1.9)node[above]{$\Delta U$};
+\draw[world,blue,domain=-1.2:1.2]plot(\x,{(\x)^2});
+\draw[world,red,domain=-1.2:1.2]plot(\x,{-(\x)^2});
+\node[right,blue]at(1.2,1.44){$s^2$};\node[right,red]at(1.2,-1.44){$-s^2$};
+\end{scope}
+\end{tikzpicture}}
+图\ref{fig:s4:two-coordinate}蓝线对应$x=s,y=0$或$x=0,y=s$，红线对应$x=y=s$。红线给出一个任意小而降低势能的允许扰动，已足以否定稳定性。只有全部独立允许方向都经过检查，单个截面的极小才可能推广为系统的稳定结论。
+
+

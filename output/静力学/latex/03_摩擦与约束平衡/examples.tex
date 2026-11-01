@@ -1,0 +1,307 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[垂直于杆的抬升力]\label{s3:example:1}
+均匀杆重$G$，一端在地面上不滑动，另一端受始终垂直杆的力而缓慢抬起。求完成全过程所需的最小静摩擦系数。
+\end{example}
+\fig{fig:s3:example:1:s}{抬升力保持垂直于杆，倾角由水平逐渐增至竖直}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(4.5,0);\draw[world](0,0)--(3,2)node[midway,above left]{$L$};\node[below]at(0,0){$A$};\node[right]at(3,2){$B$};\draw[force](3,2)--(2.2,3.2)node[above]{$F$};\draw(2.8,1.8667)--(2.6667,2.0667)--(2.8667,2.2);\draw(.8,0)arc(0:33.69:.8);\node at(1.1,.3){$\alpha$};\draw[guide](0,0)--(0,3.6);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用力矩平衡求各倾角所需的抬升力}\par\nobreak
+图\ref{fig:s3:example:1:s}设杆与地面夹角$\alpha$，绕下端取矩，$FL=G(L/2)\cos\alpha$，两边约去$L$，所以$F=G\cos\alpha/2$。抬升力的水平分量向左$F\sin\alpha$，竖直分量向上$F\cos\alpha$；为保持杆脚不动，水平摩擦$f=F\sin\alpha$，支持力$N=G-F\cos\alpha$。
+\fig{fig:s3:example:1:p}{力矩先确定抬升力，再由杆脚受力求摩擦需求}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)--(3,2);\node[below left]at(0,0){$A$};\draw[force](3,2)--(2.4,2.9)node[above]{$F$};\draw[force](1.5,1)--(1.5,-.3)node[right]{$G$};\draw[force](0,0)--(0,1.3)node[left]{$N$};\draw[force](0,0)--(.8,0)node[below]{$f$};\draw[dim](0,-.8)--(1.5,-.8)node[midway,below]{$\frac L2\cos\alpha$};
+\end{scope}
+\begin{scope}[xshift=5.5cm,x=1.5cm,y=5cm]
+\draw[axis](0,0)--(2.6,0)node[right]{$t=\tan\alpha$};\draw[axis](0,0)--(0,.48)node[above]{$f/N$};\draw[blue,thick,domain=0:2.3,samples=70]plot(\x,{\x/(1+2*(\x)^2)});\draw[guide](.7071,0)--(.7071,.35355)--(0,.35355);\node[left]at(0,.35355){$\frac1{2\sqrt2}$};\node[below]at(.7071,0){$1/\sqrt2$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把全过程化为摩擦比的最大值}\par\nobreak
+图\ref{fig:s3:example:1:p}因此要求
+\[
+\mu\ge\frac fN=\frac{\sin\alpha\cos\alpha}{1+\sin^2\alpha}
+=\frac{t}{1+2t^2},\quad t=\tan\alpha.
+\]
+将$\sin\alpha\cos\alpha=t/(1+t^2)$、$1+\sin^2\alpha=(1+2t^2)/(1+t^2)$相除，得$t/(1+2t^2)$。令$h(t)=t/(1+2t^2)$，按商的求导法则，
+\[
+h'(t)=\frac{1\cdot(1+2t^2)-t\cdot4t}{(1+2t^2)^2}
+=\frac{1-2t^2}{(1+2t^2)^2}.
+\]
+分母恒正；当$0\le t<1/\sqrt2$时导数为正，当$t>1/\sqrt2$时导数为负。因此峰值位于$t=1/\sqrt2$，代回得到
+\[
+h_{\max}=\frac{1/\sqrt2}{1+2(1/\sqrt2)^2}=\frac1{2\sqrt2}.
+\]
+图\ref{fig:s3:example:1:p}右图的峰值给出全过程所需的最小系数 $\mu_{\min}=1/(2\sqrt2)$。两端 $\alpha=0,\pi/2$ 所需摩擦均为零，最危险状态位于中途；支持力 $N=G(1+\sin^2\alpha)/2>0$，因此全过程没有法向脱离。\end{solution}
+\begin{question}\begin{example}[水平杆上的任意大载荷]\label{s3:example:2}
+重$G$、长$l$的均匀水平杆，一端$A$顶住粗糙墙，另一端$B$以与杆夹角$\theta$的绳悬挂。墙摩擦系数$\mu$。求空杆平衡条件，以及悬挂任意大重物也不失衡的载荷位置。
+\end{example}
+\fig{fig:s3:example:2:s}{载荷位置从墙端量起，绳倾角相对水平杆定义}{\begin{tikzpicture}
+
+\draw[world](0,-.5)--(0,2.7);\draw[world](0,0)--(4,0)--(0,2);\node[below left]at(0,0){$A$};\node[below right]at(4,0){$B$};\draw[force](1.4,0)--(1.4,-1)node[below]{$W$};\draw[dim](0,-1.6)--(1.4,-1.6)node[midway,below]{$x$};\draw[dim](0,2.8)--(4,2.8)node[midway,above]{$l$};\draw(3.2,0)arc(180:153.435:.8);\node at(2.9,.25){$\theta$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留载荷位置，列三个刚体平衡方程}\par\nobreak
+图\ref{fig:s3:example:2:s}在距$A$为$x$处加重$W$。对$A$取矩，$T\sin\theta=G/2+Wx/l$；水平平衡$N=T\cos\theta$；竖直平衡给$f=G/2+W(1-x/l)$。
+\fig{fig:s3:example:2:p}{完整受力图中张力、杆重、载荷分别有不同力臂}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0);\node[below left]at(0,0){$A$};\node[below right]at(4,0){$B$};\draw[force](4,0)--(2.5,.75)node[above]{$T$};\draw[force](2,0)--(2,-1.3)node[right]{$G$};\draw[force](1,0)--(1,-1.5)node[left]{$W$};\draw[force](0,0)--(0,1.2)node[left]{$f$};\draw[force](0,0)--(1,0)node[above]{$N$};\draw[dim](0,-2)--(1,-2)node[midway,below]{$x$};\draw[dim](2,-2)--(4,-2)node[midway,below]{$l/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检验空杆与任意大载荷}\par\nobreak
+图\ref{fig:s3:example:2:p}的摩擦应向上，条件为
+\[
+\frac G2+W(1-x/l)\le\mu\cot\theta\left(\frac G2+\frac{Wx}{l}\right).
+\]
+空杆需$\mu\ge\tan\theta$。在此条件下，对所有$W\ge0$成立还需$W$的系数不为正，即
+\[
+x\ge x_c=\frac{l\tan\theta}{\mu+\tan\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求不能自锁时的有限临界载荷}\par\nobreak
+把不等式移项可写为
+\[
+W[1-(1+\mu\cot\theta)x/l]\le
+\frac G2(\mu\cot\theta-1).
+\]
+空杆条件确保右侧非负。若$x<x_c$，左侧系数为正，有限临界载荷为
+\[
+W_c=\frac{G(\mu\cot\theta-1)}
+{2[1-(1+\mu\cot\theta)x/l]}.
+\]
+因此$x<x_c$时存在有限破坏载荷，$x=x_c$时大载荷极限趋于临界。结果同时保留了杆自重条件，不能仅求$W\to\infty$就忽略空杆能否静止。\end{solution}
+\begin{question}\begin{example}[推力方向造成的自锁]\label{s3:example:3}
+物块重$G$、静摩擦系数$\mu$。沿与水平成$\alpha$的右下方向施力$F$，求无论$F$多大都不能推动的条件；不自锁时求启动阈值。
+\end{example}
+\fig{fig:s3:example:3:s}{题设：推力方向造成的自锁}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,0);\draw[world](1,0)rectangle(2.4,1);\draw[force](.2,2)--(1.3,1)node[midway,left]{$F$};\draw[guide](.2,2)--(1.7,2);\draw(.8,2)arc(0:-42.27:.6);\node at(1.05,1.75){$\alpha$};\node at(1.7,.5){$G$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{比较摩擦需求与可用上限}\par\nobreak
+图\ref{fig:s3:example:3:s}中$N=G+F\sin\alpha$，维持静止需$f=F\cos\alpha$。
+在临界右滑之前，摩擦向左但大小由平衡确定为$F\cos\alpha$，最大可用值才是$\mu(G+F\sin\alpha)$。比较两者而不是一开始强令相等，可同时判断“始终不滑”和“有限阈值”两种情况。
+\fig{fig:s3:example:3:p}{解答过程：推力方向造成的自锁}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(1,-1)node[anchor=west]{$F$};\draw[force](2.5,1)--++(-1,0)node[anchor=east]{$f$};\draw[force](2.5,1)--++(0,1.4)node[anchor=south]{$N$};\draw[force](2.5,1)--++(0,-1.4)node[anchor=north]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按外力系数的符号区分自锁与启动}\par\nobreak
+图\ref{fig:s3:example:3:p}的摩擦条件化为$F(\cos\alpha-\mu\sin\alpha)\le\mu G$。若$\tan\alpha\ge1/\mu$，左边系数不正，任意$F\ge0$均能静止。若$\tan\alpha<1/\mu$，临界力为$F_c=\mu G/(\cos\alpha-\mu\sin\alpha)$。这里限定刚体和固定接触理想模型，若施力造成倾覆需另外检查。\end{solution}
+\begin{question}\begin{example}[筷子的摩擦夹持条件]\label{s3:example:4}
+两对称直筷形成总夹角$2\theta$，夹持可视为圆的物体。忽略物体重力对夹持平面内运动的影响，摩擦系数$\mu$。求物体不从开口一侧滑出的自锁条件。
+\end{example}
+\fig{fig:s3:example:4:s}{题设：筷子的摩擦夹持条件}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(5,1.5);\draw[world](0,0)--(5,-1.5);\draw[world](3.48,0)circle(1);\node at(1.2,.2){$\theta$};\draw[axis](3.4,0)--(5.5,0)node[right]{开口};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在真实接触点确定法向与摩擦方向}\par\nobreak
+图\ref{fig:s3:example:4:s}中两法向力均把物体推向开口方向，每个法向沿轴分量为$N\sin\theta$。若物体将向开口滑出，两个摩擦沿筷向尖端，其轴向分量各为$f\cos\theta$。
+以开口方向为对称轴正方向。两法向力的横向分量相互抵消，沿轴的分量相加为$2N\sin\theta$；两摩擦力反向的轴分量之和为$2f\cos\theta$。把共同因子$2$约去，才能得到单处所需的比值$f/N$。
+\fig{fig:s3:example:4:p}{摩擦沿筷指向尖端，两个法向分量共同推向开口}{\begin{tikzpicture}
+
+\draw[world](0,0)--(5,1.5);\draw[world](0,0)--(5,-1.5);\draw[world](3.48,0)circle(1);\draw[guide](0,0)--(5.7,0)node[right]{开口};\coordinate(U)at(3.1927,.9578);\coordinate(D)at(3.1927,-.9578);
+\draw[force](U)--++(.3448,-1.1494)node[below right]{$N_1$};\draw[force](D)--++(.3448,1.1494)node[above right]{$N_2$};\draw[force](U)--++(-.958,-.2874)node[left]{$f_1$};\draw[force](D)--++(-.958,.2874)node[left]{$f_2$};\node at(1.5,.18){$\theta$};\node at(3.5,-1.7){$f\cos\theta=N\sin\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以方向比判断夹持是否可行}\par\nobreak
+图\ref{fig:s3:example:4:p}沿对称轴平衡要求$f\cos\theta=N\sin\theta$，即$f/N=\tan\theta$。可静止条件为$\tan\theta\le\mu$，总夹角$2\theta\le2\arctan\mu$。加大夹持力会同比增加两种分量，不能弥补过大的开口角。\end{solution}
+\begin{question}\begin{example}[靠墙梯子的三种摩擦条件]\label{s3:example:5}
+均匀梯重$G$，与水平夹角$\theta$，墙和地面静摩擦系数分别为$\mu_1,\mu_2$。分别求光滑墙、光滑地面、两处相同系数时的最低要求。
+\end{example}
+\fig{fig:s3:example:5:s}{题设：靠墙梯子的三种摩擦条件}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(5,0);\draw[world](0,2.8)--(4,0);\node[left]at(0,2.8){$A$};\node[below]at(4,0){$B$};\node at(3.3,.35){$\theta$};\node at(2.2,2.4){梯重 $G$，长 $L$};\node[left]at(0,1){$\mu_1$};\node at(4.5,-.6){$\mu_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{列两接触点的完整受力与力矩关系}\par\nobreak
+图\ref{fig:s3:example:5:s}下滑趋势使墙摩擦$f_1$向上，地面摩擦$f_2$向墙。平衡为$N_1=f_2$，$N_2+f_1=G$；对下端取矩得
+\[
+N_1L\sin\theta+f_1L\cos\theta=\frac{GL}2\cos\theta.
+\]
+\fig{fig:s3:example:5:p}{解答过程：靠墙梯子的三种摩擦条件}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(0,0)--(5,0);\draw[world](0,2.8)--(4,0);\node[left]at(0,2.8){$A$};\node[below]at(4,0){$B$};\node at(3.3,.35){$\theta$};\draw[force](0,2.8)--(1,2.8)node[right]{$N_1$};\draw[force](0,2.8)--(0,3.8)node[left]{$f_1$};\draw[force](4,0)--(4,1.2)node[right]{$N_2$};\draw[force](4,0)--(3,0)node[below]{$f_2$};\draw[force](2,1.4)--(2,.2)node[right]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别讨论一个接触面光滑的情况}\par\nobreak
+图\ref{fig:s3:example:5:p}若墙光滑，$f_1=0$，故$N_1=(G/2)\cot\theta$，$N_2=G$，要求$\mu_2\ge\cot\theta/2$。
+
+若地面光滑，$f_2=0$进而$N_1=0$；墙摩擦也必须为零，无法抵消重力矩，所以对$0<\theta<\pi/2$不存在有限$\mu_1$可使其静止。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{让可行反力区间刚好出现以求最小系数}\par\nobreak
+若两处均为$\mu$，令$t=f_1/G$、$a=N_1/G$，力矩式化为$a\tan\theta+t=1/2$，竖直式为$N_2/G=1-t$。摩擦不等式要求$t\le\mu a$、$a\le\mu(1-t)$。消去$t=1/2-a\tan\theta$后，
+\[
+a\ge\frac1{2(\mu+\tan\theta)},\qquad
+a(1-\mu\tan\theta)\le\frac\mu2.
+\]
+当$\mu$取可行的最小值时，两端可行区间刚相接，因而此边界两处同时取等号，$f_1=\mu N_1$、$N_1=\mu N_2$。由$N_2=G-\mu N_1$得$N_1=\mu G/(1+\mu^2)$。代入力矩式得$\mu^2+2\mu\tan\theta-1=0$，正根$\mu_{\min}=\sec\theta-\tan\theta$。这是特定单参数极限，不能推广成所有双接触题都同时达极限。\end{solution}
+\begin{question}\begin{example}[轻圆筒何时翻倒]\label{s3:example:6}
+半径$a$、高$4a$、重$w$的两端开口薄圆筒置于光滑地面。筒内两相同光滑球半径$r$、各重$G$，一球落地且分别靠左右筒壁，$a/2<r<a$。求圆筒不翻倒条件。
+\end{example}
+\fig{fig:s3:example:6:s}{题设：轻圆筒何时翻倒}{\begin{tikzpicture}[scale=.88]\draw[world](0,4)--(0,0)--(2,0)--(2,4);\draw[world](.6,.6)circle(.6);\draw[world](1.4,1.4944)circle(.6);\draw[dim](2.5,0)--(2.5,4)node[midway,right]{$4a$};\draw[dim](0,-.45)--(2,-.45)node[midway,below]{$2a$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用球心三角形求筒壁水平挤压力}\par\nobreak
+图\ref{fig:s3:example:6:s}中两球心水平差$2(a-r)$，竖直差$2q$，其中$q=\sqrt{r^2-(a-r)^2}=\sqrt{a(2r-a)}$。上球竖直平衡使球间力的竖直分量为$G$，其水平分量为$G(a-r)/q$。
+\fig{fig:s3:example:6:p}{球心三角形确定水平挤压力，筒壁所受两力构成力偶}{\begin{tikzpicture}
+
+\begin{scope}
+\coordinate(A)at(0,0);\coordinate(B)at(1.6,1.78885);\draw[world](A)--(B)node[midway,above left]{$2r$};\draw[guide](A)--(1.6,0)--(B);\node[below]at(.8,0){$2(a-r)$};\node[right]at(1.6,.8944){$2q$};\fill(A)circle(2pt)node[left]{$C_1$};\fill(B)circle(2pt)node[right]{$C_2$};\draw[force](B)--(2.4,2.6833)node[above]{$N_c$};\draw[force](B)--(.6,1.78885)node[above]{$H$};\draw[force](B)--(1.6,.58885)node[right]{$G$};
+\end{scope}
+\begin{scope}[xshift=5.5cm]
+\draw[world](0,3.4)--(0,0)--(2.4,0)--(2.4,3.4);\draw[force](0,.8)--(-1,.8)node[left]{$H$};\draw[force](2.4,2.6)--(3.4,2.6)node[right]{$H$};\draw[force](1.2,1.7)--(1.2,.4)node[right]{$w$};\draw[force](2.4,0)--(2.4,1.2)node[right]{$N_g=w$};\fill(2.4,0)circle(2pt)node[below]{$B$};\draw[dim](1.2,-.7)--(2.4,-.7)node[midway,below]{$a$};\node at(1.2,4){临界时地面合力移到右边缘};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以边缘取矩比较挤压力偶与回复力矩}\par\nobreak
+图\ref{fig:s3:example:6:p}筒壁受两相反水平力，作用点高度差$2q$，形成力偶，矩为
+\[
+M_{\rm balls}=\frac{G(a-r)}q\,(2q)=2G(a-r).
+\]
+两个水平力总和虽为零，力矩并不为零，该力偶不因把两球整体取出而消失。圆筒自身重力的最大回复力矩为$wa$，所以不翻倒需
+\[
+2G(a-r)\le wa,\qquad
+r\ge a\left(1-\frac{w}{2G}\right).
+\]
+若右侧小于 $a/2$，全部题设半径均满足。上球最高点为 $2r+2q$；由 $r<a$ 及 $q=\sqrt{a(2r-a)}<a$，有 $2r+2q<4a$，所以题设范围内上球始终低于筒口。\end{solution}
+\begin{question}\begin{example}[大圆柱越过小圆柱]\label{s3:example:7}
+两光滑外形圆柱半径$r_1<r_2$、重$G_1,G_2$，置于水平地面。在大柱顶端切向向左拉绳，使其将绕小柱上升。所有接触静摩擦系数$\mu$，求临界抬离地面时不打滑的条件。
+\end{example}
+\fig{fig:s3:example:7:s}{题设：大圆柱越过小圆柱}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(6,0);\draw[world](1,1)circle(1);\draw[world](3.828,2)circle(2);\draw[force](3.828,4)--(2,4)node[left]{$P$};\node[above]at(1,1){$C_1,G_1$};\node[above]at(3.828,2){$C_2,G_2$};\draw[guide](1,1)--(1,0)node[midway,left]{$r_1$};\draw[guide](3.828,2)--(3.828,0)node[midway,right]{$r_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在离地瞬间分别列两柱转矩平衡}\par\nobreak
+图\ref{fig:s3:example:7:s}大柱地面反力为零时，两柱中心的水平距离为$2\sqrt{r_1r_2}$。对小柱转动平衡，地面摩擦与两柱间切向摩擦相等，均为$f$；对大柱中心取矩，顶端拉力满足$P=f$。
+\fig{fig:s3:example:7:p}{临界时大柱离地；两柱接触力在各自图上等大反向}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,1.5)circle(1.5);\fill(0,1.5)circle(2pt)node[left]{$C_1$};\draw[force](0,0)--(1.2,0)node[below]{$f_g=f$};\draw[force](0,-1.2)--(0,0)node[midway,left]{$N_g$};\draw[force](0,1.5)--(0,.5)node[right]{$G_1$};\draw[force](1.4142,2)--(.4714,1.6667)node[midway,above]{$N_c$};\draw[force](1.4142,2)--(1.7475,1.0572)node[right]{$f$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[world](0,2)circle(2);\fill(0,2)circle(2pt)node[above right]{$C_2$};\draw[force](0,4)--(-1.5,4)node[left]{$P$};\draw[force](0,2)--(0,.6)node[right]{$G_2$};\coordinate(K)at(-1.8856,1.3333);\draw[force](K)--++(.9428,.3333)node[midway,below]{$N_c$};\draw[force](K)--++(-.3333,.9428)node[left]{$f$};\node at(0,-.8){$N_{g2}=0,\quad P=f$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用整体取矩求拉力与摩擦}\par\nobreak
+图\ref{fig:s3:example:7:p}左图中地面摩擦向右，小柱所受接触切向力向右下；二者关于小柱中心的转矩相反。对两柱整体，以小柱最低接触点对整个系统取矩，$P(2r_2)=G_2\,2\sqrt{r_1r_2}$，所以$P=f=G_2\sqrt{r_1/r_2}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复局部接触力并比较两处摩擦约束}\par\nobreak
+设连心线向右上方的单位向量为$(c,s)$，其中
+\[
+c=\frac{2\sqrt{r_1r_2}}{r_1+r_2},\qquad
+s=\frac{r_2-r_1}{r_1+r_2}.
+\]
+大柱接触切向力为$f(-s,c)$，平衡顶端拉力的转矩，且$f=P$。水平平衡给$N_cc-fs-P=0$，故
+\[
+N_c=\frac{P(1+s)}c=P\sqrt{\frac{r_2}{r_1}}=G_2.
+\]
+整体竖直平衡给小柱地面反力$N_g=G_1+G_2$。
+\[
+f\le\mu N_c,\qquad f\le\mu N_g.
+\]
+前者更严格，故$\mu\ge\sqrt{r_1/r_2}$。本结论用于该瞬时起越状态，后续全过程仍须核对接触。\end{solution}
+\begin{question}\begin{example}[两斜面上的摩擦为何不唯一]\label{s3:example:8}
+圆柱重$G$，接触左右倾角$60^\circ,30^\circ$的固定粗糙斜面，摩擦系数$\mu_1,\mu_2$。仅给出静止条件，能否唯一求两处摩擦？
+\end{example}
+\fig{fig:s3:example:8:s}{题设：两斜面上的摩擦为何不唯一}{\begin{tikzpicture}[scale=.88]\draw[world](0,3.464)--(2,0)--(5.5,2.021);\draw[world](2.4758,1.7758)circle(1.3);\draw[guide](.5,0)--(5.5,0);\node at(1.2,.4){$60^\circ$};\node at(3.4,.3){$30^\circ$};\node[left]at(.8,2.1){$\mu_1$};\node[right]at(4.2,1.2){$\mu_2$};\node at(2.4758,1.7758){$G$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用转矩方程联系两个有向摩擦}\par\nobreak
+图\ref{fig:s3:example:8:s}取两切向方向均沿各斜面向上，记左摩擦为$T$、右摩擦为$T_2$。关于圆心的力矩平衡给$T_2=T$，两力的转矩方向相反。法向平衡分量为
+\[
+\tfrac{\sqrt3}2N_1-\tfrac12N_2-\tfrac12T+\tfrac{\sqrt3}2T=0,
+\quad
+\tfrac12N_1+\tfrac{\sqrt3}2N_2+\tfrac{\sqrt3}2T+\tfrac12T=G.
+\]
+\fig{fig:s3:example:8:p}{解答过程：两斜面上的摩擦为何不唯一}{\begin{tikzpicture}[scale=.88]\draw[world](2,1.5)circle(1.2);\fill(2,1.5)circle(2pt)node[above]{$C$};\draw[force](.9608,.9)--(1.9134,1.45)node[midway,above]{$N_1$};\draw[force](2.6,.4608)--(2.05,1.4134)node[midway,right]{$N_2$};\draw[force](.9608,.9)--(.5108,1.6794)node[left]{$T$};\draw[force](2.6,.4608)--(3.3794,.9108)node[right]{$T_2=T$};\draw[force](2,1.5)--(2,-.1)node[below]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以摩擦参数表示法向力并保留可行区间}\par\nobreak
+图\ref{fig:s3:example:8:p}第一式与第二式的法向力系数构成正交投影。以$\sqrt3/2$乘水平式、$1/2$乘竖直式后相加，得$N_1+T=G/2$；以$-1/2$乘水平式、$\sqrt3/2$乘竖直式后相加，得$N_2+T=\sqrt3G/2$。因此$N_1=G/2-T$、$N_2=\sqrt3G/2-T$。故允许的$T$满足
+\[
+N_1,N_2\ge0,\quad |T|\le\mu_1N_1,\quad |T|\le\mu_2N_2.
+\]
+这是一个区间，通常不唯一。例如$T=0$总满足光滑静力解；若小的正$T$也符合不等式，就有另一解。题目若要唯一数值，需增加变形、加载历史或临界条件。\end{solution}
+\begin{question}\begin{example}[斜面上先滑还是先翻]\label{s3:example:9}
+均匀长方体沿斜面的底边长$a$、法向高度$b$，静摩擦系数$\mu$。斜面倾角从零缓慢增加，求首先发生的失稳类型及临界角。
+\end{example}
+\fig{fig:s3:example:9:s}{题设：斜面上先滑还是先翻}{\begin{tikzpicture}[scale=.88]\begin{scope}[rotate=20]\draw[world](-1,0)--(5,0);\draw[world](1,0)rectangle(3,2.5);\node at(2,1.25){$C$};\end{scope}\draw[guide](0,0)--(5,0);\draw(4,0)arc(0:20:4);\node at(4.25,.65){$\theta$};\begin{scope}[rotate=20]\draw[dim](1,-.45)--(3,-.45)node[midway,below]{$a$};\draw[dim](3.5,0)--(3.5,2.5)node[midway,right]{$b$};\end{scope}\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求沿斜面滑动的临界角}\par\nobreak
+图\ref{fig:s3:example:9:s}静止时$f=G\sin\theta$，$N=G\cos\theta$，所以滑动边界$\theta_s=\arctan\mu$。
+\fig{fig:s3:example:9:p}{支承合力先向下坡边缘移动，临界时与重力竖线共线}{\begin{tikzpicture}
+
+\begin{scope}
+\begin{scope}[rotate=25]\draw[world](-.5,0)--(2.6,0);\draw[world](0,0)rectangle(2,2.5);\node[below]at(0,0){$A$};\fill(1,1.25)circle(2pt)node[above]{$C$};\end{scope}
+\draw[force](.378,1.556)--(.378,.5)node[right]{$G$};\draw[force](.378,.1763)--(.378,1.1)node[left]{$\bm R$};\draw[guide](.378,.1763)--(.378,-.4);\node at(1,3.5){临界前：作用点在底面内};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\begin{scope}[rotate=38.6598]\draw[world](-.5,0)--(2.6,0);\draw[world](0,0)rectangle(2,2.5);\fill(0,0)circle(2pt)node[below]{$A$};\fill(1,1.25)circle(2pt)node[above]{$C$};\end{scope}
+\draw[force](0,1.6008)--(0,.9)node[right]{$G$};\draw[force](0,0)--(0,.7)node[left]{$\bm R$};\node at(.8,3.5){临界：$C$ 的竖线通过 $A$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求倾覆边界并比较先后顺序}\par\nobreak
+图\ref{fig:s3:example:9:p}对下坡底边取矩，重力力臂从质心的水平投影决定，倾覆临界满足$(a/2)\cos\theta=(b/2)\sin\theta$，即$\theta_t=\arctan(a/b)$。重力竖线落在底面内时，可由底面某处的法向反力提供平衡；到下坡边缘时力臂为零，再偏转便需要底面外的支点，原接触构型失效。两种临界均从$\theta=0$随角度增加达到，故比较两角：$\mu<a/b$先滑；$\mu>a/b$先翻；相等时两边界同时达到。支持力作用点在倾覆临界前逐渐移向下坡边缘，不是始终位于底面中心。\end{solution}
+\begin{question}\begin{example}[开合木板夹持圆柱的转向]\label{s3:example:10}
+圆柱半径$R$、重$G$，位于竖直墙与下端铰于墙脚的木板之间。板与竖直夹角$\theta<90^\circ$缓慢增大，墙、板摩擦系数分别$\mu_w,\mu_b$。在准静态近似下，讨论哪一面粘着及转向，忽略转换瞬间惯性层。
+\end{example}
+\fig{fig:s3:example:10:s}{题设：开合木板夹持圆柱的转向}{\begin{tikzpicture}[scale=.88]\draw[world](0,4)--(0,0)--(4,3);\draw[world](.8,1.6)circle(.8);\node at(.35,.7){$\theta$};\node[below]at(0,0){$O$};\draw[guide](.8,1.6)--(0,1.6);\node[above]at(.4,1.6){$R$};\node at(2.5,3.3){$\dot\theta>0$，缓慢开板};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两处相切几何求中心下降速度}\par\nobreak
+图\ref{fig:s3:example:10:s}的圆心位于$(R,R\cot(\theta/2))$。先对余切函数求导：
+\[
+\frac{\dd}{\dd u}\cot u
+=\frac{(-\sin u)\sin u-\cos u\cos u}{\sin^2u}
+=-\frac1{\sin^2u}.
+\]
+再令$u=\theta(t)/2$，用链式法则得到中心竖直速度
+\[
+V_y=\frac{\dd}{\dd t}\bigl[R\cot(\theta/2)\bigr]
+=-\frac{R}{\sin^2(\theta/2)}\frac{\dot\theta}{2}<0.
+\]
+因此圆心向下移动。取逆时针角速度$\omega$为正，墙接触相对速度为$V_y-R\omega$，板接触沿板向上分量为$V_y\cos\theta+R\omega$。两处同时粘着只在$\dot\theta=0$时可能。
+圆心到墙的距离恒为$R$。设中心高$Y$，它到板直线的垂距亦为$R$，得到$Y\sin\theta-R\cos\theta=R$，即$Y=R(1+\cos\theta)/\sin\theta=R\cot(\theta/2)$。这一几何式先决定中心的运动方向，再用接触点的刚体速度确定滑动方向，不能单凭开板方向猜圆柱转向。
+\fig{fig:s3:example:10:p}{在墙、板实际接触点分别标法向力与切向力}{\begin{tikzpicture}
+
+\draw[world](0,6.5)--(0,0)--(6,4.5);\draw[world](2,4)circle(2);\fill(2,4)circle(2pt)node[above right]{$C$};\node[below]at(0,0){$O$};\draw[force](0,4)--(0,5.5)node[left]{$f_w$};\draw[force](0,4)--(1.4,4)node[midway,above]{$N_w$};\draw[force](3.2,2.4)--(4.8,3.6)node[right]{$f_b$};\draw[force](3.2,2.4)--(2,4)node[midway,right]{$N_b$};\draw[force](2,4)--(2,2.7)node[left]{$G$};\draw(0,.8)arc(90:36.87:.8);\node at(.35,1){$\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{列准静态受力及转矩关系}\par\nobreak
+图\ref{fig:s3:example:10:p}记板法向力$N_b$、墙法向力$N_w$，两切向力均按向上为正。准静态力矩给$f_b=f_w=f$，力平衡给
+\[
+N_w=N_b\cos\theta-f\sin\theta,\quad
+G=N_b\sin\theta+f(1+\cos\theta).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检验墙粘着和板粘着分支}\par\nobreak
+若墙粘着，$\omega=V_y/R<0$，圆柱顺时针；板向下滑，$f=\mu_bN_b$。墙能粘着的条件为
+\[
+\mu_b\le\mu_w(\cos\theta-\mu_b\sin\theta).
+\]
+若板粘着，$\omega=-V_y\cos\theta/R>0$，圆柱逆时针；墙处向下滑，$f=\mu_wN_w$。板能粘着条件为$\mu_w\cos\theta\le\mu_b(1+\mu_w\sin\theta)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较分支边界并说明转向切换条件}\par\nobreak
+墙粘着分支中，板接触的相对速度为$V_y(1+\cos\theta)<0$，故板摩擦沿板向上；板粘着分支中，墙接触的相对速度也为$V_y(1+\cos\theta)<0$，故墙摩擦向上。把板分支不等式整理为$\mu_w(\cos\theta-\mu_b\sin\theta)\le\mu_b$，恰与墙分支互补，两条件在相同临界角相接。因此当初态满足第一不等式时，开板可由顺时针分支转入逆时针分支；若初态已不满足，便不能断言必先顺时针。
+
+真实有限惯量系统的角速度连续，切换附近需保留转动动力学，两处可能短暂同时滑动。\fig{fig:s3:example:10:aux}{墙与板两种粘着分支：中心同向下移，转向相反}{\begin{tikzpicture}
+
+\foreach \xx/\sense/\angend/\lab in {0/-1/-210/墙,5/1/270/板}{
+\begin{scope}[xshift=\xx cm]
+\draw[world](0,3.4)--(0,0)--(3.5,2.625);\draw[world](.8,1.6)circle(.8);\draw[flow](.8,1.6)--(.8,.7)node[left]{$V_y$};\draw[flow](1.233,1.85)arc(30:\angend:.5);\fill(0,1.6)circle(2pt);\fill(1.28,.96)circle(2pt);\node at(1.2,3.8){\lab 面粘着};
+\end{scope}}
+\node at(1.5,-.8){$\omega=V_y/R<0$};\node at(6.5,-.8){$\omega=-V_y\cos\theta/R>0$};
+\end{tikzpicture}}
+图\ref{fig:s3:example:10:aux}把两支中的无滑动方程与转向并列。中心始终向下，而转向取决于哪一个接触点相对其接触面静止；两处不能同时粘着。\end{solution}

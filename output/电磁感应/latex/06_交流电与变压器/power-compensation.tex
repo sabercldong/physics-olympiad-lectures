@@ -1,0 +1,17 @@
+\fig{em6:compensation-current}{电压为水平相位参考时，并联电容改变电源所需无功电流}{
+\begin{tikzpicture}[scale=1.1]
+\draw[axis](-.2,0)--(4.3,0)node[right]{与$\underline U$同相};
+\draw[axis](0,-2.5)--(0,1.1)node[above]{超前$90^\circ$};
+\draw[force,blue](0,0)--(3,-2)node[midway,below left]{$\underline I_L$};
+\draw[flow,red](3,-2)--(3,-.5)node[midway,right]{$\underline I_C$};
+\draw[force](0,0)--(3,-.5)node[midway,above]{$\underline I$};
+\draw[guide](3,-2)--(3,0);
+\node[above]at(3,0){$I_P=P/U$};
+\node[below]at(1.9,-2.8){$\underline I=\underline I_L+\underline I_C$};
+\end{tikzpicture}}
+
+图\ref{em6:compensation-current}中感性负载电流$\underline I_L$滞后电压，竖直分量向下；电容电流$\underline I_C$向上。两者相加后，水平分量$I_P=P/U$不变，向下的无功分量由$Q/U$减为$(Q-\omega CU^2)/U$，故
+\[
+ I=\frac{\sqrt{P^2+(Q-\omega CU^2)^2}}{U}.
+\]
+图中红箭头恰好抵消全部竖直分量时，电源电流最小，为$P/U$；继续加大电容会使合电流超前并重新增大。线路损耗据这一合电流计算，负载支路电流本身并未因理想并联补偿而减小。

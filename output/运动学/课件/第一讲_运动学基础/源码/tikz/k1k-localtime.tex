@@ -1,0 +1,18 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}
+\draw[axis](0,0)--(6.5,0)node[right]{$t$};
+\foreach \x/\l in {0/0,2.4/t_1,5.5/t}\draw(\x,-.08)--(\x,.08)node[below]{$\l$};
+\draw[axis](2.4,-1.4)--(6.5,-1.4)node[right]{$\tau$};
+\draw[guide](2.4,0)--(2.4,-1.4) (5.5,0)--(5.5,-1.4);
+\node[below]at(2.4,-1.4){$0$};\node[below]at(5.5,-1.4){$t-t_1$};
+\draw[dim](2.4,.6)--(5.5,.6)node[midway,above]{同一段时间};
+\end{tikzpicture}
+\end{document}

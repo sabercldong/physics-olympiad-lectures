@@ -1,0 +1,305 @@
+\section{磁通量、曲面与回路方向}
+
+磁场是否变化、导线是否运动，都不能单独决定电路中有没有感应电流。必须先确定所研究的回路，以及穿过它的有向磁通量。对小面元，令单位法线为 $\bm n$，定义
+
+\begin{equation}\Phi=\int_S\bm B\cdot\bm n\,\dd S.\label{em1:flux}\end{equation}
+均匀磁场中，平面面积为 $S$，法线与磁场夹角为 $\theta$，才可简化为 $BS\cos\theta$。这里的角是磁场与法线的夹角。若给的是磁场与平面的夹角 $\alpha$，应写成带方向的 $BS\sin\alpha$。磁通量可以为负，也可以在磁场不为零时等于零。
+
+
+如图\ref{em1:orientation}，沿边界 $C$ 逆时针走时，右手四指与行进方向一致，大拇指给出正法线。选定以后，在整个计算过程中保持它不变。线圈翻转半周，磁通量从 $BS$ 变为 $-BS$，所以变化量是 $-2BS$；转过一周的总变化量为零，但中间各时刻仍可有电动势。不能用一周的平均电动势代替瞬时电动势。
+
+\fig{em1:orientation}{回路正向、正法线与磁通量}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)ellipse(1.8 and .65);\draw[flow](1.6,.3)arc(28:140:1.8 and .65);\node at(-1.8,.8){$C$};\draw[force](0,0)--(0,1.9)node[above]{$\bm n$};\draw[force](.7,-.2)--(1.5,1.5)node[right]{$\bm B$};\node at(-1,-1){右手约定};\end{tikzpicture}}
+
+对同一闭合边界，可以选平面、曲面，或者更便于积分的拼合曲面。因为磁场没有孤立磁荷，任意闭合曲面的总磁通量为零；把两种曲面拼成闭合面，就证明它们按同一边界方向计算的磁通量相等。这个性质能把斜面的磁通计算转化为投影面积计算，也提醒我们：穿入和穿出的部分必须带相反符号，面积大并不必然意味着净磁通量大。
+
+
+设两张曲面 $S_1,S_2$ 共用边界 $C$，各自法线均与同一个 $C_+$ 配对。取拱面 $S_2$ 的外法线时，底面 $S_1$ 须反向，因此
+\[
+0=\oint_{S_2-S_1}\bm B\cdot\dd\bm S=\Phi_2-\Phi_1.
+\]
+图\ref{em1:surfaces}中的平面和拱面可互换；不能把两面的同向通量直接相加后置零。
+\fig{em1:surfaces}{同一边界的两张积分曲面；取闭合面外法线时使用 $S_2-S_1$}{\begin{tikzpicture}
+
+\fill[blue!10](0,0)ellipse(2 and .6);\draw[world](0,0)ellipse(2 and .6);\node at(0,-.2){$S_1$};
+\draw[blue,thick](-2,0)..controls(-1.5,2.8)and(1.5,2.8)..(2,0);\draw[blue,dashed](-2,0)..controls(-1.2,1.3)and(1.2,1.3)..(2,0);\node at(.8,1.4){$S_2$};
+\draw[flow](1.732,.3)arc(30:150:2 and .6);\node[right]at(2,0){$C_+$};\draw[flow](-.6,0)--(-.6,.9)node[above]{$\bm n_1$};\draw[flow](0,2.1)--(0,3)node[above]{$\bm n_2$};
+\node at(5,1.2){$\Phi_1=\Phi_2$};\node[align=center]at(5,-.3){闭合面外法线\\在底面为 $-\bm n_1$};
+
+\end{tikzpicture}}
+
+若磁场不均匀，应把面分成磁场近似均匀的小片后求和。轴对称磁场中，半径 $r$ 的薄圆环面积为 $2\pi r\dd r$，因此圆盘磁通量为 $\int_0^a B_z(r)2\pi r\dd r$。若外圈处于回程磁场中，它增加的几何面积反而会使净磁通量减小。
+
+
+例如内盘 $0\le r<a$ 的场为 $+B_1\bm e_z$，外环 $a<r<b$ 的回程场为 $-B_2\bm e_z$，其中 $B_1,B_2>0$。图\ref{em1:annulus}取纸外正法线，有
+
+\[
+\Phi(b)=\pi a^2B_1-\pi(b^2-a^2)B_2.
+\]
+观察半径超过 $a$ 后，$\dd\Phi/\dd r=-2\pi rB_2<0$，说明净磁通随面积扩大反而减小；若只算两块面积之和就会丢掉回程场的符号。
+
+\fig{em1:annulus}{正向内盘与反向外环按有向通量相加；薄环面元为 $2\pi r\dd r$}{\begin{tikzpicture}
+
+\fill[red!8](0,0)circle(2);\fill[blue!12](0,0)circle(1.1);\draw[world](0,0)circle(2);\draw[world](0,0)circle(1.1);\node at(0,.45){$\odot B_1$};\node at(0,-1.5){$\otimes B_2$};
+\draw[->](0,0)--(1.1,0)node[midway,below]{$a$};\draw[->](0,0)--({2*cos(35)},{2*sin(35)})node[midway,above left]{$b$};
+\begin{scope}[xshift=5.2cm]\fill[orange!30,even odd rule](0,0)circle(1.65)(0,0)circle(1.45);\draw[world](0,0)circle(1.45);\draw[world](0,0)circle(1.65);\draw[->](0,0)--(1.45,0)node[midway,below]{$r$};\draw[dim](1.45,.35)--(1.65,.35);\draw[->](2.4,1.1)--(1.56,.36);\node[above]at(2.4,1.1){$\dd r$};\node at(0,-2.2){$\dd S=2\pi r\dd r$};\end{scope}
+
+\end{tikzpicture}}
+
+\section{法拉第定律与楞次定律}
+
+先考虑固定的闭合回路。沿已选定的正方向，法拉第定律为
+\begin{equation}\mathcal E=-\frac{\dd\Phi}{\dd t},\qquad
+\mathcal E=\oint_C\bm E\cdot\dd\bm l.\label{em1:faraday}\end{equation}
+相同磁通穿过 $N$ 匝且各匝串联时，用磁链 $\Psi=N\Phi$，于是 $\mathcal E=-\dd\Psi/\dd t$。若各匝磁通不同，应先逐匝相加，不能任意提取同一个 $\Phi$。磁通单位为韦伯，变化率单位为伏特。
+
+
+负号表达楞次定律。例如正法线指向纸外，外磁通向纸外增加，则 $\dd\Phi/\dd t>0$，电动势为负；在纯电阻闭合回路中，电流沿顺时针，其磁场向纸内。若向纸外的磁通减小，电流就改为逆时针。这里阻碍的是变化趋势，不能把它误读为感应磁场总与外磁场反向。
+
+
+\fig{em1:lenz}{固定纯电阻环中，电流所阻碍的是外磁通的变化趋势}{\begin{tikzpicture}
+
+\foreach \xx/\sgn/\lab in {0/-1/{\dot B>0},5/1/{\dot B<0}}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,0)circle(1.2);\node at(0,0){$\odot B$};\node at(0,1.8){$\lab$};
+\draw[->,red,very thick](1.2,0)arc(0:{\sgn*110}:1.2);\node[right]at(1.45,0){$i$};\end{scope}}
+\node at(0,-1.9){感应场向内，阻碍增加};\node at(5,-1.9){感应场向外，阻碍减小};
+
+\end{tikzpicture}}
+图\ref{em1:lenz}右图中，感应磁场与原磁场同向，因为原来的纸外磁通正在减小；两幅图采用相同正法线，却给出相反电流。这个判断针对固定、无其他电源且自感可忽略的电阻环。
+
+
+
+用楞次定律判断时，还要区分电动势与电流。开路可以有电荷重新分布和端电势差，却没有持续的传导电流；有电感的闭合回路中，电流方向还受既有电流与初始状态影响。不能只看磁通变化就断言所有回路的瞬时电流方向。对电阻为 $R$、自感可忽略的回路，才可直接使用 $i=\mathcal E/R$。
+
+
+磁通量—时间图像的斜率决定瞬时电动势。分段直线对应分段恒定电动势，尖角处的理想化导数不定义，应给出左右极限。对有限时间段，$\overline{\mathcal E}=-\Delta\Phi/\Delta t$ 是带符号平均值；它通常不同于 $|\mathcal E|$ 的平均值，更不同于有效值。
+
+
+
+\fig{em1:phi-time}{从磁通折线的分段斜率求电动势；折点处给左右极限}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.3,0)--(4.8,0)node[right]{$t/t_0$};\draw[axis](0,-1.5)--(0,2.7)node[above]{$\Phi/\Phi_0$};\draw[world](0,0)--(1,2)--(3,-1)--(4,0);\foreach \xx in {1,3,4}{\node[below]at(\xx,0){$\xx$};}\node[left]at(0,2){$2$};\node[left]at(0,-1){$-1$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](-.3,0)--(4.8,0)node[right]{$t/t_0$};\draw[axis](0,-2.6)--(0,2.4)node[above]{$\mathcal E/(\Phi_0/t_0)$};\draw[blue,thick](0,-2)--(1,-2) (1,1.5)--(3,1.5) (3,-1)--(4,-1);\foreach \xx/\yy in {1/-2,1/1.5,3/1.5,3/-1}{\draw[blue,fill=white](\xx,\yy)circle(2pt);}\node[left]at(0,-2){$-2$};\node[left]at(0,1.5){$1.5$};\node[left]at(0,-1){$-1$};\foreach \xx in {1,3,4}{\node[below]at(\xx,0){$\xx$};}
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{em1:phi-time}中，三段斜率依次为 $2\Phi_0/t_0,-3\Phi_0/(2t_0),\Phi_0/t_0$，故电动势依次取其负值。全过程始末磁通相同，所以有向平均电动势为零，但各段电动势都非零。折点处不连接两段水平线，以免将理想跳变误画成另一个有限值。
+
+
+
+\subsection{多个因素同时变化时怎样求导}
+对始终平面的回路，若磁场在所围区域均匀，$B,S,\theta$ 又都随时间变化，不能只保留一个变化因素。设 $\Phi=NBS\cos\theta$。先对三个因子分别求导，
+\[
+\dot\Phi=N[(\dot B)S\cos\theta+B(\dot S)\cos\theta
++BS\,\dd(\cos\theta)/\dd t].
+\]
+最后一项使用链式法则 $\dd(\cos\theta)/\dd t=-\sin\theta\,\dot\theta$，再取 $\mathcal E=-\dot\Phi$，有
+\[\mathcal E=-N\bigl(\dot B S\cos\theta+B\dot S\cos\theta-BS\dot\theta\sin\theta\bigr).\]
+三项分别对应磁场大小变化、面积变化和取向变化。它们可能同号增强，也可能抵消。线圈面积减小而磁场增大时，磁通完全可能不变，因此不能把“有切割”与“必有回路电流”画等号。这个式子还假设各匝共享相同磁通；若线圈扭曲成非平面或磁场随位置变化，应回到面积分。
+
+
+以图\ref{em1:strip}的导棒为例，棒向右移动 $\dd x$，新增面积为 $l\dd x$。若磁场指向纸外而回路取逆时针正向，则 $\dd\Phi=Bl\dd x$，电动势为 $-Blv$，对应顺时针电流。沿右侧棒的回路正向是由下向上，而 $\bm v\times\bm B$ 向下，直接积分也给出同一个负号。用两种方法交叉检查时必须使用同一方向，不能一边只取大小，另一边保留符号。
+
+\fig{em1:strip}{导棒向右扫出 $l\dd x$；沿回路正向向上积分，动生项为负}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0) (0,2)--(4,2) (0,0)--(0,2);\fill[gray!20](2.6,0)rectangle(3.2,2);\draw[world,very thick](2.6,0)--(2.6,2);\draw[guide](3.2,0)--(3.2,2);
+\draw[dim](2.6,-.5)--(3.2,-.5)node[midway,below]{$\dd x$};\draw[dim](4.45,0)--(4.45,2)node[midway,right]{$l$};\draw[flow](2.8,2.5)--(4,2.5)node[right]{$\bm u$};\node at(1,1){$\odot B$};\draw[flow](2.15,.35)--(2.15,1.4)node[left]{$C_+$};\draw[->,red,thick](3.65,1.6)--(3.65,.5)node[right]{$\bm u\times\bm B$};\node at(1,-.65){$\bm n=+\bm e_z$};
+
+\end{tikzpicture}}
+
+这也给出了移动回路公式的几何解释。先在固定的旧曲面上考察磁场本身的变化，得到 $\int_S\partial\bm B/\partial t\cdot\dd\bm S$；再沿边界补上运动扫过的窄条，得到边界速度的贡献。窄条的方向由正法线决定，恰好与 $\oint(\bm u\times\bm B)\cdot\dd\bm l$ 相差一个负号。两种贡献相加后，式\eqref{em1:moving}就同时包含动生和感生，不需要为同一个回路重复计算两次总电动势。
+
+
+\subsection{电流、电量与热量使用不同的积分}
+自感可以忽略、总电阻恒定、又没有其他电源时，任意时刻有 $i=-\dot\Phi/R$。对时间积分，得到某一截面通过的有向电量
+\[\Delta Q=\int_{t_1}^{t_2}i\dd t=-\frac{\Phi(t_2)-\Phi(t_1)}{R}.\]
+因此始末磁通给定时，有向电量与磁通变化的快慢无关。可是总共通过的电荷绝对量是 $\int|i|\dd t$；若电流反向，这个量会大于有向电量的绝对值。总焦耳热则为 $\int i^2R\dd t$，还依赖变化速度，不能只看始末状态。
+
+
+若总电阻随回路长度改变，积分中必须保留 $R(t)$；若自感不可忽略，应有 $L\dot i+Ri=-\dot\Phi_{\text{外}}$，有向电量还与初末电流有关。这些条件解释了为什么同样的磁通变化，电流峰值、发热和安培力可以完全不同。直接引用 $\Delta Q=-\Delta\Phi/R$ 前，先检查电阻和储能条件。
+
+
+
+图\ref{em1:charge-heat}把同一个单调磁通变化 $\Delta\Phi$ 分别用时 $T$ 和 $2T$ 完成。两个矩形的有向面积相同，因而有向电量相同；慢变化的电流减半，其焦耳热反而减半：
+
+\[
+|\Delta Q|=\frac{|\Delta\Phi|}{R},\qquad
+Q_{J,T}=\frac{(\Delta\Phi)^2}{RT},\qquad Q_{J,2T}=\frac12Q_{J,T}.
+\]
+\fig{em1:charge-heat}{电流时间图的面积决定电量，平方积分决定发热；两种变化有同一始末磁通}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5,0)node[right]{$t$};\draw[axis](0,-.3)--(0,2.9)node[above]{$|i|$};\fill[blue!12](0,0)rectangle(2,2);\draw[blue,thick](0,2)--(2,2)--(2,0);\draw[red,thick,dashed](0,1)--(4,1)--(4,0);\node[left]at(0,2){$I_0$};\node[left]at(0,1){$I_0/2$};\node[below]at(2,0){$T$};\node[below]at(4,0){$2T$};\node[align=left]at(7,1.4){同一电流方向\\$I_0T=(I_0/2)2T$\\$I_0=|\Delta\Phi|/(RT)$};
+
+\end{tikzpicture}}
+
+\subsection{从磁通的阻碍关系到线圈受力}
+楞次定律决定感应电动势，线圈究竟怎样运动，还要使用受力或转矩关系。小平面线圈的磁矩为 $\bm\mu=iS\bm n$；它的方向由电流的右手定则确定，大小与电流、面积相乘有关。局部磁场在小线圈尺度上近似均匀时，磁力矩为 $\bm\tau=\bm\mu\times\bm B$。因此平行和反平行时力矩都为零，倾斜时才有转动趋势。在电流由外部维持、磁矩大小固定的条件下，反平行的平衡不稳定，不能仅凭力矩瞬时为零就断言以后始终不转。
+
+
+以 $\theta$ 表示磁矩正法线与磁场的夹角，规定使 $\theta$ 增大为正转向，得到 $\tau_\theta=-iSB\sin\theta$。这里 $i$ 本身可以为负，不能把它先取绝对值。若外场增强导致 $i<0$，转矩反而使 $\theta$ 增大，从而减小投影面积。这把“阻碍磁通变化”的定性语言落实到图中的转动方向。
+
+\fig{em1:dipole}{倾斜线圈的正法线、磁矩与转矩}{\begin{tikzpicture}[scale=.88]\draw[flow](0,0)--(3,0)node[right]{$\bm B$};\draw[world](-.4,1)--(.4,-1);\draw[force](0,0)--(1.5,.6)node[above]{$\bm n$};\draw[world](.7,0)arc(0:22:.7);\node at(.95,.17){$\theta$};\node at(1.7,-1.5){$\tau_\theta=-iSB\sin\theta$};\node at(1.6,1.5){$\bm\mu=iS\bm n$};\end{tikzpicture}}
+
+图\ref{em1:dipole}中的正法线由回路正向决定；$i>0$ 时磁矩沿 $\bm n$，$i<0$ 时反向。比较磁通变化时用 $\bm B\cdot\bm n$，判断力矩时用 $\bm\mu\times\bm B$；线圈平面与场的夹角和法线与场的夹角互为余角，不能在两式中混为一个角。
+
+
+
+在不均匀磁场中，相对两侧导线所受的安培力不再完全抵消，小线圈还会平移。在磁矩固定的微小位移中，磁相互作用势能为 $U=-\bm\mu\cdot\bm B$；因此轴向磁矩在轴向场中受到 $F_x=\mu_x\partial_xB$。这个近似要求线圈足够小，磁场在其范围内变化平缓。力取决于磁场梯度，不能只用磁场方向判断吸引或排斥。
+
+
+例如铁芯右侧的轴向场向右且向外减弱，$\partial_xB<0$。磁矩向右时力向左，磁矩向左时力向右。若电源反接，外磁场与相应感应磁矩同时反向，初始力的方向可能保持不变。这正是接通任一极性的电源都能使被动金属环初始离开的原因。上述相互作用势能用于计算给定磁矩时的力；分析含电源的全过程能量时，还要计入电源做功与磁场能量，不能只把 $-\bm\mu\cdot\bm B$ 当成全系统能量。
+
+
+\fig{em1:ring-force}{接通任一极性时，外场与感应磁矩同时反向，环的初始力均指向场较弱的一侧}{\begin{tikzpicture}
+
+\foreach \xx/\yy/\sgn/\lab in {0/0/1/{\partial_xB_x<0},0/-3.8/-1/{\partial_xB_x>0}}{\begin{scope}[shift={(\xx,\yy)}]
+\fill[gray!20](-1,-.55)rectangle(1,.55);\node at(0,0){铁芯};\draw[world](3,0)ellipse(.3 and .85);
+\draw[->,blue,thick]({1.5+.65*(1-\sgn)},.65)--({1.5+.65*(1+\sgn)},.65)node[midway,above]{$\bm B$};
+\draw[->,red,thick](3,0)--({3-1.2*\sgn},0)node[midway,below]{$\bm\mu$};\draw[->,very thick](3,-1.2)--(4.4,-1.2)node[right]{$\bm F$};\node[right]at(4.5,.5){$\lab$};\end{scope}}
+
+\end{tikzpicture}}
+图\ref{em1:ring-force}在两种接通极性下都取 $x$ 向右。上图 $B_x>0$ 且正在增强，感应磁矩 $\mu_x<0$，故 $F_x=\mu_x\partial_xB_x>0$；下图两者同时反号，乘积仍为正。这只判定接通初始的排斥趋势，尚未求出环运动后的电流与力。
+
+
+
+若线圈正在运动，外磁通的变化还包含位置和角度改变。判断初始运动趋势时可先固定当前几何求感应电流；要得到随后运动，则必须把运动反馈重新代入磁通导数。定性题所用的“初始趋势”与完整动力学方程描述的是不同时间范围，不能用前者直接替代后者。
+
+
+两个线圈通过磁场联系时，也可以直接描述这种联系。在线性介质中，线圈 $A$ 的磁场与其电流 $i_A$ 成正比，穿过单匝线圈 $B$ 的磁通就可写为 $\Phi_B=Mi_A$，比例系数 $M$ 称互感。固定几何中 $M$ 不变，若只考虑 $A$ 激发的磁通，则 $B$ 中感应电动势为 $-M\dot i_A$。$M$ 的符号取决于两个回路正向的约定；相对位置和取向改变时它还会随时间改变。多匝线圈应使用磁链，互感与磁能的完整关系将在自感互感部分展开。
+
+
+\section{运动导体与电动势的分布}
+
+静磁场中，一根导体棒以速度 $\bm u$ 运动。正电荷受到沿导体的磁力分量，电子向相反方向重新分布。沿从 $a$ 到 $b$ 的导体路径，动生电动势定义为
+
+\begin{equation}\mathcal E_{a\to b}^{\rm mot}=\int_a^b(\bm u\times\bm B)\cdot\dd\bm l.\label{em1:motional}\end{equation}
+应先叉乘，再投影到导线方向。只有棒长、速度和磁场彼此垂直且各处速度相同时，大小才等于 $Blu$。若棒绕端点转动，距轴 $r$ 处的速度为 $\omega r$，必须沿棒分段积分。若取使 $(\bm u\times\bm B)\cdot\dd\bm l>0$ 的端点方向，
+\[
+\mathcal E=\int_0^l B\omega r\,\dd r
+=B\omega\left[\frac{r^2}{2}\right]_0^l
+=\frac12B\omega l^2,
+\]
+所得端点到端点的电动势为 $B\omega l^2/2$，不能把端点速度直接乘全棒长度。
+
+\fig{em1:motive}{运动棒中的电荷分离与磁力方向}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)rectangle(.22,2.4);\node[above]at(.1,2.4){$a,+$};\node[below]at(.1,0){$b,-$};\draw[flow](.5,1.1)--(1.7,1.1)node[right]{$\bm u$};\draw[force](-.7,.5)--(-.7,1.9)node[midway,left]{$q\bm u\times\bm B$};\node at(2.2,2.2){$\otimes\bm B$};\node at(2.2,.1){正电荷向上分离};\end{tikzpicture}}
+
+图\ref{em1:motive}中磁场指向纸内、棒向右，$\bm u\times\bm B$ 向上，故上端 $a$ 电势较高。开路且电荷分布达到准静态平衡时，导体内沿棒方向有 $\bm E_{\rm s}+\bm u\times\bm B=0$，因而 $V_a-V_b=Blu$。闭合后若棒自身有电阻，端电压还要扣除棒内阻降，不能把开路端电压原样搬来。
+
+
+磁力不对单个电荷的总速度做功，并不意味着棒不受阻力。载流子既随棒平动，又相对棒漂移；磁力对这两部分速度的功相互抵消，机械能通过电荷和电场转移为电能。无外电源、无明显储能变化的电阻回路中，外力做功率 $F u$ 才等于 $i^2R$。若有电容、电感或第二根运动棒，应把相应储能和机械功一起计入。
+
+
+对随物质运动的连续闭合细线，通量变化包含场变化与边界扫面积，两项合起来有
+\begin{equation}\oint_{C(t)}(\bm E+\bm u\times\bm B)\cdot\dd\bm l
+=-\frac{\dd}{\dd t}\int_{S(t)}\bm B\cdot\dd\bm S.\label{em1:moving}\end{equation}
+滑动接触的回路应按各段导体的实际速度计算；同极发电机等装置不能把几何边界的静止误当成导体静止。孤立的一段导线也没有唯一的“所围面积”，直接使用式\eqref{em1:motional}更明确。
+
+
+
+\subsection{平动、转动与弯曲导线}
+整根弯曲导线在匀强静磁场中作刚性平移时，$\bm u\times\bm B$ 为常矢量。设端点为 $a,b$，常矢量可提出线积分号，且 $\int_a^b\dd\bm r=\bm r_b-\bm r_a$，所以式\eqref{em1:motional}化为
+
+\[\mathcal E_{a\to b}^{\rm mot}=(\bm u\times\bm B)\cdot(\bm r_b-\bm r_a).\]
+可见结果取决于端点连线在 $\bm u\times\bm B$ 方向的投影，而非弧长。导线弯得更长，会改变电阻，却不一定改变电动势。若是完整闭合线框作刚性平移，端点重合，整圈动生电动势为零。各段导线中仍可有电荷分离，局部电动势相互抵消。这一结论要求磁场均匀且整框同速，线框进入有限磁区时就不适用。
+
+
+刚体绕轴转动时，各点速度不同，不能把平动的端点投影结果照搬。若转轴与匀强磁场平行，且角速度与磁场同向，$\bm u\times\bm B=B\omega\bm r_\perp$，因而沿导线有
+$(\bm u\times\bm B)\cdot\dd\bm l=B\omega r\,\dd r$。
+即使导线不是直径向线段，也有
+$r\,\dd r=\tfrac12\dd(r^2)$，故
+\[
+\int_a^bB\omega r\,\dd r
+=\frac{B\omega}{2}[r^2]_{r_a}^{r_b}.
+\]
+于是
+\[\mathcal E_{a\to b}^{\rm mot}=\frac{B\omega}{2}(r_b^2-r_a^2).\]
+任意形状的刚性导线只要各点属于同一次转动，都满足这个端点平方差关系。整根同轴转动的闭合线圈中，各段相加仍为零。但若转盘与静止电刷接触，回路有不同速度的物质部分，中心到轮缘的转盘段就能提供电动势，不能因电刷围成的几何面积未变而判为零。
+
+
+\fig{em1:wire-motion}{匀速平移取端点投影，绕轴转动取端点半径平方差；两种公式的前提不同}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)..controls(-1,1)and(2,1.1)..(1.5,2);\draw[guide](0,0)--(1.5,2);\fill(0,0)circle(2pt)node[below]{$a$};\fill(1.5,2)circle(2pt)node[above]{$b$};
+\draw[flow](2.5,.4)--(3.5,.4)node[right]{$\bm u$};\node at(2.8,2){$\otimes B$};\draw[dim](-.8,0)--(-.8,2)node[midway,left]{$\Delta y$};\node at(1,-1){$\mathcal E_{a\to b}=uB\Delta y$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[guide](0,0)circle(.8);\draw[guide](0,0)circle(1.8);\fill(0,0)circle(2pt)node[below]{$O$};\draw[world](.8,0)..controls(1.3,.9)and(1.6,.3)..(1.8,0);\fill(.8,0)circle(2pt)node[below]{$a$};\fill(1.8,0)circle(2pt)node[below]{$b$};\draw[flow](1.8,.1)--(1.8,1.1)node[right]{$\bm u_b$};\draw[->,red](1.8,0)--(2.8,0)node[right]{$\bm u_b\times\bm B$};\node at(-1.4,1.9){$\odot B,\omega$};\node at(1,-1){$\mathcal E_{a\to b}=\tfrac12B\omega(r_b^2-r_a^2)$};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{em1:wire-motion}左图中，平移速度向右、磁场向内，$\bm u\times\bm B$ 向上，只有端点的高度差进入积分。右图中 $\bm B$ 与角速度均向外，磁力项沿径向向外；积分 $B\omega r\dd r$ 后才得到半径平方差，不能再用一根常速度矢量替代整根导线的运动。
+
+
+
+\subsection{磁力不做功与机械阻力的关系}
+进一步把导体的平动速度记为 $\bm u$、载流子相对导体的漂移速度记为 $\bm w$。磁力对电荷总速度 $\bm u+\bm w$ 的功率为零；将它展开，有
+
+\[q(\bm u\times\bm B)\cdot\bm w
++q(\bm w\times\bm B)\cdot\bm u=0.\]
+两项分别描述推动电荷沿导体漂移的作用和对应的机械反作用。导棒受到的安培力通过晶格、碰撞和电场与载流子耦合，外力维持运动所供给的机械能最终进入电路。用宏观量表示，直棒的电功率为 $\mathcal E i=Blu\,i$，对应机械功率为 $-Bli\,u$，大小相等、符号相反。
+
+
+\fig{em1:rod-power}{同一个磁相互作用分别对应载流子的电功率和导棒的机械反作用}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0) (0,2)--(4,2) (0,0)--(0,2);\draw[very thick](3,0)--(3,2);\node at(1.3,1){$\otimes B$};\draw[flow](3,2.5)--(4.4,2.5)node[right]{$\bm u$};\draw[flow](2.7,.4)--(2.7,1.5)node[left]{$i$};\draw[force,red](3,1)--(1.8,1)node[below]{$\bm F_B$};\draw[force,blue](3,1)--(4.5,1)node[right]{$\bm F_{\rm ext}$};\node at(2,-.8){$P_{\rm ext}=Bli u=\mathcal E i$};
+
+\end{tikzpicture}}
+图\ref{em1:rod-power}中磁场向内，动生电动势推动正电荷沿棒向上；相应安培力向左，外力向右维持匀速。在纯电阻稳态中 $\mathcal E i=i^2R$；若电路储能或另一根棒动能正在增加，应先从外力功中扣除相应变化，再求热量。
+
+
+
+在具体题目中，应先列各运动部件的受力，再写电路方程，最后检查总功率。只有一个运动棒、磁场恒定且无电容电感储能变化时，才可把它的机械损失全部认作焦耳热。如果第二根棒也运动，第一根棒损失的机械能还可能增加第二根棒动能。这个区别是后面多杆动力学与磁场能量问题的出发点。
+
+
+\section{轴对称感生电场}
+
+磁场随时间变化时，空间中出现环流不为零的电场。这个电场不依赖是否放置金属线圈。设半径 $R$ 的无限长圆柱区域内有沿 $+z$ 的均匀磁场 $B(t)$，区域外磁场近似为零。在忽略端部效应、准静态且轴对称的条件下，感生电场只有环向分量，同一圆周上大小相等。取逆时针为 $E_\theta$ 正向，对半径 $r$ 的圆周积分。内区包围的磁区面积为 $\pi r^2$，外区只包围固定磁区面积 $\pi R^2$，故分别有
+
+\[2\pi rE_\theta=-\pi r^2\dot B\quad(r\le R),\qquad
+2\pi rE_\theta=-\pi R^2\dot B\quad(r\ge R).\]
+两式各除以 $2\pi r$，得到
+\begin{equation}
+E_\theta(r)=\begin{cases}-\dfrac r2\dot B,&r\le R,\\
+-\dfrac{R^2}{2r}\dot B,&r\ge R.
+\end{cases}\label{em1:inducedfield}\end{equation}
+圆柱外虽然 $B=0$，电场仍不为零，因为该圆周包围着变化的磁通。两式在 $r=R$ 连续；内区随 $r$ 线性增加，外区按 $1/r$ 减小。若 $\dot B>0$，电场顺时针；若 $\dot B<0$，方向反转。
+
+\fig{em1:field}{圆柱内外的环向电场及其径向变化}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1);\draw[guide](0,0)circle(1.65);\node at(0,0){$\odot\dot B>0$};\draw[flow](0,1.65)arc(90:10:1.65);\draw[flow](.6,0)arc(0:-100:.6);\node at(-1.5,-1.5){$r>R$};\begin{scope}[xshift=3cm]\draw[axis](0,0)--(3.3,0)node[right]{$r$};\draw[axis](0,0)--(0,2)node[above]{$|E_\theta|$};\draw[world](0,0)--(1,1.5);\draw[world,domain=1:3,samples=50]plot(\x,{1.5/\x});\draw[guide](1,0)node[below]{$R$}--(1,1.5);\end{scope}\end{tikzpicture}}
+
+图\ref{em1:field}的内外圆环包围了不同磁通：内环的有效面积随半径增加，外环只包围固定磁区。局部电场分别随半径正比增长、反比衰减，环流却始终按各环所围磁通的变化计算；电场非零处不必有局部磁场。
+
+
+
+不能只凭一个圆形积分回路就对任意磁场断言 $E\,2\pi r=-\dot\Phi$；把积分提出电场大小，需要对称性保证。若放入形状不对称的导体，表面电荷还会建立静电场，改变导体内总场，但静电场沿闭合路径的环流为零，回路总电动势仍由变化的磁通决定。第二讲将利用这个区分计算局部电势差与表计读数。
+
+
+感生电场能够改变粒子动能，磁场主要改变运动方向。受圆轨道约束的粒子应把切向与径向方程分开：切向为 $m\dot v=qE_\theta$，径向则含 $mv^2/r$、磁力和轨道支持力。若正电荷最初静止、磁场沿 $+z$ 增长，粒子先获得顺时针速度，其磁力朝圆心。把“电场做功”和“轨道提供约束”分清，才能避免漏掉磁力或把支持力方向判断反。
+
+
+
+\subsection{从环流到局部场，再到粒子方程}
+对更一般的轴对称分布 $B_z(\rho,t)$，仍可先对半径 $r$ 的圆盘积分：
+\[\Phi(r,t)=2\pi\int_0^r B_z(\rho,t)\rho\dd\rho,\qquad
+E_\theta(r,t)=-\frac1r\int_0^r\frac{\partial B_z}{\partial t}\rho\dd\rho.\]
+这里 $\rho$ 是积分变量，$r$ 是观察位置，两者不能混用。若磁区有限，只需把积分上限改为 $\min(r,R)$。分段磁场可以按同心圆盘逐段相加；粒子所在位置的磁场决定当地磁力，但所有被包围的磁场变化共同决定当地感生电场。
+
+
+粒子沿定半径轨道运动时，切向动力学可直接对时间积分。若 $B$ 在轨道内均匀，且粒子起初位于 $B_i$、速度为 $v_i$ 的状态，切向方程是
+$m\dot v=-qr\dot B/2$，固定的半径可以提出积分号。以初态为下限，
+\[
+m\int_{v_i}^{v}\dd z=-\frac{qr}{2}\int_{B_i}^{B}\dd b,
+\qquad v-v_i=-\frac{qr}{2m}(B-B_i).
+\]
+这个速度是逆时针为正的有向量。径向磁力则为 $qvB$，向外为正；$v$ 与 $B$ 反号时磁力向内。支持力应从 $F_r+qvB=-mv^2/r$ 求出，不凭图形先假设其方向。若轨道是细管，它可双向施力；若只是单侧挡壁，应进一步检查接触是否能保持。
+
+
+没有轨道约束时，半径通常会变化，不能再把上式中的 $r$ 当常数。需要使用极坐标的径向、切向方程，或先考察角动量。外磁区的环向电场满足 $rE_\theta$ 为常量时，电场对圆心的力矩就为常量，这使角动量方法很有效；但能量是否守恒要另作判断，感生电场能够持续做功。
+
+
+以上采用的集中电路与准静态场模型，默认装置尺寸远小于相关电磁传播尺度，导体中的电荷分布能够迅速建立，辐射与趋肤效应可以忽略。对于极快的理想跳变，不能一面忽略所有电感，一面又要求瞬时电流、能量和局部场完全有定义。后续暂态部分会保留电容电压与电感电流的初始条件，处理这些过渡过程。
+
+
+\input{knowledge-induced-field}
+

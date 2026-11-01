@@ -1,0 +1,25 @@
+\fig{fig:contact-angle-sign}{接触角从液体一侧量取，界面切线决定张力竖直分量；弯月面作局部示意}{
+\begin{tikzpicture}[x=1.1cm,y=1.1cm]
+\foreach \s in {0,4.4}{\begin{scope}[xshift=\s cm]
+\draw[world] (0,-1.5)--(0,1.5) (.8,-1.5)--(.8,1.5);
+\draw[guide] (-.8,0)--(1.7,0);\node[right] at (1.7,0){槽面};
+\end{scope}}
+\fill[blue!10] (0,-1.5)--(0,.8) .. controls (.2,.6) and (.6,.6) .. (.8,.8)--(.8,-1.5)--cycle;
+\draw[world] (0,.8) .. controls (.2,.6) and (.6,.6) .. (.8,.8);
+\draw[guide] (0,.8)--(.48,.32);\draw[force] (0,.8)--(-.55,1.35);\draw[force] (.8,.8)--(1.35,1.35);
+\draw (0,.56) arc(-90:-45:.24);\node at (.23,.48){$\theta$};
+\node[align=center] at (.4,-2){$\theta<90^\circ$\\$\cos\theta>0,\ h>0$};
+\begin{scope}[xshift=4.4cm]
+\fill[blue!10] (0,-1.5)--(0,-.8) .. controls (.2,-.6) and (.6,-.6) .. (.8,-.8)--(.8,-1.5)--cycle;
+\draw[world] (0,-.8) .. controls (.2,-.6) and (.6,-.6) .. (.8,-.8);
+\draw[guide] (0,-.8)--(.48,-.32);\draw[force] (0,-.8)--(-.5,-1.3);\draw[force] (.8,-.8)--(1.3,-1.3);
+\draw (0,-1.04) arc(-90:45:.24);\node at (.32,-.99){$\theta$};
+\node[align=center] at (.4,-2){$\theta>90^\circ$\\$\cos\theta<0,\ h<0$};
+\end{scope}
+\end{tikzpicture}}
+图\ref{fig:contact-angle-sign}中，箭头表示接触线处作用于液体的张力方向，沿气液界面的切线指向边界。润湿时其竖直分量向上，不润湿时向下；改变的不是 $\sigma$ 的正负，而是 $\cos\theta$ 的正负。对不润湿的下降液面，宜用压强法统一处理：
+\[
+ p_0-p_{\text{液面下}}=\frac{2\sigma\cos\theta}{r},
+ \qquad p_0-p_{\text{液面下}}=\rho gh.
+\]
+两式都按同一方向取压差，因而给出同一个带符号高度公式。此时不能把“槽面以上的一段液柱”当作实际存在的正高度液柱，再给其重力随意加负号。图中的槽面是固定参考高度，$h<0$ 表示管内液面低于它。

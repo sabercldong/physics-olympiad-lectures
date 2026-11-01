@@ -1,0 +1,100 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:11}\textbf{分开辨认两次入射的介质顺序与当地法线}\par\nobreak
+两侧小图是不同的入射实验，应各自重新确定光从哪种介质进入哪种介质。左图用空气到玻璃的折射关系；右图应先检查是否存在实数折射角，因为玻璃到空气时并非任意入射角都能透射。计算后还须在图上检查折射线靠近或远离法线的趋势。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对空气入射计算折射角}\par\nobreak
+图\ref{fig:d11q}左侧的法线垂直界面，故
+\[
+ \sin r=\frac{\sin45^\circ}{\sqrt2}=\frac12,\qquad \boxed{r=30^\circ}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对玻璃入射先算临界角，再判断传播支路}\par\nobreak
+右侧入射来自玻璃，临界角 \(C=\arcsin(1/\sqrt2)=45^\circ\)。
+由于 \(50^\circ>C\)，发生全反射，没有传播折射光。
+图\ref{fig:d11s}左侧折射线靠近法线；右侧只保留玻璃内的反射线。若把 \(50^\circ\) 误当作空气侧入射角，会错误地使用另一组介质顺序。
+\fig{fig:d11s}{练习\ref{d:11}的解答图：左为折射，右为全反射；点划线均为法线}{
+\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\draw[normal](0,-2)--(0,2);
+\draw[ray](-1.3,1.3)--(0,0);\draw[ray](0,0)--(.85,-1.472);
+\node at(-.35,.8){$45^\circ$};\node at(.3,-.85){$30^\circ$};
+\node[left]at(-1.4,-1){$\sqrt2$};
+\begin{scope}[xshift=5.5cm]
+\draw[world](-1.5,0)--(1.5,0);\draw[normal](0,-1.8)--(0,1.5);
+\draw[ray](-1.149,-.964)--(0,0);\draw[ray](0,0)--(1.149,-.964);
+\node at(-.35,-.8){$50^\circ$};\node at(.35,-.8){$50^\circ$};
+\node at(0,1){空气：无传播折射光};\node at(0,-1.6){玻璃 $n=\sqrt2$};\end{scope}
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:12}\textbf{连续使用两面折射定律，确定方向和板内投影}\par\nobreak
+图\ref{fig:d12q}中入射角从第一面的法线量起，故 $\sin r=\sin45^\circ/\sqrt2=1/2$，即 $r=30^\circ$。两法线平行，板内直线在第二面的入射角仍为 $r$。第二面满足
+\(\sqrt2\sin30^\circ=\sin i_{\rm out}\)，故
+\[
+ \boxed{i_{\rm out}=45^\circ},\qquad
+ \boxed{X=t\tan30^\circ=2\sqrt3\,\mathrm{cm}=3.46\,\mathrm{cm}}.
+\]
+\fig{fig:d12s}{平行板内的路程 $PQ$、横向投影 $HQ=X$ 与通常侧移 $s$ 属于三个不同的几何量}{\begin{tikzpicture}
+
+\fill[gray!8](-1,0)rectangle(3.4,3);\draw[world](-1,0)--(3.4,0) (-1,3)--(3.4,3);\coordinate(P)at(0,3);\coordinate(Q)at(1.73205,0);\coordinate(H)at(0,0);\coordinate(K)at(2.366025,.633975);
+\draw[normal](0,-.3)--(0,4);\draw[normal](1.73205,-1.4)--(1.73205,1.15);\draw[ray](-1.3,4.3)--(P);\draw[ray,blue](P)--(Q);\draw[ray](Q)--(3.03205,-1.3);\draw[virtual](P)--(3.4,-.4);\draw[dim](Q)--(K)node[midway,right]{$s$};
+\node[above right]at(P){$P$};\node[below left]at(H){$H$};\node[above left]at(Q){$Q$};\node[right]at(2.366025,.633975){$K$};\node[right]at(3.7,2){$PQ=t/\cos r$};\node at(.28,2.3){$r$};\draw[dim](-.65,0)--(-.65,3)node[midway,left]{$t$};\draw[dim](0,-.65)--(1.73205,-.65)node[midway,below]{$X$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按板内实际路程计时}\par\nobreak
+图\ref{fig:d12s}的 \(PH\) 是厚度、\(HQ\) 是横向投影，真正用于计时的路程是 \(PQ\)。因此
+\[
+ T=\frac{n\,PQ}{c}=\frac{\sqrt2(0.0600)}{c\cos30^\circ}
+ =\boxed{3.27\times10^{-10}\,\mathrm s}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对出射平行所需的界面与介质条件}\par\nobreak
+出射光与入射光平行，因为两次折射依次满足 \(\sin i=n\sin r\)、\(n\sin r=\sin i_{\rm out}\)，消去中间量才得到 \(i_{\rm out}=i\)。这个结论要求两界面平行、板两侧介质相同；若换成棱镜，不能直接沿用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分板内投影与出射平行光的垂直侧移}\par\nobreak
+图\ref{fig:d12s}中 \(X=HQ=t\tan r\) 是光在板内相对入射点的横向投影。图中的 $QK\perp PK$，因而 $s=QK$ 是出射光与入射光延长线的垂直距离。求它时应先将两平行线之间的横向差投影到光线的法向，得到 \(s=t\sin(i-r)/\cos r\)。因此 \(X\) 与通常所说的平行板侧移 \(s\) 具有不同的几何定义，不能混作同一个长度。
+
+\end{drillsolution}
+
+\begin{drillsolution}{d:13}\textbf{将物点映到镜后，把实际折线展开}\par\nobreak
+图\ref{fig:d13q}中 $A,B$均位于镜面上方。将 $A$映到镜下的 $A'$，利用镜面对称保持距离，便有 $AP=A'P$，折线路程可化为直线路程。连接 $A'B$与镜面求交后，还须确认交点位于有效镜面，再折回实际光路。下面的参数 $s$只是线段比例，不是传播时间。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求镜像直线与镜面的交点和总路程}\par\nobreak
+图\ref{fig:d13s}将 \(A\) 映为 \(A'=(-2,-3)\)。直线 \(A'B\) 可写为
+\[
+ (x,y)=(-2,-3)+s(6,4).
+\]
+令 \(y=0\)，得 \(s=3/4\)，故
+\[
+ \boxed{P=(2.50,0)},\qquad
+ \boxed{AP+PB=A'B=\sqrt{6^2+4^2}=2\sqrt{13}\,\mathrm m}.
+\]
+\fig{fig:d13s}{练习\ref{d:13}的解答图：虚线连接镜像点，实线保留实际反射路径}{
+\begin{tikzpicture}[scale=.8]
+\draw[world](-3,0)--(5,0);\draw[normal](2.5,-.7)--(2.5,2.2);
+\draw[ray](-2,3)--(2.5,0);\draw[ray](2.5,0)--(4,1);
+\draw[virtual](-2,-3)--(2.5,0);\draw[aux](-2,-3)--(-2,3);
+\fill(-2,-3)circle(1pt)node[below]{$A'$};\node[above]at(-2,3){$A$};
+\node[above]at(4,1){$B$};\node[below right]at(2.5,0){$P$};
+\node at(2.1,1){$i$};\node at(3,.55){$i'$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两侧法线角核对反射定律}\par\nobreak
+图\ref{fig:d13s}中 \(P\) 处法线竖直。入射与反射两侧分别有
+\(\tan i=(2.5+2)/3=1.5\)，
+\(\tan i'=(4-2.5)/1=1.5\)，因此 \(i=i'\approx56.3^\circ\)。
+镜像直线只是求解的辅助线；实际光沿实线 \(A\to P\to B\) 传播。
+\end{drillsolution}

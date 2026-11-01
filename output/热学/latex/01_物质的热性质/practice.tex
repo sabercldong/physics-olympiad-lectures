@@ -1,0 +1,40 @@
+\section{练习}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[金属环孔的变化]\label{t1-10}
+各向同性金属圆环在 $T_0$ 时内半径为 $a$、外半径为 $b$，在可自由膨胀的条件下均匀升温 $\Delta T$。线膨胀系数为 $\alpha$，求孔面积与环材料面积的一阶变化。见图\ref{fig:t1-10q}。
+\end{drill}
+\fig{fig:t1-10q}{金属环孔的变化：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[gray!20,even odd rule] (0,0) circle(1.5) (0,0) circle(.7);\draw[world] (0,0) circle(1.5) (0,0) circle(.7);\draw[dim] (0,0)--(.7,0) node[midway,above]{$a$};\draw[dim] (0,0)--(0,-1.5) node[midway,left]{$b$};
+\end{tikzpicture}}
+\hyperref[sol:t1-10]{详解见第\pageref{sol:t1-10}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[润湿与毛细高度]\label{t1-11}
+两根内半径分别为 $r,2r$ 的细管插入同一液体。液体密度 $\rho$、表面张力 $\sigma$，接触角均为 $60^\circ$。忽略弯月面体积，求液面高度及高度比。见图\ref{fig:t1-11q}。
+\end{drill}
+\fig{fig:t1-11q}{题设：两根管的半径比为$1:2$，两弯月面与管壁的液体内接触角同为$60^\circ$}{\begin{tikzpicture}
+
+\draw[guide](-1,0)--(5,0)node[right]{槽面};\draw[world](0,-.5)--(0,2.6) (.5,-.5)--(.5,2.6) (3,-.5)--(3,2.6) (4,-.5)--(4,2.6);\draw[blue,thick](0,2.066987)arc(240:300:.5);\draw[blue,thick](3,1.133975)arc(240:300:1);
+\node[above]at(.25,2.6){$r$};\node[above]at(3.5,2.6){$2r$};\draw[dim](1,0)--(1,2)node[midway,right]{$h_r$};\draw[dim](4.5,0)--(4.5,1)node[midway,right]{$h_{2r}$};\draw[guide](0,2.066987)--(.5,1.778312);\draw(0,1.866987)arc(-90:-30:.2);\node[left]at(-.1,1.85){$60^\circ$};
+
+\end{tikzpicture}}
+\hyperref[sol:t1-11]{详解见第\pageref{sol:t1-11}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[两室等温连通]\label{t1-12}
+刚性容器两室体积分别为 $V,2V$，初压分别为 $3p_0,p_0$，内含同种理想气体。始末温度均为 $T_0$。打开阀门后求平衡压强，以及由第一室净流出的物质的量。见图\ref{fig:t1-12q}。
+\end{drill}
+\fig{fig:t1-12q}{两室等温连通：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (2,2) (2.7,0) rectangle (6.7,2);\draw (2,1)--(2.7,1);\draw[world](2.2,.85)--(2.5,1.15)--(2.5,.85)--(2.2,1.15)--cycle;\node at (1,1){$V,3p_0$};\node at (4.7,1){$2V,p_0$};\node[above] at (2.35,1.2){$K$};
+\end{tikzpicture}}
+\hyperref[sol:t1-12]{详解见第\pageref{sol:t1-12}页}。
+\end{minipage}
+\par\medskip\noindent\begin{minipage}{\textwidth}
+\begin{drill}[重活塞接触上挡板]\label{t1-13}
+竖直活塞面积 $S$、质量 $m$，初始自由平衡，气柱高 $h_0$、温度 $T_0$，外压 $p_0$。上挡板在 $2h_0$。缓慢加热到 $3T_0$，求末压与挡板支持力。见图\ref{fig:t1-13q}。
+\end{drill}
+\fig{fig:t1-13q}{重活塞接触上挡板：题设}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,3)--(0,0)--(2,0)--(2,3);\fill[pattern=north east lines] (0,1.2) rectangle (2,1.35);\draw[guide] (0,2.4)--(2,2.4);\draw[world,very thick](0,2.4)--(.3,2.4) (1.7,2.4)--(2,2.4);\node at(1,3.2){$m,\ S,\ p_0$};\node[right] at (2,1.2){$h_0$};\node[right] at (2,2.4){$2h_0$};\node at (1,.6){$T_0$};
+\end{tikzpicture}}
+\hyperref[sol:t1-13]{详解见第\pageref{sol:t1-13}页}。
+\end{minipage}

@@ -1,0 +1,225 @@
+\section{保守力、势能与可达区域}
+
+功沿路径累积，势能只由状态决定。二者能够相互替换，需要先满足保守性：在研究区域内，任意连接同一对端点的路径上，力所做的功相同。选定参考点$O$后定义
+\[
+ U(\bm r)-U(O)=-\int_O^{\bm r}\bm F\cdot\dd\bm r,
+ \qquad W_{A\to B}=U(A)-U(B).
+\]
+路径无关保证这个定义不会因走另一条路而改变。沿闭路的功因此为零；若找出一条闭路功不为零，就已否定保守性。势能可以整体加任意常数，因为运动只涉及势能差和势能的导数。
+
+\fig{fig:em4:paths}{同端点的两条路径功相等，才能建立单值势能}{\begin{tikzpicture}
+\coordinate(A)at(0,0);\coordinate(B)at(5,0);\fill(A)circle(.06)node[left]{$A$};\fill(B)circle(.06)node[right]{$B$};
+\draw[->,blue,thick](A)..controls(1.4,2)and(3.6,2)..(B);\draw[->,red,thick](A)..controls(1.4,-1.5)and(3.6,-1.5)..(B);
+\node[above]at(2.5,1.5){路径$\gamma_1$};\node[below]at(2.5,-1.1){路径$\gamma_2$};
+\node at(2.5,.1){$W_{\gamma_1}=W_{\gamma_2}=U_A-U_B$};\end{tikzpicture}}
+
+图\ref{fig:em4:paths}两条路都按$A\to B$计功；将第二条反向接回，闭路功是$W_{\gamma_1}-W_{\gamma_2}$。不要把“功相等”误写成两条同向路径的功相反。重力势能属于物体与地球的相互作用系统，弹簧势能属于弹簧形变；单独谈一个物体的势能，是对其相互作用伙伴作了简化。
+
+近地均匀重力场取 $y=0$ 为零势面，$U_g(y)=-\int_0^y(-mg)\dd\eta=mg[\eta]_0^y=mgy$。
+胡克弹簧取自然长为零势能，$U_s(x)=-\int_0^x(-k\xi)\dd\xi=k[\xi^2/2]_0^x=kx^2/2$。
+万有引力的径向分量为 $F_r=-GMm/r^2$。先从有限参考半径 $b$ 积到 $r$，再取 $b\to\infty$：
+\[
+U(r)-U(b)=GMm\int_b^r s^{-2}\dd s
+=GMm[-s^{-1}]_b^r
+=GMm\left(-\frac1r+\frac1b\right).
+\]
+无穷远取零，得到
+\[
+ U(r)=-\frac{GMm}{r},\qquad U(R+h)-U(R)=\frac{GMmh}{R(R+h)}.
+\]
+仅当$h/R\ll1$时，后式才近似为$mgh$，其中$g=GM/R^2$。不同高度范围的势能模型不能任意混用。
+
+一维保守力满足$F_x=-U'(x)$。在总机械能$E$已知时，$K=E-U(x)\ge0$先给出允许位置；实际运动还只能留在初态所在的连通允许区间内。图\ref{fig:em4:potential}用$U/U_0=[(x/a)^2-1]^2$展示两个势阱，中间势垒高$U_0$。
+
+\fig{fig:em4:potential}{相同能量线可对应两个互不连通的允许区间，初态决定实际处在哪个势阱}{\begin{tikzpicture}[x=2cm,y=1cm]
+\fill[blue!8](-1.306563,0)rectangle(-.541196,1);\fill[blue!8](.541196,0)rectangle(1.306563,1);
+\draw[axis](-1.7,0)--(1.8,0)node[right]{$x/a$};\draw[axis](0,-.2)--(0,3.5)node[above]{$U$};
+\draw[world,domain=-1.5:1.5,samples=120]plot(\x,{2*((\x)^2-1)^2});\draw[red](-1.65,1)--(1.65,1)node[right]{$E=U_0/2$};
+\node[above right]at(0,2){势垒$U_0$};\foreach \xx in {-1,1}{\fill(\xx,0)circle(.04cm);\node[below]at(\xx,0){$\xx$};}
+\draw[force](-1.3,-.7)--(-1.05,-.7);\draw[force](-.7,-.7)--(-.95,-.7);\node at(-1,-1.25){回复力指向势阱底};
+\node at(1,-.8){蓝区内$K\ge0$};\end{tikzpicture}}
+
+能量线与势能曲线相交处是$K=0$的候选转折点；若当地$U'\ne0$，速度虽为零，力却不为零，物体随即反向。平衡点还需$U'=0$。若$U''(x_0)>0$，令$\xi=x-x_0$，局部有$U\simeq U(x_0)+U''(x_0)\xi^2/2$。对位置求导时 $\dd\xi/\dd x=1$，故
+$F_x=-\dd U/\dd x\simeq-U''(x_0)\xi$，从而
+$\ddot\xi+\omega^2\xi=0$，其中 $\omega^2=U''(x_0)/m>0$。
+试解 $\e^{st}$ 得特征根 $s=\pm i\omega$，所以
+$\xi=A\cos\omega t+B\sin\omega t$。
+速度为 $\dot\xi=-A\omega\sin\omega t+B\omega\cos\omega t$；
+给定 $\xi(0)=\xi_0,\dot\xi(0)=w_0$ 后，$A=\xi_0,B=w_0/\omega$。
+位移保持有界的小振动，说明该平衡稳定，角频率为 $\sqrt{U''(x_0)/m}$。若二阶导数为零，应继续看更高阶项，不能直接判为不稳定。
+
+\section{机械能变化与相对滑动耗散}
+
+把保守力功移入势能，动能定理变为$\Delta(K+U)=W_{\text{其他}}$。机械能守恒要求未计入势能的其余作用总功为零。判断之前必须说明系统：活动光滑轨道的支持力可对单个物体做功，整个“物体与轨道”系统内的理想约束力总功却可相消。固定接触面上静摩擦的作用点静止时可以不做功，因此不能只凭“有摩擦”三个字判定能量损失。
+
+滑动摩擦须按两受力点的相对运动计算。图\ref{fig:em4:friction}中$v_1>v_2$，上物体受摩擦向左，下物体受摩擦向右。短时间内两者对地位移为$\dd x_1,\dd x_2$，两摩擦力的总功为
+\[
+ \dd W_f=-f\dd x_1+f\dd x_2=-f\dd s_{\text{相}},\quad
+ \dd s_{\text{相}}=(v_1-v_2)\dd t>0.
+\]
+
+\fig{fig:em4:friction}{摩擦力成对，但作用点位移不同；差出的功转为耗散}{\begin{tikzpicture}
+\draw[world](0,0)rectangle(5,.5);\node at(4.5,.25){$m_2$};\draw[world](1,.5)rectangle(2.2,1.4);\node at(1.6,.95){$m_1$};
+\draw[force](1.6,.7)--(.2,.7)node[left]{$f$};\draw[force](2,.25)--(3.4,.25)node[right]{$f$};
+\draw[flow](1,1.9)--(3.3,1.9)node[right]{$v_1$};\draw[flow](1,-.6)--(2.3,-.6)node[right]{$v_2$};
+\draw[dim](.2,-1.3)--(3.2,-1.3)node[midway,above]{$\dd x_1$};\draw[dim](.2,-1.9)--(1.9,-1.9)node[midway,below]{$\dd x_2$};
+\draw[dim](1.9,-1.9)--(3.2,-1.9)node[midway,below]{$\dd s_{\text{相}}$};\end{tikzpicture}}
+
+所以$Q=\int f\dd s_{\text{相}}\ge0$，恒定摩擦时为$fs_{\text{相}}$。即使下物体被摩擦加速、摩擦对它做正功，两物体合计仍减少机械能。子弹进入自由木块时，穿入深度就是这两个对地位移之差。若反向滑动，应重新确定摩擦方向，并用相对路程的正增量累积$Q$。
+
+力学模型中的$Q$可包括内能、不可恢复形变、声和其他未单列的能量。无外界能量输入时，完整式为$K_i+U_i=K_f+U_f+Q$。外功或热量存在时须加入能量输入，机械能减少并不表示总能量消失。
+
+\section{质心平动与相对运动的动能}
+
+设两物体总质量$M=m_1+m_2$，质心速度$\bm V_C=(m_1\bm v_1+m_2\bm v_2)/M$，相对速度$\bm u=\bm v_1-\bm v_2$。先解出
+\[
+ \bm v_1=\bm V_C+\frac{m_2}{M}\bm u,\qquad
+ \bm v_2=\bm V_C-\frac{m_1}{M}\bm u.
+\]
+图\ref{fv:e4:collision}把同一时刻的两速度作共同平移；速度间距不变，质心系内两物体的动量等大反向。
+
+\input{knowledge-collision-frames}
+
+将上述两式代入$K=m_1v_1^2/2+m_2v_2^2/2$，交叉项$\pm(m_1m_2/M)\bm V_C\cdot\bm u$相消，得到
+\begin{equation}
+ K=\frac12MV_C^2+\frac12\mu u^2,\qquad
+ \mu=\frac{m_1m_2}{m_1+m_2}.
+ \label{eq:em4:relative}
+\end{equation}
+第一项是整体平动动能，第二项是相对运动动能。忽略外冲量时，$V_C$不变；内部碰撞、弹簧形变和内耗只能重新分配相对运动的能量。完全非弹性碰撞末态共速，相对动能全部转走，所以在给定总动量下动能损失最多，为$\mu u_i^2/2$。弹簧最大压缩也共速，但能量可暂存为弹性势能，随后重新释放，不能把它称为同样的永久损失。
+
+\fig{fig:em4:energy-bars}{共速时整体平动仍存在；相对动能可以储存在弹簧中，也可以转为耗散}{\begin{tikzpicture}
+\foreach \xx/\lab in {0/初始,3/最大压缩,6/粘合后}{\fill[blue!30](\xx,0)rectangle(\xx+1.3,1);\node[below]at(\xx+.65,0){\lab};}
+\fill[red!20](0,1)rectangle(1.3,3);\fill[green!25](3,1)rectangle(4.3,3);\draw[dashed](6,1)rectangle(7.3,3);
+\node at(.65,2){$K_{\text{相}}$};\node at(3.65,2){$U_s$};\node at(6.65,2){$Q$};\node at(3.65,.5){$K_C$};
+\draw[guide](-.3,1)--(7.6,1);\node[right]at(7.6,.5){保留的平动动能};\end{tikzpicture}}
+
+自由木块与子弹的相互摩擦不改变总动量，因而$\mu(u_i^2-u_f^2)/2=f\ell_{\text{相}}$。木块若固定，固定装置提供外冲量，$V_C$不再保持原值，不能照搬这个仅由相对动能变化决定损失的表达式。
+
+\section{恢复系数与一维碰撞}
+
+取从物体1指向物体2为正方向，碰前接近要求$u_1-u_2>0$。恢复系数用分离相对速率与接近相对速率之比定义：
+\[
+ e=\frac{v_2-v_1}{u_1-u_2},\qquad
+ v_2-v_1=e(u_1-u_2)\ge0.
+\]
+通常无额外释能时$0\le e\le1$。将恢复关系写成
+$v_2=v_1+e(u_1-u_2)$，代入动量式
+$m_1u_1+m_2u_2=m_1v_1+m_2v_2$，得
+$Mv_1=m_1u_1+m_2u_2-em_2(u_1-u_2)$。
+除以 $M$ 求 $v_1$，再代回恢复关系求 $v_2$，得到
+\[
+\begin{aligned}
+v_1&=\frac{(m_1-em_2)u_1+(1+e)m_2u_2}{M},\\
+v_2&=\frac{(1+e)m_1u_1+(m_2-em_1)u_2}{M}.
+\end{aligned}
+\]
+这两式来自两个独立条件；动量守恒本身不能给出材料的恢复系数。碰后相对速度反号并缩为原来的$e$倍，式\eqref{eq:em4:relative}立即给出$Q=\mu(1-e^2)(u_1-u_2)^2/2$。图\ref{fig:em4:energy-bars}的粘合极限对应$e=0$，弹性碰撞则$e=1$、$Q=0$。
+
+等质量弹性正碰时，速度交换。若只联立动量和动能，还会得到末速度保持$(u,0)$的原状根；这意味着没有发生冲击，仍在接近，必须用分离条件排除。固定墙可作为极大质量极限，但墙的约束冲量是球子系统的外冲量，不能对球单独使用动量守恒。
+
+\section{弹簧接触的有限过程}
+
+瞬时碰撞只保留前后速度，弹簧模型还能描述接触力和形变。设左右两物体间弹簧压缩量$x=\ell_0-(x_2-x_1)$，故$\dot x=v_1-v_2$。压缩时两端受力为$-kx,+kx$，于是
+\[
+ \ddot x=-k\left(\frac1{m_1}+\frac1{m_2}\right)x=-\frac{k}{\mu}x.
+\]
+图\ref{fig:em4:spring-states}中的共同速度不是零，而是由总动量决定的$V_C$。
+
+\fig{fig:em4:spring-states}{最大压缩时相对速度为零，恢复自然长后两物体正在分离}{\begin{tikzpicture}
+\foreach \yy/\left/\right/\lab in {3.8/0/3.7/开始接触,1.9/.8/2.9/最大压缩,0/.3/4/自然长分离}{\begin{scope}[yshift=\yy cm]
+\draw[world](\left,0)rectangle++(.8,.7);\draw[world](\right,0)rectangle++(.8,.7);\draw[spring](\left+.8,.35)--(\right,.35);
+\node at(\left+.4,.35){$m_1$};\node at(\right+.4,.35){$m_2$};\node[left]at(-.5,.35){\lab};\end{scope}}
+\draw[flow](.3,4.9)--(1.5,4.9);\draw[flow](4.1,4.9)--(3.3,4.9);
+\draw[flow](1.1,3)--(2,3)node[above]{$V_C$};\draw[flow](3.2,3)--(4.1,3);
+\draw[flow](.7,1)--(-.1,1);\draw[flow](4.4,1)--(5.6,1);\end{tikzpicture}}
+
+以自然长接触、相对接近速率 $u>0$ 为初态，令 $\omega=\sqrt{k/\mu}$。
+在 $x''+\omega^2x=0$ 中试取 $x=\e^{st}$，特征方程 $s^2+\omega^2=0$ 给根 $\pm i\omega$，故通解为
+\[
+x=A\cos\omega t+B\sin\omega t,\qquad
+\dot x=-A\omega\sin\omega t+B\omega\cos\omega t.
+\]
+初始条件 $x(0)=0,\dot x(0)=u$ 给 $A=0,B=u/\omega$，于是
+$x=(u/\omega)\sin\omega t$、$\dot x=u\cos\omega t$。
+再求导得 $\ddot x=-u\omega\sin\omega t=-\omega^2x$，核对了运动方程。
+由图\ref{fig:em4:phase}，最大压缩在首次 $\dot x=0$，即 $t_m=\pi/(2\omega)$；
+第一次恢复自然长在 $t_c=\pi/\omega$，此时 $\dot x=-u<0$；后者才是只接触、不连接的弹簧结束作用时刻。
+
+\fig{fig:em4:phase}{压缩量与相对速度共同确定接触阶段}{\begin{tikzpicture}
+\draw[axis](-.3,0)--(5,0)node[right]{$\omega t$};\draw[axis](0,-1.8)--(0,2)node[above]{归一化量};
+\draw[blue,thick,domain=0:180,samples=80]plot({\x/45},{1.4*sin(\x)});\draw[red,dashed,domain=0:180,samples=80]plot({\x/45},{1.4*cos(\x)});
+\node[above]at(2,1.4){$x/x_{\max}$};\node[right]at(4,-1.4){$\dot x/u$};\node[below]at(2,0){$\pi/2$};\node[below]at(4,0){$\pi$};\end{tikzpicture}}
+
+最大压缩量$x_{\max}=u\sqrt{\mu/k}$，弹性势能$kx_{\max}^2/2=\mu u^2/2$。任意时刻的地面速度是$v_1=V_C+(m_2/M)\dot x$、$v_2=V_C-(m_1/M)\dot x$。求某个物体先停止，应令对应$v_i=0$；求最大压缩才令$\dot x=0$。两种事件一般不重合。
+
+若初始已有压缩 $x_0$，且相对速度 $u_0$，仍从同一通解求常数：$x(0)=A=x_0$，$\dot x(0)=B\omega=u_0$。因此
+$x=x_0\cos\omega t+(u_0/\omega)\sin\omega t$。
+把它合成为 $x=\mathcal A\cos(\omega t-\phi)$，比较两系数得
+$\mathcal A\cos\phi=x_0$、$\mathcal A\sin\phi=u_0/\omega$，
+平方相加给振幅 $\mathcal A=\sqrt{x_0^2+(u_0/\omega)^2}$。
+两端均连接时可以继续拉伸；只接触时只能取$x\ge0$且接触力非负的一段。有耗散时，恢复系数可概括碰前后关系，但接触时间和力峰值仍须具体弹性、阻尼模型。
+
+\section{斜碰中的法线、切线与冲量限制}
+
+光滑碰撞的接触冲量只沿法线，因此只改变各物体的法向速度，切向速度各自不变。恢复系数也只用于法向分量。固定光滑平面、完全弹性且在平面惯性系中观察时，法向反号、切向不变才给出入射角等于反射角；活动平面需先作速度变换。
+
+对固定粗糙平面，先把受碰物体视为不计自转的质点。设入射法向速率$u_n>0$、切向速度$u_t>0$，忽略其他冲量。法向冲量$J_n=m(1+e)u_n$，分离法向速率为$eu_n$。若全程沿原方向滑动，切向冲量$J_t=-\mu J_n$，于是$v_t=u_t-\mu(1+e)u_n$。这一步必须检查$v_t$是否仍非负。
+
+\fig{fig:em4:rough-impact}{切向冲量从滑动支路到达停止点后，不能越过零速继续按原方向累加}{\begin{tikzpicture}
+\draw[world](-2,0)--(2.8,0);\draw[axis](0,0)--(0,2.6)node[above]{$n$};\draw[flow](-1.7,2)--(0,0)node[midway,left]{$\bm u$};
+\draw[flow](0,0)--(.8,1.9)node[midway,right]{$\bm v$};\draw[force](1.9,.7)--(1.9,2)node[above]{$J_n$};\draw[force](1.9,.7)--(.9,.7)node[below]{$J_t$};
+\begin{scope}[xshift=5.5cm]\draw[axis](0,0)--(4,0)node[right]{$|J_t|$};\draw[axis](0,0)--(0,2.5)node[above]{$v_t$};
+\draw[blue,thick](0,2)--(2.5,0)--(3.6,0);\node[left]at(0,2){$u_t$};\node[below]at(2.5,0){$mu_t$};\node[above]at(3,1){禁止延续到$v_t<0$};\end{scope}\end{tikzpicture}}
+
+若接触中到达零切向速度后能维持不滑动，则实际$|J_t|=\min[\mu J_n,mu_t]$，结果为$v_t=\max[u_t-\mu(1+e)u_n,0]$。图\ref{fig:em4:rough-impact}右图的横轴是累计切向冲量大小，折点以后只能停在零速。设入射角$\theta$与法线夹角满足$\tan\theta=u_t/u_n$，$e>0$且碰后仍滑动时，
+\[
+ \tan\alpha=\frac{\tan\theta-\mu(1+e)}{e}.
+\]
+若$\mu(1+e)\ge\tan\theta$，则出射沿法线、$\alpha=0$。有自转时须根据接触点速度列切向方程，不能用质心速度代替；存在其他切向冲量时，也须重新判断停止后能否保持不滑动。
+
+在两个自由物体的弹性斜碰中，回到地面系相当于把$\bm V_C$加到可旋转的质心系末速度上，速度端点因而位于圆上。若原点在圆外，最大偏转方向是从原点向速度圆作出的切线；若原点位于圆内或圆上，角度范围须重新分析。这里的圆是速度空间中的轨迹，不能与物体实际路径混为一谈。
+
+\section{多次碰撞的事件顺序与舍根}
+
+多物体的总动量和总能量通常不足以确定各自末速度。图\ref{fig:em4:events}给出三个等质量球的一个确定过程：1先碰2，2再碰3。每次都是弹性正碰且速度交换，所以中间状态决定下一次是否接触。
+
+\fig{fig:em4:events}{有间隔的逐次接触应逐次更新速度，不能擅自当作同时碰撞}{\begin{tikzpicture}
+\foreach \yy/\lab in {3.6/初始,1.8/第一次碰后,0/第二次碰后}{\begin{scope}[yshift=\yy cm]
+\foreach \xx/\num in {0/1,2/2,4/3}{\draw[world](\xx,.2)circle(.3);\node at(\xx,.2){$\num$};}\node[left]at(-.6,.2){\lab};\end{scope}}
+\draw[flow](0,4.4)--(1.1,4.4)node[right]{$u$};\draw[flow](2,2.6)--(3.1,2.6)node[right]{$u$};\draw[flow](4,.8)--(5.1,.8)node[right]{$u$};
+\node at(6,3.8){$(u,0,0)$};\node at(6,2){$(0,u,0)$};\node at(6,.2){$(0,0,u)$};\end{tikzpicture}}
+
+每次事件后，都要检查已碰的一对是否分离、另一对是否正在接近、追及距离和边界是否允许下一次碰撞。对同时多点接触，应明确对称冲量、有限弹性接触或其他模型；独立套用若干两体恢复式可能产生矛盾。若算出法向冲量为负，接触并未按所假定的方式激活，应舍弃该过程。
+
+弹簧压缩、瞬时粘合和摩擦共速可有相同的“相对速度为零”末态，但能量去向不同。每一阶段都应重新说明系统、能量式和结束事件。反复弹跳中“停止”也需指明方向：水平滑动可停止，竖直弹跳却仍继续。
+
+\section{理想流体中压力功与机械能流}
+
+流体不是固定质量质点，但也遵守功与能量关系。对定常、不可压缩、无粘滞流动，沿同一流线取截面1和2。短时间两端流过同体积$\dd V=S_1v_1\dd t=S_2v_2\dd t$；图\ref{fig:em4:streamtube}的入口压力做正功$p_1\dd V$，出口压力做负功$-p_2\dd V$。
+
+\fig{fig:em4:streamtube}{同一时间两端的流体微柱体积相等，净压力功补充动能与重力势能变化}{\begin{tikzpicture}
+\draw[world](0,0)--(2,0)--(4,1)--(6,1);\draw[world](0,1.8)--(2,1.8)--(4,2)--(6,2);
+\fill[blue!15](.5,0)rectangle(1,1.8);\fill[red!15](5,1)rectangle(5.9,2);\draw[guide](.5,0)--(.5,1.8) (5,1)--(5,2);
+\draw[force](.5,.9)--(1.6,.9)node[right]{$p_1S_1$};\draw[force](5.9,1.5)--(4.8,1.5)node[left]{$p_2S_2$};
+\draw[dim](.5,-.5)--(1,-.5)node[midway,below]{$v_1\dd t$};\draw[dim](5,2.5)--(5.9,2.5)node[midway,above]{$v_2\dd t$};
+\node[above]at(.5,1.8){1};\node[below]at(5.9,1){2};\node at(3,-1.3){$\dd V=S_1v_1\dd t=S_2v_2\dd t$};\end{tikzpicture}}
+
+净压力功等于流入、流出部分机械能之差，
+\[
+ (p_1-p_2)\dd V=\tfrac12\rho(v_2^2-v_1^2)\dd V+\rho g(h_2-h_1)\dd V.
+\]
+消去$\dd V$便得到伯努利方程
+\begin{equation}p+\frac12\rho v^2+\rho gh=\text{常量}.\label{eq:em4:bernoulli}\end{equation}
+三项都是单位体积的能量。同高度且伯努利常量相同，才能由速度增大判断静压降低；不同流线、明显可压缩、有泵做功或有显著耗散时须补充相应条件。
+
+皮托管在驻点把来流速度降到零，同高比较给出$p_0-p=\rho v^2/2$。图\ref{fig:em4:pitot}区分迎流驻点口与侧向静压口，因此驻点读数较高。这里静压$p$与动压$\rho v^2/2$单位相同，测量意义却不同。
+
+\fig{fig:em4:pitot}{迎流口测驻点压强，平行来流的侧孔测静压，二者差值用于测速}{\begin{tikzpicture}
+\foreach \yy in {0,.7,1.4}{\draw[flow](-1,\yy)--(.6,\yy);}
+\draw[world](1,.55)--(2.7,.55)--(2.7,-1.2);\draw[world](1,.85)--(3,.85)--(3,-1.2);
+\fill(1,.7)circle(.045);\node[above]at(1,1.1){驻点口$p_0$};
+\draw[world](4.2,1.2)--(6,1.2);\draw[world](4.2,.9)--(6,.9);\fill(4.9,.9)circle(.045);\draw[world](4.9,.9)--(4.9,-1.2);
+\node[above]at(5,1.6){侧孔$p$};\node at(3,-1.8){同高：$p_0-p=\rho v^2/2>0$};\end{tikzpicture}}
+
+若两测口同高并接到密度为$\rho_m$的测压液，来流密度为$\rho$，液面差$\Delta h$给出$p_0-p=(\rho_m-\rho)g\Delta h$。气体密度远小时可近似忽略$\rho$；两种液体密度接近时不可忽略密度差。流速需结合测口高度、液柱几何与流体能量式共同求出。

@@ -1,0 +1,29 @@
+\section{本讲小结}
+角速度与角加速度先统一符号，再用半径转换成线量；重复相遇使用相对角速度，并核对重复构形与计时间隔。曲线加速度包含切向和法向两部分，曲率半径反映轨迹的局部弯曲。
+
+刚体运动选物质点作基点，滚动接触点的零速度不能推出零加速度。绳切点、几何交点和物质点必须区分；线轴、圆环和从动机构分别由自己的接触或投影方程确定运动。
+\section{练习}
+\nopagebreak[4]
+\begin{question}\begin{drill}[曲柄滑块机构]\label{k5p18}
+曲柄 $OB=r$，连杆 $AB=l>r$，滑块 $A$沿过 $O$的水平线运动且位于左侧。曲柄向左上方，与向左水平线夹角为 $\alpha$；顺时针角速度为 $\omega$。连杆从 $A$到 $B$向右上方倾角为 $\theta$。求滑块向右速度。\end{drill}
+\fig{k5p18q}{曲柄滑块机构：题设关系}{\begin{tikzpicture}\coordinate(O)at(3,0);\coordinate(B)at(1.8,1.6);\coordinate(A)at(-1,0);\draw[world](O)--(B)--(A);\draw[world](-1.8,0)--(3.8,0);\node[below]at(O){$O$};\node[above]at(B){$B$};\node[draw]at(A){$A$};\node at(2.2,.3){$\alpha$};\node at(-.2,.2){$\theta$};\node[right]at(2.6,1){$r$};\node[above]at(.3,.9){$l$};\end{tikzpicture}}
+\answerlink{k5p18}
+\end{question}
+
+\begin{question}\begin{drill}[转杆通过绳牵引悬物]\label{k5p19}
+定滑轮 $B$在固定转轴 $O$正上方，高差为 $h$。杆端 $A$位于 $O$右侧，绳从 $A$经 $B$向下连悬物 $M$。杆以顺时针角速度大小 $\omega$转动，$BA$与向下竖直线夹角为 $\alpha$。求悬物上升速率。\end{drill}
+\fig{k5p19q}{转杆通过绳牵引悬物：题设关系}{\begin{tikzpicture}\coordinate(O)at(0,0);\coordinate(B)at(0,2.8);\coordinate(A)at(2.4,1);\draw[world](O)--(A);\draw[very thick](A)--(B)--(-.3,2.8)--(-.3,-.5);\node[below]at(O){$O$};\node[above]at(B){$B$};\node[right]at(A){$A$};\node[draw]at(-.3,-.7){$M$};\draw[guide](B)--(0,.6);\node at(.4,2){$\alpha$};\node[left]at(0,1.5){$h$};\end{tikzpicture}}
+\answerlink{k5p19}
+\end{question}
+
+\begin{question}\begin{drill}[水平杆与圆的移动交点]\label{k5p20}
+固定圆半径为 $r$，水平长杆以恒速 $v$向下平移。右侧几何交点 $M$相对圆心的位置为 $r(\sin\varphi,\cos\varphi)$，$0<\varphi<\pi$。求 $M$的速度、加速度。\end{drill}
+\fig{k5p20q}{水平杆与圆的移动交点：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.6);\draw[world](-2.3,.8)--(2.4,.8);\fill(1.386,.8)circle(2pt)node[above right]{$M$};\draw[guide](0,0)--(1.386,.8) (0,0)--(0,1.6);\node at(.3,.5){$\varphi$};\draw[flow,blue](-2,.6)--(-2,-.5)node[left]{$v$};\end{tikzpicture}}
+\answerlink{k5p20}
+\end{question}
+
+\begin{question}\begin{drill}[两移动圆的交点加速度]\label{k5p21}
+两个半径均为 $r$ 的圆，其圆心沿同一水平线运动，坐标为 $x_1,x_2$，速度为 $v_1,v_2$、加速度为 $a_1,a_2$。令 $d=x_2-x_1\in(0,2r)$，求上侧几何交点 $P$的速度和加速度。\end{drill}
+\fig{k5p21q}{两移动圆的交点加速度：题设关系}{\begin{tikzpicture}\draw[world](-.8,0)circle(1.5);\draw[world](.8,0)circle(1.5);\fill(0,1.269)circle(2pt)node[above]{$P$};\draw[guide](-.8,0)--(.8,0) (-.8,0)--(0,1.269)--(.8,0);\node[below]at(-.8,0){$O_1$};\node[below]at(.8,0){$O_2$};\draw[dim](-.8,-.7)--(.8,-.7)node[midway,below]{$d$};\end{tikzpicture}}
+\answerlink{k5p21}
+\end{question}

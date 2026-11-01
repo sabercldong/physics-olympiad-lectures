@@ -1,0 +1,542 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[竖直导棒的速度建立]\label{em3:example:1}
+质量 $0.030\,\mathrm{kg}$、长度 $0.20\,\mathrm m$ 的棒从静止沿竖直无摩擦导轨下落，磁场垂直导轨，$B=0.50\,\mathrm T$，总电阻 $0.50\,\Omega$。取 $g=10\,\mathrm{m/s^2}$。求速度规律、终端速度及速度为 $10\,\mathrm{m/s}$ 时的电流与磁力。
+\end{example}
+\fig{fig:em3:example:1:s}{水平棒横跨竖直导轨向下滑动；纸内磁场使棒内动生作用向右}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,4)--(.7,4) (1.7,4)--(2.4,4)--(2.4,0);\draw[world](.7,3.8)rectangle(1.7,4.2);\node[above]at(1.2,4.2){$R$};\draw[very thick](0,1.5)node[left]{$a$}--(2.4,1.5)node[right]{$b$};\node at(1.2,3){$\otimes B$};\draw[flow](3,2)--(3,.7)node[below]{$v$};\draw[dim](0,.4)--(2.4,.4)node[midway,below]{$l$};\draw[flow](.6,1.5)--(1.7,1.5)node[midway,above]{$\bm v\times\bm B$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按真实竖直方向联立电路与受力}\par\nobreak
+图\ref{fig:em3:example:1:s}中取竖直向下为速度正向。棒中 $\bm v\times\bm B$ 向右，回路电动势大小为 $Blv$，自感忽略给出 $i=Blv/R$；安培力大小 $Bli$，实际方向竖直向上。因此
+\[m\dot v=mg-Bli=mg-\frac{B^2l^2}{R}v.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离变量求速度建立过程}\par\nobreak
+令 $\gamma=B^2l^2/R$，$v_\infty=mg/\gamma$，将方程改写为 $\dd v/(v_\infty-v)=(\gamma/m)\dd t$。从 $0,0$ 积分到 $t,v$，
+\[
+\int_0^v\frac{\dd z}{v_\infty-z}
+=\frac{\gamma}{m}\int_0^t\dd s,\qquad
+[-\ln(v_\infty-z)]_0^v=\frac\gamma m t.
+\]
+原函数的负号来自 $v_\infty-z$ 的内层导数，代入上下限后，
+\[-\ln\frac{v_\infty-v}{v_\infty}=\frac\gamma m t,\qquad v=v_\infty(1-\e^{-\gamma t/m}).\]
+\fig{fig:em3:example:1:p}{指数速度曲线与 $v=10\,\mathrm{m/s}$ 时的真实竖直受力相互核验}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,2.8)node[above]{$v/v_\infty$};\draw[world,domain=0:4.3,samples=80]plot(\x,{2.4*(1-exp(-\x))});\draw[guide](0,2.4)--(4.3,2.4);\draw[guide](1.098612,0)--(1.098612,1.6)--(0,1.6);\fill(1.098612,1.6)circle(2pt);\node[left]at(0,2.4){$1$};\node[left]at(0,1.6){$2/3$};\node[below]at(1.098612,0){$\ln3$};\node at(2,-1){$\tau=1.5\,\mathrm s,\quad v_\infty=15\,\mathrm{m/s}$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[very thick](-.7,0)--(.7,0);\draw[force,blue](0,0)--(0,1.2)node[above]{$F_B=0.20\,\mathrm N$};\draw[force,red](0,0)--(0,-1.8)node[below]{$mg=0.30\,\mathrm N$};\node[right]at(1,0){$v=10\,\mathrm{m/s}$};\node at(.7,2){$i=2.0\,\mathrm A$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入物理量得到时间尺度和终速}\par\nobreak
+与图\ref{fig:em3:example:1:p}对照，$\gamma=0.50^2\times0.20^2/0.50=0.020\,\mathrm{kg/s}$，时间常量 $m/\gamma=1.5\,\mathrm s$，终速 $mg/\gamma=15\,\mathrm{m/s}$。于是 $v=15(1-\e^{-t/1.5})\,\mathrm{m/s}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在指定速度下复核电流、磁力与加速度}\par\nobreak
+速度达到10m/s时，依次计算电流和磁力：
+\[i=\frac{(0.50)(0.20)(10)}{0.50}=2.0\,\mathrm A,\qquad F_B=(0.50)(0.20)(2.0)=0.20\,\mathrm N.\]
+磁力向上，而重力为0.30N，因此净力仍为0.10N向下，加速度为 $0.10/0.030=3.33\,\mathrm{m/s^2}$。初始斜率 $\dot v(0)=g$、终态斜率趋零，都与受力一致。\end{solution}
+\begin{question}\begin{example}[两棒的摩擦与悬物牵引]\label{em3:example:2}
+等宽轨道上两棒长度均为 $l$，总电阻为 $R_\Sigma$。第一种情形：前棒受水平拉力，两棒均向右匀速，前棒、后棒的摩擦力大小分别为 $f_1,f_2$，求拉力及速度差。第二种情形：两棒各质量 $m$、电阻 $R$，无摩擦；右棒由越过定滑轮的轻绳连接质量 $M$ 的悬物，求给定速度 $v_1,v_2$ 时的加速度。
+\end{example}
+\fig{fig:em3:example:2:s}{两棒均向右运动；右棒为前棒，第二情形另以绳连接悬物}{\begin{tikzpicture}
+
+\draw[world](0,0)--(5,0) (0,2)--(5,2);\draw[very thick](.7,0)--(.7,2)node[above]{$1:\ \text{后棒}$};\draw[very thick](3.5,0)--(3.5,2)node[above]{$2:\ \text{前棒}$};\draw[flow](.7,-.7)--(1.7,-.7)node[right]{$v_1$};\draw[flow](3.5,-.7)--(4.8,-.7)node[right]{$v_2$};\node at(2,.6){$\otimes B$};\draw[dim](-.6,0)--(-.6,2)node[midway,left]{$l$};
+\draw[world](3.5,1.3)--(5.7,1.3);\draw[world](5.7,1.1)circle(.2);\draw[world](5.9,1.1)--(5.9,-.3);\draw[world](5.6,-.3)rectangle(6.2,-.9);\node[right]at(6.3,-.6){$M$};\node at(4.8,3.1){第二情形的悬物连接};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先对匀速后棒与前棒分别列平衡式}\par\nobreak
+图\ref{fig:em3:example:2:s}中前棒为右侧棒，较快的前棒驱动电流，后棒被磁力向右牵引。第一种情形后棒平衡给出 $Bli=f_2$，前棒平衡给出 $F=f_1+Bli$，因此
+\[F=f_1+f_2,\qquad v_2-v_1=\frac{iR_\Sigma}{Bl}=\frac{f_2R_\Sigma}{B^2l^2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对速度差与全回路电阻的数量关系}\par\nobreak
+例如，取
+\[
+f_1=0.020\,\mathrm N,f_2=0.010\,\mathrm N,B=0.20\,\mathrm T,l=0.50\,\mathrm m,R_\Sigma=2.0\,\Omega
+\]
+可得 $F=0.030\,\mathrm N$，速度差为 $2.0\,\mathrm{m/s}$。总电阻必须按全回路定义，不能误把单棒电阻当成总值。
+\fig{fig:em3:example:2:p}{分别对匀速摩擦情形及无摩擦悬物情形列真实受力，不混用稳态条件}{\begin{tikzpicture}
+
+\node at(2,2){第一情形：两棒均匀速};\foreach \xx/\lab in {0/{后棒},4/{前棒}}{\draw[very thick](\xx,-.7)--(\xx,.7);\node at(\xx,1.2){\lab};}
+\draw[force,blue](0,.3)--(1.2,.3)node[midway,above]{$Bli$};\draw[force](0,-.4)--(-1.2,-.4)node[midway,below]{$f_2$};\draw[force,blue](4,.3)--(2.8,.3)node[midway,above]{$Bli$};\draw[force](4,-.4)--(2.8,-.4)node[midway,below]{$f_1$};\draw[force,red](4,.6)--(5.5,.6)node[right]{$F$};
+\begin{scope}[yshift=-4cm]
+\node at(2,2){第二情形：保留三物体的加速度};\fill(0,0)circle(2pt)node[above]{$m,\ a_1$};\fill(3,0)circle(2pt)node[above]{$m,\ a_2$};\fill(6,0)circle(2pt)node[right]{$M,\ a_2$};\draw[force,blue](0,0)--(1.2,0)node[midway,below]{$Bli$};\draw[force,blue](3,0)--(1.8,0)node[midway,below]{$Bli$};\draw[force,red](3,0)--(4.4,0)node[midway,below]{$T$};\draw[force,red](6,0)--(6,1.2)node[above]{$T$};\draw[force](6,0)--(6,-1.5)node[below]{$Mg$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留悬物与两棒的加速度后消去张力}\par\nobreak
+第二情形按图\ref{fig:em3:example:2:p}分别画后棒、前棒与悬物，$i=Bl(v_2-v_1)/(2R)$。沿后、前棒向右及悬物向下取正，分别有
+\[
+ma_1=Bli,\qquad ma_2=T-Bli,\qquad Ma_2=Mg-T.
+\]把前棒与悬物的方程相加，张力消去，$(m+M)a_2=Mg-Bli$；再把 $i=Bl(v_2-v_1)/(2R)$ 分别代入两个加速度式，得
+\[a_1=\frac{B^2l^2(v_2-v_1)}{2mR},\quad a_2=\frac{Mg-B^2l^2(v_2-v_1)/(2R)}{m+M}.\]
+这些是有向加速度，若括号为负，实际加速度反向；求大小时最后取绝对值。\end{solution}
+\begin{question}\begin{example}[碰撞后的三杆系统]\label{em3:example:3}
+上下平行导轨相距高 $H$，轨宽 $l$，左端半圆竖直轨道连接上下层。相同棒各质量 $m$，单位长度电阻 $\lambda$。$A_3$ 从半圆最左点静止下滑，在底端与静止 $A_2$ 粘连；此后粘连棒立即进入右侧向上的磁区，与上层静止棒 $A_1$ 构成闭合回路，两条水平轨均无摩擦且足够长。求最大电流、电流产生的总热及粘连棒速度为 $A_1$ 三倍时 $A_1$ 的磁力。
+\end{example}
+\fig{fig:em3:example:3:s}{竖直侧视图：半圆轨道位于无磁区，棒的长度 $l$ 垂直图面}{\begin{tikzpicture}
+
+\fill[blue!7](0,-.3)rectangle(4,2.3);\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world](0,2)arc(90:270:1);\filldraw[fill=white](2.6,2)circle(.06)node[above]{$A_1$};\filldraw[fill=white](0,0)circle(.06)node[below right]{$A_2$};\filldraw[fill=white](-1,1)circle(.06)node[left]{$A_3$};\draw[dim](4.5,0)--(4.5,2)node[midway,right]{$H$};\draw[dim](-1.7,0)--(-1.7,1)node[midway,left]{$H/2$};\draw[flow](3.4,.6)--(3.4,1.4)node[right]{$\bm B$};\node at(1.8,3){碰前 $A_3$ 从半圆最左点静止下滑};\node at(2,-1){右侧水平轨足够长；$A_2,A_3$ 在底端瞬时粘连};
+
+\end{tikzpicture}}
+\end{question}
+\input{solution-three-rods}
+\begin{question}\begin{example}[不等有效轨宽与阶段接续]\label{em3:example:4}
+两棒质量均为 $m$，棒 $P$ 从无磁光滑斜轨下降高度 $h$ 后，以 $u=\sqrt{2gh}$ 进入水平磁区；$Q$ 初始静止。磁场均匀，两棒有效导电长度分别为 $2l,l$，回路总电阻为常量 $R$。先求有效长度保持不变的渐近速度；再说明若 $P$ 到达台阶后有效长度也变成 $l$，能否只由 $h$ 确定最终共同速度。讨论相应构型保持电接触且两棒不相碰的阶段，台阶接续先按无机械冲量理想化处理。
+\end{example}
+\fig{fig:em3:example:4:s}{左为磁区俯视的不同轨宽，右为 $P$ 入场前下降高度 $h$ 的侧视图}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.8,0) (0,2.4)--(2.7,2.4)--(2.7,1.2)--(4.8,1.2);\draw[very thick](.7,0)--(.7,2.4)node[above]{$P$};\draw[very thick](4,0)--(4,1.2)node[above]{$Q$};\draw[dim](-.55,0)--(-.55,2.4)node[midway,left]{$2l$};\draw[dim](5.2,0)--(5.2,1.2)node[midway,right]{$l$};\node at(1.7,.7){$\otimes B$};\draw[flow](.7,-.7)--(1.9,-.7)node[right]{$u$};\node at(4,-.7){$v_Q(0)=0$};
+\begin{scope}[xshift=7.5cm]
+\draw[world](0,2.2)--(1.8,0)--(3.5,0);\fill(0,2.2)circle(2pt)node[above]{$P$ 初态};\draw[dim](-.5,0)--(-.5,2.2)node[midway,left]{$h$};\draw[flow](2,0)--(3.2,0)node[midway,above]{$u=\sqrt{2gh}$};\node at(1.6,-.8){无磁、光滑下降段};
+\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\input{solution-width-switch}
+\begin{question}\begin{example}[有效长度变化的导棒电流、热与停止位置]\label{em3:example:5}
+水平导轨为直角坐标中的射线 $y=0$ 与 $y=x$，均匀磁场向纸里。一根足够长、整体质量恒为 $m$ 的刚性导棒垂直 $x$ 轴，以速度 $v_0$ 向右运动，$t=0$ 的有效接触段位于顶点。仅两导轨接触点之间的棒段参与闭合回路，导轨与棒单位长度电阻均为 $\lambda$。求匀速时电流、拉力与棒自身发热；在 $t_0$ 撤去拉力，求极限停止坐标。
+\end{example}
+\fig{fig:em3:example:5:s}{整根导棒质量固定；只有接触点 $a,b$ 之间的有效导电长度随位置增加}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.4,0)node[right]{$x$};\draw[world](0,0)--(3.5,3.5)node[right]{$y=x$};\draw[gray,very thick](2.2,-.5)--(2.2,3.4);\draw[very thick](2.2,0)--(2.2,2.2);\fill(2.2,0)circle(2pt)node[below right]{$b$};\fill(2.2,2.2)circle(2pt)node[above left]{$a$};\node[below left]at(0,0){$O$};\draw[flow](2.5,1.1)--(3.8,1.1)node[right]{$v_0$};\node at(1,2.6){$\otimes B$};\draw[dim](1.8,0)--(1.8,2.2)node[midway,left]{$x$};\node at(2,-1.2){灰色端段不承载回路电流；$m$ 为整根导棒质量};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由三条有效导线的长度计算电流和拉力}\par\nobreak
+图\ref{fig:em3:example:5:s}中 $x=v_0t$，有效导电长度 $ab=x$，另外两边长度为 $x,\sqrt2x$，故 $R_\Sigma=\lambda(2+\sqrt2)x$。磁区面积 $x^2/2$，磁通大小为 $Bx^2/2$；链式求导
+$\dd(Bx^2/2)/\dd t=(B/2)(2x)\dot x=Bxv_0$，
+所以电动势为 $B x v_0$，所以 $i=Bv_0/[\lambda(2+\sqrt2)]$，沿棒向上，电流为常量（$t>0$）。拉力 $F=Bix=B^2v_0^2t/[\lambda(2+\sqrt2)]$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只对有效棒段积分其自身发热}\par\nobreak
+棒的电阻为 $\lambda v_0t$，单独积分其焦耳热，得
+\[Q_{ab}=\int_0^t i^2\lambda v_0t'\dd t'
+=i^2\lambda v_0\left[\frac{t'^2}{2}\right]_0^t
+=\frac{B^2v_0^3t^2}{2\lambda(2+\sqrt2)^2}.\]
+\fig{fig:em3:example:5:p}{撤去拉力后，速度随位置按二次函数降低；空心零点只表示无限时间的位置极限}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0)node[right]{$x/x_s$};\draw[axis](0,-.2)--(0,2.8)node[above]{$v/v_0$};\draw[world,domain=.5:1,samples=80]plot({4*\x},{2.4*(1-(\x)^2)/.75});\fill(2,2.4)circle(2pt);\draw[fill=white](4,0)circle(2pt);\draw[guide](2,0)--(2,2.4);\node[below]at(2,0){$x_0/x_s$};\node[below]at(4,0){$1$};\node[left]at(0,2.4){$1$};\node at(2.1,3.4){$v=v_0-K(x^2-x_0^2)/(2m)$};\node at(2,-1){图示取 $x_0/x_s=1/2$，$x_s=x_{\rm stop}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用空间方程求撤力后的速度与位置极限}\par\nobreak
+图\ref{fig:em3:example:5:p}中撤力后 $x_0=v_0t_0$。令 $K=B^2/[\lambda(2+\sqrt2)]$，有 $m\dot v=-Kxv$。使用链式法则 $\dot v=(\dd v/\dd x)\dot x=v\dd v/\dd x$，在 $v>0$ 时约去速度，
+\[
+m\int_{v_0}^{v(x)}\dd z=-K\int_{x_0}^{x}\xi\,\dd\xi
+=-\frac K2(x^2-x_0^2).
+\]
+所以得 $v=v_0-K(x^2-x_0^2)/(2m)$，故
+\[x_{\rm stop}=\sqrt{x_0^2+2mv_0/K}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查极限停止时间与顶点接触近似}\par\nobreak
+这是 $t\to\infty$ 的位置极限，停止附近 $v$ 与剩余距离成正比，不能声称有限时间恰好静止。顶点处电阻与电动势都为零，常电流结论指从 $x\to0^+$ 的极限，实际接触尺度会消除理想奇点。\end{solution}
+\begin{question}\begin{example}[导棒与电容的快速耦合]\label{em3:example:6}
+水平无摩擦轨道上的棒质量 $m$、长度 $l$，初速度 $v_0>0$。未充电电容 $C$ 通过总电阻 $R>0$ 突然接入，磁场 $B$ 垂直轨道，自感忽略。单棒向远离固定电容的方向运动，轨道足够长，求最终速度、充电时间尺度与总焦耳热。再考虑图示两根各质量 $m$、各电阻 $R$ 的棒：左棒向右的初速度为 $v_0$，右棒静止，初始间距 $D_0$；两个相同电容 $C$ 串在两棒之间的固定上导轨中，均未充电，中间孤立导体净电荷为零。左棒到最近固定电容接点的初始距离为 $a$，$0<a<D_0$。求左棒到达该接点之前两棒的速度、电荷及累计焦耳热，并给出这一运动阶段结束时刻 $t_*$ 的方程。
+\end{example}
+\fig{fig:em3:example:6:s}{两种初始连接：电容均未充电，双棒模型的两电容串在固定导轨中}{\begin{tikzpicture}
+
+\begin{scope}
+\node at(1.6,3.2){单棒};\draw[world](0,0)--(3.7,0) (0,2)--(1,2) (2,2)--(3.7,2) (0,0)--(0,.8) (0,1.2)--(0,2);\draw[world](1,1.8)rectangle(2,2.2);\node[above]at(1.5,2.2){$R$};\draw[world](-.3,.8)--(.3,.8) (-.3,1.2)--(.3,1.2);\node[left]at(-.35,1){$C$};\draw[very thick](3,0)--(3,2)node[above]{$m$};\draw[flow](3,-.6)--(4.1,-.6)node[right]{$v_0$};\node at(1.5,.7){$\otimes B$};
+\node at(1.5,-1.3){$q_0=0$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\node at(2,3.2){双棒、两个串联电容};\draw[world](0,0)--(4.7,0) (0,2)--(1.4,2) (1.8,2)--(2.6,2) (3,2)--(4.7,2);\draw[very thick](.5,0)--(.5,2)node[above]{$m,R$};\draw[very thick](4.2,0)--(4.2,2)node[above]{$m,R$};\foreach \xx in {1.4,1.8,2.6,3}{\draw[world](\xx,1.7)--(\xx,2.3);}\node[above]at(1.6,2.3){$C$};\node[above]at(2.8,2.3){$C$};\node at(2.3,.6){$\otimes B$};\draw[flow](.5,-.6)--(1.5,-.6)node[right]{$v_0$};\node at(4.2,-.6){初始静止};
+\draw[dim](.5,2.85)--(1.4,2.85)node[midway,above]{$a$};
+\draw[dim](.5,-1.25)--(4.2,-1.25)node[midway,below]{$D_0$};
+\node at(2.2,-2.1){两电容初始均未充电};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{积分安培冲量并建立单棒充电方程}\par\nobreak
+令 $k=Bl$，按图\ref{fig:em3:example:6:s}使充电电流产生阻力，$m\dot v=-k\dot q$。从$v(0)=v_0,q(0)=0$积分，
+\[
+m\int_{v_0}^{v}\dd u=-k\int_0^q\dd Q,\qquad
+m[u]_{v_0}^{v}=-k[Q]_0^q.
+\]
+所以$m(v-v_0)=-kq$，即$mv+kq=mv_0$。代入 $R\dot q+q/C=kv$，得到
+\[R\dot q+\left(\frac1C+\frac{k^2}{m}\right)q=kv_0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电荷与速度的指数过程及时间尺度}\par\nobreak
+定义 $C_e=(1/C+k^2/m)^{-1}$、$\tau=RC_e$，把方程写为 $\dot q+q/\tau=kv_0/R$，乘积分因子 $\e^{t/\tau}$，得到 $\dd(q\e^{t/\tau})/\dd t=(kv_0/R)\e^{t/\tau}$。从零初电荷积分，
+\[
+q(t)\e^{t/\tau}-0
+=\frac{kv_0}{R}\int_0^t\e^{s/\tau}\dd s
+=\frac{kv_0}{R}[\tau\e^{s/\tau}]_0^t
+=\frac{kv_0\tau}{R}(\e^{t/\tau}-1),
+\]故 $q=C_e kv_0(1-\e^{-t/\tau})$。因此 $v_\infty=mv_0/(m+Ck^2)$。
+\fig{fig:em3:example:6:p}{由充电电流确定单棒阻力、双棒等大反向力，再分别保留质心与相对运动}{\begin{tikzpicture}
+
+\begin{scope}
+\node at(1.6,3.2){单棒};\draw[world](0,0)--(3.7,0) (0,2)--(1,2) (2,2)--(3.7,2) (0,0)--(0,.8) (0,1.2)--(0,2);\draw[world](1,1.8)rectangle(2,2.2);\node[above]at(1.5,2.2){$R$};\draw[world](-.3,.8)--(.3,.8) (-.3,1.2)--(.3,1.2);\node[left]at(-.35,1){$C$};\draw[very thick](3,0)--(3,2)node[above]{$m$};\draw[flow](3,-.6)--(4.1,-.6)node[right]{$v(t)$};\node at(1.5,.7){$\otimes B$};
+\draw[flow,red](3,.3)--(3,1.1)node[right]{$\dot q$};\draw[force](3,1.4)--(1.7,1.4)node[midway,above]{$k\dot q$};\node[above left]at(0,1.3){$+q$};\node[below left]at(0,.7){$-q$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\node at(2,3.2){双棒、两个串联电容};\draw[world](0,0)--(4.7,0) (0,2)--(1.4,2) (1.8,2)--(2.6,2) (3,2)--(4.7,2);\draw[very thick](.5,0)--(.5,2)node[above]{$m,R$};\draw[very thick](4.2,0)--(4.2,2)node[above]{$m,R$};\foreach \xx in {1.4,1.8,2.6,3}{\draw[world](\xx,1.7)--(\xx,2.3);}\node[above]at(1.6,2.3){$C$};\node[above]at(2.8,2.3){$C$};\node at(2.3,.6){$\otimes B$};\draw[flow](.5,-.6)--(1.5,-.6)node[right]{$v_{\rm left}$};\draw[flow](4.2,-.6)--(5.1,-.6)node[right]{$v_{\rm right}$};
+\draw[flow,red](1.9,2)--(2.4,2)node[midway,below]{$i$};\draw[force](.5,1.3)--(-.6,1.3)node[left]{$ki$};\draw[force](4.2,1.3)--(5.3,1.3)node[right]{$ki$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按机械能与真实电容能计算单棒热量}\par\nobreak
+图\ref{fig:em3:example:6:p}左图对应单棒，机械能除一部分留为动能、一部分存入电容外，其余为热，故
+\[Q=\frac12mv_0^2-\frac12mv_\infty^2-\frac{(Ckv_\infty)^2}{2C}=\frac{mv_0^2}{2}\frac{Ck^2}{m+Ck^2}.\]
+$R\to0^+$ 时热量仍有限，只是充电时间趋零，不能直接用机械能与电场能守恒替代切换过程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离双棒质心运动并建立相对充电方程}\par\nobreak
+右图中令相对速度 $w=v_{\rm left}-v_{\rm right}$，初值为 $v_0$。两棒质心速度为 $v_0/2$，相对运动的质量为 $\mu=m/2$，两个串联电容的电容为 $C_0=C/2$。两个棒的受力相反，所以质心匀速；相减两棒方程并用 $\dot q$ 为共同串联电流，得 $\mu\dot w=-k\dot q$。两只电容电压相加为 $2q/C=q/C_0$，两电阻相加为 $2R$，回路方程为 $2R\dot q+q/C_0=kw$。积分第一式得 $\mu w+kq=\mu v_0$，这才将两棒问题化为与单棒同形式的方程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求固定连接保持期间的电荷和两棒速度}\par\nobreak
+将 $m,C,R$ 分别替换为 $\mu,C_0,2R$。定义无量纲数 $\lambda=m/(m+Ck^2)$ 和时间尺度 $\tau'=RmC/(m+Ck^2)$，双棒的约化方程为
+$2R\dot q+(1/C_0+k^2/\mu)q=kv_0$。
+令 $q_f=kv_0/(1/C_0+k^2/\mu)$，则
+$\dot q=(q_f-q)/\tau'$；从$q(0)=0$分离变量并积分：
+\[
+\int_0^{q(t)}\frac{\dd Q}{q_f-Q}
+=\int_0^t\frac{\dd s}{\tau'},
+\qquad
+[-\ln(q_f-Q)]_0^{q(t)}=\left[\frac{s}{\tau'}\right]_0^t.
+\]
+在题设$q_f>0$时，解沿$q<q_f$的分支趋近终值，故$-\ln[(q_f-q)/q_f]=t/\tau'$。把 $C_0=C/2,\mu=m/2$ 代入 $q_f$，再用 $w=v_0-kq/\mu$，得到
+\[
+q(t)=\frac{mCkv_0}{2(m+Ck^2)}(1-\e^{-t/\tau'}),\qquad
+w(t)=v_0[\lambda+(1-\lambda)\e^{-t/\tau'}].
+\]
+再用质心速度与相对速度还原图\ref{fig:em3:example:6:p}右图的两个箭头：
+\[
+v_{\rm left}(t)=\frac{v_0+w(t)}2,\qquad
+v_{\rm right}(t)=\frac{v_0-w(t)}2.
+\]
+初始时分别恢复 $v_0,0$。此后 $0<w(t)<v_0$，所以两棒都向右运动，左棒始终更快；必须在它到达固定接点前停止使用这一回路方程。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由位移确定首次接点事件}\par\nobreak
+以左棒初始位置为 $x=0$，图\ref{fig:em3:example:6:interval}中的最近接点位于 $x=a$。从零位移积分左棒速度，
+\[
+x_{\rm left}(t)=\frac{v_0}{2}
+\left[(1+\lambda)s-(1-\lambda)\tau'\e^{-s/\tau'}\right]_0^t,
+\]
+代入上下限后得到
+\[
+x_{\rm left}(t)=\frac{v_0}2\left[(1+\lambda)t
+ +(1-\lambda)\tau'(1-\e^{-t/\tau'})\right].
+\]
+因此 $t_*$ 是 $x_{\rm left}(t_*)=a$ 的唯一正根。左棒速度始终介于 $(1+\lambda)v_0/2$ 与 $v_0$ 之间，故
+\[
+\frac a{v_0}<t_*<\frac{2a}{(1+\lambda)v_0}.
+\]
+右棒向右移动，始终有 $x_{\rm right}\ge D_0>a$，所以左棒先到接点，此前两棒不会相遇。
+\fig{fig:em3:example:6:interval}{固定接点限定暂态方程的有效运动区间}{\begin{tikzpicture}
+\draw[axis](-.3,0)--(8.5,0)node[right]{$x$};
+\foreach \x/\t in{0/0,2.5/a,6/D_0}{\draw(\x,-.12)--(\x,.12);\node[below]at(\x,-.12){$\t$};}
+\draw[very thick](0,.4)--(0,1.6);\draw[very thick,blue](1.5,.4)--(1.5,1.6);
+\draw[very thick](6,.4)--(6,1.6);\draw[very thick,blue](6.7,.4)--(6.7,1.6);
+\draw[guide](2.5,.15)--(2.5,1.9);\node[above]at(2.5,1.9){首个固定接点};
+\draw[flow,blue](.15,1)--(1.3,1);\draw[flow,blue](6.1,1)--(6.55,1);
+\node[above]at(.1,2.65){左棒};\node[above]at(6.3,2.65){右棒};
+\node at(4,-1){$0\le t<t_*:\quad x_{\rm left}<a<D_0\le x_{\rm right}$};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分有限阶段的热量并核对能量去向}\par\nobreak
+共同串联电流为 $i=\dot q=kv_0\e^{-t/\tau'}/(2R)$，两棒电阻均发热，所以
+\[
+Q_J(t)=\frac{k^2v_0^2}{2R}
+\left[-\frac{\tau'}2\e^{-2t'/\tau'}\right]_0^t
+=\frac{mv_0^2}{4}\frac{Ck^2}{m+Ck^2}
+ (1-\e^{-2t/\tau'}),\qquad 0\le t<t_*.
+\]
+到达接点前的累计热量取 $Q_J(t_*^-)$。能量关系为
+\[
+\frac12mv_0^2=\frac12m(v_{\rm left}^2+v_{\rm right}^2)
+ +\frac{q^2}{C}+Q_J(t).
+\]
+两只真实电容的总储能为 $q^2/C$，质心动能 $mv_0^2/4$ 保持不变。若把原方程形式上延伸到无限时间，仍有正的相对速度 $\lambda v_0$；这不代表图示装置有相应末态。接点后的接触、导通方式未给定，不能由本阶段方程继续推算。
+\end{solution}
+\begin{question}\begin{example}[电容导棒下落、有限电阻与击穿]\label{em3:example:7}
+水平棒横跨竖直导轨下落，质量 $m$、长度 $l$，上端回路接电容 $C$，磁场向纸内且垂直轨道。先从静止、未充电状态释放，求零电阻下落高度 $h$ 的时间，并给出总电阻为 $R>0$ 时热量的表达式。另讨论初速度 $v_0$ 且初始电压与运动相容时，击穿电压 $U_b$ 对应的时刻。
+\end{example}
+\fig{fig:em3:example:7:s}{棒向下运动，电容接在竖直导轨上端；零电阻与有限电阻分别讨论}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,4)--(.6,4) (1,4)--(1.4,4) (2.2,4)--(2.4,4)--(2.4,0);\draw[world](.6,3.7)--(.6,4.3) (1,3.7)--(1,4.3);\node[above]at(.8,4.4){$C$};\draw[world](1.4,3.8)rectangle(2.2,4.2);\node[above]at(1.8,4.4){$R\ge0$};\draw[very thick](0,1.5)--(2.4,1.5);\draw[flow](3,2)--(3,.7)node[below]{$v$};\node at(.8,3){$\otimes B$};\draw[dim](0,.2)--(2.4,.2)node[midway,below]{$l$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在相容零初态下消去电荷求下落加速度}\par\nobreak
+令 $k=Bl$，取接右轨一侧极板电荷为 $q$、下落方向为正。图\ref{fig:em3:example:7:s}中无电阻时 $q=Ckv$，受力方程 $m\dot v=mg-k\dot q$ 给出 $a=mg/(m+Ck^2)$。由初态零速度，$h=at_h^2/2$，所以 $t_h=\sqrt{2h(m+Ck^2)/(mg)}$。
+\fig{fig:em3:example:7:p}{右轨侧极板电荷为 $q$，棒中充电电流向右，安培力与重力相反}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,4)--(.6,4) (1,4)--(1.4,4) (2.2,4)--(2.4,4)--(2.4,0);\draw[world](.6,3.7)--(.6,4.3) (1,3.7)--(1,4.3);\node[above]at(.8,4.4){$C$};\draw[world](1.4,3.8)rectangle(2.2,4.2);\node[above]at(1.8,4.4){$R\ge0$};\draw[very thick](0,1.5)--(2.4,1.5);\draw[flow](3,2)--(3,.7)node[below]{$v$};\node at(.8,3){$\otimes B$};\draw[dim](0,.2)--(2.4,.2)node[midway,below]{$l$};
+\draw[flow,red](.4,1.5)--(1.4,1.5)node[midway,above]{$i=\dot q$};\draw[force,blue](1.9,1.5)--(1.9,2.8)node[right]{$ki$};\draw[force](1.9,1.5)--(1.9,.5)node[right]{$mg$};\node at(1.1,3.4){$+q$};\node at(.35,3.4){$-q$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留有限电阻后积分电荷、速度和位移}\par\nobreak
+图\ref{fig:em3:example:7:p}保留电阻时先积分受力，得到 $mv+kq=mgt$；代入电路，$R\dot q+(1/C+k^2/m)q=kgt$。令 $C_e=(1/C+k^2/m)^{-1}$、$\tau=RC_e$、$\alpha=m/(m+Ck^2)$，一阶方程乘 $\e^{t/\tau}$ 后，$\dd(q\e^{t/\tau})/\dd t=(kg/R)t\e^{t/\tau}$。分部积分时取 $f=s$、$\dd g=\e^{s/\tau}\dd s$，所以 $\dd f=\dd s$、$g=\tau\e^{s/\tau}$。于是
+\[
+\int_0^t s\e^{s/\tau}\dd s
+=[\tau s\e^{s/\tau}]_0^t-\tau\int_0^t\e^{s/\tau}\dd s
+=\tau t\e^{t/\tau}-\tau^2(\e^{t/\tau}-1),
+\]故先得到下列 $q$；再用 $v=gt-kq/m$ 求速度，并从零位移积分，
+\[
+x=\left[\frac12\alpha gs^2+(1-\alpha)g\tau
+(s+\tau\e^{-s/\tau})\right]_0^t,
+\]
+得到 $x$：
+\begin{align*}q&=C_ekg[t-\tau(1-\e^{-t/\tau})],\\v&=\alpha gt+(1-\alpha)g\tau(1-\e^{-t/\tau}),\\x&=\tfrac12\alpha gt^2+(1-\alpha)g\tau[t-\tau(1-\e^{-t/\tau})].\end{align*}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际落地时间积分电流平方求热量}\par\nobreak
+用最后一式令 $x(T)=h$ 确定落地时间，对电荷求导，$\dot q=C_ekg(1-\e^{-t/\tau})$。平方后保留三项 $1-2\e^{-t/\tau}+\e^{-2t/\tau}$，分别从零积分到 $T$，三项原函数依次是
+$t$、$2\tau\e^{-t/\tau}$、$-(\tau/2)\e^{-2t/\tau}$。因此
+\[
+Q=R(C_ekg)^2
+\left[t+2\tau\e^{-t/\tau}-\frac\tau2\e^{-2t/\tau}\right]_0^T.
+\]
+扣除下限的 $3\tau/2$，得到电阻热：
+\[Q=R(C_ekg)^2\left[T-2\tau(1-\e^{-T/\tau})+\frac\tau2(1-\e^{-2T/\tau})\right].\]
+也可用 $Q=mgh-mv(T)^2/2-q(T)^2/(2C)$ 检查。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电压阈值图判断击穿时刻的适用初态}\par\nobreak
+\fig{fig:em3:example:7:threshold}{相容初态下电压线性增长；阈值高于初始电压时才有正的首次击穿时刻}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.5,0)node[right]{$t$};\draw[axis](0,-.2)--(0,3.6)node[above]{$U$};\draw[world](0,.7)--(3.8,3.36);\draw[red,dashed](0,2.45)--(4,2.45)node[right]{$U_b$};\draw[guide](2.5,0)--(2.5,2.45);\fill(2.5,2.45)circle(2pt);\node[left]at(0,.7){$kv_0$};\node[below]at(2.5,0){$t_b$};\node at(2,-.9){$U=kv_0+kat,\quad a=mg/(m+Ck^2)$};
+
+\end{tikzpicture}}图\ref{fig:em3:example:7:threshold}仅用于零电阻且初态相容的阶段；有限电阻的电压应从前述 $q(t)/C$ 计算。
+
+若零电阻初始电压已为 $kv_0$，初态相容，便有 $v=v_0+at$，$U=k(v_0+at)$。在 $U_b>kv_0$ 时，$t_b=(U_b/k-v_0)/a$；若 $U_b\le kv_0$，初态即触及或超过阈值。若初始未充电而 $v_0\ne0$，需先算上一例的快速切换，不能把这里的相容初态公式从原始时刻直接使用。\end{solution}
+\begin{question}\begin{example}[交叠圆环：场变与相对运动]\label{em3:example:8}
+两个相同均匀圆环半径 $a$，每环总电阻 $r$，中心距 $\sqrt3a$，交点 $A,C$ 电接触良好。先固定两环，向里磁场以速率 $k>0$ 减小，求各长、短弧电流及单环合磁力。再令磁场恒定，两环分别以速率 $v$ 相向平移，求此瞬时电流与阻力。
+\end{example}
+\fig{fig:em3:example:8:s}{两个圆心位于各自圆心处；中心距 $\sqrt3a$ 确定短弧 $60^\circ$、交弦长 $a$}{\begin{tikzpicture}
+
+\fill[orange!18](0,.7)arc(30:-30:1.4)arc(210:150:1.4)--cycle;\draw[world](-1.212436,0)circle(1.4);\draw[world](1.212436,0)circle(1.4);\fill(-1.212436,0)circle(2pt)node[below]{$O_1$};\fill(1.212436,0)circle(2pt)node[below]{$O_2$};\fill(0,.7)circle(2pt)node[above]{$A$};\fill(0,-.7)circle(2pt)node[below]{$C$};\draw[guide](-1.212436,0)--(0,.7)--(0,-.7)--cycle;\node[left]at(-.6,.4){$a$};\node at(.55,0){$S$};\draw[dim](-1.212436,-1.9)--(1.212436,-1.9)node[midway,below]{$\sqrt3a$};\node at(0,2.2){$AC=a,\quad\otimes B$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由交叠几何求长短弧电阻与透镜磁通}\par\nobreak
+由图\ref{fig:em3:example:8:s}每条短弧圆心角 $60^\circ$、电阻 $r/6$，长弧为 $5r/6$。交叠部分由两个圆心角60度的扇形各减一个三角形拼成，故 $S=2[\pi a^2/6-(a^2/2)\sin60^\circ]=a^2(\pi/3-\sqrt3/2)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先解固定环的两个回路电流}\par\nobreak
+场变情形诱导顺时针环流，设外侧长弧电流为 $I_1$、内侧短弧电流为 $I_2$，方向均按各自圆环的顺时针。透镜回路电阻 $r/3$，故 $I_2=3kS/r$；任一整环的回路方程为 $(5r/6)I_1+(r/6)I_2=k\pi a^2$，因此 $I_1=k(6\pi a^2-3S)/(5r)$。
+\fig{fig:em3:example:8:p}{只取左环比较两种驱动：场变时两弧电流反向，相向运动时两弧同向；右环由对称性得到}{\begin{tikzpicture}
+
+\foreach \xx/\sgn/\lab in {0/-1/{固定环、向里场减弱},6.6/1/{恒场、两环相向运动}}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,0)circle(1.4);\fill(1.212436,.7)circle(2pt)node[above right]{$A$};\fill(1.212436,-.7)circle(2pt)node[below right]{$C$};\draw[->,blue,thick](-1.4,0)arc(180:100:1.4);\ifnum\sgn=-1\draw[->,red,thick](1.212436,.7)arc(30:-30:1.4);\else\draw[->,red,thick](1.212436,-.7)arc(-30:30:1.4);\fi
+\node at(0,2.3){\lab};\node at(-.5,-1.9){$\otimes B$};\end{scope}}
+\node[blue]at(-1.9,.7){$I_1$};\node[red]at(2,.1){$I_2$};\draw[force,blue](-.1,.35)--(-1.2,.35)node[midway,above]{$BaI_1$};\draw[force,red](.1,-.35)--(1.2,-.35)node[midway,below]{$BaI_2$};\node at(0,-2.8){$F_{\rm left}=Ba(I_1-I_2)$ 向左};
+\node[blue]at(4.7,.7){$I_{\rm long}$};\node[red]at(8.65,.1){$I_{\rm short}$};\draw[force,blue](6.5,.35)--(5.4,.35)node[midway,above]{$BaI_{\rm long}$};\draw[force,red](6.7,-.35)--(5.6,-.35)node[midway,below]{$BaI_{\rm short}$};\node at(6.6,-2.8){$F_{\rm left}=Ba(I_{\rm long}+I_{\rm short})$ 向左};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两段有向端点位移求单环合力}\par\nobreak
+图\ref{fig:em3:example:8:p}中左环长弧从 $C$ 到 $A$、短弧从 $A$ 到 $C$，所以按端点位移计算两部分安培力，均匀磁场中任一载流弧段的合力为 $I\int\dd\bm l\times\bm B=I(\bm r_{\text{末}}-\bm r_{\text{初}})\times\bm B$。公共弦 $AC=a$ 竖直，左长弧电流从下到上，受力向左，大小 $BaI_1$；短弧电流从上到下，受力向右，大小 $BaI_2$。合力因此向左，大小
+\[F=Ba(I_1-I_2)=\frac{9\sqrt3}{5}\frac{kBa^3}{r}.\]
+计算系数时，$I_1-I_2=k[6\pi a^2-18S]/(5r)$，代入 $S$ 后，方括号中的 $6\pi a^2$ 恰抵消，只留下 $9\sqrt3a^2$，得到所列结果。右环受反向等大力，两环有分开的趋势。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新积分相向运动的动生作用并求阻力}\par\nobreak
+图\ref{fig:em3:example:8:p}右侧的恒场相向运动中，左环 $\bm v\times\bm B$ 向上，左右环沿 $C\to A$ 的动生积分分别为 $+Bva,-Bva$。把四条弧都按 $C\to A$ 为参考，左右环电动势分别为 $+Bva,-Bva$，总电导又相同。节点方程中的两组源项抵消，给出 $V_A=V_C$。故左环两弧都从 $C$ 流向 $A$，且
+\[
+I_{\text{短}}=\frac{Bva}{r/6}=\frac{6Bva}{r},\qquad
+I_{\text{长}}=\frac{Bva}{5r/6}=\frac{6Bva}{5r}.
+\]两部分力同向向左，阻力 $F=Ba(I_{\text{短}}+I_{\text{长}})=36B^2va^2/(5r)$。此时两弧电流方向与场变情形不同，不能把场变解直接换一个变化率。若给的是单位长度电阻 $\lambda$，须先换成 $r=2\pi a\lambda$。\end{solution}
+\begin{question}\begin{example}[导棒电动机的启动与能量分配]\label{em3:example:9}
+水平导棒质量 $m$、长度 $l$，回路总电阻 $R$，磁场向纸里，接理想直流源 $E$，极性使棒从静止向右加速。无摩擦、自感忽略。求电流、速度和位移；求从启动到渐近无电流过程中电源做功、焦耳热和最终动能。
+\end{example}
+\fig{fig:em3:example:9:s}{题设：导棒电动机的启动与能量分配}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[flow](3.3,1)--(4.4,1)node[above]{$v$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\draw[white,line width=3pt](0,1.55)--(0,1.85);\draw[world](-.3,1.8)--(.3,1.8) (-.18,1.6)--(.18,1.6);\node[left]at(-.35,1.75){$E$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按电源与反电动势的实际方向列耦合方程}\par\nobreak
+图\ref{fig:em3:example:9:s}电源正端接上轨，初电流沿棒向下，安培力向右。棒向右运动时自身动生作用向上，反抗电源。因此令 $k=Bl$，有
+\[Ri=E-kv,\qquad m\dot v=ki=\frac{kE-k^2v}{R}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求启动过程的速度、电流和位移}\par\nobreak
+令 $\tau=mR/k^2$，令 $v_\infty=E/k$，从 $v(0)=0$ 分离积分，
+\[
+\int_0^{v(t)}\frac{\dd z}{v_\infty-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad-\ln\frac{v_\infty-v}{v_\infty}=\frac t\tau,
+\]
+解得 $v=E(1-\e^{-t/\tau})/k$，电流 $i=E\e^{-t/\tau}/R$。再次积分速度，
+$x=(E/k)[s+\tau\e^{-s/\tau}]_0^t$，得到 $x=E[t-\tau(1-\e^{-t/\tau})]/k$。
+\fig{fig:em3:example:9:p}{启动后速度逐渐接近 $E/k$，电流同时从 $E/R$ 衰减到零}{\begin{tikzpicture}
+
+\foreach \xx/\lab in {0/{kv/E},6/{Ri/E}}{\begin{scope}[xshift=\xx cm]\draw[axis](-.2,0)--(4.7,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,2.8)node[above]{$\lab$};\draw[guide](0,2.2)--(4.3,2.2);\node[left]at(0,2.2){$1$};\end{scope}}
+\draw[blue,thick,domain=0:4.3,samples=80]plot(\x,{2.2*(1-exp(-\x))});\draw[red,thick,domain=0:4.3,samples=80]plot({6+\x},{2.2*exp(-\x)});\node at(5,-1){$\tau=mR/k^2,\quad Ri+kv=E$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分总电量与电流平方并检查能量分配}\par\nobreak
+图\ref{fig:em3:example:9:p}中速度上升而电流下降，二者的初态与极限相互对应。通过电源的总电量有限，为
+$Q=(E/R)\int_0^\infty\e^{-t/\tau}\dd t
+=(E/R)[-\tau\e^{-t/\tau}]_0^\infty
+=E\tau/R=mE/k^2$，所以电源做功 $W_E=EQ=mE^2/k^2$。热量直接由电流平方积分，
+\[Q_J=\frac{E^2}{R}\int_0^\infty\e^{-2t/\tau}\dd t
+=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^\infty
+=\frac{mE^2}{2k^2}.\]
+最终动能 $mv_\infty^2/2=mE^2/(2k^2)$，恰与热量相同，二者之和等于电源功。最终棒仍匀速运动而电流趋零，不存在维持匀速所需的电阻功率，因为本题没有机械负载。\end{solution}
+\begin{question}\begin{example}[恒力牵引两棒的共同加速]\label{em3:example:10}
+两根棒长度 $l$、质量 $m_1,m_2$，在水平等宽光滑导轨上，回路总电阻 $R$，磁场向纸里。两棒初始静止，右棒受恒力 $F$ 向右。求两棒速度、电流的时间规律，解释电流趋于常量时为何两棒仍加速。
+\end{example}
+\fig{fig:em3:example:10:s}{题设：恒力牵引两棒的共同加速}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[flow](3.3,1)--(4.4,1)node[above]{$v_2$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world,very thick](.7,0)node[below]{$d$}--(.7,2)node[above]{$c$};\draw[flow](.8,-.6)--(1.8,-.6)node[right]{$v_1$};\draw[force](3,.5)--(4.4,.5)node[midway,above]{$F$};\node at(.7,2.7){$m_1$};\node at(3,2.7){$m_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对两棒分别列受力并识别内部磁力}\par\nobreak
+图\ref{fig:em3:example:10:s}右棒先运动，回路电动势为 $k(v_2-v_1)$，其中 $k=Bl$。安培力使左棒向右、右棒受阻，因此
+\[m_1\dot v_1=ki,\quad m_2\dot v_2=F-ki,\quad i=k(v_2-v_1)/R.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将质心运动与相对运动分开}\par\nobreak
+先将两受力式相加，内部磁力抵消，得到 $m_1\dot v_1+m_2\dot v_2=F$。再将第二式除以 $m_2$、第一式除以 $m_1$ 后相减，得到相对速度方程。令总质量 $M=m_1+m_2$、约化质量 $\mu=m_1m_2/M$，质心方程为 $\dot V=F/M$，所以 $V=Ft/M$。相对速度 $w=v_2-v_1$ 满足
+\[\mu\dot w=\frac{m_1}{M}F-\frac{k^2}{R}w.\]
+\fig{fig:em3:example:10:p}{质心持续加速，相对速度趋于常量；两棒的安培力是内部等大反向力}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)--(5,0) (0,2)--(5,2);\draw[very thick](.5,0)--(.5,2)node[above]{$m_1$};\draw[very thick](3.6,0)--(3.6,2)node[above]{$m_2$};\draw[force,blue](.5,1.3)--(1.6,1.3)node[midway,above]{$ki$};\draw[force,blue](3.6,1.3)--(2.5,1.3)node[midway,above]{$ki$};\draw[force,red](3.6,.6)--(5,.6)node[right]{$F$};\draw[flow](.5,.85)--(.5,.2)node[left]{$i$};\draw[flow](3.6,.2)--(3.6,.85)node[right]{$i$};\node at(2,.55){$\otimes B$};\node at(2.5,-.9){$m_1\dot v_1+m_2\dot v_2=F$};
+\end{scope}
+\begin{scope}[xshift=7.2cm]
+\draw[axis](-.2,0)--(4.1,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,3.6);\draw[world](0,0)--(3.5,3.5)node[above]{$V/(F\tau/M)$};\draw[blue,thick,domain=0:3.5,samples=80]plot(\x,{1-exp(-\x)});\draw[guide](0,1)--(3.5,1);\node[blue]at(2.5,1.45){$w/w_\infty$};\node[left]at(0,1){$1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相对速度、电流及两棒实际速度}\par\nobreak
+由图\ref{fig:em3:example:10:p}分别对质心和相对运动求解，$\tau=\mu R/k^2$，$w_\infty=Fm_1R/(Mk^2)$，相对方程是 $\dot w=(w_\infty-w)/\tau$，由 $w(0)=0$ 积分，
+\[
+\int_0^{w(t)}\frac{\dd z}{w_\infty-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad -\ln\frac{w_\infty-w}{w_\infty}=\frac t\tau.
+\]
+于是 $w=w_\infty(1-\e^{-t/\tau})$。
+\[v_1=\frac{Ft}{M}-\frac{m_2}{M}w,\qquad v_2=\frac{Ft}{M}+\frac{m_1}{M}w,\qquad i=\frac{k}{R}w.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查启动加速度、长期状态和瞬时功率}\par\nobreak
+初始 $\dot v_1=0,\dot v_2=F/m_2$，与直接受力相符。长期两棒加速度均趋于 $F/M$，电流却趋于 $Fm_1/(Mk)$。此时稳定的是相对速度与电流，而不是各棒速度。每一时刻都有 $Fv_2=\dd(m_1v_1^2/2+m_2v_2^2/2)/\dd t+i^2R$，外力持续供能同时增加质心动能和发热。\end{solution}
+\begin{question}\begin{example}[随位置增强的磁场中的停止位置]\label{em3:example:11}
+水平光滑轨道上，质量 $m$、长度 $l$ 的棒从 $x=0$ 以速度 $v_0$ 向右运动。回路总电阻 $R$ 恒定，场垂直轨面，沿轨为 $B(x)=B_0x/a$（$x\ge0$），棒长方向近似均匀。无外力、自感忽略。求 $v(x)$、极限停止位置；若磁区在 $x=d$ 截止，判断能否穿出。
+\end{example}
+\fig{fig:em3:example:11:s}{题设：随位置增强的磁场中的停止位置}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[flow](3.3,1)--(4.4,1)node[above]{$v$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\node at(1.5,2.8){$B(x)=B_0x/a$};\draw[axis](0,-1)--(4.6,-1)node[right]{$x$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用当前位置的场强建立阻力方程}\par\nobreak
+沿图\ref{fig:em3:example:11:s}向右，电动势 $e=B(x)lv$，电流 $i=B(x)lv/R$，磁力 $F_x=-B(x)^2l^2v/R$。因此
+\[m\dot v=-\frac{B_0^2l^2}{Ra^2}x^2v.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{转换为空间方程并积分三次速度曲线}\par\nobreak
+在尚有正速度时用 $\dot v=v\dd v/\dd x$，约去 $v$ 后按位移积分：
+\[m\int_{v_0}^{v(x)}\dd v=-\frac{B_0^2l^2}{Ra^2}\left[\frac{\xi^3}{3}\right]_0^x,\qquad v(x)=v_0-\frac{B_0^2l^2x^3}{3mRa^2}.\]
+\fig{fig:em3:example:11:p}{若磁区在 $d<x_s$ 截止，速度转为正的常量；未截断的零点只表示渐近停止}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.2,0)node[right]{$x/x_s$};\draw[axis](0,-.2)--(0,2.8)node[above]{$v/v_0$};\draw[red,thick,domain=0:.65,samples=60]plot({4*\x},{2.3*(1-(\x)^3)});\draw[blue,dashed,domain=.65:1,samples=60]plot({4*\x},{2.3*(1-(\x)^3)});\draw[red,thick](2.6,1.6683625)--(4.8,1.6683625);\draw[guide](2.6,0)--(2.6,2.5);\draw[blue,fill=white](4,0)circle(2pt);\node[below]at(2.6,0){$d/x_s$};\node[below]at(4,0){$1$};\node[left]at(0,2.3){$1$};\node[red]at(4,2.3){出场后匀速};\node at(2.5,-1){红线示意 $d/x_s=0.65$；蓝虚线为未截场的后续解};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将场边界与渐近停止位置比较}\par\nobreak
+图\ref{fig:em3:example:11:p}中未截场的三次速度曲线逐渐变陡，其零点给出位置极限 $x_s=[3mRa^2v_0/(B_0^2l^2)]^{1/3}$。若 $d<x_s$，穿出速度 $v_d=v_0[1-(d/x_s)^3]>0$，此后无场而匀速；若 $d>x_s$，棒不能到达边界；若相等，则只能渐近接近边界。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查到达时间及能量损失}\par\nobreak
+在 $x_s$ 附近，展开 $v(x)\simeq3v_0(x_s-x)/x_s$，设 $x_*=x_s-\epsilon_0$ 已在停止点附近，则
+\[
+\int_{x_*}^{x_s-\epsilon}\frac{\dd x}{v(x)}
+\simeq\frac{x_s}{3v_0}
+\int_{x_*}^{x_s-\epsilon}\frac{\dd x}{x_s-x}
+=\frac{x_s}{3v_0}\ln\frac{\epsilon_0}{\epsilon}
+\longrightarrow\infty.
+\]
+因此时间积分对数发散，所以这里的停止不是有限时间到达。若能穿出，磁区内热量为 $m(v_0^2-v_d^2)/2$；未穿出则最终全部初动能变热。\end{solution}
+\begin{question}\begin{example}[竖直磁场中斜面导棒与摩擦反馈]\label{em3:example:12}
+导轨平面倾角 $\theta$，棒沿等高线横跨轨道，长 $l$、质量 $m$，以速度 $v$ 沿斜面下滑。磁场竖直向上、大小 $B$，总电阻 $R$，动摩擦因数 $\mu$，设 $\tan\theta>\mu$。求电流、支持力和终端速度。
+\end{example}
+\fig{fig:em3:example:12:s}{题设：竖直磁场中斜面导棒与摩擦反馈}{\begin{tikzpicture}[scale=.88]\draw[world](0,2)--(4,0);\fill(2,1)circle(3pt)node[above right=2pt]{$m$};\draw[flow](2.3,.85)--(3.3,.35)node[midway,below]{$v$};\draw[flow](.5,2.3)--(.5,3.3)node[above]{$B$};\draw[guide](0,0)--(4,0);\draw(3.2,0)arc(180:153.435:.8);\node at(2.95,.2){$\theta$};\node at(2,-.7){棒长 $l$ 垂直图面};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先取速度水平分量求真实棒电流}\par\nobreak
+图\ref{fig:em3:example:12:s}中速度的水平分量为 $v\cos\theta$，它与竖直场叉乘后沿棒，所以电动势大小 $Blv\cos\theta$，电流 $i=Blv\cos\theta/R$。实际安培力大小 $Bil$，方向水平指向斜面上方，不能只把它当成沿斜面力。
+\fig{fig:em3:example:12:p}{磁场向上、电流向外，安培力水平向左；它压向斜面的分量增加支持力和摩擦}{\begin{tikzpicture}
+
+\draw[world](0,2)--(4,0);\filldraw[fill=white](2,1)circle(.13);\node at(2,1){$\odot$};\node[below right]at(2.1,1){$i$};\draw[force,blue](2,1)--(.4,1)node[left]{$Bil$};\draw[force](2,1)--(2,-.6)node[below]{$mg$};\draw[force,red](2,1)--(2.7,2.4)node[above]{$N$};\draw[force](2,1)--(1.1,1.45)node[above left]{$\mu N$};\draw[flow](4.5,1)--(4.5,2.2)node[above]{$\bm B$};\draw[flow](2.6,.4)--(3.5,-.05)node[below]{$v$};\draw[guide](2,1)--(.72,1.64) (2,1)--(1.68,.36);\node at(.7,2.3){$F_\parallel=Bil\cos\theta$};\node at(.4,-.4){$F_{\rm into}=Bil\sin\theta$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分解完整安培力并求含磁力的支持力}\par\nobreak
+按图\ref{fig:em3:example:12:p}将水平磁力分解，沿斜面向上的分量为 $Bil\cos\theta$，压入斜面的分量为 $Bil\sin\theta$。垂直轨面没有加速度，因此 $N=mg\cos\theta+Bil\sin\theta$，摩擦力大小 $\mu N$、方向沿斜面向上。沿下滑方向列式，
+\[m\dot v=mg(\sin\theta-\mu\cos\theta)-Bil(\cos\theta+\mu\sin\theta).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿斜面联立摩擦与阻力求终速}\par\nobreak
+代入电流并令加速度趋零，得到
+\[v_\infty=\frac{mgR(\sin\theta-\mu\cos\theta)}{B^2l^2\cos\theta(\cos\theta+\mu\sin\theta)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查模型极限和静摩擦启动条件}\par\nobreak
+无摩擦时化为 $mgR\sin\theta/(B^2l^2\cos^2\theta)$；若 $\tan\theta\le\mu$，从静止释放是否启动还要使用静摩擦条件，本题所给持续下滑模型不直接适用。磁力的法向分量通过支持力改变摩擦，这是仅替换有效磁场分量所不能包含的效应。\end{solution}
+\begin{question}\begin{example}[弹簧导棒的磁阻尼与临界磁场]\label{em3:example:13}
+光滑水平轨道上的棒质量 $m$、长度 $l$，与劲度系数 $K$ 的弹簧相连。磁场 $B$ 垂直轨面，回路总电阻 $R$，自感忽略。棒从伸长 $A$ 处静止释放。求运动方程、欠阻尼条件及临界磁场；求全过程发热。
+\end{example}
+\fig{fig:em3:example:13:s}{题设：弹簧导棒的磁阻尼与临界磁场}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\node at(2,-1.6){初态 $x=A,\ \dot x=0$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\draw[spring](1,2.8)--(3,2.8);\draw[world](1,2.4)--(1,3.2);\draw[guide](3,2)--(3,2.8);\node at(2,3.3){$K$};\draw[flow](.8,3.9)--(3.2,3.9)node[right]{$+x$};\node at(1,-.8){$x$ 为相对平衡位置的伸长};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别识别弹簧回复力与速度阻尼}\par\nobreak
+在图\ref{fig:em3:example:13:s}中，以弹簧伸长为 $x$ 的正向，弹簧力 $-Kx$，电流所致磁力为 $-\gamma\dot x$，其中 $\gamma=B^2l^2/R$。方程为 $m\ddot x+\gamma\dot x+Kx=0$。设 $x\propto\e^{st}$，特征方程 $ms^2+\gamma s+K=0$。
+\fig{fig:em3:example:13:p}{从伸长处静止释放的欠阻尼曲线；初始斜率为零，首段速度向负方向}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(7,0)node[right]{$\omega_0t$};\draw[axis](0,-2.5)--(0,2.8)node[above]{$x/A$};\draw[world,domain=0:6.5,samples=150]plot(\x,{2*exp(-.2*\x)*(cos(sqrt(.96)*\x r)+.2/sqrt(.96)*sin(sqrt(.96)*\x r))});\node[left]at(0,2){$1$};\draw[guide,blue,domain=0:6.5,samples=60]plot(\x,{2/sqrt(.96)*exp(-.2*\x)});\draw[guide,blue,domain=0:6.5,samples=60]plot(\x,{-2/sqrt(.96)*exp(-.2*\x)});\node at(3.3,3.4){图示 $\zeta=0.2,\quad\omega_0=\sqrt{K/m}$};\node at(3.3,-3.1){包络 $\pm A\e^{-\alpha t}\omega_0/\omega_d$，初态仍为 $x=A,\dot x=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由特征根和零初速求欠阻尼解}\par\nobreak
+图\ref{fig:em3:example:13:p}中欠阻尼要求 $\gamma^2<4mK$。令 $\alpha=\gamma/(2m)$、$\omega_d=\sqrt{K/m-\alpha^2}$，将特征方程除以 $m$ 并配方为 $(s+\alpha)^2+\omega_d^2=0$，两个根为 $-\alpha\pm\mathrm j\omega_d$，所以一般实解为 $x=\e^{-\alpha t}(C_1\cos\omega_dt+C_2\sin\omega_dt)$。$x(0)=A$ 给出 $C_1=A$；乘积求导为
+\[
+\dot x=\e^{-\alpha t}
+[(-\alpha C_1+\omega_d C_2)\cos\omega_dt
++(-\alpha C_2-\omega_d C_1)\sin\omega_dt].
+\]
+所以 $\dot x(0)=-\alpha C_1+\omega_d C_2=0$，所以 $C_2=\alpha A/\omega_d$，得到
+\[x=A\e^{-\alpha t}\left(\cos\omega_dt+\frac\alpha{\omega_d}\sin\omega_dt\right).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从临界阻尼条件求磁场阈值}\par\nobreak
+临界磁场由 $B_c^2l^2/R=2\sqrt{mK}$ 得
+\[B_c=\left(\frac{4mKR^2}{l^4}\right)^{1/4}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分能量耗散并保留零场例外}\par\nobreak
+将受力式乘速度，$\dd(m\dot x^2/2+Kx^2/2)/\dd t=-\gamma\dot x^2=-i^2R$。只要 $B>0$ 且回路闭合，最终回到平衡并静止，全过程热量为 $KA^2/2$。若 $B=0$，没有磁阻尼，理想系统持续振荡，不能把同一热量结论直接延拓到恰为零场的情形。\end{solution}

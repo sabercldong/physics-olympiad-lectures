@@ -1,0 +1,25 @@
+\begin{question}
+\begin{drill}[不同环境中的棱镜透射]\label{d:14}
+折射率 $n_g=1.80$ 的三棱镜顶角 $A=80.0^\circ$。将它分别置于空气和折射率 $n_m=1.20$ 的液体中，判断是否存在由一个侧面进入、另一个侧面射出的非掠射光路。若存在，求最小偏向角及对应入射角。只考虑两侧面的透射，不考虑底面和多次反射。
+\end{drill}
+\fig{fig:d14q}{棱镜形状和折射率不变，分别改变外部介质}{\begin{tikzpicture}
+\fill[blue!8](-2.517,0)--(0,3)--(2.517,0)--cycle;\draw[world](-2.517,0)--(0,3)--(2.517,0)--cycle;
+\draw(0,3)++(230:.65)arc(230:310:.65);\node at(0,2.05){$80.0^\circ$};
+\node at(0,1){$n_g=1.80$};\node at(0,-.7){外部：空气或 $n_m=1.20$ 的液体};
+\end{tikzpicture}}
+\end{question}
+
+\begin{question}
+\begin{drill}[两介质与有限透光窗口]\label{d:15}
+平面界面为 $y=0$，上方折射率 $n_1=1$，下方 $n_2=\sqrt2$。光由 $A=(0,h)$ 发出，经界面一次折射到达 $B=((1+1/\sqrt3)h,-h)$，$h>0$。先求整个界面透明时的入射点和传播时间。再设界面仅 $0\le x\le4h/5$ 透光，其余部分完全遮蔽，判断 $B$ 能否收到上述直接折射光。忽略衍射和反射。
+\end{drill}
+\fig{fig:d15q}{已知两点的位置及界面窗口，入射点待定}{\begin{tikzpicture}[scale=1.5]
+\fill[cyan!7](-.5,-1.25)rectangle(2,-0.01);\draw[world](-.5,0)--(2,0);
+\draw[axis](0,-1.3)--(0,1.4)node[above]{$y$};\draw[axis](-.5,0)--(2.2,0)node[right]{$x$};
+\fill(0,1)circle(1.2pt)node[above left]{$A(0,h)$};\fill(1.57735,-1)circle(1.2pt)node[below]{$B$};
+\node at(.8,-1.7){$x_B=(1+1/\sqrt3)h$};
+\node at(1.3,.8){$n_1=1$};\node at(.6,-.7){$n_2=\sqrt2$};
+\draw[very thick,blue](0,0)--(.8,0);\node[below]at(.8,-.03){$4h/5$};
+\node at(.8,1.75){蓝段为第二种条件下的透光窗口};
+\end{tikzpicture}}
+\end{question}

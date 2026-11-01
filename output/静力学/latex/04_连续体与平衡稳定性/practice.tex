@@ -1,0 +1,58 @@
+\section{练习}
+
+\begin{question}\begin{drill}[六杆铰接支架]\label{s4:drill:1}
+六根等长轻杆$AC,CB,BO,OA,AE,AB$构成支架，$O,E$固定在墙上。取$A=(0,0),B=(0,l),C=(-\sqrt3l/2,l/2),O=(\sqrt3l/2,l/2),E=(\sqrt3l/2,-l/2)$，$C$处挂重$G$。求$AB$杆受拉还是受压。
+\end{drill}
+\fig{fig:s4:drill:1:s}{题设：六杆铰接支架}{\begin{tikzpicture}[scale=.88]\draw[world](2,1)--(.268,2)--(2,3)--(3.732,2)--(2,1)--(3.732,0);\draw[world](2,1)--(2,3);\draw[world](3.732,-.4)--(3.732,3.4);\foreach \x/\y/\l in {2/1/A,2/3/B,.268/2/C,3.732/2/O,3.732/0/E}{\node[above]at(\x,\y){$\l$};}\draw[force](.268,2)--(.268,.5)node[left]{$G$};\end{tikzpicture}}
+\end{question}
+\answerlink{s4:drill:1}
+\begin{question}\begin{drill}[碗中的长杆平衡范围]\label{s4:drill:2}
+半径$r$的光滑半球碗内放长$l$的均匀杆，杆的一端接触碗内面，另一部分越过右侧碗口。杆与水平夹角$\theta>0$。求这一接触构型的平衡关系和允许杆长范围。
+\end{drill}
+\fig{fig:s4:drill:2:s}{倾角从碗口水平线量起，杆在$B$处伸出碗口}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:360:2);\draw[guide](-2,0)--(3.4,0);
+\draw[world](-1,-1.732)--(3,.577);\fill(-1,-1.732)circle(2pt)node[left]{$A$};
+\fill(2,0)circle(2pt)node[above]{$B$};\fill(1,-.577)circle(2pt)node[below]{$C$};
+\fill(0,0)circle(2pt)node[above]{$O$};\draw[guide](0,0)--(-1,-1.732)node[midway,left]{$r$};
+\draw[world](2.6,0)arc(0:30:.6);\node at(2.9,.23){$\theta$};
+\draw[dim](-.75,-2.165)--(2.25,-.433)node[midway,below right]{$AB=2r\cos\theta$};
+\node at(.5,1.2){$AC=l/2$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{s4:drill:2}
+\begin{question}\begin{drill}[五球在半球碗内的平衡]\label{s4:drill:3}
+四个半径$R$、重$G$的光滑球，两两相邻相切、球心构成水平正方形并接触半球碗。第五个相同球放在正中央上方且与四球相切。求允许对称平衡的碗半径上限。
+\end{drill}
+\fig{fig:s4:drill:3:s}{题设：五球在半球碗内的平衡}{\begin{tikzpicture}[scale=.88]\begin{scope}\draw[world](0,0)--(2,0)--(2,2)--(0,2)--cycle;\foreach \x/\y in {0/0,2/0,2/2,0/2}{\draw[world](\x,\y)circle(1);}\fill(1,1)circle(2pt)node[right]{$S$};\node at(1,3.5){下层球心的俯视关系};\draw[guide](0,0)--(2,2);\end{scope}\begin{scope}[xshift=5.5cm]\draw[world](0,0)--(1.4,1.4)--(2.8,0);\node[above]at(1.4,1.4){上球心};\node[below]at(1.4,0){$\sqrt2R$};\draw[guide](1.4,0)--(1.4,1.4);\end{scope}\end{tikzpicture}}
+\end{question}
+\answerlink{s4:drill:3}
+\begin{question}\begin{drill}[两环连在固定圆周上]\label{s4:drill:4}
+质量$m_1,m_2$的小环在半径$R$的竖直光滑圆环上，由细线连接。圆心夹角为$\alpha$，取两环均位于下半圈的构型。求弦与水平的倾角。
+\end{drill}
+\fig{fig:s4:drill:4:s}{两环所在半径夹角为$\alpha$，弦中点半径垂直于弦}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\draw[guide](0,0)--(-.845,-1.813);\draw[guide](0,0)--(1.414,-1.414);
+\draw[world](-.845,-1.813)--(1.414,-1.414);
+\fill(-.845,-1.813)circle(3pt)node[below left]{$m_1$};\fill(1.414,-1.414)circle(3pt)node[below right]{$m_2$};
+\fill(0,0)circle(2pt)node[above]{$O$};\draw[world](-.296,-.634)arc(-115:-45:.7);\node at(.15,-1){$\alpha$};
+\node[left]at(-.55,-.8){$R$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{s4:drill:4}
+\begin{question}\begin{drill}[偏心圆轮在碗内的滚动稳定]\label{s4:drill:5}
+圆轮半径$R$，质心在轮心正下方$h$，$h>0$表示下偏，$h<0$表示上偏。轮在内半径$a>R$的固定圆弧碗底纯滚动。求小扰动稳定条件。
+\end{drill}
+\fig{fig:s4:drill:5:s}{初始轮心位于碗心正下方，偏心量$h$从轮心竖直向下计}{\begin{tikzpicture}
+
+\draw[world](-2.598,1.5)arc(210:330:3);\draw[world](0,.8)circle(.8);
+\draw[guide](0,3)--(0,0);\fill(0,3)circle(2pt)node[above]{$K$};
+\fill(0,.8)circle(2pt)node[above right]{$O$};\fill(0,.45)circle(2pt)node[below right]{$C$};
+\draw[world](0,3)--(2.298,1.072)node[midway,above right]{$a$};
+\draw[world](0,.8)--(-.8,.8)node[midway,above]{$R$};\node[left]at(0,.625){$h$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{s4:drill:5}

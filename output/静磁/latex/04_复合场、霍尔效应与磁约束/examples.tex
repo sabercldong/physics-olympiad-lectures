@@ -1,0 +1,499 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[轨道电子的弱外场响应]\label{mg4:example:1}
+电子质量 $m$、电荷 $-e$，在固定半径 $R$ 的轨道上逆时针转动，原速率 $v_0$。用圆轨道径向平衡模型比较外磁场垂直纸面向里和向外时的新速率，并判断电子在轴上产生的场大小怎样变化。
+\end{example}
+\fig{fig:mg4:example:1:s}{题设：轨道电子的弱外场响应}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$R$};\draw[flow](1.5*.707,1.5*.707)arc(45:115:1.5);\node at(0,2.2){电子逆时针，原速率 $v_0$};\node at(2.7,.8){$B_0$ 沿轴};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在同一轨道右端分别判断两种外场的径向磁力}\par\nobreak
+图\ref{fig:mg4:example:1:s}的电子实际电流为顺时针，轴上自生场大小正比于速率。设维持原圆周的中心吸引力 $F_c=mv_0^2/R$，比较过程保持半径和该力不变。外场向里时，电子磁力径向向外，因此 $mv_-^2/R=F_c-ev_-B_0$。外场向外时，磁力向内，$mv_+^2/R=F_c+ev_+B_0$。
+\fig{fig:mg4:example:1:p}{在同一轨道右端作径向受力比较，电子速度始终向上，磁力随外场方向反转}{\begin{tikzpicture}
+
+\foreach \b in {0,6.2}{\draw[world](\b,0)circle(1.3);\node at(\b+1.3,0){$\ominus$};\draw[flow](\b+1.3,.2)--(\b+1.3,1.2)node[right]{$v$};}
+\node at(0,.6){$\otimes B_0$};\draw[force](1.3,0)--(-.3,0)node[midway,above]{$F_c$};\draw[force,blue](1.3,0)--(2.6,0)node[right]{$ev_-B_0$};\node at(.5,-2){外场向里：$v_-<v_0$};
+\node at(6.2,.6){$\odot B_0$};\draw[force,red](7.5,0)--(5.4,0)node[midway,below]{$F_c+ev_+B_0$};\node at(6.4,-2){外场向外：$v_+>v_0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选连续正根并比较速率与轴上自生场}\par\nobreak
+解图\ref{fig:mg4:example:1:p}两个二次方程，取与原转向连续的正根：
+\[
+v_\pm=\frac{\sqrt{(eB_0R/m)^2+4v_0^2}\ \pm eB_0R/m}{2}.
+\]
+所以向里时 $v_-<v_0$、自生场减小；向外时 $v_+>v_0$、自生场增大。在弱场参数 $eB_0R/(mv_0)\ll1$ 下，展开根式得 $v_\pm\simeq v_0\pm eB_0R/(2m)$，轨道磁矩的增量均反抗外场。该比较描述固定半径圆轨道的力平衡；实际建立外场的阶段还存在感生电场，不能用最终磁力不做功否定上述弱场速度变化。\end{solution}
+\begin{question}\begin{example}[重力与库仑力共同约束的水平圆轨道]\label{mg4:example:2}
+原点固定正点电荷 $Q$，匀强磁场沿竖直 $+y$。另一正电荷 $q$、质量 $m$ 的粒子以 $y$ 轴上 $(0,h,0)$ 为圆心作水平圆周运动，角速度大小为 $\omega$，转向使磁力向心。考虑重力，求 $h$ 和水平半径，并给出存在条件。
+\end{example}
+\fig{fig:mg4:example:2:s}{题设：重力与库仑力共同约束的水平圆轨道}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-.5)--(0,3)node[above]{$y,B$};\fill(0,0)circle(3pt)node[left]{$Q$};\draw[world](0,1.8)ellipse(1.5 and .4);\fill(1.5,1.8)circle(3pt)node[right]{$q,m$};\draw[guide](0,0)--(1.5,1.8);\draw[dim](-.7,0)--(-.7,1.8)node[midway,left]{$h$};\draw[dim](0,1.8)--(1.5,1.8)node[midway,above]{$\rho$};\node[right]at(.7,.8){$s$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按同一距离矢量分解库仑力，并列竖直与径向方程}\par\nobreak
+图\ref{fig:mg4:example:2:s}设粒子到原点距离为 $s=\sqrt{\rho^2+h^2}$，库仑常量为 $k_e$。竖直方向没有加速度，故 $k_eQq\,h/s^3=mg$。水平方向库仑力向外、磁力向内，径向式为 $qB\omega\rho-k_eQq\rho/s^3=m\omega^2\rho$。
+\fig{fig:mg4:example:2:p}{库仑力沿原点到粒子的连线；竖直分量平衡重力，水平分量抵消一部分向心磁力}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(-2.2,0)node[left]{$qB\omega\rho$};\draw[force,red](0,0)--(1.2,1.44)node[above]{$F_e=k_eQq/s^2$};\draw[force](0,0)--(0,-1.44)node[below]{$mg$};
+\draw[guide](1.2,1.44)--(1.2,0)--(0,0);\node[right]at(1.2,.7){$F_{e,y}=F_eh/s$};\node[below]at(.6,0){$F_{e,\rho}=F_e\rho/s$};\node at(.5,2.5){分量比例与题设同一 $s^2=\rho^2+h^2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去共同力系数，依次求高度、总距离与半径}\par\nobreak
+对非零半径约去 $\rho$，令 $D=qB\omega-m\omega^2$，得到 $k_eQq/s^3=D$。代入竖直式，依次求得
+\[
+h=\frac{mg}{D},\qquad s=\left(\frac{k_eQq}{D}\right)^{1/3},\qquad
+\rho^2=\left(\frac{k_eQq}{D}\right)^{2/3}-\left(\frac{mg}{D}\right)^2.
+\]
+图\ref{fig:mg4:example:2:p}要求 $D>0$ 且 $\rho^2>0$，即 $0<\omega<qB/m$，并满足后一个几何不等式。只给出形式上的高度而不检查半径实数，会保留并不存在的圆轨道。若磁力转向改为径向向外，正库仑力也向外，就没有本题这种非零半径的水平圆轨道。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将实半径条件化为严格的存在下界并检查退化}\par\nobreak
+存在条件还可整理为 $D>\sqrt{m^3g^3/(k_eQq)}$，由此可知仅满足 $D>0$ 并不足够。该下界来自球到原点的总距离必须大于高度，若等号成立，水平半径缩为零，原先的圆周转动模型退化。\end{solution}
+\begin{question}\begin{example}[平行电磁场中再次经过轴线]\label{mg4:example:3}
+匀强磁场为 $B\bm e_z$，电场为 $-E\bm e_z$。粒子质量 $m$、电荷 $-q$，从原点以 $v_0\bm e_x$ 出发，不计重力。求首次再次经过 $z$ 轴的时间与坐标，并比较相邻回旋周的轴向推进距离。
+\end{example}
+\fig{fig:mg4:example:3:s}{题设：平行电磁场中再次经过轴线}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.3,0)--(5.5,0)node[right]{$z,\bm B$};\draw[flow](3,1)--(1.5,1)node[left]{$\bm E$};\draw[flow](0,0)--(0,1.5)node[above]{$v_0\bm e_x$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求负电荷的横向回旋与轴向加速}\par\nobreak
+图\ref{fig:mg4:example:3:s}中负电荷受电力沿 $+z$，轴向加速度为 $qE/m$。横向圆心在 $+y$ 方向，令 $\Omega=qB/m$、$r=mv_0/(qB)$，横向速度方程为 $\dot v_x=-\Omega v_y,\dot v_y=\Omega v_x$。
+消元得 $\ddot v_x+\Omega^2v_x=0$，特征根 $\pm\mathrm i\Omega$，
+初值 $v_x(0)=v_0,\dot v_x(0)=0$ 给
+$v_x=v_0\cos\Omega t,\ v_y=-\dot v_x/\Omega=v_0\sin\Omega t$。
+分别积分，并由静止的轴向初态积分 $\dot v_z=qE/m$：
+\[
+ x=\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\Omega t,\quad
+ y=-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\Omega t),
+\]
+\[
+ v_z=\frac{qE}{m}[s]_0^t=\frac{qEt}{m},\qquad
+ z=\frac{qE}{m}\int_0^t s\dd s=\frac{qE}{m}[s^2/2]_0^t
+ =\frac{qEt^2}{2m}.
+\]
+\fig{fig:mg4:example:3:p}{负电荷横向一周才回到原轴线；轴向加速使前两周推进距离之比为1比3}{\begin{tikzpicture}
+
+\draw[world](0,1)circle(1);\fill(0,0)circle(1.5pt)node[below left]{$O$};\fill(0,2)circle(1.5pt)node[above]{$t=T/2$};\draw[flow](0,0)--(1.1,0)node[below]{$v_0$};\draw[flow](.866025,.5)arc(-30:90:1);\node at(0,2.8){横向圆：$y(T/2)=2r$};
+\begin{scope}[xshift=3.1cm,yshift=1cm]
+\draw[axis](-.3,0)--(7.8,0)node[right]{$z$};\draw[->,blue,thick,domain=0:720,samples=180]plot({1.8*(\x/360)^2+.2*(1-cos(\x))},{.8*sin(\x)});
+\foreach \x in {0,1.8,7.2}{\fill(\x,0)circle(1.5pt);}\draw[dim](0,-1.3)--(1.8,-1.3)node[midway,below]{$z_1$};\draw[dim](1.8,-1.3)--(7.2,-1.3)node[midway,below]{$3z_1$};\node at(3.7,1.8){空间投影：$z_n=n^2z_1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时令两个横向坐标为零，选最早正时刻}\par\nobreak
+图\ref{fig:mg4:example:3:p}再次过轴要求 $x=y=0$。$x$ 虽在半周时为零，但当时 $y=2r$；最早非初始解是 $\Omega t=2\pi$。故
+\[
+t_1=\frac{2\pi m}{qB},\qquad (x,y,z)=\left(0,0,\frac{2\pi^2mE}{qB^2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较逐周推进距离并用电功核对加速}\par\nobreak
+第 $n$ 周结束时 $z_n=n^2z_1$，因此下一周推进 $(2n+1)z_1$，螺距逐周增大。速度检验为 $v_z=qEt/m$，动能增加 $\tfrac12mv_z^2=qEz$，与电场作功一致。
+
+图中一周后的有向推进为 $z_1$，第二周为 $z_2-z_1=3z_1$。横向周期相同而轴向间距不同，正好对应不变的横向速率和持续增加的 $v_z$，不能把它画成等螺距螺旋。\end{solution}
+\begin{question}\begin{example}[电子在垂直电磁场中的完整轨迹]\label{mg4:example:4}
+空间中 $\bm E=E\bm e_y$、$\bm B=B\bm e_x$。电子质量 $m$、电荷 $-q$ 从原点静止释放，求 $y,z$ 坐标、沿 $y$ 的最大位移大小与漂移方向。
+\end{example}
+\fig{fig:mg4:example:4:s}{题设：电子在垂直电磁场中的完整轨迹}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.3,0)--(4.5,0)node[right]{$z$};\draw[axis](0,-2.3)--(0,2)node[above]{$y,E$};\node at(2,1){$\otimes B_x$};\fill(0,0)circle(2pt)node[below left]{$-q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从带电荷号的分量方程求速度}\par\nobreak
+按图\ref{fig:mg4:example:4:s}作叉乘，$m\dot v_y=-qE-qBv_z$、$m\dot v_z=qBv_y$。记 $\Omega=qB/m$、$V=E/B$，令 $w=v_z+V$，则 $\dot v_y=-\Omega w$、$\dot w=\Omega v_y$。对 $\dot v_y=-\Omega w$ 求导，得
+$\ddot v_y=-\Omega\dot w=-\Omega^2v_y$。
+特征根为 $\pm\mathrm i\Omega$，故
+$v_y=A\cos\Omega t+D\sin\Omega t$。
+初态 $v_y(0)=0,w(0)=V$ 给 $A=0$、
+$\Omega D=\dot v_y(0)=-\Omega V$，所以
+$v_y=-V\sin\Omega t$、$w=-\dot v_y/\Omega=V\cos\Omega t$，
+进而 $v_z=V(\cos\Omega t-1)$。
+\fig{fig:mg4:example:4:p}{坐标轴分别取 $-z,-y$ 向正，画出与分量解同一比例尺的旋轮线}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(6.3,0)node[right]{$-z$};\draw[axis](0,-.2)--(0,2)node[above]{$-y$};\draw[->,blue,thick,domain=0:12.566371,samples=180]plot({.45*(\x-sin(\x r))},{.45*(1-cos(\x r))});
+\draw[dim](1.413717,0)--(1.413717,.9)node[midway,right]{$2V/\Omega$};\fill(1.413717,.9)circle(1.5pt);\node[above]at(1.413717,1.1){$t=T/2$};\fill(2.827433,0)circle(1.5pt)node[below]{$t=T$};
+\draw[flow](3.7,1.4)--(5.4,1.4)node[midway,above]{$\bm v_D\parallel-z$};\node at(4.8,.7){$\otimes B_x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分坐标并确定最大横向位移与平均漂移}\par\nobreak
+积分并用零初始坐标，
+\begin{align*}
+ y&=-V\int_0^t\sin\Omega s\dd s
+ =\frac V\Omega[\cos\Omega s]_0^t,\\
+ z&=V\int_0^t(\cos\Omega s-1)\dd s
+ =V[\sin\Omega s/\Omega-s]_0^t.
+\end{align*}
+代入上下限，得到
+\[
+y=\frac V\Omega(\cos\Omega t-1),\qquad
+z=\frac V\Omega\sin\Omega t-Vt.
+\]
+图\ref{fig:mg4:example:4:p}中 $y\le0$，最大位移大小 $2V/\Omega=2mE/(qB^2)$，在半周时达到。平均漂移沿 $-z$，与 $\bm E\times\bm B$ 一致。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以电场作功独立核对坐标及符号}\par\nobreak
+半周时速率为 $2V$，动能 $2mV^2$；电功 $(-q)Ey=2qEV/\Omega=2mV^2$，独立核验了坐标和电荷的符号。\end{solution}
+\begin{question}\begin{example}[三维落点确定场方向与末速]\label{mg4:example:5}
+$y$ 轴竖直向上，匀强电场平行 $x$ 轴。质量 $m$、电荷 $-q$ 的小球从 $M=(0,H,0)$ 静止释放，落到 $N=(c,0,b)$，其中 $b,c>0$。撤去磁场时落在 $P=(l,0,0)$，$l>0$。磁场平行某一坐标轴，求其可能方向、电场大小与到达 $N$ 的速率。
+\end{example}
+\fig{fig:mg4:example:5:s}{三维落点的坐标投影；$c,l$ 的大小不预设，位置仅为示意}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(0,3.5)node[above]{$y$};\draw[axis](0,0)--(3.8,0)node[right]{$x$};\draw[axis](0,0)--(-1.5,-1)node[left]{$z$};
+\fill(0,3)circle(1.6pt)node[left]{$M(0,H,0)$};\fill(3,0)circle(1.6pt)node[below]{$P(l,0,0)$};\fill(.9,-.6)circle(1.6pt)node[below right]{$N(c,0,b)$};
+\draw[guide](1.8,0)--(.9,-.6)--(-.9,-.6);\node[above]at(1.8,0){$c$};\node[left]at(-.9,-.6){$b$};\draw[guide](0,3)--(.9,-.6);\node at(2.3,2.6){$\bm E\parallel-x$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用撤场落点确定电场方向与大小}\par\nobreak
+图\ref{fig:mg4:example:5:s}撤去磁场后，落地时间为 $t_0=\sqrt{2H/g}$，水平加速度需向 $+x$，因此负电荷对应电场沿 $-x$。由 $l=\tfrac12(qE/m)t_0^2$ 得 $E=mgl/(qH)$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用正的出平面偏移排除坐标轴并筛选磁场符号}\par\nobreak
+若磁场平行 $z$，初始及所有力都在 $xy$ 平面，$z$ 坐标不可能增至 $b>0$。若场沿 $x$，重力引起的负 $v_y$ 通过磁力造成 $z$ 偏转，起始 $\ddot z$ 的后续变化要求场沿 $-x$；若场沿 $y$，正 $v_x$ 的磁偏转要使 $z$ 增加，场应沿 $-y$。
+\fig{fig:mg4:example:5:p}{在 $xy$ 投影中比较实际落点与撤场落点，使用了原题给出的 $c/l$ 信息}{\begin{tikzpicture}
+
+\begin{scope}[x=3cm,y=2.7cm]
+\draw[axis](0,0)--(1.5,0)node[right]{$x/l$};\draw[axis](0,0)--(0,1.3)node[above]{$y/H$};\draw[black,thick](0,1)--(1,0);
+\draw[blue,thick,domain=0:90,samples=70]plot({(\x*pi/180)^2/2},{cos(\x)});\draw[red,thick,domain=0:90,samples=70]plot({8/(pi*pi)*(1-cos(\x))},{1-(\x/90)^2});
+\fill(1,0)circle(1.5pt)node[below]{$P$};\fill(1.233701,0)circle(1.5pt);\fill(.810569,0)circle(1.5pt);\node[left]at(0,1){$M$};
+\node[below,red]at(.810569,-.3){$c<l$};\node[below,blue]at(1.233701,-.3){$c>l$};
+\end{scope}
+\node[right,align=center]at(5.2,2.7){黑：撤去磁场\\蓝：$\bm B\parallel-x$\\红：$\bm B\parallel-y$};\node[right,align=center]at(5.2,.8){两色曲线各取一个可实现参数示意\\三维的 $b>0$ 用来筛选轴的负方向};
+
+\end{tikzpicture}}
+
+更完整地，在这两个分支中，$z$ 的偏移分别与 $-(g/\Omega)(t-\sin\Omega t/\Omega)$ 或与 $-(qE/(m\Omega))(t-\sin\Omega t/\Omega)$ 同号，这里 $\Omega=qB_{\rm axis}/m$ 为带符号量。因为 $t-\sin\Omega t/\Omega>0$ 对 $t>0$ 成立，正 $b$ 均要求 $B_{\rm axis}<0$。所以由 $b>0$ 筛出的候选方向是 $-x$ 或 $-y$；还应继续使用 $c$ 与 $l$ 的大小关系。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较有场与撤场的横向射程，进一步确定所沿轴}\par\nobreak
+令 $a_x=qE/m=gl/H$，并取 $\omega=q|B|/m>0$。在 $\bm B\parallel-x$ 分支，分量方程为
+$\dot v_x=a_x,\dot v_y=-g+\omega v_z,\dot v_z=-\omega v_y$。
+令 $w=v_z-g/\omega$，则 $\dot v_y=\omega w,\dot w=-\omega v_y$，
+所以 $\ddot v_y+\omega^2v_y=0$。特征根为 $\pm\mathrm i\omega$，
+初值 $v_y(0)=0,\dot v_y(0)=-g$ 给
+$v_y=-(g/\omega)\sin\omega t$，再由
+$v_z=g/\omega+\dot v_y/\omega$ 得
+$v_z=(g/\omega)(1-\cos\omega t)$。
+对三个速度分量从零积分，
+\[
+ x=a_x[s^2/2]_0^t,\quad
+ y-H=\frac g{\omega^2}[\cos\omega s]_0^t,\quad
+ z=\frac g\omega[s-\sin\omega s/\omega]_0^t.
+\]
+因此轴向 $x=a_xt^2/2$ 不受磁力影响，而
+\[
+ H-y=\frac g{\omega^2}(1-\cos\omega t),\qquad
+ z=\frac g{\omega^2}(\omega t-\sin\omega t).
+\]
+落地时利用 $1-\cos u<u^2/2$（$u>0$），得 $H<gt^2/2$，所以 $c=a_xt^2/2> a_xH/g=l$。
+
+在 $\bm B\parallel-y$ 分支，$\dot v_y=-g$，
+$\dot v_x=a_x-\omega v_z,\dot v_z=\omega v_x$。
+对第一条横向式求导，得到 $\ddot v_x+\omega^2v_x=0$；
+由 $v_x(0)=0,\dot v_x(0)=a_x$，其解为
+$v_x=(a_x/\omega)\sin\omega t$，再由
+$v_z=(a_x-\dot v_x)/\omega$ 得
+$v_z=(a_x/\omega)(1-\cos\omega t)$。
+于是
+\[
+ x=-\frac{a_x}{\omega^2}[\cos\omega s]_0^t,\quad
+ y=H-g[s^2/2]_0^t,\quad
+ z=\frac{a_x}{\omega}[s-\sin\omega s/\omega]_0^t.
+\]
+竖直下落不受磁力影响，仍在 $t_0=\sqrt{2H/g}$ 落地，而 $c=a_x(1-\cos\omega t_0)/\omega^2<a_xt_0^2/2=l$。因此
+\[
+ \boxed{\bm B\parallel\begin{cases}-\bm e_x,&c>l,\\-\bm e_y,&0<c<l.\end{cases}}
+\]
+非零磁场两分支均为严格不等式；$c=l$ 与题给 $b>0$ 不相容。图\ref{fig:mg4:example:5:p}画的是三维运动的 $xy$ 投影，投影中不显示的正 $z$ 偏移已经用于筛选磁场的正负号。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{最后用重力与电功求末速率并核对条件}\par\nobreak
+按图\ref{fig:mg4:example:5:p}的能量关系，磁力不作功，$\tfrac12mv^2=mgH+qEc$，从而 $v=\sqrt{2gH+2glc/H}$。落点既已由实际运动给定，磁场沿哪条轴还能由 $c/l$ 进一步判定，不能只保留两个候选方向。\end{solution}
+\begin{question}\begin{example}[电子导体的总电场与霍尔电压]\label{mg4:example:6}
+长条沿 $x$ 长 $a$，截面沿 $y$ 宽 $b=1.0\,\mathrm{cm}$、沿 $z$ 厚 $c=1.0\,\mathrm{mm}$。电流 $I=1.0\,\mathrm A$ 沿 $+x$，磁场 $B=0.10\,\mathrm T$ 沿 $+y$。电子密度 $n=2.5\times10^{22}\,\mathrm{m^{-3}}$、迁移率 $\mu=7.8\,\mathrm{m^2/(V\,s)}$，取 $e=1.6\times10^{-19}\,\mathrm C$。求总电场及 $V(z=c/2)-V(z=-c/2)$。
+\end{example}
+\fig{fig:mg4:example:6:s}{题设：电子导体的总电场与霍尔电压}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)rectangle(4,1.5);\draw[flow](.4,.75)--(1.5,.75)node[above]{$I,+x$};\draw[dim](4.5,0)--(4.5,1.5)node[midway,right]{$c$};\node at(2,2.2){$\otimes B_y$，宽 $b$ 垂直示意截面};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由电流密度求电子漂移，再分别求纵向与横向场}\par\nobreak
+图\ref{fig:mg4:example:6:s}电子沿 $-x$ 漂移，速率 $v_d=I/(nebc)=25.0\,\mathrm{m/s}$。沿电流方向，弛豫模型给驱动场 $E_x=v_d/\mu=3.21\,\mathrm{V/m}$。由于 $\bm v_d=-v_d\bm e_x$，有 $\bm v_d\times\bm B=-v_dB\bm e_z$；横向平衡要求 $\bm E_H=-\bm v_d\times\bm B=+v_dB\bm e_z$。
+\fig{fig:mg4:example:6:p}{先画表面极性，再将纵向与霍尔电场按同一比例相加得到总场}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,1.7);\foreach \x in {.4,1.1,1.8,2.5}{\node at(\x,1.95){$-$};\node at(\x,-.25){$+$};}\draw[flow](3.6,.2)--(3.6,1.5)node[right]{$E_z$};\node at(1.5,2.7){$V(c/2)-V(-c/2)=-2.50\,\mathrm{mV}$};
+\begin{scope}[xshift=6cm]
+\draw[->,blue,thick](0,0)--(1.605,0)node[below]{$E_x=3.21$};\draw[->,blue,thick](0,0)--(0,1.25)node[left]{$E_z=2.50$};\draw[force,red](0,0)--(1.605,1.25)node[right]{$E=4.07$};\draw[guide](1.605,0)--(1.605,1.25)--(0,1.25);\draw[dim](.6,0)arc(0:37.912:.6)node[midway,right]{$\theta$};\node at(.8,2.7){各场强单位均为 $\mathrm{V/m}$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按矢量求总场，并沿厚度积分得到带符号电压}\par\nobreak
+图\ref{fig:mg4:example:6:p}中 $E_z=2.50\,\mathrm{V/m}$，总场 $\bm E=3.21\bm e_x+2.50\bm e_z\,\mathrm{V/m}$，大小 $4.07\,\mathrm{V/m}$，相对 $+x$ 向 $+z$ 倾斜，$\tan\theta=E_z/E_x=\mu B=0.78$。电势沿电场下降，因此上、下两面电势差
+\[
+V(c/2)-V(-c/2)=-\int_{-c/2}^{c/2}E_z\dd z
+=-E_z[z]_{-c/2}^{c/2}=-E_zc=-2.50\,\mathrm{mV}.
+\]
+上表面积累负电荷，与电子磁力向 $+z$ 的判断相符。电压分母等价写成 $neb$，厚度 $c$ 已由电流截面与测量距离相互约去。
+
+上负、下正给出的电场方向与分量方程一致。若将磁场或电流单独反向，霍尔项及电压极性反号，正的纵向电阻率所确定的驱动场大小关系仍按同一弛豫模型处理。\end{solution}
+\begin{question}\begin{example}[交叉导线排产生的霍尔电压]\label{mg4:example:7}
+两无限密集线排在截面内相交成120度，分别沿与水平成 $+30^\circ,-30^\circ$ 的直线排列。每根线电流大小 $I$，前者向纸内、后者向纸外，单位长度根数 $\lambda$。角平分线上方放一薄N型半导体，整个截面均在两线排上方的公共夹角内，截面宽 $w$ 水平、高 $l$ 沿角平分线，电流 $I_0$ 向纸外。载流子密度 $n$、电荷 $-q$。长直线场为 $kI/r$，求右侧减左侧的电势差。
+\end{example}
+\fig{fig:mg4:example:7:s}{题设：交叉导线排产生的霍尔电压}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,-1.155)--(2,1.155) (-2,1.155)--(2,-1.155);\draw[guide](0,-1.5)--(0,3.3);\draw[world](-.3,1.4)rectangle(.3,2.7);\node[right]at(.3,2){$l,I_0$};\node at(2.2,1.5){$\otimes I$};\node at(2.2,-1.5){$\odot I$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先对两线排的场作方向分解与矢量叠加}\par\nobreak
+图\ref{fig:mg4:example:7:s}每个线排连续面电流密度为 $K=\lambda I$，单侧场大小为 $\mu_0K/2=\pi k\lambda I$。在上方夹角区域，第一排场沿向右上30度，第二排场沿向左上30度；水平分量抵消，竖直分量相加，合场 $B=\pi k\lambda I$，沿角平分线向上。
+\fig{fig:mg4:example:7:p}{先叠加两线排的场，再在半导体截面上判断电子受力、霍尔场与测量极性}{\begin{tikzpicture}
+
+\draw[flow,blue](0,0)--(1.732051,1)node[right]{$B_1$};\draw[flow,blue](0,0)--(-1.732051,1)node[left]{$B_2$};\draw[force,red](0,0)--(0,2)node[above]{$B=\pi k\lambda I$};\node at(0,-1){两项大小相等，夹角为 $120^\circ$};
+\begin{scope}[xshift=5cm]
+\draw[world](0,0)rectangle(3,2);\node at(1,.65){$\odot I_0$};\node at(2,.65){$\otimes v_d$};\draw[->,red,thick](2.7,1.5)--(.5,1.5)node[midway,above]{$\bm E_H$};\draw[->,blue,thick](-.7,.2)--(-.7,1.8)node[above]{$\bm B$};
+\foreach \y in {.4,1,1.6}{\node at(-.25,\y){$-$};\node at(3.25,\y){$+$};}\draw[dim](0,-.7)--(3,-.7)node[midway,below]{$w$};\draw[dim](3.8,0)--(3.8,2)node[midway,right]{$l$};\node at(1.5,-1.6){左侧负电，$V_{\text{右}}>V_{\text{左}}$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在给定截面内判断霍尔极性并代入电流密度}\par\nobreak
+图\ref{fig:mg4:example:7:p}电子漂移向纸内，$\bm v_d\times\bm B$ 向右，电子磁力向左，所以左侧积累负电荷，右侧电势较高。电流截面为 $wl$，$v_d=I_0/(nqwl)$，霍尔电场向左，大小 $v_dB$。故
+\[
+V_{\text{右}}-V_{\text{左}}=v_dBw
+=\frac{\pi k\lambda II_0}{nql}.
+\]
+结果中 $l$ 是平行合磁场的截面边，薄宽 $w$ 约去。若仅把两排场大小直接相加，会多出一倍；两场夹角为120度，必须先作方向分解。\end{solution}
+\begin{question}\begin{example}[速度选择器的通行条件]\label{mg4:example:8}
+平行板间电场沿 $+y$，磁场沿 $+z$。带电粒子沿 $+x$ 入射。求无偏转通行的速度；若同样速率的粒子改沿 $-x$ 入射，求其初始合力。
+\end{example}
+\fig{fig:mg4:example:8:s}{题设：速度选择器的通行条件}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1,1.5)--(4,1.5) (-1,-1.5)--(4,-1.5);\draw[flow](0,0)--(1.5,0)node[above]{$v$};\draw[flow](3,-.7)--(3,.7)node[right]{$E$};\node at(1,2.1){$\odot B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对正向速度作叉乘并求持续抵消条件}\par\nobreak
+图\ref{fig:mg4:example:8:s}正向入射时，$\bm v\times\bm B=-vB\bm e_y$，总力 $q(E-vB)\bm e_y$。无偏转要求 $v=E/B$；电荷符号改变时两个力同时反向，抵消速率仍相同。
+\fig{fig:mg4:example:8:p}{对同一正电荷比较正、反入射方向；电场不变，磁力却随速度反向}{\begin{tikzpicture}
+
+\foreach \b in {0,5.5}{\fill(\b,0)circle(2pt);\draw[force,red](\b,0)--(\b,1.5)node[left]{$qE$};\node at(\b+.8,2.3){$\odot B_z$};}
+\draw[flow](0,0)--(1.8,0)node[below]{$v=E/B$};\draw[force,blue](0,0)--(0,-1.5)node[right]{$qvB$};\node at(.7,-2.1){正向：两力抵消};
+\draw[flow](5.5,0)--(3.7,0)node[below]{$-v$};\draw[force,blue](5.8,0)--(5.8,1.5)node[right]{$qvB$};\node at(5.4,-2.1){反向：$\bm F=2qE\bm e_y$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反转速度后重新求初始合力，区分速率与方向}\par\nobreak
+图\ref{fig:mg4:example:8:p}将速度改为 $-v\bm e_x$ 后，叉乘变成 $+vB\bm e_y$，合力为 $q(E+vB)\bm e_y=2qE\bm e_y$。因此选择的是给定方向的速度矢量关系，而非对任何方向只要速率合适就通行。若另加沿 $z$ 的速度分量，磁力不含该分量，理想横向抵消仍成立；实际狭缝还会限制三维通道。\end{solution}
+\begin{question}\begin{example}[速度选择后的质谱分离]\label{mg4:example:9}
+粒子先通过电场 $E$、磁场 $B_s$ 的理想速度选择器，再垂直进入分析磁场 $B_a$，经半周到达探测器。各离子电荷均为 $q>0$，求落点距离与质量关系，比较共同加速电压的情形。
+\end{example}
+\fig{fig:mg4:example:9:s}{速度选择区的直线束进入分析磁区后作半周偏转；两个磁场的方向可分别配置}{\begin{tikzpicture}
+
+\draw[world](-3,.75)--(0,.75)(-3,-.75)--(0,-.75);\draw[->,blue,thick](-3.5,0)--(1,0);\draw[->](-2,-.4)--(-2,.4)node[right]{$E$};\node at(-.8,.35){$\odot B_s$};\node at(-1.4,-1.3){选择区：$v=E/B_s$};
+\draw[world](.4,-.7)--(.4,-.12)(.4,.12)--(.4,.7);\fill[blue!7](1,-.4)rectangle(4.3,3.5);\draw[world](1,-.4)--(1,3.5);\node at(3.1,2.5){$\otimes B_a$};\draw[guide](1,0)arc(-90:90:1.4);\draw[very thick](.85,2.5)--(.85,3.1)node[left]{探测器};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先用选择器固定速率，再求分析区半周距离}\par\nobreak
+图\ref{fig:mg4:example:9:s}通过选择器的速度为 $v=E/B_s$。分析区只改变方向，半径 $r=mv/(qB_a)=mE/(qB_sB_a)$，半周落点距离为直径 $D=2r$。
+\fig{fig:mg4:example:9:p}{共同速率下磁分析半径与质量成正比，落点差保留质量差的一次比例}{\begin{tikzpicture}
+
+\fill[blue!6](0,-.3)rectangle(3.1,3.6);\draw[world](0,-.3)--(0,3.6);\draw[->,blue,thick](0,0)arc(-90:90:1.2);\draw[->,red,thick](0,0)arc(-90:90:1.6);\draw[flow](-1.4,0)--(0,0)node[midway,above]{$E/B_s$};
+\draw[dim](-.6,0)--(-.6,2.4)node[midway,left]{$D_1$};\draw[dim](-1.6,0)--(-1.6,3.2)node[midway,left]{$D_2$};\fill(0,2.4)circle(1.5pt);\fill(0,3.2)circle(1.5pt);\draw[very thick](-.1,2.2)--(-.1,3.4);
+\node[align=center]at(4.1,2.2){$m_2>m_1$\\$D_2/D_1=m_2/m_1$};\node at(1.4,-1){两离子同电荷、同速率，分析场仅改变方向};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反求质量与色散，核对电荷态和入射准备条件}\par\nobreak
+由图\ref{fig:mg4:example:9:p}可解 $m=qB_sB_aD/(2E)$，且小质量差满足 $\Delta D/D=\Delta m/m$。若改为从静止经过相同电压加速，则 $D\propto\sqrt m$，色散系数只有一半。两者并不矛盾，前者选择共同速度，后者选择共同单位电荷能量。若离子电荷不同，装置直接区分的是相应的 $m/q$，不能仅凭落点将电荷态不同的离子认作不同质量。\end{solution}
+\begin{question}\begin{example}[磁镜的反射条件与损失锥]\label{mg4:example:10}
+粒子从场强 $B_0$ 处以总速率 $v_0$、俯仰角 $0\le\alpha_0<\pi/2$ 向缓变强场端运动，该端最大场为 $B_m>B_0$。满足绝热近似，不存在电场。求镜点场强及能够反射的初始角范围。
+\end{example}
+\fig{fig:mg4:example:10:s}{沿轴的场强剖面仅作示意，初始俯仰角在速度分解图中定义}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(3.7,0)node[right]{$z$};\draw[axis](0,0)--(0,3.6)node[above]{$B$};\draw[blue,thick,domain=0:3,samples=80]plot(\x,{1+2*(sin(30*\x))^2});\node[left]at(0,1){$B_0$};\draw[guide](3,0)--(3,3);\node[above]at(3,3){$B_m$};\draw[flow](.2,-.6)--(1.4,-.6)node[midway,below]{朝强场端};
+\begin{scope}[xshift=5.1cm,yshift=.5cm]
+\draw[axis](0,0)--(2.7,0)node[right]{$v_{\parallel0}$};\draw[axis](0,0)--(0,2.4)node[above]{$v_{\perp0}$};\draw[force](0,0)--(1.8,1.03923)node[above]{$v_0$};\draw[dim](.65,0)arc(0:30:.65)node[midway,right]{$\alpha_0$};\node at(1.3,3){初速度分解};
+\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以近似磁矩不变量与总动能求镜点场强}\par\nobreak
+图\ref{fig:mg4:example:10:s}初始磁矩 $\mu=mv_0^2\sin^2\alpha_0/(2B_0)$，总动能为 $mv_0^2/2$。在场强 $B$ 处，横向动能 $\mu B$，所以 $v_\parallel^2=v_0^2[1-(B/B_0)\sin^2\alpha_0]$。镜点要求平行速度降为零，得到 $B_{\rm mir}=B_0/\sin^2\alpha_0$。
+\fig{fig:mg4:example:10:p}{同一总速率圆弧上的俯仰角决定镜点条件；临界线与有限时间反射须分别讨论}{\begin{tikzpicture}
+
+\fill[orange!15](0,0)--(2.5,0)arc(0:30:2.5)--cycle;\fill[blue!7](0,0)--(30:2.5)arc(30:90:2.5)--cycle;
+\draw[axis](0,0)--(3.2,0)node[right]{$v_{\parallel0}$};\draw[axis](0,0)--(0,3.2)node[above]{$v_{\perp0}$};\draw[world](2.5,0)arc(0:90:2.5);\draw[thick](0,0)--(2.165064,1.25);\draw[dim](.8,0)arc(0:30:.8)node[midway,right]{$\alpha_c$};
+\node[right,align=center]at(3.6,2.5){蓝区：峰前有镜点\\$\alpha_0>\alpha_c$};\node[right,align=center]at(3.6,.9){橙区：损失锥\\临界线需另判到达时间};\node at(2.4,-.8){示意 $B_m/B_0=4$，$\sin^2\alpha_c=B_0/B_m$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由可用最大场筛选俯仰角并单列临界线}\par\nobreak
+图\ref{fig:mg4:example:10:p}的强场端能达到该镜点，要求 $B_{\rm mir}\le B_m$，即 $\sin^2\alpha_0\ge B_0/B_m$。对向该端运动的 $0\le\alpha_0<\pi/2$，临界角 $\alpha_c=\arcsin\sqrt{B_0/B_m}$，小于它的方向落入损失锥。$\alpha_0=0$ 时磁矩为零，镜点场强趋于无穷，不会由静磁力凭空生成回旋。若要求在峰值之前出现普通转折点并在有限时间反射，应取严格范围 $\alpha_c<\alpha_0<\pi/2$。等号 $\alpha_0=\alpha_c$ 对应镜点位于最大场处；若峰顶光滑且非退化，平行速率按到峰顶距离的一次方趋零，时间对数发散，不能把这一临界线无条件纳入有限时间完成反射的范围。\end{solution}
+\begin{question}\begin{example}[抛物型磁瓶的轴向振动]\label{mg4:example:11}
+近轴磁场为 $B(z)=B_0(1+z^2/L^2)$，粒子在 $z=0$ 的横向、平行速度为 $v_{\perp0},v_{\parallel0}$，其中 $v_{\perp0}>0$。在绝热近似下求轴向运动频率与镜点位置。
+\end{example}
+\fig{fig:mg4:example:11:s}{题设：抛物型磁瓶的轴向振动}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-3,0)--(3.5,0)node[right]{$z$};\draw[world,domain=-2.7:2.7]plot(\x,{.5+.2*\x*\x});\node at(0,2.8){$B_0(1+z^2/L^2)$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把磁场梯度转成轴向线性回复力}\par\nobreak
+图\ref{fig:mg4:example:11:s}中心磁矩 $\mu=mv_{\perp0}^2/(2B_0)$。轴向平均力 $F_z=-\mu\,\dd B/\dd z=-2\mu B_0z/L^2$，故 $m\ddot z+(2\mu B_0/L^2)z=0$，是关于中心的简谐运动。
+\fig{fig:mg4:example:11:p}{轴向运动是具有两个镜点的简谐振动，图示 $v_{\parallel0}>0$ 的相位}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.9,0)node[right]{$\omega_zt$};\draw[axis](0,-1.8)--(0,1.9)node[above]{$z$};\draw[blue,thick,domain=0:6.283185,samples=100]plot(\x,{1.3*sin(\x r)});\draw[guide](0,1.3)--(6.4,1.3)(0,-1.3)--(6.4,-1.3);
+\node[left]at(0,1.3){$z_m$};\node[left]at(0,-1.3){$-z_m$};\foreach \x/\lab in {1.570796/{\pi/2},3.141593/\pi,6.283185/{2\pi}}{\node[below]at(\x,0){$\lab$};}\node at(3.5,2.7){$\omega_z=v_{\perp0}/L,\quad z_m=L|v_{\parallel0}|/v_{\perp0}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始位置、平行速度求振幅与镜点}\par\nobreak
+由图\ref{fig:mg4:example:11:p}，$\omega_z=\sqrt{2\mu B_0/(mL^2)}=v_{\perp0}/L$。在 $m\ddot z+(2\mu B_0/L^2)z=0$ 中令
+$z\propto\e^{st}$，得特征方程 $s^2+\omega_z^2=0$，
+因此实通解为 $z=A\cos\omega_zt+D\sin\omega_zt$。
+求导得 $\dot z=-A\omega_z\sin\omega_zt+D\omega_z\cos\omega_zt$。
+从 $z(0)=0,\dot z(0)=v_{\parallel0}$ 得 $A=0,D=v_{\parallel0}/\omega_z$，
+所以 $z=(v_{\parallel0}/\omega_z)\sin\omega_zt$，所以镜点 $|z_m|=L|v_{\parallel0}|/v_{\perp0}$。也可用 $mv_{\parallel0}^2/2=\mu[B(z_m)-B_0]$ 独立检查。必须同时满足回旋频率远大于 $\omega_z$，并保证运动范围内近轴和缓变近似有效，才能把这个平均轴向方程当作原轨迹的近似描述。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查零振幅退化与全运动范围的绝热条件}\par\nobreak
+在这一平均模型中，改变初始平行速度只改变振幅和相位，频率由 $v_{\perp0}$ 与 $L$ 决定。若 $v_{\parallel0}=0$，粒子保持在轴向平衡点，虽然线性方程仍有上述固有频率，却没有实际的非零振幅往返。初始平行速率很大时，还须逐点检查一周内采样的相对场变，不能只由中心回旋频率大就断言整个长轨道都满足绝热条件。\end{solution}
+\begin{question}\begin{example}[任意初速在漂移系中的回旋]\label{mg4:example:12}
+恒定均匀电场与磁场互相垂直，忽略其他力。粒子初速为任意 $\bm v_0$，证明其垂直运动是漂移加圆周，并求一周期内的平均速度和净电功。
+\end{example}
+\fig{fig:mg4:example:12:s}{题设：任意初速在漂移系中的回旋}{\begin{tikzpicture}[scale=.88]
+\draw[flow](0,0)--(2.6,0)node[right]{$\bm E$};\node at(1.2,1.5){$\odot\bm B$};\draw[flow](0,0)--(0,-2)node[below]{$\bm v_D$};\draw[->,red,thick](0,0)--(1.4,-.8)node[right]{$\bm v_{0\perp}$（任意）};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{移到抵消电场的恒速系，确定初始相对回旋速度}\par\nobreak
+图\ref{fig:mg4:example:12:s}令 $\bm v_D=\bm E\times\bm B/B^2$，则 $\bm E+\bm v_D\times\bm B=0$。写 $\bm v_\perp=\bm v_D+\bm u$，运动方程化为 $m\dot{\bm u}=q\bm u\times\bm B$，取 $\bm B=B\bm e_z$，并定义带符号的 $\omega=qB/m$，
+则 $\dot u_x=\omega u_y,\dot u_y=-\omega u_x$。
+再次求导得 $\ddot u_x+\omega^2u_x=0$，特征根为
+$\pm\mathrm i\omega$。初值 $u_x(0)=u_{x0}$、
+$\dot u_x(0)=\omega u_{y0}$ 确定
+\[
+ u_x=u_{x0}\cos\omega t+u_{y0}\sin\omega t,\qquad
+ u_y=u_{y0}\cos\omega t-u_{x0}\sin\omega t.
+\]
+平方相加，交叉项消去，得 $u_x^2+u_y^2=u_{x0}^2+u_{y0}^2$，
+所以 $|\bm u|$ 不变、在垂直平面匀速转动，初值 $\bm u_0=\bm v_{0\perp}-\bm v_D$ 决定回旋半径 $m|\bm u_0|/(|q|B)$。
+\fig{fig:mg4:example:12:p}{同一回旋相位一周后复原，整个回旋中心平移；图示非零初始回旋速度的一例}{\begin{tikzpicture}
+
+\draw[guide](0,-.7)circle(.7);\draw[guide](0,-2.082301)circle(.7);\fill(0,-.7)circle(1.5pt)node[left]{$C_0$};\fill(0,-2.082301)circle(1.5pt)node[left]{$C_1$};
+\draw[->,blue,thick,domain=0:6.283185,samples=130]plot({.7*sin(\x r)},{.7*(cos(\x r)-1)-.22*\x});\fill(0,0)circle(1.5pt)node[above left]{$P_0$};\fill(0,-1.382301)circle(1.5pt)node[below right]{$P_1$};
+\draw[dim](1.35,-.7)--(1.35,-2.082301)node[midway,right]{$\bm v_DT$};
+\begin{scope}[xshift=4.6cm,yshift=-.3cm]
+\draw[->,blue,thick](0,0)--(1.4,0)node[above]{$\bm u_0$};\draw[->,blue,thick](1.4,0)--(1.4,-.44)node[right]{$\bm v_D$};\draw[force,red](0,0)--(1.4,-.44)node[below]{$\bm v_{0\perp}$};\node at(.6,-1.7){$\bm v_{0\perp}=\bm u_0+\bm v_D$};
+\end{scope}
+\node at(2,-3.5){$P_1-P_0=C_1-C_0=\bm v_DT$，不是固定中心圆周};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用一周后相位复原求平均速度与净电功}\par\nobreak
+按图\ref{fig:mg4:example:12:p}取 $T=2\pi/|\omega|$，
+\[
+ \int_0^T u_x\dd t=
+ \left[\frac{u_{x0}}{\omega}\sin\omega t
+       -\frac{u_{y0}}{\omega}\cos\omega t\right]_0^T=0,
+\]
+\[
+ \int_0^T u_y\dd t=
+ \left[\frac{u_{y0}}{\omega}\sin\omega t
+       +\frac{u_{x0}}{\omega}\cos\omega t\right]_0^T=0.
+\]
+因此回旋一周期的位移为零，故垂直平均速度是 $\bm v_D$；若初速含沿场分量，再加不变的 $\bm v_{0\parallel}$。整周净电功 $q\bm E\cdot(\bm v_DT+\bm v_{0\parallel}T)=0$，因为电场同时垂直这两个分量。瞬时动能可以振荡，只有初始 $\bm u_0=0$ 时才始终直线匀速。这个分解比把所有初速都画成同一条标准摆线更一般。\end{solution}
+\begin{question}\begin{example}[重力与磁场共同作用下的水平漂移]\label{mg4:example:13}
+正粒子质量 $m$、电荷 $q$，在竖直 $xy$ 平面从原点静止释放，重力向 $-y$，磁场 $B$ 垂直纸面向外。求运动方程、平均漂移速度与最大下降高度，忽略空气阻力。
+\end{example}
+\fig{fig:mg4:example:13:s}{题设：重力与磁场共同作用下的水平漂移}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-3,0)--(1,0)node[right]{$x$};\draw[axis](0,-2)--(0,1)node[above]{$y$};\node at(1.5,1){$\odot B$};\fill(0,0)circle(2pt);\draw[force](0,0)--(0,-1.3)node[right]{$mg$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在重力与磁力的带符号分量方程中求速度与坐标}\par\nobreak
+按图\ref{fig:mg4:example:13:s}的坐标，$m\dot v_x=qBv_y$，$m\dot v_y=-mg-qBv_x$。定义 $\Omega=qB/m$，$V=mg/(qB)$。取 $u_x=v_x+V$，则 $\dot u_x=\Omega v_y$，$\dot v_y=-\Omega u_x$，初始 $u_x(0)=V$、$v_y(0)=0$。对 $\dot u_x=\Omega v_y$ 再求导，得
+$\ddot u_x+\Omega^2u_x=0$。特征根 $\pm\mathrm i\Omega$，
+通解 $u_x=A\cos\Omega t+D\sin\Omega t$；
+初值 $u_x(0)=V,\dot u_x(0)=0$ 给 $A=V,D=0$。
+因此 $v_x=V(\cos\Omega t-1)$，
+$v_y=\dot u_x/\Omega=-V\sin\Omega t$。
+积分并用初始位置为零，
+\begin{align*}
+ x&=V\int_0^t(\cos\Omega s-1)\dd s
+   =V[\sin\Omega s/\Omega-s]_0^t,\\
+ y&=-V\int_0^t\sin\Omega s\dd s
+   =\frac V\Omega[\cos\Omega s]_0^t.
+\end{align*}
+即
+\[
+x=\frac V\Omega\sin\Omega t-Vt,\qquad
+y=\frac V\Omega(\cos\Omega t-1).
+\]
+\fig{fig:mg4:example:13:p}{沿原坐标画出重力漂移的实际旋轮线，最低点仍有水平速率，整周尖点才瞬时静止}{\begin{tikzpicture}
+
+\draw[axis](-4.7,0)--(1,0)node[right]{$x$};\draw[axis](0,-2.3)--(0,1)node[above]{$y$};\draw[->,blue,thick,domain=0:6.283185,samples=130]plot({.65*(sin(\x r)-\x)},{.65*(cos(\x r)-1)});
+\fill(-2.042035,-1.3)circle(1.6pt);\draw[force,red](-2.042035,-1.3)--(-3.3,-1.3)node[below]{$v_x=-2V$};\node[below]at(-2.042035,-1.75){$t=T/2$};\fill(-4.08407,0)circle(1.5pt)node[above]{$t=T,\ \bm v=0$};
+\draw[dim](.5,0)--(.5,-1.3)node[midway,right]{$h=2V/\Omega$};\draw[flow](-.6,-2)--(-2,-2)node[midway,below]{$\bm v_D=-V\bm e_x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由完整周期位移求漂移，并在最低点检查能量}\par\nobreak
+图\ref{fig:mg4:example:13:p}每经过 $T=2\pi/\Omega$，相对回旋中心的位移复原，平均速度为 $-V\bm e_x$，与 $m\bm g\times\bm B/(qB^2)$ 一致。最大下降为 $h=2V/\Omega=2m^2g/(q^2B^2)$，在 $\Omega t=\pi$ 时首次达到。此刻 $v_x=-2V,v_y=0$，故动能 $2mV^2=mgh$，与重力功完全相等；磁场仅改变轨迹方向。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分高度极值与瞬时静止两种事件}\par\nobreak
+最大下降点的水平速率不为零，竖直速度为零仅意味着高度出现极值。相反，完整周期终点的两个速度分量都为零，却已沿水平方向移到新的位置。这两种事件在过程图上对应波谷与尖点，不能用同一“停下”表述。\end{solution}
+\begin{question}\begin{example}[磁镜峰顶的临界到达时间]\label{mg4:example:14}
+绝热磁镜近轴场的峰顶附近 $B(z)=B_m-a(z-z_m)^2$，$a>0$。粒子磁矩 $\mu>0$，总动能恰为 $K=\mu B_m$，从 $z<z_m$ 向峰顶运动。求峰顶附近的位置随时间的变化，判断是否在有限时间反射。
+\end{example}
+\fig{fig:mg4:example:14:s}{题设：磁镜峰顶的临界到达时间}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4.6,0)node[right]{$z$};\draw[axis](0,-0.2)--(0,2.8)node[above]{$B$};\draw[world,domain=.5:4]plot(\x,{2.3-.35*(\x-2.5)^2});\draw[guide](2.5,0)--(2.5,2.3);\node[below]at(2.5,0){$z_m$};\node[above]at(2.5,2.3){$B_m$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由峰顶能量差得到距离的一阶微分方程}\par\nobreak
+图\ref{fig:mg4:example:14:s}的能量关系给出 $mv_\parallel^2/2=K-\mu B=\mu a(z_m-z)^2$。入射粒子取正向速率，记 $\kappa=\sqrt{2\mu a/m}$，则 $\dot z=\kappa(z_m-z)$。以 $s=z_m-z>0$ 表示峰顶距离，有 $\dot s=-\kappa s$。在峰前 $s>0$，分离变量并使用初值，
+\[
+ \int_{s(t_0)}^{s(t)}\frac{\dd\xi}{\xi}
+ =-\kappa\int_{t_0}^t\dd\tau,\qquad
+ [\ln\xi]_{s(t_0)}^{s(t)}=-\kappa[\tau]_{t_0}^{t}.
+\]
+因此 $\ln[s(t)/s(t_0)]=-\kappa(t-t_0)$，取指数后
+\[
+s(t)=s(t_0)e^{-\kappa(t-t_0)},\qquad z(t)=z_m-s(t_0)e^{-\kappa(t-t_0)}.
+\]
+\fig{fig:mg4:example:14:p}{解答过程：磁镜峰顶的临界到达时间}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4.5,0)node[right]{$\kappa(t-t_0)$};\draw[axis](0,-0.2)--(0,1.4)node[above]{$s/s_0$};\draw[world,domain=0:4.2]plot(\x,{exp(-\x)});\draw[guide](0,0)--(4.3,0);\node at(2.3,1){$s>0$，渐近趋零};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用指数解与时间积分判断临界可达性}\par\nobreak
+图\ref{fig:mg4:example:14:p}中距离始终为正，只在 $t\to\infty$ 时趋零。等价地，从 $s_0$ 到 $s$ 的时间为 $\kappa^{-1}\ln(s_0/s)$，在 $s\to0$ 时发散。故理想临界粒子在有限时间内既不穿过峰顶，也不在峰顶完成反射。若总能量略低于 $\mu B_m$，转折点移到峰前且斜率非零，可在有限时间反射；若略高于阈值，则可越过峰顶。三种情形需要分清。\end{solution}

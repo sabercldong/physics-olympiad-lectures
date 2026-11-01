@@ -1,0 +1,18 @@
+\fig{em3:two-rod-model}{等轨宽双棒的相对运动；图示$v_2>v_1$时的电流与受力}{
+\begin{tikzpicture}[scale=.9]
+\draw[world](-.4,0)--(5.8,0) (-.4,2.1)--(5.8,2.1);
+\draw[world,very thick](.5,0)--(.5,2.1) (4.3,0)--(4.3,2.1);
+\node[above]at(.5,2.2){$m_1$};
+\node[above]at(4.3,2.2){$m_2$};
+\draw[flow,blue](.5,2.9)--(1.4,2.9)node[right]{$v_1$};
+\draw[flow,blue](4.3,2.9)--(5.6,2.9)node[right]{$v_2$};
+\draw[force](.5,1.3)--(1.6,1.3)node[midway,above]{$ki$};
+\draw[force](4.3,1.3)--(3.2,1.3)node[midway,above]{$ki$};
+\draw[flow,red](.5,.9)--(.5,.25)node[left]{$i$};
+\draw[flow,red](4.3,.25)--(4.3,.9)node[right]{$i$};
+\draw[dim](6.2,0)--(6.2,2.1)node[midway,right]{$l$};
+\node at(2.4,.5){$\otimes\ B$};
+\draw[dim](.5,-.65)--(4.3,-.65)node[midway,below]{$x_2-x_1$};
+\end{tikzpicture}}
+
+图\ref{em3:two-rod-model}以向右为共同速度正向，磁场指向纸里。右棒快于左棒时，回路面积增长率为$l(v_2-v_1)$；图示电流在右棒向上、左棒向下，使两棒受到大小相等、方向相反的安培力。令$k=Bl$，这一几何关系给出$i=k(v_2-v_1)/R$。若速度差反号，电流和两力同时反向，下面的有向方程仍成立。

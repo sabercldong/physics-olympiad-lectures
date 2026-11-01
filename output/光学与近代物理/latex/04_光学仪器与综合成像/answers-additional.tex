@@ -1,0 +1,74 @@
+\begin{drillsolution}{d:44}\textbf{把物镜孔径作为目镜的成像对象}\par\nobreak
+出瞳是物镜孔径经目镜所成的像，量距起点在图\ref{fig:d44q}的目镜。物距为 $25.0\,\mathrm{cm}$，所以
+\[
+\frac1{25}+\frac1{v_p}=\frac15,
+\qquad \boxed{v_p=6.25\,\mathrm{cm}}.
+\]
+孔径像的横向放大率为 $-v_p/25=-1/4$，故出瞳直径 $\boxed{D_p=1.00\,\mathrm{cm}}$。它是位于目镜后 $6.25\,\mathrm{cm}$ 的实像；正常观察时眼睛应靠近这个平面。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分方向放大与光束口径}\par\nobreak
+无穷远物体在物镜后焦平面成中间像，该平面与目镜前焦平面重合，因此视角放大率为 $\boxed{M=-f_o/f_e=-4}$，像倒立。图\ref{fig:d44s}左侧的孔径成像决定眼的位置，不能把出瞳距离误当作目镜焦距。
+\fig{fig:d44s}{左图追踪物镜上缘的孔径像；右图比较同心出瞳和眼瞳}{\begin{tikzpicture}
+\draw[axisline](-.5,0)--(7,0);\draw[world](0,-.8)--(0,.8)(5,-.6)--(5,.6);
+\draw[ray](0,.8)--(5,0);\draw[ray](5,0)--(6.25,-.2);\draw[ray](0,.8)--(5,.3);\draw[ray](5,.3)--(6.25,-.2);
+\draw[world,blue](6.25,-.2)--(6.25,.2);\node[above]at(0,1){物镜};\node[above]at(5,1){目镜};\node[above right]at(6.25,.2){出瞳};
+\draw[dim](5,-1)--(6.25,-1)node[midway,below]{$6.25\,\mathrm{cm}$};
+\begin{scope}[xshift=9cm]
+\fill[blue!8](0,0)circle(.75);\draw[world,blue](0,0)circle(.75);\fill[gray!25](0,0)circle(.6);\draw[world](0,0)circle(.6);
+\node[above]at(0,1.1){出瞳平面};\node at(0,-1.1){眼瞳占中央区域};
+\end{scope}
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将眼瞳限制折回物方并计算面积比}\par\nobreak
+图\ref{fig:d44s}右图中眼瞳直径小于出瞳，接收中央直径比例 $0.800/1.00=0.800$ 的光束。因此有效物镜口径
+\[
+\boxed{D_{\rm eff}=0.800D_o=3.20\,\mathrm{cm}}.
+\]
+均匀照度下通量按圆面积变化，接收比例为
+\[
+\boxed{\eta=(0.800/1.00)^2=0.640}.
+\]
+这里只改变轴上接收光量，近轴视角放大率仍为 $-4$。眼睛若偏离出瞳平面或横向偏心，还会出现不同的遮光条件，不属于上述同心面积比模型。
+\end{drillsolution}
+
+\begin{drillsolution}{d:45}\textbf{由无穷远观察确定第一次物距}\par\nobreak
+图\ref{fig:d45q}中镜距固定。最终像在无穷远时，中间实像必须落在目镜前焦平面，故物镜像距为 $v_{o\infty}=L-f_e=13.0\,\mathrm{cm}$。由物镜公式，
+\[
+u_{o\infty}=\frac{f_ov_{o\infty}}{v_{o\infty}-f_o}
+=\frac{13}{12}\,\mathrm{cm},\qquad
+\beta_{o\infty}=-\frac{v_{o\infty}}{u_{o\infty}}=-12.
+\]
+目镜的视角放大率为 $D/f_e=5$，总放大率 $\boxed{M_\infty=-60}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从近点虚像反求新的中间像位置}\par\nobreak
+近点虚像的目镜像距为 $v_{eD}=-25.0\,\mathrm{cm}$，所以
+\[
+\frac1{u_{eD}}-\frac1{25}=\frac15,
+\qquad u_{eD}=\frac{25}{6}\,\mathrm{cm}.
+\]
+图\ref{fig:d45s}显示，中间像向目镜靠近，新的物镜像距为
+$v_{oD}=18-25/6=83/6\,\mathrm{cm}$，对应
+\[
+u_{oD}=\frac{83/6}{83/6-1}=\frac{83}{77}\,\mathrm{cm}.
+\]
+\fig{fig:d45s}{同一镜距下，近点观察要求中间像从前焦平面向目镜移动}{\begin{tikzpicture}
+\foreach \yy in{0,-2.6}{\draw[axisline](-.3,\yy)--(5.2,\yy);\draw[world](0,\yy-.5)--(0,\yy+.5)(4.5,\yy-.5)--(4.5,\yy+.5);}
+\fill(3.25,0)circle(1.5pt)node[above]{$A_{1\infty}=F_e$};\draw[dim](3.25,-.7)--(4.5,-.7)node[midway,below]{$5.00\,\mathrm{cm}$};
+\fill(3.45833,-2.6)circle(1.5pt)node[above right]{$A_{1D}$};\draw[guide](3.25,-2.6)--(3.25,-3.1);\draw[axis](3.25,-3.35)--(3.45833,-3.35);
+\draw[dim](3.45833,-3.8)--(4.5,-3.8)node[midway,below]{$25/6\,\mathrm{cm}$};
+\node[above]at(0,.6){物镜};\node[above]at(4.5,.6){目镜};
+\node[left]at(-.4,0){像在无穷远};\node[left]at(-.4,-2.6){像在近点};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求物体位移及新的视角放大率}\par\nobreak
+物距变化为
+\[
+\Delta u_o=\frac{83}{77}-\frac{13}{12}
+=-\frac5{924}\,\mathrm{cm}\simeq-0.0541\,\mathrm{mm}.
+\]
+因此物体向物镜移动约 $0.0541\,\mathrm{mm}$。新的物镜放大率为 $\beta_{oD}=-77/6$，目镜近点视角放大率为 $1+D/f_e=6$，故
+\[
+\boxed{M_D=-77}.
+\]
+图\ref{fig:d45s}中中间像右移，对应物体在物镜焦点外向焦点靠近；放大率绝对值由 $60$ 增至 $77$。两状态下均为倒立像，不能仅改变目镜放大率而把物镜放大率仍固定为 $-12$。
+\end{drillsolution}

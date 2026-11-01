@@ -1,0 +1,47 @@
+\section{练习}
+
+\begin{question}\begin{drill}[固定弦的模态识别]\label{w3:drill:1}
+弦长$L=1.2\,\mathrm m$，波速$u=120\,\mathrm{m/s}$，两端固定。观察到弦有三个波腹，求频率、波长与全部波节位置。
+\end{drill}
+\fig{fig:w3:drill:1:s}{题设：固定弦的模态识别}{\begin{tikzpicture}[scale=.88]\draw[world](0,-1)--(0,1);\draw[world](4.8,-1)--(4.8,1);\draw[world,domain=0:4.8,samples=100]plot(\x,{.7*sin(112.5*\x)});\draw[guide](0,0)--(4.8,0);\node[below]at(0,0){$0$};\node[below]at(4.8,0){$L$};\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:1}
+\begin{question}\begin{drill}[开闭管的频率]\label{w3:drill:2}
+理想声管长$L$，一端封闭另一端开口。以空气位移为变量，求固有频率；若测得相邻两次共振频率相差$200\,\mathrm{Hz}$，声速$340\,\mathrm{m/s}$，求管长。
+\end{drill}
+\fig{fig:w3:drill:2:s}{题设：开闭管的频率}{\begin{tikzpicture}[scale=.88]\draw[world](0,-.6)--(0,.6)--(4.5,.6);\draw[world](0,-.6)--(4.5,-.6);\node at(1,1){封闭};\node at(4.5,1){开口};\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:2}
+\begin{question}\begin{drill}[拍频与消声时刻]\label{w3:drill:3}
+两音叉频率$440\,\mathrm{Hz}$与$444\,\mathrm{Hz}$，在某点产生等振幅同向振动且初相相同。求拍频、相邻强音间隔及拍包络第一次降到零的时刻。
+\end{drill}
+\fig{fig:w3:drill:3:s}{两音叉在同一观察点形成同向振动，初始相位相同}{\begin{tikzpicture}
+
+\foreach \yy/\ff in {0/440,3/444}{\begin{scope}[yshift={\yy*1cm}]\draw[world,very thick](0,1)--(0,0)arc(180:360:.3)--(.6,1);\draw[world,very thick](.3,-.3)--(.3,-.9);\node[left]at(-.2,.4){$\ff\,\mathrm{Hz}$};\end{scope}}
+\fill(4,1.5)circle(.07)node[right]{$P$};\draw[flow](1,.2)--(3.6,1.3);\draw[flow](1,3.2)--(3.6,1.7);\node at(2,-1){$A_1=A_2=A,\quad\Delta\varphi(0)=0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:3}
+\begin{question}\begin{drill}[相向运动的声源与接收者]\label{w3:drill:4}
+静止空气中声速$340\,\mathrm{m/s}$，声源以$20\,\mathrm{m/s}$接近接收者，接收者以$10\,\mathrm{m/s}$迎向声源。发射频率$640\,\mathrm{Hz}$，求接收频率。
+\end{drill}
+\fig{fig:w3:drill:4:s}{题设：相向运动的声源与接收者}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(6,0)node[right]{$x$};\fill(1,0)circle(3pt)node[below]{$S$};\fill(4.5,0)circle(3pt)node[below]{$D$};\draw[flow](1,.8)--(2,.8)node[midway,above]{$v_S$};\draw[flow](4.5,.8)--(3.5,.8)node[midway,above]{$|v_D|$};\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:4}
+\begin{question}\begin{drill}[移动反射体的回声频率]\label{w3:drill:5}
+声源和接收器同处固定位置，频率$f$，声速$u$。平面反射体以速度$V<u$沿法线朝它们匀速运动。求回声频率。
+\end{drill}
+\fig{fig:w3:drill:5:s}{题设：移动反射体的回声频率}{\begin{tikzpicture}[scale=.88]\fill(0,0)circle(3pt)node[left]{$S,D$};\draw[world](4,-1)--(4,1);\draw[flow](4,1.5)--(3,1.5)node[left]{$V$};\draw[flow](.5,.4)--(3.5,.4);\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:5}
+\begin{question}\begin{drill}[驻波的瞬时能流]\label{w3:drill:6}
+弦上驻波$y=B\sin kx\cos\omega t$，张力$\mathcal T$。求位置$x$处瞬时功率和周期平均功率，说明波节的作用。
+\end{drill}
+\fig{fig:w3:drill:6:s}{驻波一段在$t=0$的极端形状；两端所标位置均为波节}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(4.8,0)node[right]{$x$};\draw[axis](0,-.3)--(0,1.7)node[above]{$y/B$};\draw[world,domain=0:4,samples=90]plot(\x,{sin(45*\x)});\fill(0,0)circle(.05);\fill(4,0)circle(.05)node[below]{$\pi/k$};\node[above]at(2,1){波腹};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{w3:drill:6}

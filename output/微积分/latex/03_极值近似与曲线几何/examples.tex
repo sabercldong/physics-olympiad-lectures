@@ -1,0 +1,511 @@
+\section{例题与分析}
+\begin{question}
+\begin{example}[驻点与极值的分类]
+在各自实数定义域内，分析 $x^2$、$x^2+1/x^2$、$x-2\sin x$、$x^3$、$\sqrt{1-x^2}$ 的极值和全局最值。
+\end{example}
+\fig{c3e1q}{导数为零不一定形成峰或谷}{\begin{tikzpicture}[x=1cm,y=.7cm]
+\draw[axis](-1.5,0)--(1.6,0);\draw[axis](0,-.2)--(0,2.2);\draw[blue,domain=-1.2:1.2,samples=40]plot(\x,{\x*\x});\node[above]at(0,2.3){$x^2$};
+\begin{scope}[xshift=4cm]\draw[axis](-1.5,0)--(1.6,0);\draw[axis](0,-1.6)--(0,1.8);\draw[blue,domain=-1.1:1.1,samples=40]plot(\x,{(\x)^3});\node[above]at(0,2.3){$x^3$};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{比较驻点两侧的导数符号}\par\nobreak
+图 \ref{c3e1q} 中，$x^2$ 在零点由减转增，有全局最小值零，无最大值；$x^3$ 虽在零点驻留，导数 $3x^2$ 不变号，故无局部极值，也无全局最值。
+
+对 $x^2+x^{-2}$，定义域排除零。导数方程
+$2x-2/x^3=0$ 两边乘以非零的 $x^3/2$，得到 $x^4=1$，实根只有 $\pm1$。二阶导数为 $2+6/x^4>0$，两点均为极小；代回原函数，值均为 $1+1=2$。全局判断再用
+$x^2+x^{-2}-2=(x-1/x)^2\ge0$，证明二为全局下界。$|x|\to\infty$ 时平方项无界，故没有最大值。
+\fig{c3e1s}{在 $[-\pi,\pi]$ 内用导数符号判定极值}{\begin{tikzpicture}
+\draw[axis](0,0)--(6.7,0)node[right]{$x$};
+\foreach \x in {.4,2.3,4.2,6.1}{\draw(\x,-.06)--(\x,.06);}
+\node[below]at(.4,0){$-\pi$};\node[below]at(2.3,0){$-\pi/3$};\node[below]at(4.2,0){$\pi/3$};\node[below]at(6.1,0){$\pi$};
+\node[above]at(1.35,.2){$f'>0$};\node[above]at(3.25,.2){$f'<0$};\node[above]at(5.15,.2){$f'>0$};
+\node[below=17pt]at(2.3,0){极大};\node[below=17pt]at(4.2,0){极小};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分周期性局部极值与全局最值}\par\nobreak
+对 $f=x-2\sin x$，$f'=1-2\cos x$，驻点要求 $\cos x=1/2$，所以 $x=2n\pi\pm\pi/3$。二阶导数为 $2\sin x$：在减号支等于 $-\sqrt3<0$，在加号支等于 $\sqrt3>0$。因此图 \ref{c3e1s} 中，减号支为极大点，其值为
+$(2n\pi-\pi/3)-2(-\sqrt3/2)=2n\pi-\pi/3+\sqrt3$；加号支为极小点，其值为 $2n\pi+\pi/3-\sqrt3$。由于 $x-2\le f(x)\le x+2$，函数随 $x\to\pm\infty$ 分别无界地增大、减小，没有全局最值。
+
+最后一式定义域是 $[-1,1]$。内部按链式法则求导：
+\[
+f'(x)=\frac12(1-x^2)^{-1/2}(-2x)
+=-\frac{x}{\sqrt{1-x^2}}.
+\]
+导数在 $(-1,0)$ 为正、$(0,1)$ 为负，因此零点为极大点。比较实际函数值：$f(0)=1$，$f(\pm1)=0$，又因整个区间内 $0\le\sqrt{1-x^2}\le1$，所以最大值为一、最小值为零。端点不要求导数为零，仍须参加全局最值比较。
+\end{solution}
+
+\begin{question}
+\begin{example}[圆锥上的弹性绳套]
+质量 $m$、自然长度 $L$、整体劲度系数 $k$ 的均匀弹性绳套水平套在光滑圆锥上，圆锥顶角为 $2\alpha$。绳套保持水平圆形，只作升降。求距顶点的平衡高度 $z$，并讨论该方向稳定性。
+\end{example}
+\fig{c3e2q}{向下坐标决定绳套的周长}{\begin{tikzpicture}
+\draw[world](-1.7,0)--(0,2.8)--(1.7,0);\draw[axis](0,3.1)--(0,-.3)node[below]{$z$};
+\draw[blue,very thick](0,1.1)ellipse(1.032 and .22);\draw[guide](0,1.1)--(1.032,1.1);
+\node[right]at(1.2,1.1){$r=z\tan\alpha$};
+\draw(0,2.1)arc(-90:-58.74:.7);\node at(.23,1.83){$\alpha$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用下降高度统一绳长与势能}\par\nobreak
+图 \ref{c3e2q} 中向下为正，圆环半径 $r=z\tan\alpha$，伸长量为 $2\pi z\tan\alpha-L$。重力势能为 $-mgz$，故
+\[
+ U(z)=\frac k2(2\pi z\tan\alpha-L)^2-mgz.
+\]
+对 $z$ 求导时，弹性势能的内层导数为 $2\pi\tan\alpha$，重力项导数为 $-mg$。因而 $U'(z_0)=0$ 给出
+\[
+ 2\pi k\tan\alpha(2\pi z_0\tan\alpha-L)=mg,
+\]
+先将平衡方程除以正数 $2\pi k\tan\alpha$，得到
+$2\pi z_0\tan\alpha-L=mg/(2\pi k\tan\alpha)$，再移项并除以 $2\pi\tan\alpha$，就得到平衡高度。
+\[
+ \boxed{z_0=\frac{L}{2\pi\tan\alpha}
+ +\frac{mg}{4\pi^2k\tan^2\alpha}}.
+\]
+\fig{c3e2s}{平衡位置附近形成势阱}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$z$};\draw[axis](0,0)--(0,2.7)node[above]{$U$};
+\draw[blue,domain=.5:4.5,samples=40]plot(\x,{.45*(\x-2.5)^2+.4});\draw[guide](2.5,0)--(2.5,.4);\node[below]at(2.5,0){$z_0$};
+\draw[flow](3.6,1.3)--(2.9,.8);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查张紧条件与恢复作用}\par\nobreak
+如图 \ref{c3e2s}，再求一次导数有 $U''=4\pi^2k\tan^2\alpha>0$，所以升降扰动后存在恢复作用。平衡伸长量为 $mg/(2\pi k\tan\alpha)>0$，也验证绳套处于张紧状态。若圆锥有限长，还须检查 $z_0$ 未越过底边。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由绳元的实际速度确定振动惯量}\par\nobreak
+% thirty-c3-conekinetic
+若进一步研究保持水平圆形的升降振动，不能直接把 $z$的有效质量写成 $m$。因为绳套下降时半径也增加，$r=z\tan\alpha$给 $\dot r=\dot z\tan\alpha$。每个绳元同时具有竖直和径向速度，图\ref{c3e2velocity}给出
+\[v_{\text{元}}^2=\dot z^2+\dot r^2=\dot z^2\sec^2\alpha,
+\qquad T=\frac12m\sec^2\alpha\dot z^2.\]
+\fig{c3e2velocity}{圆锥母线上运动的绳元具有两个速度分量}{\begin{tikzpicture}
+\draw[world](0,2.7)--(1.7,0);\coordinate(P)at(.85,1.35);
+\draw[flow,blue](P)--++(0,-1)node[below]{$\dot z$};
+\draw[flow,red](.85,.35)--(1.47963,.35)node[right]{$\dot r=\dot z\tan\alpha$};
+\draw[flow](P)--(1.47963,.35)node[midway,right]{$\bm v_{\text{元}}$};
+\fill(P)circle(1.3pt)node[left]{绳元};\node at(.3,2){$\alpha$};
+\end{tikzpicture}}
+令 $z=z_0+\eta$，势能在平衡位置附近为 $U_0+2\pi^2k\tan^2\alpha\,\eta^2$。因此
+\[m\sec^2\alpha\ddot\eta+4\pi^2k\tan^2\alpha\,\eta=0,
+\qquad\omega^2=\frac{4\pi^2k}{m}\sin^2\alpha.\]
+这一步说明，势能的二阶系数确定回复作用，而频率还必须结合实际速度场确定惯量。若只取竖直速度，就会漏掉径向运动的动能。
+\end{solution}
+
+\begin{question}
+\begin{example}[弹簧连接的引力双球]
+两球各质量 $M$，在同一直线上由轻弹簧连接，仅考虑相互引力与弹力。平衡时压缩量为 $x>0$，劲度系数为 $k$，球半径忽略。求弹簧自然长度，并讨论沿连线方向的稳定性。
+\end{example}
+\fig{c3e3q}{相互吸引与压缩弹簧的排斥}{\begin{tikzpicture}
+\fill(0,0)circle(4pt)node[above]{$M$};\fill(4.6,0)circle(4pt)node[above]{$M$};
+\draw[world,decorate,decoration={zigzag,segment length=5pt,amplitude=3pt}](.2,0)--(4.4,0);
+\draw[dim](0,-1.05)--(4.6,-1.05)node[midway,below]{$r_0$};
+\draw[force,red](0,.6)--(.9,.6)node[midway,above]{$F_g$};\draw[force,red](4.6,.6)--(3.7,.6)node[midway,above]{$F_g$};
+\draw[force,blue](0,-.35)--(-.9,-.35)node[midway,below]{$kx$};\draw[force,blue](4.6,-.35)--(5.5,-.35)node[midway,below]{$kx$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由受力平衡确定弹簧自然长度}\par\nobreak
+图 \ref{c3e3q} 中平衡时 $kx=GM^2/r_0^2$，因此
+\[
+ r_0=\sqrt{\frac{GM^2}{kx}},\qquad
+ \boxed{L_0=x+\sqrt{\frac{GM^2}{kx}}}.
+\]
+为判断距离扰动，写系统势能
+$U(r)=\tfrac12k(L_0-r)^2-GM^2/r$。
+对第一项用链式法则，对第二项写成负幂：$U'(r)=\frac k2\,2(L_0-r)(-1)-GM^2(-r^{-2})=k(r-L_0)+GM^2/r^2$，在 $r=r_0$ 处等于零，恰好恢复受力平衡。再用 $(r^{-2})'=-2r^{-3}$，得到
+\[
+ U''(r_0)=k-\frac{2GM^2}{r_0^3}
+ =k\left(1-\frac{2x}{r_0}\right).
+\]
+\fig{c3e3s}{距离增加时两种力的变化率相互竞争}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.8,0)node[right]{$r$};\node[below]at(2.5,0){$r_0$};
+\draw[flow](2.5,.45)--(3.6,.45)node[midway,above]{$\eta>0$};
+\node[align=center]at(2.8,1.6){引力减弱率 $2GM^2/r_0^3$\\弹簧排斥力减弱率 $k$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较两种力的变化率，判定稳定范围}\par\nobreak
+图 \ref{c3e3s} 中，若弹簧排斥力减小得更快，拉开后净力会把两球拉回，故稳定条件为
+\[
+ r_0>2x\quad\Longleftrightarrow\quad
+ \boxed{kx^3<GM^2/4}.
+\]
+把 $r_0=\sqrt{GM^2/(kx)}$ 代入 $r_0>2x$，两侧均正，可以平方，得到 $GM^2/(kx)>4x^2$；再乘 $kx>0$，才得到 $kx^3<GM^2/4$。反向不等号为不稳定。等号处 $U''=0$，但 $U'''=6GM^2/r_0^4>0$，势能首个变化项为 $U'''(r_0)(r-r_0)^3/6$，在平衡点两侧异号，不形成局部极小，仍不稳定。这里 $kx^3$ 与 $GM^2$ 量纲相同。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两球相对坐标建立小振动方程}\par\nobreak
+% thirty-c3-gravity
+可把稳定结论继续转成小振动方程。两球各自相对质心的位移大小为 $r/2$，速度大小为 $\dot r/2$，所以系统动能为
+\[T=2\cdot\frac12M\left(\frac{\dot r}{2}\right)^2
+   =\frac12\left(\frac M2\right)\dot r^2.\]
+因此距离坐标的有效质量是 $M/2$。在稳定分支令 $r=r_0+\eta$，线性回复项为 $-U''(r_0)\eta$，有
+\[\frac M2\ddot\eta+k\left(1-\frac{2x}{r_0}\right)\eta=0,\qquad
+\omega^2=\frac{2k}{M}\left(1-\frac{2x}{r_0}\right)>0.\]
+图\ref{c3e3s}中当两种力的变化率逐渐接近时，回复系数和频率都减小；在临界等号处，线性频率为零，必须恢复已讨论的三阶势能项，不能据此判为普通的稳定小振动。
+\end{solution}
+
+\begin{question}
+\begin{example}[圆环上的零自然长度弹簧]
+竖直光滑圆环半径 $R$，最高点 $A$ 与质量 $m$ 的小珠 $P$ 之间连接劲度系数 $k$、自然长度为零的轻弹簧。小珠仅能沿圆环运动。求平衡位置及稳定性。
+\end{example}
+\fig{c3e4q}{用圆心角描述珠的位置}{\begin{tikzpicture}[scale=1.1]
+\draw[world](0,0)circle(1.5);\coordinate(A)at(0,1.5);\coordinate(B)at(0,-1.5);\coordinate(P)at(1.299,-.75);
+\draw[guide](A)--(B);\draw[guide](0,0)--(P);\draw[world,decorate,decoration={zigzag,amplitude=2pt,segment length=5pt}](A)--(P);
+\fill(P)circle(2pt)node[right]{$P$};\node[above]at(A){$A$};\node[below]at(B){$B$};\node[left]at(0,0){$O$};
+\draw(0,-.5)arc(-90:-30:.5)node[midway,below right]{$\varphi$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由弦长与高度写出角坐标势能}\par\nobreak
+图 \ref{c3e4q} 中从向下半径起量圆心角 $\varphi$。以圆心为原点，$A=(0,R)$、$P=(R\sin\varphi,-R\cos\varphi)$，所以
+\[
+ AP^2=R^2\sin^2\varphi+R^2(1+\cos\varphi)^2
+ =2R^2(1+\cos\varphi).
+\]
+最低点高度为 $-R$，珠高于 $B$ 的高度为 $-R\cos\varphi-(-R)=R(1-\cos\varphi)$。因弹簧自然长度为零，其伸长量就是 $AP$，于是
+\[
+ U=kR^2(1+\cos\varphi)+mgR(1-\cos\varphi)
+ =\text{常数}+R(kR-mg)\cos\varphi.
+\]
+对角坐标求导有
+$U'=-R(kR-mg)\sin\varphi$。
+当 $kR\ne mg$，平衡要求 $\sin\varphi=0$，在完整圆周上只对应最低点 $B$ 与最高点 $A$（角度相差 $2\pi$ 表示同一位置）。
+\fig{c3e4s}{参数变化使势能最低位置交换}{\begin{tikzpicture}[x=.85cm,y=.65cm]
+\draw[axis](0,0)--(4,0)node[right]{$\varphi$};\draw[axis](0,0)--(0,3.5)node[above]{$U$};
+\draw[blue,domain=0:3.1416,samples=50]plot(\x,{1.8-cos(\x r)});
+\draw[red,domain=0:3.1416,samples=50]plot(\x,{1.8+cos(\x r)});
+\node[below]at(0,0){$B$};\node[below]at(3.1416,0){$A$};
+\node[right,blue]at(3.2,2.8){$kR<mg$};\node[right,red]at(3.2,.8){$kR>mg$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检查上下端点及临界参数}\par\nobreak
+二阶导数为 $U''=-R(kR-mg)\cos\varphi$。在 $B$，$\cos0=1$，故 $U''_B=R(mg-kR)$；在 $A$，$\cos\pi=-1$，故 $U''_A=R(kR-mg)$。图 \ref{c3e4s} 因而显示：$kR<mg$ 时 $B$ 稳定、$A$ 不稳定；$kR>mg$ 时正好相反。$kR=mg$ 时角度项系数严格为零，势能完全不变，全部位置均为该约束下的随遇平衡。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在各稳定点附近求振动频率}\par\nobreak
+% thirty-c3-ring
+稳定点附近的频率也可由同一势能直接求出。用题设圆心角 $\varphi$，小珠动能为 $T=mR^2\dot\varphi^2/2$。在稳定的最低点 $B$附近令 $\varphi=\eta$，有
+\[mR^2\ddot\eta+R(mg-kR)\eta=0,\qquad
+\omega_B^2=\frac gR-\frac km\quad(kR<mg).\]
+在稳定的最高点 $A$附近令 $\varphi=\pi+\eta$，同理
+\[\omega_A^2=\frac km-\frac gR\quad(kR>mg).\]
+图\ref{c3e4s}中哪一个点是势阱，便在哪一点使用正的频率平方。临界时 $kR=mg$使整个势能严格为常数，而不只是二阶项消失；此时若给予切向初速，小珠会沿环匀速运动，不会自行返回某个唯一平衡点。这与存在四次势阱但线性频率为零的情形不同。
+\end{solution}
+
+\begin{question}
+\begin{example}[相对论动能的低速极限]
+静质量为 $m_0$ 的粒子总能量为 $E=m_0c^2/\sqrt{1-v^2/c^2}$。求动能的前两项非零展开，并估计经典动能的相对误差首项。
+\end{example}
+\fig{c3e5q}{小参数来自速度与光速之比}{\begin{tikzpicture}
+\draw[axis](0,0)--(6,0)node[right]{$v/c$};\draw[fill=blue!12](0,-.12)rectangle(1.2,.12);
+\node[below]at(0,-.15){$0$};\node[below]at(5.3,-.15){$1$};\node[above]at(1.1,.35){低速区};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以速度比的平方作为展开参数}\par\nobreak
+图 \ref{c3e5q} 的低速区满足 $\beta=v/c\ll1$，真正进入根式的展开量是 $\beta^2$。用
+$(1-z)^{-1/2}=1+\tfrac12z+\tfrac38z^2+O(z^3)$，
+\[
+ K=E-m_0c^2
+ =\boxed{\frac12m_0v^2+\frac38m_0\frac{v^4}{c^2}
+ +O(m_0v^6/c^4)}.
+\]
+\fig{c3e5s}{经典动能与四阶近似从下方逐步接近精确动能}{\begin{tikzpicture}
+\begin{scope}[x=6cm,y=4cm]\draw[axis](0,0)--(.94,0)node[right]{$\beta=v/c$};\draw[axis](0,0)--(0,.77)node[above]{$K/(m_0c^2)$};\draw[world,domain=0:.8,samples=70]plot(\x,{1/sqrt(1-(\x)^2)-1});\draw[blue,thick,domain=0:.8,samples=70]plot(\x,{.5*(\x)^2+.375*(\x)^4});\draw[red,dashed,domain=0:.8,samples=70]plot(\x,{.5*(\x)^2});\draw[guide](.8,0)--(.8,.666667);\node[below]at(.8,0){$0.8$};\node[right]at(.8,.666667){精确值};\node[blue,right]at(.8,.4736){四阶};\node[red,right]at(.8,.32){二阶};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开到不相消阶并解释修正量}\par\nobreak
+二项式的参数是 $\alpha=-1/2$，代入量为 $-\beta^2$。一次系数为 $(-1/2)(-\beta^2)=\beta^2/2$，二次系数为 $[(-1/2)(-3/2)/2]\beta^4=3\beta^4/8$。乘以 $m_0c^2$ 后，第一项为 $m_0c^2\beta^2/2=m_0v^2/2$，第二项为 $3m_0c^2\beta^4/8=3m_0v^4/(8c^2)$。
+
+图 \ref{c3e5s}将减去静能后的精确动能、二阶近似和四阶近似画在同一坐标系。小 $\beta$ 时三线靠近，速度增大后经典二阶式逐渐低于精确曲线。减去静能时常数项相消，若只保留 $E\simeq m_0c^2$，就无法得到动能。将修正项 $3m_0v^4/(8c^2)$ 除以经典动能 $m_0v^2/2$，得到比值
+$\tfrac34\beta^2+O(\beta^4)$，说明经典式低估动能，且误差按速度比的平方减小。这里始终使用不随速度变化的静质量 $m_0$。
+\end{solution}
+
+\begin{question}
+\begin{example}[电偶极子的远场]
+$-q$ 与 $+q$ 分别位于 $z=-d/2$ 与 $z=d/2$。观察点 $P$ 的球坐标为 $(r,\theta)$，$\theta$ 从 $+z$ 轴起量，$r\gg d$。求远场电势、电场，并给出轴向和赤道方向的结果。
+\end{example}
+\fig{c3e6q}{两电荷距离相差一个一阶小量}{\begin{tikzpicture}
+\draw[axis](0,-1.6)--(0,2.3)node[above]{$z$};\fill(0,.6)circle(2pt)node[left]{$+q$};\fill(0,-.6)circle(2pt)node[left]{$-q$};
+\coordinate(P)at(3,1.5);\fill(P)circle(2pt)node[right]{$P$};\draw[world](0,0)--(P)node[midway,below]{$r$};
+\draw[guide](0,.6)--(P);\draw[guide](0,-.6)--(P);\draw(0,.5)arc(90:26.565:.5)node[midway,above right]{$\theta$};
+\draw[dim](-.7,-.6)--(-.7,.6)node[midway,left]{$d$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别展开两个电荷到场点的距离}\par\nobreak
+取 $\mathcal K=1/(4\pi\varepsilon_0)$，偶极矩大小 $p=qd$。图 \ref{c3e6q} 中两距离满足
+$r_\pm^2=r^2+d^2/4\mp rd\cos\theta$。以 $d/r$ 展开，
+\[
+ \frac1{r_\pm}
+ =\frac1r\left(1\pm\frac{d\cos\theta}{2r}
+ +O(d^2/r^2)\right).
+\]
+这里先将距离平方中的 $r^2$ 提出，再对
+$(1+\varepsilon_\pm)^{-1/2}$ 展开，其中
+$\varepsilon_\pm=d^2/(4r^2)\mp(d/r)\cos\theta$。
+一阶项是 $-\varepsilon_\pm/2$，其中关于 $d$ 的一次项分别为 $\pm d\cos\theta/(2r)$，所以得到上面的倒数。相减时 $1/r$ 抵消，两项一次项相加为 $d\cos\theta/r^2$。由交换两电荷等价于 $d\to-d$，电势差为奇函数，全部偶次项也抵消，下一项从三次开始，故
+\[
+ V=\mathcal Kq(1/r_+-1/r_-)
+ =\frac{\mathcal Kp\cos\theta}{r^2}
+ +O(\mathcal Kqd^3/r^4).
+\]
+\fig{c3e6s}{分别固定角度与半径，用线段和圆弧计算电势变化}{\begin{tikzpicture}
+\draw[axis](0,-.4)--(0,3.5)node[above]{$z$};\coordinate(P)at(30:2.8);\coordinate(R)at(30:3.8);\coordinate(T)at(5:2.8);
+\draw[guide](0,0)--(R);\draw[guide](0,0)--(T);\node[below left]at(0,0){$O$};
+\draw[world](0,0)--(P)node[midway,above left]{$r$};
+\draw[flow,blue](P)--(R)node[midway,above]{$\dd r$};\draw[flow,red](P)arc(30:5:2.8)node[midway,right,xshift=8pt]{$r\dd\theta$};
+\draw(0,.7)arc(90:30:.7);\node at(60:1){$\theta$};\draw[flow](30:1.3)arc(30:5:1.3);\node at(17.5:1.8){$\dd\theta$};
+\fill(P)circle(1.5pt)node[above left]{$P$};\fill(R)circle(1.5pt)node[right]{$P_r$};\fill(T)circle(1.5pt)node[below right]{$P_\theta$};
+\node at(2,-.65){$P\to P_r:\ \theta$ 不变；$P\to P_\theta:\ r$ 不变};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两个方向的位移读取电势梯度}\par\nobreak
+按图 \ref{c3e6s}，$P\to P_r$ 的径向小位移为 $\dd r\,\bm e_r$，$P\to P_\theta$ 的增角小位移为 $r\dd\theta\,\bm e_\theta$。对 $r$ 求偏导时固定 $\theta$，对 $\theta$ 求偏导时固定 $r$，分别对应图中的线段和圆弧。
+
+电势微分满足
+$\dd V=-E_r\dd r-E_\theta r\dd\theta$，
+与 $\dd V=(\partial V/\partial r)\dd r+(\partial V/\partial\theta)\dd\theta$ 比较系数，得到
+\[
+ E_r=-\frac{\partial V}{\partial r}
+ \simeq\frac{2\mathcal Kp\cos\theta}{r^3},\qquad
+ E_\theta=-\frac1r\frac{\partial V}{\partial\theta}
+ \simeq\frac{\mathcal Kp\sin\theta}{r^3}.
+\]
+计算中使用
+$\partial(r^{-2}\cos\theta)/\partial r=-2r^{-3}\cos\theta$、
+$\partial(r^{-2}\cos\theta)/\partial\theta=-r^{-2}\sin\theta$。
+横向的 $1/r$ 来自图中实际弧长 $r\dd\theta$，不能遗漏。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查轴向与赤道面的场方向}\par\nobreak
+轴正向 $\theta=0$ 时 $E_\theta=0$，$E_r=2\mathcal Kp/r^3$，径向正是 $+z$；赤道面 $\theta=\pi/2$ 时 $E_r=0$，$E_\theta=\mathcal Kp/r^3$，增角方向则为 $-z$。对试探电荷 $Q$，受力为 $Q\bm E$；$Q<0$ 时方向反转。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成为矢量并投影到固定坐标轴}\par\nobreak
+把已求的两个场分量合成为矢量，可以避免在轴线与赤道面之间更换符号。图\ref{c3e6resolve}取偶极轴为 $+z$，有
+$\bm e_z=\cos\theta\bm e_r-\sin\theta\bm e_\theta$。于是
+\[\bm E=\frac{\mathcal K}{r^3}
+ [3(\bm p\cdot\bm e_r)\bm e_r-\bm p].\]
+\fig{c3e6resolve}{径向与角向分量的正方向}{\begin{tikzpicture}
+\draw[axis](0,-.5)--(0,3.3)node[above]{$z$};
+\coordinate(P)at(2.2,1.65);\draw[guide](0,0)--(P);
+\draw[flow,blue](P)--++(.96,.72)node[right]{$\bm e_r$};
+\draw[flow,red](P)--++(.72,-.96)node[right]{$\bm e_\theta$};
+\fill(P)circle(1.3pt)node[above left]{$P$};\node[below left]at(0,0){$O$};
+\draw(0,.7)arc(90:36.87:.7)node[midway,above right]{$\theta$};
+\end{tikzpicture}}
+再取图示子午面内垂直偶极轴的方向为 $x$，则
+$\bm e_r=(\sin\theta,\cos\theta)$、
+$\bm e_\theta=(\cos\theta,-\sin\theta)$。将两个分量投影，得到
+\[E_x=\frac{3\mathcal Kp}{r^3}\sin\theta\cos\theta,\qquad
+E_z=\frac{\mathcal Kp}{r^3}(3\cos^2\theta-1).\]
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用正交分量比较同一球面上的场强}\par\nobreak
+在 $\cos^2\theta=1/3$处，$E_z$虽为零，$E_x$却不为零；某一分量的抵消不能误判为总场消失。利用径向与角向正交，还得
+\[|\bm E|=\sqrt{E_r^2+E_\theta^2}
+ =\frac{\mathcal Kp}{r^3}\sqrt{1+3\cos^2\theta}.\]
+因此同一远场球面上的场强大小从赤道的 $\mathcal Kp/r^3$连续变到轴线的 $2\mathcal Kp/r^3$。这些结果均限于 $r$远大于电荷间距，不能把偶极近似延伸到两个电荷附近。
+\end{solution}
+
+\begin{question}
+\begin{example}[指数密度液体中的浮杆]
+液面以下深度为 $z$ 处的密度为 $\rho(z)=\rho_0\e^{z/\ell}$。竖直刚性杆长 $\ell$、截面积 $S$、密度 $3\rho_0/2$。液体静止，杆保持竖直。求平衡时杆顶相对液面的高度。
+\end{example}
+\fig{c3e7q}{深度坐标从自由液面向下}{\begin{tikzpicture}
+\fill[blue!7](-2,-2.5)rectangle(2,0);\draw[world](-2,0)--(2,0)node[right]{液面};
+\draw[axis](-1.5,.5)--(-1.5,-2.8)node[below]{$z$};
+\draw[fill=gray!15](-.3,.3)rectangle(.3,-2.1);\draw[dim](.8,.3)--(.8,-2.1)node[midway,right]{$\ell$};
+\node[left]at(-1.5,0){$0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先假设部分浸没，按深度积分压强}\par\nobreak
+先假定图 \ref{c3e7q} 所示的部分浸没状态，令杆底深度为 $b$。静水压梯度为 $\dd p/\dd z=\rho(z)g$，顶面在空气中，故净浮力等于
+\[
+ F_B=S[p(b)-p(0)]
+ =\rho_0gS\int_0^b\e^{z/\ell}\dd z
+ =\rho_0gS\ell(\e^{b/\ell}-1).
+\]
+积分的原函数是 $\ell\e^{z/\ell}$，在 $0,b$ 处的差为 $\ell(\e^{b/\ell}-1)$。令浮力等于杆重 $3\rho_0gS\ell/2$，约去正的共同因子 $\rho_0gS\ell$，得到 $\e^{b/\ell}-1=3/2$，所以 $\e^{b/\ell}=5/2$，取对数得
+\[
+ b=\ell\ln(5/2)\simeq0.91629\ell<\ell.
+\]
+\fig{c3e7s}{平衡后顶端露出液面，底端位于深度 $b$}{\begin{tikzpicture}
+\draw[world](-1.7,0)--(1.8,0);\draw[fill=gray!15](-.3,.22)rectangle(.3,-2.42);
+\draw[dim](.8,0)--(.8,-2.42)node[midway,right]{$b=\ell\ln(5/2)$};
+\draw[force,blue](0,-1.1)--(0,-.2)node[left]{$F_B$};\draw[force,red](0,-1.1)--(0,-2)node[left]{$mg$};
+\node[above]at(0,.35){露出 $\ell-b$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核验浸没状态并排除不成立的支路}\par\nobreak
+图 \ref{c3e7s} 中假设得到验证，顶端露出高度为
+\[
+ \boxed{h_{\rm top}=\ell[1-\ln(5/2)]\simeq0.08371\ell}.
+\]
+若强行假定完全浸没，杆顶深度为 $z_0\ge0$，杆底深度为 $z_0+\ell$，浮力积分应改为
+$\rho_0gS\ell[\e^{(z_0+\ell)/\ell}-\e^{z_0/\ell}]$。
+
+与重量相等、提出 $\e^{z_0/\ell}$ 后，应满足
+$\e^{z_0/\ell}=\tfrac{3}{2(\e-1)}<1$，反而要求 $z_0<0$，不自洽。对实际部分浸没状态，
+$\dd F_B/\dd b=\rho_0gS\e^{b/\ell}>0$。
+下沉小量 $\delta b>0$ 时重量不变、浮力增加，向下的合力变化为 $-\rho_0gS\e^{b/\ell}\delta b<0$，故竖直平移方向稳定。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在部分浸没区间构造有效势能}\par\nobreak
+% thirty-c3-floatstable
+还可将上述回复力写成势能，检查局部判稳与有限位移是否一致。令平衡底深为 $b_0=\ell\ln(5/2)$，杆整体向下位移 $\eta$，则底深为 $b_0+\eta$。在仍部分浸没的区间 $-b_0<\eta<\ell-b_0$，净向下力为
+\begin{align*}
+Q(\eta)&=mg-F_B(b_0+\eta)\\
+ &=\rho_0gS\ell\left[\frac32-\left(\frac52\e^{\eta/\ell}-1\right)\right]
+ =\frac52\rho_0gS\ell(1-\e^{\eta/\ell}).
+\end{align*}
+将浮力和重力合并为位置势能，$\dd U/\dd\eta=-Q$。用 $\xi$ 作积分变量，从平衡位置到 $\eta$ 积分，先写
+\[
+ U(\eta)-U(0)=\frac52\rho_0gS\ell
+ \int_0^\eta(\e^{\xi/\ell}-1)\dd\xi
+ =\frac52\rho_0gS\ell[\ell\e^{\xi/\ell}-\xi]_0^\eta.
+\]
+指数项可令 $u=\xi/\ell$、$\dd\xi=\ell\dd u$，其原函数才是 $\ell\e^{\xi/\ell}$。代入上下限，得到
+\[U(\eta)-U(0)=\frac52\rho_0gS\ell
+ \left[\ell(\e^{\eta/\ell}-1)-\eta\right].\]
+指数函数满足 $\e^\xi\ge1+\xi$，因此方括号非负，且仅在 $\eta=0$为零。
+
+图\ref{c3e7potential}显示平衡位置确为势能低点，而不仅是合力为零的点。
+\fig{c3e7potential}{部分浸没范围内的有效势能具有严格极小值}{\begin{tikzpicture}
+\draw[axis](-2,0)--(2.2,0)node[right]{$\xi=\eta/\ell$};
+\draw[axis](0,-.25)--(0,2.3)node[above]{$\Delta U/U_*$};
+\draw[world,blue]plot[domain=-.08:.08,samples=70]({20*\x},{500*(\x*\x/2+\x*\x*\x/6+\x*\x*\x*\x/24+\x*\x*\x*\x*\x/120+\x*\x*\x*\x*\x*\x/720)});
+\node[below]at(-1.6,0){$-.08$};\node[below]at(1.6,0){$.08$};
+\node[above left]at(0,0){$0$};
+\node at(0,-.9){按六阶展开放大显示，$U_*=\frac52\rho_0gS\ell^2$};
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对势能展开与回复刚度}\par\nobreak
+继续展开 $\e^{\eta/\ell}=1+\eta/\ell+\eta^2/(2\ell^2)+O(\eta^3/\ell^3)$，线性项抵消，故
+\[U(\eta)-U(0)=\frac54\rho_0gS\eta^2
+ +O\!\left(\rho_0gS\frac{|\eta|^3}{\ell}\right).\]
+二次项系数为正，给出回复刚度 $5\rho_0gS/2$，与前面的浮力导数相同。这里检验竖直平移的静态稳定性；计算实际振动频率时，还需明确液体运动和阻尼的处理条件。
+
+\end{solution}
+
+\begin{question}
+\begin{example}[抛物线与椭圆的曲率]
+求抛物线 $y=ax^2$ 在顶点的曲率半径，以及椭圆 $x^2/A^2+y^2/B^2=1$ 在两类轴端点的曲率半径，$a,A,B>0$。
+\end{example}
+\fig{c3e8q}{椭圆两类端点的弯曲程度不同}{\begin{tikzpicture}
+\draw[world](0,0)ellipse(2.2 and 1.2);\draw[axis](-2.6,0)--(2.7,0)node[right]{$x$};\draw[axis](0,-1.5)--(0,1.8)node[above]{$y$};
+\fill(2.2,0)circle(2pt);\node[right]at(2.6,-.65){$P(A,0)$};\fill(0,1.2)circle(2pt)node[above right]{$Q(0,B)$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别选取函数式与椭圆参数式}\par\nobreak
+抛物线顶点处 $y'=0,y''=2a$，所以 $\rho=1/(2a)$。其中 $a$ 的量纲为逆长度，所得半径量纲正确。
+
+对图 \ref{c3e8q} 的椭圆，取正则参数 $x=A\cos\theta,y=B\sin\theta$。有
+\[
+ x'=-A\sin\theta,\quad y'=B\cos\theta,\quad
+ x''=-A\cos\theta,\quad y''=-B\sin\theta,
+\]
+撇号在这里表示对参数 $\theta$ 求导。代入行列式，
+$x'y''-y'x''=AB\sin^2\theta+AB\cos^2\theta=AB$。
+同时 $x'^2+y'^2=A^2\sin^2\theta+B^2\cos^2\theta$，两部分都代入曲率公式。
+\fig{c3e8s}{密切圆半径沿内法线}{\begin{tikzpicture}
+\draw[world](0,0)ellipse(2.2 and 1.2);\draw[force,blue](2.2,0)--(1.5455,0)node[midway,above]{$\rho_P$};
+\draw[force,red](0,1.2)--(0,-2.8333)node[midway,left]{$\rho_Q$};
+\draw[guide](2.2,-.7)--(2.2,.7);\draw[guide](-.8,1.2)--(.8,1.2);
+\end{tikzpicture}}
+
+\[
+ \rho(\theta)=
+ \frac{(A^2\sin^2\theta+B^2\cos^2\theta)^{3/2}}{AB}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在轴端点代入并比较弯曲程度}\par\nobreak
+在 $P$ 处 $\theta=0$，分子为 $(B^2)^{3/2}=B^3$，除以 $AB$ 得 $B^2/A$；在 $Q$ 处 $\theta=\pi/2$，分子变为 $A^3$，除以 $AB$ 得 $A^2/B$。因此
+$\boxed{\rho_P=B^2/A,\quad \rho_Q=A^2/B}$。
+图 \ref{c3e8s} 的箭头表示内法线方向；当 $A>B$ 时长轴端更尖，半径更小。$A=B=R$ 时两式同时恢复圆的半径 $R$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿内法线确定一般位置的曲率中心}\par\nobreak
+% thirty-c3-ellipse
+已知半径后，还应能在图上确定曲率中心。记
+$D=A^2\sin^2\theta+B^2\cos^2\theta$。沿参数增加方向的单位切向为
+$\bm e_t=(-A\sin\theta,B\cos\theta)/\sqrt D$；将其逆时针转 $90^\circ$，得到指向椭圆内部的单位法向
+\[\bm e_n=\frac{(-B\cos\theta,-A\sin\theta)}{\sqrt D}.\]
+所以曲率中心 $C$的坐标应由 $\bm r_C=\bm r_P+\rho\bm e_n$确定，而不是任意沿半径 $OP$取点。代入已求的 $\rho=D^{3/2}/(AB)$，分别整理两个分量：
+\begin{align*}
+x_C&=A\cos\theta-\frac D A\cos\theta
+ =\frac{A^2-B^2}{A}\cos^3\theta,\\
+y_C&=B\sin\theta-\frac D B\sin\theta
+ =\frac{B^2-A^2}{B}\sin^3\theta.
+\end{align*}
+\fig{c3e8center}{一般位置的曲率中心位于内法线上}{\begin{tikzpicture}
+\draw[world](0,0)ellipse(2.2 and 1.2);
+\draw[axis](-2.6,0)--(2.7,0)node[right]{$x$};
+\draw[axis](0,-1.65)--(0,1.8)node[above]{$y$};
+\coordinate(P)at(1.55563,.84853);\coordinate(C)at(.54640,-1.00173);
+\path (P);\draw[flow,blue](P)--(C)node[midway,right,xshift=10pt,yshift=-8pt]{$\rho\bm e_n$};
+\draw[flow,red](P)--++(-.9,.49)node[above]{$\bm e_t$};
+\fill(P)circle(1.5pt)node[above right]{$P$};\fill(C)circle(1.5pt)node[below]{$C$};
+\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+图\ref{c3e8center}中的 $PC$与切向垂直，长度为 $\rho$；一般位置的法线并不经过 $O$。在长轴端 $P=(A,0)$，曲率中心为 $((A^2-B^2)/A,0)$，两点之差的长度正是 $B^2/A$。在短轴端，曲率中心可能落在椭圆之外；这不影响它作为局部密切圆圆心的意义。
+
+若令 $A=B=R$，则所有曲率中心均化为 $O$、所有半径均化为 $R$，同时检验了位置和大小。求几何曲率时可以自由选取正则参数；真实速度大小仍由时间规律决定，不能由这个参数化直接认定物体做匀速运动。
+\end{solution}
+
+\begin{question}
+\begin{example}[移动切线的切点]
+固定圆半径 $R$、圆心 $O$。点 $A=(x,0)$ 位于圆外，$x>R$，以速度 $\dot x=u>0$ 向右运动。从 $A$ 作上侧切线，切点为 $P$。求 $P$ 的坐标、速度大小以及切线段 $AP$ 长度的变化率。
+\end{example}
+\fig{c3e9q}{半径与切线垂直}{\begin{tikzpicture}[scale=1.15]
+\draw[world](0,0)circle(1.2);\coordinate(A)at(3.2,0);\coordinate(P)at(.45,1.1124);
+\draw[axis](-1.5,0)--(4,0)node[right]{$x$};\draw[world](0,0)--(P)--(A);
+\fill(P)circle(2pt)node[above]{$P$};\fill(A)circle(2pt)node[below]{$A$};\node[below]at(0,0){$O$};
+\draw[flow](3.2,.65)--(4,.65)node[above]{$u$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{联立切线垂直条件和圆方程}\par\nobreak
+图 \ref{c3e9q} 中设 $P=(X,Y)$。半径与切线垂直，所以
+$\overrightarrow{OP}\cdot\overrightarrow{AP}=X(X-x)+Y^2=0$。
+又因 $X^2+Y^2=R^2$，有 $R^2-xX=0$，从而 $X=R^2/x$。代回圆方程，并由上侧切点的 $Y>0$ 取正根，
+\[
+ X=\frac{R^2}{x},\qquad Y=\frac{R\sqrt{x^2-R^2}}x.
+\]
+求导时 $\dot x=u$，而 $X,Y$ 都通过 $x(t)$ 随时间变化。对 $Y=R\sqrt{x^2-R^2}/x$ 用商法则，先得
+\[
+ \frac{\dd Y}{\dd x}
+ =\frac R{x^2}\left(\frac{x^2}{\sqrt{x^2-R^2}}
+ -\sqrt{x^2-R^2}\right)
+ =\frac{R^3}{x^2\sqrt{x^2-R^2}}.
+\]
+再乘以 $\dot x=u$，得到
+\[
+ \dot X=-\frac{R^2u}{x^2},\qquad
+ \dot Y=\frac{R^3u}{x^2\sqrt{x^2-R^2}}.
+\]
+\fig{c3e9s}{切点沿圆运动，而非沿切线滑向外点}{\begin{tikzpicture}[scale=1.15]
+\draw[world](0,0)circle(1.2);\coordinate(P)at(.45,1.1124);\draw[guide](0,0)--(P);
+\draw[force,blue](P)--++(-.9,.364)node[above]{$\bm v_P$};\draw[guide](P)--(3.2,0);\node[right]at(3.2,0){$A$};\node[below]at(0,0){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成分量速度并检查运动方向}\par\nobreak
+图 \ref{c3e9s} 的两个分量一负一正，切点向左上方移动。计算速率平方时先提出公因子：
+\[
+ v_P^2=\frac{R^4u^2}{x^4}
+ \left(1+\frac{R^2}{x^2-R^2}\right)
+ =\frac{R^4u^2}{x^2(x^2-R^2)}.
+\]
+用 $x>R,u>0$ 取正根，
+\[
+ \boxed{v_P=\frac{R^2u}{x\sqrt{x^2-R^2}}}.
+\]
+由直角三角形 $AP=\sqrt{x^2-R^2}$，
+$\dd(AP)/\dd t=xu/\sqrt{x^2-R^2}$。
+这是切线段的伸长率，与切点速率不同。$x\to R^+$ 时二者发散，提醒我们外点接近圆周时，切点几何对应关系对位置变化异常敏感。
+\end{solution}

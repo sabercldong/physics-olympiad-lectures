@@ -1,0 +1,57 @@
+\begin{drillsolution}{em6:drill:1}\textbf{从接线节点和同频相量分别求线量与相量的关系}\par\nobreak
+图\ref{fig:em6:drill:1:s}左图每条线路电流就是对应负载电流；右图节点$a$则给出$\underline I_a=\underline I_{ab}-\underline I_{ca}$。负载参数为
+\[
+ |Z|=\sqrt{8^2+6^2}=10\,\Omega,\qquad \cos\phi=\frac8{10}=0.8.
+\]
+\fig{fig:em6:drill:1:p}{星形的电压差与三角形的电流差；两图均将两个相差$120^\circ$的等长相量相减}{
+\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[flow](0,0)--(2.3,0)node[right]{$\underline U_a$};
+\draw[flow](0,0)--(-1.15,-1.99)node[below]{$\underline U_b$};
+\draw[force,blue](-1.15,-1.99)--(2.3,0)node[midway,below right]{$\underline U_{ab}$};
+\node at(0,-2.7){$U_\ell=\sqrt3U_\phi$};
+\end{scope}
+\begin{scope}[xshift=6.2cm]
+\draw[flow](0,0)--(2.3,0)node[right]{$\underline I_{ab}$};
+\draw[flow](0,0)--(-1.15,1.99)node[above]{$\underline I_{ca}$};
+\draw[force,blue](-1.15,1.99)--(2.3,0)node[midway,above right]{$\underline I_a$};
+\node at(0,-2.7){$I_\ell=\sqrt3I_\phi$};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:em6:drill:1:p}中作差箭头均从被减相量的端点指向另一端点。由余弦定理，差的模为
+\[
+ \sqrt{A^2+A^2-2A^2\cos120^\circ}=\sqrt3A.
+\]
+左图应用于星形线电压，右图应用于三角形线电流；两幅相量图可各自整体旋转，不改变模的关系。
+
+\par\medskip\Needspace{3\baselineskip}\noindent
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{星形连接用线电压求相电压、相电流与总功率}\par\nobreak
+按题设图左侧连接，
+\[
+ U_\phi=\frac{380}{\sqrt3}\,\mathrm V,\qquad
+ I_\phi=I_\ell=\frac{38}{\sqrt3}\,\mathrm A
+              \simeq21.94\,\mathrm A.
+\]
+三条相电流等大且依次相差$120^\circ$，故中性线电流为零。总有功功率为
+\[
+ P_Y=3U_\phi I_\phi\cos\phi=11552\,\mathrm W.
+\]
+
+\par\medskip\Needspace{3\baselineskip}\noindent
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{三角形连接先求支路电流，再作节点电流差}\par\nobreak
+题设图右侧每个$Z$直接跨接两条线路，
+\[
+ U_\phi=380\,\mathrm V,\quad I_\phi=38\,\mathrm A,\quad
+ I_\ell=\sqrt3I_\phi=38\sqrt3\,\mathrm A\simeq65.82\,\mathrm A,
+\]
+\[
+ P_\Delta=3U_\phi I_\phi\cos\phi=34656\,\mathrm W=3P_Y.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在相同负载和线电压条件下检查三倍功率关系}\par\nobreak
+两种连接保持相同线电压、相同每相阻抗，因而三角形的相电压、相电流各增至星形的$\sqrt3$倍，总功率增至三倍；若改变比较条件，应重新由接线求相量。
+\end{drillsolution}

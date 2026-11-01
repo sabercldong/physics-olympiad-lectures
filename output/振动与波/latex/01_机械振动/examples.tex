@@ -1,0 +1,198 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[竖直弹簧上的小球]\label{w1:example:1}
+质量$m$的小球由劲度系数$k$的竖直轻弹簧托着，上下振动。求周期，并求始终不脱离弹簧的振幅条件。
+\end{example}
+\fig{fig:w1:example:1:s}{题设：竖直弹簧上的小球}{\begin{tikzpicture}[scale=.88]\draw[world](.7,0)--(3.3,0);\draw[spring](2,0)--(2,1.7);\fill(2,1.7)circle(4pt)node[left]{$m$};\draw[guide](.7,1.7)--(2.8,1.7)node[left,pos=0]{$O$};\draw[axis](3.3,2.3)--(3.3,.4)node[below]{$x$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由静压缩量消去重力常量项}\par\nobreak
+以图\ref{fig:w1:example:1:s}中小球的静止位置$O$为原点，向下取$x$正方向。先求静压缩量：静止时$k\delta_0=mg$，故$\delta_0=mg/k$。小球下移$x$后压缩量是$\delta_0+x$，弹簧向上的支持力为$N=k(\delta_0+x)$。对小球列牛顿第二定律，
+\[
+m\ddot x=mg-N=mg-k\delta_0-kx=-kx.
+\]
+方程可写成$\ddot x+(k/m)x=0$，与简谐方程比较得到$\omega=\sqrt{k/m}$，因此$T=2\pi\sqrt{m/k}$。这一步成立的前提是球和弹簧保持接触。
+\fig{fig:w1:example:1:p}{解答过程：竖直弹簧上的小球}{\begin{tikzpicture}[scale=.88]\draw[world](.7,0)--(3.3,0);\draw[spring](2,0)--(2,2.3);\fill(2,2.3)circle(4pt)node[left]{$m$};\draw[guide](.7,1.7)--(2.8,1.7)node[left,pos=0]{$O$};\draw[dim](3,1.7)--(3,2.3)node[midway,right]{$A$};\draw[force](2,2.3)--(2,3.3)node[right]{$N$};\draw[force](2,2.3)--(2,1.2)node[right]{$mg$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在最高点检查最小支持力和临界接触}\par\nobreak
+图\ref{fig:w1:example:1:p}画出最高点的受力，此时$x=-A$。由于$N$随$x$单调增加，全程的最小支持力在最高点，
+\[
+N_{\min}=k(\delta_0-A)=mg-kA.
+\]
+弹簧只能向上推球，故要求$N_{\min}\ge0$，解得$A\le mg/k$。等号表示最高点瞬时恰无支持力，随后球向下运动仍可恢复接触；若$A>mg/k$，在到达形式上的最高点之前就已脱离，必须将自由飞行另列为一段。周期不含$g$，但允许振幅含$g$，分别对应运动方程与单向接触约束。\end{solution}
+\begin{question}\begin{example}[浮块的竖直小振动]\label{w1:example:2}
+密度$\rho_b<\rho$、高$H$、水平截面积$S$的均匀直柱浮在密度$\rho$的液体中。忽略液体随动惯性、液面变化及阻力，浮力始终按瞬时静水浸深计算。稍向下压后释放，求周期和保持部分浸没的振幅范围。
+\end{example}
+\fig{fig:w1:example:2:s}{题设：浮块的竖直小振动}{\begin{tikzpicture}[scale=.88]\draw[world](0,2)--(0,-.7)--(4,-.7)--(4,2);\fill[blue!8](0,-.6)rectangle(4,.8);\draw[guide](0,.8)--(4,.8);\draw[world](1.5,0)rectangle(2.5,1.4);\node at(2,1.1){$S$};\draw[axis](4.5,1.5)--(4.5,-.5)node[below]{$x$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由静浮力确定平衡浸深}\par\nobreak
+在图\ref{fig:w1:example:2:s}中取静止浸深为$d_0$。浮块质量$m=\rho_b SH$，静止时$\rho gSd_0=mg$，所以$d_0=\rho_b H/\rho$。令相对平衡位置向下位移为$x$，此时浸深变为$d_0+x$，向上的浮力为$B=\rho gS(d_0+x)$。
+\fig{fig:w1:example:2:p}{液面近似固定时，三个位置的浸深分别为$d_0-A$、$d_0$、$d_0+A$}{\begin{tikzpicture}
+
+\foreach \xx/\bot/\lab in {0/.5/上端点,3.4/0/平衡位置,6.8/-.5/下端点}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,2.2)--(0,-.7)--(2,-.7)--(2,2.2);\fill[blue!8](0,-.7)rectangle(2,.8);\draw[blue](0,.8)--(2,.8);\draw[world](.6,\bot)rectangle(1.4,\bot+1.4);\node at(1,2.7){\lab};\end{scope}}
+\node at(1,-1.2){$d_0-A>0$};\node at(4.4,-1.2){$\rho gSd_0=mg$};\node at(7.8,-1.2){$d_0+A<H$};
+\draw[force](4.4,.45)--(4.4,1.7)node[right]{$B$};\draw[force](4.4,.45)--(4.4,-.55)node[right]{$mg$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由浸深增量得到线性回复力和周期}\par\nobreak
+沿图\ref{fig:w1:example:2:p}的向下方向列方程，
+\[
+m\ddot x=mg-B=\rho gSd_0-\rho gS(d_0+x)=-\rho gSx.
+\]
+两边除以$m=\rho_b SH$，得$\ddot x+[\rho g/(\rho_b H)]x=0$，于是
+\[
+\omega^2=\frac{\rho g}{\rho_b H},\qquad T=2\pi\sqrt{\frac{\rho_b H}{\rho g}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用露出和全浸两个边界限制振幅}\par\nobreak
+上、下端点分别有浸深$d_0-A$、$d_0+A$。要在整个周期内保持部分浸没，应同时满足$d_0-A>0$和$d_0+A<H$，故$A<\min(d_0,H-d_0)$。等号处刚好露出或全浸；再增大振幅，排液体积与位移的关系就要分段。截面积$S$同时进入惯性与浮力增量，约去后周期与$S$无关。\end{solution}
+\begin{question}\begin{example}[静止三角框中的移动物体]\label{w1:example:3}
+三根相同均匀杆组成边长$l$的正三角框，顶点$C$铰接于固定水平轴。质量$m$的小物体可通过自身驱动调节与底杆的水平相互作用，沿底杆$AB$运动且不另受外部水平力，而框架始终静止。求物体的运动规律。
+\end{example}
+\fig{fig:w1:example:3:s}{题设：静止三角框中的移动物体}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,0)--(2,3.464)--cycle;\fill(2,3.464)circle(3pt)node[above]{$C$};\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\draw[guide](2,0)--(2,3.464);\fill(2.8,0)circle(4pt)node[below]{$m$};\draw[dim](2,-.6)--(2.8,-.6)node[midway,below]{$x$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分清静止框架与运动物体的研究对象}\par\nobreak
+在图\ref{fig:w1:example:3:s}中记底边中点为$O$，物体相对$O$向右位移$x$，$CO=h=\sqrt3l/2$。框架保持静止，三根相同杆的总重力作用线通过$C$，对悬点无力矩。设框架对物体的竖直力为$N$，水平力的带符号分量为$f_x$；物体无竖直加速度，故$N=mg$。
+\fig{fig:w1:example:3:p}{先对静止框架取矩求相互作用，再对物体列平动方程}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)--(2,3.464102)--cycle;\fill(2,3.464102)circle(.05)node[above]{$C$};\fill(2.8,0)circle(.05);\draw[guide](2,0)--(2,3.464102);
+\draw[force](2.8,0)--(2.8,-1.1)node[right]{$N\text{（对框）}$};\draw[force](2.8,0)--(4,0)node[right]{$-f_x$};\draw[dim](2,-1.6)--(2.8,-1.6)node[midway,below]{$x$};\node[left]at(2,1.9){$h$};
+\begin{scope}[xshift=7cm,yshift=1cm]\fill(0,0)circle(.1)node[below right]{$m$};\draw[force](0,0)--(-1.2,0)node[left]{$f_x<0$};\draw[force](0,0)--(0,1.3)node[above]{$N$};\draw[force](0,0)--(0,-1.2)node[below]{$mg$};\node at(0,2.2){物体受力};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用框架零力矩求所需水平相互作用}\par\nobreak
+图\ref{fig:w1:example:3:p}右图对物体规定水平力$f_x$向右为正，在$x>0$时它实际向左。左图中物体对框架的反作用力为向下$N$及向右$-f_x$。以逆时针力矩为正，对框架绕$C$取矩，
+\[
+-Nx-hf_x=0,\qquad f_x=-\frac{N}{h}x=-\frac{mg}{h}x.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由平动方程确定振动规律和可实现条件}\par\nobreak
+再单独对物体沿$AB$列$m\ddot x=f_x$，得到$\ddot x+(g/h)x=0$。因此$x=A\cos(\sqrt{g/h}\,t+\varphi)$，$T=2\pi\sqrt{h/g}$。振幅须满足$A\le l/2$，使物体不越过杆端。此处先用框架转动平衡确定水平相互作用，再用物体平动方程确定运动；“框架始终静止”是题目给定的约束，这给出驱动必须实现的运动规律，普通光滑底杆不能自行提供所需水平力，恒定动摩擦也不能在全程代替这个主动作用。\end{solution}
+\begin{question}\begin{example}[弹簧和动滑轮的等效劲度]\label{w1:example:4}
+两竖直轻弹簧劲度为$k_1,k_2$，下端由跨过轻动滑轮的不可伸长轻绳连接。滑轮轴悬质量$m$的物体。求竖直振动周期。
+\end{example}
+\fig{fig:w1:example:4:s}{题设：弹簧和动滑轮的等效劲度}{\begin{tikzpicture}[scale=.88]\draw[world](0,3)--(4,3);\draw[spring](.6,3)--(.6,1.8)node[left]{$k_1$};\draw[spring](3.4,3)--(3.4,1.8)node[right]{$k_2$};\draw[world](.6,1.8)--(.6,.8)arc(180:360:1.4)--(3.4,1.8);\draw[world](2,.8)circle(1.4);\draw[world](2,.8)--(2,-1);\fill(2,-1)circle(4pt)node[right]{$m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先对两直绳段作长度变化分析}\par\nobreak
+在图\ref{fig:w1:example:4:s}中先以静平衡状态为基准。记绳张力为$T_0+\Delta T$，平衡时$2T_0=mg$。滑轮轴向下位移$x$，两弹簧下端向下位移$x_1,x_2$。两直绳段的长度增量分别为$x-x_1$、$x-x_2$，包绕弧长不变，所以
+\[
+(x-x_1)+(x-x_2)=0,\qquad x_1+x_2=2x.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由等张力求两个弹簧端点的位移分配}\par\nobreak
+轻绳和轻滑轮使两侧张力相同，胡克定律给$k_1x_1=k_2x_2=\Delta T$。代入约束，
+\[
+\Delta T\left(\frac1{k_1}+\frac1{k_2}\right)=2x,\quad
+\Delta T=\frac{2k_1k_2}{k_1+k_2}x.
+\]
+\fig{fig:w1:example:4:p}{两弹簧的端点位移相加为滑轮轴位移的两倍，恢复力则是两股张力增量之和}{\begin{tikzpicture}
+
+\draw[world](0,3.6)--(4,3.6);\draw[spring](.6,3.6)--(.6,2.4)node[left]{$k_1$};\draw[spring](3.4,3.6)--(3.4,2.1)node[right]{$k_2$};
+\draw[world](.6,2.4)--(.6,.8)arc(180:360:1.4)--(3.4,2.1);\draw[world](2,.8)circle(1.4);\draw[world](2,.8)--(2,-1.1);\fill(2,-1.1)circle(.09)node[right]{$m$};
+\draw[flow](-.1,2.8)--(-.1,2.2)node[left]{$x_1$};\draw[flow](4.1,2.8)--(4.1,1.9)node[right]{$x_2$};\draw[flow](3.7,-.4)--(3.7,-1.2)node[right]{$x$};
+\node[align=left]at(7,1.4){$x_1+x_2=2x$\\$\Delta T=k_1x_1=k_2x_2$\\$\Delta F_{\text{支持}}=2\Delta T$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从支持力增量确定有效劲度和周期}\par\nobreak
+图\ref{fig:w1:example:4:p}标出的$2\Delta T$是两股绳支持力的总增量，并非完整张力。对轴和重物沿向下方向列方程，$m\ddot x=mg-2(T_0+\Delta T)=-2\Delta T$，故
+\[
+K_{\rm eff}=\frac{4k_1k_2}{k_1+k_2},\qquad
+T_{\rm osc}=2\pi\sqrt{\frac{m(k_1+k_2)}{4k_1k_2}}.
+\]
+$k_2\to\infty$时$x_1=2x$，得到$K_{\rm eff}=4k_1$，同时核对了受力和位移中的两个倍数。\end{solution}
+\begin{question}\begin{example}[落球与弹簧的接触时间]\label{w1:example:5}
+质量$m$的小球从劲度系数$k$的理想竖直轻弹簧原长顶端上方$h>0$处静止释放，落到弹簧上后被弹回。小球不与弹簧连接。求接触时间随$h$如何变化。
+\end{example}
+\fig{fig:w1:example:5:s}{题设：落球与弹簧的接触时间}{\begin{tikzpicture}[scale=.88]\draw[world](.7,0)--(3.3,0);\draw[spring](2,0)--(2,1.7);\draw[guide](1,1.7)--(3,1.7)node[right]{原长顶端};\fill(2,3.6)circle(3pt)node[right]{$m$};\draw[dim](.8,1.7)--(.8,3.6)node[midway,left]{$h$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用自由落体初速确定接触振动的振幅}\par\nobreak
+从图\ref{fig:w1:example:5:s}释放点到原长顶端作自由落体，由$v_0^2=2gh$得接触初速度$v_0=\sqrt{2gh}$，向下。接触后以压缩量$z$为坐标，$m\ddot z=mg-kz$。令$d=mg/k$、$x=z-d$，方程变为$\ddot x+\omega^2x=0$，其中$\omega=\sqrt{k/m}$。接触瞬间$x=-d$、$\dot x=v_0$，所以
+\[
+A^2=x^2+\frac{\dot x^2}{\omega^2}=d^2+\frac{2gh}{\omega^2}.
+\]
+\fig{fig:w1:example:5:p}{解答过程：落球与弹簧的接触时间}{\begin{tikzpicture}[scale=.88]\draw[world](2,0)circle(1.4);\draw[axis](.2,0)--(4,0)node[right]{$x$};\draw[guide](1.2,-1.5)--(1.2,1.5)node[above]{$-d$};\fill(1.2,-1.149)circle(2pt)node[below left]{$S$};\fill(1.2,1.149)circle(2pt)node[above left]{$E$};\draw[flow](1.2,-1.149)arc(235.15:484.85:1.4);\node at(2,-2){$S$接触，经右端到$E$脱离};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用进出接触时的速度方向选长相位弧}\par\nobreak
+在图\ref{fig:w1:example:5:p}参考圆中，接触和脱离都满足$x=-d$，但$S$的速度向下为正，$E$的速度向上为负。令$\alpha=\arccos(d/A)$，其中$0\le\alpha<\pi/2$。采用$x=A\cos\psi$、$\dot x=-A\omega\sin\psi$，两点相位依次可取$\psi_S=-\pi+\alpha$、$\psi_E=\pi-\alpha$，故
+\[
+\Delta\psi=2\pi-2\alpha,\qquad
+t_c=\frac{2(\pi-\alpha)}{\omega}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较释放高度变化并区分零高度极限}\par\nobreak
+从$S$到$E$的长圆弧经过右端最大压缩位置，不能取两交点之间的短弧。$h$增大使$A$增大，$d/A$减小，$\alpha$增大，故接触时间减小。$h\to0^+$时$\alpha\to0,t_c\to T$；$h\to\infty$时$\alpha\to\pi/2,t_c\to T/2$。这些是接触阶段的时间，不含先前自由下落的$\sqrt{2h/g}$。若恰有$h=0$，球到原长位置仅瞬时零支持而没有有限的自由飞行，$T$应称为首次返回原长位置的时间，不是连续接触的结束。\end{solution}
+\begin{question}\begin{example}[相向转轴上的木板]\label{w1:example:6}
+均匀木板放在间距$2l$的两个转轴上。两轴接触点的表面速度相向，动摩擦系数为$\mu$。木板质心偏离中线$x$，证明其作简谐运动并说明条件。将木板视为厚度可忽略的细板，两轴面速率足够大以维持图示滑动方向。
+\end{example}
+\fig{fig:w1:example:6:s}{题设：相向转轴上的木板}{\begin{tikzpicture}[scale=.88]\draw[world](-.4,1)rectangle(4.4,1.25);\draw[world](.5,.5)circle(.5);\draw[world](3.5,.5)circle(.5);\draw[flow](.2,.2)arc(225:30:.42);\draw[flow](3.8,.2)arc(-45:150:.42);\fill(2.4,1.12)circle(2pt)node[above]{$C$};\draw[guide](2,-.4)--(2,1.6)node[above]{$O$};\draw[flow](.1,1.6)--(.9,1.6)node[above]{轴面};\draw[flow](3.9,1.6)--(3.1,1.6);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由薄板竖直平衡和零力矩求两反力}\par\nobreak
+按图\ref{fig:w1:example:6:s}令左右轴到中线距离均为$l$，木板质心在中线右方$x$。忽略板厚引起的摩擦力矩，板无竖直加速度且不转动。于是
+\[
+N_L+N_R=mg,\quad N_L(l+x)=N_R(l-x).
+\]
+将$N_R=mg-N_L$代入第二式，得$2lN_L=mg(l-x)$；再由总力式求得
+\[
+N_L=\frac{mg(l-x)}{2l},\qquad N_R=\frac{mg(l+x)}{2l}.
+\]
+\fig{fig:w1:example:6:p}{质心右偏时右轴承重较多，左向摩擦占优；左右顶面的相对滑动方向必须持续不变}{\begin{tikzpicture}
+
+\draw[world](-.4,1)--(4.4,1);\draw[world](.5,.5)circle(.5);\draw[world](3.5,.5)circle(.5);\fill(2.4,1)circle(.05)node[below left]{$C$};\draw[guide](2,-.5)--(2,2.7)node[above]{$O$};
+\draw[force](.5,1.15)--(1.16,1.15)node[midway,above]{$\mu N_L$};\draw[force](3.5,1.15)--(2.36,1.15)node[midway,above]{$\mu N_R$};
+\draw[force](.5,1)--(.5,2)node[left]{$N_L$};\draw[force](3.5,1)--(3.5,2.6)node[right]{$N_R$};\draw[force](2.4,1)--(2.4,-.5)node[right]{$mg$};
+\draw[flow](.1,.4)arc(195:20:.42);\draw[flow](3.9,.4)arc(-15:160:.42);\draw[dim](.5,-.8)--(2,-.8)node[midway,below]{$l$};\draw[dim](2,-.8)--(3.5,-.8)node[midway,below]{$l$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按相对滑动方向求净摩擦回复力}\par\nobreak
+图\ref{fig:w1:example:6:p}中两轴顶面向中间运动，且相对板始终滑动，所以左摩擦向右，右摩擦向左。向右取正，
+\[
+m\ddot x=\mu N_L-\mu N_R
+=\frac{\mu mg}{2l}[(l-x)-(l+x)]=-\frac{\mu mg}{l}x.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由运动方程求周期并检查接触和滑速条件}\par\nobreak
+约去$m$，$\omega^2=\mu g/l$，$T=2\pi\sqrt{l/(\mu g)}$。$x>0$时右侧承重更大，左向摩擦占优，确有回复作用。还须$A<l$以保持两反力为正；若两轴面速率均为$w$，充分条件是$w>A\omega$，确保板速度不使滑动方向反转。若轴转向相反，合力变为正比于$x$，中间平衡不稳定。\end{solution}
+\begin{question}\begin{example}[初相、速度与到达时间]\label{w1:example:7}
+质点振幅$A=0.06\,\mathrm m$，周期$T=2\,\mathrm s$，初态$x_0=0.03\,\mathrm m$且向正方向运动。求初相；再求其在同一位置向负方向运动时的速度、加速度，并从这次向负方向经过该位置起计，求到达平衡位置的最短时间。
+\end{example}
+\fig{fig:w1:example:7:s}{题设：初相、速度与到达时间}{\begin{tikzpicture}[scale=.88]\draw[world](0,-.4)--(0,1);\draw[spring](0,.3)--(2.4,.3);\draw[world](2.4,0)rectangle(3.1,.6);\node at(2.75,.3){$m$};\draw[axis](1,-.7)--(4.8,-.7)node[right]{$x$};\draw[guide](2,-.4)--(2,1.3)node[above]{$O$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用初态的位置和速度共同确定相位象限}\par\nobreak
+图\ref{fig:w1:example:7:s}取向右为正，角频率为$\omega=\pi\,\mathrm{s^{-1}}$。
+由$x_0=A\cos\varphi$得$\cos\varphi=0.03/0.06=1/2$；又$v_0=-A\omega\sin\varphi>0$，所以$\sin\varphi<0$。余弦为正且正弦为负，锁定第四象限，可取$\varphi=-\pi/3$，不能只取反余弦的主值。
+\fig{fig:w1:example:7:p}{先由速度正号选初相下半圆，再从向左经过A/2的上半圆状态计到平衡点的相位差}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.8);\draw[axis](-2.2,0)--(2.6,0)node[right]{$x$};\coordinate(S)at(.9,-1.558846);\coordinate(P)at(.9,1.558846);\draw[guide](S)--(P);
+\fill(S)circle(.05)node[below]{$\varphi=-\pi/3$};\fill(P)circle(.05)node[above right]{$\psi=\pi/3$};\draw[world](0,0)--(S) (0,0)--(P);
+\draw[flow](P)arc(60:90:1.8);\fill(0,1.8)circle(.04)node[above left]{$\psi=\pi/2$};\node[below right]at(.9,0){$A/2$};\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在向负方向经过该位置时计算速度和加速度}\par\nobreak
+在图\ref{fig:w1:example:7:p}中，向负方向经过$x=A/2$对应相位$\psi=\pi/3$。于是
+\[
+v=-\frac{\sqrt3}{2}A\omega=-0.03\sqrt3\pi\,\mathrm{m/s},\quad
+a=-0.03\pi^2\,\mathrm{m/s^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从本次经过时刻起累计最短相位差}\par\nobreak
+接下来第一次到$O$时相位为$\pi/2$，故$\Delta t=(\pi/2-\pi/3)/\pi=1/6\,\mathrm s$。速度与加速度均为负，但到达$O$前速度大小继续增加，不能由同号误判为减速。\end{solution}

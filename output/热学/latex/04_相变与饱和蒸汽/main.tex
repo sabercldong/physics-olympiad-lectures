@@ -1,0 +1,29 @@
+% !TEX program = xelatex
+\documentclass[11pt,openany,fontset=fandol]{ctexbook}
+\usepackage[paperwidth=176mm,paperheight=250mm,inner=21mm,outer=18mm,top=20mm,bottom=20mm,headheight=14pt,headsep=6mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm,mathtools,booktabs,array,enumitem,float}
+\usepackage{tikz,fancyhdr,hyperref}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\hypersetup{hidelinks}\setlength{\parindent}{2em}\setlength{\parskip}{3pt}\setlength{\emergencystretch}{2em}
+\linespread{1.18}\raggedbottom\setcounter{tocdepth}{1}
+\ctexset{chapter={name={第,讲},number=\chinese{chapter},format=\LARGE\bfseries\centering,beforeskip=16pt,afterskip=22pt},section={format=\Large\bfseries},subsection={format=\large\bfseries},subsubsection={format=\normalsize\bfseries,beforeskip=10pt,afterskip=4pt}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[LE,RO]{\small\thepage}\fancyhead[LO]{\small 物理竞赛一轮讲义}
+\renewcommand{\headrulewidth}{0pt}\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\theoremstyle{definition}\newtheorem{example}{例}[chapter]\newtheorem{drill}{练习}[chapter]
+\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000
+\newenvironment{solution}{\par\medskip\Needspace{5\baselineskip}\noindent\textbf{解}\quad\ignorespaces}{\par\medskip}
+\newenvironment{drillsolution}[1]{\subsubsection*{练习\ref{#1}详解}\phantomsection\label{sol:#1}\ignorespaces}{\par\medskip}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={line width=.7pt,->,>=Stealth},guide/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\newsavebox{\LectureFigureBox}\newcommand{\fig}[3]{\begin{figure}[H]\centering\sbox{\LectureFigureBox}{#3}\ifdim\wd\LectureFigureBox>\linewidth\resizebox{\linewidth}{!}{\usebox{\LectureFigureBox}}\else\usebox{\LectureFigureBox}\fi\caption{#2}\label{#1}\end{figure}}
+\setlist[enumerate]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\fancyhead[RE]{\small 第4讲\quad 相变与饱和蒸汽}
+\input{lecture-style}
+\LectureHeader{第四讲}{相变与饱和蒸汽}
+\begin{document}\frontmatter\LectureCover{热学}{第四讲}{相变与饱和蒸汽}\tableofcontents\mainmatter\setcounter{chapter}{3}\chapter{相变与饱和蒸汽}
+\input{theory}
+\input{examples}
+\input{corecard}
+\input{practice}
+\input{answers}
+\end{document}

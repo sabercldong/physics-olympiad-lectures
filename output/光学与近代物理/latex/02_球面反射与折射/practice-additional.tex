@@ -1,0 +1,24 @@
+\begin{question}
+\begin{drill}[实心玻璃球的两次折射]\label{d:24}
+空气中实心玻璃球半径 $R=10.0\,\mathrm{cm}$，折射率 $n=1.50$。小物在主轴上，距前表面顶点 $O_1$ 为 $15.0\,\mathrm{cm}$。求近轴光经前、后表面折射后的最终像位置和横向放大率，注明中间像对第二面的物距。忽略反射光。
+\end{drill}
+\fig{fig:d24q}{物距从前顶点量起，两顶点相隔一个直径}{\begin{tikzpicture}[scale=1.2]
+\fill[cyan!8](1,0)circle(1);\draw[world](1,0)circle(1);\draw[axisline](-2,0)--(3.6,0);
+\draw[axis,thick](-1.5,0)--(-1.5,.5)node[above]{$B$};\node[below]at(-1.5,0){$A$};
+\node[below left]at(0,0){$O_1$};\node[below right]at(2,0){$O_2$};\fill(1,0)circle(1pt)node[below]{$C$};
+\draw[dim](-1.5,-1.4)--(0,-1.4)node[midway,below]{$15.0\,\mathrm{cm}$};\draw[dim](0,1.4)--(2,1.4)node[midway,above]{$20.0\,\mathrm{cm}$};
+\node at(1,.55){$1.50$};\node at(3,.55){空气};
+\end{tikzpicture}}
+\end{question}
+
+\begin{question}
+\begin{drill}[球面镜的有限入射高度]\label{d:25}
+一束平行于主轴的光射向凹球面镜，球面半径为 $R$，顶点为 $O$。求入射高度为 $h$ 的光线反射后与主轴交点到顶点的距离 $s(h)$，取 $0<h<R/\sqrt2$。当 $R=20.0\,\mathrm{cm}$、$h=10.0\,\mathrm{cm}$ 时，比较该距离与近轴焦距。若要求 $|s-R/2|/(R/2)\le1.00\%$，求允许的最大入射高度。
+\end{drill}
+\fig{fig:d25q}{入射光平行主轴，球心到入射点的半径给出局部法线}{\begin{tikzpicture}
+\draw[axisline](-4.3,0)--(.7,0);\draw[world](-3,0)++(-40:3)arc(-40:40:3);
+\coordinate(P)at(-.401924,1.5);\draw[ray](-4,1.5)--(P);\draw[normal](-3,0)--(P);
+\fill(-3,0)circle(1.5pt)node[below]{$C$};\node[right]at(0,0){$O$};\fill(P)circle(1.5pt)node[above]{$P$};
+\draw[dim](.6,0)--(.6,1.5)node[midway,right]{$h$};\node[above left]at(-1.6,.8){$R$};
+\end{tikzpicture}}
+\end{question}

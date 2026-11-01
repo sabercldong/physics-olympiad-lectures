@@ -1,0 +1,313 @@
+\section{几何光学基本定律}
+
+\subsection{直线传播、反射与折射}
+
+几何光学用光线表示传播方向。在均匀、透明、各向同性介质内，光线是直线；介质不均匀时，传播方向可以连续改变。这里讨论静止介质，忽略衍射、吸收及界面反射造成的能量损失，除非题目另作说明。介质的变化尺度和孔径须远大于波长。
+
+图\ref{fig:hobasic}中，$AO$ 为入射光线，$OB$ 为反射光线，$OC$ 为折射光线。各角均从界面法线量起。入射、反射、折射光线与法线共面，反射角等于入射角，折射角满足斯涅尔定律：
+\begin{equation}\label{eq:hosnell}
+i'=i,\qquad n_1\sin i=n_2\sin r.
+\end{equation}
+\fig{fig:hobasic}{反射和折射的角度约定。图中下方介质的折射率较大。}{
+\begin{tikzpicture}
+\fill[black!6](-2.7,-2)rectangle(2.7,0);\draw(-2.7,0)--(2.7,0);
+\draw[normal](0,-2.1)--(0,2.1)node[above]{法线};
+\draw[ray](-2,2)--(0,0);\draw[ray](0,0)--(2,2);\draw[ray](0,0)--(1,-2);
+\node[above]at(-2,2){$A$};\node[above]at(2,2){$B$};\node[below]at(1,-2){$C$};\node[below left]at(0,0){$O$};
+\draw(0,.65)arc(90:135:.65);\draw(.46,.46)arc(45:90:.65);\draw(0,-.75)arc(270:296.565:.75);
+\node at(-.3,.85){$i$};\node at(.3,.85){$i'$};\node at(.26,-1){$r$};
+\node at(-2,1){$n_1$};\node at(-2,-1){$n_2$};
+\end{tikzpicture}}
+
+折射率定义为 $n=c/v_{\rm p}$，$v_{\rm p}$ 为相速度。本讲忽略色散，传播时间按 $v=c/n$ 计算，空气取 $n=1$。第二种介质相对第一种介质的折射率为
+\[
+n_{21}=\frac{\sin i}{\sin r}=\frac{v_1}{v_2}=\frac{n_2}{n_1}.
+\]
+本讲的玻璃、液体等普通透明介质取 $n>1$；这一取值不应推广为所有频率、所有介质中的普遍结论。
+
+处理反射时，还可将物点或眼睛对镜面作对称，使反射折线展开为直线。若光线先后遇到多个镜面，须依次展开。有限镜面、狭缝和不透明屏都限制实际通光范围，不能只满足方向关系而忽略交点是否落在允许区域内。
+
+\subsection{从法线、传播方向到几何关系}
+
+入射角取入射光线的反向延长线与法线的锐夹角，反射角、折射角分别取离开界面的光线与相应法线的夹角。光线与界面本身的锐夹角记作 $\alpha$ 时，有 $i+\alpha=90^\circ$。曲面问题中，每个交点的法线通常不同，须先求交点，再确定法线，最后比较角度。
+
+图\ref{fig:ho-vector}把反射定律分解为两个分量。令 $\bm u$ 为指向镜面的入射单位矢量，$\bm n$ 为任一侧的单位法线，则
+\begin{equation}\label{eq:hovector}
+\boxed{\bm u_{\rm r}=\bm u-2(\bm u\cdot\bm n)\bm n.}
+\end{equation}
+沿镜面的分量不变，垂直镜面的分量反号。对曲面，只需在碰撞点使用当地的 $\bm n$。若镜面方向与 $+x$ 轴成 $\varphi$，入射传播方向角为 $\theta$，同一关系可写为 $\theta_{\rm r}=2\varphi-\theta$，角度按 $360^\circ$ 取同一方向。这正是例\ref{ex:ho3}逐次计算反射方向所用的式子。
+\fig{fig:ho-vector}{传播矢量的切向分量保持不变，法向分量反号。虚线表示入射传播方向在 $O$ 处的平移。}{
+\begin{tikzpicture}[scale=1]
+\draw[very thick](-2.5,0)--(2.7,0);\draw[axis](0,-1.9)--(0,2.2)node[above]{$\bm n$};
+\draw[ray](-1.5,1.5)--(0,0);\draw[ray](0,0)--(1.5,1.5);
+\draw[aux](0,0)--(1.5,-1.5);\draw[axis](0,0)--(1.5,0)node[midway,below]{$\bm u_{\parallel}$};
+\draw[axis](1.5,0)--(1.5,-1.5);\draw[axis](1.5,0)--(1.5,1.5);
+\node[above left]at(-1.3,1.3){$\bm u$};\node[above right]at(1.5,1.5){$\bm u_{\rm r}$};\node[right]at(1.5,-1.5){$\bm u$（平移后）};\node[below left]at(0,0){$O$};
+\node[right]at(1.6,.7){$-\bm u_{\perp}$};\node[right]at(1.6,-.7){$\bm u_{\perp}$};
+\end{tikzpicture}}
+
+镜像展开保留的是长度与交角。图中反射光线的反向延长线可在镜后相交，那是虚像位置，实际光并未经过镜后。使用虚像求通光范围时，还须把展开直线折回，检查每一次真实穿屏和真实碰镜的位置。例\ref{ex:ho1}中的实狭缝、虚狭缝分别对应两次不同的真实穿越。
+
+\subsection{镜像展开与实际反射路径}
+
+设物点、接收点分别为 $A,B$，镜面为 $y=0$。图\ref{o1:mirror-unfold}把 $A$ 映为 $A'$，镜面对称使任一镜上点 $P$ 都有 $AP=A'P$。因此折线路程 $AP+PB$ 可由 $A'P+PB$ 计算；当 $A',P,B$ 共线时，折线满足反射定律。
+\fig{o1:mirror-unfold}{先在镜后作像，再把辅助直线折回实际光路；只有实线携带实际传播方向}{\begin{tikzpicture}
+
+\draw[very thick](-2.7,0)--(3.2,0);\coordinate(A)at(-2,1.8);\coordinate(Ap)at(-2,-1.8);\coordinate(B)at(2.5,.9);\coordinate(P)at(1,0);
+\draw[ray,blue](A)--(P);\draw[ray,blue](P)--(B);\draw[virtual](Ap)--(P);\draw[aux](A)--(Ap);\draw[normal](1,-.65)--(1,1.1);
+\fill(A)circle(1.5pt)node[above]{$A$};\fill(Ap)circle(1.5pt)node[below]{$A'$};\fill(B)circle(1.5pt)node[above]{$B$};\fill(P)circle(1.5pt)node[below right]{$P$};\node[left]at(-2,.3){镜面对称};\node at(.1,-2.3){$AP=A'P,\qquad AP+PB=A'B$（共线时）};
+
+\end{tikzpicture}}
+镜后像点不是实际经过的点。有限镜面只允许部分 $P$，多次反射还须依次检查碰镜顺序。若中间有狭缝或屏，应把每一次实际穿越分别折到展开图中，再取允许区域的交集。这样，方向定律、总路程与通光范围就在同一幅图中对应起来。
+
+
+\subsection{光密、光疏与全反射}
+
+“光密”和“光疏”表示两种介质折射率的相对大小，与质量密度没有普遍的一一对应关系。光由较大折射率 $n_1$ 射向较小折射率 $n_2$ 时，折射光远离法线。临界角为
+\begin{equation}\label{eq:hocritical}
+\sin C=\frac{n_2}{n_1},\qquad n_1>n_2.
+\end{equation}
+当 $i>C$ 时发生全反射；$i=C$ 是折射光沿界面传播的临界极限。若外界为空气，才可简化为 $\sin C=1/n_1$。
+
+临界角可直接由折射定律中的限制得到。实折射方向要求
+\[
+\sin r=\frac{n_1}{n_2}\sin i\le1.
+\]
+随着 $i$ 增大，$r$ 先到达 $90^\circ$，于是 $n_1\sin C=n_2$。若 $n_1\le n_2$，这一过程不会给出 $0<C<90^\circ$ 的临界角。每次碰撞都应按光即将进入的介质选取 $n_2$；同一根导光棒的侧壁和端面必须分别检查。
+\fig{fig:hocritical}{同一界面上的普通折射、临界极限与全反射。入射角从下方的法线量起。}{
+\begin{tikzpicture}[scale=.85]
+\foreach \x/\a/\txt in {0/25/$i<C$,4/41.81/$i=C$,8/60/$i>C$}{
+\begin{scope}[shift={(\x,0)}]
+\fill[black!7](-1.5,-1.4)rectangle(1.5,0);\draw(-1.5,0)--(1.5,0);\draw[normal](0,-1.5)--(0,1.3);
+\draw[ray]({-1.4*sin(\a)},{-1.4*cos(\a)})--(0,0);\draw[ray](0,0)--({1.4*sin(\a)},{-1.4*cos(\a)});
+\node[below]at(0,-1.6){\txt};\end{scope}}
+\draw[ray](0,0)--(.95,1.16);\draw[ray](4,0)--(5.4,0);
+\node at(-1.2,.8){$n_2$};\node at(-1.2,-.6){$n_1$};
+\end{tikzpicture}}
+
+图\ref{fig:hocritical}中折射角逐渐逼近直角；达到这一边界后，再增大入射角就不再存在传播折射支路。三个构形应按同一条折射定律比较，不能把全反射理解为折射光沿界面继续前进。
+
+
+平行分层介质中，各层法线平行，连续使用式\eqref{eq:hosnell}得 $n_j\sin\theta_j=p$。厚度为 $d_j$ 的一层内，横向位移为 $d_j\tan\theta_j$，实际路程为 $d_j/\cos\theta_j$。曲面上的法线须逐点确定：球面的法线沿半径，光纤端面的法线沿轴，侧面的法线与轴垂直。
+
+由图\ref{fig:hocritical}的三种构形可知，将 $i>C$ 代入折射定律会要求 $\sin r>1$，它表示传播折射支路不存在，不能继续对这个值取实反正弦。临界时的掠射方向也不能当作进入上方介质并到达任意观察点的普通光路。
+
+\subsection{分层介质中的位移、路程与时间}
+
+这三个量在计算中应分开。图\ref{fig:ho-layers}的一层内，$d_j$ 沿法线量取，$\Delta x_j$ 平行于界面，$\ell_j$ 沿实际光路量取。因此
+\[
+\sin\theta_j=\frac p{n_j},\quad
+\Delta x_j=\frac{d_jp}{\sqrt{n_j^2-p^2}},\quad
+\ell_j=\frac{d_jn_j}{\sqrt{n_j^2-p^2}},
+\]
+\[
+T=\sum_j\frac{n_j\ell_j}{c}
+=\frac1c\sum_j\frac{d_jn_j^2}{\sqrt{n_j^2-p^2}}.
+\]
+若已知两端的横向间距 $X$，应先用 $\sum_j\Delta x_j=X$ 求 $p$，再求各层角度和时间。要使光线穿过所有层，须对每层都有 $p<n_j$；等号表示该层中的掠射极限。
+\fig{fig:ho-layers}{在一层内区分法向厚度、横向投影和真实路程。$PQ$ 与法线的夹角为 $\theta_j$。}{
+\begin{tikzpicture}[scale=1]
+\fill[black!5](-.6,0)rectangle(5,2.6);\draw(-.6,0)--(5,0) (-.6,2.6)--(5,2.6);
+\coordinate(P)at(.4,2.6);\coordinate(Q)at(3.4,0);\coordinate(H)at(.4,0);
+\draw[ray](P)--(Q);\draw[aux](P)--(H);\draw[aux](H)--(Q);
+\node[above left]at(P){$P$};\node[below]at(Q){$Q$};\node[below]at(H){$H$};
+\draw[dim](-.1,0)--(-.1,2.6)node[midway,left]{$d_j$};\draw[dim](.4,-.65)--(3.4,-.65)node[midway,below]{$\Delta x_j$};
+\node[above right]at(1.8,1.4){$\ell_j$};\node at(.7,1.9){$\theta_j$};\node at(4,1.7){$n_j$};
+\end{tikzpicture}}
+光线越接近层面，给定厚度所需的路程就越长。例\ref{ex:ho6}用的是两段横向投影之和；例\ref{ex:ho9}则要先把端面折射角转换为侧面的入射角。
+
+图\ref{fig:ho-layers}中的光程也可直接由 $n_j\ell_j$ 求得，但不能把几何长度 $\ell_j$ 与法向厚度 $d_j$ 混用。只有正入射时二者相同。给出端点位置的题目，未知的各层角度并非独立参数：同一个 $p$ 同时决定全部层内的角度和横向位移。因此先解端点条件，再分配各层路程，能避免把每一层分别取成最短路而失去端点约束。
+
+若把平行分层逐渐细化为 $n=n(z)$ 的连续介质，同一不变量成为
+\[
+ n(z)\sin\theta(z)=p.
+\]
+折射率变小，光线与法线的夹角增大；接近 $n=p$ 时，方向趋于与层面平行。曲线路径由局部折射逐步积累而来，不能在折射率变化后仍把整段光线视作直线。这个联系也解释了海市蜃楼和渐变折射率模型为什么需要逐点处理传播方向。
+
+\subsection{渐变介质中的方向变化与转向点}
+
+把薄层极限写成图\ref{o1:gradient}的 $n=n(y)$，并将光线与水平线的夹角记作 $\beta$，则与竖直法线的角为 $90^\circ-\beta$，守恒量变为 $p=n(y)\cos\beta$。向上进入较小折射率时，$\cos\beta$ 增大，光线的上升斜率减小；在 $n(y_T)=p$ 处达到水平切线。再向上若 $n<p$，就没有实数传播方向。
+\fig{o1:gradient}{水平分层的连续极限；局部光线保持切向光学分量，转向点不是一次平面反射}{\begin{tikzpicture}
+
+\foreach\y/\op in {0/22,.5/18,1/14,1.5/10,2/6}{\fill[blue!\op](-.2,\y)rectangle(6,\y+.5);}
+\draw[axis](-.2,-.2)--(-.2,3)node[above]{$y$};\draw[ray,red]plot[domain=0:5.8,samples=90](\x,{2.2-.20*(\x-3)^2});\draw[guide](0,2.2)--(5.8,2.2);\fill(3,2.2)circle(1.5pt)node[above]{$T:\ n=p$};
+\draw[normal](1,.5)--(1,2.3);\draw[guide](.5,1.4)--(2,1.4);\draw[ray](1,1.4)--(1.8,2.04);\node at(1.8,1.65){$\beta$};\node[right]at(6,1.3){$n$ 向上减小};\node at(3,-.4){$n(y)\cos\beta=p$};
+
+\end{tikzpicture}}
+平滑转向由很多次微小折射累积而成。用弧长 $s$ 表示，$\dd y/\dd s=\sin\beta$；对不变量 $n(y(s))\cos\beta(s)$ 使用乘积和链式法则：
+\[
+ 0=\frac{\dd}{\dd s}(n\cos\beta)
+ =\frac{\dd n}{\dd y}\frac{\dd y}{\dd s}\cos\beta
+  -n\sin\beta\frac{\dd\beta}{\dd s}.
+\]
+代入 $\dd y/\dd s=\sin\beta$，在非水平段将两项的公因子 $\sin\beta$ 消去，可得
+\[
+\frac{\dd\beta}{\dd s}=\frac{\cos\beta}{n}\frac{\dd n}{\dd y}.
+\]
+右端为负时，传播方向连续向下转，极限也适用于平滑转向点。这与均匀介质内的直线传播并不矛盾，因为这里的折射率随位置改变。
+
+
+\section{近似计算与几何光学定律的解释}
+
+\subsection{小角度近似}
+
+以弧度计，
+\[
+\sin\theta=\theta-\frac{\theta^3}{6}+\cdots,\qquad
+\tan\theta=\theta+\frac{\theta^3}{3}+\cdots.
+\]
+应先画出光路并列出精确关系，再按角度大小展开。近轴折射中可取 $n_1i\simeq n_2r$，但临界光线的出射角接近 $90^\circ$，不能对它使用小角度近似。例\ref{ex:ho13}将用透镜面形说明精确光程与近轴结果的关系。
+
+小角度的判据是误差是否可接受。例如 $\sin\theta$ 以 $\theta$ 代替时，相对误差约为 $\theta^2/6$；$\tan\theta$ 的相应误差约为 $\theta^2/3$。$5^\circ$ 时二者约为 $0.13\%$、$0.25\%$，而 $30^\circ$ 时已不宜在精确追迹中直接替换。这里的幂级数必须把角度换成弧度后使用。
+
+近似的阶数还必须与最终要求配合。由 $\cos\theta\simeq1-\theta^2/2$，可见沿轴投影与真实路程的差从二阶开始；若题目正要求两条几乎相同路径的光程差，一阶公共部分可能消去，这时被舍去的二阶项反而决定干涉位置。不能因为每条光线都近轴，就把所有光程都只保留到零阶。
+
+在图\ref{fig:ho-layers}中，$\Delta x_j$ 是一阶角度量，而 $\ell_j-d_j$ 是二阶角度量。分别展开后比较所求量的首个非零阶，才能判断哪些项可以略去。近轴成像着重光线方向的一阶关系，等光程设计却可能需要更高阶的长度，两类计算使用近似的目的不同。
+
+\fig{o1:small-angle}{相同角度下的精确投影；横向位移从一阶开始，路程增量从二阶开始}{\begin{tikzpicture}
+
+\coordinate(P)at(0,2.5);\coordinate(H)at(0,0);\coordinate(Q)at(2,0);\draw[ray](P)--(Q);\draw[normal](P)--(H);\draw[guide](H)--(Q);\draw[dim](-.6,0)--(-.6,2.5)node[midway,left]{$d$};\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$x=d\tan\theta$};\draw(0,1.75)arc(270:308.66:.75);\node at(.35,1.5){$\theta$};\node[above left]at(P){$P$};\node[below left]at(H){$H$};\node[below right]at(Q){$Q$};\node[right]at(1.25,1.25){$\ell=d/\cos\theta$};\node[align=left]at(5,1.4){$x=d\theta+O(\theta^3)$\\[6pt]$\ell-d=d\theta^2/2+O(\theta^4)$};
+
+\end{tikzpicture}}
+图\ref{o1:small-angle}把近似阶数落实到几何量：若已知轴向厚度 $d$，角度改变引起的路程差为 $d(\sec\theta-1)$，而不是 $d\theta$。在有色散介质中，光程 $\int n\dd s$ 描述相位；本讲以它除以 $c$ 计时，依赖于前面已经约定的无色散近似。
+
+
+\subsection{光程与费马原理}
+
+均匀介质中，几何路程 $s$ 对应光程 $\mathcal L=ns$。不均匀介质中则有
+\[
+\mathcal L=\int_\Gamma n(\bm r)\dd s,\qquad T=\mathcal L/c.
+\]
+费马原理要求实际光路相对邻近允许路径的光程为驻值：$\delta\mathcal L=0$。这是一阶变化为零的局部条件；实际光程可能为极小、极大，或在一族路径间相同，不能一概称为全局最短。
+
+均匀介质中两点间的直线是最短路。存在界面时，应固定端点和界面，把反射点或折射点沿界面的位移作为允许变化；两个路段的长度会同时改变，其一阶光程变化相抵才确定实际方向。下面以有限透光界面说明驻值计算及边界检查，例\ref{ex:ho11}再分别处理反射与折射。
+
+\subsection{光程驻值与有限边界的检查}
+
+有限孔径给驻值问题增加了交点的范围限制。即使代数上求得驻值点，也须检查它是否位于允许透光的界面内。
+
+图\ref{fig:stationary-boundary}把界面上的折射点写为 $P(x,0)$，物、像两端固定在 $A(-a,h_1)$、$B(b,-h_2)$。两介质的光程为
+\[
+ \mathcal L(x)=n_1\sqrt{(x+a)^2+h_1^2}
+             +n_2\sqrt{(b-x)^2+h_2^2}.
+\]
+\fig{fig:stationary-boundary}{先以折射点坐标表示光程，再检查驻值点是否落在有效界面内}{
+\begin{tikzpicture}
+\draw[world] (-3,0)--(3.5,0);\draw[very thick] (-1,0)--(1.6,0);
+\coordinate (A) at (-2,1.8);\coordinate (P) at (.3,0);\coordinate (B) at (2.7,-1.4);
+\draw[ray] (A)--(P);\draw[ray] (P)--(B);\draw[normal] (.3,-1)--(.3,1);
+\fill (A) circle(1.2pt) node[above]{$A(-a,h_1)$};
+\fill (B) circle(1.2pt) node[below]{$B(b,-h_2)$};
+\node[above right] at (P){$P(x,0)$};\node[left] at (-2.8,1){$n_1$};\node[left] at (-2.8,-1){$n_2$};
+\node[below] at (-1,0){$x_{\min}$};\node[below] at (1.6,0){$x_{\max}$};
+\end{tikzpicture}}
+在图\ref{fig:stationary-boundary}中让 $P$ 向右移动 $\dd x$，入射段增量为 $\sin i\,\dd x$，折射段增量为 $-\sin r\,\dd x$，这也可以由根式逐项求导验证：
+\begin{align*}
+\frac{\dd(AP)}{\dd x}
+&=\frac{1}{2\sqrt{(x+a)^2+h_1^2}}\cdot2(x+a)
+=\frac{x+a}{AP},\\
+\frac{\dd(PB)}{\dd x}
+&=\frac{1}{2\sqrt{(b-x)^2+h_2^2}}\cdot2(b-x)(-1)
+=-\frac{b-x}{PB}.
+\end{align*}
+所以
+\[
+\mathcal L'(x)=n_1\frac{x+a}{AP}-n_2\frac{b-x}{PB}
+=n_1\sin i-n_2\sin r.
+\]
+把一阶变化设为零就得到折射定律。两侧均为同一介质且端点位于镜面同侧时，完全相同的投影计算给出 $\sin i=\sin i'$，即反射定律。驻值点 $x_*$ 的几何意义因此是两段光程的一阶增减相抵；求出它后，还要检查允许的交点范围。
+
+若仅有图中粗线段允许透光，求得的 $x$ 必须满足 $x_{\min}\le x\le x_{\max}$。驻值落在线段外，说明所求的那条普通折射光路受到遮挡。不能把端点处的受限最小值自动当成满足折射定律的光线；边缘附近的绕射需要波动光学处理。有限镜面、有限透镜孔径和全反射条件都属于同类的可行性检查。
+
+\subsection{分层传播与透射边界}
+
+单界面的驻值与边界检查可推广到平行分层介质。各层共享的参数 $p=n_j\sin\theta_j$ 已由折射定律确定，水平位移与传播时间按前述分层关系累加。其中每层厚度沿法线量取，不能当作实际光路段长。透射支路要求 $0\le p<\min n_j$；若起始光线已经确定 $p$，进入折射率小于 $p$ 的一层便没有传播折射光。
+
+\subsection{波前与惠更斯原理}
+
+同一时刻相位相同的点组成波前。惠更斯作图把波前各点看作发出子波的点，经过 $\Delta t$ 后，前向子波的包络给出新的波前。在各向同性介质中，光线垂直于波前。
+\fig{fig:howavefront}{平面波前与点光源的球面波前截面。箭头沿波前法线。}{
+\begin{tikzpicture}[scale=.85]
+\foreach \y in {-1.2,0,1.2}{\draw[black!35](0,\y)circle(.8);\draw[axis](0,\y)--(1.6,\y);}
+\draw[thick](0,-2)--(0,2) (.8,-2)--(.8,2);\node[below]at(-.1,-2){$t$};\node[below right]at(.8,-2){$t+\Delta t$};
+\begin{scope}[shift={(5.3,0)}]
+\foreach \r in {.8,1.5,2}{\draw[black!50](0,0)circle(\r);}
+\foreach \a in {30,110,200,280}{\draw[axis](0,0)--(\a:2.3);}
+\fill(0,0)circle(1.4pt)node[below right]{$S$};\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:howavefront}中箭头处处垂直于所在波前，平面波对应平行光线，球面波对应沿半径发散的光线。图线是同一时刻的等相位位置，不是光在一个周期里走过的轨迹。
+
+同一入射波前经光学系统后，若各部分在同一时刻会聚于一点，它们到该点的光程必须相等。反过来设计反射镜或折射曲面时，等光程条件可给出曲面方程，还应检查所得方向满足反射、折射定律，以及是否发生遮挡或全反射。
+
+也可用惠更斯作图直接读出折射定律。图\ref{fig:ho-huygens-snell}中，入射平面波前 $AB$ 在 $A$ 最先到达界面。经过 $\Delta t$，$B$ 处的光传播到 $C$，所以 $BC=v_1\Delta t$；同时，$A$ 发出的下方子波半径为 $AD=v_2\Delta t$。从 $C$ 作子波的切线 $CD$，它便是新的折射波前，$AD\perp CD$。
+\fig{fig:ho-huygens-snell}{$AB$ 与 $CD$ 为先后两个波前；$BC$、$AD$ 分别垂直于相应波前。图示取 $n_2/n_1=1.5$。}{
+\begin{tikzpicture}[scale=1.1]
+\draw[thick](-1.8,0)--(4,0);\draw[normal](0,-1.6)--(0,1.8) (3,-.5)--(3,1.5);
+\draw[black!40,dashed](-1.414214,0)arc(180:360:1.414214);
+\coordinate(A)at(0,0);\coordinate(B)at(1.5,1.5);\coordinate(C)at(3,0);\coordinate(D)at(.666667,-1.247219);
+\draw[very thick](A)--(B);\draw[very thick](D)--(C);\draw[ray](-1.2,1.2)--(A);\draw[ray](B)--(C);\draw[ray](A)--(D);
+\node[below left]at(A){$A$};\node[above]at(B){$B$};\node[above right]at(C){$C$};\node[below]at(D){$D$};
+\node[above,rotate=-45]at(2.25,.75){$v_1\Delta t$};\node[left]at(-.25,-.95){$v_2\Delta t$};
+\node at(-1.25,.6){$n_1$};\node at(-1.25,-.6){$n_2$};\node at(-.25,.6){$i$};\node at(.16,-.45){$r$};
+\draw[dim](0,-1.95)--(3,-1.95)node[midway,below]{$AC$};
+\end{tikzpicture}}
+两个直角三角形共用斜边 $AC$。入射波前与界面的夹角等于入射角 $i$，折射波前与界面的夹角等于折射角 $r$，故
+\[
+\sin i=\frac{BC}{AC},\qquad \sin r=\frac{AD}{AC},\qquad
+\frac{\sin i}{\sin r}=\frac{v_1}{v_2}=\frac{n_2}{n_1}.
+\]
+波前作图由此得到与光线追迹相同的折射关系。例\ref{ex:ho12}和例\ref{ex:ho13}将进一步设计反射、折射面，使整个入射波前转化为以指定焦点为中心的会聚波前。
+
+\section{精确曲面与波前设计}
+
+等光程曲面把给定的入射波前变换为目标出射波前。设计时先选同一个入射波前，再把到目标点的每段长度分别乘上所在介质的折射率。不能只令曲面到焦点的距离相同，因为到达不同曲面点所花的入射时间通常也不同。
+
+\subsection{反射面的等光程与局部法线}
+
+图\ref{o1:surface-design}左图中，平行光从 $x=X$ 向左射到 $M=(x,y)$，再反射到 $F=(f,0)$。均匀介质的公共折射率约去，等光程要求
+\[
+(X-x)+MF=X+f,\qquad MF=x+f,
+\]
+平方后得到 $y^2=4fx$。它给出抛物线截面，绕轴旋转即为抛物面。点源到另一点的反射则要求 $MF_1+MF_2$ 为常数，得到椭圆截面；两种曲面来自不同的入射波前。
+\fig{o1:surface-design}{反射时补偿几何路程，折射时补偿加权光程；两侧图中的介质和入射方向不同}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw[axis](-.3,0)--(4.4,0);\draw[world,domain=-1.8:1.8,samples=60]plot({(\x)^2/4},\x);\draw[guide](3.8,-2)--(3.8,2);\fill(1,0)circle(1.5pt)node[below]{$F$};\coordinate(M)at(.64,1.6);\draw[ray,blue](3.8,1.6)--(M);\draw[ray,red](M)--(1,0);\node[above left]at(M){$M$};\node[above]at(3.8,2){$x=X$};\node at(1.8,-2.5){$(X-x)+MF=X+f$};\end{scope}
+\begin{scope}[xshift=4.7cm,scale=.8]
+\pgfmathsetmacro{\Ksurf}{sqrt(16+1.8^2)}\pgfmathsetmacro{\Asurf}{1.5*\Ksurf-4}\pgfmathsetmacro{\Bsurf}{6-\Ksurf}\pgfmathsetmacro{\Msurf}{(\Asurf-sqrt(\Bsurf^2+1.25))/1.25}
+\fill[blue!10](0,-1.8)--plot[domain=-1.8:1.8,samples=70]({(\Asurf-sqrt(\Bsurf^2+1.25*(\x)^2))/1.25},\x)--cycle;\draw[world](0,-1.8)--(0,1.8);\draw[world,domain=-1.8:1.8,samples=70]plot({(\Asurf-sqrt(\Bsurf^2+1.25*(\x)^2))/1.25},\x);\draw[axis](-.4,0)--(4.6,0);\fill(4,0)circle(1.5pt)node[below]{$F$};\draw[ray,blue](-.6,1)--(\Msurf,1);\draw[ray,red](\Msurf,1)--(4,0);\node[above]at(\Msurf,1){$M$};\node at(.45,-.7){$n$};\node at(2.5,1.6){空气};\node at(2,-2.5){$nx+MF=K$};\end{scope}
+
+\end{tikzpicture}}
+等光程还应落实到反射方向。沿曲面切向 $\bm t$ 移动 $M$，路径的一阶变化为 $(\bm u_{\rm in}-\bm u_{\rm out})\cdot\bm t\,\dd s=0$，所以两传播单位矢量的切向分量相同；对实际入、出镜面的两条光线，法向分量大小相等、方向相反。这给出与前述反射矢量式相同的局部定律。
+
+\subsection{折射面的加权光程与传播支路}
+
+右图以玻璃内的平面 $x=0$ 为入射波前。到曲面点 $M=(x,y)$ 的玻璃路程为 $x$，到外部焦点的空气路程为 $MF$，故
+\[
+nx+\sqrt{(f-x)^2+y^2}=K.
+\]
+令 $L=MF=\sqrt{(f-x)^2+y^2}$，先对根式逐项微分：
+\[
+ \dd L=\frac{2(x-f)\dd x+2y\dd y}{2L}
+      =-\bm u_{\rm out}\cdot\dd\bm r,\qquad
+ \dd\bm r=\bm t\,\dd\ell.
+\]
+因此 $\dd(nx+L)=n\dd x-\bm u_{\rm out}\cdot\dd\bm r=0$，
+除以 $\dd\ell$ 得 $(n\bm e_x-\bm u_{\rm out})\cdot\bm t=0$，说明两侧切向光学分量相同，等价于斯涅尔定律。再以曲面向外法线检查出射方向，排除平方后引入的根和全反射支路。边缘位置、中心厚度和外部焦点还会进一步限制孔径。例\ref{ex:ho13}把这些条件同时用于有限孔径的精确面形，第三讲继续讨论不同物像边界下的设计。
+
+\section{散射与天空的颜色}
+
+前面的几何光路描述沿一条方向传播的光；天空颜色还需要研究光离开原传播方向后的强度分布。晴空的颜色涉及光在大气中的散射。对于尺度远小于波长的分子或微粒，瑞利散射强度近似满足 $I_{\rm sc}\propto\lambda^{-4}$，短波光更容易被散射到偏离太阳直射方向的位置。
+\fig{fig:hosky}{直达光沿较长的大气路径传播后，短波成分损失较多；侧向观察接收到较强的短波散射光。}{
+\begin{tikzpicture}
+\draw[ray](-3,0)--(0,0);\draw[ray](0,0)--(3,0);\draw[ray](0,0)--(1.4,1.8);\draw[ray](0,0)--(-1,1.3);
+\fill(0,0)circle(2pt)node[below]{空气分子};\node[above]at(-2,.1){太阳光};\node[right,align=left]at(3,0){直达光\\短波成分减少};\node[above,align=center]at(1.4,1.8){侧向散射\\短波较强};
+\end{tikzpicture}}
+例如比较 $0.425\,\mu\mathrm m$ 和 $0.650\,\mu\mathrm m$ 的光，在其余条件相同时，散射强度比约为
+\[
+\left(\frac{0.650}{0.425}\right)^4\simeq5.47.
+\]
+图\ref{fig:hosky}中的侧向光含有较多短波成分。日出、日落时，直达光在大气中的路径较长，短波成分损失较多，常呈偏红色。云滴通常比可见光波长大，对可见光各色的散射差异较小，混合后常呈白色。
+
+天空没有呈现单一紫色，还与太阳光谱、大气传输及人眼对不同波长的响应有关。判断所见颜色时，须把这些因素与 $\lambda^{-4}$ 的散射规律合并考虑。

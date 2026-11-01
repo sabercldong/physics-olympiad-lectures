@@ -1,0 +1,98 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{t3-10}\textbf{由气体类型与可逆绝热条件求末温}\par\nobreak
+图\ref{fig:t3-10q}以初压 $p_A=RT_0/V_0$ 归一化，$A$ 点坐标为 $(1,1)$。单原子气体 $\gamma=5/3$，题给可逆绝热，故 $TV^{\gamma-1}$ 不变。将初、末体积代入，
+\[T_f(2V_0)^{2/3}=T_0V_0^{2/3},\qquad \boxed{T_f=2^{-2/3}T_0}.\]
+末温降低，对外做功由内能减少提供。图\ref{fig:t3-10s}的阴影是实际绝热线下的有向面积，可用第一定律直接求出。\fig{fig:t3-10s}{绝热线下的有向面积为气体所做的正功，由内能减少提供}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$V/V_0$};\draw[axis](0,0)--(0,3.7)node[above]{$p/p_A$};\fill[blue!12](2,0)--(2,3)--plot[domain=2:4,samples=100](\x,{3*(2/\x)^(5/3)})--(4,0)--cycle;\draw[flow,blue,domain=2:4,samples=100]plot(\x,{3*(2/\x)^(5/3)});\fill(2,3)circle(.05)node[above]{$A$};\fill(4,.9449408)circle(.05)node[right]{$B$};\node[below]at(2,0){$1$};\node[below]at(4,0){$2$};\node[left]at(0,3){$1$};\node[left]at(0,.9449408){$2^{-5/3}$};\node at(3,1.2){$W$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从内能减少求膨胀功，并用图下面积核对正号}\par\nobreak
+绝热 $Q=0$，因此
+\[\boxed{W=-\Delta U=\frac32R(T_0-T_f)=\frac32RT_0(1-2^{-2/3})>0}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把温度项与体积项同时计入，检验等熵条件}\par\nobreak
+再由理想气体熵差公式检查，
+\[\Delta S=\frac32R\ln(2^{-2/3})+R\ln2=0.\]
+故 $\boxed{\Delta S=0}$。温度项为负、体积项为正且恰好相消，与可逆绝热无熵交换、无熵产生一致；“温度降低”本身并不等于“熵减小”。
+\end{drillsolution}
+\begin{drillsolution}{t3-11}\textbf{设刚性容器为固定控制体，逐项排除壁面热量和体积功}\par\nobreak
+取图\ref{fig:t3-11q}中刚性容器为固定控制体。容器起初真空，$U_i=0$；外壁绝热、不动，分别排除热交换和外壁体积功。流入的每摩尔单原子气体仍携带 $C_pT_s$ 的焓，因为入口推动功与分子内能同时进入控制体。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{跟踪入口微团，把推动功和内能一起计入流入焓}\par\nobreak
+\fig{fig:t3-11s}{真空容器的绝热充气：解答过程}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (-.5,.5)--(4.6,.5) (-.5,1.5)--(4.6,1.5);
+\fill[blue!12] (1,.53) rectangle (2,1.47);\draw[thick] (1,.5)--(1,1.5) (2,.5)--(2,1.5);
+\draw[force] (-.5,1)--(.9,1) node[midway,above]{$p_sS$};
+\draw[dim] (1,2)--(2,2) node[midway,above]{$\dd\ell$};
+\node[below,align=center] at (1.5,0){微团 $\dd n$\\内能 $C_VT_s\dd n$};
+\draw[world] (4.6,.5)--(4.6,-.2)--(8,-.2)--(8,2.4)--(4.6,2.4)--(4.6,1.5);
+\draw[dashed,thick,rounded corners] (4.1,-.65) rectangle (8.45,2.85);
+\node[above] at (6.2,2.9){固定控制面};
+\draw[flow,blue,thick] (2.8,1)--(5.2,1) node[pos=.15,above]{$\dd n$};
+\node[align=center] at (6.5,1.3){刚性绝热容器\\$U_i=0$\\$U_f=n_fC_VT_f$};
+\node[align=center] at (4,-1.45){微团进入前接受推动功\\$p_sS\dd\ell=p_s\dd V=RT_s\dd n$};
+\end{tikzpicture}}
+
+图\ref{fig:t3-11s}的推动力作用于微团后端，位移沿入口方向，故推动功为正。每摩尔流入能量是内能$C_VT_s$加推动功$RT_s$，合为$C_pT_s$；它不是刚性容器外壁的体积功。忽略入口动能、势能，且$T_s$不变，累计进入量从0增至$n_f$，因此
+\[
+n_fC_VT_f=\int_0^{n_f}C_pT_s\,\dd n_{\text{入}}
+=C_pT_s[n_{\text{入}}]_0^{n_f}=n_fC_pT_s.
+\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用气体热容比求绝热充气末温}\par\nobreak
+取 $C_V=3R/2,C_p=5R/2$，消去非零的 $n_f$，得
+\[\boxed{T_f=\frac53T_s}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再用停止压强条件求末气体量并检验后续状态}\par\nobreak
+关阀时末压等于气库压强，故状态方程又给出
+\[\boxed{n_f=\frac{p_sV}{RT_f}=\frac{3p_sV}{5RT_s}}.\]
+若误用 $T_f=T_s$，同一末压、末容积会要求更大的气体量，却无法满足绝热充气的能量式。这里的高温是刚性容器接收流入焓的结果；关阀后若容器再向环境放热，温度、压强还会变化，应作为后续过程另算。
+\end{drillsolution}
+\begin{drillsolution}{t3-12}\textbf{先读热流方向，再以可逆熵平衡求高温端排热}\par\nobreak
+按图\ref{fig:t3-12q}的箭头，机器从低温源取热，接受外界功，再向高温源放热。设低温取热 $Q_c=900\,\mathrm J$、高温排热为 $Q_h$，两者均用正的绝对值表示。
+机器可逆且只与两恒温源交换热量，因此机器循环熵变为零、两热源总熵变也为零：
+\[\frac{Q_h}{300}-\frac{Q_c}{270}=0,
+\qquad Q_h=900\frac{300}{270}=1000\,\mathrm J.\]\fig{fig:t3-12s}{每周从低温源搬运900J，加上100J输入功，向高温源送出1000J}{\begin{tikzpicture}
+
+\draw[world](0,3)rectangle(3,4) (0,1)rectangle(3,2) (0,-1)rectangle(3,0);\node at(1.5,3.5){300K热源};\node at(1.5,1.5){可逆制冷机};\node at(1.5,-.5){270K热源};\draw[flow](1.5,0)--(1.5,1)node[midway,right]{$Q_c=900\,\mathrm J$};\draw[flow](1.5,2)--(1.5,3)node[midway,right]{$Q_h=1000\,\mathrm J$};\draw[flow](5,1.5)--(3,1.5)node[midway,above]{$W_{\rm in}=100\,\mathrm J$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对一周机器用能量守恒求输入功}\par\nobreak
+由图\ref{fig:t3-12s}的能量分配，$Q_h=Q_c+W_{\text{入}}$，故
+\[\boxed{W_{\text{入}}=100\,\mathrm J,\qquad Q_h=1000\,\mathrm J}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按制冷与供热两种目标分别求性能系数}\par\nobreak
+制冷目标是取走低温热量，热泵目标是向高温端供热，两个系数分别为
+\[\boxed{\varepsilon=\frac{Q_c}{W_{\text{入}}}=9,\qquad \mathrm{COP}_h=\frac{Q_h}{W_{\text{入}}}=10}.\]
+两系数相差1，正对应输入功本身也转入高温端。系数大于1表示热量被搬运，并非把100J功凭空转成1000J能量；其中900J已从低温源取走。
+\end{drillsolution}
+\begin{drillsolution}{t3-13}\textbf{用刚性绝热外边界与真空阻力确定实际热量、功和内能差}\par\nobreak
+取整个容器内的气体为研究对象。图\ref{fig:t3-13q}中外壁刚性、绝热，气体扩散前方是真空，所以既无外部热量输入，也无抵抗外界负载所做的功。因此
+\[\boxed{Q=0,\qquad W=0,\qquad \Delta U=0}.\]
+理想气体量不变，$\Delta U=C_V(T_f-T_i)$ 给出 $T_f=T_i$。温度不变是能量守恒的结论，不能反过来把自由膨胀当成可逆等温过程而算出对数功。\fig{fig:t3-13s}{实际自由膨胀只给初末平衡态，虚线是计算熵差的可逆参考路径}{\begin{tikzpicture}[x=1.5cm,y=1cm]
+\draw[->](0,0)--(3.2,0)node[right]{$V'/V$};\draw[->](0,0)--(0,2.8)node[above]{$p/p_i$};
+\draw[blue,dashed,domain=1:2,samples=60]plot(\x,{1/\x});\fill(1,1)circle(2pt)node[above]{$A$};\fill(2,.5)circle(2pt)node[above right]{$B$};
+\draw[dashed](1,0)--(1,1) (2,0)--(2,.5);\node[below]at(1,0){$1$};\node[below]at(2,0){$2$};
+\node at(1.8,-1){实际：$Q=W=0$};\node at(1.8,-1.7){参考路径：$T=T_i$，$\Delta S=R\ln2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只借助可逆参考路径算熵差，检验孤立容器能否自行复原}\par\nobreak
+熵差只看端点。可另选一条连接相同端点的假想可逆等温路径来计算，或直接用理想气体熵差公式：
+\[\Delta S=C_V\ln\frac{T_f}{T_i}+R\ln\frac{2V}{V}=\boxed{R\ln2>0}.\]
+图\ref{fig:t3-13s}显示内能保持不变与熵增加可以同时发生。若容器孤立，要求气体自行退回原半边并恢复初温，就会使整体熵减少 $R\ln2$，第二定律不允许。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分恢复气体初态与系统、环境同时无变化}\par\nobreak
+外界可以借助活塞压缩并排热恢复气体初态，但环境必然发生做功、受热等变化；这与“只在孤立容器内自发恢复且没有其他变化”不同。
+\end{drillsolution}

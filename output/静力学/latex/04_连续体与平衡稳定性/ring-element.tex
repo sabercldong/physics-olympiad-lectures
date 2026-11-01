@@ -1,0 +1,46 @@
+\fig{s4:ring-element}{球面上的弹性圈：整圈几何、水平微段张力与子午面内的微段受力}{
+\begin{tikzpicture}[scale=.8]
+\begin{scope}
+\draw[world](0,0)circle(1.8);
+\draw[guide](0,-1.9)--(0,2.2);
+\draw[world](0,.9)ellipse(1.56 and .25);
+\draw[world](0,0)--(1.56,.9)node[midway,below]{$R_s$};
+\draw[dim](0,1.4)--(1.56,1.4)node[midway,above]{$b$};
+\fill(0,0)circle(1.5pt)node[below left]{$O$};
+\fill(0,.9)circle(1.5pt)node[left]{$C$};
+\fill(1.56,.9)circle(2pt)node[right]{$P$};
+\draw[world](0,.5)arc(90:30:.5);
+\node at(.25,.65){$\theta$};
+\node at(0,-2.4){整圈位于纬度圈};
+\end{scope}
+\begin{scope}[xshift=4.8cm]
+\coordinate(A)at(1.45,.39);\coordinate(B)at(1.45,-.39);
+\draw[guide](0,0)--(A) (0,0)--(B);
+\draw[world,very thick](1.5,0)arc(0:15:1.5) (1.5,0)arc(0:-15:1.5);
+\draw[force,blue](A)--(1.15,1.5)node[above]{$\tau$};
+\draw[force,blue](B)--(1.15,-1.5)node[below]{$\tau$};
+\draw[force,red](1.5,0)--(.35,0)node[midway,above]{$\tau\dd\phi$};
+\node[left]at(0,0){$C$};
+\node at(.7,-.55){$\dd\phi$};
+\node at(.8,-2.4){俯视微段};
+\end{scope}
+\begin{scope}[xshift=8.7cm]
+\fill(0,0)circle(2pt)node[above left]{$P$};
+\draw[force,blue](0,0)--(1.65,.953)node[above]{$\dd N$};
+\draw[force](0,0)--(0,-1.55)node[below]{$g\,\dd m$};
+\draw[force,red](0,0)--(-1.45,0)node[midway,below]{$\tau\dd\phi$};
+\draw[guide](0,0)--(0,1.6);
+\draw[world](0,.65)arc(90:30:.65);
+\node at(.47,.8){$\theta$};
+\node at(0,-2.4){子午面内平衡};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{s4:ring-element}左图以$O$为球心、$C$为圈心，$R_s$为球半径，故$b=R_s\sin\theta$。中图两端张力沿各自切线向微段外拉，横向分量相加，给出径向合力$2\tau\sin(\dd\phi/2)\simeq\tau\dd\phi$；不能把两力按同一直线完全抵消。
+
+右图取圈在光滑球面外侧的构型，支持力沿$OP$向外，和竖直方向成$\theta$角。设整圈质量为$M$，则$\dd m=M\dd\phi/(2\pi)$。分别沿竖直与水平径向平衡：
+\[
+ \dd N\cos\theta=g\,\dd m,\qquad
+ \dd N\sin\theta=\tau\dd\phi.
+\]
+消去支持力后$\tau=Mg\tan\theta/(2\pi)$，再与整圈弹性关系联立。微段受力中的$\dd m,\dd N,\tau\dd\phi$均为同阶小量；整圈伸长则由周长变化计算。若换成球内侧接触，须重画支持力方向并重新检查能否平衡。

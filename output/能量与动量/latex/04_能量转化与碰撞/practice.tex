@@ -1,0 +1,26 @@
+\section{练习}
+
+\begin{question}\begin{drill}[磁吸平衡的失稳条件]\label{em4:drill:1}
+质量$m$的小磁铁由长$\ell=1\,\mathrm m$的轻绳悬挂，另一磁铁缓慢靠近且始终同高，吸力大小为$K/d^n$。在小位移近似下，悬挂磁铁离初始竖线水平位移$s=1\,\mathrm{cm}$、两磁铁间距$d=4\,\mathrm{cm}$时平衡恰失稳。求整数$n$，并求改为竖直同极相对、只允许竖直平移时的平衡间距；排斥力的大小仍按同一$K/d^n$计算。
+\end{drill}
+\fig{fig:em4:drill:1:s}{外磁铁缓慢靠近；示意图放大摆角以区分水平位移s与磁铁间距d}{\begin{tikzpicture}
+
+\coordinate(O)at(0,3);\coordinate(P)at(.3,0);\draw[world](O)--(P)node[midway,right]{$\ell$};\draw[guide](O)--(0,-.4);
+\fill(O)circle(.05)node[above]{$O$};\filldraw[fill=gray!15](.1,-.15)rectangle(.5,.15);\filldraw[fill=gray!15](1.3,-.15)rectangle(1.7,.15);
+\draw[dim](0,-.6)--(.3,-.6)node[midway,below]{$s$};\draw[dim](.3,-1.15)--(1.5,-1.15)node[midway,below]{$d$};
+\draw[flow](2.2,.7)--(1.5,.7)node[above]{缓慢靠近};\node[right]at(1.8,-.1){外磁铁};
+\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:1}
+\begin{question}\begin{drill}[粘合后再释放弹簧]\label{em4:drill:2}
+三块质量均为$m$的$A,B,C$在光滑直线上，$B,C$间有被锁定的压缩弹簧。$A$以$v_0$撞上$B$，三块短时共速后$A,B$粘合，锁线断开，弹簧释放，最终$C$速度为$v_0$。（1）求弹簧释放能量；（2）若$A$初速改为$v$、要求$C$末速为$2v_0$，求所需能量；（3）若仍用原弹簧，求可行$v$。
+\end{drill}
+\fig{fig:em4:drill:2:s}{题设：粘合后再释放弹簧}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$A$};\draw[world](2.6-.35,-.3)rectangle(2.6+.35,.3);\node at(2.6,0){$B$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$C$};\draw[flow](0.6,0.8)--++(1.3,0)node[above]{$v_0$};\draw[spring](3,0)--(4.2,0);\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:2}
+\begin{question}\begin{drill}[带挡板木板上的往返滑动]\label{em4:drill:3}
+质量$M=3m$、长$L=1\,\mathrm m$的木板静止于光滑水平面，右端有挡板。质量$m$的块以$v_0=4\,\mathrm{m/s}$从左端滑上，与挡板完全弹性碰撞后返回，恰在左端相对板停止。求最后共同速度及块板间动摩擦因数，取$g=10\,\mathrm{m/s^2}$。
+\end{drill}
+\fig{fig:em4:drill:3:s}{题设：带挡板木板上的往返滑动}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\draw[world](5,.3)--(5,1.3);\draw[world](.2,.3)rectangle(1,.9);\draw[flow](.2,1.3)--(1.8,1.3)node[above]{$v_0$};\node at(3,.7){$M=3m$};\draw[dim](0,-.5)--(5,-.5)node[midway,below]{$L$};\end{tikzpicture}}
+\end{question}
+\answerlink{em4:drill:3}

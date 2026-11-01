@@ -1,0 +1,43 @@
+\section{练习}
+
+\begin{question}
+\begin{drill}[放大镜的近点观察]\label{d:41}
+薄凸透镜焦距 \(f=5.00\,\mathrm{cm}\)，眼睛紧贴透镜，明视距离 \(D=25.0\,\mathrm{cm}\)。求最终虚像在近点时的物距和视角放大率，再与最终像在无穷远时比较。忽略眼与镜之间的间隔。
+\end{drill}
+\fig{fig:d41q}{练习：放大镜的近点观察}{
+\begin{tikzpicture}
+\draw[axisline](-3.2,0)--(2,0);\draw[<->,>=Stealth,world](0,-1)--(0,1);
+\draw[axis,thick](-1,0)--(-1,.4)node[above]{$B$};\node[below]at(-1,0){$A$};
+\node[right]at(.8,.7){眼};\node[below left]at(0,0){$O$};\node at(-2.2,.9){物距 $u$ 待求};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[焦平面上的物体往返成像]\label{d:42}
+薄凸透镜焦距 \(f=10.0\,\mathrm{cm}\)，其后 \(20.0\,\mathrm{cm}\) 处放垂直主轴的平面镜。小物放在透镜前焦平面。求光两次通过透镜后的像位置及横向放大率。忽略元件厚度。
+\end{drill}
+\fig{fig:d42q}{练习：焦平面上的物体往返成像}{
+\begin{tikzpicture}
+\draw[axisline](-2,0)--(3,0);\draw[world](0,-1)--(0,1) (2,-1)--(2,1);
+\draw[axis,thick](-1,0)--(-1,.3)node[above]{$B$};
+\node[below]at(-1,0){$A$};\node[above]at(0,1){$L$};\node[above]at(2,1){平面镜};
+\draw[dim](-1,-1.2)--(0,-1.2)node[midway,below]{$f$};
+\draw[dim](0,-1.2)--(2,-1.2)node[midway,below]{$2f$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[伽利略望远镜的无焦条件]\label{d:43}
+伽利略望远镜的物镜焦距 \(f_o=+30.0\,\mathrm{cm}\)，目镜焦距 \(f_e=-5.00\,\mathrm{cm}\)。求观察无穷远目标、出射光平行时的镜间距和视角放大率，并说明像的正倒。
+\end{drill}
+\fig{fig:d43q}{练习：伽利略望远镜的无焦条件}{
+\begin{tikzpicture}
+\draw[axisline](-1,0)--(6,0);
+\draw[<->,>=Stealth,world](0,-1)--(0,1)node[above]{物镜};
+\draw[>-<,>=Stealth,world](3,-.8)--(3,.8)node[above]{目镜};
+\draw[ray](-1,.3)--(0,.3);\draw[dim](0,-1.4)--(3,-1.4)node[midway,below]{$d$};
+\end{tikzpicture}}
+\end{question}
+

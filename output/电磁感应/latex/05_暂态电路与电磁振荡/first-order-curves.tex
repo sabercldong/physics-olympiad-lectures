@@ -1,0 +1,14 @@
+\fig{em5:time-constant}{一阶过程的剩余偏差；虚线为初始切线及一个时间常量的读数}{
+\begin{tikzpicture}[x=1.5cm,y=2.2cm]
+\draw[axis](0,0)--(4.4,0)node[right]{$t/\tau$};
+\draw[axis](0,0)--(0,1.25)node[above]{$\delta/\delta_0$};
+\draw[world,blue,domain=0:4.1,samples=80]plot(\x,{exp(-\x)});
+\draw[guide](0,1)--(1,0);
+\draw[guide](1,0)--(1,{exp(-1)})--(0,{exp(-1)});
+\node[left]at(0,1){$1$};
+\node[left]at(0,{exp(-1)}){$\e^{-1}$};
+\node[below]at(1,0){$1$};
+\node at(2.6,.6){$\delta=\delta_0\e^{-t/\tau}$};
+\end{tikzpicture}}
+
+图\ref{em5:time-constant}把电感电流偏差$\delta=i-I_\infty$或电容电压偏差$\delta=u-U_\infty$除以各自初始偏差$\delta_0$。曲线在$t=\tau$处的高度为$\e^{-1}$，初始切线则在同一横坐标截到零；实际曲线始终不在有限时间到零。初值高于或低于新稳态时，$\delta_0$符号不同，但归一化后的曲线相同。$\delta_0=0$时系统从开始就在稳态，无须作此归一化。

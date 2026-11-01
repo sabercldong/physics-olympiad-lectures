@@ -1,0 +1,338 @@
+\section{静水压强与参考压强}
+静止流体不能承受持久剪应力，小面元上的压力沿法线。图\ref{fig:s5:pressure-element}截取一个竖直液柱，侧面压力的水平合力为零，顶面压力向下、底面压力向上。深度$z$从已知压强的边界向下量，微元厚度为$\dd z$。
+\fig{fig:s5:pressure-element}{用微元上下表面压力差支承微元重量，确定压强梯度的符号}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(2,1.4);\draw[force](1,2.4)--(1,1.4)node[pos=0,above]{$pS$};
+\draw[force,blue](1,-1.4)--(1,0)node[pos=0,below]{$(p+\dd p)S$};
+\draw[force,red](1,.7)--(1,.1);\draw[guide,red](1,.4)--(2.5,.7);\node[right,red]at(2.5,.7){$\rho gS\dd z$};
+\draw[dim](-.5,0)--(-.5,1.4)node[midway,left]{$\dd z$};
+\draw[axis](4.5,2.2)--(4.5,-.8)node[below]{$z$向下};\node at(1,3.1){截面积$S$};
+
+\end{tikzpicture}}
+由图\ref{fig:s5:pressure-element}的竖直平衡，
+\[
+(p+\dd p)S-pS-\rho gS\dd z=0
+\quad\Rightarrow\quad \frac{\dd p}{\dd z}=\rho g.
+\]
+密度恒定且液面边界为 $p(0)=p_0$时，从液面积至深度 $z$：
+\[\int_{p_0}^{p(z)}\dd P=\rho g\int_0^z\dd\zeta
+ =\rho g[\zeta]_0^z,\qquad p(z)=p_0+\rho gz.\]
+若密度随深度变化，则$\rho$必须留在积分号内：$p(z)-p_0=g\int_0^z\rho(\zeta)\dd\zeta$。这里具体原函数由给定密度函数决定，不能把变量密度当常数提出。压强增加来自上下表面之差，并非把微元全部重量除以任意表面积。
+
+
+同一连通、静止、密度相同的液体在同一水平面压强相等。不同液体之间无表面张力的静止界面两侧压强连续，但压强随高度的斜率不同。计算多层液体时应逐层增加$\rho_i gh_i$，不能把同一深度当成每层都具有的厚度。
+
+绝对压强与表压必须区分。物体外侧也受大气压时，均匀大气压在闭合表面上合力为零，可改用表压；若一侧真空、另一侧大气，则不能省掉$p_0$。容器底部压力等于底压强乘底面积，但这不一定等于液体重量，因为倾斜侧壁还可提供竖直分力。
+
+\fig{fig:s5:pressure}{各层厚度确定分段压强增量，界面处压强连续而斜率改变}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,3.3)--(0,0)--(3,0)--(3,3.3);
+\fill[blue!18](0,0)rectangle(3,1.5);\fill[blue!5](0,1.5)rectangle(3,3);
+\draw[guide](0,1.5)--(3,1.5);\draw[world](0,3)--(3,3);
+\node at(1.5,3.5){$p_0$};\node at(1,2.2){$\rho_1$};\node at(1,.7){$\rho_2>\rho_1$};
+\draw[dim](3.5,3)--(3.5,1.5)node[midway,right]{$h_1$};\draw[dim](3.5,1.5)--(3.5,0)node[midway,right]{$h_2$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](0,0)--(3.4,0)node[right]{$z$};\draw[axis](0,0)--(0,3.3)node[above]{$p-p_0$};
+\draw[world,blue](0,0)--(1.5,.9)--(3,2.7);\draw[guide](1.5,0)--(1.5,.9);\node[below]at(1.5,0){$h_1$};
+\node[below]at(3,0){$h_1+h_2$};\node at(1.8,4.1){两段斜率为$\rho_1g,\rho_2g$};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:s5:pressure}的界面压强为$p_1=p_0+\rho_1gh_1$，下层从这个值继续累加，底压为$p_b=p_0+\rho_1gh_1+\rho_2gh_2$。右图的折线在界面处不断开；若错误地把下层顶面当成另一个大气边界，就会漏掉上层载荷。求容器底部净力时，再按实际外侧压强计算压差。
+
+\subsection{连通液体、侧壁反力与静水悖论}
+对于静止连通液体，从一个已知压强点沿竖直方向积分到另一个点，压强差只取决于密度分布与高度差，不取决于所选路径。若同一均匀液体同高处压强不同，就会出现水平加速度，与静止假设矛盾。隔着不连通的密闭气室或不同液体界面时，则要把各段边界压强一起保留。
+
+上宽下窄的容器中，液体受倾斜侧壁的法向力可以含向上分量，底面所承受的总压力便小于液体重量；上窄下宽时，侧壁可对液体施向下分量，底压力反而大于水重。容器外形改变底部受力，并不违反整体重力平衡。若求的是容器压在台秤上的总力，应取容器和液体整体，自重与液重全部由台秤承担，内部侧壁压力不再单独出现。
+
+\fig{fig:s5:wall-vertical}{侧壁法向力的竖直分量决定底压力与液体重量的差别}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-1.7,3)--(-.8,0)--(.8,0)--(1.7,3);\draw[guide](-1.55,2.5)--(1.55,2.5);
+\draw[force,blue](-1.25,1.5)--(-.25,1.8);\draw[force,blue](1.25,1.5)--(.25,1.8);
+\draw[force](0,-1)--(0,0)node[pos=0,below]{$F_b$};\draw[force](0,1.3)--(0,.3)node[left]{$W$};
+\node at(0,-1.8){$F_b+N_{\rm side,z}=W$};\node at(0,3.6){侧壁合力有向上分量};
+\end{scope}
+\begin{scope}[xshift=5.7cm]
+\draw[world](-.8,3)--(-1.7,0)--(1.7,0)--(.8,3);\draw[guide](-.95,2.5)--(.95,2.5);
+\draw[force,blue](-1.25,1.5)--(-.25,1.2);\draw[force,blue](1.25,1.5)--(.25,1.2);
+\draw[force](0,-1)--(0,0)node[pos=0,below]{$F_b$};\draw[force](0,2.4)--(0,1.4)node[left]{$W$};
+\node at(0,-1.8){$F_b=W+|N_{\rm side,z}|$};\node at(0,3.6){侧壁合力有向下分量};
+\end{scope}
+\end{tikzpicture}}
+图\ref{fig:s5:wall-vertical}的研究对象是液体，$F_b$为底面对液体的向上力，其大小等于液体对底面的向下力。蓝色箭头垂直各侧壁，所以两种容器的竖直分量方向相反。若改取容器与液体整体，侧壁力成为内力，台秤读数仍由总重量决定。
+
+
+帕斯卡原理描述密闭静止液体中额外压强的传递。液压活塞以小面积$S_1$施力$F_1$，理想同高大活塞可给$F_2=F_1S_2/S_1$；位移相反按体积守恒满足$S_1\Delta x_1=S_2\Delta x_2$，因此输入和输出功相同。面积放大力伴随行程缩小，不能由力放大推断能量增益。两活塞高度不同时还要加入静水压差。
+
+
+\fig{fig:s5:hydraulic}{液压装置以大面积换取大力，同时以小行程保持体积与功的关系}{\begin{tikzpicture}
+
+\draw[world](0,3)--(0,0)--(6,0)--(6,3);\draw[world](1,3)--(1,.8)--(3,.8)--(3,3);
+\fill[blue!10](.02,.02)rectangle(.98,2);\fill[blue!10](.02,.02)rectangle(5.98,.78);\fill[blue!10](3.02,.78)rectangle(5.98,2);
+\draw[world,line width=2pt](0,2)--(1,2);\draw[world,line width=2pt](3,2)--(6,2);
+\draw[force](.5,3.3)--(.5,2.1)node[pos=0,above]{$F_1$};\draw[force](4.5,2.1)--(4.5,3.3)node[above]{$F_2$};
+\draw[axis,red](1.4,2.3)--(1.4,1.1)node[right]{$\Delta x_1$};\draw[axis,red](6.4,1.7)--(6.4,2.1)node[right]{$\Delta x_2$};
+\node at(.5,1.5){$S_1$};\node at(4.5,1.5){$S_2$};\draw[guide](-.3,2)--(6.2,2);
+
+\end{tikzpicture}}
+图\ref{fig:s5:hydraulic}画的是活塞同高、忽略活塞自重和摩擦的瞬时状态。由液体得到的额外压强$F_1/S_1=F_2/S_2$与体积约束$S_1\Delta x_1=S_2\Delta x_2$相乘，可直接核验输入、输出功相等；有限行程造成高差后，应同时计入液体重力势能的变化。
+
+
+\section{分布压力的合力与作用点}
+平面受液面下分布压强作用，合力大小为$F=\int p\,\dd S$，作用点需由力矩匹配确定。对上边缘在液面的竖直矩形闸门，宽$b$、高$h$，取深度$z$的小条，$\dd F=\rho gzb\,\dd z$。分别对力和关于液面的力矩积分：
+\begin{align*}
+ F&=\rho gb\int_0^h z\dd z
+ =\rho gb\left[\frac{z^2}{2}\right]_0^h=\frac12\rho gbh^2,\\
+ M&=\rho gb\int_0^h z^2\dd z
+ =\rho gb\left[\frac{z^3}{3}\right]_0^h=\frac13\rho gbh^3.
+\end{align*}
+再用 $Fz_P=M$得到 $z_P=M/F=2h/3$。
+合力作用点低于面积中心，因为下部压强更大。若上边缘本就在深度$z_0$，压强图为梯形，不能仍用$2h/3$。曲面压力则要投影积分，或用一个假想封闭液体体积的整体平衡间接求竖直分力。
+
+\fig{fig:s5:gate-strip}{对同一条带分别累加力与力矩，才能确定压力中心}{\begin{tikzpicture}
+
+\draw[world,line width=1.3pt](0,0)--(0,3);\draw[guide](-2,3)--(3.7,3);
+\draw[axis](-1.5,3)--(-1.5,-.6)node[below]{$z$};\node[above]at(1,3){液面};
+\draw[fill=blue!25](-.15,1.2)rectangle(.15,1.5);\draw[force,blue](0,1.35)--(1.7,1.35)node[right]{$\dd F=\rho gzb\dd z$};
+\draw[dim](-.7,1.35)--(-.7,3)node[midway,left]{$z$};\node[left]at(-.15,1.6){$\dd z$};
+\draw[world,dashed](0,3)--(2.7,0)--(0,0);\draw[force,red](0,1)--(2.7,1)node[right]{$F$};
+\node[left]at(0,1){$P$};\node at(1.7,-.65){门宽$b$垂直纸面};
+
+\end{tikzpicture}}
+图\ref{fig:s5:gate-strip}中蓝色条带的合力为$\dd F$，其对液面横轴的力矩为$z\dd F$。红色合力须同时替代全部条带的力与力矩，故应以$Fz_P=\int z\dd F$确定作用点。图中的三角形是压强分布，不能把它当作闸门的几何外形。
+
+
+对薄壁圆锥、漏斗等，直接积分压力方向有时繁琐。可把液体与壳体合成一个系统，界面压力成为内力；再计算底面的外压力和系统重力，往往能直接得到外壳受力。关键是系统边界闭合且所有外表面压力都已计入。
+
+\subsection{压力中心的一般表达与曲面投影}
+压力中心的表达式来自力矩积分，而不是预设在面积中心。对完全湿润的倾斜平面，面积为$S$，面积中心深度为$h_C>0$，平面与水平夹角$\beta$。取平面内坐标$\eta$沿下坡从面积中心量起，深度为$h=h_C+\eta\sin\beta$。均匀液体的表压为$\rho gh$，所以
+\[
+F=\rho g\int_S(h_C+\eta\sin\beta)\dd S
+=\rho gh_CS,
+\]
+其中$\int_S\eta\dd S=0$由面积中心定义保证。各微元力都垂直同一平面，方向平行；其关于面积中心横向轴的总力矩为
+\[
+M_C=\rho g\int_S\eta(h_C+\eta\sin\beta)\dd S
+=\rho g\sin\beta\,I_C,\quad I_C=\int_S\eta^2\dd S.
+\]
+令等效合力下移$\eta_P$，由$F\eta_P=M_C$才得到$\eta_P=I_C\sin\beta/(h_CS)$；对应的竖直深度为$h_P=h_C+I_C\sin^2\beta/(h_CS)$。$I_C$是面积二次矩，量纲为长度四次，不能与质量转动惯量混同。
+
+\fig{fig:s5:inclined-pressure}{沿斜面的位移与竖直深度不同，压力中心偏移沿斜面量取}{\begin{tikzpicture}
+
+\draw[world](0,3)--(3,0);\draw[guide](-.5,3.7)--(4.4,3.7);
+\fill(1.5,1.5)circle(2pt)node[above right]{$C$};\fill(2,.9999)circle(2pt)node[below left]{$P$};
+\draw[axis,blue](1.5,1.5)--(2.55,.45)node[right]{$+\eta$};
+\draw[force,red](2,1)--(3.2,2.2)node[right]{$F$};
+\draw[guide](1.5,1.5)--(4,1.5);\draw[dim](3.8,1.5)--(3.8,3.7)node[midway,right]{$h_C$};
+\draw[guide](0,3)--(1.3,3);\draw[world](.7,3)arc(0:-45:.7);\node at(.95,2.65){$\beta$};
+\node at(.1,.4){$CP=\eta_P$};
+
+\end{tikzpicture}}
+图\ref{fig:s5:inclined-pressure}中$C$是面积中心、$P$是压力中心。沿面下移$\eta$只增加竖直深度$\eta\sin\beta$，因此$\eta_P$和$h_P-h_C$相差一个$\sin\beta$。水平平板$\beta=0$上压强均匀，二者均为零，可检查角度因子。
+
+
+对图\ref{fig:s5:gateoffset}的竖直矩形闸门，顶边深度$z_0$、高$h$、宽$b$，有$h_C=z_0+h/2$、$S=bh$。面积二次矩为
+\[I_C=b\int_{-h/2}^{h/2}\eta^2\dd\eta
+ =b\left[\frac{\eta^3}{3}\right]_{-h/2}^{h/2}
+ =\frac b3\left[\left(\frac h2\right)^3-\left(-\frac h2\right)^3\right]
+ =\frac{bh^3}{12}.\]
+代入一般式得到
+\[
+z_P=z_0+\frac h2+\frac{h^2}{12(z_0+h/2)}.
+\]
+\fig{fig:s5:gateoffset}{顶边已浸没时压强呈梯形分布，合力仍须匹配力矩}{\begin{tikzpicture}[scale=.88]\fill[blue!8](0,0)rectangle(2.8,4.9);\draw[guide](-.1,4.9)--(4.8,4.9)node[right]{自由液面};\draw[world,line width=1.3pt](2.8,.4)--(2.8,3.4);\draw[guide](2.8,3.4)--(3.4,3.4)--(4.6,.4)--(2.8,.4);\foreach \z/\l in {.4/1.8,1.15/1.5,1.9/1.2,2.65/.9,3.4/.6}{\draw[flow](2.8,\z)--++(\l,0);}\draw[dim](-.4,3.4)--(-.4,4.9)node[midway,left]{$z_0$};\draw[dim](-.4,.4)--(-.4,3.4)node[midway,left]{$h$};\draw[force](2.8,1.65)--(5,1.65)node[right]{$F$};\node[left]at(2.8,1.65){$P$};\end{tikzpicture}}
+令$z_0=0$，才恢复$z_P=2h/3$；若$z_0\gg h$，压强分布相对接近均匀，压力中心便接近面积中心。图中梯形的上部均匀部分会把合力作用点往上移，故不能不看浸没起点而一律取距顶边$2h/3$。若闸门两侧承受不同压强，应先对净压强积分；只在一侧大气压已被另一侧抵消时，才能直接采用上述表压关系。
+
+对曲面，水平分力等于曲面在竖直投影上的压强积分，竖直分力可用曲面上方（或下方）的假想液体重量来求，方向由所选流体体积平衡确定。若曲面一部分露出水面，积分范围必须截断在湿润部分，不能按整圆或整球面积计算。
+
+\fig{fig:s5:curved-control}{曲面上方的假想液体把曲面压力分解为投影压力和液体重量}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[blue!12](0,2)--(2,2)arc(0:-90:2)--cycle;
+\draw[world](0,0)arc(-90:0:2);\draw[guide](0,0)--(0,2)--(2,2);
+\draw[force,red](1.414,.586)--(2.121,-.121)node[right]{$\dd\boldsymbol F$};
+\node at(.7,2.5){表压为零};\node at(.5,1.5){假想水体};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill[blue!12](0,2)--(2,2)arc(0:-90:2)--cycle;\draw[world](0,0)arc(-90:0:2);\draw[guide](0,0)--(0,2)--(2,2);
+\draw[force,blue](0,1)--(1.2,1)node[above]{$F_H$};
+\draw[force](.7,1.5)--(.7,.3)node[right]{$W$};
+\draw[force,red](1.414,.586)--(.56,1.44)node[above right]{$\boldsymbol R$};
+\node at(1,-.8){曲面对水的力为$\boldsymbol R$};
+\end{scope}
+\end{tikzpicture}}
+图\ref{fig:s5:curved-control}右图只分析假想水体。竖直投影面上的压力向右，曲面对水的反力$\boldsymbol R$必须有向左分量抵消它、向上分量平衡重量$W$。故水对曲面的力方向相反，水平向右、竖直向下，竖直分力大小为$W$。若液体位于曲面的另一侧，应重新画控制体和压力方向。
+
+
+计算开口壳体时，均匀压强对闭合面总合力为零的结论可以用来补上虚拟封口面，再减去它的压力。虚拟面只服务于积分，不能把其压力当成真实存在的额外外力重复计入系统。所用压强必须是同一侧的绝对压强或一致的表压，不能把一面用表压、另一面用绝对压强。
+
+
+\section{浮力及两层液体中的平衡}
+把物体占据的空间暂时换成静止液体，同一闭合边界上的压力合力应平衡这部分液体的重力。因此物体受到的净浮力为排开流体的重力，均匀液体中$B=\rho gV_{\rm sub}$。在多层液体中分别求$\sum_i\rho_i gV_i$，不能只选一种密度乘总浸没体积。
+
+浮力作用线通过排液体积的质心，即浮心。漂浮物平衡还要求重力、浮力及其他支承力的力矩平衡。物体倾斜后排液形状、浮心位置可能改变，稳定性不能只看总浮力等于总重力。若物体与容器底密封接触，其底面没有相应液体压强，不能机械套用完整阿基米德浮力。
+
+\subsection{漂浮约束与浮心的移动}
+若浮体只受重力和浮力，静止要求两者大小相等且作用线重合。质心由固体质量分布决定，浮心由浸没形状决定。物体转动后，即使总体浸没体积仍由重量固定，浸没形状可以改变，浮心也会水平移动。因此“重心低于浮心”是某些完全浸没情形的充分判断，不能直接当作所有部分漂浮物的唯一稳定标准。
+
+自由漂浮体的小倾角稳定性，可以从新浸入与露出的小楔形体积推导。先限定均匀液体、体积不变的刚体、无自由液面舱内流动，且初始水线关于倾斜轴对称。取浮体自身坐标，$x$沿水线横向，向右倾倒的小角$\theta>0$使水面在浮体坐标中升高约$x\theta$。图\ref{fig:s5:waterplane}右侧新浸入、左侧露出；水线面积元$\dd A$对应的排液体积变化为$\dd(\Delta V)=x\theta\dd A$，允许它带符号。
+\fig{fig:s5:waterplane}{浮体坐标中水线两侧的楔形体积变化}{\begin{tikzpicture}[scale=.88]\draw[world](-2,1)--(-2,-1.5)--(2,-1.5)--(2,1);\fill[blue!12](-2,-1.5)rectangle(2,0);\fill[blue!35](0,0)--(2,0)--(2,.5)--cycle;\fill[red!20](-2,0)--(-2,-.5)--(0,0)--cycle;\draw[guide](-2.6,0)--(2.7,0)node[right]{$x$};\draw[world](-2.5,-.625)--(2.5,.625);\draw[axis](-2.8,-1.6)--(-2.8,1.3)node[above]{$z$};\node at(1.2,1.1){新增排液};\draw[guide](1.2,.9)--(1.5,.2);\node at(-1.2,1.1){露出部分};\draw[guide](-1.2,.9)--(-1.5,-.2);\node[below]at(0,-1.5){以浮体为参考};\draw[dim](1.8,0)--(1.8,.45);\node[right]at(2.2,-.45){$\Delta z\simeq x\theta$};\end{tikzpicture}}
+水线关于倾斜轴对称，故$\Delta V=\theta\int x\dd A=0$，与漂浮排液总量不变相符。但排液的一阶矩增加$\Delta J_x=\theta\int x^2\dd A=\theta I_{\rm wp}$。排液体积$V_{\rm sub}$不变，所以浮心相对浮体的横向移动为
+\[
+\Delta x_B=\frac{\Delta J_x}{V_{\rm sub}}
+=\frac{I_{\rm wp}}{V_{\rm sub}}\theta.
+\]
+延长新的浮力作用线，它与原竖直中轴的交点为定倾中心$M$。小角几何给$BM\,\theta\simeq\Delta x_B$，从而$BM=I_{\rm wp}/V_{\rm sub}$。若$BG=z_G-z_B$按向上为正，便有$GM=BM-BG$。设浮体质量为$m$，回复力矩的大小约为$mg\,GM\,\theta$。$GM>0$时反抗倾倒，$GM<0$时促进倾倒；等于零仍要继续检查高阶项。
+
+\fig{fig:s5:metacenter}{浮心横移后，新的浮力作用线与原中轴交于定倾中心}{\begin{tikzpicture}
+
+\draw[world](-2,1)--(-2,-1.6)--(2,-1.6)--(2,1);\draw[guide](-2.4,0)--(2.4,0);
+\draw[world,blue](-2.2,-.776)--(2.2,.776);\draw[guide](0,-1.5)--(0,2.4);
+\fill(0,-.95)circle(2pt)node[left]{$B$};\fill(.9,-.95)circle(2pt)node[right]{$B'$};
+\draw[dim](0,-2)--(.9,-2)node[midway,below]{$\Delta x_B$};
+\draw[force,blue](.9,-.95)--(-.25,2.3083)node[above]{$B_{\rm force}$};
+\fill(0,1.6)circle(2pt)node[right]{$M$};\fill(0,.45)circle(2pt)node[right]{$G$};
+\draw[force](0,.45)--(.45,-.825)node[midway,left]{$mg$};
+\node[align=left]at(5,1){图在浮体坐标中\\$BM\simeq\Delta x_B/\theta$\\$GM>0$：力偶回复};
+
+\end{tikzpicture}}
+图\ref{fig:s5:metacenter}保留浮体的竖直中轴，真实竖直方向在此坐标中已倾斜。蓝色浮力经过移动后的浮心$B'$，重力经过固体质心$G$；两者等大反向，但作用线分开。$M$在$G$上方时，这个力偶反抗原来的倾倒。计算$BM$所用的是浮心横移，而不是固体质心的移动。
+
+
+以水线宽$b$、纵向长$\ell$、浸深$d$的直立长方体为例，绕纵向轴倾斜，
+\[I_{\rm wp}=\ell\int_{-b/2}^{b/2}x^2\dd x
+ =\ell\left[\frac{x^3}{3}\right]_{-b/2}^{b/2}
+ =\frac{\ell}{3}\left[\left(\frac b2\right)^3-\left(-\frac b2\right)^3\right]
+ =\frac{\ell b^3}{12}.\]
+又有 $V_{\rm sub}=\ell bd$，故$BM=b^2/(12d)$。在浸深固定的比较中，水线越宽，浮心移动产生的回复作用越强。这里使用水线面积的二次矩，原因是计算两侧小楔形体积的一阶矩，不是把水线当成实体求转动惯量。
+
+悬杆入水题另有绳张力，应对悬挂端取矩，不能直接套用自由浮体的定倾中心公式。两类问题都要跟踪浮力作用线，但约束改变后，力矩关系也随之改变。
+
+
+\subsection{分层液体中的浮力作用线}
+均匀液体中浮力作用线通过排液体积的几何质心；分层液体密度不同，同样大小的排液体积不再提供同样大小的浮力。设排开各层体积$V_i$，各部分几何质心为$\boldsymbol r_i$。把被排开的分层液体暂时补回，它受到的边界压力合力与重力平衡，因此
+\[
+B=g\sum_i\rho_iV_i,\qquad
+\boldsymbol r_B=\frac{\sum_i\rho_iV_i\boldsymbol r_i}
+{\sum_i\rho_iV_i}.
+\]
+作用线应通过排液质量的质心，而非直接用全部排液体积的几何中心。界面处的内部压力在补回的液体整体中互相抵消；界面压强连续，是这一整体比较成立的条件。
+\fig{fig:s5:layercenter}{跨界直柱中两段排液的密度权重}{\begin{tikzpicture}[scale=.88]\draw[world](0,3.7)--(0,0)--(4,0)--(4,3.7);\fill[blue!16](0,0)rectangle(4,2);\fill[blue!5](0,2)rectangle(4,3.5);\draw[guide](0,2)--(4,2);\draw[world](1.5,.8)rectangle(2.5,3);\node at(.55,1){$\rho_2$};\node at(.55,2.7){$\rho_1$};\draw[axis](4.6,.8)--(4.6,3.5)node[above]{$z$};\draw[dim](3,.8)--(3,2)node[midway,right]{$a_2$};\draw[dim](3,2)--(3,3)node[midway,right]{$a_1$};\node[below]at(4.6,.8){$0$};\end{tikzpicture}}
+例如图\ref{fig:s5:layercenter}的直柱截面积$S$，在下、上两液体内的高度分别为$a_2,a_1$。以柱底为$z=0$，两段排液质心高度为$a_2/2$、$a_2+a_1/2$，所以
+\[
+z_B=\frac{\rho_2a_2(a_2/2)+\rho_1a_1(a_2+a_1/2)}
+{\rho_2a_2+\rho_1a_1}.
+\]
+截面积$S$在分子分母约去。若$\rho_2=\rho_1$，化为$(a_1+a_2)/2$；若下层更密，作用点比同样浸没形状的均匀液体情形更低。总浮力相等只给一个力条件，作用线的位置仍需由这个加权关系确定。
+
+当求力矩平衡时，各层浮力也可以分别画在对应排液部分的质心上，再将力矩相加；其结果与上述单一合浮力相同。若固体并非闭合浸没、底面与容器密封，补回液体的边界条件不再与实际受压相同，应逐面计算压力。把浮力公式及作用点的适用范围同时说清，才能避免在多层、悬挂或底部接触题中只满足总力而漏掉转动平衡。
+
+\section{液体分层与形状效应}
+分层前后总质量和总体积都不变，不代表底部压强不变。此处令 $z$为距自由液面的深度，液体总深度为 $H$。底压表压为 $g\int_0^H\rho(z)\dd z$，质量却为 $\int_0^H\rho(z)S(z)\dd z$；截面积$S$随高度变化时，两种加权不同。上宽下窄的容器中，浓密层占据较小截面，固定体积对应较厚层，因此底压可以增加。
+
+比较过程时，应固定清楚哪些量守恒：可混合液体总体积是否近似可加、容器是否溢流、物体是否仍漂浮。若铁块从浮板移到水底，原来由浮板多排开的体积为铁块质量除以水密度，后来铁块只排自身体积；两者差决定液面升降，板的总质量不需要在差量中反复计算。
+
+\subsection{液面变化的体积约束}
+先确定物体怎样运动，再计算排液变化。自由漂浮物的排液体积由重量固定；受控浸入物的浸没长度随位置变化；完全浸没并沉底的物体则按几何体积排液。比较前后状态时还要说明是否溢流、是否有水被带走。下面分别处理受控浸入与自由浮动。
+
+\input{knowledge-level-volume}
+
+\subsection{移动浮体与固定浸入物的液面方程}
+液面变化必须和物体运动同时考虑。设直壁容器横截面积$S_c$，水量固定，水面高度为$h$，水中物体占据的浸没体积为$V_{\rm sub}$。水体积为$V_w=S_ch-V_{\rm sub}$，对前后状态作差，得到$S_c\Delta h=\Delta V_{\rm sub}$。这个式子中的$\Delta V_{\rm sub}$是实际浸没体积变化，不能先假定所有物体都固定在原高度。
+
+若一根固定竖柱水线截面积为$S_b$，液面上升$\Delta h$使柱的浸没体积增加$S_b\Delta h$。另外放入体积$V_0$的完全浸没物体时，方程为$S_c\Delta h=S_b\Delta h+V_0$，故$\Delta h=V_0/(S_c-S_b)$。如果原物体是质量不变的自由浮体，其排液体积由重量固定，液面升高时浮体随之上升，原浮体的浸没体积不增加；同样加入$V_0$时则有$\Delta h=V_0/S_c$。扣除水线面积的公式适用于固定贯穿物，不能对自由浮体照搬。
+
+若把原来放在浮板上的铁块投入水中沉底，浮板减少的排液体积为$m/\rho_w$，铁块新增浸没体积为$m/\rho_{\rm Fe}$，所以$S_c\Delta h=m/\rho_{\rm Fe}-m/\rho_w<0$。液面降低的原因是同一质量先前通过浮板按水密度排液，后来按自身几何体积排液。这个体积比较假设无溢流、铁块完整浸没、没有水被带走。底部接触是否密封会改变压力合力；排液体积的计算则仍应按水实际不能占据的空间确定。
+
+
+\section{浮体稳定与质心优化}
+细杆由一端悬挂并逐渐浸水时，绳拉力仍竖直，但浮力的力臂会随浸没长度改变。可对悬点取矩，比较重力和浮力对小偏角的一阶项，找出竖直构型失稳条件。若进一步求倾斜平衡，应将浸没长度与悬点离水面的距离通过三角关系联系，不能继续用竖直状态的浸深。
+
+向杯中加水时，杯与水的总质心可能先降后升。设水深$x$，新加入的薄层位于水面$x$，如果$x$低于当前总质心，加入质量使总质心下降；高于则上升。最低点由水面与总质心等高给出，也可以对完整质心表达式求导核验。这是分布质量变化的极值问题，不是浮力问题。
+
+\fig{fig:s5:added-layer}{新加薄层位于原质心下方时降低总质心，位于上方时提高总质心}{\begin{tikzpicture}
+
+\foreach \shift/\height/\title in {0/.9/水面低于质心,5/2.3/水面高于质心}{
+\begin{scope}[xshift=\shift cm]
+\draw[world](0,3)--(0,0)--(2.5,0)--(2.5,3);\fill[blue!10](0,0)rectangle(2.5,\height);
+\draw[world,blue,line width=2pt](0,\height)--(2.5,\height);\node[right]at(2.5,\height){$\dd m$};
+\fill(1.25,1.6)circle(2pt)node[right]{$C$};\node at(1.25,3.6){\title};
+\end{scope}}
+\draw[axis,red](1.25,1.5)--(1.25,1.05);\draw[axis,red](6.25,1.7)--(6.25,2.15);
+
+\end{tikzpicture}}
+图\ref{fig:s5:added-layer}是质量增加问题。原系统总质量$M_t$、质心高$z_C$，在水面高度$x$处加入$\dd m$后，有
+\[
+z_C+\dd z_C=\frac{M_tz_C+x\dd m}{M_t+\dd m},
+\qquad \dd z_C\simeq\frac{x-z_C}{M_t}\dd m.
+\]
+所以极值候选条件为$x=z_C$。它来自新增质量的一阶矩，与浮力是否等于重力无关；在例题中还须用导数符号确认确为极小。
+
+
+\section{加速容器内的相对静止液体}
+容器匀加速运动时，液体可相对容器静止，但相对地面并非静止。取随容器平移的参考系，对每个液体微元加入惯性力密度$-\rho\boldsymbol a$，局部平衡变为$\boldsymbol\nabla p=\rho(\boldsymbol g-\boldsymbol a)$。这里$\boldsymbol g$是竖直向下的重力加速度矢量，$\boldsymbol a$是容器对惯性系的加速度。
+
+若容器水平向右加速$a$，取$x$向右、$z$向上，则$\partial p/\partial x=-\rho a$，$\partial p/\partial z=-\rho g$。自由液面上压强相同，所以$-a\,\dd x-g\,\dd z=0$，得到$\dd z/\dd x=-a/g$。液面左高右低，坡度由加速度决定，与容器当前速度无关。做题应同时用液体体积守恒定位液面截距，不能只求出斜率就认为液面已完全确定。
+
+\fig{fig:s5:accelerating-liquid}{向右加速时有效重力向左下，等压自由液面与它垂直}{\begin{tikzpicture}
+
+\draw[world](0,3.4)--(0,0)--(5,0)--(5,3.4);\fill[blue!12](0,0)--(5,0)--(5,1.2)--(0,2.8)--cycle;
+\draw[world,blue](0,2.8)--(5,1.2);\draw[guide](0,2)--(5,2)node[right]{$h_0$};
+\draw[force](1.5,3.5)--(3.4,3.5)node[right]{$\boldsymbol a$};
+\draw[force](2.5,1.6)--(2.5,.35)node[right]{$\boldsymbol g$};
+\draw[force](2.5,1.6)--(2.1,1.6)node[above left]{$-\boldsymbol a$};
+\draw[force,red](2.5,1.6)--(2.1,.35)node[left]{$\boldsymbol g_{\rm eff}$};
+\draw[axis](5.7,.1)--(5.7,3.2)node[above]{$z$};\draw[axis](0,-.4)--(5.5,-.4)node[right]{$x$};
+
+\end{tikzpicture}}
+图\ref{fig:s5:accelerating-liquid}的虚线是未加速时液面，实线是相对静止后的液面。先从 $x=0$积分坡度：
+\[z_s(x)-z_s(0)=\int_0^x-\frac ag\dd\xi=-\frac ag[\xi]_0^x=-\frac agx.\]
+对宽$L$的直壁容器，若无溢流且底部仍全部有水，按单位纵向长度写体积守恒，
+\[Lh_0=\int_0^L\left[z_s(0)-\frac agx\right]\dd x
+ =\left[z_s(0)x-\frac{a}{2g}x^2\right]_0^L
+ =Lz_s(0)-\frac{aL^2}{2g}.\]
+解得 $z_s(0)=h_0+aL/(2g)$，于是
+\[
+z_s(x)=h_0+\frac ag\left(\frac L2-x\right),\qquad 0\le x\le L.
+\]
+左、右端高度差为$aL/g$。若右端计算深度为负，湿润范围已经改变，必须先求新的液面与底面的交点，再用体积守恒确定截距。
+
+
+同一密度液体中的等压面垂直于有效重力$\boldsymbol g-\boldsymbol a$。若容器竖直向上加速$a_z$，压强梯度相当于$g+a_z$；若自由下落，理想有效重力为零，简单静水深度公式不再维持通常液面形状，表面张力等原先忽略的因素可能变得重要。
+
+在这种相对静止液体中，压力合力可由排液微元的有效重量计算，但物体的真实重力、惯性力和其他约束力也必须在同一参考系中一起列入平衡。不能只把浮力公式里的$g$换成有效值，却在物体受力方程中漏掉惯性力。若回到地面惯性系，则保留真实重力与压力，右侧写物体的加速度，两种方法应给相同结果。
+
+\subsection{匀速转动时为何形成抛物面}
+液体以角速度$\Omega$绕竖直轴整体转动时，在随转参考系中径向体力为$\rho\Omega^2r$向外，竖直体力为$-\rho g$。因此
+\[
+\frac{\partial p}{\partial r}=\rho\Omega^2r,\qquad
+\frac{\partial p}{\partial z}=-\rho g.
+\]
+自由液面上$\dd p=0$，即 $\rho\Omega^2r\dd r-\rho g\dd z_s=0$，所以 $\dd z_s/\dd r=\Omega^2r/g$。从轴线积分到半径 $r$，
+\[z_s(r)-z_s(0)=\frac{\Omega^2}{g}\int_0^r\xi\dd\xi
+ =\frac{\Omega^2}{g}\left[\frac{\xi^2}{2}\right]_0^r
+ =\frac{\Omega^2r^2}{2g}.\]
+图\ref{fig:s5:rotating-liquid}中外侧斜率更大，正对应离心项随$r$增加。
+\fig{fig:s5:rotating-liquid}{径向有效体力随半径增加，自由液面高度按$r^2$增加}{\begin{tikzpicture}
+
+\fill[blue!12](-2,0)--(2,0)--(2,2.6)--plot[domain=2:-2,samples=60](\x,{1+.4*(\x)^2})--cycle;
+\draw[world](-2,3.2)--(-2,0)--(2,0)--(2,3.2);\draw[world,blue,domain=-2:2,samples=60]plot(\x,{1+.4*(\x)^2});
+\draw[axis](0,-.3)--(0,3.6)node[above]{$z$};\draw[axis](0,.4)--(2.8,.4)node[right]{$r$};
+\draw[force,red](1.4,1.6)--(2.52,.6)node[right]{$\boldsymbol g_{\rm eff}$};
+\draw[guide](-2,1.8)--(2,1.8);\node[left]at(-2,1.8){$h_0$};
+\node[above right]at(0,1){$z_s(0)$};\node at(-1.1,3.5){$\Omega$};
+
+\end{tikzpicture}}
+若圆筒半径为$R_c$、原液深$h_0$，且不溢流、不露底，圆环面积元为 $\dd A=2\pi r\dd r$，因此体积守恒为
+\begin{align*}
+ \pi R_c^2h_0
+ &=2\pi\int_0^{R_c}\left[z_s(0)+\frac{\Omega^2r^2}{2g}\right]r\dd r\\
+ &=2\pi\left[\frac{z_s(0)r^2}{2}+\frac{\Omega^2r^4}{8g}\right]_0^{R_c}
+ =\pi R_c^2z_s(0)+\frac{\pi\Omega^2R_c^4}{4g}.
+\end{align*}
+除以底面积，解得 $z_s(0)=h_0-\Omega^2R_c^2/(4g)$。相应边缘液深为 $h_0+\Omega^2R_c^2/(4g)$；轴线液深非负且边缘不超过杯高，才符合积分时采用的全底湿润、无溢流条件。平移加速与转动的共同方法是局部平衡，但有效体力的空间分布不同，液面形状也不同。
+
+

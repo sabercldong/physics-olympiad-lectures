@@ -1,0 +1,83 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{n3d1}\textbf{在电梯系中求截面以下的有效重量}\par\nobreak
+图\ref{n3d1q}电梯系有效重力 $g_e=g+a_0$ 向下。自然坐标从顶端向下取，截面以下总质量为 $M+m_0(1-u/L_0)$，所以 $T(u)=[M+m_0(1-u/L_0)]g_e$。
+\fig{n3d1s}{末端载荷使整个轴力图提高同一个常量}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.6,0)node[right]{$u$};\draw[axis](0,0)--(0,2.7)node[above]{$T$};\draw[world](0,2.2)--(4,.8);\draw[guide](0,.8)--(4,.8);\node[left]at(0,2.2){$(M+m_0)g_e$};\node[right]at(4,.8){$Mg_e$};\node[below]at(4,0){$L_0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{累加局部伸长并检查失重情形}\par\nobreak
+按图\ref{n3d1s}，自然微元 $\dd u$ 的局部劲度为 $kL_0/\dd u$，伸长为 $T(u)\dd u/(kL_0)$。从上端积到下端：
+\begin{align*}
+\Delta L&=\frac{g+a_0}{kL_0}\int_0^{L_0}
+\left[M+m_0-\frac{m_0u}{L_0}\right]\dd u\\
+&=\frac{g+a_0}{kL_0}
+\left[(M+m_0)u-\frac{m_0u^2}{2L_0}\right]_0^{L_0}
+=\frac{(M+m_0/2)(g+a_0)}k.
+\end{align*}
+上端力为 $(M+m_0)(g+a_0)$，下端轴力为 $M(g+a_0)$。若电梯向下加速度恰为 $g$，有效重力为零，原来已相对静止且无振动的极限状态可无拉伸；从有伸长状态突然自由落体则会发生弹性振动，不能直接假设形变瞬间归零。
+\end{drillsolution}
+
+\begin{drillsolution}{n3d2}\textbf{由径向压差求两液面高度差}\par\nobreak
+图\ref{n3d2q}中径向微元满足 $\dd p=\rho\omega^2r\,\dd r$，同高底管两端的压差为
+\[
+p(r_2)-p(r_1)=\rho\omega^2\int_{r_1}^{r_2}r\,\dd r
+=\frac12\rho\omega^2[r^2]_{r_1}^{r_2}
+=\frac12\rho\omega^2(r_2^2-r_1^2).
+\]
+各支管从液面向下积分给 $p(r_i)-p_0=-\rho g[z]_{h_i}^0=\rho gh_i$，两式相减，故 $\delta h=h_2-h_1=\omega^2(r_2^2-r_1^2)/(2g)$。
+\fig{n3d2s}{等体积转移使窄管下降多、宽管上升少}{\begin{tikzpicture}
+\fill[blue!10](-1.5,0)rectangle(2.2,.2);\fill[blue!10](-1.5,0)rectangle(-.8,.7);\fill[blue!10](1,0)rectangle(2.2,1.65);\fill[red!10](-1.5,.7)rectangle(-.8,1.3);\fill[blue!25](1,1.3)rectangle(2.2,1.65);\draw[world](-1.5,2.5)--(-1.5,0)--(2.2,0)--(2.2,2.5);\draw[world](-.8,2.5)--(-.8,.2)--(1,.2)--(1,2.5);\draw[guide](-2,1.3)--(2.8,1.3)node[right]{$h$};\draw[blue,thick](-1.5,.7)--(-.8,.7) (1,1.65)--(2.2,1.65);\node[left]at(-1.5,.7){$h_1$};\node[right]at(2.2,1.65){$h_2$};\node at(.35,-.6){$S_1(h-h_1)=S_2(h_2-h)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等体积交换确定各液面}\par\nobreak
+图\ref{n3d2s}中 $S_1h_1+S_2h_2=(S_1+S_2)h$，代入 $h_2=h_1+\delta h$，解得 $h_1=h-S_2\delta h/(S_1+S_2)$、$h_2=h+S_1\delta h/(S_1+S_2)$。从轴积分到内侧支管底部，$p(r_1)-p(0)=\rho\omega^2[r^2/2]_0^{r_1}$，故轴处压强为
+\[p=p_0+\rho gh_1-\tfrac12\rho\omega^2r_1^2
+=p_0+\rho gh-\frac{\rho\omega^2}{2}\frac{S_1r_1^2+S_2r_2^2}{S_1+S_2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选首先到达的边界}\par\nobreak
+令 $h_1=0$ 得 $\omega_{\rm dry}^2=2gh(S_1+S_2)/[S_2(r_2^2-r_1^2)]$。若先发生外侧溢出或空化，则这一见底阈值不再实际达到，必须按先发生的边界切换模型。
+\end{drillsolution}
+
+\begin{drillsolution}{n3d3}\textbf{用离口时间表示水滴位置}\par\nobreak
+图\ref{n3d3q}随桶平移系中，水滴初速度为 $(0,-v_e)$、相对加速度为 $(-a,-g)$。离口年龄 $\tau$ 后，$x'=-a\tau^2/2$、$z'=-v_e\tau-g\tau^2/2$。令 $h=-z'$，正根为 $\tau=[\sqrt{v_e^2+2gh}-v_e]/g$。
+\fig{n3d3s}{水流切向速度随离口时间改变，坐标仍取竖直向上}{\begin{tikzpicture}
+\draw[axis](0,0)--(1.6,0)node[right]{$x'$};\draw[axis](0,-.2)--(0,1.3)node[above]{$z'$};\fill(0,0)circle(2pt)node[above left]{出口};\draw[world,domain=0:1.8,samples=45]plot({-.5*(\x)^2},{-.7*\x-.5*(\x)^2});\draw[flow,blue](0,0)--(0,-.65)node[right]{$v_e$};\fill(-.5,-1.2)circle(2pt);\draw[flow,blue](-.5,-1.2)--(-1,-2.05)node[left]{$\bm v_{\rm rel}$};\draw[flow,red](2,-1.2)--(1.5,-1.7)node[right]{$(-a,-g)$};\draw[guide](-1.62,-2.88)--(.5,-2.88);\draw[dim](.45,0)--(.45,-2.88)node[midway,right]{$h$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用切向速度换算线密度并检查极限}\par\nobreak
+按图\ref{n3d3s}，$|\bm v_{\rm rel}|=\sqrt{a^2\tau^2+(v_e+g\tau)^2}$，所以 $\lambda=Q/\sqrt{a^2\tau^2+(v_e+g\tau)^2}$，其中 $\tau$ 取上式。由于 $x'$ 与 $z'$ 不再保持固定比例，$a\ne0$、$v_e>0$ 时流线为曲线。$v_e\to0$ 回到例题的斜直线与线密度；$a\to0$ 则回到竖直水流 $\lambda=Q/\sqrt{v_e^2+2gh}$。
+\end{drillsolution}
+
+\begin{drillsolution}{n3d4}\textbf{保留材料方程并改变末端受力}\par\nobreak
+图\ref{n3d4q}取自然坐标 $u$，微元质量为 $(m_0/L_0)\dd u$，向外为正时
+$T'(u)=-(m_0/L_0)\omega^2r$。把 $T=kL_0(r'-1)$ 求导得 $T'=kL_0r''$，所以
+$r''+(\beta/L_0)^2r=0$，其中 $\beta=\omega\sqrt{m_0/k}$。
+对 $\beta>0$ 试解 $e^{\lambda u}$，特征方程
+$\lambda^2+(\beta/L_0)^2=0$ 的两根为 $\pm i\beta/L_0$，故实数通解为
+\[
+r=C\sin(\beta u/L_0)+D\cos(\beta u/L_0).
+\]
+固定端 $r(0)=0$ 给 $D=0$，求导得 $r'=C(\beta/L_0)\cos(\beta u/L_0)$。现在末端球要求的轴力是 $M\omega^2L$，不再为零。
+\fig{n3d4s}{新边界把末端伸长梯度同末端半径联系起来}{\begin{tikzpicture}
+\draw[spring](-2,0)--(1.6,0);\fill(1.6,0)circle(5pt)node[right]{$M$};\draw[force,blue](1.6,0)--(.3,0)node[above]{$T_L=M\omega^2L$};\draw[flow](1.6,.5)--(1.6,1.6)node[above]{$\omega L$};\node at(0,-.8){$T_L=kL_0[r'(L_0)-1]$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入球的向心力边界求长度}\par\nobreak
+由图\ref{n3d4s}，末端半径 $L=r(L_0)=C\sin\beta$，末端受力条件为
+$kL_0(C\beta\cos\beta/L_0-1)=M\omega^2C\sin\beta$。把含 $C$ 的项移到同侧，
+\[
+C\left[k\beta\cos\beta-M\omega^2\sin\beta\right]=kL_0.
+\]
+由此求得 $C$，再代入 $L=C\sin\beta$ 并使用 $\omega^2/k=\beta^2/m_0$，得
+\[\frac L{L_0}=\frac{\sin\beta}{\beta\cos\beta-(M/m_0)\beta^2\sin\beta}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查正拉伸分支与质量极限}\par\nobreak
+取分母首次变零之前的正拉伸分支。$M\to0$ 时化为 $\tan\beta/\beta$。$m_0\to0$ 时 $\beta\to0$，但 $(M/m_0)\beta^2=M\omega^2/k$ 不趋零，展开后得到 $L/L_0=1/(1-M\omega^2/k)$，恰与轻弹簧端球方程 $k(L-L_0)=M\omega^2L$ 相符，要求 $M\omega^2<k$。
+\end{drillsolution}

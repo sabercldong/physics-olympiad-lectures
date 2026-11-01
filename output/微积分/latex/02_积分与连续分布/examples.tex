@@ -1,0 +1,512 @@
+\section{例题与分析}
+\begin{question}
+\begin{example}[反向求导与积分常数]
+求 $\int c\,\dd x$、$\int x^n\dd x\ (n\ne-1)$、$\int(3x+1)^2\dd x$、$\int\sin x\dd x$、$\int\sin3x\dd x$、$\int\sin^2x\dd x$、$\int\e^{kx}\dd x\ (k\ne0)$ 和 $\int\dd x/x$。
+\end{example}
+\fig{c2e1q}{同一导函数对应相差常数的原函数}{\begin{tikzpicture}[x=1.2cm,y=.65cm]
+\draw[axis](-1.7,0)--(1.9,0)node[right]{$x$};\draw[axis](0,-.2)--(0,3.5)node[above]{$F$};
+\foreach \c in {0,1,2}{\draw[blue,domain=-1.2:1.2,samples=30]plot(\x,{\x*\x+\c});}
+\node[right]at(1.2,3.4){$x^2+C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用反向求导确定幂函数与复合函数的原函数}\par\nobreak
+图 \ref{c2e1q} 的各条曲线只作竖直平移，斜率相同，因此每个不定积分都要包含常数。由于 $(cx)'=c$，第一式为 $cx+C$；由于 $(x^{n+1})'=(n+1)x^n$，第二式要除以 $n+1$，得到 $x^{n+1}/(n+1)+C$，这也说明为何排除 $n=-1$。第三式令 $u=3x+1$，则 $\dd u=3\dd x$、$\dd x=\dd u/3$，所以
+\[
+ \int(3x+1)^2\dd x=\frac{(3x+1)^3}{9}+C.
+\]
+\fig{c2e1s}{换元把同一微小区间的宽度放大三倍}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6,0)node[right]{$x$};\draw[axis](0,-1.8)--(6,-1.8)node[right]{$u=3x+1$};
+\draw[very thick,blue](2,0)--(2.6,0);\draw[very thick,red](2,-1.8)--(3.8,-1.8);
+\draw[guide](2,-.1)--(2,-1.7) (2.6,-.1)--(3.8,-1.7);
+\node[above]at(2.3,0){$\dd x$};\node[below]at(2.9,-1.8){$\dd u=3\dd x$};
+\node at(4.7,-.65){$\dd x=\dd u/3$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别处理降次、指数补偿与对数积分}\par\nobreak
+图 \ref{c2e1s} 中实际先求 $\tfrac13\int u^2\dd u=u^3/9+C$，再把 $u$ 换回 $3x+1$。其余积分按被积函数的形式分别处理：正弦平方先用倍角公式降次，指数函数补偿内层导数 $k$，倒数函数则用对数的导数，得到
+\[
+ \begin{aligned}
+ \int\sin^2x\dd x
+ &=\int\frac{1-\cos2x}{2}\dd x=\frac x2-\frac{\sin2x}4+C,\\
+ \int\e^{kx}\dd x&=\frac1k\int\e^u\dd u
+ =\frac{\e^{kx}}k+C\quad(u=kx,\ \dd u=k\dd x),\\
+ \int\frac{\dd x}x&=\ln|x|+C.
+ \end{aligned}
+\]
+正弦平方的积分中，余弦项再令 $u=2x$，有 $\int\cos2x\dd x=\frac12\int\cos u\dd u=\frac12\sin2x$，所以外面的 $1/2$ 再乘换元的 $1/2$ 才给出 $1/4$。最后一式在零点两侧各自的连通区间使用。由同一规律还得到
+$\int5x^3\dd x=5x^4/4+C$、
+$\int4\dd x/x=4\ln|x|+C$、
+$\int7\cos2x\dd x=(7/2)\sin2x+C$。
+对上述答案求导，链式法则恰好抵消积分时补入的系数。
+
+% thirty-c2-sineinputs
+对另外两个正弦积分，先从已知导数反向确定符号与系数：
+\[(\cos x)'=-\sin x\quad\Longrightarrow\quad
+\int\sin x\dd x=-\cos x+C,\]
+\[\int\sin3x\dd x
+ =\frac13\int\sin u\dd u
+ =-\frac13\cos3x+C\qquad(u=3x).\]
+后式求导时，余弦的负号与内层导数3分别抵消前面的负号与 $1/3$，结果正好是 $\sin3x$。这两个积分不需要使用正弦平方的降次公式。
+\end{solution}
+
+
+\begin{question}
+\begin{example}[带边界的积分]
+设 $a>0,k\ne0$。计算
+$\int_a^b(v_0+gt)\dd t$、
+$\int_a^b\sin(kx+\varphi)\dd x$、
+$\int_a^{2a}\dd x/(a+x)^2$、
+$\int_1^5\dd x/(x^2+7x+12)$。
+\end{example}
+\fig{c2e2q}{积分是区间内的连续求和}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$t$};\draw[axis](0,0)--(0,2.8)node[above]{$v$};
+\fill[blue!10](1,0)--(4,0)--(4,2.3)--(1,.95)--cycle;\draw[world](.3,.635)--(4.6,2.57);
+\node[below]at(1,0){$a$};\node[below]at(4,0){$b$};\node[right]at(4.4,2.1){$v_0+gt$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求原函数，再代入带方向的边界}\par\nobreak
+图\ref{c2e2q}在 $b>a$且速度为正时把第一式表示成位移面积；一般仍按带方向的积分计算。先写原函数，再作上限值减下限值：
+\begin{align*}
+\int_a^b(v_0+gt)\dd t
+ &=[v_0t+gt^2/2]_a^b\\
+ &=(v_0b+gb^2/2)-(v_0a+ga^2/2)
+ =v_0(b-a)+\frac g2(b^2-a^2).
+\end{align*}
+第二式中，$\cos(kx+\varphi)$求导会带来因子 $-k$，故原函数要补偿为 $-\cos(kx+\varphi)/k$：
+\[\int_a^b\sin(kx+\varphi)\dd x
+ =\left[-\frac{\cos(kx+\varphi)}k\right]_a^b
+ =\frac{\cos(ka+\varphi)-\cos(kb+\varphi)}k.\]
+第三式的原函数是 $-(a+x)^{-1}$，代入题设的两个边界得到
+\[\int_a^{2a}\frac{\dd x}{(a+x)^2}
+ =\left[-\frac1{a+x}\right]_a^{2a}
+ =-\frac1{3a}+\frac1{2a}=\frac1{6a}>0.\]
+
+第四式先因式分解为 $(x+3)(x+4)$。令
+$1/[(x+3)(x+4)]=A/(x+3)+B/(x+4)$，两边同乘分母，得
+$1=A(x+4)+B(x+3)$。比较 $x$的系数与常数项，
+\[A+B=0,\qquad4A+3B=1,\qquad A=1,\quad B=-1.\]
+\fig{c2e2s}{两个倒数函数之间的面积恰好等于所求正积分}{\begin{tikzpicture}
+
+\begin{scope}[x=.85cm,y=8cm]
+\fill[blue!15]plot[domain=1:5,samples=60](\x,{1/(\x+3)})--plot[domain=5:1,samples=60](\x,{1/(\x+4)})--cycle;
+\draw[axis](0,0)--(6,0)node[right]{$x$};\draw[axis](0,0)--(0,.34)node[above]{$f$};
+\draw[blue,thick,domain=.3:5.5,samples=70]plot(\x,{1/(\x+3)});\draw[red,thick,domain=.3:5.5,samples=70]plot(\x,{1/(\x+4)});
+\draw[guide](1,0)--(1,.25) (5,0)--(5,.125);\node[below]at(1,0){$1$};\node[below]at(5,0){$5$};
+\node[blue,right]at(5.3,.17){$1/(x+3)$};\node[red,right]at(5.3,.075){$1/(x+4)$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先分解有理式，再检查积分的正负}\par\nobreak
+图\ref{c2e2s}中，蓝线与红线的高度差为 $1/(x+3)-1/(x+4)=1/[(x+3)(x+4)]$，阴影面积正是原积分。分解后两个函数都是已知的对数导数。在积分区间内 $x+3,x+4$均为正，所以
+\begin{align*}
+\int_1^5\frac{\dd x}{x^2+7x+12}
+ &=[\ln(x+3)-\ln(x+4)]_1^5\\
+ &=\ln\frac89-\ln\frac45
+ =\ln\frac{8\cdot5}{9\cdot4}
+ =\boxed{\ln\frac{10}9}.
+\end{align*}
+被积函数在整个区间为正，结果也应为正；若写成 $\ln(9/10)$，就应检查上下限相减的顺序。
+\end{solution}
+
+\begin{question}
+\begin{example}[四分之一圆的面积积分]
+计算 $J=\int_0^1\sqrt{1-x^2}\dd x$，分别用几何和三角换元解释结果。
+\end{example}
+\fig{c2e3q}{单位圆第一象限内的竖直窄条}{\begin{tikzpicture}[scale=2.4]
+\fill[blue!8](0,0)--(1,0)arc(0:90:1)--cycle;\draw[world](1,0)arc(0:90:1);
+\draw[axis](0,0)--(1.2,0)node[right]{$x$};\draw[axis](0,0)--(0,1.2)node[above]{$y$};
+\draw[fill=blue!30](.55,0)rectangle(.6,.8);\node[below]at(.575,0){$\dd x$};
+\node[right]at(.8,.7){$y=\sqrt{1-x^2}$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用四分之一圆判断积分的几何量级}\par\nobreak
+先用几何意义判断结果的正负和量级，再作代数换元，是两条独立的核验途径。此处半径为一，上、下边界分别为圆弧和横轴，因此积分面积小于单位正方形面积而大于零；采用余弦换元时，角度增大却使横坐标减小，负微元正是这一方向关系的记录。
+
+图 \ref{c2e3q} 的被积函数非负，积分正是单位圆的四分之一面积，故 $J=\pi/4$。为说明换元，令 $x=\cos\theta$，取 $0\le\theta\le\pi/2$。此时根式为 $\sin\theta$，而 $\dd x=-\sin\theta\dd\theta$。
+\fig{c2e3s}{新变量的两端与旧变量顺序相反}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};\node[below]at(.4,0){$0$};\node[below]at(4.1,0){$1$};
+\draw[flow](.5,.6)--(4,.6);
+\draw[axis](0,-1.3)--(5,-1.3)node[right]{$\theta$};\node[below]at(.4,-1.3){$0$};\node[below]at(4.1,-1.3){$\pi/2$};
+\draw[flow](4,-.8)--(.5,-.8);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时变换微元和两个端点}\par\nobreak
+由图 \ref{c2e3s}，$x:0\to1$ 对应 $\theta:\pi/2\to0$，所以
+\[
+ J=\int_{\pi/2}^{0}-\sin^2\theta\dd\theta
+ =\int_0^{\pi/2}\frac{1-\cos2\theta}2\dd\theta
+ =\left[\frac\theta2-\frac{\sin2\theta}4\right]_0^{\pi/2}
+ =\boxed{\frac\pi4}.
+\]
+原函数中的 $-\sin2\theta/4$ 来自 $\int\cos2\theta\dd\theta=\sin2\theta/2$。上限处 $\sin\pi=0$，下限处 $\sin0=0$，只剩 $(\pi/2)/2=\pi/4$。负微元与反向边界恰好补偿；不能只替换根式，却保留 $\dd x$ 或旧上下限。
+\end{solution}
+
+\begin{question}
+\begin{example}[抛物线薄板的面积与质心]
+均匀薄板占据 $-2\ell\le x\le2\ell$、$0\le y\le4\ell-x^2/\ell$，其中 $\ell>0$。求面积与质心。另求无量纲坐标中 $0\le\eta\le1-\xi^2$所围区域的面积，并说明两个区域的缩放关系。
+\end{example}
+\fig{c2e4q}{抛物线与横轴围成的均匀薄板}{\begin{tikzpicture}[x=1cm,y=.55cm]
+\fill[blue!8](-2,0)--plot[domain=-2:2,samples=50](\x,{4-\x*\x})--cycle;
+\draw[world,domain=-2:2,samples=50]plot(\x,{4-\x*\x});
+\draw[axis](-2.5,0)--(2.6,0)node[right]{$x/\ell$};\draw[axis](0,0)--(0,4.8)node[above]{$y/\ell$};
+
+\node[below]at(-2,0){$-2$};\node[below]at(2,0){$2$};\node[left]at(0,4){$4$};
+\begin{scope}[xshift=5.6cm]
+\fill[red!8](-1.4,0)--plot[domain=-1:1,samples=40]({1.4*\x},{4*(1-\x*\x)})--cycle;
+\draw[world]plot[domain=-1:1,samples=40]({1.4*\x},{4*(1-\x*\x)});
+\draw[axis](-1.8,0)--(1.9,0)node[right]{$\xi$};\draw[axis](0,0)--(0,4.8)node[above]{$\eta$};
+\node[below]at(-1.4,0){$-1$};\node[below]at(1.4,0){$1$};\node[left]at(0,4){$1$};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用对称性和竖直窄条确定一次矩}\par\nobreak
+\par\medskip\Needspace{4\baselineskip}\noindent\nobreak
+图 \ref{c2e4q} 关于 $y$ 轴对称，故 $x_C=0$。取图 \ref{c2e4s} 的竖直窄条，记高度 $f(x)=4\ell-x^2/\ell$，则 $\dd A=f(x)\dd x$，该条质心在 $y=f(x)/2$。
+\fig{c2e4s}{竖直微元的质量集中在其中点计算一次矩}{\begin{tikzpicture}[x=1cm,y=.55cm]
+\draw[world,domain=-2:2,samples=50]plot(\x,{4-\x*\x});\draw[axis](-2.4,0)--(2.5,0);
+\draw[fill=blue!20](.8,0)rectangle(.95,3.2);\fill(.875,1.6)circle(2pt);
+\draw[dim](1.4,0)--(1.4,3.2)node[midway,right]{$f(x)$};
+\draw[guide](.875,1.6)--(-.3,1.6)node[left]{$f(x)/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\nobreak
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{累加窄条面积}\par\nobreak
+先求面积。因为 $f(x)$ 为偶函数，可以把关于零点对称的积分化为正半轴的两倍：
+\[
+ A=\int_{-2\ell}^{2\ell}\left(4\ell-\frac{x^2}{\ell}\right)\dd x
+ =2\left[4\ell x-\frac{x^3}{3\ell}\right]_0^{2\ell}
+ =2\left(8\ell^2-\frac83\ell^2\right)
+ =\frac{32}3\ell^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将每条质量放在条内质心计算一次矩}\par\nobreak
+再求高度的一次矩。图 \ref{c2e4s} 的条形微元高 $f(x)$，其中点高 $f(x)/2$，因此分子多乘的高度不是 $f(x)$，而是它的一半。平方展开后为
+\[
+ f(x)^2=16\ell^2-8x^2+\frac{x^4}{\ell^2}.
+\]
+\[
+ \int y\,\dd A=\frac12\int_{-2\ell}^{2\ell}
+ \left(4\ell-\frac{x^2}{\ell}\right)^2\dd x
+ =\left[16\ell^2x-\frac83x^3+\frac{x^5}{5\ell^2}\right]_0^{2\ell}
+ =\frac{256}{15}\ell^3.
+\]
+最后一步的三项为 $32\ell^3-(64/3)\ell^3+(32/5)\ell^3$，通分后得到上式。
+
+面密度相同，在分子分母约去后，
+$\boxed{(x_C,y_C)=(0,8\ell/5)}$。
+其中 $y_C=(256\ell^3/15)/(32\ell^2/3)=8\ell/5$。质心低于半高 $2\ell$，因为薄板在下部更宽、质量更多。均匀性允许约去面密度，但不能把每条微元的质心误取到上边界。
+
+% thirty-c2-plate
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{更换分割方向作独立核验}\par\nobreak
+图\ref{c2deep:horizontal}画出同一薄板的水平微元。它的整条质心高度就是 $y$，宽度却随 $y$ 改变；因此这里不再出现竖条内平均高度的 $1/2$ 因子。
+\fig{c2deep:horizontal}{水平窄条的高度权重为本身所在的高度}{\begin{tikzpicture}[x=1.2cm,y=.7cm]
+\draw[axis](-2.4,0)--(2.5,0)node[right]{$x/\ell$};\draw[axis](0,0)--(0,4.7)node[above]{$y/\ell$};
+\draw[blue,thick,domain=-2:2,samples=80]plot(\x,{4-\x*\x});\fill[orange!25](-1.414214,2)--(1.414214,2)--(1.349074,2.18)--(-1.349074,2.18)--cycle;
+\draw[thick](-1.414,2)--(1.414,2);\draw[dim](-1.414,1.5)--(1.414,1.5)node[midway,below]{$2\sqrt{\ell(4\ell-y)}$};
+\draw[guide](1.414,2)--(2,2) (-1.414,2)--(-1.414,1.5);\node[right]at(2,2){$y$};\node[right]at(1.5,2.35){$\dd y$};
+\end{tikzpicture}}
+
+
+用水平条再作一次独立计算。图\ref{c2e4q}在高度 $y$处左右边界为 $x=\pm\sqrt{\ell(4\ell-y)}$，因此
+\[A=2\sqrt\ell\int_0^{4\ell}\sqrt{4\ell-y}\dd y.
+\]
+令 $u=4\ell-y$，则 $\dd y=-\dd u$，上下限由 $0,4\ell$变为 $4\ell,0$，故
+\[A=2\sqrt\ell\int_0^{4\ell}u^{1/2}\dd u
+ =\frac43\sqrt\ell(4\ell)^{3/2}=\frac{32}3\ell^2.\]
+一次矩同理为
+\[Q_x=2\sqrt\ell\int_0^{4\ell}(4\ell-u)u^{1/2}\dd u
+ =2\sqrt\ell\left[\frac{8\ell}{3}u^{3/2}-\frac25u^{5/2}\right]_0^{4\ell}
+ =\frac{256}{15}\ell^3.\]
+于是 $y_C=Q_x/A=8\ell/5$，与图\ref{c2e4s}的竖直条结果相同。水平条自身的高度就是 $y$，此时不再额外乘 $1/2$；这个因子只出现在把竖直条按其中点计算一次矩时。
+
+% thirty-c2-unitarea
+图\ref{c2e4q}右侧的单位区域与左侧薄板都由抛物线和横轴围成；横、纵尺度应分别改变。先由 $1-\xi^2=0$得左右端点 $\xi=\pm1$，在其间上边界不低于横轴，所以
+\[A_*=\int_{-1}^{1}(1-\xi^2)\dd\xi
+ =\left[\xi-\frac{\xi^3}{3}\right]_{-1}^{1}
+ =\left(1-\frac13\right)-\left(-1+\frac13\right)
+ =\boxed{\frac43}.\]
+\fig{c2e4unit}{单位区域的竖条与两个方向的缩放}{\begin{tikzpicture}
+\draw[axis](-1.7,0)--(1.8,0)node[right]{$\xi$};\draw[axis](0,0)--(0,1.9)node[above]{$\eta$};
+\draw[world]plot[domain=-1:1,samples=40]({1.4*\x},{1.4*(1-\x*\x)});
+\draw[fill=red!15](.56,0)rectangle(.64,1.13);
+\node[left]at(0,1.4){$1$};\node[below]at(-1.4,0){$-1$};\node[below]at(1.4,0){$1$};
+\node[draw,align=center]at(4.4,.8){$x=2\ell\xi$\\$y=4\ell\eta$\\$\dd x\dd y=8\ell^2\dd\xi\dd\eta$};
+\draw[flow](2,.8)--(2.9,.8);
+\end{tikzpicture}}
+图\ref{c2e4unit}中横尺度放大 $2\ell$、纵尺度放大 $4\ell$，面积因而乘二者之积 $8\ell^2$，不是仅乘一个长度因子。于是薄板面积为 $8\ell^2 A_*=32\ell^2/3$，与前面两种积分一致。
+\end{solution}
+
+\begin{question}
+\begin{example}[两曲线之间的面积]
+求无量纲坐标中直线 $y=x$ 与抛物线 $y=x^2-x-3$ 围成的面积。
+\end{example}
+\fig{c2e5q}{先确定交点和上下边界}{\begin{tikzpicture}[x=.85cm,y=.6cm]
+\draw[axis](-1.7,0)--(3.7,0)node[right]{$x$};\draw[axis](0,-3.6)--(0,4)node[above]{$y$};
+\draw[world,domain=-1.3:3.3,samples=60]plot(\x,{\x*\x-\x-3});
+\draw[blue](-1.3,-1.3)--(3.3,3.3);\fill(-1,-1)circle(2pt)node[left]{$A$};\fill(3,3)circle(2pt)node[right]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{解交点并确定上下边界}\par\nobreak
+由图 \ref{c2e5q}，交点方程 $x=x^2-x-3$ 化为 $(x-3)(x+1)=0$，所以积分区间是 $[-1,3]$。其内直线在上，竖直窄条高度为
+$x-(x^2-x-3)=4-(x-1)^2\ge0$。
+\fig{c2e5s}{平移到对称轴后，条高为偶函数}{\begin{tikzpicture}[x=.9cm,y=.5cm]
+\fill[blue!10](-2,0)--plot[domain=-2:2,samples=40](\x,{4-\x*\x})--cycle;
+\draw[axis](-2.5,0)--(2.7,0)node[right]{$u=x-1$};
+\draw[world,domain=-2:2,samples=40]plot(\x,{4-\x*\x});\draw[guide](0,0)--(0,4.6);
+\node[below]at(-2,0){$-2$};\node[below]at(2,0){$2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{平移到对称轴后积分并核对面积}\par\nobreak
+图 \ref{c2e5s} 中取 $u=x-1$，于是
+\[
+ A=\int_{-1}^3(-x^2+2x+3)\dd x
+ =\int_{-2}^2(4-u^2)\dd u
+ =2\left[4u-\frac{u^3}3\right]_0^2
+ =\boxed{\frac{32}3}.
+\]
+在最后一步，上限代入给出 $4(2)-2^3/3=8-8/3=16/3$，再乘偶对称的系数二，得到 $32/3$。面积不等于单独对抛物线积分的绝对值，因为条高必须同时扣除上下边界。平移不改变面积，可用上一例 $\ell=1$ 的面积作独立检查。
+\end{solution}
+
+\begin{question}
+\begin{example}[球的体积与表面积]
+只用圆面积 $\pi r^2$ 和圆周长 $2\pi r$，分别积分求半径 $R$ 的球体体积与球面面积。
+\end{example}
+\fig{c2e6q}{球体的平行圆盘截面}{\begin{tikzpicture}[scale=1.1]
+\draw[world](0,0)circle(1.6);\draw[axis](0,-1.9)--(0,2)node[above]{$z$};
+\draw[world](-1.3856,.8)--(1.3856,.8);\draw[guide](0,0)--(1.3856,.8)node[midway,below]{$R$};
+\node[right]at(1.4,.8){截面};\node[left]at(0,.8){$z$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把实心球分成水平圆盘}\par\nobreak
+同一个球的体积和表面积必须使用不同的微元。体积按水平圆盘叠加，每层厚度沿 $z$ 方向；表面积按球面窄带叠加，宽度应沿弧线。两个微元都利用轴对称，但厚度方向不同，不能把一个面积公式仅换掉密度后直接当作另一个体积公式。
+
+图 \ref{c2e6q} 的截面半径满足 $r^2=R^2-z^2$，故
+\[
+ V=\int_{-R}^R\pi(R^2-z^2)\dd z
+ =\pi\left[R^2z-\frac{z^3}{3}\right]_{-R}^{R}
+ =2\pi\left(R^3-\frac{R^3}{3}\right)
+ =\boxed{\frac43\pi R^3}.
+\]
+求表面积时改取图 \ref{c2e6s} 的纬度窄带。令 $z=R\cos\theta$，纬圈半径为 $R\sin\theta$，沿球面母线的宽度为 $R\dd\theta$。
+\fig{c2e6s}{球面窄带的宽度沿弧面测量}{\begin{tikzpicture}[scale=1.1]
+\draw[world](0,0)circle(1.6);\draw[axis](0,-1.9)--(0,2)node[above]{$z$};
+\draw[blue,very thick](40:1.6)arc(40:48:1.6);\draw[guide](0,0)--(40:1.6);\draw[guide](0,0)--(48:1.6);
+\draw[blue](-1.2257,1.0285)--(1.2257,1.0285);
+\node[right]at(1.5,1.45){$R\dd\theta$};\draw(0,.45)arc(90:40:.45)node[midway,above right]{$\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿球面窄带计算面积并核验量纲}\par\nobreak
+于是 $\dd S=2\pi R\sin\theta\,R\dd\theta$，
+\[
+ S=\int_0^\pi2\pi R^2\sin\theta\dd\theta
+ =\boxed{4\pi R^2}.
+\]
+这里 $\int_0^\pi\sin\theta\dd\theta=[-\cos\theta]_0^\pi=1-(-1)=2$，所以面积为 $2\pi R^2\times2$。若误用周长乘 $\dd z$，就漏掉球面倾斜。还可独立校验：半径增加 $\dd R$ 时薄壳体积为 $S\dd R$，所以 $S=\dd V/\dd R=4\pi R^2$。
+\end{solution}
+
+\begin{question}
+\begin{example}[实心半球与半球壳的质心]
+求均匀实心半球和均匀薄半球壳的质心高度，均以底面圆心为原点、对称轴向上为 $z$ 轴，半径为 $R$。
+\end{example}
+\fig{c2e7q}{相同外形的实心半球与薄壳}{\begin{tikzpicture}
+\draw[world](-1.5,0)arc(180:0:1.5)--cycle;\draw[axis](0,0)--(0,2)node[above]{$z$};\node[below]at(0,-.2){实心};
+\begin{scope}[xshift=4.3cm]\draw[very thick,blue](-1.5,0)arc(180:0:1.5);\draw[guide](-1.5,0)--(1.5,0);\draw[axis](0,0)--(0,2)node[above]{$z$};\node[below]at(0,-.2){薄壳};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{实心半球按圆盘质量加权}\par\nobreak
+图 \ref{c2e7q} 的两物体都轴对称，质心只能在 $z$ 轴上。实心半球取圆盘微元 $\dd m=\rho\pi(R^2-z^2)\dd z$，故
+\[
+ M=\frac23\pi\rho R^3,\quad
+ Mz_C=\rho\pi\int_0^R z(R^2-z^2)\dd z
+ =\frac14\pi\rho R^4,
+\]
+其中质量积分的原函数为 $R^2z-z^3/3$，一次矩积分的原函数为 $R^2z^2/2-z^4/4$。分别在 $0,R$ 代入，就得到 $M=(2/3)\pi\rho R^3$ 与 $Mz_C=(1/4)\pi\rho R^4$。二者相除，
+$z_C=[(1/4)/(2/3)]R=3R/8$。
+\fig{c2e7s}{圆盘微元与曲面窄带的区别}{\begin{tikzpicture}
+\draw[world](-1.5,0)arc(180:0:1.5);\draw[fill=blue!20](-1.2,.7)rectangle(1.2,.82);\node[above]at(0,1.65){$\dd m=\rho\pi(R^2-z^2)\dd z$};
+\begin{scope}[xshift=4.5cm]\draw[world](-1.5,0)arc(180:0:1.5);\draw[very thick,blue](35:1.5)arc(35:45:1.5);\node[above]at(0,1.65){$\dd m=\sigma\,2\pi R\,\dd z$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{半球壳按等高度球面带加权}\par\nobreak
+对图 \ref{c2e7s} 的薄壳，上一例的窄带面积为
+$\dd S=2\pi R^2\sin\theta\,|\dd\theta|$。
+由 $z=R\cos\theta$ 得 $|\dd z|=R\sin\theta|\dd\theta|$，因此 $\dd S=2\pi R|\dd z|$。从底面向上排列时取正的 $\dd z$，于是
+\[
+ M=2\pi\sigma R^2,\quad
+ Mz_C=2\pi\sigma R\int_0^R z\dd z=\pi\sigma R^3,
+\]
+这里 $\int_0^Rz\dd z=[z^2/2]_0^R=R^2/2$，故 $Mz_C=\pi\sigma R^3$。再除以 $M=2\pi\sigma R^2$，得到 $\boxed{z_C=R/2}$。薄壳各等高窄带质量相同，实心半球各圆盘质量随高度减小，因此后者质心更低。
+\end{solution}
+
+\begin{question}
+\begin{example}[圆锥的质量与质心]
+均匀实心圆锥高 $h$、底面半径 $b$、体密度 $\rho$。以顶点为 $z=0$、向下为正方向，求质量及质心。
+\end{example}
+\fig{c2e8q}{从顶点向下的圆锥截面}{\begin{tikzpicture}
+\coordinate(O)at(0,2.5);\draw[world](-1.6,0)--(O)--(1.6,0);\draw[world](0,0)ellipse(1.6 and .3);
+\draw[axis](0,2.8)--(0,-.5)node[below]{$z$};
+\draw[blue](-.96,1)--(.96,1);\node[left]at(-1.1,1){$z$};\node[right]at(1.7,.1){$b$};\node[above]at(O){顶点};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用相似三角形确定随高度变化的截面}\par\nobreak
+本题的高度从顶点向底面增加。图中靠近底面的圆盘半径较大，包含的质量也较多，因此质心应偏向底面。一次矩给每一层质量乘的是该层的高度坐标 $z$，不是圆盘半径；半径平方已经包含在质量元之内，再拿它作高度权重会改变所求物理量。
+
+图 \ref{c2e8q} 中由相似三角形 $r(z)=bz/h$。这决定图 \ref{c2e8s} 的圆盘微元，而不是把全锥当成截面不变的柱体。
+\fig{c2e8s}{厚度为 $\dd z$ 的圆盘微元}{\begin{tikzpicture}
+\draw[world](0,0)ellipse(1.7 and .35);\draw[world](-1.7,0)--(-1.7,-.3);\draw[world](1.7,0)--(1.7,-.3);\draw[world](0,-.3)ellipse(1.7 and .35);
+\draw[dim](-2.2,0)--(-2.2,-.3)node[left,midway]{$\dd z$};\draw[flow](0,0)--(1.7,0)node[midway,above]{$bz/h$};
+\end{tikzpicture}}
+\[
+ \dd m=\rho\pi\frac{b^2z^2}{h^2}\dd z,\quad
+ M=\frac{\rho\pi b^2}{h^2}\int_0^h z^2\dd z
+ =\frac{\rho\pi b^2}{h^2}\left[\frac{z^3}{3}\right]_0^h
+ =\frac13\rho\pi b^2h.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算一次矩并明确质心从何处量起}\par\nobreak
+再对高度加权，先列一次矩 $Mz_C=\int_0^h z\dd m=(\rho\pi b^2/h^2)\int_0^h z^3\dd z$。其原函数为 $z^4/4$，所以
+\[
+ z_C=\frac{\rho\pi b^2}{Mh^2}\left[\frac{z^4}{4}\right]_0^h
+ =\frac{\rho\pi b^2h^2/4}{\rho\pi b^2h/3}
+ =\boxed{\frac34h}.
+\]
+这是从顶点量起的位置，距底面为 $h-z_C=h/4$。改变坐标零点会改变坐标值，但对应同一个物理位置。
+\end{solution}
+
+\begin{question}
+\begin{example}[非均匀细杆]
+细杆占据 $0\le x\le L$，线密度 $\lambda(x)=Ax^4$，$A>0$。求质量和质心。若线密度写成 $\lambda_0(x/L)^p$，$p>-1$，结论怎样推广？
+\end{example}
+\fig{c2e9q}{线密度向右增大的细杆}{\begin{tikzpicture}
+\draw[axis](-.3,0)--(6,0)node[right]{$x$};\draw[very thick,blue](0,0)--(5,0);
+\foreach \x in {1,2,3,4,4.3,4.6,4.9}{\draw(\x,-.15)--(\x,.15);}
+\node[below]at(0,-.2){$0$};\node[below]at(5,-.2){$L$};\node[above]at(2.5,.5){$\lambda=Ax^4$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把位置相关密度保留在两个积分中}\par\nobreak
+图 \ref{c2e9q} 的小段质量为 $\dd m=Ax^4\dd x$。由于 $A$ 并非密度本身，而是带单位的比例系数，其量纲为质量除以长度五次方。
+\begin{align*}
+M&=A\int_0^Lx^4\,\dd x
+=A\left[\frac{x^5}{5}\right]_0^L=\frac{AL^5}5,\\
+Mx_C&=A\int_0^Lx^5\,\dd x
+=A\left[\frac{x^6}{6}\right]_0^L=\frac{AL^6}{6}.
+\end{align*}
+将一次矩除以质量，$x_C=(AL^6/6)/(AL^5/5)=\boxed{5L/6}$。
+\fig{c2e9s}{一次矩比总质量多乘一个位置权重}{\begin{tikzpicture}
+\draw[world](0,0)--(5,0);\draw[fill=blue!20](3.2,-.18)rectangle(3.4,.18);\draw[dim](0,-.6)--(3.3,-.6)node[midway,below]{$x$};
+\node[above]at(3.3,.3){$\dd m$};\fill[red](4.1667,0)circle(2pt)node[above=5pt]{$C$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广密度幂次并检验质心的移动方向}\par\nobreak
+图 \ref{c2e9s} 的质心位于中点右侧，符合右端质量更集中的判断。对一般的 $p>-1$，分别积分总质量和一次矩：
+\[
+ M=\frac{\lambda_0}{L^p}\left[\frac{x^{p+1}}{p+1}\right]_0^L
+ =\frac{\lambda_0L}{p+1},
+ \qquad
+ Mx_C=\frac{\lambda_0}{L^p}\left[\frac{x^{p+2}}{p+2}\right]_0^L
+ =\frac{\lambda_0L^2}{p+2}.
+\]
+先分别得到总质量与一次矩，再作商，才有 $x_C=L(p+1)/(p+2)$。条件 $p>-1$ 保证原点附近质量积分收敛；$p=0$ 恢复均匀杆中点，$p=4$ 恢复本题。若 $p\to+\infty$，质量越来越集中到右端，$x_C\to L$。
+
+密度系数改变时，各质量元和一次矩按相同比例变化，故系数在质心比值中消去。令 $\xi=x/L$还可看出，长度尺度改变只使质心位置随 $L$同比变化，$x_C/L$由密度分布的形状决定。正密度保证质心落在杆内，这是不依赖具体积分结果的检查。
+\end{solution}
+
+\begin{question}
+\begin{example}[光滑圆柱上的链条]
+一条均匀链条质量 $m$、长度 $\pi R/2$，静置在水平光滑圆柱右上方的四分之一圆周上。下端 $A$ 位于圆心等高处且自由，上端 $B$ 在圆顶受到水平向左拉力 $F$。求链内张力及 $F$。
+\end{example}
+\fig{c2e10q}{自由端到圆顶的四分之一圆弧}{\begin{tikzpicture}[scale=1.3]
+\draw[world](-1.6,0)--(1.8,0);\draw[world](-1.5,0)arc(180:0:1.5);
+\draw[very thick,blue](1.5,0)arc(0:90:1.5);\node[right]at(1.5,0){$A$};\node[above right]at(0,1.5){$B$};
+\draw[force](0,1.5)--(-.9,1.5)node[left]{$F$};\draw[guide](0,0)--(40:1.5);
+\draw(.45,0)arc(0:40:.45)node[midway,right]{$\theta$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{画微小链段并投影两端张力}\par\nobreak
+图 \ref{c2e10q} 的线密度为 $\lambda=2m/(\pi R)$。取极角 $\theta$ 到 $\theta+\dd\theta$ 的微段，弧长为 $R\dd\theta$。沿逆时针切向，重力分量为 $-\lambda gR\cos\theta\dd\theta$；支持力沿径向，没有切向分量。
+\fig{c2e10s}{微小链段的切向受力}{\begin{tikzpicture}[scale=1.2]
+\coordinate(P)at(0,0);\draw[very thick,blue](.3,-.25)--(-.3,.25);
+\draw[force](-.3,.25)--(-1.2,1)node[above]{$T+\dd T$};
+\draw[force](.3,-.25)--(1.2,-1)node[below]{$T$};
+\draw[force](P)--(0,-1.35)node[left]{$\dd m\,g$};\draw[flow](P)--(.8,.96)node[above]{$\dd N$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从自由端边界积分到任意截面}\par\nobreak
+在图 \ref{c2e10s} 的局部受力中，仅对切向列平衡：
+\[
+ \dd T=\lambda gR\cos\theta\dd\theta.
+\]
+沿图 \ref{c2e10s} 的上行切向，前端张力与后端张力相减为 $\dd T$，重力投影为 $-\lambda gR\cos\theta\dd\theta$，两者相加为零。自由端给出 $T(0)=0$，用哑变量 $\phi$ 写完整积分：
+\[
+ T(\theta)-T(0)=\lambda gR\int_0^\theta\cos\phi\dd\phi
+ =\lambda gR[\sin\phi]_0^\theta.
+\]
+由此得到
+\[
+ T(\theta)=\lambda gR\sin\theta,\qquad
+ F=T(\pi/2)=\boxed{\frac{2mg}{\pi}}.
+\]
+这不是把整条链的重量投影到某一个固定方向，而是逐段累加随位置变化的切向分量。$F<mg$，其余重力由圆柱的分布支持力承担。
+\end{solution}
+
+\begin{question}
+\begin{example}[杆与圆盘的转动惯量]
+求均匀细杆绕端点且垂直于杆的轴、绕中点平行轴的转动惯量，再求均匀圆盘绕中心法线的转动惯量。杆长 $L$、盘半径 $R$，质量均记为 $m$。
+\end{example}
+\fig{c2e11q}{转轴决定质量元的距离权重}{\begin{tikzpicture}
+\draw[very thick](0,0)--(3.3,0);\draw[axis](0,-.7)--(0,.9)node[above]{端点轴};\draw[guide](1.65,-.6)--(1.65,.6); \node[below]at(2.5,-.2){细杆};
+\begin{scope}[xshift=5.3cm]\draw[world](0,0)circle(1);\fill(0,0)circle(2pt)node[below]{$O$};\draw[flow](0,0)--(35:1)node[midway,above]{$R$};\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{改变转轴时重新确定杆元的轴距}\par\nobreak
+对图 \ref{c2e11q} 的端点轴，杆元 $\dd m=(m/L)\dd x$，距离为 $x$，因此
+$I_O=(m/L)\int_0^L x^2\dd x=mL^2/3$。
+端点轴的原函数是 $(m/L)x^3/3$，代入 $0,L$ 后为 $mL^2/3$。中点轴把原点移到杆中点，两边都必须计入：
+\[
+ I_C=\frac mL\int_{-L/2}^{L/2}x^2\dd x=\frac{mL^2}{12}.
+\]
+\fig{c2e11s}{圆盘按同心圆环分割}{\begin{tikzpicture}
+\draw[world](0,0)circle(1.5);\draw[blue,very thick](0,0)circle(.95);\draw[guide](0,0)circle(1.05);
+\draw[flow](0,0)--(.95,0)node[midway,above]{$r$};\draw[dim](.95,-.3)--(1.05,-.3); \node[right]at(1.1,-.4){$\dd r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同心圆环计算圆盘惯量}\par\nobreak
+中点积分的上下限代入差为
+$[(L/2)^3-(-L/2)^3]/3=L^3/12$，乘 $m/L$ 得 $mL^2/12$。图 \ref{c2e11s} 中整条窄圆环到轴距离相同，适合作微元。面密度 $\sigma=m/(\pi R^2)$，所以
+\[
+ \dd m=\sigma\,2\pi r\dd r,\qquad
+ I=\int_0^Rr^2\,2\pi\sigma r\dd r
+ =\boxed{\frac12mR^2}.
+\]
+圆盘最后的积分为 $2\pi\sigma[r^4/4]_0^R=\pi\sigma R^4/2$，代入 $\sigma$ 才得到 $mR^2/2$。平行轴关系则来自
+\[
+ I_O=\int(x+d)^2\dd m
+ =\int x^2\dd m+2d\int x\dd m+d^2\int\dd m.
+\]
+以质心为原点时 $\int x\dd m=0$，所以 $I_O=I_C+md^2$。对杆取 $d=L/2$，得 $mL^2/12+mL^2/4=mL^2/3$，与直接积分相符。
+\end{solution}

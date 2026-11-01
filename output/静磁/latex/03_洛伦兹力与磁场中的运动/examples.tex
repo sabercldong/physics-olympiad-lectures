@@ -1,0 +1,508 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[半平面磁场中的半周偏转]\label{mg3:example:1}
+正电荷 $q$、质量 $m$ 的粒子以速度 $v_0$ 沿 $+x$ 从原点进入 $x>0$ 的匀强磁场，场向纸内、大小 $B$。求首次离开磁区的位置、速度与在场时间。
+\end{example}
+\fig{fig:mg3:example:1:s}{题设：半平面磁场中的半周偏转}{\begin{tikzpicture}[scale=.88]
+\fill[gray!12](0,-.5)rectangle(4,3.3);\draw[guide](0,-.5)--(0,3.3);\fill(0,0)circle(2pt)node[left]{$O$};\draw[flow](-1.2,0)--(0,0)node[midway,above]{$v_0$};\node at(3,2.6){$\otimes B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由初始磁力定位圆心并写运动参数式}\par\nobreak
+由图\ref{fig:mg3:example:1:s}，初始磁力向 $+y$，圆心在 $(0,r)$，其中 $r=mv_0/(qB)$。取转角 $\phi=\Omega t$、$\Omega=qB/m$，由知识正文已解出的速度分量
+$v_x=v_0\cos\Omega t,v_y=v_0\sin\Omega t$，
+\[
+ x=\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\phi,\qquad
+ y=-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\phi).
+\]
+两个积分下限使用同一入射时刻，初始坐标均为零；对位置求导也分别回到给定速度分量。
+\fig{fig:mg3:example:1:p}{先由磁力确定圆心，再按正的运动转角选出第一次跨越边界的位置}{\begin{tikzpicture}
+
+\fill[blue!6](0,-.3)rectangle(3.3,3.3);\draw[world](0,-.3)--(0,3.3);\draw[->,blue,thick](0,0)arc(-90:90:1.4);
+\fill(0,1.4)circle(1.6pt)node[left]{$C(0,r)$};\fill(0,0)circle(1.6pt)node[below left]{$O$};\fill(0,2.8)circle(1.6pt)node[above right]{$P(0,2r)$};
+\draw[flow](-1.3,0)--(0,0)node[midway,below]{$v_0$};\draw[flow](0,2.8)--(-1.3,2.8)node[midway,above]{$-v_0$};\draw[guide](0,1.4)--(1.4,1.4)node[midway,below]{$r$};
+\node at(2.5,2.7){$\otimes B$};\node at(1.5,-1){$0<\phi<\pi:\ x>0;\quad \phi=\pi:\ \bm v\parallel-x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按正转角选首次返回边界并检查出界速度}\par\nobreak
+图\ref{fig:mg3:example:1:p}中粒子首先在 $0<\phi<\pi$ 留在 $x>0$，到 $\phi=\pi$ 才再次遇到边界 $x=0$，此时 $y=2r$，速度为 $-v_0\bm e_x$。再向前就进入无磁场的 $x<0$，所以这是真正的出界，而非相切。时间 $t=\pi/\Omega=\pi m/(qB)$，等于半个回旋周期。直接把出界点取为轨道圆心会同时破坏边界与速度切线关系，图中的半圆应始终以 $C$ 为圆心。\end{solution}
+\begin{question}\begin{example}[有限宽磁场中的穿出与返回]\label{mg3:example:2}
+粒子按上一题的初态进入条形磁场 $0<x<d$，场向纸内。用 $r=mv_0/(qB)$ 分类讨论首次出界位置和时间，特别说明 $d=r$ 的情形。
+\end{example}
+\fig{fig:mg3:example:2:s}{题设：有限宽磁场中的穿出与返回}{\begin{tikzpicture}[scale=.88]
+\fill[gray!12](0,-.5)rectangle(2.4,3.3);\draw[guide](0,-.5)--(0,3.3);\fill(0,0)circle(2pt)node[left]{$O$};\draw[flow](-1.2,0)--(0,0)node[midway,above]{$v_0$};\node at(1.4,2.6){$\otimes B$};\draw[guide](2.4,-.5)--(2.4,3.3);\node[below]at(2.4,-.5){$d$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求最大穿透深度与右边界的先后关系}\par\nobreak
+按图\ref{fig:mg3:example:2:s}，场内轨迹仍是 $x=r\sin\phi$、$y=r(1-\cos\phi)$。它向右最远只到 $x=r$。若 $d<r$，右边界在达到最远点以前就被穿过，首次解为 $\phi_e=\arcsin(d/r)\in(0,\pi/2)$。
+\fig{fig:mg3:example:2:p}{左图在最远点前穿出，右图只与右边界相切；实际轨道用实线表示}{\begin{tikzpicture}
+
+\begin{scope}
+\fill[blue!7](0,-.2)rectangle(.8,3.1);\draw[world](0,-.2)--(0,3.1)(.8,-.2)--(.8,3.1);\draw[guide](0,0)arc(-90:90:1.4);
+\draw[->,blue,thick](0,0)arc(-90:-55.150095:1.4);\fill(.8,.251087)circle(1.6pt)node[below right]{$P$};\draw[->,red,thick](.8,.251087)--(1.784784,.936801);
+\node[below]at(.8,-.2){$d<r$};\node[align=center]at(1,3.8){$\phi_e=\arcsin(d/r)$\\右侧穿出};
+\end{scope}
+\begin{scope}[xshift=5.1cm]
+\fill[blue!7](0,-.2)rectangle(1.4,3.1);\draw[world](0,-.2)--(0,3.1)(1.4,-.2)--(1.4,3.1);\draw[->,blue,thick](0,0)arc(-90:90:1.4);\fill(1.4,1.4)circle(1.6pt);\draw[flow](0,2.8)--(-1,2.8);
+\node[right]at(1.6,1.4){切点：不穿出};\node[below]at(1.4,-.2){$d=r$};\node[align=center]at(.7,3.8){$\phi_e=\pi$\\最终从左侧返回};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在穿出分支计算交点、时间与切向速度}\par\nobreak
+图\ref{fig:mg3:example:2:p}此时 $y_e=r-\sqrt{r^2-d^2}$、$t_e=\phi_e/\Omega$，出界速度为 $v_0(\cos\phi_e,\sin\phi_e)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另判无法到达与相切两种情形}\par\nobreak
+若 $d>r$，粒子根本到不了右边界，经过半周从左边界 $(0,2r)$ 离开。在 $d=r$ 时，圆弧与右边界相切，切点前后均在磁区一侧，并未穿入 $x>d$；仍在半周后从左侧离开。把相切时刻 $\pi/(2\Omega)$ 当作离开时间，会错误改变后续的运动方程。\end{solution}
+\begin{question}\begin{example}[圆形磁区中的散射角]\label{mg3:example:3}
+半径 $a$ 的圆形区域内有向纸内的匀强场 $B$。正电荷 $q$、质量 $m$ 的粒子从左端 $A=(-a,0)$ 沿圆的直径方向以速率 $v$ 入射。求磁区内轨道转角、时间与出界点。
+\end{example}
+\fig{fig:mg3:example:3:s}{题设：圆形磁区中的散射角}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\draw[flow](-2.8,0)--(-1.5,0)node[midway,above]{$v$};\node[left]at(-1.5,0){$A$};\fill(0,0)circle(2pt)node[below]{$O$};\node at(0,1){$\otimes B$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$a$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用入点切线定位轨道圆并写参数式}\par\nobreak
+图\ref{fig:mg3:example:3:s}中入射处磁力向上，轨道半径 $r=mv/(qB)$，圆心在 $(-a,r)$。速度分量为 $v\cos\Omega t,v\sin\Omega t$。取初始坐标 $(-a,0)$，
+\[
+ x=-a+\frac v\Omega[\sin\Omega s]_0^t=-a+r\sin\phi,\qquad
+ y=-\frac v\Omega[\cos\Omega s]_0^t=r(1-\cos\phi),
+\]
+其中 $\phi=\Omega t$，积分变量 $s$ 从入射时刻到当前时刻。出界点还应满足磁区圆的方程 $x^2+y^2=a^2$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立磁区边界，除去初始交点}\par\nobreak
+将参数式代入并约去共同项，得 $r(1-\cos\phi)=a\sin\phi$。除去入射时的 $\phi=0$，利用半角公式，得到 $\tan(\phi/2)=a/r$。
+\fig{fig:mg3:example:3:p}{轨道圆与磁区边界相交，除去入点后得到唯一的首次出点；示意取 $a/r=15/14$}{\begin{tikzpicture}
+
+\filldraw[fill=blue!7,world](0,0)circle(1.5);\draw[guide](-1.5,1.4)circle(1.4);\draw[->,red,thick](-1.5,0)arc(-90:3.949868:1.4);
+\fill(-1.5,1.4)circle(1.6pt)node[left]{$C(-a,r)$};\fill(-1.5,0)circle(1.6pt)node[below left]{$A$};\fill(-.103325,1.496437)circle(1.6pt)node[right]{$P_e$};
+\draw[guide](-1.5,0)--(-1.5,1.4)--(-.103325,1.496437);\draw[dim](-1.5,.9)arc(-90:3.949868:.5);\node at(-.8,1){$\phi_e$};
+\draw[flow](-.103325,1.496437)--(-.151542,2.194775)node[above]{$\bm v_e$};\draw[flow](-2.7,0)--(-1.5,0);\node at(.6,-.8){$\otimes B$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选有效半角分支并求时间与出口坐标}\par\nobreak
+图\ref{fig:mg3:example:3:p}中实际转角 $\phi_e=2\arctan(a/r)\in(0,\pi)$，故时间 $t=\phi_e/\Omega$。由半角关系 $\sin\phi_e=2ar/(a^2+r^2)$、$1-\cos\phi_e=2a^2/(a^2+r^2)$，出界点为
+\[
+x_e=\frac{a(r^2-a^2)}{r^2+a^2},\qquad
+y_e=\frac{2ra^2}{r^2+a^2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查弱场直穿与强场折回极限}\par\nobreak
+当 $r\gg a$，转角约为 $2a/r$，时间趋近直线穿过直径的 $2a/v$；强场使 $r$ 很小时，粒子在入口附近折回，转角趋近半周。\end{solution}
+\begin{question}\begin{example}[两侧不同磁场中的平均漂移]\label{mg3:example:4}
+界面 $x=0$ 右侧磁场为 $B$，左侧为 $2B$，方向均向纸内。正电荷粒子从界面原点以 $v_0$ 向右出发。求经过任意整数个完整往返后，沿界面方向的平均速度。
+\end{example}
+\fig{fig:mg3:example:4:s}{题设：两侧不同磁场中的平均漂移}{\begin{tikzpicture}[scale=.88]
+\fill[gray!10](-2,-1)rectangle(0,3);\fill[gray!20](0,-1)rectangle(2,3);\draw[guide](0,-1)--(0,3);\draw[flow](0,0)--(1,0)node[right]{$v_0$};\node at(-1,2){$\otimes 2B$};\node at(1,2){$\otimes B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求两区半圆的有向位移与时间}\par\nobreak
+在图\ref{fig:mg3:example:4:s}右侧，粒子先完成半径 $r=mv_0/(qB)$ 的右半圆，回到界面时沿 $-x$，界面方向位移为 $+2r$，耗时 $t_R=\pi m/(qB)$。进入左侧后半径变为 $r/2$，从当前点继续按同一转向走左半圆，这次界面位移为 $-r$，耗时 $t_L=\pi m/(2qB)$。
+\fig{fig:mg3:example:4:p}{两段半圆在界面处连续相接，位移取端点差，时间按各自回旋角速度求和}{\begin{tikzpicture}
+
+\fill[blue!5](0,-.3)rectangle(2.7,3.6);\fill[orange!7](-2,-.3)rectangle(0,3.6);\draw[world](0,-.3)--(0,3.6);
+\draw[->,blue,thick](0,0)arc(-90:90:1.5);\draw[->,red,thick](0,3)arc(90:270:.75);\draw[flow](0,1.5)--(1,1.5)node[right]{$v_0$};
+\fill(0,0)circle(1.6pt)node[left]{$O$};\fill(0,3)circle(1.6pt)node[left]{$A$};\fill(0,1.5)circle(1.6pt)node[left]{$D$};
+\node[align=center]at(2.4,2.4){$r,\ t_R=\pi m/(qB)$\\$\Delta y_R=2r$};\node[align=center]at(-2,2.4){$r/2,\ t_L=t_R/2$\\$\Delta y_L=-r$};\draw[dim](-1.3,0)--(-1.3,1.5)node[midway,left]{$\Delta y=r$};
+\node at(.5,-1){$D$ 处速度恢复为向右，下一往返只是整体上移 $r$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用整次往返的净位移除以总时间}\par\nobreak
+所以图\ref{fig:mg3:example:4:p}一个完整往返的净位移 $\Delta y=r$，总时间 $3\pi m/(2qB)$，平均速度 $\bar v_y=2v_0/(3\pi)$。每个往返结束时粒子又从界面向右，初速度方向复原，所以连续 $N$ 个往返只需把位移与时间同乘 $N$，平均值不变。它不等于粒子速率 $v_0$，也不能用两个半圆的弧长差代替沿界面的位移。\end{solution}
+\begin{question}\begin{example}[使粒子转过直角的最小圆磁区]\label{mg3:example:5}
+正电荷粒子速率为 $v$，质量 $m$，电量 $q$。在第一象限安排一个向纸外的圆形匀强磁区，使粒子从 $y$ 轴沿 $+x$ 入射，最后从 $x$ 轴沿 $-y$ 射出。两轴上的入、出射点位置可选择。求圆磁区最小半径，并构造实现它的位置。
+\end{example}
+\fig{fig:mg3:example:5:s}{一种可行布局示意；圆磁区的位置与半径仍待优化}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.2,0)node[right]{$x$};\draw[axis](0,0)--(0,4.2)node[above]{$y$};\filldraw[fill=blue!7,draw=blue](1.6,1.6)circle(1.523155);
+\draw[flow](0,3)--(1,3)node[midway,above]{$v$};\draw[->,red,thick](1,3)arc(90:0:2);\draw[flow](3,1)--(3,0)node[midway,right]{$v$};
+\draw[dim](1.6,1.6)--(3.123155,1.6)node[midway,below]{$a$};\node at(1.5,.6){$\odot B$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由速度转向确定轨道半径和所需圆弧}\par\nobreak
+正电荷在向纸外的场中顺时针转动，速度由 $+x$ 转到 $-y$ 需要四分之一周。由 $mv^2/r=qvB$，轨道半径为 $r=mv/(qB)$，速率全程不变。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用弦长给出任何圆磁区都须满足的下界}\par\nobreak
+设场内弧的两端为 $P,Q$。速度转角为 $\pi/2$，故弦长 $PQ=\sqrt2r$。任一圆盘包含这两个端点，其直径至少为 $PQ$，因此磁区半径必有 $a\ge r/\sqrt2$。图\ref{fig:mg3:example:5:p}把轨道圆心 $C$ 与磁区圆心 $M$ 分别标出，不能将二者混用。
+\fig{fig:mg3:example:5:p}{磁区圆心取弦中点，轨道圆心另在左下方；构造完全位于第一象限}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.4,0)node[right]{$x$};\draw[axis](0,0)--(0,4.4)node[above]{$y$};\filldraw[fill=blue!7,draw=blue](2,2)circle(1.414214);
+\draw[flow](0,3)--(1,3)node[midway,above]{$v$};\draw[->,red,very thick](1,3)arc(90:0:2);\draw[flow](3,1)--(3,0);
+\fill(1,3)circle(1.6pt)node[above left]{$P$};\fill(3,1)circle(1.6pt)node[right]{$Q$};\fill(2,2)circle(1.6pt)node[above left]{$M$};\fill(1,1)circle(1.6pt)node[below left]{$C$};
+\draw[guide](1,3)--(1,1)--(3,1);\node[left]at(1,2){$r$};\draw[dim](.7,2.7)--(2.7,.7)node[midway,below left]{$\sqrt2r$};\node at(2,-.8){$P=(r/2,3r/2),\ Q=(3r/2,r/2)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查整段弧都被下界圆盘包含}\par\nobreak
+以 $PQ$ 为直径作磁区圆盘。将坐标临时转到以轨道圆心 $C$ 为原点、弧的中间半径为横轴的坐标系，弧点为 $(r\cos\psi,r\sin\psi)$，$|\psi|\le\pi/4$，弦中点为 $(r/\sqrt2,0)$。任意弧点到磁区中心的距离平方为
+\[
+ r^2+\frac{r^2}{2}-\sqrt2r^2\cos\psi\le\frac{r^2}{2}.
+\]
+所以整段实际圆弧都被半径 $r/\sqrt2$ 的圆盘包含，下界在几何上达到。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{给出固定坐标中的具体位置，验证进出直线与象限}\par\nobreak
+还要满足两轴与第一象限的限制。回到图中的固定坐标，明确取 $M=(r,r)$、$C=(r/2,r/2)$，则 $P=(r/2,3r/2)$、$Q=(3r/2,r/2)$。磁区距两坐标轴的最近距离均为 $r-r/\sqrt2>0$，整个圆盘都在第一象限。粒子从 $(0,3r/2)$ 向右到 $P$，由 $Q$ 向下到 $(3r/2,0)$，两段无场直线长度均为 $r/2>0$。入点速度指向磁区内、出点速度指向磁区外，构造因此可实现，最终
+\[\boxed{a_{\min}=\frac{r}{\sqrt2}=\frac{mv}{\sqrt2qB}}.\]
+\end{solution}
+\begin{question}\begin{example}[等边三角形磁区的最小边长]\label{mg3:example:6}
+正粒子从大等边三角形 $ABC$ 的 $BC$ 边上 $M$ 点垂直入射，从 $AC$ 边上 $N$ 点垂直射出，$CM=CN=d$。磁场向纸外，仅占据一个等边三角形区域。令 $\rho=mv/(qB)$，取 $d\ge\rho$ 且大三角形边长至少 $2d$，求轨道半径、在场时间与磁区最小边长。
+\end{example}
+\fig{fig:mg3:example:6:s}{大等边三角形给定入射点与出射点，两者到同一顶点 $C$ 的距离均为 $d$}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)--(2,3.464102)--cycle;\node[left]at(0,0){$B$};\node[right]at(4,0){$C$};\node[above]at(2,3.464102){$A$};
+\fill(2,0)circle(1.6pt)node[below left]{$M$};\fill(3,1.732051)circle(1.6pt)node[right]{$N$};\draw[flow](2,-.8)--(2,.4);\draw[flow](2.6,1.501111)--(3.7,2.136196);
+\draw[dim](2,-.5)--(4,-.5)node[midway,below]{$d$};\node[right]at(3.75,.9){$CN=d$};\node at(1.2,1.7){小磁区位置待定};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按入、出射切线确定实际转角与曲率}\par\nobreak
+图\ref{fig:mg3:example:6:s}中入射方向竖直向上，出射方向与水平成30度，速度需顺时针转过60度。初始磁力向右，正粒子与向纸外的磁场恰好满足这个转向。轨道半径 $r=\rho=mv/(qB)$，角速度大小 $\Omega=qB/m$。
+\fig{fig:mg3:example:6:p}{短弧由边长为 $\rho$ 的等边三角形覆盖，再用进出切线定位小磁区}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0)--(2,3.464102)--cycle;\node[left]at(0,0){$B$};\node[right]at(4,0){$C$};\node[above]at(2,3.464102){$A$};
+\filldraw[fill=blue!8,draw=blue](2,.288675)--(2.75,1.587713)--(1.25,1.587713)--cycle;
+\draw[flow](2,-.5)--(2,.288675);\draw[->,red,very thick](2,.288675)arc(180:120:1.5);\draw[flow](2.75,1.587713)--(3.5,2.020726);
+\fill(2,0)circle(1.5pt)node[below left]{$M$};\fill(3,1.732051)circle(1.5pt)node[right]{$N$};\node[left]at(2,.288675){$P$};\node[above left]at(2.75,1.587713){$Q$};\node[above left]at(1.25,1.587713){$S$};
+\node at(1.8,1.1){$\odot B$};\node[align=center]at(6,2.3){$PQ=QS=SP=\rho$\\$MP=QN=(d-\rho)/\sqrt3$};\node[align=center]at(6,.6){图示 $d=2,\ \rho=1.5$\\大边长 $\ell=4$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由真实转角求时间，再以弦长给出边长下界}\par\nobreak
+按图\ref{fig:mg3:example:6:p}场内圆弧转角 $\pi/3$，时间 $t=\pi/(3\Omega)=\pi m/(3qB)$，为周期的六分之一。弧两端 $P,Q$ 的弦长 $2r\sin(\pi/6)=r$。任一等边三角形的最大点距不超过其边长，因此磁区边长至少为 $r$。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐点检查短弧在构造三角形内}\par\nobreak
+把 $PQ$ 作为小等边三角形的一边，第三顶点 $S$ 放在弧凸起侧。以 $P$ 为局部原点，弧可写为 $x=\rho(1-\cos\beta),y=\rho\sin\beta$，$0\le\beta\le\pi/3$。小三角形的三个顶点为 $(0,0),(\rho/2,\sqrt3\rho/2),(-\rho/2,\sqrt3\rho/2)$。因为 $x\ge0$、$y\ge\sqrt3x$、$y\le\sqrt3\rho/2$，整段弧确实在小三角形内。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解两条直线长度并核对大三角形的三条边界}\par\nobreak
+再用外部给定点定位。设大三角形边长为 $\ell$，取 $B=(0,0),C=(\ell,0)$。
+图\ref{fig:mg3:example:6:p}中，$M=(\ell-d,0)$、
+$N=(\ell-d/2,\sqrt3d/2)$。令入场前直线长 $a=MP$、出场后直线长 $b=QN$。
+入射方向为 $(0,1)$，出射方向为 $(\sqrt3/2,1/2)$，圆弧端点位移为
+$(\rho/2,\sqrt3\rho/2)$，因此
+\[
+ \left(\frac d2,\frac{\sqrt3d}{2}\right)
+ =(0,a)+\left(\frac\rho2,\frac{\sqrt3\rho}{2}\right)
+ +b\left(\frac{\sqrt3}{2},\frac12\right).
+\]
+横分量先给 $b=(d-\rho)/\sqrt3$；再代入纵分量
+$a+\sqrt3\rho/2+b/2=\sqrt3d/2$，得到 $a=(d-\rho)/\sqrt3$。
+所以小磁区的位置为
+\[
+ MP=QN=\frac{d-\rho}{\sqrt3},\quad
+ P=\left(\ell-d,\frac{d-\rho}{\sqrt3}\right),\quad
+ Q=P+\left(\frac\rho2,\frac{\sqrt3\rho}{2}\right).
+\]
+因此 $d\ge\rho$ 正是两直线段长度非负的条件。第三顶点为
+$S=P+(-\rho/2,\sqrt3\rho/2)$。
+大三角形的三个内部半平面为
+\[
+ y\ge0,\qquad y\le\sqrt3(\ell-x),\qquad y\le\sqrt3x.
+\]
+三顶点中，$P$ 最低，其高度 $a\ge0$；对右边界 $AC$，最接近边界的是 $Q$，代入得
+\[
+ \sqrt3(\ell-x_Q)-y_Q=\frac{2(d-\rho)}{\sqrt3}\ge0.
+\]
+对左边界 $AB$，最接近边界的是 $S$。由
+$x_S=\ell-d-\rho/2$、$y_S=(d+\rho/2)/\sqrt3$，可得
+\[
+ \sqrt3x_S-y_S=\frac{3\ell-4d-2\rho}{\sqrt3}.
+\]
+题设给 $\ell\ge2d$、$d\ge\rho$，故分子至少为
+$6d-4d-2\rho=2(d-\rho)\ge0$。
+三个顶点都在大三角形内，而每个边界半平面均为凸集，
+所以它们的凸包，即整个小等边三角形，也在大三角形内。
+结合前面对整段圆弧的覆盖证明，边长下界能够实现，最终
+\[\boxed{a_{\min}=\rho=\frac{mv}{qB}}.\]
+\end{solution}
+\begin{question}\begin{example}[圆锥外表面运动的最小半径]\label{mg3:example:7}
+光滑圆锥尖顶向上，半顶角为 $\theta$。质量 $m$、正电荷 $q$ 的小球在外侧表面作水平匀速圆周运动。磁场沿竖直方向向下，转向使磁力向圆心。求允许的最小轨道半径，并取 $m=0.0369\,\mathrm{kg},q=0.181\,\mathrm C,B=1.99\,\mathrm T,\theta=32.7^\circ,g=10\,\mathrm{m/s^2}$ 计算。
+\end{example}
+\fig{fig:mg3:example:7:s}{球在尖顶向上圆锥的外表面，图中速度向纸内，向下磁场产生向内磁力}{\begin{tikzpicture}
+
+\pgfmathsetmacro{\cth}{cot(32.7)}\pgfmathsetmacro{\yb}{2-2*\cth}\pgfmathsetmacro{\yp}{2-1.15*\cth}
+\draw[world](-2,\yb)--(0,2)--(2,\yb);\draw[guide](0,2)--(0,\yb-.4);\draw[guide](0,\yp)ellipse(1.15 and .25);\node at(1.15,\yp){$\otimes$};\node[above right]at(1.35,\yp){$m,q,\ v$};
+\draw[dim](0,1.3)arc(-90:-57.3:.7)node[midway,below]{$\theta$};\draw[dim](0,\yp-.5)--(1.15,\yp-.5)node[midway,below]{$R$};\draw[flow](3,1.5)--(3,-.2)node[below]{$B$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在竖直与径向分解外表面支持力}\par\nobreak
+图\ref{fig:mg3:example:7:s}规定球在尖顶向上的外表面，支持力向外且向上。竖直平衡 $N\sin\theta=mg$，所以支持力的径向向外分量为 $N\cos\theta=mg\cot\theta$。沿圆心方向，$qBv-mg\cot\theta=mv^2/R$，整理为
+\[
+mv^2-qBRv+mgR\cot\theta=0.
+\]
+\fig{fig:mg3:example:7:p}{外表面的支持力向外上方；速度—半径关系的最低点与判别式重根等价}{\begin{tikzpicture}
+
+\fill(0,0)circle(2pt);\draw[force](0,0)--(1.43062,.91876)node[above]{$N$};\draw[force](0,0)--(0,-1.7)node[below]{$mg$};\draw[force,blue](0,0)--(-1.9,0)node[left]{$qBv$};\draw[guide](0,0)--(1.7,0);\draw[dim](.65,0)arc(0:32.7:.65)node[midway,right]{$\theta$};\node at(.2,1.9){$N\sin\theta=mg$};
+\begin{scope}[xshift=5cm]
+\draw[axis](0,0)--(4.6,0)node[right]{$v/v_c$};\draw[axis](0,0)--(0,3.6)node[above]{$R/R_{\min}$};\draw[blue,thick,domain=1.1:4.2,samples=90]plot(\x,{(\x)^2/(4*(\x-1))});\draw[guide](2,0)--(2,1)--(0,1);\fill(2,1)circle(1.5pt);\node[below]at(2,0){$2$};\node[left]at(0,1){$1$};\node at(2.4,4.2){$v_c=mg\cot\theta/(qB)$};\node at(2,-1){$R/R_{\min}=u^2/[4(u-1)],\ u>1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由实速度判别式求最小半径并作数值计算}\par\nobreak
+图\ref{fig:mg3:example:7:p}的速度应为实数，判别式要求 $(qBR)^2-4m^2gR\cot\theta\ge0$。对 $R>0$ 约去一因子，得到
+\[
+R\ge R_{\min}=\frac{4m^2g\cot\theta}{q^2B^2}=0.654\,\mathrm m.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度—半径曲线与正根条件核对临界状态}\par\nobreak
+图中再以 $v_c=mg\cot\theta/(qB)$ 归一化。径向式要求 $v>v_c$，且 $R=mv^2/(qBv-mg\cot\theta)$；令 $A=mg\cot\theta$，直接对商求导，
+\[
+ \frac{\dd R}{\dd v}
+ =\frac{2mv(qBv-A)-mv^2qB}{(qBv-A)^2}
+ =\frac{mv(qBv-2A)}{(qBv-A)^2}.
+\]
+在允许区间 $v>A/(qB)$ 内，导数在 $v=2A/(qB)=2v_c$ 前负后正，故曲线在 $v=2v_c$ 达到同一 $R_{\min}$，因此半径高于最低点时对应两种正速度。
+
+
+
+临界时两速度根相等，$v=qBR_{\min}/(2m)$；支持力仍为正，接触条件满足。若把球改放在尖顶向上的锥体内侧，或把圆锥倒置，支持力的径向方向会改变，上述最小半径结论不能照搬。
+
+判别式只给出实速度的必要范围，还需确认两个速度根是否均为正。这里根和 $qBR/m>0$、根积 $gR\cot\theta>0$，所以有实根时两根同为正。最低半径处支持力为 $mg/\sin\theta$，没有触及失去接触的边界。\end{solution}
+\begin{question}\begin{example}[磁摆不松绳的最大磁场]\label{mg3:example:8}
+长 $L$ 的单摆带正电 $q$、质量 $m$，在竖直平面内摆动，最大摆角为 $0<\alpha<\pi/2$。磁场垂直摆动平面，求使往返全过程绳力非负的最大 $B$。计算 $L=1.2\,\mathrm m,m=0.215\,\mathrm{kg},q=0.867\,\mathrm C,\alpha=33.7^\circ,g=10\,\mathrm{m/s^2}$ 时的值。
+\end{example}
+\fig{fig:mg3:example:8:s}{虚线为两个转折位置，夹角为最大摆角 $\alpha$；实线表示磁力向心半程的一处位置}{\begin{tikzpicture}
+
+\fill(0,2.5)circle(1.6pt)node[above]{$O$};\draw[guide](0,2.5)--(0,-.7);\draw[guide](0,2.5)--(-1.6647,.0043)(0,2.5)--(1.6647,.0043);\draw[guide](-1.6647,.0043)arc(-123.7:-56.3:3);
+\draw[world](0,2.5)--(1.02606,-.31908);\node[right]at(.7,.6){$L$};\fill(1.02606,-.31908)circle(2pt);\draw[flow](.9,-.45)--(.0543,-.7578)node[left]{$v$};
+\draw[dim](0,1.55)arc(-90:-56.3:.95);\draw[guide](.275,1.59)--(.85,1.45)node[right]{$\alpha$};\draw[dim](0,1.95)arc(-90:-70:.55);\draw[guide](.0955,1.9583)--(-.45,1.9583)node[left]{$\theta$};\node at(2.7,1.1){$\odot B$};\node at(0,-1.5){转折点 $v=0$，最低点速率为 $v_{\max}$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用不做功条件求速率，再找磁力向心的最小绳力分支}\par\nobreak
+图\ref{fig:mg3:example:8:s}的磁力不做功，故 $v^2=2gL(\cos\theta-\cos\alpha)$。在磁力向心的半次摆动中，绳力最小；其径向方程是 $T+qvB-mg\cos\theta=mv^2/L$。令 $c=\cos\alpha$，用 $\cos\theta=c+v^2/(2gL)$ 消去角度，得到 $T=3mv^2/(2L)-qBv+mgc$。
+\fig{fig:mg3:example:8:p}{须在实际速率区间内取最严场强上界，区间外的极小点不能直接使用}{\begin{tikzpicture}
+
+\node at(4.2,5.8){$u=v/\sqrt{gL},\quad H=qB_{\rm lim}\sqrt L/(m\sqrt g)=3u/2+c/u$};
+\begin{scope}[x=4cm,y=1.1cm]
+\draw[axis](0,0)--(1.17,0)node[right]{$u$};\draw[axis](0,0)--(0,4.4)node[above]{$H$};\draw[blue,thick,domain=.15:1,samples=75]plot(\x,{1.5*\x+.5/\x});
+\draw[guide](.57735,0)--(.57735,1.73205);\node[below]at(.57735,0){$v_*$};\node[below]at(1,0){$v_{\max}$};\fill(.57735,1.73205)circle(1.6pt);
+\node at(.55,4.9){$c=1/2\le3/4$};\node at(.55,-.9){内部极小点可达};
+\end{scope}
+\begin{scope}[xshift=5.5cm,x=4cm,y=1.1cm]
+\draw[axis](0,0)--(1.17,0)node[right]{$u$};\draw[axis](0,0)--(0,4.4)node[above]{$H$};\draw[blue,thick,domain=.25:.547723,samples=60]plot(\x,{1.5*\x+.85/\x});\draw[gray,dashed,domain=.547723:1,samples=60]plot(\x,{1.5*\x+.85/\x});
+\draw[guide](.547723,0)--(.547723,2.37346);\fill(.547723,2.37346)circle(1.6pt);\node[below]at(.547723,0){$v_{\max}$};\draw[guide](.752773,0)--(.752773,2.25832);\node[below]at(.752773,-.55){$v_*$};
+\node at(.55,4.9){$c=0.85>3/4$};\node at(.55,-1.3){只能在区间端点取最小值};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把非负绳力改写为可达区间内的场强上界}\par\nobreak
+图\ref{fig:mg3:example:8:p}用 $u=v/\sqrt{gL}$ 表示横轴上的速率位置，蓝色实线只保留可达部分。实际速度只在 $0\le v\le v_{\max}=\sqrt{2gL(1-c)}$ 内。对 $v>0$，$T\ge0$ 等价于
+\[
+B\le\frac mq\left(\frac{3v}{2L}+\frac{gc}{v}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较内部极小点与区间端点，得到两种临界式}\par\nobreak
+将第二项写成 $gc\,v^{-1}$，逐项求导得
+$\dd[3v/(2L)+gc\,v^{-1}]/\dd v=3/(2L)-gc\,v^{-2}$；
+因此右端导数为 $(m/q)[3/(2L)-gc/v^2]$，无约束极小点为 $v_*=\sqrt{2gLc/3}$。它可达的条件是 $v_*\le v_{\max}$，即 $c\le3/4$。因此
+\[
+B_{\max}=\begin{cases}
+\dfrac mq\sqrt{\dfrac{6gc}{L}},&0<c\le3/4,\\[1mm]
+\dfrac mq\sqrt{\dfrac g{2L}}\dfrac{3-2c}{\sqrt{1-c}},&3/4<c<1.
+\end{cases}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入角度选分支，并核对端点与两支连续性}\par\nobreak
+给定角度的 $c\simeq0.832>3/4$，应取第二支，得到 $B_{\max}=1.65\,\mathrm T$，临界发生在最低点。另一半次摆动磁力背离圆心，绳力增大，无需另加更严限制。等号表示绳力在临界点恰为零的理想极限；若要求始终严格张紧，则取 $B<B_{\max}$。
+
+释放点 $v=0$ 不宜直接代入含 $1/v$ 的场强上界，但原拉力式给 $T=mgc>0$，不会形成更严条件。两分支在 $c=3/4$ 处都给 $(m/q)\sqrt{(9/2)g/L}$，因此分段表达连续，端点选择没有造成结果跳变。\end{solution}
+\begin{question}\begin{example}[斜入射粒子的螺旋参数]\label{mg3:example:9}
+质量 $m$、电荷 $q$ 的粒子以速率 $v$、与均匀磁场夹角 $\beta$ 入射。求回旋半径、周期、有向轴向推进、几何螺距，以及一周期内经过的总路程。
+\end{example}
+\fig{fig:mg3:example:9:s}{题设：斜入射粒子的螺旋参数}{\begin{tikzpicture}[scale=.88]
+\draw[flow](0,0)--(4,0)node[right]{$B$};\draw[flow](0,0)--(2,1.6)node[above]{$v$};\draw[guide](2,1.6)--(2,0);\node at(1,.25){$\beta$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分解速度并用垂直分量求回旋半径}\par\nobreak
+图\ref{fig:mg3:example:9:s}的初速度分量为 $v_\parallel=v\cos\beta$、$v_\perp=v\sin\beta$。磁力不含平行分量，平行运动匀速；垂直平面满足 $mv_\perp^2/r=|q|v_\perp B$，故 $r=mv\sin\beta/(|q|B)$。
+\fig{fig:mg3:example:9:p}{实际螺旋的空间投影与展开三角形相对应；图示沿磁场正向推进}{\begin{tikzpicture}
+
+\draw[axis](-.8,0)--(6.8,0)node[right]{$\bm B,z$};\foreach \x in {0,2.7,5.4}{\draw[guide](\x,0)ellipse(.3 and .8);}
+\draw[->,blue,thick,domain=0:720,samples=200]plot({2.7*\x/360+.3*cos(\x)},{.8*sin(\x)});\draw[dim](.3,-1.4)--(3,-1.4)node[midway,below]{$p=|v_\parallel|T$};
+\begin{scope}[xshift=8cm]
+\draw[world](0,0)--(2,0)--(2,2.5)--cycle;\draw(1.8,0)--(1.8,.2)--(2,.2);\node[below]at(1,0){$2\pi r$};\node[right]at(2,1.25){$p$};\node[left]at(.8,1.4){$s=vT$};\node at(1,3.2){一周螺旋展开};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由同一周期求有向推进、几何螺距及完整路程}\par\nobreak
+由图\ref{fig:mg3:example:9:p}一周横向角度 $2\pi$，周期 $T=2\pi m/(|q|B)$，沿 $+\bm B$ 的有向轴向推进为 $p_z=v\cos\beta\,T$，若螺距表示长度，则 $p=|p_z|=|v\cos\beta|T$。总路程则为速率乘时间 $s=vT$，并非仅是圆周长 $2\pi r$。也可把一周期螺旋展开，验证 $s^2=(2\pi r)^2+p^2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查回旋退化时周期的物理含义}\par\nobreak
+当 $\beta=0$ 或 $\pi$ 时横向圆退化，运动是一条直线；这时形式上的回旋周期只是相关动力学尺度，粒子并没有实际绕轴转一圈。\end{solution}
+\begin{question}\begin{example}[磁聚焦与近轴条件]\label{mg3:example:10}
+同种粒子从同一点发射，总速率均为 $v$，与均匀轴向场 $B$ 的小夹角为 $\beta$。求经过一周回旋后的轴向位置，并写出相对近轴焦距的最低阶偏差。
+\end{example}
+\fig{fig:mg3:example:10:s}{共同起点、共同总速率的两条空间轨迹投影；较大入射角的粒子一周后回到较近的轴向位置}{\begin{tikzpicture}
+
+\draw[axis](-.4,0)--(6.9,0)node[right]{$z,B$};\fill(0,0)circle(1.6pt)node[left]{$O$};
+\draw[->,blue,thick,domain=0:360,samples=120]plot({5.908847*\x/360+.04975*(cos(\x)-1)},{.82909*sin(\x)});
+\draw[->,red,thick,domain=0:360,samples=120]plot({5.638156*\x/360+.09798*(cos(\x)-1)},{1.633* sin(\x)});
+\fill(5.908847,0)circle(1.5pt);\fill(5.638156,0)circle(1.5pt);\draw[guide](5.908847,0)--(5.908847,1);\draw[guide](5.638156,0)--(5.638156,-1);
+\node[above,blue]at(5.908847,1){$z(\beta_1)$};\node[below,red]at(5.638156,-1){$z(\beta_2)$};\node at(2.8,2.3){$\beta_1<\beta_2$，横向尺度已放大};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在共同回旋周期后比较各粒子的横向与轴向位置}\par\nobreak
+图\ref{fig:mg3:example:10:s}不同入射角的粒子回旋周期同为 $T=2\pi m/(|q|B)$，因此一周期后都回到初始横向位置。轴向速度却为 $v\cos\beta$，精确回到轴线的位置是 $z(\beta)=vT\cos\beta$。
+\fig{fig:mg3:example:10:p}{解答过程：磁聚焦与近轴条件}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4,0)node[right]{$\beta^2$};\draw[axis](0,-2)--(0,0.6)node[above]{$\Delta z/f_0$};\draw[world](0,0)--(3.5,-1.75);\node at(2,.4){最低阶斜率 $-1/2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开余弦求最低阶焦距偏差并说明准备条件}\par\nobreak
+图\ref{fig:mg3:example:10:p}的近轴焦距 $f_0=vT$ 采用了 $\cos\beta\simeq1$。用 $\cos\beta=1-\beta^2/2+O(\beta^4)$，得 $\Delta z=z-f_0=-f_0\beta^2/2+O(\beta^4)$，斜角粒子较早回到轴线。若粒子从静止经电压 $U$ 加速，$v=\sqrt{2|q|U/m}$，则 $f_0=2\pi\sqrt{2mU/|q|}/B$。共同回旋周期并不能保证任意大角度都在同一轴向点聚焦，近轴条件正是压低该差异的条件。\end{solution}
+\begin{question}\begin{example}[回旋加速器的能量与尺寸]\label{mg3:example:11}
+理想回旋加速器磁场为 $B$，粒子质量 $m$、正电荷 $q$，D形盒最大半径 $R$。每次过缝电压差使动能增加 $qU$，缝内时间忽略。求同步频率、最大动能，以及从很小初能起约需转动的圈数。
+\end{example}
+\fig{fig:mg3:example:11:s}{题设：回旋加速器的能量与尺寸}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.6)arc(90:270:1.6);\draw[world](.25,-1.6)arc(-90:90:1.6);\draw[guide](.12,-2)--(.12,2);\node at(-.9,0){D};\node at(1.1,.9){D};\draw[dim](.25,0)--(1.85,0)node[midway,below]{$R$};\node at(.12,2.5){交变电压 $U$};\node at(2.6,1.4){$\otimes B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用半周飞行确定电压换向节奏，再由最大半径求能量}\par\nobreak
+图\ref{fig:mg3:example:11:s}磁场内周期 $T=2\pi m/(qB)$ 不随半径改变，电压应每半个回旋周期反向一次，完整交流周期取 $T$，频率 $f=qB/(2\pi m)$。最大轨道满足 $R=mv_{\max}/(qB)$，故
+\[
+K_{\max}=\frac12m\left(\frac{qBR}{m}\right)^2=\frac{q^2B^2R^2}{2m}.
+\]
+\fig{fig:mg3:example:11:p}{能量只在跨缝时增加，按跨缝次数计数后再换算完整圈数}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(7.1,0)node[right]{$n_{\rm gap}$};\draw[axis](0,0)--(0,4.4)node[above]{$K$};\draw[guide](0,.3)--(6,3.9);
+\foreach \n in {0,1,...,6}{\fill(\n,{.3+.6*\n})circle(1.6pt);\node[below]at(\n,0){$\n$};}
+\draw[dim](4.6,2.7)--(4.6,3.3)node[right]{$qU$};\draw[guide](0,3.9)--(6,3.9);\node[left]at(0,.3){$K_0$};\node[left]at(0,3.9){$K_{\max}$};
+\node at(3.7,5){$K_n=K_0+n_{\rm gap}qU,\quad n_{\rm gap}\simeq2N_{\rm turn}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把跨缝次数换成圈数，检查整数与同步近似}\par\nobreak
+按图\ref{fig:mg3:example:11:p}每圈跨缝两次，增加能量 $2qU$，所以所需圈数约 $N=K_{\max}/(2qU)$；实际提取会按跨缝次数取相应整数并保留初能。粒子获得的能量来自电场，磁场只保持弯转。该同步条件要求非相对论近似及缝内时间可忽略；当高速引起回旋周期显著变化时，恒定频率电压不再自动同步。\end{solution}
+\begin{question}\begin{example}[加速电压后的磁分析]\label{mg3:example:12}
+同为正电荷 $q$ 的粒子从静止经电势差 $U$ 加速，再垂直进入匀强场 $B$，经半周落在与入口同一边界的探测器。求入口至落点距离 $D$ 与质量的关系，并估算微小质量差造成的落点差。
+\end{example}
+\fig{fig:mg3:example:12:s}{经同一电势差加速后进入磁区，入口与探测器位于同一边界}{\begin{tikzpicture}
+
+\fill[blue!7](0,-.5)rectangle(3.3,3.5);\draw[world](0,-.5)--(0,3.5);\fill(0,0)circle(1.6pt)node[below]{入口};\draw[flow](-3.4,0)--(0,0)node[midway,above]{$v$};
+\foreach \x in {-2.8,-1}{\draw[world](\x,-.6)--(\x,-.1)(\x,.1)--(\x,.6);}\node at(-1.9,-1.1){加速电势差 $U$};\node at(2.2,2.6){$\otimes B$};\draw[very thick](-.12,2.4)--(-.12,3.2)node[left]{探测器};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先按共同加速电压求各自速率与磁区半径}\par\nobreak
+图\ref{fig:mg3:example:12:s}的加速过程先给 $\tfrac12mv^2=qU$，所以 $v=\sqrt{2qU/m}$。磁区半径 $r=mv/(qB)=\sqrt{2mU/q}/B$，半周落点距入口 $D=2r$。
+\fig{fig:mg3:example:12:p}{相同电压与电荷量下，较重粒子的半周轨道半径较大，落点更远}{\begin{tikzpicture}
+
+\fill[blue!5](0,-.3)rectangle(3.3,3.6);\draw[world](0,-.3)--(0,3.6);\draw[->,blue,thick](0,0)arc(-90:90:1.3);\draw[->,red,thick](0,0)arc(-90:90:1.6);
+\fill(0,0)circle(1.6pt)node[below left]{$O$};\fill(0,2.6)circle(1.5pt);\fill(0,3.2)circle(1.5pt);\draw[very thick](-.15,2.4)--(-.15,3.4);
+\draw[dim](-.7,0)--(-.7,2.6)node[midway,left]{$D_1$};\draw[dim](-1.7,0)--(-1.7,3.2)node[midway,left]{$D_2$};\draw[guide](0,2.6)--(-.3,2.6)(0,3.2)--(-.3,3.2);\draw[dim](-.3,2.6)--(-.3,3.2)node[midway,left]{$\Delta D$};
+\node[align=center]at(4.3,2.1){蓝：$m_1$\\红：$m_2>m_1$};\node at(1.8,-1){$D\propto\sqrt m$，不是所有粒子速率相同};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用半周落点反求质量并微分求色散}\par\nobreak
+由图\ref{fig:mg3:example:12:p}，$D=(2/B)\sqrt{2mU/q}$，平方后 $m=qB^2D^2/(8U)$。对固定 $q,B,U$，把 $D=A\sqrt m$ 中的常量记为 $A=(2/B)\sqrt{2U/q}$，则
+$\dd D/\dd m=A(1/2)m^{-1/2}$。
+一阶增量为 $\Delta D\simeq A\Delta m/(2\sqrt m)$，
+再除以 $D=A\sqrt m$，得 $\Delta D/D\simeq\Delta m/(2m)$。若探测器能分辨间距 $\delta D$，可分辨的相对质量差量级为 $2\delta D/D$。这个平方根关系使用了共同加速电压；若先选择共同速率，半径与质量直接成正比，不能沿用同一色散系数。\end{solution}
+\begin{question}\begin{example}[同一落点附近的不同飞行时间]\label{mg3:example:13}
+正粒子从 $O$ 以相同速率进入 $x>0$ 的匀强磁场，磁场垂直纸面向里。两粒子的入射方向与 $+x$ 的夹角分别为 $+\alpha$、$-\alpha$，$0<\alpha<\pi/2$。求首次返回 $x=0$ 的位置与时间差，说明小角度下的聚焦性质。
+\end{example}
+\fig{fig:mg3:example:13:s}{题设：同一落点附近的不同飞行时间}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(3,0)node[right]{$x$};\draw[axis](0,-0.2)--(0,3)node[above]{$y$};\node at(2.5,2.7){$\otimes B$};\draw[flow](0,0)--(1.7,.7)node[right]{$+\alpha$};\draw[flow](0,0)--(1.7,-.7)node[right]{$-\alpha$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别由入射速度定位圆心并求共同边界交点}\par\nobreak
+按图\ref{fig:mg3:example:13:s}的转向，速度逆时针旋转。对入射角 $\beta$，圆心相对入点的矢量为 $r(-\sin\beta,\cos\beta)$。将 $x=0$ 代入圆方程，除入点外的交点为 $y=2r\cos\beta$，因此两粒子在相同的 $Q=(0,2r\cos\alpha)$ 返回。
+\fig{fig:mg3:example:13:p}{两轨道共用入点和出点，但圆心位于界面两侧，实际逆时针转角不同}{\begin{tikzpicture}
+
+\fill[blue!5](0,-.7)rectangle(3.8,3.9);\draw[world](0,-.7)--(0,3.9);\draw[->,blue,thick](0,0)arc(-60:60:2);\draw[->,red,dashed,thick](0,0)arc(-120:120:2);
+\fill(0,0)circle(1.6pt)node[left]{$O$};\fill(0,3.464102)circle(1.6pt)node[left]{$Q$};\fill(-1,1.732051)circle(1.5pt)node[left]{$C_+$};\fill(1,1.732051)circle(1.5pt)node[right]{$C_-$};
+\draw[guide,blue](0,0)--(-1,1.732051)--(0,3.464102);\draw[guide,red](0,0)--(1,1.732051)--(0,3.464102);
+\node[align=center]at(5.9,2.7){蓝实线：$\pi-2\alpha$\\红虚线：$\pi+2\alpha$};\node[align=center]at(5.9,.9){$t_--t_+=4\alpha/\Omega$\\落点相同，时间不同};\node at(2,-1.3){图示 $\alpha=\pi/6$，两圆半径相同};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿真实转向计算两个转角与时间差}\par\nobreak
+图\ref{fig:mg3:example:13:p}实线对应 $+\alpha$ 粒子，其初始半径方向角为 $\alpha-\pi/2$。出点相对圆心为 $(r\sin\alpha,r\cos\alpha)$，方位角为 $\pi/2-\alpha$；两者相减，实际逆时针转角为 $\pi-2\alpha$。另一粒子把 $\alpha$ 换成 $-\alpha$，所以 $t_+=(\pi-2\alpha)/\Omega$，$t_-=(\pi+2\alpha)/\Omega$，时间差 $t_--t_+=4\alpha/\Omega$。两粒子的落点相同，飞行时间却不同；相对中心入射束，落点误差 $2r(1-\cos\alpha)\simeq r\alpha^2$ 为二阶，而时间差是一阶量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分角度聚焦与速度色散}\par\nobreak
+若两粒子存在微小速率差，两半径不再相同，落点也不会完全重合。因 $y_Q=2r\cos\alpha$，固定角度下有 $\Delta y_Q/y_Q=\Delta v/v$，说明角度发散的一阶聚焦仍不能消除速率色散。\end{solution}
+\begin{question}\begin{example}[磁场对竖直圆周临界速率的影响]\label{mg3:example:14}
+质量 $m$、正电荷 $q$ 的小球由长 $L$ 的轻绳连接固定点，在竖直面内沿使磁力指向圆心的方向运动。匀强磁场垂直运动平面。底部速率满足 $v_b^2=8gL$，求保持完整圆周且绳始终不松弛的最大磁场。
+\end{example}
+\fig{fig:mg3:example:14:s}{题设：磁场对竖直圆周临界速率的影响}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,below]{$L$};\draw[flow](1.5*.707,1.5*.707)arc(45:115:1.5);\node at(2.7,1.4){$\otimes B$};\node[below]at(0,-1.5){$v_b$};\draw[flow](0,-1.5)--(1.2,-1.5);\draw[flow](0,1.5)--(-1.2,1.5);\node[above]at(0,1.5){最高点};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由重力势能求顶点速率并消去径向方程中的角度}\par\nobreak
+由图\ref{fig:mg3:example:14:s}底部到最高点的高度差 $2L$，能量守恒给 $v_t^2=8gL-4gL=4gL$，故 $v_t=2\sqrt{gL}$。任意位置距最低点的转角为 $\varphi$，能量与径向方程分别为 $v^2=v_b^2-2gL(1-\cos\varphi)$、$T+qBv-mg\cos\varphi=mv^2/L$。先用能量关系求 $\cos\varphi$，再代入径向式，并使用 $v_b^2=8gL$，得到\[T=\frac{3mv^2}{2L}-qBv+mg-\frac{mv_b^2}{2L}=\frac{3mv^2}{2L}-qBv-3mg.\]
+图\ref{fig:mg3:example:14:p}右图取 $u=v/\sqrt{gL}$、$H=qB_{\rm lim}\sqrt L/(m\sqrt g)$，只保留完整圆周中实际可达的速率区间。
+
+\fig{fig:mg3:example:14:p}{顶点受力给候选限制，再用全程可达区间中的单调性确定它最严格}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.5);\fill(0,1.5)circle(2pt)node[above]{$v_t=2\sqrt{gL}$};\draw[force](0,1.5)--(0,.7)node[left]{$mg$};\draw[force,blue](.15,1.5)--(.15,.2)node[right]{$qBv_t$};\node at(.2,-2.2){临界：$T_t=0$};
+\begin{scope}[xshift=4.2cm,yshift=-1cm]
+\draw[axis](1.7,0)--(3.4,0)node[right]{$u=v/\sqrt{gL}$};\draw[axis](1.8,0)--(1.8,3.9)node[above]{$H$};
+\draw[blue,thick,domain=2:2.828427,samples=60]plot(\x,{1.5*\x-3/\x});\fill(2,1.5)circle(1.5pt);\draw[guide](2,0)--(2,1.5)--(1.8,1.5);\node[below]at(2,0){$2$};\node[below]at(2.828427,0){$\sqrt8$};\node[left]at(1.8,1.5){$3/2$};
+\node[align=center]at(2.6,4.8){$H=3u/2-3/u$\\实际区间内严格递增};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在实际速率区间证明场强上界的最小位置}\par\nobreak
+图\ref{fig:mg3:example:14:p}实际区间为 $2\sqrt{gL}\le v\le\sqrt{8gL}$。要求 $T\ge0$ 等价于 $B\le[m(3v/(2L)-3g/v)]/q$。右侧导数为 $(m/q)[3/(2L)+3g/v^2]>0$，故最小上界在最高点。代入最高点速率，
+\[
+B_{\max}=\frac mq\left(3\sqrt{g/L}-\frac32\sqrt{g/L}\right)
+=\frac{3m}{2q}\sqrt{g/L}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查其余位置与磁场反向时的约束}\par\nobreak
+临界时顶点拉力为零，其余位置因上界严格更大而拉力为正。若场继续增大，小球会在达到最高点之前出现绳松弛，此后轨迹不能再按固定半径圆周外推。
+
+磁力向心这一条件沿完整圆周保持：粒子始终按同一转向运行，速度切线与垂直平面的磁场叉乘始终朝圆心。若把磁场反向，磁力改为离心，拉力反而增大，本题所求的最大场不再由同一个松绳条件给出。\end{solution}

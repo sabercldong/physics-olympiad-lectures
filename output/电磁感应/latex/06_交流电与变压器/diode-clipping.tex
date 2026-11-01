@@ -1,0 +1,70 @@
+\fig{em6:clipper-circuits}{正向阈值相同的两种接法；二极管三角端到横杠为允许电流方向}{
+\begin{tikzpicture}[scale=.83]
+\begin{scope}
+\node at(1.6,4){并联上限钳位（高阻输出）};
+\draw[world](0,0)--(3.2,0)
+ (0,0)--(0,1) (0,1.8)--(0,2.7)--(1,2.7)
+ (2,2.7)--(3.2,2.7)--(4.1,2.7);
+\draw[world](0,1.4)circle(.4)node{$u_i$};
+\node[left]at(-.4,2){$+$};
+\draw[world](1,2.52)rectangle(2,2.88);
+\node[above]at(1.5,2.9){$R$};
+\draw[world](3.2,2.7)--(3.2,2.15);
+\draw[world](2.95,2.15)--(3.45,2.15)--(3.2,1.7)--cycle;
+\draw[world](2.9,1.65)--(3.5,1.65);
+\draw[world](3.2,1.65)--(3.2,1.15) (3.2,.35)--(3.2,0);
+\draw[world](3.2,.75)circle(.4)node{$E_b$};
+\node[left]at(2.7,1.1){$+$};
+\node[right]at(3.55,1.95){$D$};
+\fill(3.2,2.7)circle(1.5pt);
+\node[right]at(4.1,2.7){$u_o$};
+\node[below]at(1.6,0){共同参考端};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\node at(1.8,4){串联阈值传输};
+\draw[world](0,0)--(4,0)--(4,.7) (4,1.7)--(4,2.7)--(3,2.7)
+ (2.2,2.7)--(1.7,2.7) (1.2,2.7)--(0,2.7)--(0,1.8) (0,1)--(0,0);
+\draw[world](0,1.4)circle(.4)node{$u_i$};
+\node[left]at(-.4,2){$+$};
+\draw[world](1.2,2.45)--(1.2,2.95)--(1.65,2.7)--cycle;
+\draw[world](1.7,2.4)--(1.7,3);
+\node[above]at(1.4,3){$D$};
+\draw[world](2.6,2.7)circle(.4)node{$E_b$};
+\node[above]at(2.15,2.95){$+$};
+\draw[world](3.82,.7)rectangle(4.18,1.7);
+\node[right]at(4.3,1.2){$R_L$};
+\node[right]at(4,2.7){$u_o$};
+\node[below]at(1.8,0){共同参考端};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{em6:clipper-circuits}取$u_i=U_m\sin\varphi$、$0<E_b<U_m$，输出均对下方公共导线计。左图截止时电阻无电流，$u_o=u_i$；一旦$u_i>E_b$，二极管把输出钳在$E_b$，并有正向电流$(u_i-E_b)/R$。右图截止时负载电流为零，故$u_o=0$；导通时沿串联路径扣除$E_b$，得到$u_o=u_i-E_b$。于是
+\[
+ u_{o,\text{并}}=\min(u_i,E_b),\qquad
+ u_{o,\text{串}}=\max(u_i-E_b,0).
+\]
+左图采用高阻测量端，若输出并接有限负载，截止时还需先计算电阻分压，阈值也随之改变。
+
+\fig{em6:clipper-waveforms}{同一正弦输入的两种输出；图示$E_b/U_m=1/2$，虚线为输入}{
+\begin{tikzpicture}[x=.8cm,y=1.25cm]
+\foreach \shift/\mode in {0/0,8/1}{
+\begin{scope}[xshift=\shift cm]
+\draw[axis](0,0)--(6.8,0)node[right]{$\varphi$};
+\draw[axis](0,-1.15)--(0,1.4)node[above]{$u/U_m$};
+\draw[guide,gray,domain=0:6.283,samples=100]plot(\x,{sin(\x r)});
+\draw[guide](0,.5)--(3.3,.5);
+\draw[guide](.5236,-1.05)--(.5236,1.05) (2.618,-1.05)--(2.618,1.05);
+\node[below]at(.5236,-1.05){$\alpha$};
+\node[below]at(2.618,-1.05){$\pi-\alpha$};
+\node[left]at(0,.5){$E_b/U_m$};
+\ifnum\mode=0
+\draw[world,blue,domain=0:6.283,samples=180]plot(\x,{min(sin(\x r),.5)});
+\node at(3.1,-1.8){并联：削去正峰顶部};
+\else
+\draw[world,blue,domain=0:6.283,samples=180]plot(\x,{max(sin(\x r)-.5,0)});
+\node at(3.1,-1.8){串联：只传输超过阈值的部分};
+\fi
+\end{scope}}
+\end{tikzpicture}}
+
+图\ref{em6:clipper-waveforms}的两条竖虚线由$U_m\sin\alpha=E_b$确定。在区间$[\alpha,\pi-\alpha]$内二极管导通，但左图输出是常量、右图输出仍随输入变化；同一导通区间并不意味着同一输出。求平均值、有效值时，先按图写出各段函数，再对完整周期$0\le\varphi<2\pi$积分。

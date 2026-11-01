@@ -1,0 +1,206 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[由卫星周期测天体质量]\label{at1:example:1}
+火星半径为 $r_0$，卫星圆轨道半径为 $R$、周期为 $T$。忽略自转及卫星质量，求火星质量和表面重力；再推导密度为 $\rho$、半径为 $a$ 的均匀星球表面重力。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:1:s}\fig{fig:at1:example:1:s}{题设：由卫星周期测天体质量}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$r_0$};\node at(-.65,.55){$M$};\draw[guide](0,0)circle(2.5);\fill(2.5,0)circle(2pt)node[right]{卫星};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:1:s} 的轨道距离从球心量取。卫星向心方程为 $GMm/R^2=m(2\pi/T)^2R$，约去 $m$ 并乘 $R^2/G$，得
+\[M=\frac{4\pi^2R^3}{GT^2}.\]
+\typeout{ASTROFIG:fig:at1:example:1:p}\fig{fig:at1:example:1:p}{解答过程：由卫星周期测天体质量}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$r_0$};\node at(-.65,.55){$M$};\draw[dim](0,-1.8)--(2.5,-1.8)node[midway,below]{$R$};\fill(2.5,0)circle(2pt);\draw[force](2.5,0)--(1.6,0)node[midway,above]{$GMm/R^2$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:1:p} 区分轨道半径 $R$ 与表面半径 $r_0$，因此
+\[g_0=\frac{GM}{r_0^2}=\frac{4\pi^2R^3}{T^2r_0^2}.\]
+均匀星球的质量 $M_a=4\pi\rho a^3/3$，代入 $GM_a/a^2$ 得 $g_a=4\pi G\rho a/3$。同密度星球的表面重力与半径成正比，而不是与半径平方反比；平方反比的比较必须保持质量不变。$GT^2M/R^3$ 无量纲，也与周期式一致。\end{solution}
+\begin{question}\begin{example}[双星的半径和共同角速度]\label{at1:example:2}
+质量 $m_1,m_2$ 的两颗星相距 $L$，只在相互引力作用下作圆周运动。求各自轨道半径、角速度和周期。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:2:s}\fig{fig:at1:example:2:s}{题设：双星的半径和共同角速度}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:2:s} 中两星间的距离为 $L$，各自绕共同质心 $C$ 运动。令两轨道半径为 $r_1,r_2$，质心条件与几何条件分别为 $m_1r_1=m_2r_2$、$r_1+r_2=L$，所以
+\[r_1=\frac{m_2L}{m_1+m_2},\qquad r_2=\frac{m_1L}{m_1+m_2}.\]
+\typeout{ASTROFIG:fig:at1:example:2:p}\fig{fig:at1:example:2:p}{解答过程：双星的半径和共同角速度}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};\fill(3,0)circle(2pt)node[below]{$C$};\draw[force](0,0)--(1.2,0);\draw[force](5,0)--(3.8,0);\node[above]at(1.5,0){$r_1$};\node[above]at(4,0){$r_2$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:2:p} 对 $m_1$ 列式：$Gm_1m_2/L^2=m_1\omega^2r_1$。代入 $r_1$ 后消去 $m_2$，得
+\[\omega=\sqrt{\frac{G(m_1+m_2)}{L^3}},\qquad T=2\pi\sqrt{\frac{L^3}{G(m_1+m_2)}}.\]
+对 $m_2$ 得同一角速度。若 $m_2\ll m_1$，重星轨道趋小，周期恢复小卫星绕 $m_1$ 的结果。把 $L$ 当成两颗星各自的轨道半径，会使质心关系和向心加速度同时出错。\end{solution}
+\begin{question}\begin{example}[由圆轨道周期律识别引力规律]\label{at1:example:3}
+同一中心天体的圆轨道满足 $T^2=Kr^3$。根据牛顿第二定律求试验天体受力与距离、试验质量的关系，并说明此推理的范围。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:3:s}\fig{fig:at1:example:3:s}{题设：由圆轨道周期律识别引力规律}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.6);\draw[world](0,0)circle(3);\fill(0,0)circle(2pt)node[below]{$O$};\node[below]at(1.4,-.8){$r_1$};\node[below]at(2.8,-1.1){$r_2$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:3:s} 中比较的是不同半径的圆轨道，圆周速度 $v=2\pi r/T$，向心加速度 $a=v^2/r=4\pi^2r/T^2$。代入已知周期律，
+\[a=\frac{4\pi^2}{Kr^2},\qquad F=ma=\frac{4\pi^2m}{Kr^2}.\]
+\typeout{ASTROFIG:fig:at1:example:3:p}\fig{fig:at1:example:3:p}{解答过程：由圆轨道周期律识别引力规律}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$r$};\draw[axis](0,-.2)--(0,2.4)node[above]{$a$};\draw[world,domain=.7:4,samples=70]plot(\x,{1/(\x*\x)});\node at(2.5,1.7){$ar^2=4\pi^2/K$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:3:p} 的两轨道给 $a_2/a_1=(r_1/r_2)^2$，在同一位置换试验质量则 $F\propto m$。因此可以识别此中心场的平方反比形式，但不能仅由一个系统的 $K$ 推出“场源质量加倍，力也加倍”；后者还需普适引力定律或其他系统的比较。对于椭圆不能把瞬时距离直接代入圆周运动式，椭圆力律的推导需要角动量守恒和轨道方程。\end{solution}
+\begin{question}\begin{example}[自转临界与天体密度下限]\label{at1:example:4}
+球形星球极点重力为 $g$、半径为 $R$。求赤道表面无需支持力的自转角速度。若近似球形中子星每秒转 $30$ 周，估计仅靠自引力束缚所需平均密度下限，取 $G=6.67\times10^{-11}\,\mathrm{m^3kg^{-1}s^{-2}}$。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:4:s}\fig{fig:at1:example:4:s}{题设：自转临界与天体密度下限}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[axis](0,-1.8)--(0,1.9)node[above]{转轴};\fill(1.3,0)circle(2pt)node[right]{$P$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:4:s} 的赤道点随表面转动。在惯性系沿球心方向列 $mg-N=m\Omega^2R$。临界 $N=0$ 给 $\Omega_c=\sqrt{g/R}$。
+\typeout{ASTROFIG:fig:at1:example:4:p}\fig{fig:at1:example:4:p}{解答过程：自转临界与天体密度下限}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\fill(1.3,0)circle(2pt);\draw[force](1.3,0)--(.3,0)node[midway,below]{$mg$};\node at(3,.6){$N=0$};\draw[flow](1.3,0)--(1.3,1)node[right]{$v$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:4:p} 表示临界时全部引力用于向心加速度。由 $M=4\pi\bar\rho R^3/3$，得到 $\Omega^2\le4\pi G\bar\rho/3$，所以
+\[\bar\rho\ge\frac{3(2\pi f)^2}{4\pi G}=\frac{3\pi f^2}{G}\simeq1.27\times10^{14}\,\mathrm{kg/m^3}.\]
+一位有效数字为 $10^{14}\,\mathrm{kg/m^3}$。本估计忽略相对论、非球形与材料应力，给的是牛顿近似下的数量级。临界线速度 $\Omega_cR=\sqrt{gR}$ 为圆轨道速度，低于逃逸速度，故“失去支持力”不能解释成已经逃逸。\end{solution}
+\begin{question}\begin{example}[球壳抵消与均匀球内场]\label{at1:example:5}
+用窄双锥证明均匀薄球壳内引力为零，并求半径 $R$、密度 $\rho$ 的均匀球在内部半径 $r$ 处的场。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:5:s}\fig{fig:at1:example:5:s}{题设：球壳抵消与均匀球内场}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\fill(.5,0)circle(2pt)node[above]{$P$};\draw[guide](-1.3,-.3)--(1.3,.133);\draw[guide](-1.2,-.5)--(1.25,.25);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:5:s} 取以 $P$ 为顶点、正反方向相同微小立体角 $\dd\Omega$ 的双锥，交球壳的距离分别为 $s_1,s_2$。两端法线与连线的夹角余弦相同，设为 $\cos\alpha$。投影关系为 $\dd S_i\cos\alpha=s_i^2\dd\Omega$。
+\typeout{ASTROFIG:fig:at1:example:5:p}\fig{fig:at1:example:5:p}{解答过程：球壳抵消与均匀球内场}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[guide](0,0)circle(.7);\fill(.7,0)circle(2pt)node[above]{$P$};\draw[force](.7,0)--(.1,0);\node at(3,.7){$M(r)=4\pi\rho r^3/3$};\node at(3,-.3){外部同心壳合场零};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:5:p} 的两块面元质量 $\dd m_i=\sigma s_i^2\dd\Omega/\cos\alpha$，于是各自产生的引力为 $G\sigma\dd\Omega/\cos\alpha$，大小相同、方向相反。全部双锥配对后合场为零。
+
+均匀实心球可分成内球与外壳。外壳合场零，内球质量 $M(r)=4\pi\rho r^3/3$，在其表面产生
+\[\bm g(r)=-\frac{4\pi G\rho}{3}\bm r.\]
+表面给 $g(R)=GM/R^2$，球心给零。窄双锥中的相等是“质量除以距离平方”相等；两端面元的质量一般并不相等。\end{solution}
+\begin{question}\begin{example}[偏心空腔中的均匀引力]\label{at1:example:6}
+半径 $R$、密度 $\rho$ 的均匀实心球挖去半径 $R/2$、与外球内切的球形空腔。外球心 $O$、腔心 $C$，求空腔内任意质量 $m$ 的受力。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:6:s}\fig{fig:at1:example:6:s}{题设：偏心空腔中的均匀引力}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[world](.65,0)circle(.65);\fill(.65,0)circle(1.5pt)node[below]{$C$};\fill(.9,.2)circle(1.5pt)node[above]{$P$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:6:s} 中挖孔后的分布可写成完整正密度球，加上以 $C$ 为中心的负密度球。令 $\bm d=\overrightarrow{OC}$、$\bm r=\overrightarrow{OP}$，则 $\overrightarrow{CP}=\bm r-\bm d$。
+\typeout{ASTROFIG:fig:at1:example:6:p}\fig{fig:at1:example:6:p}{解答过程：偏心空腔中的均匀引力}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(3,0)circle(2pt)node[below]{$C$};\fill(4,1)circle(2pt)node[above]{$P$};\draw[flow](0,0)--(3,0)node[midway,below]{$\bm d$};\draw[guide](0,0)--(4,1);\draw[guide](3,0)--(4,1);\draw[force](4,1)--(2.8,1)node[midway,above]{$\bm g$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:6:p} 分别计算两球在腔内点的场：
+\[\bm g_+=-\frac{4\pi G\rho}{3}\bm r,\qquad
+\bm g_- =+\frac{4\pi G\rho}{3}(\bm r-\bm d).
+\]
+相加后场点变量抵消，$\bm g=-4\pi G\rho\bm d/3$。所以腔内均匀，方向从 $C$ 指向 $O$。内切给 $d=R/2$，故 $F=2\pi G\rho mR/3$。在腔心取 $\bm r=\bm d$，负球贡献零，恰好恢复同一结果；这也是方向的独立检查。\end{solution}
+\begin{question}\begin{example}[均匀液态星球的中心压强]\label{at1:example:7}
+半径 $R$、密度 $\rho$ 的不可压缩液态星球不自转，表面压强为零。求任意半径 $r$ 的压强及中心压强。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:7:s}\fig{fig:at1:example:7:s}{题设：均匀液态星球的中心压强}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$\rho$};\draw[guide](0,0)circle(.8);\node at(2.6,.5){$p(R)=0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:7:s} 中半径 $r$ 内的质量 $M(r)=4\pi\rho r^3/3$。取厚度 $\dd r$ 的薄流体层，内外压强差支撑其向内重力，因此 $\dd p/\dd r=-\rho GM(r)/r^2=-4\pi G\rho^2r/3$。
+\typeout{ASTROFIG:fig:at1:example:7:p}\fig{fig:at1:example:7:p}{解答过程：均匀液态星球的中心压强}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$r$};\draw[axis](0,-.2)--(0,2.4)node[above]{$p$};\draw[world,domain=0:3]plot(\x,{2*(1-\x*\x/9)});\node[below]at(3,0){$R$};\node[left]at(0,2){$p_c$};\draw[guide](3,0)--(3,2);
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:7:p} 以表面为已知边界，向内积分：
+\[p(r)-p(R)=\int_R^r-\frac{4\pi G\rho^2s}{3}\dd s
+=\frac{2\pi G\rho^2}{3}(R^2-r^2).\]
+故 $p(0)=2\pi G\rho^2R^2/3=3GM^2/(8\pi R^4)$。中心处场为零并不要求压强为零；只要求压强梯度为零。若用恒定表面重力估计 $\rho g(R)R$，会恰好多一倍，差别来自内部场随半径减小。\end{solution}
+\begin{question}\begin{example}[从静止开始的两体相落]\label{at1:example:8}
+相距 $l$ 的质点 $m_1,m_2$ 由静止释放，只受相互引力。求它们相遇的时间，忽略尺寸。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:8:s}\fig{fig:at1:example:8:s}{题设：从静止开始的两体相落}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$l$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at1:example:8:s} 的共同质心静止，但两物体都在加速。取相对距离 $r$，相对引力参数 $\mu=G(m_1+m_2)$。相对能量守恒给
+\[\frac12\dot r^2-\frac\mu r=-\frac\mu l,\qquad
+\dot r=-\sqrt{2\mu(1/r-1/l)}.
+\]
+负根对应距离缩短。
+\typeout{ASTROFIG:fig:at1:example:8:p}\fig{fig:at1:example:8:p}{解答过程：从静止开始的两体相落}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$l$};\draw[flow](.2,.5)--(1.4,.5);\draw[flow](4.8,.5)--(3.6,.5);\fill(3,0)circle(1.5pt)node[below]{$C$};
+\end{tikzpicture}}
+
+图\ref{fig:at1:example:8:p} 的整个过程从 $r=l$ 到 $r=0$。用 $r=l\sin^2\theta$，初末分别为 $\theta=\pi/2,0$，则
+\[t=\int_0^l\frac{\dd r}{\sqrt{2\mu(1/r-1/l)}}
+=\sqrt{\frac{2l^3}{\mu}}\int_0^{\pi/2}\sin^2\theta\dd\theta
+=\frac\pi{2\sqrt2}\sqrt{\frac{l^3}{G(m_1+m_2)}}.\]
+积分初端速度为零，但平方根奇性可积，所以相遇时间有限。若一颗质量远小于另一颗，总质量趋于重星质量，恢复从半径 $l$ 静止下落到点状中心的时间；有真实表面时应把积分下限改成接触距离。\end{solution}
+\begin{question}\begin{example}[密度向外减小的星球内部场]\label{at1:example:9}
+球形天体 $\rho(r)=\rho_0(1-r^2/R^2)$，$0\le r\le R$。求总质量、内外场和场强最大位置，并检验表面连续性。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:9:s}\fig{fig:at1:example:9:s}{题设：密度向外减小的星球内部场}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$\rho(r)$};\draw[guide](0,0)circle(.8);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at1:example:9:s} 将天体分成半径 $s$ 的薄壳，$\dd M=4\pi\rho_0(s^2-s^4/R^2)\dd s$，积分给
+  \[M(r)=4\pi\rho_0\left(\frac{r^3}3-\frac{r^5}{5R^2}\right),\quad M=\frac{8\pi\rho_0R^3}{15}.\]
+  \typeout{ASTROFIG:fig:at1:example:9:p}\fig{fig:at1:example:9:p}{解答过程：密度向外减小的星球内部场}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$r$};\draw[axis](0,-.2)--(0,2.4)node[above]{$g$};\draw[world,domain=0:3,samples=70]plot(\x,{1.2*(\x-\x*\x*\x/15)});\draw[guide](2.236,0)--(2.236,1.789)node[above]{$r_*=\sqrt5R/3$};\node[below]at(3,0){$R$};
+\end{tikzpicture}}
+
+  图\ref{fig:at1:example:9:p} 内部场大小 $g=4\pi G\rho_0(r/3-r^3/(5R^2))$，外部为 $GM/r^2$。内部求导 $g'=4\pi G\rho_0(1/3-3r^2/(5R^2))$，唯一正驻点为 $r_*=\sqrt5R/3$。导数此前正、此后负，故它是内部最大；外部一直下降，所以也是全空间最大。
+  代入表面得 $g(R)=8\pi G\rho_0R/15=GM/R^2$，连续；球心场为零。最大值 $g(r_*)=8\pi\sqrt5G\rho_0R/27$。这道题必须积分包围质量，不能将当地 $\rho(r)$ 直接乘 $4\pi r^3/3$。\end{solution}
+\begin{question}\begin{example}[厚球壳空腔的场与势]\label{at1:example:10}
+均匀球壳内半径 $A$、外半径 $B$、密度 $\rho$。以无穷远为零势，求空腔内场和势，以及壳体内部 $A<r<B$ 的场。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:10:s}\fig{fig:at1:example:10:s}{题设：厚球壳空腔的场与势}{\begin{tikzpicture}[scale=.85]
+\draw[world,fill=gray!15](0,0)circle(1.8);\draw[world,fill=white](0,0)circle(1);\node at(0,0){$O$};\node at(.7,.3){$A$};\node at(1.6,.5){$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at1:example:10:s} 的空腔中，每一同心薄壳合场都为零，故 $\bm g=0$。但半径 $s$ 的薄壳在腔内给势 $-G\dd M/s$，$\dd M=4\pi\rho s^2\dd s$。
+  \typeout{ASTROFIG:fig:at1:example:10:p}\fig{fig:at1:example:10:p}{解答过程：厚球壳空腔的场与势}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4,0)node[right]{$r$};\draw[axis](0,-2)--(0,.4)node[above]{$\Phi$};\draw[world](0,-1.5)--(2,-1.5);\node[below]at(2,0){$A$};\node at(2.7,-1){空腔常势};
+\end{tikzpicture}}
+
+  图\ref{fig:at1:example:10:p} 对所有外壳积分得常势 $\Phi=-4\pi G\rho\int_A^Bs\dd s=-2\pi G\rho(B^2-A^2)$。在壳体内部，包围质量 $4\pi\rho(r^3-A^3)/3$，所以
+  \[g(r)=\frac{4\pi G\rho}{3}\left(r-\frac{A^3}{r^2}\right),\qquad A<r<B.\]
+  $r\to A^+$ 时场趋零，与腔内连续；$r=B$ 与壳外总质量的平方反比场连续。零场意味着势在空腔内恒定，并不意味着所选零点下的势等于零。\end{solution}
+\begin{question}\begin{example}[不同纬度的支持力与摩擦]\label{at1:example:11}
+半径 $R$ 的刚性球形星球以角速度 $\Omega$ 自转，非转动引力为 $g$。物体在纬度 $\lambda$ 的粗糙表面静止，求法向力和纬向静摩擦力。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:11:s}\fig{fig:at1:example:11:s}{题设：不同纬度的支持力与摩擦}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[axis](0,-1.8)--(0,1.9);\fill(1.126,.65)circle(2pt)node[right]{$P$};\draw[guide](0,0)--(1.126,.65);\node at(.5,.16){$\lambda$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at1:example:11:s} 将单位方向分成径向外 $\bm e_r$、沿表面朝北 $\bm e_\lambda$，星球转轴垂直于赤道。转动向心加速度指向转轴，分解为
+  \[\bm a=-\Omega^2R\cos^2\lambda\,\bm e_r+\Omega^2R\sin\lambda\cos\lambda\,\bm e_\lambda.
+  \]
+  \typeout{ASTROFIG:fig:at1:example:11:p}\fig{fig:at1:example:11:p}{解答过程：不同纬度的支持力与摩擦}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\fill(1.126,.65)circle(2pt);\draw[force](1.126,.65)--(.45,.26)node[below]{$mg$};\draw[flow](1.126,.65)--(1.8,1.04)node[right]{$N$};\draw[flow,blue](1.126,.65)--(.8,1.21)node[left]{$f_\lambda$};
+\end{tikzpicture}}
+
+  图\ref{fig:at1:example:11:p} 沿两个方向列式，$N-mg=-m\Omega^2R\cos^2\lambda$、$f_\lambda=m\Omega^2R\sin\lambda\cos\lambda$。故法向力 $N=m(g-\Omega^2R\cos^2\lambda)$，北半球摩擦朝北、南半球朝南。若静摩擦系数为 $\mu_s$，还需 $|f_\lambda|\le\mu_sN$ 且 $N\ge0$ 才能保持随表面静止。赤道与极点的纬向分量都为零，符合对称性；摩擦不能在未检查上限时自动视为足够大。\end{solution}
+\begin{question}\begin{example}[双星速度振幅与质量测定]\label{at1:example:12}
+圆轨道双星周期为 $T$，两星视线速度振幅为 $K_1,K_2$。轨道法线与视线夹角为 $i$，$\sin i>0$。求质量比和总质量，说明未知倾角时能确定什么。
+\end{example}
+\typeout{ASTROFIG:fig:at1:example:12:s}\fig{fig:at1:example:12:s}{题设：双星速度振幅与质量测定}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};\draw[flow](0,0)--(0,1)node[above]{$v_1$};\draw[flow](5,0)--(5,-1)node[below]{$v_2$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at1:example:12:s} 的真实轨道速率为 $v_j=K_j/\sin i$。两轨道半径满足 $r_1/r_2=m_2/m_1$，同周期使速度比也相同，因此 $m_1/m_2=K_2/K_1$。
+  \typeout{ASTROFIG:fig:at1:example:12:p}\fig{fig:at1:example:12:p}{解答过程：双星速度振幅与质量测定}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)--(3,0);\draw[flow](0,0)--(2,1.5)node[above]{$v$};\draw[guide](2,1.5)--(2,0);\node[below]at(1,0){$K=v\sin i$};\node at(1.5,-1){只测得投影};
+\end{tikzpicture}}
+
+  图\ref{fig:at1:example:12:p} 两星距离为 $L=(v_1+v_2)T/(2\pi)$。将它代入 $G(m_1+m_2)=4\pi^2L^3/T^2$，得到
+  \[m_1+m_2=\frac{T(K_1+K_2)^3}{2\pi G\sin^3i}.\]
+  若不知道 $i$，只能直接测得 $(m_1+m_2)\sin^3i$，它是总质量的下界而非总质量本身。对于几乎正面朝向的轨道 $i\to0$，视线振幅很小，不能据此断言天体质量很小。\end{solution}

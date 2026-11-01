@@ -1,0 +1,114 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{t4-10}\textbf{以同温饱和压为基准求初相对湿度}\par\nobreak
+初相对湿度比较的是蒸气分压与同温饱和压，故
+\[\boxed{\varphi_i=\frac{2.4}{3.2}=75\%}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{试算气相水量不变的末压并判断凝结}\par\nobreak
+先假设冷却时没有凝结。固定容积中，蒸气量若不变，末分压应按绝对温度比下降至 $p_v^*=2.4\times280/300=2.24\,\mathrm{kPa}$。它仍高于280K的饱和压1.0kPa，故这一无凝结试算不满足相平衡，部分水必须转入液相。
+图\ref{fig:t4-10s}把相同刚性容器的初、末态并列：末态出现底部液水，气相水量因此减少；实际末分压取1.0kPa，而不是2.24kPa。\fig{fig:t4-10s}{定容冷却后的气液分配；液体体积忽略，容器气体空间相同}{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[world] (0,0) rectangle (3.2,2.6) (5.4,0) rectangle (8.6,2.6);
+\node[align=center] at (1.6,1.4){$T_i=300\,\mathrm K$\\$p_{vi}=2.4\,\mathrm{kPa}$\\$n_{vi}=n_w$};
+\fill[blue!15] (5.42,.02) rectangle (8.58,.45);
+\node[align=center] at (7,1.6){$T_f=280\,\mathrm K$\\$p_{vf}=1.0\,\mathrm{kPa}$\\$n_{vf}<n_w$};
+\node at (7,.23){液水 $n_l$};
+\draw[flow] (3.35,1.3)--(5.25,1.3) node[midway,above]{冷却};
+\node[below,align=center] at (4.3,-.5){水的总量不变：$n_{vi}=n_{vf}+n_l$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际末态分配水量并核对凝结比例}\par\nobreak
+用SI单位分别求初、末气相水量，
+\[n_{vi}=\frac{2400V}{R\times300},\qquad
+\boxed{n_{vf}=\frac{1000V}{R\times280}}.\]
+水的总量守恒，故
+\[\boxed{n_{\text{凝}}=n_{vi}-n_{vf}
+=\frac{2400V}{R\times300}-\frac{1000V}{R\times280}>0}.\]
+温度不同，不能仅用两个分压作差再除同一个温度来求凝结量。将两水量相除还可得到与容积无关的检查：
+\[
+ \frac{n_{vf}}{n_{vi}}=\frac{1000/280}{2400/300}=\frac{25}{56},
+ \qquad\frac{n_{\text{凝}}}{n_{vi}}=\frac{31}{56}\approx55.4\%.
+\]
+凝结比例介于0与1之间，与图\ref{fig:t4-10s}中气相与液相同时存在相容。空气仍保持自己的物质的量，其分压可另按280/300变化；它影响总压，却不改变此处对水蒸气饱和与气液分配的判断。
+\end{drillsolution}
+\begin{drillsolution}{t4-11}\textbf{区分固定总水量与可变气相水量}\par\nobreak
+图\ref{fig:t4-11q}中的空气量始终固定为 $n_a$，水的总量也固定为 $n_w$，但气相水量并不始终固定。液水尚存时，蒸发补充扩大的气体空间，水蒸气分压保持 $p_s$，气相水量为 $n_v=p_su/(RT)$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以最后一滴液水消失确定临界体积}\par\nobreak
+在液体恰好耗尽的临界体积 $V_*$，全部水都在气相且刚好饱和，所以
+\[p_sV_*=n_wRT,\qquad\boxed{V_*=\frac{n_wRT}{p_s}}.\]
+图\ref{fig:t4-11s}中的折点对应这一实际事件，不能仅将两条曲线任意拼接。\fig{fig:t4-11s}{总压在临界体积连续，斜率改变；图取 $n_a/n_w=1/2$}{\begin{tikzpicture}
+
+\begin{scope}[x=2cm]
+\draw[axis](0,0)--(2.8,0)node[right]{$u/V_*$};\draw[axis](0,0)--(0,3.8)node[above]{$p/p_s$};
+\draw[blue,thick,domain=.2:1,samples=70]plot(\x,{1+.5/\x});\draw[blue,thick,domain=1:2.6,samples=70]plot(\x,{1.5/\x});
+\draw[orange!80!black,thick](.2,1)--(1,1);\draw[orange!80!black,thick,domain=1:2.6]plot(\x,{1/\x});
+\draw[guide](1,0)--(1,1.5)--(0,1.5);\fill(1,1.5)circle(1.5pt);\node[below]at(1,0){$1$};\node[left]at(0,1.5){$1.5$};
+\node[align=center]at(1.85,3){蓝：总压\\橙：蒸气分压};\node[above right]at(1,1.6){液水刚尽};
+\node[below,align=center]at(1.3,-.7){$u<V_*$：$n_v$ 随体积增加\\$u>V_*$：$n_v=n_w$ 固定};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别叠加空气分压并检查两段相态}\par\nobreak
+空气全程占据体积 $u$，分压为 $n_aRT/u$。因此
+\[\boxed{p(u)=\begin{cases}n_aRT/u+p_s,&u\le V_*,\\(n_a+n_w)RT/u,&u\ge V_* .\end{cases}}\]
+在第一段，液体剩余量为 $n_w-p_su/(RT)\ge0$；在第二段，蒸气分压 $n_wRT/u\le p_s$，均与相态假设相容。代入 $u=V_*$，两式同为 $p_s(1+n_a/n_w)$，所以压强连续。
+图取 $n_a/n_w=1/2$，折点总压为 $1.5p_s$。折点两侧的斜率不同，来自第一段水量向气相转移、第二段所有气体量均固定；这正是饱和分支与不饱和分支的区别。
+\end{drillsolution}
+\begin{drillsolution}{t4-12}\textbf{由活塞的体积变化求总边界功}\par\nobreak
+取题给 $n=1\,\mathrm{mol}$ 的物质为封闭系统，并在中间推导中保留带单位的 $n$。图\ref{fig:t4-12q}中活塞从液态端点移动到蒸气端点；摩尔体积是 $\bar V$，系统总体积则为 $V=n\bar V$，两者不能混用。理想蒸气有 $V_v=nRT/p_s$，因而
+\[
+ \boxed{W=p_s(V_v-V_l)=np_s(\bar V_v-\bar V_l)\simeq nRT}.
+\]
+图\ref{fig:t4-12s}的阴影面积正是此项边界功，液体端点的微小体积在图中放大表示。
+\fig{fig:t4-12s}{恒压边界功是汽化路径下方的面积，输入热量还要增加系统内能}{\begin{tikzpicture}
+
+\fill[blue!12](.5,0)rectangle(5,2.3);\draw[axis](0,0)--(6,0)node[right]{$V$};\draw[axis](0,0)--(0,3.5)node[above]{$p$};
+\draw[->,thick,blue](.5,2.3)--(5,2.3);\draw[guide](.5,0)--(.5,2.3)(5,0)--(5,2.3);\node[left]at(0,2.3){$p_s$};
+\node[below]at(.5,0){$V_l$};\node[below]at(5,0){$V_v$};\node at(2.75,1.15){$W=p_s(V_v-V_l)\simeq nRT$};
+\node[above]at(2.75,2.6){恒温恒压汽化，$Q=nL_m$};\node at(2.8,-1){$\Delta U=Q-W\simeq n(L_m-RT)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将摩尔潜热转换成总热量并求内能差}\par\nobreak
+恒压吸热的总量为 $Q=nL_m$，由第一定律得到
+\[\boxed{\Delta U=Q-W\simeq n(L_m-RT)}.\]
+其中 $L_m$ 与 $RT$ 的单位均为 $\mathrm{J/mol}$，乘 $n$ 后才得到单位为 J 的总热量、总功或总内能变化。$L_m=\Delta h$ 表示摩尔焓差；相应的摩尔内能差约为 $L_m-RT$，少去的部分正用于推开外界。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新检查固定容积下的实际末态}\par\nobreak
+若改成刚性容器，确有 $W_{\text{边界}}=0$、$Q=\Delta U$，但这只确定能量形式，不保证仍能在同温同压下从全液体变成同量蒸气。固定容积会限制最终温度、压强和气液比例，必须先确定实际端点，再求其内能差。因此不能直接照搬 $Q=nL_m$；若采用其他边界条件或装置使端点改变，必须对实际系统重新列出能量收支。
+\end{drillsolution}
+\begin{drillsolution}{t4-13}\textbf{按界面上移确定体积增加与负载减轻}\par\nobreak
+初平衡时，气压等于外压与液柱压强之和。按图\ref{fig:t4-13q}的方向令界面向上微移 $x>0$；管口已满，新增气体体积为 $Sx$，相同体积的液体从管口溢出，所以负载液柱缩短 $x$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求两种压降并由斜率比较净力}\par\nobreak
+气体自身的响应由题给条件确定：$\delta p_g=-\kappa px/\ell$；液柱负载的响应则为 $\delta p_\ell=-\rho gx$。图\ref{fig:t4-13s}比较的是这两个压降，而不是直接比较两个初始压强。\fig{fig:t4-13s}{向上扰动后，气体压降大于负载压降才产生向下的恢复力}{\begin{tikzpicture}[x=1.1cm,y=1cm]
+\draw[->](0,0)--(5.5,0)node[right]{$x$};\draw[->](0,-3.4)--(0,.5)node[above]{$\delta p$};
+\draw[blue,thick](0,0)--(4,-1.2)node[right]{$\delta p_\ell=-\rho gx$};
+\draw[red,thick](0,0)--(4,-2.8)node[right]{$\delta p_g=-\kappa px/\ell$};
+\draw[->](3,-.9)--(3,-2.1)node[midway,left]{$\delta F<0$};\node at(2.6,.8){图示为稳定的一侧分支};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以位移与净力反向为恢复条件}\par\nobreak
+净推力变化为
+\[\delta F=S\delta(p_g-p_\ell)=S\left(\rho g-\frac{\kappa p}{\ell}\right)x.\]
+向上偏离后若要求净力向下，须有
+\[\boxed{\frac{\kappa p}{\ell}>\rho g}.\]
+即气体压强随位移降低得比液柱负载更快。若不等号反向，位移后净力继续向上，扰动被放大；若两者相等，一阶项消失，须由更高阶项与边界条件判断，不能直接称为稳定。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分热交换时间尺度与另一侧的边界条件}\par\nobreak
+等温 $\kappa=1$ 与快扰动近似绝热 $\kappa=\gamma$ 对应不同热交换时间尺度。题问只针对向上溢液分支；向下不溢液时负载变化不同，还应另列关系，局部恢复性也不自动保证液体量不变的周期运动。
+\end{drillsolution}

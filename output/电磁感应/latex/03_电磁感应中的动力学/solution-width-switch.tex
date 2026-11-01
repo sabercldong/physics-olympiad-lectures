@@ -1,0 +1,68 @@
+\begin{solution}\textbf{在不同有效轨宽阶段使用加权速度不变量}\par\nobreak
+按图\ref{fig:em3:example:4:s}取两棒向右为速度正向，电流按$P$棒的动生作用方向为正：
+\[
+ i=\frac{Bl}{R}(2v_P-v_Q),\qquad
+ m\dot v_P=-2Bli,\quad m\dot v_Q=Bli.
+\]
+将第一棒的受力式与第二棒的两倍相加，得到
+\[
+ \dot v_P+2\dot v_Q=0,\qquad v_P+2v_Q=u.
+\]
+若这一构型保持足够久，渐近无电流要求$2v_P=v_Q$。联立得
+$v_P\to u/5,\ v_Q\to2u/5$；两渐近速度并不相等。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用阶段内速度和位移说明台阶距离的作用}\par\nobreak
+若要确定切换速度，必须知道 $P$ 在初阶段走过的距离。令 $k=Bl$、$\kappa=5k^2/(mR)$，先对 $z=2v_P-v_Q$ 求导，得到 $\dot z=-\kappa z,z(0)=2u$。分离积分
+$\int_{2u}^{z(t)}\dd y/y=-\kappa\int_0^t\dd s$，
+得 $z=2u\e^{-\kappa t}$。联立 $2v_P-v_Q=z$ 与 $v_P+2v_Q=u$，
+$5v_P=u+2z$、$5v_Q=2u-z$，所以
+\[
+v_P(t)=\frac u5+\frac{4u}{5}\e^{-\kappa t},\qquad
+v_Q(t)=\frac{2u}{5}(1-\e^{-\kappa t}).
+\]
+若台阶距离为 $D$，位移积分的原函数为
+$ut/5-4u\e^{-\kappa t}/(5\kappa)$，从 $0$ 积到到达时刻 $t_*$ 还须满足
+\[
+D=\frac u5t_*+\frac{4u}{5\kappa}(1-\e^{-\kappa t_*}),\qquad
+v_*=v_P(t_*).
+\]
+这说明渐近比例只给足够长时间后的极限，并不能代替有限台阶处的速度。以下按台阶处无机械冲量、两棒在相应轨段内保持接触且不相碰的理想接续计算。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按切换瞬间速度接续等轨宽阶段并求共同末速}\par\nobreak
+\fig{fig:em3:example:4:p}{左为切换前受力，右为切换后两棒均跨长$l$；台阶转换假定无机械冲量}{
+\begin{tikzpicture}[scale=.8]
+\begin{scope}
+\node at(2.1,3.4){切换前：$2l,\ l$};
+\draw[world](0,0)--(4.4,0) (0,2)--(2.5,2)--(2.5,1)--(4.4,1);
+\draw[world,very thick](.7,0)--(.7,2)node[above]{$P$}
+ (3.5,0)--(3.5,1)node[above]{$Q$};
+\draw[force](.7,1)--(-.3,1)node[left]{$2Bli$};
+\draw[force](3.5,.5)--(4.5,.5)node[right]{$Bli$};
+\node at(3.4,2.4){$\otimes B$};
+\node at(2,-.7){$v_P+2v_Q=u$};
+\end{scope}
+\begin{scope}[xshift=6.6cm]
+\node at(2.1,3.4){切换后：$l,\ l$};
+\draw[world](0,0)--(4.8,0) (0,2)--(1.3,2)--(1.3,1)--(4.8,1);
+\draw[world,very thick](2.1,0)--(2.1,1)node[above]{$P$}
+ (4,0)--(4,1)node[above]{$Q$};
+\draw[flow,blue](2.1,2.1)--(2.9,2.1)node[above]{$v_*$};
+\draw[flow,blue](4,2.1)--(4.8,2.1)node[above]{$(u-v_*)/2$};
+\node at(3.2,.5){$\otimes B$};
+\node at(2.3,-.7){$v_P+v_Q=(u+v_*)/2$};
+\end{scope}
+\end{tikzpicture}}
+
+图\ref{fig:em3:example:4:p}右图标出$P$到达台阶后的状态。设到达时$v_P=v_*$，由切换前不变量得$v_Q=(u-v_*)/2$。在题设的无机械冲量理想接续下，两速度不跳变；此后安培力大小相等、方向相反，两棒总动量才保持不变。因此共同末速度为
+\[
+ \boxed{v_f=\frac{v_*+(u-v_*)/2}{2}=\frac{u+v_*}{4}}.
+\]
+$v_*$取决于台阶距离及此前运动，不能只由$h$决定。图左的加权速度不变量与图右的总动量约束属于不同阶段，不能跨越台阶混用。
+
+若切换几何会产生机械冲量，还需把该冲量作为额外条件，以上接续式不再直接适用。
+\end{solution}

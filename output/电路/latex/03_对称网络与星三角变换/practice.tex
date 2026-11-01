@@ -1,0 +1,66 @@
+\section{练习}
+
+\begin{question}\begin{drill}[移除完全图中的两种边]\label{c3:drill:1}
+四节点完全网络每边电阻 $r$，端口为 $A,B$。分别删去内部边 $PQ$ 和直接边 $AB$，求两种情况下的端口电阻。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:1:s}\fig{fig:c3:drill:1:s}{题设：移除完全图中的两种边}{\begin{tikzpicture}[scale=.88]
+\draw[world](1.8,0.0)--(1.1021821192326179e-16,1.8);\draw[world](1.8,0.0)--(-1.8,2.2043642384652358e-16);\draw[world](1.8,0.0)--(-3.3065463576978537e-16,-1.8);\draw[world](1.1021821192326179e-16,1.8)--(-1.8,2.2043642384652358e-16);\draw[world](1.1021821192326179e-16,1.8)--(-3.3065463576978537e-16,-1.8);\draw[world](-1.8,2.2043642384652358e-16)--(-3.3065463576978537e-16,-1.8);\fill(1.8,0.0)circle(2pt)node[above right]{$A$};\fill(1.1021821192326179e-16,1.8)circle(2pt)node[above right]{$B$};\fill(-1.8,2.2043642384652358e-16)circle(2pt)node[above right]{$P$};\fill(-3.3065463576978537e-16,-1.8)circle(2pt)node[above right]{$Q$};\node at(0,-2.5){每条连线为电阻 $r$，交叉处不连接};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:1}
+\begin{question}\begin{drill}[立方体一条端口棱断开]\label{c3:drill:2}
+立方体各棱电阻 $r$，相邻顶点为 $A,B$。若直接连接两端的棱断开，其余十一条棱保持，求等效电阻。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:2:s}\fig{fig:c3:drill:2:s}{题设：立方体一条端口棱断开}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$A$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$B$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$011$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$111$};\node at(2.5,-.9){各棱电阻均为 $r$，未标点的交叉处不接通};\node at(1.4,-1.3){$AB$ 直接棱已断开};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:2}
+\begin{question}\begin{drill}[完全图的一条边改变]\label{c3:drill:3}
+$N>2$ 个节点两两连接，原阻值全为 $r$，现仅将端口 $A,B$ 的直接边改为 $R$。求端口等效电阻，并讨论 $R\to0,\infty$。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:3:s}\fig{fig:c3:drill:3:s}{题设：完全图的一条边改变}{\begin{tikzpicture}[scale=.88]
+\draw[world](1.8,0.0)--(0.5562305898749055,1.7119017293312764);\draw[world](1.8,0.0)--(-1.4562305898749053,1.0580134541264519);\draw[world](1.8,0.0)--(-1.4562305898749055,-1.0580134541264514);\draw[world](1.8,0.0)--(0.556230589874905,-1.7119017293312766);\draw[world](0.5562305898749055,1.7119017293312764)--(-1.4562305898749053,1.0580134541264519);\draw[world](0.5562305898749055,1.7119017293312764)--(-1.4562305898749055,-1.0580134541264514);\draw[world](0.5562305898749055,1.7119017293312764)--(0.556230589874905,-1.7119017293312766);\draw[world](-1.4562305898749053,1.0580134541264519)--(-1.4562305898749055,-1.0580134541264514);\draw[world](-1.4562305898749053,1.0580134541264519)--(0.556230589874905,-1.7119017293312766);\draw[world](-1.4562305898749055,-1.0580134541264514)--(0.556230589874905,-1.7119017293312766);\fill(1.8,0.0)circle(2pt)node[above right]{$A$};\fill(0.5562305898749055,1.7119017293312764)circle(2pt)node[above right]{$B$};\fill(-1.4562305898749053,1.0580134541264519)circle(2pt)node[above right]{$P_1$};\fill(-1.4562305898749055,-1.0580134541264514)circle(2pt)node[above right]{$P_2$};\fill(0.556230589874905,-1.7119017293312766)circle(2pt)node[above right]{$P_3$};\node at(0,-2.5){除 $AB$ 外每条连线为 $r$，交叉处不连接};\node at(0,-3.1){$AB$ 边为 $R$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:3}
+\begin{question}\begin{drill}[从端口测量反求星臂]\label{c3:drill:4}
+三端无源网络可以表示为正电阻星形。第三端悬空时，测得 $R_{12}=5\,\Omega,R_{23}=7\,\Omega,R_{31}=6\,\Omega$。求星臂；若测得的三对电阻为 $1,2,5\,\Omega$，能否仍以三个正星臂表示？
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:4:s}\fig{fig:c3:drill:4:s}{题设：从端口测量反求星臂}{\begin{tikzpicture}[scale=.88]
+\draw(2.3,1.6)to[R](0,0);\draw(2.3,1.6)to[R](4.6,0);\draw(2.3,1.6)to[R](2.3,4.2);\node at(.75,1.35){$r_1$};\node at(3.85,1.35){$r_2$};\node at(1.7,3){$r_3$};\node[left]at(0,0){$1$};\node[right]at(4.6,0){$2$};\node[above]at(2.3,4.2){$3$};\node[right]at(2.3,1.6){$O$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:4}
+\begin{question}\begin{drill}[六边形交叉导线中的电源电流]\label{c3:drill:5}
+正六边形六个顶点沿周向交替标为 $A,B,A,B,A,B$。同为 $A$ 的三个顶点用理想导线相连，同为 $B$ 的三个顶点也用理想导线相连，交叉处不连接。六条边各含电阻 $r$，其中一边另串联电动势 $\mathcal E$ 的电源。求通过电源的电流。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:5:s}\fig{fig:c3:drill:5:s}{题设：六边形交叉导线中的电源电流}{\begin{tikzpicture}[scale=.88]
+\foreach \a/\t in {0/A,60/B,120/A,180/B,240/A,300/B}{\coordinate(P\a)at(\a:2.4);\node at(\a:2.9){$\t$};}\foreach \a/\b in {0/60,60/120,120/180,180/240,240/300}{\draw(P\a)to[R](P\b);}\coordinate(T)at($(P300)!.5!(P0)$);\draw(P300)to[R](T)to[battery1,invert,l={$\mathcal E$}](P0);\draw(P0)--(P120)--(P240)--cycle;\draw(P60)--(P180)--(P300)--cycle;\node at(0,-3.5){各边电阻均为 $r$，交叉处不接通};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:5}
+\begin{question}\begin{drill}[立方体一条棱变为两倍]\label{c3:drill:6}
+立方体原每棱为 $r$。相邻端口 $A,B$ 的直接棱改为 $2r$，其余保持。求等效电阻。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:6:s}\fig{fig:c3:drill:6:s}{题设：立方体一条棱变为两倍}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.6,0.0);\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$A$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$B$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$011$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$111$};\node at(2.5,-.9){棱 $AB$ 为 $2r$，其余棱均为 $r$，未标点的交叉处不接通};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:6}
+\begin{question}\begin{drill}[四维网络的相邻端口]\label{c3:drill:7}
+四维超立方体每边电阻 $r$。求仅一位二进制不同的相邻节点间电阻。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:7:s}\fig{fig:c3:drill:7:s}{题设：四维网络的相邻端口}{\begin{tikzpicture}[scale=.88]
+\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.34500000000000003);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,-0.115);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.115);\draw[gray,line width=.3pt](0.0,0.0)--(1.3,0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.34500000000000003)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,-0.34500000000000003)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,-0.34500000000000003)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,-0.115)--(2.6,-0.5750000000000001);\draw[gray,line width=.3pt](1.3,-0.115)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,-0.115)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.115)--(2.6,-0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.115)--(2.6,-0.115);\draw[gray,line width=.3pt](1.3,0.115)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](1.3,0.34500000000000003)--(2.6,0.115);\draw[gray,line width=.3pt](1.3,0.34500000000000003)--(2.6,0.34500000000000003);\draw[gray,line width=.3pt](1.3,0.34500000000000003)--(2.6,0.5750000000000001);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.5750000000000001)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.34500000000000003)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,-0.34500000000000003);\draw[gray,line width=.3pt](2.6,-0.115)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.115)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,-0.115);\draw[gray,line width=.3pt](2.6,0.34500000000000003)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.115);\draw[gray,line width=.3pt](2.6,0.5750000000000001)--(3.9000000000000004,0.34500000000000003);\draw[gray,line width=.3pt](3.9000000000000004,-0.34500000000000003)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,-0.115)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.115)--(5.2,0.0);\draw[gray,line width=.3pt](3.9000000000000004,0.34500000000000003)--(5.2,0.0);\fill(0.0,0.0)circle(.9pt);\fill(1.3,-0.34500000000000003)circle(.9pt);\fill(1.3,-0.115)circle(.9pt);\fill(1.3,0.115)circle(.9pt);\fill(1.3,0.34500000000000003)circle(.9pt);\fill(2.6,-0.5750000000000001)circle(.9pt);\fill(2.6,-0.34500000000000003)circle(.9pt);\fill(2.6,-0.115)circle(.9pt);\fill(2.6,0.115)circle(.9pt);\fill(2.6,0.34500000000000003)circle(.9pt);\fill(2.6,0.5750000000000001)circle(.9pt);\fill(3.9000000000000004,-0.34500000000000003)circle(.9pt);\fill(3.9000000000000004,-0.115)circle(.9pt);\fill(3.9000000000000004,0.115)circle(.9pt);\fill(3.9000000000000004,0.34500000000000003)circle(.9pt);\fill(5.2,0.0)circle(.9pt);\node at(0.0,1.65){$1$};\node at(1.3,1.65){$4$};\node at(2.6,1.65){$6$};\node at(3.9000000000000004,1.65){$4$};\node at(5.2,1.65){$1$};\node[left]at(0,0){$A$};\node[right]at(1.3,-0.34500000000000003){$B$};\node at(2.6,-1.7){每条边为 $r$；上方为每层节点数};\node at(2.6,-2.3){端口为全零点及第一层某点};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:7}
+\begin{question}\begin{drill}[相对两棱中点的立方体网络]\label{c3:drill:8}
+立方体每棱均匀电阻为 $r$，端口取一对关于体心中心对称的平行棱的中点。求端口电阻。
+\end{drill}
+\typeout{ECFIG:fig:c3:drill:8:s}\fig{fig:c3:drill:8:s}{题设：相对两棱中点的立方体网络}{\begin{tikzpicture}[scale=.88]
+\draw[world](0.0,0.0)--(3.6,0.0);\draw[world](0.0,0.0)--(0.0,3.6);\draw[world](0.0,0.0)--(1.5,1.5);\draw[world](3.6,0.0)--(3.6,3.6);\draw[world](3.6,0.0)--(5.1,1.5);\draw[world](0.0,3.6)--(3.6,3.6);\draw[world](0.0,3.6)--(1.5,5.1);\draw[world](3.6,3.6)--(5.1,5.1);\draw[world](1.5,1.5)--(5.1,1.5);\draw[world](1.5,1.5)--(1.5,5.1);\draw[world](5.1,1.5)--(5.1,5.1);\draw[world](1.5,5.1)--(5.1,5.1);\fill(0.0,0.0)circle(1.3pt)node[below left]{$000$};\fill(3.6,0.0)circle(1.3pt)node[below left]{$001$};\fill(0.0,3.6)circle(1.3pt)node[above right]{$010$};\fill(3.6,3.6)circle(1.3pt)node[above right]{$011$};\fill(1.5,1.5)circle(1.3pt)node[below left]{$100$};\fill(5.1,1.5)circle(1.3pt)node[above right]{$101$};\fill(1.5,5.1)circle(1.3pt)node[above right]{$110$};\fill(5.1,5.1)circle(1.3pt)node[above right]{$111$};\node at(2.5,-.9){各棱均匀电阻 $r$；端口在相对棱中点，未标点的交叉处不接通};\fill(.75,.75)circle(2pt)node[left]{$M$};\fill(4.35,4.35)circle(2pt)node[right]{$N$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c3:drill:8}

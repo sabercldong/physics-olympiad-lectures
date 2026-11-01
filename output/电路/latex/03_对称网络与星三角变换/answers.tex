@@ -1,0 +1,163 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{c3:drill:1}\textbf{在当前端口下证明内部两点等势}\par\nobreak
+图\ref{fig:c3:drill:1:s} 中交换 $P,Q$ 保持端口，故二者等势。删去 $PQ$ 不改变其零电流条件，剩余 $r,2r,2r$ 三通道并联，结果为 $r/2$。
+\fig{c3:d1:remove-internal}{删去内部边 $PQ$ 后，直接通道与经 $P,Q$ 的两条通道均保留}{\begin{tikzpicture}
+
+\draw(0,0)to[R,l={$r$}](6,0);
+\draw(0,0)--(0,2)to[R,l={$r$}](3,2)to[R,l={$r$}](6,2)--(6,0);
+\draw(0,0)--(0,-2)to[R,l_={$r$}](3,-2)to[R,l_={$r$}](6,-2)--(6,0);
+\fill(3,2)circle(1.5pt)node[above]{$P:U/2$};\fill(3,-2)circle(1.5pt)node[below]{$Q:U/2$};
+\node[left]at(0,0){$A:U$};\node[right]at(6,0){$B:0$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算删去内部边后的三通道并联}\par\nobreak
+图\ref{c3:d1:remove-internal}中三个通道的电导和为 $1/r+1/(2r)+1/(2r)=2/r$。
+
+\typeout{ECFIG:fig:c3:drill:1:p}\fig{fig:c3:drill:1:p}{解答过程：移除完全图中的两种边}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)--(0,1)to[R,l={$2r$}](4,1)--(4,0);\draw(0,0)--(0,-1)to[R,l={$2r$}](4,-1)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另行计算删去直接边后的网络}\par\nobreak
+图\ref{fig:c3:drill:1:p} 删去的是直接边 $AB$，内部 $PQ$ 仍等势无电流，留下两条 $2r$ 通道，等效为 $r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按原支路电流检查删边的影响}\par\nobreak
+两种删除操作结果不同：删去无流边不改变端口电阻，删去原来通电的直接边则使电阻增加。这也说明不能仅按“少一条边”而忽略它在当前电势分布中的位置。\end{drillsolution}
+\begin{drillsolution}{c3:drill:2}\textbf{把完整网络分为直接棱与其余十一棱}\par\nobreak
+先在图\ref{fig:c3:drill:2:s}的断口补回直接棱，完整立方体相邻端口电阻为 $7r/12$。直接棱 $r$ 与其余十一棱组成的网络跨接同一对端点，因此属于并联。记去掉直接棱后的电阻为 $X$。
+\typeout{ECFIG:fig:c3:drill:2:p}\fig{fig:c3:drill:2:p}{解答过程：立方体一条端口棱断开}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$r$}](4,0);\draw(0,0)--(0,-1.5)to[R,l={$X$}](4,-1.5)--(4,0);\node at(2,1){完整网络：$r\parallel X=7r/12$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由电导相减求绕行网络电阻}\par\nobreak
+图\ref{fig:c3:drill:2:p} 的端口关系给出 $1/(7r/12)=1/r+1/X$，即 $12/(7r)-1/r=1/X=5/(7r)$，所以 $X=7r/5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对删边后的单调性}\par\nobreak
+结果大于完整网络值，也大于直接棱 $r$，说明剩余绕行路径整体较长；去掉一条电阻不是从总电阻中简单减去 $r$。\end{drillsolution}
+\begin{drillsolution}{c3:drill:3}\textbf{确定内部节点置换与等势条件}\par\nobreak
+图\ref{fig:c3:drill:3:s} 中其他 $N-2$ 个节点仍等势，电势为 $U/2$，每个提供一条 $2r$ 通道。它们合成 $2r/(N-2)$，再与直接边 $R$ 并联。
+\typeout{ECFIG:fig:c3:drill:3:p}\fig{fig:c3:drill:3:p}{解答过程：完全图的一条边改变}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R$}](4,0);\draw(0,0)--(0,-1.5)to[R,l={$2r/(N-2)$}](4,-1.5)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按直接通道与间接通道相加电导}\par\nobreak
+由 图\ref{fig:c3:drill:3:p}，
+\[
+ R_{AB}=\left(\frac1R+\frac{N-2}{2r}\right)^{-1}
+ =\frac{2rR}{2r+(N-2)R}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用复原、短路和断路三种极限核对}\par\nobreak
+令 $R=r$ 回到 $2r/N$；$R\to0$ 时端口被短接，等效电阻趋零；$R\to\infty$ 时直接边断开，结果为 $2r/(N-2)$。内部等势条件未因改变直接边而破坏，因为置换内部节点仍保持网络。\end{drillsolution}
+\begin{drillsolution}{c3:drill:4}\textbf{依据第三端悬空写出三组两臂之和}\par\nobreak
+按 图\ref{fig:c3:drill:4:s} 的第三端悬空测试，有 $r_1+r_2=5,r_2+r_3=7,r_3+r_1=6$。第一式加第三式减第二式得 $2r_1=4$，所以 $r_1=2\,\Omega$。再回代得 $r_2=3\,\Omega,r_3=4\,\Omega$。
+\typeout{ECFIG:fig:c3:drill:4:p}\fig{fig:c3:drill:4:p}{解答过程：从端口测量反求星臂}{\begin{tikzpicture}[scale=.88]
+\draw(2.3,1.6)to[R](0,0);\draw(2.3,1.6)to[R](4.6,0);\draw(2.3,1.6)to[R](2.3,4.2);\node at(.75,1.35){$2$};\node at(3.85,1.35){$3$};\node at(1.7,3){$4$};\node[left]at(0,0){$1$};\node[right]at(4.6,0){$2$};\node[above]at(2.3,4.2){$3$};\node[right]at(2.3,1.6){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反解一般星臂公式与正性条件}\par\nobreak
+图\ref{fig:c3:drill:4:p} 显示三个正星臂。一般测量值 $a=R_{12},b=R_{23},c=R_{31}$ 给出 $r_1=(a+c-b)/2,r_2=(a+b-c)/2,r_3=(b+c-a)/2$。若要求三臂严格为正，三组测量值须满足三角不等式。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验第二组测量值能否表示为正星臂}\par\nobreak
+对于 $1,2,5$，有 $r_2=(1+2-5)/2=-1\,\Omega$，不能表示为题设的三个正电阻星形；应检查测量条件或网络假设。\end{drillsolution}
+\begin{drillsolution}{c3:drill:5}\textbf{沿跨接导线把六个顶点归为两个节点}\par\nobreak
+图\ref{fig:c3:drill:5:s} 的跨接导线将六个顶点合成两个节点。含电源的一条边为电动势 $\mathcal E$ 串联内阻 $r$；其余五边各为 $r$，都跨接同一对 $A,B$。
+\typeout{ECFIG:fig:c3:drill:5:p}\fig{fig:c3:drill:5:p}{解答过程：六边形交叉导线中的电源电流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,2.6)--(3.4,2.6)to[R,l={$r/5$}](3.4,0)to[R,l_={$r$}](0,0);\node[above right]at(3.4,2.6){$A$};\node[below right]at(3.4,0){$B$};\draw[flow](1,2.9)--(2.2,2.9)node[midway,above]{$I$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{等效五个负载后求电源电流}\par\nobreak
+图\ref{fig:c3:drill:5:p} 中五个负载并联为 $r/5$。电源电流大小
+\[
+ I=\frac{\mathcal E}{r+r/5}=\frac{5\mathcal E}{6r}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回算原六条边的电流检查守恒}\par\nobreak
+共同端电压 $U=I(r/5)=\mathcal E/6$，其余每边电流大小为 $\mathcal E/(6r)$，五边之和等于电源电流。电源极性只决定整体电流方向，不改变本题所求大小。\end{drillsolution}
+\begin{drillsolution}{c3:drill:6}\textbf{从原完整立方体反求十一棱绕行部分}\par\nobreak
+图\ref{fig:c3:drill:6:s} 中先把 $AB$ 直接棱与其余十一条棱分开。完整等阻立方体端口电阻 $7r/12=r\parallel X$，故 $1/X=12/(7r)-1/r=5/(7r)$，$X=7r/5$。
+\typeout{ECFIG:fig:c3:drill:6:p}\fig{fig:c3:drill:6:p}{解答过程：立方体一条棱变为两倍}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$2r$}](4,0);\draw(0,0)--(0,-1.4)to[R,l={$7r/5$}](4,-1.4)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{仅替换直接边并重算并联电阻}\par\nobreak
+图\ref{fig:c3:drill:6:p} 将直接边改为 $2r$，绕行部分不变，所以
+\[
+ R_{AB}=2r\parallel\frac{7r}{5}
+ =\frac{(2r)(7r/5)}{2r+7r/5}=\frac{14r}{17}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对单调性与保持不变的内部边界}\par\nobreak
+结果大于原来的 $7r/12$，小于断开直接棱后的 $7r/5$，符合电阻增大与删边的单调性。改变直接边仍保持内部节点置换的对称性。若固定 $U_{AB}$，其余十一棱的节点方程、电势和电流均不变；改变的是直接边电流与端口总电流。将直接边独立取出，正是利用这个端口并联关系。\end{drillsolution}
+\begin{drillsolution}{c3:drill:7}\textbf{用均匀抽取边界恢复四条邻边对称}\par\nobreak
+在 图\ref{fig:c3:drill:7:s} 上先向 $A$ 注入 $I$，从其余 $15$ 点各流出 $I/15$。由坐标置换对称，$A$ 的四条边电流均为 $I/4$，第一层任一点与 $A$ 的电势差为 $Ir/4$。
+\typeout{ECFIG:fig:c3:drill:7:p}\fig{fig:c3:drill:7:p}{第一辅助问题中 $A$ 的四条实际边等价；各邻点抽取 $I/15$ 后仍向后续网络送出电流}{\begin{tikzpicture}
+
+\coordinate(A)at(0,0);
+\foreach \y/\lab in {3/B,1/{P_1},-1/{P_2},-3/{P_3}}{
+\draw(A)to[R,l={$r$}](4,\y);
+\fill(4,\y)circle(1.5pt)node[above right]{$\lab$};
+\draw[flow](4.2,\y)--(6,\y)node[right]{$11I/60$};
+\draw[flow](4,\y-.1)--(4,\y-.8)node[below]{$I/15$};
+}
+\draw[flow](-1.5,0)--(-.1,0)node[pos=0,left]{$I$};
+\fill(A)circle(1.5pt)node[above left]{$A$};
+\node at(1.2,4.1){每条出 $A$ 的边均通过 $I/4$};
+\node at(4,-4.7){每个邻点其余三条边接入第二层，图中右箭头为这三边电流之和};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{构造互补边界并核对各点注入}\par\nobreak
+图\ref{fig:c3:drill:7:p}画出第一辅助问题在 $A$ 附近的真实四条边，并保留各邻点抽取及后续电流。再以相邻节点 $B$ 为流出端构造互补辅助问题：其余各点各注入 $I/15$，$B$ 流出 $I$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时叠加电势差和端口总电流}\par\nobreak
+两个辅助问题的 $U_{AB}$ 都为 $Ir/4$，叠加后为 $Ir/2$，实际端口电流为 $I+I/15=16I/15$。因此
+\[
+ R_{AB}=\frac{Ir/2}{16I/15}=\frac{15r}{32}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广维数并以三维、五维结果检验}\par\nobreak
+相同构造对 $d$ 维相邻端口给出 $R_{\text{邻}}=2(1-2^{-d})r/d$。代入 $d=3$ 为 $7r/12$，与三维立方体结果相同；代入 $d=5$ 为 $31r/80$。后者来自 $32$ 个节点、每点 $5$ 条等价边：叠加边电压 $2Ir/5$，端口电流 $32I/31$，相除正得 $31r/80$。这里是同一连接规则的维数核验，不能与体对角线端口或相距两步端口混用。\end{drillsolution}
+\begin{drillsolution}{c3:drill:8}\textbf{把端口棱分段并证明端点成对等势}\par\nobreak
+图\ref{fig:c3:drill:8:s} 中端口所在两棱各被拆成两个 $r/2$。交换每条端口棱的两个端点而保持 $M,N$ 的对称变换，使该棱两端等势。因此每一端口到其端点组的两个 $r/2$ 并联为 $r/4$。
+\typeout{ECFIG:fig:c3:drill:8:p}\fig{fig:c3:drill:8:p}{端口半棱先并联为 $r/4$，八个顶点分为四个双节点组，再保留四条跨组通道}{\begin{tikzpicture}
+
+\coordinate(M)at(-2.5,0);\coordinate(G)at(0,0);\coordinate(H)at(5,0);\coordinate(N)at(7.5,0);
+\coordinate(Y)at(2.5,2);\coordinate(Z)at(2.5,-2);
+\draw(M)to[R,l={$r/4$}](G)to[R,l={$r/2$}](Y)to[R,l={$r/2$}](H)to[R,l={$r/4$}](N);
+\draw(G)to[R,l_={$r/2$}](Z)to[R,l_={$r/2$}](H);
+\foreach \q/\lab/\pos in {M/M/left,N/N/right,G/G/below left,H/H/below right,Y/Y/above,Z/Z/below}{\fill(\q)circle(1.5pt)node[\pos]{$\lab$};}
+\node at(2.5,3.2){$G,H,Y,Z$ 各含两个等势顶点};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按八个实际顶点建立四组环形网络}\par\nobreak
+图\ref{fig:c3:drill:8:p}中，八个原顶点按沿端口棱方向的反射分为四组，每组两点。$G,H$ 分别含 $M,N$ 所在棱的两个端点，$Y,Z$ 是另两组；组内原棱无电流。四组之间每对相邻组有两条原棱并联，因而形成四边每边 $r/2$ 的环形网络。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求环形电阻再加两端半棱等效}\par\nobreak
+两个端组位于环形的相对位置，两个总阻 $r$ 的绕行通道并联为 $r/2$。加上端口处两个 $r/4$，总阻为 $r/4+r/2+r/4=r$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查分组依据与端口位置}\par\nobreak
+对称轴必须经过两棱中点，若改取不满足中心对称的两条棱，分组和结果可能不同。\end{drillsolution}

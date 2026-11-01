@@ -1,0 +1,124 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{mg3:drill:1}\textbf{先定两圆心与半径，判断轨道交点集合}\par\nobreak
+图\ref{fig:mg3:drill:1:s}中正粒子圆心在原点下方，半径 $r=mv/(qB)$，负粒子圆心在上方，半径为 $2r$。两个圆心距为 $3r$，恰等于两半径之和，因此两轨道只在原点外切，不可能在别处相遇。
+\fig{fig:mg3:drill:1:p}{两轨道在原点外切，相遇只能发生在共同回到切点的时刻；半径按真实质量比作图}{\begin{tikzpicture}
+
+\draw[world](0,-1)circle(1);\draw[world](0,2)circle(2);\fill(0,0)circle(1.6pt)node[left]{$O$};\draw[flow](0,0)--(1.5,0)node[below]{$v$};
+\draw[flow](.707107,-.292893)arc(45:-30:1);\draw[flow](1.414214,.585786)arc(-45:25:2);
+\node[align=center]at(3,2.5){$2m,-q$\\$T_2=2T_1$};\node[align=center]at(2,-1.4){$m,+q$\\$T_1=2\pi m/(qB)$};\draw[dim](-.5,-1)--(-.5,0)node[midway,left]{$r$};\draw[dim](-.5,0)--(-.5,2)node[midway,left]{$2r$};
+\node at(1,-2.8){最早共同返回：$t=T_2$，下圆两周、上圆一周};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再比较两个周期，取最早共同返回时刻}\par\nobreak
+图\ref{fig:mg3:drill:1:p}中相遇必须同时回到原点。两周期分别是 $T_1=2\pi m/(qB)$、$T_2=4\pi m/(qB)=2T_1$。共同回到原点的最早正时刻是 $T_2$，此时第一粒子转两周，第二粒子转一周。若仅看两粒子速度大小相同，就把半周期当作相遇时间，会忽略两条圆轨道分居切点两侧的几何事实。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:2}\textbf{对短弧先给弦长下界，再逐点验证覆盖}\par\nobreak
+图\ref{fig:mg3:drill:2:s}在 $\delta\le\pi$ 时弦长为 $2r\sin(\delta/2)$，任一覆盖圆盘半径至少为 $r\sin(\delta/2)$。取弦中点作圆心，弧点到中点的距离平方为 $r^2+r^2\cos^2(\delta/2)-2r^2\cos(\delta/2)\cos\psi$。在 $|\psi|\le\delta/2$ 内，它不超过 $r^2\sin^2(\delta/2)$，故这个下界可达。
+\fig{fig:mg3:drill:2:p}{短弧的下界由端点给出，长弧的下界必须改用弧内一对对径点}{\begin{tikzpicture}
+
+\filldraw[fill=blue!7,draw=blue](.75,0)circle(1.299038);\draw[guide](0,0)circle(1.5);\draw[red,very thick](.75,-1.299038)arc(-60:60:1.5);\fill(.75,-1.299038)circle(1.5pt);\fill(.75,1.299038)circle(1.5pt);\draw[guide](.75,-1.299038)--(-1.8,-1.299038)(.75,1.299038)--(-1.8,1.299038);\draw[dim](-1.8,-1.299038)--(-1.8,1.299038)node[midway,left]{$2r\sin(\delta/2)$};
+\node at(.6,2.2){$0<\delta\le\pi$};
+\begin{scope}[xshift=5.7cm]
+\filldraw[fill=blue!7,draw=blue](0,0)circle(1.5);\draw[red,very thick](1.5,0)arc(0:240:1.5);\fill(-1.5,0)circle(1.5pt);\fill(1.5,0)circle(1.5pt);\draw[dim](-1.5,0)--(1.5,0)node[midway,below]{$2r$};\node at(0,2.2){$\pi\le\delta\le2\pi$};
+\end{scope}
+\node at(2.9,-2.3){蓝色为覆盖圆盘，红色为所需圆弧；允许圆弧在边界上};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对长弧改用对径点下界并连接两段结果}\par\nobreak
+若图\ref{fig:mg3:drill:2:p}的圆弧达到或超过半周，弧内存在一对相距 $2r$ 的对径点，所以覆盖半径至少 $r$；用原轨道圆盘即可达到。因此 $a_{\min}=r\sin(\delta/2)$ 对 $0<\delta\le\pi$ 成立，而 $\pi\le\delta\le2\pi$ 时 $a_{\min}=r$。在两支的连接点结果连续。仅取端点距离会在超过半周时给出错误下降的“最小半径”。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:3}\textbf{由带符号圆心写参数式并求最大穿透深度}\par\nobreak
+图\ref{fig:mg3:drill:3:s}圆心为 $(-r\sin\alpha,r\cos\alpha)$。速度角随时间增加为 $\beta=\alpha+\Omega t$，速度分量为 $v\cos(\alpha+\Omega t),v\sin(\alpha+\Omega t)$。
+令 $\psi=\alpha+\Omega s$，$\dd s=\dd\psi/\Omega$，上下限从 $0,t$ 变为 $\alpha,\beta$，从而
+\[
+ x=\frac v\Omega\int_\alpha^\beta\cos\psi\dd\psi
+ =r[\sin\psi]_\alpha^\beta=r(\sin\beta-\sin\alpha),
+\]
+\[
+ y=\frac v\Omega\int_\alpha^\beta\sin\psi\dd\psi
+ =r[-\cos\psi]_\alpha^\beta=r(\cos\alpha-\cos\beta).
+\]向右最远点在 $\beta=\pi/2$，最大横坐标 $x_{\max}=r(1-\sin\alpha)$。
+\fig{fig:mg3:drill:3:p}{示意向右穿出分支；虚线是磁场未被截断时的候选延拓，不能作为出界后的轨道}{\begin{tikzpicture}
+
+\fill[blue!8](0,-.3)rectangle(.4,2.6);\draw[world](0,-.3)--(0,2.6)(.4,-.3)--(.4,2.6);\draw[guide](0,0)arc(-55:55:1.4);
+\draw[->,blue,thick](0,0)arc(-55:-30.762962:1.4);\fill(.4,.430730)circle(1.6pt)node[below right]{$P_e$};\draw[->,red,thick](.4,.430730)--(.911487,1.290021);
+\fill(-.803007,1.146813)circle(1.5pt)node[left]{$C$};\draw[guide](.596993,-.3)--(.596993,2.6);\node[below]at(.4,-.3){$d$};
+\node[right,align=center]at(2,2.2){$x_{\max}=r(1-\sin\alpha)$\\$d<x_{\max}$ 才真正穿出};\node[right,align=center]at(2,.7){$\beta_e=\arcsin(\sin\alpha+d/r)$\\取 $\alpha<\beta_e<\pi/2$};\node at(1.8,-1.1){示意取 $\alpha=35^\circ$，初始切线不水平};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在穿出分支选正向最早的反三角函数解}\par\nobreak
+图\ref{fig:mg3:drill:3:p}只有 $d<x_{\max}$ 时真正穿出右边界。首次穿出角为 $\beta_e=\arcsin(\sin\alpha+d/r)$，选在 $[\alpha,\pi/2)$ 内，时间 $t_e=(\beta_e-\alpha)/\Omega$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将相切归入返回分支并求左边界时刻}\par\nobreak
+若 $d\ge x_{\max}$，右边界不可穿出；再次回到 $x=0$ 的非初始角满足 $\beta=\pi-\alpha$，故 $t=(\pi-2\alpha)/\Omega$，回到 $y=2r\cos\alpha$。等号仍为右边界相切，应归入返回情形。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:4}\textbf{用两条速度法线交点定位圆心并核对等距}\par\nobreak
+由图\ref{fig:mg3:drill:4:s}入射切线水平，圆心必须在过 $P$ 的竖直线上；出射切线竖直，圆心必须在过 $Q$ 的水平线上。两条法线交于 $C=(0,a)$，因此两端到圆心的距离都为 $a$，轨道半径 $r=a$。
+\fig{fig:mg3:drill:4:p}{解答过程：由两条切线反求磁场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)arc(-90:0:2);\draw[guide](0,0)--(0,2)--(2,2);\node[left]at(0,2){$C$};\node at(1,2.5){$r=a$};\node at(3,1){$\otimes B$};\fill(0,0)circle(1.5pt)node[below]{$P$};\fill(2,2)circle(1.5pt)node[right]{$Q$};\draw[flow](0,0)--(1,0)node[below]{$v$};\draw[flow](2,2)--(2,3)node[above]{$v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选择首次出界的小圆弧，确定场方向与飞行时间}\par\nobreak
+图\ref{fig:mg3:drill:4:p}从 $P$ 向 $Q$ 的小圆弧是逆时针四分之一圆，正电荷初始受力向上，故磁场向纸内。由 $qvB=mv^2/a$ 得 $B=mv/(qa)$，时间为弧长除以速率，$t=(\pi a/2)/v$，也等于 $\pi/(2\Omega)$。参数角在纯几何上可形式地加上 $2\pi n$，但本题选的是小于半周且首次出界的一支。固定磁区中首次到达 $Q$ 就已离开，不能把区外阶段继续按同一圆周延拓后再称为另一个出界时间。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:5}\textbf{在同一外表面受力模型下解速度二次方程}\par\nobreak
+图\ref{fig:mg3:drill:5:s}竖直支持平衡给出 $N\sin\theta=mg$，磁力向心，径向式为 $qBv-mg\cot\theta=mv^2/R$。写成关于 $v$ 的二次方程后，求根得到
+\[
+v_\pm=\frac{qBR\pm\sqrt{q^2B^2R^2-4m^2gR\cot\theta}}{2m}.
+\]
+\fig{fig:mg3:drill:5:p}{解答过程：圆锥上的两种允许速度}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4,0)node[right]{$v$};\draw[axis](0,-0.5)--(0,2.2)node[above]{$mv^2-qBRv+mgR\cot\theta$};\draw[world,domain=.2:3.7]plot(\x,{.5*(\x-1)*(\x-3)});\node[below]at(1,0){$v_-$};\node[below]at(3,0){$v_+$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较根和与根积，再检查临界合并}\par\nobreak
+图\ref{fig:mg3:drill:5:p}中 $R>R_{\min}$ 时根号为正，且根的和为 $qBR/m>0$、积为 $gR\cot\theta>0$，所以两根都为正，均对应同一转向的不同速率。它们并不因有两个数学根就自动被分成“正转、反转”。当 $R\downarrow R_{\min}$，两根合并于 $qBR_{\min}/(2m)$，正是磁力与离心需求共同允许的临界状态。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:6}\textbf{用恒定动量大小求曲率半径与真实周期}\par\nobreak
+图\ref{fig:mg3:drill:6:s}中磁力始终垂直动量，速率与 $\gamma$ 不变，动量方向作匀速转动。径向方程是 $qvB=pv/r$，故 $r=p/(qB)=\gamma mv/(qB)$。用一周弧长除以速率得 $T=2\pi r/v=2\pi\gamma m/(qB)$。
+\fig{fig:mg3:drill:6:p}{解答过程：非相对论周期的适用精度}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(3,0)node[right]{$K/(mc_0^2)$};\draw[axis](0,-0.2)--(0,3.5)node[above]{$T/T_0$};\draw[world](0,1)--(2.5,3.5);\node[left]at(0,1){$1$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以指定分母表示周期偏差并换成动能条件}\par\nobreak
+图\ref{fig:mg3:drill:6:p}以 $T_0=2\pi m/(qB)$ 为非相对论近似值，则 $(T-T_0)/T_0=\gamma-1=K/(mc_0^2)$。若以 $T_0$ 为分母要求周期的相对偏差不超过1\%，在上述理想条件下恰有 $K/(mc_0^2)\le0.01$。若改以真实周期为分母，偏差则为 $(T-T_0)/T=K/(mc_0^2+K)$；精度数值应始终注明所用分母。此处只修正动量—速度关系，仍忽略辐射及场的非均匀性；相对论关系在近代物理专题中系统展开。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:7}\textbf{逐段求半圆位移与时间，保留界面方向正负}\par\nobreak
+图\ref{fig:mg3:drill:7:s}中每侧的路径都是半圆，半径 $r_1=mv/(qB_1)$、$r_2=mv/(qB_2)$。右半圆使界面坐标增加 $2r_1$，左半圆使其减少 $2r_2$，故 $\Delta y=2(r_1-r_2)$；耗时分别是 $\pi r_1/v$ 与 $\pi r_2/v$。
+\fig{fig:mg3:drill:7:p}{每个完整往返由两区各半周组成，速率相同而界面有向位移相反；图示 $r_1>r_2$}{\begin{tikzpicture}
+
+\fill[blue!6](0,-.3)rectangle(2.4,3.3);\fill[orange!7](-2,-.3)rectangle(0,3.3);\draw[world](0,-.3)--(0,3.3);
+\draw[->,blue,thick](0,0)arc(-90:90:1.4);\draw[->,red,thick](0,2.8)arc(90:270:.8);\fill(0,0)circle(1.5pt)node[left]{$O$};\fill(0,2.8)circle(1.5pt)node[left]{$A$};\fill(0,1.2)circle(1.5pt)node[left]{$D$};\draw[flow](0,1.2)--(.9,1.2);
+\node[align=center]at(2.9,2.3){$2r_1$\\$t_1=\pi r_1/v$};\node[align=center]at(-2,2.2){$-2r_2$\\$t_2=\pi r_2/v$};\node at(.4,-1){$\Delta y=2(r_1-r_2),\quad\Delta t=\pi(r_1+r_2)/v$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用净位移求平均速度并检验等场极限}\par\nobreak
+按图\ref{fig:mg3:drill:7:p}相除，$\bar v_y=2v(r_1-r_2)/[\pi(r_1+r_2)]=2v(B_2-B_1)/[\pi(B_1+B_2)]$。当两场相等时位移抵消、平均速度为零，轨道成为完整圆；当某侧场较弱时，其半径较大，净位移沿该侧半圆的界面推进方向。该平均速度只适用于完整往返。\end{drillsolution}
+\begin{drillsolution}{mg3:drill:8}\textbf{让圆心随入射角改变，求每条实际轨道的最右点}\par\nobreak
+图\ref{fig:mg3:drill:8:s}每条轨道的半径相同，$r=mv/(qB)$，但圆心 $C=(-r\sin\alpha,r\cos\alpha)$ 随入射角改变。圆周最右点到边界的距离为 $x_{\max}=-r\sin\alpha+r=r(1-\sin\alpha)$。
+\fig{fig:mg3:drill:8:p}{穿透深度随入射角单调变化；开圆点表示两个边界角不属于允许入射集合}{\begin{tikzpicture}
+
+\begin{scope}[x=2cm,y=1.5cm]
+\draw[axis](-1.8,0)--(1.9,0)node[right]{$\alpha$};\draw[axis](0,-.2)--(0,2.5)node[above]{$x_{\max}/r$};\draw[blue,thick,domain=-1.570796:1.570796,samples=100]plot(\x,{1-sin(\x r)});
+\filldraw[fill=white,draw=blue](-1.570796,2)circle(1.8pt);\filldraw[fill=white,draw=blue](1.570796,0)circle(1.8pt);\draw[guide](-1.570796,2)--(0,2);\node[left]at(0,2){$2$};\node[below]at(-1.570796,0){$-\pi/2$};\node[below]at(1.570796,0){$\pi/2$};
+\node at(0,3.1){$\alpha\to-\pi/2^+$ 时趋近2，任何允许轨道都小于2};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在开角区间求上确界，再核对严格入射条件}\par\nobreak
+图\ref{fig:mg3:drill:8:p}的函数在 $\alpha\to-\pi/2^+$ 时趋向 $2r$，故 $2r$ 是上确界。严格入射要求 $v_x=v\cos\alpha>0$，不包含 $\alpha=-\pi/2$；每一条允许轨道都有 $x_{\max}<2r$。因此该上界不能达到，穿透深度不存在最大值。与边界相切的极限初态不属于本题允许集合。\end{drillsolution}

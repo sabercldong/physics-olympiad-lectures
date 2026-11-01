@@ -1,0 +1,197 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em1:drill:1}\textbf{将大圆盘拆成内盘与新增环带}\par\nobreak
+按图\ref{fig:em1:drill:1:s}取向上为正，把较大圆盘分成小圆盘与外环带，如图\ref{fig:em1:drill:1:p}，即有
+\[\Phi_b-\Phi_a=2\pi\int_a^b B_z(r)r\,\dd r.\]
+\fig{fig:em1:drill:1:p}{环带中的回程磁通以负号进入两圆盘磁通之差}{\begin{tikzpicture}
+
+\fill[gray!15,even odd rule](0,0)circle(2)(0,0)circle(1.2);\draw[world](0,0)circle(1.2)circle(2);\foreach \ang in {30,90,150,210,270,330}{\node at({1.6*cos(\ang)},{1.6*sin(\ang)}){$\otimes$};}\node at(0,0){$\Phi_a>0$};\draw[->](0,0)--(1.2,0)node[midway,above]{$a$};\node[right]at(2,0){$b$};\node at(4.4,.8){$\Phi_b=\Phi_a+\Phi_{\rm annulus}$};\node at(4.4,-.4){$\Phi_{\rm annulus}<0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按环带有向积分判断比较所需信息}\par\nobreak
+图\ref{fig:em1:drill:1:p}中，灰色环带的面积不能直接代表正磁通；比较取决于环带中的有向磁场积分。仅说磁铁置于中心而未说明磁铁大小、两环与磁极的相对位置及磁场分布，不能无条件用面积判断。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在补充回程场条件下比较有向值和大小}\par\nobreak
+若补充环带全部是向下的回程磁场，则积分为负，$\Phi_b<\Phi_a$；在两者均向上的条件下，磁通量大小也满足 $|\Phi_a|>|\Phi_b|$。若净磁通本身有不同符号，还要先区分有向值与绝对值。\end{drillsolution}
+\begin{drillsolution}{em1:drill:2}\textbf{把轴对称感生场写成坐标分量}\par\nobreak
+按图\ref{fig:em1:drill:2:s}，在圆柱内 $\bm E_{\text{感}}=\tfrac K2(y,-x,0)$。弦上 $y=h$，线元为 $(\dd x,0,0)$，故每一段的水平电场分量都等于 $Kh/2$。因此
+\[\mathcal E_{M\to N}^{\text{感}}=\int_{-l/2}^{l/2}\frac{Kh}{2}\,\dd x
+=\frac{Kh}{2}[x]_{-l/2}^{l/2}=\frac{Khl}{2}.\]
+\fig{fig:em1:drill:2:p}{弦上各点的环向场方向不同，但水平投影均为 $Kh/2$}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\draw[very thick](-1.6,1.2)node[left]{$M$}--(1.6,1.2)node[right]{$N$};\fill(0,0)circle(1.5pt)node[below]{$O$};
+\foreach \xx in {-1.2,0,1.2}{\draw[guide](0,0)--(\xx,1.2);\draw[->,blue,thick](\xx,1.2)--({\xx+.6},{1.2-.5*\xx});\draw[->,red,thick](\xx,1.2)--({\xx+.6},1.2);}
+\node at(0,2.8){蓝：$\bm E_{\rm ind}=\tfrac K2(y,-x)$；红：水平投影};\draw[dim](-2.5,0)--(-2.5,1.2)node[midway,left]{$h$};\node at(0,-2.7){$E_x\dd x=\tfrac12Kh\dd x>0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿水平弦积分相同的电场投影}\par\nobreak
+图\ref{fig:em1:drill:2:p}中每点的电场都沿顺时针切向，水平投影同为正。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用弦几何求特例并解释开路端压}\par\nobreak
+若 $l=R$，几何关系为 $h^2+(l/2)^2=R^2$，所以 $h=\sqrt3R/2$，电动势大小为 $\sqrt3KR^2/4$。
+
+这是沿指定路径的感生积分；若放入开路金属棒，电荷重新分布使总切向场为零，其端电势差 $V_N-V_M$ 与这个感生积分相等。不要把感生场本身称为可定义全空间单值电势的静电场。\end{drillsolution}
+\begin{drillsolution}{em1:drill:3}\textbf{将旋转电荷换成带符号的源电流}\par\nobreak
+图\ref{fig:em1:drill:3:s}中的旋转电荷每转一周通过固定径向截面的电量为 $Q$，周期为 $2\pi/|\omega|$，所以有向电流为 $i_A=Q\omega/(2\pi)$。互感磁通为 $Mi_A$，故
+\[i_B=-\frac{M}{R}\frac{\dd i_A}{\dd t}=-\frac{MQ}{2\pi R}\dot\omega.\]
+\fig{fig:em1:drill:3:p}{固定互感下的角加速与固定源电流下的互感减小，分别导致相反的被动电流}{\begin{tikzpicture}
+
+\foreach \xx/\sgn/\lab in {0/-1/{Q>0,\ \dot\omega>0,\ \dot M=0},5/1/{i_A>0,\ \dot i_A=0,\ \dot M<0}}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,0)circle(1.2);\draw[->,blue,thick](1.2,0)arc(0:{\sgn*110}:1.2);\node at(0,0){$B$ 环俯视};\node at(0,2){$\lab$};\end{scope}}
+\node at(0,-1.9){正磁通增加，$i_B<0$};\node at(5,-1.9){正磁通减少，$i_B>0$};\node at(2.5,-2.8){$\dot\Phi_B=M\dot i_A+i_A\dot M$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐项判断电荷与有向角加速的反号}\par\nobreak
+图\ref{fig:em1:drill:3:p}以 $Q>0,\dot\omega>0$ 为例，$i_B<0$，即顺时针。若 $Q$ 改为负，或同一有向角速度的导数改变符号，电流方向各翻转一次；二者同时改变则方向不变。仅说“转速增大”还需说明原来旋转方向，因为 $\dot\omega$ 是有向量的变化率。这个结果也适用于线圈电流变化引起的互感，只需把 $Q\dot\omega/(2\pi)$ 换为 $\dot i_A$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对互感与源电流的乘积求导}\par\nobreak
+若几何也变化，先定义穿过 $B$ 的外磁通为 $\Phi_B=M(t)i_A(t)$。对这个乘积求导，得 $i_B=-(M\dot i_A+i_A\dot M)/R$。当 $i_A>0$ 恒定而 $\dot M<0$ 时，$i_B>0$，即逆时针，补偿减少的正磁通。位置改变能否使 $M$ 减小，必须根据具体磁场与几何判断，不能只根据“移动”二字确定。\end{drillsolution}
+\begin{drillsolution}{em1:drill:4}\textbf{沿母线写出位置、速度与横向磁场叉乘}\par\nobreak
+图\ref{fig:em1:drill:4:s}中沿金属丝取距锥顶为 $s$ 的微段，其位置为
+\[\bm r=s(\sin\theta\cos\omega t,\sin\theta\sin\omega t,\cos\theta).\]
+对时间求导时 $s,\theta$ 固定，利用
+$\dd(\cos\omega t)/\dd t=-\omega\sin\omega t$、
+$\dd(\sin\omega t)/\dd t=\omega\cos\omega t$，
+得到速度 $\bm u=\omega s\sin\theta(-\sin\omega t,\cos\omega t,0)$。与 $\bm B=(B,0,0)$ 叉乘后，只有 $z$ 分量 $-B\omega s\sin\theta\cos\omega t$。
+\fig{fig:em1:drill:4:p}{两种磁场方向对应不同的线元投影；左图仅示 $t=0$ 的瞬间}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](0,0)--(0,3.3)node[above]{$z$};\draw[axis](0,0)--(2.5,0)node[right]{$x$};\draw[world](0,0)--(1.5,2.598)node[above]{$P$};\node[below left]at(0,0){$O$};
+\draw[very thick,red](.7,1.212)--(.9,1.559);\draw[guide](.7,1.212)--(1.8,1.212) (.9,1.559)--(1.8,1.559);\draw[dim](1.7,1.212)--(1.7,1.559);\node[right]at(1.9,1.38){$\dd s\cos\theta$};\draw[->,blue,thick](.8,1.386)--(.8,.5);\node[blue,right]at(1.05,.45){$\bm u\times\bm B$};\node at(-.8,2.5){$\otimes\bm u$};\node at(1.2,-.9){$\bm B\parallel+x$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axis](0,0)--(0,3.3)node[above]{$z$};\draw[world](0,0)--(1.5,2.598)node[above]{$P$};\draw[very thick,red](.7,1.212)--(.9,1.559);\draw[guide](.7,1.212)--(.7,.5) (.9,1.559)--(.9,.5);\draw[dim](.7,.65)--(.9,.65);\draw[->](2,.25)--(.82,.6);\node[right]at(2,.25){$\dd s\sin\theta$};\draw[->,blue,thick](.8,1.386)--(2,1.386)node[right]{$\bm u\times\bm B$};\node at(1.2,-.9){$\bm B\parallel+z$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将横向磁场的作用投影到母线}\par\nobreak
+图\ref{fig:em1:drill:4:p}中母线的 $z$ 投影为 $\dd s\cos\theta$，所以
+\[V_P-V_O=-B\omega\sin\theta\cos\theta\cos\omega t
+\int_0^l s\,\dd s
+=-B\omega\sin\theta\cos\theta\cos\omega t
+\left[\frac{s^2}{2}\right]_0^l.
+\]
+因此
+\[
+V_P-V_O=-\frac12B\omega l^2\sin\theta\cos\theta\cos\omega t.\]
+开路时这一积分等于端电势升高。$\theta=0$ 时导线不运动，$\theta=\pi/2$ 时母线无 $z$ 投影，两种极限都给零。所得是动生电动势，磁场本身并未随时间改变。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新叉乘并积分轴向磁场情形}\par\nobreak
+当磁场改为沿 $+z$ 时，速度表达式不变，叉乘改为
+\[\bm u\times\bm B=B\omega s\sin\theta(\cos\omega t,\sin\omega t,0),\]
+方向沿柱坐标径向向外。图\ref{fig:em1:drill:4:p}右图中，母线在径向的投影为 $\dd s\sin\theta$，所以
+\[V_P-V_O=\int_0^l B\omega s\sin^2\theta\dd s
+=B\omega\sin^2\theta\left[\frac{s^2}{2}\right]_0^l
+=\frac12B\omega l^2\sin^2\theta.\]
+这一结果为常量，且 $P$ 端电势高。横向磁场情形的母线投影沿 $z$，所以出现 $\sin\theta\cos\theta\cos\omega t$；轴向磁场情形的投影沿径向，所以出现 $\sin^2\theta$。当 $\theta\to0$ 时，两式均趋于零；当 $\theta\to\pi/2$ 时，横向场的结果趋零，轴向场则成为平面径向导线的 $B\omega l^2/2$。两个投影不同，不能只把第一种情形的时间因子删去得到第二种答案。\end{drillsolution}
+\begin{drillsolution}{em1:drill:5}\textbf{由柱外感生场积分恒定力矩}\par\nobreak
+图\ref{fig:em1:drill:5:s}中，探测器在相切以前始终位于柱外，当地 $B=0$，但该位置的环向场为
+\[
+E_\theta=\frac{kR^2}{2r}>0.
+\]
+令 $\Gamma=qkR^2/2$，则对圆心的力矩 $r qE_\theta=\Gamma$ 为常量。初速径向，初始角动量为零。记 $J=mr^2\dot\theta$，其方程 $\dot J=\Gamma$ 先积分为
+$J(t)-J(0)=\int_0^t\Gamma\,\dd s=\Gamma t$，因此
+\[
+mr^2\dot\theta=\Gamma t.
+\]
+\fig{fig:em1:drill:5:p}{相切时只有环向速度；柱外环向电场既提供恒定力矩，也沿转角做功}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.5);\fill(1.175588,.931664)circle(2pt)node[right]{$P$};\draw[guide](0,0)--(1.175588,.931664);\draw[->,blue,thick](1.175588,.931664)--(.554479,1.715389)node[above]{$\bm v_\theta,\ q\bm E_\theta$};\draw[guide](0,0)--(2.6,0);\draw(.6,0)arc(0:38.397:.6);\node at(.8,.22){$\alpha$};
+\node at(0,-.65){柱内有磁场};\node[align=left]at(4.5,1){$r=R,\ \dot r=0$\\$L_z=\Gamma t$\\$W_E=\Gamma\alpha$};\node at(3.7,-1.5){$\Gamma=qkR^2/2$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将相切条件与实际路径电功联立}\par\nobreak
+图\ref{fig:em1:drill:5:p}的相切位置满足 $r=R,\dot r=0$，全速度只剩切向分量，故 $v_\theta=\Gamma t/(mR)$。沿真实轨迹的电场功为
+\[
+W_E=\int_0^\alpha\Gamma\,\dd\theta
+=\Gamma[\theta]_0^\alpha=\Gamma\alpha,
+\]
+其中径向位移不做功。代入动能定理，得到
+\[
+\frac{\Gamma^2t^2}{2mR^2}-\frac12mv_0^2=\Gamma\alpha,
+\qquad
+\boxed{v_0=R\sqrt{\left(\frac{qkt}{2m}\right)^2-\frac{qk\alpha}{m}}}.
+\]
+根式必须为正，才能有题设的非零径向入射速率；减弱磁场的规律也须维持到相切事件。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用径向运动和首次到达条件检验可实现性}\par\nobreak
+这个关系只使用了角动量和功，是必要条件。若给定出发距离 $r_0>R$，径向力为零，极坐标径向方程是
+$m(\ddot r-r\dot\theta^2)=0$。把 $\dot\theta=\Gamma t/(mr^2)$ 代入，才得到需要积分的径向方程
+\[
+\ddot r=\frac{\Gamma^2t^2}{m^2r^3},\qquad
+\dot\theta=\frac{\Gamma t}{mr^2},\qquad
+r(0)=r_0,\quad\dot r(0)=-v_0,\quad\theta(0)=0,
+\]
+这些方程可保留初值写成等价的积分形式：
+\[
+\dot r(s)=-v_0+\frac{\Gamma^2}{m^2}
+\int_0^s\frac{\xi^2}{r(\xi)^3}\dd\xi,
+\]
+\[
+r(s)=r_0-v_0s+\frac{\Gamma^2}{m^2}
+\int_0^s\frac{(s-\xi)\xi^2}{r(\xi)^3}\dd\xi,\qquad
+\theta(s)=\frac{\Gamma}{m}\int_0^s\frac{\xi}{r(\xi)^2}\dd\xi.
+\]
+第二式由径向加速度连续积两次得到，内层累计贡献在余下的 $s-\xi$ 时间内继续改变位置。因未知的 $r(\xi)$ 仍在被积函数中，一般须联立作数值积分，并调节未定的初始距离；不能直接把 $r$ 当常量积分。之后检验首次满足 $r(t)=R,\dot r(t)=0,\theta(t)=\alpha$，且此前 $r>R$。因径向加速度非负，径向速度从负值增加到零，这个切点对应最近距离。初始距离未给时，它仍是待由轨迹匹配的参数；任取一组根式为实数的 $t,\alpha$，并不能跳过这些边界条件。题设图示取一条满足条件的轨迹，突出柱外电场导致的弯曲，而不把整个柱外区域误作无力区。
+\end{drillsolution}
+\begin{drillsolution}{em1:drill:6}\textbf{把纯滚动分解并排除转动项的切向贡献}\par\nobreak
+图\ref{fig:em1:drill:6:s}中的刚体速度可分为圆心平动与绕圆心转动。对于转动部分，$\bm u_{\text{转}}\times\bm B$ 沿径向，而金属圆环的线元沿切向，点积恒为零。因此不能把最上端速度 $2v_0$ 直接乘缺口长度。
+\fig{fig:em1:drill:6:p}{转动项径向、线元切向，点积为零；平动项只保留缺口两端高度差}{\begin{tikzpicture}
+
+\draw[world](12:1.5)arc(12:348:1.5);\fill(12:1.5)circle(2pt)node[above right]{$A$};\fill(348:1.5)circle(2pt)node[below right]{$C$};\draw[guide](1.467,.312)--(2.4,.312) (1.467,-.312)--(2.4,-.312);\draw[dim](2.3,-.312)--(2.3,.312)node[midway,right]{$\Delta y$};
+\draw[->,blue,thick](-1.06,1.06)--(-1.8,1.8)node[above]{$\bm u_{\rm rot}\times\bm B$};\draw[->,red,thick](-1.06,1.06)--(-.45,1.67)node[right]{$\dd\bm l$};\draw[->,thick](-.3,-.3)--(-.3,.8)node[left]{$\bm v_0\times\bm B$};
+\node at(1.6,-2.2){$|\Delta y|_{\max}=2a\sin(\Delta l/2a)$};\node at(1.6,-2.9){此图放大缺口；最大值出现在缺口弦竖直时};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿开口金属环积分端点高度差}\par\nobreak
+平动部分的 $\bm v_0\times\bm B$ 竖直向上，是常矢量。设图\ref{fig:em1:drill:6:p}中缺口两端 $A,C$ 的高度差为 $\Delta y$，沿其余金属环积分的绝对值为 $Bv_0|\Delta y|$。当缺口弦竖直时，高度差最大，故
+\[|\mathcal E|_{\max}=2Bv_0a\sin\frac{\Delta l}{2a}\simeq Bv_0\Delta l.\]
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在竖直缺口弦位置取最大值并作小角近似}\par\nobreak
+精确式把 $\Delta l$ 取为缺口弧长，近似式用了小角近似。缺口转动使端电势差周期变化；完整圆环的回路积分为零，与开口导线的端电势差并不矛盾。\end{drillsolution}
+\begin{drillsolution}{em1:drill:7}\textbf{由两条磁通斜线确定分段电流}\par\nobreak
+根据图\ref{fig:em1:drill:7:s}的两条斜线，第一种过程电流恒为 $i_1=\Phi_0/(RT)$；第二种在前半段为 $i_2=2\Phi_0/(RT)$，后半段为零。电流均为正向，因而
+\[\Delta Q_1=i_1T=\frac{\Phi_0}{R},\qquad
+\Delta Q_2=i_2\frac T2=\frac{\Phi_0}{R}.\]
+\fig{fig:em1:drill:7:p}{解答过程：相同磁通变化的电量与发热}{\begin{tikzpicture}[scale=.88]\draw[axis](-0.2,0)--(5,0)node[right]{$t$};\draw[axis](0,-0.2)--(0,1.5)node[above]{$i$};\draw[world](0,.6)--(4,.6);\draw[guide](0,1.2)--(2,1.2)--(2,0)--(4,0);\node[left]at(0,.6){$i_1$};\node[left]at(0,1.2){$2i_1$};\node[below]at(2,0){$T/2$};\node[below]at(4,0){$T$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相同矩形面积比较有向电量}\par\nobreak
+图\ref{fig:em1:drill:7:p}中两个电流矩形的面积相同，但平方积分不同：
+\[W_1=i_1^2RT=\frac{\Phi_0^2}{RT},\qquad
+W_2=i_2^2R\frac T2=\frac{2\Phi_0^2}{RT}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将平方积分与峰值一起核验}\par\nobreak
+第二种电流峰值与总热量都是第一种的两倍，符合更快改变磁通会产生更强电流的判断。\end{drillsolution}

@@ -1,0 +1,142 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{mg1:drill:1}\textbf{由两个端点角求有限段场与长线场的比值}\par\nobreak
+图\ref{fig:mg1:drill:1:s}的两个端点角互为相反数。将 $z_1=-l,z_2=l$ 代入有限导线积分，
+\[
+ B_f=\frac{\mu_0I}{4\pi a}
+ \left[\frac{z}{\sqrt{a^2+z^2}}\right]_{-l}^{l}
+ =\frac{\mu_0I}{4\pi a}\frac{2l}{\sqrt{a^2+l^2}}
+ =\frac{\mu_0Il}{2\pi a\sqrt{a^2+l^2}}.
+\]
+这里的原函数已由知识正文的 $z=a\tan\alpha$ 换元得到。长线值 $B_\infty=\mu_0I/(2\pi a)$，因此比值为 $B_f/B_\infty=l/\sqrt{a^2+l^2}<1$。
+\fig{fig:mg1:drill:1:p}{以无限长值归一化，有限段场低于长线场；阈值与曲线交点给出所需长度}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$l/a$};\draw[axis](0,0)--(0,3.6)node[above]{$B_f/B_\infty$};
+\draw[blue,thick,domain=0:4.8,samples=90]plot(\x,{3*\x/sqrt(1+\x*\x)});\draw[guide](0,3)--(5,3);\draw[orange!80!black,dashed](0,2.85)--(4.9,2.85);
+\draw[guide](3.04243,0)--(3.04243,2.85);\fill(3.04243,2.85)circle(1.6pt);\node[below]at(3.04243,0){$3.04$};\node[left]at(0,3.2){$1$};\node[left]at(0,2.65){$0.95$};
+\node at(2.7,4.1){$1-B_f/B_\infty\le0.05$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按指定分母建立误差不等式并求长宽比}\par\nobreak
+图\ref{fig:mg1:drill:1:p}中误差按题目指定以长线值为分母，要求 $1-B_f/B_\infty\le0.05$，即 $l/\sqrt{a^2+l^2}\ge0.95$。两边均非负，可以平方：$l^2\ge0.9025(a^2+l^2)$，故 $l/a\ge0.95/\sqrt{1-0.95^2}=3.04$。若改用真实有限值作分母，数值条件会略变；应先说清误差定义，再作长度估计。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:2}\textbf{分别检查径向引线与圆弧微元的叉乘}\par\nobreak
+图\ref{fig:mg1:drill:2:s}中沿径向引线的电流元与指向圆心的位置矢量共线，$\dd\bm l\times\bm r=0$，所以两段径向线对圆心各自贡献为零。弧段每一元的磁场都向纸外，大小 $\dd B=\mu_0I\dd\varphi/(4\pi R)$，从0积到 $3\pi/2$。
+\fig{fig:mg1:drill:2:p}{径向引线的叉乘为零，圆弧各微元的圆心场均向纸外}{\begin{tikzpicture}
+
+\draw[world](0:1.7)arc(0:270:1.7);\draw[world](1.7,0)--(3.2,0)(0,-1.7)--(0,-3.2);
+\draw[flow](2.9,0)--(2,0)node[midway,above]{$I$};\draw[flow](0,-2)--(0,-2.9)node[midway,right]{$I$};\draw[flow](30:1.7)arc(30:80:1.7);
+\node at(0,0){$\odot B$};\draw[guide](0,0)--(1.202,1.202)node[midway,below right]{$R$};
+\draw[force](1.202,1.202)--(.636,1.768)node[above]{$I\dd\bm l$};\draw[->,blue](1.202,1.202)--(.2,.2)node[midway,left]{$\bm r$};
+\node[align=center]at(4,-1.5){引线上 $\dd\bm l\parallel\bm r$\\$\dd\bm B=0$};\node at(2.6,-3.4){弧上 $\dd\bm l\perp\bm r$，积分角为 $3\pi/2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际弧角积分并检查方向与整圆极限}\par\nobreak
+图\ref{fig:mg1:drill:2:p}所示圆心总场为 $B=\frac{\mu_0I}{4\pi R}\int_0^{3\pi/2}\dd\varphi
+=\frac{\mu_0I}{4\pi R}[\varphi]_0^{3\pi/2}
+=\frac{3\mu_0I}{8R}$，方向向纸外。该值是整圆 $\mu_0I/(2R)$ 的 $3/4$，与弧长比例一致。若引线变为切向而非径向，它们的叉乘不再为零；“引线很细”也不是忽略其磁场的理由。题目已经对远处闭合段作近似，其贡献不在本式中。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:3}\textbf{由圆心、垂足和端点确定单边的几何参数}\par\nobreak
+图\ref{fig:mg1:drill:3:s}用六边形示意一般正多边形。每条边到圆心的垂距为 $a=R\cos(\pi/N)$，从垂足到两个端点的张角均为 $\pi/N$。有限直线段公式给出单边贡献 $B_1=\mu_0I\sin(\pi/N)/(2\pi a)$，所有边在圆心的场同向。
+\fig{fig:mg1:drill:3:p}{一般正多边形的一边及圆心构成等腰三角形；此处按六边形的一边示意}{\begin{tikzpicture}
+
+\draw[world](-1.4,-2.424871)--(1.4,-2.424871);\draw[guide](-1.4,-2.424871)--(0,0)--(1.4,-2.424871);\draw[guide](0,0)--(0,-2.424871);
+\fill(0,0)circle(1.5pt)node[above]{$O$};\node[left]at(-1.4,-2.424871){$A$};\node[right]at(1.4,-2.424871){$B$};\node[below]at(0,-2.424871){$M$};
+\draw(-.16,-2.424871)--(-.16,-2.264871)--(0,-2.264871);\node[left]at(-.8,-1.3){$R$};\node[left]at(-.08,-1.5){$a$};
+\draw[dim](0,-.85)arc(-90:-120:.85);\draw[dim](0,-.85)arc(-90:-60:.85);\node at(-.35,-.6){$\theta$};\node at(.35,-.6){$\theta$};
+\draw[flow](-1.2,-2.424871)--(1.2,-2.424871);\node[below]at(1,-2.6){$I$};\node[align=center]at(3.7,-1){$\theta=\pi/N$\\$a=R\cos\theta$};
+\node at(1.4,-3.5){所有 $N$ 条边在 $O$ 处产生同向场};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把同向单边场相加并检验圆环极限}\par\nobreak
+按图\ref{fig:mg1:drill:3:p}相加得到 $B=N B_1=\mu_0NI\tan(\pi/N)/(2\pi R)$。令 $u=\pi/N$，则 $N\tan(\pi/N)=\pi(\tan u/u)\to\pi$，故 $B\to\mu_0I/(2R)$，回到圆环结果。这里固定的是外接圆半径；若固定内切圆半径，有限 $N$ 的表达式会写成正弦形式，不能混淆两个几何长度。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:4}\textbf{把旋转电荷窄环转换为电流微元}\par\nobreak
+图\ref{fig:mg1:drill:4:s}取半径 $r$、宽 $\dd r$ 的薄环，电荷 $\dd q=2\pi\sigma r\dd r$，每转一周通过固定径线一次。故 $\dd I=\dd q\,\omega/(2\pi)=\sigma\omega r\dd r$，而不是把 $\sigma$ 直接当作电流。每一薄环在轴上坐标 $z$ 的场由圆电流轴线式得到。
+\fig{fig:mg1:drill:4:p}{解答过程：旋转带电圆盘的中心场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)ellipse(.45 and 1.4);\draw[axis](-1,0)--(4.7,0)node[right]{$z$};\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(3.7,0)circle(2pt)node[above]{$P$};\draw[dim](0,-1.8)--(3.7,-1.8)node[midway,below]{$z$};\draw[dim](0,0)--(0,1.4)node[midway,left]{$r$};\node at(0,1.4){$\odot\dd I$};\node at(0,-1.4){$\otimes\dd I$};\draw[guide](0,1.4)--(3.7,0);\node at(1.8,1.1){$\sqrt{r^2+z^2}$};\node at(1.4,2){$\dd I=\sigma\omega r\dd r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{乘圆环轴线场系数并对半径积分}\par\nobreak
+于是图\ref{fig:mg1:drill:4:p}中
+\[
+B_z(z)=\frac{\mu_0\sigma\omega}{2}\int_0^R
+\frac{r^3\dd r}{(r^2+z^2)^{3/2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取圆心值并检查积分下端与方向}\par\nobreak
+在圆心 $z=0$，对 $r>0$ 被积函数化为1，积分下端按连续极限处理：
+$B_z(0)=(\mu_0\sigma\omega/2)\int_0^R\dd r
+=(\mu_0\sigma\omega/2)[r]_0^R=\mu_0\sigma\omega R/2$，方向向纸外。积分下端虽含半径为零的环，其电流与几何系数恰好抵消而给出有限贡献。远轴处可用总磁矩检验场的 $z^{-3}$ 下降规律，但不能据远场式反推圆心值。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:5}\textbf{按三种半径分别计算包围的有向电流}\par\nobreak
+图\ref{fig:mg1:drill:5:s}仍有关于共同轴的旋转对称，场沿环向。取半径 $r$ 的圆环路：$r<a$ 时包围电流为零，因此 $B=0$；$a<r<b$ 时包围电流为 $J\pi(r^2-a^2)$；$r>b$ 时包围全部电流 $J\pi(b^2-a^2)$。
+\fig{fig:mg1:drill:5:p}{解答过程：中空圆柱电流的三段场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4,0)node[right]{$r$};\draw[axis](0,-0.2)--(0,2)node[above]{$B$};\draw[world](0,0)--(.8,0);\draw[world,domain=.8:2]plot(\x,{.8*(\x-.64/\x)});\draw[world,domain=2:3.7]plot(\x,{2.688/\x});\node[below]at(.8,0){$a$};\node[below]at(2,0){$b$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段用环路定理求场}\par\nobreak
+由图\ref{fig:mg1:drill:5:p}的包围面积逐段代入 $B=\mu_0I_{\rm enc}/(2\pi r)$，得
+\[
+B=\begin{cases}0,&r<a,\\
+\mu_0J(r^2-a^2)/(2r),&a\le r\le b,\\
+\mu_0J(b^2-a^2)/(2r),&r>b.
+\end{cases}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查两边界连续性与最大值}\par\nobreak
+在 $r=a$ 中间式为零，在 $r=b$ 与外式相等，场连续。导体内中间式的导数为 $\mu_0J(1+a^2/r^2)/2>0$，所以最大值仍在外表面，不能把“导体中电流密度均匀”等同于“场在导体内均匀”。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:6}\textbf{由中面对称和内部矩形环路求线性场}\par\nobreak
+图\ref{fig:mg1:drill:6:s}关于中面反射对称，$\bm B(0)=0$，场沿 $x$。对 $0<y<a$，取长边在中面与高度 $y$ 的矩形，包围电流为 $JyL$。上边的场向 $-x$，环路定理按大小给 $BL=\mu_0JyL$，故 $\bm B=-\mu_0Jy\bm e_x$。反射后该式也适用于负 $y$。
+\fig{fig:mg1:drill:6:p}{解答过程：厚电流层的连续磁场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-2.5,0)--(2.8,0)node[right]{$y/a$};\draw[axis](0,-1.5)--(0,1.5)node[above]{$B_x/(\mu_0Ja)$};\draw[world](-2.3,1)--(-1,1)--(1,-1)--(2.3,-1);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把半层全部电流接到两侧外场}\par\nobreak
+图\ref{fig:mg1:drill:6:p}中当 $y>a$ 时已包围半层全部电流，$B=\mu_0Ja$，方向 $-x$；当 $y<-a$ 时方向 $+x$。即内部线性变化，外部为 $\bm B=-\mu_0Ja\,\operatorname{sgn}(y)\bm e_x$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查边界与固定面电流的薄层极限}\par\nobreak
+在两个边界场连续，斜率发生改变。若将厚层压缩而保持 $K=2aJ$ 不变，就得到薄面两侧 $\mu_0K/2$ 的极限，说明薄面跳变是连续厚层的极限。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:7}\textbf{逐段求包围电流并说明可用对称环路的理由}\par\nobreak
+在图\ref{fig:mg1:drill:7:s}取同轴圆环路。$r<a$ 时只包围内柱的 $Ir^2/a^2$；$a<r<b$ 时包围全部正向电流 $I$；$r>b$ 时有向包围电流为 $I-I=0$。由于整体保留完整圆柱对称，可以把场从环量中独立提出。
+\fig{fig:mg1:drill:7:p}{解答过程：同轴正反电流的外部抵消}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-0.2,0)--(4,0)node[right]{$r$};\draw[axis](0,-0.2)--(0,2)node[above]{$B$};\draw[world](0,0)--(1,1.5);\draw[world,domain=1:2.5]plot(\x,{1.5/\x});\draw[world](2.5,0)--(3.7,0);\draw[guide](2.5,0)--(2.5,.6);\node[below]at(1,0){$a$};\node[below]at(2.5,0){$b$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{写出三段场并区分实体边界与薄面跳变}\par\nobreak
+所以图\ref{fig:mg1:drill:7:p}三段场大小依次为 $\mu_0Ir/(2\pi a^2)$、$\mu_0I/(2\pi r)$、0，前两段环向相同。内柱边界 $r=a$ 连续，薄外导体面 $r=b$ 的两侧场则发生跳变，差值 $\mu_0I/(2\pi b)$ 对应外层面电流密度。这里“净包围电流为零推出外场零”依赖圆柱对称，不能把这个推理照搬到任意形状的两条回路线。\end{drillsolution}
+\begin{drillsolution}{mg1:drill:8}\textbf{先成对消去分量，再对离散导线求和}\par\nobreak
+由图\ref{fig:mg1:drill:8:s}，第 $k$ 根线在 $P$ 的场之 $x$ 分量为 $-\mu_0Iy/[2\pi((kd)^2+y^2)]$。正、负 $k$ 两根线的 $y$ 分量相消，因此将这些 $x$ 分量求和。代入给出的恒等式，得到 $\bm B=-[\mu_0I/(2d)]\coth(\pi y/d)\bm e_x$。
+\fig{fig:mg1:drill:8:p}{离散场大小大于连续面值，近线极限和1\%阈值由同一曲线给出}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.4,0)node[right]{$y/d$};\draw[axis](0,0)--(0,4.3)node[above]{$B/B_c$};
+\draw[blue,thick,domain=.13:2,samples=120]plot({2*\x},{1.5*(1+exp(-2*pi*\x))/(1-exp(-2*pi*\x))});
+\draw[guide](0,1.5)--(4.1,1.5);\node[left]at(0,1.5){$1$};\draw[orange!80!black,dashed](0,1.515)--(4,1.515);
+\fill(1.688,1.515)circle(1.6pt);\draw[guide](1.688,0)--(1.688,1.515);\node[below]at(1.688,0){$0.844$};\node[below]at(4,0){$2$};
+\node[right,align=center]at(2,3.2){近线：$B\simeq\mu_0I/(2\pi y)$\\远处：$B\to B_c=\mu_0I/(2d)$};
+\draw[flow](3,2.3)--(1.8,1.55);\node[right]at(3,2.3){$B/B_c=1.01$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以连续面场为基准解1\%阈值}\par\nobreak
+图\ref{fig:mg1:drill:8:p}的连续面值为 $B_c=\mu_0I/(2d)$，故相对增加为 $\coth u-1$，其中 $u=\pi y/d$。用 $\coth u=(\e^{2u}+1)/(\e^{2u}-1)$，不等式化为 $2/(\e^{2u}-1)\le0.01$，依次得到 $\e^{2u}\ge201$、$y/d\ge\ln201/(2\pi)=0.844$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取近线极限，检查连续近似的适用尺度}\par\nobreak
+当 $y\ll d$，$\coth(\pi y/d)\simeq d/(\pi y)$，结果回到最近那根长直线的 $\mu_0I/(2\pi y)$，把远场与近场两种尺度接续起来。\end{drillsolution}

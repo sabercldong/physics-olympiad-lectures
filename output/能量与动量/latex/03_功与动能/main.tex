@@ -1,0 +1,24 @@
+% !TEX program = xelatex
+\documentclass[11pt,openany,fontset=fandol]{ctexbook}
+\usepackage{geometry,amsmath,amssymb,amsthm,bm,mathtools,booktabs,array,enumitem,float}
+\usepackage{tikz,fancyhdr,hyperref}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\theoremstyle{definition}\newtheorem{example}{例}[chapter]\newtheorem{drill}{练习}[chapter]
+\newenvironment{solution}{\par\smallskip\noindent\textbf{解}\quad\ignorespaces}{\par\medskip}
+\newenvironment{drillsolution}[1]{\subsubsection*{练习\ref{#1}详解}\phantomsection\label{sol:#1}\ignorespaces}{\par\medskip}
+\newenvironment{question}{\par\medskip\noindent\begin{minipage}{\linewidth}}{\end{minipage}\par\medskip}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newsavebox{\LectureFigureBox}\newcommand{\fig}[3]{\begin{figure}[H]\centering\sbox{\LectureFigureBox}{#3}\ifdim\wd\LectureFigureBox>\linewidth\resizebox{\linewidth}{!}{\usebox{\LectureFigureBox}}\else\usebox{\LectureFigureBox}\fi\caption{#2}\label{#1}\end{figure}}
+\newcommand{\answerlink}[1]{\par\smallskip\noindent\hyperref[sol:#1]{详解}}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},spring/.style={decorate,decoration={zigzag,segment length=3pt,amplitude=2pt}}}
+\input{lecture-style}
+\LectureHeader{第三讲}{功与动能}
+\begin{document}\frontmatter\LectureCover{能量与动量}{第三讲}{功与动能}\tableofcontents\mainmatter
+\setcounter{chapter}{2}\chapter{功与动能}
+\input{theory}
+\input{examples}
+\input{summary}
+\input{practice}
+\input{answers}
+\end{document}

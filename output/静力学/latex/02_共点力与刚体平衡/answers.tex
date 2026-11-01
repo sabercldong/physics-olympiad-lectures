@@ -1,0 +1,95 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{s2:drill:1}\textbf{用共同水平分量表示两端张力}\par\nobreak
+图\ref{fig:s2:drill:1:s}水平平衡得两绳水平分量相等，记为$H$，则竖直分量分别为$H\cot\theta$和$H\cot\varphi$。它们之和等于$mg$。
+两端张力沿各自绳方向，左、右的竖直分量为$T_L\cos\theta,T_R\cos\varphi$。水平式$T_L\sin\theta=T_R\sin\varphi=H$使它们可分别化成$H\cot\theta,H\cot\varphi$。再由竖直式得$H=mg/(\cot\theta+\cot\varphi)$，而不是先假定两张力相等。
+\fig{fig:s2:drill:1:p}{水平分量相消，竖直分量分别带入对 $B$ 的力矩}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0);\node[above right]at(0,0){$A$};\node[above left]at(4,0){$B$};\draw[force](0,0)--(0,1.5)node[left]{$H\cot\theta$};\draw[force](4,0)--(4,1)node[right]{$H\cot\varphi$};\draw[force](0,0)--(-.8,0)node[left]{$H$};\draw[force](4,0)--(4.8,0)node[right]{$H$};\draw[force](1.8,0)--(1.8,-1.2)node[left]{$mg$};\draw[dim](1.8,-1.7)--(4,-1.7)node[midway,below]{$d$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对右端取矩确定重心位置}\par\nobreak
+图\ref{fig:s2:drill:1:p}对右端取矩：$(H\cot\theta)l=mg\,d$，所以
+\[
+d=\frac{l\cot\theta}{\cot\theta+\cot\varphi}
+=\frac{l\tan\varphi}{\tan\theta+\tan\varphi}.
+\]
+若两角相等则$d=l/2$；左绳更接近竖直时承担更多重量，重心更靠左。两角同时为零是退化情形，不能直接代入$0/0$。\end{drillsolution}
+\begin{drillsolution}{s2:drill:2}\textbf{选两球整体消去斥力和绳力矩}\par\nobreak
+图\ref{fig:s2:drill:2:s}两球不等高，斥力一般不水平，直接用单球的$\tan\theta=F/mg$会出错。取两球及轻绳整体，斥力属于内力且沿连心线，其总力矩抵消。
+关于同一悬点，两个绳张力的作用线都通过取矩点，力矩为零；两球间斥力沿连心线、等大反向，在整体力矩中相消。剩下的只有两球重力，力臂分别为$l\sin45^\circ$和$l\sin30^\circ$，转矩方向相反。质量比因此由力矩平衡决定，不需要知道斥力大小。
+\fig{fig:s2:drill:2:p}{对共同悬点取矩，仅保留两个重力的水平力臂}{\begin{tikzpicture}
+
+\fill(0,3)circle(2pt)node[above]{$O$};\draw[guide](0,3)--(0,-1.3);\draw[guide](-1.6971,1.3029)--(0,3)--(1.2,.9215);\draw[force](-1.6971,1.3029)--(-1.6971,-.2)node[left]{$m_1g$};\draw[force](1.2,.9215)--(1.2,-.5)node[right]{$m_2g$};\draw[dim](-1.6971,-.8)--(0,-.8)node[midway,below]{$l\sin45^\circ$};\draw[dim](0,-1.6)--(1.2,-1.6)node[midway,below]{$l\sin30^\circ$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{读取两重力臂并求质量比}\par\nobreak
+图\ref{fig:s2:drill:2:p}关于悬点取矩，$m_1gl\sin45^\circ=m_2gl\sin30^\circ$，所以$m_1/m_2=\sin30^\circ/\sin45^\circ=1/\sqrt2$。绳等长是消去$l$的必要条件。\end{drillsolution}
+\begin{drillsolution}{s2:drill:3}\textbf{用矢量相减求相对滑动方向}\par\nobreak
+图\ref{fig:s2:drill:3:s}取东为$x$、北为$y$。相对速度$\boldsymbol v_{\rm rel}=(v,-v)$，方向东南，大小$\sqrt2v$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{归一化方向后求摩擦分量}\par\nobreak
+法向方向没有其他力且无加速度，所以$N=mg$。动摩擦应写成矢量式$\boldsymbol f=-\mu N\,\boldsymbol v_{\rm rel}/|\boldsymbol v_{\rm rel}|$。将$(v,-v)$除以$\sqrt2v$得到单位向量$(1/\sqrt2,-1/\sqrt2)$，再乘负号和$\mu mg$，即可逐项得到所列分量。
+\fig{fig:s2:drill:3:p}{解答过程：两运动板间的滑动摩擦}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(3,0)node[right]{东};\draw[axis](0,0)--(0,3)node[above]{北};\draw[flow](0,0)--(2,-2)node[right]{$\boldsymbol v_{\rm rel}$};\draw[force](0,0)--(-1.4,1.4)node[left]{$\boldsymbol f$};\end{tikzpicture}}
+
+图\ref{fig:s2:drill:3:p}摩擦反向指西北，大小$\mu mg$，分量为$(-\mu mg/\sqrt2,\mu mg/\sqrt2)$。不能沿东、西、南、北分别赋予$\mu mg$，否则摩擦总大小会被算成$\sqrt2\mu mg$。\end{drillsolution}
+\begin{drillsolution}{s2:drill:4}\textbf{区分带面法向力与挡板反力}\par\nobreak
+图\ref{fig:s2:drill:4:s}相对传送带速度为$(-v,v')$，摩擦为$\mu mg(v,-v')/\sqrt{v^2+v'^2}$。挡板反力水平，沿挡板投影可将其消去。
+取水平面内右、上分别为$x,y$，木块速度$(0,v')$，带速$(v,0)$，两者相减得到$(-v,v')$。与重力平衡的法向力竖直向上，大小$mg$；挡板的反力却位于水平面内，两种“支持力”不能混同。沿挡板方向$y$只有驱动力与摩擦分量，故匀速条件为$F-\mu mgv'/\sqrt{v^2+v'^2}=0$。
+\fig{fig:s2:drill:4:p}{解答过程：传送带与光滑挡板}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(1,-1)node[anchor=west]{$f$};\draw[force](2.5,1)--++(-1,0)node[anchor=east]{$N_b$};\draw[force](2.5,1)--++(0,1)node[anchor=south]{$F$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿允许方向求驱动力并验横向接触}\par\nobreak
+图\ref{fig:s2:drill:4:p}中沿挡板的 $y$ 方向平衡给
+\[
+F=\frac{\mu mgv'}{\sqrt{v^2+v'^2}}.
+\]
+水平反力大小为$\mu mgv/\sqrt{v^2+v'^2}$，应由挡板向左提供，图中挡板须位于木块右侧。$v'\to0$时驱动力趋零，但横向挡板反力仍存在。\end{drillsolution}
+\begin{drillsolution}{s2:drill:5}\textbf{将法向支持代入水平平衡}\par\nobreak
+图\ref{fig:s2:drill:5:s}中$N=G-F\sin\alpha$，水平平衡$F\cos\alpha=\mu N$。代入得$F=\mu G/(\cos\alpha+\mu\sin\alpha)$。
+将法向式代入水平式，$F\cos\alpha=\mu(G-F\sin\alpha)$，把含$F$项移到左边得到$F(\cos\alpha+\mu\sin\alpha)=\mu G$。为了使分式中的$F$最小，应使分母最大；分母必须在$N\ge0$的接触范围内优化，不能先令$N=0$来消除摩擦。
+\fig{fig:s2:drill:5:p}{解答过程：斜向拉箱的最小力}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(1.2,0.8)node[anchor=west]{$F$};\draw[force](2.5,1)--++(0,1.3)node[anchor=south]{$N$};\draw[force](2.5,1)--++(-1,0)node[anchor=east]{$\mu N$};\draw[force](2.5,1)--++(0,-1.3)node[anchor=north]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最优拉力方向并验证未离地}\par\nobreak
+图\ref{fig:s2:drill:5:p}把分母写成$\sqrt{1+\mu^2}\cos(\alpha-\arctan\mu)$。最大值为$\sqrt{1+\mu^2}$，在$\alpha=\arctan\mu$取得，故$F_{\min}=\mu G/\sqrt{1+\mu^2}$。此时$N=G/(1+\mu^2)>0$，接触有效。\end{drillsolution}
+\begin{drillsolution}{s2:drill:6}\textbf{沿斜面投影确定挡板必须提供的分量}\par\nobreak
+图\ref{fig:s2:drill:6:s}斜面的法向力方向固定。把$G$分解为沿该法线和沿斜面的两个分量，沿斜面向下的分量为$G\sin\beta$，必须由挡板力的沿斜面分量平衡。
+沿斜面上坡取正，斜面自身的支持力完全没有这个方向的分量，所以挡板力必须提供固定投影$G\sin\beta$。一个矢量的模不小于任一方向投影的绝对值，故$N_b\ge G\sin\beta$；只有其方向恰沿上坡时才不含多余的法向分量。
+\fig{fig:s2:drill:6:p}{解答过程：挡板支持力的最小值}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(1.2,0.5)node[anchor=west]{$N_b$};\draw[force](2.5,1)--++(-0.5,1.2)node[anchor=east]{$N_s$};\draw[force](2.5,1)--++(0,-1.5)node[anchor=north]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由投影不等式求最小值及可行条件}\par\nobreak
+图\ref{fig:s2:drill:6:p}若挡板力与上坡方向夹角$\delta$，$N_b\cos\delta=G\sin\beta$，因此$N_b\ge G\sin\beta$，在$\delta=0$时取等号。即挡板法线沿斜面向上，挡板本身与斜面垂直。此时斜面支持力$G\cos\beta>0$，接触有效；若转动范围排除了该角度，最小值只能在允许边界求。\end{drillsolution}
+\begin{drillsolution}{s2:drill:7}\textbf{对三球整体沿板投影求墙反力}\par\nobreak
+图\ref{fig:s2:drill:7:s}取三个圆柱整体，沿板方向平衡：墙反力$N$的投影$N\sin\theta=3G\cos\theta$，故$N=3G\cot\theta$。
+墙与板夹角为$\theta$，板上坡方向单位向量为$(\sin\theta,\cos\theta)$，因此墙水平推力的上坡投影是$N\sin\theta$。三个重力的下坡投影相加为$3G\cos\theta$。最下球心位于墙右$r$处，其到两边等距，处于夹角平分线上，所以高度为$r\cot(\theta/2)$。
+\fig{fig:s2:drill:7:p}{整体外力及墙反力的作用高度，内部接触力相消}{\begin{tikzpicture}
+
+\draw[world](0,0)--(5,2);\draw[guide](0,0)--(0,3);\draw[force](0,.7385)--(1,.7385)node[above]{$N$};\draw[force](5,2)--(3.6,2)node[above]{$P$};\foreach \xx/\yy in {.5/.7385,1.4285/1.1099,2.357/1.4813}{\fill(\xx,\yy)circle(2pt);\draw[force](\xx,\yy)--++(0,-.8)node[below]{$G$};}\draw[force](0,0)--(-.8,0)node[left]{$A_x$};\draw[force](0,0)--(0,.6)node[left]{$A_y$};\node[below]at(0,0){$A$};\draw[guide](5,2)--(5,0);\draw[dim](5.5,0)--(5.5,2)node[midway,right]{$l\cos\theta$};\draw[dim](-1.6,0)--(-1.6,.7385)node[midway,left]{$h$};\node at(2.5,3.2){$h=r\cot(\theta/2)$};\node at(2.5,-1.3){$x_i=r+2(i-1)r\sin\theta$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扩大对象为板和三球，取矩求绳力}\par\nobreak
+图\ref{fig:s2:drill:7:p}中的铰链反力 $A_x,A_y$ 均通过 $A$，取矩时消去。墙反力 $N$ 向右，关于 $A$ 产生顺时针力矩，与三个重力矩同号；绳力 $P$ 向左，产生逆时针力矩。最下球心到墙距离$r$、到铰点高度$r\cot(\theta/2)$；三球中心的水平坐标依次为$r,r+2r\sin\theta,r+4r\sin\theta$。再取板及三球整体对铰点的矩，得到
+\[
+Pl\cos\theta=Nr\cot(\theta/2)+3Gr(1+2\sin\theta),
+\]
+所以$P=\frac{3Gr}{l\cos\theta}[\cot\theta\cot(\theta/2)+1+2\sin\theta]$。球与球的力已作为内力消去，墙反力的力矩仍须保留。
+
+还须核对有限板长。最下圆柱在板上的接触点距铰点
+$s_1=r\cot(\theta/2)$，相邻接触点沿板相距 $2r$，所以第三个接触点在
+$s_3=r\cot(\theta/2)+4r$。上述解要求 $0<\theta<\pi/2$ 且
+\[
+l\ge r\cot(\theta/2)+4r.
+\]
+若不满足这个条件，第三圆柱的所需接触点已越过板端，题设的三柱同时接触构型不能成立。\end{drillsolution}

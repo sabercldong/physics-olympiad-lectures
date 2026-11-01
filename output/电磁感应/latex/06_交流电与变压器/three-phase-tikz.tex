@@ -1,0 +1,32 @@
+\begin{tikzpicture}[scale=.85]
+\begin{scope}
+\node at(1.4,4.1){星形};
+\coordinate(a)at(1.4,2.8);\coordinate(b)at(0,0);\coordinate(c)at(2.8,0);
+\coordinate(n)at(1.4,1);
+\draw[world](a)--(n)--(b) (n)--(c);
+\node[draw,fill=white]at(1.4,1.95){$Z$};
+\node[draw,fill=white]at(.7,.5){$Z$};
+\node[draw,fill=white]at(2.1,.5){$Z$};
+\draw[flow](1.4,3.75)--(a)node[midway,right]{$I_a$};
+\draw[flow](-1,0)--(b)node[midway,above]{$I_b$};
+\draw[flow](3.8,0)--(c)node[midway,above]{$I_c$};
+\fill(n)circle(2pt)node[right]{$N$};
+\draw[guide](n)--(1.4,-.65)node[below]{$O$};
+\node[above left]at(a){$a$};\node[below left]at(b){$b$};\node[below right]at(c){$c$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\node at(1.4,4.1){三角形};
+\coordinate(a)at(1.4,2.8);\coordinate(b)at(0,0);\coordinate(c)at(2.8,0);
+\draw[world](a)--(b)--(c)--cycle;
+\node[draw,fill=white]at(.7,1.4){$Z$};
+\node[draw,fill=white]at(2.1,1.4){$Z$};
+\node[draw,fill=white]at(1.4,0){$Z$};
+\draw[flow](1.4,3.75)--(a)node[midway,right]{$I_a$};
+\draw[flow](-1,0)--(b)node[midway,above]{$I_b$};
+\draw[flow](3.8,0)--(c)node[midway,above]{$I_c$};
+\draw[flow,blue](1.15,2.3)--(.9,1.8)node[midway,left]{$I_{ab}$};
+\draw[flow,blue](.4,0)--(.9,0)node[midway,below]{$I_{bc}$};
+\draw[flow,blue](2.55,.5)--(2.3,1)node[midway,right]{$I_{ca}$};
+\node[above left]at(a){$a$};\node[below left]at(b){$b$};\node[below right]at(c){$c$};
+\end{scope}
+\end{tikzpicture}

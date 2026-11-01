@@ -1,0 +1,11 @@
+\fig{fv:o4:pupil}{目镜对孔径光阑成像，确定眼睛应放置的轴向位置}{\begin{tikzpicture}[x=.8cm,y=.85cm]
+\draw[->](-.5,0)--(9,0);\draw[thick](0,-1.3)--(0,1.3);\draw[thick](5,-1.6)--(5,1.6);\draw[thick](8,-.6)--(8,.6);
+\draw[->,blue](0,1)--(5,1)--(8,-.6);\draw[->,red](0,1)--(5,0)--(8,-.6);
+\node[above]at(0,1.4){物镜口径};\node[above]at(5,1.7){目镜};\node[above]at(8,.9){出瞳};
+\draw[<->](0,-1.9)--(5,-1.9)node[midway,below]{$d$};\draw[<->](5,-1.9)--(8,-1.9)node[midway,below]{$v_p$};
+\end{tikzpicture}}
+以开普勒望远镜为例，若物镜边缘确为限制光束的光阑，图\ref{fv:o4:pupil}中它距目镜 $d$，出瞳便是目镜对这个圆孔的实像。由 $1/d+1/v_p=1/f_e$，有
+\[
+ v_p=\frac{df_e}{d-f_e},\qquad D_p=\frac{v_p}{d}D_o.
+\]
+这里 $D_o,D_p$分别为物镜孔径和出瞳直径；把无穷远调焦条件 $d=f_o+f_e$代入，得到 $D_p=D_o f_e/f_o$。眼睛若偏离这一截面，视场边缘的光束会先被截去。若另有镜筒口径成为限制光阑，就应先找真正的孔径光阑，再求其像，不能继续按物镜口径直接计算。

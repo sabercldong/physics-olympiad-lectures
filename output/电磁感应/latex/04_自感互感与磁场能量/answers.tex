@@ -1,0 +1,304 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em4:drill:1}\textbf{按同名端方向列次级回路方程}\par\nobreak
+由图\ref{fig:em4:drill:1:s}次级沿流入同名端为正，有 $L_2\dot i_2+Ri_2=-M\dot i_1$。初级稳定以后，次级经电阻衰减到零。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两端电流均为零消去自感端点项}\par\nobreak
+全程积分，
+\[L_2[i_2(\infty)-i_2(0)]+R\int_0^\infty i_2\dd t=-M[I_0-0].\]
+\fig{fig:em4:drill:1:p}{线性上升初级电流的一种示例：次级电流的有向面积为负，充分衰减后回零}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5.5,0)node[right]{$t/\tau$};\draw[axis](0,-1.9)--(0,.6)node[above]{$i_2/(MI_0/L_2)$};
+\fill[blue!12](0,0)--plot[domain=0:1,samples=40](\x,{-(1-exp(-\x))})--plot[domain=1:5,samples=70](\x,{-(1-exp(-1))*exp(-(\x-1))})--(5,0)--cycle;
+\draw[world,blue,domain=0:1,samples=40]plot(\x,{-(1-exp(-\x))});\draw[world,blue,domain=1:5,samples=70]plot(\x,{-(1-exp(-1))*exp(-(\x-1))});
+\draw[guide](1,0)--(1,-.8);\node[above]at(1,0){$1$};\node at(3.4,-1.5){$Q=\int i_2\dd t<0$};\node at(2.7,-2.4){示例上升时间 $T=\tau=L_2/R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将有向总电量与依赖波形的峰值、热量区分}\par\nobreak
+图\ref{fig:em4:drill:1:p}取初级在 $T=\tau=L_2/R$ 内线性上升为示例。上升段有 $\dot i_1=I_0/T$，故
+$\dot i_2+i_2/\tau=-MI_0/(L_2T)$。乘以积分因子$\e^{t/\tau}$，左侧按乘积法则合并：
+\[
+\frac{\dd}{\dd t}\bigl(i_2\e^{t/\tau}\bigr)
+=\e^{t/\tau}\bigl(\dot i_2+i_2/\tau\bigr)
+=-\frac{MI_0}{L_2T}\e^{t/\tau}.
+\]
+使用$i_2(0)=0$，在上升段$0\le t\le T$积分，
+\[
+i_2(t)\e^{t/\tau}
+=-\frac{MI_0}{L_2T}\int_0^t\e^{s/\tau}\,\dd s
+=-\frac{MI_0}{L_2T}[\tau\e^{s/\tau}]_0^t.
+\]
+在图示 $T=\tau$ 下，得到
+$i_2=-(MI_0/L_2)(1-\e^{-t/\tau})$。
+随后令$s=t-T$，无源方程给$\dd i_2/i_2=-\dd s/\tau$。由接续初值$i_2(T)<0$确定积分边界：
+\[
+\int_{i_2(T)}^{i_2(t)}\frac{\dd \xi}{\xi}
+=-\int_0^s\frac{\dd \sigma}{\tau},\qquad
+[\ln|\xi|]_{i_2(T)}^{i_2(t)}=-\frac{s}{\tau}.
+\]
+由于衰减过程中电流保持负号，得到$\ln[i_2(t)/i_2(T)]=-s/\tau$，所以$i_2(t)=i_2(T)\e^{-(t-T)/\tau}$。图形的具体峰值依赖上升规律，而两端均为零的积分结论不变。因此有向电量 $Q=-MI_0/R$。它与初级上升快慢无关，但峰值和热量有关；若次级没有充分回零，式中电感端点项不能删去。\end{drillsolution}
+\begin{drillsolution}{em4:drill:2}\textbf{固定第二电流并将完整磁能配方}\par\nobreak
+图\ref{fig:em4:drill:2:s}的磁能为 $W=\tfrac12L_1i_1^2+Mi_1I+\tfrac12L_2I^2$。按 $i_1$ 配方，
+\[W=\frac{L_1}{2}\left(i_1+\frac{MI}{L_1}\right)^2+\frac{I^2}{2}\left(L_2-\frac{M^2}{L_1}\right).\]
+\fig{fig:em4:drill:2:p}{固定第二电流后，磁能为抛物线；图示 $MI>0$、非完全耦合的情形}{\begin{tikzpicture}
+
+\draw[axis](-2.3,0)--(2.5,0)node[right]{$i_1$};\draw[axis](0,-.2)--(0,4)node[above]{$W$};
+\draw[world,domain=-1.8:1.8,samples=60]plot(\x,{.5*(\x+.6)^2+.4});\draw[guide](-.6,0)--(-.6,.4)--(0,.4);\fill(-.6,.4)circle(2pt);
+\node[below]at(-.6,0){$-MI/L_1$};\node[right]at(.2,.4){$W_{\min}\ge0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求抛物线顶点并施加场能非负条件}\par\nobreak
+图\ref{fig:em4:drill:2:p}中的抛物线在 $i_1=-MI/L_1$ 处取最小值 $W_{\min}=I^2(L_2-M^2/L_1)/2$。由于任意可实现电流的磁能不能为负，括号非负，即得所证。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释等号的理想场抵消含义}\par\nobreak
+完全耦合时最小值可为零，表示两个绕组的磁场在理想模型中完全抵消。\end{drillsolution}
+\begin{drillsolution}{em4:drill:3}\textbf{固定电流时先分配电源输入功}\par\nobreak
+图\ref{fig:em4:drill:3:s}中向右插入使自感增加。维持电流时，电源功为 $I\dd(LI)=I^2\dd L$，磁能增加 $I^2\dd L/2$；余下部分为机械功，因此 $F=I^2\alpha/2$，$W_{\rm mech}=I^2\alpha d/2$。
+\fig{fig:em4:drill:3:p}{磁力均向自感增大的方向；同一初态下固定电流的力恒定，固定磁链的力减小}{\begin{tikzpicture}
+
+\fill[gray!25](-1,.4)rectangle(2,1.1);\draw[world](-1,.4)rectangle(2,1.1);\draw[world](0,0)rectangle(4,1.5);
+\foreach\x in {.3,.7,1.1,1.5,1.9,2.3,2.7,3.1,3.5}{\draw[world](\x,0)--(\x,1.5);}
+\draw[guide](0,-.2)--(0,-1);\draw[guide](2,-.2)--(2,-1);\draw[dim](0,-.5)--(2,-.5)node[midway,below]{$x$};\node at(2,2){$L(x)=L_0+\alpha x$};
+
+\draw[force,blue](.6,2.8)--(2.6,2.8)node[midway,above]{$F>0$};
+\begin{scope}[xshift=6cm]\draw[axis](-.2,0)--(3.4,0)node[right]{$\alpha x/L_0$};\draw[axis](0,-.2)--(0,2.5)node[above]{$F/F_0$};
+\draw[blue,thick](0,2)--(3,2);\draw[red,thick,domain=0:3,samples=60]plot(\x,{2/(1+\x)^2});\node[left]at(0,2){$1$};\node[right]at(3,2){固定 $I$};\node[red]at(2.5,.7){固定 $\Psi$};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定磁链时先求随位置变化的电流与磁能}\par\nobreak
+图\ref{fig:em4:drill:3:p}以 $\Psi_0=L_0I,F_0=\alpha I^2/2$ 比较同一初态的两种控制。对一般给定的 $\Psi_0$，孤立超导回路磁链固定，$i=\Psi_0/L(x)$。磁能 $W_B=\Psi_0^2/[2L(x)]$，对 $x$ 求导时，$\dd[1/L(x)]/\dd x=-\alpha/L(x)^2$，所以 $F=\alpha\Psi_0^2/[2L(x)^2]$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分变化的吸入力并核对外力功的符号}\par\nobreak
+机械功应沿路积分，令 $z=L_0+\alpha x,\dd z=\alpha\dd x$，得到 $\int_0^d F\dd x=(\Psi_0^2/2)\int_{L_0}^{L_0+\alpha d}z^{-2}\dd z$，原函数 $\int z^{-2}\dd z=-z^{-1}$，代入上下限后，
+\[W_{\rm mech}=\frac{\Psi_0^2}{2}\left(\frac1{L_0}-\frac1{L_0+\alpha d}\right).\]
+两种情况下力均向自感增大的方向，但固定磁链时电流下降、力也下降。这里机械功指磁力的正功；准静态外力做功与之相反。\end{drillsolution}
+\begin{drillsolution}{em4:drill:4}\textbf{在两导体之间用安培环路求场}\par\nobreak
+图\ref{fig:em4:drill:4:s}中对半径 $s$ 的同心圆使用安培定律，$B\,2\pi s=\mu I$，所以 $B=\mu I/(2\pi s)$，适用 $a<s<b$。
+\fig{fig:em4:drill:4:p}{能量积分取整圈薄壳，磁通积分取径向—轴向窄带；二者须使用不同微元}{\begin{tikzpicture}
+
+
+\fill[blue!8,even odd rule](0,0)circle(1.65)(0,0)circle(.65);
+\draw[world](0,0)circle(.65)(0,0)circle(1.65);\node at(0,0){$\odot I$};
+\draw[guide](0,0)circle(1.15);\draw[flow,blue](.813,.813)arc(45:140:1.15);\node[above]at(-.8,1.1){$B(s)$};
+\draw[dim](0,0)--(.65,0)node[midway,below]{$a$};\draw[dim](0,0)--(0,-1.65)node[midway,left]{$b$};\node at(0,-2.3){外导体回流 $\otimes I$};
+\begin{scope}[xshift=4cm]
+\draw[axis](0,0)--(3.8,0)node[right]{$s$};\draw[axis](0,0)--(0,2.3)node[above]{$z$};
+\fill[blue!12](.7,0)rectangle(3,1.8);\draw[world](.7,0)rectangle(3,1.8);
+\fill[blue!40](1.7,0)rectangle(1.9,1.8);\draw[guide](1.7,0)--(1.7,-.6);
+\node[below]at(.7,0){$a$};\node[below]at(3,0){$b$};\node at(2.5,.9){$\otimes B$};\node[left]at(.7,.9){$\ell$};
+\node at(1.8,-.9){$\dd S=\ell\dd s$};\end{scope}
+
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按单位长度圆柱壳积分场能}\par\nobreak
+图\ref{fig:em4:drill:4:p}左图取厚度 $\dd s$ 的整圈圆柱壳，单位长度体积 $2\pi s\dd s$，故\[W'_B=\int_a^b[B^2/(2\mu)]2\pi s\dd s=\frac{\mu I^2}{4\pi}\int_a^b\frac{\dd s}{s}
+=\frac{\mu I^2}{4\pi}[\ln s]_a^b
+=\frac{\mu I^2}{4\pi}\ln\frac ba.\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较磁能系数并区分单位长度量与整段量}\par\nobreak
+由 $W'_B=L'I^2/2$ 得 $L'=\mu\ln(b/a)/(2\pi)$。若取轴向长度 $\ell$，两导体间磁能为 $W_B=\ell W'_B=\mu I^2\ell\ln(b/a)/(4\pi)$。$b\to a$ 时此区域能量趋零，但这不表示被本题忽略的内部自感也为零。\end{drillsolution}
+\begin{drillsolution}{em4:drill:5}\textbf{统一端压并分别消去另一支路电流导数}\par\nobreak
+图\ref{fig:em4:drill:5:s}两支路端压相等，故 $u=L_1\dot i_1+M\dot i_2=M\dot i_1+L_2\dot i_2$。将第一等式乘 $L_2$、第二等式乘 $M$ 后相减，消去 $\dot i_2$，得 $(L_1L_2-M^2)\dot i_1=(L_2-M)u$；反过来消去 $\dot i_1$，得 $(L_1L_2-M^2)\dot i_2=(L_1-M)u$。题设行列式为正，可以相除，因此 $\dot i_1=u(L_2-M)/(L_1L_2-M^2)$、$\dot i_2=u(L_1-M)/(L_1L_2-M^2)$。
+\fig{fig:em4:drill:5:p}{端口电流为支路电流的代数和，不能预先假定均分}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.3,2.4)--(3.3,1.95);\draw[world](3.3,0.35)arc(-90:90:.2);\draw[world](3.3,0.75)arc(-90:90:.2);\draw[world](3.3,1.15)arc(-90:90:.2);\draw[world](3.3,1.5500000000000003)arc(-90:90:.2);\draw[world](3.3,.35)--(3.3,0);\fill(3.0799999999999996,2.15)circle(2pt);
+\draw[world](0,2.4)--(0,2.9)--(3.3,2.9)--(3.3,2.4) (0,0)--(0,-.5)--(3.3,-.5)--(3.3,0);
+\node[left]at(0,1.1){$L_1$};\node[right]at(3.7,1.1){$L_2$};\fill(1.65,2.9)circle(2pt)node[above]{$A$};\fill(1.65,-.5)circle(2pt)node[below]{$B$};
+\draw[flow,red](-.7,2.7)--(-.7,1.9)node[left]{$i_1$};\draw[flow,red](4.1,2.7)--(4.1,1.9)node[right]{$i_2$};\node at(1.65,1.5){$M>0$};\node at(1.65,.6){$u=V_A-V_B$};
+
+\draw[flow,blue](1.65,4.1)--(1.65,3.1)node[midway,right]{$i=i_1+i_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总电流导数定义端口等效电感}\par\nobreak
+图\ref{fig:em4:drill:5:p}总电流导数是两者相加，因此
+\[L_p=\frac{u}{\dot i_1+\dot i_2}=\frac{L_1L_2-M^2}{L_1+L_2-2M}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查无互感与相等自感的极限}\par\nobreak
+无互感时为通常并联值 $L_1L_2/(L_1+L_2)$；相等自感 $L$ 时，分子 $L^2-M^2=(L-M)(L+M)$，分母为 $2(L-M)$，约去非零的 $L-M$ 后得 $(L+M)/2$，与对称分流结果一致。完全耦合的不等匝数直接并联不属于所给非退化条件，不能把分子设零后草率解释。\end{drillsolution}
+\begin{drillsolution}{em4:drill:6}\textbf{分别保存两回路初始磁链并解联立方程}\par\nobreak
+在图\ref{fig:em4:drill:6:s}中，每个闭合超导回路分别保持总磁链。按初始值写出 $Li_1+Mi_2=LI_0$、$Mi_1+Li_2=0$。先从第二式得 $i_2=-Mi_1/L$，代第一式求得
+\[i_1=\frac{L^2I_0}{L^2-M^2},\qquad i_2=-\frac{LMI_0}{L^2-M^2}.\]
+\fig{fig:em4:drill:6:p}{实际次级电流从同名端流出；外力相向推动，磁作用阻碍靠近}{\begin{tikzpicture}
+\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](3.5,2.4)--(3.5,1.95);\draw[world](3.5,0.35)arc(-90:90:.2);\draw[world](3.5,0.75)arc(-90:90:.2);\draw[world](3.5,1.15)arc(-90:90:.2);\draw[world](3.5,1.5500000000000003)arc(-90:90:.2);\draw[world](3.5,.35)--(3.5,0);\fill(3.28,2.15)circle(2pt);
+\draw[world](0,2.4)--(-1.2,2.4)--(-1.2,0)--(0,0) (3.5,2.4)--(4.7,2.4)--(4.7,0)--(3.5,0);
+\node[right]at(.4,1.1){$L$};\node[left]at(3.5,1.1){$L$};\node at(1.75,2.8){$0<M<L$};
+
+\draw[flow,red](0,3.2)--(0,2.5)node[midway,left]{$i_1>0$};\draw[flow,blue](3.5,2.5)--(3.5,3.2)node[midway,right]{$|i_2|$};
+\draw[force](-.6,-.6)--(.5,-.6)node[midway,below]{$F_{\text{外}}$};\draw[force](4.1,-.6)--(3,-.6)node[midway,below]{$F_{\text{外}}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将两电流代回完整磁能求外力功}\par\nobreak
+图\ref{fig:em4:drill:6:p}中两电流反向，靠近时都发生变化，不能保持初级 $I_0$ 不动。利用 $W_B=(i_1\Psi_1+i_2\Psi_2)/2$，得 $W_B=LI_0i_1/2=L^3I_0^2/[2(L^2-M^2)]$。相对初始 $LI_0^2/2$，能量增加 $LI_0^2M^2/[2(L^2-M^2)]$，无电阻也无外电源，故这正是准静态外力需要提供的正功，磁作用阻碍靠近。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查完全耦合端点与给定初态的相容性}\par\nobreak
+形式上 $M\to L$ 时电流和能量发散，表示给定初始磁链与完全耦合约束不相容，不能把模型延伸到该端点。实际漏磁、自感变化、超导临界电流等会限制这一过程；本题的数学解只用于明确给定的 $M<L$ 范围。\end{drillsolution}
+\begin{drillsolution}{em4:drill:7}\textbf{反解电流并将磁能化成两个平方项}\par\nobreak
+由图\ref{fig:em4:drill:7:s}的同名端约定，$W=L(i_1^2+i_2^2)/2+Mi_1i_2$。反解电流为 $i_1=i_++i_-,i_2=i_+-i_-$，展开有 $i_1^2+i_2^2=2(i_+^2+i_-^2)$、$i_1i_2=i_+^2-i_-^2$，所以
+\[W=(L+M)i_+^2+(L-M)i_-^2.\]
+\fig{fig:em4:drill:7:p}{固定 $i_1^2+i_2^2=I^2$ 时，同向等幅电流给出最大能量，反向等幅给出最小能量}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](2.5,2.4)--(2.5,1.95);\draw[world](2.5,0.35)arc(-90:90:.2);\draw[world](2.5,0.75)arc(-90:90:.2);\draw[world](2.5,1.15)arc(-90:90:.2);\draw[world](2.5,1.5500000000000003)arc(-90:90:.2);\draw[world](2.5,.35)--(2.5,0);\fill(2.28,2.15)circle(2pt);\node at(1.25,3.8){同向组合};\draw[flow,red](0,3.3)--(0,2.5)node[midway,left]{$i_1$};\draw[flow,blue](2.5,3.3)--(2.5,2.5)node[midway,right]{$i_2$};\node at(1.25,1.2){$M>0$};\node at(1.25,-.6){$W=(L+M)I^2/2$};\end{scope}\begin{scope}[xshift=5cm]\draw[world](0,2.4)--(0,1.95);\draw[world](0,0.35)arc(-90:90:.2);\draw[world](0,0.75)arc(-90:90:.2);\draw[world](0,1.15)arc(-90:90:.2);\draw[world](0,1.5500000000000003)arc(-90:90:.2);\draw[world](0,.35)--(0,0);\fill(-0.22,2.15)circle(2pt);\draw[world](2.5,2.4)--(2.5,1.95);\draw[world](2.5,0.35)arc(-90:90:.2);\draw[world](2.5,0.75)arc(-90:90:.2);\draw[world](2.5,1.15)arc(-90:90:.2);\draw[world](2.5,1.5500000000000003)arc(-90:90:.2);\draw[world](2.5,.35)--(2.5,0);\fill(2.28,2.15)circle(2pt);\node at(1.25,3.8){反向组合};\draw[flow,red](0,3.3)--(0,2.5)node[midway,left]{$i_1$};\draw[flow,blue](2.5,2.5)--(2.5,3.3)node[midway,right]{$|i_2|$};\node at(1.25,1.2){$M>0$};\node at(1.25,-.6){$W=(L-M)I^2/2$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定幅度约束下分别选取两个组合求极值}\par\nobreak
+图\ref{fig:em4:drill:7:p}对应两种磁场叠加方式。约束为 $i_+^2+i_-^2=I^2/2$。因为 $L+M>L-M>0$，最大能量在全部幅度分配给 $i_+$ 时取得，$W_{\max}=(L+M)I^2/2$，此时 $i_1=i_2=\pm I/\sqrt2$；最小能量 $W_{\min}=(L-M)I^2/2$，此时 $i_1=-i_2=\pm I/\sqrt2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用弱耦合与完全耦合极限检查剩余能量}\par\nobreak
+反向磁场相互抵消但不一定完全抵消，因为 $M<L$。当耦合弱 $M\to0$，两种组合能量相同；只有理想完全耦合的极限下，反向组合能量才可趋零。这个分解也为后面的两个耦合振荡频率提供磁能系数。\end{drillsolution}
+\begin{drillsolution}{em4:drill:8}\textbf{按电流对磁链积分求可回收场能}\par\nobreak
+图\ref{fig:em4:drill:8:s}给的是电流作为磁链的函数。磁能微元为 $\dd W=i\dd\Psi$，所以
+\[W(\Psi_0)=\int_0^{\Psi_0}(a\psi+b\psi^3)\dd\psi
+=\left[\frac a2\psi^2+\frac b4\psi^4\right]_0^{\Psi_0}
+=\frac a2\Psi_0^2+\frac b4\Psi_0^4.\]
+\fig{fig:em4:drill:8:p}{蓝色面积给出场能；原点割线和工作点切线的斜率分别是两种电感的倒数}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.2,0)node[right]{$\Psi$};\draw[axis](0,-.2)--(0,3.6)node[above]{$i$};
+\fill[blue!12](0,0)--plot[domain=0:2.5,samples=60](\x,{.35*\x+.06*(\x)^3})--(2.5,0)--cycle;
+\draw[world,blue,domain=0:3.1,samples=70]plot(\x,{.35*\x+.06*(\x)^3});\draw[guide](0,0)--(3.4,{1.8125*3.4/2.5});
+\draw[world,red](1.7,.6325)--(3.1,2.6975);\fill(2.5,1.8125)circle(2pt);\node[left]at(2.4,2.2){$P$};\node[below]at(2.5,0){$\Psi_0$};\draw[guide](2.5,0)--(2.5,1.8125);
+\node at(1.8,.45){$W_B$};\node[right]at(3.4,2.465){割线 $1/L_s$};\node at(1.2,3.6){切线 $1/L_d$};\draw[guide](1.8,3.3)--(2.9,2.4);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别求割线与切线对应的两种电感}\par\nobreak
+图\ref{fig:em4:drill:8:p}中从原点到工作点的连线斜率为 $i/\Psi$，静态比值电感 $L_s=\Psi/i=1/(a+b\Psi^2)$；工作点切线斜率为 $\dd i/\dd\Psi$，逐项求导得
+$\dd i/\dd\Psi=a+b(3\Psi^2)=a+3b\Psi^2$，
+所以增量电感 $L_d=(\dd i/\dd\Psi)^{-1}=1/(a+3b\Psi^2)$。两者在零磁链处相同，离开零点以后不同。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先解磁链随时间变化，再代入本构关系求电流}\par\nobreak
+恒压源给出 $u=\dot\Psi=E$，从零初态积分
+$\int_0^{\Psi(t)}\dd\psi=\int_0^t E\,\dd s=Et$，
+得 $\Psi=Et$，于是 $i=aEt+bE^3t^3$。\fig{em4:d8:time}{恒压使磁链线性增长，非线性本构关系使电流呈弯曲增长；示例取 $b\Psi_0^2=a$}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4,0)node[right]{$t/t_0$};\draw[axis](0,-.2)--(0,3.3)node[above]{$\Psi/\Psi_0,\ i/i_0$};
+\draw[world,blue](0,0)--(3.6,2.4);\draw[world,red,domain=0:3.6,samples=70]plot(\x,{(\x/3)+(\x/3)^3});
+\draw[guide](3,0)--(3,2)--(0,2);\node[below]at(3,0){$1$};\node[left]at(0,2){$1$};\node at(1.4,1.6){$\Psi$};\node at(3.6,3.3){$i$};\node at(2,-.95){$t_0=\Psi_0/E,\quad i_0=a\Psi_0+b\Psi_0^3$};
+
+\end{tikzpicture}}
+图\ref{em4:d8:time}的归一化示例给出 $\Psi/\Psi_0=t/t_0$ 与 $i/i_0=[t/t_0+(t/t_0)^3]/2$。两者在指定工作点相交，不代表所有时刻都成比例。
+
+
+初期近似线性建立，之后电流加速增长，不能再使用恒定 $L$ 的直线电流公式。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用四次项检查线性储能公式为何失效}\par\nobreak
+把 $L_s i^2/2$ 代入会得到与积分不同的四次项，正说明线性磁能公式不能直接套用。单值可逆是本题能量完全可回收的前提。\end{drillsolution}
+\begin{drillsolution}{em4:drill:9}\textbf{用零总磁链约束求实际电流与自感储能}\par\nobreak
+按图\ref{fig:em4:drill:9:s}向纸外取磁通正向，零总磁链要求 $\lambda ai+B\pi a^2=0$，所以 $i=-B\pi a/\lambda$，实际电流为顺时针。磁能为
+\[W_B=\frac12L i^2=\frac{B^2\pi^2a^3}{2\lambda}.\]
+\fig{fig:em4:drill:9:p}{顺时针电流使外磁场力向内，自感几何项向外；蓝箭头示两者合成的收缩趋势，红箭头示外力伸展}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.5);\node at(0,0){$O$};\draw[dim](.1,.17)--(.75,1.299)node[midway,left]{$a$};
+\foreach\ang in {0,90,180,270}{\draw[force,blue](\ang:1.5)--(\ang:.85);}
+\foreach\ang in {45,135,225,315}{\draw[force,red](\ang:1.5)--(\ang:2.1);}
+\draw[flow](25:1.5)arc(25:5:1.5);\node[right]at(1.6,.45){$|i|$};\node at(2.6,1.6){$\odot B$};\node at(0,-2.8){共同增大半径 $a$，广义磁力 $F_a<0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对共同半径求导，得到广义磁力}\par\nobreak
+图\ref{fig:em4:drill:9:p}以半径增大为正广义位移，准静态过程中外力支付磁能增加，磁力的广义值为 $F_a=-[B^2\pi^2/(2\lambda)]\,\dd(a^3)/\dd a
+=-3B^2\pi^2a^2/(2\lambda)$，阻碍伸展。它是所有周向微元力对共同半径变化做功的总系数，不是单个局部点的集中力。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别核对外磁通项与自感几何项的贡献}\par\nobreak
+也可用完整广义力核对：外磁通项 $i\,\dd(B\pi a^2)/\dd a=-2B^2\pi^2a^2/\lambda$，自感几何项 $i^2L'(a)/2=B^2\pi^2a^2/(2\lambda)$，相加正好为上述结果。若只计算外磁场力而漏掉圆环自身场随形状改变的贡献，会错一个系数。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分准静态外力功并检查能量增量}\par\nobreak
+外力与广义磁力平衡，故
+\[
+W_{\rm ext}=\frac{3B^2\pi^2}{2\lambda}\int_{a_1}^{a_2}a^2\dd a
+=\frac{3B^2\pi^2}{2\lambda}\left[\frac{a^3}{3}\right]_{a_1}^{a_2}
+=\frac{B^2\pi^2}{2\lambda}(a_2^3-a_1^3)>0,
+\]过程中无电阻热。\end{drillsolution}
+\begin{drillsolution}{em4:drill:10}\textbf{在环形磁芯中用安培环路求非均匀场}\par\nobreak
+图\ref{fig:em4:drill:10:s}右侧表示径向—轴向截面尺寸。由轴对称性，在磁芯内半径 $r$ 的圆形安培环路上 $B(r)2\pi r=\mu Ni$，所以 $B(r)=\mu Ni/(2\pi r)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以径向—轴向截面求磁通并乘总匝数}\par\nobreak
+磁通的面积元不是圆环水平面积，而是垂直周向磁场的 $h\dd r$，故单匝磁通
+\[\Phi=\int_a^bB(r)h\dd r
+=\frac{\mu Nih}{2\pi}\int_a^b\frac{\dd r}{r}
+=\frac{\mu Nih}{2\pi}[\ln r]_a^b
+=\frac{\mu Nih}{2\pi}\ln\frac ba.\]
+磁链 $N\Phi$ 与电流之比给出 $L=\mu N^2h\ln(b/a)/(2\pi)$。
+\fig{fig:em4:drill:10:p}{解答过程：矩形截面环形线圈的精确自感}{\begin{tikzpicture}[scale=.88]\draw[axis](-0.2,0)--(5,0)node[right]{$r$};\draw[axis](0,-0.2)--(0,3)node[above]{$B$};\draw[world,domain=1:4]plot(\x,{2.5/\x});\draw[guide](1,0)--(1,2.5) (4,0)--(4,.625);\node[below]at(1,0){$a$};\node[below]at(4,0){$b$};\node at(3.2,2.8){$\dd S=h\dd r,\quad\dd V=2\pi rh\dd r$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以整圈薄环体积独立核验总磁能}\par\nobreak
+图\ref{fig:em4:drill:10:p}用场能独立核验，薄环体积 $2\pi rh\dd r$，所以\begin{align*}
+W&=\int_a^b\frac{B(r)^2}{2\mu}2\pi rh\,\dd r
+=\frac{\mu N^2hi^2}{4\pi}\int_a^b\frac{\dd r}{r}\\
+&=\frac{\mu N^2hi^2}{4\pi}\left[\ln\frac ra\right]_a^b
+=\frac{\mu N^2hi^2}{4\pi}\ln\frac ba=\frac12Li^2.
+\end{align*}磁通积分使用截面积元，场能积分使用体积元，两者几何含义不同。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{围绕平均半径展开对数并判断相对误差阶数}\par\nobreak
+设平均半径 $r_0=(a+b)/2$，宽度 $w=b-a$，$x=w/(2r_0)\ll1$。利用
+$\ln(1+x)=x-x^2/2+x^3/3-\cdots$、
+$\ln(1-x)=-x-x^2/2-x^3/3-\cdots$，
+相减时偶次项消去，故
+$\ln[(1+x)/(1-x)]=2(x+x^3/3+\cdots)$，所以 $L=\mu N^2hw/(2\pi r_0)[1+w^2/(12r_0^2)+\cdots]$。首项就是把磁场取在平均半径、磁路长取 $2\pi r_0$ 的公式；相对误差从 $(w/r_0)^2$ 开始。内外半径相差明显时必须保留对数，不能凭长螺线管形式套入一个任意磁路长度。\end{drillsolution}
+\begin{drillsolution}{em4:drill:11}\textbf{从内线圈产生的实际有场面积求互感}\par\nobreak
+图\ref{fig:em4:drill:11:s}中单独给内线圈通流，磁场 $\mu N_1i_1/\ell$ 只存在于面积 $S_1$ 内。它穿过外线圈每匝的磁通仍为 $\mu N_1i_1S_1/\ell$，因此 $M=\mu N_1N_2S_1/\ell$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两自感和小于一的耦合系数}\par\nobreak
+分别计算自磁链，$L_1=\mu N_1^2S_1/\ell,L_2=\mu N_2^2S_2/\ell$，耦合系数 $\kappa=M/\sqrt{L_1L_2}=\sqrt{S_1/S_2}<1$。
+\fig{fig:em4:drill:11:p}{总磁能分为不重叠的内区和环区；内区完全抵消并不使环区储能最小}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)circle(1.7);\fill[blue!22](0,0)circle(.9);\draw[world](0,0)circle(1.7)(0,0)circle(.9);
+\node at(0,0){$\odot(B_1+B_2)$};\node at(0,1.3){$\odot B_2$};
+\node[align=left]at(5,.8){内区体积 $S_1\ell$\\$B_1+B_2=\mu(N_1i_1+N_2i_2)/\ell$};
+\node[align=left]at(5,-.9){环区体积 $(S_2-S_1)\ell$\\$B_2=\mu N_2i_2/\ell$};\node at(3,-2.5){符号表示沿共同正轴的有向场，负值时实际方向相反};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按内区和环区分别积分并核对交叉能量}\par\nobreak
+图\ref{fig:em4:drill:11:p}的内区两磁场叠加，外环区只有外线圈磁场。按两个体积积分，
+\[W=\frac{\mu}{2\ell}\left[S_1(N_1i_1+N_2i_2)^2+(S_2-S_1)(N_2i_2)^2\right].\]
+展开正好等于 $L_1i_1^2/2+L_2i_2^2/2+Mi_1i_2$，也从空间场解释互感交叉项。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定初级电流约束下求能量极小值}\par\nobreak
+固定 $i_1$ 时，
+\[
+\frac{\partial W}{\partial i_2}
+=0+\frac{L_2}{2}(2i_2)+Mi_1=L_2i_2+Mi_1.
+\]
+令其为零，且 $\partial^2W/\partial i_2^2=L_2>0$ 确认是极小值，所以 $i_{2*}=-(N_1S_1/N_2S_2)i_1$，最小磁能 $W_{\min}=L_1i_1^2(1-S_1/S_2)/2>0$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释内区未完全抵消及剩余能量的来源}\par\nobreak
+把内区场恰好抵消需要 $N_2i_2=-N_1i_1$，但这会在较大的外环区建立磁场，未必使总能最低。实际极小值选择同时减少两个区域储能，故内区仍留非零场。$S_2\to S_1$ 时耦合趋完全，剩余能量才趋零。只看到同轴排列而直接令 $M=\sqrt{L_1L_2}$，就会丢掉外环区的实际储能。\end{drillsolution}

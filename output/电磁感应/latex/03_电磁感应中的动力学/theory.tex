@@ -1,0 +1,342 @@
+\section{由电路和受力共同确定运动}
+
+感应电流不是预先给定的外力。导棒速度决定动生电动势，电流又通过安培力改变导棒速度，形成相互反馈。求运动规律时，应把速度、电流及必要的电荷量同时作为未知量。先由图中方向确定 $\bm v\times\bm B$，列电路方程，再沿运动方向列牛顿定律，最后用功率关系检查符号。
+
+
+以水平导轨上的导棒为例，棒长 $l$、质量 $m$，磁场垂直轨道，回路总电阻 $R$，自感可忽略。令 $k=Bl$，速度沿外力 $F$ 的方向为正。则 $\varepsilon=kv$，$i=kv/R$，磁阻力为 $-ki=-k^2v/R$，于是
+
+\[m\dot v=F-\gamma v,\qquad\gamma=\frac{k^2}{R}.\]
+磁阻力与速度成正比不是普遍规律，它来自此处的固定磁场、固定有效棒长和纯电阻回路。若接有电容、电感，或者棒长随位置改变，就要重新列式，不能把同一个 $\gamma$ 直接搬过去。
+
+
+\fig{em3:feedback}{同一张图确定电动势、电流和机械反作用的符号，再联立电路与牛顿方程}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4.7,0) (0,2.2)--(4.7,2.2) (0,0)--(0,.7) (0,1.5)--(0,2.2);\draw[world](-.2,.7)rectangle(.2,1.5);\node[left]at(-.25,1.1){$R$};\draw[very thick](3.2,0)--(3.2,2.2);\draw[flow](3.2,2.8)--(4.5,2.8)node[right]{$v$};\draw[flow,blue](3.2,.25)--(3.2,.95)node[right]{$i$};\draw[force,red](3.2,1.4)--(1.7,1.4)node[midway,above]{$ki$};\draw[force](3.2,1.4)--(4.6,1.4)node[right]{$F$};\node at(1.5,.6){$\otimes B$};\draw[dim](5.2,0)--(5.2,2.2)node[midway,right]{$l$};\node at(2.5,-.8){$\varepsilon=kv,\quad Ri=kv,\quad m\dot v=F-ki$};
+
+\end{tikzpicture}}
+图\ref{em3:feedback}中向右速度与纸内磁场给棒内向上的动生作用，正电流向上时安培力向左，由此连接三个关系；最后一个力方向反过来抑制原速度。在下面各模型中，电路或几何条件改变时，应重新检查相应一环，不能仅保留最后的阻力形式。
+
+
+
+\section{终端速度、时间解与空间解}
+
+当 $F$ 恒定，令 $v_\infty=F/\gamma$、$\tau=m/\gamma$，将运动方程改写为 $\dd(v-v_\infty)/(v-v_\infty)=-\dd t/\tau$。当 $v_0\ne v_\infty$ 时，以 $\delta=v-v_\infty$ 为偏差变量，
+\[
+\int_{v_0-v_\infty}^{v-v_\infty}\frac{\dd\delta}{\delta}
+=-\int_0^t\frac{\dd s}{\tau},\qquad
+\ln\left|\frac{v-v_\infty}{v_0-v_\infty}\right|=-\frac t\tau.
+\]
+保留偏差的原符号；若初速度就是终速，直接取恒速解。于是得到
+
+\[v(t)=v_\infty+(v_0-v_\infty)\e^{-t/\tau}.\]
+再以 $x(0)=x_0$ 对速度积分：
+\[
+x-x_0=\int_0^t[v_\infty+(v_0-v_\infty)\e^{-s/\tau}]\dd s
+=\left[v_\infty s-\tau(v_0-v_\infty)\e^{-s/\tau}\right]_0^t.
+\]
+代入两端，位移为 $x-x_0=v_\infty t+\tau(v_0-v_\infty)(1-\e^{-t/\tau})$。初速度小于终端值时加速，大于终端值时减速，两种情形由同一公式描述。在有限时间内，指数项一般不恰为零；“达到终端速度”往往只是允许误差内的近似。
+
+
+\fig{em3:terminal-curves}{低于终速则加速，高于终速则减速；相同时间尺度控制趋近过程}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.2,0)node[right]{$t/\tau$};\draw[axis](0,-.3)--(0,3.1)node[above]{$v/v_\infty$};\draw[guide](0,1.5)--(4.8,1.5)node[right]{$1$};
+\foreach \aa/\hue in {-.8/blue,.8/red}{\draw[\hue,thick,domain=0:4.5,samples=80]plot(\x,{1.5*(1+\aa*exp(-\x))});}\draw[world](0,1.5)--(4.5,1.5);\node[blue,left]at(0,.3){$0.2$};\node[red,left]at(0,2.7){$1.8$};\node at(2.6,-.9){$\dot v=(v_\infty-v)/\tau$，速度一般在有限时间内不恰等于终速};
+
+\end{tikzpicture}}
+图\ref{em3:terminal-curves}的红、蓝曲线共享同一水平渐近线。若要求相对偏差不超过 $\delta$，条件是 $|v_0-v_\infty|\e^{-t/\tau}\le\delta|v_\infty|$，可据此给出所需时间；无需把“近似稳定”写成指数项在某时刻突然为零。
+
+
+
+已知经过的距离而不关心时间时，使用 $\dot v=v\dd v/\dd x$ 可减少计算。特别是无外力、阻力为 $-\gamma(x)v$ 时，约去非零速度得到 $m\dd v/\dd x=-\gamma(x)$，直接按位移积分。在求停止位置时先求 $v\to0$ 的极限，不能在一开始把整个方程除以零速度。若停止点附近速度随剩余距离线性趋零，所需时间仍可能发散。
+
+
+图\ref{em3:space-time}专取 $F=0,\gamma$ 恒定。由 $m\dd v/\dd x=-\gamma$ 积分，
+$m[v-v_0]=-\gamma[x-x_0]$。时间由 $\dd t=\dd x/v$ 给出，令 $z=v_0-\gamma(x-x_0)/m$，则 $\dd x=-m\dd z/\gamma$，所以
+\[
+t=-\frac m\gamma\int_{v_0}^{v}\frac{\dd z}{z}
+=\frac m\gamma\ln\frac{v_0}{v}.
+\]
+空间解与时间解共同给出
+\[
+v(x)=v_0-\frac\gamma m(x-x_0),\quad
+x_\infty-x_0=\frac{mv_0}{\gamma},\quad
+t=\tau\ln\frac{v_0}{v}.
+\]
+当 $v\to0^+$ 时，位置趋于有限的 $x_\infty$，但时间趋于无穷。不能将空间直线延长到 $v<0$ 后，声称被动磁阻力会使棒自动反向。
+
+\fig{em3:space-time}{有限的空间衰减距离与无限的衰减时间相容；空间图端点只表示极限}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.2,0)--(4.4,0)node[right]{$\frac{x-x_0}{x_\infty-x_0}$};\draw[axis](0,-.2)--(0,2.6)node[above]{$v/v_0$};\draw[world](0,2)--(3.6,0);\draw[fill=white](3.6,0)circle(2pt);\node[left]at(0,2){$1$};\node[below]at(3.6,0){$1$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,2.6)node[above]{$\frac{x-x_0}{x_\infty-x_0}$};\draw[guide](0,2)--(4.5,2);\draw[world,domain=0:4.5,samples=80]plot(\x,{2*(1-exp(-\x))});\node[left]at(0,2){$1$};\end{scope}
+
+\end{tikzpicture}}
+
+线框跨越磁区边界时应按阶段处理。仅一条横边在磁区内，电动势为 $Blv$；两条横边均在同一匀强场中，平移电动势相消，净磁力为零；离开时电流反向而阻力仍与运动反向。每一次换阶段都要更新有效磁通面积，并把前一阶段的末速度作为下一阶段的初速度。
+
+
+
+\fig{em3:finite-frame}{同一个线框进入、完全处于磁区和离开时，要分别更新有效横边、电流及合力}{\begin{tikzpicture}
+
+\foreach \yy/\xx/\lab/\sgn in {0/-1/{进入：右边在场内}/1,-3.4/1/{全框在场内}/0,-6.8/3/{离开：左边在场内}/-1}{\begin{scope}[yshift=\yy cm]
+\fill[blue!7](0,-.3)rectangle(4,1.8);\draw[guide](0,-.3)--(0,1.8) (4,-.3)--(4,1.8);\draw[world](\xx,0)rectangle({\xx+2},1.4);\node at(2,1.65){$\otimes B$};\draw[flow]({\xx+.3},2.15)--({\xx+1.6},2.15)node[right]{$v$};\node[left]at(-1.7,.7){\lab};
+\ifnum\sgn=1\draw[->,red,thick]({\xx+2},.2)--({\xx+2},1.2)node[right]{$i$};\draw[force]({\xx+2},.7)--(\xx,.7)node[midway,above]{$F_B$};\fi
+\ifnum\sgn=0\node at(2,-.7){$\varepsilon=0,\ i=0,\ F_B=0$};\fi
+\ifnum\sgn=-1\draw[->,red,thick](\xx,.2)--(\xx,1.2)node[right]{$i$};\draw[force](\xx,.7)--({\xx-2},.7)node[midway,above]{$F_B$};\fi
+\end{scope}}
+
+\end{tikzpicture}}
+图\ref{em3:finite-frame}取磁区宽度大于线框宽度，并忽略自感。进入时右边电流向上，离开时左边电流向上，整圈电流方向虽相反，受场横边的安培力都向左。全框处在同一匀强场时，前后横边的动生积分抵消，电阻模型中无持续电流；不能将进入阶段的阻力沿用到这一段。
+
+
+
+\subsection{变力驱动与时间尺度}
+
+在固定电阻的单棒问题中，可以把外力驱动与自由衰减叠加。设外力不是常量而是给定函数 $F(t)$，$m\dot v+\gamma v=F(t)$。乘以积分因子 $\e^{t/\tau}$，左端成为
+$m\e^{t/\tau}(\dot v+v/\tau)=m\dd[v\e^{t/\tau}]/\dd t$。
+从初时刻到当前时刻积分，
+\[
+m[v(t)\e^{t/\tau}-v_0]=\int_0^tF(s)\e^{s/\tau}\dd s.
+\]
+两边除以 $m\e^{t/\tau}$，因此
+
+\[v(t)=v_0\e^{-t/\tau}+\frac1m\int_0^t F(s)\e^{-(t-s)/\tau}\dd s,\qquad\tau=m/\gamma.\]
+积分中的指数表明，越早施加的力对当前速度的影响经过越久衰减。若外力分段恒定，可以逐段使用常力解并保持速度连续；不必在每个阶段重新猜一种函数。若电流存在电感暂态，则速度与电流构成两个状态量，上式不再单独成立。
+
+
+无量纲化可帮助判断哪些量控制结果。令 $s=t/\tau$、$z=v/v_t$，常力方程化为 $\dd z/\dd s=1-z$，所以所有同类系统的归一化曲线相同，区别只在速度尺度 $v_t$ 和时间尺度 $\tau$。当磁场增大，终端速度和时间尺度都按 $B^{-2}$ 减小；但在给定物理时刻，电流未必按同一个简单比例改变，须先把速度反馈代入。
+
+
+若在有限距离内运动，应把速度时间解与位置时间解一起使用。对下落线框，知道终端速度并不足以确定出磁区时速度，因为磁区可能太短。精确解通常由一个单调的位移方程隐式确定时间，数值求根是合理结果，不应为了写出简单公式而虚构“某时刻已严格达到终速”。
+
+
+磁力功也能在空间变量中检查。单棒无外力时，$m\dd v/\dd x=-\gamma$，所以速度随位移线性下降；停止距离为 $mv_0/\gamma$，而时间趋于无穷。另一方面 $\int F_B\dd x=-mv_0^2/2$，恰等于总焦耳热的负值，说明有限总热与无限衰减时间可以同时成立。
+
+
+
+\section{空间变化的磁场与倾斜运动的投影}
+
+若回路运动到不同位置时经历不同磁场，应先算当前有效磁通导数。对一根横跨等宽轨道的直棒，磁场在棒长方向近似均匀而沿轨坐标 $x$ 改变，电动势为 $B(x)lv$；纯电阻回路的阻力系数为 $\gamma(x)=B(x)^2l^2/R$。无外力时使用空间方程 $m\dd v/\dd x=-\gamma(x)$，可直接累加不同位置的减速效果。磁场变强一倍使同速磁阻力增加四倍，但整个运动中的速度也会改变，不能把时间过程简单按四倍缩放。
+
+
+倾斜导轨中，还要区分垂直轨面的场分量与实际安培力方向。动生电动势由 $\bm v\times\bm B$ 在棒方向上的投影决定；支路电流确定以后，安培力仍由完整矢量 $i\bm l\times\bm B$ 决定。若磁场竖直而轨道倾斜，安培力一般有垂直轨面的分量，它会改变支持力，进而改变滑动摩擦力。只把 $B$ 换成 $B\cos\theta$ 而完全不检查支持力，会漏掉摩擦反馈。
+
+
+以图\ref{em3:incline-projection}的侧视截面为例，轨面倾角为 $\theta$，棒轴垂直图面，磁场竖直向下，棒正沿斜面下滑。动生作用朝纸外，故正电流也朝纸外，安培力水平向右。其沿斜面的分量阻碍下滑，垂直斜面的分量则压向轨面：
+
+\[
+i=\frac{Blv\cos\theta}{R},\quad F_B=Bli,\quad
+N=mg\cos\theta+F_B\sin\theta.
+\]
+若滑动摩擦系数为 $\mu_f$，沿下坡取正，才得到
+\[
+m\dot v=mg(\sin\theta-\mu_f\cos\theta)
+-\frac{B^2l^2\cos\theta}{R}(\cos\theta+\mu_f\sin\theta)v.
+\]
+这里的额外 $\mu_f\sin\theta$ 来自支持力改变；仅将磁场换成法向分量而仍取 $N=mg\cos\theta$ 会漏掉它。这些式子适用于已经下滑且保持接触的阶段，静止能否启动还需静摩擦条件。
+
+\fig{em3:incline-projection}{侧视图中棒电流向外，水平安培力同时改变切向阻力与法向支持力}{\begin{tikzpicture}
+
+\draw[world](-2,-1.4)--(2,1.4);\draw[guide](-2,-1.4)--(0,-1.4);\draw(-1.3,-1.4)arc(0:34.992:.7);\node at(-1.05,-1.12){$\theta$};\filldraw[fill=white](0,0)circle(.15);\node at(0,0){$\odot$};\node[above right]at(.1,.1){$i$};\draw[force,red](0,0)--(1.8,0)node[right]{$F_B$};\draw[force](0,0)--(0,-1.8)node[below]{$mg$};\draw[force,blue](0,0)--(-.9,1.2857)node[above]{$N$};\draw[flow](-.2,-.4)--(-1.3,-1.17)node[below]{$v$};\draw[flow](2.6,1.2)--(2.6,.2)node[right]{$\bm B$};\draw[flow](.2,.45)--(1.1,1.08)node[above]{$\mu_fN$};
+
+\end{tikzpicture}}
+
+分段磁区问题的判据可以用速度作为位置的函数表达。若在到达磁区边界前速度已趋零，棒不能进入下一段；若边界处速度为正，才把这个速度作为新区的初值。计算中得到的停止位置往往是无限时间的位置极限，和一根棒撞上机械挡板后在有限时间停止是不同事件。能量相同不意味着停止方式相同。
+
+
+
+\section{多杆运动与约化质量}
+
+\input{two-rod-model}
+
+取图\ref{em3:two-rod-model}中的两棒为整体，内部安培力大小相等、方向相反。没有其他水平外力时，两棒总动量守恒，机械能却因回路发热而减少；这两种总量的变化应分别判断。
+
+
+令质量为$m_1,m_2$，相对速度$w=v_2-v_1$。图\ref{em3:two-rod-model}中两棒受力相反，分别列式并作有向差：
+
+\[
+ m_1\dot v_1=ki,\qquad m_2\dot v_2=-ki,\qquad
+ \dot w=-k i\left(\frac1{m_1}+\frac1{m_2}\right).
+\]
+定义约化质量$\mu=m_1m_2/(m_1+m_2)$，再用$i=kw/R$消去电流，才得到
+\[
+ \mu\dot w=-\frac{k^2}{R}w.
+\]
+当 $w_0\ne0$，在相对速度未变号的区间分离变量，并从初始状态积分：
+\begin{align*}
+\int_{w_0}^{w(t)}\frac{\dd z}{z}
+&=-\frac{k^2}{\mu R}\int_0^t\dd s,\\
+\left[\ln|z|\right]_{w_0}^{w(t)}
+&=-\frac{k^2t}{\mu R},\\
+\ln\left|\frac{w(t)}{w_0}\right|
+&=-\frac{k^2t}{\mu R}.
+\end{align*}
+取指数并保留初始符号，得到 $w(t)=w_0\e^{-k^2t/(\mu R)}$。
+该式表明相对速度只渐近趋于零，因而与积分时未变号的条件一致。
+若 $w_0=0$，直接代入原方程得到 $w(t)=0$，两棒保持共同速度，回路中也没有电流。
+最终共同速度由总动量求得。总焦耳热为初始相对运动动能$\mu w_0^2/2$，质心动能保持不变。这一结果同时说明，把某一根棒损失的动能全部认作热量是不对的，另一根棒还会获得动能。
+
+
+若两棒所跨有效轨宽不同，安培力系数也不同，总动量未必守恒，固定导轨和磁场装置会承担水平反作用。
+\input{unequal-rod-model}
+
+
+\subsection{冲量关系与可达状态}
+
+安培力积分可以把机械变化与通过电量联系起来。长度不变的一根棒满足 $m\Delta v=\int F_{\text{外}}\dd t\pm Bl\Delta Q$。外力冲量已知时，这常比完整求 $i(t)$ 简洁，但符号取决于图中棒的电流方向。两棒的安培冲量等大反向，才有整体机械动量守恒；若长度不同，不能仅凭两棒连在同一回路就假定冲量相同。
+
+
+固定等宽两棒的动能可分解为质心项与相对项：
+\[\frac12m_1v_1^2+\frac12m_2v_2^2=\frac12(m_1+m_2)V^2+\frac12\mu(v_2-v_1)^2.\]
+这个恒等式可由 $v_1=V-m_2w/(m_1+m_2)$、$v_2=V+m_1w/(m_1+m_2)$ 展开验证，交叉项互相抵消。纯电阻使相对项最终耗尽；接电容后相对项可以保留一部分，并另储存电场能；理想自感则允许相对动能与磁场能交换。这使几个看似相似的“双杆最终速度”问题具有不同结局。
+
+
+\fig{em3:cm-relative-energy}{等宽无外力双棒中，质心运动不变，热量只来自相对运动能的衰减}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\tau_r$};\draw[axis](0,-.2)--(0,2.9)node[above]{$K_{\rm rel}/K_{\rm rel,0},\ Q_J/K_{\rm rel,0}$};\draw[blue,thick,domain=0:4.3,samples=80]plot(\x,{2.2*exp(-2*\x)});\draw[red,thick,domain=0:4.3,samples=80]plot(\x,{2.2*(1-exp(-2*\x))});\draw[guide](0,2.2)--(4.3,2.2);\node[left]at(0,2.2){$1$};\node[blue]at(2.7,.5){相对动能};\node[red]at(3,2.7){累计热量};\node at(2,-.9){$\tau_r=\mu R/k^2,\quad K_{\rm cm}=\tfrac12(m_1+m_2)V^2\ \text{保持不变}$};
+
+\end{tikzpicture}}
+由 $w=w_0\e^{-t/\tau_r}$，图\ref{em3:cm-relative-energy}中的能量曲线为 $K_{\rm rel}=\mu w_0^2\e^{-2t/\tau_r}/2$。因此累计热量为 $Q_J=\mu w_0^2(1-\e^{-2t/\tau_r})/2$，不能把总初动能全部作为发热来源。若两棒最终都仍向右运动，其共同动能正是未被耗散的质心项。
+
+
+算出的某一速度比例还要检查是否可达。若相对速度按指数单调衰减，介于初值与零之间的比例可以在有限时刻出现，恰为零通常只能渐近出现。如果几何边界会先被碰到，则该事件必须在本阶段末时刻之前，否则应进入下一阶段重新求解。碰撞题中还应检查粘连后的两棒电接触是否确实并联，机械质量相加与电阻如何组合是两件不同的事。
+
+
+滑轮牵引题的“稳定”也有多种含义。两棒速度差可能趋于常量、电流趋于常量，而两棒自身仍共同加速。这时磁力不能简单与悬物重力直接平衡，必须同时保留后棒、前棒和悬物三个受力方程。只有各物体加速度都为零时，才是真正的匀速稳态。
+
+
+
+\section{电容耦合与切换初态}
+
+\input{capacitor-rod-model}
+
+导棒连接电容后，磁力取决于充电电流而非直接取决于速度。设正向电容电荷为 $q$，回路满足
+\[R\dot q+q/C=kv,\qquad m\dot v=F-k\dot q.\]
+第一式中的电容电压与动生电动势相抗，第二式包含电流的机械反作用。无外力时从 $(v_0,q_0)$ 积分第二式，
+$m\int_{v_0}^{v}\dd z=-k\int_{q_0}^{q}\dd y$，
+即 $m(v-v_0)+k(q-q_0)=0$，得到 $mv+kq=\text{常量}$；代入第一式即可把问题化成单个充电方程。等效电容 $C_e=(1/C+k^2/m)^{-1}$ 同时包含电储能和机械反馈，不是某两只真实电容直接串联。
+
+
+若令 $R=0$，有 $q=Ckv$。对时间求导并代入受力方程，得到 $(m+Ck^2)\dot v=F$。电容使运动表现出额外惯性，而非产生与速度成正比的阻力。但是这一约束必须与初态相容；未充电电容突然接上具有非零速度的棒，不能同时保持原速度和 $q=Ckv$。保留很小电阻求快速充电，再取极限，才能得到切换后的一致初态与有限热量。
+
+
+对无外力、初始 $q(0)=0,v(0)=v_0$ 的快速接通，先保留 $R>0$。由 $mv+kq=mv_0$ 消去速度，得到
+\[
+R\dot q+\left(\frac1C+\frac{k^2}{m}\right)q=kv_0.
+\]
+定义 $\eta=Ck^2/m$、$\tau_e=RC/(1+\eta)$，以及 $q_f=Ckv_0/(1+\eta)$。方程成为 $\dot q=(q_f-q)/\tau_e$，从零电荷积分，
+\[
+\int_0^{q(t)}\frac{\dd z}{q_f-z}=\int_0^t\frac{\dd s}{\tau_e},
+\qquad -\ln\frac{q_f-q}{q_f}=\frac t{\tau_e}.
+\]
+先求出 $q$，再用 $v=v_0-kq/m$，便有
+\[
+q(t)=\frac{Ckv_0}{1+\eta}(1-\e^{-t/\tau_e}),\qquad
+v(t)=\frac{v_0}{1+\eta}(1+\eta\e^{-t/\tau_e}).
+\]
+图\ref{em3:fast-capacitor}显示电荷上升与速度下降是同一反馈过程。快速阶段后的相容状态为 $v_f=v_0/(1+\eta),q_f=Ckv_f$，并非只让电容充电而棒速不变。
+\fig{em3:fast-capacitor}{保留小电阻求快速充电；示意取 $\eta=1$，横轴为 $t/\tau_e$}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\tau_e$};\draw[axis](0,-.2)--(0,2.8)node[above]{$v/v_0,\ q/(Ckv_0)$};\draw[blue,thick,domain=0:4.3,samples=80]plot(\x,{2.4*.5*(1+exp(-\x))});\draw[red,thick,domain=0:4.3,samples=80]plot(\x,{2.4*.5*(1-exp(-\x))});\draw[guide](0,1.2)--(4.3,1.2);\node[left]at(0,1.2){$1/2$};\node[left]at(0,2.4){$1$};\node[blue]at(2.8,2.3){速度};\node[red]at(2.8,.6){电荷};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\tau_e$};\draw[axis](0,-.2)--(0,2.8)node[above]{$\mathcal H/K_0,\ Q_J/K_0$};\draw[blue,thick,domain=0:4.3,samples=80]plot(\x,{2.4*.5*(1+exp(-2*\x))});\draw[red,thick,domain=0:4.3,samples=80]plot(\x,{2.4*.5*(1-exp(-2*\x))});\draw[guide](0,1.2)--(4.3,1.2);\node[left]at(0,1.2){$1/2$};\node[left]at(0,2.4){$1$};\node[blue]at(2.7,2.3){剩余机电能};\node[red]at(2.7,.6){累计热量};
+\end{scope}
+
+\end{tikzpicture}}
+令 $\mathcal H=mv^2/2+q^2/(2C)$、$K_0=mv_0^2/2$，初末能量差为
+\[
+Q_J=K_0-\frac12(m+Ck^2)v_f^2
+=K_0\frac{\eta}{1+\eta}.
+\]
+当 $R\to0^+$ 时，$\tau_e\to0$，但这笔热量并不趋零；直接把切换前的 $v_0,q_0$ 强行代入零电阻约束，会遗漏快速阶段。切换后的缓慢运动再以 $v_f,q_f$ 为初态，才与 $q=Ckv$ 相容。
+
+
+重力作用下，零电阻且初态相容的电容导棒作匀加速运动，$a=mg/(m+Ck^2)$。若电容有击穿电压，击穿前后电路结构会改变，应先求是否及何时达到阈值，再讨论后续阶段。不能用击穿前的电容关系描述击穿后的短路运动。
+
+
+
+\subsection{电容反馈中的能量与击穿阈值}
+
+一般的约化质量电容耦合模型满足 $\mu\dot w=-k\dot q$、$R\dot q+q/C_0=kw$。分别乘 $w$ 和 $\dot q$ 相加，得到
+
+\[\frac\dd{\dd t}\left(\frac12\mu w^2+\frac{q^2}{2C_0}\right)=-R\dot q^2.\]
+由此看出能量随时间下降，下降率非负；同时 $\mu w+kq$ 保持常量。一个给出状态约束，另一个给出耗散检查，作用不同。若只用初末能量守恒求末速度，等于把右端本应存在的耗散强行删去。
+
+
+电容击穿题还需要确定阈值在快速切换阶段还是缓慢运动阶段出现。初始未充电且棒有速度时，快速阶段先把速度从 $v_0$ 降到 $mv_0/(m+Ck^2)$，电压从零升到相应动生电压。若击穿阈值低于这个电压，就不能跳过快速阶段再算一个负的击穿时间；应保留实际电阻与初态解出首次触及阈值的时刻。
+
+
+近似参数也要随结果复核。忽略回路自感，意味着电感电压在所关心的时间尺度上远小于电阻降或电容电压；突然切换的极短时段未必满足这一点。题目明确采用小电阻、无自感的理想极限时，结果说明的是该模型的极限行为；实际峰值电流和切换持续时间还会受到寄生电感限制。
+
+
+
+\section{发电、受驱动运动与能量流向}
+
+被动感应回路中的安培力通常阻碍相对运动，但在电路中接入独立电源后，电流方向可能由电源控制，安培力可以驱动导棒加速。仍令 $k=Bl$，电源极性使静止棒受到正向磁力，动生作用就成为反电动势，电路有 $Ri=E-kv$，而受力方程为 $m\dot v=ki-F_{\text{负载}}$。这两式中的正负号可用功率检查：电源功率 $Ei$ 应分成电阻热 $Ri^2$ 与机械转移功率 $kvi$。
+
+
+当速度增加，反电动势增大，电流和驱动力下降；当棒被外界拖得过快，使 $kv>E$，电流反向，机械能可以经电路返回电源。电动机与发电机不是两套互相矛盾的规律，而是同一耦合方程在不同速度和外部约束下的状态。求最终状态前，应先判断它是匀速、恒加速，还是仅有相对速度不再变化。
+
+
+两棒中只有一棒受恒定外力时，整个系统质心仍不断加速。磁力可以使两棒速度差趋于定值，但不能抵消系统所受的合外力。此时“电流稳定”与“物体匀速”并不同义。将速度分成质心速度和相对速度，既能保留总动量方程，也能把内部耗散单独提取出来，避免在终态处理中漏掉外力持续做功。
+
+
+\input{knowledge-motor-power}
+
+
+\section{回复力、阻尼与参数辨认}
+
+若导棒与弹簧相连，纯电阻感应表现为阻尼，弹簧提供回复力，二者必须同时保留。取平衡位置位移为 $x$，有 $m\ddot x+\gamma\dot x+Kx=0$。试取 $x=\e^{st}$，其一、二阶导数分别为 $s\e^{st},s^2\e^{st}$。代入并约去非零指数，得 $ms^2+\gamma s+K=0$，两根
+\[
+s=-\frac{\gamma}{2m}\pm
+\sqrt{\frac{\gamma^2}{4m^2}-\frac Km}.
+\]
+因此阻尼判别式 $\gamma^2-4mK$ 决定是否振荡，磁场增大可以使系统从欠阻尼变为临界或过阻尼。磁场本身不是弹簧，回复力来自弹簧位移；如果换成零电阻自感回路，才会出现由磁通约束引起的位移回复力。
+
+
+\fig{em3:damping-curves}{同一初位移、零初速下，感应阻尼从欠阻尼到临界及过阻尼改变回复方式}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(7,0)node[right]{$\omega_0t$};\draw[axis](0,-1.7)--(0,2.8)node[above]{$x/x_0$};\draw[blue,thick,domain=0:6.5,samples=150]plot(\x,{2*exp(-.2*\x)*(cos(sqrt(.96)*\x r)+.2/sqrt(.96)*sin(sqrt(.96)*\x r))});\draw[black,thick,domain=0:6.5,samples=100]plot(\x,{2*(1+\x)*exp(-\x)});\draw[red,thick,domain=0:6.5,samples=100]plot(\x,{((2+sqrt(3))*exp(-(2-sqrt(3))*\x)-(2-sqrt(3))*exp(-(2+sqrt(3))*\x))/sqrt(3)});\node[left]at(0,2){$1$};\node[blue]at(4.8,-1.4){$\zeta=0.2$};\node at(4.8,.35){$\zeta=1$};\node[red]at(4.8,1.35){$\zeta=2$};\node at(3.2,3.3){$\omega_0=\sqrt{K/m},\quad\zeta=\gamma/(2\sqrt{mK})$};
+
+\end{tikzpicture}}
+图\ref{em3:damping-curves}中的蓝线越过平衡位置，黑线和红线不越过。增大阻尼不总意味着更快回到平衡附近：过阻尼时缓慢模态的衰减率反而变小。判断所需的是完整特征根，而不是仅比较初始阻力大小。
+
+
+有多个速度相关阻力时，可从改变磁场前后的衰减率辨认参数。若空气阻力近似为 $-bv$，磁阻力为 $-B^2l^2v/R$，总衰减率为 $(b+B^2l^2/R)/m$。在两个磁场值下测得指数时间常量，便可分别求出空气阻力系数和电阻。反演还需要检查求出的参数为正，并确认两个实验的接触电阻和机械条件没有改变。
+
+
+将实测衰减率记为 $\Lambda=1/\tau$，图\ref{em3:rate-fit}给出
+\[
+\Lambda=\frac bm+\frac{l^2}{mR}B^2.
+\]
+在 $B_2^2>B_1^2$ 的两次实验中，若测得 $\Lambda_2>\Lambda_1$，则
+\[
+R=\frac{l^2(B_2^2-B_1^2)}{m(\Lambda_2-\Lambda_1)},\qquad
+b=m\Lambda_1-\frac{B_1^2l^2}{R}.
+\]
+斜率决定电阻，截距决定机械阻力；解出的 $R>0,b\ge0$ 是模型自洽的必要检查。若拟合曲线明显不呈直线，应重新检查接触电阻、速度范围或阻力模型。
+\fig{em3:rate-fit}{衰减率对磁场平方的直线将机械阻力与电磁阻尼分开}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5,0)node[right]{$B^2$};\draw[axis](0,-.2)--(0,3.2)node[above]{$\Lambda$};\draw[world](0,.6)--(4.5,2.85);\fill(1.1,1.15)circle(2pt);\fill(3.5,2.35)circle(2pt);\draw[guide](1.1,0)--(1.1,1.15)--(0,1.15) (3.5,0)--(3.5,2.35)--(0,2.35);\node[below]at(1.1,0){$B_1^2$};\node[below]at(3.5,0){$B_2^2$};\node[left]at(0,.6){$b/m$};\node at(3.2,3.5){斜率 $l^2/(mR)$};
+
+\end{tikzpicture}}
+
+旋转装置可沿同样思路建立反馈。绳端速度与角速度由轴半径联系，转动惯量在绳端等效为 $J/a_0^2$ 的附加惯性；发电电动势随角速度成正比，磁制动力矩随电流成正比。质量和惯量决定建立过程的快慢，而稳定功率平衡未必含这些惯量。这正是仅求终速与求完整运动规律需要不同信息的原因。
+
+
+
+\section{功率、热量与近似模型的检验}
+
+将各棒受力方程乘相应速度，电路方程乘电流并相加，动生功率与磁力机械功率相互抵消，得到外力功率等于机械能变化率、电场能变化率、磁场能变化率及焦耳热功率之和。在本讲忽略自感时，磁场储能项不出现，但电容能 $q^2/(2C)$ 仍须保留。该检验能及时发现电流方向或相对速度符号的错误。
+
+
+碰撞、滑动摩擦与电阻发热应分别计算。瞬时粘连碰撞通常先用碰撞方向的动量守恒求速度，并单独计算碰撞损失；碰撞后再用电磁动力学求热量。若题目问“电流产生的热”，不能把碰撞损失也算进去。摩擦力则从开始运动起一直做功，应进入每段的机械能平衡。
+
+
+圆盘涡流、收缩软线等模型还需要说明近似。把大导体磁区当成局部小电阻，只能估计数量级，因为导体电荷重排与区外回流也影响电流。缓慢收缩的圆环可在有限半径范围内忽略惯性，但推导若预测半径趋零时速度发散，就已经指明末段超出准静态近似。好的结果检查不仅核对单位，也核对所得运动是否仍满足推导时的条件。
+
+

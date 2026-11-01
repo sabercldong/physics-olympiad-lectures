@@ -1,0 +1,8 @@
+\fig{fv:e5:support}{活动支点的等长约束限制相对速度，张力功率仍取对地速度}{\begin{tikzpicture}
+
+\coordinate(O)at(0,1.8);\coordinate(P)at(2,-.5);\draw[world](O)--(P);\fill(O)circle(.05)node[above]{$O$};\fill(P)circle(.075)node[below]{$P$};
+\draw[force](P)--(1.1,.535)node[midway,left]{$\bm T$};\draw[flow](O)--(1.6,1.8)node[right]{$\bm V_O$};
+\draw[flow](P)--(4.175,0)node[midway,above]{$\bm v_P$};\draw[guide](P)--(3.6,-.5)node[midway,below]{$\bm V_O$};\draw[flow](3.6,-.5)--(4.175,0)node[midway,right]{$\bm v_{\text{相}}$};
+\node at(2,-1.5){$\bm v_{\text{相}}\perp OP,\quad\bm v_P=\bm V_O+\bm v_{\text{相}}$};
+\end{tikzpicture}}
+图\ref{fv:e5:support}中绳长不变只给 $(\bm v_P-\bm V_O)\cdot\bm n=0$，因此张力对质点的功率为 $\bm T\cdot\bm v_P=\bm T\cdot\bm V_O$。支点移动时它一般非零，不能继续按固定支点的圆周运动假定张力不做功。同时 $O$既然在运动，就应使用活动参考点的角动量变化关系；“力的作用线通过 $O$”本身不足以保证关于该活动点的角动量守恒。

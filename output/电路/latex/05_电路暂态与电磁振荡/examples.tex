@@ -1,0 +1,579 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[带初电荷的RC充电]\label{c5:example:1}
+电容 $C$ 初电荷 $q_0$（按上极板为正），经电阻 $R$ 接恒电源 $\mathcal E$。求 $q(t),i(t)$，讨论 $q_0>C\mathcal E$ 时的电流方向。
+\end{example}
+\typeout{ECFIG:fig:c5:example:1:s}\fig{fig:c5:example:1:s}{题设：带初电荷的RC充电}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{固定电荷极板与电流的关联方向}\par\nobreak
+图\ref{fig:c5:example:1:s} 电流流入标记 $q$ 的上极板，故 $i=\dot q$。由 $\mathcal E-R\dot q-q/C=0$，令 $u=q-C\mathcal E$，得 $R\dot u+u/C=0$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离偏差变量并代入初电荷}\par\nobreak
+当偏差不为零时，先写 $\dd u/u=-\dd t/(RC)$，再以初态为下限，
+\[
+\int_{u(0)}^{u(t)}\frac{\dd z}{z}
+=-\int_0^t\frac{\dd s}{RC},\qquad
+\ln\left|\frac{u(t)}{u(0)}\right|=-\frac t{RC}.
+\]
+偏差的符号不改变，且偏差零时解恒定。电流由
+$\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
+\[
+ q=C\mathcal E+(q_0-C\mathcal E)\e^{-t/(RC)},\quad
+ i=\frac{C\mathcal E-q_0}{RC}\e^{-t/(RC)}.
+\]
+\typeout{ECFIG:fig:c5:example:1:p}\fig{fig:c5:example:1:p}{解答过程：带初电荷的RC充电}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.2,0)--(5,0)node[right]{$t$};\draw[axis](0,-.2)--(0,2.7)node[above]{$q$};\draw[world,domain=0:4.4,samples=70]plot(\x,{2.3-(2.3-0.5)*exp(-\x)});\node[left]at(0,0.5){$q_0$};\draw[guide](0,2.3)--(4.5,2.3)node[right]{$C\mathcal E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{根据曲线斜率判断回送电荷的条件}\par\nobreak
+图\ref{fig:c5:example:1:p} 示意 $q_0<C\mathcal E$ 的上升过程。若 $q_0>C\mathcal E$，电流为负，电容向电源回送电荷，同时电阻仍发热。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对初态连续及终态不越过}\par\nobreak
+初值和终值分别为 $q_0,C\mathcal E$，不会越过终态。$t=0^+$ 电容电荷连续，电流却可以立刻取有限非零值。\end{solution}
+\begin{question}\begin{example}[RC放电的电荷与通过量]\label{c5:example:2}
+电容初电压 $U_0>0$，经电阻 $R$ 放电。求电荷、按放电方向取正的电流，以及时间 $t$ 内通过电阻的电荷量。
+\end{example}
+\typeout{ECFIG:fig:c5:example:2:s}\fig{fig:c5:example:2:s}{题设：RC放电的电荷与通过量}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)--(0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{区分流入极板的参考电流与实际放电方向}\par\nobreak
+图\ref{fig:c5:example:2:s} 的参考电流流入上极板，与实际初始放电方向相反。回路式 $R\dot q+q/C=0$ 分离后为 $\dd q/q=-\dd t/(RC)$。由初值 $q(0)=CU_0$，
+\[
+\int_{CU_0}^{q(t)}\frac{\dd z}{z}
+=-\int_0^t\frac{\dd s}{RC},\qquad
+\ln\frac{q(t)}{CU_0}=-\frac t{RC},
+\]
+给出 $q=CU_0\e^{-t/(RC)}$，参考电流 $\dot q=-U_0\e^{-t/(RC)}/R$。
+\typeout{ECFIG:fig:c5:example:2:p}\fig{fig:c5:example:2:p}{左图改用实际放电方向为正；右图中剩余电荷与已通过电荷的归一化曲线之和恒为 $1$}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw(0,0)--(0,3)to[R,l={$R$}](4,3)to[C,l={$C$}](4,0)--(0,0);
+\node[right]at(4,2.2){$+q(t)$};\node[right]at(4,.8){$-q(t)$};
+\draw[flow](3,4)--(1,4)node[midway,above]{$i_{\text{放}}=-\dot q$};
+\end{scope}
+\begin{scope}[xshift=6cm,scale=.8]
+\draw[axis](0,0)--(5,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,3.2);
+\draw[blue,thick,domain=0:4.5,samples=80]plot(\x,{2.5*exp(-\x)});
+\draw[red,thick,domain=0:4.5,samples=80]plot(\x,{2.5*(1-exp(-\x))});
+\node[left]at(0,2.5){$1$};
+\node[blue]at(2.5,.7){$q/(CU_0)$};\node[red]at(2.5,3){$\Delta Q/(CU_0)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对实际放电电流积分求已通过电荷}\par\nobreak
+图\ref{fig:c5:example:2:p} 按实际放电方向标正电流 $i_{\text{放}}=U_0\e^{-t/(RC)}/R$。通过电阻的电荷量不是剩余电荷，而是积分
+\[
+ \Delta Q=\frac{U_0}{R}\int_0^t\e^{-s/(RC)}\dd s
+=\frac{U_0}{R}\left[-RC\e^{-s/(RC)}\right]_0^t
+=CU_0(1-\e^{-t/(RC)}).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电荷守恒与减半时刻检查}\par\nobreak
+两者相加等于初电荷 $CU_0$。若问“电荷减半的时刻”，解 $\e^{-t/(RC)}=1/2$，得 $t=RC\ln2$；若问“已通过一半电荷”，在本单调放电过程中恰好同一时刻，其他复杂过程中则需区分。\end{solution}
+\begin{question}\begin{example}[RC电压达到指定误差]\label{c5:example:3}
+未带电电容经 $R$ 接到电压 $\mathcal E$。求电压达到终值 $90\%$、$99\%$ 的时刻，以及此时电流相对初值的比。
+\end{example}
+\typeout{ECFIG:fig:c5:example:3:s}\fig{fig:c5:example:3:s}{题设：RC电压达到指定误差}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从电压比例改写剩余偏差}\par\nobreak
+图\ref{fig:c5:example:3:s} 中令 $\tau=RC$。回路给出 $\tau\dot u_C=\mathcal E-u_C$，以 $u_C(0)=0$ 积分，
+\[
+\int_0^{u_C}\frac{\dd z}{\mathcal E-z}=\frac t\tau,\qquad
+-\ln\frac{\mathcal E-u_C}{\mathcal E}=\frac t\tau.
+\]
+因此 $u_C=\mathcal E(1-\e^{-t/\tau})$，初电流 $i_0=\mathcal E/R$。达到 $f\mathcal E$ 时，$1-f=\e^{-t/\tau}$，故 $t=-\tau\ln(1-f)$。
+\typeout{ECFIG:fig:c5:example:3:p}\fig{fig:c5:example:3:p}{达到给定比例相当于剩余偏差达到 $0.1,0.01$；时间横轴以 $\tau=RC$ 归一化}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.6,0)node[right]{$t/\tau$};
+\draw[axis](0,0)--(0,4.1)node[above]{$u_C/\mathcal E$};
+\draw[thick,domain=0:5.3,samples=100]plot(\x,{3*(1-exp(-\x))});
+\draw[guide](0,3)--(5.3,3);\node[left]at(0,3){$1$};
+\foreach \x/\y/\lab in {2.302585/2.7/{\ln10},4.605170/2.97/{\ln100}}{\draw[guide](\x,0)--(\x,\y);\fill(\x,\y)circle(1.7pt);\node[below]at(\x,-.1){$\lab$};}
+\draw[guide](2.302585,2.7)--(2.1,3.45)node[above]{$0.90$};
+\draw[guide](4.605170,2.97)--(4.4,3.9)node[above]{$0.99$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别解两个对数时刻}\par\nobreak
+图\ref{fig:c5:example:3:p} 中 $90\%$ 对应 $t_{90}=\tau\ln10\approx2.303\tau$，$99\%$ 对应 $t_{99}=\tau\ln100\approx4.605\tau$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由相同指数因子回算电流比例}\par\nobreak
+电流 $i/i_0=\e^{-t/\tau}$，所以分别是 $0.10,0.01$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按剩余误差解释指数过程}\par\nobreak
+两次时间并非相差一个固定“百分比时间”，指数过程取决于剩余偏差的倍数。严格达到 $100\%$ 需要 $t\to\infty$，这与实际按误差规定完成的含义不同。\end{solution}
+\begin{question}\begin{example}[电容换接另一恒压源]\label{c5:example:4}
+电容 $C$ 已充到 $U_1$，经电阻 $R$ 换接到同极性恒压源 $U_2$，$U_1>U_2>0$。求电流与电阻总热，并说明电源是否吸收能量。
+\end{example}
+\typeout{ECFIG:fig:c5:example:4:s}\fig{fig:c5:example:4:s}{题设：电容换接另一恒压源}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$U_2$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{继承原电容电压并确定新的终态}\par\nobreak
+图\ref{fig:c5:example:4:s} 切换瞬间电容电压保持 $U_1$，终态为 $U_2$。由 $RC\dot u_C+u_C=U_2$，令 $w=u_C-U_2$，得
+\[
+\int_{U_1-U_2}^{w(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{RC},
+\qquad w(t)=(U_1-U_2)\e^{-t/(RC)}.
+\]
+电流为 $C\dot u_C=C(U_1-U_2)(-1/RC)\e^{-t/(RC)}$，所以
+\[
+ u_C=U_2+(U_1-U_2)\e^{-t/(RC)},\quad
+ i=\frac{U_2-U_1}{R}\e^{-t/(RC)}<0.
+\]
+\typeout{ECFIG:fig:c5:example:4:p}\fig{fig:c5:example:4:p}{电容电压由 $U_1$ 下降到 $U_2$，实际电流沿所画箭头流入电源正端}{\begin{tikzpicture}
+
+\begin{scope}[scale=.78]
+\draw(0,0)to[battery1,invert,l={$U_2$}](0,3)to[R,l={$R$}](4,3)to[C,l={$C$}](4,0)--(0,0);
+\draw[flow](3,4)--(1,4)node[midway,above]{$-i>0$};
+\node[left]at(-.3,2.3){$+$};\node[left]at(-.3,.7){$-$};
+\node[right]at(4,2.2){$u_C(t)$};
+\end{scope}
+\begin{scope}[xshift=6cm,scale=.78]
+\draw[axis](0,0)--(4.7,0)node[right]{$t$};\draw[axis](0,0)--(0,3.4)node[above]{$u_C$};
+\draw[thick,domain=0:4.2,samples=80]plot(\x,{1+1.5*exp(-\x)});
+\draw[guide](0,1)--(4.3,1)node[right]{$U_2$};\node[left]at(0,2.5){$U_1$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际方向计算电源吸收的能量}\par\nobreak
+图\ref{fig:c5:example:4:p} 的电流反向流入电源正端，电源吸收的能量为 $W_{\text{吸}}=CU_2(U_1-U_2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由初末储能差计算电阻热}\par\nobreak
+电容释放能量 $C(U_1^2-U_2^2)/2$，扣除电源吸收部分，电阻热为
+\[
+ Q_R=\frac C2(U_1-U_2)^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用瞬时焦耳功率独立核验}\par\nobreak
+直接积分 $Ri^2$：$R[(U_1-U_2)/R]^2\left[-\frac{RC}{2}\e^{-2t/(RC)}\right]_0^\infty=C(U_1-U_2)^2/2$，核验通过。电源仍接着并不意味着它一定供能。\end{solution}
+\begin{question}\begin{example}[经分压网络充电的时间常数]\label{c5:example:5}
+恒压源 $\mathcal E$ 经 $R_1$ 到节点 $A$，$A$ 经 $R_2$ 接地，电容 $C$ 并联于 $R_2$，初始未带电。求电容电压、源电流及终态。
+\end{example}
+\typeout{ECFIG:fig:c5:example:5:s}\fig{fig:c5:example:5:s}{题设：经分压网络充电的时间常数}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R_1$}](3,3)to[R,l={$R_2$}](3,0)--(0,0);\draw(3,3)--(5.5,3)to[C,l={$C$}](5.5,0)--(3,0);\node[above]at(3,3){$A$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从电容端口求开路电压与看入电阻}\par\nobreak
+在 图\ref{fig:c5:example:5:s} 中先移去电容。端口开路电压为 $U_{\rm th}=\mathcal E R_2/(R_1+R_2)$；把理想源短路后，$R_1,R_2$ 对电容端口并联，$R_{\rm th}=R_1R_2/(R_1+R_2)$。
+\typeout{ECFIG:fig:c5:example:5:p}\fig{fig:c5:example:5:p}{解答过程：经分压网络充电的时间常数}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$U_{\rm th}$}](0,3)to[R,l={$R_1\parallel R_2$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电容电压的完整暂态}\par\nobreak
+图\ref{fig:c5:example:5:p} 得到 $\tau=R_{\rm th}C$。回路式 $\tau\dot u_C+u_C=U_{\rm th}$ 给出
+\[
+\int_0^{u_C(t)}\frac{\dd z}{U_{\rm th}-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad-\ln\frac{U_{\rm th}-u_C}{U_{\rm th}}=\frac t\tau,
+\]
+所以 $u_C=U_{\rm th}(1-\e^{-t/\tau})$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到原分压支路求电源电流}\par\nobreak
+真实源电流经 $R_1$，为
+\[
+ i_{\text{源}}=\frac{\mathcal E-u_C}{R_1}
+ =\frac{\mathcal E}{R_1+R_2}+\frac{U_{\rm th}}{R_1}\e^{-t/\tau}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初态与终态原电路检查分流}\par\nobreak
+初始值 $\mathcal E/R_1$ 对应电容初态零电压；终值 $\mathcal E/(R_1+R_2)$ 对应电容直流断路。源电流不等于电容充电电流，因为 $R_2$ 同时分流。\end{solution}
+\begin{question}\begin{example}[两个电容经电阻重新分配电荷]\label{c5:example:6}
+电容 $C_1,C_2$ 初电压为 $U_1,U_2$，负极板共接，正极板经电阻 $R$ 接通。求电流、共同终压和总热。
+\end{example}
+\typeout{ECFIG:fig:c5:example:6:s}\fig{fig:c5:example:6:s}{题设：两个电容经电阻重新分配电荷}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$C_1$}](0,3)to[R,l={$R$}](4,3)to[C,l={$C_2$}](4,0)--(0,0);\node[above]at(0,3){$U_1$};\node[above]at(4,3){$U_2$};\draw[flow](1,4.1)--(3,4.1)node[midway,above]{$i$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用转移电荷同时表示两极板的状态}\par\nobreak
+取 图\ref{fig:c5:example:6:s} 的 $i$ 从 $C_1$ 正端流向 $C_2$ 正端。转移电荷为 $x$，则 $u_1=U_1-x/C_1$、$u_2=U_2+x/C_2$，电阻关系
+\[
+ R\dot x=U_1-U_2-x\left(\frac1{C_1}+\frac1{C_2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立差电压时间常数并解转移过程}\par\nobreak
+令 $C_s=C_1C_2/(C_1+C_2)$，终转移量 $x_\infty=C_s(U_1-U_2)$，令 $y=x-x_\infty$，则 $\dot y=-y/(RC_s)$。当 $x_\infty\ne0$，由$y(0)=-x_\infty$确定积分下限，
+\[
+\int_{-x_\infty}^{y(t)}\frac{\dd \eta}{\eta}
+=-\int_0^t\frac{\dd s}{RC_s},\qquad
+[\ln|\eta|]_{-x_\infty}^{y(t)}=-\frac{t}{RC_s}.
+\]
+故$\ln|y/(-x_\infty)|=-t/(RC_s)$；若 $U_1=U_2$，初态即平衡，$x=i=0$。
+对非平衡初态还原 $x$ 并求导，故 $x=x_\infty(1-\e^{-t/(RC_s)})$，$i=(U_1-U_2)\e^{-t/(RC_s)}/R$。
+\typeout{ECFIG:fig:c5:example:6:p}\fig{fig:c5:example:6:p}{固定从左向右的转移坐标；左上极板电荷减少 $x$，右上极板电荷增加 $x$}{\begin{tikzpicture}
+
+\draw(0,0)to[C,l={$C_1$}](0,3)to[R,l={$R$}](7,3)to[C,l={$C_2$}](7,0)--(0,0);
+\node[right]at(.4,2.1){$q_1$};\node[right]at(.4,.9){$-q_1$};
+\node[left]at(6.6,2.1){$q_2$};\node[left]at(6.6,.9){$-q_2$};
+\draw[flow](2.5,4.2)--(4.5,4.2)node[midway,above]{$i=\dot x$};
+\node at(1.5,-1){$q_1=C_1U_1-x$};\node at(5.5,-1){$q_2=C_2U_2+x$};
+\node at(3.5,-2){$q_1+q_2=C_1U_1+C_2U_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总电荷守恒求共同终压}\par\nobreak
+图\ref{fig:c5:example:6:p} 两上极板总电荷守恒，终压 $U_f=(C_1U_1+C_2U_2)/(C_1+C_2)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求总热并区分两种等效电容的用途}\par\nobreak
+初末储能差给出
+\[
+ Q_R=\frac12C_1U_1^2+\frac12C_2U_2^2-\frac12(C_1+C_2)U_f^2
+ =\frac12C_s(U_1-U_2)^2.
+\]
+差压的时间常数用串联等效 $C_s$，终态总储能用并联总电容 $C_1+C_2$，二者用途不同。\end{solution}
+\begin{question}\begin{example}[斜坡电压驱动RC电路]\label{c5:example:7}
+未带电电容串联 $R$，从 $t=0$ 起电源电动势为 $\mathcal E(t)=\kappa t$，$\kappa>0$。求 $q(t),i(t)$ 和长期电容电压相对电源的滞后。
+\end{example}
+\typeout{ECFIG:fig:c5:example:7:s}\fig{fig:c5:example:7:s}{题设：斜坡电压驱动RC电路}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\kappa t$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{针对斜坡驱动求线性特解}\par\nobreak
+由 图\ref{fig:c5:example:7:s}，$R\dot q+q/C=\kappa t$。设线性特解 $q_p=at+b$，有 $\dot q_p=a$，代回得 $Ra+(at+b)/C=\kappa t$。比较 $t$ 的系数和常数项，$a/C=\kappa$、$Ra+b/C=0$，解得 $a=C\kappa,b=-RC^2\kappa$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{加入齐次解并满足初态}\par\nobreak
+齐次项 $q_h$ 满足 $R\dot q_h+q_h/C=0$，对$q_h\ne0$先分离为$\dd q_h/q_h=-\dd t/(RC)$，再积分：
+\[
+\int\frac{\dd q_h}{q_h}=-\frac1{RC}\int\dd t,\qquad
+\ln|q_h|=-\frac{t}{RC}+C_0.
+\]
+因此$q_h=A\e^{-t/(RC)}$，$A=0$也包含齐次零解。由 $q(0)=0$ 得 $A=RC^2\kappa$。
+\typeout{ECFIG:fig:c5:example:7:p}\fig{fig:c5:example:7:p}{归一化斜坡驱动与电容响应；渐近直线比电源直线低 $\kappa\tau$}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.1,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,4.8)node[above]{$u/(\kappa\tau)$};
+\draw[gray,thick](0,0)--(4.5,4.5)node[above]{$\mathcal E(t)$};
+\draw[thick,domain=0:4.5,samples=100]plot(\x,{\x-1+exp(-\x)});
+\draw[guide](1,0)--(4.5,3.5)node[right]{$\kappa(t-\tau)$};
+\draw[<->](3.8,3.8)--(3.8,2.8)node[midway,left]{$1$};
+\node at(2,4.5){实线：$u_C(t)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电荷与电流的完整表达式}\par\nobreak
+所以 图\ref{fig:c5:example:7:p} 的完整响应中，对括号逐项求导得 $1+RC(-1/RC)\e^{-t/(RC)}=1-\e^{-t/(RC)}$，所以
+\[
+ q=C\kappa[t-RC+RC\e^{-t/(RC)}],\quad
+ i=C\kappa(1-\e^{-t/(RC)}).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{读取渐近滞后并核对初始电流}\par\nobreak
+长期 $u_C\simeq\kappa(t-RC)$，相对电源电压滞后常量 $\kappa RC$，源电流趋于 $C\kappa$。初始电流为零，因为初始源电压和电容电压同为零；不能把常阶跃电源的指数衰减电流直接套到斜坡驱动。\end{solution}
+\begin{question}\begin{example}[电感从零电流接通电源]\label{c5:example:8}
+电感 $L$ 与电阻 $R$ 串联接恒电源 $\mathcal E$，初电流零。求电流、电感端电压及电流达到稳值一半的时间。
+\end{example}
+\typeout{ECFIG:fig:c5:example:8:s}\fig{fig:c5:example:8:s}{题设：电感从零电流接通电源}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,3)to[R,l={$R$}](3.5,3)to[L,l={$L$}](3.5,0)--(0,0);\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从零电流与终值写出RL初值方程}\par\nobreak
+图\ref{fig:c5:example:8:s} 中 $L\dot i+Ri=\mathcal E$。终电流 $\mathcal E/R$，令 $j=i-\mathcal E/R$，则 $\dd j/j=-(R/L)\dd t$。由$j(0)=-\mathcal E/R$确定下限，
+\[
+\int_{-\mathcal E/R}^{j(t)}\frac{\dd \xi}{\xi}
+=-\frac RL\int_0^t\dd s,\qquad
+[\ln|\xi|]_{-\mathcal E/R}^{j(t)}=-\frac RL[s]_0^t.
+\]
+所以$\ln|j/(-\mathcal E/R)|=-Rt/L$，指数化并加回终值，得到 $i=(\mathcal E/R)(1-\e^{-Rt/L})$。
+\typeout{ECFIG:fig:c5:example:8:p}\fig{fig:c5:example:8:p}{电感电压与电阻电压互补；电流以稳值归一化后与电阻电压共用同一上升曲线}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.4,0)node[right]{$t/\tau_L$};\draw[axis](0,0)--(0,3.3);
+\draw[blue,thick,domain=0:5,samples=90]plot(\x,{2.5*(1-exp(-\x))});
+\draw[red,thick,domain=0:5,samples=90]plot(\x,{2.5*exp(-\x)});
+\node[left]at(0,2.5){$1$};
+\node[blue]at(3,3){$i/(\mathcal E/R)=u_R/\mathcal E$};\node[red]at(3,.5){$u_L/\mathcal E$};
+\draw[guide](.693147,0)--(.693147,1.25);\fill(.693147,1.25)circle(1.5pt);
+\node[below]at(.693147,-.1){$\ln2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按关联方向求电感及电阻电压}\par\nobreak
+图\ref{fig:c5:example:8:p} 的电感端电压 $u_L=L\dot i=\mathcal E\e^{-Rt/L}$，电阻电压 $u_R=\mathcal E(1-\e^{-Rt/L})$，二者之和始终为 $\mathcal E$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电流达到一半的时刻}\par\nobreak
+令 $i=(\mathcal E/R)/2$，得 $t=(L/R)\ln2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初态连续与直流终态核对}\par\nobreak
+初态 $i(0)=0,u_L(0)=\mathcal E$；终态 $i\to\mathcal E/R,u_L\to0$，分别符合电流连续和直流短路条件。\end{solution}
+\begin{question}\begin{example}[电感在闭合电阻回路中衰减]\label{c5:example:9}
+电感初电流 $I_0>0$，切除电源后仍与电阻 $R$ 组成闭合回路。求 $i(t)$、电阻热及释放一半磁能所需时间。
+\end{example}
+\typeout{ECFIG:fig:c5:example:9:s}\fig{fig:c5:example:9:s}{题设：电感在闭合电阻回路中衰减}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)--(0,3)to[R,l={$R$}](3.5,3)to[L,l={$L$}](3.5,0)--(0,0);\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留闭合续流路径并继承初始电流}\par\nobreak
+图\ref{fig:c5:example:9:s} 保留原电流方向为正，电流连续给出 $i(0^+)=I_0$。回路方程 $L\dot i+Ri=0$，所以
+\[
+\int_{I_0}^{i(t)}\frac{\dd z}{z}=-\frac RL\int_0^t\dd s,
+\qquad\ln\frac{i}{I_0}=-\frac{Rt}{L},
+\]
+故 $i=I_0\e^{-Rt/L}$。
+\fig{c5:e9:polarity}{释放磁能时电感电流保持原方向，但电感实际端电势为下高上低}{\begin{tikzpicture}
+
+\draw(0,0)--(0,3)to[R,l={$R$}](4,3)to[L,l={$L$}](4,0)--(0,0);
+\draw[flow](1,4)--(3,4)node[midway,above]{$i(t)>0$};
+\node[right]at(4.5,2.4){$-$};\node[right]at(4.5,.6){$+$};
+\node[right]at(5,1.5){$u_L=V_{\text{上}}-V_{\text{下}}=-Ri$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际电感极性确认磁场向电阻供能}\par\nobreak
+图\ref{c5:e9:polarity}中电感功率 $u_Li=-Ri^2<0$，磁场向外释放能量；电阻功率 $Ri^2>0$。参考方向保持一致后，不必另加一个感应电动势再重复计入回路。
+
+\typeout{ECFIG:fig:c5:example:9:p}\fig{fig:c5:example:9:p}{剩余磁能的指数含电流衰减率的两倍；用 $2Rt/L$ 归一化横轴}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.1,0)node[right]{$2Rt/L$};
+\draw[axis](0,0)--(0,3.2)node[above]{$W_L/(LI_0^2/2)$};
+\draw[thick,domain=0:4.6,samples=90]plot(\x,{2.5*exp(-\x)});
+\node[left]at(0,2.5){$1$};\node[left]at(0,1.25){$1/2$};
+\draw[guide](0,1.25)--(.693147,1.25)--(.693147,0);\fill(.693147,1.25)circle(1.5pt);
+\node[below]at(.693147,-.1){$\ln2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求剩余磁能与总焦耳热}\par\nobreak
+图\ref{fig:c5:example:9:p} 的磁能 $W_L=LI_0^2\e^{-2Rt/L}/2$，衰减指数是电流的两倍。总焦耳热
+\[
+ Q=\int_0^\infty Ri^2\dd t
+=RI_0^2\left[-\frac L{2R}\e^{-2Rt/L}\right]_0^\infty
+=RI_0^2\frac L{2R}=\frac12LI_0^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按能量指数求时刻并区分电流减半}\par\nobreak
+释放一半磁能时剩余能量为初值一半，所以 $t=L\ln2/(2R)$。若误用电流减半的时间 $L\ln2/R$，该时刻只剩四分之一磁能。\end{solution}
+\begin{question}\begin{example}[有源并联网络中的电感响应]\label{c5:example:10}
+三个支路并联：一支为电感 $L$，一支为电阻 $R$，一支为电动势 $\mathcal E$ 的电源串联 $R$。电源正端朝上，电感参考电流取从上向下，初值 $I_0$。求电感电流。
+\end{example}
+\typeout{ECFIG:fig:c5:example:10:s}\fig{fig:c5:example:10:s}{题设：有源并联网络中的电感响应}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,1.5)to[R,l={$R$}](0,3)--(5,3)to[L,l={$L$}](5,0)--(0,0);\draw(2.5,3)to[R,l={$R$}](2.5,0);\draw[flow](5.6,2.3)--(5.6,.7)node[midway,right]{$i$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从电感端口求等效电源和电阻}\par\nobreak
+在 图\ref{fig:c5:example:10:s} 中暂移去电感，另两支路构成端口电源。开路分压 $U_{\rm th}=\mathcal E/2$，关闭电动势后两电阻并联，$R_{\rm th}=R/2$。
+\typeout{ECFIG:fig:c5:example:10:p}\fig{fig:c5:example:10:p}{解答过程：有源并联网络中的电感响应}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$\mathcal E/2$}](0,3)to[R,l={$R/2$}](3.5,3)to[L,l={$L$}](3.5,0)--(0,0);\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用继承的初始电流求完整响应}\par\nobreak
+由 图\ref{fig:c5:example:10:p} 的等效回路，$L\dot i+(R/2)i=\mathcal E/2$。终态 $i_\infty=\mathcal E/R$，时间常数 $\tau=2L/R$。令 $j=i-i_\infty$，分离积分得
+\[
+\int_{I_0-i_\infty}^{j(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau},
+\qquad j(t)=(I_0-i_\infty)\e^{-t/\tau}.
+\]
+若初流恰等于终值，直接取 $j=0$；其余情形保留初始偏差的正负号，所以
+\[
+ i(t)=\frac{\mathcal E}{R}+\left(I_0-\frac{\mathcal E}{R}\right)\e^{-Rt/(2L)}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断上升或下降并回到原网络检查终态}\par\nobreak
+若 $I_0$ 小于终值，电流上升；大于终值时下降。终态电感短路使并联纯电阻电压为零，电池支路电流 $\mathcal E/R$ 全流入电感，核验通过。不能按图上两个 $R$ 直接串联得到错误时间常数。\end{solution}
+\begin{question}\begin{example}[LC振荡的两个初值]\label{c5:example:11}
+理想LC电路中按图取 $i=\dot q$。初始 $q(0)=q_0,i(0)=I_0$。求完整运动及最大电流、最大电荷。
+\end{example}
+\typeout{ECFIG:fig:c5:example:11:s}\fig{fig:c5:example:11:s}{题设：LC振荡的两个初值}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[L,l={$L$}](0,2.8)--(3.2,2.8)to[C,l={$C$}](3.2,0)--(0,0);\node[right]at(3.2,2){$q$};\draw[flow](.6,3.3)--(2.6,3.3)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{建立电荷坐标的二阶微分方程}\par\nobreak
+图\ref{fig:c5:example:11:s} 沿关联参考方向列式 $L\dot i+q/C=0$，结合 $i=\dot q$ 得 $\ddot q+\omega_0^2q=0$，$\omega_0=1/\sqrt{LC}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时代入电荷与电流两个初值}\par\nobreak
+试取 $q=\e^{st}$，得到特征方程 $s^2+\omega_0^2=0$，所以一般实解 $q=A\cos\omega_0t+B\sin\omega_0t$。求导为 $i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$，由初值 $A=q_0,\omega_0B=I_0$，
+\[
+ q=q_0\cos\omega_0t+\frac{I_0}{\omega_0}\sin\omega_0t,\quad
+ i=-\omega_0q_0\sin\omega_0t+I_0\cos\omega_0t.
+\]
+\typeout{ECFIG:fig:c5:example:11:p}\fig{fig:c5:example:11:p}{归一化能量圆；初态点以第一象限示意，实际象限由 $q_0,I_0$ 的符号确定}{\begin{tikzpicture}
+
+\draw[axis](-2.6,0)--(3.2,0)node[right]{$q/\sqrt C$};
+\draw[axis](0,-2.6)--(0,3)node[above]{$\sqrt L\,i$};
+\draw[thick](0,0)circle(2);
+\fill(40:2)circle(1.8pt);\draw[guide](40:2)--(3,2.3)node[right]{$P_0$};
+\draw[flow,blue](40:2)arc[start angle=40,end angle=0,radius=2];
+\draw[flow,blue](-90:2)arc[start angle=-90,end angle=-125,radius=2];
+\node[above right]at(2,0){$Q_{\max}/\sqrt C$};
+\node[above left]at(0,2){$\sqrt L\,I_{\max}$};
+\draw[guide](0,0)--(40:2);\node at(.7,.2){$\sqrt{2W}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量圆求最大电荷和最大电流}\par\nobreak
+图\ref{fig:c5:example:11:p} 以归一化 $q/\sqrt C$ 和 $\sqrt L i$ 表示能量平面，轨道是半径 $\sqrt{q_0^2/C+LI_0^2}$ 的圆。因此 $Q_{\max}=\sqrt{q_0^2+LCI_0^2}$，$I_{\max}=\sqrt{I_0^2+q_0^2/(LC)}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两个初始符号检查相位与运动方向}\par\nobreak
+最大值只确定振幅，初始方向仍由带符号的两个初值确定。代回 $t=0$ 可同时检验电荷和电流。\end{solution}
+\begin{question}\begin{example}[两个电容通过电感转移电荷]\label{c5:example:12}
+$C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理想电感 $L$ 相连。初电感电流零。求转移电荷 $x(t)$、最大电流及最大转移量。
+\end{example}
+\typeout{ECFIG:fig:c5:example:12:s}\fig{fig:c5:example:12:s}{题设：两个电容通过电感转移电荷}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[C,l={$C_1$}](0,3)to[L,l={$L$}](4,3)to[C,l={$C_2$}](4,0)--(0,0);\draw[flow](.7,4.1)--(3.2,4.1)node[midway,above]{$\dot x$};\node at(0,3.8){$U$};
+\node at(4,3.8){$u_2(0)=0$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用转移量表示两电容的电压}\par\nobreak
+图\ref{fig:c5:example:12:s} 中转移 $x$ 后，两电容电压为 $u_1=U-x/C_1,u_2=x/C_2$。电感上从左到右的电压等于 $u_1-u_2=L\ddot x$，所以
+\[
+ L\ddot x+\frac{x}{C_s}=U,\qquad C_s=\frac{C_1C_2}{C_1+C_2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{移到差电压的平衡坐标并代入两个初值}\par\nobreak
+令 $y=x-C_sU$，得 $\ddot y+\omega^2y=0$，$\omega=1/\sqrt{LC_s}$。特征方程 $s^2+\omega^2=0$ 给出 $y=A\cos\omega t+B\sin\omega t$。初位移变为 $y(0)=-C_sU$，故 $A=-C_sU$；初速度为零给出 $\omega B=0$。因此 $y=-C_sU\cos\omega t$，还原 $x=y+C_sU$ 并求导，得到
+\[
+ x=C_sU(1-\cos\omega t),\quad i=C_sU\omega\sin\omega t.
+\]
+\typeout{ECFIG:fig:c5:example:12:p}\fig{fig:c5:example:12:p}{转移量越过平衡值 $C_sU$ 后仍继续增加；第一次在 $\omega t=\pi$ 达到最大值}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.9,0)node[right]{$\omega t$};
+\draw[axis](0,0)--(0,3.4)node[above]{$x/(C_sU)$};
+\draw[thick,domain=0:6.283185,samples=130]plot(\x,{1.5*(1-cos(\x r))});
+\draw[guide](0,1.5)--(6.4,1.5);\node[left]at(0,1.5){$1$};\node[left]at(0,3){$2$};
+\draw[guide](3.141593,0)--(3.141593,3);\fill(3.141593,3)circle(1.6pt);
+\node[below]at(3.141593,-.1){$\pi$};\node[below]at(6.283185,-.1){$2\pi$};
+\node at(1.6,3.7){$i>0$};\node at(4.9,3.7){$i<0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求转移量极值和最大电流}\par\nobreak
+图\ref{fig:c5:example:12:p} 中转移量在 $0$ 与 $2C_sU$ 间往复，最大电流 $I_{\max}=U\sqrt{C_s/L}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以电荷守恒和储能交换解释越过平衡}\par\nobreak
+与电阻连接的单调趋向不同，理想电感把能量暂存为磁能，使转移量可越过静态共同电压对应的 $C_sU$，随后反向。总电荷仍守恒，总电容能与磁能之和恒定。\end{solution}
+\begin{question}\begin{example}[RLC衰减振荡与初始斜率]\label{c5:example:13}
+串联RLC电路无电源，$R<2\sqrt{L/C}$。$q(0)=q_0,\dot q(0)=0$。求 $q(t)$，解释为何不能只写 $q_0\e^{-\gamma t}\cos\omega t$。
+\end{example}
+\typeout{ECFIG:fig:c5:example:13:s}\fig{fig:c5:example:13:s}{题设：RLC衰减振荡与初始斜率}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[L,l={$L$}](0,3)to[R,l={$R$}](3.5,3)to[C,l={$C$}](3.5,0)--(0,0);\node[above right]at(3.5,2){$q$};\draw[flow](.8,4.1)--(2.4,4.1)node[midway,above]{$i=\dot q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求欠阻尼特征根及完整实解}\par\nobreak
+图\ref{fig:c5:example:13:s} 的方程是 $L\ddot q+R\dot q+q/C=0$。设 $\gamma=R/(2L)$、$\omega=\sqrt{1/(LC)-\gamma^2}$，试取 $q=\e^{st}$ 后得到 $Ls^2+Rs+1/C=0$，除以 $L$ 并配方为 $(s+\gamma)^2+\omega^2=0$，特征根为 $-\gamma\pm i\omega$，一般实解 $q=\e^{-\gamma t}(A\cos\omega t+B\sin\omega t)$。
+\typeout{ECFIG:fig:c5:example:13:p}\fig{fig:c5:example:13:p}{图取 $\gamma/\omega_0=0.3$；实线满足零初始电流，虚线是由两正交系数组成的真实包络}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.8,0)node[right]{$\omega_0t$};
+\draw[axis](0,-1.7)--(0,2.8)node[above]{$q/q_0$};
+\draw[thick,domain=0:9,samples=180]plot({.7*\x},{2*exp(-.3*\x)*(cos(.953939*\x r)+.314485*sin(.953939*\x r))});
+\draw[guide,domain=0:9,samples=120]plot({.7*\x},{2.096570*exp(-.3*\x)});
+\draw[guide,domain=0:9,samples=120]plot({.7*\x},{-2.096570*exp(-.3*\x)});
+\draw[blue](0,2)--(.8,2);\node[blue,right]at(.8,2.3){初始切线水平};
+\node[left]at(0,2){$1$};
+\foreach \x in {2,4,6,8}{\draw({.7*\x},0)--({.7*\x},-.1)node[below]{$\x$};}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始斜率确定正弦项系数}\par\nobreak
+图\ref{fig:c5:example:13:p} 初值 $A=q_0$。乘积求导为
+\[
+\dot q=\e^{-\gamma t}
+[(-\gamma A+\omega B)\cos\omega t+(-\gamma B-\omega A)\sin\omega t].
+\]
+在 $t=0$ 为 $\dot q(0)=-\gamma A+\omega B=0$，因此 $B=\gamma q_0/\omega$，得到
+\[
+ q=q_0\e^{-\gamma t}\left(\cos\omega t+\frac{\gamma}{\omega}\sin\omega t\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查初始电流与逐周期能量衰减}\par\nobreak
+仅保留余弦项会给出错误初始电流 $-\gamma q_0$。能量导数为 $-Ri^2\le0$，每次经过相同相位时振幅比为 $\e^{-\gamma 2\pi/\omega}$，能量比为其平方，方向与衰减吻合。\end{solution}
+\begin{question}\begin{example}[有限电压脉冲后的响应]\label{c5:example:14}
+电容原不带电，电阻 $R$ 与电容 $C$ 串联。输入电压在 $0<t<t_0$ 为 $E$，此后为零并保持闭合。求整个电压、电流响应及总热。
+\end{example}
+\typeout{ECFIG:fig:c5:example:14:s}\fig{fig:c5:example:14:s}{题设：有限电压脉冲后的响应}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$E(t)$}](0,2.5)to[R,l={$R$}](3,2.5)to[C,l={$C$}](3,0)--(0,0);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求脉冲期间的充电过程}\par\nobreak
+图\ref{fig:c5:example:14:s} 令 $\tau=RC$。脉冲期间满足 $\tau\dot u=E-u$，以 $u(0)=0$ 积分得
+\[
+\int_0^{u(t)}\frac{\dd z}{E-z}=\int_0^t\frac{\dd s}{\tau},
+\qquad-\ln\frac{E-u}{E}=\frac t\tau.
+\]
+解出电压并用 $i=C\dot u$ 求导，$u=E(1-e^{-t/\tau})$、$i=(E/R)e^{-t/\tau}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把连续的电容电压继承为第二段初值}\par\nobreak
+在结束时 $u_1=E(1-e^{-t_0/\tau})$，电容电压连续。
+\typeout{ECFIG:fig:c5:example:14:p}\fig{fig:c5:example:14:p}{图以 $t_0=2\tau$ 示意：电容电压连续，电流在脉冲结束时向下跳变 $E/R$}{\begin{tikzpicture}
+
+\draw[axis](-.6,0)--(6.7,0)node[right]{$t/\tau$};
+\draw[axis](0,-.1)--(0,2.8)node[above]{$u/E$};
+\draw[guide](-.5,0)--(0,0)--(0,2)--(2,2)--(2,0)--(6,0);
+\draw[blue,thick,domain=0:2,samples=60]plot(\x,{2*(1-exp(-\x))});
+\draw[blue,thick,domain=2:6,samples=70]plot(\x,{2*(1-exp(-2))*exp(-(\x-2))});
+\draw[guide](2,0)--(2,2.4);\node[below]at(2,-.1){$t_0/\tau$};
+\node[above]at(1,2){$E(t)/E$};\node[blue]at(4,1.2){$u_C/E$};\node[left]at(0,2){$1$};
+\begin{scope}[yshift=-5cm]
+\draw[axis](-.6,0)--(6.7,0)node[right]{$t/\tau$};\draw[axis](0,-2.2)--(0,2.8)node[above]{$iR/E$};
+\draw[blue,thick](-.5,0)--(0,0);\draw[blue,thick,domain=0:2,samples=60]plot(\x,{2*exp(-\x)});
+\draw[blue,thick,domain=2:6,samples=70]plot(\x,{-2*(1-exp(-2))*exp(-(\x-2))});
+\draw[guide](2,{2*exp(-2)})--(2,{-2*(1-exp(-2))});
+\draw[fill=white](2,{2*exp(-2)})circle(1.5pt);\fill(2,{-2*(1-exp(-2))})circle(1.5pt);
+\node[left]at(0,2){$1$};\node[left]at(0,-2){$-1$};\node[above right]at(2,.2){$t_0/\tau$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求断源放电并检查电流跳变}\par\nobreak
+图\ref{fig:c5:example:14:p} 输入变零后满足 $\dot u=-u/\tau$。从切换时刻积分，
+\[
+\int_{u_1}^{u(t)}\frac{\dd z}{z}
+=-\int_{t_0}^t\frac{\dd s}{\tau},
+\qquad \ln\frac{u(t)}{u_1}=-\frac{t-t_0}{\tau}.
+\]
+所以是以 $u_1$ 为初值的放电，$u=u_1e^{-(t-t_0)/\tau}$，$i=-(u_1/R)e^{-(t-t_0)/\tau}$。电流可因电源突变而跳变，电容电压不跳变。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电源功和末态能量求总热}\par\nobreak
+电源只在第一段供能，$W_s=(E^2/R)[-\tau e^{-t/\tau}]_0^{t_0}=CE^2(1-e^{-t_0/\tau})$。末态电容能为零，所以总热等于 $W_s$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段积分焦耳热并检查长短脉冲极限}\par\nobreak
+对平方电流分别积分，令第二段局部时间 $s=t-t_0$：
+\[
+H_1=\frac{E^2}{R}\left[-\frac\tau2 e^{-2t/\tau}\right]_0^{t_0}
+=\frac{CE^2}{2}(1-e^{-2t_0/\tau}),
+\]
+\[
+H_2=\frac{u_1^2}{R}\left[-\frac\tau2 e^{-2s/\tau}\right]_0^\infty
+=\frac12Cu_1^2.
+\]
+指数原函数中的 $\tau/2$ 正是平方电流带来的时间尺度。相加为同一结果。长脉冲极限总热为 $CE^2$，分别包含充电与随后放电的两部分；短脉冲极限为 $E^2t_0/R$，此时电容电压尚小。
+\end{solution}

@@ -1,0 +1,9 @@
+\fig{fv:s5:volume}{受控浸入物多排开的体积，由容器其余自由液面上升补偿}{\begin{tikzpicture}[scale=.9]
+\draw[thick](0,3)--(0,0)--(5,0)--(5,3);\fill[blue!10](0,0)rectangle(5,1.8);
+\draw[dashed](0,1.8)--(5,1.8);\draw[blue,thick](0,2.2)--(5,2.2);
+\fill[white](1.8,.9)rectangle(3.2,3.3);\draw[thick](1.8,.9)rectangle(3.2,3.3);
+\draw[<->](5.4,1.8)--(5.4,2.2)node[right]{$\Delta h$};\draw[->,red](2.5,3.6)--(2.5,2.6)node[right]{$\Delta z$};
+\node at(2.5,-.6){容器截面积 $A$，浸入物截面积 $a$};\end{tikzpicture}}
+图\ref{fv:s5:volume}取等截面浸入物向下移动 $\Delta z>0$、液面上升 $\Delta h>0$。相对物体，新增浸没高度为 $\Delta z+\Delta h$，所以液体体积不变给
+\[A\Delta h=a(\Delta z+\Delta h),\qquad \Delta h=\frac{a}{A-a}\Delta z.\]
+若漏掉物体随液面上升新增的浸没部分，就会误写成 $a\Delta z/A$。该式适用于几何浸入量受控的物体；自由漂浮且质量不变的物体排液体积由浮力平衡固定，不能未经比较便套同一关系。

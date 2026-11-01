@@ -1,0 +1,44 @@
+\section{本讲小结}
+抛体运动先选统一坐标与共同时间，再由落地、斜面或墙面条件确定运动终点。空间轨迹必须配合时间方向和有效区间使用；最高点不等于速度为零，到斜面的距离也不等于竖直高度。
+
+最值问题应在可行域中求解，并把候选结果代回全部障碍与边界。反弹问题逐次更新初值，展开图帮助比较不同阶段，但不能代替碰撞顺序与根的筛选。
+\section{练习}
+\nopagebreak[4]
+\begin{question}\begin{drill}[越过有限宽仓库]\label{k4p6}
+水平地面上一座仓库高20m、宽40m。球从仓库前的地面发射，越过水平屋顶后落回仓库后方地面。发射点位置可选，求所需最小初速、发射点到前墙的距离及发射角。取 $g=10$m/s$^2$，允许临界掠过屋沿。\end{drill}
+\fig{k4p6q}{越过有限宽仓库：题设关系}{\begin{tikzpicture}\draw[world](-2,0)--(6,0);\draw[world](0,0)rectangle(4,2);\node at(2,1){仓库};\draw[dim](0,2.5)--(4,2.5)node[midway,above]{$40\,\mathrm m$};\draw[dim](4.5,0)--(4.5,2)node[midway,right]{$20\,\mathrm m$};\fill(-1.5,0)circle(2pt)node[below]{$A$};\draw[ray](-1.5,0)--(-.8,1.2);\end{tikzpicture}}
+\answerlink{k4p6}
+\end{question}
+
+\begin{question}\begin{drill}[两面矮墙与多次反弹]\label{k4p7}
+从高 $H=5$m的平台水平抛球，终点距平台水平9m。第一球先反弹一次，第二球先反弹两次，都恰落到终点。途中两面矮墙的墙顶同时位于两条轨迹上，求两球初速及两面墙的位置、高度。地面碰撞完全弹性，取 $g=10$m/s$^2$。\end{drill}
+\fig{k4p7q}{两面矮墙与多次反弹：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(7,0);\draw[world](0,0)--(0,2);\draw[world](1.5,0)--(1.5,.875) (4.5,0)--(4.5,1.875);\node[left]at(0,1){$5$m};\node[below]at(6,0){$C$：$9$m};\node[below]at(1.5,0){$A$};\node[below]at(4.5,0){$B$};\draw[blue,world]plot[domain=0:2,samples=25]({\x},{2*(1-(\x/2)^2)});\draw[blue,world]plot[domain=2:6,samples=50]({\x},{2*(1-(\x/2-2)^2)});\draw[red,world]plot[domain=0:1.2,samples=20]({\x},{2*(1-(\x/1.2)^2)});\draw[red,world]plot[domain=1.2:3.6,samples=35]({\x},{2*(1-(\x/1.2-2)^2)});\draw[red,world]plot[domain=3.6:6,samples=35]({\x},{2*(1-(\x/1.2-4)^2)});\end{tikzpicture}}
+\answerlink{k4p7}
+\end{question}
+
+\begin{question}\begin{drill}[瞄准点的空间轨迹]\label{k4p8}
+枪口位于原点，子弹初速大小固定为 $v_0$。靶平面为 $x=d>0$，靶上需要击中的水平线为 $y=h$，$z$沿水平线。枪口直线指向在靶平面的交点称为瞄准点 $B=(d,Y,Z)$。求所有能击中该水平线的瞄准点的轨迹。$y$轴竖直向上。\end{drill}
+\fig{k4p8q}{瞄准点的空间轨迹：题设关系}{\begin{tikzpicture}\draw[world](3,-1)--(6,-.3)--(6,3)--(3,2.3)--cycle;\fill(0,0)circle(2pt)node[left]{$O$};\draw[ray](0,0)--(4.5,2)node[above]{$B$};\draw[blue,world](3,.5)--(6,1.2)node[right]{$y=h$};\draw[guide](4.5,2)--(4.5,.85)node[below]{$A$};\node[below]at(4.5,-.7){$x=d$};\end{tikzpicture}}
+\answerlink{k4p8}
+\end{question}
+
+\begin{question}\begin{drill}[两墙之间的周期抛射]\label{k4p9}
+两竖直墙相距 $L$，地面水平。球从左墙高 $h>0$ 处向右上方发射，与右墙、地面均发生光滑完全弹性碰撞，再回到左墙原位置、恢复碰撞后相同的速度，周期重复。要求每周期一次触地，且触地点在两墙之间。求最小初速，并讨论不同 $h/L$ 时是否能达到。\end{drill}
+\fig{k4p9q}{两墙之间的周期抛射：题设关系}{\begin{tikzpicture}
+\draw[world](0,3)--(0,0)--(4,0)--(4,3);
+\draw[blue,world]plot[domain=0:2,samples=50,variable=\t]
+ ({2*\t},{1+sqrt(2)*\t-.5*(\t)^2});
+\draw[blue,world]plot[domain=2:{2+sqrt(2)},samples=40,variable=\t]
+ ({8-2*\t},{1+sqrt(2)*\t-.5*(\t)^2});
+\draw[blue,world]plot[domain=0:{2-sqrt(2)},samples=30,variable=\t]
+ ({4-2*sqrt(2)-2*\t},{2*\t-.5*(\t)^2});
+\draw[flow,blue](1,1.582107)--(1.4,1.744949);
+\draw[flow,blue](3,1.410534)--(2.6,1.173377);
+\fill(0,1)circle(1.5pt)node[left]{$A$};
+\fill(4,{2*sqrt(2)-1})circle(1.5pt)node[right]{$B$};
+\fill({4-2*sqrt(2)},0)circle(1.5pt)node[below]{$C$};
+\draw[dim](-.55,0)--(-.55,1)node[midway,left]{$h$};
+\draw[dim](0,-.7)--(4,-.7)node[midway,below]{$L$};
+\end{tikzpicture}}
+\answerlink{k4p9}
+\end{question}

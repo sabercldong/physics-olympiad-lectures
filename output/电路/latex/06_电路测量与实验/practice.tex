@@ -1,0 +1,68 @@
+\section{练习}
+
+\begin{question}\begin{drill}[伏安法接法的临界阻值]\label{c6:drill:1}
+电流表内阻 $0.50\,\Omega$，电压表内阻 $2000\,\Omega$。仅比较未修正相对误差，求两接法误差相同的待测阻值，并判断 $10\,\Omega$、$1000\,\Omega$ 各宜用哪种接法。
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:1:s}\fig{fig:c6:drill:1:s}{题设：伏安法接法的临界阻值}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[ammeter,l={$R_A$}](2,3)--(4,3)to[R,l={$R_x$}](4,0)--(0,0);\draw(2.6,3)--(6,3)to[voltmeter,l={$R_V$}](6,0)--(4,0);\node[above]at(4,3){$P$};\node[below]at(4,0){$Q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:1}
+\begin{question}\begin{drill}[半偏读数的精确修正]\label{c6:drill:2}
+半偏实验串联电阻 $R_1=10000\,\Omega$，使表头电流减半时并联电阻 $R_2=99.0\,\Omega$。求真实 $R_g$ 和直接以 $R_2$ 作为内阻的相对误差。
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:2:s}\fig{fig:c6:drill:2:s}{断开 $S$ 调满偏，再保持 $R_1$ 不变合上 $S$ 调半偏}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$E$}](0,3.5)to[R,l={$R_1$}](3.5,3.5)to[ammeter,l={$R_g$}](3.5,0)--(0,0);
+\draw(3.5,3.5)to[nos,l={$S$}](6,3.5)to[R,l={$R_2$}](6,0)--(3.5,0);
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:2}
+\begin{question}\begin{drill}[三伏电压表扩为六伏]\label{c6:drill:3}
+电压表量程 $3\,\mathrm V$、内阻 $3\,\mathrm{k}\Omega$，另有 $3\,\mathrm{k}\Omega$ 与 $15\,\mathrm{k}\Omega$ 定值电阻。要测 $4.8\,\mathrm V,2\,\mathrm W$ 灯泡的伏安曲线，选择改装方法，求原表读数与灯泡电压的关系；电流表量程 $0.6\,\mathrm A$、内阻 $1\,\Omega$。
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:3:s}\fig{fig:c6:drill:3:s}{原电压表与灯泡的额定条件；附加电阻和测量接线尚待选择}{\begin{tikzpicture}
+
+\draw(0,0)to[lamp,l={$4.8\,\mathrm V,2\,\mathrm W$}](4,0);\node at(2,-1){待测灯泡};
+\draw(6,0)to[voltmeter,l={$3\,\mathrm V;\ 3\,\mathrm{k}\Omega$}](10,0);\node at(8,-1){原电压表};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:3}
+\begin{question}\begin{drill}[欧姆刻度的倍率与偏转]\label{c6:drill:4}
+欧姆表基础中值为 $20\,\Omega$，指针在电流满偏的 $2/7$ 位置，选 $\times1000$ 挡。求电阻；若改为同档 $1/2$ 偏转，电阻应为多少？
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:4:s}\fig{fig:c6:drill:4:s}{题设：欧姆刻度的倍率与偏转}{\begin{tikzpicture}[scale=.88]
+\draw[world](160:2.2)arc(160:20:2.2);\draw(160:2.1)--(160:2.3);\node at(160:2.65){$\infty$};\draw(146.0:2.1)--(146.0:2.3);\node at(146.0:2.65){$180$};\draw(132.0:2.1)--(132.0:2.3);\node at(132.0:2.65){$80$};\draw(113.33333333333334:2.1)--(113.33333333333334:2.3);\node at(113.33333333333334:2.65){$40$};\draw(90.0:2.1)--(90.0:2.3);\node at(90.0:2.65){$20$};\draw(66.66666666666667:2.1)--(66.66666666666667:2.3);\node at(66.66666666666667:2.65){$10$};\draw(43.33333333333333:2.1)--(43.33333333333333:2.3);\node at(43.33333333333333:2.65){$4$};\draw(20:2.1)--(20:2.3);\node at(20:2.65){$0$};\draw[force](0,0)--(120.0:2);\fill(0,0)circle(2pt);\node at(0,-.6){$\Omega\times1000$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:4}
+\begin{question}\begin{drill}[逐段测量定位断路]\label{c6:drill:5}
+串联回路为电源—灯 $L_1$—连接线 $de$—灯 $L_2$—开关。断开电源后，欧姆表测 $L_1$ 两端有限、连接线 $de$ 两端无穷大、$L_2$ 两端有限。判断故障并说明为何必须先隔离电源及并联通路。
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:5:s}\fig{fig:c6:drill:5:s}{断开电源后的串联支路；分别测量两个灯泡及连接线 $de$}{\begin{tikzpicture}
+
+\draw(0,2)to[lamp,l={$L_1$}](3,2)--(5,2)to[lamp,l={$L_2$}](8,2)to[nos,l={$S$}](8,0)--(6,0);
+\draw(0,2)--(0,0)--(2,0);\draw(2.5,0)to[battery1,l_={$E$}](5.5,0);
+\draw[guide](2,0)circle(.18);\draw[guide](6,0)circle(.18);\node at(4,-1){电源两端已断开};
+\fill(3,2)circle(2pt)node[above]{$d$};\fill(5,2)circle(2pt)node[above]{$e$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:5}
+\begin{question}\begin{drill}[电源拟合中两种仪表误差]\label{c6:drill:6}
+电池真实参数 $E,r$，仪表内阻 $R_A,R_V$。甲接法电压表直接跨电池、电流表只读负载；乙接法电流表读电池总电流、电压表只读外负载。分别求拟合 $U=a-bI$ 的参数和误差方向。
+\end{drill}
+\typeout{ECFIG:fig:c6:drill:6:s}\fig{fig:c6:drill:6:s}{甲接法中电压表直接跨电池端子，电流表位于负载支路}{\begin{tikzpicture}
+\draw(0,0)to[battery1,invert,l={$E$}](0,1.7)to[R,l={$r$}](0,4);
+\draw[flow](.5,4.8)--(1.6,4.8)node[midway,above]{$I_{\text{源}}$};
+\draw(0,4)--(3,4)to[ammeter,l={$R_A$}](3,2)to[R,l={$R_x$}](3,0)--(0,0);
+\draw(3,4)--(6,4)to[voltmeter,l={$R_V$}](6,0)--(3,0);
+\fill(3,4)circle(2pt);\fill(3,0)circle(2pt);
+\draw[flow](2.1,3.5)--(2.1,2.6)node[midway,left]{$I$};
+\node at(3,-1){甲：$I_{\text{源}}=I+U/R_V$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{c6:drill:6}

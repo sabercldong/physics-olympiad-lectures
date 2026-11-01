@@ -1,0 +1,637 @@
+\section{例题与分析}
+
+\begin{question}
+\begin{example}[电场加速后的电子物质波]\label{ex:m3wave}
+电子从静止出发，经电势差 \(U=150\,\mathrm V\) 加速。求电子的德布罗意波长，并判断能否用非相对论动量公式。设加速区外电场为零，忽略电子间相互作用。
+\end{example}
+\fig{fig:m3waveq}{电子由低电势处向高电势处加速，离开加速区后进入衍射装置}{
+\begin{tikzpicture}
+\draw[world] (0,-.8)--(0,.8) node[above] {$\varphi_A=0$};
+\draw[world] (3,-.8)--(3,-.16) (3,.16)--(3,.8) node[above] {$\varphi_B=U$};
+\fill (.3,0) circle(2pt) node[below] {$e^-$};
+\draw[axis] (.4,0)--(2.4,0) node[midway,above] {加速};
+\draw[axis] (3.2,0)--(5,0) node[midway,above] {$\bm p$};
+\node[draw,align=center] at(6,0){衍射\\装置};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先由电势能变化求电子动能}\par\nobreak
+图\ref{fig:m3waveq}中电子电荷为 \(-e\)，从 \(A\) 到 \(B\) 的电势能变化为 \(-eU\)。电场力做正功 \(eU\)，因此动能为 \(K=eU=150\,\mathrm{eV}\)。先比较能标：
+\[
+ \frac{K}{m_ec^2}=\frac{150}{5.11\times10^5}=2.94\times10^{-4}\ll1.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查非相对论条件并确定出射动量}\par\nobreak
+可以取 \(p\approx\sqrt{2m_e eU}\)。图\ref{fig:m3waves}把动量和波长的对应关系画在出射区；图中的波线表示相位变化，电子并不沿波线运动。
+\fig{fig:m3waves}{同一出射动量对应确定波长；波线仅表示空间周期}{
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis] (0,.9)--(5.7,.9) node[right] {$\bm p$};
+\draw[domain=0:5.4,samples=100] plot(\x,{.3*sin(360*\x/1.8)});
+\draw[dim] (.45,-.55)--(2.25,-.55) node[midway,below] {$\lambda=h/p$};
+\draw[aux] (.45,.3)--(.45,-.6) (2.25,.3)--(2.25,-.6);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算波长并估计近似误差}\par\nobreak
+代入 \(m_e=9.109\times10^{-31}\,\mathrm{kg}\) 得
+\[
+ \lambda\approx\frac{6.626\times10^{-34}}
+ {\sqrt{2(9.109\times10^{-31})(1.602\times10^{-19})(150)}}
+ =\boxed{1.00\times10^{-10}\,\mathrm m=0.100\,\mathrm{nm}}.
+\]
+若用相对论式 \(\lambda=hc/\sqrt{eU(eU+2m_ec^2)}\)，结果约相对减小 \(7.3\times10^{-5}\)，远小于本题保留三位有效数字的要求。把电子动能代入光子的 \(\lambda=hc/E\) 则会得到错误结果，因为有静质量的电子不满足 \(E=pc\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对波长对应的区域和量纲}\par\nobreak
+图\ref{fig:m3waves}中动量应对应加速区外的匀速电子。为检查单位，\(150\,\mathrm{eV}=2.403\times10^{-17}\,\mathrm J\)，因此
+\(p\simeq6.62\times10^{-24}\,\mathrm{kg\,m/s}\)；用 \(\mathrm{J\,s}=\mathrm{kg\,m^2/s}\) 可见 \(h/p\) 的单位确为米。电场中电子的局部动量会随位置改变，不能把出射波长理解为整个加速区内始终不变的波长。
+\end{solution}
+
+\begin{question}
+\begin{example}[高电压电子的波长与近似误差]\label{ex:r71}
+电子从静止出发，经 \(U=150\,\mathrm{kV}\) 电势差加速。取 \(m_ec^2=511\,\mathrm{keV}\)，\(hc=1.240\,\mathrm{keV\,nm}\)。求精确相对论波长和非相对论波长，比较后者的相对误差，并求使该误差低于 \(1.00\%\) 的电压范围。
+\end{example}
+\fig{fig:r71q}{电子从低电势 \(A\) 向高电势 \(B\) 加速，获得动能 \(eU\)}{
+\begin{tikzpicture}
+\draw[world](0,-1)--(0,1)node[above]{$A:\varphi=0$};
+\draw[world](5,-1)--(5,1)node[above]{$B:\varphi=U$};
+\draw[axis,thick](.7,0)--(4.3,0)node[midway,above]{电子 \(-e\)};
+\draw[axis](4,-.6)--(1,-.6)node[midway,below]{$\boldsymbol E$};
+\node[right]at(5.7,0){无场区测 \(\lambda\)};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由加速动能求相对论动量与波长}\par\nobreak
+图\ref{fig:r71q}中电势能变化为 \(-eU\)，故 \(K=150\,\mathrm{keV}\)。相对论动量为
+\[
+ pc=\sqrt{150(150+2\times511)}\,\mathrm{keV},
+\]
+因此
+\[
+ \boxed{\lambda=\frac{1.240}{\sqrt{150\times1172}}\,\mathrm{nm}
+ =2.96\,\mathrm{pm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一动能下计算经典近似值}\par\nobreak
+若采用非相对论动量，得到
+\[
+ \lambda_{\rm nr}=\frac{1.240}{\sqrt{2\times511\times150}}\,\mathrm{nm}
+ =3.17\,\mathrm{pm}.
+\]
+\fig{fig:r71s}{同一动能下 \(p_{\rm rel}>p_{\rm nr}\)，故实际波长较短；波线仅示意相位}{
+\begin{tikzpicture}
+\node[left]at(0,1){非相对论};
+\draw[axis](0,1)--(2.5,1)node[right]{$p_{\rm nr}$};
+\node[left]at(0,-.5){相对论};
+\draw[axis](0,-.5)--(2.677,-.5)node[right]{$p_{\rm rel}$};
+\draw[domain=0:3.2,samples=160]plot({5+\x},{1+.16*sin(360*\x/.8)});
+\draw[domain=0:3.2,samples=180]plot({5+\x},{-.5+.16*sin(360*\x/.747)});
+\node[above]at(6.6,1.3){同一空间区间};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立相对误差的精确表达式}\par\nobreak
+图\ref{fig:r71s}所示误差方向可直接由公式检查：
+\[
+ \varepsilon=\frac{\lambda_{\rm nr}-\lambda}{\lambda}
+ =\sqrt{1+\frac K{2m_ec^2}}-1
+ =\boxed{7.09\%}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由误差上限反解允许电压}\par\nobreak
+解 \(\varepsilon<0.0100\) 时，应先保留精确不等式：
+\[
+ 1+\frac{eU}{2m_ec^2}<(1.0100)^2,\qquad
+ \boxed{0<U<20.5\,\mathrm{kV}}.
+\]
+该上限由 \(2\times511\times0.0201=20.5422\,\mathrm{keV}\) 得到。题设 \(150\,\mathrm{kV}\) 明显超出范围，若要求百分之一精度，就必须保留相对论修正。
+\end{solution}
+
+\begin{question}
+\begin{example}[从氢到单电子氦离子]\label{ex:b7bohr}
+单电子氦离子 \(\mathrm{He}^+\) 的核电荷数为 \(Z=2\)，电子处于 \(n=2\)。求该模型中的轨道半径、速度和能量，并求 \(2\to1\) 光子的波长。取 \(hc=1240\,\mathrm{eV\,nm}\)，忽略核运动和整体反冲。
+\end{example}
+\fig{fig:b7bohrq}{核电荷改变库仑力；圆轨道只表示玻尔模型的量子化条件}{
+\begin{tikzpicture}
+\draw[world](0,0)circle(1.4);\fill(0,0)circle(2pt)node[below]{核 \(+2e\)};
+\fill(1.4,0)circle(2pt)node[right]{电子};
+\draw[axis](1.4,0)--(1.4,1)node[right]{$v_2$};
+\draw[dim](0,-.5)--(1.4,-.5)node[midway,below]{$r_2$};
+\node at(-2,1.5){$n=2$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{代入核电荷和量子数求轨道参数}\par\nobreak
+图\ref{fig:b7bohrq}中 \(Z=2,n=2\)，所以
+\[
+ \boxed{r_2=2a_0=1.06\times10^{-10}\,\mathrm m},\qquad
+ \boxed{v_2=v_0=2.19\times10^6\,\mathrm{m/s}},
+\]
+\[
+ \boxed{E_2=-13.6\,\mathrm{eV}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两内部能级之差求光子波长}\par\nobreak
+图\ref{fig:b7bohrs}把氢和单电子氦离子的同量子数能级并列。氦离子的 \(E_1=-54.4\,\mathrm{eV}\)，故
+\[
+ \Delta E=E_2-E_1=40.8\,\mathrm{eV},\qquad
+ \boxed{\lambda=\frac{1240}{40.8}\,\mathrm{nm}=30.4\,\mathrm{nm}}.
+\]
+\fig{fig:b7bohrs}{左为氢，右为单电子氦离子；各列内部按同一能量比例画出}{
+\begin{tikzpicture}[y=.055cm]
+\draw[world](0,0)--(2.3,0) (0,-3.4)--(2.3,-3.4) (0,-13.6)--(2.3,-13.6);
+\draw[world](5,0)--(7.3,0) (5,-13.6)--(7.3,-13.6) (5,-54.4)--(7.3,-54.4);
+\draw[axis](1.2,-3.4)--(1.2,-13.6);
+\draw[axis](6.2,-13.6)--(6.2,-54.4);
+\node[above]at(1.2,4){氢 \(Z=1\)};\node[above]at(6.2,4){\(\mathrm{He}^+\), \(Z=2\)};
+\node[left]at(0,-13.6){$-13.6$};\node[right]at(7.3,-13.6){$-13.6$};
+\node[right]at(7.3,-54.4){$-54.4$};\node[right]at(7.3,0){$0$};
+\node[below]at(3.7,-62){能量单位：\(\mathrm{eV}\)};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用核电荷数的平方关系检查结果}\par\nobreak
+相同 \(n\) 下，能量差随 \(Z^2\) 放大为四倍，所以该跃迁波长为氢 \(2\to1\) 波长的四分之一。先区分核电荷数与电子数，才能判断这些类氢公式是否适用。
+\end{solution}
+
+\begin{question}
+\begin{example}[从第四能级出发的全部谱线]\label{ex:r72}
+大量彼此独立的氢原子被激发至 \(n=4\)，随后通过自发辐射回到基态。按玻尔模型，设任意两层间的向下跃迁均可能发生，忽略反冲、精细结构及外场。求可能出现的不同谱线数、各条谱线所属谱系及波长，并说明单个原子一次退激发最多发射多少个光子。取 \(E_n=-13.6/n^2\,\mathrm{eV}\)，\(hc=1240\,\mathrm{eV\,nm}\)。
+\end{example}
+\fig{fig:r72q}{能级按序分开画，竖直间距不代表真实能量差；初始原子均在 \(n=4\)}{
+\begin{tikzpicture}
+\foreach \y/\n/\en in {0/1/-13.6,1/2/-3.40,2/3/-1.511,3/4/-0.850}{
+\draw[world](0,\y)--(5,\y);
+\node[left]at(0,\y){$n=\n$};\node[right]at(5,\y){\(\en\,\mathrm{eV}\)};}
+\foreach \x in {1,2,3,4}{\fill(\x,3)circle(2pt);}
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{列举不同起终层组成的谱线集合}\par\nobreak
+图\ref{fig:r72q}中允许的起终层满足 \(1\le j<i\le4\)。逐一列出配对，可避免漏掉间接下降所形成的谱线：
+\[
+ (i,j)=(2,1),(3,1),(4,1),(3,2),(4,2),(4,3).
+\]
+共 \(\boxed{6\text{ 条}}\)。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将每一能级差换成波长}\par\nobreak
+每条能量与波长为
+\(\Delta_{ij}=13.6(1/j^2-1/i^2)\,\mathrm{eV}\)，
+\(\lambda_{ij}=1240/\Delta_{ij}\,\mathrm{nm}\)。
+\fig{fig:r72s}{细箭头列出六种跃迁；右侧粗箭头为逐级退激发路径}{
+\begin{tikzpicture}
+\foreach \y/\n in {0/1,1/2,2/3,3/4}{
+\draw[world](0,\y)--(7,\y);\node[left]at(0,\y){$n=\n$};}
+\draw[axis](.6,1)--(.6,0);
+\draw[axis](1.6,2)--(1.6,0);
+\draw[axis](2.6,3)--(2.6,0);
+\draw[axis](3.6,2)--(3.6,1);
+\draw[axis](4.6,3)--(4.6,1);
+\draw[axis](5.6,3)--(5.6,2);
+\draw[axis,thick](6.5,3)--(6.5,2);
+\draw[axis,thick](6.5,2)--(6.5,1);
+\draw[axis,thick](6.5,1)--(6.5,0);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐条对应谱系并检查最大最小波长}\par\nobreak
+对应图\ref{fig:r72s}的六根细箭头，计算结果为
+\begin{center}
+\begin{tabular}{cccc}\toprule
+跃迁&能量/\(\mathrm{eV}\)&波长/\(\mathrm{nm}\)&谱系\\\midrule
+\(2\to1\)&10.2&122&赖曼系\\
+\(3\to1\)&12.09&103&赖曼系\\
+\(4\to1\)&12.75&97.3&赖曼系\\
+\(3\to2\)&1.889&656&巴耳末系\\
+\(4\to2\)&2.550&486&巴耳末系\\
+\(4\to3\)&0.6611&\(1.88\times10^3\)&帕邢系\\\bottomrule
+\end{tabular}
+\end{center}
+表中波长按所给近似常数保留三位有效数字。最长波长对应最小能级差 \(4\to3\)，最短波长对应最大能级差 \(4\to1\)，与能级顺序相符。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区别单个原子的级联路径与整个集合}\par\nobreak
+图\ref{fig:r72s}粗箭头的逐级路径最多包含 \(\boxed{3\text{ 个光子}}\)。直接 \(4\to1\) 则只发一个光子；单个原子不会依次发出全部六种光子。任一路径总辐射能量均为
+\[
+ E_4-E_1=12.75\,\mathrm{eV},
+\]
+例如 \(0.6611+1.8889+10.2=12.75\)。六条谱线是大量原子的不同下降路径合在一起得到的集合。
+\end{solution}
+
+\begin{question}
+\begin{example}[内部跃迁能与自由原子的反冲]\label{ex:m3recoil}
+氢原子处于第一激发态 \(n=2\)，基态静质量为 \(m_0\)，基态电离能为 \(E_B=13.6\,\mathrm{eV}\)。
+\begin{enumerate}
+\item 原子受外界束缚，忽略支承整体的反冲能，求 \(2\to1\) 跃迁发出的光子频率 \(\nu_1\)。
+\item 原子最初静止且完全自由，求发射光子的频率 \(\nu_{\rm em}\) 及频率降低量 \(\Delta\nu=\nu_1-\nu_{\rm em}\)。
+\item 另有一个静止、自由的基态氢原子。用一个光子使其激发到 \(n=2\)，求所需入射频率 \(\nu_{\rm abs}\)。
+\end{enumerate}
+\end{example}
+\fig{fig:m3recoilq}{相同内部能级差对应三种整体运动条件}{
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \x/\txt in {0/{受束缚发射},2.8/{自由发射},5.6/{自由吸收}}{
+\draw[world] (\x,0)--++(2,0) (\x,1.25)--++(2,0);
+\node at(\x+1,1.65){\txt};}
+\draw[axis,thick] (.7,1.2)--(.7,.05);
+\draw[axis,thick] (3.5,1.2)--(3.5,.05);
+\draw[axis,thick] (6.3,.05)--(6.3,1.2);
+\node[right] at(7.7,1.25){$n=2$};\node[right] at(7.7,0){$n=1$};
+\node at(1,-.4){支承可传递动量};
+\node at(3.8,-.4){原子向后反冲};
+\node at(6.6,-.4){原子吸收后前进};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{求内部能级差并处理支承承担动量的情形}\par\nobreak
+图\ref{fig:m3recoilq}中的两条能级线相隔
+\[
+ \Delta=E_2-E_1=E_B\left(1-\frac14\right)=10.2\,\mathrm{eV}.
+\]
+受束缚原子发射时，支承可以取得动量。在理想化的巨大支承质量极限，其反冲能可忽略，于是
+\[
+ \boxed{h\nu_1=\Delta},\qquad
+ \nu_1=\frac{10.2(1.602\times10^{-19})}{6.626\times10^{-34}}
+       =\boxed{2.47\times10^{15}\,\mathrm{Hz}}.
+\]
+对应波长约 \(121.6\,\mathrm{nm}\)。图\ref{fig:m3bound}说明支承的作用：原子与光子不是独立封闭系统，但包括支承的整体仍满足动量守恒。束缚本身若显著改变能级，就不能沿用孤立氢原子的 \(\Delta\)；本题已忽略这一影响。
+\fig{fig:m3bound}{支承承担反冲动量；图示为发射后的状态}{
+\begin{tikzpicture}
+\draw[fill=gray!12] (-.7,-.65) rectangle(.7,.65);
+\fill (0,0) circle(2.5pt);\node at(0,.95) {$H(n=1)$};
+\draw[axis,thick] (-.8,0)--(-2.1,0) node[midway,above] {$\bm P_{\rm support}$};
+\draw[ray] (.9,0)--(3.2,0) node[midway,above] {$p_\gamma=\Delta/c$};
+\node at(0,-1){巨大支承：\(K_{\rm support}\approx0\)};
+\end{tikzpicture}}
+
+\Needspace{13\baselineskip}
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{自由发射时先确定末态反冲动量}\par\nobreak
+激发态质量应取
+\(m_*=m_0+\Delta/c^2\)。图\ref{fig:m3emission}选光子方向为 \(+x\)，初始总动量为零，故末态原子动量为 \(-h\nu_{\rm em}/c\)。
+\fig{fig:m3emission}{自由发射前后：末态原子向左，光子向右}{
+\begin{tikzpicture}
+\node at(-2.2,1){发射前};\fill (-2.2,0) circle(2.5pt);
+\node[below,align=center] at(-2.2,-.25){$m_*=m_0+\Delta/c^2$\\$p_{\rm initial}=0$};
+\draw[->,double] (-.8,0)--(.1,0);
+\fill (1.6,0) circle(2.5pt) node[above] {$m_0$};
+\draw[axis,thick] (1.4,0)--(.4,0) node[midway,below] {$-p_\gamma$};
+\draw[ray] (2,0)--(4,0) node[midway,above] {$h\nu_{\rm em}$};
+\node at(2.1,1){发射后};\draw[axis] (2,-1)--(4,-1) node[right] {$x$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立自由发射的能量和动量守恒}\par\nobreak
+记 \(\varepsilon=h\nu_{\rm em}\)。按图\ref{fig:m3emission}中的末态动量，原子总能量为 \(\sqrt{m_0^2c^4+\varepsilon^2}\)。能量守恒给出
+\[
+ m_0c^2+\Delta=\varepsilon+\sqrt{m_0^2c^4+\varepsilon^2}.
+\]
+先移项再平方，\(\varepsilon^2\) 恰好相消：
+\[
+ (m_0c^2+\Delta)^2-2(m_0c^2+\Delta)\varepsilon=m_0^2c^4.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出发射频率并检查微小反冲修正}\par\nobreak
+令 \(\delta=\Delta/(m_0c^2)\)，得到
+\[
+ \boxed{\nu_{\rm em}=\nu_1\frac{1+\delta/2}{1+\delta}},\qquad
+ \boxed{\Delta\nu=\nu_1\frac{\delta}{2(1+\delta)}}.
+\]
+因此相对降低量为
+\[
+ \boxed{\frac{\Delta\nu}{\nu_1}=\frac{\delta}{2(1+\delta)}
+       \approx\frac{\Delta}{2m_0c^2}}\quad(\delta\ll1).
+\]
+频率降低量为正，与图中原子获得反冲动能一致。若取 \(m_0c^2\approx938.8\,\mathrm{MeV}\)，则 \(\delta\approx1.09\times10^{-8}\)，\(\Delta\nu/\nu_1\approx5.43\times10^{-9}\)，\(\Delta\nu\approx1.34\times10^7\,\mathrm{Hz}\)。
+
+还可用非相对论反冲能检查：图\ref{fig:m3emission}给出 \(p_\gamma\approx\Delta/c\)，所以
+\[
+ K_R\approx\frac{p_\gamma^2}{2m_0}=\frac{\Delta^2}{2m_0c^2},\qquad
+ h\Delta\nu\approx K_R.
+\]
+这一近似只作一阶检查。精确反冲能为 \(\Delta^2/[2(m_0c^2+\Delta)]\)。
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{自由吸收时确定末态原子运动}\par\nobreak
+图\ref{fig:m3absorption}中，原子初始静止，光子向右入射，吸收后的激发态原子也向右，动量为 \(h\nu_{\rm abs}/c\)。
+\fig{fig:m3absorption}{吸收前后的动量方向；末态质量为 \(m_*\)}{
+\begin{tikzpicture}
+\draw[ray] (-3,0)--(-1.3,0) node[midway,above] {$h\nu_{\rm abs}$};
+\fill (-.8,0) circle(2.5pt) node[above] {$m_0$};
+\node[below] at(-.8,-.25){静止};
+\draw[->,double] (.1,0)--(1,0);
+\fill (1.8,0) circle(2.5pt) node[below] {$m_*$};
+\draw[axis,thick] (2,0)--(3.8,0) node[midway,above] {$p_*=h\nu_{\rm abs}/c$};
+\node at(1.8,-.75){吸收后向右运动};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求自由吸收所需的精确光子能量}\par\nobreak
+记 \(\varepsilon_a=h\nu_{\rm abs}\)，能量守恒为
+\[
+ m_0c^2+\varepsilon_a
+ =\sqrt{(m_0c^2+\Delta)^2+\varepsilon_a^2}.
+\]
+平方后同样消去 \(\varepsilon_a^2\)，得
+\[
+ \boxed{h\nu_{\rm abs}=\Delta\left(1+\frac{\delta}{2}\right)},\qquad
+ \boxed{\nu_{\rm abs}=\nu_1\left(1+\frac{\delta}{2}\right)>\nu_1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较发射和吸收的频率偏移}\par\nobreak
+图\ref{fig:m3recoilenergy}中，吸收与发射分别位于内部能级差的两侧，偏移为
+\[
+ h\nu_{\rm abs}-\Delta=\frac{\Delta^2}{2m_0c^2},\qquad
+ \Delta-h\nu_{\rm em}=\frac{\Delta^2}{2(m_0c^2+\Delta)}.
+\]
+当 $\delta\ll1$ 时，两种偏移近似相等。在所取精度下，发射与吸收频率相差约 $2.68\times10^7\,\mathrm{Hz}$。
+
+\fig{fig:m3recoilenergy}{以静止内部能级差为基准比较三种光子能量；偏移夸张绘制}{
+\begin{tikzpicture}
+\draw[axis] (0,0)--(6.5,0) node[right] {$h\nu$};
+\foreach \x/\txt in {1.2/{h\nu_{\rm em}},3.2/{\Delta},5.2/{h\nu_{\rm abs}}}{
+\draw[world] (\x,-.12)--(\x,.12);\node[above] at(\x,.15){$\txt$};}
+\draw[dim] (1.2,-.65)--(3.2,-.65) node[midway,below] {发射反冲能};
+\draw[dim] (3.2,-.65)--(5.2,-.65) node[midway,below] {吸收后动能};
+\end{tikzpicture}}
+精确关系 \(\nu_{\rm abs}/\nu_{\rm em}=1+\delta=m_*/m_0\) 可作为代数检查。自由、静止原子发出的这一个光子，不能恰好激发另一个自由、静止的同种基态原子；需考虑原子的运动、多普勒频移等条件。
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{换到末态静止系独立复核}\par\nobreak
+设图\ref{fig:m3absorption}中末态原子在实验室的速度为 \(+u\)，记 \(b=u/c\)。新参考系 \(S'\) 相对实验室以 \(+u\) 运动，故吸收前基态原子在 \(S'\) 中以 \(-u\) 运动，入射光子仍向右，如图\ref{fig:m3absframe}。
+\fig{fig:m3absframe}{在末态静止系中，入射原子与光子的动量相消}{
+\begin{tikzpicture}
+\node[left]at(-2,1){吸收前};
+\draw[ray](-1.6,1)--(.2,1)node[midway,above]{$\varepsilon'_a$};
+\fill(1.9,1)circle(2.5pt)node[above]{$m_0$};
+\draw[axis](1.7,1)--(.6,1)node[midway,below]{$-u$};
+\node[left]at(-2,-.6){吸收后};\fill(.8,-.6)circle(2.5pt);
+\node[right]at(1.1,-.6){$m_*$，静止};
+\node at(.6,-1.3){$S'$：总动量为零};
+\end{tikzpicture}}
+图中动量守恒为 \(\varepsilon'_a=\gamma_bm_0bc^2\)，能量守恒为
+\[
+ \gamma_bm_0c^2+\varepsilon'_a=m_*c^2
+ \quad\Longrightarrow\quad
+ \gamma_b(1+b)=\frac{m_*}{m_0}=1+\delta.
+\]
+于是 \(b=[(1+\delta)^2-1]/[(1+\delta)^2+1]\)。入射光子在两系间满足纵向多普勒关系
+\(\varepsilon'_a=\gamma_b(1-b)\varepsilon_a\)，故
+\[
+ \varepsilon_a=\frac{m_0c^2b}{1-b}
+ =\frac{m_0c^2}{2}\big[(1+\delta)^2-1\big]
+ =\Delta\left(1+\frac\delta2\right),
+\]
+与实验室中的直接计算一致。
+\end{solution}
+
+\begin{question}
+\begin{example}[用同位素谱线反求核质量比]\label{ex:m3isotope}
+巴耳末系中的 \(H_\alpha\) 线对应氢原子 \(n=3\to2\) 跃迁，波长为 \(\lambda_H=656.280\,\mathrm{nm}\)。氘原子的对应谱线波长为 \(\lambda_D=656.101\,\mathrm{nm}\)。在玻尔模型及约化质量修正下，求氢核与氘核的质量比，按整数比表示。取氢核质量与电子质量之比 \(M_H/m_e=1836\)，忽略整体发射反冲和更高阶光谱修正。
+\end{example}
+\fig{fig:m3isotopeq}{同一对量子数的跃迁；氘的能级差略大，图中差别夸张绘制}{
+\begin{tikzpicture}
+\node at(1,2.6){氢};\node at(4.8,2.6){氘};
+\draw[world] (0,.2)--(2,.2) (0,2)--(2,2);
+\draw[world] (3.8,0)--(5.8,0) (3.8,1.95)--(5.8,1.95);
+\draw[axis,thick] (1,1.95)--(1,.25) node[midway,right] {$\Delta_H$};
+\draw[axis,thick] (4.8,1.90)--(4.8,.05) node[midway,right] {$\Delta_D$};
+\node[left] at(0,2){$n=3$};\node[left] at(0,.2){$n=2$};
+\node at(1,-.5){$\lambda_H=656.280\,\mathrm{nm}$};
+\node at(4.8,-.5){$\lambda_D=656.101\,\mathrm{nm}$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{用两体相对坐标确定质量怎样进入能级}\par\nobreak
+图\ref{fig:m3twobody}中电子与核分别位于质心 \(C\) 两侧，电子到核的间距为 \(r\)。由 \(m_er_e=M_Nr_N\) 和 \(r=r_e+r_N\)，可把两体相对运动化成质量为 \(\mu=m_eM_N/(m_e+M_N)\) 的等效运动。
+\fig{fig:m3twobody}{核越重，核到质心的距离越小；能级公式使用相对坐标和约化质量}{
+\begin{tikzpicture}
+\draw[axisline] (-.8,0)--(5,0);
+\fill (0,0) circle(3pt) node[above] {核 \(M_N\)};
+\fill (.9,0) circle(1.5pt) node[above] {$C$};
+\fill (4.2,0) circle(2pt) node[above] {电子 \(m_e\)};
+\draw[dim] (0,-.45)--(.9,-.45) node[midway,below] {$r_N$};
+\draw[dim] (.9,-.45)--(4.2,-.45) node[midway,below] {$r_e$};
+\draw[dim] (0,-1.1)--(4.2,-1.1) node[midway,below] {$r$};
+\node at(2.1,.9){$m_er_e=M_Nr_N$（距离示意）};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{列两条波长式并消去公共能级因子}\par\nobreak
+对图\ref{fig:m3isotopeq}中的相同跃迁，量子数因子相同，因此
+\[
+ \frac1{\lambda_H}=\frac{R_\infty}{1+m_e/M_H}\left(\frac14-\frac19\right),\qquad
+ \frac1{\lambda_D}=\frac{R_\infty}{1+m_e/M_D}\left(\frac14-\frac19\right).
+\]
+设 \(q=\lambda_H/\lambda_D\)，消去共同因子得
+\[
+ q=\frac{1+m_e/M_H}{1+m_e/M_D},\qquad
+ \frac{m_e}{M_D}=\frac{1+1/1836}{q}-1.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反求核质量并检查谱线移动方向}\par\nobreak
+代入 \(q=1.00027282385\)，得到
+\[
+ \frac{M_D}{m_e}\approx3679.7,\qquad
+ \frac{M_D}{M_H}\approx2.004,
+ \qquad\boxed{M_H:M_D=1:2}.
+\]
+图\ref{fig:m3isotopeq}中 \(\lambda_D<\lambda_H\)，故 \(\Delta_D>\Delta_H\)。这与较重的氘核给出较大的约化质量、较大的同量子数能级间隔相符，因而质量比方向也得到了检查。
+
+题目只要求整数比，上述小数不应被解释为精密核质量测量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确反演所需的已知质量条件}\par\nobreak
+已知 \(M_H/m_e\) 是完成质量反演所需的条件。单独给出两条波长的比值，只能确定 \((1+m_e/M_H)/(1+m_e/M_D)\)，不足以同时求出两个未知核质量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留同位素小差量后再取整}\par\nobreak
+上述质量比应在消去小差量后再取整。具体地，先保留
+\[
+ q-1=\frac{656.280-656.101}{656.101}
+ \approx2.72824\times10^{-4},
+\]
+再求 \((1+1/1836)/q-1\approx2.7176\times10^{-4}\)，最后取倒数求 \(M_D/m_e\)。若一开始把 \(q\) 取成 \(1.000\)，同位素差异就被舍去，图\ref{fig:m3isotopeq}两条不同波长将被错误地当成同一能级间隔。
+\end{solution}
+
+\begin{question}
+\begin{example}[不同质量的静止靶碰撞]\label{ex:b7com}
+质量为 \(m\) 的粒子以速率 \(v\) 撞击静止靶原子，靶质量为 \(3m\)。靶原子激发需要内能 \(\Delta\)。采用非相对论模型，忽略激发引起的相对静质量变化。求质心系相对运动动能占入射动能的比例，以及实验室激发阈能。
+\end{example}
+\fig{fig:b7comq}{实验室中仅入射粒子运动，质量比不能遗漏}{
+\begin{tikzpicture}
+\fill(0,0)circle(2pt)node[below]{$m$};\fill(4,0)circle(3pt)node[below]{$3m$};
+\draw[axis](.4,.5)--(2.3,.5)node[midway,above]{$v$};\node[above]at(4,.4){静止};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由总动量求实验室质心速度}\par\nobreak
+图\ref{fig:b7comq}的入射动能为 \(K=mv^2/2\)，质心速度为
+\(V_{\rm cm}=mv/(m+3m)=v/4\)。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在质心系计算可用相对运动动能}\par\nobreak
+图\ref{fig:b7coms}中两粒子在质心系的速度分别为 \(+3v/4,-v/4\)，故
+\[
+ K_{\rm rel}=\frac12m(3v/4)^2+\frac12(3m)(v/4)^2
+ =\frac38mv^2=\boxed{\frac34K}.
+\]
+\fig{fig:b7coms}{质心系两动量等大反向，实验室整体平动能仍需保留}{
+\begin{tikzpicture}
+\node[left]at(0,1){质心系};
+\fill(.7,1)circle(2pt)node[below]{$m$};\fill(5,1)circle(3pt)node[below]{$3m$};
+\draw[axis](1,1)--(3.1,1)node[above]{$3v/4$};
+\draw[axis](4.7,1)--(4,1)node[above]{$v/4$};
+\draw[world](0,-1)rectangle(6,-1.6);
+\draw[world](1.5,-1)--(1.5,-1.6);
+\node[above,align=center]at(.75,-1){\(K/4\)\\整体平动};
+\node[above,align=center]at(3.8,-1){\(3K/4\)\\相对运动};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用末态相对动能为零求实验室阈能}\par\nobreak
+阈值时质心系中的末态相对运动动能趋于零，因而
+\[
+ \frac34K_{\min}=\Delta,\qquad
+ \boxed{K_{\min}=\frac43\Delta}.
+\]
+实验室阈能大于能级差，差额对应守恒总动量所要求的整体平动。本题的 \(3/4\) 来自质量比；若两者质量相等，该系数变为 \(1/2\)，应重新计算。
+\end{solution}
+
+\begin{question}
+\begin{example}[不同碰撞条件下的激发阈能]\label{ex:m3excitation}
+用粒子碰撞基态氢原子，使其随后有可能发出 \(H_\alpha\) 谱线。求下列情况下入射粒子的最小动能：
+\begin{enumerate}
+\item 电子与室温下的氢原子相碰撞；
+\item 质子轰击最初静止的基态氢原子；
+\item 质子与基态氢原子以相等速率相向运动并对心碰撞。
+\end{enumerate}
+取 \(E_n=-13.6/n^2\,\mathrm{eV}\)，电子质量远小于氢原子质量，质子质量与氢原子质量近似相等。忽略辐射损失和相对论修正。所求阈能仅表示能量和动量允许的下限。
+\end{example}
+\fig{fig:m3collisionq}{三种入射条件；第三行的两个速度均相对同一实验室测量}{
+\begin{tikzpicture}
+\foreach \y/\txt in {2/{（1）电子},1/{（2）质子},0/{（3）质子}}{
+\node[left] at(-.7,\y){\txt};\fill (0,\y) circle(2pt);\fill(4,\y)circle(3pt);
+\draw[axis] (.2,\y)--(1.8,\y) node[midway,above] {$v$};}
+\node[right] at(4.3,2){氢原子近似静止};
+\node[right] at(4.3,1){氢原子静止};
+\draw[axis] (3.8,0)--(2.2,0) node[midway,above] {$v$};
+\node[right] at(4.3,0){氢原子};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由目标谱线确定最小内部激发能}\par\nobreak
+\(H_\alpha\) 对应 \(3\to2\)。因此从 \(n=1\) 至少须激发到 \(n=3\)，而只到 \(n=2\) 不够。图\ref{fig:m3cascade}把碰撞吸收的能量和随后发射的光子区分开。
+\fig{fig:m3cascade}{碰撞至少提供 \(1\to3\) 的激发能；\(3\to2\) 只释放其中一部分}{
+\begin{tikzpicture}
+\foreach \y/\n in {0/1,1.5/2,2.5/3}{\draw[world](0,\y)--(5,\y)node[right]{$n=\n$};}
+\draw[axis,thick] (1,0)--(1,2.45) node[midway,left] {$\Delta_{31}$};
+\draw[axis,thick] (3,2.45)--(3,1.55) node[midway,right] {$H_\alpha$};
+\draw[axis,thick] (4,1.45)--(4,.05) node[midway,right] {$2\to1$};
+\end{tikzpicture}}
+
+最小内部激发能为
+\[
+ \Delta_{31}=E_3-E_1=13.6\left(1-\frac19\right)
+             =\frac{108.8}{9}\,\mathrm{eV}\approx12.09\,\mathrm{eV}.
+\]
+这还不一定等于实验室中入射粒子的阈能，因为总动量所对应的质心动能不能全部转成内部能。
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对任意初速度分解整体与相对运动}\par\nobreak
+设入射粒子质量为 \(m\)，氢原子质量为 \(M\)，初速度分别为 \(v_1,v_2\)，均带方向符号。定义
+\[
+ V=\frac{mv_1+Mv_2}{m+M},\qquad
+ v_{\rm rel}=v_1-v_2,\qquad
+ \mu_c=\frac{mM}{m+M}.
+\]
+这里 \(\mu_c\) 是碰撞两物体的约化质量，与原子内部电子和核的约化质量不同。初始动能可分为
+\[
+ \frac12mv_1^2+\frac12Mv_2^2
+ =\frac12(m+M)V^2+\frac12\mu_c v_{\rm rel}^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由阈值同速末态建立必要能量条件}\par\nobreak
+图\ref{fig:m3threshold}画出靶静止时阈值前后的运动。阈值处末态相对动能趋于零，两物体具有相同速度 \(V\)，而不是都在实验室中静止。因此可转成内部能的最大值是 \(\frac12\mu_c v_{\rm rel}^2\)，必要条件为
+\[
+ \boxed{\frac12\mu_c v_{\rm rel}^2\ge\Delta_{31}}.
+\]
+\fig{fig:m3threshold}{靶静止时的阈值状态：末态在实验室中仍整体向右运动}{
+\begin{tikzpicture}
+\node[left] at(-.8,1){碰撞前};\fill(0,1)circle(2pt);
+\draw[axis] (.2,1)--(1.8,1)node[midway,above]{$v$};
+\fill(3,1)circle(3pt)node[above]{$M$};\node[right]at(3.4,1){静止};
+\node[left]at(-.8,-.4){阈值后};
+\fill(0,-.4)circle(2pt)node[below]{$m$};\fill(3,-.4)circle(3pt)node[below]{$H^*$};
+\draw[axis] (.2,-.4)--(1.3,-.4)node[midway,above]{$V$};
+\draw[axis] (3.2,-.4)--(4.3,-.4)node[midway,above]{$V$};
+\node at(2,-1.2){两者同速；质心动能保留};
+\end{tikzpicture}}
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算轻电子打近似静靶的阈能}\par\nobreak
+图\ref{fig:m3collisionq}第一行可近似取 \(v_2=0\)，于是 \(v_{\rm rel}=v\)。因 \(m=m_e\ll M\)，\(\mu_c\approx m_e\)，故
+\[
+ \boxed{K_{e,\min}\approx\Delta_{31}=12.09\,\mathrm{eV}}.
+\]
+室温氢原子的热速度远小于具有约 \(12\,\mathrm{eV}\) 动能的电子速度，本题据此忽略靶的热运动。若保留有限 \(m_e/M\)，静靶阈能为 \((1+m_e/M)\Delta_{31}\)，略高于此值。
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算质子打静靶时保留的整体动能}\par\nobreak
+此时 \(m\approx M\)，\(\mu_c\approx m/2\)，\(v_{\rm rel}=v\)。结合图\ref{fig:m3threshold}，初始质子动能的一半留作质心动能，另一半才可用于激发：
+\[
+ \frac12\mu_c v^2=\frac14mv^2=\frac12K_p\ge\Delta_{31},
+ \qquad\boxed{K_{p,\min}=2\Delta_{31}\approx24.18\,\mathrm{eV}}.
+\]
+一般的静靶情形满足 \(\mu_c v^2/2=[M/(m+M)]K_{\rm lab}\)，从而
+\[
+ \boxed{K_{{\rm lab},\min}=\left(1+\frac mM\right)\Delta_{31}}.
+\]
+它同时包含前两问，是检查因子 \(2\) 的简便方法。
+
+ 
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算等速相向时每个入射粒子的阈能}\par\nobreak
+图\ref{fig:m3headon}中两物体质量近似相等，速度为 \(+v,-v\)，故质心静止，相对速度为 \(2v\)。末态在阈值极限中都可在实验室静止。
+\fig{fig:m3headon}{等质量、等速相向时，全部初始总动能均可转成内部激发能}{
+\begin{tikzpicture}
+\fill(0,.6)circle(2pt)node[above]{$p$};\fill(4,.6)circle(3pt)node[above]{$H$};
+\draw[axis] (.2,.6)--(1.6,.6)node[midway,above]{$+v$};
+\draw[axis] (3.8,.6)--(2.4,.6)node[midway,above]{$-v$};
+\node at(2,-.15){$P_{\rm total}=0,\quad V=0$};
+\fill(1,-1)circle(2pt)node[below]{$p$};\fill(3,-1)circle(3pt)node[below]{$H^*$};
+\node at(2,-1.8){阈值极限：两者均静止};
+\end{tikzpicture}}
+于是
+\[
+ \frac12\mu_c(2v)^2=mv^2=2K_p\ge\Delta_{31},\qquad
+ \boxed{K_{p,\min}=\frac{\Delta_{31}}2\approx6.04\,\mathrm{eV}}.
+\]
+这个数值是单个质子的动能；初始氢原子也提供同样的动能，系统总初始动能仍为 $\Delta_{31}\approx12.09\,\mathrm{eV}$。计算先保留 $\Delta_{31}=108.8/9\,\mathrm{eV}$，最后才对 $\Delta_{31}/2$ 取舍，得到 $6.04\,\mathrm{eV}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查能量阈值与实际发光分支的区别}\par\nobreak
+上述结果只给出能量和动量允许的阈值。碰撞是否发生激发、激发后是否沿 \(3\to2\) 路径发光，还涉及碰撞概率和跃迁分支；能量够大不等于每次碰撞必然发出 \(H_\alpha\)。
+\end{solution}

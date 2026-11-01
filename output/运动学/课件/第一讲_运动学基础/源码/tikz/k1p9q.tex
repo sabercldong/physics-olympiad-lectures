@@ -1,0 +1,11 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=none]{ctex}
+\setCJKmainfont{Songti SC}\setCJKsansfont{PingFang SC}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\definecolor{blue}{HTML}{235789}\definecolor{red}{HTML}{BC4B41}
+\tikzset{axis/.style={->,>=Stealth,line width=.55pt},world/.style={line width=.9pt},flow/.style={->,>=Stealth,line width=.85pt},ray/.style={->,>=Stealth,line width=.85pt},guide/.style={dashed,line width=.4pt},aux/.style={dashed,line width=.4pt},dim/.style={<->,>=Stealth,line width=.5pt},every node/.style={font=\normalsize},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\coordinate(S)at(0,3);\draw[world](0,0)--(6,0);\draw[very thick](0,0)--(S)node[above]{$S$};\draw[world](2.4,0)--(2.4,1.56);\draw[guide](S)--(5,0);\draw[dim](-.5,0)--(-.5,3)node[midway,left]{$h$};\draw[dim](2,0)--(2,1.56)node[midway,left]{$l$};\node[below]at(2.4,0){$x$};\node[below]at(5,0){$X$};\end{tikzpicture}
+\end{document}

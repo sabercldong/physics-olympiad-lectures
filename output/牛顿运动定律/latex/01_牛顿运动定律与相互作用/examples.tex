@@ -1,0 +1,723 @@
+\section{例题与分析}
+\begin{question}\begin{example}[动量形式的适用条件]\label{n1e1}
+比较 $\bm F=\Delta\bm p/\Delta t$、$\bm F=\dd\bm p/\dd t$ 与 $\bm F=m\bm a$，说明三者相互转化的条件，以及接收物质的装置为何需要额外分析。
+\fig{n1e1q}{固定质点组与有物质流入的装置}{\begin{tikzpicture}
+\node[draw,minimum width=2cm,minimum height=1cm](A)at(-1.8,0){固定质点组};\draw[force](-3.8,0)--(A.west)node[midway,above]{$F$};
+\node[draw,minimum width=1.8cm,minimum height=1cm](B)at(2,0){装置};\draw[flow](.2,.3)--(1.1,.3)node[midway,above]{$u,\dd m$};\draw[flow](2,-.8)--(3.3,-.8)node[right]{$v$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先写固定质点组的冲量与动量关系}\par\nobreak
+图\ref{n1e1q}左侧的研究对象始终由同一组质点构成。其动量定律在有限区间内先写为
+\[
+ \int_t^{t+\Delta t}\bm F_{\rm ext}(\tau)\dd\tau=\bm p(t+\Delta t)-\bm p(t).
+\]
+除以 $\Delta t$，得到的是区间平均力 $\overline{\bm F}_{\rm ext}=\Delta\bm p/\Delta t$；取 $\Delta t\to0$ 才得到瞬时关系。若质量恒定，$\dd(m\bm v)/\dd t=m\dd\bm v/\dd t=m\bm a$，三式便在各自的平均或瞬时意义下相容。
+\fig{n1e1s}{动量增量对应同一条力曲线下的时间面积}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.5)node[above]{$F_x$};
+\fill[blue!10](1,0)--plot[domain=1:3.5,samples=60](\x,{.6+1.2*sin(32*\x)})--(3.5,0)--cycle;
+\draw[world]plot[domain=.3:4.5,samples=70](\x,{.6+1.2*sin(32*\x)});\draw[guide](1,0)--(1,{.6+1.2*sin(32)}) (3.5,0)--(3.5,{.6+1.2*sin(112)});\node at(2.2,.6){$\Delta p_x$};\node[below]at(1,0){$t_1$};\node[below]at(3.5,0){$t_2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由时间面积区分平均力与瞬时力}\par\nobreak
+图\ref{n1e1s}中曲线下的面积是动量增量，不能把曲线上任意一点的高度代替全区间平均值。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把即将流入的物质并入短时闭合系统}\par\nobreak
+右侧装置若以速率 $\dot m$ 接收速度为 $u$ 的物质，取“装置及即将进入的物质”为短时闭合系统，在一维情形有
+\[
+ mv+u\dd m+F\dd t=(m+\dd m)(v+\dd v),\quad
+ m\dot v=F+(u-v)\dot m.
+\]
+略去二阶小量 $\dd m\dd v$ 后才得到后式。它表明外力并非一般等于装置自身的 $\dd(mv)/\dd t$，还须计入穿过边界的动量。
+\end{solution}
+
+\begin{question}\begin{example}[悬挂滑轮的弹簧秤]\label{n1e2}
+质量为 $m_1>m_2$ 的两物体由跨过光滑轻定滑轮的轻绳连接，滑轮挂在竖直弹簧秤下。求两物体运动时的加速度、绳张力及秤的读数，忽略秤下滑轮的自重。
+\fig{n1e2q}{弹簧秤悬挂整个滑轮}{\begin{tikzpicture}
+\draw[world](-1,3)--(1,3);\draw[spring](0,3)--(0,2);\draw[world](0,2)--(0,1.5);\draw[world](0,1.5)circle(.4);\draw[world](-.4,.2)--(-.4,1.5)arc(180:0:.4)--(.4,.7);\node[draw]at(-.4,0){$m_1$};\node[draw]at(.4,.5){$m_2$};\node[right]at(.4,2.5){秤};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由绳长约束写两悬物方程}\par\nobreak
+图\ref{n1e2q}中，轻绳绷紧且滑轮中心固定，两物体加速度大小相等、方向相反。以 $m_1$ 向下、$m_2$ 向上为各自正向，分别列式
+\[
+ m_1g-T=m_1a,\qquad T-m_2g=m_2a.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力求加速度，再代回}\par\nobreak
+两式相加得 $a=(m_1-m_2)g/(m_1+m_2)$；代回第二式得 $T=m_2(g+a)=2m_1m_2g/(m_1+m_2)$。
+\fig{n1e2s}{隔离滑轮时须计入两股绳的拉力}{\begin{tikzpicture}
+\draw[world](0,0)circle(.5);\draw[force,blue](0,0)--(0,1.5)node[above]{$S$};\draw[force,red](-.5,0)--(-.5,-1.2)node[below]{$T$};\draw[force,red](.5,0)--(.5,-1.2)node[below]{$T$};\node at(3,0){$S-2T=0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离滑轮求秤读数并检查等质量极限}\par\nobreak
+滑轮受力如图\ref{n1e2s}。秤的拉力 $S$ 同两股向下的绳张力平衡，因此
+\[S=2T=\frac{4m_1m_2}{m_1+m_2}g.\]
+当 $m_1=m_2=m$ 时读数为 $2mg$，等于静止悬挂的总重力；质量差增大时不能仍把总重力当作秤读数，因为系统质心具有向下加速度。
+\end{solution}
+
+\begin{question}\begin{example}[增加中间物体质量后的张力]\label{n1e3}
+三个物体按 $B,C,A$ 的顺序放在光滑水平面上，相邻物体用轻绳连接，恒力 $F$ 向右拉 $A$。在 $C$ 上增加质量 $m$ 的小物体，且小物体同 $C$ 共同运动。比较 $A,C$ 间张力 $T_a$ 和 $C,B$ 间张力 $T_b$ 的变化。
+\fig{n1e3q}{拉力作用在最右端，附加质量放在中间}{\begin{tikzpicture}
+\draw[world](-3.8,0)--(4,0);\foreach \x/\s in {-2.6/B,0/C,2.6/A}{\node[draw,minimum width=1cm,minimum height=.65cm,anchor=south]at(\x,0){$\s$};}\draw[world](-2.1,.325)--(-.5,.325)node[midway,above]{$T_b$};\draw[world](.5,.325)--(2.1,.325)node[midway,above]{$T_a$};\node[draw,anchor=south]at(0,.65){$m$};\draw[force](3.1,.325)--(4.1,.325)node[right]{$F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先算增加质量后的共同加速度和远端张力}\par\nobreak
+令三物体原总质量 $M_0=m_A+m_B+m_C$。整体水平合力始终为 $F$，增加质量前后分别有 $a=F/M_0$、$a'=F/(M_0+m)$。图\ref{n1e3q}中 $T_b$ 仅拉动 $B$，因此 $T_b=m_Ba$、$T_b'=m_Ba'$，后者减小。
+\fig{n1e3s}{对张力左侧的子系统分别列式}{\begin{tikzpicture}
+\node[draw]at(0,.8){$B$};\draw[force](.4,.8)--(1.8,.8)node[right]{$T_b=m_Ba$};
+\node[draw,minimum width=2.3cm]at(.6,-.5){$B+C+m$};\draw[force](1.8,-.5)--(3,-.5)node[right]{$T_a'$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{扩大子系统求近端张力的改变量}\par\nobreak
+对图\ref{n1e3s}下方的左侧整体，$T_a'=F(m_B+m_C+m)/(M_0+m)$。与 $T_a=F(m_B+m_C)/M_0$ 相减，得到
+\[
+ T_a'-T_a=\frac{Fm_Am}{M_0(M_0+m)}>0.
+\]
+所以靠近拉力的一段张力增大，另一段减小。判断的依据是各段绳实际拉动的质量和共同加速度同时改变，而不是简单认为“总加速度减小，所以所有张力都减小”。
+\end{solution}
+
+\begin{question}\begin{example}[加速斜面上的摩擦方向]\label{n1e4}
+斜面向右下方倾斜，倾角 $\theta$，斜面体以水平向右加速度 $a$ 运动，物块 $m$ 与斜面保持相对静止。求支持力和静摩擦力，讨论摩擦方向。
+\fig{n1e4q}{物块与向右加速的斜面共同平移}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.3)--cycle;\node[draw,rotate=-29.8989,anchor=south]at(-.4,1.38){$m$};\draw[flow](2,.8)--(3.2,.8)node[right]{$a$};\node at(-1.3,.3){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{把水平加速度投影到斜面坐标}\par\nobreak
+以图\ref{n1e4q}中沿斜面向下为切向 $t$，垂直斜面向外为法向 $n$，先令摩擦 $f$ 沿斜面向上。物块的加速度水平向右，分量为 $a_t=a\cos\theta$、$a_n=a\sin\theta$。第二定律给出
+\[
+ mg\sin\theta-f=ma\cos\theta,\qquad
+ N-mg\cos\theta=ma\sin\theta.
+\]
+\fig{n1e4s}{水平加速度也有垂直斜面的分量}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,red](0,0)--(0,-1.3)node[right]{$mg$};\draw[force,blue](0,0)--(.7,1.2)node[above]{$N$};\draw[force](0,0)--(-1,.58)node[left]{$f$};\draw[flow](1.8,0)--(3.5,0)node[right]{$a$};\draw[guide](1.8,0)--(3.1,-.75)--(3.5,0);\node[below]at(2.6,-.7){$a\cos\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求接触力并划分摩擦方向}\par\nobreak
+由图\ref{n1e4s}对应的两个分量方程，$N=m(g\cos\theta+a\sin\theta)$，$f=m(g\sin\theta-a\cos\theta)$。因此 $a<g\tan\theta$ 时摩擦向上，等号时为零，大于时向下。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验静摩擦上限}\par\nobreak
+每个分支还须满足 $|f|\le\mu_sN$；题设的相对静止已经要求这一条件可实现。物块对地向右运动，并不能直接确定摩擦方向。
+\end{solution}
+
+\begin{question}\begin{example}[由吊篮悬线判断运动]\label{n1e5}
+两条平行钢索向右下方倾斜，倾角均为 $\theta$。吊篮与各自滑轮保持相对静止，悬线相对竖直向左偏角为 $\varphi$。两装置分别测得 $\varphi_{\text{明}}>\varphi_{\text{红}}\ge0$。求此时加速度与悬线张力，并说明比较全程时间和末速还需要什么条件。
+\fig{n1e5q}{向左偏斜的悬线对应向右的加速度分量}{\begin{tikzpicture}
+\foreach \x/\s/\d in {-2/红/.25,2/明/.65}{\begin{scope}[shift={(\x,0)}]\draw[world](-1,2)--(1,1.2);\draw[guide](0,1.6)--(0,-.2);\draw[world](0,1.6)--(-\d,.1);\node[draw,anchor=north]at(-\d,.1){\s};\node[right]at(0,.7){$\varphi_{\text{\s}}$};\end{scope}}
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由悬线方向建立两个分量方程}\par\nobreak
+图\ref{n1e5q}中，悬线对吊篮的张力指向右上。沿水平向右、竖直向上列式，令沿索向下的加速度大小为 $a$，有
+\[
+ T\sin\varphi=ma\cos\theta,\qquad
+ T\cos\varphi-mg=-ma\sin\theta.
+\]
+由第二式消去 $T$ 后整理：$a(\cos\theta+\sin\theta\tan\varphi)=g\tan\varphi$，所以
+\[
+ a=\frac{g\sin\varphi}{\cos(\theta-\varphi)},\qquad
+ T=\frac{mg\cos\theta}{\cos(\theta-\varphi)}.
+\]
+\fig{n1e5s}{张力与重力的合力沿钢索方向}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(.6,1.6)node[above]{$T$};\draw[force,red](0,0)--(0,-1.3)node[left]{$mg$};\draw[flow](1.8,.2)--(3.4,-.45)node[right]{$\bm a$};\draw[guide](0,0)--(0,1.8);\node at(.35,.9){$\varphi$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较瞬时加速度并限定全程推断的条件}\par\nobreak
+在图\ref{n1e5s}的可实现范围$\cos(\theta-\varphi)>0$内，分母的导数为$\dd\cos(\theta-\varphi)/\dd\varphi=\sin(\theta-\varphi)$。再用商法则和余弦和角公式，
+\[
+\frac{\dd a}{\dd\varphi}
+=g\frac{\cos\varphi\cos(\theta-\varphi)-\sin\varphi\sin(\theta-\varphi)}{\cos^2(\theta-\varphi)}
+=\frac{g\cos\theta}{\cos^2(\theta-\varphi)}>0.
+\]
+故小明在测量时刻的加速度较大。若稳定阶段可视作由静止开始的全程恒加速度，且索长同为$L$，再由$t=\sqrt{2L/a}$、$v=\sqrt{2aL}$判断小明用时较短、末速较大。单独一张瞬时照片不足以比较此前任意变化的全程运动；悬线恰好竖直只说明该瞬间$a=0$，不能证明两装置始终匀速。
+\end{solution}
+
+\begin{question}\begin{example}[车厢中的悬球]\label{n1e6}
+车厢沿水平方向作匀变速运动，质量 $1\,\mathrm{kg}$ 的小球相对车厢静止，悬线相对竖直向左偏 $37^\circ$。取 $g=10\,\mathrm{m/s^2}$，$\sin37^\circ=0.6$，$\cos37^\circ=0.8$。求加速度、张力，并讨论车厢的速度方向。
+\fig{n1e6q}{悬线向后倾斜的匀加速车厢}{\begin{tikzpicture}
+\draw[world](-2,0)rectangle(2,2.5);\draw[world](0,2.5)--(-.9,1.3);\fill(-.9,1.3)circle(3pt);\draw[guide](0,2.5)--(0,.8);\node at(-.3,1.9){$37^\circ$};\draw[world](-1,-.2)circle(.2) (1,-.2)circle(.2);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{沿竖直与水平分别列第二定律}\par\nobreak
+图\ref{n1e6q}的球没有竖直加速度，故 $T\cos37^\circ=mg$；水平方向随车共同加速，$T\sin37^\circ=ma$。
+\fig{n1e6s}{由张力的两个分量分别确定加速度与大小}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(.9,1.2)node[above]{$T$};\draw[force,red](0,0)--(0,-1.2)node[below]{$mg$};\draw[guide](.9,1.2)--(.9,0)--(0,0);\node[right]at(.9,.6){$T\cos37^\circ$};\draw[flow](2.7,0)--(4,0)node[right]{$a$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求张力和加速度，区分速度方向}\par\nobreak
+由图\ref{n1e6s}，先得 $T=10/0.8=12.5\,\mathrm N$，再得 $a=g\tan37^\circ=7.5\,\mathrm{m/s^2}$，方向向右。加速度向右不能唯一确定速度向右：车厢可以向右加速，也可以向左减速，甚至正处在速度为零的转向时刻。已知运动为匀变速，只表示这里的加速度在考察时段恒定。
+\end{solution}
+
+\begin{question}\begin{example}[光滑斜面上的相对静止]\label{n1e7}
+倾角为 $\alpha$、质量为 $M$ 的光滑斜面向右上方升高，位于光滑水平面上。用水平力向左推斜面，使质量为 $m$ 的物块同斜面相对静止。求共同加速度、支持力和所需推力。
+\fig{n1e7q}{向左推动上升斜面}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,2.2)--cycle;\node[draw,rotate=28.8108,anchor=south]at(.1,1.155){$m$};\node at(1,.5){$M$};\draw[force](3,1)--(2,1)node[midway,above]{$F$};\node at(-1,.2){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{隔离物块求使它不沿面滑动的加速度}\par\nobreak
+图\ref{n1e7q}中物块只受 $mg$ 与斜面支持力 $N$。共同运动为水平平移，所以竖直加速度为零，而非沿斜面加速度为零。分别沿竖直和水平向左写
+\[N\cos\alpha=mg,\qquad N\sin\alpha=ma.\]
+\fig{n1e7s}{支持力的水平分量使物块随斜面加速}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(-.8,1.4)node[above]{$N$};\draw[force,red](0,0)--(0,-1.2)node[below]{$mg$};\draw[flow](2.5,0)--(1,0)node[left]{$a$};\node at(2.4,1){整体：$F=(M+m)a$};
+\end{tikzpicture}}
+由图\ref{n1e7s}中物块的方程，$N=mg/\cos\alpha$、$a=g\tan\alpha$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以整体方程求外推力并检查水平面极限}\par\nobreak
+再取斜面和物块整体，水平外力只有 $F$，故 $F=(M+m)g\tan\alpha$。当 $\alpha\to0$ 时，所需加速度趋于零，支持力趋于 $mg$，符合水平面的极限。
+\end{solution}
+
+\begin{question}\begin{example}[沿斜轨运动的车厢]\label{n1e8}
+小车沿倾角 $\alpha$ 的直斜轨向左下方加速。悬球相对车厢静止，悬线相对竖直向右偏 $\beta$，如图所示。求小车沿轨道的加速度大小。
+\fig{n1e8q}{向左下方的加速度与向右偏的悬球}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,1.4);\draw[world](-.9,.7)--(-.9,2.8)--(1.1,2.8)--(1.1,1.4);\draw[world](0,2.8)--(.65,1.4);\fill(.65,1.4)circle(3pt);\draw[guide](0,2.8)--(0,1.2);\node at(.25,2){$\beta$};\draw[flow](-1,.7)--(-2.2,.28)node[left]{$a$};\node at(1.6,.3){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{保留沿轨道加速度的两个投影}\par\nobreak
+由图\ref{n1e8q}，张力对球向左上，加速度向左下。取水平向左、竖直向上为正，得到 $T\sin\beta=ma\cos\alpha$ 与 $T\cos\beta-mg=-ma\sin\alpha$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力得到沿轨道加速度}\par\nobreak
+第二式写成 $T\cos\beta=m(g-a\sin\alpha)$，两式相除并整理：
+\[
+ a\cos\alpha=(g-a\sin\alpha)\tan\beta,
+ \quad a=\frac{g\sin\beta}{\cos(\alpha-\beta)}.
+\]
+\fig{n1e8s}{沿轨道加速度的水平、竖直投影}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(-.6,1.4)node[above]{$T$};\draw[force,red](0,0)--(0,-1.2)node[right]{$mg$};\draw[flow](4.5,.8)--(2.5,-.3)node[below left]{$\bm a$};\draw[guide](4.5,.8)--(2.5,.8)--(2.5,-.3);\node[above]at(3.5,.8){$a\cos\alpha$};\node[left]at(2.5,.25){$a\sin\alpha$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查张力条件与两个特殊角度}\par\nobreak
+图\ref{n1e8s}说明，此题不能直接使用水平车厢的 $a=g\tan\beta$，因为小车还具有竖直分量。结果要求分母为正且绳张力非负；当 $\alpha=0$ 时才回到水平车厢的结果。当 $\beta=\alpha$ 时，$a=g\sin\alpha$，对应沿光滑斜轨的自由下滑。
+\end{solution}
+
+\begin{question}\begin{example}[水平台阶上的静摩擦]\label{n1e9}
+自动扶梯沿与水平面成 $37^\circ$ 的方向，以 $5\,\mathrm{m/s^2}$ 向右上方加速，台阶表面水平。质量 $60\,\mathrm{kg}$ 的人相对台阶静止。取 $g=10\,\mathrm{m/s^2}$，求摩擦力、支持力及防止滑动所需的最小静摩擦因数。
+\fig{n1e9q}{运动方向倾斜，实际接触面水平}{\begin{tikzpicture}
+\draw[world](-2,0)--(-1,0)--(-1,.5)--(0,.5)--(0,1)--(1,1)--(1,1.5)--(2,1.5);\node[draw,anchor=south]at(.5,1){人};\draw[flow](1.6,2)--(2.8,2.9)node[right]{$a$};\draw[guide](-2,-.3)--(2,2.7);\node at(-1.3,.1){$37^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{按水平台阶画力，按轨道分解加速度}\par\nobreak
+接触面是图\ref{n1e9q}的水平台阶，故 $N$ 竖直向上、$f$ 水平。人的加速度分量为 $a_x=5\times0.8=4\,\mathrm{m/s^2}$、$a_y=5\times0.6=3\,\mathrm{m/s^2}$。分别列 $f=ma_x$、$N-mg=ma_y$。
+\fig{n1e9s}{按接触面方向画力，再分解加速度}{\begin{tikzpicture}
+\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(0,1.4)node[above]{$N$};\draw[force,red](0,0)--(0,-1.1)node[below]{$mg$};\draw[force](0,0)--(1.4,0)node[right]{$f$};\draw[flow](2.3,0)--(3.5,.9)node[right]{$a$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算所需接触力及静摩擦阈值}\par\nobreak
+图\ref{n1e9s}给出 $f=240\,\mathrm N$，方向向右；$N=60(10+3)=780\,\mathrm N$。由 $f\le\mu_sN$，$\mu_{s,\min}=240/780=4/13\approx0.308$。这里的支持力大于重力，若直接取 $N=mg$ 就遗漏了竖直加速度。所得因数只保证不滑动；若还讨论人体倾倒，需另给重心位置与支承范围。
+\end{solution}
+
+\begin{question}\begin{example}[刚离地时剪断提绳]\label{n1e10}
+上下两物体质量分别为 $m_1,m_2$，由轻弹簧连接。缓慢向上提起 $m_1$，至 $m_2$ 刚要离开地面时剪断提绳，求剪断瞬间两物体的加速度。
+\fig{n1e10q}{下方物体处于地面支持力降为零的临界}{\begin{tikzpicture}
+\draw[world](-1,0)--(1,0);\node[draw,anchor=south](B)at(0,0){$m_2$};\node[draw](A)at(0,2){$m_1$};\draw[spring](B.north)--(A.south);\draw[world](A.north)--(0,3);\draw[force](0,3)--(0,3.6)node[above]{$F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由刚离地条件保存剪断前弹簧力}\par\nobreak
+剪断前图\ref{n1e10q}的下方物体准静态，且地面支持力恰为零，因此弹簧拉力 $F_s=m_2g$。剪断瞬间形变连续，这个弹簧力仍不变。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重画上物体剪断后的受力}\par\nobreak
+上方物体失去提绳拉力，只剩重力和向下的弹簧力，所以
+\[m_1a_1=m_1g+F_s=(m_1+m_2)g,\quad a_1=\frac{m_1+m_2}{m_1}g\quad\text{向下}.\]
+\fig{n1e10s}{弹簧对上下物体的作用方向相反}{\begin{tikzpicture}
+\fill(-1,0)circle(2pt)node[above]{$m_1$};\draw[force](-1,0)--(-1,-1.2)node[below]{$m_1g+F_s$};\fill(2,0)circle(2pt)node[right]{$m_2$};\draw[force,blue](2,0)--(2,1)node[above]{$F_s=m_2g$};\draw[force,red](2,0)--(2,-1)node[below]{$m_2g$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查下物体的瞬时加速度及接触条件}\par\nobreak
+图\ref{n1e10s}右侧的两力在该瞬间仍平衡，故$a_2=0$，地面支持力也为零。随后上物体向下运动使弹簧拉力减小，地面可以重新提供向上的支持力；不能把瞬时的零支持力延长到以后。若继续研究运动，应同时更新弹簧形变并检查下物体的接触状态。
+\end{solution}
+
+\begin{question}\begin{example}[剪断三球系统的上方悬线]\label{n1e11}
+三个等质量小球 $A,B,C$ 自上而下连接：天花板与 $A$ 间为轻绳，$A,B$ 间为轻弹簧，$B,C$ 间为轻绳。系统静止后剪断最上方轻绳，求瞬时加速度。
+\fig{n1e11q}{上绳、弹簧与下绳分别承担不同约束}{\begin{tikzpicture}
+\draw[world](-.8,3)--(.8,3);\draw[guide](0,3)--(0,2.4);\draw[spring](0,2.4)--(0,1.2);\draw[world](0,1.2)--(0,0);\foreach \y/\s in {2.4/A,1.2/B,0/C}{\fill(0,\y)circle(3pt)node[left]{$\s,m$};}\node[right]at(0,2.8){剪断};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{保存弹簧力并求上球加速度}\par\nobreak
+图\ref{n1e11q}中弹簧原来悬挂 $B,C$ 两球，故弹力 $F_s=2mg$。剪断后弹力瞬时不变，取向下为正，对 $A$ 有 $ma_A=mg+2mg$，即 $a_A=3g$ 向下。
+\fig{n1e11s}{对下方两球整体求加速度，再隔离求张力}{\begin{tikzpicture}
+\node[draw,minimum height=1.1cm,minimum width=1.6cm](BC)at(0,0){$B+C$};\draw[force,blue](BC.north)--++(0,1)node[above]{$2mg$};\draw[force,red](BC.south)--++(0,-1)node[below]{$2mg$};\fill(3,0)circle(2pt)node[right]{$C$};\draw[force](3,0)--(3,1)node[above]{$T$};\draw[force](3,0)--(3,-1)node[below]{$mg$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对下两球整体列式，再核查下绳张力}\par\nobreak
+下方轻绳仍绷紧，两球加速度相同。按图\ref{n1e11s}对 $B+C$ 列 $2ma=2mg-F_s=0$，得到 $a_B=a_C=0$；再隔离 $C$，$mg-T=0$，故下绳张力仍为 $mg$。这里张力恰好保持原值，是联立约束后的计算结果，不能先当作普遍规律使用。
+\end{solution}
+
+\begin{question}\begin{example}[改变弹簧和绳的位置]\label{n1e12}
+三个质量均为 $m$ 的小球自上而下为 $A,B,C$。天花板与 $A$ 间为轻弹簧，$A,B$ 间为轻绳，$B,C$ 间为另一轻弹簧。系统静止后剪断 $A,B$ 间的绳，求瞬时加速度。
+\fig{n1e12q}{两根弹簧分别承受三球和一球的重量}{\begin{tikzpicture}
+\draw[world](-.8,3)--(.8,3);\draw[spring](0,3)--(0,2);\draw[guide](0,2)--(0,1);\draw[spring](0,1)--(0,0);\foreach \y/\s in {2/A,1/B,0/C}{\fill(0,\y)circle(3pt)node[left]{$\s$};}\node[right]at(0,1.5){剪断};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由剪断前平衡确定两根弹簧的形变}\par\nobreak
+剪断前逐级向上隔离可知，下弹簧弹力 $F_2=mg$，上弹簧弹力 $F_1=3mg$。图\ref{n1e12q}的两根弹簧在剪断瞬间均保持原形变，而被剪轻绳的张力变为零。
+\fig{n1e12s}{分别画出三球的瞬时合力}{\begin{tikzpicture}
+\foreach \x/\s in {-2/A,0/B,2/C}{\fill(\x,0)circle(2pt)node[above right]{$\s$};}
+\draw[force,blue](-2,0)--(-2,1.4)node[above]{$3mg$};\draw[force,red](-2,0)--(-2,-.6)node[below]{$mg$};\draw[force](0,0)--(0,-1.3)node[below]{$mg+F_2$};\draw[force,blue](2,0)--(2,.9)node[above]{$F_2$};\draw[force,red](2,0)--(2,-.9)node[below]{$mg$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将连续的弹簧力代入三个独立方程}\par\nobreak
+图\ref{n1e12s}给出 $ma_A=F_1-mg=2mg$，$ma_B=mg+F_2=2mg$，$ma_C=F_2-mg=0$。所以 $A$ 向上加速度 $2g$，$B$ 向下加速度 $2g$，$C$ 瞬时加速度为零。三球初速度相同并不要求剪断后的加速度仍相同，因为它们已不受共同的刚性约束。
+\end{solution}
+
+\begin{question}\begin{example}[斜绳与斜弹簧的不同响应]\label{n1e13}
+质量 $m$ 的小球由向左上方的连接件及向右的水平轻绳共同保持静止。斜连接件与竖直夹角为 $\theta$，分别取不可伸长轻绳和轻弹簧两种情况。剪断水平绳，求瞬时加速度。
+\fig{n1e13q}{两装置只有斜连接件的性质不同}{\begin{tikzpicture}
+\begin{scope}[shift={(-2,0)}]\draw[world](-.7,2)--(.3,0)--(1.4,0);\draw[guide](-.7,2)--(-.7,0);\fill(.3,0)circle(3pt);\node at(0,2.4){斜绳};\node at(-.45,1.4){$\theta$};\end{scope}
+\begin{scope}[shift={(2,0)}]\draw[spring](-.7,2)--(.3,0);\draw[world](.3,0)--(1.4,0);\draw[guide](-.7,2)--(-.7,0);\fill(.3,0)circle(3pt);\node at(0,2.4){斜弹簧};\end{scope}
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先由原平衡确定两种连接件的受力}\par\nobreak
+图\ref{n1e13q}两装置剪断前均满足斜向力 $Q\cos\theta=mg$，水平绳张力 $H=Q\sin\theta=mg\tan\theta$。但剪断后的约束不同，不能继续对二者都令 $Q=mg/\cos\theta$。
+\fig{n1e13s}{绳约束确定径向加速度，弹簧连续性确定瞬时弹力}{\begin{tikzpicture}
+\draw[world](-2,1.5)--(-1,0);\fill(-1,0)circle(2pt);\draw[flow,blue](-1,0)--(-2,-.65)node[left]{$g\sin\theta$};\draw[guide](-1,0)--(-.4,-.9);\node at(-1.7,2){绳：$a_r=0$};
+\fill(2,0)circle(2pt);\draw[force,blue](2,0)--(1.3,1.3)node[above]{$Q$};\draw[force,red](2,0)--(2,-1.3)node[below]{$mg$};\draw[flow](2,0)--(.8,0)node[below]{$a_x$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按绳长约束和弹簧连续性分别求加速度}\par\nobreak
+对图\ref{n1e13s}左图，球初速为零，定长绳径向加速度 $v^2/l=0$，所以 $T=mg\cos\theta$；切向只剩重力分量，$a=g\sin\theta$，沿切线向左下。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另用连续的弹簧力求水平加速度}\par\nobreak
+对右图，弹簧力仍为 $Q=mg/\cos\theta$，竖直分量恰抵消重力，剩下水平向左合力 $mg\tan\theta$，故 $a=g\tan\theta$ 向左。二者在 $\theta\to0$ 时均趋于零，但方向与大小一般不同。
+\end{solution}
+
+\begin{question}\begin{example}[三球与水平弹簧的瞬时运动]\label{n1e14}
+图示三个等质量小球静止，三根弹簧均水平。上球 $A$ 用与竖直成 $\theta$ 的轻绳悬挂，$A,B$ 之间为竖直轻绳，$B,C$ 间轻绳也与竖直成 $\theta$。剪断 $A,B$ 间的绳，求三球瞬时加速度。
+\fig{n1e14q}{上、下斜绳平行，水平弹簧方向交替}{\begin{tikzpicture}
+\draw[world](-2,-.3)--(-2,3.2) (2,-.3)--(2,2.4) (-.3,3.2)--(1.2,3.2);
+\coordinate(A)at(.2,2.3);\coordinate(B)at(.2,1.1);\coordinate(C)at(-.5,-.1);
+\draw[world](.725,3.2)--(A);\draw[guide](A)--(B);\draw[world](B)--(C);
+\draw[spring](-2,2.3)--(A);\draw[spring](B)--(2,1.1);\draw[spring](-2,-.1)--(C);
+\foreach \p in {A,B,C}{\fill(\p)circle(3pt)node[right]{$\p$};}\node[right]at(.2,1.7){剪断};\node at(.7,2.75){$\theta$};\node at(0,.55){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{逐球还原剪断前的三个弹簧力}\par\nobreak
+先由图\ref{n1e14q}剪断前的平衡逐球求弹簧力。下球 $C$ 的斜绳拉力为 $mg/\cos\theta$，其水平分量为 $mg\tan\theta$。因此 $C$ 的弹簧向左拉 $mg\tan\theta$；再平衡 $B$，其向右弹簧力也是 $mg\tan\theta$；平衡 $A$，上绳承担三球竖直重量，$A$ 弹簧向左拉 $3mg\tan\theta$。
+\fig{n1e14s}{沿下斜绳与垂直下斜绳建立局部坐标}{\begin{tikzpicture}
+\draw[axis](0,0)--(-1,-1.7)node[below]{$\bm e$};\draw[axis](0,0)--(1.7,-1)node[right]{$\bm t$};\fill(0,0)circle(2pt)node[above]{$B$};\fill(-.6,-1.02)circle(2pt)node[below right]{$C$};\draw[world](0,0)--(-.6,-1.02);\draw[force,blue](0,0)--(1.2,0)node[above]{$mg\tan\theta$};\draw[force,blue](-.6,-1.02)--(-1.8,-1.02);\node at(3,-.3){$a_{B,e}=a_{C,e}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用下绳零初速约束建立径向方程}\par\nobreak
+取图\ref{n1e14s}的 $\bm e=(-\sin\theta,-\cos\theta)$ 沿 $B$ 指向 $C$，$\bm t=(\cos\theta,-\sin\theta)$ 与其垂直。剪断瞬间下绳两端初速均为零，故沿绳的加速度相同。
+
+设下绳张力为 $T$，则
+\[
+ ma_{B,e}=mg\cos\theta-mg\tan\theta\sin\theta+T,
+\]
+\[
+ ma_{C,e}=mg\cos\theta+mg\tan\theta\sin\theta-T.
+\]
+相等后得 $T=mg\sin^2\theta/\cos\theta$，共同分量为 $g\cos\theta$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算切向分量和上球加速度}\par\nobreak
+垂直绳方向不受张力影响。沿$\bm t$逐球投影，
+\[
+ma_{B,t}=mg\sin\theta+mg\tan\theta\cos\theta=2mg\sin\theta,
+\]
+\[
+ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
+\]
+对上球，沿上绳的瞬时径向加速度为零，切向合力为$mg\sin\theta-3mg\tan\theta\cos\theta=-2mg\sin\theta$，故$\bm a_A=-2g\sin\theta\,\bm t$。最终
+\[
+ \bm a_B=g\cos\theta\,\bm e+2g\sin\theta\,\bm t,
+ \quad\bm a_C=g\cos\theta\,\bm e.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{复核约束仅要求沿绳分量相同}\par\nobreak
+两下球的完整加速度不同，但沿绳的分量相同，符合定长约束。仅给出其中一个分量会遗漏本题的运动信息。
+
+\end{solution}
+
+\begin{question}\begin{example}[由接触力反求质量比]\label{n1e15}
+光滑水平面上，水平力 $F$ 向右推物块 $A$，$A$ 再推动相邻物块 $B$。已知 $A$ 对 $B$ 的推力为 $2F/3$，求质量比。
+\fig{n1e15q}{外力与内部推力作用于不同对象}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0);\node[draw,minimum width=1.4cm,minimum height=.8cm,anchor=south]at(-.7,0){$A$};\node[draw,minimum width=1.4cm,minimum height=.8cm,anchor=south]at(.7,0){$B$};\draw[force](-2.6,.4)--(-1.4,.4)node[midway,above]{$F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对两个物块分别写相同加速度的方程}\par\nobreak
+图\ref{n1e15q}中两物块保持接触，水平加速度相同。隔离 $B$，有 $(2F/3)=m_Ba$；隔离 $A$，其合力为 $F-2F/3=F/3$，因此 $(F/3)=m_Aa$。
+\fig{n1e15s}{同一接触力在两物体上方向相反}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[above]{$A$};\draw[force](-3,0)--(-1.5,0)node[midway,above]{$F$};\draw[force,blue](-1.5,0)--(-2.5,0)node[below]{$2F/3$};\fill(1.5,0)circle(2pt)node[above]{$B$};\draw[force,blue](1.5,0)--(3,0)node[right]{$2F/3$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由方程比值求质量比，再用整体复核}\par\nobreak
+将图\ref{n1e15s}对应的方程相除，$m_A/m_B=1/2$。也可取整体得 $a=F/(m_A+m_B)$，再代入 $B$ 的方程检验：$m_B/(m_A+m_B)=2/3$，得到同一质量比。
+\end{solution}
+
+\begin{question}\begin{example}[撤去中层拉力后的共同减速]\label{n1e16}
+三个相同物块自上而下为 $A,B,C$，各质量 $m$。原来用水平力 $F$ 拉中层 $B$，三者在地面上共同匀速向右运动。撤去 $F$ 后仍不相对滑动，求 $A,B$ 及 $B,C$ 间的水平摩擦力。
+\fig{n1e16q}{撤力后，唯一水平外力来自地面}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\foreach \y/\s in {.35/C,1.05/B,1.75/A}{\node[draw,minimum width=1.2cm,minimum height=.7cm]at(0,\y){$\s$};}\draw[flow](.8,2.2)--(2,2.2)node[right]{$v$};\draw[guide](.6,1.05)--(2,1.05)node[right]{撤去 $F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由撤力前匀速运动确定地面摩擦}\par\nobreak
+图\ref{n1e16q}中，撤力前匀速运动给出地面动摩擦力大小 $f_0=F$。撤力后物块仍向右滑动，地面法向力未变，故该摩擦仍为 $F$、向左。整体方程为 $3ma=-F$，取向右为正，$a=-F/(3m)$。
+\fig{n1e16s}{按上层与上两层分别截取系统}{\begin{tikzpicture}
+\node[draw]at(0,.9){$A$};\draw[force,blue](-.4,.9)--(-1.6,.9)node[left]{$F/3$};\node[draw,minimum width=1.8cm]at(.4,-.4){$A+B$};\draw[force,blue](-.5,-.4)--(-2,-.4)node[left]{$2F/3$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按上层和上两层逐次求层间摩擦}\par\nobreak
+对图\ref{n1e16s}上层，$f_{B\to A}=ma=-F/3$；对上两层整体，$f_{C\to B}=2ma=-2F/3$。故两接触面的水平作用力大小分别为 $F/3$ 与 $2F/3$，都使上方子系统减速。这里所求是水平摩擦力；接触面的完整作用力还含竖直支持力，不能把两者的大小混称。
+\end{solution}
+
+\begin{question}\begin{example}[拉动三层叠块的分段状态]\label{n1e17}
+三个质量均为 $m$ 的物块 $A,B,C$ 自上而下叠放。各接触面最大静摩擦和动摩擦均取 $\mu N$，系统初静止，用恒力 $F\ge0$ 向右拉中层 $B$。讨论各物块加速度。
+\fig{n1e17q}{三个接触面的正压力不同}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\foreach \y/\s in {.35/C,1.05/B,1.75/A}{\node[draw,minimum width=1.3cm,minimum height=.7cm]at(0,\y){$\s$};}\draw[force](.65,1.05)--(2.2,1.05)node[right]{$F$};\node[left]at(-.8,.7){$2mg$};\node[left]at(-.8,1.4){$mg$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{逐个接触面比较摩擦上限}\par\nobreak
+图\ref{n1e17q}中 $A,B$ 间正压力为 $mg$，$B,C$ 间为 $2mg$，地面为 $3mg$。$C$ 所受向右摩擦最多 $2\mu mg$，地面可提供到 $3\mu mg$ 的静摩擦，故 $C$ 能始终静止。系统起动的限制首先出现在 $B,C$ 接触面。
+\fig{n1e17s}{中层受上下两处摩擦，不能只画一处}{\begin{tikzpicture}
+\node[draw,minimum width=1.4cm,minimum height=1cm]at(0,0){$B$};\draw[force](.7,0)--(2.2,0)node[right]{$F$};\draw[force,blue](-.7,.3)--(-2,.3)node[left]{$f_{AB}$};\draw[force,red](-.7,-.3)--(-2,-.3)node[left]{$2\mu mg$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{确定全静止区间}\par\nobreak
+当 $0\le F\le2\mu mg$，$B,C$ 间静摩擦与 $F$ 平衡，$A$ 不需水平力，三者都静止。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验上两块共同滑动的范围}\par\nobreak
+当 $F>2\mu mg$，先设 $A,B$ 共同滑过静止的 $C$。由图\ref{n1e17s}取 $A+B$ 得
+\[2ma=F-2\mu mg,\qquad f_{AB}=ma=\frac{F-2\mu mg}{2}.\]
+要求 $f_{AB}\le\mu mg$，故 $2\mu mg<F\le4\mu mg$ 时 $a_A=a_B=(F-2\mu mg)/(2m)$，$a_C=0$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别列层间滑动方程并验证方向}\par\nobreak
+当 $F>4\mu mg$，$B$ 相对 $A$ 向右滑动。此时 $A$ 仅受向右摩擦 $\mu mg$，$B$ 同时受上方 $\mu mg$ 和下方 $2\mu mg$ 的向左摩擦，因而
+\[a_A=\mu g,\qquad a_B=F/m-3\mu g,\qquad a_C=0.\]
+\fig{n1deep:layers}{拉中层时，三个物体的加速度在两个阈值处衔接}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.7,0)node[right]{$F/(\mu mg)$};\draw[axis](0,-.1)--(0,2.5)node[above]{$a/(\mu g)$};
+\draw[blue,very thick](0,0)--(2,0)--(4,1)--(5.4,1);\draw[red,dashed,very thick](0,0)--(2,0)--(4,1)--(5.4,2.4);\draw[green!50!black,thick](0,-.09)--(5.4,-.09);\draw[guide](2,0)--(2,1.3) (4,0)--(4,2.3);
+\node[below]at(2,0){$2$};\node[below]at(4,0){$4$};\node[left]at(0,1){$1$};\node[right,blue]at(5.4,1){$A$};\node[right,red]at(5.4,2.4){$B$};\node[below,green!50!black]at(5,-.09){$C:\ a_C=0$};
+\end{tikzpicture}}
+图\ref{n1deep:layers}以无量纲拉力为横轴。$F=2\mu mg$ 后上两块才开始共同加速；$F=4\mu mg$ 后中块斜率增大，上块加速度封顶为 $\mu g$。绿色零线稍向下错开以便辨认，所代表的值始终为零。
+
+由于 $a_B-a_A=F/m-4\mu g>0$，滑动方向与假设一致。两段在临界 $F=4\mu mg$ 处连续，构成结果的独立检查。
+\end{solution}
+
+\begin{question}\begin{example}[拉上层的悬重与共同运动阈值]\label{n1e18}
+质量 $m_1=0.5\,\mathrm{kg}$ 的小块放在 $m_2=1\,\mathrm{kg}$ 的木板上。地面光滑，小块由水平轻绳经固定滑轮连接悬重 $m_3$。小块与木板间的最大静摩擦及滑动摩擦均取 $\mu m_1g$，$\mu=0.5$。由静止释放，讨论加速度与 $m_3$ 的关系。
+\fig{n1e18q}{绳拉上层小块，下层由摩擦带动}{\begin{tikzpicture}
+\draw[world](-2,0)--(2.2,0)--(2.2,-.7);\node[draw,minimum width=2cm,minimum height=.6cm]at(-.6,.3){$m_2$};\node[draw,anchor=south](A)at(-.6,.6){$m_1$};\path(A.center)++(2.8,-.2)coordinate(P);\draw[world](A.east)--($(P)+(0,.2)$)arc(90:0:.2)--(2.4,-.8);\node[draw,anchor=north]at(2.4,-.8){$m_3$};\draw[world](P)circle(.2);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{假设两块共同运动并检验所需摩擦}\par\nobreak
+先假设图\ref{n1e18q}的两块共同向右，悬重向下，加速度大小均为 $a$。整体沿各运动方向相加得 $m_3g=(m_1+m_2+m_3)a$；单独对下板，所需摩擦为 $f=m_2a$。共同运动要求
+\[
+ \frac{m_2m_3g}{m_1+m_2+m_3}\le\mu m_1g.
+\]
+代入数值得 $m_3\le0.5\,\mathrm{kg}$，这一范围 $a_1=a_2=a_3=m_3g/(1.5\,\mathrm{kg}+m_3)$。
+\fig{n1e18s}{滑动后张力沿绳关联上块与悬重，下板仅由摩擦加速}{\begin{tikzpicture}
+\begin{scope}\node[draw](A)at(0,0){$m_1$};\draw[force](A.east)--(1.8,0)node[right]{$T$};\draw[force,blue](A.west)--(-1.7,0)node[left]{$f_k$};\draw[flow](0,.8)--(1,.8)node[right]{$a_1$};\end{scope}
+\begin{scope}[xshift=5cm]\node[draw](B)at(0,0){$m_3$};\draw[force](B.north)--(0,1.3)node[above]{$T$};\draw[force,red](B.south)--(0,-1.5)node[below]{$m_3g$};\draw[flow](1,.5)--(1,-.5)node[right]{$a_3=a_1$};\end{scope}
+\begin{scope}[yshift=-2.5cm]\node[draw](C)at(0,0){$m_2$};\draw[force,blue](C.east)--(1.8,0)node[right]{$f_k=\mu m_1g$};\node at(-1.7,0){水平受力};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算层间滑动后的加速度}\par\nobreak
+当 $m_3>0.5\,\mathrm{kg}$，按图\ref{n1e18s}使用滑动摩擦：
+\[
+ (m_1+m_3)a_1=m_3g-\mu m_1g,\quad
+ a_2=\frac{\mu m_1g}{m_2}=2.5\,\mathrm{m/s^2},\quad a_3=a_1.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入数值并检查滑动方向和临界连续性}\par\nobreak
+在 $g=10\,\mathrm{m/s^2}$ 时，$a_1=10(m_3-0.25\,\mathrm{kg})/(m_3+0.5\,\mathrm{kg})\,\mathrm{m/s^2}$，且 $a_1>a_2$，验证上块相对下板向右滑动。临界值处两式都给出 $2.5\,\mathrm{m/s^2}$。
+\end{solution}
+
+\begin{question}\begin{example}[与推车侧壁保持接触的悬块]\label{n1e19}
+光滑水平面上的车体质量 $m_3$，顶部放 $m_1$，右侧靠有 $m_2$。一根轻绳从 $m_1$ 水平绕过车顶光滑轻滑轮后竖直连接 $m_2$，接触面均光滑。求使三者相对静止的向右推力。
+\fig{n1e19q}{侧壁为悬块提供水平支持力}{\begin{tikzpicture}
+\draw[world](-2,0)rectangle(1,2);\node at(-.5,.8){$m_3$};\node[draw,anchor=south](A)at(-1,2){$m_1$};\node[draw,anchor=west](B)at(1,1){$m_2$};\coordinate(P)at($(B.center |- A.center)+(-.2,-.2)$);\draw[world](A.east)--($(P)+(0,.2)$)arc(90:0:.2)--(B.north);\draw[world](P)circle(.2);\draw[force](-3,1)--(-2,1)node[midway,above]{$F$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{隔离悬块和顶部块求共同加速度}\par\nobreak
+图\ref{n1e19q}中 $m_2$ 不升降，故 $T=m_2g$；侧壁对它的向右支持力满足 $N_2=m_2a$。顶部物块水平方向只受张力，所以 $T=m_1a$，联立得 $a=m_2g/m_1$。
+\fig{n1e19s}{有侧壁时，水平加速度不由绳倾斜提供}{\begin{tikzpicture}
+\fill(-1.8,0)circle(2pt)node[above]{$m_1$};\draw[force](-1.8,0)--(-.5,0)node[right]{$T$};\fill(1.6,0)circle(2pt);\draw[force,blue](1.6,0)--(1.6,1.2)node[above]{$T$};\draw[force,red](1.6,0)--(1.6,-1.2)node[below]{$m_2g$};\draw[force](1.6,0)--(3,0)node[right]{$N_2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对三物体整体求推力并核查侧壁接触}\par\nobreak
+再对图\ref{n1e19s}所代表的三物体整体列水平式，内力相消，$F=(m_1+m_2+m_3)a$，于是
+\[F=\frac{(m_1+m_2+m_3)m_2g}{m_1}.\]
+这里 $N_2>0$，侧壁能够提供所需推力；若取消侧壁，原来竖直的悬绳不能为悬块提供水平加速度，运动构形必须改变。
+\end{solution}
+
+\begin{question}\begin{example}[取消侧壁后的悬块]\label{n1e20}
+将上一装置右侧挖空，使 $m_2$ 能自由偏斜且不与车体接触。允许预先把悬绳放到稳定倾角，问能否用恒定向右推力使三物体保持相对静止？求条件和推力。
+\fig{n1e20q}{悬块只能靠倾斜张力产生水平加速度}{\begin{tikzpicture}
+\draw[world](-2,0)--(-1.3,0)--(-1.3,2)--(1,2)--(1,2.15)--(-2,2.15)--cycle;\node[draw]at(-1,2.45){$m_1$};\draw[world](-.7,2.45)--(1.1,2.45)arc(90:-24.2:.15)--(.5,.6);\draw[world](1.1,2.3)circle(.15);\node[draw]at(.5,.4){$m_2$};\draw[guide](1.25,2.3)--(1.25,.3);\node at(1,1.5){$\varphi$};\draw[force](-3,1)--(-2,1)node[midway,above]{$F'$};\node at(-1.65,1){$m_3$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{把倾斜张力分量与共同加速度对应}\par\nobreak
+取图\ref{n1e20q}悬绳与竖直夹角 $\varphi$，球位于滑轮的左下方。相对车体静止要求三者共同水平加速度为 $a$。隔离悬块与顶部物块分别有
+\[
+ T\cos\varphi=m_2g,\quad T\sin\varphi=m_2a,\quad T=m_1a.
+\]
+\fig{n1e20s}{张力三角形与顶部物块方程共同限制质量比}{\begin{tikzpicture}
+\draw[force,blue](0,0)--(1,1.5)node[above]{$T=m_1a$};\draw[guide](0,0)--(1,0)--(1,1.5);\node[below]at(.5,0){$m_2a$};\node[right]at(1,.75){$m_2g$};\node at(3,1){$T^2=m_2^2(a^2+g^2)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力并确定质量比的可行条件}\par\nobreak
+按图\ref{n1e20s}平方相加，$(m_1^2-m_2^2)a^2=m_2^2g^2$。只有 $m_1>m_2$ 才存在有限正解：
+\[
+ a=\frac{m_2g}{\sqrt{m_1^2-m_2^2}},\quad
+ F'=(m_1+m_2+m_3)a,\quad \sin\varphi=\frac{m_2}{m_1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分相对平衡的存在与实际运动的建立}\par\nobreak
+质量相等时不存在有限解，小于时更不可能。还须区分“存在稳定构形”和“从竖直初态自动达到稳定”：理想无阻尼装置通常会持续摆动，不能由这里的相对平衡条件推出它会自行静止。
+\end{solution}
+
+\begin{question}\begin{example}[加速车厢中的地板与悬重]\label{n1e21}
+车厢以 $a>0$ 向右加速，车顶轻滑轮两侧轻绳分别连接地板上的 $m_1$ 与自由悬挂的 $m_2$，$m_1>m_2$。在相对平衡构形中，连到 $m_1$ 的绳段竖直，悬重偏到滑轮左下方。求张力及地板所需最小静摩擦因数。
+\fig{n1e21q}{地板物块的绳段竖直，另一侧允许偏斜}{\begin{tikzpicture}
+\draw[world](-2,0)rectangle(2,3);\draw[world](0,3)--(0,2.3);\draw[world](0,2.3)circle(.3);\node[draw,anchor=south](A)at(.3,0){$m_1$};\node[draw,anchor=north](B)at(-1,1){$m_2$};\draw[world](A.north)--(.3,2.3)arc(0:180:.3)--(B.north);\draw[flow](2.1,1.8)--(3.3,1.8)node[right]{$a$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由悬重的水平加速度求张力}\par\nobreak
+图\ref{n1e21q}的悬重相对车厢静止，在地面系只有水平加速度。它的张力分量为 $T_x=m_2a$、$T_y=m_2g$，所以 $T=m_2\sqrt{g^2+a^2}$。
+\fig{n1e21s}{地板物块的竖直支持力与竖直张力并列示意}{\begin{tikzpicture}
+\draw[guide](-.2,0)--(.2,0);\fill(0,0)circle(2pt)node[below left]{$m_1$};\draw[force,blue](-.15,0)--(-.15,1.2)node[above left]{$N$};\draw[force](.15,0)--(.15,1.7)node[above right]{$T$};\draw[force,red](0,0)--(0,-1.3)node[below]{$m_1g$};\draw[force](0,0)--(1.5,0)node[right]{$f$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离地板物块求支持力和摩擦}\par\nobreak
+由图\ref{n1e21s}，地板物块的水平加速度由摩擦提供，$f=m_1a$；竖直平衡给出 $N=m_1g-T$。因此
+\[
+ \mu_{s,\min}=\frac{m_1a}{m_1g-m_2\sqrt{g^2+a^2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先检查接触可行，再讨论摩擦阈值}\par\nobreak
+此式首先要求分母为正，即 $a<g\sqrt{(m_1/m_2)^2-1}$。到达上限时 $N\to0$ 而所需摩擦仍为正，任何有限摩擦因数都不能维持题设状态。只检查 $f\le\mu_sN$ 的形式而不检查 $N>0$，会得到没有物理意义的负因数。
+\end{solution}
+
+\begin{question}\begin{example}[固定斜面的地面作用力]\label{n1e22}
+质量 $m$ 的物块从倾角 $\theta$ 的光滑斜面上滑下，斜面质量 $M$，依靠地面静摩擦保持静止。斜面向右下方倾斜。求地面对斜面的摩擦力与支持力。
+\fig{n1e22q}{斜面静止，滑块具有水平与竖直加速度}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,2.4)--cycle;\node[draw,rotate=-30.9638,anchor=south]at(-.5,1.5){$m$};\node at(-.8,.6){$M$};\draw[flow](.2,1.5)--(1.2,.9)node[right]{$a_s$};\node at(1,.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先将滑块加速度投影到地面坐标}\par\nobreak
+图\ref{n1e22q}的斜面不动，沿面加速度为 $a_s=g\sin\theta$。以向右、向上为正，物块 $a_x=g\sin\theta\cos\theta$、$a_y=-g\sin^2\theta$。取物块和斜面整体，设地面摩擦为有符号的 $f$，则
+\[
+ f=ma_x,\qquad N-(M+m)g=ma_y.
+\]
+\fig{n1e22s}{整体边界包含接触面，地面力是外力}{\begin{tikzpicture}
+\draw[guide,rounded corners](-1.5,-.3)rectangle(1.5,1.5);\node at(0,.8){斜面与滑块};\draw[force](0,0)--(1.8,0)node[right]{$f$};\draw[force,blue](0,0)--(0,1.9)node[above]{$N$};\draw[force,red](0,0)--(0,-1.5)node[below]{$(M+m)g$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用整体外力求地面作用并由隔离法复核}\par\nobreak
+按图\ref{n1e22s}的外力方向，$f=mg\sin\theta\cos\theta$ 向右，$N=(M+m)g-mg\sin^2\theta=Mg+mg\cos^2\theta$。再隔离滑块得斜面压力 $mg\cos\theta$，其对斜面的水平分量向左、竖直分量向下，恰与上述结果相符。地面还应满足所需 $f\le\mu_sN$，否则“斜面静止”不能实现。
+\end{solution}
+
+\begin{question}\begin{example}[箱内运动与称重条件]\label{n1e23}
+质量 $M$ 的箱体固定在地面上，箱内质量 $m$ 的圆环沿竖直杆向下运动，测得向下加速度为 $a$。在无其他竖直外力时求地面支持力；进一步说明若杆完全光滑、圆环仅受重力和杆的作用，$a$ 可以怎样取值。
+\fig{n1e23q}{测量加速度与核查其受力机制是两个步骤}{\begin{tikzpicture}
+\draw[world](-1.5,0)rectangle(1.5,2.7);\draw[world](0,0)--(0,2.7);\draw[world](0,1.7)circle(.18);\node[right]at(.2,1.7){$m$};\node at(1,.6){$M$};\draw[flow](-.6,2)--(-.6,1)node[left]{$a$};\draw[world](-2,-.05)--(2,-.05);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从整个箱体系统的动量变化求支持力}\par\nobreak
+以图\ref{n1e23q}中的箱体和圆环为整体，竖直向上列式。箱体加速度为零，圆环加速度为 $-a$，于是 $N-(M+m)g=-ma$，得到 $N=(M+m)g-ma$。该式反映整体竖直动量变化，暂不依赖内部接触力的具体形式。
+\fig{n1e23s}{光滑竖直杆不能对圆环提供竖直分力}{\begin{tikzpicture}
+\draw[world](0,-1.5)--(0,1.5);\draw[world](0,0)circle(.2);\draw[force,red](0,0)--(0,-1.2)node[right]{$mg$};\draw[guide](-1,0)--(1,0)node[above right]{法向水平};\node at(3,.9){仅有重力时：$a=g$};\node at(3,-.9){因而 $N=Mg$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用圆环的真实受力核查给定加速度}\par\nobreak
+但图\ref{n1e23s}还要求物理自洽：光滑竖直杆的法向作用水平，圆环没有其他竖直力时，只能有 $ma=mg$，即 $a=g$，所以此特定模型的支持力就是 $Mg$。
+
+若测得 $a\ne g$，必须存在摩擦、驱动装置或其他竖直作用；若它们都在箱内，上面的整体式仍可用，若力来自箱外，则须把该外力列入整体方程。
+\end{solution}
+
+\begin{question}\begin{example}[斜面滑轮系统的地面反力]\label{n1e24}
+质量 $4m$ 的斜面保持静止，倾角 $30^\circ$。质量 $8m$ 的物块在光滑斜面上，由轻绳跨过顶端光滑轻滑轮连接竖直悬挂的 $2m$ 物体。求地面对斜面的竖直支持力及水平静摩擦力。
+\fig{n1e24q}{悬重与斜面物块的竖直加速度不同}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(-2,{4*tan(30)})--cycle;\node at(-.8,.5){$4m$};\node[draw,rotate=-30,anchor=south](A)at(.2,{1.8*tan(30)}){$8m$};\path(A.center)++(-2.2,{2.2*tan(30)})coordinate(Q);\path(Q)++(240:.2)coordinate(P);\path(P)++(180:.2)coordinate(S);\draw[world](P)--(-2,{4*tan(30)});\draw[world](A.west)--(Q)arc(60:180:.2)--(0,1.1 -| S);\node[draw,anchor=north]at(0,1.1 -| S){$2m$};\draw[world](P)circle(.2);\node at(1,.2){$30^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{沿绳消去内张力求两物体加速度}\par\nobreak
+取图\ref{n1e24q}的 $8m$ 沿面向右下、$2m$ 向上为正向。两者加速度大小均为 $a$，方程相加得
+\[8mg\sin30^\circ-2mg=(8m+2m)a,\quad a=g/5.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用竖直加速度的质量加权和求支持力}\par\nobreak
+取斜面、滑轮和两物体整体，竖直向上为正。只有悬重的 $+a$ 和斜面物块的 $-a\sin30^\circ$ 进入质量加权和：
+\[N_y-14mg=2ma-8ma\sin30^\circ=-2ma.\]
+\fig{n1e24s}{两物体加速度在地面坐标中的投影}{\begin{tikzpicture}
+\fill(-1,0)circle(2pt)node[left]{$2m$};\draw[flow](-1,0)--(-1,1.2)node[above]{$a$};\fill(1.5,.8)circle(2pt)node[above]{$8m$};\draw[flow](1.5,.8)--(3,-.07)node[right]{$a$};\draw[guide](1.5,.8)--(3,.8)--(3,-.07);\node[right]at(3,.4){$a\sin30^\circ$};
+\end{tikzpicture}}
+由图\ref{n1e24s}，$N_y=14mg-2mg/5=68mg/5$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由水平投影求摩擦并检验地面条件}\par\nobreak
+水平外力须提供 $8m$ 物块的向右加速度分量，故 $f_x=8ma\cos30^\circ=4\sqrt3mg/5$ 向右。维持斜面静止所需静摩擦因数至少为 $f_x/N_y=\sqrt3/17$。若题目另称地面完全光滑，就不能同时保持斜面静止，必须重求耦合运动。
+\end{solution}
+
+\begin{question}\begin{example}[粗糙地面上拉上层物块]\label{n1e25}
+上层 $A$ 质量 $5\,\mathrm{kg}$，下层 $B$ 质量 $2\,\mathrm{kg}$。$A,B$ 间摩擦因数 $0.2$，$B$ 与地面间为 $0.1$，各处最大静摩擦均近似等于动摩擦。由静止对 $A$ 加水平向右恒力 $F\ge0$。取 $g=10\,\mathrm{m/s^2}$，求各阶段加速度。
+\fig{n1e25q}{地面与层间摩擦须依次检查}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\node[draw,minimum width=2cm,minimum height=.6cm]at(0,.3){$B,2\,\mathrm{kg}$};\node[draw,minimum width=1.4cm,minimum height=.6cm]at(0,.9){$A,5\,\mathrm{kg}$};\draw[force](.7,.9)--(2.3,.9)node[right]{$F$};\node[left]at(-1,.65){$\mu_1$};\node[left]at(-1,0){$\mu_2$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{先检查地面与层间的静止条件}\par\nobreak
+图\ref{n1e25q}地面最大静摩擦为 $0.1(5+2)10=7\,\mathrm N$，层间上限为 $0.2\times5\times10=10\,\mathrm N$。当 $0\le F\le7\,\mathrm N$，层间摩擦和地面摩擦均可平衡 $F$，两块静止。
+\fig{n1e25s}{共同运动时先用整体，再用下层求所需摩擦}{\begin{tikzpicture}
+\node[draw,minimum width=1.5cm]at(0,.7){$A+B$};\draw[force](.8,.7)--(2.2,.7)node[right]{$F$};\draw[force,red](-.8,.7)--(-2,.7)node[left]{$7\,\mathrm N$};\node[draw]at(0,-.7){$B$};\draw[force,blue](.4,-.7)--(1.8,-.7)node[right]{$f$};\draw[force,red](-.4,-.7)--(-1.8,-.7)node[left]{$7\,\mathrm N$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求共同滑动区间的加速度与所需摩擦}\par\nobreak
+当 $F>7\,\mathrm N$，若共同运动，图\ref{n1e25s}给出 $a=(F-7\,\mathrm N)/(7\,\mathrm{kg})$，而下层方程 $f-7\,\mathrm N=(2\,\mathrm{kg})a$，故 $f=(2F+35\,\mathrm N)/7$。令 $f\le10\,\mathrm N$，得到 $F\le17.5\,\mathrm N$。因此中间区间两块加速度均为上述 $a$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{转入层间滑动并核查临界连接}\par\nobreak
+当 $F>17.5\,\mathrm N$，层间滑动，$f=10\,\mathrm N$，分别列式得 $a_A=(F-10\,\mathrm N)/(5\,\mathrm{kg})$，$a_B=(10-7)\,\mathrm N/(2\,\mathrm{kg})=1.5\,\mathrm{m/s^2}$。在临界处两者也等于 $1.5\,\mathrm{m/s^2}$，且高于临界时 $a_A>a_B$，滑动方向正确。
+\end{solution}
+
+\begin{question}\begin{example}[最大静摩擦不能替代滑动摩擦]\label{n1e26}
+质量 $1\,\mathrm{kg}$ 的 $A$ 放在质量 $2\,\mathrm{kg}$ 的 $B$ 上，地面光滑，层间最大静摩擦为 $5\,\mathrm N$。用水平向右恒力拉 $B$，分别取 $F=10\,\mathrm N$、$20\,\mathrm N$，求加速度。若滑动摩擦未知，说明结果应怎样表达。
+\fig{n1e26q}{恒力直接拉下层，摩擦加速上层}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\node[draw,minimum width=2cm,minimum height=.6cm]at(0,.3){$B$};\node[draw,anchor=south]at(0,.6){$A$};\draw[force](1,.3)--(2.4,.3)node[right]{$F$};\node at(0,1.55){$f_{s,\max}=5\,\mathrm N$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用上层所需摩擦确定共同运动阈值}\par\nobreak
+共同加速度为 $a=F/(3\,\mathrm{kg})$，图\ref{n1e26q}上层所需摩擦为 $f=(1\,\mathrm{kg})a=F/3$。故临界拉力为 $F_c=15\,\mathrm N$。$F=10\,\mathrm N$ 时，所需摩擦 $10/3\,\mathrm N<5\,\mathrm N$，两块均为 $a=10/3\,\mathrm{m/s^2}$。
+\fig{n1e26s}{滑动后的两个方程需要滑动摩擦力作为参数}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[above]{$A$};\draw[force,blue](-1.5,0)--(-.2,0)node[right]{$f_k$};\fill(1.8,0)circle(2pt)node[above]{$B$};\draw[force](1.8,0)--(3.4,0)node[right]{$20\,\mathrm N$};\draw[force,blue](1.8,0)--(.6,0)node[below]{$f_k$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{超过阈值后保留未知的滑动摩擦参数}\par\nobreak
+当 $F=20\,\mathrm N$，共同运动所需摩擦为 $20/3\,\mathrm N$，已超上限，必滑动。按图\ref{n1e26s}记滑动摩擦为 $f_k$，正确结果是 $a_A=f_k/(1\,\mathrm{kg})$、$a_B=(20\,\mathrm N-f_k)/(2\,\mathrm{kg})$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明何种补充条件才能得到数值}\par\nobreak
+仅凭最大静摩擦无法给出唯一数值。额外采用 $f_k=5\,\mathrm N$ 的近似时，才得到 $a_A=5\,\mathrm{m/s^2}$、$a_B=7.5\,\mathrm{m/s^2}$。
+\end{solution}
+
+\begin{question}\begin{example}[切开长方体后的离地阈值]\label{n1e27}
+把长方体沿与水平面成 $\theta$ 的切面分成左上块 $m$ 与右下块 $M$，两块底部起初都接触光滑水平面，切面也光滑。向右水平推左上块，求它刚开始相对另一块向上滑动所需的临界推力。
+\fig{n1e27q}{左上块开始上滑时，它的地面支持力先降至零}{\begin{tikzpicture}
+\draw[world](-2,0)rectangle(2,2);\draw[world](-1,0)--(2,2);\node at(-.7,1.3){$m$};\node at(1,.5){$M$};\draw[force](-3,1)--(-2,1)node[midway,above]{$F$};\draw[world](-2.5,-.05)--(2.5,-.05);\node at(-.3,.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从上块地面支持力降为零确定临界}\par\nobreak
+临界前两块都不能竖直移动，接触且相对静止，故图\ref{n1e27q}中两块共同水平加速度为 $a$。设切面对 $m$ 的支持力为 $N$，地面对它的支持力为 $R$，则 $N\cos\theta+R=mg$。刚要上滑时 $R=0$，所以 $N=mg/\cos\theta$。
+\fig{n1e27s}{临界时上块的受力与下块的水平反作用}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[above]{$m$};\draw[force](-3,0)--(-1.5,0)node[midway,above]{$F_c$};\draw[force,blue](-1.5,0)--(-2.2,1)node[above]{$N$};\draw[force,red](-1.5,0)--(-1.5,-1.1)node[below]{$mg$};\fill(1.5,0)circle(2pt)node[above]{$M$};\draw[force,blue](1.5,0)--(2.9,0)node[right]{$N\sin\theta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{依次隔离下块、取整体求临界推力}\par\nobreak
+按图\ref{n1e27s}，下块的水平式为 $Ma=N\sin\theta=mg\tan\theta$，整体水平式为 $F_c=(M+m)a$。联立得到
+\[F_c=\frac{(M+m)mg\tan\theta}{M}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查阈值两侧的接触状态}\par\nobreak
+小于此值时 $R>0$，地面支持还可维持两块竖直位置不变；超过临界后若仍假设共同平移，就会算得 $R<0$，必须转入上块脱离地面并相对滑动的分支。严格说 $F_c$ 是阈值，持续出现相对加速度需 $F>F_c$。
+\end{solution}
+
+\begin{question}\begin{example}[水平动滑轮与等效惯量]\label{n1e28}
+光滑水平面上有 $m_1,m_2$ 两物体。轻绳一端固定在左墙，向右绕过连接在 $m_2$ 上的轻动滑轮，再向左连接 $m_1$。用水平恒力 $F$ 向右拉 $m_2$，求两物体加速度。
+\fig{n1e28q}{绳的两段长度都随滑轮中心位置改变}{\begin{tikzpicture}
+\draw[world](-3,-.3)--(-3,1.6);\draw[world](-3,1)--(0,1)arc(90:-90:.3)--(-1.7,.4);\draw[world](0,.7)circle(.3);\node[draw]at(-1.9,.4){$m_1$};\draw[world](.3,.7)--(1.3,.7);\node[draw]at(1.8,.7){$m_2$};\draw[force](2.3,.7)--(3.5,.7)node[right]{$F$};\draw[world](-2.8,0)--(3,0);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{写总绳长并求两块的加速度比}\par\nobreak
+图\ref{n1e28q}中统一向右取坐标，动滑轮中心与$m_2$同坐标。轻绳长度为$L=x_2+(x_2-x_1)+C$，对时间先后求导得$0=2\dot x_2-\dot x_1$、$0=2\ddot x_2-\ddot x_1$，故$2a_2-a_1=0$。设绳张力$T$，上式给$a_1=2a_2$，物块$m_1$水平式为$T=m_1a_1=2m_1a_2$。
+\fig{n1e28s}{动滑轮受到两股向左张力}{\begin{tikzpicture}
+\draw[world](0,0)circle(.35);\draw[force,blue](-.35,.2)--(-1.7,.2)node[left]{$T$};\draw[force,blue](-.35,-.2)--(-1.7,-.2)node[left]{$T$};\node[draw]at(1.5,0){$m_2$};\draw[world](.35,0)--(1.1,0);\draw[force](1.9,0)--(3.1,0)node[right]{$F$};\node at(.7,1.1){$a_1=2a_2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入动滑轮两股张力，联立动力学}\par\nobreak
+按图\ref{n1e28s}把轻滑轮与 $m_2$ 合并，$F-2T=m_2a_2$。代入张力后得
+\[a_2=\frac{F}{4m_1+m_2},\qquad a_1=\frac{2F}{4m_1+m_2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释分母中的倍数来自位移比与传力关系}\par\nobreak
+不能把两块当作共同加速度而直接用 $F/(m_1+m_2)$。分母中的 $4m_1$ 由两倍位移比和相应的两股张力共同产生。
+\end{solution}
+
+\begin{question}\begin{example}[自由斜面的反冲加速度]\label{n1e29}
+光滑水平面上放置质量 $M$ 的斜面，斜面向右上方升高、倾角 $\theta$。质量 $m$ 的物块从斜面静止释放，各处无摩擦，求斜面及物块对地加速度。
+\fig{n1e29q}{滑块沿面下滑，斜面同时水平移动}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,0)--(2,2.4)--cycle;\node[draw,rotate=30.9638,anchor=south]at(.4,1.44){$m$};\node at(1,.6){$M$};\draw[flow](2.2,.5)--(3.4,.5)node[right]{$A$};\node at(-1,.2){$\theta$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{分别列滑块和自由斜面的真实力方程}\par\nobreak
+令图\ref{n1e29q}中斜面向右加速度为 $A$，物块受支持力为 $N$。向右、向上分别列物块方程 $ma_x=-N\sin\theta$、$ma_y=N\cos\theta-mg$；斜面水平式为 $MA=N\sin\theta$。
+\fig{n1e29s}{法向相对加速度为零，切向可以不同}{\begin{tikzpicture}
+\draw[axis](0,0)--(1.6,1)node[right]{$\bm t$};\draw[axis](0,0)--(-.9,1.5)node[above]{$\bm n$};\draw[flow](0,0)--(1.8,0)node[right]{$A\bm e_x$};\draw[guide](-1.7,-1)--(1.7,1);\node at(2.2,1.7){$(\bm a_m-A\bm e_x)\cdot\bm n=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以法向接触约束关闭方程组}\par\nobreak
+斜面仅平移且是直面，图\ref{n1e29s}的法向 $\bm n=(-\sin\theta,\cos\theta)$ 不转动。接触条件给 $-a_x\sin\theta+a_y\cos\theta=-A\sin\theta$。代入两条物块方程，化为 $N/m-g\cos\theta=-A\sin\theta$。再结合 $MA=N\sin\theta$，得到
+\[
+ N=\frac{mMg\cos\theta}{M+m\sin^2\theta},\qquad
+ A=\frac{mg\sin\theta\cos\theta}{M+m\sin^2\theta}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复滑块加速度并作整体与极限检查}\par\nobreak
+物块对地分量为
+\[
+ a_x=-\frac{Mg\sin\theta\cos\theta}{M+m\sin^2\theta},\qquad
+ a_y=-\frac{(M+m)g\sin^2\theta}{M+m\sin^2\theta}.
+\]
+$MA+ma_x=0$，符合整体无水平外力；$M\to\infty$ 时 $A\to0$，物块回到固定斜面的结果。
+\end{solution}
+
+\begin{question}\begin{example}[固定斜面上的水平顶面楔块]\label{n1e30}
+质量 $M$ 的三角楔块 $A$ 在倾角 $\theta=30^\circ$ 的固定光滑斜面上，楔块顶面保持水平，顶上放质量 $m$ 的物块 $B$。两者初静止且接触光滑，求释放后 $A$ 的加速度，并检查 $B$ 是否保持接触。
+\fig{n1e30q}{上表面水平，物块只获得竖直加速度}{\begin{tikzpicture}
+\draw[world](-2,0)--(2,{4*tan(30)});\draw[world](-.8,{1.2*tan(30)})--(1,{3*tan(30)})--(-.8,{3*tan(30)})--cycle;\node at(-.2,1.3){$A,M$};\node[draw,anchor=south]at(-.1,{3*tan(30)}){$B,m$};\node at(-1,.25){$\theta$};\draw[flow](-.9,1.3)--(-1.8,.78)node[left]{$a_A$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用水平顶面的竖直运动联系两物体}\par\nobreak
+由图\ref{n1e30q}，$A$ 只能沿固定斜面向左下移动，而 $B$ 不受水平力。因此只要接触，$B$ 向下加速度等于顶面竖直加速度 $a_B=a_A\sin\theta$。设顶面支持力为 $N_2$，有 $mg-N_2=ma_A\sin\theta$。
+\fig{n1e30s}{用顶面的竖直运动连接两物体}{\begin{tikzpicture}
+\fill(-1.5,0)circle(2pt)node[right]{$B$};\draw[force,blue](-1.5,0)--(-1.5,1.1)node[above]{$N_2$};\draw[force,red](-1.5,0)--(-1.5,-1.3)node[below]{$mg$};\fill(1.5,0)circle(2pt)node[right]{$A$};\draw[force,red](1.5,0)--(1.5,-1.4)node[below]{$Mg+N_2$};\draw[force,blue](1.5,0)--(.8,1.2124)node[above]{$N_1$};\draw[flow](1.5,0)--(.1,-.8)node[left]{$a_A$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿固定斜面投影楔块方程并消去支持力}\par\nobreak
+对图\ref{n1e30s}右侧楔块沿固定斜面投影，支持力 $N_1$ 没有沿面分量，故 $Ma_A=(Mg+N_2)\sin\theta$。代入 $N_2=m(g-a_A\sin\theta)$ 得
+\[
+ a_A=\frac{(M+m)g\sin\theta}{M+m\sin^2\theta}
+ =\frac{2(M+m)g}{4M+m},
+\]
+方向沿固定斜面向下。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以正支持力检查释放后的接触状态}\par\nobreak
+再代回得$N_2=mMg\cos^2\theta/(M+m\sin^2\theta)>0$，所以在$B$尚未滑出水平顶面范围内接触能够维持。此题只要求法向运动相同，不能把$B$的完整加速度也设为沿斜面方向。
+\end{solution}

@@ -1,0 +1,599 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[落球反弹的平均冲击力]\label{em1:example:1}
+质量为$m$的小球从高度$H$自由落下，与水平地面碰撞$\tau$后反弹至高度$h$。忽略空气阻力，求地面对球的平均支持力，并讨论何时可以忽略碰撞期间的重力。
+\end{example}
+\fig{fig:em1:example:1:s}{题设：落球反弹的平均冲击力}{\begin{tikzpicture}[scale=.9]\draw[world](-.7,0)--(5,0);\fill(.4,2.2)circle(.09)node[left]{$A$};\fill(3.7,1.35)circle(.09)node[right]{$B$};\draw[flow](.4,1.9)--(.4,.35)node[midway,right]{$\sqrt{2gH}$};\draw[flow](3.7,.3)--(3.7,1.1)node[midway,left]{$\sqrt{2gh}$};\draw[dim](-.2,0)--(-.2,2.2)node[midway,left]{$H$};\draw[dim](4.5,0)--(4.5,1.35)node[midway,right]{$h$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两段自由飞行确定接触前后速度}\par\nobreak
+按图\ref{fig:em1:example:1:s}取竖直向上为正。落地前$v_-=-\sqrt{2gH}$，离地后$v_+=\sqrt{2gh}$。这两个速率分别由下落段$mgH=mv_-^2/2$和上升段$m v_+^2/2=mgh$求出。它们属于接触前、后的自由飞行，不能把碰撞段也当作自由落体；碰撞段应单独对小球使用动量定理。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对接触阶段保留支持力和重力冲量}\par\nobreak
+碰撞中支持力冲量为$\overline N\tau$，重力冲量为$-mg\tau$，所以
+\[\overline N\tau-mg\tau=m(v_+-v_-)=m\bigl(\sqrt{2gh}+\sqrt{2gH}\bigr).\]
+\fig{fig:em1:example:1:p}{只对接触阶段列冲量方程，重力项与支持力项分别保留}{\begin{tikzpicture}
+
+\fill(0,0)circle(.13);\draw[force,blue](0,.2)--(0,1.6)node[above]{$\overline N\tau$};
+\draw[force,red](0,-.2)--(0,-1.2)node[below]{$mg\tau$};
+\draw[flow](-2,1)--(-2,-.7)node[left]{$v_-<0$};\draw[flow](2,-.7)--(2,1)node[right]{$v_+>0$};
+\draw[axis](3,-.7)--(3,1.6)node[above]{$+y$};\node at(0,2.5){$\Delta p_y=m(v_+-v_-)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求平均支持力并检查近似条件}\par\nobreak
+图\ref{fig:em1:example:1:p}中支持力冲量向上、重力冲量向下，初末速度又分别带负、正号。由此
+\[\boxed{\overline N=mg+\frac{m}{\tau}\bigl(\sqrt{2gH}+\sqrt{2gh}\bigr)}.\]
+若$g\tau\ll\sqrt{2gH}+\sqrt{2gh}$，第一项可忽略。固定$H,\tau$时，反弹高度越大，平均冲击力越大；固定两高度和碰撞时间时，它与质量成正比。球对地面的平均力等大而向下。$h=0$仍需使下落动量降到零，故平均力不会为零。\end{solution}
+\begin{question}\begin{example}[抽纸时的作用时间]\label{em1:example:2}
+一小铁块原来静置于紧邻桌边的水平纸条上，纸条匀速抽出后，铁块立即失去支承。铁块与纸间动摩擦因数为$\mu$，纸条相对铁块移动$\ell$后接触结束；抽纸速度远大于铁块获得的速度，接触结束位置可近似视为同一桌边。桌高为$h$。比较抽纸速率$u$与$2u$时铁块落地点距桌边的距离。
+\end{example}
+\fig{fig:em1:example:2:s}{模型中纸条抽离后铁块立即离开支承，$\ell$为脱离前的相对移动距离}{\begin{tikzpicture}
+
+\draw[world](-.5,1.2)--(3,1.2)--(3,-1);\draw[world](-.5,-1)--(6,-1);
+\draw[world](3.05,1.22)rectangle(3.65,1.8);\draw[world,line width=1.5pt](2,1.2)--(4.2,1.2);
+\draw[flow](4.3,1.3)--(5.5,1.3)node[above]{$u$};
+\draw[guide](3.35,1.9)--(3.35,2.6);\draw[dim](2,2.3)--(3.35,2.3)node[midway,above]{$\ell$};
+\draw[dim](5.7,-1)--(5.7,1.2)node[midway,right]{$h$};\node at(1,.2){桌面};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以相对抽离距离估算接触时间}\par\nobreak
+图\ref{fig:em1:example:2:s}中纸对铁块的摩擦力向右。抽纸很快时，接触时间近似为$\tau=\ell/u$；铁块位移相对$\ell$很小，正是这一近似的依据。由水平方向冲量方程
+\[\mu mg\tau=mV,\qquad V\simeq\frac{\mu g\ell}{u}.\]
+\fig{fig:em1:example:2:p}{接触冲量先决定抛出速度；加倍抽纸速度使接触时间约减半}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,1.4)--(1,1.4)--(1,-1);\draw[world](0,-1)--(5,-1);
+\draw[guide,domain=0:3,samples=40]plot({1+\x},{1.4-2.4*(\x/3)^2});
+\draw[world,blue,domain=0:1.5,samples=40]plot({1+\x},{1.4-2.4*(\x/1.5)^2});
+\draw[flow](1,1.4)--(2.1,1.4)node[above]{$V$};\node[below]at(2.5,-1){$X/2$};\node[below]at(4,-1){$X$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+\draw[axis](0,0)--(2.8,0)node[right]{$t$};\draw[axis](0,0)--(0,2.4)node[above]{$f$};
+\fill[blue!15](0,0)rectangle(1.1,1.6);\draw[world](0,1.6)--(2.2,1.6)--(2.2,0);\draw[world,blue](1.1,0)--(1.1,1.6);
+\node[left]at(0,1.6){$\mu mg$};\node[below]at(1.1,0){$\tau/2$};\node[below]at(2.2,0){$\tau$};
+\node at(1,-.8){面积减半，$V$减半};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查铁块位移与速度是否足够小}\par\nobreak
+快速近似还可作数量级检查：铁块在接触期间移动约$\Delta x=\mu g\tau^2/2$，故$\Delta x/\ell\simeq\mu g\ell/(2u^2)\ll1$。这个条件与所得$V/u\simeq\mu g\ell/u^2\ll1$一致，保证铁块不会在抽纸阶段追上纸条。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用抛出速度求平抛距离}\par\nobreak
+铁块离开桌边后按图\ref{fig:em1:example:2:p}作平抛，飞行时间$T=\sqrt{2h/g}$，故$X=VT\simeq(\mu g\ell/u)\sqrt{2h/g}$。速率变为$2u$时，$X$约减半，落地点更靠近桌边。这里不能把纸的速度当作铁块的抛出速度；铁块所得速度取决于摩擦冲量。若不满足快速抽纸条件，还应联立接触边界的相对位移，不能继续直接用$\ell/u$。\end{solution}
+\begin{question}\begin{example}[分段推力与全过程冲量]\label{em1:example:3}
+质量$2\,\mathrm{kg}$的物体从静止开始，在水平恒力$8\,\mathrm N$作用下运动$5\,\mathrm s$，再在同向恒力$5\,\mathrm N$作用下运动$4\,\mathrm s$；撤力后又经$6\,\mathrm s$停止。全过程滑动摩擦力大小不变。求摩擦力，并检查运动方向。
+\end{example}
+\fig{fig:em1:example:3:s}{两段推力持续时间不同，全过程推力冲量为两矩形面积之和}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,2.8)node[above]{$F/\mathrm N$};
+\fill[blue!12](0,0)rectangle(1.5,2);\fill[blue!12](1.5,0)rectangle(2.7,1.25);
+\draw[world](0,2)--(1.5,2)--(1.5,1.25)--(2.7,1.25)--(2.7,0)--(4.5,0);
+\foreach \x/\lab in {1.5/5,2.7/9,4.5/15}{\node[below]at(\x,0){$\lab$};}
+\node[left]at(0,2){$8$};\node[left]at(0,1.25){$5$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以全过程始末动量相同求摩擦力}\par\nobreak
+初、末动量都为零。图\ref{fig:em1:example:3:s}所示两段推力产生正冲量，摩擦在总计$15\,\mathrm s$内产生负冲量，故
+\[8\times5+5\times4-f(5+4+6)=0,\qquad\boxed{f=4\,\mathrm N}.\]
+\fig{fig:em1:example:3:p}{分段速度始终非负，验证摩擦方向在全过程保持不变}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,2.9)node[above]{$v/(\mathrm{m/s})$};
+\draw[world,blue](0,0)--(1.5,2)--(2.7,2.4)--(4.5,0);\draw[guide](1.5,0)--(1.5,2);\draw[guide](2.7,0)--(2.7,2.4);
+\node[above]at(1.5,2){$10$};\node[above]at(2.7,2.4){$12$};
+\foreach \x/\lab in {1.5/5,2.7/9,4.5/15}{\node[below]at(\x,0){$\lab$};}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分段列式说明中间速度如何消去}\par\nobreak
+将三段分别写成$mv_1=(8-f)5$、$m(v_2-v_1)=(5-f)4$、$m(0-v_2)=-6f$，相加时中间速度项恰好抵消，才得到上面的全过程冲量式。这样合并没有假设各段加速度相同，只要求摩擦在三段内保持同一大小和方向。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回代各段速度验证摩擦方向}\par\nobreak
+用图\ref{fig:em1:example:3:p}检查符号假设：第一段加速度$(8-4)/2=2\,\mathrm{m/s^2}$，末速度为$10\,\mathrm{m/s}$；第二段加速度$0.5\,\mathrm{m/s^2}$，末速度为$12\,\mathrm{m/s}$；第三段加速度$-2\,\mathrm{m/s^2}$，恰经$6\,\mathrm s$降为零。各段停止前始终向右，摩擦方向没有改变，故全过程方程成立。\end{solution}
+\begin{question}\begin{example}[飞船吸附微尘]\label{em1:example:4}
+飞船以$V=10\,\mathrm{km/s}$进入相对地面静止、密度$\rho=10^{-7}\,\mathrm{kg/m^3}$的微尘区，正横截面积$S=2\,\mathrm{m^2}$，撞上的微尘全部附着。求保持速度所需增加的推力。
+\end{example}
+\fig{fig:em1:example:4:s}{题设：飞船吸附微尘}{\begin{tikzpicture}[scale=.9]\draw[world](2,-.4)--(4,-.4)--(4.6,.3)--(4,1)--(2,1)--cycle;\node at(3,.3){飞船};\foreach \x in {5.1,5.6,6.1}\foreach \y in {-.3,.3,.9}\fill(\x,\y)circle(.035);\draw[flow](2,1.4)--(3.6,1.4)node[midway,above]{$V$};\node at(5.4,-.9){$\rho,\ S$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选择飞船与即将并入尘埃为系统}\par\nobreak
+在$\dd t$内，图\ref{fig:em1:example:4:s}飞船扫过体积$SV\dd t$，所以流入质量$\dd m=\rho SV\dd t$。选取飞船和这些尚未碰撞的微尘为系统；微尘初动量为零，并入后以$V$运动。图\ref{fig:em1:example:4:p}所示附加推力提供所需动量：
+\[F_{\text{增}}\dd t=(M+\dd m)V-MV=V\dd m.\]
+\fig{fig:em1:example:4:p}{飞船扫过的尘埃初态静止，末态并入飞船后以同一速度运动}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](-.3,-.5)rectangle(4.4,1.8);\draw[world](0,0)rectangle(2,.8);\node at(1,.4){$M$};
+\foreach \x in {2.6,3,3.4,3.8}\foreach \y in {.2,.6}{\fill(\x,\y)circle(.03);}
+\draw[flow](.4,1.1)--(1.8,1.1)node[midway,above]{$V$};\node at(3.2,1.1){$\bm u=0$};
+\draw[dim](2,-.9)--(4,-.9)node[midway,below]{$V\dd t$};\node at(1.7,-1.6){尘埃质量$\dd m=\rho SV\dd t$};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[guide](-.3,-.5)rectangle(4.4,1.8);\draw[world](.5,0)rectangle(3,.8);\node at(1.75,.4){$M+\dd m$};
+\draw[flow](3.1,.4)--(4.3,.4)node[right]{$V$};\draw[force,red](.5,1.1)--(2,1.1)node[midway,above]{$F_{\text{增}}$};
+\node at(2,-1.25){新增动量为$V\dd m$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分初态静止尘埃与末态新增质量}\par\nobreak
+式中的$M$是该小段开始时飞船已有的质量，新增微尘尚未进入时对地静止；不能把初动量写成$(M+\dd m)V$。展开末动量时因保持匀速，没有$M\dd V$项，附加推力完全用于把流入微尘从零加速到$V$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入数据并检查流量与量纲}\par\nobreak
+因此
+\[F_{\text{增}}=\rho SV^2=10^{-7}\times2\times(10^4)^2=\boxed{20\,\mathrm N}.\]
+增加的是补偿流入动量的推力，尽管速度不变也并非合外推力为零。量纲$\rho SV^2$为$\mathrm{kg\,m/s^2}$，符合力的单位。\end{solution}
+\begin{question}\begin{example}[反射分子束的压强]\label{em1:example:5}
+分子质量为$5.4\times10^{-26}\,\mathrm{kg}$、速度为$460\,\mathrm{m/s}$的单向分子束垂直打在平面上，以原速率反向弹回。束中数密度为$1.5\times10^{20}\,\mathrm{m^{-3}}$，求压强。
+\end{example}
+\fig{fig:em1:example:5:s}{题设：反射分子束的压强}{\begin{tikzpicture}[scale=.9]\draw[world](4,-1)--(4,1.5);\foreach \y in {-.6,0,.6}\draw[flow](0,\y)--(3.3,\y);\node at(1.5,1.2){$n,m,v$};\node[right]at(4,.3){平面};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{求单个反射分子的动量变化}\par\nobreak
+取图\ref{fig:em1:example:5:s}中指向平面的方向为正。单个分子初动量$mv$，末动量$-mv$，变化为$-2mv$；平面获得正冲量$2mv$。在$\Delta t$内到达面积$S$的分子来自厚度$v\Delta t$的柱体，分子数为$nvS\Delta t$。
+\fig{fig:em1:example:5:p}{解答过程：反射分子束的压强}{\begin{tikzpicture}[scale=.9]\draw[world](4,-1)--(4,1.5);\draw[flow](.2,.7)--(3.5,.7)node[midway,above]{$+mv$};\draw[flow](3.5,-.4)--(.2,-.4)node[midway,below]{$-mv$};\draw[guide](.2,-1)--(.2,1.2);\draw[dim](.2,-1.2)--(4,-1.2)node[midway,below]{$v\Delta t$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由扫过体积计算实际到达数}\par\nobreak
+这里的$n$是单位体积分子数，并非单位时间撞击数。先由$N_{\text{碰}}=nSv\Delta t$计算实际到达数，再求单位时间的冲量：$\overline F=(N_{\text{碰}}/\Delta t)(2mv)$。面积$S$在除以$S$求压强时才消去。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成冲量并除以面积求压强}\par\nobreak
+图\ref{fig:em1:example:5:p}的入、出动量差与到达数相乘，给出$\overline F\Delta t=2nmv^2S\Delta t$，所以
+\[p=\frac{\overline F}{S}=2nmv^2=\boxed{3.43\,\mathrm{Pa}}.\]
+不能只算每次碰撞的冲量而漏掉每秒到达的分子数；压强对速度呈平方关系，一次来自单分子的动量变化，一次来自到达率。\end{solution}
+\begin{question}\begin{example}[断绳后的整体动量]\label{em1:example:6}
+质量为$m_1,m_2$的物体$A,B$在同一斜面上由轻绳连接，受到沿斜面向上的恒力$F$，由静止共同以加速度$a$上行。经$t_1$绳断，再经$t_2$，$B$恰好停止。绳断后拉力不变，各物体上滑时的外界阻力保持原值，求此时$A$的速度。
+\end{example}
+\fig{fig:em1:example:6:s}{题设：断绳后的整体动量}{\begin{tikzpicture}[scale=.9]\draw[world](-.5,-.5)--(5,2.25);\begin{scope}[rotate=26.565]\draw[world](.7,0)rectangle(1.5,.5);\node at(1.1,.25){$B$};\draw[world](1.5,.25)--(2.7,.25);\draw[world](2.7,0)rectangle(3.5,.5);\node at(3.1,.25){$A$};\draw[force](3.5,.25)--(4.7,.25)node[above]{$F$};\end{scope}\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定断绳后仍保持不变的总外力}\par\nobreak
+沿图\ref{fig:em1:example:6:s}斜面向上取正。两物体共同上滑时，设各自向下的外力合计为$R_1,R_2$，则$F-R_1-R_2=(m_1+m_2)a$。绳断后在$B$停止以前，外力总和没有变化，故系统仍满足
+\[\Delta P=(m_1+m_2)a\,t_2.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同一初末时刻写系统动量定理}\par\nobreak
+断绳瞬间两物体速度均为$at_1$，终态$B$速度为零，所以
+\[m_1v_A-(m_1+m_2)at_1=(m_1+m_2)at_2.\]
+\fig{fig:em1:example:6:p}{断绳时速度连续，之后两物体分别加速和减速；终态取同一时刻}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,3.7)node[above]{$v$};
+\draw[world](0,0)--(1.5,1);\draw[world,blue](1.5,1)--(4,3);\draw[world,red](1.5,1)--(4,0);
+\draw[guide](1.5,0)--(1.5,3.4);\draw[guide](4,0)--(4,3);
+\node[below]at(1.5,0){$t_1$};\node[below]at(4,0){$t_1+t_2$};
+\node[right,blue]at(4,3){$v_A$};\node[right,red]at(4,0){$v_B=0$};\node[left]at(0,1){$at_1$};\draw[guide](0,1)--(1.5,1);
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{整理所求速度并用个体方程核验}\par\nobreak
+把末态动量$m_1v_A$单独放到等式左边，右边两项均含$(m_1+m_2)a$：$m_1v_A=(m_1+m_2)a t_1+(m_1+m_2)a t_2$。这里初态必须选断绳时刻，若误选刚开始运动却仍只累计$t_2$的冲量，就会漏掉断绳前已经获得的动量。
+
+于是
+\[\boxed{v_A=\frac{m_1+m_2}{m_1}a(t_1+t_2)}.\]
+图\ref{fig:em1:example:6:p}同时显示，$B$停止只消去了其终动量，并没有消去它在这一段所受的外冲量。若用个体方程核验，$R_2t_2=m_2at_1$，代入$A$的动量定理会得到同一结果。条件“各外力保持原值”使全过程方法成立；若粗糙程度沿位置变化，则不能直接照用。\end{solution}
+\begin{question}\begin{example}[碰撞前后滑行的时间]\label{em1:example:7}
+$A,B$两物体质量为$2\,\mathrm{kg},1\,\mathrm{kg}$，与水平面的动摩擦因数都为$0.10$，初始相距$9.5\,\mathrm m$。$A$以$10\,\mathrm{m/s}$向静止的$B$运动，正碰后仍向前。从开始到$A$停止共$6\,\mathrm s$。碰撞时间可忽略，取$g=10\,\mathrm{m/s^2}$，求$B$碰后运动时间。
+\end{example}
+\fig{fig:em1:example:7:s}{题设：碰撞前后滑行的时间}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$A$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$B$};\draw[flow](0.7,0.8)--++(1.5,0)node[above]{$v_0$};\draw[dim](1,-.8)--(4.3,-.8)node[midway,below]{$9.5\,\mathrm m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从接近距离求碰撞时刻并筛选根}\par\nobreak
+图\ref{fig:em1:example:7:s}中两物体滑动减速度大小均为$\mu g=1\,\mathrm{m/s^2}$。设碰前时间$t$，则$10t-\tfrac12t^2=9.5$，解得$t=1\,\mathrm s$或$19\,\mathrm s$。后者已超过未碰撞时的停止时刻，必须舍去；故碰前$u_A=9\,\mathrm{m/s}$。
+\fig{fig:em1:example:7:p}{碰撞使速度瞬时跳变，碰后两物体以相同减速度分别滑行至停止}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.2,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,3)node[above]{$v/(\mathrm{m/s})$};
+\draw[world,blue](0,2.5)--(.5,2.25)--(.5,1.25)--(3,0);\draw[world,red](.5,0)--(.5,2)--(4.5,0);
+\draw[guide](.5,0)--(.5,2.7);\node[below]at(.5,0){$1$};\node[below]at(3,0){$6$};\node[below]at(4.5,0){$9$};
+\node[left]at(0,2.5){$10$};\node[right,blue]at(.5,2.25){$9$};\node[right,red]at(.5,1.9){$8$};\node[right,blue]at(.5,1.25){$5$};
+\node[blue]at(1.5,.75){$A$};\node[red]at(3,1){$B$};\draw[dim](.5,-.8)--(4.5,-.8)node[midway,below]{$B$碰后滑行$8\,\mathrm s$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查数学根对应的运动区间}\par\nobreak
+二次方程可化为$t^2-20t+19=0$，即$(t-1)(t-19)=0$。未碰撞时$A$在$10\,\mathrm s$便停止，故后一个数学根不在所用匀减速公式的有效区间。碰撞前的接近距离在$t=1\,\mathrm s$确实为$10-0.5=9.5\,\mathrm m$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由碰后滑行反推速度，再用碰撞动量}\par\nobreak
+图\ref{fig:em1:example:7:p}中碰后$A$还有$5\,\mathrm s$的减速段，因而$v_A=5\,\mathrm{m/s}$。在瞬时碰撞段，地面摩擦冲量可略，水平方向有$2\times9=2\times5+v_B$，得到$v_B=8\,\mathrm{m/s}$。因此
+\[\boxed{t_B=v_B/(\mu g)=8\,\mathrm s}.\]
+碰后$B$比$A$快，不会再次追撞；这个检查也与单次碰撞的分段图一致。\end{solution}
+\begin{question}\begin{example}[折线绳的冲量传递]\label{em1:example:8}
+光滑水平面上三个质量均为$m$、初始静止的小球$A,B,C$用两条不可伸长轻绳$AB,BC$相连，绳已拉直，$\angle ABC=120^\circ$。沿$BA$方向向$A$施加瞬时冲量$I$。求$C$刚受冲击后的速度。
+\end{example}
+\fig{fig:em1:example:8:s}{题设：折线绳的冲量传递}{\begin{tikzpicture}[scale=.9]\coordinate(A)at(0,1);\coordinate(B)at(2,1);\coordinate(C)at(3,-.732);\draw[world](A)--(B)--(C);\foreach \p in {A,B,C}\fill(\p)circle(.07)node[above right]{$\p$};\draw[flow](A)--++(-1.2,0)node[above]{$I$};\draw(1.5,1)arc(180:300:.5);\node at(1.9,.2){$120^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按两根绳的方向分别列各球冲量}\par\nobreak
+按图\ref{fig:em1:example:8:s}令$\bm e_1$沿$B\!\to\!A$，$\bm e_2$沿$B\!\to\!C$，则$\bm e_1\cdot\bm e_2=-1/2$。设两绳拉力冲量分别为$J_1,J_2$。对各球写矢量式：
+\[m\bm v_A=(I-J_1)\bm e_1,\quad m\bm v_B=J_1\bm e_1+J_2\bm e_2,\quad m\bm v_C=-J_2\bm e_2.\]
+\fig{fig:em1:example:8:p}{在各球上分别画冲量，同一根绳的两端冲量等大反向}{\begin{tikzpicture}
+
+\coordinate(A)at(0,1.4);\coordinate(B)at(3,1.4);\coordinate(C)at(4.5,-1.198);
+\draw[guide](A)--(B)--(C);\foreach \p in {A,B,C}{\fill(\p)circle(2pt);\node[above right]at(\p){$\p$};}
+\draw[force,blue](A)--(-1.4,1.4)node[left]{$I$};\draw[force,red](A)--(1.2,1.4)node[below]{$J_1$};
+\draw[force,red](B)--(1.8,1.4)node[above]{$J_1$};\draw[force,red](B)--(3.6,.361)node[right]{$J_2$};
+\draw[force,red](C)--(3.9,-.159)node[left]{$J_2$};
+\draw[axis](2.4,2.2)--(1.3,2.2)node[left]{$\bm e_1$};\draw[axis](4,1.4)--(4.5,.534)node[right]{$\bm e_2$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将速度约束投影到各自绳方向}\par\nobreak
+图\ref{fig:em1:example:8:p}中每根绳两端的沿绳速度必须相等。把速度代入$(\bm v_A-\bm v_B)\cdot\bm e_1=0$与$(\bm v_C-\bm v_B)\cdot\bm e_2=0$，得到
+\[I-2J_1+\tfrac12J_2=0,\qquad \tfrac12J_1-2J_2=0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开投影以保留两绳夹角}\par\nobreak
+投影的中间计算例如$ m\bm v_B\cdot\bm e_1=J_1-J_2/2$，而$m\bm v_A\cdot\bm e_1=I-J_1$；两者相等便给第一式。沿$\bm e_2$，分别有$m\bm v_C\cdot\bm e_2=-J_2$及$m\bm v_B\cdot\bm e_2=-J_1/2+J_2$，从而得到第二式。夹角的余弦已经通过这两个投影进入方程。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求末速度并检查两绳冲量为正}\par\nobreak
+第二式给$J_1=4J_2$，第一式给$J_2=2I/15$，所以
+\[\boxed{\bm v_C=-\frac{2I}{15m}\bm e_2}.\]
+$C$沿$CB$方向运动。两个冲量均为正，绳只需提供拉力，约束自洽。题中只使用两根绳；若另加$AC$绳，几何约束及结果都会改变。\end{solution}
+\begin{question}\begin{example}[松绳绷紧与槽的约束冲量]\label{em1:example:9}
+质量均为$m$的$A,B$由长$L$的轻绳相连。$B$只能在水平直槽内运动，$A$位于同一光滑水平面上，距槽$L/2$，初始绳松弛且两球静止。给$A$一个平行槽的速度$v_0$。求绳第一次绷紧后$B$的速度，并说明可守恒的动量分量。
+\end{example}
+\fig{fig:em1:example:9:s}{题设：松绳绷紧与槽的约束冲量}{\begin{tikzpicture}[scale=.9]\draw[world](-.3,1.4)--(5,1.4);\draw[world](-.3,1.6)--(5,1.6);\fill(0,1.5)circle(.08)node[above]{$B$};\fill(0,0)circle(.08)node[left]{$A_0$};\draw[flow](0,0)--(1.5,0)node[below]{$v_0$};\draw[guide](0,0)--(2.598,0);\fill(2.598,0)circle(.08)node[below]{$A_1$};\draw[world](0,1.5)--(2.598,0)node[midway,above]{$L$};\draw[dim](-.5,0)--(-.5,1.5)node[midway,left]{$L/2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由第一次绷紧的几何确定绳方向}\par\nobreak
+图\ref{fig:em1:example:9:s}中绳绷紧时，令从$B$指向$A$的单位矢量为$\bm n=(\sqrt3/2,-1/2)$，$x$轴沿槽。设绳冲量大小为$J$。冲击后
+\[v_{Ax}=v_0-\frac{\sqrt3J}{2m},\quad v_{Ay}=\frac{J}{2m},\quad v_B=\frac{\sqrt3J}{2m}.\]
+$B$的$y$速度始终为零，这由槽壁额外提供的约束冲量保证。
+\fig{fig:em1:example:9:p}{解答过程：松绳绷紧与槽的约束冲量}{\begin{tikzpicture}[scale=.9]\draw[world](-.3,1.4)--(5,1.4);\draw[world](-.3,1.6)--(5,1.6);\fill(0,1.5)circle(.08)node[above left]{$B$};\fill(2.598,0)circle(.08)node[below]{$A$};\draw[guide](0,1.5)--(2.598,0);\draw[force](2.598,0)--(1.732,.5)node[below]{$J$};\draw[force](0,1.5)--(.866,1)node[right]{$J$};\draw[force](0,1.5)--(0,2.4)node[above]{$J_{\text{槽}}$};\draw[flow](2.598,0)--(3.598,.433)node[right]{$\bm v_A$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开沿绳相对速度的投影}\par\nobreak
+从图中的直角三角形有$\sin\angle(BA,x)=-(L/2)/L=-1/2$、水平投影为$\sqrt3/2$。将三个速度分量代入沿绳相对速度，左边展开为$[v_0-\sqrt3J/m](\sqrt3/2)-(J/2m)(1/2)$。两项分别来自水平相对运动和$A$的竖直于槽分量，不能漏掉后者。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解绳冲量并区分两个动量分量}\par\nobreak
+由图\ref{fig:em1:example:9:p}的绷紧约束$(\bm v_A-\bm v_B)\cdot\bm n=0$，得到
+\[\frac{\sqrt3}{2}v_0-\frac{7J}{4m}=0,\quad J=\frac{2\sqrt3}{7}mv_0,\quad\boxed{v_B=\frac37v_0}.\]
+进而$v_{Ax}=4v_0/7$、$v_{Ay}=\sqrt3v_0/7$。沿槽的总动量仍为$mv_0$；垂直槽的总动量增加了$\sqrt3mv_0/7$，正是槽给系统的外冲量。碰后动能为$2mv_0^2/7$，小于碰前的$mv_0^2/2$，符合松绳突然绷紧的耗能性质。\end{solution}
+\begin{question}\begin{example}[下落链条对秤盘的作用]\label{em1:example:10}
+长$\ell$、线密度$\lambda$的柔软链条竖直悬于秤盘上方，下端恰接触盘面。由静止释放，假定链节落到盘后立即静止，尚未到盘的部分自由下落且互不牵制。求已有长度$x$堆在秤盘上时的示数。
+\end{example}
+\fig{fig:em1:example:10:s}{题设：下落链条对秤盘的作用}{\begin{tikzpicture}[scale=.9]\draw[world](1,-.2)--(4,-.2)--(4,-.5)--(1,-.5)--cycle;\draw[very thick](2.5,0)--(2.5,2.5);\node[right]at(2.5,1.6){$\lambda,\ell$};\draw[flow](3.4,2)--(3.4,.8)node[midway,right]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将到盘速率与已堆积长度联系}\par\nobreak
+图\ref{fig:em1:example:10:s}的链条在时刻$t$下落$x=gt^2/2$，速度$v=gt$，因此$v^2=2gx$。已静止的链条重为$\lambda xg$。同时每秒有质量$\lambda v$到盘，每单位质量的竖直速度由$v$降为零，盘还要提供$\lambda v^2$的向上动量变化率。
+\fig{fig:em1:example:10:p}{秤盘既支承已静止链条，又把新到链节的向下动量消去}{\begin{tikzpicture}
+
+\draw[world](-1,0)--(-1,-.4)--(2.5,-.4)--(2.5,0);\draw[world](0,.5)--(0,3);
+\draw[fill=red!15](-.15,.6)rectangle(.15,1.1);\node[left]at(-.15,.85){$\dd m$};
+\draw[world](0,0)..controls(.5,.3)and(.8,-.2)..(1,0)..controls(1.5,.3)and(1.8,-.2)..(2,0);
+\draw[guide](-.7,.4)--(2.3,.4);\draw[flow,blue](.7,2.8)--(.7,1.7)node[right]{$v$};
+\draw[force,blue](1,-1.6)--(1,-.4)node[pos=0,below]{$N$};\draw[force,red](1.7,.1)--(1.7,-.9)node[right]{$\lambda xg$};
+\node[right]at(2.3,.7){$\dd m=\lambda v\dd t$};\node at(1.3,3.5){上方未到盘部分自由下落};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由新到链节的制动冲量求额外载荷}\par\nobreak
+可在很短时间$\dd t$内核对冲击项：落入盘的质量$\dd m=\lambda v\dd t$，由向下速度$v$变为零，需要向上冲量$v\dd m$。除以$\dd t$便得附加支持力$\lambda v^2$。这一小团自身的重力冲量为高阶小量，而已经堆积的质量$\lambda x$的重量必须另计。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加承重并检查落尽前后极限}\par\nobreak
+按图\ref{fig:em1:example:10:p}把静态承重和接收冲量分开，得到
+\[\boxed{N=\lambda xg+\lambda v^2=3\lambda gx},\qquad0<x<\ell.\]
+在最后一段链节到盘前，示数趋向$3\lambda\ell g$；全部落定后流入项消失，示数降为$\lambda\ell g$。这个突变属于理想的立即停止模型，实际秤盘弹性会把它平滑化。不能把链条整体当作始终自由落体的定质量系统，因为已经落盘的部分速度为零。\end{solution}
+\begin{question}\begin{example}[链条跨轮的支承力]\label{em1:example:11}
+一条长$\ell$、线密度$\lambda$的柔软链条绕过光滑小定滑轮，两侧最初等长。给很小扰动后右侧下行。忽略轮半径，求左右链长为$\ell/2\mp x$时的速度与滑轮所受竖直向下的力。
+\end{example}
+\fig{fig:em1:example:11:s}{题设：链条跨轮的支承力}{\begin{tikzpicture}[scale=.9]\draw[world](2,1.5)circle(.35);\draw[very thick](1.65,1.5)--(1.65,0);\draw[very thick](2.35,1.5)--(2.35,-1);\node[left]at(1.65,.5){$\ell/2-x$};\node[right]at(2.35,.1){$\ell/2+x$};\draw[flow](3.7,1)--(3.7,-.2)node[midway,right]{$v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由两侧重力差求速度与加速度}\par\nobreak
+以图\ref{fig:em1:example:11:s}两侧链条为系统，右侧相对左侧多出的重力为$2\lambda gx$，整条链的质量为$\lambda\ell$，故切向加速度$a=2gx/\ell$。
+链式法则给 $a=(\dd v/\dd x)\dot x=v\dd v/\dd x$。先取一个小的初始偏移 $x=\varepsilon>0$，由静止释放，则
+\[
+\int_0^v w\,\dd w=\frac{2g}{\ell}\int_\varepsilon^x\xi\,\dd\xi,
+\qquad
+\frac{v^2}{2}=\frac g\ell[\xi^2]_\varepsilon^x
+=\frac g\ell(x^2-\varepsilon^2).
+\]
+令 $\varepsilon\to0^+$，得到题设微小扰动极限 $v^2=2gx^2/\ell$。完全对称且严格静止的状态不会自行开始运动；这里比较的是扰动后到达同一 $x>0$ 时的极限速度。
+\fig{fig:em1:example:11:p}{弯曲段不断把上行链的动量反转，需保留有限的动量流差}{\begin{tikzpicture}
+
+\draw[guide](0,-.2)rectangle(3,2.4);\draw[world](.5,.5)arc(180:0:1);
+\draw[force](.5,.5)--(.5,-.9)node[below]{$T$};\draw[force](2.5,.5)--(2.5,-.9)node[below]{$T$};
+\draw[force,blue](1.5,1.5)--(1.5,2.8)node[above]{$N$};
+\draw[flow,red](-.8,-.2)--(-.8,1)node[left]{$v$};\draw[flow,red](3.8,1)--(3.8,-.2)node[right]{$v$};
+\node[align=left]at(6,1.6){每秒通过质量$\lambda v$\\向上取正\\$N-2T=\lambda v(-v-v)$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别处理两个直链段的边界流动}\par\nobreak
+对图\ref{fig:em1:example:11:p}的上行左链和下行右链分别考虑动量流。若以小滑轮两切点处张力为$T$，直段满足$T=\lambda(\ell/2-x)(g+a)$和$T=\lambda(\ell/2+x)(g-a)$，两者都给
+\[T=\lambda g\left(\frac\ell2-\frac{2x^2}{\ell}\right).\]
+对左直段取向上为正，$P_L=\lambda(\ell/2-x)v$。乘积求导并用 $\dot x=v,\dot v=a$，得
+\[
+\dot P_L=\lambda(-\dot x)v+\lambda(\ell/2-x)\dot v
+=-\lambda v^2+\lambda(\ell/2-x)a.
+\]
+其上端每秒流出向上动量 $\lambda v^2$，故
+$\dot P_L=T-\lambda(\ell/2-x)g-\lambda v^2$。
+两式中的流出项抵消，留下 $T-\lambda(\ell/2-x)g=\lambda(\ell/2-x)a$。
+右段取向下为正时，$\dot P_R=\lambda v^2+\lambda(\ell/2+x)a$，而外力与流入项给
+$\dot P_R=\lambda(\ell/2+x)g-T+\lambda v^2$，同样得到前面的右段方程。这解释了两式为何可以写成“该段质量乘加速度”，而不是忽略了边界流动。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入弯曲段动量反转并检查接触}\par\nobreak
+图\ref{fig:em1:example:11:p}的弯曲段质量虽趋于零，却把上行速度$+v$变为下行速度$-v$。向上取正，故$N-2T=(\lambda v)(-2v)$。轮对链的向上力为$2T-2\lambda v^2$，轮承受的向下力
+\[\boxed{N=\lambda\ell g-\frac{8\lambda gx^2}{\ell}}.\]
+该理想包络接触模型要求$N\ge0$，到$x=\ell/(2\sqrt2)$会失去贴轮条件；不能把此式外推成轮“吸住”链条。若链被槽强制沿原路径运动，约束性质改变，应另行处理。\end{solution}
+\begin{question}\begin{example}[漏水容器与秤盘的总示数]\label{em1:example:12}
+手托容器、全部水的总重恒为$300\,\mathrm N$，这里全部水包括容器内、空中和已落入秤盘的水。下方接水秤盘本身重量已去皮。容器以恒定质量流率$q$从相对静止状态释放水，水自由下落高度$h$后在盘内立即静止；忽略液面变化和出口初速。求连续水流建立后，手的支持力与秤盘示数之和。
+\end{example}
+\fig{fig:em1:example:12:s}{题设：漏水容器与秤盘的总示数}{\begin{tikzpicture}[scale=.9]\draw[world](0,2.6)--(0,1.7)--(2.2,1.7)--(2.2,2.6);\draw[world](.5,0)--(.5,-.4)--(3.5,-.4)--(3.5,0);\draw[flow](1.1,1.5)--(1.1,.3)node[right]{水流};\draw[dim](4,0)--(4,1.7)node[midway,right]{$h$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定稳定水流中空中水的质量}\par\nobreak
+图\ref{fig:em1:example:12:s}每团水的下落时间$T=\sqrt{2h/g}$，入盘速率$u=\sqrt{2gh}=gT$。稳态飞行中的水质量为$qT$，它的重量$qgT$暂时既不由手直接承受，也不属于盘内静止水的重量。
+\fig{fig:em1:example:12:p}{空中水的重量与接水冲量造成的额外载荷相补偿}{\begin{tikzpicture}[scale=.85]
+\draw[thick](0,3.2)--(0,2.4)--(2.4,2.4)--(2.4,3.2);\fill[blue!10](0,2.4)rectangle(2.4,2.9);
+\draw[thick](0,.3)--(0,0)--(3.5,0)--(3.5,.3);\draw[->,blue,thick](1.2,2.3)--(1.2,.6)node[midway,right]{$q,\ u=gT$};
+\draw[->,red,thick](.3,2.8)--(.3,4)node[above]{$F_{\text{手}}=W_1$};\draw[->,red,thick](2.8,-1.3)--(2.8,-.1)node[right]{$N=W_2+qu$};
+\draw[dashed](.7,.5)rectangle(1.8,2.2);\node[align=left]at(4.9,1.5){空中水质量 $qT$\\重量 $qgT=qu$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别写手力与接水盘示数}\par\nobreak
+令当时容器与剩余水重为$W_1$、盘中已接水重为$W_2$。全部物质的重量满足$W_1+W_2+qTg=300\,\mathrm N$。在题设零出口初速近似下手力为$W_1$，接水盘示数为$W_2+qu$；代入$u=gT$即可看见两项怎样精确补偿。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用入盘冲击与空中水重的补偿}\par\nobreak
+图\ref{fig:em1:example:12:p}秤盘除承受已接住水的重量外，还增加冲击力$qu=qgT$，恰等于空中水的重量。因此手所承受的剩余容器与水重，加盘内水重，再加这项冲击力，正好补回全部总重，得到
+\[\boxed{F_{\text{手}}+N=300\,\mathrm N}.\]
+在第一批水尚未到盘之前，水流未建立为稳态，这个等式不适用；空气阻力、出口动量或外部抽水装置也会改变所取系统的外力关系。\end{solution}
+\begin{question}\begin{example}[逆风航行的帆角优化]\label{em1:example:13}
+均匀风以速率$u$沿$+y$方向吹，远大于船速。船受水的侧向约束，只能沿与$+x$夹角$-\alpha$的方向航行，沿航向阻力为$kV$。帆面积$S$，法线与$+y$成$\beta$角、偏向$+x$，气流在法向理想反射，$0<\alpha<\beta<\pi/2$。求逆风方向速度$V\sin\alpha$的最大值，并与同帆正对风顺风航行的时间比较。
+\end{example}
+\fig{fig:em1:example:13:s}{题设：逆风航行的帆角优化}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,3.2)node[above]{$y$};\draw[flow](0,0)--(0,2.5)node[left]{$u$};\draw[flow](0,0)--(2.3,1.7)node[right]{$\bm n$};\draw[flow](0,0)--(3,-1.2)node[right]{$\bm e$};\node at(.45,1.3){$\beta$};\node at(1,-.25){$\alpha$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由法向入流求帆力并投影到航向}\par\nobreak
+按图\ref{fig:em1:example:13:s}帆法向入射速度$u\cos\beta$，质量流率$\rho Su\cos\beta$，每单位质量法向速度改变量$2u\cos\beta$，故帆受力$N=2\rho Su^2\cos^2\beta$。航向单位矢量$\bm e=(\cos\alpha,-\sin\alpha)$，帆法线$\bm n=(\sin\beta,\cos\beta)$，投影$\bm n\cdot\bm e=\sin(\beta-\alpha)$。
+\[kV=N\sin(\beta-\alpha),\quad V\sin\alpha=\frac{2\rho Su^2}{k}\cos^2\beta\sin(\beta-\alpha)\sin\alpha.\]
+\fig{fig:em1:example:13:p}{对固定帆角先优化航向，再优化剩下的单变量角度因子}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](0,0)--(3.1,0)node[right]{$x$};\draw[axis](0,0)--(0,2.8)node[above]{$y$};
+\draw[force,blue](0,0)--(1.6,2.1)node[right]{$N\bm n$};\draw[flow](0,0)--(2.4,-1)node[right]{$\bm e$};
+\draw[force,red](0,0)--(.618,-.257)node[below right]{$N\sin(\beta-\alpha)\bm e$};
+\draw[guide](1.6,2.1)--(.618,-.257);\node at(.4,1.3){$\beta$};\node at(1,-.15){$\alpha$};
+\end{scope}
+\begin{scope}[xshift=6cm,x=4cm,y=25cm]
+\draw[axis](0,0)--(1.12,0)node[right]{$c=\cos\beta$};\draw[axis](0,0)--(0,.105)node[above]{$f$};
+\draw[world,blue,domain=0:1,samples=70]plot(\x,{(\x)^2*(1-\x)/2});
+\draw[guide](.66667,0)--(.66667,.074074)--(0,.074074);
+\node[below]at(.66667,0){$2/3$};\node[left]at(0,.074074){$2/27$};\node[below]at(1,0){$1$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先在固定帆角下优化航向}\par\nobreak
+图\ref{fig:em1:example:13:p}左图先将法向力投影到航向。对固定$\beta$，所需角度乘积可写为$\sin(\beta-\alpha)\sin\alpha=[\cos(\beta-2\alpha)-\cos\beta]/2$。对固定$\beta$，第一项至多为$1$，且在$\alpha=\beta/2$取到，因此最大值为$(1-\cos\beta)/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{优化帆角并比较顺逆风用时}\par\nobreak
+再按图\ref{fig:em1:example:13:p}右图令$c=\cos\beta\in(0,1)$，角度因子为 $f(c)=c^2(1-c)/2$。乘积求导：
+\[
+f'(c)=\frac12[2c(1-c)-c^2]=\frac{c(2-3c)}2.
+\]
+因此 $0<c<2/3$ 时递增、$2/3<c<1$ 时递减，端点极限均为零；内部最大值在 $c=2/3$，值为 $(4/9)(1/3)/2=2/27$。所以
+\[\boxed{(V\sin\alpha)_{\max}=4\rho Su^2/(27k)}.\]
+顺风正对帆速度$V_d=2\rho Su^2/k$，跨相同顺、逆风距离时，最短逆风时间与顺风时间之比为$\boxed{27/2}$。侧向约束力不做功，船并非自由沿帆法线漂动；$u\gg V$是忽略船速对入射气流修正的前提。\end{solution}
+\begin{question}\begin{example}[从地面连续拉起链条]\label{em1:example:14}
+一条柔软均匀长链堆在地面上，线密度$\lambda$，已被提起的竖直长度初始为$x_0>0$、速度为零。在上端施加恒定向上力$F>\lambda gx_0$，下端不断从链堆中接入，接入前静止。忽略链节间预先牵连，求竖直长度为$x$时的速度，并求接入耗散率。
+\end{example}
+\fig{fig:em1:example:14:s}{题设：从地面连续拉起链条}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\draw[very thick](2,0)--(2,2.6);\draw[world](1,.1)--(3,.1)--(1.2,.2)--(2.8,.2);\draw[force](2,2.6)--(2,3.6)node[above]{$F$};\draw[dim](3.7,0)--(3.7,2.6)node[midway,right]{$x$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留静止链节接入带来的动量项}\par\nobreak
+按图\ref{fig:em1:example:14:s}移动部分质量为$\lambda x$，下端以速率$v=\dot x$接入原来静止的链节。封闭微元动量式给$F-\lambda xg=\lambda x\dot v+\lambda v^2$。
+令 $y(x)=v(x)^2$，有 $y'=2v\,\dd v/\dd x$；同时链式法则给
+$\dot v=(\dd v/\dd x)\dot x=v\,\dd v/\dd x=y'/2$。
+代入再除以 $\lambda x/2$，得到 $y'+2y/x=2F/(\lambda x)-2g$。
+\fig{fig:em1:example:14:p}{下端新接入链节原来静止，加入后与竖直链段一起向上运动}{\begin{tikzpicture}
+
+\draw[world](-1,0)--(3,0);\draw[guide](-.7,-.1)rectangle(2,3.5);
+\draw[world](0,0)--(0,2.6);\draw[world](-.8,.1)--(.8,.1)--(-.6,.2)--(.6,.2);
+\draw[fill=red!20](-.12,0)rectangle(.12,.5);\node[left]at(-.12,.3){$\dd m$};
+\draw[force,blue](0,2.6)--(0,3.8)node[above]{$F$};\draw[force](0,1.3)--(0,.6)node[midway,right]{$\lambda xg$};
+\draw[flow,red](.8,1.7)--(.8,2.7)node[right]{$v$};\draw[dim](2.5,0)--(2.5,2.6)node[midway,right]{$x$};
+\node[align=left]at(5.5,1.5){接入前：$u=0$\\接入后：速率$v$\\$\dd m=\lambda\dd x$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解速度平方方程并使用初始条件}\par\nobreak
+按图\ref{fig:em1:example:14:p}，为把左边凑成乘积导数，取积分因子 $I(x)$ 满足 $I'/I=2/x$。因$x>0$，可选正的积分因子。取参考点$x_0>0$，分离后
+\[
+\int_{I(x_0)}^{I(x)}\frac{\dd \xi}{\xi}
+=2\int_{x_0}^{x}\frac{\dd s}{s},
+\qquad
+[\ln\xi]_{I(x_0)}^{I(x)}=2[\ln s]_{x_0}^{x}.
+\]
+故$\ln[I(x)/I(x_0)]=2\ln(x/x_0)$，即$I(x)=I(x_0)x^2/x_0^2$。积分因子的非零常数倍不改变方程，取$I(x_0)=x_0^2$，便有$I=x^2$。乘上后
+\[
+x^2y'+2xy=\frac{\dd(x^2y)}{\dd x}=\frac{2F}{\lambda}x-2gx^2.
+\]
+从初始长度 $x_0$ 积到 $x$：
+\begin{align*}
+x^2y-x_0^2y(x_0)
+&=\int_{x_0}^x\left(\frac{2F}{\lambda}\xi-2g\xi^2\right)\dd\xi\\
+&=\left[\frac F\lambda\xi^2-\frac{2g}{3}\xi^3\right]_{x_0}^x\\
+&=\frac F\lambda(x^2-x_0^2)-\frac{2g}{3}(x^3-x_0^3).
+\end{align*}
+初速度为零，故 $y(x_0)=0$；再除以 $x^2$ 可得速度平方。
+
+代入初始条件并整理，得
+\[\boxed{v^2=\frac F\lambda\left(1-\frac{x_0^2}{x^2}\right)-\frac{2g}{3}\left(x-\frac{x_0^3}{x^2}\right)}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由动能和势能增长率求接入耗散}\par\nobreak
+只取$v^2\ge0$且仍在向上接入的区间。运动链的动能 $K=\lambda xv^2/2$；以地面为零势面，
+$U=\int_0^x\lambda gz\,\dd z=\lambda g[z^2/2]_0^x=\lambda gx^2/2$。
+乘积与链式求导时须保留质量增加项：
+\[
+\dot K=\frac\lambda2(\dot x\,v^2+x\cdot2v\dot v)
+=\frac{\lambda v^3}{2}+\lambda xv\dot v,\qquad
+\dot U=\frac{\lambda g}{2}(2x\dot x)=\lambda gxv.
+\]
+将动量方程乘 $v$ 得
+$\lambda xv\dot v=Fv-\lambda gxv-\lambda v^3$，再代入上式，
+
+由动力学式算得$\dot K+\dot U=Fv-\lambda v^3/2$，故接入耗散率
+\[\boxed{\dot Q=\lambda v^3/2}.\]
+$x_0>0$避免了从零运动质量起步的模型奇点。\end{solution}
+\begin{question}\begin{example}[匀速收拢水平链条的功率]\label{em1:example:15}
+线密度$\lambda$的柔软长链原来静止堆在光滑水平面上，其一端被以恒定速率$v$拉走，使链节不断从静止堆中接入水平运动的直链。忽略重力功和链节的提前牵制，求拉力、外力功率、动能增长率及耗散率。
+\end{example}
+\fig{fig:em1:example:15:s}{题设：匀速收拢水平链条的功率}{\begin{tikzpicture}[scale=.9]\draw[world](-.5,0)--(5.7,0);\draw[world](0,.2)--(1.4,.2)--(.2,.35)--(1.2,.35);\draw[very thick](1.2,.35)--(4.7,.35);\draw[force](4.7,.35)--(5.7,.35)node[above]{$F,v$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从每秒接入质量求匀速拉力}\par\nobreak
+图\ref{fig:em1:example:15:s}每秒接入质量$\dot m=\lambda v$，每单位质量速度由零变为$v$，所以
+\[\boxed{F=\dot m v=\lambda v^2}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以作用点速度计算输入功率}\par\nobreak
+拉力作用点以$v$运动，外力功率为
+\[\boxed{P=Fv=\lambda v^3}.\]
+
+\fig{fig:em1:example:15:p}{在同一时间间隔内跟踪新加入的链节和拉力作用点的位移}{\begin{tikzpicture}
+
+\draw[world](-.5,0)--(7,0);\draw[world](0,.2)--(1.4,.2)--(.2,.35)--(1.2,.35);
+\draw[world,line width=1.2pt](1.2,.35)--(5,.35);\draw[world,red,line width=2.5pt](1.2,.35)--(2,.35);
+\draw[force,blue](5,.35)--(6.4,.35)node[above]{$F$};\draw[guide](5,.35)--(5,1.5);\draw[guide](6.4,.35)--(6.4,1.5);
+\draw[dim](5,1.3)--(6.4,1.3)node[midway,above]{$v\dd t$};
+\node[red]at(1.6,1.1){$\dd m=\lambda v\dd t$};\draw[flow](2.7,1.1)--(4,1.1)node[midway,above]{$v$};
+\node at(2.2,-.65){红段由静止加入，新增动能为$\frac12v^2\dd m$};
+\node at(2.2,-1.35){拉力输入功为$Fv\dd t=v^2\dd m$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{跟踪新增链节的动能}\par\nobreak
+若在$\dd t$内新接入$\dd m=\lambda v\dd t$，新增运动链节的动能为$v^2\dd m/2$，与此同时拉力输入功$Fv\dd t=v^2\dd m$。输入的另一半在接入处转为内能，而不是消失。即使地面光滑，接入链节的非弹性加速仍可造成耗散。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用能量差求耗散并说明匀速含义}\par\nobreak
+图\ref{fig:em1:example:15:p}运动部分质量增加，速率不变，故$\dot K=\dot m v^2/2=\lambda v^3/2$，剩余部分为
+\[\boxed{\dot Q=P-\dot K=\lambda v^3/2}.\]
+匀速并不使动能总量不变，因为正在运动的质量持续增加；动量流决定拉力，能量流还能揭示理想接入中的耗散。\end{solution}
+\begin{question}\begin{example}[恒力牵引逐个粘合的圆环]\label{em1:example:16}
+许多质量均为$m$的小环，沿光滑直线等间距$\ell$静置。第一个环从静止受恒力$F$向前运动，依次与前方环碰撞粘合，碰撞极短。求第$n$个环刚加入后共同速度，以及下一次碰撞前的速度。
+\end{example}
+\fig{fig:em1:example:16:s}{题设：恒力牵引逐个粘合的圆环}{\begin{tikzpicture}[scale=.9]\foreach \x in {0,1.5,3,4.5}\draw[world](\x,0)circle(.2);\draw[force](0,.6)--(1.2,.6)node[above]{$F$};\draw[dim](0,-.6)--(1.5,-.6)node[midway,below]{$\ell$};\node at(3,1){各环质量$m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{区分相邻碰撞之间加速与瞬间粘合}\par\nobreak
+令图\ref{fig:em1:example:16:s}第$n$个环刚加入后的速度为$V_n$，再前进$\ell$、碰第$n+1$环前速度为$U_n$。连续加速段动能定理给$U_n^2=V_n^2+2F\ell/(nm)$；粘合瞬间动量给$V_{n+1}=nU_n/(n+1)$。
+\fig{fig:em1:example:16:p}{连续加速段积累外力功，粘合瞬间用动量关系连接前后速度}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {3/第$n$环刚加入,1/下一次碰撞前,-1/下一次粘合后}{\draw[guide](-.5,\yy-.4)--(7,\yy-.4);\node[left]at(-.6,\yy){\lab};}
+\foreach \yy/\xx in {3/0,1/2,-1/2}{
+\draw[world](\xx,\yy-.2)rectangle(\xx+2,\yy+.2);
+\foreach \dx in {.3,.7,1.1,1.7}{\draw[world](\xx+\dx,\yy)circle(.12);}}
+\draw[world](4.3,3)circle(.16);\draw[world](4.3,1)circle(.16);\draw[world](4.3,-1)circle(.16);
+\draw[dim](2,3.8)--(4.3,3.8)node[midway,above]{$\ell$};
+\draw[flow](.4,3.5)--(1.7,3.5)node[right]{$V_n$};\draw[flow](2.4,1.5)--(3.7,1.5)node[right]{$U_n$};
+\draw[flow](2.4,-.5)--(3.7,-.5)node[right]{$V_{n+1}$};
+\node[right]at(4.5,3){下一环静止};\node[right]at(4.7,-1){总质量$(n+1)m$};
+\draw[force,red](5.5,1.8)--(6.7,1.8)node[above]{$F$持续作用};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两种规律联立为速度递推}\par\nobreak
+按图\ref{fig:em1:example:16:p}两式联立，$(n+1)^2V_{n+1}^2=n^2V_n^2+2nF\ell/m$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{累加递推并检查初值和极限}\par\nobreak
+令$A_n=n^2V_n^2$，递推成为$A_{n+1}-A_n=2nF\ell/m$。从$1$累加到$n-1$，左边只剩$A_n-A_1$，右边为$(2F\ell/m)\sum_{j=1}^{n-1}j=(F\ell/m)n(n-1)$。由$V_1=0$得$A_1=0$，再除以$n^2$得到$V_n^2$；将其代回连续加速段，才得到$U_n^2$。所以
+\[\boxed{V_n=\sqrt{\frac{F\ell}{m}\frac{n-1}{n}},\qquad U_n=\sqrt{\frac{F\ell}{m}\frac{n+1}{n}}}.\]
+$n\to\infty$时二者都趋于$\sqrt{F\ell/m}$。若误把每次粘合当弹性过程，速度递推和极限都会不同。\end{solution}
+\begin{question}\begin{example}[移动反射板受到的水流推力]\label{em1:example:17}
+水平水流相对地面速度$u$、密度$\rho$、截面积$S$，追上一块以$V<u$同向匀速移动的光滑板。板将水相对板完全反向，忽略损失。求水对板的力，并说明两个速度应怎样使用。
+\end{example}
+\fig{fig:em1:example:17:s}{题设：移动反射板受到的水流推力}{\begin{tikzpicture}[scale=.9]\draw[flow](0,0)--(2.4,0)node[midway,above]{$u$};\draw[world](3,-1)--(3,1.5);\draw[flow](3.2,.7)--(4.7,.7)node[above]{$V$};\node at(1,-.8){$\rho,S$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由相对边界速度计算碰撞流率}\par\nobreak
+图\ref{fig:em1:example:17:s}单位时间追上板的质量为$\dot m=\rho S(u-V)$。在板系中入、出速度为$u-V$和$-(u-V)$，转换回地面系，出流速度为$2V-u$。每单位质量的地面动量变化为$(2V-u)-u=-2(u-V)$。
+\fig{fig:em1:example:17:p}{反射关系在板系中表示，板上力由水流动量变化反向得到}{\begin{tikzpicture}
+
+\draw[world](3,-1.2)--(3,2);\draw[flow,blue](0,1.2)--(3,1.2)node[midway,above]{$u-V$};
+\draw[flow,blue](3,0)--(0,0)node[midway,below]{$-(u-V)$};
+\draw[force,red](3,.6)--(5,.6)node[midway,above]{$F_{\text{水}\to\text{板}}$};
+\node at(1.5,2.5){相对板的反射速度};\node at(1.8,-1.3){地面系出流：$V-(u-V)=2V-u$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在地面系计算动量流变化}\par\nobreak
+对水流写$F_{\text{板}\to\text{水}}=\dot m(v_{\text{出}}-u)=-2\rho S(u-V)^2$，这个负号表示板使水向后改变动量。再用牛顿第三定律改变研究对象，水对板的力才取相反号；不能一开始把水的动量变化直接当成板所受力。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向求板受力并检查追不上时的极限}\par\nobreak
+按图\ref{fig:em1:example:17:p}水对板的反作用力
+\[\boxed{F=2\rho S(u-V)^2},\]
+沿水流方向。流量用相对速度，初末动量用同一地面系；两者最终恰好都含$u-V$，但理由不同。$V\to u$时碰撞流量消失，推力也趋零。板得到机械功率$FV$，相应射流能量流减少，静板$V=0$则可以受力而不获功。\end{solution}
+\begin{question}\begin{example}[有阻力的风帆小车]\label{em1:example:18}
+小车只可沿水平直线运动，正对来流的帆把密度$\rho$、有效截面积$S$、地面流速$u$的气流理想反射。小车所受其他阻力为$kV$，$k>0$。求终极速度，并判断是否可能追上气流。
+\end{example}
+\fig{fig:em1:example:18:s}{题设：有阻力的风帆小车}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(4,.3);\draw[world](3,.3)--(3,2.4);\draw[flow](-.5,1.5)--(2.5,1.5)node[midway,above]{$u$};\draw[flow](1,-.5)--(2.5,-.5)node[above]{$V$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{将迎流推力与阻力相等作为终速条件}\par\nobreak
+按图\ref{fig:em1:example:18:s}移动反射帆受向前推力$2\rho S(u-V)^2$，阻力向后为$kV$。终极速度满足$2\rho S(u-V)^2=kV$。令$A=2\rho S$，方程$AV^2-(2Au+k)V+Au^2=0$。
+\fig{fig:em1:example:18:p}{在迎流区间，推力递减、阻力递增，唯一交点给出终极速度}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.1,0)node[right]{$\xi=V/u$};\draw[axis](0,0)--(0,3)node[above]{$F/(Au^2)$};
+\draw[world,blue,domain=0:1,samples=80]plot({4*\x},{2.4*(1-\x)^2});
+\draw[world,red](0,0)--(4,1.44);\node[right,red]at(4,1.44){$\gamma\xi$};
+\node[right,blue]at(.25,2.2){$(1-\xi)^2$};\node[left]at(0,2.4){$1$};\node[below]at(4,0){$1$};
+\draw[guide](1.8774,0)--(1.8774,.6759);\fill(1.8774,.6759)circle(2pt)node[above right]{$\xi_*$};
+\node at(2,-.7){$\gamma=k/(Au)>0$，曲线形状示意};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选处于迎流区间的代数根}\par\nobreak
+二次方程判别式为$(2Au+k)^2-4A^2u^2=k^2+4Aku$，所以两根为$[2Au+k\pm\sqrt{k^2+4Aku}]/(2A)$。由于$\sqrt{k^2+4Aku}>k$，较小根小于$u$；又因$(2Au+k)^2-(k^2+4Aku)=4A^2u^2>0$，有$2Au+k>\sqrt{k^2+4Aku}$，较小根大于零。较大根则大于$u$，不满足迎流条件。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用单调力曲线核验唯一性}\par\nobreak
+图\ref{fig:em1:example:18:p}取位于$0<V<u$的根，得
+\[\boxed{V_*=\frac{2Au+k-\sqrt{k^2+4Aku}}{2A}}.\]
+另一根大于$u$，违背来流追上帆的前提，应舍去。也可由两力曲线判断：推力在$V=0$为正、到$u$为零，阻力单调增加，故只有一个可行交点。$k\to0$时速度趋近$u$，但有限时间不能靠有限气流推力越过$u$。\end{solution}

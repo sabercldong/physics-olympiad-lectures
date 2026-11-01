@@ -1,0 +1,903 @@
+\section{例题与分析}
+
+\begin{question}
+\begin{example}[球面折射成像公式]\label{ex:o21}
+两种透明介质的折射率分别为 \(n_1,n_2\)，分界面为球面，顶点为 \(O\)，球心为 \(C\)。按本讲的符号约定，证明式\eqref{eq:o2sphere}，并说明其近轴条件。
+\end{example}
+\fig{fig:o21q}{球面折射的轴上物点、像点与法线；图示 \(u,v,R_{\!s}>0\)}{
+\begin{tikzpicture}
+\draw[axis] (-3.3,0)--(5.6,0);
+\draw[world,domain=-1.3:1.3,samples=60,variable=\y] plot ({3-sqrt(9-\y*\y)},\y);
+\coordinate (P) at (.05085,.55);
+\draw[ray] (-3,0)--(P);\draw[ray] (P)--(5,0);
+\draw[normal] (P)--(3,0) node[pos=.65,above] {法线};
+\fill (-3,0) circle(1.3pt) node[below] {$Q$};
+\node[below left] at (0,0) {$O$};
+\fill (3,0) circle(1.3pt) node[below] {$C$};
+\fill (5,0) circle(1.3pt) node[below] {$Q'$};
+\node[above] at (P) {$P$};
+\node at (-2,1.3) {$n_1$};\node at (2,1.3) {$n_2$};
+\draw[dim] (-3,-.65)--(0,-.65) node[midway,below] {$u$};
+\draw[dim] (0,-1.25)--(5,-1.25) node[midway,below] {$v$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{在折射点用当地法线区分三个几何倾角}\par\nobreak
+先推导图\ref{fig:o21q}所示的实物、实像、球心在出射侧的情形。在图\ref{fig:o21s}中，设 \(P\) 的高度为 \(y\)，入射光 \(QP\) 向上倾斜 \(\alpha\)，出射光 \(PQ'\) 向下倾斜 \(\gamma\)，法线 \(PC\) 向下倾斜 \(\varphi\)。这里三个角均取其正的大小。由几何关系，
+\[
+ i=\alpha+\varphi,\qquad r=\varphi-\gamma.
+\]
+第二式对应图示光线位于法线上方的情形；用带符号角写折射定律时，不必另行限制 \(n_1,n_2\) 的大小。
+
+\fig{fig:o21s}{把高度 \(y\) 与三条直线的倾角对应起来}{
+\begin{tikzpicture}
+\draw[axis] (-3.2,0)--(5.5,0);
+\draw[world,domain=-1:1,samples=60,variable=\y] plot ({3-sqrt(9-\y*\y)},\y);
+\coordinate (P) at (.05085,.55);
+\draw[ray] (-3,0)--(P);\draw[ray] (P)--(5,0);
+\draw[normal] (P)--(3,0);
+\draw[aux] (P)--(2,.55);
+\draw[dim] (-.55,0)--(-.55,.55) node[midway,left] {$y$};
+\node[below] at (-3,0) {$Q$};\node[below] at (0,0) {$O$};
+\node[below] at (3,0) {$C$};\node[below] at (5,0) {$Q'$};
+\node[above] at (P) {$P$};
+\node[above] at (-1.5,.28) {$\alpha$};
+\node[below] at (1.8,.22) {$\varphi$};
+\node[above] at (3.8,.16) {$\gamma$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把倾角换成高度与带符号距离之比}\par\nobreak
+略去顶点与 \(P\) 之间的二阶轴向位移，有
+\[
+ \alpha\simeq\frac y u,\qquad
+ \gamma\simeq\frac y v,\qquad
+ \varphi\simeq\frac y{R_{\!s}}.
+\]
+代入 \(n_1i=n_2r\)：
+\[
+ n_1\left(\frac y u+\frac y{R_{\!s}}\right)
+ =n_2\left(\frac y{R_{\!s}}-\frac y v\right).
+\]
+消去 \(y\ne0\)，整理即得
+\[
+ \boxed{\frac{n_1}{u}+\frac{n_2}{v}=\frac{n_2-n_1}{R_{\!s}}}.
+\]
+若某点转到另一侧，用本讲的带符号距离延续同一式即可。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明共同像点来自一阶近似，并检查两项极限}\par\nobreak
+这一步中高度 \(y\) 消失，说明一阶近似下不同高度的近轴光线有同一像点。若保留高阶项，结论一般会依赖 \(y\)，这正是球差需要另行处理的原因。
+
+可做两项检验：\(R_{\!s}\to\infty\) 时，
+\(v=-n_2u/n_1\)，与视深公式一致；\(n_1=n_2\) 时，\(v=-u\)，出射光沿原方向传播，反向延长线仍交于原物点，不产生新的折射成像效果。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由过顶点光线求横向放大率}\par\nobreak
+为推导横向放大率，再取通过顶点 \(O\) 的近轴光线。其折射前、后的带符号倾角分别为 \(-h/u\) 与 \(h'/v\)，因此
+\[
+ n_1\left(-\frac h u\right)=n_2\frac{h'}v,
+ \qquad \frac{h'}h=-\frac{n_1v}{n_2u}.
+\]
+负号同时记录像的正倒，不能在判断虚实前就取绝对值。
+\end{solution}
+
+\begin{question}
+\begin{example}[球面镜的焦距]\label{ex:o22}
+一束近轴平行光分别射向凹球面镜、凸球面镜。证明焦距的大小为球面半径的一半，并判断焦点虚实。
+\end{example}
+\fig{fig:o22q}{反射面不同，平行光的会聚性质不同}{
+\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[axisline] (-3,0)--(.6,0);
+\draw[world] (-.25501,-1.1) arc[start angle=-26.104,end angle=26.104,radius=2.5];
+\draw[ray] (-3,.3)--(-.01807,.3);
+\node[below] at (0,0) {$O$};\node at (-1.6,1.3) {凹镜};
+\fill (-2.5,0) circle(1.2pt) node[below] {$C$};
+\end{scope}
+\begin{scope}[xshift=5.2cm]
+\draw[axisline] (-2.4,0)--(3,0);
+\draw[world] (.25501,-1.1) arc[start angle=206.104,end angle=153.896,radius=2.5];
+\draw[ray] (-2.3,.3)--(.01807,.3);
+\node[below left] at (0,0) {$O$};\node at (-1,1.3) {凸镜};
+\fill (2.5,0) circle(1.2pt) node[below] {$C$};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由球面法线把平行入射的反射偏转写成两倍角}\par\nobreak
+图\ref{fig:o22q}的两种镜面均接收近轴平行光。先考察图\ref{fig:o22s}左图。\(CP\) 是反射点法线，与主轴的夹角为 \(\theta\)。平行入射光与法线夹角也是 \(\theta\)，由反射定律，反射光与主轴夹角为 \(2\theta\)。若反射高度为 \(y\)，
+\[
+ \theta\simeq\frac yR,\qquad
+ OF\simeq\frac{y}{\tan2\theta}\simeq\frac{y}{2y/R}=\frac R2.
+\]
+入射光从左向右，反射光从 \(P\) 向左到达 \(F\)，所以凹镜的 \(F\) 是实焦点。
+
+\fig{fig:o22s}{凹镜反射光实际会聚；凸镜只由反向延长线确定虚焦点}{
+\begin{tikzpicture}[scale=.9]
+\begin{scope}
+\draw[axisline] (-3.2,0)--(.4,0);
+\draw[world] (-.25501,-1.1) arc[start angle=-26.104,end angle=26.104,radius=2.5];
+\draw[ray] (-3,.3)--(-.01807,.3);
+\draw[ray] (-.01807,.3)--(-2.3,-.25569);
+\draw[normal] (-2.5,0)--(-.01807,.3);
+\node[above right] at (-.01807,.3) {$P$};
+\node[below] at (-2.5,0) {$C$};\node[below] at (-1.25,0) {$F$};\node[below right] at (0,0) {$O$};
+\draw[dim] (-1.25,-.95)--(0,-.95) node[midway,below] {$R/2$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axisline] (-2.5,0)--(2.8,0);
+\draw[world] (.25501,-1.1) arc[start angle=206.104,end angle=153.896,radius=2.5];
+\draw[ray] (-2.3,.3)--(.01807,.3);
+\draw[ray] (.01807,.3)--(-2.1,.81581);
+\draw[virtual] (.01807,.3)--(1.25,0);
+\draw[normal] (.01807,.3)--(2.5,0);
+\node[above right] at (.01807,.3) {$P$};
+\node[below left] at (0,0) {$O$};\node[below] at (1.25,0) {$F$};\node[below] at (2.5,0) {$C$};
+\draw[dim] (0,-.95)--(1.25,-.95) node[midway,below] {$R/2$};
+\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按反射线及其延长线区分实、虚焦点}\par\nobreak
+右图中，凸镜反射光向左上方发散，反向延长线在镜后与轴交于 \(F\)，故其焦点为虚焦点。采用实焦距为正的镜面约定，
+\[
+ \boxed{f_{\text{凹}}=+\frac R2,\qquad f_{\text{凸}}=-\frac R2}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对反射焦距与折射焦距的定义}\par\nobreak
+这里的 \(f\) 属于反射系统，不能直接拿来替代折射面的 \(f'\)。
+\end{solution}
+
+\begin{question}
+\begin{example}[水下看到的太阳视角]\label{ex:o23}
+地面观测太阳的角直径约为 \(\Theta=9.2\times10^{-3}\,\mathrm{rad}\)。正午太阳位于天顶，水的折射率为 \(n=4/3\)。人在水下沿竖直方向观察，太阳的角直径变为多少？
+\end{example}
+\fig{fig:o23q}{太阳两端的入射方向关于水面法线对称，角度放大示意}{
+\begin{tikzpicture}
+\draw[world] (-3,0)--(3,0);\draw[normal] (0,-3.2)--(0,2);
+\draw[ray] (-.92686,1.9)--(-.5,0);\draw[ray] (.92686,1.9)--(.5,0);
+\draw[ray] (-.5,0)--(0,-3);\draw[ray] (.5,0)--(0,-3);
+\node[fill=white,inner sep=1pt] at (0,1.6) {$\Theta$};
+\node[fill=white,inner sep=1pt] at (0,-1.1) {$\Theta_{\!w}$};
+\node[right] at (2,1) {空气};\node[right] at (2,-1) {水};
+\node[below] at (0,-3) {眼睛};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先对太阳边缘的半角列精确折射关系}\par\nobreak
+图\ref{fig:o23q}的角直径是两条入眼方向之间的夹角，不是某一条光线相对法线的角。先取太阳上端一条光线，其空气侧倾角为 \(\Theta/2\)，水侧倾角为 \(\Theta_{\!w}/2\)。由折射定律，
+\[
+ \sin\frac{\Theta}{2}=n\sin\frac{\Theta_{\!w}}2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{取一阶近似后恢复整个角直径}\par\nobreak
+由于给定角度很小，
+\[
+ \boxed{\Theta_{\!w}\simeq\frac{\Theta}{n}
+ =6.9\times10^{-3}\,\mathrm{rad}}.
+\]
+\fig{fig:o23s}{以半角列折射定律，再恢复太阳的整个角直径}{
+\begin{tikzpicture}
+\draw[world] (-2.3,0)--(2.3,0);
+\draw[normal] (0,-1.9)--(0,1.9);
+\draw[ray] (-.45,1.8)--(0,0);
+\draw[ray] (0,0)--(.3,-1.6);
+\node[left] at (-.45,1.3) {$\Theta/2$};
+\node[left] at (-.15,-1.1) {$\Theta_{\!w}/2$};
+\node[right] at (1.1,1.1) {$n_{\text{空气}}\simeq1$};
+\node[right] at (1.1,-1.65) {$n=4/3$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对角直径缩小的方向与天顶条件}\par\nobreak
+图\ref{fig:o23s}中光从空气进入水，折射方向更靠近法线，故水下角直径减小，与计算结果相符。若太阳远离天顶，两端光线不再关于法线对称，应分别折射后求夹角，不能直接除以 \(n\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用精确式量化近似误差}\par\nobreak
+上述近似保留一阶角度。若要量化误差，应从
+\[
+ \Theta_w=2\arcsin\!\left[\frac1n\sin(\Theta/2)\right]
+\]
+计算，代入得 \(\Theta_w\approx6.899989\times10^{-3}\,\mathrm{rad}\)，与一阶值相差约 \(1.1\times10^{-8}\,\mathrm{rad}\)。图\ref{fig:o23s}的两条边缘光线决定的是整个角直径，不能在折射后只取单条光线的倾角而漏掉因子 \(2\)。
+\end{solution}
+
+\begin{question}
+\begin{example}[玻璃棒的两种入射方向]\label{ex:o24}
+足够长的细玻璃棒一端为平面，另一端为向外凸起的球面，球心在棒内。近轴平行光由平端入射，从球端出射后在空气中与轴交于距球面 \(a\) 处；若由球端入射，在棒内与轴交于距球面 \(b\) 处。求玻璃折射率 \(n\)。
+\end{example}
+\fig{fig:o24q}{同一球面在两种传播方向下，曲率半径的符号相反}{
+\begin{tikzpicture}[scale=.9]
+\draw[world] (-3,-.8)--(1,-.8) arc(-90:90:.8)--(-3,.8)--cycle;
+\draw[axisline] (-4,0)--(4.2,0);
+\draw[ray] (-4,.12)--(-3,.12);\draw[ray] (-3,.12)--(1.791,.12);
+\draw[ray] (1.791,.12)--(3.4,0);
+\fill (1,0) circle(1.2pt) node[below] {$C$};
+\node[below right] at (1.8,0) {$O$};\node[below] at (3.4,0) {$F_a$};
+\draw[dim] (1.8,-1.3)--(3.4,-1.3) node[midway,below] {$a$};
+\node at (-1,1.2) {甲：由平端入射};
+\begin{scope}[yshift=-3.2cm]
+\draw[world] (-3,-.8)--(1,-.8) arc(-90:90:.8)--(-3,.8)--cycle;
+\draw[axisline] (-4,0)--(4.2,0);
+\draw[ray] (4,.12)--(1.791,.12);\draw[ray] (1.791,.12)--(-.6,0);
+\node[below] at (-.6,0) {$F_b$};\node[below right] at (1.8,0) {$O$};
+\draw[dim] (-.6,-1.3)--(1.8,-1.3) node[midway,below] {$b$};
+\node at (-1,1.2) {乙：由球端入射};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{按实际光路区分两次实验的介质和曲率号}\par\nobreak
+\fig{fig:o24s}{同一凸球端的反向入射实验：分别重新规定传播正向，并按球心所在侧赋予曲率符号}{\begin{tikzpicture}
+
+\foreach\dy in {0,-3.3}{\begin{scope}[yshift=\dy cm]\draw[axisline](-3.1,0)--(3.6,0);\draw[world,domain=-.7:.7,samples=50]plot({-1+sqrt(1-(\x)^2)},\x);\fill(-1,0)circle(1.5pt)node[below]{$C$};\node[below right]at(0,0){$O$};\node at(-2.2,.9){玻璃 $n$};\node at(2.6,.9){空气};\end{scope}}
+\draw[ray,blue](-3,.18)--(-.01633,.18);\draw[ray,red](-.01633,.18)--(2,0);\fill(2,0)circle(1.5pt)node[below]{$F_a$};\draw[normal](-1,0)--(-.01633,.18);\draw[dim](0,-.7)--(2,-.7)node[midway,below]{$a$};\draw[axis](-2,1.6)--(-.7,1.6)node[midway,above]{甲：正向向右};\node at(2.2,1.6){$R_s=-R$};
+\draw[ray,blue](3,-3.12)--(-.01633,-3.12);\draw[ray,red](-.01633,-3.12)--(-3,-3.3);\fill(-3,-3.3)circle(1.5pt)node[below]{$F_b$};\draw[normal](-1,-3.3)--(-.01633,-3.12);\draw[dim](-3,-4)--(0,-4)node[midway,below]{$b$};\draw[axis](-.7,-1.7)--(-2,-1.7)node[midway,above]{乙：正向向左};\node at(2.2,-1.7){$R_s=+R$};
+
+\end{tikzpicture}}
+
+图\ref{fig:o24q}甲中的光线垂直进入平端，方向不变，抵达球面时仍是平行光。其传播正向向右，球心 \(C\) 在入射侧，故 \(R_{\!s}=-R\)。式\eqref{eq:o2sphere}给出
+\[
+ \frac1a=\frac{1-n}{-R},\qquad a=\frac R{n-1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向入射时重新计算玻璃内焦点}\par\nobreak
+乙图的传播正向向左，球心在出射侧，故 \(R_{\!s}=+R\)。此时从空气折入玻璃，
+\[
+ \frac nb=\frac{n-1}R,\qquad b=\frac{nR}{n-1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去半径求折射率，再还原曲率半径}\par\nobreak
+两式相除，
+\[
+ \boxed{n=\frac ba}.
+\]
+还可由 \(R=(n-1)a\) 得
+\[
+ \boxed{R=b-a}.
+\]
+因此 \(a,b\) 不仅能确定折射率，还能反推出球端曲率半径。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对测量距离、数据范围与棒长条件}\par\nobreak
+若测得 \(b\le a\)，便与普通玻璃 \(n>1\)、向外凸起球端的题设不符，应先检查两种入射方向与距离基准。
+
+图\ref{fig:o24s}所列两次实验的出射介质不同，测得的像方焦距也不同。因 \(n>1\)，应有 \(b>a\)，可据此检查实验数据。题设默认棒足够长，使乙图光线在遇到平端前已经交轴。
+\end{solution}
+
+\begin{question}
+\begin{example}[盛有浅水的凹球面镜]\label{ex:o25}
+开口向上的凹球面镜曲率半径为 \(R=60\,\mathrm{cm}\)，装入折射率 \(n=1.333\) 的浅水，水深 \(d\ll R\)。空气中的近轴平行光竖直入射，所用镜面区域全部浸没。求光线出水后的焦点距镜面顶点的距离，并求浅水极限。
+\end{example}
+\fig{fig:o25q}{先在水中反射，再经平水面折射进入空气}{
+\begin{tikzpicture}[scale=.85]
+\draw[axisline] (0,-.3)--(0,4.2);
+\draw[world] (-1.6,.55) .. controls (-.9,-.18) and (.9,-.18) .. (1.6,.55);
+\draw[world] (-1.4,.4)--(1.4,.4);
+\fill[gray!12] (-1.35,.4)--(1.35,.4) .. controls (.6,-.08) and (-.6,-.08) .. cycle;
+\draw[ray] (-.7,3.9)--(-.7,.11);
+\node[below] at (0,0) {$O$};\node[right] at (0,.4) {$E$};
+\draw[dim] (2,0)--(2,.4) node[midway,right] {$d$};
+\node at (2,1.3) {空气};\node at (-2,.15) {水};
+\node[above] at (0,4) {平行光};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先在水中作反射，确定原几何焦点}\par\nobreak
+图\ref{fig:o25q}中入射光垂直水面，折射后仍竖直。水中反射遵循反射定律，几何焦点 \(F_w\) 距顶点仍为 \(R/2\)，并不会因介质折射率而变成 \(R/(2n)\)。改变最终焦点的是出水时的折射。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把水中会聚点作为水面的虚物，计算出水焦点}\par\nobreak
+图\ref{fig:o25s}中，若暂时没有水面，反射光将在 \(F_w\) 会聚。水面位于其前方，故 \(F_w\) 对水面是虚物。其虚物距
+\[
+ u_E=-\left(\frac R2-d\right).
+\]
+平面折射公式为 \(n/u_E+1/v_E=0\)，于是
+\[
+ v_E=\frac{R/2-d}{n},\qquad
+ \boxed{OF=d+\frac{R/2-d}{n}}.
+\]
+\fig{fig:o25s}{水面使上行会聚光更偏离法线，焦点由 \(F_w\) 移到 \(F\)}{
+\begin{tikzpicture}
+\draw[axisline] (0,-.2)--(0,3.5);
+\draw[world] (-2.5,.54564) arc[start angle=-114.6243,end angle=-65.3757,radius=6];
+\draw[world] (-2.3979,.5)--(2.3979,.5);
+\draw[ray] (.8,2.8)--(.8,.05357);
+\draw[ray] (.8,.05357)--(.6788,.5);
+\draw[virtual] (.6788,.5)--(0,3);
+\draw[ray] (.6788,.5)--(0,2.375);
+\fill (0,3) circle(1.2pt) node[right] {$F_w:\ OF_w=R/2$};
+\fill (0,2.375) circle(1.2pt) node[left] {$F$};
+\node[below] at (0,0) {$O$};\node[right] at (2.4,.5) {水面 \(E\)};
+\draw[dim] (-2.5,.5)--(-2.5,2.375) node[midway,left] {$v_E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求浅水极限并检查水深变化的方向}\par\nobreak
+在 \(d/R\to0\) 的极限，
+\[
+ \boxed{OF\simeq\frac{R}{2n}
+ =\frac{60}{2\times1.333}\,\mathrm{cm}\simeq22.5\,\mathrm{cm}}.
+\]
+在图\ref{fig:o25s}的几何关系下，\(d\) 增大一小量时，最终焦点高度增大 \((1-1/n)\dd d\)。令 \(n\to1\)，不论参考液面画在何处，都恢复 \(OF=R/2\)；这是检查逐级成像公式的一个直接极限。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查浸没孔径和焦点距离的定义}\par\nobreak
+水深趋小时还应同步缩小入射孔径，使所用镜面区仍浸没；球面弓高约为 $y^2/(2R)$，须小于 $d$。这里 \(OF\) 是平行光的焦点距顶点距离；有限水深时若严格讨论系统有效焦距，还须定位主平面，不能把任何参考点到焦点的距离都叫系统焦距。
+\end{solution}
+
+\begin{question}
+\begin{example}[凹镜中的液体与自准直]\label{ex:o26}
+凹球面镜的球心为 \(C\)，主轴交液面于 \(E\)，镜面顶点为 \(O\)。\(CE=40.0\,\mathrm{cm}\)，物点 \(A\) 在液面上方，\(AE=30.0\,\mathrm{cm}\)。小光圈保证近轴成像，调节后 \(A\) 的实像与 \(A\) 处于同一位置。求液体折射率。
+\end{example}
+\fig{fig:o26q}{物点、球心、液面与镜面的轴上位置}{
+\begin{tikzpicture}
+\draw[axisline] (0,-.2)--(0,4.2);
+\draw[world,domain=-2:2,samples=60,variable=\x] plot (\x,{3.7-sqrt(13.69-\x*\x)});
+\draw[world] (-1.8574,.5)--(1.8574,.5);
+\fill (0,3.7) circle(1.4pt) node[left] {$C$};
+\fill (0,2.9) circle(1.4pt) node[left] {$A$};
+\node[below] at (0,0) {$O$};\node[left] at (0,.5) {$E$};
+\draw[dim] (1,.5)--(1,2.9) node[midway,right] {$30.0\,\mathrm{cm}$};
+\draw[dim] (2.7,.5)--(2.7,3.7) node[midway,right] {$40.0\,\mathrm{cm}$};
+\node[left] at (-1,.2) {液体 \(n\)};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从液体一侧确定空气物点的等效位置}\par\nobreak
+从图\ref{fig:o26q}的液体一侧看空气中的 \(A\)，其视高为 \(n\,AE\)。也就是说，入射到凹镜的光束反向延长后交于图\ref{fig:o26s}的 \(A_1\)，距液面 \(EA_1=n\,AE\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由可逆性把往返光路化为镜面自共轭条件}\par\nobreak
+要使反射后再折出液面的光回到 \(A\)，由光路可逆性，液体中的反射光须回到同一轴上点 \(A_1\)。因此 \(A_1\) 是凹镜的自共轭点。由镜面公式 \(u=v\) 得
+\[
+ \frac2u=\frac1{R/2},\qquad u=R,
+\]
+故 \(A_1\) 必须与球心 \(C\) 重合。
+\fig{fig:o26s}{液中光线的反向延长线通过球心，镜面处沿法线往返}{
+\begin{tikzpicture}
+\draw[axisline] (0,-.2)--(0,4.1);
+\draw[world] (-2,.62772) arc[start angle=-124.8499,end angle=-55.1501,radius=3.5];
+\draw[world] (-1.9596,.6)--(1.9596,.6);
+\coordinate (A) at (0,2.775);\coordinate (C) at (0,3.5);
+\coordinate (B) at (.77166,.6);\coordinate (P) at (.9,.1177);
+\draw[ray] (A)--(B);\draw[ray] (B)--(P);
+\draw[normal] (B)--(C);
+\draw[ray] (.8648,.25)--(.8009,.49);
+\draw[ray] (.6227,1.02)--(.27495,2);
+\node[left] at (A) {$A$};\node[left] at (C) {$C=A_1$};
+\node[above right] at (B) {$B$};\node[right] at (P) {$P$};
+\node[left] at (0,.6) {$E$};\node[below] at (0,0) {$O$};
+\node[align=center,right] at (1.7,2.1) {下行：\(A\to B\to P\)\\上行沿同一路径返回};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用球心重合条件求液体折射率}\par\nobreak
+因此
+\[
+ n\,AE=CE,\qquad
+ \boxed{n=\frac{40.0}{30.0}=\frac43\simeq1.33}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向往返光路核对最终实像}\par\nobreak
+图\ref{fig:o26s}中的 \(CP\) 是球面法线；只要 \(A_1=C\)，镜面处就是法向入射，反射光沿原路返回。这里的像为实像，因为回程空气中的光实际会聚于 \(A\)，而 \(A_1\) 只是第一次平面折射后用于描述入射光束的虚像位置。
+\end{solution}
+
+\begin{question}
+\begin{example}[鱼缸中小鱼的像速]\label{ex:o27}
+薄壁球形鱼缸直径为 \(2R\)，忽略缸壁厚度，水的折射率为 \(n=3/2\)。小鱼从左侧壁中点沿直径向球心游动，速率为 \(v_{\mathrm{fish}}\)，观察者在右侧轴线上。求小鱼刚离开左侧壁时，观察到的像朝右运动的速度。
+\end{example}
+\fig{fig:o27q}{只研究小鱼发出的光穿过右侧球面后形成的近轴像}{
+\begin{tikzpicture}
+\draw[world] (0,0) circle(1.5);
+\draw[axis] (-2,0)--(3.8,0) node[right] {向右};
+\fill (-1.5,0) circle(1.5pt) node[below left] {$A$};
+\fill (0,0) circle(1.2pt) node[below] {$C$};
+\node[below right] at (1.5,0) {$O$};
+\draw[ray] (-1.4,.3)--(-.6,.3) node[midway,above] {$v_{\mathrm{fish}}$};
+\node at (2.8,.5) {观察者};
+\draw[dim] (-1.5,-2)--(1.5,-2) node[midway,below] {$2R$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{以出射顶点为原点，确定物距、曲率号和初始像距}\par\nobreak
+取图\ref{fig:o27q}的右侧球面顶点 \(O\) 为原点，向右为坐标正向。小鱼的坐标 \(x_A=-u\)，刚离开左壁时 \(u=2R\)。水向空气折射，\(n_1=n,n_2=1\)；球心在入射侧，故 \(R_{\!s}=-R\)。成像公式为
+\[
+ \frac nu+\frac1v=\frac{n-1}R,\qquad
+ v=\frac{Ru}{(n-1)u-nR}.
+\]
+当 \(n=3/2,u=2R\) 时，\(v=-4R\)，虚像位于右端面左侧 \(4R\) 处，已经超出鱼缸范围。虚像由出射光的反向延长线确定，其位置可以在水体之外。
+\fig{fig:o27s}{位置映射及其微分：横向放大率不能代替纵向像速比}{
+\begin{tikzpicture}[x=.85cm,y=1cm]
+\draw[axis] (-5,0)--(2.5,0) node[right] {$x$};
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({-1+sqrt(1-\y*\y)},\y);
+\fill (-4,0) circle(1.3pt) node[below] {$I$};
+\fill (-2,0) circle(1.3pt) node[below] {$A$};
+\fill (-1,0) circle(1.3pt) node[below] {$C$};
+\node[below right] at (0,0) {$O$};
+\draw[ray] (-2,0)--(-.00723,.12);
+\draw[ray] (-.00723,.12)--(2,.18032594);
+\draw[virtual] (-4,0)--(-.00723,.12);
+\draw[ray] (-4,.85)--(-2.8,.85) node[midway,above] {$6v_{\mathrm{fish}}$};
+\draw[ray] (-2,-.85)--(-1.5,-.85) node[midway,below] {$v_{\mathrm{fish}}$};
+\node at (-1.6,1.6) {$v=-4R,\quad u=2R$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分物距的变化率与实际坐标速度}\par\nobreak
+对成像公式关于时间求导，水与球面均静止：
+\[
+ -\frac n{u^2}\dot u-\frac1{v^2}\dot v=0,\qquad
+ \dot v=-n\frac{v^2}{u^2}\dot u.
+\]
+小鱼向右，故 \(\dot u=-v_{\mathrm{fish}}\)；像的坐标是 \(x_I=v\)，所以
+\[
+ \boxed{v_{\mathrm{image}}=\dot v
+ =n\frac{v^2}{u^2}v_{\mathrm{fish}}
+ =6v_{\mathrm{fish}}}
+\]
+且方向向右。图\ref{fig:o27s}中两支速度箭头同向，与求导所得正号一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿游动区间检查像的性质与速度变化}\par\nobreak
+小鱼从左壁游到球心的过程中，\(R\le u\le2R\)，成像分母 \((n-1)u-nR\) 始终为负，所以近轴像一直是虚像。到球心时 \(u=R\)，有 \(v=-R\)，像恰与图\ref{fig:o27s}的球心 \(C\) 重合；此时像速降为 \(1.5v_{\mathrm{fish}}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较轴向像速比与横向放大率}\par\nobreak
+本题求的是轴向位移的变化率。横向放大率在起始位置为
+\(\beta=-nv/u=3\)，与纵向速率比 \(6\) 不相等。小鱼继续游动后，\(u\) 改变，像速比也随之改变，不能把 \(6\) 当作全程常量。
+\end{solution}
+
+\begin{question}
+\begin{example}[体温计柱面的放大作用]\label{ex:o28}
+体温计横截面如图。玻璃圆柱面的半径为 \(R\)，顶点为 \(O\)，圆柱轴线在截面上的位置为 \(C\)。细水银柱 \(A\) 距 \(O\) 为 \(2R\)，玻璃折射率 \(n=1.5\)，观察者在右侧轴线上。求该截面内水银柱像距 \(O\) 的距离、像的虚实与正倒，以及宽度放大倍数。
+\end{example}
+\fig{fig:o28q}{柱面的有曲率截面；水银柱在顶点左侧 \(2R\)}{
+\begin{tikzpicture}
+\fill[gray!10] (-3.5,-1.1)--(-1.2,-1.1) arc(-90:90:1.1)--(-3.5,1.1)--cycle;
+\draw[world] (-3.5,-1.1)--(-1.2,-1.1) arc(-90:90:1.1)--(-3.5,1.1);
+\draw[axisline] (-4,0)--(2.2,0);
+\draw[world] (-2.3,-.13)--(-2.3,.13);
+\node[below] at (-2.3,-.13) {$A$};
+\fill (-1.2,0) circle(1.2pt) node[below] {$C$};
+\node[below right] at (-.1,0) {$O$};\node at (1.5,.6) {$E$};
+\draw[dim] (-2.3,-1.6)--(-.1,-1.6) node[midway,below] {$2R$};
+\node at (-2.4,.7) {$n=1.5$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{在柱面有曲率的截面内求带符号像距}\par\nobreak
+图\ref{fig:o28q}中的光从玻璃射入空气，球心在入射侧，所以 \(u=2R,R_{\!s}=-R\)。由球面折射公式在该截面内的对应关系，
+\[
+ \frac{1.5}{2R}+\frac1v=\frac{1-1.5}{-R},
+ \qquad \boxed{v=-4R}.
+\]
+因此像距顶点的几何距离为 \(4R\)，位于玻璃一侧；出射光发散，只能反向延长后相交，故为虚像。
+
+\fig{fig:o28s}{在截面内追踪物体上端，确定虚像的正倒和宽度}{
+\begin{tikzpicture}[x=.95cm,y=1.4cm]
+\draw[axis] (-4.7,0)--(2.2,0);
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({-1+sqrt(1-\y*\y)},\y);
+\draw[axis,very thick] (-2,0)--(-2,.18) node[above] {$A$};
+\draw[axis,very thick,dashed] (-4,0)--(-4,.54) node[above] {$A'$};
+\draw[ray] (-2,.18)--(0,0);\draw[ray] (0,0)--(2,-.27);
+\draw[virtual] (-4,.54)--(0,0);
+\draw[ray] (-2,.18)--(-.01633,.18);\draw[ray] (-.01633,.18)--(2,-.00221359);
+\draw[virtual] (-4,.54)--(-.01633,.18);
+\node[below] at (0,0) {$O$};
+\draw[dim] (-2,-.45)--(0,-.45) node[midway,below] {$2R$};
+\draw[dim] (-4,-.95)--(0,-.95) node[midway,below] {$4R$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由出射线反向延长确定正倒和宽度}\par\nobreak
+横向放大率为
+\[
+ \boxed{\beta=-\frac{n_1v}{n_2u}
+ =-\frac{1.5(-4R)}{2R}=+3}.
+\]
+图\ref{fig:o28s}中物体上端 \(A\) 的出射光反向延长后交于轴上方的 \(A'\)，故像正立，截面内宽度放大为三倍。柱面只在此截面内有曲率，不能据此说水银柱沿体温计长度方向也放大三倍。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用约化倾角独立核对虚像与发散方向}\par\nobreak
+还可用顶点附近一条高度为 \(y\) 的光线检查虚像位置：由轴上物点出发时，入射约化倾角为 \(p_1=1.5y/(2R)\)，界面光焦度为 \(\Phi=0.5/R\)，故
+\[
+ p_2=p_1-\Phi y=\frac{y}{4R}>0.
+\]
+空气侧出射线仍离轴发散，反向延长至 \(x=-4R\) 才回到轴上，与图\ref{fig:o28s}所画虚像一致。这一步同时检查了曲率半径、像距的负号和光线方向。
+\end{solution}
+
+\begin{question}
+\begin{example}[薄弯玻璃板的等效折射面]\label{ex:o29}
+一块很薄的弯玻璃板，两球面在近轴区具有相同的带符号曲率半径 \(R_{\!s}\)，玻璃折射率为 \(n\)，左右两侧介质折射率为 \(n_a,n_b\)。忽略板厚，证明其近轴折射效果等同于 \(n_a,n_b\) 间的单个球面。
+\end{example}
+\fig{fig:o29q}{两面朝向相同；“半径相同”还须包括曲率符号相同}{
+\begin{tikzpicture}
+\draw[axis] (-3,0)--(4,0);
+\draw[world] (.2,-1.2) .. controls (-.08,-.4) and (-.08,.4) .. (.2,1.2);
+\draw[world] (.45,-1.2) .. controls (.17,-.4) and (.17,.4) .. (.45,1.2);
+\node at (-1.8,1) {$n_a$};\node at (.13,1.65) {$n$};\node at (2,1) {$n_b$};
+\draw[ray] (-2.5,.5)--(.04,.3);
+\draw[ray] (.04,.3)--(.29,.28);
+\draw[ray] (.29,.28)--(3,.12);
+\node[below] at (0,0) {$O_1$};\node[below right] at (.25,0) {$O_2$};
+\draw[dim] (0,-1.65)--(.25,-1.65) node[midway,below] {$t\to0$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{按零厚度极限连接前后两面的物像距离}\par\nobreak
+设第一面成像距离为 \(v_1\)，第二面的物距为 \(u_2\)。由图\ref{fig:o29q}的顶点关系，忽略板厚后 \(u_2=-v_1\)。分别列式：
+\[
+ \frac{n_a}{u}+\frac n{v_1}=\frac{n-n_a}{R_{\!s}},
+ \qquad
+ \frac n{u_2}+\frac{n_b}{v}=\frac{n_b-n}{R_{\!s}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去中间像，得到外介质间的等效公式}\par\nobreak
+相加时，中间介质的两项恰好抵消：
+\[
+ \boxed{\frac{n_a}{u}+\frac{n_b}{v}
+ =\frac{n_b-n_a}{R_{\!s}}}.
+\]
+这就是两种外部介质间单个球面的一阶成像公式。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{说明有限厚度时为何不能直接抵消}\par\nobreak
+这里消去的是 \(\frac n{v_1}+\frac n{u_2}=0\)，而不是把两次折射的偏折角凭直觉相减。若厚度 \(t\) 不再忽略，\(u_2=t-v_1\)，中间项一般不能抵消，须保留两次成像分别求解。
+
+\fig{fig:o29s}{零厚度极限下，两面使用同一高度 $y$；分别追踪每次折射前后的方向，再相加约化倾角的变化}{\begin{tikzpicture}
+
+\begin{scope}[scale=.9]
+\draw[axisline](-2.2,0)--(2.2,0);\draw[world](0,-.4)--(0,1.6);\draw[normal](0,1)--(2,0);\draw[guide](-1.9,1)--(2,1);\draw[ray,blue](-1.8,.46)--(0,1);\draw[ray,red](0,1)--(1.8,1.06);\node[above]at(-1.2,.8){$\alpha_a$};\node[above]at(1.2,1.08){$\alpha_g$};\draw[dim](-.4,0)--(-.4,1)node[midway,left]{$y$};\node at(0,2.2){面1：$n_a\to n$};\node at(0,-.8){$n\alpha_g-n_a\alpha_a=-\Phi_1y$};\end{scope}
+\begin{scope}[xshift=5.5cm,scale=.9]
+\draw[axisline](-2.2,0)--(2.2,0);\draw[world](0,-.4)--(0,1.6);\draw[normal](0,1)--(2,0);\draw[guide](-1.9,1)--(2,1);\draw[ray,blue](-1.8,.94)--(0,1);\draw[ray,red](0,1)--(1.8,1.30);\node[above]at(-1.2,.94){$\alpha_g$};\node[above]at(1.2,1.35){$\alpha_b$};\draw[dim](-.4,0)--(-.4,1)node[midway,left]{$y$};\node at(0,2.2){面2：$n\to n_b$};\node at(0,-.8){$n_b\alpha_b-n\alpha_g=-\Phi_2y$};\end{scope}
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两次实际方向变化复核折射本领相加}\par\nobreak
+图\ref{fig:o29s}的两个局部图是同一薄板的两次折射，竖线表示各自的近轴顶点平面，角度作放大示意。令 $\Phi_1=(n-n_a)/R_s,\Phi_2=(n_b-n)/R_s$，图中两式相加使中间方向 $\alpha_g$ 消去，得到 $n_b\alpha_b-n_a\alpha_a=-(\Phi_1+\Phi_2)y$。这从光线方向独立核对了前面的中间像消元。这里 \(\Phi=\Phi_1+\Phi_2\) 表示折射本领，量纲为长度的倒数。若 \(n_a=n_b\)，则 \(\Phi=0\)，薄板在零厚度极限没有一阶聚焦作用。有限厚度仍可能带来光线位移和高阶影响；两面的曲率符号若相反，上述抵消关系便不成立。
+\end{solution}
+
+\begin{question}
+\begin{example}[透明球内的小发光泡]\label{ex:o210}
+透明球半径为 \(R\)，折射率为 \(n>1\)，直径两端为 \(A,B\)。除 \(A,B\) 附近小区域透光外，其余表面涂黑。小发光泡紧靠球内 \(B\) 点，观察者位于左侧轴线上。
+求小泡的像位于 \(B\) 点左侧多远处（向左取正，向右取负），以及横向放大率；并给出像在整个球右侧的折射率范围。
+\end{example}
+\fig{fig:o210q}{传播方向向左，出射面是 \(A\) 附近的小球面}{
+\begin{tikzpicture}
+\draw[world,line width=1.8pt] (0,0) circle(1.5);
+\draw[white,line width=3pt] (-1.5,-.2)--(-1.5,.2);
+\draw[white,line width=3pt] (1.5,-.2)--(1.5,.2);
+\draw[axisline] (-3.7,0)--(3,0);
+\node[below left] at (-1.5,0) {$A=O$};
+\fill (1.5,0) circle(1.7pt) node[below right] {$B$};
+\fill (0,0) circle(1.2pt) node[below] {$C$};
+\draw[ray] (1.4,.1)--(-1.47,.15);
+\draw[axis] (-2.2,.8)--(-3.4,.8) node[midway,above] {入眼};
+\node at (0,1.9) {其余球面遮光};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{随向左传播重新定向，求出射面像距}\par\nobreak
+在图\ref{fig:o210q}中，主轴正向应随光向左。相对出射面 \(A\)，有
+\(u=2R,n_1=n,n_2=1\)，球心位于入射侧，\(R_{\!s}=-R\)。所以
+\[
+ \frac n{2R}+\frac1v=\frac{n-1}R,\qquad
+ \boxed{v=\frac{2R}{n-2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选像在整个球右侧的折射率范围}\par\nobreak
+当 \(1<n<2\) 时，\(v<0\)，虚像在 \(A\) 的右侧。其到 \(A\) 的距离为 \(-v=2R/(2-n)>2R\)，故确在整个球的右侧。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从顶点像距换算到球后端的有向距离}\par\nobreak
+题目要求从 \(B\) 向左计的有向距离，不是像距 \(v\)。图\ref{fig:o210s}给出两者的换算：
+\[
+ \boxed{\ell_{BI}=2R+v
+ =\frac{2R(n-1)}{n-2}}.
+\]
+在 \(1<n<2\) 时此值为负，表示像在 \(B\) 右侧。
+\fig{fig:o210s}{示例取 \(n=3/2\)；虚像在 \(B\) 的右侧，实际出射光向左}{
+\begin{tikzpicture}[x=.9cm,y=1cm]
+\draw[axis] (5.2,0)--(-2.1,0) node[left] {正向};
+\draw[world,domain=-.7:.7,samples=60,variable=\y] plot ({1-sqrt(1-\y*\y)},\y);
+\draw[ray] (2,0)--(.00723,.12);\draw[ray] (.00723,.12)--(-1.8,.17431507);
+\draw[virtual] (.00723,.12)--(4,0);
+\fill (2,0) circle(1.3pt) node[below] {$B$};
+\fill (4,0) circle(1.3pt) node[below] {$I$};
+\node[below left] at (0,0) {$A$};
+\draw[dim] (0,-.65)--(2,-.65) node[midway,below] {$2R$};
+\draw[dim] (0,-1.3)--(4,-1.3) node[midway,below] {$-v$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求横向放大率并检验三种折射率极限}\par\nobreak
+横向放大率为
+\[
+ \boxed{\beta=-\frac{nv}{2R}=\frac n{2-n}}.
+\]
+在题设像位于球右侧的范围内，\(\beta>0\)，为正立放大虚像。\(n\to1\) 时，\(v\to-2R\)，\(\ell_{BI}\to0,\beta\to1\)，像回到小泡自身；\(n\to2^-\) 时，虚像向右远离，放大率增大。\(n=2\) 时出射平行，像在无穷远；\(n>2\) 时 \(v>0\)，形成左侧实像，已不满足“像在球右侧”的限制。
+\end{solution}
+
+\begin{question}
+\begin{example}[高脚酒杯中的画片]\label{ex:o211}
+酒杯内底面向上凸起，球面顶点为 \(O\)，球心 \(C\) 在 \(O\) 下方的玻璃中，半径 \(R=1.50\,\mathrm{cm}\)。杯口高于 \(O\) 点 \(8.0\,\mathrm{cm}\)，杯脚底中心的画片 \(P\) 在 \(O\) 下方 \(6.3\,\mathrm{cm}\)。玻璃折射率 \(n_1=1.56\)，酒的折射率 \(n_2=1.34\)。
+求未斟酒时、斟酒后杯底球面对画片所成的像。进一步讨论酒面高度为 \(H\) 时，经过水平酒面后看到的视位置，并计算斟至杯口的情形。
+\end{example}
+\fig{fig:o211q}{杯底球面与水平酒面是两个不同的折射界面；纵向尺寸作示意}{
+\begin{tikzpicture}[scale=.9]
+\draw[world] (-1.7,4)--(-1.6,2) .. controls (-1.5,.7) and (-.7,.15) .. (-.3,-.1);
+\draw[world] (1.7,4)--(1.6,2) .. controls (1.5,.7) and (.7,.15) .. (.3,-.1);
+\draw[world] (-.7,-.2) .. controls (-.35,.25) and (.35,.25) .. (.7,-.2);
+\draw[world] (-.15,-.1)--(-.15,-2.2)--(-1,-2.4)--(1,-2.4)--(.15,-2.2)--(.15,-.1);
+\draw[axisline] (0,-2.7)--(0,4.5);
+\draw[aux] (-1.7,4)--(1.7,4);
+\draw[world] (-1.63,2.9)--(1.63,2.9);
+\node[right] at (1.65,2.9) {酒面 \(z=H\)};
+\node[above right] at (0,.14) {$O$};
+\fill (0,-.6) circle(1.2pt) node[right] {$C$};
+\fill (0,-2.4) circle(1.5pt) node[below] {$P$};
+\draw[dim] (-2.2,.14)--(-2.2,4) node[midway,left] {$8.0\,\mathrm{cm}$};
+\draw[dim] (1.5,-2.4)--(1.5,.14) node[midway,right] {$6.3\,\mathrm{cm}$};
+\node at (-.9,1.5) {$n_2$};\node at (-.9,-1.3) {$n_1$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{以球面顶点为量距起点，先固定曲率符号}\par\nobreak
+按图\ref{fig:o211q}取竖直向上为正向，\(O\) 为坐标原点。玻璃中的画片是实物，
+\(u=6.3\,\mathrm{cm}\)，球心在入射侧，故 \(R_{\!s}=-1.50\,\mathrm{cm}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{空杯时单独计算玻璃到空气的球面像}\par\nobreak
+玻璃直接通向空气，球面成像公式给出
+\[
+ \frac{1.56}{6.3}+\frac1{v_0}
+ =\frac{1-1.56}{-1.50},
+ \qquad
+ \boxed{v_0=+7.95\,\mathrm{cm}}.
+\]
+像为实像，在 \(O\) 上方，距杯口平面仅约 \(0.045\,\mathrm{cm}\)。眼睛若贴近杯口，这个像几乎落在眼睛位置，难以调焦。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{斟酒后先求杯底球面在酒中的中间像}\par\nobreak
+先只计算这一界面的像 \(I_1\)：
+\[
+ \frac{1.56}{6.3}+\frac{1.34}{v_1}
+ =\frac{1.34-1.56}{-1.50},
+ \qquad
+ \boxed{v_1=-13.27\,\mathrm{cm}}.
+\]
+负号表示它在 \(O\) 下方，是酒中出射光的反向延长线交点。它是杯底球面所成的虚像，还不是空气中最终观察到的视位置。
+
+\fig{fig:o211s}{球面成像与平面折射分两步计算；右侧是高度坐标示意}{
+\begin{tikzpicture}[x=1cm,y=.18cm]
+\begin{scope}
+\draw[axis] (0,-16)--(0,11) node[above] {$z$};
+\draw[world] (-1,0)--(1,0) node[right] {$O$};
+\draw[world] (-1,8)--(1,8) node[right] {杯口、酒面 \(H=8\)};
+\fill (0,7.9545) circle(1.4pt);
+\node[left] at (-.15,5.5) {$I_0:\ +7.95$};
+\draw[aux] (-.15,5.5)--(0,7.9545);
+\fill (0,-6.3) circle(1.3pt) node[left] {$P:\ -6.3$};
+\fill (0,-13.2736) circle(1.3pt) node[left] {$I_1:\ -13.27$};
+\fill (0,-7.8758) circle(1.3pt) node[right] {$I:\ -7.88$};
+\end{scope}
+\begin{scope}[xshift=6.2cm]
+\node[draw,align=center] at (0,7) {玻璃 \(\to\) 酒\\球面：\(v_1=-13.27\)};
+\draw[axis] (0,3)--(0,-.5);
+\node[draw,align=center] at (0,-4) {酒 \(\to\) 空气\\平面：视深缩短为 \(1/n_2\)};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以酒面为新顶点计算空气中的最终视位置}\par\nobreak
+图\ref{fig:o211s}中，到达酒面的酒中光束相当于从 \(I_1\) 发出，\(I_1\) 距酒面的深度为 \(H-v_1\)。在空气中观察，视深为
+\[
+ h_{\mathrm{app}}=\frac{H-v_1}{n_2},
+ \qquad
+ \boxed{z_I=H-\frac{H-v_1}{n_2}}.
+\]
+若斟至杯口，\(H=8.0\,\mathrm{cm}\)，则
+\[
+ h_{\mathrm{app}}=\frac{8.0+13.27}{1.34}
+ \simeq15.88\,\mathrm{cm},\qquad
+ \boxed{z_I\simeq-7.88\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在同一光线上核对两次折射和最终观察位置}\par\nobreak
+图\ref{fig:o211rays}把前述两次计算落实到同一条近轴光线上。空杯中的光束越过 \(O\) 后会聚于 \(I_0\)；斟满酒后，\(O\) 至液面 \(E\) 的光束发散，其反向延长线交于 \(I_1\)。经液面后，出射光更偏离法线，反向延长线改交于 \(I\)。
+
+\fig{fig:o211rays}{两种情况下的分段光路；球面用顶点平面表示，纵向压缩示意}{
+\begin{tikzpicture}[x=1.5cm,y=.16cm]
+\begin{scope}
+\draw[axisline] (0,-14.5)--(0,11);
+\draw[world] (-.75,0)--(.75,0);
+\draw[aux] (-.75,8)--(.75,8);
+\draw[ray] (0,-6.3)--(.4,0);
+\draw[ray] (.4,0)--(0,7.9545);
+\fill (0,-6.3) circle(1.2pt) node[left] {$P$};
+\fill (0,7.9545) circle(1.2pt) node[above left] {$I_0$};
+\node[below left] at (0,0) {$O$};
+\node[right] at (.75,8) {杯口};
+\node at (0,13) {甲：空杯};
+\end{scope}
+\begin{scope}[xshift=6cm]
+\draw[axisline] (0,-14.5)--(0,11);
+\draw[world] (-.75,0)--(.75,0);
+\draw[world] (-.75,8)--(.9,8);
+\draw[ray] (0,-6.3)--(.4,0);
+\draw[ray] (.4,0)--(.64108,8);
+\draw[ray] (.64108,8)--(.72185,10);
+\draw[virtual] (0,-13.2736)--(.4,0);
+\draw[virtual] (0,-7.8758)--(.64108,8);
+\fill (0,-6.3) circle(1.2pt) node[above left] {$P$};
+\fill (0,-13.2736) circle(1.2pt) node[left] {$I_1$};
+\fill (0,-7.8758) circle(1.2pt) node[below right] {$I$};
+\node[below left] at (0,0) {$O$};
+\node[right] at (.9,8) {$E:\ H=8$};
+\node at (0,13) {乙：斟满酒};
+\end{scope}
+\end{tikzpicture}}
+“距 \(O\) 下方 \(13.27\,\mathrm{cm}\)”是球面在酒中所成的像，空气中的最终视位置还受酒面高度影响。斟酒后视像远离杯口，观察距离增大；具体能否看清，还取决于眼睛的位置和调节范围，不宜单凭一个轴上像距作绝对判断。
+\end{solution}
+
+\begin{question}
+\begin{example}[用反向光路检验球面成像]\label{ex:r21}
+光从空气射入折射率 \(1.50\) 的玻璃，球面顶点为 \(O\)，球心 \(C\) 位于玻璃内，\(OC=10.0\,\mathrm{cm}\)。轴上实物 \(A\) 在顶点前 \(30.0\,\mathrm{cm}\)。求近轴像的位置、横向放大率，并将该像点改为反向发光点，重新计算反向的像。
+\end{example}
+\fig{fig:r21q}{球心在正向出射侧；图中长度统一用厘米}{
+\begin{tikzpicture}[x=.8cm,y=1cm]
+\draw[axisline](-3.5,0)--(9.5,0);
+\draw[world]plot[domain=-.75:.75,samples=40]({1-sqrt(1-\x*\x)},\x);
+\fill(-3,0)circle(1pt)node[below]{$A$};
+\fill(0,0)circle(1pt)node[below left]{$O$};
+\fill(1,0)circle(1pt)node[below]{$C$};
+\node at(-1.6,.9){空气};\node at(3,.9){玻璃};
+\draw[dim](-3,-.6)--(0,-.6)node[midway,below]{$30.0$};
+\draw[dim](0,.5)--(1,.5)node[midway,above]{$10.0$};
+\draw[axis](4,-.6)--(6,-.6)node[right]{正向传播};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{正向传播时分别计算像距和横向放大率}\par\nobreak
+按图\ref{fig:r21q}正向传播，\(n_1=1,n_2=1.50,u=30.0\,\mathrm{cm},R_s=+10.0\,\mathrm{cm}\)，所以
+\[
+ \frac1{30}+\frac{1.50}{v}=\frac{0.50}{10},
+ \qquad\boxed{v=90.0\,\mathrm{cm}},\qquad
+ \boxed{\beta=-\frac{1\times90}{1.50\times30}=-2.00}.
+\]
+正像距表示玻璃中的实像；负放大率表示物面上端成像在轴下。
+\fig{fig:r21s}{甲为正向近轴追迹，乙把同一对共轭点反向使用；竖线为等效顶点平面}{
+\begin{tikzpicture}[x=.8cm,y=1cm]
+\foreach \yy/\txt in {0/甲,-2/乙}{
+\draw[aux](-3.5,\yy)--(9.5,\yy);
+\draw[world](0,\yy-.5)--(0,\yy+.6);
+\node[left]at(-3.5,\yy+.7){\txt};
+\node[below left]at(0,\yy){$O$};}
+\draw[ray](-3,0)--(0,.3);\draw[ray](0,.3)--(9,0);
+\draw[ray](-3,0)--(0,-.3);\draw[ray](0,-.3)--(9,0);
+\fill(-3,0)circle(1pt)node[below]{$A$};
+\fill(9,0)circle(1pt)node[below]{$A'$};
+\draw[ray](9,-2)--(0,-1.7);\draw[ray](0,-1.7)--(-3,-2);
+\draw[ray](9,-2)--(0,-2.3);\draw[ray](0,-2.3)--(-3,-2);
+\node[below]at(9,-2){反向物点};\node[below]at(-3,-2){反向像点};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向传播时重置两介质与曲率号}\par\nobreak
+图\ref{fig:r21s}乙的入射介质为玻璃，出射介质为空气，球心在反向入射侧。重新赋值
+\[
+ n_1'=1.50,\quad n_2'=1,\quad u'=90.0\,\mathrm{cm},\quad R_s'=-10.0\,\mathrm{cm}.
+\]
+于是 \(1.50/90+1/v'=(1-1.50)/(-10)\)，得到
+\[
+ \boxed{v'=30.0\,\mathrm{cm}},\qquad
+ \boxed{\beta'=-\frac{1.50\times30}{1\times90}=-\frac12}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验共轭点与放大率的可逆关系}\par\nobreak
+反向像正好回到 \(A\)，且 \(\beta\beta'=1\)。这是同一共轭关系的可逆性检查；图中的顶点平面追迹只保留一阶角度和高度，不代表离轴大孔径光线也精确会聚。
+\end{solution}
+
+\begin{question}
+\begin{example}[凹球面镜的纵向球差]\label{ex:r22}
+凹球面镜顶点 \(O\) 取为 \(x=0\)，球心 \(C=(-R,0)\)，平行轴光沿 \(+x\) 方向入射。光线在高度 \(h\) 处击中镜面 \(P\)。求反射线与主轴的交点 \(F_h\)，并对 \(h/R\ll1\) 展开。取 \(R=20.0\,\mathrm{cm},h=4.00\,\mathrm{cm}\)，比较它与近轴焦点的位置。
+\end{example}
+\fig{fig:r22q}{实际球面上 \(CP\) 是法线；\(P\) 位于顶点左侧}{
+\begin{tikzpicture}[x=.42cm,y=.42cm]
+\draw[axisline](-22,0)--(2,0);
+\draw[world]plot[domain=-7:7,samples=60]({-20+sqrt(400-\x*\x)},\x);
+\draw[ray](-18,4)--(-.404082,4);
+\draw[normal](-20,0)--(-.404082,4);
+\fill(-20,0)circle(2pt)node[below]{$C$};
+\node[below right]at(0,0){$O$};\node[above right]at(-.404082,4){$P$};
+\draw[dim](1,0)--(1,4)node[midway,right]{$h$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{从实际球面点和单位法线求精确反射方向}\par\nobreak
+图\ref{fig:r22q}中令 \(\phi=\angle OCP\)，则
+\[
+ h=R\sin\phi,\quad x_P=-R+R\cos\phi,\quad
+ \boldsymbol s_{\rm in}=(1,0),\quad\boldsymbol n=(\cos\phi,\sin\phi).
+\]
+由反射矢量式 \(\boldsymbol s_{\rm out}=\boldsymbol s_{\rm in}
+-2(\boldsymbol s_{\rm in}\cdot\boldsymbol n)\boldsymbol n\)，得
+\(\boldsymbol s_{\rm out}=(-\cos2\phi,-\sin2\phi)\)。
+\fig{fig:r22s}{有限高度光线在 \(F_h\) 交轴；近轴焦点 \(F_0\) 稍远离顶点}{
+\begin{tikzpicture}[x=.42cm,y=.42cm]
+\draw[axisline](-22,0)--(2,0);
+\draw[world]plot[domain=-7:7,samples=60]({-20+sqrt(400-\x*\x)},\x);
+\draw[ray](-18,4)--(-.404082,4);
+\draw[ray](-.404082,4)--(-9.793793,0);
+\draw[normal](-20,0)--(-.404082,4);
+\fill(-9.793793,0)circle(2pt)node[above left]{$F_h$};
+\fill(-10,0)circle(2pt)node[below left]{$F_0$};
+\node[below]at(-20,0){$C$};\node[below right]at(0,0){$O$};
+\node[above right]at(-.404082,4){$P$};
+\begin{scope}[x=10cm,y=1cm,xshift=-5cm,yshift=-4cm]
+\draw[axis](-.025,0)--(.34,0)node[right]{$\xi/\mathrm{cm}$};
+\fill(0,0)circle(1.5pt)node[above]{$F_0$};
+\fill(.206207,0)circle(1.5pt)node[above]{$F_h$};
+\draw[dim](0,-.6)--(.206207,-.6)node[midway,below]{$0.2062\,\mathrm{cm}$};
+\node[above]at(.14,.65){局部放大：$\xi=x_F+R/2$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际反射方向求与主轴的交点}\par\nobreak
+由图\ref{fig:r22s}从 \(P\) 沿反射方向消去高度，
+\[
+ x_{F_h}=x_P-h\cot2\phi
+ =\boxed{-R+\frac{R}{2\sqrt{1-h^2/R^2}}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开交点位置，辨认纵向球差的方向}\par\nobreak
+在本题的小孔径区域，光线向左下方传播，故此交点在实际反射线上。展开得
+\[
+ x_{F_h}=-\frac R2+\frac{h^2}{4R}
+ +O\!\left(\frac{h^4}{R^3}\right).
+\]
+所以 \(F_h\) 比近轴焦点 \(F_0=(-R/2,0)\) 更靠近顶点。数值为
+\[
+ \boxed{x_{F_h}=-9.7938\,\mathrm{cm}},\qquad
+ x_{F_0}=-10.000\,\mathrm{cm},\qquad
+ \boxed{x_{F_h}-x_{F_0}=0.2062\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用数值和局部图检查近轴误差的阶数}\par\nobreak
+图\ref{fig:r22s}下方以 \(F_0\) 为局部坐标原点，单独放大了两焦点间的距离。二阶估计为 \(h^2/(4R)=0.200\,\mathrm{cm}\)。误差项随孔径四次方起始，说明缩小孔径能改善球面镜的近轴成像；把 \(f=R/2\) 用于所有高度会掩盖这项差异。
+\end{solution}

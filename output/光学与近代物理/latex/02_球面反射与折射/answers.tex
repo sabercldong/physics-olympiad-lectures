@@ -1,0 +1,131 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:21}\textbf{用同一折射点的横向距离连接真实深度与视深}\par\nobreak
+图\ref{fig:d21q}的物点与观察者分处水、空气两侧。设真实深度为 \(h\)、视深为 \(h_{\rm app}\)，取水面折射点 \(P\) 离轴的水平距离为 \(\xi\)。图\ref{fig:d21s}左侧中 \(SP\) 与法线夹角满足 \(\tan i=\xi/h\)，出射线及其反向延长线满足 \(\tan r=\xi/h_{\rm app}\)。近轴时分别以角度代替正切、正弦，折射定律变为
+\[
+ n_{\text{水}}\frac{\xi}{h}=n_{\text{空气}}\frac{\xi}{h_{\rm app}},
+ \qquad h_{\rm app}=\frac{n_{\text{空气}}}{n_{\text{水}}}h.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入初始深度求虚像位置}\par\nobreak
+因此
+\[
+ \boxed{h_{\rm app}=\frac{40.0}{4/3}=30.0\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在固定水面下比较末态与初态}\par\nobreak
+物体上升后真实深度为 \(36.0\,\mathrm{cm}\)，视深变为 \(27.0\,\mathrm{cm}\)，故
+\(\boxed{\text{虚像上升 }3.00\,\mathrm{cm}}\)。
+
+图\ref{fig:d21s}中空气侧出射线反向延长到 \(I\)，像在水中且比 \(S\) 浅。深度从水面向下为正，所以上升时真实深度和视深同时减小。
+\fig{fig:d21s}{初、末态共用同一水面高度；横向偏移放大，虚线给出近轴虚像}{
+\begin{tikzpicture}
+\draw[world](-2,0)--(2,0);\draw[normal](0,-3.2)--(0,1.6);
+\draw[ray](0,-2.4)--(.32,0);\draw[ray](.32,0)--(.64,1.8);
+\draw[virtual](0,-1.8)--(.32,0);
+\fill(0,-2.4)circle(1.5pt)node[left]{$S:40.0$};
+\draw(0,-1.8)circle(2pt)node[left]{$I:30.0$};
+\node[below right]at(.32,0){$P$};
+\node[right]at(.8,-1){单位：厘米};
+\begin{scope}[xshift=5cm]
+\draw[world](-2,0)--(2,0);\draw[normal](0,-3.2)--(0,1.6);
+\draw[ray](0,-2.16)--(.32,0);\draw[ray](.32,0)--(.675556,1.8);
+\draw[virtual](0,-1.62)--(.32,0);
+\fill(0,-2.16)circle(1.5pt)node[left]{$S_f:36.0$};
+\draw(0,-1.62)circle(2pt)node[left]{$I_f:27.0$};
+\node[below right]at(.32,0){$P_f$};
+\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用比例核对移动方向和大小}\par\nobreak
+图中水面固定，两个状态的量距起点相同，故可以直接比较深度差：\(\Delta h_{\rm app}=3\Delta h/4\)。真实物上升4cm，虚像上升3cm；这不是像、物经过两条不同路径的距离差，而是同一折射比例作用于两个位置的结果。
+
+\end{drillsolution}
+
+\begin{drillsolution}{d:22}\textbf{先判介质、物点和球心的相对位置}\par\nobreak
+本次光从空气进入折射率较大的介质，物点在入射侧，球心在出射侧，因此 $n_1=1,n_2=1.50,u>0,R_s>0$。折射面具有会聚作用不意味着任意近处物体都能形成实像；仍须由出射束是否真正交叉来判断，不能在列式前把像距强行取正。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入带符号公式，允许解出负像距}\par\nobreak
+图\ref{fig:d22q}中 \(u=+10.0\,\mathrm{cm},R_s=+10.0\,\mathrm{cm}\)。因此
+\[
+ \frac1{10}+\frac{1.50}{v}=\frac{0.50}{10}
+ \quad\Rightarrow\quad\boxed{v=-30.0\,\mathrm{cm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别判断像的正倒与尺寸}\par\nobreak
+横向放大率为
+\[
+ \boxed{\beta=-\frac{n_1v}{n_2u}
+ =-\frac{-30}{1.50\times10}=+2.00}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用实际光线和焦内条件核对虚像}\par\nobreak
+图\ref{fig:d22s}从物体上端 $B$ 画出两条独立光线，折射后的实际半直线仍然分开，其反向延长线交于入射侧的 $B'$。$B'$ 在主轴上方且高度为物高的两倍，所以像正立放大；轴上对应点为 $A'$。该面的物方焦距为 $f=n_1R_s/(n_2-n_1)=20.0\,\mathrm{cm}$，实物位于 $u=10.0\,\mathrm{cm}<f$ 的焦内区域，界面虽减小入射束的发散程度，仍不能使它变成会聚束。这与 $v<0$ 的结果一致。
+\fig{fig:d22s}{近轴顶点平面作图：两条出射线反向延长相交于上端虚像 $B'$，对应正立放大}{\begin{tikzpicture}
+
+\begin{scope}[y=4cm]
+\draw[axisline](-3.5,0)--(2.5,0);\draw[world](0,-.25)--(0,.5);\draw[axis,blue](-1,0)--(-1,.15)node[above]{$B$};\draw[axis,red,dashed](-3,0)--(-3,.3)node[above]{$B'$};
+\draw[ray,blue](-1,.15)--(0,0);\draw[ray,blue](0,0)--(2,-.2);\draw[virtual,blue](-3,.3)--(0,0);\draw[ray,red](-1,.15)--(0,.15);\draw[ray,red](0,.15)--(2,.05);\draw[virtual,red](-3,.3)--(0,.15);
+\node[below]at(-1,0){$A$};\node[below]at(-3,0){$A'$};\node[below right]at(0,0){$O$};\node[below]at(1,0){$C$};\node at(1.2,.38){玻璃 $n_2=1.50$};\node at(-2,.48){空气 $n_1=1$};
+\end{scope}
+
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:23}\textbf{辨认第一实验的物点位置和距离基准}\par\nobreak
+实物位于凹镜的焦点与球心之间，图\ref{fig:d23q}中两条独立反射线可用来确定第一次的像。各距离均从镜顶点量起，实物、实像取正；正倒再由横向放大率判断。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求第一次像距和放大率}\par\nobreak
+以图\ref{fig:d23q}的镜顶点 \(O\) 为量距起点，
+\[
+ \frac1{15}+\frac1v=\frac1{10},\qquad
+ \boxed{v=30.0\,\mathrm{cm},\quad\beta=-2.00}.
+\]
+\fig{fig:d23s}{练习\ref{d:23}的解答图：镜前形成倒立实像；竖线表示近轴顶点平面}{\begin{tikzpicture}[y=2cm]
+
+\draw[axisline](-4,0)--(.6,0);\draw[world](0,-.6)--(0,.6);
+\draw[axis,thick](-1.5,0)--(-1.5,.2);
+\draw[axis,thick](-3,0)--(-3,-.4);
+\draw[ray](-1.5,.2)--(0,.2);\draw[ray](0,.2)--(-3,-.4);
+\draw[ray](-1.5,.2)--(0,0);\draw[ray](0,0)--(-3,-.4);
+\node[above]at(-1.5,.2){$B$};\node[below]at(-3,-.4){$B'$};
+\node[below]at(-1,-.3){$F$};\node[below]at(-1.5,0){$A$};
+\node[above]at(-3,0){$A'$};\node[right]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由两条独立反射线核对倒立实像}\par\nobreak
+像在镜前，为倒立放大实像。图\ref{fig:d23s}中平行主轴的光线反射后经过 \(F\)，经顶点的光线按反射定律返回，两线交于 \(B'\)。
+\fig{o2:d3:reverse}{第二次实验把物体移到第一次的像平面，反射线在原物平面相交；图中物高重新取为正}{\begin{tikzpicture}
+
+
+\begin{scope}[y=2cm]
+\draw[axisline](-4,0)--(.6,0);\draw[world](0,-.6)--(0,.6);\draw[axis,blue](-3,0)--(-3,.2)node[above]{$B_2$};\draw[axis,red](-1.5,0)--(-1.5,-.1)node[below]{$B_2'$};\draw[ray](-3,.2)--(0,.2);\draw[ray](0,.2)--(-1.5,-.1);\draw[ray](-3,.2)--(0,0);\draw[ray](0,0)--(-1.5,-.1);\node[below]at(-1,-.3){$F$};\node[below]at(-3,0){$A_2$};\draw[aux](-1.5,0)--(-1.5,.55);\node[above]at(-1.5,.55){$A_2'$};\node[right]at(0,0){$O$};
+\end{scope}
+
+
+\end{tikzpicture}}
+图\ref{o2:d3:reverse}的物、像平面互换，两个实际距离均仍为正。它描述重新摆放物体后的成像，不是前一次光线再反射一遍。
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{交换共轭位置，求第二次放大率并核对倒数关系}\par\nobreak
+把物体放到镜前 \(30.0\,\mathrm{cm}\)，物像距交换，故
+\[
+ \boxed{v_2=15.0\,\mathrm{cm},\quad\beta_2=-\frac12},\qquad
+ \beta\beta_2=1.
+\]
+两次放大率相乘为1，表示同一对共轭平面的尺寸关系互为倒数；每次负号都由该次图中的倒立关系独立确定。
+
+\end{drillsolution}

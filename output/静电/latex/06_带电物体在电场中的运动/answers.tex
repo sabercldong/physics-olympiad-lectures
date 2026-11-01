@@ -1,0 +1,162 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{e6:drill:1}\textbf{由加速电压求水平速率与出口偏移}\par\nobreak
+在 图\ref{fig:e6:drill:1:s} 加速后 $v_x^2=2eu/m$，电子向上偏转，加速度 $eU^\prime/(md)$。出口偏移
+$y_L=U^\prime L^2/(4du)$。不接触极板要求 $y_L<d/2$，所以 $u>U^\prime L^2/(2d^2)$；单向向上弯曲时，出口确为场内最高点。
+\typeout{ECFIG:fig:e6:drill:1:p}\fig{fig:e6:drill:1:p}{虚线为恰触出口上边缘的极限，实际通过轨迹必须在其下方}{\begin{tikzpicture}
+
+\draw[world](0,1)--(4,1)(0,-1)--(4,-1);\draw[guide](-1,0)--(6,0);\draw[world](6,-1.6)--(6,2.5);\draw[flow](-1,0)--(0,0)node[midway,above]{$e^-,v_0$};\node[above]at(2,1){上板 $A$};\node[below]at(2,-1){下板 $B$};\node[right]at(6,0){屏};\draw[dim](0,-1.8)--(4,-1.8)node[midway,below]{$L$};\draw[dim](4,-1.8)--(6,-1.8)node[midway,below]{$b$};\draw[dim](4.6,-1)--(4.6,1)node[midway,right]{$d$};\node at(2,2.1){$V_A-V_B=U'\ge0$};
+\draw[guide,domain=0:4,samples=50]plot(\x,{(\x)^2/16});\draw[guide](4,1)--(6,2);\draw[world,domain=0:4,samples=50]plot(\x,{(\x)^2/32});\draw[flow](4,.5)--(6,1);\fill(6,1)circle(1.8pt);\draw[fill=white](6,2)circle(1.8pt);\draw[flow](1.2,.7)--(1.2,-.2)node[left]{$E$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把通过条件与最大加速电压联合求范围}\par\nobreak
+注意 图\ref{fig:e6:drill:1:p} 中代入参数，$L^2/(2d^2)=8$，因而 $u>8U^\prime$。至少有电子通过要求 $8U^\prime<800$，即 $0\le U^\prime<100\,\mathrm V$。等号时只有最大加速电压的电子恰触出口边缘，不符合题设通过条件。这里是至少有部分电子；若要求所有任意小 $u>0$ 的电子都通过，只能 $U^\prime=0$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只对实际通过的电子求屏上区间}\par\nobreak
+屏位移 $Y=U^\prime L(b+L/2)/(2du)=20/u\,\mathrm m$。当 $U^\prime=50\,\mathrm V$，可通过的加速电压为 $400<u\le800\,\mathrm V$，故屏上向上范围为 $0.025\le Y<0.050\,\mathrm m$，下界对应最大加速电压；上确界对应擦板电压，只能任意接近而不能取到。不能把所有 $0<u<800$ 直接代入屏位移，否则会错误地得到无限大的光斑。\end{drillsolution}
+\begin{drillsolution}{e6:drill:2}\textbf{用固定高度差求所有落板漆滴的共同动能}\par\nobreak
+图\ref{fig:e6:drill:2:s} 负滴受力向下，$a=|q|E/m=100\,\mathrm{m/s^2}$。各路径下降相同高度 $d$，电力作功相同，故落板动能
+$K_f=mv_0^2/2+|q|Ed=4.6\times10^{-13}\,\mathrm J$。
+\typeout{ECFIG:fig:e6:drill:2:p}\fig{fig:e6:drill:2:p}{竖直喷射取得最短时间，水平喷射极限取得覆盖边界}{\begin{tikzpicture}
+
+\draw[world](-3.2,0)--(3.2,0);\fill(0,2.4)circle(2pt)node[above]{$P$};\draw[flow](0,2.4)--(0,0);\draw[world,domain=0:3,samples=60]plot(\x,{2.4*(1-(\x)^2/9)});\draw[flow](.1,2.4)--(1.2,2.4)node[above]{$v_0$};\draw[dim](0,-.5)--(3,-.5)node[midway,below]{$r_{\max}$};\node at(-2,1.6){竖直：$t_{\min}$};\draw[force](3.5,2)--(3.5,1)node[right]{$a$};\node at(0,3.3){侧视图，横纵比例不同};
+\begin{scope}[xshift=7cm,yshift=1.2cm]\fill[blue!10](0,0)circle(1.5);\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.5pt);\draw[dim](0,0)--(1.5,0)node[midway,above]{$r_{\max}$};\node at(0,-2){下板俯视：覆盖圆};\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按初始竖直分量求到达时间并取最小值}\par\nobreak
+在 图\ref{fig:e6:drill:2:p} 设初速度向下分量 $w\in[0,v_0]$，有 $d=wt+at^2/2$，解这个关于 $t$ 的二次方程并取正根，得 $t=(\sqrt{w^2+2ad}-w)/a$。对初始向下速度 $w$ 求导：
+\[
+t'(w)=\frac1a\left[\frac{2w}{2\sqrt{w^2+2ad}}-1\right]
+=\frac1a\left(\frac{w}{\sqrt{w^2+2ad}}-1\right)<0.
+\]
+所以到达时间随 $w$ 增大而减小。最短时间在竖直下喷，
+$t_{\min}=(\sqrt{460}-20)/100\simeq1.45\times10^{-2}\,\mathrm s$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别优化水平射程并转成覆盖面积}\par\nobreak
+水平射程 $r=\sqrt{v_0^2-w^2}\,t(w)$，其中两个非负因子均随 $w$ 增大而减小，故最大射程在 $w=0$ 的水平喷射极限：
+$r_{\max}=v_0\sqrt{2d/a}=\sqrt{2.4}\,\mathrm m$。各方位与中间方向连续，覆盖圆面积 $A=\pi r_{\max}^2=2.4\pi\,\mathrm m^2$。最短时间和最大射程由不同喷射方向取得，不能用同一个时间计算二者。\end{drillsolution}
+\begin{drillsolution}{e6:drill:3}\textbf{沿固定坐标分解合加速度并消去时间}\par\nobreak
+图\ref{fig:e6:drill:3:s} 取向右 $x$、向下 $y$，加速度分量为 $qE/m,g$。由静止释放得 $x=qEt^2/(2m)$、$y=gt^2/2$，所以 $x/y=qE/(mg)$，轨迹为直线。
+\typeout{ECFIG:fig:e6:drill:3:p}\fig{fig:e6:drill:3:p}{静止释放时速度始终沿合加速度，落差 $h$ 确定到达点}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[axis](0,0)--(0,-3.7)node[below]{$y$};\draw[world](0,0)--(3.5,-2.8);\fill(3.5,-2.8)circle(2pt)node[right]{$P$};\draw[guide](0,-2.8)--(3.5,-2.8);\node[left]at(0,-2.8){$h$};\draw[force](1.2,-.96)--(2.45,-.96)node[above]{$qE$};\draw[force](1.2,-.96)--(1.2,-1.96)node[left]{$mg$};\draw[flow](1.2,-.96)--(2.45,-1.96)node[right]{$\bm v\parallel\bm a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用给定落差求到达位置和速度方向}\par\nobreak
+在 图\ref{fig:e6:drill:3:p} 当 $y=h$ 时 $t=\sqrt{2h/g}$、$x=qEh/(mg)$，速度分量 $v_x=(qE/m)\sqrt{2h/g}$、$v_y=\sqrt{2gh}$，方向始终与合加速度一致。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查静止初态为何对应直线轨迹}\par\nobreak
+恒力运动并非总是抛物线，只有初速度与加速度不平行时才有非退化抛物线。\end{drillsolution}
+\begin{drillsolution}{e6:drill:4}\textbf{按正电荷符号列回复力方程}\par\nobreak
+图\ref{fig:e6:drill:4:s} 正粒子受回复力 $-q\beta x$，方程 $\ddot x+\omega^2x=0$，$\omega=\sqrt{q\beta/m}$。试取指数解 $x=e^{\lambda t}$，代入得特征方程
+$\lambda^2+\omega^2=0$，两根为 $\lambda=\pm i\omega$。实通解为
+\[
+x=C_1\cos\omega t+C_2\sin\omega t.
+\]
+对时间求导，$v=-C_1\omega\sin\omega t+C_2\omega\cos\omega t$。
+初条件 $x(0)=A$、$v(0)=0$ 分别给 $C_1=A$、$C_2\omega=0$，故
+\[
+x=A\cos\omega t,\qquad v=-A\omega\sin\omega t.
+\]
+\typeout{ECFIG:fig:e6:drill:4:p}\fig{fig:e6:drill:4:p}{一完整周期的位移图；过原点时速率最大，端点速度为零}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(6.2,0)node[right]{$t/T$};\draw[axis](0,-1.7)--(0,1.8)node[above]{$x/A$};\draw[world,domain=0:1,samples=100]plot({5*\x},{1.2*cos(360*\x)});\foreach \x/\n in{1.25/{1/4},2.5/{1/2},3.75/{3/4},5/1}{\node[below]at(\x,0){$\n$};}\node[left]at(0,1.2){$1$};\node[left]at(0,-1.2){$-1$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用周期与能量检查最大速率}\par\nobreak
+图\ref{fig:e6:drill:4:p} 周期 $T=2\pi/\omega$，最大速度 $A\omega$。电势差由场积分得到
+\[
+V(x)-V(0)=-\int_0^x E(s)\,\dd s
+=\beta\int_0^x s\,\dd s
+=\beta\left[\frac{s^2}{2}\right]_0^x=\frac12\beta x^2.
+\]
+用能量也得 $mv_{\max}^2/2=q\beta A^2/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{改变电荷符号后重新判断稳定性}\par\nobreak
+若为负粒子，令 $\Omega=\sqrt{|q|\beta/m}$，方程为
+$\ddot x-\Omega^2x=0$。特征方程 $\lambda^2-\Omega^2=0$ 给实根
+$\lambda=\pm\Omega$，故通解为 $x=C_+e^{\Omega t}+C_-e^{-\Omega t}$。
+同样的初条件给
+\[
+C_++C_-=A,\qquad \Omega(C_+-C_-)=0,
+\]
+所以 $C_+=C_-=A/2$，运动为
+\[
+x=A\cosh\Omega t,\qquad v=A\Omega\sinh\Omega t.
+\]
+非零初偏离向外增长，平衡不稳定，不能仍把 $|q|$ 代入振动周期式。\end{drillsolution}
+\begin{drillsolution}{e6:drill:5}\textbf{由入射速度和瞄准距保留角动量}\par\nobreak
+图\ref{fig:e6:drill:5:s} 远处能量 $\mathcal E=mv^2/2$、角动量 $\ell=mvb$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在最近点保留非零切向动能}\par\nobreak
+最近点径向速度零，切向速度仍为 $\ell/(mr_{\min})$，于是
+\[
+ \frac12mv^2=\frac{mv^2b^2}{2r_{\min}^2}+\frac{kqQ}{r_{\min}}.
+\]
+\typeout{ECFIG:fig:e6:drill:5:p}\fig{fig:e6:drill:5:p}{最近点速度与半径垂直，斥力沿半径向外}{\begin{tikzpicture}
+
+\draw[guide](-5,1)--(-1,1)--(-1,5);\draw[world,domain=-1.5:1.5,samples=80]plot({-1-exp(-\x)/sqrt(2)},{1+exp(\x)/sqrt(2)});\fill(0,0)circle(2pt)node[below right]{$Q$};\fill(-1.7071,1.7071)circle(2pt)node[left]{$P$};\draw[dim](0,0)--(-1.7071,1.7071);\node[right]at(-.6,.4){$r_{\min}$};\draw[flow](-1.7071,1.7071)--(-.9071,2.5071)node[right]{$v_t$};\draw[force](-1.7071,1.7071)--(-2.3071,2.3071)node[left]{$F$};\node at(-2,5.5){图示取 $kqQ/(mv^2)=b$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解最近距离的二次方程并检查极限}\par\nobreak
+在 图\ref{fig:e6:drill:5:p} 令 $\eta=kqQ/(mv^2)>0$，整理为 $r_{\min}^2-2\eta r_{\min}-b^2=0$，取正根
+$r_{\min}=\eta+\sqrt{\eta^2+b^2}$。$b=0$ 时最近点总速度才为零，距离 $2\eta$；$Q\to0$ 则距离趋于几何瞄准距 $b$。\end{drillsolution}
+\begin{drillsolution}{e6:drill:6}\textbf{先求第一段末状态作为下一段初态}\par\nobreak
+图\ref{fig:e6:drill:6:s} 第一段末速度 $v_0=at_0$、位移 $x_0=at_0^2/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{接续速度确定首次停止时刻}\par\nobreak
+第二段令经过时间 $\tau$，速度 $v=at_0-2a\tau$，首次零速在 $\tau=t_0/2$，所以绝对时刻为 $3t_0/2$。
+\typeout{ECFIG:fig:e6:drill:6:p}\fig{fig:e6:drill:6:p}{换场前后速度连续，两块三角形面积相加给总位移}{\begin{tikzpicture}
+
+\fill[blue!12](0,0)--(2,2)--(2,0)--cycle;\fill[orange!16](2,0)--(2,2)--(3,0)--cycle;\draw[axis](0,0)--(4.5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.8)node[above]{$v_x$};\draw[world](0,0)--(2,2)--(3,0);\draw[guide](2,0)--(2,2);\node[below]at(2,0){$t_0$};\node[below]at(3,0){$3t_0/2$};\node[left]at(0,2){$at_0$};\node at(1,2.7){斜率 $a$};\node at(3.3,2){斜率 $-2a$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对速度图面积求和并用分段位移核对}\par\nobreak
+图\ref{fig:e6:drill:6:p} 速度图为两段相接直线，其面积给总位移
+\[
+ x=\frac12at_0^2+\frac12(at_0)(t_0/2)=\frac34at_0^2.
+\]
+也可在第二段用位移 $v_0\tau-a\tau^2=at_0^2/4$ 检查。换场时速度不能跳成 $-2at_0$，加速度数值和速度不是同一个量。\end{drillsolution}
+\begin{drillsolution}{e6:drill:7}\textbf{用水平运动确定实际在场时间}\par\nobreak
+图\ref{fig:e6:drill:7:s} 水平运动给飞行时间 $T=L/v$，竖直位置 $y(t)=ut-at^2/2$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按曲线凹性确定最小值与最大值的位置}\par\nobreak
+固定初速度 $u$ 与加速度大小 $a$，逐次求导：
+\[
+y'(t)=u-\frac a2(2t)=u-at,\qquad y''(t)=-a<0.
+\]
+因此曲线凹向下。由 $y'(t_*)=0$ 解得 $t_*=u/a$；若它位于 $[0,T]$ 内，就是最大值点，代入得到
+$y(t_*)=u(u/a)-(a/2)(u/a)^2=u^2/(2a)$。
+最小值则在时间区间的两个端点之一。
+\typeout{ECFIG:fig:e6:drill:7:p}\fig{fig:e6:drill:7:p}{内部顶点与全程上升两种情况，均另检查出口下边界}{\begin{tikzpicture}
+\begin{scope}[xshift=0cm]\draw[world](0,1.5)--(5,1.5)(0,-1.5)--(5,-1.5);\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[world,domain=0:5,samples=50]plot(\x,{1.1*\x-.22*(\x)^2});\node at(2.5,2.2){$t_*=u/a\le T$};\node[below]at(5,0){$T$};\draw[guide](2.5,0)--(2.5,1.375);\node[below]at(2.5,0){$t_*$};\end{scope}\begin{scope}[xshift=8cm]\draw[world](0,1.5)--(5,1.5)(0,-1.5)--(5,-1.5);\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[world,domain=0:5,samples=50]plot(\x,{.25*\x-.01*(\x)^2});\node at(2.5,2.2){$t_*>T$};\node[below]at(5,0){$T$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检查下边界和两种上边界条件}\par\nobreak
+在 图\ref{fig:e6:drill:7:p} 下边界只需检查出口 $y(T)>-d/2$，因为入口为零且曲线凹向下。上边界分两种：若 $u/a\le T$，需 $u^2/(2a)<d/2$；若 $u/a>T$，整个场内仍上升，需 $uT-aT^2/2<d/2$。这两项与出口下边界共同构成完整条件。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对首次碰板是否早于形式离场}\par\nobreak
+只检查出口绝对值可能漏掉先撞上板、随后形式轨迹又回到中线的情形。\end{drillsolution}

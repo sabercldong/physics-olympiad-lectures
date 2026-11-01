@@ -1,0 +1,15 @@
+\fig{fv:c2:annulus}{同心圆环的厚度与到转轴的距离具有不同作用}{\begin{tikzpicture}[scale=.9]
+\draw[thick](0,0)circle(2);\fill[blue!18,even odd rule](0,0)circle(1.35)(0,0)circle(1.15);
+\draw[thick](0,0)circle(1.15);\draw[thick](0,0)circle(1.35);
+\draw[->](0,0)--(1.15,0)node[midway,below]{$r$};\draw[->](2.7,1.8)--(1.1,.7)node[pos=0,above]{$\dd r$};
+\draw[->](0,0)--(-1.414,-1.414)node[midway,below left]{$R$};
+\node at(0,0){$\odot$};\node[below]at(0,-2.3){转轴垂直盘面};
+\node[align=left]at(5,0){$\dd m=2\pi\sigma r\dd r$\\[5pt]$\dd I=r^2\dd m$};
+\end{tikzpicture}}
+图\ref{fv:c2:annulus}中蓝色环带沿半径的宽为 $\dd r$，沿周向却延伸整整一圈。因此面积是一阶量 $2\pi r\dd r$，而不是 $\pi(\dd r)^2$。环带内各点到中心轴的距离在微元近似下均为 $r$，故均匀圆盘有
+\[
+ I=2\pi\sigma\int_0^Rr^3\dd r
+ =2\pi\sigma\left[\frac{r^4}{4}\right]_0^R
+ =\frac{\pi\sigma R^4}{2}=\frac12MR^2.
+\]
+这里的 $r^2$是惯量的权重，$2\pi r$来自微元面积，二者不能相互替代。若转轴改为盘面内的直径，同一圆环各点到新轴的距离不再相同，须先对周向位置再积分，不能继续整环乘 $r^2$。

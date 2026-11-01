@@ -1,0 +1,211 @@
+\section{节点、支路与回路的物理意义}
+\subsection{先读连接关系，再列方程}
+
+电路图中的线条形状可以改变，理想导线连接的同一节点电势不变。判断串、并联前，应先给所有电连接点命名：两电阻有公共端，并不自动构成串联；只有公共端没有其他分流，二者才通过同一电流。两电阻看上去平行，也不自动构成并联；只有两端分别连接同一对节点，二者才承受同一电压。交叉线是否连接，应由实心接点或题目说明确定。
+
+节点是电荷守恒的应用位置。若所有支路参考电流都取流出某节点为正，稳恒时应有 $\sum I_k=0$。节点电势不必为零，电流代数和为零也不要求每条支路电流都为零。一个连通电路共有 $N$ 个节点时，全部节点方程的和恒为零，因此只有 $N-1$ 个独立节点方程。
+
+回路是电势变化的累加路径。沿任意闭合路径回到起点，静电势变化总和为零。在纯电阻上沿参考电流走，电势变化为 $-IR$；逆参考电流走为 $+IR$。跨越电源从负端到正端，电势变化为 $+\mathcal E$；反向为 $-\mathcal E$。这些符号来自电势差定义，与纸面上的顺时针、逆时针无关。复杂电路容易出错的环节往往不是求解联立方程，而是把同一条支路在不同回路中写成了不一致的方向。
+
+\typeout{ECFIG:fig:c2:sign}\fig{fig:c2:sign}{同一支路的电流参考与电势变化}{\begin{tikzpicture}[scale=.88]
+
+\draw(0,0)to[R,l={$R$}](2.6,0)to[battery1,invert,l={$\mathcal E$}](5.2,0);
+\node[left]at(0,0){$P$};\node[right]at(5.2,0){$Q$};
+\draw[flow](.6,.8)--(1.9,.8)node[midway,above]{$i:P\to Q$};
+\node at(2.6,-1){$V_Q-V_P=\mathcal E-iR$};
+
+\end{tikzpicture}}
+\subsection{用节点电势把守恒变成方程}
+
+选一个节点电势为零，只是规定电势零点，不等于把它接入一个额外支路。对图\ref{fig:c2:sign}，从 $P$ 到 $Q$ 的支路含电阻 $R$ 和电势上升 $\mathcal E$，有
+\[
+ i_{PQ}=\frac{V_P-V_Q+\mathcal E}{R}.
+\]
+将这一带符号的表达式代入每个未知节点的电流守恒式，便得到以节点电势为未知量的线性方程组。若只有电阻，节点 $P$ 的方程为
+\[
+ \sum_Q\frac{V_P-V_Q}{R_{PQ}}=I_P^{\text{外}},
+\]
+右端表示从外界注入节点的电流。每个连接都应出现一次，不能因某条支路在图上画得很短就忽略它。
+
+理想电压源规定端电压，流过它的电流待求；理想电流源规定支路电流，端电压待求。对电流源直接套 $U=IR$ 没有意义，只有与它相连的电阻部分才满足欧姆关系。节点法遇到电流源时，把给定注入量写到节点守恒方程右侧；求出两端电势后，才能判断电流源的功率是输出还是吸收。
+
+\fig{c2:node-balance}{给节点 $M$ 的各电阻支路规定流出方向；外部注入电流为 $J$}{\begin{tikzpicture}
+
+\draw(-3,0)to[R,l={$R_1$}](0,0)to[R,l={$R_2$}](3,0);
+\draw(0,0)to[R,l_={$R_3$}](0,-2.4);
+\fill(0,0)circle(1.5pt)node[below left]{$M:V_M$};
+\node[left]at(-3,0){$V_A$};\node[right]at(3,0){$V_B$};\node[below]at(0,-2.4){$0$};
+\draw[flow](-.3,.6)--(-1.6,.6)node[midway,above]{$i_1$};
+\draw[flow](.3,.6)--(1.6,.6)node[midway,above]{$i_2$};
+\draw[flow](.6,-.4)--(.6,-1.6)node[right]{$i_3$};
+\draw[flow](0,1.8)--(0,.3)node[pos=0,above]{$J$};
+
+\end{tikzpicture}}
+图\ref{c2:node-balance}中流出量为 $i_1=(V_M-V_A)/R_1$、$i_2=(V_M-V_B)/R_2$、$i_3=V_M/R_3$。因此 $i_1+i_2+i_3=J$。若某项为负，只表示该支路实际流入 $M$；节点方程的参考方向始终保持不变。
+
+两个未知节点的网络通常只需两个方程，求出电势后即可逐支路回算电流。若电源理想且内阻为零，不可把它代入分母为零的支路公式；此时用已知电势差约束，必要时将电源两端组成超节点，再对超节点外边界列电流守恒。电流为负时保留负号直到解释实际方向，能减少解题中的重复变更。
+
+
+\fig{c2:supernode-boundary}{虚线围出超节点，电源两端保留规定的电势差，外围电流服从电荷守恒}{\begin{tikzpicture}
+
+\draw(0,2)--(1.6,2);\draw(2.4,2)--(4,2);
+\draw[world](2,2)circle(.4);\node at(1.8,2){$+$};\node at(2.2,2){$-$};\node[above]at(2,2.45){$\mathcal E$};
+\draw(0,2)to[R,l_={$R_1$}](0,-.7)--(4,-.7)to[R,l_={$R_2$}](4,2);
+\fill(0,2)circle(1.5pt)node[above]{$M$};\fill(4,2)circle(1.5pt)node[above]{$N$};
+\draw[guide,rounded corners](-.7,1.1)rectangle(4.7,3.1);
+\draw[flow](-1.7,2)--(-.1,2)node[midway,above]{$J$};\node[below]at(2,-.7){参考地};
+\node[below]at(2,-1.5){$V_M/R_1+V_N/R_2=J,\quad V_M-V_N=\mathcal E$};
+
+\end{tikzpicture}}
+图\ref{c2:supernode-boundary}的理想电压源电流未知，但它只在虚线区域内部输运电荷。把两个节点方程相加，内部电流自动消去；再补上电压约束，就能求 $V_M,V_N$。超节点是守恒区域，并非一个等势节点，不能把 $M,N$ 当作短路合并。
+
+\section{闭合与断开支路中的电势判断}
+\subsection{断路电流为零，电势差未必为零}
+
+断开的支路没有稳恒电流，支路电阻的电势降为零，但其中的电源仍可使断口两侧具有电势差。处理“求两点电势差”时，可以沿任意一条由已知节点到目标节点的路径累加电势变化。应先解闭合部分的电流，后追踪断开部分的电势，不能看到断口就把相邻电源也删掉。
+
+理想电压表可看作不取电流的支路，测量的是接入位置的两点电势差；理想电流表可看作连接两点的零电阻导线，会改变原有节点关系。电桥中的电流计只有在桥平衡、两端电势相等时才无电流，并非任何电桥都可删去中间支路。
+
+\fig{c2:open-branch-potential}{断口使串联支路电流为零，电源仍改变浮置端 $P$ 的电势}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](2.3,0)to[R,l={$r$}](4.6,0);
+\fill(0,0)circle(1.5pt)node[left]{$L:V_L$};\draw[world](4.6,0)circle(2pt)node[below]{$P$};
+\draw[world](6,0)circle(2pt)node[below]{$Q:V_Q$};\draw(6,0)--(6.7,0);
+\node[above]at(3,.8){$i=0,\quad ir=0$};
+\draw[dim](4.6,-.8)--(6,-.8)node[midway,below]{$U_{PQ}$};
+
+\end{tikzpicture}}
+图\ref{c2:open-branch-potential}中，闭合部分先给出 $V_L,V_Q$。断支路没有电阻压降，故 $V_P=V_L+\mathcal E$，断口电压为 $U_{PQ}=V_L+\mathcal E-V_Q$，通常不为零。这里的零电流是连接条件的结果，不能拿来删去电源的电势上升。
+
+\subsection{支路电流法与回路电流法}
+
+支路电流法直接给每条支路设电流，以节点方程配合独立回路方程求解。回路电流法则给平面电路的若干网孔设循环电流。只有相邻两网孔共用的电阻上，实际支路电流才是两个网孔电流的代数差。例如两个网孔都设顺时针，共用电阻上的两网孔贡献方向相反，应写成 $i_1-i_2$。
+
+网孔电流是一组求解变量，并非每个变量都等于某条实际支路电流。在有电流源、非平面连线或高度对称网络中，节点法往往更直接。选择方法的依据是未知量多少和约束是否易表达，而非要求每道题固定使用某一种套路。解答中若使用两种方法，第二种应承担方向或结果的独立核验，避免重复整套代数运算。
+
+
+\fig{c2:mesh-shared-branch}{两网孔电流都取顺时针，共用电阻中的下向实际电流为 $i_1-i_2$}{\begin{tikzpicture}
+
+\draw(0,0)--(6,0)to[R,l={$R_3$}](6,3)to[R,l={$R_2$}](3,3)to[R,l={$R_1$}](0,3)to[battery1,l={$\mathcal E$}](0,0);
+\draw(3,3)to[R,l_={$R_s$}](3,0);
+\draw[flow](1.5,1.5)++(40:.7)arc(40:-240:.7);\node at(1.5,1.5){$i_1$};
+\draw[flow](4.5,1.5)++(40:.7)arc(40:-240:.7);\node at(4.5,1.5){$i_2$};
+\draw[flow](3.6,2.5)--(3.6,.8)node[midway,right]{$i_1-i_2$};
+
+\end{tikzpicture}}
+图\ref{c2:mesh-shared-branch}中，沿左网孔走过 $R_s$ 的电势降为 $R_s(i_1-i_2)$；沿右网孔反向走过它，电势降为 $R_s(i_2-i_1)$。两式描述同一条支路，符号必须相反。先在图上画清两项贡献，比在两条方程中分别猜符号更可靠。
+
+\section{线性电路与叠加}
+\subsection{可以相加的是电压和电流}
+
+固定电阻构成的网络中，节点方程对电势和独立电源强度都是线性的。因此两个电源同时作用时的支路电流，等于分别单独作用时该支路电流的代数和。使用叠加时必须保持同一条支路的参考方向：一个子问题得到向右 $3\,\mathrm A$，另一个得到向左 $1\,\mathrm A$，总电流才是向右 $2\,\mathrm A$。
+
+“关闭独立电源”表示令它的给定强度为零。理想电压源两端电压变为零，应以短路代替；理想电流源电流变为零，应以开路代替。图\ref{fig:c2:super}把理想电动势支路换成导线，串联内阻 $r$ 仍连接在原来的端点之间。电源内阻属于网络的一部分，关闭电动势时仍要保留。若网络中含受控源，控制关系也不能随意关闭。
+
+功率不是线性量。若电阻电流为 $I_1+I_2$，实际功率为 $R(I_1+I_2)^2$，包含交叉项 $2RI_1I_2$，一般不等于两个子问题功率之和。可叠加电流后再求功率，不能直接把子问题热功率相加。相同道理，随温度变化的电阻若在各子问题中取值不同，线性叠加前提也不再成立。
+
+\typeout{ECFIG:fig:c2:super}\fig{fig:c2:super}{关闭电源时保留内阻}{\begin{tikzpicture}[scale=.88]
+
+\draw(0,0)to[battery1,invert,l={$\mathcal E$}](0,2)to[R,l={$r$}](2.5,2);
+\node at(3.5,1){$\Longrightarrow$};
+\draw(5,0)--(5,2)to[R,l={$r$}](7.5,2);\node at(6.2,-.5){$\mathcal E=0$};
+
+\end{tikzpicture}}
+
+\section{两端网络的等效电源}
+\subsection{端口关系为何只需两个参数}
+
+取出网络上两个端子 $A,B$，把外接部分称为负载，网络内部称为待等效部分。令端电压 $U=V_A-V_B$，输出电流 $I$ 从 $A$ 流向负载。对线性网络，消去内部节点电势后，端口关系为
+\[
+ U=U_{\rm oc}-R_{\rm th}I.
+\]
+$U_{\rm oc}$ 是开路时 $I=0$ 的端电压，$R_{\rm th}$ 表示输出电流每增加一单位时端电压下降的斜率。由此可用电动势 $U_{\rm oc}$、串联内阻 $R_{\rm th}$ 的电源代替原网络。等效要求端口电压和电流关系相同，不要求内部每个电阻的电流或发热相同。
+
+只含独立电压源和电阻时，先断开负载，计算开路电压；再把独立电动势置零，保留内阻，求从端口看入的电阻。最后接回负载 $R_L$，得到 $I=U_{\rm oc}/(R_{\rm th}+R_L)$。这里 $R_L$ 必须留在等效部分之外，否则把它重复接入会改变问题。
+
+\fig{c2:port-load-lines}{端口直线与负载直线的交点给出实际工作点；截距分别为开路电压和短路电流}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4,0)node[right]{$I$};\draw[axis](0,0)--(0,4)node[above]{$U$};
+\draw[world](0,3)--(3,0);\node[left]at(0,3){$U_{\rm oc}$};\node[below]at(3,0){$I_{\rm sc}$};
+\draw[blue,thick](0,0)--(2.3,3.45)node[right]{$U=R_LI$};
+\fill(1.2,1.8)circle(1.5pt)node[left]{$P$};\draw[guide](1.2,0)--(1.2,1.8)--(0,1.8);
+\node[right]at(2.7,1){$U=U_{\rm oc}-R_{\rm th}I$};
+
+\end{tikzpicture}}
+图\ref{c2:port-load-lines}中，端口直线只记录待等效网络对外的关系，负载则提供另一条约束 $U=R_LI$。两式联立才得到工作点 $P$。改变负载只改变交点，不改变已固定的网络参数；这也说明负载不应被重复算入 $R_{\rm th}$。
+
+\subsection{等效电流源与短路电流}
+
+将端口关系改写为 $I=U_{\rm oc}/R_{\rm th}-U/R_{\rm th}$，便得到电流源 $I_N=U_{\rm oc}/R_{\rm th}$ 与电阻 $R_{\rm th}$ 并联的表示。端口短路 $U=0$ 时的输出电流正好等于 $I_N$，所以也称短路电流。
+
+如果 $R_{\rm th}=0$，理想电压源不能转换为有限电流源。理想电压源直接并联也必须满足电压相同，否则理想模型本身不相容。实际不同电池可经有限内阻并联，环流由内阻限制。对于具有内部电源的网络，不能从其开路电压判断看入电阻为零；开路电压和看入电阻分别描述截距和斜率，两者缺一不可。
+
+\fig{c2:thevenin-norton}{两个端口等效表示接同一负载；虚线内为待等效网络，负载留在虚线外}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw(0,0)to[battery1,invert,l={$U_{\rm oc}$}](0,3)to[R,l={$R_{\rm th}$}](4,3)--(6,3)to[R,l={$R_L$}](6,0)--(0,0);
+\draw[guide](-.7,-.5)rectangle(3.1,3.7);
+\fill(4,3)circle(1.5pt)node[above]{$A$};\fill(4,0)circle(1.5pt)node[below]{$B$};
+\node[above]at(1.5,4){电压源串联电阻};
+\end{scope}
+\begin{scope}[xshift=6.8cm,scale=.8]
+\draw(0,0)to[I,l={$I_N$}](0,3)--(6,3)to[R,l={$R_L$}](6,0)--(0,0);
+\draw(2,3)to[R,l={$R_{\rm th}$}](2,0);\draw[guide](-.7,-.5)rectangle(3.1,3.7);
+\fill(4,3)circle(1.5pt)node[above]{$A$};\fill(4,0)circle(1.5pt)node[below]{$B$};
+\node[above]at(1.5,4){电流源并联电阻};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c2:thevenin-norton}右侧的电流源把 $I_N$ 注入上节点，其中 $U/R_{\rm th}$ 经并联电阻返回，余下 $I=I_N-U/R_{\rm th}$ 流向负载。因此只要 $I_N=U_{\rm oc}/R_{\rm th}$，两图给出的端口关系一致；内部电流和发热分配则不要求逐项一致。
+
+\subsection{电源串并联与电池组的选择}
+
+串联电源的电动势按极性代数相加，内阻相加。若多个带内阻的电源同极性并联，设共同端电压为 $U$，各电源向外供给的电流为 $(\mathcal E_k-U)/r_k$，总电流为
+\[
+ I=\sum_k\frac{\mathcal E_k}{r_k}-U\sum_k\frac1{r_k}.
+\]
+整理为等效电压源形式，
+\[
+ R_{\rm th}=\left(\sum_k\frac1{r_k}\right)^{-1},\qquad
+ \mathcal E_{\rm eq}=\frac{\sum_k\mathcal E_k/r_k}{\sum_k1/r_k}.
+\]
+等效电动势是以电导为权重的平均，而不是一般的算术平均。若某节电池电动势低于共同端电压，它的输出电流为负，表示该电池被其他电池充电。检查各支路功率的符号，可以识别网络内部的能量交换。
+
+
+\fig{c2:parallel-circulation}{开路并联的两节电池仍可有环流；图示 $\mathcal E_1>\mathcal E_2$ 时的实际电流}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$\mathcal E_1$}](0,1.6)to[R,l={$r_1$}](0,3.4)--(6,3.4);
+\draw(3,0)to[battery1,invert,l={$\mathcal E_2$}](3,1.6)to[R,l={$r_2$}](3,3.4);
+\draw(0,0)--(6,0);\draw[world](6,3.4)circle(2pt)node[right]{$A$};\draw[world](6,0)circle(2pt)node[right]{$B$};
+\draw[flow](-.6,1.8)--(-.6,2.8)node[left]{$I_c$};\draw[flow](3.7,2.8)--(3.7,1.8)node[right]{$I_c$};
+\node[right]at(4.3,1.7){外部电流为零};
+
+\end{tikzpicture}}
+图\ref{c2:parallel-circulation}的开路条件只要求两支路输出电流代数和为零。由内部闭合回路得 $I_c=(\mathcal E_1-\mathcal E_2)/(r_1+r_2)$，高电动势电池放电、低电动势电池充电；差额能量在两内阻中发热。故外部开路不等于网络内部各处无电流。
+
+\section{电桥平衡、负载和功率核验}
+\subsection{平衡是两个中点电势相等}
+
+电桥上、下两臂分别为 $R_1,R_2$ 与 $R_3,R_4$，两中点 $M,N$ 之间接桥臂 $R_5$，电压加在共同两端 $A,B$。图\ref{fig:c2:bridge}中桥支 $R_5$ 连接 $M,N$；假定它无电流后，$A-M-B$ 与 $A-N-B$ 两条分压支路各自串联，有
+\[
+ V_M-V_B=U\frac{R_2}{R_1+R_2},\qquad
+ V_N-V_B=U\frac{R_4}{R_3+R_4}.
+\]
+令二者相等，得到平衡条件 $R_1R_4=R_2R_3$。这一条件成立时，删去桥臂不改变电路；不成立时，桥臂会改变两中点电势，不能先按无载分压求完电势后直接除以桥臂电阻。
+
+不平衡电桥的一个有效方法，是把桥臂当作外接负载。先断开桥臂求 $U_{MN}^{\rm oc}$，再关闭端部电源，得到桥端看入电阻 $(R_1\parallel R_2)+(R_3\parallel R_4)$。这样桥电流为开路电压除以看入电阻和桥臂电阻之和。由此既能求精确电流，也能看清偏离平衡后的方向。
+
+\typeout{ECFIG:fig:c2:bridge}\fig{fig:c2:bridge}{桥臂两端的等效网络}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[R,l={$R_1$}](2.4,1.5)to[R,l={$R_2$}](4.8,0)to[R,l_={$R_4$}](2.4,-1.5)to[R,l_={$R_3$}](0,0);\draw(2.4,1.5)to[R,l={$R_5$}](2.4,-1.5);\fill(0,0)circle(1.4pt)node[above right]{$A$};\fill(4.8,0)circle(1.4pt)node[above right]{$B$};\fill(2.4,1.5)circle(1.4pt)node[above right]{$M$};\fill(2.4,-1.5)circle(1.4pt)node[above right]{$N$};
+\end{tikzpicture}}
+\subsection{用能量关系检查符号}
+
+解完电路后，对每个电阻计算 $I_k^2R_k$，结果必须非负。电源若沿电流方向提供电势上升，其转换功率为 $+\mathcal E_k I_k$；电流反向时该代数功率为负，表示电源吸收电能。包含全部电源和电阻的闭合稳恒网络应满足
+\[
+ \sum_k\mathcal E_k I_k=\sum_j I_j^2R_j.
+\]
+若外界维持某端口电压，还应计入该端口的输入功率。功率核验不能代替节点、回路方程，但能发现漏掉内阻、误画电源极性或把某个充电电池当作放电电池等问题。精确有理数计算还可避免小数舍入掩盖守恒误差。
+
+
+
+求解后还应把节点电势逐支路代回原来的带符号电流式，检查每个节点的净流入是否为零。未单独列方程的参考节点也应自动满足守恒。端口等效与全网功率核验回答的问题不同：前者保证外部工作状态相同，后者须保留原网络的全部电源和耗散元件。

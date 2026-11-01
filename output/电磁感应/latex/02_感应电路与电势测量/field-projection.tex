@@ -1,0 +1,25 @@
+\fig{em2:field-chord}{环向电场在直线路径上的投影；磁区外仍存在感生电场}{
+\begin{tikzpicture}[scale=1.05]
+\fill[blue!5](0,0)circle(1.45);
+\draw[world](0,0)circle(1.45);
+\draw[guide](0,0)circle(2.05);
+\draw[axis](-2.8,0)--(2.8,0)node[right]{$x$};
+\draw[flow,red](-2.5,.65)--(2.5,.65);
+\fill(-2.5,.65)circle(1.5pt)node[above]{$P$};
+\fill(2.5,.65)circle(1.5pt)node[above]{$Q$};
+\fill(-1.296,.65)circle(1.5pt)node[above left]{$M$};
+\fill(1.296,.65)circle(1.5pt)node[above right]{$N$};
+\draw[dim](-.25,0)--(-.25,.65)node[midway,left]{$h$};
+\draw[guide](0,0)--(.9,.65)node[midway,below]{$r$};
+\fill(.9,.65)circle(1.5pt);
+\draw[flow,blue](.9,.65)--(1.42,-.07)node[right]{$\bm E_f$};
+\draw[flow](0,0)--(-1,-1.05)node[midway,left]{$a$};
+\node[align=center]at(.35,-.7){$\odot\ \dot B$\\$k>0$};
+\node[below]at(0,-2.1){$PM$、$NQ$在磁区外，$MN$在磁区内};
+\end{tikzpicture}}
+
+图\ref{em2:field-chord}中取直线路径$P\to Q$，其高度为$h>0$，微元为$\dd\bm l=\dd x\,\bm e_x$。按逆时针定义$\bm e_\theta$，有$r^2=x^2+h^2$和$\bm e_\theta\cdot\bm e_x=-h/r$，因而
+\[
+ \bm E_f\cdot\dd\bm l=-E_\theta(r)\frac{h}{r}\,\dd x.
+\]
+这一步投影把环向电场变为沿弦的推动作用，不能以圆弧长代替$\dd x$。由图中交点$M,N$把积分分成三段，内段代入$E_\theta=-kr/2$，两外段代入$E_\theta=-ka^2/(2r)$。在$r=a$处两式同为$-ka/2$，所以分段不会引入电场跳变。固定端点的测量支路若改走别的路径，也应重新按路径投影积分。

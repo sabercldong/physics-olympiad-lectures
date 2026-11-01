@@ -1,0 +1,430 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[弯曲导线的有效位移]\label{mg2:example:1}
+任意形状细导线从 $A=(0,0)$ 延伸到 $B=(a,b)$，通有从 $A$ 到 $B$ 的电流 $I$，均匀磁场垂直纸面向外。求导线合力，并比较长直连线与绕行曲线的结果。
+\end{example}
+\fig{fig:mg2:example:1:s}{题设：弯曲导线的有效位移}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)node[below]{$A$}to[bend left=55](2,2)to[bend right=30](4,1)node[right]{$B(a,b)$};\node at(3,2.7){$\odot B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按有向电流元积分，把匀强场提出积分号}\par\nobreak
+图\ref{fig:mg2:example:1:s}各微元受力为 $I\dd\bm l\times B\bm e_z$。均匀场不随积分位置变化，故
+\begin{align*}
+\bm F&=IB\left(\int_A^B\dd x\,\bm e_x+\int_A^B\dd y\,\bm e_y\right)\times\bm e_z\\
+&=IB\left([x]_0^a\bm e_x+[y]_0^b\bm e_y\right)\times\bm e_z\\
+&=IB(b\bm e_x-a\bm e_y).
+\end{align*}
+\fig{fig:mg2:example:1:p}{端点位移决定合力；位移向量与磁力相互垂直，分量需交叉对应}{\begin{tikzpicture}
+
+\draw[axis](-.4,0)--(4.7,0)node[right]{$x$};\draw[axis](0,-.4)--(0,2.5)node[above]{$y$};
+\draw[world](0,0)to[bend left=55](2,2)to[bend right=30](4,1);\draw[->,blue,thick](0,0)--(4,1)node[midway,below]{$\Delta\bm r$};
+\draw[guide](4,1)--(4,0);\node[below]at(4,0){$a$};\node[right]at(4,1){$B(a,b)$};\node[left]at(0,0){$A$};\draw[dim](4.5,0)--(4.5,1)node[midway,right]{$b$};
+\begin{scope}[xshift=6.4cm,yshift=1.4cm]
+\draw[->,blue,thick](0,0)--(.8,0)node[above]{$IBb$};\draw[->,blue,thick](0,0)--(0,-3.2)node[left]{$-IBa$};\draw[force](0,0)--(.8,-3.2)node[right]{$\bm F$};\draw[guide](.8,0)--(.8,-3.2)--(0,-3.2);
+\node[above,align=center]at(.4,.7){力的分量图\\$\bm B=B\bm e_z=\odot$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将端点位移交叉投影为合力并检查闭合极限}\par\nobreak
+图\ref{fig:mg2:example:1:p}的水平、竖直分力来自端点位移的两个分量，合力大小为 $IB\sqrt{a^2+b^2}$。直线与绕行曲线端点相同，合力相同；局部受力和内部应力可以不同。若把曲线长度 $s$ 放入 $IBs$，就把不同方向的微元力当成同向相加。对闭合曲线有 $a=b=0$，此处只推出合力零，不能同时推出力矩零。\end{solution}
+\begin{question}\begin{example}[使导棒起滑的最小磁场]\label{mg2:example:2}
+质量 $m=0.10\,\mathrm{kg}$ 的直棒跨在间距 $l=0.080\,\mathrm m$ 的水平导轨上，摩擦因数 $\mu=0.50$，棒中电流 $I=5.0\,\mathrm A$。允许选择磁场方向，取 $g=10\,\mathrm{m/s^2}$，求起滑所需最小场及该时支持力。
+\end{example}
+\fig{fig:mg2:example:2:s}{题设：使导棒起滑的最小磁场}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[dim](4.5,0)--(4.5,2)node[midway,right]{$l$};\draw[flow](3.3,1)--(4.1,1)node[right]{$v$};\node at(1,1){$m$};\draw[flow](3,.4)--(3,1.5)node[left]{$I$};\node at(1,-.7){水平轨道，摩擦因数 $\mu$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先分解磁力，同时列水平临界式与竖直平衡}\par\nobreak
+在图\ref{fig:mg2:example:2:s}中，磁场平行棒的分量不产生推力，应舍去这一无效分量。其余磁场可使磁力斜向上，设磁力与水平夹角为 $\alpha$，则 $F_x=IlB\cos\alpha$、$F_y=IlB\sin\alpha$，支持力 $N=mg-F_y$。临界滑动 $F_x=\mu N$，故
+\[
+B=\frac{\mu mg}{Il(\cos\alpha+\mu\sin\alpha)}.
+\]
+\fig{fig:mg2:example:2:p}{侧视受力图中电流垂直纸面向内；最优外场向左上，磁力向右上}{\begin{tikzpicture}
+
+\draw[world](-2.3,-.1)--(2.8,-.1);\node at(0,0){$\otimes I$};
+\draw[force,red](0,0)--(2.4,1.2)node[right]{$F_B=IlB$};\draw[force](0,0)--(0,2.1)node[above]{$N$};\draw[force](0,0)--(0,-1.9)node[below]{$mg$};\draw[force](0,0)--(-1.8,0)node[left]{$f=\mu N$};
+\draw[dim](.8,0)arc(0:26.565:.8)node[midway,right]{$\alpha$};
+\draw[->,blue,thick](-1.4,1)--(-2.1,2.4)node[above]{$\bm B$};\draw[guide](-1.4,1)--(-1.4,2.5);\node at(3.1,-1.2){$\tan\alpha=\mu$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{优化两分量的共同作用并核对接触与场方向}\par\nobreak
+按图\ref{fig:mg2:example:2:p}，分母最大为 $\sqrt{1+\mu^2}$，在 $\tan\alpha=\mu$ 时达到，故 $B_{\min}=\mu mg/[Il\sqrt{1+\mu^2}]=1.12\,\mathrm T$。此时 $\sin\alpha=\mu/\sqrt{1+\mu^2}$，代回得 $N=mg/(1+\mu^2)=0.80\,\mathrm N>0$，接触条件满足。图中电流垂直纸面向内，所需 $\bm B$ 与电流垂直、相对竖直方向朝左倾斜 $\alpha=\arctan\mu\simeq26.6^\circ$，由叉乘正好产生图示斜向上的磁力。若只允许竖直磁场，磁力只能水平，需 $B=\mu mg/(Il)=1.25\,\mathrm T$；两种数值对应不同的方向约束，不能混作同一问题的答案。\end{solution}
+\begin{question}\begin{example}[输电线电荷力与磁力的平衡]\label{mg2:example:3}
+两条细长平行输电线分别带有单位长度电荷 $\pm\lambda$，通过大小相等、方向相反的电流 $I$。已知单位长度电容 $c'=10^{-11}\,\mathrm{F/m}$、线间电压 $U=33\,\mathrm{kV}$。在细线近似下两线无横向相互作用，求电流与输送功率，取光速 $c_0=3.0\times10^8\,\mathrm{m/s}$。
+\end{example}
+\fig{fig:mg2:example:3:s}{题设：输电线电荷力与磁力的平衡}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.5,0)circle(.13);\node at(-1.5,0){$\cdot$};\node[below]at(-1.5,-0.2){$+\lambda,\ I$};\draw[world](1.5,0)circle(.13);\node at(1.5,0){$\times$};\node[below]at(1.5,-0.2){$-\lambda,\ I$};\draw[dim](-1.5,-1)--(1.5,-1)node[midway,below]{$d$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对同一根线分别列电力与磁力}\par\nobreak
+图\ref{fig:mg2:example:3:s}的异号线电荷相吸，反向电流相斥。每单位长度电荷力为 $f_e=\lambda^2/(2\pi\varepsilon_0d)$，磁力为 $f_B=\mu_0I^2/(2\pi d)$。平衡时两者大小相等，约去共同的距离因子，得到 $I^2=\lambda^2/(\mu_0\varepsilon_0)$。
+\fig{fig:mg2:example:3:p}{解答过程：输电线电荷力与磁力的平衡}{\begin{tikzpicture}[scale=.88]
+\node at(-1.5,0){$\odot I$};\node at(1.5,0){$\otimes I$};\node at(-1.5,1){$+\lambda$};\node at(1.5,1){$-\lambda$};\draw[force](-1.5,.2)--(-.4,.2)node[midway,above]{$f_e$};\draw[force](-1.5,-.2)--(-2.6,-.2)node[midway,below]{$f_B$};\draw[force](1.5,.2)--(.4,.2);\draw[force](1.5,-.2)--(2.6,-.2);
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由单位长度电容求电荷密度、电流及功率}\par\nobreak
+由图\ref{fig:mg2:example:3:p}及电容定义 $\lambda=c'U$，取电流大小 $I=c_0c'U=99\,\mathrm A$。输送功率 $P=UI=c_0c'U^2=3.27\times10^6\,\mathrm W$。这一步不是将静电能与磁能直接相等，而是先比较导线的横向力。结果不显含间距，是两种细线力均按 $1/d$ 衰减的结果；给定 $c'$ 已包含电容几何信息，若改变线距而仍保持原数值的 $c'$，就改变了实际模型。\end{solution}
+\begin{question}\begin{example}[线圈在磁场中的转动与稳定性]\label{mg2:example:4}
+磁矩大小为 $m_B=NIS$ 的刚性线圈绕经过中心且位于线圈平面内的固定轴转动，转动惯量为 $J$。均匀场 $B$ 垂直转轴，初始磁矩与场夹角 $0\le\theta_0<\pi$，静止释放，电流恒定。求转过任意角时的角速度、最大角速度及小角振动周期。
+\end{example}
+\fig{fig:mg2:example:4:s}{线圈绕纸面法向的轴转动，磁矩始终垂直转轴；图示初始夹角}{\begin{tikzpicture}
+
+\draw[->,blue,thick](0,0)--(3.8,0)node[right]{$\bm B$};\draw[->,red,thick](0,0)--(1.4,2.424871)node[above]{$\bm m_B$};
+\draw[very thick](-1.3,.750555)--(1.3,-.750555);\node at(0,0){$\odot$};\node[left,align=center]at(-1.5,.8){线圈平面\\侧视};
+\draw[dim](.7,0)arc(0:60:.7)node[midway,right]{$\theta_0$};\node at(2,-1.4){固定转轴过中心、垂直纸面};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用力矩方向建立固定电流下的机械能积分}\par\nobreak
+图\ref{fig:mg2:example:4:s}中力矩使夹角减小，$\tau_\theta=-m_BB\sin\theta$。机械势能 $U=-m_BB\cos\theta$，从静止初态到角度 $\theta$，对 $J\ddot\theta=-m_BB\sin\theta$ 乘 $\dot\theta$ 后积分，令 $\Omega=\dot\theta$，
+\[
+ J\int_0^{\dot\theta}\Omega\dd\Omega
+ =-m_BB\int_{\theta_0}^{\theta}\sin\varphi\dd\varphi
+ =m_BB[\cos\varphi]_{\theta_0}^{\theta}.
+\]
+左端为 $J[\Omega^2/2]_0^{\dot\theta}$，故
+$\tfrac12J\dot\theta^2=m_BB(\cos\theta-\cos\theta_0)$。在首次向同向位置转动时 $\dot\theta<0$，因此在首次从 $\theta_0$ 转到零位的过程中，\[\boxed{\dot\theta=-\sqrt{\frac{2m_BB}{J}(\cos\theta-\cos\theta_0)}},\qquad 0\le\theta\le\theta_0.\]若只求角速度大小，则取同一根式的正值；根式非负也给出可达角的条件。
+\fig{fig:mg2:example:4:p}{总机械能等于初始势能；曲线与能量线的竖直差给出转动动能}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(4.4,0)node[right]{$\theta$};\draw[axis](0,-1.8)--(0,2.2)node[above]{$U/(m_BB)$};
+\draw[blue,thick,domain=0:3.8,samples=100]plot(\x,{-1.4*cos(\x r)});\draw[orange!80!black,dashed](0,-.7)--(3,-.7)node[right]{$E/(m_BB)=\!\!-\cos\theta_0$};
+\fill(1.047198,-.7)circle(1.6pt);\draw[guide](1.047198,0)--(1.047198,-.7);\node[above]at(1.047198,0){$\theta_0$};\node[below]at(3.141593,0){$\pi$};
+\draw[guide](0,-1.4)--(-.45,-1.4)(0,-.7)--(-.45,-.7);\draw[dim](-.45,-1.4)--(-.45,-.7)node[midway,left]{$K_{\max}/(m_BB)$};
+\node at(2.2,3.1){示意取 $\theta_0=\pi/3$，解析式适用于一般初角};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在势能最低点求最大角速度}\par\nobreak
+图\ref{fig:mg2:example:4:p}的势能在 $\theta=0$ 最小，此处角速度最大：
+\[
+|\dot\theta|_{\max}=\sqrt{\frac{2m_BB(1-\cos\theta_0)}J}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{线性化转动方程并区分大幅运动的周期}\par\nobreak
+小角度时 $\sin\theta\simeq\theta$，运动方程化为 $\ddot\theta+(m_BB/J)\theta=0$，记 $\omega_0=\sqrt{m_BB/J}$，特征方程为
+$s^2+\omega_0^2=0$，实通解
+$\theta=A\cos\omega_0t+D\sin\omega_0t$。
+初始静止给 $A=\theta_0$、$\omega_0D=0$，故
+$\theta=\theta_0\cos\omega_0t$，每增加 $2\pi/\omega_0$ 重复一次，
+所以 $T=2\pi\sqrt{J/(m_BB)}$。$\theta=\pi$ 虽力矩也为零，却处于势能极大点，是不稳定平衡。给定较大初角时，上述最大角速度仍成立，但小振动周期不能当作完整大幅转动的周期。
+
+上述能量式可直接由转动方程乘 $\dot\theta$ 后积分得到：$J\ddot\theta\dot\theta=-m_BB\sin\theta\dot\theta$，两端分别是转动动能导数和 $m_BB\cos\theta$ 的导数。这样可确认势能符号与力矩方向相符。\end{solution}
+\begin{question}\begin{example}[长直电流对斜置方形线圈的力矩]\label{mg2:example:5}
+长直导线沿 $+z$ 通电流 $I_0$，其场 $B=kI_0/\rho$。边长 $2L$ 的方形线圈中轴平行 $z$，轴距直线 $D>L$。线圈水平边方向 $\bm u=(\cos\varphi,\sin\varphi,0)$，两竖边位置为 $(D,0)\pm L\bm u$；负号一侧电流向上，另一侧向下。求绕中轴的力矩。若两边距直线都为 $2L$，求对应数值表达式。
+\end{example}
+\fig{fig:mg2:example:5:s}{沿 $+z$ 轴观察线圈的水平投影；两竖边在投影中分别为点}{\begin{tikzpicture}
+
+\draw[axis](-.5,0)--(5.8,0)node[right]{$x$};\draw[axis](0,-1.6)--(0,2.5)node[above]{$y$};\node at(0,0){$\odot I_0$};
+\fill(3,0)circle(1.6pt)node[below]{$O$};\draw[world](2,-1)--(4,1);\node at(2,-1){$\odot$};\node at(4,1){$\otimes$};\node[below]at(2,-1.2){$\bm r_-,+I$};\node[above right]at(4,1){$\bm r_+,-I$};
+\draw[guide](0,0)--(2,-1)(0,0)--(4,1);\draw[->,blue](3,0)--(4.8,1.8)node[above]{$\bm u$};\draw[dim](3.55,0)arc(0:45:.55)node[midway,right]{$\varphi$};
+\draw[dim](0,-2)--(3,-2)node[midway,below]{$D$};\node at(2.6,3){竖边长 $2L$，各距中轴 $L$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按水平投影分别求两竖边的径向力}\par\nobreak
+按图\ref{fig:mg2:example:5:s}作水平投影，记两边到直线的位置为 $\bm r_\pm=(D,0)\pm L\bm u$，距离平方 $\rho_\pm^2=D^2+L^2\pm2DL\cos\varphi$。场沿环向，向上的边受吸引力，向下的边受排斥力，故 $\bm F_-=-2LkI_0I\,\bm r_-/\rho_-^2$、$\bm F_+=2LkI_0I\,\bm r_+/\rho_+^2$。
+\fig{fig:mg2:example:5:p}{两竖边的力沿各自到长直电流的径向，取矩的力臂则从线圈中轴量起}{\begin{tikzpicture}
+
+\node at(0,0){$\odot I_0$};\fill(3,0)circle(1.6pt)node[below]{$O$};\fill(2,-1)circle(1.7pt)node[below]{$-$};\fill(4,1)circle(1.7pt)node[right]{$+$};
+\draw[guide](0,0)--(2,-1)(0,0)--(4,1);\draw[->,blue](3,0)--(2,-1)node[midway,above left]{$-L\bm u$};\draw[->,blue](3,0)--(4,1)node[midway,below right]{$L\bm u$};
+\draw[force,red](2,-1)--(.8,-.4)node[below]{$\bm F_-$};\draw[force,red](4,1)--(4.706,1.1765)node[above]{$\bm F_+$};
+\node at(3,2.1){$\otimes\tau_z$（图示 $0<\varphi<\pi$）};\node at(2.5,-2){水平边受力沿 $z$，对中轴 $z$ 不贡献力矩};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从中轴取力臂，计算两边的有向力矩}\par\nobreak
+图\ref{fig:mg2:example:5:p}中的力臂是相对中轴的 $\pm L\bm u$。两水平边的微元力沿 $z$，对 $z$ 轴不贡献力矩，所以
+\[
+\tau_z=[(-L\bm u)\times\bm F_-+(L\bm u)\times\bm F_+]_z
+=-2DL^2kI_0I\sin\varphi
+\left(\rho_-^{-2}+\rho_+^{-2}\right).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把双距离条件代入，并检查几何信息是否充分}\par\nobreak
+若两边距离同时为 $2L$，相减两距离平方式得到 $\cos\varphi=0$；取 $\varphi=\pi/2$，再由 $D^2+L^2=4L^2$ 得 $D=\sqrt3L$。代入力矩为 $\tau_z=-\sqrt3kI_0IL$。只给单边距离 $\rho_-=2L$ 而不指定轴距或角度时，一条方程不能唯一确定两项几何参数，应保留一般式。
+
+力矩交叉乘积中，$\bm u\times(D,0)$ 的 $z$ 分量为 $-D\sin\varphi$，而 $\bm u\times\bm u=0$。因此每一边的位置沿 $\bm u$ 的部分不产生关于中轴的额外项，两边都留下同号的负转矩。对 $\varphi\to0$，两力作用线均穿过中轴，结果自然趋零。\end{solution}
+\begin{question}\begin{example}[旋转带电圆环的张力增量]\label{mg2:example:6}
+质量 $m$、半径 $R$ 的均匀细圆环带正电 $q$，以固定角速度 $\omega$ 逆时针转动。外磁场 $B$ 垂直环面向外。环的半径与电荷分布保持不变，求与无磁场、相同角速度相比的张力增量。
+\end{example}
+\fig{fig:mg2:example:6:s}{题设：旋转带电圆环的张力增量}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.6);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.6,0)node[midway,below]{$R$};\draw[flow](1.6*.707,1.6*.707)arc(45:115:1.6);\node at(2.5,1.3){$\odot B$};\node at(0,2.2){$m,q,\omega$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对小弧段分解两端张力与外磁力}\par\nobreak
+图\ref{fig:mg2:example:6:s}中正电荷的速度沿逆时针切向，$\bm v\times\bm B$ 径向向外。取张角 $\dd\theta$ 的小弧段，质量 $\dd m=m\dd\theta/(2\pi)$，电荷 $\dd q=q\dd\theta/(2\pi)$。两端张力的向心合量为 $2T\sin(\dd\theta/2)\simeq T\dd\theta$，磁力则为 $\omega RB\,\dd q$ 向外。
+\fig{fig:mg2:example:6:p}{微元两端张力的切向分量抵消；比较加外场前后的同一向心条件}{\begin{tikzpicture}
+
+\draw[world](-12:2)arc(-12:12:2);\draw[guide](0,0)--(12:2)(0,0)--(-12:2);\node[left]at(0,0){$O$};
+\draw[force](1.9563,.4158)--(1.7484,1.3939)node[above]{$T$};\draw[force](1.9563,-.4158)--(1.7484,-1.3939)node[below]{$T$};
+\draw[force,red](2,0)--(3.8,0)node[right]{$\omega RB\,\dd q$};\draw[->,blue](1.9,-.15)--(.7,-.15)node[midway,below]{$T\dd\theta$};
+\draw[dim](.85,-.1807)arc(-12:12:.87);\node at(1,.5){$\dd\theta$};\node at(2.3,2.6){同一 $\omega,R$ 下，向心加速度不变};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较相同向心运动条件，消去未改变的径向力}\par\nobreak
+沿图\ref{fig:mg2:example:6:p}的向心方向列式，把静电自斥等未改变的径向力统一记作 $\dd F_{0,\text{内}}$：
+\[
+T\dd\theta-\frac{q\omega RB}{2\pi}\dd\theta+\dd F_{0,\text{内}}
+=\frac{m}{2\pi}\dd\theta\,\omega^2R.
+\]
+无外场时满足 $T_0\dd\theta+\dd F_{0,\text{内}}=m\omega^2R\dd\theta/(2\pi)$。将两式相减，其他径向力与同一向心项同时消去，得到\[\boxed{\Delta T=T-T_0=\frac{q\omega BR}{2\pi}}.\]只有额外忽略静电自斥等其他作用时，才可进一步写 $T_0=m\omega^2R/(2\pi)$；求增量不需要这一假设。若磁场反向，增量变负；当算得总张力为负时，细软圆环不能靠“负张力”维持同一圆形，必须另有刚性支持。整环所受磁力合量为零，与每一段受到径向力、张力改变并不矛盾。\end{solution}
+\begin{question}\begin{example}[通电U形框的倾斜平衡]\label{mg2:example:7}
+截面积 $A=2.0\,\mathrm{mm^2}$、密度 $\rho=2.7\times10^3\,\mathrm{kg/m^3}$ 的均匀铝线弯成三边等长的U形框，各边长 $l$。开口两端绕水平轴转动，通电流 $I=4.0\,\mathrm A$，均匀磁场竖直。平衡时框偏离竖直面 $30^\circ$。求 $B$，取 $g=10\,\mathrm{m/s^2}$。
+\end{example}
+\fig{fig:mg2:example:7:s}{题设：通电U形框的倾斜平衡}{\begin{tikzpicture}[scale=.88]
+\draw[world](-1.2,1.5)--(-1.2,-1.2)--(1.2,-1.2)--(1.2,1.5);\draw[axis](-1.7,1.5)--(1.7,1.5)node[right]{$OO^{\prime}$};\draw[flow](3.2,-.5)--(3.2,1.3)node[above]{$B$};\node at(0,-1.7){三边均为 $l$（未偏转时正视图）};\draw[flow](-1.2,.9)--(-1.2,-.4)node[left]{$I$};\draw[flow](-.7,-1.2)--(.7,-1.2);\draw[flow](1.2,-.4)--(1.2,.9);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由三边实际质量分布求质心与重力力矩}\par\nobreak
+图\ref{fig:mg2:example:7:s}中每边质量为 $\rho Al$，总质量 $M=3\rho Al$。以转轴为零点沿框向下量距离，底边质心距轴 $l$，两侧边质心各距轴 $l/2$，所以总体质心距轴 $d=[l+2(l/2)]/3=2l/3$。框倾斜 $\theta$ 时，重力力矩为 $Mg d\sin\theta=2\rho Agl^2\sin\theta$。
+\fig{fig:mg2:example:7:p}{解答过程：通电U形框的倾斜平衡}{\begin{tikzpicture}[scale=.88]
+\draw[axis](-.5,0)--(.5,0)node[right]{$O$};\draw[guide](0,0)--(0,-2.7);\draw[world](0,0)--(1.3,-2.25);\fill(.87,-1.5)circle(2pt)node[right]{$G$};\draw[force](.87,-1.5)--(.87,-2.8)node[left]{$Mg$};\node at(.35,-.7){$\theta$};\node at(2.9,-1){$OG=2l/3$};\draw[force,blue](1.3,-2.25)--(3.2,-2.25)node[right]{$F_B=IBl$};\node at(1.3,-2.25){$\otimes$};\node[right]at(1.65,-2.85){$I$ 向纸内};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{补上零力臂封口线，求磁力矩与平衡场}\par\nobreak
+把开口两端沿转轴作虚拟连线不会改变绕轴磁力矩，等效面积为 $l^2$。图\ref{fig:mg2:example:7:p}中磁矩与竖直场夹角为 $90^\circ-\theta$，故磁力矩 $IBl^2\cos\theta$。平衡给出 $B=(2\rho Ag/I)\tan\theta=1.56\times10^{-2}\,\mathrm T$。长度约去，是磁矩力臂与重力力臂同按 $l^2$ 缩放的结果。若误把质心放在 $l/2$，就会漏掉底边在质量分布中的作用。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对供电引线与虚拟封口对取矩的影响}\par\nobreak
+虚拟封口线位于转轴上，其每一个受力元到转轴的力臂均为零，所以加入封口不改变所求轴向力矩；这并非声称开口线框本来就是闭合回路。实际供电引线按沿转轴引入的理想化处理，才不会另加绕轴驱动力矩。\end{solution}
+\begin{question}\begin{example}[由导棒射程反求通过电量]\label{mg2:example:8}
+质量 $m=3.0\,\mathrm g$ 的金属棒跨在宽 $l=1.0\,\mathrm m$ 的光滑水平导轨上。磁场竖直向上，大小 $B=0.10\,\mathrm T$。棒从静止受短时电流推动后水平离轨，从高 $h=0.80\,\mathrm m$ 处落地，射程 $s=2.0\,\mathrm m$。离轨后电路断开，求通过棒的有向总电量，取 $g=10\,\mathrm{m/s^2}$。
+\end{example}
+\fig{fig:mg2:example:8:s}{导轨段用俯视图表示，离轨后的下落另作侧视图；两图中的向右方向相同}{\begin{tikzpicture}
+
+\draw[world](-2,.8)--(2,.8)(-2,-.8)--(2,-.8);\draw[very thick](.5,-.8)--(.5,.8);\draw[flow](.5,-.5)--(.5,.5)node[right]{$i$};\node at(-1,0){$\odot B$};\draw[flow](.6,1.2)--(1.9,1.2)node[above]{$v$};\draw[dim](-2.5,-.8)--(-2.5,.8)node[midway,left]{$l$};\node at(0,-1.5){俯视：轨道光滑};
+\begin{scope}[xshift=6.5cm]
+\draw[world](-1.2,1.5)--(0,1.5)--(0,-1);\draw[world](-.6,-1)--(3,-1);\draw[dashed,domain=0:2.5]plot(\x,{1.5-.4*(\x)^2});\draw[flow](0,1.5)--(1.2,1.5)node[above]{$v$};
+\draw[dim](-.7,-1)--(-.7,1.5)node[midway,left]{$h$};\draw[dim](0,-1.6)--(2.5,-1.6)node[midway,below]{$s$};\node at(1,2.3){侧视：离轨即断路};
+\end{scope}
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用断路后的平抛轨迹求离轨速度}\par\nobreak
+图\ref{fig:mg2:example:8:s}的离轨后运动先给出飞行时间 $t_f=\sqrt{2h/g}=0.40\,\mathrm s$，所以离轨水平速度 $v=s/t_f=5.0\,\mathrm{m/s}$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对有磁力的导轨时段积分牛顿定律}\par\nobreak
+导轨阶段水平其他力忽略，磁力方向不变，设通电从 $t=0$ 持续到 $t=t_1$，牛顿定律积分为
+$m\int_0^v\dd u=Bl\int_0^{t_1}i(t)\dd t$。
+左端是 $m[u]_0^v=mv$，右端是 $Bl\Delta Q$。
+\fig{fig:mg2:example:8:p}{由抛体轨迹确定末动量，电流曲线下的有向面积再给出相应磁冲量}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4,0)node[right]{$t$};\draw[axis](0,-.3)--(0,2.7)node[above]{$i(t)$};
+\fill[blue!12](.4,0)plot[domain=.4:3.3,samples=60](\x,{1.9*sin((\x-.4)*180/2.9)})--(3.3,0)--cycle;
+\draw[blue,thick,domain=.4:3.3,samples=60]plot(\x,{1.9*sin((\x-.4)*180/2.9)});\node at(1.85,.65){面积 $\Delta Q$};\node at(1.8,-.8){电流仅示意，$Bl\int i\dd t=mv$};
+\begin{scope}[xshift=6.3cm]
+\draw[world](-.8,1.8)--(0,1.8)--(0,-.7);\draw[world](-.5,-.7)--(3,-.7);\draw[dashed,domain=0:2.5]plot(\x,{1.8-.4*(\x)^2});\draw[force](0,1.8)--(1.5,1.8)node[above]{$mv$};
+\draw[dim](-.7,-.7)--(-.7,1.8)node[midway,left]{$h$};\draw[dim](0,-1.3)--(2.5,-1.3)node[midway,below]{$s$};\node at(1,2.6){$t_f=\sqrt{2h/g}$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由末动量反求有向电量并检查电流换向条件}\par\nobreak
+根据图\ref{fig:mg2:example:8:p}，通过棒的电量 $\Delta Q=mv/(Bl)=(0.0030)(5.0)/(0.10\times1.0)=0.15\,\mathrm C$，正方向选择为能产生向右磁力的电流方向。计算不需要假定电流恒定，也不需要知道通电持续时间。能由这组数据确定的是有向电量；若电流发生反向，各段电量绝对值的和可能更大。棒离轨后回路断开，题中的平抛阶段不再沿用通电时的 $Bil$ 推力。\end{solution}
+\begin{question}\begin{example}[电容放电推动导棒后的剩余电荷]\label{mg2:example:9}
+电容 $C$ 先由电动势 $E$ 的电源充电，随后断开电源并通过光滑轨道上的质量 $m$、长度 $l$ 的棒放电。均匀磁场竖直，方向使棒向右运动。棒水平离轨后电路立即断开，从高度 $h$ 下落、射程为 $s$。求电容留下的电荷 $Q_f$，并给出单向放电时由电荷、冲量和电能共同限制的射程必要范围。
+\end{example}
+\fig{fig:mg2:example:9:s}{题设：电容放电推动导棒后的剩余电荷}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\draw[dim](4.5,0)--(4.5,2)node[midway,right]{$l$};\draw[flow](3.3,1)--(4.1,1)node[right]{$v$};\draw[world](0,0)--(0,.85) (0,1.15)--(0,2) (-.3,.85)--(.3,.85) (-.3,1.15)--(.3,1.15);\node[left]at(-.3,1){$C$};\node at(1.5,1){$\otimes B$};\node at(1.5,-.8){初电荷 $CE$};\draw[flow](3,1.6)--(3,.7)node[left]{$i$};\node at(-.6,1.3){$+$};\node at(-.6,.7){$-$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别确定初电荷、通过电量与离轨速度}\par\nobreak
+图\ref{fig:mg2:example:9:s}的初电荷为 $Q_0=CE$，释放阶段通过棒的有向电量为 $Q_0-Q_f$。飞行时间仍为 $\sqrt{2h/g}$，所以离轨速度 $v=s\sqrt{g/(2h)}$。不论放电电流怎样变化，水平磁冲量给出 $mv=Bl(Q_0-Q_f)$。
+\fig{fig:mg2:example:9:p}{磁冲量确定余电荷与末速度的直线关系，电能再给出独立的必要约束}{\begin{tikzpicture}
+
+\begin{scope}[x=3.8cm,y=3.8cm]
+\draw[axis](0,0)--(1.2,0)node[right]{$u=mv/(BlQ_0)$};\draw[axis](0,0)--(0,1.2)node[above]{$q_f=Q_f/Q_0$};
+\fill[blue!8](0,0)--(0,1)plot[domain=0:.707107,samples=70](\x,{sqrt(max(0,1-2*(\x)^2))})--cycle;
+\draw[blue,thick,domain=0:.7071,samples=80]plot(\x,{sqrt(1-2*(\x)^2)});
+\draw[green!45!black,very thick](0,1)--(.666667,.333333);\draw[red,dashed,thick](.666667,.333333)--(1,0);
+\fill(.666667,.333333)circle(1.5pt);\draw[guide](.666667,0)--(.666667,.333333);\node[below]at(.666667,0){$2/3$};\node[below]at(1,0){$1$};\node[left]at(0,1){$1$};
+\node[right,align=center]at(.82,.9){直线：$q_f=1-u$\\蓝线：$q_f^2+2u^2=1$};
+\end{scope}
+\node[align=center]at(3,-1.1){示意取 $CB^2l^2/m=2$；绿色线段满足电荷与电能的必要条件\\蓝线以内才不超过初始电能，不能只检查 $Q_f\ge0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从磁冲量求余电荷及非反向放电的必要范围}\par\nobreak
+由图\ref{fig:mg2:example:9:p}直接解出
+\[
+Q_f=CE-\frac{ms}{Bl}\sqrt{\frac g{2h}}.
+\]
+若放电过程中电容未反向、棒从静止单向加速，则 $0\le Q_f\le CE$，所以 $0\le s\le(BlCE/m)\sqrt{2h/g}$。这是由电荷与冲量得到的必要范围；具体电路阻值和轨道长度还会限制实际可达值。$Q_f$ 指切断电路时被保留下来的电荷，不能额外假设 $Q_f/C=Blv$，除非另有条件说明离轨前已经达到电流为零的渐近状态。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{加入电能约束，合并为更完整的必要范围}\par\nobreak
+还应核对能量的必要条件。初电能 $Q_0^2/(2C)$ 至少等于棒的动能与剩余电能之和，即 $mv^2/2+Q_f^2/(2C)\le Q_0^2/(2C)$。把 $a=Bl$、$Q_f=Q_0-mv/a$ 代入并约去初电能，得到 $mv^2+m^2v^2/(Ca^2)-2Q_0mv/(Ca)\le0$。对 $v>0$ 约去 $mv$，故还需 $v\le2Q_0a/(m+Ca^2)$。这一上界应与 $v\le aQ_0/m$ 同时满足，故射程的必要范围可合并为\[\boxed{0\le s\le\sqrt{\frac{2h}{g}}\min\!\left(\frac{BlCE}{m},\frac{2BlCE}{m+CB^2l^2}\right)}.\]图\ref{fig:mg2:example:9:p}以 $u=mv/(BlQ_0)$、$q_f=Q_f/Q_0$ 归一化，直线来自冲量，蓝色边界来自电能。示意参数下，电能比非负余电荷给出更紧的必要上界；实际可达值仍须由电路时程与轨道长度决定。若给定射程违反任一必要条件，就无法由该电容单独实现。\end{solution}
+\begin{question}\begin{example}[转动带电圆盘的外磁场力矩]\label{mg2:example:10}
+绝缘薄圆盘半径 $R$、均匀面电荷密度 $\sigma$，以角速度 $\omega$ 转动。均匀磁场 $B$ 垂直转轴，求磁力矩。取 $R=0.108\,\mathrm m,\sigma=2.23\,\mathrm{C/m^2},\omega=24.6\,\mathrm{s^{-1}},B=0.13\,\mathrm T$ 计算大小。
+\end{example}
+\fig{fig:mg2:example:10:s}{题设：转动带电圆盘的外磁场力矩}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1.6);\fill(0,0)circle(1.4pt)node[below]{$O$};\draw[dim](0,0)--(1.6,0)node[midway,below]{$R$};\draw[flow](1.6*.707,1.6*.707)arc(45:115:1.6);\draw[flow](2.4,0)--(4,0)node[right]{$B$};\node at(0,2.3){$\omega\bm n$ 垂直盘面};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把旋转圆盘分成同轴电流环并求磁矩微元}\par\nobreak
+图\ref{fig:mg2:example:10:s}将圆盘分为半径 $r$ 的薄环。薄环电量 $\dd q=2\pi\sigma r\dd r$，电流 $\dd I=\omega\dd q/(2\pi)=\sigma\omega r\dd r$，磁矩 $\dd m=\pi r^2\dd I=\pi\sigma\omega r^3\dd r$。所有磁矩沿同一转轴方向，故积分可按标量进行。
+\fig{fig:mg2:example:10:p}{先按半径积磁矩，再在与题设相同的正视图中确定力矩方向}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.8);\fill[blue!15,even odd rule](0,0)circle(1.15)(0,0)circle(.98);\draw(0,0)circle(1.15)(0,0)circle(.98);
+\draw[flow](1.1,0)arc(0:85:1.1);\draw[dim](0,-.1)--(.98,-.1)node[midway,below]{$r$};\node[above]at(0,2.2){$\dd I=\sigma\omega r\dd r$};\node at(0,-2.3){$\dd m_B=\pi\sigma\omega r^3\dd r$};
+\begin{scope}[xshift=5.8cm]
+\node at(0,0){$\odot\bm m_B$};\draw[->,blue,thick](.2,0)--(2.4,0)node[right]{$\bm B$};\draw[force,red](0,.2)--(0,2.1)node[above]{$\bm\tau\parallel+\bm e_y$};\node[align=center]at(.8,-1.3){磁矩沿 $+z$ 向纸外\\$\bm m_B\times\bm B\parallel+y$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分磁矩、求数值，并区分瞬时力矩与轴的后续运动}\par\nobreak
+图\ref{fig:mg2:example:10:p}给出 $m_B=\pi\sigma\omega\int_0^Rr^3\dd r
+=\pi\sigma\omega[r^4/4]_0^R=\pi\sigma\omega R^4/4$。因磁矩与外场垂直，力矩大小 $\tau=m_BB=\pi\sigma\omega BR^4/4=7.62\times10^{-4}\,\mathrm{N\,m}$。力矩方向为 $\bm m_B\times\bm B$，与原转轴垂直；在图示正视图中沿纸面向上。仅凭这一瞬时力矩，不能断言旋转轴会单调趋近磁场方向：若轴由支承固定，支承需提供相应反力矩；若轴自由，则还须联立刚体角动量方程判断进动与其他转动。对任意夹角，应再乘 $\sin\theta$；把整个圆盘当作外缘一条电流环会高估磁矩，因为内圈半径与线速度都更小。\end{solution}
+\begin{question}\begin{example}[矩形回路被长直电流吸引]\label{mg2:example:11}
+长直导线沿竖直方向通电流 $I_0$，同一平面内矩形线圈高 $l$、宽 $w$，近边距直线 $a$。近边电流 $I$ 与直线同向。求线圈合力，并说明上下横边的作用。
+\end{example}
+\fig{fig:mg2:example:11:s}{题设：矩形回路被长直电流吸引}{\begin{tikzpicture}[scale=.88]
+\draw[flow](0,-.3)--(0,2.8)node[above]{$I_0$};\draw[world](1,0)rectangle(3,2);\draw[flow](1,.4)--(1,1.3)node[left]{$I$};\node[below]at(1,0){$a$};\draw[dim](1,-.7)--(3,-.7)node[midway,below]{$w$};\draw[dim](3.4,0)--(3.4,2)node[midway,right]{$l$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按各自距离分别求近边与远边受力}\par\nobreak
+图\ref{fig:mg2:example:11:s}中近边与长直电流同向，受力向左，大小 $F_1=\mu_0I_0Il/(2\pi a)$；远边电流反向，受力向右，大小 $F_2=\mu_0I_0Il/[2\pi(a+w)]$。两边受到的场不同，闭合线圈的合力不能由均匀场的端点位移式给成零。
+\fig{fig:mg2:example:11:p}{近边的吸引大于远边的排斥，上下边则在相同位置有等大反向的微元力}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(3,2.5);\draw[force,red](0,1.25)--(-1.8,1.25)node[left]{$F_1$};\draw[force,red](3,1.25)--(3.7,1.25)node[right]{$F_2$};
+\foreach \x/\f in {.4/.9,1.4/.6,2.5/.4}{\draw[->,blue,thick](\x,2.5)--(\x,2.5+\f);\draw[->,blue,thick](\x,0)--(\x,-\f);}
+\draw[flow](0,.3)--(0,1);\draw[flow](.5,2.5)--(1.8,2.5);\draw[flow](3,2.2)--(3,1.6);\draw[flow](2.4,0)--(1.1,0);
+\node at(1.5,4){上下横边同一 $x$ 的受力逐点抵消};\node at(1.5,-1.6){竖边场分别为 $\mu_0I_0/(2\pi a)$ 和 $\mu_0I_0/[2\pi(a+w)]$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相减竖边力并逐点抵消上下横边的力}\par\nobreak
+沿图\ref{fig:mg2:example:11:p}的向左方向，合力大小
+\[
+F=\frac{\mu_0I_0Il}{2\pi}\left(\frac1a-\frac1{a+w}\right).
+\]
+上横边各微元受力竖直，其受力积分大小为
+\[
+ |F_{\rm top}|=\frac{\mu_0I_0I}{2\pi}\int_a^{a+w}\frac{\dd x}{x}
+ =\frac{\mu_0I_0I}{2\pi}[\ln x]_a^{a+w}
+ =\frac{\mu_0I_0I}{2\pi}\ln\frac{a+w}{a}
+\]；下横边电流反向，受相反等大的力，所以二者相消。$w\ll a$ 时两竖边差值约为 $\mu_0I_0Ilw/(2\pi a^2)$，随线圈面积减小而趋零，可与小磁偶极子的场梯度近似相互检验。\end{solution}
+\begin{question}\begin{example}[径向磁场电流计的标定]\label{mg2:example:12}
+多匝线圈面积为 $S$，匝数 $N$，转动惯量 $J$，处于理想径向磁场 $B$ 中。设计使工作范围内磁力矩恒为 $NIBS$，游丝反向力矩为 $\kappa\theta$。求静态偏角、电流灵敏度与断电后的微小振动周期。
+\end{example}
+\fig{fig:mg2:example:12:s}{径向场工作区的俯视示意：两有效载流边的场沿径向，磁力沿切向组成力偶}{\begin{tikzpicture}
+
+\filldraw[fill=gray!10,world](0,0)circle(1.05);\draw[world](0,0)circle(1.9);\node at(-2.5,0){$N$};\node at(2.5,0){$S$};
+\draw[guide](-1.3595,-.6339)--(1.3595,.6339);\node at(1.3595,.6339){$\odot$};\node at(-1.3595,-.6339){$\otimes$};
+\draw[->,blue,thick](1.45,.676)--(2.25,1.049)node[right]{$\bm B$};\draw[->,blue,thick](-2.25,-1.049)--(-1.45,-.676);\node at(-2.25,-1.4){$\bm B$};
+\draw[force,red](1.3595,.85)--(.95,1.73)node[above]{$\bm F$};\draw[force,red](-1.3595,-.85)--(-.95,-1.73)node[below]{$-\bm F$};
+\node[align=center]at(0,-2.6){有效载流边沿转轴方向，磁力垂直各自半径\\工作范围内力臂不因偏转角改变};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{利用径向场的固定力臂求静态偏角与灵敏度}\par\nobreak
+图\ref{fig:mg2:example:12:s}中的径向场始终与有效载流边保持规定几何关系，磁力矩按题设为常量 $NIBS$，无需再乘一个随偏角变化的正弦。静态平衡满足 $NIBS-\kappa\theta=0$，故 $\theta=NBSI/\kappa$，灵敏度 $\theta/I=NBS/\kappa$。
+\fig{fig:mg2:example:12:p}{静态标定来自两种力矩的交点；断电后只保留游丝的线性回复力矩}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.5,0)node[right]{$\theta$};\draw[axis](0,0)--(0,3.4)node[above]{$\tau$};
+\draw[blue,thick](0,0)--(3.8,3.04)node[right]{$\kappa\theta$};\draw[red,thick](0,1.8)--(4.1,1.8)node[right]{$NIBS$};
+\draw[guide](2.25,0)--(2.25,1.8);\fill(2.25,1.8)circle(1.5pt);\node[below]at(2.25,0){$\theta_{\rm eq}=NBSI/\kappa$};
+\node at(2.1,4){固定电流时，$\delta\tau_{\rm net}=-\kappa\eta$};\node at(2.1,-1.2){断电后：$J\ddot\theta+\kappa\theta=0$，零位恢复};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在平衡点附近列回复力矩，求断电后周期}\par\nobreak
+图\ref{fig:mg2:example:12:p}中若电流固定，平衡偏角附近的小扰动 $\eta=\theta-\theta_{\rm eq}$ 满足 $J\ddot\eta+\kappa\eta=0$；记 $\omega_0=\sqrt{\kappa/J}$，将 $\eta\propto\e^{st}$ 代入得
+$s^2+\omega_0^2=0$，故
+$\eta=A\cos\omega_0t+D\sin\omega_0t$。
+给定 $\eta(0)=\eta_0,\dot\eta(0)=\Omega_0$ 时，
+$A=\eta_0,D=\Omega_0/\omega_0$。
+断电后用 $\theta$ 替代 $\eta$，平衡点回到零位；若从静态偏角处断电，
+$\theta(0)=NBSI/\kappa,\dot\theta(0)=0$，故
+$\theta=(NBSI/\kappa)\cos\omega_0t$。
+周期仍是 $T=2\pi\sqrt{J/\kappa}$。这一周期不含磁场，是忽略感应阻尼和其他阻尼后的理想结果。实际表头的阻尼会改变回零过程，应在有相应电路条件时另加速度项，不能从静态偏角公式直接判断回零快慢。\end{solution}
+\begin{question}\begin{example}[电流层的外场与磁压力]\label{mg2:example:13}
+两块很宽的平行薄板沿纸外、纸内方向分别通有面电流 $K$，忽略边缘效应。求层间磁场、单层所受压力；若 $K=2.0\times10^4\,\mathrm{A/m}$，取 $\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$，求压力数值。
+\end{example}
+\fig{fig:mg2:example:13:s}{题设：电流层的外场与磁压力}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,-1)--(2,-1) (-2,1)--(2,1);\node[right]at(2,1){$\odot K$};\node[right]at(2,-1){$\otimes K$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别求两层场并叠加区域总场}\par\nobreak
+按图\ref{fig:mg2:example:13:s}中上层电流的右手方向，它在下侧产生向右场；下层在上侧也产生向右场。每层单独的场大小 $\mu_0K/2$，所以层间 $B=\mu_0K$，外部为零。
+\fig{fig:mg2:example:13:p}{解答过程：电流层的外场与磁压力}{\begin{tikzpicture}[scale=.88]
+\draw[world](-2,0)--(2,0);\node[right]at(2,0){$\odot K$};\draw[flow](-1,-.5)--(1,-.5)node[midway,below]{$B_{\rm other}=\mu_0K/2$};\draw[force](0,0)--(0,1.3)node[above]{$F$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只用另一层的场求本层受力和压力}\par\nobreak
+图\ref{fig:mg2:example:13:p}取上层小片，使用下层产生的 $B_{\rm other}=\mu_0K/2$。若小片沿电流长 $a$、横向宽 $b$，其总电流 $Kb$，受力 $F=(Kb)aB_{\rm other}$，垂直板面向上。于是 $p=F/(ab)=\mu_0K^2/2$。代入得 $p=80\pi\,\mathrm{Pa}\approx251\,\mathrm{Pa}$，下层受等大反向压力。用层间总场改写为 $B^2/(2\mu_0)$，仍得到同一数值。总场用于描述区域，其他层的场用于求本层受力，两次取场分别对应不同研究对象。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对单位、距离依赖与无限宽近似}\par\nobreak
+压力数值按单位面积计算，不需要知道板间距离。在理想无限面模型中，另一层所产生的场与距离无关，所以间距改变不改变此压力；实际有限宽板在间距接近板宽后不再符合该近似。\end{solution}
+\begin{question}\begin{example}[均匀带电球的磁进动]\label{mg2:example:14}
+质量 $M$、电荷 $Q>0$ 的均匀实心球，电荷密度与质量密度成比例。球心固定且支承不提供力矩，初始角动量与均匀磁场夹角 $\theta$。在经典刚体近似下求角动量的运动、进动角速度，并判断转动动能是否改变。
+\end{example}
+\fig{fig:mg2:example:14:s}{题设：均匀带电球的磁进动}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,0)circle(1);\draw[flow](0,-1.5)--(0,2.3)node[above]{$B$};\draw[force](0,0)--(1.5,1.6)node[right]{$L$};\draw[guide](0,.8)arc(90:47:.8);\node at(.45,.95){$\theta$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用电荷质量同比分布建立磁矩与角动量关系}\par\nobreak
+图\ref{fig:mg2:example:14:s}中每个质量微元具有同比电量，故 $\dd Q=(Q/M)\dd M$。由 $\dd m=\omega r_\perp^2\dd Q/2$ 与 $\dd L=\omega r_\perp^2\dd M$ 积分，$\bm m=(Q/2M)\bm L$。均匀场总力矩为 $\bm m\times\bm B$，所以
+\[
+\frac{\dd\bm L}{\dd t}=\frac{Q}{2M}\bm L\times\bm B
+=\left(-\frac{Q\bm B}{2M}\right)\times\bm L.
+\]
+\fig{fig:mg2:example:14:p}{解答过程：均匀带电球的磁进动}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,-1)--(0,2.8)node[above]{$B$};\draw[guide](0,1.8)ellipse(1.5 and .45);\draw[flow,blue](1.299,2.025)arc(30:-35:1.5 and .45);\draw[force](0,0)--(1.3,2)node[right]{$L(t)$};\draw[flow](0,0)--(0,-1)node[below]{$\Omega_p$};\node[align=center]at(3,.4){$|L|,\theta$ 不变\\从 $+\bm B$ 轴端看为顺时针};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{交换叉乘次序求有向进动角速度}\par\nobreak
+图\ref{fig:mg2:example:14:p}的 $\bm L$ 端点绕场轴作匀速圆周运动，$\bm\Omega_p=-Q\bm B/(2M)$，周期 $4\pi M/(QB)$。为确定运动函数，取 $\bm B=B\bm e_z$，
+令 $\gamma=QB/(2M)$，并选择初始横向角动量沿 $+x$。
+运动方程成为 $\dot L_x=\gamma L_y,\dot L_y=-\gamma L_x,\dot L_z=0$；
+再求导得 $\ddot L_x+\gamma^2L_x=0$，其特征根为 $\pm\mathrm i\gamma$。
+由初值 $L_x(0)=L\sin\theta,\dot L_x(0)=0,L_z(0)=L\cos\theta$，
+\[
+ \bm L(t)=L\sin\theta\cos\gamma t\,\bm e_x
+ -L\sin\theta\sin\gamma t\,\bm e_y+L\cos\theta\,\bm e_z.
+\]
+其中 $L_y=\dot L_x/\gamma$，直接求导可核对两个耦合分量方程。
+转过相位 $2\pi$ 所需时间即 $2\pi/\gamma$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查长度、夹角及转动动能的守恒}\par\nobreak
+将运动方程分别点乘 $\bm L$ 和 $\bm B$，得到 $\dd L^2/\dd t=0$、$\dd(\bm L\cdot\bm B)/\dd t=0$，因此夹角保持 $\theta$。实心球的 $J=2MR^2/5$ 不变，$K=L^2/(2J)$ 也不变。对于 $\theta=0$ 的特殊情形，力矩为零，角动量方向固定；公式中的进动角速度描述绕轴生成的运动，但端点圆的半径为零。
+
+也可由功率检查 $\bm\tau\cdot\bm\omega=(Q/2M)(\bm L\times\bm B)\cdot(\bm L/J)=0$。由于球体转动惯量各向相同，这一检验与角动量长度不变完全一致；它并未借助额外摩擦或耗散来保持速率。\end{solution}

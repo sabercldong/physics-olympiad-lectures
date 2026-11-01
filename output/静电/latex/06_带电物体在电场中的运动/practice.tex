@@ -1,0 +1,64 @@
+\section{练习}
+
+\begin{question}\begin{drill}[电子束的屏上范围与撞板限制]\label{e6:drill:1}
+电子由变化加速电压 $0<u\le800\,\mathrm V$ 加速，从中线进入偏转板，$L=0.20\,\mathrm m,d=0.050\,\mathrm m$，出口至屏 $b=0.10\,\mathrm m$。上板相对下板的电势差为 $U^\prime\ge0$，以不接触极板为通过条件。求至少有电子能通过并打屏的 $U^\prime$ 范围；$U^\prime=50\,\mathrm V$ 时求屏上纵向范围。忽略电子过场期间电压变化。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:1:s}\fig{fig:e6:drill:1:s}{电子的入场位置、偏转板极性与屏的几何位置}{\begin{tikzpicture}
+
+\draw[world](0,1)--(4,1)(0,-1)--(4,-1);\draw[guide](-1,0)--(6,0);\draw[world](6,-1.6)--(6,2.5);\draw[flow](-1,0)--(0,0)node[midway,above]{$e^-,v_0$};\node[above]at(2,1){上板 $A$};\node[below]at(2,-1){下板 $B$};\node[right]at(6,0){屏};\draw[dim](0,-1.8)--(4,-1.8)node[midway,below]{$L$};\draw[dim](4,-1.8)--(6,-1.8)node[midway,below]{$b$};\draw[dim](4.6,-1)--(4.6,1)node[midway,right]{$d$};\node at(2,2.1){$V_A-V_B=U'\ge0$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:1}
+\begin{question}\begin{drill}[向下半空间喷出的带电漆滴]\label{e6:drill:2}
+两水平板相距 $d=0.30\,\mathrm m$，场由下板指向上板，$E=1.0\times10^3\,\mathrm{N/C}$。上板中心喷枪以速率 $v_0=20\,\mathrm{m/s}$ 向下半空间各方向喷负漆滴，$m=2.0\times10^{-15}\,\mathrm{kg}$、$q=-2.0\times10^{-16}\,\mathrm C$。忽略重力与相互作用，求落到下板的动能、最短时间、覆盖圆面积。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:2:s}\fig{fig:e6:drill:2:s}{题设：向下半空间喷出的带电漆滴}{\begin{tikzpicture}[scale=.88]
+\draw[world](0,1.25)--(4.5,1.25);\node[right]at(4.5,1.25){$A$};\draw[world](0,0.0)--(4.5,0.0);\node[right]at(4.5,0.0){$B$};\node at(2,1.8){喷枪 $P$};\foreach \x in{1,2,3}{\draw[flow](2,1.25)--(\x,.2);}\node at(-1,.6){$E\uparrow$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:2}
+\begin{question}\begin{drill}[匀强电场与重力的合加速度]\label{e6:drill:3}
+质量 $m$、电量 $q>0$ 的小球由原点静止释放，电场水平向右，重力竖直向下。求轨迹、经过高度落差 $h$ 时的位移与速度方向。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:3:s}\fig{fig:e6:drill:3:s}{题设：匀强电场与重力的合加速度}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,0)--(4,0)node[right]{$x$};\draw[axis](0,0)--(0,-2.5)node[below]{$y$};\draw[flow](1,1)--(3,1)node[right]{$E$};\fill(0,0)circle(2pt)node[above left]{$q$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:3}
+\begin{question}\begin{drill}[线性回复电场中的振动]\label{e6:drill:4}
+一维电场 $E_x=-\beta x$，$\beta>0$。正粒子 $q,m$ 从 $x=A$ 静止释放，忽略其他力，求运动、周期与最大速度，并讨论负粒子。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:4:s}\fig{fig:e6:drill:4:s}{回复电场在原点变号，两侧均指向原点}{\begin{tikzpicture}
+
+\draw[axis](-3,0)--(3.5,0)node[right]{$x$};\draw[axis](0,-2.4)--(0,2.4)node[above]{$E_x$};\draw[world](-2.5,2)--(2.5,-2);\draw[flow](-2,-1.8)--(-1,-1.8);\draw[flow](2,1.8)--(1,1.8);\node[below left]at(0,0){$O$};\fill(1.8,0)circle(2pt)node[above]{$q>0,\ x=A$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:4}
+\begin{question}\begin{drill}[斥力散射的最近距离]\label{e6:drill:5}
+粒子 $q,m$ 从远处以速率 $v$、瞄准距 $b$ 射向固定同号点电荷 $Q$。求最近距离 $r_{\min}$。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:5:s}\fig{fig:e6:drill:5:s}{题设：斥力散射的最近距离}{\begin{tikzpicture}[scale=.88]
+\draw[flow](-4,1.5)--(-1.5,1.5);\draw[guide](-4,0)--(3,0);\draw[world,fill=white](0,0)circle(.12);\node[above]at(0,0.15){$Q$};\draw[dim](-3,0)--(-3,1.5)node[midway,left]{$b$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:5}
+\begin{question}\begin{drill}[速度连续的两段电场]\label{e6:drill:6}
+正粒子从静止开始，前 $t_0$ 受加速度 $a$，接着受 $-2a$，直到第一次停止。求停止时刻与总位移，并画速度图。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:6:s}\fig{fig:e6:drill:6:s}{题设：速度连续的两段电场}{\begin{tikzpicture}[scale=.88]
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,-2)--(0,1.5)node[above]{$a_x$};\draw[world](0,1)--(2,1);\draw[world](2,-2)--(4,-2);\node[below]at(2,0){$t_0$};\node[left]at(0,1){$a$};\node[left]at(0,-2){$-2a$};
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:6}
+\begin{question}\begin{drill}[斜入射偏转板的最危险位置]\label{e6:drill:7}
+板间允许 $-d/2<y<d/2$，长 $L$。粒子入场 $y=0$，$v_x=v>0,v_y=u>0$，竖直加速度恒为 $-a$，$a>0$。给出不撞板的完整条件。
+\end{drill}
+\typeout{ECFIG:fig:e6:drill:7:s}\fig{fig:e6:drill:7:s}{只保留题给的板间边界、初速度与向下加速度}{\begin{tikzpicture}
+
+\draw[world](0,1.5)--(5,1.5)(0,-1.5)--(5,-1.5);\draw[guide](-.5,0)--(5.5,0);\draw[axis](-.5,-.6)--(5.8,-.6)node[right]{$x$};\fill(0,0)circle(2pt);\draw[flow](0,0)--(1.3,.8)node[above]{$(v,u)$};\draw[force](2.8,.5)--(2.8,-.7)node[right]{$a$};\draw[dim](0,-2)--(5,-2)node[midway,below]{$L$};\node[right]at(5,1.5){$y=d/2$};\node[right]at(5,-1.5){$y=-d/2$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{e6:drill:7}

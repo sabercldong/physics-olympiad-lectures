@@ -1,0 +1,161 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{n4d1}\textbf{分离上升段变量求时间和最高点}\par\nobreak
+图\ref{n4d1q}上升段用向上速度 $v>0$，$\dot v=-g(1+v^2/u^2)$。令 $r=v_0/u$，速度由 $v_0$ 降到零，分离变量给
+\[
+t_\uparrow=\int_0^{v_0}\frac{\dd v}{g(1+v^2/u^2)}
+=\frac ug\int_0^r\frac{\dd y}{1+y^2}
+=\frac ug[\arctan y]_0^r=\frac ug\arctan r.
+\]
+这里换元 $y=v/u$，$\dd v=u\dd y$，速度端点 $0,v_0$ 对应 $y=0,r$；原函数来自 $(\arctan y)'=1/(1+y^2)$。
+同一上升段用 $v\dd v/\dd z=\dot v$，得
+\[
+H=\int_0^{v_0}\frac{v\dd v}{g(1+v^2/u^2)}
+=\frac{u^2}{2g}\int_1^{1+r^2}\frac{\dd q}{q}
+=\frac{u^2}{2g}[\ln q]_1^{1+r^2}
+=\frac{u^2}{2g}\ln(1+r^2).
+\]
+第二个积分换元 $q=1+v^2/u^2$，所以 $\dd q=2v\dd v/u^2$，上下限变为 $1$ 与 $1+r^2$。
+两个积分的分母相同，分子多出的 $v$ 来自位移微元 $\dd z=v\dd t$。
+\fig{n4d1s}{下落速率渐近终端值，返回速率由有限高度确定}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$t_\downarrow$};\draw[axis](0,0)--(0,2.5)node[above]{$w$};\draw[guide](0,2)--(4.4,2)node[right]{$u$};\draw[world,domain=0:4.2,samples=50]plot(\x,{2*(exp(2*\x)-1)/(exp(2*\x)+1)});\draw[guide](2.2,0)--(2.2,1.95);\node[below]at(2.2,0){返回时刻};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从最高点重新积分下降运动}\par\nobreak
+从最高点另起计时，记下降用时为 $\tau$，向下速率为 $w$、下降距离为 $s$。
+阻力向上，故 $\dot w=g(1-w^2/u^2)$，初始条件为 $w(0)=s(0)=0$。
+在 $0\le w<u$ 的实际分支上分离变量，令 $z=w/u$，得
+\[
+ \frac{g\tau}{u}=\int_0^{w/u}\frac{\dd z}{1-z^2}
+ =\frac12[-\ln(1-z)+\ln(1+z)]_0^{w/u}
+ =\frac12\ln\frac{1+w/u}{1-w/u}.
+\]
+这里用了 $1/(1-z^2)=[1/(1-z)+1/(1+z)]/2$。
+将对数式指数化并解出 $w$，得到
+\[
+ w=u\frac{\e^{2g\tau/u}-1}{\e^{2g\tau/u}+1}
+   =u\tanh\frac{g\tau}{u}.
+\]
+定义 $\cosh x=(\e^x+\e^{-x})/2$、
+$\tanh x=(\e^x-\e^{-x})/(\e^x+\e^{-x})$。链式求导给
+$\dd\ln\cosh x/\dd x=(\e^x-\e^{-x})/(2\cosh x)=\tanh x$。
+位移积分中换元 $q=g\tau'/u$，有 $\dd\tau'=(u/g)\dd q$，
+原上下限 $0,\tau$ 对应 $0,g\tau/u$，所以
+\[
+ s=\int_0^\tau w(\tau')\dd\tau'
+   =\frac{u^2}{g}\int_0^{g\tau/u}\tanh q\,\dd q
+   =\frac{u^2}{g}[\ln\cosh q]_0^{g\tau/u}
+   =\frac{u^2}{g}\ln\cosh\frac{g\tau}{u}.
+\]
+图\ref{n4d1s}中的 $w$ 从零单调增大，却始终低于终端速率 $u$；
+因此不能把下降段也写成上升时含 $1+w^2/u^2$ 的分母。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由返回高度确定下降时间与末速}\par\nobreak
+令 $s=H$，并记 $x=gt_\downarrow/u\ge0$，则
+\[
+ \ln\cosh x=\frac12\ln(1+r^2),\qquad
+ \cosh x=\sqrt{1+r^2}.
+\]
+把 $\cosh x=(\e^x+\e^{-x})/2$ 代入，令 $Y=\e^x\ge1$，可得
+$Y^2-2\sqrt{1+r^2}Y+1=0$。
+两个根互为倒数；下降时间非负，故应取
+$Y=\sqrt{1+r^2}+r$。再由 $\tanh x=\sqrt{\cosh^2x-1}/\cosh x$
+求返回速率，图\ref{n4d1s}的返回状态为
+\[
+ t_\downarrow=\frac ug\ln\left(r+\sqrt{1+r^2}\right),\qquad
+ v_f=\frac{v_0}{\sqrt{1+r^2}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{整理总时间并检查弱阻力极限}\par\nobreak
+下降时间只从最高点算起；从发射到返回的总时间是
+\[
+ T=t_\uparrow+t_\downarrow
+ =\frac ug\left[\arctan r+\ln\left(r+\sqrt{1+r^2}\right)\right].
+\]
+它一般不等于 $(v_0+v_f)/g$，因为平方阻力的冲量不能用线性阻力中的 $-k\Delta z$ 表示。
+$c\to0$、$r\to0$ 时，$\arctan r\simeq r$、
+$\ln(r+\sqrt{1+r^2})\simeq r$，两段时间都趋于 $v_0/g$，且 $v_f\to v_0$，回到真空抛体。
+\end{drillsolution}
+
+\begin{drillsolution}{n4d2}\textbf{以静摩擦上限确定开始滑动的时刻}\par\nobreak
+图\ref{n4d2q}共同运动时 $a=F/(3m)$，上块所需摩擦 $f=ma=F/3$。达到 $\mu mg$ 时 $F_c=3\mu mg$，所以 $t_c=3\mu mg/\gamma$。
+\fig{n4d2s}{滑动后的相对位移从零以三次方增长}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.7,0)node[right]{$\tau=t-t_c$};\draw[axis](0,0)--(0,2.7)node[above]{$s_{\rm rel}$};\draw[world,domain=0:3.5,samples=40]plot(\x,{.05*\x*\x*\x});\draw[guide](0,2.14)--(3.5,2.14)--(3.5,0);\node[left]at(0,2.14){$\ell$};\node[below]at(3.5,0){$\tau_e$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在局部时间内积分相对加速度}\par\nobreak
+滑动后上块加速度 $a_m=\mu g$，板加速度 $a_P=[\gamma t-\mu mg]/(2m)$。令 $\tau=t-t_c$，两者之差 $a_P-a_m=\gamma\tau/(2m)$。临界时相对速度为零，以从临界位置新增的滑动量定义 $s_{\rm rel}(0)=0$，逐次积分：
+\begin{align*}
+v_P-v_m&=\int_0^\tau\frac{\gamma s}{2m}\dd s
+=\left[\frac{\gamma s^2}{4m}\right]_0^\tau
+=\frac{\gamma\tau^2}{4m},\\
+s_{\rm rel}&=\int_0^\tau\frac{\gamma s^2}{4m}\dd s
+=\left[\frac{\gamma s^3}{12m}\right]_0^\tau
+=\frac{\gamma\tau^3}{12m}.
+\end{align*}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用板端边界求总离板时刻}\par\nobreak
+图\ref{n4d2s}取 $s_{\rm rel}=\ell$，得滑动后到左端时间 $\tau_e=(12m\ell/\gamma)^{1/3}$，总时刻 $t_e=t_c+\tau_e$。整个滑动阶段相对速度为正且递增，因此摩擦方向一致；如果只在临界时把恒定加速度带入位移公式，会遗漏持续增加的驱动力。
+\end{drillsolution}
+
+\begin{drillsolution}{n4d3}\textbf{由质量比与斜面约束求接触力分量}\par\nobreak
+定义图\ref{n4d3q}的 $N_n=c_nmg$，$c_0=0$。设上块向下加速度 $a$，接触斜面力水平与竖直分量大小相同，记为 $P$。两块水平加速度大小分别为 $P/m$、$P/(\eta m)$，$45^\circ$ 约束给两者之和等于 $a$，所以 $P=bma$，$b=\eta/(1+\eta)$。
+\fig{n4d3s}{质量比改变水平分配，但上层仍由有效重力缩放}{\begin{tikzpicture}
+\draw[world](0,0)rectangle(2,2);\draw[world](0,0)--(2,2);\draw[flow](.5,1.5)--(-.8,1.5)node[left]{$P/(\eta m)$};\draw[flow](1.5,.5)--(2.8,.5)node[right]{$P/m$};\draw[force,red](1,2.9)--(1,2)node[midway,right]{$c_{n-1}m(g-a)$};\node at(1,-.7){$N_n=mg+P$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{使用上层有效重力建立递推}\par\nobreak
+图\ref{n4d3s}上块竖直式为 $\eta ma=\eta mg+c_{n-1}m(g-a)-P$，得到 $a/g=(\eta+c_{n-1})/(\eta+c_{n-1}+b)$。因此
+\[c_n=1+b\frac{\eta+c_{n-1}}{\eta+c_{n-1}+b}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{证明极限存在并核查质量比极限}\par\nobreak
+记递推映射为 $f(c)=1+b(\eta+c)/(\eta+c+b)$。商法则给
+\[
+f'(c)=b\frac{(\eta+c+b)-(\eta+c)}{(\eta+c+b)^2}
+=\frac{b^2}{(\eta+c+b)^2}>0.
+\]
+因 $\eta>0,c\ge0$，此导数小于 $1$。而 $c_1>c_0=0$，递增映射使 $c_{n+1}>c_n$；又有 $f(c)<1+b$，故有限层序列递增有界，极限存在。
+令 $c$ 为极限，固定点式给
+$(c-1)(\eta+c+b)=b(\eta+c)$。整理成
+$(c-1)(c+\eta)=b(\eta+1)=\eta$，
+即 $c^2+(\eta-1)c-2\eta=0$。舍去负根，所以
+\[N_\infty=\frac{1-\eta+\sqrt{\eta^2+6\eta+1}}2\,mg.\]
+$\eta=1$ 给 $\sqrt2mg$；$\eta\to0$ 直接代入给 $mg$。为计算 $\eta\to\infty$，将正根有理化，
+\[
+c=\frac{4\eta}{\sqrt{\eta^2+6\eta+1}+\eta-1}
+=\frac4{\sqrt{1+6/\eta+1/\eta^2}+1-1/\eta}\longrightarrow2,
+\]
+所以支持力趋于 $2mg$。后两项是先取无限层极限再取质量比极限，说明上块很重时也不能把底部支持直接按无限总重力计算。
+\end{drillsolution}
+
+\begin{drillsolution}{n4d4}\textbf{隔离槽内物块并结合路径几何}\par\nobreak
+图\ref{n4d4q}直槽不弯曲，物块法向加速度为零，故 $N=mg\sin\beta$，摩擦沿槽向上。沿槽加速度 $a_s=g(\cos\beta-\mu\sin\beta)$，要求括号为正。槽长仍为 $s=h/\cos(\alpha-\beta)$，所以
+\[t^2=\frac{2h}{g(\cos\beta-\mu\sin\beta)\cos(\alpha-\beta)}.\]
+\fig{n4deep:roughslot}{沿槽重力分量驱动下滑，法向分量决定摩擦上限}{\begin{tikzpicture}
+\coordinate(P)at(0,0);\draw[world](-1,2)--(1,-2);\fill(P)circle(2pt);\draw[guide](0,0)--(0,-2.3);\draw[force,red](P)--(0,-1.8)node[below]{$mg$};\draw[force,blue](P)--(1.2,.6)node[right]{$N$};\draw[force](P)--(-.6,1.2)node[left]{$\mu N$};\draw[flow](.8,-.6)--(1.4,-1.8)node[right]{$a_s$};\node at(.23,-.9){$\beta$};\node at(2.1,1.5){$N=mg\sin\beta$};
+\end{tikzpicture}}
+图\ref{n4deep:roughslot}中槽与竖直夹角为 $\beta$，支持力与槽垂直；于是重力沿槽分量为 $mg\cos\beta$，法向分量为 $mg\sin\beta$。摩擦随 $\beta$ 增大而增大，这解释了下面最优方向为何向竖直靠拢。
+
+\fig{n4d4s}{摩擦把内部最优方向推向竖直，超过后由边界接替}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$\delta=\arctan\mu$};\draw[axis](0,0)--(0,2.2)node[above]{$\beta_*$};\draw[world](0,1.6)--(3,0)--(4.3,0);\node[left]at(0,1.6){$\alpha/2$};\node[below]at(3,0){$\alpha$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求内部极值并检查角度边界}\par\nobreak
+令 $\delta=\arctan\mu$，$\cos\beta-\mu\sin\beta=\sqrt{1+\mu^2}\cos(\beta+\delta)$。分母除去正常数后为 $[\cos(\alpha+\delta)+\cos(2\beta+\delta-\alpha)]/2$。当 $\alpha\ge\delta$，内部最大值在 $\beta_*=(\alpha-\delta)/2$；当 $\alpha<\delta$，这个角为负，超出题设范围，图\ref{n4d4s}最优改为边界 $\beta_*=0$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{验证运动条件及光滑极限}\par\nobreak
+内部解满足 $\cos(\beta_*+\delta)=\cos[(\alpha+\delta)/2]>0$，故确能下滑并到达斜面。边界解竖直槽的法向力为零，也就没有该模型中的摩擦，时间为 $\sqrt{2h/(g\cos\alpha)}$。$\mu\to0$ 时回到光滑直槽的 $\alpha/2$，验证参数极限。
+\end{drillsolution}

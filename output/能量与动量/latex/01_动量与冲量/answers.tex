@@ -1,0 +1,109 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em1:drill:1}\textbf{沿墙面法线和切线分别确定末速度}\par\nobreak
+按图\ref{fig:em1:drill:1:s}法线取向墙为正，入射分量为$v_n=v\cos\alpha$、$v_t=-v\sin\alpha$。光滑墙只有法向冲量，且恢复系数规定$v'_n=-ev_n$，所以
+\[I_n=m(v'_n-v_n)=-(1+e)mv\cos\alpha,\qquad I_t=0.\]
+\fig{fig:em1:drill:1:p}{切向分量不变，法向分量反向并乘恢复系数；冲量沿离墙方向}{\begin{tikzpicture}
+
+\draw[world](3,-1.8)--(3,2);\draw[axis](3,.5)--(4.3,.5)node[right]{$+n$};
+\draw[flow,blue](3,0)--(1.2,-1.2)node[midway,below]{$\bm v'$};
+\draw[flow](3,0)--(1.2,0)node[midway,above]{$-ev\cos\alpha$};
+\draw[flow](1.2,0)--(1.2,-1.2)node[left]{$-v\sin\alpha$};
+\draw[force,red](3,1.4)--(.4,1.4)node[midway,above]{$\bm I$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成末速率并计算法向动能损失}\par\nobreak
+由图\ref{fig:em1:drill:1:p}的分量合成，末速率
+\[\boxed{v'=v\sqrt{e^2\cos^2\alpha+\sin^2\alpha}},\]
+由两正交分量，$v'^2=(-ev\cos\alpha)^2+(-v\sin\alpha)^2$。初末动能相减时，切向平方项完全抵消，只剩法向动能的损失；因此损失并不由入射总动能全部乘$1-e^2$得到。
+
+损失动能为
+\[\boxed{Q=\tfrac12mv^2(1-e^2)\cos^2\alpha}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查弹性反弹与擦边极限}\par\nobreak
+$e=1$时速率不变而冲量仍一般不为零；$\alpha=\pi/2$时法向入射分量为零，理想模型不产生冲击。\end{drillsolution}
+\begin{drillsolution}{em1:drill:2}\textbf{对全过程积分，消去线性阻力冲量}\par\nobreak
+图\ref{fig:em1:drill:2:s}的整个飞行过程，重力冲量为$-mgT$。线性阻力的冲量为
+\[-k\int_0^T v\dd t=-k[y(T)-y(0)]=0,\]
+因为初、末高度相同。注意这是有符号冲量相消，并不是阻力始终为零。
+\fig{fig:em1:drill:2:p}{返回原高度使速度图的有向面积为零；正、负阻力冲量相消}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.6,0)node[right]{$t$};\draw[axis](0,-1.2)--(0,2.4)node[above]{$v$};
+\fill[blue!15](0,0)--plot[domain=0:1.098612,samples=45]({1.4*\x},{.9*(3*exp(-\x)-1)})--cycle;
+\fill[red!15](1.538057,0)--plot[domain=1.098612:2.82144,samples=45]({1.4*\x},{.9*(3*exp(-\x)-1)})--(3.950016,0)--cycle;
+\draw[world,domain=0:2.82144,samples=90]plot({1.4*\x},{.9*(3*exp(-\x)-1)});
+\draw[guide](3.950016,0)--(3.950016,-.7393)--(0,-.7393);
+\node[left]at(0,1.8){$u$};\node[left]at(0,-.7393){$-w$};\node[above]at(3.95,0){$T$};
+\node[above]at(1.538,0){最高点};\node at(2,-1.7){蓝、红面积大小相等，符号相反};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{使用有符号始末速度列动量变化}\par\nobreak
+返回时末速度为$-w$，故全过程动量变化为$-m(w+u)$。图\ref{fig:em1:drill:2:p}的有向面积为零，使线性阻力的全过程冲量为零；但阻力功为$-k\int v^2\dd t<0$，不能以冲量相消推出无能量损失。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求飞行时间并区别冲量与功}\par\nobreak
+图\ref{fig:em1:drill:2:p}中上升段阻力向下、下降段向上，其积分恰好相抵。动量定理给$-mgT=m(-w-u)$，故$\boxed{T=(u+w)/g}$。阻力始终做负功，所以$w<u$；由此$T<2u/g$。若阻力改成$-kv|v|$，冲量不再与净位移成正比，这个简洁结果通常不成立。\end{drillsolution}
+\begin{drillsolution}{em1:drill:3}\textbf{求质量流率和入出速度分量}\par\nobreak
+图\ref{fig:em1:drill:3:s}中每秒流过质量$\dot m=\rho Su$，入、出速度分别为$(u,0)$与$(u\cos\theta,u\sin\theta)$。导流板给水的力是动量流出率减流入率。反向后得到水对板的力
+\[\boxed{F_x=\rho Su^2(1-\cos\theta),\qquad F_y=-\rho Su^2\sin\theta}.\]
+\fig{fig:em1:drill:3:p}{相减的动量流给板对水的力，再反向得到水对板的力}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[flow,blue](0,0)--(2.5,0)node[midway,below]{$\dot m\bm u_{\text{入}}$};
+\draw[flow,blue](0,0)--(1.5,2)node[midway,left]{$\dot m\bm u_{\text{出}}$};
+\draw[force,red](2.5,0)--(1.5,2)node[midway,right]{$\bm F_{\text{板}\to\text{水}}$};
+\draw[world](.6,0)arc(0:53.13:.6);\node at(.95,.35){$\theta$};
+\end{scope}
+\begin{scope}[xshift=5.2cm]
+\draw[axis](0,0)--(2,0)node[right]{$x$};\draw[axis](0,-1.9)--(0,1.4)node[above]{$y$};
+\draw[force,red](0,0)--(1,-2)node[below right]{$\bm F_{\text{水}\to\text{板}}$};
+\draw[guide](1,0)--(1,-2);\node at(1,1){$F_x>0$};\node at(1.3,-.8){$F_y<0$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成受力大小并判断方向}\par\nobreak
+将两个分量平方相加，得到$F^2=(\rho Su^2)^2[(1-\cos\theta)^2+\sin^2\theta]$。括号内为$2-2\cos\theta=4\sin^2(\theta/2)$；取非负平方根，绝对值便自然出现。分量结果中的$F_y<0$与图中水向上出流相对应。
+
+图\ref{fig:em1:drill:3:p}中的两个动量矢量长度相等，夹角为$\theta$，所以力的大小为
+\[\boxed{F=2\rho Su^2|\sin(\theta/2)|}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查不偏转和完全反向的极限}\par\nobreak
+不偏转时力为零，完全反向时为$2\rho Su^2$。导流板静止，受力点无位移，板对理想水流不做功，但仍能改变水的动量方向。\end{drillsolution}
+\begin{drillsolution}{em1:drill:4}\textbf{分别列两球沿绳的冲量方程}\par\nobreak
+按图\ref{fig:em1:drill:4:s}取$x$轴沿绳从$B$指向$A$。绳冲量只改变$x$分量，故$v_{Ay}=u\sin\alpha$、$v_{By}=0$。设拉力冲量为$J$，则$mv_{Ax}=mu\cos\alpha-J$、$mv_{Bx}=J$。
+\fig{fig:em1:drill:4:p}{两球沿绳速度分量相同，$A$垂直绳的速度分量保持不变}{\begin{tikzpicture}
+
+\draw[world](0,0)--(4,0);\fill(0,0)circle(2pt)node[left]{$B$};\fill(4,0)circle(2pt)node[below right]{$A$};
+\draw[flow,blue](0,0)--(1,0)node[below right]{$u\cos\alpha/2$};
+\draw[flow,blue](4,0)--(5,0)node[below right]{$u\cos\alpha/2$};
+\draw[flow,blue](4,0)--(4,1.6)node[above left]{$u\sin\alpha$};\draw[flow](4,0)--(5,1.6)node[above]{$\bm v_A$};
+\draw[guide](4,1.6)--(5,1.6)--(5,0);
+\draw[force,red](0,-.9)--(1.2,-.9)node[midway,below]{$J$};\draw[force,red](4,-.9)--(2.8,-.9)node[midway,below]{$J$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{施加沿绳速度约束求冲量和末速度}\par\nobreak
+由图\ref{fig:em1:drill:4:p}绷紧后的$v_{Ax}=v_{Bx}$，得到$J=mu\cos\alpha/2$，因此$\bm v_A=(u\cos\alpha/2,u\sin\alpha)$、$\bm v_B=(u\cos\alpha/2,0)$。末动能应把两球的两个分量分别平方相加：$K_f=(m/2)[u^2\cos^2\alpha/4+u^2\sin^2\alpha+u^2\cos^2\alpha/4]$，即$K_f=mu^2\sin^2\alpha/2+mu^2\cos^2\alpha/4$。初动能中的垂直绳分量完全保留，只有沿绳的相对运动能量减少。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{只对被消去的沿绳相对运动求损失}\par\nobreak
+动能损失
+\[\boxed{Q=\frac12mu^2-\frac m2(v_A^2+v_B^2)=\frac14mu^2\cos^2\alpha}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对绳只能拉不能推的条件}\par\nobreak
+必须有$\cos\alpha\ge0$，两球原来沿绳方向分离，绳才会绷紧；若沿绳靠近，就不会在这一瞬间发生拉紧冲击。\end{drillsolution}

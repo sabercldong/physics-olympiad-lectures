@@ -1,0 +1,264 @@
+\section{仪表的物理模型与量程}
+\subsection{读数来自仪表自身电流}
+
+小量程磁电表的偏转在工作范围内近似与通过表头的电流成正比。设满偏电流 $I_g$、内阻 $R_g$，满偏时表头两端电压为 $U_g=I_gR_g$。改装仪表的任务，是使待测总电压或总电流达到新量程时，表头恰好通过 $I_g$，同时不超过其允许值。
+
+扩大量程为$U>I_gR_g$的电压表时，串联电阻与表头通过同一电流；满量程的回路方程为
+\[
+U=I_gR_s+I_gR_g,\qquad
+R_s=\frac{U-I_gR_g}{I_g}=\frac U{I_g}-R_g.
+\]
+因此仪表总内阻$R_V=R_s+R_g=U/I_g$。扩大量程为$I>I_g$的电流表时，端口电流分成$I_g$与$I-I_g$，两支路同电压，故
+\[
+I_gR_g=(I-I_g)R_p,\qquad R_p=\frac{I_gR_g}{I-I_g}.
+\]
+整个电流表的端电压仍为$I_gR_g$，所以$R_A=I_gR_g/I$。串联电阻承受的是电压差 $U-I_gR_g$，并联电阻通过的是 $I-I_g$，两式都应由同电流或同电压关系推出，不宜只记“电压表串联、电流表并联”的口令。
+
+\fig{c6:meter-ranges}{电压挡把附加电阻串联，电流挡把附加电阻并联；虚框内均包含同一个表头}{\begin{tikzpicture}
+
+\begin{scope}
+\draw(0,1.5)to[R,l={$R_s$}](3,1.5)to[ammeter,l={$G:R_g$}](6,1.5);
+\node[left]at(0,1.5){$A$};\node[right]at(6,1.5){$B$};
+\draw[flow](.5,2.7)--(2,2.7)node[midway,above]{$I_g$};
+\draw[<->](0,0)--(6,0)node[midway,below]{$U=I_g(R_s+R_g)$};
+\draw[guide](-.2,.7)rectangle(6.2,2.5);
+\end{scope}
+\begin{scope}[xshift=8cm]
+\draw(0,1.5)--(1,1.5)--(1,3)to[ammeter,l={$G:R_g$}](5,3)--(5,1.5)--(6,1.5);
+\draw(1,1.5)--(1,0)to[R,l_={$R_p$}](5,0)--(5,1.5);
+\node[left]at(0,1.5){$A$};\node[right]at(6,1.5){$B$};
+\draw[flow](-1,1.5)--(-.1,1.5)node[pos=0,left]{$I$};
+\draw[flow](2,4.7)--(4,4.7)node[midway,above]{$I_g$};
+\draw[flow](2,-.8)--(4,-.8)node[midway,below]{$I-I_g$};
+\draw[guide](.6,-.4)rectangle(5.4,4.1);
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c6:meter-ranges}左图先确定表头所需电压 $I_gR_g$，剩余电压由 $R_s$ 承担。右图两支路同跨 $A,B$，故 $I_gR_g=(I-I_g)R_p$。改装后按总端口量重新标度，但线圈的电流上限始终是 $I_g$。
+
+量程增加后，表盘均匀刻度的读数比例相应改变，但表头满偏电流并没有改变。若重新更换量程，应先确认选择开关确实把相应电阻接入，不能只在相同接线上给读数乘一个任意倍数。电流表并联接入低阻电源会使电流过大，测量前的连接判断首先是电路结构问题。
+
+校准一个改装表时，需要独立的标准仪器或已知标准量，不能把同一只尚未校准的表读数当成它自己的真值。多量程仪表可用开关切换附加电阻，但切换时应检查是否可能暂时使表头失去分流保护。涉及实际实验操作的图应画出开关公共端和各挡的真实连接，不能只画一个没有连接定义的开关符号。
+
+\subsection{分辨率、量程与功率限制}
+
+量程应足够覆盖预期最大读数，同时让有效偏转占据适当范围。较小量程通常有更好的分辨率，但可能具有不同内阻，改变被测电路。滑动变阻器除最大阻值外还有允许电流；低阻大电流实验不能只依据“调节范围大”选择细长高阻电阻器。
+
+灯泡额定电压、电功率给出额定电流 $I_N=P_N/U_N$ 与热态电阻 $R_N=U_N^2/P_N$。初始冷态电阻更小，启动电流可能更大。设计实验时应使电压从零或较低值开始平稳提高，观测到额定工作点后停止继续加压。图中应标明滑片起始位置和电表实际跨接的两节点，防止把分压接法画成限流接法。
+
+
+\section{伏安法中的仪表接入误差}
+\subsection{电压表分流的接法}
+
+电压表只跨待测电阻，电流表位于分流点之外时，电流表示数 $I_A=I_x+I_V$，电压表示数 $U_V=I_xR_x$。因 $I_V=U_V/R_V$，若直接以两表读数相除，
+\[
+ R_{\text{读}}=\frac{U_V}{I_A}=R_x\parallel R_V<R_x.
+\]
+已知 $R_V$ 后可修正 $R_x=U_V/(I_A-U_V/R_V)$。这种接法适合 $R_x\ll R_V$，因为电压表分流很小。电流表内阻仍影响电源所需总电压，但没有被包含在电压表示数对应的待测电阻范围内。
+
+\typeout{ECFIG:fig:c6:external}\fig{fig:c6:external}{电压表仅跨待测电阻，电流表读总分流}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[ammeter,l={$R_A$}](2,3)--(4,3)to[R,l={$R_x$}](4,0)--(0,0);\draw(2.6,3)--(6,3)to[voltmeter,l={$R_V$}](6,0)--(4,0);\node[above]at(4,3){$P$};\node[below]at(4,0){$Q$};
+\draw[flow](.5,4.1)--(1.8,4.1)node[midway,above]{$I_A$};\draw[flow](3.2,2.5)--(3.2,.7)node[midway,left]{$I_x$};\draw[flow](7.2,2.5)--(7.2,.7)node[midway,right]{$I_V$};\end{tikzpicture}}
+\subsection{电流表分压的接法}
+
+电压表跨待测电阻和电流表串联部分，电流表恰读待测电阻电流时，有 $U_V=I_A(R_x+R_A)$，因此
+\[
+ R_{\text{读}}=R_x+R_A>R_x,\qquad R_x=\frac{U_V}{I_A}-R_A.
+\]
+当 $R_x\gg R_A$ 时内阻影响小，适合较大电阻。在两表内阻均已知时，两种接法都可修正；选择接法还应考虑量程和读数不确定度，不能仅按一个粗略分界值机械决定。
+
+若只比较未修正的相对误差，前一接法为 $R_x/(R_x+R_V)$，后一接法为 $R_A/R_x$。令二者相等并交叉相乘，
+\[
+\frac{R_x}{R_x+R_V}=\frac{R_A}{R_x}
+\quad\Longrightarrow\quad
+R_x^2-R_AR_x-R_AR_V=0.
+\]
+用求根公式并舍去负根，得到临界阻值
+\[
+R_*=\frac{R_A+\sqrt{R_A^2+4R_AR_V}}2
+=\frac{R_A}{2}+\sqrt{R_AR_V+\frac{R_A^2}{4}}.
+\]
+当$R_V\gg R_A$时，根号内$R_A^2/4$相对$R_AR_V$很小，而$R_A/2$也远小于$\sqrt{R_AR_V}$，因此$R_*\simeq\sqrt{R_AR_V}$。这一估计建立在忽略其他误差并且阻值可预估的条件下。
+
+\typeout{ECFIG:fig:c6:internal}\fig{fig:c6:internal}{电压表包含电流表内阻的压降}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[ammeter,l={$R_A$}](2.5,3)to[R,l={$R_x$}](2.5,0)--(0,0);\draw(0,3)--(-2,3)to[voltmeter,l_={$R_V$}](-2,0)--(0,0);
+\fill(0,3)circle(1.5pt)node[above left]{$P$};\fill(0,0)circle(1.5pt)node[below left]{$Q$};\draw[flow](.5,4)--(1.8,4)node[midway,above]{$I_A=I_x$};\end{tikzpicture}}
+
+
+图\ref{fig:c6:external}中 $P,Q$ 恰是待测电阻的两个端点，表头读数的差 $I_A-I_V$ 才流过 $R_x$。图\ref{fig:c6:internal}的电压表则跨 $P,Q$，其内部包含电流表和待测电阻两个连续电势降。先沿图追踪测量路径，再决定修正项，就能判断未修正结果分别偏低、偏高。
+
+
+\section{表头内阻、校准与数据处理}
+\subsection{半偏法的近似来自何处}
+
+电源经大串联电阻 $R_1$ 使表头满偏，再在表头两端并联可调电阻 $R_2$，调至表头电流减为一半。若串联电阻远大于表头内阻，并联前后总电流近似不变，分流电阻通过另一半电流，所以常近似取 $R_g\simeq R_2$。
+
+精确计算能说明误差方向。忽略电源内阻，并联前 $I_g=E/(R_1+R_g)$。并联后的等效电阻为$R_p=R_gR_2/(R_g+R_2)$，并联部分电压为$U_p=ER_p/(R_1+R_p)$。表头电流因此为
+\[
+I'_g=\frac{U_p}{R_g}
+=\frac{ER_2}{R_1R_g+R_1R_2+R_gR_2}.
+\]
+令$I'_g=I_g/2=E/[2(R_1+R_g)]$，消去$E$并交叉相乘：
+\begin{align*}
+2R_2(R_1+R_g)&=R_1R_g+R_1R_2+R_gR_2,\\
+R_2(R_1+R_g)&=R_1R_g.
+\end{align*}
+分别把$R_2$与$R_g$作为未知量解出，得
+\[
+ R_2=\frac{R_1R_g}{R_1+R_g}<R_g,\qquad
+ R_g=\frac{R_1R_2}{R_1-R_2}.
+\]
+因此直接把 $R_2$ 当作表头内阻会偏小。较高电源电压在保持满偏电流时允许更大 $R_1$，有助于减小这项近似误差，但也要检查串联电阻的额定功率。
+
+\fig{c6:half-deflection}{满偏与半偏是两个不同电路；右侧总输入电流增加，不能精确当作仍为 $I_g$}{\begin{tikzpicture}
+
+\begin{scope}[scale=.8]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[R,l={$R_1$}](4,3)to[ammeter,l={$G:R_g$}](4,0)--(0,0);
+\draw[flow](.8,4)--(2.5,4)node[midway,above]{$I_g$};
+\node at(2,-1){并联前};
+\end{scope}
+\begin{scope}[xshift=7cm,scale=.8]
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[R,l={$R_1$}](3.5,3)--(6.5,3)to[R,l={$R_2$}](6.5,0)--(0,0);
+\draw(3.5,3)to[ammeter,l={$G:R_g$}](3.5,0);
+\draw[flow](.8,4)--(2.5,4)node[midway,above]{$I'_{\text{总}}$};
+\draw[flow](2.6,2.3)--(2.6,.6)node[midway,left]{$I_g/2$};
+\draw[flow](7.4,2.3)--(7.4,.6)node[midway,right]{$I_2$};
+\node at(3,-1){并联后};
+\end{scope}
+
+\end{tikzpicture}}
+图\ref{c6:half-deflection}右侧并联部分的等效电阻小于原表头内阻，所以 $I'_{\text{总}}>I_g$，分流支路电流 $I_2=I'_{\text{总}}-I_g/2>I_g/2$。两并联支路电压相同，从 $I_2R_2=(I_g/2)R_g$ 立即得到 $R_2<R_g$，这给出了精确修正式的物理方向检查。
+
+\subsection{电源伏安直线与斜率单位}
+
+电源满足端电压 $U=E-rI$。绘制 $U-I$ 图像时，纵轴截距为 $E$、斜率为 $-r$，但横轴若用 $\mathrm{mA}$，每 $\mathrm{mA}$ 对应的电压变化须乘 $10^3$ 才是欧姆。例如斜率 $-0.20\,\mathrm{V/mA}$ 表示 $-200\,\Omega$。
+
+有随机误差的多组数据应作符合模型的拟合或画平滑最佳直线，不能逐点硬折线后任取局部斜率。设拟合直线为$U=a+bI$，共有$N$组数据。以电压方向残差的平方和作为拟合目标：
+\[
+S(a,b)=\sum_{i=1}^N(U_i-a-bI_i)^2.
+\]
+分别对$a,b$求偏导，平方函数的导数与括号内的导数相乘，得到
+\begin{align*}
+\frac{\partial S}{\partial a}
+&=\sum_i2(U_i-a-bI_i)(-1)=0,\\
+\frac{\partial S}{\partial b}
+&=\sum_i2(U_i-a-bI_i)(-I_i)=0.
+\end{align*}
+第一式给$Na+b\sum I_i=\sum U_i$，即$a=\bar U-b\bar I$。代入第二式：
+\[
+b\left(\sum I_i^2-N\bar I^2\right)
+=\sum I_iU_i-N\bar I\bar U.
+\]
+括号分别等于$\sum(I_i-\bar I)^2$与$\sum(I_i-\bar I)(U_i-\bar U)$，因而
+\[
+b=\frac{\sum(I_i-\bar I)(U_i-\bar U)}{\sum(I_i-\bar I)^2},
+\qquad a=\bar U-b\bar I.
+\]
+只要采样电流不全相同，分母为正；平方和是凸二次函数，上述驻点即给出最小值。此处$b$是带符号的斜率，电源模型中$b=-r$。拟合残差可帮助发现个别读数异常；若残差有系统弯曲，应检查电源极化、温度变化或模型本身，而非一概称作随机误差。
+
+
+\fig{c6:ui-slope-units}{同一条拟合直线的斜率随坐标单位改变数值；三角形标出 $1\,\mathrm{mA}$ 对应约 $0.20\,\mathrm V$}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.8,0)node[right]{$I/\mathrm{mA}$};\draw[axis](0,0)--(0,3.7)node[above]{$U/\mathrm V$};
+\draw[thick](0,3)--(5.2,1.4);
+\foreach \x/\y in {.65/2.82,1.3/2.57,2.6/2.23,3.9/1.77}{\fill(\x,\y)circle(1.7pt);}
+\foreach \x/\lab in {0/0,1.3/1,2.6/2,3.9/3,5.2/4}{\draw(\x,0)--(\x,-.1)node[below]{$\lab$};}
+\node[left]at(0,3){$1.5$};
+\draw[guide](1.3,2.6)--(2.6,2.6)--(2.6,2.2);
+\node[above]at(1.95,2.7){$\Delta I=1\,\mathrm{mA}$};
+\draw[guide](2.6,2.4)--(3.6,3.1)node[right]{$\Delta U=-0.20\,\mathrm V$};
+
+\end{tikzpicture}}
+图\ref{c6:ui-slope-units}的读数斜率约为 $-0.20\,\mathrm{V/mA}$。用国际单位计算应先将横向变化写成 $10^{-3}\,\mathrm A$，故电阻为 $0.20/10^{-3}=200\,\Omega$。拟合时纵向残差代表实测电压与模型电压之差，图中小幅偏离直线的点仍共同参与截距、斜率估计。
+
+当电压表跨电池本身时，它的电流也经过电池内阻；当电流表读电池总电流而电压表跨负载时，电流表内阻的压降又可能被排除在电压读数外。仪表接法使拟合变量偏离真实端量，因此应先根据实际跨接点求读数直线，再解释参数。
+
+\section{欧姆表的非均匀刻度}
+\subsection{内电源与电阻刻度}
+
+图\ref{fig:c6:ohm}把内电池、表头和调零电阻 $R_0$ 串联，再通过黑、红表笔连接待测电阻 $R_x$。黑表笔连内电源正侧，外部常规电流经 $R_x$ 从黑流向红；表头和 $R_0$ 同样被这个回路电流穿过。将表笔短接时调到满偏，内部总电阻 $R_m=E/I_g$。接入 $R_x$ 后
+\[
+ I=\frac{E}{R_m+R_x},\qquad
+ \frac I{I_g}=\frac1{1+R_x/R_m}.
+\]
+因此中间偏转 $I/I_g=1/2$ 对应 $R_x=R_m$，称中值电阻。电阻零值在满偏端，无穷大在零电流端，刻度不均匀且通常左密右疏。电压、电流刻度可以等间距读数，电阻刻度则不能把针的位置当作电阻的线性比例。
+
+\typeout{ECFIG:fig:c6:ohm}\fig{fig:c6:ohm}{串联式欧姆表及内部电流方向}{\begin{tikzpicture}[scale=.88]
+\draw(0,0)to[battery1,l={$E$}](0,3)to[ammeter,l={$I_g,R_g$}](2.5,3)to[R,l={$R_0$}](5,3)--(5,0)to[R,l_={$R_x$}](0,0);\node[below]at(0,0){黑};\node[below]at(5,0){红};
+\draw[flow](1,.6)--(3.8,.6)node[midway,above]{$I$};\node[below]at(0,-.6){对外 $+$};\node[below]at(5,-.6){对外 $-$};\end{tikzpicture}}
+\fig{c6:ohm-scale}{指针偏角对电流均匀，对电阻不均匀；图中中间偏转对应 $R_x=R_m$}{\begin{tikzpicture}
+
+\draw[thick](-3.6,0)arc[start angle=180,end angle=0,radius=3.6];
+\foreach \ang/\lab in {180/{\infty},162/{9R_m},144/{4R_m},120/{2R_m},90/{R_m},60/{R_m/2},0/0}{
+\draw(\ang:3.4)--(\ang:3.8);\node at(\ang:4.3){$\lab$};}
+\draw[flow,thick](0,-.7)--(0,3.25);
+\node at(0,-1.4){$I/I_g=1/2$};
+\node at(0,-2.2){左端：$I=0$ \hspace{1cm} 右端：$I=I_g$};
+
+\end{tikzpicture}}
+图\ref{c6:ohm-scale}中，阻值与电流比的对应关系为
+\[
+\begin{array}{c|ccccccc}
+R_x/R_m&0&1/2&1&2&4&9&\infty\\
+I/I_g&1&2/3&1/2&1/3&1/5&1/10&0
+\end{array}
+\]
+越接近零电流端，相同的较大电阻差占据的偏角越小；换倍率是把待测阻值移到较易分辨的区域，并不把刻度变成线性刻度。
+
+\subsection{调零、换挡与表笔极性}
+
+机械调零校正的是没有电流时指针位置，欧姆调零校正的是当前量程、当前内电源下表笔短接的满偏位置，两者不能互相代替。换欧姆倍率后，应短接表笔重新调零，再接待测物。电阻应与外部电源及其他并联通路断开；欧姆表自身已经提供测量电源。
+
+常见模拟式串联欧姆表的内部电源使测电阻时黑表笔对外为正、红表笔为负，外电流从黑笔经被测物回到红笔。对无极性电阻，交换表笔不改结果；对二极管或其他非线性元件，会改变工作方向。数字表及不同内部结构的表可能另有极性，解题和实验应以给定电路为准。
+
+电池电动势降低后即使仍可调零，内部中值电阻 $E/I_g$ 也改变，原标定刻度可能产生系统偏差。若调零旋钮已无足够范围，不能继续乘倍率读数，应先处理仪表状态。使用结束将选择开关转到给定的关闭位置；模拟表未设关闭挡时，可按仪表要求放到交流电压最高挡。
+
+
+\section{非线性元件与故障判断}
+\subsection{灯泡伏安曲线与电阻的两种定义}
+
+白炽灯的温度随电流变化，电阻随温度上升，伏安曲线一般不是过原点的直线。图上某点 $U/I$ 是该工作点的静态电阻，切线斜率 $\dd U/\dd I$ 则描述小变化的微分电阻。曲线弯曲时二者不等。求功率仍用 $UI$，把 $U^2/R$ 或 $I^2R$ 用在不同工作点时，要同时更新该点的电阻。
+
+由离散伏安点判断非线性元件，$U/I$ 是从原点到该点的割线斜率，$\Delta U/\Delta I$ 是相邻采样点的平均微分电阻，两者不同。同样，$P/I^2$ 是静态电阻，并不等同于 $P-I^2$ 曲线的切线斜率。需要讨论斜率随工作点变化时，应实际计算相邻割线并说明采样精度，而不能只把比值的变化换个名称。
+
+\fig{c6:nonlinear-resistance}{同一工作点的静态电阻由原点割线确定，小变化的微分电阻由切线确定}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$I$};\draw[axis](0,0)--(0,5.5)node[above]{$U$};
+\draw[thick,domain=0:1.6,samples=100]plot({3*\x},{1.5*(\x+\x^3/3)});
+\draw[blue](0,0)--(4.2,2.8);\draw[red,domain=.45:1.6]plot({3*\x},{1.5*(2*\x-2/3)});
+\fill(3,2)circle(1.7pt)node[above left]{$P$};
+\node[blue,right]at(4.2,2.8){$U/I$};\node[red,right]at(4.8,3.8){$\dd U/\dd I$};
+\node at(2.4,5){曲线仅示意升温非线性};
+
+\end{tikzpicture}}
+图\ref{c6:nonlinear-resistance}在同一点 $P$ 画出两条斜率。沿曲线移动后，点本身的 $U/I$ 会变，切线斜率也会变；由几个离散数据点最多直接得到相邻割线，不能把一个比值的单调变化直接改称切线斜率的变化。
+
+描绘从零开始的伏安曲线通常采用分压连接，使输出端在滑片处于起始端时可以近似为零。电流、电压表的接入应根据灯泡阻值与仪表内阻选择，必要时对读数修正。增加低电压区数据有助于表现曲率；实验曲线应连接成平滑趋势，不用折线把各随机波动放大为物理结构。
+
+\fig{c6:divider-lamp}{分压连接中滑片输出单独供给电表和灯泡；起始接近下端 $P_0$，负载电压近零}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$E$}](0,4)--(2,4)--(2,3.4);
+\draw(1.8,.6)rectangle(2.2,3.4);\draw(2,.6)--(2,0)--(9,0);\draw(0,0)--(2,0);
+\draw[<-](2.2,2)--(4,2)to[ammeter,l={$A$}](6,2)--(7,2)to[lamp,l={$L$}](7,0);
+\draw(6,2)--(9,2)to[voltmeter,l={$V$}](9,0);
+\node[above]at(3.2,2){$P$};\node[right]at(2.4,3.1){$R_P$};
+\fill(2,0)circle(1.6pt)node[below]{$P_0$};
+\draw[flow,gray](3.1,1.5)--(3.1,.3)node[midway,right]{起始移向下端};
+
+\end{tikzpicture}}
+图\ref{c6:divider-lamp}中电源接在滑动电阻的两个固定端，负载取滑片 $P$ 与下端 $P_0$ 之间的电压。电压表仅跨灯泡，电流表读灯泡与电压表的总分流。滑片位于 $P_0$ 时两输出端等势；若只把变阻器串入灯泡回路，就不能保证从零电压起调。
+
+\subsection{断路、短路和测量路径}
+
+用欧姆挡查故障前应断开外部电源。某两点读到无穷大表示这两个测量端之间没有连通直流路径，不能只凭一次读数就确定某个元件损坏，因为测试路径中还可能有其他断点。逐段测量并结合连线，才能缩小故障位置。
+
+对于电容，欧姆表刚接入时产生充电电流，随后电流减小、指针回到大电阻端。理想无泄漏电容最终接近无穷大读数；有限的稳定偏转可能对应漏电通路，但也需排除其他并联元件。二极管反向测量的读数还依赖欧姆挡内电压，不能把它当成与工作点无关的材料常数。
+\fig{c6:leakage-path}{欧姆表内部源经总电阻 $R_m$ 给电容充电；稳定偏转需沿并联漏电路径解释}{\begin{tikzpicture}
+
+\draw(0,0)to[battery1,invert,l={$E$}](0,3)to[R,l={$R_m$}](3.5,3)--(6,3)to[R,l={$R_\ell$}](6,0)--(0,0);
+\draw(3.5,3)to[C,l={$C$}](3.5,0);
+\draw[flow](.8,4)--(2.3,4)node[midway,above]{$I(t)$};
+\node[above]at(3.5,3){$A$};\node[below]at(3.5,0){$B$};
+
+\end{tikzpicture}}
+图\ref{c6:leakage-path}中，初始未带电电容使 $I(0^+)=E/R_m=I_g$。若无漏电且没有其他支路，电流最终趋零；若有有限 $R_\ell$，电容充好后电流仍可由 $A$ 经 $R_\ell$ 到 $B$，故 $I_\infty=E/(R_m+R_\ell)$。测得稳定电流后应先核对端口并联路径，才能把读数解释为该元件的漏电电阻。

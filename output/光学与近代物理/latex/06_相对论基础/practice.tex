@@ -1,0 +1,145 @@
+\section{练习}
+
+\begin{question}
+\begin{drill}[同一对闪光事件的同时性]\label{d:61}
+飞船固有长度 \(300\,\mathrm m\)，沿地面 \(+x\) 方向以 \(0.600c\) 运动。地面系在同一时刻记录船尾闪光 \(A\) 和船头闪光 \(B\)。以 \(A\) 为两系原点，求 \(B\) 相对 \(A\) 的船系时间间隔，并判断先后。取 \(c=3.00\times10^8\,\mathrm{m/s}\)。
+\end{drill}
+\fig{fig:d61q}{练习：同一对闪光事件的同时性}{
+\begin{tikzpicture}
+\draw[axis](-.5,0)--(5,0)node[right]{$x$};
+\draw[world](0,.4)rectangle(3.2,1.2);
+\node[left]at(0,.8){$A$};\node[right]at(3.2,.8){$B$};
+\draw[axis](1.1,1.6)--(2.6,1.6)node[midway,above]{$0.600c$};
+\node[below]at(1.6,0){地面同时记录两端闪光};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[飞船中的横向运动]\label{d:62}
+飞船相对地面沿 \(+x\) 方向以 \(V=0.600c\) 运动。在船系中，一粒子沿 \(+y'\) 方向以 \(0.800c\) 发射，且 \(u'_x=0\)。求地面系中粒子的两个速度分量与速率。
+\end{drill}
+\fig{fig:d62q}{练习：飞船中的横向运动}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(3,0)node[right]{$x'$};
+\draw[axis](0,0)--(0,2.7)node[above]{$y'$};
+\draw[axis,thick](0,0)--(0,2)node[left]{$u'_y=0.800c$};
+\draw[axis](4,0)--(6,0)node[midway,above]{$V=0.600c$};
+\node[below]at(5,-.3){船相对地面};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[静止靶与运动粒子的粘合]\label{d:63}
+两粒子静质量均为 \(m\)。实验室中一粒子以 \(0.600c\) 撞向另一静止粒子，碰后粘合且无能量逸出。求复合粒子的速度、不变质量，以及在复合粒子静止系中增加的内能。
+\end{drill}
+\fig{fig:d63q}{练习：静止靶与运动粒子的粘合}{
+\begin{tikzpicture}
+\draw[axisline](-1,0)--(6,0);
+\fill(0,0)circle(2pt)node[below]{$m$};\fill(4,0)circle(2pt)node[below]{$m$};
+\draw[axis](.4,.5)--(2.4,.5)node[midway,above]{$0.600c$};
+\node[above]at(4,.3){静止};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[康普顿散射的能量与反冲方向]\label{d:64}
+静止自由电子质量为 \(m\)。入射光子波长为 \(\lambda_C=h/(mc)\)，沿 \(+x\) 方向传播，散射后光子沿 \(+y\) 方向传播。求散射波长、电子动能和电子速度的两个分量。
+\end{drill}
+\fig{fig:d64q}{练习：康普顿散射的能量与反冲方向}{
+\begin{tikzpicture}
+\draw[ray](-2,0)--(0,0);\draw[ray](0,0)--(0,2);
+\fill(0,0)circle(2pt)node[below right]{$e^-$};
+\node[above]at(-1.4,0){$\lambda_C$};\node[right]at(0,1.4){散射光子};
+\draw[axis](.4,-.5)--(2,-.5)node[right]{$+x$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[飞船上观察百米赛跑]\label{hw:hr1}
+飞船以 $V=0.8c$ 向北飞行。地面上一名运动员由南向北匀速跑完 $100\,\mathrm m$，地面记录的用时为 $10\,\mathrm s$。求飞船系中的跑道长度、运动员在这段运动中的路程及平均速度。取 $c=3.0\times10^8\,\mathrm{m/s}$，以北为正方向。
+\end{drill}
+\fig{fig:hrh1q}{地面系中的跑道与两种运动}{
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[axis](-.4,0)--(8,0)node[right]{北 $+x$};
+\draw[world](0,-.3)--(0,.3)node[above]{起点 $A$};\draw[world](5,-.3)--(5,.3)node[above]{终点 $B$};
+\draw[dim](0,-.7)--(5,-.7)node[midway,fill=white]{$L_0=100\,\mathrm m$};
+\fill(1.1,.15)circle(2pt);\draw[axis](1.1,.5)--(3.1,.5)node[midway,above]{$u=10\,\mathrm{m/s}$};
+\draw[world](.4,1.5)rectangle(2,1.9);\draw[axis](2,1.7)--(4.4,1.7)node[midway,above]{$V=0.8c$};\node[left]at(.4,1.7){飞船};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[两种安装方式的光钟]\label{hw:hr2}
+光钟由发光接收器 $A$ 与平面镜 $M$ 组成，二者在光钟静止系中的间距为 $l_0$，一次往返为一个滴答，固有周期 $\tau_0=2l_0/c$。分别讨论：
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item 光钟固定在地面，$AM$ 垂直于车辆速度 $V$。求车上观察者测得的滴答周期。
+\item 光钟固定在车上，$AM$ 平行于 $V$。求地面测得的 $AM$ 间距。
+\item 对第 (2) 种安装方式，求地面测得的滴答周期。
+\end{enumerate}
+取 $c=3.0\times10^8\,\mathrm{m/s}$、$V=7.70\times10^7\,\mathrm{m/s}$、$l_0=2.46\times10^5\,\mathrm m$。
+\end{drill}
+\fig{fig:hrh2q}{分别固定在地面和车上的光钟}{
+\begin{tikzpicture}[scale=.87]
+\draw[world](0,0)--(0,2);\fill(0,0)circle(2pt)node[below]{$A$};\draw[world](-.7,2)--(.7,2)node[right]{$M$};\draw[dim](-1,0)--(-1,2)node[midway,left]{$l_0$};
+\draw[world](-1.6,-.5)--(1.8,-.5);\node at(0,2.7){(1) 地面光钟};\draw[axis](.4,.8)--(2,.8)node[right]{$V$（车辆）};
+\begin{scope}[shift={(5,0)}]
+\draw[world](-.5,-.5)rectangle(3.5,1.5);\fill(0,.5)circle(2pt)node[below]{$A$};\draw[world](2.5,-.1)--(2.5,1.1)node[above]{$M$};
+\draw[dim](0,1.9)--(2.5,1.9)node[midway,fill=white]{$l_0$（车上测量）};\draw[axis](3.7,.5)--(5,.5)node[right]{$V$};\node at(1.2,2.7){(2)、(3) 车载光钟};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[恒星光行差]\label{hw:hr3}
+航天飞机沿 $+x$ 方向飞行，速率为 $V$。在恒星静止系 $S$ 中，从飞机指向恒星的视线与 $+x$ 轴成 $\theta$ 角。求飞机系 $S'$ 中的视线角 $\theta'$。若前端半球形观察室只能接收 $\theta'<\pi/2$ 的恒星，说明 $V\to c$ 时可见范围怎样变化。取 $V=2.61\times10^8\,\mathrm{m/s}$、$c=3.0\times10^8\,\mathrm{m/s}$、$\theta=30.9^\circ$。
+\end{drill}
+\fig{fig:hrh3q}{视线指向恒星，光的传播方向与视线相反}{
+\begin{tikzpicture}[scale=1]
+\coordinate(O)at(0,0);\coordinate(H)at(4.8,2.872);\draw[axis](-.7,0)--(6,0)node[right]{$+x$};
+\draw[aux](O)--(H);\draw[light](H)--(O);\fill(H)circle(2pt)node[above]{恒星};\fill(O)circle(2pt)node[below]{飞机};
+\draw[axis](.3,-.6)--(2.5,-.6)node[right]{$V$};\draw(1,0)arc(0:30.9:1)node[midway,right]{$\theta$};\node at(3.1,2.5){入射光};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[高速粒子的完全非弹性碰撞]\label{hw:hr4}
+两个相同质点的静质量均为 $m_0$，在实验室系中以等值反向的速率 $v$ 相撞，碰后粘成一个质点，过程中没有能量逸出。求复合质点的静质量。取 $v=2.74\times10^8\,\mathrm{m/s}$、$c=3.0\times10^8\,\mathrm{m/s}$、$m_0=4.21\times10^{-27}\,\mathrm{kg}$。
+\end{drill}
+\fig{fig:hrh4q}{两粒子的动量大小相等、方向相反}{
+\begin{tikzpicture}
+\draw[axis](-4,0)--(4,0)node[right]{$x$};\fill(-2,0)circle(3pt)node[below]{$m_0$};\fill(2,0)circle(3pt)node[below]{$m_0$};
+\draw[axis](-2,.5)--(-.5,.5)node[midway,above]{$v$};\draw[axis](2,.5)--(.5,.5)node[midway,above]{$v$};\node[below]at(0,-.4){实验室系 $S$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[两光子反推母粒子的静质量]\label{hw:hr5}
+一个粒子衰变为两个光子。在同一惯性系中测得它们的能量分别为 $E_1,E_2$，传播方向夹角为 $\theta$。求母粒子的静质量 $m_0$。取 $E_1=182\,\mathrm{MeV}$、$E_2=162\,\mathrm{MeV}$、$\theta=37.6^\circ$。
+\end{drill}
+\fig{fig:hrh5q}{两光子的传播方向与夹角}{
+\begin{tikzpicture}
+\fill(0,0)circle(3pt)node[below left]{衰变点};\draw[light](0,0)--(4.8,0)node[right]{$E_1,\ \bm p_1$};\draw[light](0,0)--(37.6:{4.8*162/182})node[right]{$E_2,\ \bm p_2$};
+\draw(1,0)arc(0:37.6:1)node[midway,right]{$\theta$};
+\end{tikzpicture}}
+\end{question}
+
+
+\begin{question}
+\begin{drill}[发射光子后的反冲]\label{hw:hr6}
+静质量为 $M_0$ 的粒子起初静止，发射一个能量为 $Q=\lambda M_0c^2$ 的光子后，剩余粒子反冲。求反冲速度与剩余粒子的静质量。取 $\lambda=0.139$。
+\end{drill}
+\fig{fig:hrh6q}{初态静止，末态的光子和剩余粒子反向运动}{
+\begin{tikzpicture}
+\fill(-3.7,0)circle(4pt)node[below]{$M_0,\ u_0=0$};\draw[axis](-2.7,0)--(-1.4,0)node[midway,above]{发射};
+\fill(1,0)circle(3pt)node[below]{$m$};\draw[axis](1,.5)--(-.6,.5)node[midway,above]{$u$};\draw[light](1,0)--(4,0)node[right]{$Q,\ p_\gamma=Q/c$};
+\end{tikzpicture}}
+\end{question}
+

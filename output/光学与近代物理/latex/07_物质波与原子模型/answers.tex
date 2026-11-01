@@ -1,0 +1,138 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{d:71}\textbf{按不同电荷的极性分别求动能}\par\nobreak
+图\ref{fig:d71q}表示两次独立实验，电极极性分别按电荷符号选择，使电场力均做正功 \(eU\)。所以
+\[
+ \boxed{K_p=K_e=100\,\mathrm{eV}},\qquad
+ \boxed{\frac{p_p}{p_e}=\sqrt{\frac{m_p}{m_e}}=\sqrt{1836}\approx42.8}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从动量比求质子波长}\par\nobreak
+由德布罗意关系，
+\[
+ \boxed{\lambda_p=\frac{0.123}{\sqrt{1836}}\,\mathrm{nm}
+ =2.87\,\mathrm{pm}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对不同横轴比例和相同动能条件}\par\nobreak
+图\ref{fig:d71s}分别放大显示一个电子波长和一个质子波长，并用不同的横轴单位标明。相同动能不等于相同动量，也不等于相同波长；此处每种粒子的非相对论条件均由题设限定。
+\fig{fig:d71s}{练习\ref{d:71}的解答图：每行各显示一个相位周期，两行水平比例不同}{
+\begin{tikzpicture}
+\draw[axis](0,1)--(6,1)node[right]{$x/\lambda_e$};
+\draw[domain=0:5,samples=120]plot(\x,{1+.3*sin(360*\x/5)});
+\node[left]at(0,1){电子};
+\draw[axis](0,-1)--(6,-1)node[right]{$x/\lambda_p$};
+\draw[domain=0:5,samples=120]plot(\x,{-1+.3*sin(360*\x/5)});
+\node[left]at(0,-1){质子};
+\node[above]at(2.5,1.5){\(\lambda_e=0.123\,\mathrm{nm}\)};\node[below]at(2.5,-1.6){\(\lambda_p=2.87\,\mathrm{pm}\)};\node[below]at(5,1){$1$};\node[below]at(5,-1){$1$};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:72}\textbf{逐一比较束缚态吸收的离散能级差}\par\nobreak
+图\ref{fig:d72q}中从 \(n=2\) 到 \(n=3,4\) 所需能量分别为 \(1.889,2.550\,\mathrm{eV}\)。
+\(2.00\,\mathrm{eV}\) 落在二者之间，没有对应束缚能级差，在理想窄线模型下 \(\boxed{\text{不能发生该单光子束缚态吸收}}\)。这里需要的是与某一允许能级差匹配，而非只要求“超过第一激发所需能量”。一个光子被完全吸收后不再留下独立光子带走多余的0.111eV；题设又已忽略原子反冲，不能任意给末原子附加一份动能来补足不匹配的能量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以电离极限计算光电子动能}\par\nobreak
+从 \(n=2\) 电离的阈能为 \(0-E_2=3.40\,\mathrm{eV}\)，所以 \(4.00\,\mathrm{eV}\) 光子可以电离，忽略反冲时
+\(\boxed{K_e=4.00-3.40=0.600\,\mathrm{eV}}\)。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用出射电子带走余能解释碰撞激发}\par\nobreak
+碰撞电子可在激发后带走剩余动能，不必把全部 \(2.00\,\mathrm{eV}\) 交给原子。图\ref{fig:d72s}右侧满足
+\[
+ 2.00=(E_3-E_2)+K_{\rm rem},\qquad K_{\rm rem}=0.111\,\mathrm{eV}>0,
+\]
+故 \(\boxed{\text{能量上允许激发到 }n=3}\)，但不保证每次碰撞都发生激发。光子全部吸收与粒子碰撞的条件不同。
+\fig{fig:d72s}{练习\ref{d:72}的解答图：左为匹配指定能级差的光子，右为带走剩余能量的碰撞电子}{
+\begin{tikzpicture}
+\begin{scope}
+\draw[world](0,0)--(2.5,0) (0,1.889)--(2.5,1.889);
+\draw[axis](1,0)--(1,1.889);
+\node[left]at(0,0){$n=2$};\node[left]at(0,1.889){$n=3$};
+\node[above,align=center]at(1.2,2.4){束缚态吸收\\光子能量须为 \(1.889\)};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[world](0,0)--(2.5,0) (0,1.889)--(2.5,1.889);
+\draw[axis](1,0)--(1,1.889);
+\draw[axis](-.5,.7)--(.5,.7)node[above]{$e^-:2.00$};
+\draw[axis](1.5,.7)--(2.8,.7)node[above]{$e^-:0.111$};
+\node[above]at(1.2,2.4){碰撞可带走剩余能量};\end{scope}
+\node[below]at(3.7,-.6){能量单位：\(\mathrm{eV}\)，忽略靶原子反冲};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:73}\textbf{由约化质量判断谱线移动方向}\par\nobreak
+图\ref{fig:d73q}比较相同量子数的跃迁，整数能级因子相同。约化质量 $\mu=m_e/(1+m_e/M_N)$ 随核质量增加而增大，能级差随之增大，所以较重核 $2M$ 对应较短波长。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去公共波长因子求相对差}\par\nobreak
+把无限重核时的相应波长记为 $\lambda_\infty$，由 $\lambda\propto1/\mu$ 得
+\[
+ \lambda_M=\lambda_\infty(1+m_e/M),\qquad
+ \lambda_{2M}=\lambda_\infty(1+m_e/(2M)).
+\]
+先相减，再除以题设的 $\lambda_M$，共同因子 $\lambda_\infty$ 消去：
+
+\[
+ \frac{\lambda_M-\lambda_{2M}}{\lambda_M}
+ =\frac{m_e/(2M)}{1+m_e/M}
+ =\boxed{\frac1{2(1836+1)}=2.72\times10^{-4}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查所用分母与小质量比近似}\par\nobreak
+图\ref{fig:d73s}中 \(\lambda_{2M}\) 向短波一侧移动。分母应以题设的 \(\lambda_M\) 为准；若换成 \(\lambda_\infty\)，精确分式会改变，虽然一阶近似都约为 \(m_e/(2M)\)。
+\fig{fig:d73s}{练习\ref{d:73}的解答图：谱线间距放大示意；重核对应较短波长}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(7,0)node[right]{$\lambda$};
+\draw[very thick](2,0)--(2,1.7)node[above]{$\lambda_{2M}$};
+\draw[very thick](5,0)--(5,1.7)node[above]{$\lambda_M$};
+\draw[dim](2,-.7)--(5,-.7)node[midway,below]{$\lambda_M/(3674)$};
+\node[below]at(1,-1.4){短波};\node[below]at(6,-1.4){长波};
+\end{tikzpicture}}
+\end{drillsolution}
+
+\begin{drillsolution}{d:74}\textbf{变到质心系求可用相对运动动能}\par\nobreak
+设入射速率为 \(v\)，图\ref{fig:d74q}中 \(K=Mv^2/2\)。质心速度为 \(V=v/2\)，故图\ref{fig:d74s}的两粒子在质心系的速度为 \(\pm v/2\)，
+\[
+ \boxed{K_{\rm rel}=2\times\frac12M(v/2)^2=\frac K2=15.0\,\mathrm{eV}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较内部激发能与可用动能}\par\nobreak
+由基态到第三层的能级差为
+\[
+ \Delta_{31}=13.6(1-1/9)=12.0889\,\mathrm{eV}<15.0\,\mathrm{eV}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由阈值末态求最小实验室入射动能}\par\nobreak
+故能量上允许激发到 \(n=3\)。阈值时质心系末态相对运动动能趋于零，因此
+\[
+ K_{\min}/2=\Delta_{31},\qquad
+ \boxed{K_{\min}=24.2\,\mathrm{eV}}.
+\]
+图\ref{fig:d74s}中整体平动的 \(15.0\,\mathrm{eV}\) 不能凭空转为内部激发能，实验室阈能因此高于能级差。达到阈能仍只是必要能量条件。
+
+\fig{fig:d74s}{练习\ref{d:74}的解答图：先扣除质心整体运动，再判断内部激发是否可行}{\begin{tikzpicture}
+
+\node[left]at(0,.75){实验室};
+\draw[axis](.7,.75)--(2.2,.75)node[above]{$v$};
+\fill(.5,.75)circle(2pt);\fill(5,.75)circle(2pt)node[above]{静止};
+\node[left]at(0,-.75){质心系};
+\draw[axis](.7,-.75)--(2,-.75)node[above]{$v/2$};
+\draw[axis](4.8,-.75)--(3.5,-.75)node[above]{$v/2$};
+\fill(.5,-.75)circle(2pt);\fill(5,-.75)circle(2pt);
+\node[below]at(2.8,-1.3){$K_{\rm rel}=K/2,\quad K_{\rm trans}=K/2$};
+
+\end{tikzpicture}}
+
+
+
+\end{drillsolution}

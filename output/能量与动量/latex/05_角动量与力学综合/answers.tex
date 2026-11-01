@@ -1,0 +1,82 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em5:drill:1}\textbf{用竖直速度反号求法向总冲量}\par\nobreak
+按图\ref{fig:em5:drill:1:s}取向左为正，球竖直落地、反弹速率均为$u=\sqrt{2gh}$，法向总冲量$J_n=2mu$。若全程滑动，水平摩擦冲量$J_t=\mu J_n$，球可获得$2\mu u$的水平速度。
+\fig{fig:em5:drill:1:p}{球的摩擦冲量向左，车的反冲量向右；共速点限制可累积的摩擦冲量}{\begin{tikzpicture}
+
+\draw[world](-.3,0)rectangle(3.8,.4);\fill(1.5,.5)circle(.1);\draw[force](1.5,.5)--(.3,.5)node[above]{$J_t$};\draw[force](1.5,.5)--(1.5,2)node[above]{$J_n=2mu$};
+\draw[force](2,-.3)--(3.2,-.3)node[right]{$J_t\text{（对车）}$};\draw[flow](1,-.8)--(0,-.8)node[left]{车向左};
+\begin{scope}[xshift=6cm]\draw[axis](0,0)--(3.6,0)node[right]{$J$};\draw[axis](0,0)--(0,2.7)node[above]{相对滑速};
+\draw[blue,thick](0,2.2)--(2.7,0);\node[left]at(0,2.2){$v$};\node[below]at(2.7,0){$J_*$};\node at(1.5,-1.1){$v-J(1/m+1/M)$};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求消除水平相对滑动所需的冲量}\par\nobreak
+若给球向左的切向冲量$J$，球水平速度为$J/m$，车速变为$v-J/M$。相对滑速降为零的条件为$J/m=v-J/M$，所需冲量$J_*=mMv/(M+m)$。实际冲量只能取$\min(\mu J_n,J_*)$，除以$m$便得到下式。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较摩擦上限与共速上限得到分段结果}\par\nobreak
+但图\ref{fig:em5:drill:1:p}若球先与车水平共速，之后不应让摩擦继续反向推动。达到共速所需球速度由水平动量给$V=Mv/(M+m)$。因此
+\[\boxed{v_{bx}=\min\left(2\mu\sqrt{2gh},\frac{Mv}{M+m}\right)}\]
+方向向左。对应条件为$2\mu\sqrt{2gh}\lessgtr Mv/(M+m)$。法向冲量有限并不保证摩擦始终为$\mu N$；只有相对滑动期间才可如此取值。\end{drillsolution}
+\begin{drillsolution}{em5:drill:2}\textbf{由水平质心不变确定杆的后退量}\par\nobreak
+取图\ref{fig:em5:drill:2:s}桌边为$x=0$、向桌外为正。初始杆心为零，第一只苍蝇在$-L/2$。无水平外力，质心水平位置固定。设杆后退$d$，末态杆心为$-d$，苍蝇在$L/2-d$，于是
+\[-Md+m(L/2-d)=-mL/2.\]
+移项得$(M+m)d=mL$，故$d=mL/(M+m)$。
+\fig{fig:em5:drill:2:p}{关于固定桌边比较重力矩，两只苍蝇的位置均由爬行后的杆位置确定}{\begin{tikzpicture}
+
+\draw[world](-3.4,0)--(0,0)--(0,-1.2);\draw[very thick](-2.8,.1)--(1.2,.1);\fill(-.8,.1)circle(.045)node[above left]{$C$};\fill(1.2,.1)circle(.07);
+\draw[force](-.8,.1)--(-.8,-1)node[below]{$Mg$};\draw[force](1.2,.1)--(1.2,-1)node[below]{$(m+m')g$};
+\draw[dim](-.8,.8)--(0,.8)node[midway,above]{$d$};\draw[dim](0,.8)--(1.2,.8)node[midway,above]{$L/2-d$};\node at(3.5,.1){桌边$x=0$};
+\end{tikzpicture}}
+
+\fig{fig:em5:drill:2:walk}{光滑桌面不提供水平外力，苍蝇向外爬时杆必须向内退}{\begin{tikzpicture}
+
+\foreach \yy/\lab in {2.4/爬行前,0/爬行后}{\begin{scope}[yshift=\yy cm]\draw[world](-3.5,0)--(0,0)--(0,-.7);\draw[guide](0,0)--(0,1);\node[left]at(-3.8,.3){\lab};\end{scope}}
+\draw[very thick](-2,2.5)--(2,2.5);\fill(0,2.5)circle(.045)node[above]{$C_0$};\fill(-2,2.7)circle(.07)node[above]{$m$};
+\draw[very thick](-2.8,.1)--(1.2,.1);\fill(-.8,.1)circle(.045)node[above]{$C$};\fill(1.2,.3)circle(.07)node[above]{$m$};
+\draw[dim](-.8,-.9)--(0,-.9)node[midway,below]{$d$};\node at(2,1.4){质心横坐标不变};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在爬行后位置应用静态倾覆条件}\par\nobreak
+图\ref{fig:em5:drill:2:walk}把杆心从 $C_0$ 移到 $C$ 的向内位移标为 $d$。
+苍蝇相对杆向外爬了 $L$，它对地的位移却是 $L-d$；因而质心位移条件也可写成 $-Md+m(L-d)=0$，与前面的坐标方程相同。
+爬行期间，杆与第一只苍蝇的总质心始终在
+$x_C=-mL/[2(M+m)]<0$，保持在桌边内侧，与尚未倾覆的假设相符。
+
+在图\ref{fig:em5:drill:2:p}中，杆重作用线位于桌内、两只苍蝇位于桌外，两力臂分别为$d$和$L/2-d$。第二只准静态降落不改变水平位置，且不引入需另行考虑的倾覆冲击；慢爬及准静态判据下，不倾覆要求
+\[(m+m^{\prime})(L/2-d)\le Md.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出第二只苍蝇质量上限并核对力臂}\par\nobreak
+代入$d$并乘以$2(M+m)/L$，得$(m+m^{\prime})(M-m)\le2Mm$，即$m^{\prime}(M-m)\le m(M+m)$。题设$M>m$，可除以正的$M-m$，所以
+\[\boxed{m^{\prime}\le\frac{m(M+m)}{M-m}}.\]
+同时$L/2-d=L(M-m)/[2(M+m)]>0$，桌外端的几何条件自洽。等号表示总重力作用线恰通过桌边，是静态倾覆的临界位置。\end{drillsolution}
+\Needspace{4\baselineskip}
+\begin{drillsolution}{em5:drill:3}\textbf{先处理下球与地面的弹性碰撞}\par\nobreak
+在图\ref{fig:em5:drill:3:s}取竖直向上为正，两球落地前速率均为$u=\sqrt{2gh}$。下球与地面完全弹性碰撞后，速度变为$+u$，上球仍为$-u$。这两次碰撞分开处理，不能把地面冲量混入随后两球相互碰撞的动量式。
+\fig{fig:em5:drill:3:p}{地面碰撞先改变下球速度，随后两球碰撞再交换动量和能量}{\begin{tikzpicture}
+
+\foreach \xx/\lab in {0/撞地前,3.4/地面碰后,6.8/两球碰后}{\begin{scope}[xshift=\xx cm]
+\draw[world](-.8,0)--(.8,0);\draw[world](0,.35)circle(.22);\node[right]at(.25,.35){$M$};\draw[world](0,1.5)circle(.12);\node[right]at(.2,1.5){$m$};\node at(0,2.6){\lab};\end{scope}}
+\draw[flow](-.4,1.9)--(-.4,1.1)node[left]{$-u$};\draw[flow](-.4,.8)--(-.4,.05)node[left]{$-u$};
+\draw[flow](3,1.9)--(3,1.1)node[left]{$-u$};\draw[flow](3,.15)--(3,.95)node[left]{$+u$};
+\draw[flow](6.4,1.3)--(6.4,2.1)node[left]{$v_m$};\node[below]at(6.8,-.3){下球$V_M$可正可负};
+\node at(3.4,-1.3){两球碰撞：$v_m-V_M=2u$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两倍相对接近速率处理两球碰撞}\par\nobreak
+按图\ref{fig:em5:drill:3:p}的事件顺序，设随后两球末速度为$V_M,v_m$。两球碰撞守恒动量，且相对分离速率等于原接近速率$2u$，所以
+\[Mu-mu=MV_M+mv_m,\qquad v_m-V_M=2u.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由上球末速度求首次反弹高度与质量极限}\par\nobreak
+由第二式得$V_M=v_m-2u$，代入第一式，$(M+m)v_m=(3M-m)u$。因$M>m$，上球速度为正，随后上升到
+\[\boxed{H=\frac{v_m^2}{2g}=\left(\frac{3M-m}{M+m}\right)^2h}.\]
+在$M\gg m$时，$v_m\to3u$、$H\to9h$；上球增加的能量来自下球的运动。图中两次碰撞按题设先后发生，忽略二者之间的高度变化。\end{drillsolution}

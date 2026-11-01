@@ -1,0 +1,754 @@
+\section{例题与分析}
+
+\begin{question}
+\begin{example}[炸弹爆炸事件的坐标]\label{ex:hr1}
+在地面系 $S$ 中，炸弹于 $x=1.0\times10^6\,\mathrm m,t=0.020\,\mathrm s$ 爆炸。飞船系 $S'$ 沿 $+x$ 以 $V=0.75c$ 运动，两系原点在 $t=t'=0$ 重合。求爆炸事件在飞船系中的地点和时刻，并与伽利略变换比较，见图\ref{fig:hr1q}。
+\end{example}
+\fig{fig:hr1q}{地面系中爆炸事件 $A$ 与飞船原点的世界线。两轴均以 $10^6\,\mathrm m$ 为单位，等比例。}{
+\begin{tikzpicture}[scale=.65]
+\draw[axis](-.4,0)--(5.5,0)node[right]{$x/(10^6\,\mathrm m)$};\draw[axis](0,-.4)--(0,7)node[above]{$ct/(10^6\,\mathrm m)$};
+\draw[world](0,0)--(4.95,6.6)node[right]{$x=0.75ct$};\fill(1,6)circle(2pt)node[above right]{$A(1,6)$};\draw[aux](1,0)--(1,6)--(0,6);\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{统一时空单位并求洛伦兹因子}\par\nobreak
+图\ref{fig:hr1q}中时间坐标已乘以 $c$，所以 $ct_A=6.0\times10^6\,\mathrm m$。先求
+\[
+\gamma=\frac1{\sqrt{1-0.75^2}}=\frac4{\sqrt7}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换同一爆炸事件的两个坐标}\par\nobreak
+把同一个事件的空间、时间坐标一起变换：
+\[
+x'_A=\frac4{\sqrt7}(1.0-0.75\times6.0)10^6\,\mathrm m
+=\boxed{-5.2915\times10^6\,\mathrm m},
+\]
+\[
+t'_A=\frac4{\sqrt7}\left(0.020-\frac{0.75\times10^6}{3.00\times10^8}\right)\mathrm s
+=\boxed{0.026458\,\mathrm s}.
+\]
+\fig{fig:hr1s}{飞船系中的同一事件。负横坐标表示爆炸发生在飞船原点后方，时间仍为正。}{
+\begin{tikzpicture}[scale=.55]
+\draw[axis](-6.4,0)--(1,0)node[right]{$x'/(10^6\,\mathrm m)$};\draw[axis](0,-.3)--(0,9)node[above]{$ct'/(10^6\,\mathrm m)$};
+\fill(-5.291503,7.937254)circle(2pt)node[above left]{$A$};\draw[aux](-5.291503,0)--(-5.291503,7.937254)--(0,7.937254);
+\node[below]at(-5.291503,0){$-5.2915$};\node[right]at(0,7.937254){$7.9373$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用位置趋势和不变间隔复核}\par\nobreak
+地面爆炸时，飞船原点已在 $Vt=4.5\times10^6\,\mathrm m$ 处，所以图\ref{fig:hr1s}中事件在后方是合理的。间隔也可核对：
+\[
+(ct_A)^2-x_A^2=35\times10^{12}\,\mathrm{m^2}
+=(ct'_A)^2-x_A'^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较经典结果并区别信号到达时间}\par\nobreak
+若用伽利略变换，则 $x'_{\rm G}=x-Vt=-3.5\times10^6\,\mathrm m$，$t'_{\rm G}=0.020\,\mathrm s$。在 $0.75c$ 下不能忽略时间变换及洛伦兹因子。
+图\ref{fig:hr1s}的 $t'_A$ 由飞船系同步钟网定义，表示爆炸发生的坐标时间；光信号随后到达原点，还需传播一段时间。
+
+又因 $O,A$ 为类时间隔且 $t_A>0$，所有惯性系都把 $A$ 排在 $O$ 之后。$x'_A<0$ 表示爆炸地点在后方，与这个时间先后关系相容。
+\end{solution}
+
+\begin{question}
+\begin{example}[隧道口的闪电能否击中车尾]\label{ex:hr5}
+隧道 $BA$ 与列车 $B'A'$ 的固有长度都为 $L_0$。列车以 $0<V<c$ 沿 $B\to A$ 方向运动。在地面系中，车头 $A'$ 恰到出口 $A$ 的同时，闪电击中入口 $B$。问闪电是否同时击中车尾 $B'$？见图\ref{fig:hr5q}。将闪电击中视为入口处的一次局部事件。
+\end{example}
+\fig{fig:hr5q}{所画快照属于地面系：隧道长 $L_0$，列车同时测长为 $L_0/\gamma$，车尾已进入入口右侧。}{
+\begin{tikzpicture}
+\draw[thick](0,1.2)--(5,1.2) (0,0)--(0,1.2) (5,0)--(5,1.2);\draw[very thick](1,0)--(5,0);
+\node[below]at(0,0){$B$};\node[below]at(1,0){$B'$};\node[below]at(5,0){$A,A'$};\draw[axis](1.5,.5)--(3.5,.5)node[midway,above]{$V$};\draw[dim](0,1.7)--(5,1.7)node[midway,above]{$L_0$};
+\draw[thick](-.2,2.3)--(.15,1.9)--(-.1,1.5)--(0,.9);\node[left]at(-.25,1.8){闪电};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{在地面同时面上确定车尾位置}\par\nobreak
+取入口 $B$ 为 $x=0$，出口 $A$ 为 $x=L_0$，并把题设地面同时的两事件定为 $t=0$。此时车头在 $x=L_0$，车长却是 $L_0/\gamma$，所以车尾在
+\[
+x_{B'}(0)=L_0-L_0/\gamma>0.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以局部事件是否重合判断击中}\par\nobreak
+闪电事件在 $(x,t)=(0,0)$，车尾事件在 $(L_0-L_0/\gamma,0)$，二者不同地。因此 $\boxed{\text{闪电不会击中车尾}}$。
+\fig{fig:hr5s}{地面时空图。闪电事件 $E$ 在入口世界线上，车尾世界线在其右方；车头抵出口事件为 $F$。两轴等比例，图示速度取 $0.6c$。}{
+\begin{tikzpicture}[scale=.65]
+\draw[axis](-.4,0)--(8.4,0)node[right]{$x$};\draw[axis](0,-.4)--(0,5.4)node[above]{$ct$};\draw[world](5,0)--(5,5);
+\draw[world](1,0)--(4,5);\draw[world](5,0)--(8,5);\fill(0,0)circle(2pt)node[below left]{$E$};\fill(5,0)circle(2pt)node[below right]{$F$};
+\node[left]at(0,4.4){入口};\node[above right]at(5,5){出口};\node[above left]at(4,5){车尾};\node[above]at(8,5){车头};\draw[aux](0,0)--(5,3)node[right]{$t'=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将同一对事件变换到车系}\par\nobreak
+“击中”要求两个物体在同一事件相遇，这种重合关系在所有参考系中一致。在车系中，$E,F$ 不再同时。以 $E$ 为两系共同原点，时间变换给出
+\[
+t'_E=0,\qquad t'_F=-\gamma\frac{VL_0}{c^2}<0.
+\]
+在车系的闪电时刻 $t'=0$，还可以直接列位置。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重选车系同时面并画出列车位置}\par\nobreak
+入口在 $x'_B=0$，出口在 $x'_A=L_0/\gamma$，而车尾、车头分别固定于
+\[
+x'_{B'}=(\gamma-1)L_0,\qquad x'_{A'}=\gamma L_0.
+\]
+因此车尾与入口仍有正的间隔，结论与地面系一致。图\ref{fig:hr5ship}采用与前图相同的 $V=0.6c$，把这组同时位置画出；此时车头早已超过出口。
+\fig{fig:hr5ship}{车系 $t'=0$ 的同时快照。隧道以 $-V$ 运动，列车静止；本图的出口位置与地面同时快照不同。}{
+\begin{tikzpicture}[scale=.95]
+\draw[world](0,0)--(0,1.2)--(4,1.2)--(4,0);\draw[line width=1.3pt](1.25,0)--(6.25,0);
+\node[below]at(0,0){$B$};\node[below]at(1.25,0){$B'$};\node[above right]at(4,.05){$A$};\node[below]at(6.25,0){$A'$};
+\draw[dim](0,1.7)--(4,1.7)node[midway,above]{$L_0/\gamma$};\draw[dim](1.25,-.7)--(6.25,-.7)node[midway,below]{$L_0$};
+\draw[axis](3.3,.65)--(1.8,.65)node[midway,above]{$-V$};\draw[world](-.25,1.6)--(.1,1.15)--(-.15,.7)--(0,.15);\node[left]at(-.25,1.6){闪电};
+\end{tikzpicture}}
+图\ref{fig:hr5s}的斜同时线说明了两组快照为何不同：车系中，车头抵出口发生在闪电之前。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区别局部击中和随后光信号传播}\par\nobreak
+若另问闪电发出的光后来能否追上车尾，则需画出光信号世界线，寻找它与车尾世界线的交点。
+\end{solution}
+
+\begin{question}
+\begin{example}[高空产生的介子能否到达地面]\label{ex:hr7}
+一个介子在离地面 $D=6000\,\mathrm m$ 的高空产生，以 $v=0.998c$ 飞向地面。假定平均固有寿命为 $\tau_0=2.0\times10^{-6}\,\mathrm s$，按指数规律衰变，忽略运动中的能量损失。（1）地面能否观测到到达的介子？（2）与介子共动的观察者如何判断？见图\ref{fig:hr7q}。
+\end{example}
+\fig{fig:hr7q}{产生事件为 $A$，到达地面为 $B$。平均寿命是统计参数，并非每个介子都在该时刻消失。}{
+\begin{tikzpicture}
+\draw[thick](-2,0)--(2,0);\fill(0,3.5)circle(2pt)node[above]{$A$};\draw[axis](0,3.2)--(0,1.6)node[midway,right]{$0.998c$};\node[below]at(0,0){$B$，地面};\draw[dim](-1,0)--(-1,3.5)node[midway,left]{$6000\,\mathrm m$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{选取粒子产生和到达的同一对事件}\par\nobreak
+图\ref{fig:hr7s}中，$A,B$ 位于同一粒子的世界线上，实验室飞行时间和粒子固有时间分别为 $D/v$、$D/(\gamma v)$。先求
+\[
+\gamma=\frac1{\sqrt{1-0.998^2}}\simeq15.8193,
+\quad \tau_{\text{地}}=\gamma\tau_0\simeq31.639\,\mu\mathrm s.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在地面系计算平均距离与存活比例}\par\nobreak
+地面系平均传播距离为 $v\gamma\tau_0\simeq9.47\,\mathrm{km}$，大于 $6.00\,\mathrm{km}$。更确切地，到达地面的存活比例为
+\[
+\boxed{\frac N{N_0}=\exp\left[-\frac D{\gamma v\tau_0}\right]\simeq0.531.}
+\]
+即约有 $53.1\%$ 的介子能够到达地面；个别粒子仍可能在途中衰变。
+\fig{fig:hr7s}{把沿飞行方向的坐标改为 $x$。探测面静止，$AB$ 为粒子世界线；两轴以相同长度单位绘制。}{
+\begin{tikzpicture}[scale=.65]
+\draw[axis](-.3,0)--(7.2,0)node[right]{$x/\mathrm{km}$};\draw[axis](0,-.3)--(0,7)node[above]{$ct/\mathrm{km}$};\draw[world](6,0)--(6,6.7);\draw[world](0,0)--(6,6.012024);\fill(6,6.012024)circle(2pt)node[right]{$B$};\node[below left]at(0,0){$A$};\draw[aux](0,6.012024)--(6,6.012024);\node[above]at(6,6.7){地面};\node[rotate=45,above]at(2.8,2.8){$\tau_{AB}=D/(\gamma v)$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在粒子系重选地面同时位置}\par\nobreak
+介子系中，地面与产生位置在地面系的静止间距收缩为 $D'=D/\gamma\simeq379.3\,\mathrm m$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用粒子固有时间复核衰变统计}\par\nobreak
+地面以 $0.998c$ 接近，所需时间
+\[
+t'_{AB}=\frac{D'}v=\frac D{\gamma v}\simeq1.267\,\mu\mathrm s.
+\]
+将它代入同一指数衰变式，仍得约 $0.531$。两系选取的是相同的产生、到达事件，因而关于能否到达的结论一致。
+\fig{fig:hr7rest}{介子系中的两幅同时快照。介子始终在 $x'=0$，地面从 $D/\gamma$ 处以 $-v$ 接近。}{
+\begin{tikzpicture}[scale=.9]
+\draw[axis](-.4,1.8)--(5.2,1.8)node[right]{$x'$};\fill(0,1.8)circle(2pt)node[below]{$A$};\draw[world](4,1.4)--(4,2.2)node[right]{地面};\draw[dim](0,2.6)--(4,2.6)node[midway,above]{$D'=D/\gamma$};\draw[axis](3.6,1.05)--(2,1.05)node[midway,below]{$-v$};\node[left]at(-.6,1.8){$t'=0$};
+\draw[axis](-.4,-.5)--(5.2,-.5)node[right]{$x'$};\draw[world](0,-.9)--(0,-.1);\fill(0,-.5)circle(2pt)node[below right]{$B$};\node[left]at(-.6,-.5){$t'=D' /v$};\node[above right]at(1,-.5){地面到达介子处};
+\end{tikzpicture}}
+图\ref{fig:hr7rest}中，地面到达所需的时间为 $1.267\,\mu\mathrm s$，介子的平均固有寿命为 $2.0\,\mu\mathrm s$。平均寿命描述一群粒子的衰变统计，单个粒子没有统一的消失时刻。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查飞行时间和平均寿命所属的系}\par\nobreak
+计算存活比例时，飞行时间与寿命应取自同一参考系；介子系用收缩后的距离 $D/\gamma$，地面系用膨胀后的平均寿命 $\gamma\tau_0$。
+\end{solution}
+
+\begin{question}
+\begin{example}[反向飞行的两艘飞船]\label{ex:hr2}
+地面测得飞船 $a,b$ 沿同一直线分别以 $+0.9c,-0.9c$ 飞行。求 $a$ 相对 $b$ 的速度大小，见图\ref{fig:hr2q}。
+\end{example}
+\fig{fig:hr2q}{两速度都给在地面系中，正方向向右。}{
+\begin{tikzpicture}
+\draw[axis](-4,0)--(4,0)node[right]{$x$};\fill(-2.8,0)circle(2pt)node[below]{$a$};\fill(2.8,0)circle(2pt)node[below]{$b$};
+\draw[axis](-3,.7)--(-.7,.7)node[midway,above]{$+0.9c$};\draw[axis](3,.7)--(.7,.7)node[midway,above]{$-0.9c$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{取另一飞船静止系并确定变换符号}\par\nobreak
+以 $b$ 的静止系为 $S'$，该系相对地面速度 $V=-0.9c$。把 $a$ 的地面速度 $u_a=+0.9c$ 代入从地面到 $S'$ 的速度变换，
+\[
+u'_a=\frac{u_a-V}{1-u_aV/c^2}
+=\frac{0.9c+0.9c}{1+0.81}
+=\boxed{\frac{180}{181}c\simeq0.994475c}.
+\]
+\fig{fig:hr2s}{在 $b$ 系中，$b$ 静止，$a$ 沿正方向接近。分母中的时间变换使相对速度保持小于 $c$。}{
+\begin{tikzpicture}
+\draw[axis](-4,0)--(2,0)node[right]{$x'$};\fill(0,0)circle(2pt)node[below]{$b$，静止};\fill(-3.4,0)circle(2pt)node[below]{$a$};
+\draw[axis](-3.4,.7)--(-.7,.7)node[midway,above]{$u'_a=180c/181$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分地面间距减少率与相对速度}\par\nobreak
+图\ref{fig:hr2q}中的地面间距以 $1.8c$ 的速率减少，这是按地面时间计算的间距变化率。图\ref{fig:hr2s}所求速度使用 $b$ 系的尺和同步钟；变换相邻事件时，空间与时间间隔都会改变。由它们的比值得到 $u'_a=180c/181<c$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逆变换复核参考系的速度符号}\par\nobreak
+方向也可用逆变换检查。把 $u'_a=180c/181$ 与 $V=-0.9c$ 代入
+\[
+u_a=\frac{u'_a+V}{1+Vu'_a/c^2},
+\]
+恰好还原为 $+0.9c$。若把参考系速度误取为 $+0.9c$，便会将“变到 $b$ 系”错当成“变到 $a$ 系”，这是本题符号选择的主要区别。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从同一飞船的相邻事件解释时间分母}\par\nobreak
+也可把图\ref{fig:hr2s}所求速度直接写成事件间隔之比。取飞船 \(a\) 上相邻两事件，在地面系有 \(\Delta x=0.9c\Delta t\)。变到 \(b\) 系时，
+\[
+ \Delta x'=\gamma_b(1.8c\Delta t),\qquad
+ \Delta t'=\gamma_b(1.81\Delta t).
+\]
+二者相除，公共因子 \(\gamma_b\) 消去，得到 \(u'_a=1.8c/1.81\)。时间分母的变化就是不能直接把两个 \(0.9c\) 相加的原因。
+\end{solution}
+
+\begin{question}
+\begin{example}[飞船向前发射导弹]\label{ex:hr4}
+飞船以 $0.9c$ 远离地球，又以相对飞船 $0.9c$ 的速率向前发射导弹。求导弹相对地球的速率，见图\ref{fig:hr4q}。
+\end{example}
+\fig{fig:hr4q}{船系中的发射速度为 $u'=0.9c$，飞船相对地球速度为 $V=0.9c$。}{
+\begin{tikzpicture}
+\draw(0,-.5)rectangle(3.5,.5);\node at(1.75,0){飞船 $S'$};\draw[axis](3.5,0)--(5.8,0)node[right]{$u'=0.9c$};\draw[axis](.7,1.2)--(2.8,1.2)node[right]{$V=0.9c$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由船系发射速度合成为地球系速度}\par\nobreak
+图\ref{fig:hr4q}的两个速度属于不同的参考系，应由逆速度变换合成：
+\[
+u=\frac{u'+V}{1+Vu'/c^2}
+=\frac{1.8}{1.81}c
+=\boxed{\frac{180}{181}c\simeq0.994475c}.
+\]
+\fig{fig:hr4s}{地球系中，导弹比飞船快，但仍比真空光慢。三条箭头按速度比例绘制。}{
+\begin{tikzpicture}
+\draw[axis](0,1)--(5.96685,1)node[right]{$u=180c/181$};\draw[axis](0,0)--(5.4,0)node[right]{$V=0.9c$};\draw[axis](0,-1)--(6,-1)node[right]{$c$};\node[left]at(0,1){导弹};\node[left]at(0,0){飞船};\node[left]at(0,-1){光};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查速度差与光速上限}\par\nobreak
+图\ref{fig:hr4s}中，地球系速度差 $u-V\simeq0.094475c$ 不是导弹的船系速度。两系赋予相邻导弹事件的时间间隔不同，须把空间和时间一起变换。
+还可把合成速度与光速的差写成
+\[
+c-u=\frac{(c-u')(c-V)}{c(1+Vu'/c^2)}.
+\]
+本题右端为 $0.01c/1.81=c/181>0$，与图\ref{fig:hr4s}导弹箭头略短于光箭头一致。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以导弹相邻事件推导所用比值}\par\nobreak
+为说明这里使用的是逆变换，取导弹在船系的两相邻事件，满足 \(\Delta x'=u'\Delta t'\)。地球系测得
+\[
+ \Delta x=\gamma_V(u'+V)\Delta t',\qquad
+ \Delta t=\gamma_V(1+Vu'/c^2)\Delta t'.
+\]
+与图\ref{fig:hr4s}向右的传播方向对应，两式取比正好得到前述合成式。反向计算 $(u-V)/(1-uV/c^2)$ 恰好得到船系的 $0.9c$。低速极限下，当 \(Vu'/c^2\ll1\) 时才近似回到 \(u\simeq u'+V\)；本题该无量纲量为 \(0.81\)，显然不能忽略。
+\end{solution}
+
+\begin{question}
+\begin{example}[飞船与彗星的相撞时间]\label{ex:hr6}
+飞船和彗星相对地面分别以 $+0.6c,-0.8c$ 相向运动。地面在当前时刻判断，再过 $5\,\mathrm s$ 两者相撞。求：（1）飞船系中彗星的速度；（2）从飞船当前事件到相撞，船钟还经过多少时间？见图\ref{fig:hr6q}。
+\end{example}
+\fig{fig:hr6q}{地面当前快照。两者间距由地面接近率与剩余时间确定。}{
+\begin{tikzpicture}
+\draw[axis](-.5,0)--(7.5,0)node[right]{$x$};\fill(0,0)circle(2pt)node[below]{飞船};\fill(7,0)circle(2pt)node[below]{彗星};\draw[axis](.3,.7)--(2.3,.7)node[midway,above]{$0.6c$};\draw[axis](6.7,.7)--(4.7,.7)node[midway,above]{$0.8c$};\draw[dim](0,-.7)--(7,-.7)node[midway,below]{$D=(0.6+0.8)c\times5\,\mathrm s$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{在地面系写出两条运动世界线}\par\nobreak
+取飞船当前事件为 $O$，令 $x_O=t_O=0$。图\ref{fig:hr6s}中两条世界线为
+\[
+x_{\text{船}}=0.6ct,\qquad x_{\text{彗}}=7c\,\mathrm s-0.8ct.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把彗星速度变到飞船系}\par\nobreak
+彗星速度变到飞船系，
+\[
+\boxed{u'_{\text{彗}}=\frac{-0.8c-0.6c}{1+0.48}
+=-\frac{35}{37}c\simeq-0.945946c.}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在飞船世界线上计算船钟走时}\par\nobreak
+相撞事件 $C$ 在地面系有 $t_C=5\,\mathrm s,x_C=3c\,\mathrm s$。由于 $O,C$ 都在飞船世界线上，船钟经历
+\[
+\boxed{\Delta\tau_{OC}=\frac5{1.25}\,\mathrm s=4.00\,\mathrm s.}
+\]
+\fig{fig:hr6s}{横轴 $x/c$、纵轴 $t$ 均以秒计且等比例。虚线 $OE_*$ 在飞船系同时，$E_*$ 不是地面 $t=0$ 时的彗星事件。}{
+\begin{tikzpicture}[scale=.65]
+\draw[axis](-.4,0)--(8,0)node[right]{$x/c\ (\mathrm s)$};\draw[axis](0,-.3)--(0,6.5)node[above]{$t\ (\mathrm s)$};
+\draw[world](0,0)--(3.6,6);\draw[world](7,0)--(2.2,6);\fill(3,5)circle(2pt)node[above right]{$C(3,5)$};\draw[aux](0,0)--(4.72973,2.83784);\fill(4.72973,2.83784)circle(2pt)node[right]{$E_*$};\node[below left]at(0,0){$O$};\node[below]at(7,0){彗星初始事件};\node[above,rotate=30.964]at(2,1.2){$t'=0$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新求船系同时的彗星位置并复核时间}\par\nobreak
+用时间变换也得 $\Delta t'=1.25(5-0.6\times3)\,\mathrm s=4\,\mathrm s$。若改用“船系初始距离除以相对速度”，须先按图\ref{fig:hr6s}的船系同时线取彗星位置：$t=0.6x/c$ 与其世界线相交，得
+\[
+\frac{x}{c}=7\,\mathrm s-0.8t
+=7\,\mathrm s-0.48\frac{x}{c},\qquad
+1.48\frac{x}{c}=7\,\mathrm s.
+\]
+所以
+\[
+\frac{x_{E_*}}c=\frac{175}{37}\,\mathrm s,\quad
+t_{E_*}=\frac{105}{37}\,\mathrm s,\quad
+D'=x'_{E_*}=\frac{140}{37}c\,\mathrm s.
+\]
+于是 $D'/|u'_{\text{彗}}|=4\,\mathrm s$。不能把地面同时距离 $D$ 直接除以船系相对速度。
+\end{solution}
+
+\begin{question}
+\begin{example}[运动圆孔与固定挡板的遮光时刻]\label{ex:hr9}
+车厢以速度 $V$ 沿地面 $+x$ 运动。车内点光源 $S$ 一直发光，正前方固有距离 $l$ 处有半径 $r$ 的圆孔，圆心为 $O_1$。地面 $x=x_A$ 处固定半径 $R>r$ 的不透明圆挡板，圆心为 $O_2$。孔面、挡板均垂直于轴线，$S,O_1,O_2$ 等高，见图\ref{fig:hr9q}。$S$ 经过地面原点时取 $t=t'=0$，此时尚有光从挡板周围通过。求挡板处刚完全截住光束这一事件的车系时刻与地面时刻。忽略衍射；不把挡板到远处屏幕的传播延迟计入。
+\end{example}
+\fig{fig:hr9q}{在车系中作几何示意：光源和圆孔静止，挡板向左运动，边界光线形成稳定的圆锥。}{
+\begin{tikzpicture}[scale=.9]
+\draw[axis](-.5,0)--(8.2,0)node[right]{$x'$};\draw[very thick](2,.6)--(2,2.3) (2,-.6)--(2,-2.3);\draw[very thick](6,-1.2)--(6,1.2);
+\draw[light](0,0)--(2,.6);\draw[light](2,.6)--(8,2.4);\draw[light](0,0)--(2,-.6);\draw[light](2,-.6)--(8,-2.4);
+\fill(0,0)circle(1.8pt)node[left]{$S$};\node[below left]at(2,0){$O_1$};\node[below right]at(6,0){$O_2$};\draw[dim](2.4,0)--(2.4,.6)node[midway,right]{$r$};\draw[dim](6.4,0)--(6.4,1.2)node[midway,right]{$R$};\draw[dim](0,-1.1)--(2,-1.1)node[midway,below]{$l$};\draw[axis](6.4,2)--(4.7,2)node[midway,above]{$-V$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{在车系由相似三角形求遮光位置}\par\nobreak
+车系中，圆孔和光源均静止，边界光线由 $S$ 连到孔边缘。因此图\ref{fig:hr9s}中距光源 $X'$ 处的光束半径为 $\rho=rX'/l$。刚完全遮光时 $\rho=R$，故挡板的车系坐标为
+\[
+\boxed{X'_*=\frac{lR}{r}}.
+\]
+由于 $R>r$，该位置仍在孔面前方。
+\fig{fig:hr9s}{遮光开始时，挡板边缘恰好接触光锥边界。两直角三角形给出 $R/X'_*=r/l$。}{
+\begin{tikzpicture}
+\draw[axis](-.5,0)--(5.2,0)node[right]{$x'$};\draw[very thick](2,.6)--(2,1.8) (2,-.6)--(2,-1.8);\draw[very thick](4,-1.2)--(4,1.2);
+\draw[light](0,0)--(2,.6);\draw[light](2,.6)--(4,1.2);\draw[light](0,0)--(2,-.6);\draw[light](2,-.6)--(4,-1.2);
+\node[left]at(0,0){$S$};\node[above]at(4,1.2){$E$，边缘接触};\draw[dim](4.4,0)--(4.4,1.2)node[midway,right]{$R$};\draw[dim](2.3,0)--(2.3,.6)node[midway,right]{$r$};\draw[dim](0,-2.2)--(4,-2.2)node[midway,below]{$X'_*=lR/r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换挡板世界线并求车系时刻}\par\nobreak
+地面固定挡板的世界线为 $x=x_A$。由逆变换 $x=\gamma(x'+Vt')$，在车系有
+\[
+x'_A(t')=\frac{x_A}{\gamma}-Vt'.
+\]
+令它到达 $X'_*$，得到车系坐标时间
+\[
+\boxed{t'_E=\frac1V\left(\frac{x_A}{\gamma}-\frac{lR}{r}\right).}
+\]
+这里的 $t'_E$ 是车系同步钟网赋予挡板处遮光事件的坐标时间。
+
+\fig{fig:hr9time}{地面时空图。$x'=X'_*$ 对应一条与车厢平行的直线，与固定挡板世界线相交于遮光事件 $E$。两轴等比例，图示取 $V=0.6c$。}{
+\begin{tikzpicture}[scale=.5]
+\draw[axis](-.5,0)--(10.2,0)node[right]{$x$};\draw[axis](0,-.4)--(0,10)node[above]{$ct$};\draw[world](0,0)--(5.7,9.5)node[above]{$S$};\draw[world](8,0)--(8,9.5)node[above]{挡板};\draw[aux](3.2,0)--(8.9,9.5);\fill(8,8)circle(2pt)node[right]{$E$};\node[above,rotate=59.036]at(6.5,5.5){$x'=X'_*$};\node[below]at(8,0){$x_A$};\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把同一遮光事件变回地面时刻}\par\nobreak
+图\ref{fig:hr9time}中遮光事件 $E$是固定挡板世界线与 $x'=X'_* $轨迹的交点，先确定这个共同事件，再变回地面时间；等价地，将 $x'=\gamma(x_A-Vt)$ 代入阈值，得
+\[
+\boxed{t_E=\frac1V\left(x_A-\frac{lR}{\gamma r}\right).}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对初始条件和两种时间零点}\par\nobreak
+题给地面零时刻仍有光从边缘通过，等价于 $\gamma x_A>lR/r$，保证 $t_E>0$。$t'_E$ 不一定为正，因为地面零时刻与车系零时刻的远处同时面不同。若另求屏幕真正变暗的接收时刻，还须给出屏幕位置并加上最后一束光从挡板到屏幕的传播时间。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查固有距离和横向尺寸的使用}\par\nobreak
+在几何步骤中，$l$ 是车厢固有距离，图\ref{fig:hr9s}又正是在车系中作图，所以直接用 $l$，不再附加一次长度收缩。挡板的横向半径 $R$ 和圆孔半径 $r$ 也不随纵向变换改变。遮光发生在一圈边缘的同一轴向位置、同一时刻，时空图中的 $E$ 代表其中任一点的轴向坐标。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用挡板半径变化检查结论}\par\nobreak
+最后检查参数趋势：固定 $V,x_A,l,r$ 时，
+\[
+\frac{\partial t_E}{\partial R}=-\frac{l}{\gamma rV}<0.
+\]
+挡板越大，越早完全遮光，符合光锥与挡板相交的图形。反之，若圆孔更大，光束更宽，挡板需更接近光源才会截住全部光。
+\end{solution}
+
+\begin{question}
+\begin{example}[串列静电加速器]\label{ex:hr8}
+串列加速器中，离子源 $S$ 与终端靶 $T$ 接地，中央氮气管 $N$ 的电势为 $U=5.00\times10^6\,\mathrm V$，见图\ref{fig:hr8q}。氢负离子从 $S$ 由静止进入，在 $N$ 中被剥去电子而成为质子。忽略电子质量及能量损失，并假定剥离不改变粒子速度。考虑相对论效应，求质子到达 $T$ 的速率。取 $e=1.60\times10^{-19}\,\mathrm C,m_0=1.673\times10^{-27}\,\mathrm{kg}$。
+\end{example}
+\fig{fig:hr8q}{粒子先以负电荷从零电势到正高压区，再以正电荷回到零电势；两段均加速。}{
+\begin{tikzpicture}
+\draw[thick](0,-.6)rectangle(6,.6);\fill[black!12](2.6,-.5)rectangle(3.4,.5);\draw(2.6,-.5)rectangle(3.4,.5);
+\draw[axis](5.7,0)--(3.5,0)node[midway,above]{$\mathrm H^-$};\draw[axis](2.5,0)--(.3,0)node[midway,above]{$\mathrm H^+$};
+\node[above]at(6,.7){$S$};\node[above]at(0,.7){$T$};\node[below]at(3,-.6){$N$，$+U$};\node[below]at(0,-.6){$0$};\node[below]at(6,-.6){$0$};
+\draw(3,.5)--(3,1.5);\draw(2.5,1.5)rectangle(3.5,2.1);\node at(3,1.8){$H$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{按电荷和电势差分别计算两段做功}\par\nobreak
+电场做功为 $\Delta K=-q\Delta\varphi$。图\ref{fig:hr8q}的第一段 $S\to N$ 中，$q=-e,\Delta\varphi=U$，所以 $\Delta K_1=eU$。第二段 $N\to T$ 中电荷变成 $+e$，电势降为 $\Delta\varphi=-U$，故仍有 $\Delta K_2=eU$。
+\fig{fig:hr8s}{沿粒子行程画电势和动能：电势先升后降，电荷在 $N$ 变号，使动能两段都增加。横轴表示行程次序。}{
+\begin{tikzpicture}[scale=.9]
+\draw[axis](0,0)--(6.5,0)node[right]{行程};\draw[axis](0,0)--(0,2.5)node[above]{$\varphi$};\draw[thick](0,0)--(3,2)--(6,0);\node[left]at(0,2){$U$};\node[above]at(3,2){$N$};\node[below]at(0,0){$S$};\node[below]at(6,0){$T$};
+\begin{scope}[shift={(0,-3.6)}]\draw[axis](0,0)--(6.5,0)node[right]{行程};\draw[axis](0,0)--(0,2.6)node[above]{$K$};\draw[thick](0,0)--(3,1.1)--(6,2.2);\draw[aux](0,1.1)--(3,1.1);\draw[aux](0,2.2)--(6,2.2);\node[left]at(0,1.1){$eU$};\node[left]at(0,2.2){$2eU$};\node[below]at(3,0){剥离};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将两段增益相加求终端动能}\par\nobreak
+按题设的质量近似，剥离前后的动能可连续处理，终端动能为
+\[
+K_T=2eU=1.60\times10^{-12}\,\mathrm J=10.0\,\mathrm{MeV}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相对论动能反求速度}\par\nobreak
+由 $K_T=(\gamma-1)m_0c^2$，
+\[
+\gamma=1+\frac{2eU}{m_0c^2},\qquad
+\boxed{v=c\sqrt{1-\left(1+\frac{2eU}{m_0c^2}\right)^{-2}}}
+\simeq4.34\times10^7\,\mathrm{m/s}.
+\]
+图\ref{fig:hr8s}中的两次能量增益都须计入，不能只取一次 $eU$。若要保留电子质量，剥离时速度不变并不等于质子动能不变，须分别使用氢负离子质量和质子质量；本题已明确忽略这一小修正。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿电势图核对两段受力方向}\par\nobreak
+两段加速也可从受力方向检查：$S\to N$ 时电势沿运动方向升高，电场指向反方向，负离子受力沿运动方向；$N\to T$ 时电势降低，电场和正离子受力都沿运动方向。因此图\ref{fig:hr8s}的动能在两段均上升。电场做功仍由电荷与电势差决定，相对论修正进入的是最后由 $K_T$ 求 $v$ 的关系。
+
+\end{solution}
+
+\begin{question}
+\begin{example}[迎头粘合后的质量]\label{ex:hr3}
+两个粒子的不变质量均为 $m$，以大小相同、方向相反的速度 $0.6c$ 迎头碰撞，随后粘成一个复合粒子。若没有能量向外散失，求复合粒子的不变质量 $M$，见图\ref{fig:hr3q}。
+\end{example}
+\fig{fig:hr3q}{对称的碰前状态。两粒子动量等大反向，总动量为零。}{
+\begin{tikzpicture}
+\fill(-2,0)circle(3pt)node[below]{$m$};\fill(2,0)circle(3pt)node[below]{$m$};\draw[axis](-2,.6)--(-.5,.6)node[midway,above]{$0.6c$};\draw[axis](2,.6)--(.5,.6)node[midway,above]{$0.6c$};\draw[axisline](-3,0)--(3,0);
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{先由动量守恒判断复合粒子静止}\par\nobreak
+图\ref{fig:hr3s}中两条动量箭头相互抵消，碰前总动量为零。碰后只有一个复合粒子，故其动量也为零，即它在此参考系静止。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总能量守恒求不变质量}\par\nobreak
+每个入射粒子的洛伦兹因子为 $\gamma=1/\sqrt{1-0.6^2}=1.25$，总能量为 $2\gamma mc^2$。能量不向外流失，所以
+\[
+Mc^2=2\gamma mc^2,\qquad \boxed{M=2.50m}.
+\]
+\fig{fig:hr3s}{上方为碰前的两粒子，下面为静止复合粒子。总动量保持为零，碰前动能转化为复合粒子的内能。}{
+\begin{tikzpicture}
+\draw[axis](-3,1)--(-1,1)node[midway,above]{$\bm p$};\draw[axis](3,1)--(1,1)node[midway,above]{$-\bm p$};\node[below]at(-2,1){$E=1.25mc^2$};\node[below]at(2,1){$E=1.25mc^2$};
+\draw[axis](0,.6)--(0,-.6);\fill(0,-1.1)circle(4pt)node[right]{$M=2.5m,\quad u=0$};\node[below]at(0,-1.6){$E_{\text{后}}=Mc^2=2.5mc^2$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释增加的静能与内部能量}\par\nobreak
+两粒子碰前的静能和为 $2mc^2$，总动能为 $0.5mc^2$。这些相对运动能在粘合后留作内能，使复合粒子的不变质量增加 $0.5m$。若有辐射带走能量和动量，就必须把辐射也列入守恒式，不能沿用本题的 $M$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以系统不变量和一般速率复核}\par\nobreak
+也可直接对图\ref{fig:hr3s}的整个系统使用不变量：
+\[
+M^2c^4=(2\gamma mc^2)^2-c^2|\bm p+(-\bm p)|^2
+=4\gamma^2m^2c^4.
+\]
+取正根得到 $M=2\gamma m$。这样先消去总动量，再求静质量，便不必为碰后的复合粒子另猜一个速度。将 $0.6c$ 换成任意等值反向速率 $v$，仍有 $M=2m/\sqrt{1-v^2/c^2}$。
+\end{solution}
+
+\begin{question}
+\begin{example}[恒力作用下的高速粒子]\label{ex:hr11}
+一粒子不变质量为 $m_0$，起初静止，受地面系中恒力 $F$ 沿 $+x$ 加速，$F/m_0=0.5c/\mathrm s$。求 $t=0,0.1,0.6,1.0\,\mathrm s$ 时的速度和动能，见图\ref{fig:hr11q}。
+\end{example}
+\fig{fig:hr11q}{恒定的是实验室力 $F=\dd p/\dd t$，不是粒子的加速度。}{
+\begin{tikzpicture}
+\draw[axis](-.5,0)--(6,0)node[right]{$x$};\fill(.5,0)circle(3pt)node[below]{$m_0$};\draw[axis](.5,.7)--(3,.7)node[midway,above]{$F$，恒定};\node[above]at(.5,1.4){$p(0)=0$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{对恒力积分得到随时间增长的动量}\par\nobreak
+图\ref{fig:hr11q}中的 $F$ 是实验室系恒力。把 $\dd p/\dd t=F$ 写为
+$\dd p=F\,\dd t$，并使用初值 $p(0)=0$：
+\[
+ \int_0^{p(t)}\dd p'=\int_0^tF\,\dd t',
+ \qquad [p']_0^{p(t)}=F[t']_0^t,\qquad p(t)=Ft.
+\]
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以无量纲动量表达速度和动能}\par\nobreak
+令 $q=p/(m_0c)=Ft/(m_0c)$，本题中 $q=0.5t/\mathrm s$。由式\eqref{eq:hrem}，
+\[
+E=m_0c^2\sqrt{1+q^2},\qquad
+\boxed{\frac uc=\frac q{\sqrt{1+q^2}},\quad
+\frac K{m_0c^2}=\sqrt{1+q^2}-1.}
+\]
+\fig{fig:hr11s}{实线为相对论结果，灰虚线为经典近似；$A,B,C,D$ 对应题设四个时刻。}{
+\begin{tikzpicture}
+\begin{scope}[x=3.6cm,y=4cm]
+\draw[axis](0,0)--(1.15,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,.62)node[above]{$u/c$};\draw[world,domain=0:1.05,samples=60]plot(\x,{.5*\x/sqrt(1+.25*\x*\x)});\draw[gray,dashed](0,0)--(1.05,.525);
+\foreach \t/\name in {.6/C,1/D}{\pgfmathsetmacro{\vv}{.5*\t/sqrt(1+.25*\t*\t)}\fill(\t,\vv)circle(1.4pt);\node[above left]at(\t,\vv){$\name$};}
+\fill(0,0)circle(1.4pt)node[below left]{$A$};\fill(.1,.0499376)circle(1.4pt);\draw[aux](.1,.0499376)--(.2,.15)node[above]{$B$};
+\end{scope}
+\begin{scope}[shift={(6.2,0)},x=3.6cm,y=15cm]
+\draw[axis](0,0)--(1.15,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,.17)node[above]{$K/(m_0c^2)$};\draw[world,domain=0:1.05,samples=60]plot(\x,{sqrt(1+.25*\x*\x)-1});\draw[gray,dashed,domain=0:1.05,samples=60]plot(\x,{.125*(\x)^2});
+\foreach \t/\name in {.6/C,1/D}{\pgfmathsetmacro{\kk}{sqrt(1+.25*\t*\t)-1}\fill(\t,\kk)circle(1.4pt);\node[above left]at(\t,\kk){$\name$};}
+\fill(0,0)circle(1.4pt)node[below left]{$A$};\fill(.1,.00124922)circle(1.4pt);\draw[aux](.1,.00124922)--(.22,.045)node[above]{$B$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把四个时刻对应到曲线和数值表}\par\nobreak
+逐项代入，得
+\[
+\begin{array}{c|c|c|c}
+\text{图中点}&t/\mathrm s&u/c&K/(m_0c^2)\\\hline
+A&0&0&0\\
+B&0.1&0.049938&0.0012492\\
+C&0.6&0.287348&0.0440307\\
+D&1.0&0.447214&0.118034
+\end{array}
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求加速度并检查低速极限}\par\nobreak
+图\ref{fig:hr11s}的每一点都由同一个动量 $Ft$ 决定。由 $u=cq(1+q^2)^{-1/2}$、$\dd q/\dd t=F/(m_0c)$，
+先对 $q$ 使用乘积法则，再作时间的链式求导：
+\begin{align*}
+ \frac{\dd u}{\dd q}
+ &=c\left[(1+q^2)^{-1/2}-q^2(1+q^2)^{-3/2}\right]
+ =\frac{c}{(1+q^2)^{3/2}},\\
+ \frac{\dd u}{\dd t}
+ &=\frac{\dd u}{\dd q}\frac{\dd q}{\dd t}
+ =\frac{F/m_0}{(1+q^2)^{3/2}}.
+\end{align*}
+可见加速度随时间减小，而 $u$ 始终小于 $c$。只有 $q\ll1$ 时才有 $u\simeq Ft/m_0$ 和 $K\simeq F^2t^2/(2m_0)$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由位移积分验证功与动能一致}\par\nobreak
+还可用功检查表中的动能。取 $x(0)=0$，将速度对时间积分，并以
+$q'=Ft'/(m_0c)$ 换元，$\dd t'=(m_0c/F)\dd q'$：
+\[
+ x(t)=\int_0^t u(t')\dd t'
+ =\frac{m_0c^2}{F}\int_0^{q(t)}
+       \frac{q'\,\dd q'}{\sqrt{1+q'^2}}.
+\]
+再令 $z=1+q'^2$，$\dd z=2q'\dd q'$；积分限由 $0,q(t)$ 变成 $1,1+q(t)^2$，
+故
+\[
+ \int_0^{q(t)}\frac{q'\dd q'}{\sqrt{1+q'^2}}
+ =\frac12\int_1^{1+q(t)^2}z^{-1/2}\dd z
+ =[\sqrt z]_1^{1+q(t)^2}
+ =\sqrt{1+q(t)^2}-1.
+\]
+代回得到
+\[
+ x(t)=\frac{m_0c^2}{F}\left[\sqrt{1+\left(\frac{Ft}{m_0c}\right)^2}-1\right],
+\]
+故 $Fx(t)=m_0c^2(\sqrt{1+q^2}-1)=K(t)$。图\ref{fig:hr11s}两条曲线虽分别表示速度和动能，却由同一条粒子运动联系起来。若误用 $u=Ft/m_0$ 一直外推，既不能保持图中的速度上限，也不能与该功关系相容。
+\end{solution}
+
+\begin{question}
+\begin{example}[康普顿散射的波长变化]\label{ex:hr10}
+波长为 $\lambda_0$ 的光子与不变质量为 $m$ 的静止自由粒子碰撞。光子碰后相对入射方向偏转 $\theta$，见图\ref{fig:hr10q}。求出射光子的波长 $\lambda$。
+\end{example}
+\fig{fig:hr10q}{光子向右入射，碰后向右上方散射，粒子向右下方反冲。$\theta$ 是两光子传播方向之间的夹角。}{
+\begin{tikzpicture}
+\draw[light](-3,0)--(0,0);\fill(0,0)circle(2pt)node[below left]{$m$};\draw[axisline](0,0)--(3.7,0);
+\draw[light](0,0)--(60:2.8)node[above]{$\lambda$};\draw[axis](0,0)--(-40.893:3)node[right]{反冲粒子};\node[above]at(-1.8,0){$\lambda_0$};\draw(.75,0)arc(0:60:.75);\node at(.95,.45){$\theta$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{根据动量三角形消去反冲方向}\par\nobreak
+记入射、出射光子能量为 $\varepsilon_0=hc/\lambda_0$、$\varepsilon=hc/\lambda$，反冲粒子的能量、动量为 $E_e,\bm p_e$。图\ref{fig:hr10s}用首尾相接的矢量表示动量守恒：
+\[
+\bm p_e=\bm p_0-\bm p_\gamma,\qquad
+p_e^2c^2=\varepsilon_0^2+\varepsilon^2-2\varepsilon_0\varepsilon\cos\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把反冲总能量写成光子能量之差}\par\nobreak
+能量守恒给出 $E_e=mc^2+\varepsilon_0-\varepsilon$。
+\fig{fig:hr10s}{光子动量与反冲动量组成矢量三角形。图示长度取 $\varepsilon_0=mc^2,\theta=60^\circ$，两光子动量夹角为 $\theta$。}{
+\begin{tikzpicture}
+\coordinate(O)at(0,0);\coordinate(G)at(1.333333,2.309401);\coordinate(P)at(4,0);
+\draw[axis](O)--(P)node[midway,below]{$\bm p_0$};\draw[axis](O)--(G)node[midway,above left]{$\bm p_\gamma$};\draw[axis](G)--(P)node[midway,above right]{$\bm p_e$};\draw(.7,0)arc(0:60:.7);\node at(.9,.45){$\theta$};\node[below left]at(O){$O$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立反冲粒子的能量动量关系}\par\nobreak
+将 $E_e$ 代入粒子的能量动量关系 $E_e^2-p_e^2c^2=m^2c^4$，有
+\[
+(mc^2+\varepsilon_0-\varepsilon)^2
+-\left(\varepsilon_0^2+\varepsilon^2-2\varepsilon_0\varepsilon\cos\theta\right)
+=m^2c^4.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{整理出波长变化并检查两个极限}\par\nobreak
+消去相同项，整理为
+\[
+mc^2(\varepsilon_0-\varepsilon)
+=\varepsilon_0\varepsilon(1-\cos\theta).
+\]
+两边除以 $\varepsilon_0\varepsilon$，再换成波长，得到
+\[
+\boxed{\lambda-\lambda_0=\frac h{mc}(1-\cos\theta).}
+\]
+前向散射 $\theta=0$ 时波长不变；反向散射 $\theta=\pi$ 时增量最大，为 $2h/(mc)$。图\ref{fig:hr10q}中的反冲动量带走能量，所以出射光子一般波长增大；这里要求粒子起初静止且可视为自由粒子。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算反冲分量核对图中的实际角度}\par\nobreak
+为了进一步核对图\ref{fig:hr10s}的矢量长度，可把结果写成出射能量：
+\[
+\varepsilon=\frac{\varepsilon_0}{1+\dfrac{\varepsilon_0}{mc^2}(1-\cos\theta)},\qquad
+K_e=\varepsilon_0-\varepsilon.
+\]
+反冲动量的分量为 $p_{ex}=(\varepsilon_0-\varepsilon\cos\theta)/c$、$p_{ey}=-\varepsilon\sin\theta/c$，故向下反冲角 $\phi$ 满足
+\[
+\tan\phi=\frac{\varepsilon\sin\theta}{\varepsilon_0-\varepsilon\cos\theta}.
+\]
+图示参数给出 $\varepsilon=2\varepsilon_0/3$、$\phi=40.89^\circ$，与题设图的反冲方向和动量三角形一致。出射光子的 $\theta$ 与粒子反冲角 $\phi$ 是两个角，进入波长公式的是前者。
+\end{solution}
+
+
+
+\begin{question}
+\begin{example}[寿命、飞行距离与同时性]\label{ex:r61}
+某不稳定粒子的固有平均寿命为 \(\tau_0=2.00\,\mu\mathrm s\)，相对地面匀速 \(v=0.800c\)。取产生事件 \(A\) 为两系共同原点，求平均意义下的地面寿命与飞行距离。再在粒子静止系中用地面两个标记点的运动解释同一结果。取 \(c=3.00\times10^8\,\mathrm{m/s}\)。
+\end{example}
+\fig{fig:r61q}{\(B\) 表示经过一个平均寿命时的代表事件；平均寿命不是每个粒子的固定衰变时刻}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};
+\draw[axis](0,0)--(0,5.7)node[above]{$ct$};
+\draw[world](0,0)--(4,5);\draw[aux](4,0)--(4,5.3);
+\fill(0,0)circle(1pt)node[below left]{$A$};
+\fill(4,5)circle(1pt)node[right]{$B$};
+\node[rotate=51,above]at(2,2.5){粒子世界线};
+\node[below]at(4,0){地面终点 \(x=L\)};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{由粒子固有平均寿命求地面寿命和距离}\par\nobreak
+图\ref{fig:r61q}的 \(A,B\) 在粒子系同一空间点，所以其时间间隔为固有平均寿命。由 \(\gamma=1/\sqrt{1-0.8^2}=5/3\)，有
+\[
+ \boxed{\Delta t=\gamma\tau_0=\frac{10}{3}\,\mu\mathrm s},
+ \qquad\boxed{L=v\Delta t=800\,\mathrm m}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐事件变换确认粒子系时间}\par\nobreak
+将两个事件列在地面系：\(A:(0,0)\)，\(B:(L,\Delta t)\)。变换给出
+\[
+ \Delta x'=\gamma(L-v\Delta t)=0,\qquad
+ \Delta t'=\gamma\left(\frac{10}{3}-\frac{0.8\times800}{300}\right)
+ \mu\mathrm s=2.00\,\mu\mathrm s.
+\]
+\fig{fig:r61s}{\(A,D\) 在粒子系同时；\(A\) 与地面终点在 \(t=0\) 的事件并不在粒子系同时}{
+\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};
+\draw[axis](0,0)--(0,5.7)node[above]{$ct$};
+\draw[world](0,0)--(4,5);
+\draw[world](4,0)--(4,5.4);
+\draw[dashed](0,0)--(4.6,3.68)node[right]{$t'=0$};
+\fill(4,3.2)circle(1pt)node[right]{$D$};
+\fill(4,5)circle(1pt)node[right]{$B$};
+\node[below left]at(0,0){$A$};\node[below]at(4,0){$L$};
+\draw[aux](0,5)--(4,5)node[midway,above]{$ct=1000\,\mathrm m$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{选粒子系同时事件测地面标记间距}\par\nobreak
+图\ref{fig:r61s}中，\(D\) 是终点世界线与 \(t'=0\) 线的交点。地面原点与终点之间的固有距离为 \(L\)，在粒子系同时测得其间距
+\[
+ L'=\frac L\gamma=480\,\mathrm m.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用终点运动复核粒子系飞行时间}\par\nobreak
+这段地面装置以 \(-0.800c\) 运动，终点从距粒子 \(480\,\mathrm m\) 处移到粒子旁。所用时间为
+\[
+ \frac{L'}{v}=\frac{480\,\mathrm m}{0.800c}=2.00\,\mu\mathrm s,
+\]
+与固有寿命一致。这里 \(L'\) 使用 \(A,D\) 两个同时事件；若直接变换地面 \(t=0\) 的两个端点事件，会得到另一对不同步事件，不能据此测粒子系长度。
+\end{solution}
+
+\begin{question}
+\begin{example}[两个光子的系统质量]\label{ex:r62}
+实验室中两光子的能量分别为 \(E_1=3.00\,\mathrm{MeV},E_2=1.00\,\mathrm{MeV}\)，传播夹角为 \(\theta\)。求系统不变质量随 \(\theta\) 的关系。对迎头相向的 \(\theta=\pi\)，求质心系相对实验室的速度及质心系中两光子的能量。
+\end{example}
+\fig{fig:r62q}{两光子的动量必须作矢量相加；单个光子仍有零静质量}{
+\begin{tikzpicture}
+\draw[axis,thick](0,0)--(3,0)node[right]{$\boldsymbol p_1$};
+\draw[axis,thick](0,0)--(.5,.866025)node[above]{$\boldsymbol p_2$};
+\draw(0.7,0)arc[start angle=0,end angle=60,radius=.7];
+\node at(.9,.5){$\theta$};\node[below left]at(0,0){$O$};
+\end{tikzpicture}}
+\end{question}
+
+\begin{solution}\textbf{将两光子动量作矢量相加}\par\nobreak
+按图\ref{fig:r62q}，\(|\boldsymbol p_j|=E_j/c\)，所以
+\[
+ c^2|\boldsymbol p_1+\boldsymbol p_2|^2
+ =E_1^2+E_2^2+2E_1E_2\cos\theta.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求任意夹角下的系统不变质量}\par\nobreak
+代入总能量得
+\[
+ \boxed{M^2c^4=2E_1E_2(1-\cos\theta)},\qquad
+ \boxed{Mc^2=2\sqrt{E_1E_2}\,|\sin(\theta/2)|}.
+\]
+\fig{fig:r62s}{迎头时实验室总动量向右；质心系中两光子等能、反向}{
+\begin{tikzpicture}
+\node[left]at(0,1){实验室};
+\draw[axis,thick](.5,1)--(3.5,1)node[midway,above]{$E_1=3$};
+\draw[axis,thick](5,1)--(4,1)node[midway,above]{$E_2=1$};
+\node[left]at(0,-1){质心系};
+\draw[axis,thick](.5,-1)--(2.232,-1)node[midway,above]{$E'_1=\sqrt3$};
+\draw[axis,thick](5,-1)--(3.268,-1)node[midway,above]{$E'_2=\sqrt3$};
+\node[below]at(2.7,-1.5){能量单位：\(\mathrm{MeV}\)};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{列出迎头情形的总能量和总动量}\par\nobreak
+取图\ref{fig:r62s}向右为正，迎头时
+\[
+ E_{\rm tot}=4.00\,\mathrm{MeV},\quad
+ cp_{\rm tot}=2.00\,\mathrm{MeV},\quad
+ \boxed{Mc^2=2\sqrt3\,\mathrm{MeV}}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求使系统总动量消失的参考系速度}\par\nobreak
+要求质心系总动量为零，由 \(p'_{\rm tot}=\gamma_V(p_{\rm tot}-VE_{\rm tot}/c^2)=0\)，得
+\[
+ \boxed{V=\frac{c^2p_{\rm tot}}{E_{\rm tot}}=+0.500c}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{变换两光子并检查同向传播边界}\par\nobreak
+再分别变换光子能量，\(\gamma_V=2/\sqrt3\)，
+\[
+ E'_1=\gamma_VE_1(1-0.5)=\sqrt3\,\mathrm{MeV},\qquad
+ E'_2=\gamma_VE_2(1+0.5)=\sqrt3\,\mathrm{MeV}.
+\]
+两光子反向等能，总动量确为零。若 \(\theta=0\)，则 \(M=0\)，系统整体同向传播，不能用小于光速的惯性系把它变成总动量为零；这是上述“质心静止系”存在条件的边界。
+\end{solution}

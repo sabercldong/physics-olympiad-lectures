@@ -1,0 +1,354 @@
+\section{例题与分析}
+\begin{question}\begin{example}[八面转镜测光速]\label{k5p1}
+光从匀速旋转的正八面镜射出，经远处反射装置返回，同一光路单程长度为 $L$。从镜静止逐渐提高转频，首次重新观察到同样的返回光斑时转频为 $f_0$。求光速，忽略装置内其他光程。\end{example}
+\fig{k5p1q}{八面转镜测光速：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(.7);\foreach \a in {0,45,...,315}\draw[world](\a:.7)--({\a+45}:.7);\draw[ray](.7,.2)--(4,.2);\draw[ray](4,-.2)--(.7,-.2);\draw[very thick](4,-.6)--(4,.6);\node[above]at(2.4,.3){$L$};\node[below]at(0,-.8){正八面镜};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从等价镜面确定最小重复转角}\par\nobreak
+图\ref{k5p1q}的八个镜面等价，同样光路的最小非零重复转角为 $2\pi/8$。光往返用时 $2L/c$，在转频 $f_0$ 时镜面转角为 $2\pi f_0(2L/c)$，故
+\[2\pi f_0\frac{2L}{c}=\frac{2\pi}{8},\qquad \boxed{c=16Lf_0}.\]
+\fig{k5p1s}{八面转镜测光速：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$t$};\foreach \x/\s in {0/0,4/{2L/c}}\draw(\x,-.1)--(\x,.1)node[below]{$\s$};\draw[flow,blue](0,.8)--(4,.8)node[midway,above]{镜转 $1/8$圈};\node at(2,1.7){$f_0(2L/c)=1/8$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用往返光程核对级次与量纲}\par\nobreak
+图\ref{k5p1s}把往返时间与八分之一转联系，而非与一整转联系。若使用更高一次重现，镜面可能转过若干个 $2\pi/8$，需要引入整数级次，不能仍使用首次重现公式。这里已把同样返回光斑的最小构形周期明确为一个镜面间隔；其他光路结构应先重新判断构形周期。
+
+等价镜面的重复周期为 $1/(8f_0)$，而非光反射方向随单面转动产生的局部角速度关系。将传播时间写成 $2L/c$以后再与这一构形周期相等，便不会把反射光偏角的二倍关系与八个等价镜面的周期重复混为一谈。量纲上 $Lf_0$为速度；若题给的是总往返光程，应先将它与这里的单程 $L$区分。\end{solution}
+
+\begin{question}\begin{example}[旋转探照灯的光斑]\label{k5p2}
+探照灯距直线海岸500m，以每分钟一周匀速转动。光束与海岸成 $60^\circ$ 时，求光斑沿岸的速率。\end{example}
+\fig{k5p2q}{旋转探照灯的光斑：题设关系}{\begin{tikzpicture}\draw[world](-2,0)--(4,0);\fill(0,2)circle(2pt)node[above]{$O$};\draw[guide](0,2)--(0,0)node[below]{$H$};\draw[ray](0,2)--(1.155,0)node[below]{$P$};\node[left]at(0,1){$500$m};\node at(.9,.25){$60^\circ$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对光束与海岸的交点坐标求导}\par\nobreak
+设图\ref{k5p2q}中垂足到光斑的沿岸坐标为 $x$，光束与海岸夹角为 $\theta$，则 $x=500\cot\theta$。把余切写成商并求导，
+\[\dot x=500\frac{(-\sin\theta)\sin\theta-\cos^2\theta}{\sin^2\theta}\dot\theta
+ =-500\csc^2\theta\,\dot\theta.\]
+角速度大小 $|\dot\theta|=\omega=2\pi/60$rad/s，因此
+\[|\dot x|=500\omega\csc^2\theta,\quad\boxed{|\dot x|_{60^\circ}=\frac{2000\pi}{90}\approx69.8\ \mathrm{m/s}}.\]
+\fig{k5p2s}{旋转探照灯的光斑：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4.5,0)node[right]{$\theta$};\draw[axis](0,0)--(0,3)node[above]{$|\dot x|/(500\omega)$};\draw[world]plot[domain=35:90,samples=50]({\x/25},{1/(sin(\x)^2)});\draw[guide](2.4,0)--(2.4,1.333);\node[below]at(2.4,0){$60^\circ$};\node[right]at(2.4,1.333){$4/3$};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查投影放大及角度参照}\par\nobreak
+图\ref{k5p2s}显示光斑不是绕灯作半径500m的圆周运动，故不能直接用 $500\omega$。斜射时光斑还受投影放大；当光束趋近平行海岸，光斑位置和移动速率均可很大。光斑是几何交点，这个速率不表示有某个物体以同速沿岸传递。
+
+若改用光束与海岸法线的角 $\varphi=\pi/2-\theta$，便有 $x=500\tan\varphi$，$|\dot x|=500\omega\sec^2\varphi$，与原式相同。两种三角函数看似不同，只是角度参照不同；图上的500m是到岸的最短距离，不是当前灯到光斑的距离。光束正对垂足时光斑速率最小，为 $500\omega$，斜射时再由投影因子放大。\end{solution}
+
+\begin{question}\begin{example}[卫星经过同一地面点]\label{k5p3}
+卫星沿赤道上空圆轨道运动。地球自转周期为1天，5天内完成9个相对地面的重复周期。分别求顺行和逆行卫星的轨道周期。这里9指完整重复间隔数。\end{example}
+\fig{k5p3q}{卫星经过同一地面点：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1);\draw[guide](0,0)circle(2);\fill(2,0)circle(2pt)node[right]{卫星};\fill(1,0)circle(2pt)node[above right]{地面点};\draw[flow](0,-1.4)arc(-90:0:1.4);\node at(0,0){地球};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用相对周期确定角速度差并筛选顺行根}\par\nobreak
+以地球自转方向为正。图\ref{k5p3q}给相对角速度大小 $|\omega_s-\omega_E|=(9/5)\omega_E$。若顺行，正的解只能是 $\omega_s=(14/5)\omega_E$，所以 $\boxed{T_s=5/14\text{天}=60/7\text{小时}}$。
+\fig{k5p3s}{卫星经过同一地面点：解答过程}{\begin{tikzpicture}\draw[axis](-2.5,0)--(5.5,0)node[right]{$\omega/\omega_E$};\foreach \x/\s in {-1.2/{-4/5},1.5/1,4.2/{14/5}}\draw(\x,-.12)--(\x,.12)node[below]{$\s$};\draw[dim](-1.2,.7)--(1.5,.7)node[midway,above]{$9/5$};\draw[dim](1.5,1.5)--(4.2,1.5)node[midway,above]{$9/5$};\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选负角速度根并还原正的轨道周期}\par\nobreak
+若逆行，$\omega_s<0$，则 $\omega_E-\omega_s=(9/5)\omega_E$，得到 $\omega_s=-(4/5)\omega_E$，$\boxed{T_s=5/4\text{天}}$。图\ref{k5p3s}用角差计周期，强调地面点本身也在转动。若只说“观察到9次”却含首尾两次观测，间隔可能是8个，答案会不同，所以必须先明确计数含义。
+
+绝对角速度方程还有代数支 $\omega_s=\omega_E-(9/5)\omega_E=-4\omega_E/5$，它正对应逆行，不能在“顺行”条件下保留。另一个正支是 $14\omega_E/5$。先由符号确定运动方向，再由 $T_s=2\pi/|\omega_s|$求周期，既保留了周期的正值，也解释了同一重复频率为何能对应两种相反绕行方向。\end{solution}
+
+\begin{question}\begin{example}[恒星月与朔望月]\label{k5p4}
+把月球和地球绕各自中心的相关公转近似为共面匀速同向圆周运动。月球绕地球的恒星周期为28天，地球绕太阳周期为365天。求月相重复的朔望周期。\end{example}
+\fig{k5p4q}{恒星月与朔望月：题设关系}{\begin{tikzpicture}\fill(0,0)circle(4pt)node[below]{太阳};\draw[guide](3,0)circle(.8);\fill(3,0)circle(3pt)node[below]{地球};\fill(3.8,0)circle(2pt)node[right]{月球};\draw[guide](0,0)--(4.3,0);\draw[flow](3.7,.4)arc(30:100:.8);\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{以地月方向相对日地方向转过一圈计周期}\par\nobreak
+图\ref{k5p4q}中月相由地月方向与日地方向的相对角度决定。月球每绕地球一周时，地球也沿绕日轨道前进，因而同一月相的重复需要比28天更久。
+\[\frac1{T_{\rm syn}}=\frac1{28}-\frac1{365},\qquad\boxed{T_{\rm syn}=\frac{10220}{337}\approx30.33\text{天}}.\]
+\fig{k5p4s}{月相重复时两方向的累计转角相差整整一圈}{\begin{tikzpicture}
+\draw[axis](0,0)--(5.4,0)node[right]{$t$};\draw[axis](0,0)--(0,3.4)node[above]{累积转角};
+\draw[blue,world](0,0)--(4.4,2.72212)node[above]{$\varphi_M$};\draw[red,world](0,0)--(4.4,.2089)node[below right]{$\varphi_E$};
+\draw[dim](4.65,.2089)--(4.65,2.72212)node[midway,right]{$2\pi$};\node[below]at(4.4,0){$T_{\rm syn}$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从角度差核对频率相减和极限}\par\nobreak
+图\ref{k5p4s}将一个重复周期中的月球转角和地球转角画在同一正向下，其差为 $2\pi$。相减的是频率而非周期，不能用 $365-28$ 作为答案。数值采用题设的28天近似，不代表实际月球各类周期的精确天文学数值。
+
+经过时间 $T$，两方向分别转过 $2\pi T/28$与 $2\pi T/365$，重复月相要求前者比后者多一整圈，故相减等于 $2\pi$。所得 $T>28$天符合月球还要追上已经转动的日地方向；若两个角速度趋于相同，重复周期应趋于无穷，这也检验了分母必须取频率差。\end{solution}
+
+\begin{question}\begin{example}[角加速度恒定的圆周运动]\label{k5p5}
+质点在半径 $r$ 的圆周上从静止开始，转角为 $\varphi=At^2/2$，$A>0$。求角速度、切向加速度、法向加速度与总加速度大小，并判断加速度是否恒定。\end{example}
+\fig{k5p5q}{角加速度恒定的圆周运动：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.6);\fill(1.28,.96)circle(2pt)node[right]{$P$};\draw[guide](0,0)--(1.28,.96)node[midway,below]{$r$};\draw[ray](1.28,.96)--(.68,1.76);\node at(.5,.18){$\varphi$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{逐次对转角求导并分解线加速度}\par\nobreak
+对图\ref{k5p5q}的转角求导，$\omega=At$，$\beta=A$。所以 $\boxed{a_t=rA}$，$\boxed{a_n=rA^2t^2}$，两者正交，得到 $\boxed{|\bm a|=rA\sqrt{1+A^2t^4}}$。
+\fig{k5p5s}{角加速度恒定的圆周运动：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(3,0)node[right]{$a_t=rA$};\draw[flow,red](3,0)--(3,2)node[right]{$a_n=rA^2t^2$};\draw[flow](0,0)--(3,2)node[midway,above]{$\bm a$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分量比判断合加速度大小和方向的改变}\par\nobreak
+图\ref{k5p5s}中切向分量大小虽恒定，它的方向仍随质点转动；法向分量还随时间增大，因此总加速度既非恒大小，也非恒方向。初始时 $a_n=0$，加速度纯切向；到 $t=1/\sqrt A$ 时两分量相等，此后法向分量占优。把“角加速度恒定”说成“加速度恒定”混淆了角量与线矢量。
+
+由 $a_n/a_t=At^2$可得合加速度偏离切线向内的角满足 $\tan\gamma=At^2$，这比只给大小更能说明方向如何随时间改变。合加速度的大小由 $r^2A^2+r^2A^4t^4$开平方得到，$At^2$无量纲。即使 $A$恒定，法向分量增长且基矢不断转动，所以不能把结果当作一维恒加速度使用。\end{solution}
+
+\begin{question}\begin{example}[圆筒内壁上的下落轨迹]\label{k5p6}
+质点在竖直光滑圆筒内壁上运动，圆筒半径 $R$、高度 $H$。从顶部以水平切向速率 $v_0$出发，始终保持贴壁，忽略摩擦。求绕一周的时间及各周下落距离，说明何时能在落地前绕完一周。\end{example}
+\fig{k5p6q}{圆筒内壁上的下落轨迹：题设关系}{\begin{tikzpicture}\draw[world](0,2.5)ellipse(1.4 and .45);\draw[world](-1.4,2.5)--(-1.4,0) (1.4,2.5)--(1.4,0);\draw[world](0,0)ellipse(1.4 and .45);\draw[flow,blue](0,2.9)--(1.3,2.9)node[right]{$v_0$};\node[right]at(1.4,1.3){$H$};\node at(0,2.5){$R$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分清周向匀速与竖直自由落体}\par\nobreak
+在图\ref{k5p6q}中，以圆筒轴线为竖直轴。筒壁的法向力沿水平径向，重力沿竖直方向，两者均没有周向分量。因此周向速率始终为 $v_0$，角速度 $\omega=v_0/R$，每绕一周所需时间为
+\[\boxed{T=\frac{2\pi}{\omega}=\frac{2\pi R}{v_0}}.\]
+初始竖直速度为零，取向下为正，竖直下降量为 $z(t)=gt^2/2$。将圆筒沿母线展开，周向弧长为 $s=v_0t$；消去时间后有
+\[z=\frac{g}{2}\left(\frac{s}{v_0}\right)^2
+ =\frac{gs^2}{2v_0^2}.\]
+\fig{k5p6s}{圆筒内壁上的下落轨迹：解答过程}{\begin{tikzpicture}
+\draw[axis](0,0)--(6.7,0)node[right]{$s$};
+\draw[axis](0,0)--(0,-2.7)node[below]{$z$（下降量）};
+\draw[world,blue]plot[domain=0:5.6,samples=70]({\x},{-.065*(\x)^2});
+\foreach \x/\s in {1.4/{2\pi R},2.8/{4\pi R},4.2/{6\pi R},5.6/{8\pi R}}{
+ \draw[guide](\x,0)--(\x,{-.065*(\x)^2});
+ \node[above]at(\x,0){$\s$};}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{将等时周段换成下落距离差}\par\nobreak
+图\ref{k5p6s}横轴取弧长 $s$，所以完成第 $n$周的刻度应为 $2\pi Rn$，对应时间才是 $nT$。
+
+展开后的轨迹是抛物线，图中相邻竖虚线之间各代表一周。第 $n$周从 $(n-1)T$开始、到 $nT$结束，下落量为
+\begin{align*}
+\Delta h_n
+ &=z(nT)-z((n-1)T)\\
+ &=\frac12gT^2\bigl[n^2-(n-1)^2\bigr]
+  =\boxed{\frac12gT^2(2n-1)}.
+\end{align*}
+因此 $\Delta h_{n+1}-\Delta h_n=gT^2$，各周下落量按奇数比增加，轨迹不是等距螺旋线。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用实际高度截断可完成的圈数}\par\nobreak
+落地时 $z=H$，可用时间为 $t_H=\sqrt{2H/g}$。若允许恰在完成一周时触地，条件为 $T\le t_H$；若严格要求落地前绕完，则应取 $T<t_H$。完成 $n$周同理要求 $nT\le t_H$，并应按题意处理等号。上述运动还满足径向加速度 $v_0^2/R$恒定，符合始终贴壁的条件。\end{solution}
+
+\begin{question}\begin{example}[两平板之间的圆柱]\label{k5p7}
+半径 $r$ 的圆柱夹在水平地面和上方平板之间，与二者均无滑动。地面固定，上板向右匀速 $v_0$。求圆心速度、角速度及顶部、底部物质点的速度与加速度。\end{example}
+\fig{k5p7q}{两平板之间的圆柱：题设关系}{\begin{tikzpicture}\draw[world](-2,-1)--(2.5,-1) (-2,1)--(2.5,1);\draw[world](0,0)circle(1);\node[left]at(0,1){$A$};\node[left]at(0,-1){$B$};\draw[flow](1.6,1.4)--(3,1.4)node[right]{$v_0$};\node at(0,.1){$r$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分别在上板和地面写无滑动方程}\par\nobreak
+设圆心向右速度为 $u$，顺时针角速度大小为 $\omega$。图\ref{k5p7q}的底部无滑动给 $u-r\omega=0$，顶部给 $u+r\omega=v_0$，所以 $\boxed{u=v_0/2,\ \omega=v_0/(2r)}$。
+\fig{k5p7s}{两平板之间的圆柱：解答过程}{\begin{tikzpicture}\draw[world](0,0)circle(1);\draw[flow,blue](0,1)--(2,1)node[right]{$v_A=v_0$};\draw[flow,red](0,1)--(0,.2)node[right]{$a_A$};\draw[flow,red](0,-1)--(0,-.2)node[right]{$a_B$};\node[left]at(0,-1){$v_B=0$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以圆心为基点求两个物质点的加速度}\par\nobreak
+由于驱动速度恒定，圆心加速度与角加速度均为零。图\ref{k5p7s}中的顶部物质点 $A$速度向右为 $v_0$，加速度向下为 $r\omega^2=v_0^2/(4r)$；底部 $B$速度为零，加速度向上为相同大小。接触点每一瞬间更换材料身份，不能因地面静止就断言当下处于接触位置的物质点加速度也为零。
+
+以圆心为基点，顶部位矢是 $(0,r)$、底部是 $(0,-r)$，顺时针角速度对应 $\bm\omega=-(v_0/2r)\bm e_z$。速度中的叉乘分别给 $(v_0/2,0)$与 $(-v_0/2,0)$，再加圆心速度即得顶、底两结果；加速度则只剩 $-\omega^2\bm r$，方向恰好相反。这一逐点代入说明零速度不能推出零加速度。\end{solution}
+
+\begin{question}\begin{example}[纯滚动车轮轮缘点]\label{k5p8}
+半径 $R$ 的车轮向右以恒速 $u$纯滚动。轮缘物质点 $P$位于圆心左侧，其半径与向上竖直线夹角为 $\theta\in(0,\pi)$，即 $\bm r_{P/C}=R(-\sin\theta,\cos\theta)$。求速度和加速度。\end{example}
+\fig{k5p8q}{纯滚动车轮轮缘点：题设关系}{\begin{tikzpicture}\draw[world](-2,-1.5)--(3,-1.5);\draw[world](0,0)circle(1.5);\fill(-1.2,.9)circle(2pt)node[left]{$P$};\draw[guide](0,0)--(-1.2,.9) (0,0)--(0,1.5);\node at(-.3,.5){$\theta$};\draw[flow,blue](0,0)--(1.8,0)node[right]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{合成圆心平动与轮缘转动速度}\par\nobreak
+图\ref{k5p8q}中角速度矢量为 $-(u/R)\bm e_z$。按平动加转动，$\bm v_P=(u,0)+\bm\omega\times\bm r_{P/C}$，故
+\[\boxed{\bm v_P=u(1+\cos\theta,\sin\theta)},\qquad |\bm v_P|=2u\cos(\theta/2).\]
+\fig{k5p8s}{纯滚动车轮轮缘点：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(2,0)node[midway,below]{$\bm v_C$};\draw[flow,red](2,0)--(3.2,1.6)node[right]{$\bm v_{P/C}$};\draw[flow](0,0)--(3.2,1.6)node[midway,above]{$\bm v_P$};\node at(.9,.18){$\theta/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用相对圆心的向心项求加速度并核验顶底位置}\par\nobreak
+图\ref{k5p8s}中的合速度向右上，与水平夹角 $\theta/2$。圆心无加速度、角速度恒定，只有相对圆心的向心项，$\boxed{\bm a_P=(u^2/R)(\sin\theta,-\cos\theta)}$。顶部极限给速度 $2u$、加速度向下；底部极限给速度零、加速度向上，两者均与平地纯滚动接触条件一致。
+
+速率化简用到 $(1+\cos\theta)^2+\sin^2\theta=2(1+\cos\theta)=4\cos^2(\theta/2)$；给定 $0<\theta<\pi$保证半角余弦为正。速度方向由 $v_y/v_x=\tan(\theta/2)$确定。对地的曲率半径可进一步由法向加速度求得，而不能把大小恒为 $u^2/R$的合加速度直接全当法向分量，因为此点的速率一般正在变化。\end{solution}
+
+\begin{question}\begin{example}[线轴的上下出绳]\label{k5p9}
+线轴外半径 $R$、内半径 $r<R$，在水平地面纯滚动。绳从内轴的上侧或下侧沿水平方向引出，向右以恒速 $v$拉动。分别求圆心速度，以及外轮顶部 $C$、左端 $D$的速度和加速度。再讨论绳与水平成 $\alpha$时的速度关系。\end{example}
+\fig{k5p9q}{线轴的上下出绳：题设关系}{\begin{tikzpicture}\foreach \x in {0,4}\draw[world](\x,0)circle(1.2);\foreach \x in {0,4}\draw[world](\x,0)circle(.5);\draw[world](-1.5,-1.2)--(5.5,-1.2);\draw[ray](0,.5)--(2.1,.5)node[right]{$v$};\draw[ray](4,-.5)--(6.1,-.5)node[right]{$v$};\node[above]at(0,1.3){上侧};\node[above]at(4,1.3){下侧};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按上侧与下侧切点分别确定绳速符号}\par\nobreak
+令圆心向右速度为 $U$，顺时针角速度大小为 $U/R$。图\ref{k5p9q}上侧出绳有 $v=U+(r/R)U$，下侧有 $v=U-(r/R)U$，因此 $\boxed{U_{\text{上}}=Rv/(R+r),\ U_{\text{下}}=Rv/(R-r)}$，均向右。
+\fig{k5p9s}{线轴的上下出绳：解答过程}{\begin{tikzpicture}\draw[world](0,0)circle(1.2);\fill(0,1.2)circle(2pt)node[above]{$C$};\fill(-1.2,0)circle(2pt)node[left]{$D$};\draw[flow,blue](0,1.2)--(2,1.2)node[right]{$2U$};\draw[flow,blue](-1.2,0)--(-.2,1);\draw[flow,red](0,1.2)--(0,.4);\draw[flow,red](-1.2,0)--(-.4,0);\node[below]at(.4,-1.5){红：加速度；蓝：速度};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把各自圆心速度代入轮缘速度和加速度}\par\nobreak
+恒定水平绳速使 $U$恒定。按图\ref{k5p9s}，顶部 $\bm v_C=(2U,0)$、$\bm a_C=(0,-U^2/R)$；左端 $\bm v_D=(U,U)$、$\bm a_D=(U^2/R,0)$，两种出绳分别代入自己的 $U$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对倾斜绳恢复沿绳投影与退化边界}\par\nobreak
+若绳沿与水平成 $\alpha$的方向被拉，圆心的沿绳分量为 $U\cos\alpha$，上侧、下侧转动贡献分别为 $\pm Ur/R$，所以 $\boxed{U=v/(\cos\alpha\pm r/R)}$。下侧在 $\cos\alpha=r/R$时关系奇异，非零绳速不能对应有限的纯滚动速度；越过这一角度后圆心方向反转。倾斜时若角度随时间变化，应重新求导，不能继续使用水平恒速时的加速度结论。
+
+上、下两种结果在 $r\to0$时都回到 $U=v$，因为内轴的转动沿绳贡献消失。下侧在 $r\uparrow R$时，切点逐渐接近地面瞬心，有限圆心速度能提供的绳速趋零，所以为维持非零拉速，所需 $U$急剧增大。这是速度约束接近退化的表现，并非下侧出绳可以不受力学条件限制地任意增速。\end{solution}
+
+\begin{question}\begin{example}[拉绳系在线轴的指定点]\label{k5p10}
+外半径 $R$ 的线轴向右纯滚动。绳的一端系在内轴左侧物质点 $A$，当时 $\bm r_{A/C}=(-r,0)$；绳从 $A$向右上方延伸，与水平成 $\alpha$，沿绳拉动的速率为 $v_0$。绳不在内轴上卷绕。求圆心速率。\end{example}
+\fig{k5p10q}{拉绳系在线轴的指定点：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.3);\draw[world](0,0)circle(.6);\fill(-.6,0)circle(2pt)node[left]{$A$};\draw[ray](-.6,0)--(2,1.5)node[right]{$v_0$};\draw[world](-2,-1.3)--(3,-1.3);\draw[guide](-.6,0)--(1,0);\node at(.1,.2){$\alpha$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{先求指定系点的真实速度，再沿绳投影}\par\nobreak
+图\ref{k5p10q}指定的是系绳物质点，而非绕轴绳的切点。若圆心向右速率为 $U$，顺时针角速度大小为 $U/R$，则 $\bm v_A=(U,Ur/R)$。将它投影到沿绳单位方向 $(\cos\alpha,\sin\alpha)$，得到
+\[v_0=U\cos\alpha+\frac{Ur}{R}\sin\alpha,\qquad\boxed{U=\frac{v_0}{\cos\alpha+(r/R)\sin\alpha}}.\]
+\fig{k5p10s}{拉绳系在线轴的指定点：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(2,0)node[midway,below]{$U$};\draw[flow,red](2,0)--(2,.92308)node[right]{$Ur/R$};\draw[flow](0,0)--(2,.92308)node[above left]{$\bm v_A$};\draw[guide](0,0)--(3,1.73077)node[right]{绳方向};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查指定物质点与卷绕切点的区别}\par\nobreak
+图\ref{k5p10s}显示左侧物质点的转动速度竖直向上，所以其沿绳贡献还乘 $\sin\alpha$。这与绳始终沿内圆切线卷绕的模型不同，不能把上一题的 $r/R$项原样搬来。$\alpha=0$时系点沿绳速度就是圆心速度，结果退回 $U=v_0$。
+
+也可由系绳段定长的微分说明投影条件：沿绳看，拉动端与系点的相对速度必须为零，垂直绳向允许系点改变方向。指定系点在左侧时，顺时针转动恰使它向上，因此沿右上绳向贡献为正。若系点转到别的位置，转动速度方向会改变，当前式中的 $\sin\alpha$不能视作适用于全程的固定几何因子。\end{solution}
+
+\begin{question}\begin{example}[两个圆环驱动四个滚子]\label{k5p11}
+中心圆半径 $r$，外圆环内半径 $3r$，四个半径 $r$ 的滚子夹在其间。各接触均无滑动。在同一时间内，中心圆顺时针5周，外环逆时针7周。求每个滚子圆心的公转与自身对地自转圈数。\end{example}
+\fig{k5p11q}{两个圆环驱动四个滚子：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(.6);\draw[world](0,0)circle(1.8);\foreach \a in {0,90,180,270}\draw[world](\a:1.2)circle(.6);\node at(0,0){$r$};\node[right]at(1.8,1.6){外环 $3r$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{按内外接触半径建立同一时段的圈数方程}\par\nobreak
+统一逆时针为正，将同一段时间内的角位移直接用圈数表示。图\ref{k5p11q}中滚子圆心轨道半径为 $2r$。设滚子公转为 $N$圈、自转为 $n$圈，内接触处位移关系为 $2N-n=-5$，外接触处为 $2N+n=3\times7=21$。
+\fig{k5p11s}{两个圆环驱动四个滚子：解答过程}{\begin{tikzpicture}\draw[world](0,0)circle(1);\node at(0,0){滚子};\fill(-1,0)circle(2pt)node[left]{内};\fill(1,0)circle(2pt)node[right]{外};\draw[flow,blue](0,0)--(0,1.5)node[right]{$2r\Omega$};\draw[flow,red](-1,0)--(-1,-1.2);\draw[flow,red](1,0)--(1,1.2);\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元后用累计切向位移复核}\par\nobreak
+两式联立得 $\boxed{N=4\text{圈，逆时针};\quad n=13\text{圈，逆时针}}$。图\ref{k5p11s}在一个滚子上标出内外切向速度：半径不同使中心圆5周与外环7周不能直接算术平均。四个滚子由对称性具有相同结果；这里的积分位移关系要求各接触始终保持无滑动，瞬时速度方程在全程积分才得到圈数。
+
+在同一参考系中，将公转与自转圈数分别乘 $2\pi$，内接触的累计切向位移为 $2r(2\pi N)-r(2\pi n)$，外接触则改为加号。它们分别等于中心圆接触点的 $r(2\pi\times(-5))$与外环的 $3r(2\pi\times7)$，约去 $2\pi r$才得到两条圈数方程。半径因子说明外环转7周对应的接触线位移不能直接与中心圆5周等权相加。\end{solution}
+
+\begin{question}\begin{example}[变速滚动车轮的加速度]\label{k5p12}
+车轮半径为 $r$，向右纯滚动。以顺时针角速度 $\omega$及角加速度 $\beta$为正，轮缘点相对圆心的位置为 $r(\sin\theta,\cos\theta)$。求该物质点加速度，并检查底部接触位置。\end{example}
+\fig{k5p12q}{变速滚动车轮的加速度：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\draw[world](-2,-1.5)--(2.5,-1.5);\fill(1.2,.9)circle(2pt)node[right]{$P$};\draw[guide](0,0)--(1.2,.9) (0,0)--(0,1.5);\node at(.3,.5){$\theta$};\draw[flow,blue](0,0)--(1.5,0)node[right]{$r\omega$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{保留平动、角加速度和向心三个矢量项}\par\nobreak
+图\ref{k5p12q}中的角参数沿物质点运动满足 $\dot\theta=\omega$。圆心加速度为 $(r\beta,0)$，点相对圆心的速度为 $(r\omega\cos\theta,-r\omega\sin\theta)$。对两个乘积逐项求导，
+\begin{align*}
+ \frac{\dd}{\dd t}(r\omega\cos\theta)&=r\beta\cos\theta-r\omega\sin\theta\,\dot\theta,\\
+ \frac{\dd}{\dd t}(-r\omega\sin\theta)&=-r\beta\sin\theta-r\omega\cos\theta\,\dot\theta.
+\end{align*}
+代入 $\dot\theta=\omega$并加圆心项，得到
+\[\boxed{a_x=r\beta(1+\cos\theta)-r\omega^2\sin\theta},\]
+\[\boxed{a_y=-r\beta\sin\theta-r\omega^2\cos\theta}.\]
+\fig{k5p12s}{变速滚动车轮的加速度：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(2,0)node[below]{$r\beta\bm e_x$};\draw[flow,red](2,0)--(3.2,-1.6)node[right]{切向};\draw[flow](3.2,-1.6)--(1.6,-2.8)node[left]{向心};\draw[guide](0,0)--(1.6,-2.8)node[midway,left]{$\bm a_P$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{在底部检查切向项抵消与非零法向项}\par\nobreak
+图\ref{k5p12s}区分圆心平动、切向和向心三部分。底部 $\theta=\pi$ 时，水平两项抵消，$\bm a=(0,r\omega^2)$向上，与 $\beta$无关。这里是当前位于底部的物质点的加速度，不是始终位于地面接触位置的几何点的二阶导数；后者更换物质身份，不能混为一谈。
+
+底部处圆心切向加速度 $(r\beta,0)$与该点相对圆心的切向项 $(-r\beta,0)$恰好抵消，保留下来的只是向心项 $(0,r\omega^2)$。如果瞬间 $\omega=0$而 $\beta\ne0$，底部物质点加速度也为零，但顶部仍有水平加速度 $2r\beta$。这一特例清楚区分了角速度平方项和角加速度项，不能只凭转动方向画合加速度。\end{solution}
+
+\begin{question}\begin{example}[圆外滚动时轮缘轨迹的曲率]\label{k5p13}
+半径 $r$ 的圆沿固定半径 $R$ 的圆外侧纯滚动，圆心以顺时针公转角速度大小 $\Omega$、角加速度 $B=\dot\Omega$运动。取小圆最外侧的物质点 $P$，即它位于两圆心连线的外延长线上。求其速度、加速度及轨迹曲率半径，设 $\Omega\ne0$。\end{example}
+\fig{k5p13q}{圆外滚动时轮缘轨迹的曲率：题设关系}{\begin{tikzpicture}\draw[world](0,0)circle(1.5);\draw[world](2.2,0)circle(.7);\fill(2.9,0)circle(2pt)node[right]{$P$};\draw[guide](0,0)--(2.9,0);\node[above]at(0,0){$O$};\node[above]at(2.2,0){$C$};\node[below]at(1.1,0){$R+r$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由无滑动求自转并合成最外点瞬时速度}\par\nobreak
+令 $b=R+r$，径向外为 $\bm e_r$、逆时针切向为 $\bm e_\theta$。图\ref{k5p13q}的接触点静止给小圆顺时针自转大小 $b\Omega/r$。圆心速度为 $-b\Omega\bm e_\theta$，最外点转动速度同向同大，所以 $\boxed{\bm v_P=-2b\Omega\bm e_\theta}$。
+\fig{k5p13s}{圆外滚动时轮缘轨迹的曲率：解答过程}{\begin{tikzpicture}\fill(0,0)circle(2pt)node[above]{$P$};\draw[flow,blue](0,0)--(0,-2)node[right]{$2b\Omega$};\draw[flow,red](0,0)--(-2.5,0)node[left]{$a_n$};\draw[flow](0,0)--(0,-1)node[left]{$a_t$};\draw[guide](-2.5,0)--(-2.5,-1)--(0,-1);\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算圆心及物质点相对加速度}\par\nobreak
+圆心加速度为 $-b\Omega^2\bm e_r-bB\bm e_\theta$；点相对圆心的加速度为 $-(b^2/r)\Omega^2\bm e_r-bB\bm e_\theta$。因此
+\[\boxed{\bm a_P=-b(1+b/r)\Omega^2\bm e_r-2bB\bm e_\theta}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{提取轨迹法向项求曲率并限制瞬时条件}\par\nobreak
+图\ref{k5p13s}中径向项垂直速度，正是轨迹法向加速度，故 \[\boxed{\rho=4br/(b+r)=4r(R+r)/(R+2r)}.\]切向加速度改变速率，不进入该瞬间曲率的计算；若直接以小圆半径 $r$作曲率半径，就忽略了圆心公转。
+
+这里 $P$只在所考察瞬间位于最外侧，随后同一物质点不会一直停在两圆心连线上。因此不能把 $\bm v_P=-2b\Omega\bm e_\theta$当作对这个点全程成立的式子直接求导，否则会漏掉自转方向相对连线的变化。用刚体加速度式分别计算圆心和轮缘相对项，再取法向大小 $b(1+b/r)\Omega^2$，才有 $\rho=(2b\Omega)^2/[b(1+b/r)\Omega^2]$。\end{solution}
+
+\begin{question}\begin{example}[转杆与地面的交点]\label{k5p14}
+长杆绕高出地面 $h$ 的固定点 $O$转动，与地面右侧交于 $P$。杆向右下倾角为 $\theta$，顺时针角速度为 $\omega$、角加速度为 $\beta$。求几何交点 $P$的速度与加速度，并与杆上当时处于该位置的物质点比较。\end{example}
+\fig{k5p14q}{转杆与地面的交点：题设关系}{\begin{tikzpicture}\draw[world](-.5,0)--(5,0);\fill(0,2)circle(2pt)node[above]{$O$};\draw[world](0,2)--(4.5,-.25);\fill(4,0)circle(2pt)node[below]{$P$};\draw[guide](0,2)--(3,2);\node at(1,1.8){$\theta$};\node[left]at(0,1){$h$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对几何交点坐标连续求两次导数}\par\nobreak
+图\ref{k5p14q}中 $x_P=h\cot\theta$，且 $\dot\theta=\omega$。由 $(\cot\theta)'=-\csc^2\theta$和链式法则，$\dot x_P=-h\csc^2\theta\,\dot\theta=-h\omega\csc^2\theta$。再对乘积求导，
+\[\ddot x_P=-h\beta\csc^2\theta
+ -h\omega(-2\csc^2\theta\cot\theta)\dot\theta.\]
+代入 $\dot\theta=\omega$整理得
+\[\boxed{\dot x_P=-h\omega\csc^2\theta},\quad
+\boxed{\ddot x_P=2h\omega^2\csc^2\theta\cot\theta-h\beta\csc^2\theta}.\]
+\fig{k5p14s}{转杆与地面的交点：解答过程}{\begin{tikzpicture}\draw[world](-.5,0)--(4.5,0);\draw[world](0,2)--(4,0);\draw[flow,blue](4,0)--(2.5,0)node[below]{$\bm v_P$};\draw[flow,red](4,0)--(3.5,-1)node[right]{$\bm v_Q$};\node[above]at(4,0){$P=Q$瞬时位置};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{与当前重合的杆上物质点比较方向}\par\nobreak
+恒定角速度时 $\beta=0$，交点向左运动而加速度向右。图\ref{k5p14s}标出的杆上物质点 $Q$在此瞬间与 $P$重合，但它的速度垂直杆，有竖直分量；$P$始终在地面，速度只能水平，二者不相同。杆长若为有限 $l$，还须满足 $OP=h/\sin\theta\le l$，否则杆根本没有到达地面，交点公式失去实际对应。
+
+杆上当前重合物质点相对轴位矢为 $(h\cot\theta,-h)$，速度为 $(-h\omega,-h\omega\cot\theta)$，确有向下分量；几何交点却始终留在地面。\end{solution}
+
+\begin{question}\begin{example}[恒速收绳时小船的加速度]\label{k5p15}
+岸上滑轮高出船的系绳点 $h$，以恒定速率 $v$收绳。船只作水平运动，绳与水平成 $\theta$。求船向岸的速率与加速度大小，并说明为何船不是匀速运动。\end{example}
+\fig{k5p15q}{恒速收绳时小船的加速度：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(0,2)--(3.5,0);\draw[world](-.5,0)--(4.5,0);\node[left]at(0,1){$h$};\node[below]at(3.5,0){船};\node at(2.7,.2){$\theta$};\draw[flow,blue](3,-.5)--(1.8,-.5)node[left]{$u$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对绳长约束求两次导数}\par\nobreak
+以图\ref{k5p15q}中离岸水平距离 $x>0$为坐标，$\ell^2=x^2+h^2$，$\dot\ell=-v$。一次微分给 $2\ell\dot\ell=2x\dot x$，即 $\dot x=-v\ell/x$，因此船速 $u=v\sec\theta$。再用商法则，$\ddot x=-v(\dot\ell/x-\ell\dot x/x^2)$；使用 $\dot\ell=-v$与 $\dot x=-v\ell/x$，有
+\[\ddot x=-v\left(-\frac vx+\frac{v\ell^2}{x^3}\right)=-\frac{v^2h^2}{x^3}.\]
+\fig{k5p15s}{恒速收绳时小船的加速度：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$x/h$};\draw[axis](0,0)--(0,3)node[above]{$ah/v^2$};\draw[world]plot[domain=.75:4.5,samples=60]({\x},{1/((\x)^3)});\node at(3,1.6){$ah/v^2=(h/x)^3$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由几何比例解释加速方向并检查端点}\par\nobreak
+所以加速度指向岸，$\boxed{a=v^2h^2/x^3=(v^2/h)\tan^3\theta}$。图\ref{k5p15s}中越近岸绳越陡，同样收绳量需要更大的水平位移，故速度增加。$x\to\infty$时加速度趋零，近乎水平绳恢复近似匀速；$x\to0$时公式发散，表明理想恒速收绳模型不能持续至正下方。
+
+还可先从 $\ell^2=x^2+h^2$二次微分得到 $\dot\ell^2+\ell\ddot\ell=\dot x^2+x\ddot x$。恒定收绳给 $\dot\ell^2=v^2$、$\ddot\ell=0$，再用 $\dot x^2=v^2\ell^2/x^2$，便得 $x\ddot x=v^2-v^2\ell^2/x^2=-v^2h^2/x^2$。这种写法也明确显示，斜绳长度的二阶导数为零并不使船加速度为零。\end{solution}
+
+\begin{question}\begin{example}[内滚圆轮缘点的加速度]\label{k5p16}
+大圆半径 $R$，小圆半径 $r\in(0,R)$，小圆在大圆内侧无滑动滚动。大圆圆心 $O$固定，某瞬间小圆心 $C$在 $O$正上方，轮缘物质点 $P$位于 $C$正下方。大小圆对地角速度、角加速度分别为 $\omega_1,\beta_1$和 $\omega_2,\beta_2$，均以逆时针为正。求 $P$的加速度，并讨论大圆固定和 $r=R/2$的情形。\end{example}
+\fig{k5p16q}{内滚圆轮缘点的加速度：题设关系}{\begin{tikzpicture}
+\draw[world](0,0)circle(2.2);\coordinate(C)at(0,1.4);\draw[world](C)circle(.8);
+\fill(0,0)circle(1.3pt)node[below left]{$O$};\fill(C)circle(1.3pt)node[right]{$C$};
+\fill(0,.6)circle(1.5pt)node[right]{$P$};\fill(0,2.2)circle(1.3pt)node[above]{$K$};
+\draw[guide](0,0)--(0,2.2);\draw[dim](-.45,0)--(-.45,1.4)node[midway,left]{$R-r$};
+\draw[guide](0,0)--(-1.555635,-1.555635)node[midway,below left]{$R$};
+\draw[guide](C)--(.8,1.4)node[midway,above]{$r$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由顶部接触条件求圆心公转与加速度}\par\nobreak
+取图\ref{k5p16q}中 $x$向右、$y$向上。记圆心绕行的有符号角速度为 $\Omega$，圆心轨道半径为 $d=R-r$。顶部接触点 $K$的速度由圆心平动和小圆自转相加，两项均以向左为正的大小表示，故无滑动条件为
+\[d\Omega+r\omega_2=R\omega_1,\qquad
+\Omega=\frac{R\omega_1-r\omega_2}{R-r}.\]
+这一关系在邻近时刻也成立，对时间求导得 $\dot\Omega=(R\beta_1-r\beta_2)/(R-r)$。此时 $\overrightarrow{OC}=(0,d)$，因此圆心的切向、向心加速度为
+\[\bm a_C=(-d\dot\Omega,-d\Omega^2).\]
+\fig{k5p16s}{内滚圆轮缘点的加速度：解答过程}{\begin{tikzpicture}
+\fill(0,0)circle(1.4pt)node[above right]{$C$};
+\draw[flow,blue](0,0)--(-1.8,0)node[midway,above]{$-(R-r)\dot\Omega$};
+\draw[flow,red](0,0)--(0,-1.7)node[right]{$-(R-r)\Omega^2$};
+\begin{scope}[xshift=4.8cm]
+\fill(0,0)circle(1.4pt)node[below left]{$P/C$};
+\draw[flow,blue](0,0)--(1.6,0)node[midway,below]{$r\beta_2$};
+\draw[flow,red](0,0)--(0,1.6)node[right]{$r\omega_2^2$};
+\end{scope}
+\node at(1.7,-2.3){角加速度分项的方向随其符号改变};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加轮缘相对项并代回公转关系}\par\nobreak
+图\ref{k5p16s}右侧中 $\bm r_{P/C}=(0,-r)$，相对圆心的切向加速度为 $(r\beta_2,0)$，向心加速度为 $(0,r\omega_2^2)$。逐方向相加，得到
+\[\bm a_P=(r\beta_2-d\dot\Omega,\ r\omega_2^2-d\Omega^2).\]
+代入 $d,\Omega,\dot\Omega$并整理，最终为
+\[\boxed{a_{P,x}=2r\beta_2-R\beta_1},\qquad
+\boxed{a_{P,y}=r\omega_2^2-\frac{(R\omega_1-r\omega_2)^2}{R-r}}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查固定大圆与二比一半径的抵消}\par\nobreak
+若大圆固定，$\omega_1=\beta_1=0$，有
+\[a_{P,x}=2r\beta_2,\qquad
+a_{P,y}=\frac{r(R-2r)}{R-r}\omega_2^2.\]
+小圆匀速自转时 $\beta_2=0$，但竖直项一般仍存在；它的方向随 $R-2r$改变。只有 $r=R/2$，圆心的向下向心项与 $P$相对圆心的向上向心项才恰好抵消。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留大圆转动后重新化简特殊半径情形}\par\nobreak
+再取 $r=R/2$且大圆也可转动，先得到 $\Omega=2\omega_1-\omega_2$、$\dot\Omega=2\beta_1-\beta_2$。横向项为 $r[\beta_2-(2\beta_1-\beta_2)]=R(\beta_2-\beta_1)$；竖直项展开为
+\[r[\omega_2^2-(2\omega_1-\omega_2)^2]
+ =4r\omega_1(\omega_2-\omega_1)
+ =2R\omega_1(\omega_2-\omega_1).\]
+所以这个特殊半径比恢复
+\[\bm a_P=R(\beta_2-\beta_1)\bm e_x
+       +2R\omega_1(\omega_2-\omega_1)\bm e_y.\]
+一般半径下 $P$并不与 $O$重合；只有二比一时才重合。图中的这两个点不能预先合并，否则会把一般内滚圆模型缩减成一个特殊情形。
+\end{solution}
+
+\begin{question}\begin{example}[抛物线的曲率半径]\label{k5p17}
+曲线为 $y=-kx^2$，$k>0$且量纲为长度的倒数。用运动学方法求任一点的曲率半径。再写出选定长度单位后 $k=1$时的形式。\end{example}
+\fig{k5p17q}{抛物线的曲率半径：题设关系}{\begin{tikzpicture}\draw[axis](-2.3,0)--(2.3,0)node[right]{$x$};\draw[axis](0,-2.5)--(0,1)node[above]{$y$};\draw[world]plot[domain=-2:2,samples=60]({\x},{-.5*(\x)^2});\fill(1.2,-.72)circle(2pt)node[right]{$P$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选辅助匀速横坐标求速度与加速度}\par\nobreak
+让辅助质点沿图\ref{k5p17q}曲线运动，选 $x=ut$，$u>0$。由 $y=-kx^2$逐次求导，$\dot y=-2kx\dot x=-2kux$，$\ddot y=-2ku\dot x=-2ku^2$。因此 $\bm v=(u,-2kux)$，$\bm a=(0,-2ku^2)$，速率为 $u\sqrt{1+4k^2x^2}$，叉积大小为 $2ku^3$。
+\fig{k5p17s}{抛物线的曲率半径：解答过程}{\begin{tikzpicture}\fill(0,0)circle(2pt)node[above]{$P$};\draw[flow,blue](0,0)--(2,-1.5)node[right]{$\bm v$};\draw[flow,red](0,0)--(0,-2)node[left]{$\bm a$};\draw[flow](0,0)--(-.96,-1.28)node[left]{$\bm a_n$};\draw[guide](0,-2)--(-.96,-1.28);\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以叉积提取法向项并消去辅助速率}\par\nobreak
+代入图\ref{k5p17s}所示切向、法向分解对应的关系 $\rho=v^3/|\bm v\times\bm a|$，得到 $\boxed{\rho=(1+4k^2x^2)^{3/2}/(2k)}$。在选定单位使系数数值 $k=1$时，可写为 $(1+4x^2)^{3/2}/2$，结果的长度单位由坐标单位给出。顶点处 $\rho=1/(2k)$最小；沿两侧远离顶点，曲线逐渐平缓，曲率半径增大。辅助速率 $u$完全相消，检查了曲率只依赖几何形状。
+
+若用自然坐标分解，$a_t=\bm v\cdot\bm a/v=4k^2u^2x/\sqrt{1+4k^2x^2}$，因此 $a_n=2ku^2/\sqrt{1+4k^2x^2}$。再用 $v^2/a_n$同样恢复曲率半径。在 $x\ne0$处合加速度仍竖直向下，却不再正沿曲线法线，故用合加速度大小会少一个 $\sqrt{1+4k^2x^2}$的投影因子。\end{solution}

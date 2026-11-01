@@ -1,0 +1,129 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{s1:drill:1}\textbf{逐块数出需要闭合的空隙}\par\nobreak
+图\ref{fig:s1:drill:1:s}中最右块移动零，倒数第二块移$l$，依次直到最左块移$(N-1)l$。木块长度不影响需要闭合的空隙数。
+对等质量木块，初、末质心相减得到$\Delta x_C=N^{-1}\sum_i(x'_i-x_i)$，所以不必知道每块的初始绝对位置。从右到左数第$j$块要消除其右方$j-1$个空隙，位移为$(j-1)l$。用等差数列求和$\sum_{j=1}^N(j-1)=N(N-1)/2$后再除以$N$。
+\fig{fig:s1:drill:1:p}{固定右端后的三块示意：各块位移分别为两个、一个和零个空隙}{\begin{tikzpicture}
+\foreach \x in {0,2,4}{\draw[world](\x,2)rectangle({\x+1},2.6);}\foreach \x in {2,3,4}{\draw[world](\x,0)rectangle({\x+1},.6);}\draw[dim](1,2.3)--(2,2.3)node[midway,above]{$l$};\draw[dim](3,2.3)--(4,2.3)node[midway,above]{$l$};\draw[flow,blue](.5,2)--(2.5,.6)node[midway,left]{$2l$};\draw[flow,blue](2.5,2)--(3.5,.6)node[midway,right]{$l$};\draw[guide](4.5,2)--(4.5,.6)node[midway,right]{$0$};\node at(-.8,2.3){初态};\node at(1,.3){末态};\node at(2.5,-.7){$N=3$ 时质心右移 $l$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对各块实际位移取质量加权平均}\par\nobreak
+图\ref{fig:s1:drill:1:p}按位移加权，$\Delta x_C=[0+l+\cdots+(N-1)l]/N=(N-1)l/2$，方向向右。若$l$被理解成质心间距而不是端面空隙，此结果一般不成立，题设必须区分。\end{drillsolution}
+\begin{drillsolution}{s1:drill:2}\textbf{分别写出高度序列与质量序列}\par\nobreak
+图\ref{fig:s1:drill:2:s}第$n$块从$n=0$编号，质量$m_n=m_0/8^n$，底面高度$2l(1-2^{-n})$，质心高度$z_n=2l-\frac32l\,2^{-n}$。
+第$n$块以下各块总高为$l\sum_{j=0}^{n-1}2^{-j}=2l(1-2^{-n})$，再加本块半高$l/2^{n+1}$，即得$z_n=2l-\tfrac32l\,2^{-n}$。质量依体积缩小，$m_n/m_0=(2^{-n})^3=8^{-n}$；因此高度与质量使用的是不同公比。
+\fig{fig:s1:drill:2:p}{逐层高度与立方体积质量分别进入一阶矩}{\begin{tikzpicture}
+\foreach \z/\b in {0/2,2/1,3/.5,3.5/.25}{\draw[fill=blue!8]({-\b/2},\z)rectangle({\b/2},{\z+\b});\draw[world]({-\b/2},{\z+\b})--++({.2*\b},{.1*\b})--++(\b,0)--++({-.2*\b},{-.1*\b});\fill(0,{\z+\b/2})circle(2pt);}\draw[axis](-2,0)--(-2,4.4)node[above]{$z$};\foreach \z/\txt in {1/{l/2},2.5/{5l/4},3.25/{13l/8}}{\draw[guide](-2,\z)--(0,\z);\node[left]at(-2,\z){$\txt$};}\node[right]at(1,1){$m_0$};\node[right]at(.5,2.5){$m_0/8$};\node[right]at(.25,3.25){$m_0/64$};\fill[red](-2,1.2)circle(2pt);\draw[guide](-2,1.2)--(-3,1.6)node[left]{$z_C=3l/5$};\node at(.5,4.4){上端趋于 $2l$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对两个收敛级数分别求和}\par\nobreak
+图\ref{fig:s1:drill:2:p}同时求总质量与一阶矩：
+\[
+M=\frac{8m_0}7,\quad
+\sum m_nz_n=2lM-\frac{3m_0l}{2}\frac1{1-1/16}.
+\]
+所以$z_C=2l-\frac32l(16/15)(7/8)=3l/5$。质心稍高于底块中心$l/2$，且远低于总高度$2l$，符合上层质量迅速减小的特点。\end{drillsolution}
+\begin{drillsolution}{s1:drill:3}\textbf{划定整体边界并数清绳力}\par\nobreak
+图\ref{fig:s1:drill:3:s}动滑轮给平台$2T$向上，人手受绳$T$向上。将人与平台整体选为对象，外部总向上力为$3T$。
+选人和平台整体时，人脚与平台间的作用力互相抵消；跨边界的向上绳力包含动滑轮两侧各$T$以及人手处$T$。因此整体方程不是$2T=90g$，而是$3T=90g$。求出$T$后，人单独的受力只含$N,T,60g$，平台的两股绳力不能再次加到人的方程中。
+\fig{fig:s1:drill:3:p}{先取人与平台整体，再隔离人，两个对象承受的绳力不同}{\begin{tikzpicture}
+\begin{scope}\fill(0,0)circle(2pt);\draw[force,blue](0,0)--(0,1.6)node[above]{$3T$};\draw[force,red](0,0)--(0,-1.6)node[below]{$90g$};\node at(0,2.4){整体};\end{scope}
+\begin{scope}[xshift=4cm]\node[draw]at(0,0){人};\draw[force,blue](-.15,.25)--(-.15,1.6)node[above]{$N$};\draw[force,blue](.35,.25)--(.35,1.2)node[right]{$T$};\draw[force,red](0,-.25)--(0,-1.6)node[below]{$60g$};\node at(0,2.4){隔离人};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先求绳力，再隔离人求脚下支持力}\par\nobreak
+图\ref{fig:s1:drill:3:p}得$3T=(60+30)g$，所以$T=30g$，取$g=10$得$300\,\mathrm N$。再单独取人，$N+T=60g$，故$N=30g=300\,\mathrm N$。平台方程$2T=N+30g$也满足。不同绕绳方式的支承段数不同，本题必须按图示三股外部拉力计算。\end{drillsolution}
+\begin{drillsolution}{s1:drill:4}\textbf{在原长坐标中求截面轴力与局部劲度}\par\nobreak
+图\ref{fig:s1:drill:4:s}用未伸长坐标$s$从顶端向下量，截面张力为$T(s)=[M+m(1-s/l)]g$。长度$\dd s$的小段劲度为$kl/\dd s$，所以伸长$\dd x=T(s)\dd s/(kl)$。
+均匀弹簧切成许多串联小段，总柔度为各段柔度之和；原长$\dd s$的小段柔度为整体的$\dd s/l$倍，故$1/k_s=\dd s/(kl)$。截面下方弹簧质量为$m(l-s)/l$，将这一质量与末端所挂$M$相加，得到随$s$线性变化的张力。
+\fig{fig:s1:drill:4:p}{解答过程：弹簧自重引起的伸长}{\begin{tikzpicture}[scale=.88]\draw[axis](0,0)--(4,0)node[right]{$s$};\draw[axis](0,0)--(0,2.7)node[above]{$T$};\draw[world](0,2.3)--(4,.7);\node[left]at(0,2.3){$(M+m)g$};\node[right]at(4,.7){$Mg$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用轴力图面积积分伸长}\par\nobreak
+图\ref{fig:s1:drill:4:p}将张力沿长度积分，
+\[
+\begin{aligned}
+\Delta l&=\frac{g}{kl}\int_0^l\left(M+m-\frac{ms}{l}\right)\,\dd s\\
+&=\frac{g}{kl}\left[(M+m)s-\frac{ms^2}{2l}\right]_0^l\\
+&=\frac{g}{kl}\left[(M+m)l-\frac{ml}{2}\right]
+=\frac{Mg}{k}+\frac{mg}{2k}.
+\end{aligned}
+\]
+不挂物体时$M=0$，得到$mg/(2k)$。弹簧上端承担全部重力、下端张力为零，平均张力为$mg/2$，也能核对。\end{drillsolution}
+\begin{drillsolution}{s1:drill:5}\textbf{用对顶点力标定线段与力的比例}\par\nobreak
+图\ref{fig:s1:drill:5:s}关于水平对角线对称，成对的竖直分量抵消。设边长$a$，对顶点位移$2a$，每单位长度对应力$F_3/(2a)$。
+以$O$为原点，沿对顶点方向取$x$轴。六边形另外五个顶点相对于$O$的横坐标依次为$a/2,3a/2,2a,3a/2,a/2$；上、下成对点的纵坐标互为相反数。设力与位移的比例为$c_F$，已知$c_F(2a)=F_3$，所以每个水平分量均应乘同一$c_F=F_3/(2a)$。
+\fig{fig:s1:drill:5:p}{五个有向线段先作正交投影，再按同一比例换算为力}{\begin{tikzpicture}
+\coordinate(O)at(0,0);\foreach \x/\y/\hue in {.75/1.299/blue,2.25/1.299/green!50!black,3/0/red,2.25/-1.299/green!50!black,.75/-1.299/blue}{\draw[force,draw=\hue](O)--(\x,\y);\draw[guide](\x,\y)--(\x,-2);}\draw[world](0,0)--(.75,1.299)--(2.25,1.299)--(3,0)--(2.25,-1.299)--(.75,-1.299)--cycle;\node[left]at(O){$O$};\node[right,red]at(3,0){$F_3$};\draw[axis](0,-2)--(3.6,-2)node[right]{$x$};\node[below]at(.75,-2){$a/2$};\node[below]at(2.25,-2){$3a/2$};\node[below]at(3,-2){$2a$};\node at(1.5,2){同色成对力的竖直分量相消};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{相消竖直分量并相加水平投影}\par\nobreak
+图\ref{fig:s1:drill:5:p}中五矢量的水平投影依次为$a/2,3a/2,2a,3a/2,a/2$，和为$6a$。因此$F_{\rm total}=6aF_3/(2a)=3F_3=30\,\mathrm N$，沿$O$至对顶点方向。若五个力只有方向相同而大小不按线段长度，不能得到这一数值。\end{drillsolution}
+\begin{drillsolution}{s1:drill:6}\textbf{统一球心坐标并求总质量}\par\nobreak
+图\ref{fig:s1:drill:6:s}第$i$球心$x_i=(i-1)d$，质量$(2i-1)m$。分母$\sum(2i-1)m=N^2m$。
+\fig{fig:s1:drill:6:p}{球心间距相同，质量权重从左到右增加}{\begin{tikzpicture}
+\draw[axis](-.5,0)--(6.3,0)node[right]{$x$};\foreach \x/\rad/\lab/\mass in {0/.09/0/m,1.5/.15/d/{3m},3/.19/{2d}/{5m},5.5/.25/{(N-1)d}/{(2N-1)m}}{\fill[blue!65!black](\x,0)circle(\rad);\node[below]at(\x,-.25){$\lab$};\node[above]at(\x,.35){$\mass$};}\node at(4.2,.35){$\cdots$};\node at(2.6,-1.1){$M=N^2m$，位置权重须再乘 $x_i$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开位置与奇数质量的乘积再求和}\par\nobreak
+在图\ref{fig:s1:drill:6:p}的一阶矩中，
+\[
+\sum(2i-1)(i-1)=2\sum i^2-3\sum i+N
+=\frac{N(N-1)(4N+1)}6.
+\]
+把$\sum i=N(N+1)/2$和$\sum i^2=N(N+1)(2N+1)/6$代入上式，得
+\[
+\sum(2i-1)(i-1)=
+\frac{N(N+1)(2N+1)}3-\frac{3N(N+1)}2+N
+=\frac{N(N-1)(4N+1)}6.
+\]
+分子还须乘$md$，分母为$N^2m$，约去$mN$，因此$x_C=d(N-1)(4N+1)/(6N)$。给定数值为$998.499\,\mathrm{cm}$。若从第一个球左表面量起，则应再加$d/2$，不能把参考点混淆。\end{drillsolution}
+\begin{drillsolution}{s1:drill:7}\textbf{列出三部分的带符号面积和质心}\par\nobreak
+图\ref{fig:s1:drill:7:s}中大半圆面积$2\pi r^2$，质心$(0,-8r/(3\pi))$；挖去小半圆面积$\pi r^2/2$，质心$(-r,-4r/(3\pi))$；补上小半圆面积相同，质心$(r,4r/(3\pi))$。
+\fig{fig:s1:drill:7:p}{在同一坐标系标出完整半圆、被挖半圆和补入半圆的一阶矩位置}{\begin{tikzpicture}
+\fill[blue!10](-2,0)arc(180:360:2)--cycle;\fill[white](-2,0)arc(180:360:1)--cycle;\fill[green!12](0,0)arc(180:0:1)--cycle;\draw[world](-2,0)arc(180:360:2);\draw[dashed](-2,0)arc(180:360:1);\draw[world](0,0)arc(180:0:1);\draw[axis](-2.5,0)--(2.8,0)node[right]{$x$};\draw[axis](0,-2.2)--(0,1.6)node[above]{$y$};\fill(0,-.848826)circle(2pt)node[below left]{$2\pi r^2$};\fill[red](-1,-.424413)circle(2pt)node[above]{$-S_h$};\fill[green!50!black](1,.424413)circle(2pt)node[above]{$+S_h$};\fill[blue](.5,-.63662)circle(2.5pt)node[right]{$C$};\node[below]at(-2,0){$-2r$};\node[below]at(2,0){$2r$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别累加横纵一阶矩并检查方向}\par\nobreak
+图\ref{fig:s1:drill:7:p}对面积一阶矩加减，总面积仍为$2\pi r^2$，因此
+\[
+x_C=\frac{(\pi r^2/2)r-(\pi r^2/2)(-r)}{2\pi r^2}=\frac r2,
+\quad
+y_C=-\frac{2r}{\pi}.
+\]
+纵向计算中的分子为
+\[
+2\pi r^2\!\left(-\frac{8r}{3\pi}\right)
+-\frac{\pi r^2}{2}\!\left(-\frac{4r}{3\pi}\right)
++\frac{\pi r^2}{2}\frac{4r}{3\pi}=-4r^3.
+\]
+除以总面积$2\pi r^2$即为$-2r/\pi$。横向结果向补入侧偏移。上下小半圆对纵向矩的贡献相加，不能因面积相等就相互抵消。\end{drillsolution}
+\begin{drillsolution}{s1:drill:8}\textbf{从共同切点确定各级圆心与面积符号}\par\nobreak
+图\ref{fig:s1:drill:8:s}第$n$个圆盘半径$R/2^n$，圆心$x_n=R(1-2^{-n})$，带符号面积$\pi R^2(-1/4)^n$。这里同材质薄板质量按面积缩小，不能按半径缩小。
+从$n=0$的完整大圆开始，奇数级挖去、偶数级补回，所以符号为$(-1)^n$。每级圆心到右端公共切点$x=R$的距离等于本级半径，故$x_n=R-R/2^n$。乘上一阶矩时，一个因子来自面积$4^{-n}$，另一个来自坐标中的$2^{-n}$，这正是第二个公比$-1/8$的原因。
+\fig{fig:s1:drill:8:p}{逐级半径、圆心和符号均由共同内切点确定}{\begin{tikzpicture}
+\foreach \n/\r/\x/\c in {0/2/0/blue!10,1/1/1/white,2/.5/1.5/blue!20,3/.25/1.75/white,4/.125/1.875/blue!30}{\fill[\c](\x,0)circle(\r);\draw[world](\x,0)circle(\r);\fill(\x,0)circle(1pt);}\draw[axis](-2.4,0)--(2.7,0)node[right]{$x$};\node[below]at(0,0){$O$};\node[right]at(2,0){$R$};\fill[red](-.222222,0)circle(2pt);\draw[guide](-.222222,0)--(-1,.9)node[left]{$C$};\draw[dim](1,-1.3)--(2,-1.3)node[midway,below]{$R/2$};\node at(0,2.5){圆心 $x_n=R-R/2^n$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两个等比级数并除以剩余面积}\par\nobreak
+图\ref{fig:s1:drill:8:p}总面积$S=\pi R^2/(1+1/4)=4\pi R^2/5$。一阶矩为
+\[
+J=\pi R^3\left[\sum_{n=0}^\infty(-1/4)^n-\sum_{n=0}^\infty(-1/8)^n\right]
+=\pi R^3\left(\frac45-\frac89\right).
+\]
+故$x_C=J/S=-R/9$，$y_C=0$。挖去区域主要在右侧，负的偏移方向合理；两级数均绝对收敛。\end{drillsolution}

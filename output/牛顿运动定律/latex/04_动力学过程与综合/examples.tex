@@ -1,0 +1,412 @@
+\section{例题与分析}
+\begin{question}\begin{example}[保持速率的航向改变]\label{n4e1}
+质量近似恒为 $m$ 的探测器初速度为 $v_0\bm e_x$，欲改为与正 $x$ 轴向下成 $60^\circ$ 的速度，速率仍为 $v_0$。四发动机 $P_1,P_2,P_3,P_4$ 的推力方向分别为 $-x,+y,+x,-y$，大小均为 $f$，不引起转动。求依次开动的发动机及时间。
+\fig{n4e1q}{发动机编号按其所产生的推力方向定义}{\begin{tikzpicture}
+\draw[world](-1.4,-.5)rectangle(1.4,.5);\node[right]at(1.4,0){$P_1$};\node[left]at(-1.4,0){$P_3$};\node[above]at(0,.5){$P_4$};\node[below]at(0,-.5){$P_2$};\draw[axis](2.7,0)--(4.2,0)node[right]{$x$};\draw[axis](2.7,0)--(2.7,1.4)node[above]{$y$};\draw[flow](2.7,0)--(3.4,-1.21)node[right]{$\bm v_f$};\node at(3.1,-.3){$60^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{把目标速度分解为所需的两分量增量}\par\nobreak
+图\ref{n4e1q}目标速度分量为 $v_{f,x}=v_0/2$、$v_{f,y}=-\sqrt3v_0/2$，所以需要的速度增量是 $\Delta v_x=-v_0/2$、$\Delta v_y=-\sqrt3v_0/2$。应减小正 $x$ 速度，同时增加负 $y$ 速度，因此选 $P_1$ 与 $P_4$。
+\fig{n4e1s}{所需推力方向由速度增量而非末速度决定}{\begin{tikzpicture}
+\coordinate(O)at(0,0);\coordinate(I)at(2.4,0);\coordinate(F)at(1.2,-2.078);
+\draw[flow,blue](O)--(I)node[above]{$\bm v_i$};\draw[flow,red](O)--(F)node[left]{$\bm v_f$};\draw[flow](I)--(F)node[midway,right]{$\Delta\bm v$};\draw[guide](I)--(1.2,0)--(F);
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐方向求发动机工作时间}\par\nobreak
+由图\ref{n4e1s}两分量的冲量，$ft_1=mv_0/2$、$ft_4=\sqrt3mv_0/2$，所以 $t_1=mv_0/(2f)$、$t_4=\sqrt3mv_0/(2f)$。质量恒定、推力沿固定坐标轴且无其他外力时，两次作用顺序可以互换；只开负 $y$ 发动机不能同时减小 $x$ 分量，末速率反而增大。
+\end{solution}
+
+\begin{question}\begin{example}[采样速度与换面时刻]\label{n4e2}
+物块由光滑斜面顶端静止下滑，经 $B$ 后进入粗糙水平面，过 $B$ 时速率连续。测得下表数据，取 $g=10\,\mathrm{m/s^2}$，求斜面倾角、水平面摩擦因数及 $t=0.6\,\mathrm s$ 的速度。
+\begin{center}\begin{tabular}{c|rrrrr}\toprule
+$t/\mathrm s$&0&0.2&0.4&1.2&1.4\\
+$v/(\mathrm{m/s})$&0&1.0&2.0&1.1&0.7\\\bottomrule
+\end{tabular}\end{center}
+\fig{n4e2q}{斜面到水平面的交界不一定对应采样时刻}{\begin{tikzpicture}
+\draw[world](-2.5,2)--(0,0)--(3,0);\node[above]at(-2.5,2){$A$};\node[below]at(0,0){$B$};\node[below]at(2.6,0){$C$};\node at(-.6,.2){$\alpha$};\node[draw,rotate=-38.6598,anchor=south]at(-1.7,1.36){物块};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从同一运动阶段的采样点求加速度}\par\nobreak
+图\ref{n4e2q}前段的三个采样点给 $a_1=(2-1)/(0.4-0.2)=5\,\mathrm{m/s^2}$。光滑斜面有 $g\sin\alpha=a_1$，所以 $\alpha=30^\circ$。后段 $a_2=(0.7-1.1)/(1.4-1.2)=-2\,\mathrm{m/s^2}$，故 $\mu=|a_2|/g=0.2$。
+\fig{n4e2s}{两段速度直线在真实换面时刻相交}{\begin{tikzpicture}[x=2.8cm,y=.65cm]
+\draw[axis](0,0)--(1.7,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,3.1)node[above]{$v/(\mathrm{m/s})$};\draw[world](0,0)--(.5,2.5)--(1.5,.5);\draw[guide](.5,0)--(.5,2.5);\node[below]at(.5,0){$0.5$};\fill(.6,2.3)circle(1.4pt)node[above right]{$(0.6,2.3)$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两速度函数的交点找真实换面时刻}\par\nobreak
+斜面速度为 $v=5t$，水平面速度从采样点反推为 $v=1.1-2(t-1.2)=3.5-2t$。图\ref{n4e2s}交点满足 $5t_B=3.5-2t_B$，所以 $t_B=0.5\,\mathrm s$。所求 $0.6\,\mathrm s$ 已进入水平段，$v=3.5-1.2=2.3\,\mathrm{m/s}$。若直接延长斜面公式得到 $3\,\mathrm{m/s}$，就越过了模型切换边界。
+\end{solution}
+
+\begin{question}\begin{example}[拉力改变后的速度三角形]\label{n4e3}
+质量 $4\,\mathrm{kg}$ 的物体在水平拉力 $F$ 下从静止运动，$10\,\mathrm s$ 时速度达 $10\,\mathrm{m/s}$，此后拉力减为 $F/3$，到 $30\,\mathrm s$ 恰停下。两段速度图线均为直线，取 $g=10\,\mathrm{m/s^2}$，求 $F$ 与动摩擦因数。
+\fig{n4e3q}{速度图像给出改变拉力前后的加速度}{\begin{tikzpicture}[x=.12cm,y=.18cm]
+\draw[axis](0,0)--(36,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,13)node[above]{$v/(\mathrm{m/s})$};\draw[world](0,0)--(10,10)--(30,0);\draw[guide](10,0)--(10,10)--(0,10);\node[left]at(0,10){$10$};\node[below]at(10,0){$10$};\node[below]at(30,0){$30$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{读出两段斜率并保持摩擦方向}\par\nobreak
+图\ref{n4e3q}第一段 $a_1=1\,\mathrm{m/s^2}$，第二段 $a_2=-0.5\,\mathrm{m/s^2}$。两段速度都向右，摩擦均向左且大小相同，记为 $f$，故 $F-f=4\,\mathrm N$、$F/3-f=-2\,\mathrm N$。
+\fig{n4e3s}{两段摩擦大小相同，减小的是仍然向右的拉力}{\begin{tikzpicture}
+\node[draw,minimum width=.7cm](A)at(0,0){$m$};\draw[force](A.east)--(2.15,0)node[midway,above]{$F$};\draw[force,red](A.west)--(-1.35,0)node[midway,above]{$f$};\draw[flow](-.3,.8)--(.8,.8)node[right]{$v>0$};\node[draw,minimum width=.7cm](B)at(5,0){$m$};\draw[force](B.east)--(5.95,0)node[above right]{$F/3$};\draw[force,red](B.west)--(3.65,0)node[midway,above]{$f$};\draw[flow](4.7,.8)--(5.8,.8)node[right]{$v>0$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去摩擦求拉力，再求摩擦因数}\par\nobreak
+图\ref{n4e3s}对应的两式相减，$2F/3=6\,\mathrm N$，所以 $F=9\,\mathrm N$、$f=5\,\mathrm N$，$\mu=f/(mg)=5/40=0.125$。停下以后还须用静摩擦条件判断是否保持静止，不能把第二段直线无限延长为反向运动。
+\end{solution}
+
+\begin{question}\begin{example}[力随位置变化与等位移分段]\label{n4e4}
+质量 $m$ 的物体初速 $v_0\ge0$，沿正 $x$ 方向运动，水平合力从 $x=0$ 处的 $F_0$ 线性变为 $x=l$ 处的 $F_l$。求末速。再讨论：把总位移等分成 $n$ 段，每段合力恒定，各段力大小组成首项 $F_0$、末项 $F_l$ 的等差数列时，末速是否相同。
+\fig{n4e4q}{连续直线与等位移阶梯力采用不同的局部模型}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[axis](0,0)--(0,2.7)node[above]{$F$};\draw[world](0,.7)--(4,2.1);\draw[guide](4,0)--(4,2.1);\node[left]at(0,.7){$F_0$};\node[right]at(4,2.1){$F_l$};\node[below]at(4,0){$l$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{把连续合力曲线下的面积转换为动能变化}\par\nobreak
+图\ref{n4e4q}描述的是合力随位移的函数，应该累积功。直线力函数为
+$F(x)=F_0+(F_l-F_0)x/l$，由 $mv\dd v=F(x)\dd x$ 得
+\begin{align*}
+m\int_{v_0}^{v_l}w\dd w
+&=\int_0^l\left[F_0+\frac{F_l-F_0}{l}x\right]\dd x,\\
+\frac m2(v_l^2-v_0^2)
+&=\left[F_0x+\frac{F_l-F_0}{2l}x^2\right]_0^l\\
+&=F_0l+\frac{F_l-F_0}{2}l=\frac{F_0+F_l}{2}l.
+\end{align*}
+这与图中的梯形面积相符，因此
+\[v_l=\sqrt{v_0^2+\frac{(F_0+F_l)l}{m}}.\]
+\fig{n4e4s}{等位移分段的功等于每段矩形面积之和}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,2.5)node[above]{$F$};\foreach \i/\h in {0/.7,1/1.166667,2/1.633333,3/2.1}{\fill[blue!10](\i,0)rectangle({\i+1},\h);\draw[world](\i,\h)--({\i+1},\h);}\node[below]at(4,0){$l$};\node at(2,2.3){$\Delta x=l/n$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对等位移段求和并检查终点可达性}\par\nobreak
+图\ref{n4e4s}分段情形不必取极限，每段精确满足 $v_{j+1}^2-v_j^2=2F_j(l/n)/m$。相加后中间速度平方消去，而 $\sum_{j=1}^nF_j=n(F_0+F_l)/2$，所以末速仍为同一表达式。这里相同来自等位移权重和等差力序列，不表示两个过程的 $v(t)$ 或所需时间相同。若 $F$ 是驱动力而非合力，还须另外扣除摩擦功；若根号内虽为正但中途先停下，也要检查该终点是否实际可达。
+\end{solution}
+
+\begin{question}\begin{example}[由撤力后的时间反推驱动力]\label{n4e5}
+质量 $1.5\,\mathrm{kg}$ 的物块在水平恒力 $F$ 下从 $A$ 静止出发，撤力后再滑行 $2\,\mathrm s$ 停在 $B$。总位移 $5\,\mathrm m$，动摩擦因数 $0.2$，取 $g=10\,\mathrm{m/s^2}$。求 $F$ 及撤力时的位置和速度。
+\fig{n4e5q}{撤力事件把全程分成两段}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0);\fill(-2.5,0)circle(2pt)node[below]{$A$};\fill(-1.5,0)circle(2pt)node[below]{$C$};\fill(2.5,0)circle(2pt)node[below]{$B$};\draw[force](-2.5,.6)--(-1.5,.6)node[above]{$F$};\node at(.5,.7){撤力后 $2\,\mathrm s$};\draw[dim](-2.5,-.7)--(2.5,-.7)node[midway,below]{$5\,\mathrm m$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{从撤力后的减速段反推速度和位移}\par\nobreak
+图\ref{n4e5q}撤力后减速度大小为 $\mu g=2\,\mathrm{m/s^2}$，所以撤力时 $v_C=2\times2=4\,\mathrm{m/s}$，此后位移 $s_2=(v_C+0)\times2/2=4\,\mathrm m$。前段位移因而只有 $s_1=5-4=1\,\mathrm m$。
+\fig{n4e5s}{速度图下两块三角形面积对应两段位移}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.3)node[above]{$v$};\fill[blue!10](0,0)--(.8,1.8)--(.8,0)--cycle;\fill[red!7](.8,0)--(.8,1.8)--(4,0)--cycle;\draw[world](0,0)--(.8,1.8)--(4,0);\node at(.45,.35){$s_1$};\node at(2,.45){$s_2$};\node[above]at(.8,1.8){$4\,\mathrm{m/s}$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用剩余位移求前段加速度及驱动力}\par\nobreak
+前段由静止匀加速，$v_C^2=2a_1s_1$，故 $a_1=8\,\mathrm{m/s^2}$。图\ref{n4e5s}前段受力方程 $F-\mu mg=ma_1$ 给 $F=1.5(8+2)=15\,\mathrm N$。前段时间 $v_C/a_1=0.5\,\mathrm s$，图像面积 $4\times0.5/2=1\,\mathrm m$，与位置计算一致。
+\end{solution}
+
+\begin{question}\begin{example}[飞行器失去与恢复升力]\label{n4e6}
+飞行器质量 $2\,\mathrm{kg}$，动力提供向上恒力 $28\,\mathrm N$，运动阻力大小恒定且反向于速度。第一次由地面静止竖直上升，$8\,\mathrm s$ 升高 $64\,\mathrm m$。第二次在上升 $6\,\mathrm s$ 后失去升力。取 $g=10\,\mathrm{m/s^2}$，求阻力、最大高度，以及从开始下落到恢复升力的最长允许延迟。
+\fig{n4e6q}{上升、无动力下降、恢复动力制动的受力不同}{\begin{tikzpicture}
+\draw[axis](0,0)--(0,3.7)node[above]{$z$};\node[draw]at(.8,1.2){$m=2\,\mathrm{kg}$};\draw[force,blue](.8,1.5)--(.8,2.8)node[above]{$28\,\mathrm N$};\draw[guide](0,3.1)--(3.3,3.1)node[right]{$h$};\draw[world](-.5,0)--(3.5,0);
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用第一次上升数据确定阻力}\par\nobreak
+按图\ref{n4e6q}的竖直过程，第一次的上升加速度为 $a_1=2H/t^2=2\,\mathrm{m/s^2}$，受力 $28-20-f=2\times2$，故 $f=4\,\mathrm N$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算失去升力后还能上升的高度}\par\nobreak
+第二次失去动力时高度 $s_1=2\times6^2/2=36\,\mathrm m$，向上速度 $v_1=12\,\mathrm{m/s}$。继续上升时重力与阻力都向下，减速度 $a_2=(20+4)/2=12\,\mathrm{m/s^2}$，再上升 $s_2=12^2/(2\times12)=6\,\mathrm m$，所以最高点 $h=42\,\mathrm m$。
+\fig{n4e6s}{下降时阻力向上，恢复升力后与动力共同制动}{\begin{tikzpicture}
+\foreach \x/\s in {-1.7/无动力下降,1.7/恢复动力}{\fill(\x,0)circle(2pt);\draw[force,red](\x,0)--(\x,-1.3)node[below]{$mg$};\draw[force,blue](\x,0)--(\x,1)node[above]{$f$};\node at(\x,-1.9){\s};}\draw[force](2.1,0)--(2.1,1.8)node[above]{$F$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按下降方向重画受力并求恢复时状态}\par\nobreak
+自最高点下落后，图\ref{n4e6s}左侧向下加速度 $a_3=(20-4)/2=8\,\mathrm{m/s^2}$。延迟 $t$ 恢复动力，已下降 $4t^2$、向下速率 $8t$。恢复时还在下降，阻力也向上，因此制动加速度为 $a_4=(28+4-20)/2=6\,\mathrm{m/s^2}$，不是上升时的 $2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把延迟下落与制动下落合并限制}\par\nobreak
+\fig{n4deep:brakingheight}{恢复升力时剩余高度还必须容纳随后制动距离}{\begin{tikzpicture}
+\draw[axis](0,0)--(0,4.7)node[above]{$z$};\draw[world](-.5,0)--(4.2,0);\draw[guide](0,4)--(3.4,4);\node[left]at(0,4){$42\,\mathrm m$};\fill(1,4)circle(2pt)node[above]{最高点};\fill(1,2.7)circle(2pt)node[right]{恢复升力};\fill(1,.7)circle(2pt)node[right]{制动结束};\draw[flow,blue](1,4)--(1,2.7);\draw[flow,red](1,2.7)--(1,.7);\draw[dim](3,4)--(3,2.7)node[midway,right]{$4t^2$};\draw[dim](3,2.7)--(3,.7)node[midway,right]{$16t^2/3$};\node at(1.5,-.6){制动结束位置须高于地面};
+\end{tikzpicture}}
+图\ref{n4deep:brakingheight}中，恢复动力是中间事件，物体此时仍有向下速度；允许延迟由两段下降距离之和确定。
+
+制动到零还需向下距离 $(8t)^2/(2\times6)=16t^2/3$。不触地要求 $4t^2+16t^2/3<42$，即 $t<3/\sqrt2\,\mathrm s$，临界最长延迟为 $2.12\,\mathrm s$。恢复后停住若仍有动力，下一段重新上升，加速度才变回 $2\,\mathrm{m/s^2}$。
+\end{solution}
+
+\begin{question}\begin{example}[不同摩擦下的重复弹性碰撞]\label{n4e7}
+倾角 $30^\circ$ 的长斜面上，两等质量物块 $A,B$ 初静止，$A$ 在上、间距 $L=0.3\,\mathrm m$。取 $g=10\,\mathrm{m/s^2}$，$\mu_A=2\sqrt3/9$，各处最大静摩擦等于动摩擦。每次碰撞时间忽略、两块交换速度。求第一次碰后 $B$ 速率，并分别对 $\mu_B=\sqrt3/3$、$\sqrt3/2$ 求第 $n$ 次碰撞时 $A$ 的累计路程。
+\fig{n4e7q}{碰撞只交换速度，之后仍各受自己的摩擦}{\begin{tikzpicture}
+\draw[world](-2.5,0)--(2.5,{5*tan(30)});\node[draw,rotate=30,anchor=south]at(1.3,{3.8*tan(30)}){$A$};\node[draw,rotate=30,anchor=south]at(-.5,{2*tan(30)}){$B$};\draw[dim](-.2,{2*tan(30)-.52})--(1.6,{3.8*tan(30)-.52})node[midway,below]{$L$};\node at(-1.6,.2){$30^\circ$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{求第一次碰前速度并应用速度交换}\par\nobreak
+沿图\ref{n4e7q}斜面向下取正。$A$ 的滑动加速度 $a=g(\sin30^\circ-\mu_A\cos30^\circ)=5/3\,\mathrm{m/s^2}$。两种 $\mu_B$ 都足以让 $B$ 初始静止，所以第一次接触前 $A$ 速度 $u_1=\sqrt{2aL}=1\,\mathrm{m/s}$，碰后 $B$ 得到此速度，$A$ 瞬时速度为零。
+\fig{n4e7s}{第一次碰后的速度线明确显示追撞与停车的先后}{\begin{tikzpicture}
+\begin{scope}[x=2.3cm,y=1cm]\draw[axis](0,0)--(1.4,0)node[right]{$\tau/\mathrm s$};\draw[axis](0,0)--(0,2.6)node[above]{$v$};\draw[world,blue](0,0)--(1.2,2)node[right]{$A$};\draw[world,red](0,1)--(1.2,1)node[right]{$B$};\draw[guide](1.2,0)--(1.2,2);\node[below]at(1.2,0){$1.2$};\node[left]at(0,1){$1$};\node at(.6,3){$B$ 匀速};\end{scope}
+\begin{scope}[xshift=5.5cm,x=5.5cm,y=2cm]\draw[axis](0,0)--(.62,0)node[right]{$\tau/\mathrm s$};\draw[axis](0,0)--(0,1.3)node[above]{$v$};\draw[world,blue](0,0)--(.489898,.816497)node[above]{$A$};\draw[world,red](0,1)--(.4,0)--(.55,0);\draw[guide](.489898,0)--(.489898,.816497);\node[below left]at(.4,0){$.4$};\draw[guide](.489898,0)--(.52,-.25)node[below]{$\sqrt{.24}$};\node[left]at(0,1){$1$};\node at(.28,1.5){$B$ 先停后被追上};\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{不减速情形用相对位移求碰撞间隔}\par\nobreak
+先取 $\mu_B=\sqrt3/3$，$B$ 一旦滑动便匀速。第一次碰后 $A$ 从零加速，$B$ 以 $u_1=1$ 匀速，下一次接触满足 $a\tau^2/2=u_1\tau$，故间隔 $\tau=2u_1/a=1.2\,\mathrm s$。第二次碰前速度为 $2,1$，交换后成为 $1,2$。此后每次速度差仍为 $1\,\mathrm{m/s}$，所以间隔恒为 $1.2\,\mathrm s$，第 $j$ 次碰后 $B$ 速度为 $j\,\mathrm{m/s}$。到第 $n$ 次碰撞，$B$ 位移为 $1.2\sum_{j=1}^{n-1}j=0.6n(n-1)\,\mathrm m$。两块碰撞时在同一位置，因此
+\[s_{A,n}=0.3+0.6n(n-1)\quad(\mathrm m).\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{强摩擦情形先验证停车先于追上}\par\nobreak
+再取 $\mu_B=\sqrt3/2$，运动中的 $B$ 以 $b=2.5\,\mathrm{m/s^2}$ 减速。设某次碰后 $A$ 静止、$B$ 速度 $u_j$。$B$ 停下需 $u_j/b$，移动 $d_j=u_j^2/(2b)$；在这段时间 $A$ 只移动 $a u_j^2/(2b^2)=(a/b)d_j<d_j$。所以图\ref{n4e7s}右图的事件顺序确为 $B$ 先停下，随后 $A$ 再追到它。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立速度递推并累加碰撞位置}\par\nobreak
+下次碰前 $A$ 走过 $d_j$，速度 $u_{j+1}=\sqrt{2ad_j}=u_j\sqrt{a/b}=u_j\sqrt{2/3}$；$B$ 此时静止，交换速度后又回到同类初态。于是 $u_j^2=(2/3)^{j-1}$，$d_j=0.2(2/3)^{j-1}\,\mathrm m$。累加得到
+\[s_{A,n}=0.3+0.6\left[1-(2/3)^{n-1}\right]\quad(\mathrm m).\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查首项和有限路程极限}\par\nobreak
+两式在 $n=1$ 都回到 $0.3\,\mathrm m$。后一模型的无穷次碰撞路程趋于 $0.9\,\mathrm m$；它是理想瞬时碰撞与摩擦模型的极限，不把无限延续的微小碰撞直接解释为真实接触细节。
+\end{solution}
+
+\begin{question}\begin{example}[分段拉力下长板与物块的速度追平]\label{n4e8}
+质量 $m$ 的物块放在质量 $2m$ 的长板上，地面光滑，层间动摩擦因数 $0.2$，最大静摩擦近似等于动摩擦。整体初静止，拉板的右向力在 $0$--$1\,\mathrm s$ 为 $mg$，$1$--$1.5\,\mathrm s$ 为 $0.4mg$，之后为零。取 $g=10\,\mathrm{m/s^2}$，求关键时刻两速度及 $0$--$3\,\mathrm s$ 的相对滑动距离。
+\fig{n4e8q}{拉力撤去后，板与块仍可继续相对滑动}{\begin{tikzpicture}
+\node[draw,minimum width=3cm,minimum height=.6cm]at(-1,.3){长板 $2m$};\node[draw,anchor=south]at(-.2,.6){$m$};\draw[force](.5,.3)--(1.7,.3)node[right]{$F$};
+\begin{scope}[shift={(3,0)}]\draw[axis](0,0)--(3.1,0)node[right]{$t$};\draw[axis](0,0)--(0,1.9)node[above]{$F/(mg)$};\draw[world](0,1.6)--(1,1.6);\draw[world](1,.64)--(1.5,.64);\draw[world](1.5,0)--(2.8,0);\draw[guide](1,0)--(1,1.6) (1.5,0)--(1.5,.64);\node[below]at(1,0){$1$};\node[below]at(1.5,0){$1.5$};\end{scope}
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{检验起始阶段能否共同运动}\par\nobreak
+共同运动所能提供的最大驱动力为 $(3m)\mu g=0.6mg$，所以图\ref{n4e8q}第一段必滑动。上块向右加速度 $a_m=\mu g=2$，长板 $a_P=(mg-0.2mg)/(2m)=4$，单位为 $\mathrm{m/s^2}$。$t=1$ 时 $v_m=2$、$v_P=4\,\mathrm{m/s}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿既有滑动方向逐段更新速度}\par\nobreak
+第二段虽然外力降低，但板仍比块快，摩擦方向不变。此段 $a_m=2$、$a_P=(0.4mg-0.2mg)/(2m)=1$，到 $1.5\,\mathrm s$ 有 $v_m=3$、$v_P=4.5\,\mathrm{m/s}$。之后外力为零，仍在滑动时 $a_m=2$、$a_P=-1$，速度差以 $3\,\mathrm{m/s^2}$ 减小，从 $1.5$ 降到零需 $0.5\,\mathrm s$。
+\fig{n4e8s}{两速度图之间的面积是相对位移}{\begin{tikzpicture}[x=1.35cm,y=.46cm]
+\draw[axis](0,0)--(3.5,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,5.7)node[above]{$v/(\mathrm{m/s})$};\fill[blue!10](0,0)--(1,4)--(1.5,4.5)--(2,4)--cycle;\draw[world,blue](0,0)--(1,4)--(1.5,4.5)--(2,4)--(3,4);\draw[world,red](0,0)--(2,4)--(3,4);\node[above]at(1.25,4.6){板};\node[right]at(.8,1.6){块};\foreach \t in {1,1.5,2,3}{\draw[guide](\t,0)--(\t,4);\node[below]at(\t,0){$\t$};}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{速度追平后检验共同运动能否维持}\par\nobreak
+在 $t=2\,\mathrm s$ 两者均为 $4\,\mathrm{m/s}$。此时若共同运动，所需摩擦为零，静摩擦可以维持，故 $t=3\,\mathrm s$ 两速度仍为 $4\,\mathrm{m/s}$。长板在 $1,1.5,2,3\,\mathrm s$ 的速度依次为 $4,4.5,4,4\,\mathrm{m/s}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度差面积计算实际滑动距离}\par\nobreak
+图\ref{n4e8s}中直到 $2\,\mathrm s$ 板始终比块快，故相对滑动距离等于速度差面积：第一段 $1$，第二段 $(2+1.5)\times0.5/2=0.875$，第三段 $1.5\times0.5/2=0.375$，合计 $2.25\,\mathrm m$。达到速度相同时才切换到共同运动，不能在撤力的 $1.5\,\mathrm s$ 就提前停止计算滑动。
+\end{solution}
+
+\begin{question}\begin{example}[两变力驱动相邻物块的分离]\label{n4e10}
+光滑水平面上左块 $A$ 质量 $1\,\mathrm{kg}$，右块 $B$ 质量 $2\,\mathrm{kg}$，初静止并接触。两者各受右向外力 $F_1=(9-2t)\,\mathrm N$、$F_2=(3+2t)\,\mathrm N$，$t$ 以秒计。求分离时刻、此时加速度、分离后两秒内的加速度图像及两秒后的相对速度。
+\fig{n4e10q}{两个外力都向右，压力能否保持取决于各自加速需求}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0);\node[draw,minimum width=1.3cm,minimum height=.6cm,anchor=south]at(-.65,0){$A,1$};\node[draw,minimum width=1.3cm,minimum height=.6cm,anchor=south]at(.65,0){$B,2$};\draw[force](-2.7,.3)--(-1.3,.3)node[midway,above]{$F_1$};\draw[force](1.3,.3)--(2.8,.3)node[midway,above]{$F_2$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{接触阶段由整体加速度求内部压力}\par\nobreak
+图\ref{n4e10q}接触期间整体受力 $F_1+F_2=12\,\mathrm N$，共同加速度 $a=12/3=4\,\mathrm{m/s^2}$。隔离 $A$，$F_1-N=(1\,\mathrm{kg})a$，故 $N=(5-2t)\,\mathrm N$，到 $t_s=2.5\,\mathrm s$ 恰为零。在此之前非负，之后不能再继续共同加速。
+\fig{n4e10s}{以分离时刻为局部时间零点画加速度}{\begin{tikzpicture}[x=1.7cm,y=.35cm]
+\draw[axis](0,0)--(2.6,0)node[right]{$\tau/\mathrm s$};\draw[axis](0,0)--(0,7.5)node[above]{$a/(\mathrm{m/s^2})$};\fill[blue!10](0,4)--(2,6)--(2,0)--cycle;\draw[world,blue](0,4)--(2,6)node[right]{$a_B$};\draw[world,red](0,4)--(2,0)node[above right]{$a_A$};\node[left]at(0,4){$4$};\node[below]at(2,0){$2$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以分离时刻为零点重建两加速度}\par\nobreak
+令 $\tau=t-2.5$，图\ref{n4e10s}分离后 $a_A=4-2\tau$、$a_B=4+\tau$，单位为 $\mathrm{m/s^2}$。两者在 $\tau=0$ 都为 $4$，相对加速度为 $3\tau$，故 $B$ 逐渐领先，符合分离假设。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分相对加速度并检验间隙增长}\par\nobreak
+加速度图下的有符号面积为速度增量，两曲线间面积为相对速度增量。分离时相对速度和间隙均为零，因而
+\[
+v_B-v_A=\int_0^\tau3s\,\dd s=[3s^2/2]_0^\tau
+=\frac32\tau^2.
+\]
+代入 $\tau=2\,\mathrm s$ 得 $6\,\mathrm{m/s}$。再积分一次，
+\[
+\Delta x=\int_0^\tau\frac32s^2\,\dd s
+=[s^3/2]_0^\tau=\frac{\tau^3}{2},
+\]
+在此段始终增加，不会重新接触。
+\end{solution}
+
+\begin{question}\begin{example}[有限作用范围内的恒定斥力]\label{n4e11}
+光滑直线上，视为质点的 $A$ 质量 $m_1=1\,\mathrm{kg}$，初静止；质点 $B$ 质量 $m_2=3\,\mathrm{kg}$，以 $v_0=0.20\,\mathrm{m/s}$ 从左侧接近。间距不小于 $d=0.10\,\mathrm m$ 时无相互作用，小于 $d$ 时有大小 $F=0.60\,\mathrm N$ 的相互斥力。求相互作用阶段两加速度、最近时两速度和最小间距。
+\fig{n4e11q}{相互作用从间距达到 $d$ 后开始}{\begin{tikzpicture}
+\draw[world](-3,-.1)--(3,-.1);\fill(-1.7,0)circle(3pt)node[above]{$B,3$};\fill(1.4,0)circle(3pt)node[above]{$A,1$};\draw[flow](-1.7,1)--(-.4,1)node[right]{$v_0$};\draw[dim](-1.7,-.5)--(1.4,-.5)node[midway,below]{$d$ 时开始计时};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{进入作用范围后求速度相等时刻}\par\nobreak
+在图\ref{n4e11q}作用开始后取向右为正，$a_A=F/m_1=0.60\,\mathrm{m/s^2}$，$a_B=-F/m_2=-0.20\,\mathrm{m/s^2}$。局部时间 $\tau$ 内，$v_A=0.60\tau$、$v_B=0.20-0.20\tau$。最近条件是两速度相等，故 $\tau_*=0.25\,\mathrm s$，共同速度 $0.15\,\mathrm{m/s}$。
+\fig{n4e11s}{最近时相对速度为零，质心仍向右运动}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$\tau$};\draw[axis](0,0)--(0,2.5)node[above]{$v$};\draw[world,blue](0,0)--(4,2.4)node[right]{$v_A$};\draw[world,red](0,1.6)--(4,.8)node[right]{$v_B$};\fill(2,1.2)circle(2pt);\draw[guide](2,0)--(2,1.2);\node[below]at(2,0){$0.25\,\mathrm s$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算接近距离并用总动量核查共同速度}\par\nobreak
+按图\ref{n4e11s}，从作用开始到速度相等时，接近距离为速度差的积分：
+\[
+\int_0^{0.25}(0.20-0.80\tau)\dd\tau
+=[0.20\tau-0.40\tau^2]_0^{0.25}
+=0.050-0.025=0.025\,\mathrm m.
+\]
+因此最小间距 $d_{\min}=0.10-0.025=0.075\,\mathrm m$。总动量给共同速度 $3\times0.20/(1+3)=0.15\,\mathrm{m/s}$，与逐段计算一致。最近时两球都未停下，只有相对运动暂时停止；随后斥力使它们重新远离。
+\end{solution}
+
+\begin{question}\begin{example}[从定点到斜面的最短下滑时间]\label{n4e12}
+定点 $A$ 位于倾角为 $\alpha$ 的直斜面上方，垂直于斜面的距离为 $h$。从 $A$ 沿一条光滑直槽静止下滑到斜面，直槽与竖直向下方向向右夹角为 $\beta$。求最短时间对应的槽方向，$0<\alpha<\pi/2$。
+\fig{n4e12q}{改变槽方向会同时改变路程与沿槽加速度}{\begin{tikzpicture}
+\draw[world](-2,0)--(3,2);\coordinate(A)at(-1,2.5);\coordinate(B)at(-.624,.55);\coordinate(P)at(-.276,.69);
+\fill(A)circle(2pt)node[above]{$A$};\draw[world](A)--(B)node[below]{$B$};\draw[guide](A)--(P)node[midway,right]{$h$};\draw[guide](A)--(-1,.2);\node at(-.87,1.75){$\beta$};\draw[guide](-2,0)--(0,0);\node at(-1.2,.15){$\alpha$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{由斜面法向投影求槽长并保留可达条件}\par\nobreak
+图\ref{n4e12q}槽方向为 $(\sin\beta,-\cos\beta)$，同指向斜面的法向夹角为 $\alpha-\beta$。因此路径长 $s=h/\cos(\alpha-\beta)$，必须 $\cos(\alpha-\beta)>0$。沿槽受重力分量，$a=g\cos\beta>0$，由 $s=at^2/2$ 得
+\[t^2=\frac{2h}{g\cos\beta\cos(\alpha-\beta)}.\]
+\fig{n4e12s}{最优槽方向平分竖直向下与斜面向下法线的夹角}{\begin{tikzpicture}
+\coordinate(A)at(0,3);\draw[flow](A)--++(-90:3)node[below left]{竖直};\draw[flow](A)--++(-50:3)node[right]{斜面法向};\draw[flow,blue](A)--++(-70:3)node[below right]{$\beta=\alpha/2$};\draw(0,2.1)arc(-90:-70:.9);\draw({1.35*cos(-70)},{3+1.35*sin(-70)})arc(-70:-50:1.35);\node at(.18,1.8){$\beta$};\node at(1.05,1.3){$\alpha-\beta$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把时间最小化转为余弦乘积最大化}\par\nobreak
+利用 $\cos\beta\cos(\alpha-\beta)=[\cos\alpha+\cos(2\beta-\alpha)]/2$，最大值在 $2\beta-\alpha=0$ 取得。所以图\ref{n4e12s}最优 $\beta=\alpha/2$，$t_{\min}=\sqrt{2h/g}/\cos(\alpha/2)$。该角位于可达区间内部，槽向下且同斜面正向相交。竖直槽虽有最大加速度，却未同时取得最合适的路径长度。
+\end{solution}
+
+\begin{question}\begin{example}[无穷叠层楔块的有限层极限]\label{n4e13}
+每一层由两个质量均为 $m$ 的直角三角块拼成正方形，斜接触面与水平成 $45^\circ$，所有斜面方向相同；相邻层间为水平光滑接触，底层在光滑地面上。各块由静止释放。先求 $n$ 层时底部支持力的递推关系，再定义并求无穷层极限。
+\fig{n4e13q}{把无穷叠层定义为有限层初始动力学的极限}{\begin{tikzpicture}
+\foreach \j in {0,1,2}{\draw[world](0,{1.4*\j})rectangle(1.4,{1.4*(\j+1)});\draw[world](0,{1.4*\j})--(1.4,{1.4*(\j+1)});\node at(.35,{1.4*\j+.95}){$m$};\node at(1,{1.4*\j+.4}){$m$};}\draw[guide](.3,4.2)--(.3,5) (1.1,4.2)--(1.1,5);\draw[world](-.7,-.05)--(2.1,-.05);\draw[force,blue](.7,-1.2)--(.7,-.05)node[right]{$N_n$};\node at(2.6,2.5){共 $n$ 层};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用有限层支持力定义递推量}\par\nobreak
+定义图\ref{n4e13q}中 $N_n=c_nmg$，空叠层取 $c_0=0$。分析最下面一层：下三角块只能水平运动，上三角块向下加速度为 $a$，它承受上方 $n-1$ 层的压力 $N_1$。上方系统的底部随它向下加速，内部有效重力由 $g$ 改为 $g-a$，所以 $N_1=c_{n-1}m(g-a)$。
+\fig{n4e13s}{底层的两个水平加速度相反，竖直下降量由斜面约束给出}{\begin{tikzpicture}
+\draw[world](0,0)rectangle(2,2);\draw[world](0,0)--(2,2);\draw[flow](.5,1.5)--(-.8,1.5)node[left]{$a/2$};\draw[flow](1.5,.5)--(2.8,.5)node[right]{$a/2$};\draw[flow](.7,1.6)--(.7,.4)node[below]{$a$};\draw[force,red](1,2.9)--(1,2)node[midway,right]{$N_1$};\draw[force,blue](1,-1)--(1,0)node[midway,right]{$N_n$};
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由底层几何约束关联三方向受力}\par\nobreak
+两块水平只受相互作用，等质量给反向等大的水平加速度；$45^\circ$ 约束使图\ref{n4e13s}这两个大小均为 $a/2$。设斜面法向力为 $T$，则 $T/\sqrt2=ma/2$。上块竖直式为 $mg+N_1-T/\sqrt2=ma$，下块竖直式为 $N_n=mg+T/\sqrt2$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去加速度建立有限层递推}\par\nobreak
+令 $c=c_{n-1}$，代入得 $(1+c)g=(c+3/2)a$，从而
+\[c_n=1+\frac{a}{2g}=\frac{3c_{n-1}+4}{2c_{n-1}+3},\qquad c_0=0.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{证明有界收敛再求无限层极限}\par\nobreak
+第一层为 $c_1=4/3$。若 $0\le c<\sqrt2$，此映射仍小于 $\sqrt2$，且与 $c$ 之差为 $(4-2c^2)/(2c+3)>0$，故数列递增有上界，极限存在。令极限 $c_\infty$ 满足同一递推，$2c_\infty^2=4$，取正根得到
+\[N_\infty=\sqrt2\,mg.\]
+总质量趋于无穷却得到有限支持力，是因为上层接近自由落体，传给下层的有效重量递减；它不是静止时无穷总重量的平衡。先用有限层定义极限，也避免直接把无穷质量代进整体 $F=Ma$。
+\end{solution}
+
+\begin{question}\begin{example}[线性阻力下返回同一高度的总时间]\label{n4e15}
+质量 $m$ 的物体以竖直向上速度 $v_0$ 抛出，运动阻力为 $-kv$，$v$ 为向上正的有符号速度。返回出发高度时向下速率为 $v_f$。求总时间，并解释为何结果可以不用显式求解指数方程。
+\fig{n4e15q}{上升和下降的速度符号相反，阻力始终为 $-kv$}{\begin{tikzpicture}
+\draw[axis](0,0)--(0,3.2)node[above]{$z$};\fill(0,0)circle(2pt)node[below]{$O$};\draw[flow,blue](-.45,.2)--(-.45,1.6)node[left]{$v_0$};\draw[flow,red](.45,1.4)--(.45,.1)node[right]{$v_f$};\draw[guide](-1,0)--(1,0);\fill(0,2.6)circle(2pt)node[right]{最高点};\node at(0,-.65){运动始终沿同一竖直直线};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对有符号速度方程作全程积分}\par\nobreak
+图\ref{n4e15q}向上为正，全程方程统一为 $m\dot v=-mg-kv$，不需要在转向点人为改变 $k$ 的符号。由初态到返回时刻 $T$ 积分，速度端点为 $v_0$ 与 $-v_f$：
+\[
+m\int_{v_0}^{-v_f}\dd w=-mg\int_0^T\dd t-k\int_0^Tv\dd t.
+\]
+左边为 $m[w]_{v_0}^{-v_f}$，重力项为 $-mg[t]_0^T$，因此
+\[m(-v_f-v_0)=-mgT-k\int_0^Tv\dd t.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用零位移消去阻力总冲量}\par\nobreak
+因为返回同一高度，$\int_0^Tv\dd t=\Delta z=0$，所以
+\[T=\frac{v_0+v_f}{g}.\]
+\fig{n4e15s}{速度图的正、负面积相抵，线性阻力的总冲量因此为零}{\begin{tikzpicture}[x=1.4cm,y=.8cm]
+\draw[axis](0,0)--(3.5,0)node[right]{$t$};\draw[axis](0,-1.4)--(0,2.7)node[above]{$v$};\fill[blue!10](0,0)--plot[domain=0:1.098612,samples=40](\x,{3*exp(-\x)-1})--cycle;\fill[red!8](1.098612,0)--plot[domain=1.098612:2.82144,samples=40](\x,{3*exp(-\x)-1})--(2.82144,0)--cycle;\draw[world,domain=0:2.82144,samples=60]plot(\x,{3*exp(-\x)-1});\node[below]at(2.82144,0){$T$};\node[left]at(0,2){$v_0$};\node[right]at(2.82144,-.82){$-v_f$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分冲量抵消和机械能损失}\par\nobreak
+图\ref{n4e15s}说明抵消的是线性阻力的总冲量，不是阻力做功。阻力做功为 $-k\int v^2\dd t<0$，所以 $v_f<v_0$，$T<2v_0/g$。若换成平方阻力，阻力冲量不再正比于位移，上述简化通常失效。给出的 $v_0,v_f,k$ 还须属于同一个可实现过程，它们并非任意独立。
+\end{solution}
+
+\begin{question}\begin{example}[竖直弹簧压缩过程的最大速率]\label{n4e16}
+质量 $m$ 的物体放在竖直轻弹簧上，弹簧劲度系数 $k$、下端固定，初始原长、物体由静止释放。忽略阻力，求最大速率及其出现位置，检查最大压缩量。
+\fig{n4e16q}{向下位移从弹簧原长位置起算}{\begin{tikzpicture}
+\draw[world](-1.3,0)--(1.3,0);\node[draw](A)at(0,2.1){$m$};\draw[spring](0,0)--(A.south);\draw[axis](1.5,2.1)--(1.5,-.2)node[below]{$x$};\node[right]at(1.5,2.1){$0$};\draw[guide](-.7,1.2)--(1.5,1.2);\node[below left]at(0,1.2){压缩后位置};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{用合力变号判断最大速率位置}\par\nobreak
+按图\ref{n4e16q}向下取 $x$，合力为 $mg-kx$，加速度在 $x=mg/k$ 变号。物体从零速度向下加速，越过该位置后仍向下但减速，所以最大速率出现在 $x_*=mg/k$。
+\fig{n4e16s}{速度平方是位移的开口向下二次函数}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,2.5)node[above]{$v^2$};\draw[world,domain=0:4,samples=50]plot(\x,{.5*\x*(4-\x)});\draw[guide](2,0)--(2,2);\node[below]at(2,0){$mg/k$};\node[below]at(4,0){$2mg/k$};\node[left]at(0,2){$mg^2/k$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由速度平方曲线求极值和最大压缩量}\par\nobreak
+用 $a=(\dd v/\dd x)(\dd x/\dd t)=v\dd v/\dd x$，从初态 $(0,0)$ 积分：
+\[
+m\int_0^v w\,\dd w=\int_0^x(mg-k\xi)\,\dd\xi,
+\qquad
+\frac12mv^2=[mg\xi-k\xi^2/2]_0^x=mgx-\frac12kx^2.
+\]
+所以 $v^2=2gx-kx^2/m$。把 $x_*=mg/k$ 代入，图\ref{n4e16s}顶点处
+$v_{\max}^2=2mg^2/k-mg^2/k=mg^2/k$，因此 $v_{\max}=g\sqrt{m/k}$。
+令 $v^2=x(2g-kx/m)=0$，除初始根 $x=0$ 外，下一个零速点为 $x_{\max}=2mg/k$。量纲 $g\sqrt{m/k}$ 为速度，且最大速率不在最大压缩处，二者分别由加速度为零和速度为零确定。
+\end{solution}
+
+\begin{question}\begin{example}[线性阻力下速度随位移的变化]\label{n4e17}
+质量 $m$ 的物体在水平面上以 $v_0>0$ 向右运动，唯一水平作用为线性阻力 $-kv$。从出发位置 $x=0$ 起求 $v(x)$，并说明何时、何处达到零速度。
+\fig{n4e17q}{阻力与速度反向，没有恒定库仑摩擦项}{\begin{tikzpicture}
+\draw[world](-3,0)--(3,0);\node[draw,anchor=south](A)at(0,0){$m$};\draw[flow](.5,1)--(2,1)node[right]{$v$};\draw[force,red](A.west)--(-2,0 |- A.center)node[left]{$kv$};\draw[axis](-2,-.6)--(2.5,-.6)node[right]{$x$};
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{在正速度区间转换微分变量}\par\nobreak
+图\ref{n4e17q}在速度仍正的区间，链式法则给
+$\dot v=(\dd v/\dd x)\dot x=v\dd v/\dd x$，故
+$mv\dd v/\dd x=-kv$。约去非零的 $v$，并从 $(0,v_0)$ 积分，
+\[
+\int_{v_0}^{v}\dd w=-\frac km\int_0^x\dd\xi,
+\qquad
+[w]_{v_0}^{v}=-\frac km[\xi]_0^x,
+\]
+得到 $v(x)=v_0-kx/m$。
+\fig{n4e17s}{有限的极限位移对应无限长的衰减时间}{\begin{tikzpicture}
+\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[axis](0,0)--(0,2.4)node[above]{$v$};\draw[world](0,2)--(4,0);\draw[guide](4,0)--(4,2);\node[left]at(0,2){$v_0$};\node[below]at(4,0){$mv_0/k$};\node at(2.9,1.8){$t\to\infty$};
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回到时间方程判断能否有限时刻停车}\par\nobreak
+图\ref{n4e17s}的线性关系适用于 $0\le x<mv_0/k$。时间方程为 $\dot v=-(k/m)v$，分离变量并代入初值：
+\[
+\int_{v_0}^{v}\frac{\dd w}{w}=-\frac km\int_0^t\dd s,
+\qquad
+\ln v-\ln v_0=-\frac{kt}{m}.
+\]
+因此 $v(t)=v_0\e^{-kt/m}$。从 $x(0)=0$ 再积分，
+\[
+x(t)=v_0\int_0^t\e^{-ks/m}\dd s
+=v_0\left[-\frac mk\e^{-ks/m}\right]_0^t
+=\frac{mv_0}{k}(1-\e^{-kt/m}).
+\]
+所以任何有限时刻 $v>0$，仅在 $t\to\infty$ 时趋于零，位置趋于 $mv_0/k$。把直线延到负速度，会违反最初约去 $v$ 时的运动区间，也会错误地让纯阻力主动驱动物体反向。
+\end{solution}
+
+\begin{question}\begin{example}[从有符号速度测量求合力]\label{n4e18}
+质量 $m$ 的质点沿固定直线运动，测得两种过程的有符号速度分别为 $v(t)=v_0+\beta t^3$ 和 $v(t)=v_0\sin(\omega t)$。求各自合力随时间的函数，说明合力图与速度图的关系。
+\fig{n4e18q}{速度图提供变化率，不能直接作为力的图像}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(2.7,0)node[right]{$t$};\draw[axis](0,0)--(0,2.2)node[above]{$v$};\draw[world,domain=0:2,samples=30]plot(\x,{.5+.18*\x*\x*\x});\node[left]at(0,.5){$v_0$};\end{scope}
+\begin{scope}[shift={(4,0)}]\draw[axis](0,0)--(3,0)node[right]{$t$};\draw[axis](0,-1.2)--(0,1.5)node[above]{$v$};\draw[world,domain=0:2.7,samples=50]plot(\x,{sin(160*\x)});\end{scope}
+\end{tikzpicture}}
+\end{example}\end{question}
+\begin{solution}\textbf{对多项式速度求导并检查单位}\par\nobreak
+图\ref{n4e18q}第一种过程的加速度为 $a=\dd v/\dd t=3\beta t^2$，所以 $F(t)=3m\beta t^2$；$v_0$ 只改变初始速度，不改变该过程给定的加速度。若 $\beta$ 单位为 $\mathrm{m/s^4}$，乘 $mt^2$ 后力单位正确。
+\fig{n4e18s}{正弦速度的合力比速度在相位上提前四分之一周期}{\begin{tikzpicture}
+\begin{scope}\draw[axis](0,0)--(2.7,0)node[right]{$t$};\draw[axis](0,0)--(0,2.2)node[above]{$F$};\draw[world,domain=0:2,samples=30]plot(\x,{.45*\x*\x});\node at(1.4,2.4){$3m\beta t^2$};\end{scope}
+\begin{scope}[shift={(4,0)}]\draw[axis](0,0)--(3,0)node[right]{$t$};\draw[axis](0,-1.3)--(0,1.7)node[above]{$F$};\draw[world,domain=0:2.7,samples=50]plot(\x,{cos(160*\x)});\node at(1.5,2){$mv_0\omega\cos\omega t$};\end{scope}
+\end{tikzpicture}}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对正弦速度求导并解释相位关系}\par\nobreak
+第二种过程令 $\phi=\omega t$，链式法则给
+\[
+a=\frac{\dd(v_0\sin\phi)}{\dd\phi}\frac{\dd\phi}{\dd t}
+=(v_0\cos\phi)\omega=v_0\omega\cos\omega t.
+\]
+故图\ref{n4e18s}合力为 $mv_0\omega\cos\omega t$。在速度达到极值时合力为零，在速度过零时合力大小最大。若题目只给没有方向的速率，就不能把正弦负半周直接当作速率；本题明确采用固定轴上的速度分量。所得是合力，不能单凭这些测量进一步唯一分解成驱动力与阻力。
+\end{solution}

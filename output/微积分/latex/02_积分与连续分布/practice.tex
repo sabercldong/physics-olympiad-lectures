@@ -1,0 +1,41 @@
+\section{本讲小结}
+积分的核心是先构造具有明确意义的微元，再在正确区间内累加。求质量、质心和转动惯量虽然都要积分，权重却分别为 $1$、位置和轴距平方。换元必须同时改变微元与边界；微元图必须反映实际截面或弧面。计算后用求导、正负、量纲和对称性检查，能发现许多单纯代数运算难以暴露的错误。
+\section{练习}
+\begin{question}
+\begin{drill}[变化率的两次积分]\label{c2d1}
+质点初始位置 $x_0$、初速度 $v_0$，加速度 $a(t)=a_0+bt$。求 $v(t),x(t)$，并在 $b=0$时消去时间，恢复匀加速运动的速度与位移关系。另求电流 $I(t)=\alpha t$ 在 $0$ 到 $T$ 内的净通过电量，以及线数密度 $n(x)=\gamma x$ 在 $0$ 到 $L$ 内的总粒子数。
+\end{drill}
+\fig{c2d1q}{时间、长度上的分割分别对应不同累积量}{\begin{tikzpicture}
+\draw[axis](0,0)--(5,0)node[right]{$t$};\draw[fill=blue!20](2,-.15)rectangle(2.25,.15);\node[above]at(2.12,.2){$\dd t$};\node[below]at(0,0){$0$};\node[below]at(4.6,0){$T$};
+\draw[axis](0,-1.2)--(5,-1.2)node[right]{$x$};\draw[fill=blue!20](3,-1.35)rectangle(3.25,-1.05);\node[above]at(3.12,-1){$\dd x$};\node[below]at(4.6,-1.2){$L$};
+\end{tikzpicture}}\answerlink{c2d1}
+\end{question}
+\begin{question}
+\begin{drill}[由高度决定的攀爬速度]\label{c2d2}
+物体沿竖直杆向上运动，速度 $v(h)=c/(a+bh)$，其中 $a,c>0,b\ge0$。求从 $h=0$ 到 $h=H$ 的时间，说明为何不能用末速度直接除总高度。
+\end{drill}
+\fig{c2d2q}{同样高度微元需要的时间随位置变化}{\begin{tikzpicture}[scale=.7]
+\draw[very thick](0,0)--(0,2.6);\draw[axis](2,0)--(2,3)node[above]{$h$};\draw[fill=blue!20](-.15,1.3)rectangle(.15,1.6);
+\node[left]at(0,1.45){$\dd h$};\node[right]at(2,2.6){$H$};\draw[flow](.4,1.3)--(.4,2)node[right]{$v(h)$};
+\end{tikzpicture}}\answerlink{c2d2}
+\end{question}
+\begin{question}
+\begin{drill}[抛物面容器的容量]\label{c2d3}
+将曲线 $z=r^2/\ell$ 绕 $z$ 轴旋转得到容器内壁，$\ell>0$，容器高为 $H$。忽略壁厚，求容量。说明单独旋转一条曲线得到的是曲面，容量还需要指定内部区域。
+\end{drill}
+\fig{c2d3q}{以高度确定容器内的圆盘半径}{\begin{tikzpicture}[scale=.7]
+\draw[world,domain=-1.5:1.5,samples=50]plot(\x,{\x*\x});\draw[world](0,2.25)ellipse(1.5 and .25);
+\draw[axis](0,0)--(0,2.8)node[above]{$z$};\node[right]at(1.6,2.25){$H$};
+\draw[guide](-1,1)--(1,1);
+\end{tikzpicture}}\answerlink{c2d3}
+\end{question}
+\begin{question}
+\begin{drill}[四维球的体积]\label{c2d4}
+四维球定义为 $x_1^2+x_2^2+x_3^2+w^2\le R^2$。已知三维球体积 $4\pi r^3/3$，求四维球体积 $V_4$ 及其边界的三维测度 $S_3=\dd V_4/\dd R$。再以四维球为截面，求五维球体积 $V_5$及其边界测度 $S_4$。
+\end{drill}
+\fig{c2d4q}{示意截面：固定第四坐标后得到三维球}{\begin{tikzpicture}[scale=.7]
+\draw[world](0,0)circle(1.5);\draw[axis](0,-1.8)--(0,2)node[above]{$w$};
+\draw[blue](-1.3,.75)--(1.3,.75);\node[right]at(1.4,.75){$B_3(\sqrt{R^2-w^2})$};\node[right]at(1.4,.1){五维球时用 $B_4$截面};
+\node[below]at(0,-1.9){图示只表示截面关系};
+\end{tikzpicture}}\answerlink{c2d4}
+\end{question}

@@ -1,0 +1,407 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[半圆柱面上的均匀链条]\label{s4:example:1}
+半径$R$的固定光滑半圆柱面上覆盖长$\pi R$、质量$m$的均匀链，两端恰到水平面且端点张力为零。求张力分布和最大值。
+\end{example}
+\fig{fig:s4:example:1:s}{两自由端等高，圆柱顶点是链条的最高处}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:0:2);\draw[world](-2.5,0)--(2.5,0);
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(0,2)circle(2pt)node[above]{$C$};
+\fill(-2,0)circle(2pt)node[below]{$A$};\fill(2,0)circle(2pt)node[below]{$B$};
+\draw[guide](0,0)--(0,2);\draw[world](0,0)--(1,1.732)node[midway,right]{$R$};
+\draw[world](0,.7)arc(90:60:.7);\node at(.3,1){$\theta$};
+\fill(1,1.732)circle(2pt)node[above right]{$P$};\draw[guide](1,1.732)--(2.9,1.732);
+\draw[dim](2.8,0)--(2.8,1.732)node[midway,right]{$z$};
+\node at(-2,-.8){$T_A=0$};\node at(2,-.8){$T_B=0$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从自由端确定张力的边界值}\par\nobreak
+图\ref{fig:s4:example:1:s}线密度$\lambda=m/(\pi R)$。取链上从端点升至高度$z$的一段，切向微元平衡$\dd T=\lambda g\dd z$，端点$z=0,T=0$。
+图\ref{fig:s4:example:1:p}左图中，支持力没有切向分量，重力的切向投影由高度增量$\dd z$确定。端点条件$T(0)=0$将张力差关系转化为绝对张力。
+\fig{fig:s4:example:1:p}{切向分量决定张力变化，法向分量决定是否保持接触}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](1.286,1.532)arc(50:70:2);
+\draw[force](1.286,1.532)--(1.929,.766)node[right]{$T$};
+\draw[force](.684,1.879)--(-.537,2.324)node[left]{$T+\dd T$};
+\draw[force](1,1.732)--(1,.45)node[below]{$\lambda g\dd s$};
+\draw[force,blue](1,1.732)--(1.65,2.858)node[right]{$\dd N$};
+\draw[guide](0,0)--(1,1.732);\draw[axis,red](.7,1.212)--(.3,.52)node[left]{$\boldsymbol n$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](0,0)--(3.3,0)node[right]{$z$};\draw[axis](0,0)--(0,3)node[above]{$T$};
+\draw[world,blue](0,0)--(2.5,2);\draw[guide](2.5,0)--(2.5,2)--(0,2);
+\node[below]at(2.5,0){$R$};\node[left]at(0,2){$mg/\pi$};\fill(2.5,2)circle(2pt);
+\node at(1.5,-.7){顶点处取得最大值};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用高度表示张力并定位最大值}\par\nobreak
+沿图\ref{fig:s4:example:1:p}从自由端积分至高度 $z$，
+\[T(z)-T(0)=\lambda g\int_0^z\dd\zeta
+ =\lambda g[\zeta]_0^z=\lambda gz.\]
+用边界 $T(0)=0$得到 $T(z)=\lambda gz$。若以顶点到微元的圆心角$\theta$计，$z=R\cos\theta$，故$T(\theta)=(mg/\pi)\cos\theta$，最大张力$T_{\max}=mg/\pi$位于顶部。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用法向方程验证接触}\par\nobreak
+按图\ref{fig:s4:example:1:p}左图向心法线$\boldsymbol n$投影，张力和重力的法向分量都指向圆心，因此面支持力密度为$T/R+\lambda g\cos\theta=2\lambda g\cos\theta\ge0$，接触有效；端点的边界条件不可省略。\end{solution}
+\begin{question}\begin{example}[四分之一圆柱上的链条拉力]\label{s4:example:2}
+质量$m$、长$\pi R/2$的均匀链覆盖光滑圆柱从顶端到侧面底端的四分之一圆弧，底端自由。顶端沿水平切线施力$F$，求平衡力。
+\end{example}
+\fig{fig:s4:example:2:s}{底端自由，顶端外力沿水平切线；积分所用高度差为半径}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:90:2);\draw[guide](-2,0)--(0,0)--(0,2);
+\fill(0,0)circle(2pt)node[below right]{$O$};\node[left]at(-2,0){$A$：自由端};
+\fill(0,2)circle(2pt)node[above left]{$C$};\draw[force](0,2)--(1.4,2)node[right]{$F$};
+\draw[guide](0,0)--(-1.414,1.414)node[pos=.7,below left]{$R$};
+\draw[world](0,.65)arc(90:135:.65);\node at(-.38,.85){$\theta$};
+\draw[dim](1,0)--(1,2)node[midway,right]{$R$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{确定自由端与顶端的高度差}\par\nobreak
+图\ref{fig:s4:example:2:s}最低端到顶部的高度差为$R$，线密度为$\lambda=2m/(\pi R)$。光滑面支持力没有切向分量，因此从切向平衡出发有 $\dd T=\lambda g\dd z$；自由端给边界 $T_{\rm bottom}=0$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿圆弧积分得到张力分布}\par\nobreak
+参数$\theta$从顶端竖直半径向侧面量，链上高度$z=R\cos\theta$，$0\le\theta\le\pi/2$，微分为 $\dd z=-R\sin\theta\dd\theta$。从底端 $\theta=\pi/2$积至当前角度，
+\[T(\theta)-T(\pi/2)
+ =-\lambda gR\int_{\pi/2}^{\theta}\sin\varphi\dd\varphi
+ =\lambda gR[\cos\varphi]_{\pi/2}^{\theta}
+ =\lambda gR\cos\theta.\]
+用 $T(\pi/2)=0$得到张力分布；在$\theta=0$处取值$\lambda gR$，才是外力$F$所需平衡的顶端张力。
+\fig{fig:s4:example:2:p}{自由端是张力直线的零点，顶端高度确定外力}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4,0)node[right]{$z$};\draw[axis](0,0)--(0,2.8)node[above]{$T$};
+\draw[world](0,0)--(3,2);\draw[guide](3,0)--(3,2)--(0,2);
+\fill(3,2)circle(2pt)node[above right]{$C$};\node[below left]at(0,0){$A$};
+\node[below]at(3,0){$R$};\node[left]at(0,2){$\lambda gR$};
+\node[above,rotate=33.7]at(1.6,1.07){$T=\lambda gz$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把顶端张力转化为外力}\par\nobreak
+图\ref{fig:s4:example:2:p}顶端拉力沿切线且等于该截面张力，故$F=2mg/\pi$。结果与把整条链重量投到一个固定方向不同，因为切向方向沿圆弧连续改变。\end{solution}
+\begin{question}\begin{example}[跨滑轮重绳的最大张力]\label{s4:example:3}
+均匀绳质量$m$、总长$l\ge\pi R$，对称跨过半径$R$的光滑固定滑轮，两端自由，外侧为等长竖直段。求最大张力。
+\end{example}
+\fig{fig:s4:example:3:s}{总绳长由半圆弧与两段竖直悬绳组成}{\begin{tikzpicture}
+
+\draw[world](0,2)circle(1);\draw[world](-1,0)--(-1,2)arc(180:0:1)--(1,0);
+\fill(0,2)circle(2pt)node[below]{$O$};\draw[guide](0,2)--(1,2)node[midway,above]{$R$};
+\fill(-1,2)circle(2pt)node[left]{$A$};\fill(0,3)circle(2pt)node[above]{$C$};
+\draw[dim](-1.7,0)--(-1.7,2)node[midway,left]{$a$};\draw[dim](1.7,0)--(1.7,2)node[midway,right]{$a$};
+\node at(0,-.65){$l=2a+\pi R$，两端自由};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由总长分配两侧悬垂段}\par\nobreak
+图\ref{fig:s4:example:3:s}每侧竖直段长$a=(l-\pi R)/2$，接触边缘的张力为$T_A=(m/l)ga$。再从边缘升到轮顶，高度增加$R$。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计入竖直段重量和弧段高度差}\par\nobreak
+自由端张力为零，长度$a$的竖直段受到自身重力$(m/l)ga$，其上端因此承担同样大小的张力。接触边缘与圆柱顶的高度差为$R$，不是接触弧长$\pi R/2$；切向积分只增加$(m/l)gR$。两类长度分别来自绳长分配和高度差，不能混用。
+\fig{fig:s4:example:3:p}{同一高度坐标贯穿竖直段与接触弧，张力在接触边缘连续}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-1,0)--(-1,1.5)arc(180:0:1)--(1,0);
+\fill(-1,1.5)circle(2pt)node[left]{$A$};\fill(0,2.5)circle(2pt)node[above]{$C$};
+\draw[dim](1.6,0)--(1.6,1.5)node[midway,right]{$a$};
+\draw[dim](1.6,1.5)--(1.6,2.5)node[midway,right]{$R$};
+\node at(0,-.65){自由端取$z=0$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](0,0)--(3.8,0)node[right]{$z$};\draw[axis](0,0)--(0,3.3)node[above]{$T$};
+\draw[world,blue](0,0)--(1.8,1.5);\draw[world,red](1.8,1.5)--(3,2.5);
+\draw[guide](1.8,0)--(1.8,1.5)--(0,1.5);\draw[guide](3,0)--(3,2.5)--(0,2.5);
+\node[below]at(1.8,0){$a$};\node[below]at(3,0){$a+R$};
+\node[left]at(0,1.5){$T_A$};\node[left]at(0,2.5){$T_C$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最大张力并检查两个极限}\par\nobreak
+图\ref{fig:s4:example:3:p}取自由端高度为零，边缘 $A$和顶点 $C$的高度依次为 $a,a+R$。利用$\dd T=(mg/l)\dd z$，
+\[T_C-T_A=\frac{mg}{l}\int_a^{a+R}\dd z
+ =\frac{mg}{l}[z]_a^{a+R}=\frac{mgR}{l}.\]
+张力随高度增加，所以最大值在顶端，得
+\[
+T_{\max}=T_C=T_A+\frac{mgR}{l}
+=\frac{mg}{2l}[l+(2-\pi)R].
+\]
+当$R\to0$时趋于$mg/2$；当$l=\pi R$时竖直段消失，顶端张力为$mg/\pi$。这些边界同时检验了绳长和高度差的使用。\end{solution}
+\begin{question}\begin{example}[端点可滑的离散链]\label{s4:example:4}
+$2n$个等长均匀刚性链节、每节重$mg$，铰接组成对称悬链，两端搭在同高水平细杆上，端点静摩擦系数$\mu$。求端节与竖直夹角$\theta$的临界值。
+\end{example}
+\fig{fig:s4:example:4:s}{对称离散悬链的端节倾角从竖直方向量起}{\begin{tikzpicture}
+
+\draw[world](-.5,2)--(5.5,2);\draw[world](.5,2)--(1.2,.7)--(2.5,.2)--(3.8,.7)--(4.5,2);
+\foreach \x/\y in {.5/2,1.2/.7,2.5/.2,3.8/.7,4.5/2}{\fill(\x,\y)circle(2pt);}
+\draw[guide](.5,2)--(.5,.5);\draw[world](.5,1.3)arc(-90:-61.7:.7);\node at(.76,.95){$\theta$};
+\node at(2.5,1.35){$2n$节，每节重$mg$};\node[above left]at(.5,2){端点};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{整体平衡求端点反力}\par\nobreak
+图\ref{fig:s4:example:4:s}整体竖直平衡给每个端点支持力$N=nmg$，临界水平摩擦$H=\mu nmg$。取最左端一节，对其下端铰链取矩，内部铰接力不产生力矩。
+\fig{fig:s4:example:4:p}{左端摩擦力向外，关于下端铰链计算各力矩}{\begin{tikzpicture}
+
+\draw[world](1,3)--(2.2,.5);\draw[force](1,3)--(1,4.2)node[above]{$N$};
+\draw[force](1,3)--(-.4,3)node[left]{$H$};\draw[force](1.6,1.75)--(1.6,.65)node[left]{$mg$};
+\fill(2.2,.5)circle(2pt)node[below right]{$A$};\draw[guide](1,3)--(1,.1);
+\draw[guide](1,3)--(3,3);\draw[guide](2.2,.5)--(3,.5);
+\draw[dim](2.9,.5)--(2.9,3)node[midway,right]{$l\cos\theta$};
+\draw[dim](1,.1)--(2.2,.1)node[midway,below]{$l\sin\theta$};
+\draw[world](1,2.3)arc(-90:-64.36:.7);\node at(1.25,2.05){$\theta$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离端节，对下端铰链取矩}\par\nobreak
+图\ref{fig:s4:example:4:p}中端点支持力的力臂为$l\sin\theta$，水平摩擦力臂为$l\cos\theta$，自身重力力臂为$(l/2)\sin\theta$。故
+\[
+Nl\sin\theta-Hl\cos\theta-\frac{mgl}{2}\sin\theta=0,
+\quad \tan\theta=\frac{2n\mu}{2n-1}.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入摩擦边界并恢复允许范围}\par\nobreak
+将$N=nmg$、$H=\mu nmg$代入力矩式，约去$mgl$，得$(n-\tfrac12)\sin\theta=\mu n\cos\theta$；除以$(n-\tfrac12)\cos\theta$即得上式。允许静止时应有$\tan\theta\le2n\mu/(2n-1)$，等号只是开始滑动的边界。当$n$很大时趋于$\tan\theta=\mu$，有限节长的自重力矩带来分母中的$-1$。\end{solution}
+\begin{question}\begin{example}[球面上的水平弹性绳圈]\label{s4:example:5}
+半径$R$的固定光滑球上放质量$M$的均匀弹性圈，原长$2\pi a$，$R=2a$。静止时圈半径$b=\sqrt2a$且在上半球，整圈张力定义为$\tau=k\,2\pi(b-a)$。求$k$。
+\end{example}
+\fig{fig:s4:example:5:s}{球心半径与水平圈半径分别为$R$与$b$，纬度由两者之比确定}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(2);\draw[world](0,1.414)ellipse(1.414 and .28);
+\draw[guide](0,0)--(0,2.4);\draw[world](0,0)--(1.414,1.414)node[midway,below right]{$R$};
+\draw[world](0,1.414)--(1.414,1.414)node[midway,above]{$b$};
+\fill(0,0)circle(2pt)node[left]{$O$};\fill(0,1.414)circle(2pt)node[left]{$C$};
+\fill(1.414,1.414)circle(2pt)node[right]{$P$};
+\draw[world](0,.7)arc(90:45:.7);\node at(.4,.95){$\theta$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由圈半径确定球面法线方向}\par\nobreak
+图\ref{fig:s4:example:5:s}中$b=R\sin\theta$，所以$\theta=45^\circ$。取圆心角$\dd\phi$的小段，质量$\dd m=M\dd\phi/(2\pi)$。支持力沿球面法线，其竖直分量平衡$\dd mg$，径向分量平衡张力合力。
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对同一角元列两个方向的平衡}\par\nobreak
+图\ref{fig:s4:example:5:p}左图的两端张力合力为$2\tau\sin(\dd\phi/2)\simeq\tau\dd\phi$，方向指向圈心$C$；右图的支持力沿球心$O$到微段$P$的方向。两个方向不同，分别列出$\dd N\cos\theta=g\dd m$与$\dd N\sin\theta=\tau\dd\phi$。
+\fig{fig:s4:example:5:p}{先合成微弧两端张力，再在球面法线与竖直方向间分解}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](1.449,-.388)arc(-15:15:1.5);
+\draw[force](1.449,.388)--(1.19,1.354)node[above]{$\tau$};
+\draw[force](1.449,-.388)--(1.19,-1.354)node[below]{$\tau$};
+\draw[force,red](1.5,0)--(.3,0)node[above]{$\tau\dd\phi$};
+\draw[guide](0,0)--(1.449,.388);\draw[guide](0,0)--(1.449,-.388);
+\node[left]at(0,0){$C$};\node at(.65,-.45){$\dd\phi$};\node at(.8,2){圈平面内};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\fill(0,0)circle(2pt)node[below left]{$P$};
+\draw[force,blue](0,0)--(1.4,1.4)node[above right]{$\dd N$};
+\draw[force,red](0,0)--(-1.4,0)node[left]{$\tau\dd\phi$};
+\draw[force](0,0)--(0,-1.4)node[below]{$g\dd m$};
+\draw[guide](0,0)--(0,1.7);\draw[world](0,.7)arc(90:45:.7);\node at(.35,.95){$\theta$};
+\node at(.2,2){经过球心的竖直截面};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由张力反求整圈劲度}\par\nobreak
+图\ref{fig:s4:example:5:p}得$\tau\dd\phi=\dd mg\tan\theta$，即$\tau=Mg\tan\theta/(2\pi)=Mg/(2\pi)$。代入周长伸长，
+\[
+k=\frac{Mg}{4\pi^2(b-a)}
+=\frac{Mg}{2\pi^2R(\sqrt2-1)}.
+\]
+$k$的单位为$\mathrm{N/m}$。若把$\tau$误当整圈合力，会多乘或少乘一个$2\pi$。\end{solution}
+\begin{question}\begin{example}[半圆柱顶的长方体稳定性]\label{s4:example:6}
+高$h$的均匀长方体以水平底面接触半径$R$的固定半圆柱顶端，摩擦足够大保证纯滚动。讨论小扰动稳定性，特别检查$h=2R$。
+\end{example}
+\fig{fig:s4:example:6:s}{初始底面水平，质心位于接触点上方$h/2$}{\begin{tikzpicture}
+
+\draw[world](-2,0)arc(180:0:2);\draw[world](-2.5,0)--(2.5,0);
+\draw[world](-1.3,2)rectangle(1.3,3.5);\draw[guide](0,0)--(0,3.5);
+\fill(0,0)circle(2pt)node[below]{$O$};\fill(0,2)circle(2pt)node[below right]{$P_0$};
+\fill(0,2.75)circle(2pt)node[right]{$C_0$};
+\draw[dim](1.9,2)--(1.9,3.5)node[midway,right]{$h$};\node[left]at(0,1){$R$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{跟踪接触点和底面材料点}\par\nobreak
+图\ref{fig:s4:example:6:s}初始接触在圆柱顶。令接触法线偏离竖直$\theta$，纯滚动使长方体底面上从初始接触点到新接触点的长度为$R\theta$。
+\fig{fig:s4:example:6:p}{解答过程：半圆柱顶的长方体稳定性}{\begin{tikzpicture}[scale=.88]\draw[world](-1.6,0)arc(180:0:1.6);\draw[guide](0,0)--(.4944,1.5217);\draw[guide](0,0)--(0,1.3);\draw[world](0,.6)arc(90:72:.6);\node at(.18,.85){$\theta$};\draw[world](-1.2201,2.0787)--(1.2527,1.2753)--(1.6853,2.6068)--(-.7875,3.4102)--cycle;\fill(.4944,1.5217)circle(2pt)node[below right]{$P$};\fill(.0163,1.677)circle(2pt)node[above left]{$Q$};\fill(.2326,2.3428)circle(2pt)node[right]{$C$};\draw[guide](.0163,1.677)--(.2326,2.3428);\node[below]at(0,0){$O$};\node at(1.3,3.7){$PQ=R\theta,\ QC=h/2$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐项计算质心高度}\par\nobreak
+图\ref{fig:s4:example:6:p}中的$P$为当前接触点，$Q$为初始接触的底面材料点，$C$为质心。$PQ=R\theta$沿底面，$QC=h/2$垂直底面。新接触点的高度为$R\cos\theta$，其法线上从底面到质心的高度分量为$(h/2)\cos\theta$。纯滚动使质心相对新接触点还具有切向距离$R\theta$，该距离的竖直分量为$R\theta\sin\theta$。三项相加，几何给质心高度
+\[
+z_C=(R+h/2)\cos\theta+R\theta\sin\theta.
+\]
+\fig{fig:s4:example:6:height}{临界高度时二阶变化消失，四阶降低仍使平衡不稳定}{\begin{tikzpicture}
+
+\draw[axis](-2.5,0)--(2.7,0)node[right]{$\theta$};\draw[axis](0,-1.6)--(0,1.6)node[above]{$\Delta z_C$};
+\draw[world,blue,domain=-2:2]plot(\x,{.24*(\x)^2});
+\draw[world,red,domain=-2:2]plot(\x,{-.06*(\x)^4});
+\node[right,blue]at(2,.96){$h<2R$，邻域内上升};
+\node[right,red]at(2,-.96){$h=2R$，四阶下降};
+
+\end{tikzpicture}}图\ref{fig:s4:example:6:height}比较零点附近的最低阶变化，具体符号由完整高度式展开决定。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用二阶及临界四阶项判断稳定性}\par\nobreak
+分别使用 $\cos\theta=1-\theta^2/2+\theta^4/24+O(\theta^6)$与 $\theta\sin\theta=\theta^2-\theta^4/6+O(\theta^6)$，减去初始高度，得到
+\begin{align*}
+ z_C-z_C(0)&=(R+h/2)\left(-\frac{\theta^2}{2}+\frac{\theta^4}{24}\right)
+ +R\left(\theta^2-\frac{\theta^4}{6}\right)+O(\theta^6)\\
+ &=\left(\frac R2-\frac h4\right)\theta^2
+ +\left(\frac h{48}-\frac R8\right)\theta^4+O(\theta^6).
+\end{align*}
+因此$h<2R$稳定，$h>2R$不稳定。$h=2R$时二阶项消失，四阶系数为 $2R/48-R/8=-R/12$，仍是不稳定，不能仅凭线性项消失就判随遇平衡。\end{solution}
+\begin{question}\begin{example}[弹簧支承倒立杆]\label{s4:example:7}
+均匀杆质量$m$、长$L$，下端铰接，两等劲度$k$的弹簧通过水平导向机构作用于杆顶，合水平力为$-2kx$。求竖直平衡的稳定条件。
+\end{example}
+\fig{fig:s4:example:7:s}{导向机构使两弹簧在杆顶产生水平合力，杆绕下端铰链转动}{\begin{tikzpicture}
+
+\draw[world](0,0)--(0,3);\draw[spring](-2,3)--(0,3);\draw[spring](0,3)--(2,3);
+\draw[world](-2,2.5)--(-2,3.5);\draw[world](2,2.5)--(2,3.5);
+\draw[world](-.3,-.3)--(0,0)--(.3,-.3)--cycle;\fill(0,0)circle(2pt)node[left]{$O$};
+\draw[dim](.7,0)--(.7,3)node[midway,right]{$L$};\node at(-1,3.5){$k$};\node at(1,3.5){$k$};
+\node at(0,4.3){导向后合力$F_x=-2kx$};
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由真实导向关系写总势能}\par\nobreak
+图\ref{fig:s4:example:7:s}杆偏角$\theta$时，顶端水平位移$x=L\sin\theta$，弹簧势能为$kL^2\sin^2\theta$；重力势能为$(mgL/2)\cos\theta$。
+\fig{fig:s4:example:7:p}{顶端水平位移决定弹簧势能，质心竖直高度决定重力势能}{\begin{tikzpicture}
+
+\draw[world](0,0)--(1,2.828);\draw[guide](0,0)--(0,3.4);
+\draw[force](1,2.828)--(-.6,2.828)node[left]{$2kx$};
+\draw[force](.5,1.414)--(.5,.25)node[right]{$mg$};\fill(.5,1.414)circle(2pt)node[right]{$C$};
+\draw[dim](0,3.55)--(1,3.55)node[midway,above]{$x=L\sin\theta$};
+\draw[guide](.5,1.414)--(2,1.414);\draw[dim](1.8,0)--(1.8,1.414)node[midway,right]{$\frac L2\cos\theta$};
+\draw[world](0,.7)arc(90:70.53:.7);\node at(.25,1){$\theta$};\node[below]at(0,0){$O$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开至临界判别所需的四阶}\par\nobreak
+图\ref{fig:s4:example:7:p}使用$\sin^2\theta=\theta^2-\theta^4/3+O(\theta^6)$和$\cos\theta=1-\theta^2/2+\theta^4/24+O(\theta^6)$，减去竖直构型常量后，
+\[
+\Delta U=\left(kL^2-\frac{mgL}4\right)\theta^2
++\left(-\frac{kL^2}3+\frac{mgL}{48}\right)\theta^4+O(\theta^6).
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分严格稳定与临界不稳定}\par\nobreak
+因此总势能二阶增量为$(kL^2-mgL/4)\theta^2$，稳定需$k>mg/(4L)$。在等号处四阶项为$-mgL\theta^4/16$，故该明确导向模型下临界位置仍不稳定。若弹簧两端几何不同，其四阶项可能不同，应先写真实长度；线性稳定阈值也不能用等号代替严格稳定条件。\end{solution}
+\begin{question}\begin{example}[任意位置平衡的支承曲线]\label{s4:example:8}
+长$L$的均匀有质量杆，一端靠光滑竖直墙，另一端靠光滑曲线。要求杆在一族位置均平衡，且曲线经过$(0,0)$、杆在那里竖直。求曲线。
+\end{example}
+\fig{fig:s4:example:8:s}{杆长固定，墙端与曲线端的高度随构型共同改变}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(4.5,0)node[right]{$x$};\draw[axis](0,0)--(0,4.5)node[above]{$y$};
+\draw[world](0,3.3229)--(3,.6771)node[midway,above right]{$L$};
+\draw[world,domain=0:3.8,samples=70]plot(\x,{2-sqrt(16-(\x)^2)/2});
+\fill(0,3.3229)circle(2pt)node[left]{$A(0,Y)$};\fill(3,.6771)circle(2pt)node[below right]{$B(x,y)$};
+\node[below left]at(0,0){$O$};\draw[world,dashed](0,0)--(0,4);
+
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{由连续平衡要求质心等高}\par\nobreak
+图\ref{fig:s4:example:8:s}只有重力对允许虚位移做功，连续每一位置都平衡要求质心高度恒为$L/2$。若曲面接触端为$(x,y)$，墙端为$(0,Y)$，则$(Y+y)/2=L/2$，所以$Y=L-y$。
+\fig{fig:s4:example:8:p}{解答过程：任意位置平衡的支承曲线}{\begin{tikzpicture}[scale=.88]\draw[world](0,3.3229)--(3,.6771);\draw[guide](0,2)--(3,2);\fill(1.5,2)circle(3pt)node[above right]{$C$};\node[left]at(0,2){$L/2$};\node[right]at(3,.6771){$(x,y)$};\draw[force](3,.6771)--(2.4,1.7355)node[above right]{$\boldsymbol N$};\draw[force](0,3.3229)--(.9,3.3229)node[above]{$N_w$};\draw[force](1.5,2)--(1.5,.9)node[right]{$G$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立杆长约束选取曲线分支}\par\nobreak
+图\ref{fig:s4:example:8:p}杆长约束$x^2+(Y-y)^2=L^2$给$x^2+(L-2y)^2=L^2$。取经过原点的下支，
+\[
+y=\frac L2-\frac12\sqrt{L^2-x^2},\quad 0\le x<L.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{回代受力方程检验接触方向}\par\nobreak
+检验接触反力：记杆重为 $G$，令$s=\sqrt{L^2-x^2}=Y-y$。对曲线的平方根使用链式法则，
+\[y'=-\frac12\cdot\frac{1}{2\sqrt{L^2-x^2}}(-2x)=\frac{x}{2s}.\]
+令反力的竖直分量为$V$，则反力为$(-Vy',V)$。对上端取矩要求$xV-sVy'=Gx/2$；代入斜率，左侧化为 $xV/2$，故在 $x>0$时有 $V=G$，墙反力水平向右$Gy'>0$。因此在$0<x<L$所选接触侧确能提供正反力。$x=0$时杆竖直，取连续极限有 $V=G$、墙反力为零；端点$x=L$斜率发散，应单独讨论。这是椭圆的一段，不能把代数曲线的全部分支都视为可实现。若杆真为无质量且没有其他载荷，势能条件不能确定这条曲线。\end{solution}
+\begin{question}\begin{example}[空间斜杆的静摩擦范围]\label{s4:example:9}
+均匀杆重$G$，一端$A$为固定球铰，另一端$B$接触竖直墙。墙距$A$为$a$，$B$在墙内距垂足$O$为$b$，令$q=b/a=\tan\alpha$。$OB$与竖直夹角$\theta$，墙静摩擦系数$\mu$，取$0\le\theta<\pi/2$且$a,b>0$。求静止的角度条件，并区分缓慢滑动模型。
+\end{example}
+\fig{fig:s4:example:9:s}{左图表示空间杆与墙的关系，右图在墙面内定义角度和摩擦分量}{\begin{tikzpicture}
+
+\begin{scope}
+\coordinate(A)at(0,0);\coordinate(O)at(2.8,0);\coordinate(B)at(3.8,2.2);
+\draw[world](2.8,-.6)--(2.8,2.7)--(4.6,3.5)--(4.6,.2)--cycle;
+\draw[world](A)--(B);\draw[guide](A)--(O)--(B);
+\fill(A)circle(2pt)node[left]{$A$};\node[below]at(O){$O$};\fill(B)circle(2pt)node[right]{$B$};
+\node[below]at(1.4,0){$a$};\node[right]at(3.3,1.1){$b$};\node at(1.05,.35){$\alpha$};
+\node at(2,-1.2){墙面$x=a$};
+\end{scope}
+\begin{scope}[xshift=7cm]
+\draw[axis](0,0)--(2.3,0)node[right]{$y$};\draw[axis](0,0)--(0,3.3)node[above]{$z$};
+\draw[world](0,0)--(1.2,2.4)node[midway,right]{$b$};\fill(1.2,2.4)circle(2pt)node[right]{$B$};
+\draw[world](0,.7)arc(90:63.43:.7);\node at(.3,1.1){$\theta$};
+\draw[guide](1.2,0)--(1.2,2.4)--(0,2.4);\node[below]at(1.2,0){$b\sin\theta$};\node[left]at(0,2.4){$b\cos\theta$};
+\end{scope}
+\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{选空间坐标，对球铰取矩}\par\nobreak
+图\ref{fig:s4:example:9:s}取$A$为原点、墙为$x=a$，$B=(a,b\sin\theta,b\cos\theta)$。墙对杆的力为$(-N,f_y,f_z)$。杆重力等效在$AB$中点，对$A$取矩：
+\[
+\boldsymbol r_B\times[(-N,f_y,f_z)-(G/2)\boldsymbol e_z]=0.
+\]
+\fig{fig:s4:example:9:p}{归一化摩擦矢量的端点落在一条直线上，静止要求它进入摩擦圆盘}{\begin{tikzpicture}
+
+\draw[axis](-2.5,0)--(1.7,0)node[right]{$f_y/N$};\draw[axis](0,-1.8)--(0,2.4)node[above]{$f_z/N$};
+\draw[world,blue](0,0)circle(1.55);\node[above right,blue]at(1.1,1.1){$\mu$};
+\draw[world,red](-1,-1.4)--(-1,2.1);\draw[axis,red](-1,.7)--(-1,1.9);
+\fill(-1,0)circle(2pt)node[below left]{$D$};\draw[world](0,0)--(-1,0);
+\node[below]at(-.55,-.45){$q\sin\theta$};
+\fill(-1,.85)circle(2pt)node[left]{$\boldsymbol f/N$};\draw[force](0,0)--(-1,.85);
+\node[align=left]at(4,1){$f_y/N=-q\sin\theta$\\$f_z/N=u_N-q\cos\theta$\\$u_N=G/(2N)>0$};
+\node[align=left]at(4,-.7){$D$对应$f_z=0$\\$u_N=q\cos\theta$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求摩擦分量并写摩擦圆盘条件}\par\nobreak
+力矩为零要求方括号与$\boldsymbol r_B$平行，令方括号为$c\boldsymbol r_B$。由第一分量$-N=ca$得$c=-N/a$；依次代入第二、第三分量，$f_y=-Nq\sin\theta$，$f_z=G/2-Nq\cos\theta$。故静摩擦条件为
+\[
+q^2\sin^2\theta+\left(\frac{G}{2N}-q\cos\theta\right)^2\le\mu^2.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以最短矢量确定静止范围}\par\nobreak
+图\ref{fig:s4:example:9:p}中，静摩擦条件是矢量端点位于半径$\mu$的圆盘内；点$D$到原点最近。对$N>0$允许调整时，令$u_N=G/(2N)>0$，左边是$q^2\sin^2\theta+(u_N-q\cos\theta)^2$。当$0\le\theta<\pi/2$时，允许选$u_N=q\cos\theta$，即$N=G/(2q\cos\theta)>0$，从而最小左边为$q^2\sin^2\theta$，所以$0\le\theta<90^\circ$可静止的必要充分条件为$q\sin\theta\le\mu$。当$\mu<q$，最大角$\arcsin(\mu/q)$，该临界$N=G/[2\sqrt{q^2-\mu^2}]$。
+
+\fig{fig:s4:example:9:slide}{另加沿墙圆弧下滑的条件后，摩擦必须沿轨道切线向上}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(3.4,0)node[right]{$y$};\draw[axis](0,0)--(0,3.5)node[above]{$z$};
+\draw[world](0,2.7)arc(90:20:2.7);\draw[guide](0,0)--(1.35,2.338);
+\fill(1.35,2.338)circle(2pt)node[right]{$B$};
+\draw[force,blue](1.35,2.338)--(.311,2.938)node[left]{$f$};
+\draw[axis,red](1.35,2.338)--(2.216,1.838)node[right]{$v_B$};
+\draw[world](0,.7)arc(90:60:.7);\node at(.34,1){$\theta$};
+\node[align=left]at(5.4,1.4){$f_y=-f\cos\theta$\\$f_z=f\sin\theta$};
+
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{另加滑动方向后求不同临界条件}\par\nobreak
+图\ref{fig:s4:example:9:slide}指定了滑动方向，因而给摩擦分量增加了关系。
+
+若另规定杆端正沿墙内圆弧极慢下滑，可忽略惯性项，摩擦沿圆弧切线向上。由图中的方向，$f_y=-f\cos\theta,f_z=f\sin\theta$。代入前面的力矩分量式，
+\[f\cos\theta=Nq\sin\theta,\qquad
+ f\sin\theta=\frac G2-Nq\cos\theta.\]
+第一式乘 $\sin\theta$、第二式乘 $\cos\theta$后消去 $f$，得 $Nq=G\cos\theta/2$；再代回得 $f=G\sin\theta/2$。若这一滑动模型的动摩擦系数为 $\mu_k$，由 $f=\mu_kN$得到 $\tan\theta=\mu_k/q$；只有另设 $\mu_k=\mu$时，才写成 $\tan\theta=\mu/q$。这一指定滑动方向和动摩擦的模型不同于任意静摩擦分布，不能把它和上述静止存在范围混为同一个结论。\end{solution}

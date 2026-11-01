@@ -1,0 +1,154 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em3:drill:1}\textbf{先分自由下落、部分进入和完全进入三阶段}\par\nobreak
+图\ref{fig:em3:drill:1:s}中进入前无电流、磁力为零；下边到上边界时速度 $u=\sqrt{2gh}$。从此刻重新计时 $s$，直到上边也进入磁区，只有一横边受磁力。令 $\gamma=B^2l^2/R$，$v_t=mg/\gamma$、$\tau=m/\gamma$，令 $z=v-v_t$，从初值 $z(0)=u-v_t$ 分离积分，
+$\int_{u-v_t}^{z(s)}\dd y/y=-s/\tau$，所以
+$z=(u-v_t)\e^{-s/\tau}$；若 $u=v_t$，直接取 $z=0$。因此
+\[v=v_t+(u-v_t)\e^{-s/\tau},\quad F_B=-\gamma v.\]
+\fig{fig:em3:drill:1:p}{磁力只在单条横边处于场内时出现；完全进入后的本题区间重新自由落体}{\begin{tikzpicture}
+
+\foreach \xx/\yy/\lab in {0/.4/{尚未进入},4.7/-.6/{部分进入},9.4/-1.7/{全部进入}}{\begin{scope}[xshift=\xx cm]
+\fill[blue!7](-.4,-3)rectangle(2.4,0);\draw[guide](-.5,0)--(2.5,0) (-.5,-3)--(2.5,-3);\draw[world](.2,\yy)rectangle(1.8,{\yy+1.2});\node at(1,2.4){\lab};\node at(1,-2.55){$\otimes B$};\draw[force](1,{\yy+.5})--(1,{\yy-.35})node[right]{$mg$};\end{scope}}
+\draw[force,blue](5.2,-.6)--(5.2,.8)node[above]{$\gamma v$};\draw[flow,red](5,-.6)--(6.3,-.6)node[midway,below]{$i$};\node at(1,-3.9){$F_B=0$};\node at(5.7,-3.9){$F_B=-\gamma v$};\node at(10.4,-3.9){$i=0,\ F_B=0$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用位移确定阻尼阶段终点并接续自由落体}\par\nobreak
+图\ref{fig:em3:drill:1:p}中部分进入阶段先积分
+$y=[v_t\xi-\tau(u-v_t)\e^{-\xi/\tau}]_0^s$，
+代入上下限得到位移为 $y=v_ts+\tau(u-v_t)(1-\e^{-s/\tau})$。由 $y=d$ 求阶段末时刻 $s_1$，得末速 $v_1$。此后两横边同时在场内，电动势相消、磁力为零，框重新自由落体，直到下边到下边界，还下降 $H-d$，末速 $\sqrt{v_1^2+2g(H-d)}$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{分清阶段内最大值、终速近似与全过程最大值}\par\nobreak
+若 $u<v_t$，部分进入速度单调增大但有限时间并不恰达 $v_t$；若 $u>v_t$，则从入口速度开始减小，此阶段最大值反而是 $u$。若 $u=v_t$，仅部分进入阶段恰为匀速。整段运动的最大速度还应比较入口速度与到达下磁界前的速度：
+\[
+v_{\max}=\max\!\left(u,\sqrt{v_1^2+2g(H-d)}\right).
+\]
+因此“部分进入时达到最大速度”通常只是将足够长的阻尼阶段近似看作已接近终速，既不是严格的有限时间到达条件，也不代表完全进入后不会再加速。\end{drillsolution}
+\begin{drillsolution}{em3:drill:2}\textbf{由抽出长度与圆周长建立速度关系}\par\nobreak
+图\ref{fig:em3:drill:2:s}中半径减少 $\dd a$，拉出长度增加 $\dd x=-2\pi\dd a$，故拉端速度 $v_x=-2\pi\dot a$。圆环电阻 $2\pi\lambda a$，电动势大小 $-2\pi Ba\dot a$，电流大小 $-B\dot a/\lambda$。缓慢运动时外功率等于发热率，
+\[F(-2\pi\dot a)=\frac{B^2\dot a^2}{\lambda^2}(2\pi\lambda a).\]
+\fig{fig:em3:drill:2:p}{按 $a^2$ 的线性下降求有限半径终点；向零半径外推只是形式极限}{\begin{tikzpicture}
+
+\draw[axis](-.2,0)--(5,0)node[right]{$t$};\draw[axis](0,-.2)--(0,3)node[above]{$a^2$};\draw[world](0,2.5)--(3.4,.7);\draw[guide](3.4,.7)--(4.7222,0);\draw[guide](3.4,0)--(3.4,.7)--(0,.7);\fill(3.4,.7)circle(2pt);\node[left]at(0,2.5){$a_0^2$};\node[left]at(0,.7){$a_f^2>0$};\node[below]at(3.4,0){$T(a_f)$};\node at(2.5,3.6){斜率 $-2F\lambda/B^2$};\node at(2.4,-1){虚线外推时 $|\dot a|\propto1/a$，缓慢收缩近似失效};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用准静态功率平衡求半径方程并积分}\par\nobreak
+图\ref{fig:em3:drill:2:p}约去负的收缩速度，得 $\dot a=-F\lambda/(B^2a)$，分离后积分，
+\[
+\int_{a_0}^{a_f}a\,\dd a=-\frac{F\lambda}{B^2}\int_0^T\dd t,
+\qquad
+\left[\frac{a^2}{2}\right]_{a_0}^{a_f}
+=-\frac{F\lambda}{B^2}T.
+\]
+收缩使左端为负，解出正时间，于是
+\[T(a_f)=\frac{B^2(a_0^2-a_f^2)}{2F\lambda}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对零半径外推是否仍满足慢运动前提}\par\nobreak
+形式上 $a_f\to0$ 给出 $B^2a_0^2/(2F\lambda)$，但同时 $|\dot a|\to\infty$，末段已不满足缓慢、忽略惯性的前提，不能把这一形式极限当作真实完全消失时间的精确值。\end{drillsolution}
+\begin{drillsolution}{em3:drill:3}\textbf{统一角速度正向并求两轮的有向辐条电动势}\par\nobreak
+图\ref{fig:em3:drill:3:s}中外缘无滑动给出 $a_1\omega_1=-a_2\omega_2$。按图示向里磁场，取逆时针角速度为正，在距心 $r$ 处速度为 $\omega_jr$，沿由心到缘的微元有
+$(\bm v\times\bm B)\cdot\dd\bm l=-B\omega_jr\,\dd r$。
+因此每根辐条从心到缘的有向电动势为
+\[
+\varepsilon_j=-B\omega_j\int_0^{a_j}r\,\dd r
+=-B\omega_j\left[\frac{r^2}{2}\right]_0^{a_j}
+=-\frac12B\omega_ja_j^2;
+\]四根并联使内阻为 $R_j/4$，电动势不变。左侧绳向下运动时第一轮逆时针，$\omega_1>0$，第二轮反向。回路两轮的有向电动势相减，所以总电动势大小
+\[e=\frac B2\omega_1a_1(a_1+a_2)=K\omega_1,\quad K=\frac B2a_1(a_1+a_2).\]
+\fig{fig:em3:drill:3:p}{左轮逆时针、右轮顺时针，两轮中心与共同轮缘的极性依次排列，外电流从左轮心流向右轮心}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.3);\draw[world](2.2,0)circle(.9);\foreach \aa in {0,90,180,270}{\draw[world](0,0)--(\aa:1.3);\draw[world](2.2,0)--++(\aa:.9);}\fill(0,0)circle(2pt)node[above left]{$O_1,+$};\fill(2.2,0)circle(2pt)node[above right]{$O_2,-$};\fill(1.3,0)circle(2pt)node[below]{$P$};
+\draw[flow](1.3,0)arc(0:90:1.3);\node at(-.3,1.8){$\omega_1>0$};\draw[flow](3.1,0)arc(0:-90:.9);\node at(2.5,1.4){$\omega_2<0$};
+\draw[world](0,0)--(0,-2)--(.6,-2) (1.4,-2)--(2.2,-2)--(2.2,0);\draw[world](.6,-2.2)rectangle(1.4,-1.8);\node[below]at(1,-2.2){$R$};\draw[flow,red](.1,-1.6)--(.55,-1.6)node[midway,above]{$i$};\draw[flow,blue](1.05,0)--(.35,0);\draw[flow,blue](1.95,0)--(1.4,0);\node at(1.2,2.6){$V_{O_1}>V_P>V_{O_2},\quad\otimes B$};\node at(1.1,-3.2){两轮等效内阻分别为 $R_1/4,\ R_2/4$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用轮缘约束合成回路驱动与总电阻}\par\nobreak
+图\ref{fig:em3:drill:3:p}中 $R_\Sigma=R+(R_1+R_2)/4$，悬物速度 $v=a_0\omega_1$，电流 $i=Kv/(a_0R_\Sigma)$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由稳定功率平衡求悬物终速并检查极性相加}\par\nobreak
+稳定时重力功率转为焦耳热，$mgv=i^2R_\Sigma$，代入并约去非零 $v$ 得
+\[v_\infty=\frac{mg a_0^2R_\Sigma}{K^2}=\frac{4mg a_0^2R_\Sigma}{B^2a_1^2(a_1+a_2)^2}.\]
+对照 $V_{O_1}>V_P>V_{O_2}$，外缘反向转动使两轮从中心到轮缘的电动势极性相反，回路中反而相加；若误用两电动势大小相减，会错误地预测等半径时完全不发电。\end{drillsolution}
+\begin{drillsolution}{em3:drill:4}\textbf{按给定局部尺度估算电动势和通流电阻}\par\nobreak
+图\ref{fig:em3:drill:4:s}磁区局部速度近似为 $v=\omega r$。按题设等效尺度，电动势 $e\sim Bva$，电阻 $R_e\sim\rho a/(a\delta)=\rho/\delta$，故电流 $i\sim Bva\delta/\rho$。
+\fig{fig:em3:drill:4:p}{局部速度向上、磁场向里时，动生推动向左，安培阻力向下；区外回流影响等效电阻}{\begin{tikzpicture}
+
+\fill[blue!10](0,0)rectangle(2,2);\draw[world](0,0)rectangle(2,2);\node at(1,1.65){$\otimes B$};\draw[->,blue,thick](1.8,1)--(.2,1)node[midway,above]{$\bm v\times\bm B,\ i$};\draw[force,red](1,.8)--(1,-.5)node[below]{$F_B$};\draw[flow](3.3,.5)--(3.3,1.6)node[above]{$v=\omega r$};
+\draw[guide,->](0,1)--(-.6,1)--(-.6,2.6)--(2.6,2.6)--(2.6,1)--(2,1);\draw[guide,->](0,1)--(-.6,1)--(-.6,-1.1)--(2.6,-1.1)--(2.6,1)--(2,1);\draw[dim](0,3.2)--(2,3.2)node[midway,above]{$a$};\node at(1,-2){虚线仅示意区外回流，不能据此确定精确系数};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从局部阻力估计制动力矩并检查功率}\par\nobreak
+图\ref{fig:em3:drill:4:p}中的局部阻力估计为 $F\sim Bia$，所以制动力矩的数量级
+\[M\sim\frac{B^2a^2\delta r^2}{\rho}\omega,\]
+方向与转动相反，发热功率 $M\omega\sim B^2a^2\delta v^2/\rho$，两种计算一致。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{明确数量级近似不能确定的数值系数}\par\nobreak
+这里用 $\sim$ 而非严格等号，因为磁区内电荷重排、磁区外回流和圆盘边缘都会改变数值系数。若要求精确系数，必须给出完整边界并解二维电流场；仅由“小块电阻”无法得到它。高速下若自感与集肤效应显著，线性制动关系也不再适用。\end{drillsolution}
+\begin{drillsolution}{em3:drill:5}\textbf{由两次指数衰减率建立同一参数组}\par\nobreak
+由图\ref{fig:em3:drill:5:s}的同一回路，在各次实验中 $m\dot v=-(b+B_j^2l^2/R)v$，记 $\Gamma_j=b+B_j^2l^2/R$，从初速 $v_0$ 分离积分，
+$\int_{v_0}^{v(t)}\dd z/z=-(\Gamma_j/m)\int_0^t\dd s$，
+所以 $v=v_0\e^{-\Gamma_jt/m}$。与实测指数 $v_0\e^{-t/\tau_j}$ 比较，得到 $m/\tau_j=\Gamma_j$。两式相减，
+\[\frac1R=\frac{m(1/\tau_2-1/\tau_1)}{l^2(B_2^2-B_1^2)}=\frac{0.10(1.25-0.50)}{0.25(0.16-0.04)}=2.5\,\Omega^{-1}.\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{反求电阻与空气阻力并检查参数正值}\par\nobreak
+所以 $R=0.40\,\Omega$，再代第一式得到 $b=0.050-0.040\times0.25/0.40=0.025\,\mathrm{kg/s}$，两参数均为正。
+\fig{fig:em3:drill:5:p}{归一化速度按各自时间常量衰减，第二次实验中两类耗散以固定比例分享初动能}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.2,0)--(4.8,0)node[right]{$t/\mathrm s$};\draw[axis](0,-.2)--(0,2.9)node[above]{$v_j/v_{j0}$};\draw[blue,thick,domain=0:4.3,samples=80]plot(\x,{2.4*exp(-\x/2)});\draw[red,thick,domain=0:4.3,samples=80]plot(\x,{2.4*exp(-\x/.8)});\node[left]at(0,2.4){$1$};\node[blue]at(3.1,1.4){$\tau_1=2.0\,\mathrm s$};\node[red]at(2.9,.2){$\tau_2=0.80\,\mathrm s$};
+\end{scope}
+\begin{scope}[xshift=6.8cm]
+\filldraw[fill=red!15,world](0,0)rectangle(1.4,2.4);\filldraw[fill=blue!15,world](0,2.4)rectangle(1.4,3);\node[right]at(1.7,1.2){$Q_J/K_0=0.80$};\node[right]at(1.7,2.7){空气耗散 $0.20$};\node at(.7,3.7){第二次实验的初动能};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两种阻力的相同速度平方因子分配总耗散}\par\nobreak
+图\ref{fig:em3:drill:5:p}中两种阻力的功率都正比于 $v^2$。第二次磁阻力系数为 $\gamma_2=B_2^2l^2/R=0.10\,\mathrm{kg/s}$，总耗散系数 $b+\gamma_2=0.125$，故任意时刻磁耗散占比均为 $\gamma_2/(b+\gamma_2)=0.80$，积分后的电阻热也占初动能80\%。不能把全部动能损失都归入电阻，因为空气阻力同样做负功。\end{drillsolution}
+\begin{drillsolution}{em3:drill:6}\textbf{用稳态磁力与反电动势确定正向运行区间}\par\nobreak
+按图\ref{fig:em3:drill:6:s}，稳态动力学要求 $ki=F$，其中 $k=Bl$；电路要求 $E=Ri+kv$。先由第一式得 $i=F/k$，再代第二式得 $v=E/k-RF/k^2$。持续正向运动需要 $0<F<kE/R$。
+\fig{fig:em3:drill:6:p}{先由磁力与负载平衡求稳态速度，再在正向可运行区间内优化输出功率}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[very thick](0,-1)--(0,1);\draw[force,red](0,.4)--(1.4,.4)node[right]{$ki$};\draw[force](0,-.4)--(-1.4,-.4)node[left]{$F$};\draw[flow](0,1.6)--(1.3,1.6)node[right]{$v$};\node at(0,-1.8){$ki=F,\quad Ri+kv=E$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](-.2,0)--(4.7,0)node[right]{$RF/(kE)$};\draw[axis](0,-.2)--(0,2.9)node[above]{$4RP_F/E^2$};\draw[world,domain=0:1,samples=80]plot({4*\x},{2.4*4*\x*(1-\x)});\draw[guide](2,0)--(2,2.4);\fill(2,2.4)circle(2pt);\node[left]at(0,2.4){$1$};\node[below]at(2,0){$1/2$};\node[below]at(4,0){$1$};\node at(2,-1){最大功率点 $\eta=1/2$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{优化负载功率并计算相应效率}\par\nobreak
+图\ref{fig:em3:drill:6:p}中负载功率
+\[P_F=Fv=\frac EkF-\frac R{k^2}F^2\]
+是开口向下的抛物线，逐项求导，
+\[
+\frac{\dd P_F}{\dd F}=\frac Ek-\frac{2R}{k^2}F=0,
+\qquad \frac{\dd^2P_F}{\dd F^2}=-\frac{2R}{k^2}<0.
+\]
+由一阶导数解得极值负载 $F_*=kE/(2R)$，二阶导数和端点零功率共同确认它是区间内最大值，相应速度 $E/(2k)$，最大功率 $E^2/(4R)$。电源输入功率 $Ei=EF/k$，故效率 $\eta=P_F/(Ei)=1-RF/(kE)$，最大功率点效率为50\%。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查空载极限、停转阈值与过载模型}\par\nobreak
+当 $F\to0$，此理想模型的效率趋于1，但输出功率同时趋零；这不能解释成空载可以输出很大功率。当 $F\ge kE/R$，计算出的匀速正向速度不再为正，从静止启动时驱动力不足以克服所规定的反向负载，应重新分析启动或反向运动，不能保留一个负数又仍称为正向运行速度。\end{drillsolution}
+\input{solution-finite-field}

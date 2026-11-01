@@ -1,0 +1,303 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[翻转、投影与闭合曲面]\label{em1:example:1}
+一匝面积 $S$ 的平面线圈在匀强磁场 $B$ 中，初始正法线平行磁场，历时 $\Delta t$ 翻转半周，求磁通变化及平均电动势。另有沿 $y$ 方向长 $l$、横截面为直角三角形的封闭棱柱，底面水平宽 $a$，高 $h$，磁场竖直向下，求各面的有向磁通量。
+\end{example}
+\fig{fig:em1:example:1:s}{题设：翻转、投影与闭合曲面}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(2,0)--(2,1.3)--cycle;\draw[world](1,.6)--(3,.6)--(3,1.9)--cycle;\draw[world](0,0)--(1,.6) (2,0)--(3,.6) (2,1.3)--(3,1.9);\node[below]at(1,0){$a$};\node[right]at(3,1.2){$h$};\node[below right]at(2.65,.3){$l$};\draw[force](.5,2.3)--(.5,1.3)node[left]{$B$};\begin{scope}[xshift=4.6cm]\draw[world](0,1)ellipse(.65 and .25);\draw[force](0,1)--(0,2)node[above]{$\bm n$};\end{scope}\node at(4.6,.9){$S$};\draw[force](5.7,1)--(5.7,2)node[above]{$B$};\node at(1.3,-.8){棱柱：磁场向下};\node at(5,-.2){线圈初态：$\bm n$ 与 $\bm B$ 同向};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{跟随线圈的物质正向求翻转磁通差}\par\nobreak
+按图\ref{fig:em1:example:1:s}的初始法线约定导线上的正向，并让这一物质正向随线圈一起翻转；末态法线因此与磁场反向。线圈初、末磁通分别为 $BS$、$-BS$，故
+\[\Delta\Phi=-2BS,\qquad\overline{\mathcal E}=\frac{2BS}{\Delta t}.\]
+正号表示电动势沿初始法线对应的右手正向；并不表示在任意翻转规律下瞬时电动势恒定。
+\fig{fig:em1:example:1:p}{线圈的物质法线随翻转反向；棱柱各面则使用闭合面的外法线}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](-.7,0)--(.7,0);\draw[flow](0,0)--(0,1)node[above]{$\bm n_i$};\draw[flow](1,0)--(1,1)node[above]{$\bm B$};\node at(.1,-.7){$\Phi_i=BS$};
+\draw[->](1.6,.4)--(2.6,.4)node[midway,above]{$\pi$};
+\draw[world](3,-.0)--(4.4,0);\draw[flow](3.7,0)--(3.7,-1)node[below]{$\bm n_f$};\draw[flow](4.7,0)--(4.7,1)node[above]{$\bm B$};\node at(3.7,-1.8){$\Phi_f=-BS$};
+\end{scope}
+\begin{scope}[shift={(7,0)}]
+\draw[world](0,0)--(3,0)--(3,1.8)--cycle;\draw[flow](1.5,0)--(1.5,-1)node[below]{$\bm n_{\rm bottom}$};\draw[flow](1.5,.9)--(.9,1.9)node[above]{$\bm n_{\rm slope}$};\draw[flow](3,.8)--(4,.8)node[right]{$\Phi=0$};
+\draw[dim](0,-.45)--(3,-.45)node[midway,above]{$a$};\draw(.6,0)arc(0:30.9638:.6);\node at(.9,.2){$\beta$};\node at(1.3,2.6){$B\downarrow,\quad S_{\rm slope}=l\sqrt{a^2+h^2}$};\node at(1.5,-1.9){$\Phi_{\rm bottom}=-\Phi_{\rm slope}=Bal$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{按闭合面的外法线分别求各面磁通}\par\nobreak
+棱柱各面采用图\ref{fig:em1:example:1:p}的外法线。底面外法线向下，因此 $\Phi_{\text{底}}=Bal$；斜面的水平投影面积同为 $al$，但外法线向上，故 $\Phi_{\text{斜}}=-Bal$。竖直矩形面与两个三角端面的法线均水平，磁通为零。各面相加为零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用斜面面积与投影因子复核高度消去}\par\nobreak
+若斜面与水平面夹角为 $\beta$，由截面直角三角形得斜边长 $s=\sqrt{a^2+h^2}$、$\cos\beta=a/s$。斜面面积为 $ls$，其向上外法线与向下磁场的点积带负号，故 $\Phi_{\text{斜}}=-B(ls)\cos\beta=-Bal$。这说明高度虽改变斜面面积和倾角，二者在投影中恰好抵消。\end{solution}
+\begin{question}\begin{example}[磁通图像的斜率]\label{em1:example:2}
+一匝电阻为 $R$ 的固定线圈，自感忽略。磁通在 $t=0,2,4,6,10\,\mathrm s$ 时依次为 $0,2\Phi_0,2\Phi_0,-2\Phi_0,0$，相邻点用直线连接。求各段电动势、电流和总焦耳热，并指出电动势绝对值最大的一段。
+\end{example}
+\fig{fig:em1:example:2:s}{题设：磁通图像的斜率}{\begin{tikzpicture}[scale=.88]\draw[axis](-0.2,0)--(5,0)node[right]{$t/\mathrm s$};\draw[axis](0,-1.5)--(0,2.4)node[above]{$\Phi/\Phi_0$};\draw[world](0,0)--(1,1)--(2,1)--(3,-1)--(5,0);\foreach \x/\t in {1/2,2/4,3/6,5/10}\node[below]at(\x,0){$\t$};\node[left]at(0,1){$2$};\node[left]at(0,-1){$-2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{对四段磁通折线分别求有向斜率}\par\nobreak
+先固定图\ref{fig:em1:example:2:s}的磁通正向，自感忽略且没有其他电源，故每段均用 $\mathcal E_j=-\Delta\Phi_j/\Delta t_j$、$i_j=\mathcal E_j/R$。四段分别为
+\begin{align*}
+\mathcal E_1&=-\frac{2\Phi_0-0}{2\,\mathrm s}=-\frac{\Phi_0}{\mathrm s},&\mathcal E_2&=-\frac{2\Phi_0-2\Phi_0}{2\,\mathrm s}=0,\\
+\mathcal E_3&=-\frac{-2\Phi_0-2\Phi_0}{2\,\mathrm s}=\frac{2\Phi_0}{\mathrm s},&\mathcal E_4&=-\frac{0-(-2\Phi_0)}{4\,\mathrm s}=-\frac{\Phi_0}{2\,\mathrm s}.
+\end{align*}
+因此第三段电动势绝对值最大。正负分别对应沿正向或反向的电流，不能把磁通为负误当成电动势必为负。
+\fig{fig:em1:example:2:p}{各段电动势为磁通折线斜率的负值；其平方决定每段发热}{\begin{tikzpicture}
+
+\draw[axis](-.3,0)--(5.8,0)node[right]{$t/\mathrm s$};\draw[axis](0,-1.6)--(0,2.7)node[above]{$\mathcal E\,\mathrm s/\Phi_0$};
+\draw[world](0,-1)--(1,-1) (1,0)--(2,0) (2,2)--(3,2) (3,-.5)--(5,-.5);
+\foreach \x/\t in {1/2,2/4,3/6,5/10}{\draw[guide](\x,-1.3)--(\x,2.2);\node[above]at(\x,2.2){$\t$};}
+\foreach \xx/\yy in {1/-1,1/0,2/0,2/2,3/2,3/-.5}{\draw[fill=white](\xx,\yy)circle(2pt);}\foreach \yy in {-1,-.5,2}{\node[left]at(0,\yy){$\yy$};}
+\node at(2.5,-2){$i_j=\mathcal E_j/R,\quad Q_j=\mathcal E_j^2\Delta t_j/R$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分段恒流计算每段热量}\par\nobreak
+图\ref{fig:em1:example:2:p}的阶梯高度由各段斜率决定。各段电流恒定，先求各段热，再求和：
+\[Q_1=\frac{2\Phi_0^2}{R\,\mathrm s},\quad Q_2=0,\quad Q_3=\frac{8\Phi_0^2}{R\,\mathrm s},\quad Q_4=\frac{\Phi_0^2}{R\,\mathrm s}.\]
+因此第三段不仅电动势最大，其发热贡献也最大。各段相加得 $Q=11\Phi_0^2/(R\,\mathrm s)$。单位为 $\mathrm{Wb}^2/(\Omega\,\mathrm s)=\mathrm J$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以始末磁通和单位检查积分结果}\par\nobreak
+带符号电动势的时间积分却为 $(-2+0+4-2)\Phi_0=0$，与始末磁通相同一致；热量涉及平方，不随正负相消。折点处只取左右极限，不把理想折点当成额外持续的恒定电动势。\end{solution}
+\begin{question}\begin{example}[磁铁穿过线框]\label{em1:example:3}
+一条形磁铁沿竖直轴下落，北极朝下，穿过水平固定的电阻线框。自上向下观察，判断磁铁在框上方接近和在框下方远离时的电流方向，并分析磁场力与发热。忽略线框自感。
+\end{example}
+\fig{fig:em1:example:3:s}{题设：磁铁穿过线框}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)ellipse(1.6 and .4);\draw[world](-.3,1)rectangle(.3,2.6);\node at(0,1.4){$N$};\node at(0,2.2){$S$};\draw[flow](.7,2)--(.7,1)node[right]{$v$};\draw[guide](0,-1.5)--(0,3);\node at(2,0){线框};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{判断接近时的有向磁通变化与俯视电流}\par\nobreak
+取向上为正法线。图\ref{fig:em1:example:3:s}中北极下方的外磁场向下，接近时向下磁通的绝对值增加，即 $\dot\Phi<0$。因此感应电流逆时针，产生向上的磁场，使磁铁受到向上的阻力。
+\fig{fig:em1:example:3:p}{上方接近与下方远离时的俯视电流相反，磁铁的阻力均向上}{\begin{tikzpicture}
+
+\foreach \xx/\sgn/\lab/\yy in {0/1/{上方接近}/1.5,5/-1/{下方远离}/-2.6}{\begin{scope}[xshift=\xx cm]
+\draw[world](0,0)ellipse(1.4 and .35);\draw[world](-.25,\yy)rectangle(.25,{\yy+1.1});\node at(0,{\yy+.25}){$N$};\node at(0,{\yy+.85}){$S$};
+\draw[->,red,very thick](.7,{\yy+.5})--(.7,{\yy+1.5})node[above]{$F_B$};\draw[flow](1.3,{\yy+.9})--(1.3,{\yy+.1})node[right]{$v$};\node at(0,3.3){\lab};
+\begin{scope}[shift={(0,-4.3)}]\draw[world](0,0)circle(.8);\draw[->,blue,thick](.8,0)arc(0:{\sgn*120}:.8);\node at(0,0){$\otimes B$};\end{scope}\end{scope}}
+\node at(2.5,-5.8){下方圆图为自上向下观察；两态磁通均向下};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{重画远离阶段的场向、电流与阻力}\par\nobreak
+磁铁位于线框下方远离时，框处位于磁铁上端南极的上方，轴向外磁场仍向下，因此仍有向下磁通，但其绝对值减小，$\dot\Phi>0$，所以电流顺时针，见图\ref{fig:em1:example:3:p}。电流方向反转，磁力依然阻碍相对离去，不能以“磁力方向未变”误判电流也未变。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{把机械损失与焦耳热对应并说明零流条件}\par\nobreak
+在忽略磁储能变化的近似下，阻力对磁铁所做的负功等于线框产生的焦耳热；磁铁损失的重力势能分为动能增加和发热。磁铁恰在线框平面附近时，电流是否瞬时为零取决于磁通极值的位置与几何对称性，不能仅由“北极经过”四个字决定。\end{solution}
+\begin{question}\begin{example}[同一回路中场变与运动的抵消]\label{em1:example:4}
+轴对称匀强磁场在无限圆柱内沿纸外，在 $t\ge0$ 时为 $B(t)=B_0(1+t/\tau)$。位于磁区内的薄圆形导体环始终保持圆形，半径为 $r(t)=r_0/\sqrt{1+t/\tau}$，并均匀收缩。求感生项、动生项及回路总电动势，判断有无环向电流。忽略自感，取逆时针为正。
+\end{example}
+\fig{fig:em1:example:4:s}{题设：同一回路中场变与运动的抵消}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$r(t)$};\draw[force](2.3,0)--(1.6,0)node[above]{$\dot r<0$};\node at(0,.6){$\odot B(t)$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在同一个回路上分列感生项与动生项}\par\nobreak
+图\ref{fig:em1:example:4:s}中 $B$ 增大，感生项为负：$\mathcal E_{\text{感}}=-\pi r^2\dot B$。环上各点的速度沿径向向内，叉乘纸外磁场得到逆时针的动生作用。按图\ref{fig:em1:example:4:p}积分，$\mathcal E_{\text{动}}=-2\pi Br\dot r$。
+\fig{fig:em1:example:4:p}{收缩环上一点的感生电场与动生项相消；径向收缩速度自身并不沿环}{\begin{tikzpicture}
+
+\draw[guide](0,0)circle(1.9);\draw[world](0,0)circle(1.4);\fill(1.4,0)circle(2pt)node[below right]{$P$};\node at(0,.6){$\odot B(t)$};\draw[flow](1.25,0)--(.4,0)node[below]{$\bm u=\dot r\bm e_r$};
+\draw[->,blue,thick](1.65,-.15)--(1.65,-1.3)node[right]{$\bm E_\theta$};\draw[->,red,thick](1.65,.15)--(1.65,1.3)node[right]{$\bm u\times\bm B$};\node at(-1.7,-1.7){虚线为较早的环};\node at(1,-2.5){$E_\theta=-r\dot B/2,\quad (\bm u\times\bm B)_\theta=-B\dot r$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求收缩速率并代入两项的相同幅度}\par\nobreak
+由 $r=r_0(1+t/\tau)^{-1/2}$，先对外层幂函数、再对内层时间函数求导，
+\[
+\dot r=r_0\left(-\frac12\right)(1+t/\tau)^{-3/2}\frac1\tau
+=-\frac{r_0(1+t/\tau)^{-1/2}}{2\tau(1+t/\tau)}
+=-\frac{r}{2\tau(1+t/\tau)};
+\]又有 $\dot B=B_0/\tau$，所以
+\[\mathcal E_{\text{感}}=-\frac{\pi B_0r_0^2}{\tau(1+t/\tau)},\qquad
+\mathcal E_{\text{动}}=+\frac{\pi B_0r_0^2}{\tau(1+t/\tau)}.\]
+
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恒定总磁通核验零电流的物理含义}\par\nobreak
+两项相消，总电动势为零。直接核验 $\Phi=B\pi r^2=B_0\pi r_0^2$ 为常量，也得零。在题设电阻模型下没有环向电流；这不表示空间感生电场为零，而是运动导体内的环向驱动力恰好相消。\end{solution}
+\begin{question}\begin{example}[电磁铁附近线圈的运动]\label{em1:example:5}
+电磁铁轴线取为 $x$ 轴，右端外部磁场沿 $+x$ 且沿轴向远离铁芯时减弱。一电阻为 $R$、面积为 $S$ 的闭合小导体环套在右侧光滑绝缘圆柱上，环面垂直轴线。分析从无电流开始接通任一极性的直流电源，以及已通电后增大、减小电流绝对值时，金属环的初始运动趋势。另将线框固定在转轴上，使其法线与局部磁场夹角 $0<\theta<\pi/2$，分析磁场绝对值增大时其转动趋势。忽略被动线圈自感，采用小线圈近似。
+\end{example}
+\fig{fig:em1:example:5:s}{题设：电磁铁附近线圈的运动}{\begin{tikzpicture}[scale=.88]\draw[world](0,-.3)rectangle(2.7,.3);\foreach \x in {.2,.5,.8,1.1,1.4}\draw[world](\x,-.4)--++(.3,.8);\draw[world](2.3,0)ellipse(.2 and .7);\node[above]at(.9,.5){电磁铁};\node[above]at(2.3,.8){金属环};\draw[axis](2.8,0)--(4.8,0)node[right]{$x$};\draw[flow](3.1,.5)--(4,.5)node[right]{$B$};\node[below]at(2.3,-.8){$R,S$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{用楞次定律先确定轴向磁矩}\par\nobreak
+先按图\ref{fig:em1:example:5:s}规定环的正法线向右。当电磁铁向右的磁场增强时，环中感应电流产生向左的磁矩，环靠近铁芯的一侧与铁芯端部同名磁极相对，故环向右离开。若向右磁场减弱，感应磁矩向右，环被吸向铁芯。
+\fig{fig:em1:example:5:p}{轴向磁矩与梯度决定平移，倾斜线框的负电流决定转矩正向}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[axis](-.5,0)--(4,0)node[right]{$x$};\draw[world](1,0)ellipse(.2 and .65);\draw[->,blue,thick](1,1)--(2.2,1)node[right]{$B,\ \dot B>0$};\draw[->,red,thick](1,0)--(-.3,0)node[left]{$\bm\mu$};\draw[force](1,-1.1)--(2.4,-1.1)node[right]{$F_x>0$};\node at(1.6,-2){$\partial_xB<0$};
+\end{scope}
+\begin{scope}[xshift=6.4cm]
+\draw[flow](0,0)--(2.8,0)node[right]{$\bm B$};\draw[world](-.5,1.25)--(.5,-1.25);\draw[flow](0,0)--(1.5,.6)node[above]{$\bm n$};\draw[->,red,thick](0,0)--(-1.3,-.52)node[below]{$\bm\mu,\ i<0$};
+\draw(.75,0)arc(0:21.8014:.75);\node at(1,.16){$\theta$};\draw[->,blue,thick](1.8,.72)arc(21.8014:60:1.9387);\node at(1.2,1.9){$\odot\bm\tau,\ \theta\uparrow$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由场梯度推出任意电源极性的平移判据}\par\nobreak
+把场写成 $B(x,t)=f(x)I(t)$，其中 $f>0,f'<0$，可用图\ref{fig:em1:example:5:p}检验全部极性：环面积 $S$，有 $i=-Sf\dot I/R$，磁矩 $\mu_x=Si$。小磁偶极的轴向力为 $F_x=\mu_x\partial_xB$，因此
+\[F_x=-\frac{S^2}{R}ff'I\dot I.\]
+因 $ff'<0$，$I\dot I>0$ 即电流绝对值增大时向右，$I\dot I<0$ 时向左。从零接通任一极性，都是磁场绝对值增大，初始排斥；不能只因电源反接就改判吸引。电流稳定且环停止运动后，在本题忽略自感的电阻模型中感应电流为零；若保留小自感，则经过短暂衰减后趋于零。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用带符号电流确定转矩与投影变化}\par\nobreak
+对倾斜线框，场增大时 $i=-S\cos\theta\,\dot B/R$。绕使 $\theta$ 增大的转向取正，磁力矩为 $\tau_\theta=-iSB\sin\theta=S^2B\dot B\sin\theta\cos\theta/R>0$。因此 $\theta$ 增大，投影面积减小，阻碍磁通增加。图中的正法线与实际磁矩反向，转矩沿纸外，正好使法线逆时针转动。
+
+若电磁铁电流由滑动棒供给且 $I\propto v$，力的符号由 $v\dot v$ 决定，不能只凭向左或向右运动判断；速度大小增加与减小才分别对应初始排斥和吸引。\end{solution}
+\begin{question}\begin{example}[转动导体的局部积分]\label{em1:example:6}
+绝缘杆 $OC=R$，金属棒 $MN=R$ 固定在 $C$ 点且 $MC=CN=R/2$，$\angle MCO=60^\circ$。结构在纸面内绕 $O$ 顺时针转动，角速度 $\omega$；匀强磁场垂直纸面向里，大小 $B$。求开路时 $U_{MN}$。
+\end{example}
+\fig{fig:em1:example:6:s}{题设：转动导体的局部积分}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)node[below]{$O$}--(2,0)node[below]{$C$};\draw[world,very thick](1.5,.866)node[above]{$M$}--(2.5,-.866)node[below]{$N$};\draw[guide](0,0)--(1.5,.866) (0,0)--(2.5,-.866);\node at(1,-.3){$R$};\node at(3,1){$\otimes B$};\draw[world](1.775,.3897)arc(120:180:.45);\node at(1.38,.3){$60^\circ$};\draw[flow](-.25,.433)arc(120:30:.5);\node at(-.65,.5){$\omega$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{在实际转动速度下沿金属棒积分}\par\nobreak
+图\ref{fig:em1:example:6:s}中转动方向与磁场都向纸内，取 $B,\omega$ 为正的大小。距轴 $r$ 的微元速度为 $\bm u=\bm\omega\times\bm r$，$\bm u\times\bm B=B\omega\bm r$ 沿径向向外。开路平衡时 $\bm E_s=-\bm u\times\bm B$，由 $\bm E_s=-\nabla V$，沿金属棒有
+\[\dd V=B\omega\bm r\cdot\dd\bm r=\frac12B\omega\dd(r^2).\]
+令 $z=r^2$，其端点值分别为 $OM^2,ON^2$。因此即使棒不经过转轴，也能沿 $M\to N$ 积分，
+\[
+V_N-V_M=\frac{B\omega}{2}\int_{OM^2}^{ON^2}\dd z
+=\frac{B\omega}{2}[z]_{OM^2}^{ON^2},
+\]
+即 $V_N-V_M=B\omega(ON^2-OM^2)/2$；这是本题径向分布的积分结果。
+\fig{fig:em1:example:6:p}{沿棒微元投影积分，径向距离的端点平方差由真实三角形求得}{\begin{tikzpicture}
+
+\draw[world,very thick](1.5,.866025)node[above]{$M$}--(2.5,-.866025)node[below]{$N$};\fill(0,0)circle(1.5pt)node[left]{$O$};\fill(2,0)circle(1.5pt)node[right]{$C$};\draw[world](0,0)--(2,0);\draw[guide](0,0)--(1.5,.866025) (0,0)--(2.5,-.866025);
+\draw[force,blue](1.5,.866025)--(2.25,1.299);\draw[force,blue](2.5,-.866025)--(3.75,-1.299);\node[blue]at(3.6,2.1){$\bm u\times\bm B=B\omega\bm r$};
+\draw[->,red,thick](2.15,-.26)--(2.4,-.693)node[right]{$\dd\bm r:\ M\to N$};\node at(1.7,-1.9){$OM^2=3R^2/4,\quad ON^2=7R^2/4$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对两个真实三角形分别求端点半径}\par\nobreak
+图\ref{fig:em1:example:6:p}保留真实的 $M,C,N$ 几何。$OC=R,CM=CN=R/2$，且 $\angle MCO=60^\circ$。分别对三角形 $OCM,OCN$ 用余弦定理：
+\begin{align*}OM^2&=R^2+(R/2)^2-2R(R/2)\cos60^\circ=3R^2/4,\\ON^2&=R^2+(R/2)^2-2R(R/2)\cos120^\circ=7R^2/4.\end{align*}
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{求端压并用电荷分离方向校验极性}\par\nobreak
+相减得到平方差为 $R^2$，故 $U_{MN}=V_M-V_N=-B\omega R^2/2$。较远的 $N$ 端电势较高，与向外分离正电荷的方向相符。反转磁场或角速度之一，端压反号；同时反转则不变。\end{solution}
+\begin{question}\begin{example}[圆轨道上粒子的加速与压力]\label{em1:example:7}
+质量 $m$、电荷 $q>0$ 的小珠被光滑绝缘圆形细管约束，在半径 $r$ 的水平圆周上运动，初始静止；细管可提供双向径向约束。沿纸外方向的均匀磁场在 $0<t<T$ 为 $B_0t/T$，以后保持 $B_0$。磁场区域轴对称并覆盖轨道，忽略重力。求速度及小珠对轨道的径向力，约定向外为正。
+\end{example}
+\fig{fig:em1:example:7:s}{题设：圆轨道上粒子的加速与压力}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1.5);\fill(0,0)circle(1.3pt)node[below]{$O$};\draw[dim](0,0)--(1.5,0)node[midway,above]{$r$};\node at(0,.7){$\odot B(t)$};\fill(1.5,0)circle(3pt)node[right]{$q,m$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{沿逆时针正向积分感生电场求速度}\par\nobreak
+图\ref{fig:em1:example:7:s}取逆时针切向为正。感生场 $E_\theta=-rB_0/(2T)$，故在增长阶段
+\[
+m\int_0^{v(t)}\dd z=-\frac{qrB_0}{2T}\int_0^t\dd s,
+\]
+常加速度的积分为初末速度差，所以
+\[m\dot v=qE_\theta,\qquad v(t)=-\frac{qrB_0}{2mT}t=-\frac{qrB(t)}{2m}.\]
+以后切向场为零，速率保持 $|v(T)|$，方向顺时针。图\ref{fig:em1:example:7:p}右端小珠的速度向下，磁力向左，指向圆心。
+\fig{fig:em1:example:7:p}{细管对小珠的力向外，小珠对细管的反作用向内；两者的符号不能互换}{\begin{tikzpicture}
+
+\draw[world](0,0)circle(1.4);\fill(1.4,0)circle(2.5pt);\draw[force,blue](1.4,0)--(.1,0)node[midway,above]{$q|v|B$};\draw[force,red](1.4,0)--(2.1,0)node[right]{$F_r>0$};\draw[flow](1.4,-.15)--(1.4,-1.2)node[right]{$v<0$};\node at(-.3,.7){$\odot B$};\node at(.6,-2){$q|v|B=2mv^2/r$};
+\begin{scope}[xshift=6.2cm]
+\draw[axis](-.2,0)--(3.6,0)node[right]{$t/T$};\draw[axis](0,-2.6)--(0,.5)node[above]{$N/N_0$};\draw[world,domain=0:1,samples=50]plot({2*\x},{-2*(\x)^2});\draw[world](2,-2)--(3.2,-2);\draw[guide](2,0)--(2,-2);\node[below]at(2,0){$1$};\node[left]at(0,-2){$-1$};\node at(1.5,-3.2){$N_0=q^2rB_0^2/(4m)$};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{从径向方程区分作用力和反作用力}\par\nobreak
+设轨道对小珠向外的作用力为 $F_r$，径向方程为 $F_r+qvB=-mv^2/r$，所以小珠对轨道的力为
+\[N=-F_r=\frac{mv^2}{r}+qvB.
+\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入速度求分段约束力并检查接触模型}\par\nobreak
+在增长阶段，$mv^2/r=q^2rB(t)^2/(4m)$，而 $qvB=-q^2rB(t)^2/(2m)$。两项相加得 $N=-q^2rB(t)^2/(4m)$；稳定后为 $-q^2rB_0^2/(4m)$。负号表示小珠对细管的作用向内，细管对小珠的约束力向外。若装置只是只能向内施力的圆形挡壁，就不能维持题设轨道；“穿在轨道上”的双向约束是必要条件。电场在增长阶段做正功，磁力和轨道力始终不做功。\end{solution}
+\begin{question}\begin{example}[同轴螺线管之间的自由圆轨道]\label{em1:example:8}
+两根无限长同轴螺线管半径为 $R,2R$，单位长度匝数均为 $n$。外管电流为 $at$，内管为 $2at$，方向相同。电荷 $q>0$、初始静止的粒子恰能在两管之间始终沿半径固定的圆轨道运动，求该半径。忽略重力与辐射。
+\end{example}
+\fig{fig:em1:example:8:s}{题设：同轴螺线管之间的自由圆轨道}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)circle(1)circle(2);\draw[guide](0,0)circle(1.4142);\fill(1.4142,0)circle(2pt);\draw[dim](0,0)--(0,-1)node[midway,left]{$R$};\draw[dim](0,0)--(-1.414,1.414)node[midway,above left]{$2R$};\node at(0,.5){$3b(t)$};\node at(0,1.7){$b(t)$};\node at(2.6,-.4){粒子轨道 $r$};\node at(0,-2.5){$b(t)=\mu_0nat$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{把内盘和外环分开积分包围磁通}\par\nobreak
+在图\ref{fig:em1:example:8:s}中记外管磁场为 $b=\mu_0nat$。内圆中总场为 $3b$，两管之间为 $b$。取半径 $r$ 的圆周，包围磁通为
+\[\Phi=3b\pi R^2+b\pi(r^2-R^2)=\pi b(r^2+2R^2).\]
+这里求磁通时用的是两个不重叠面积，不能把两管磁场都乘整个圆盘面积。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由环流和切向动力学积分出速度}\par\nobreak
+法拉第定律给出 $2\pi rE_\theta=-\dot\Phi$，将上式对时间求导再除以 $2\pi r$，所以切向电场为 $-\dot b(r^2+2R^2)/(2r)$。由于题设半径固定，切向加速度就是 $\dot v$，故 $m\dd v=-q(r^2+2R^2)\dd b/(2r)$。两侧从 $b=0,v=0$ 积分，
+$m\int_0^{v}\dd z=-q(r^2+2R^2)\int_0^{b}\dd\beta/(2r)$。
+两边都是常系数乘变量差，先得有向速度 $v=-qb(r^2+2R^2)/(2mr)$，再取大小，得 $|v|=qb(r^2+2R^2)/(2mr)$。
+\fig{fig:em1:example:8:p}{内盘附加磁通决定切向加速，当地环隙磁场单独提供径向向心力}{\begin{tikzpicture}
+
+\fill[blue!7](0,0)circle(2);\fill[orange!15](0,0)circle(1);\draw[world](0,0)circle(1)circle(2);\draw[guide](0,0)circle(1.414214);\fill(1.414214,0)circle(2pt);
+\draw[flow](1.414214,-.1)--(1.414214,-1.2)node[right]{$v<0$};\draw[force](1.3,0)--(.1,0)node[midway,above]{$q|v|b$};\node at(0,.5){$3b$};\node at(0,-1.75){$b$};\node at(-2,2.6){$\Phi=\pi b(r^2+2R^2)$};\node at(2.7,-2.7){$|v|_{\rm tangential}=\frac{qb(r^2+2R^2)}{2mr}$};\node at(2.7,-3.6){$|v|_{\rm radial}=\frac{qbr}{m}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{再用当地磁力提供向心力筛选允许半径}\par\nobreak
+若不靠轨道约束，图\ref{fig:em1:example:8:p}中的磁力必须恰好提供向心力：$mv^2/r=q|v|b$。在 $t>0$ 时约去非零速率，得到 $|v|=qbr/m$。两式相等，故
+\[r^2+2R^2=2r^2,\qquad r=\sqrt2R.\]
+它确实满足 $R<r<2R$。负电荷会反向转动，但半径条件相同。这里不能只用粒子所在位置的 $b$ 计算感生场：内管的附加磁通虽不改变当地磁场，却改变环流。\end{solution}
+\begin{question}\begin{example}[倾斜导棒的电动势与功率]\label{em1:example:9}
+水平平行导轨相距 $l$，左端接电阻 $R$。金属棒单位长度电阻为 $\lambda$，棒与导轨的夹角为 $\theta\in(0,\pi/2]$，以沿导轨速度 $v$ 向右匀速平移。磁场垂直纸面向里，大小 $B$。求电流，并分别求固定电阻、导棒发热功率最大的角度。
+\end{example}
+\fig{fig:em1:example:9:s}{题设：倾斜导棒的电动势与功率}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4.5,0) (0,2)--(4.5,2) (0,0)--(0,2);\draw[very thick](1.5,0)node[below]{$N$}--(3,2)node[above]{$M$};\draw[guide](1.5,0)--(3,0);\node at(2.1,.3){$\theta$};\node[left]at(0,1){$R$};\draw[flow](3.2,1)--(4.3,1)node[right]{$v$};\node at(.7,1){$\otimes B$};\draw[dim](4.7,0)--(4.7,2)node[midway,right]{$l$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{分开计算斜棒的投影电动势与实际电阻}\par\nobreak
+图\ref{fig:em1:example:9:s}中棒在导轨间的长度为 $l/\sin\theta$，但 $\bm v\times\bm B$ 竖直向上，所以线积分只取竖直投影 $l$，$\mathcal E=Bvl$。令棒电阻 $x=\lambda l/\sin\theta$，则
+\[i=\frac{Bvl}{R+x},\quad P_R=\frac{(Bvl)^2R}{(R+x)^2},\quad P_{\text{棒}}=\frac{(Bvl)^2x}{(R+x)^2}.\]
+\fig{fig:em1:example:9:p}{棒电阻的可行下界可能截去功率峰值；斜棒仍只取竖直投影产生电动势}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[world](0,0)--(1.5,2);\draw[guide](0,0)--(1.5,0)--(1.5,2);\draw[flow](.75,1)--(.75,2.1)node[above]{$\bm v\times\bm B$};\draw[dim](2,0)--(2,2)node[midway,right]{$l$};\node[rotate=53.13,above]at(.75,1){$l/\sin\theta$};\node at(.9,-.8){$\mathcal E=Bvl$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[axis](-.2,0)--(5.2,0)node[right]{$x/R$};\draw[axis](0,-.2)--(0,2.7)node[above]{$P_{\rm rod}R/(Bvl)^2$};\draw[world,domain=0:4.5,samples=100]plot(\x,{8*\x/(1+\x)^2});\node[left]at(0,2){$1/4$};\draw[guide](1,0)--(1,2);\node[below]at(1,0){$1$};\draw[red,dashed](2.5,0)--(2.5,2.3);\node[below]at(2.5,0){$\lambda l/R>1$};\draw[->,red](2.5,.35)--(4.5,.35);\node at(2,-1.1){若下界在峰值右侧，只能取下界};
+\end{scope}
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先在可行电阻范围内确定固定电阻的功率}\par\nobreak
+图\ref{fig:em1:example:9:p}表示允许的电阻区间为 $x\ge\lambda l$。$P_R$ 随 $x$ 增大而减小，故在 $\theta=\pi/2$ 最大。对棒功率求导，
+\[\begin{aligned}
+\frac{\dd P_{\text{棒}}}{\dd x}
+&=(Bvl)^2\frac{\dd}{\dd x}\left[x(R+x)^{-2}\right]\\
+&=(Bvl)^2\left[(R+x)^{-2}-2x(R+x)^{-3}\right]\\
+&=(Bvl)^2\frac{R-x}{(R+x)^3}.
+\end{aligned}\]
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较匹配电阻与几何下界后求棒的最大功率}\par\nobreak
+若 $\lambda l\le R$，最大值在 $x=R$，对应 $\sin\theta=\lambda l/R$；若 $\lambda l>R$，可行区间全部在递减段，最大值仍在 $\theta=\pi/2$。题目的长度改变电阻，却不改变电动势，这正是不能把斜棒长度直接代入 $Blv$ 的原因。\end{solution}
+\begin{question}\begin{example}[滑动导棒与另一导体的受力]\label{em1:example:10}
+棒 $ab$ 位于水平导轨间，上端 $a$ 接右侧导线，后者连接位于纸面内的棒 $cd$；$c$ 与下轨相连，$d$ 与上轨相连。$ab$ 处磁场指向纸内，$cd$ 处磁场沿纸面向下。欲使 $cd$ 受到指向纸外的安培力，$ab$ 应向哪边运动？忽略自感。
+\end{example}
+\fig{fig:em1:example:10:s}{题设：滑动导棒与另一导体的受力}{\begin{tikzpicture}[scale=.88]\draw[world](0,1)--(4,1)--(4,-1)--(2.7,-1)--(2.7,0)--(0,0);\draw[very thick](1,0)node[below]{$b$}--(1,1)node[above]{$a$};\draw[very thick](2.7,-1)node[below]{$c$}--(4,-1)node[below]{$d$};\node at(.4,.5){$\otimes B_1$};\draw[force](3.3,-.2)--(3.3,-.8)node[right]{$B_2$};\end{tikzpicture}}
+\end{question}
+\begin{solution}\textbf{从纸外目标力反推受力棒的电流方向}\par\nobreak
+先从图\ref{fig:em1:example:10:s}中的目标受力反推 $cd$ 的电流。取向右为 $+x$、向上为 $+y$，纸外为 $+z$；$\bm B_2$ 沿 $-y$。要使 $i\bm l\times\bm B_2$ 沿 $+z$，电流必须沿 $-x$，即从 $d$ 到 $c$。
+\fig{fig:em1:example:10:p}{先由目标安培力反推 $d\to c$，再沿完整回路追踪到动生棒 $b\to a$}{\begin{tikzpicture}
+
+\draw[world](0,0)--(3.7,0)--(3.7,-1.6)--(2,-1.6)--(2,-1)--(0,-1);\draw[very thick](.7,-1)node[below]{$b$}--(.7,0)node[above]{$a$};\draw[very thick](2,-1.6)node[below]{$c$}--(3.7,-1.6)node[below]{$d$};
+\draw[->,blue,thick](.7,-.85)--(.7,-.15);\draw[->,blue,thick](1.3,0)--(2.6,0);\draw[->,blue,thick](3.7,-.3)--(3.7,-1.2);\draw[->,blue,thick](3.5,-1.6)--(2.2,-1.6);\draw[->,blue,thick](1.6,-1)--(.9,-1);
+\node at(0,-.5){$\otimes B_1$};\draw[flow](2.9,-.2)--(2.9,-1.1)node[right]{$\bm B_2$};\node at(2.85,-2.5){$\odot F_{cd}$};\draw[flow](.2,.7)--(1.5,.7)node[right]{$\bm v_{ab}$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿完整回路追踪动生棒的内部电流}\par\nobreak
+沿图\ref{fig:em1:example:10:p}的电路连接追踪，电流应从 $a$ 流入上轨、经 $d\to c$、再经下轨到 $b$，故在作为电动势部件的 $ab$ 内部应从 $b$ 到 $a$。$B_1$ 指向纸内时，棒向右运动才有 $\bm v\times\bm B_1$ 向上。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用动生叉乘检查运动方向}\par\nobreak
+因此应使 $ab$ 向右运动。判断中两个叉乘分别负责动生电动势和安培力，不能把其中一个方向规则重复用于另一种作用。\end{solution}

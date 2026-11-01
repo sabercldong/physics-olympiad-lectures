@@ -1,0 +1,174 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[日地连线上的共转点]\label{at3:example:1}
+太阳质量 $M$、地球质量 $m\ll M$，两者相距 $D$。日地之间的小探测器距地球 $x\ll D$，保持与日地线共转。求 $x$ 的最低阶近似。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:1:s}\fig{fig:at3:example:1:s}{题设：日地连线上的共转点}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(5pt)node[above]{太阳 $M$};\fill(5,0)circle(3pt)node[above]{地球 $m$};\fill(4,0)circle(2pt)node[above]{$L_1$};\draw[dim](4,-.5)--(5,-.5)node[midway,below]{$x$};\draw[guide](0,0)--(5,0);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:1:s} 向太阳方向取加速度正向。日地共同角速度 $\Omega^2=G(M+m)/D^3$，地球到日地质心的距离为 $DM/(M+m)$。探测器的向心方程为
+\[\frac{GM}{(D-x)^2}-\frac{Gm}{x^2}
+=\Omega^2\left(\frac{DM}{M+m}-x\right).
+\]
+\typeout{ASTROFIG:fig:at3:example:1:p}\fig{fig:at3:example:1:p}{解答过程：日地连线上的共转点}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(2pt)node[below]{$L_1$};\draw[force](0,0)--(-2,0)node[above]{$GM/(D-x)^2$};\draw[force](0,0)--(1,0)node[above]{$Gm/x^2$};\node at(0,-1){合加速度：共转所需向心项};
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:1:p} 在 $x/D\ll1,m/M\ll1$ 下，左侧太阳项展开为 $GM/D^2+2GMx/D^3$；右侧为 $GM/D^2-GMx/D^3$。共同项抵消后，$Gm/x^2=3GMx/D^3$，所以
+\[x\simeq D\left(\frac{m}{3M}\right)^{1/3}.\]
+这个点并非合引力为零；合力指向公转中心，负责共转向心加速度。相较 $D$，$x$ 的小量条件要求质量比足够小，所得解应再代回这个条件。\end{solution}
+\begin{question}\begin{example}[固定一个端点的两次变轨]\label{at3:example:2}
+原椭圆近地点 $2R$、远地点 $6R$。分别求：保持近地点不变，将远地点升到 $8R$；保持远地点不变，将近地点降到 $R$。给出点火位置、方向和速度变化。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:2:s}\fig{fig:at3:example:2:s}{题设：固定一个端点的两次变轨}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\node at(-1.5,1){$r_p=2R,\ r_a=6R$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:2:s} 的端点速度可由活力公式或角动量关系求得。第一问在近地点点火，初末半长轴 $4R,5R$。两速度分别为
+\[v_{p0}=\sqrt{3\mu/(4R)},\qquad v_{p1}=\sqrt{4\mu/(5R)}.\]
+\typeout{ASTROFIG:fig:at3:example:2:p}\fig{fig:at3:example:2:p}{解答过程：固定一个端点的两次变轨}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[flow](1.5,0)--(1.5,1.1)node[right]{近点顺行};\draw[force](-4.5,0)--(-4.5,1)node[left]{远点逆行};
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:2:p} 的顺行箭头表明需加速，$\Delta v_p=(2/\sqrt5-\sqrt3/2)\sqrt{\mu/R}>0$。点火瞬间近地点位置未变，新的另一端变远。
+
+第二问在原远地点点火，新轨道半长轴 $(6R+R)/2=7R/2$。初速 $v_{a0}=\sqrt{\mu/(12R)}$，新速 $v_{a1}=\sqrt{\mu/(21R)}$，所以逆行减速量 $\Delta v_a=(1/\sqrt{12}-1/\sqrt{21})\sqrt{\mu/R}$。两问是从同一原轨道出发的独立方案，不能把第一问结果当作第二问初态。\end{solution}
+\begin{question}\begin{example}[切向减速与径向脉冲的可达性]\label{at3:example:3}
+飞船原在半径 $2R$ 的圆轨道，圆速 $v_c$，星球半径 $R$。求切向减速后刚好擦到地表的新速度。若改为沿径向向外加速，能否随后落到地表？再比较改为径向向内脉冲时的临界速度增量与耗油。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:3:s}\fig{fig:at3:example:3:s}{题设：切向减速与径向脉冲的可达性}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[guide](0,0)circle(2);\fill(2,0)circle(2pt);\draw[flow](2,0)--(2,1.2)node[right]{$v_c$};\draw[force](2,0)--(3.2,0)node[above]{$w$ 向外};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:3:s} 令 $\mu=GM$，$v_c^2=\mu/(2R)$。切向减速后当前点为远地点，新椭圆 $r_a=2R,r_p=R,a=3R/2$，故
+\[v_1=\sqrt{\frac\mu{3R}}=\sqrt{\frac23}\,v_c,
+\qquad\Delta v_t=(1-\sqrt{2/3})v_c.
+\]
+\typeout{ASTROFIG:fig:at3:example:3:p}\fig{fig:at3:example:3:p}{解答过程：切向减速与径向脉冲的可达性}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1);\draw[guide](0,0)circle(2);\fill(0,0)circle(2pt)node[below]{$F$};\fill(2,0)circle(2pt)node[below right]{$A$};\draw[flow](2,0)--(2,1.3)node[right]{$v_1$};\draw[force](2,.3)--(3.1,.3);\node[right]at(3.2,.3){向外：不返地};\draw[force,blue](2,-.3)--(1.1,-.3);\node[blue,right]at(3.2,-1){向内：可达};\draw[guide,blue](1.5,-.3)--(3,-1);
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:3:p} 的径向脉冲保持 $h=2Rv_c$、$p=h^2/\mu=2R$。能量 $\varepsilon=(w^2-v_c^2)/2$，代入离心率式得 $e=|w|/v_c$。
+
+若 $0<w<v_c$，轨道为椭圆，近日点 $r_p=2R/(1+e)>R$，不会碰地；若 $w\ge v_c$，轨道为抛物线或双曲线，初始径向速度向外，此后不返回。因此没有任何纯径向向外脉冲满足“随后落到地表”。只解 $r_p=R$ 而不检查方向，会把过去的近地点误作未来位置。
+
+若脉冲改向内，$w=v_c$ 给抛物线的入射分支，可在未来擦到 $R$；更大的向内脉冲将穿入球面。临界径向增量为 $v_c$，大于切向方案。相对喷气速度为 $u$ 时，两方案剩余质量比例分别为 $\exp(-\Delta v_t/u)$、$\exp(-v_c/u)$，故切向方案少耗油；向外方案没有可比较的落地解。\end{solution}
+\begin{question}\begin{example}[从两倍半径升到四倍半径]\label{at3:example:4}
+质量 $m$ 的飞船从半径 $2R$ 圆轨道转到半径 $4R$ 圆轨道，$\mu=gR^2$。求机械能增加、双切椭圆两次脉冲大小和转移时间。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:4:s}\fig{fig:at3:example:4:s}{题设：从两倍半径升到四倍半径}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(1.5);\draw[guide](0,0)circle(3);\draw[world](-0.75,0)ellipse(2.25 and 2.1213203435596424);\fill(0,0)circle(2pt)node[below]{$F$};\fill(1.5,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:4:s} 的两条圆轨道能量分别为 $-\mu m/(4R)$ 和 $-\mu m/(8R)$，因此 $\Delta E=\mu m/(8R)=mgR/8$。这比较的是固定飞船质量的初末机械能。
+\typeout{ASTROFIG:fig:at3:example:4:p}\fig{fig:at3:example:4:p}{解答过程：从两倍半径升到四倍半径}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(1.5);\draw[guide](0,0)circle(3);\draw[world](-0.75,0)ellipse(2.25 and 2.1213203435596424);\fill(0,0)circle(2pt)node[below]{$F$};\fill(1.5,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};\node at(-.7,1){$a_t=3R$};\node at(-.7,-1){$\Delta E=mgR/8$};
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:4:p} 的转移椭圆半长轴 $3R$，近端速度 $v_{tA}=\sqrt{2\mu/(3R)}$，远端速度 $v_{tB}=\sqrt{\mu/(6R)}$。相应圆速为 $\sqrt{\mu/(2R)}$、$\sqrt{\mu/(4R)}$，所以
+\[\Delta v_A=\sqrt{\frac\mu{2R}}\left(\sqrt{\frac43}-1\right),\quad
+\Delta v_B=\sqrt{\frac\mu{4R}}\left(1-\sqrt{\frac23}\right).
+\]
+两次都是沿各自运动方向加速。转移用时 $\tau=\pi\sqrt{27R^3/\mu}$。第一次点火后仅进入外切椭圆，第二次圆化不可省略；能量增加和总速度增量是不同量，量纲也不同。\end{solution}
+\begin{question}\begin{example}[地火转移的出发相位与日期]\label{at3:example:5}
+地球、火星同向共面圆轨道，半径比 $r_M/r_E=1.5$。探测器已在地球公转轨道稳定运行。以某年3月1日零时为 $t=0$，火星沿公转方向领先探测器 $60^\circ$。取地球公转周期365日，求沿半周双切椭圆到火星的转移时间、第一次点火等待时间和约定精度下的日期。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:5:s}\fig{fig:at3:example:5:s}{题设：地火转移的出发相位与日期}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(2);\draw[guide](0,0)circle(3);\draw[world](-0.5,0)ellipse(2.5 and 2.449489742783178);\fill(0,0)circle(2pt)node[below]{$F$};\fill(2,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};\fill(1.5,2.598)circle(2pt)node[above]{火星初位};\draw[guide](0,0)--(1.5,2.598);\node at(1,.65){$60^\circ$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:5:s} 已明确火星领先方向。记 $q=1.5$，火星周期 $T_M=365q^{3/2}$ 日，转移椭圆半长轴 $(1+q)r_E/2=1.25r_E$，故
+\[\tau=\frac{365}{2}(1.25)^{3/2}\simeq255.05\ \text{日}.\]
+\typeout{ASTROFIG:fig:at3:example:5:p}\fig{fig:at3:example:5:p}{解答过程：地火转移的出发相位与日期}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(2);\draw[guide](0,0)circle(3);\draw[world](-0.5,0)ellipse(2.5 and 2.449489742783178);\fill(0,0)circle(2pt)node[below]{$F$};\fill(2,0)circle(2pt)node[right]{$A$};\fill(-3,0)circle(2pt)node[left]{$B$};\draw[flow](1.5,2.598)--(.9,2.86)node[left]{火星继续转动};\node at(-.5,-1){$\phi_*+n_M\tau=\pi$};
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:5:p} 到达点与出发点关于太阳相对，所需领先角 $\phi_*=\pi-(2\pi/T_M)\tau\simeq43.07^\circ$。地球轨道转得更快，领先角每日减少 $360/365-360/T_M\simeq0.4494^\circ$，所以第一次非负等待时间
+\[t_w=\frac{60^\circ-\phi_*}{360^\circ/365-360^\circ/T_M}\simeq37.7\ \text{日}.\]
+3月有31日，等待37.7日约为4月7日傍晚；按最近的零时取到日，约4月8日。若只报一个日期而不说明年长、领先方向和取整约定，答案会有歧义。此结果只属于所给圆轨道模型，不能当作实际航天发射日历。\end{solution}
+\begin{question}\begin{example}[球面两点之间的最小发射速度]\label{at3:example:6}
+无自转球形天体半径 $R$、引力参数 $\mu$。两地圆心夹角为 $0<\beta\le\pi$。忽略大气，飞行弧在球外，求从一地自由飞行到另一地的最小发射速率和对应仰角。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:6:s}\fig{fig:at3:example:6:s}{题设：球面两点之间的最小发射速度}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$F$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\draw[guide](0,0)--(45:1.3)(0,0)--(135:1.3);\node at(0,.65){$\beta$};\node[above left]at(135:1.3){$P$};\node[above right]at(45:1.3){$Q$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at3:example:6:s} 的两端到主焦点 $F$ 都为 $R$。设椭圆另一焦点为 $F'$。对端点分别用焦距和 $2a$：$PF'=QF'=2a-R$，因此 $F'$ 在弦 $PQ$ 的中垂线上。
+\typeout{ASTROFIG:fig:at3:example:6:p}\fig{fig:at3:example:6:p}{解答过程：球面两点之间的最小发射速度}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(2);\draw[guide](0,0)--(-1.414,1.414)(0,0)--(1.414,1.414);\fill(-1.414,1.414)circle(2pt)node[left]{$P$};\fill(1.414,1.414)circle(2pt)node[right]{$Q$};\draw[guide](-1.414,1.414)--(1.414,1.414);\fill(0,1.414)circle(2pt)node[below]{$F^\prime$};\node[below]at(0,0){$F$};\draw[world,domain=45:135,samples=100]plot({1.41421356*cos(\x)/(1-.41421356*sin(\x))},{1.41421356*sin(\x)/(1-.41421356*sin(\x))});
+\end{tikzpicture}}
+
+图\ref{fig:at3:example:6:p} 令 $s=\sin(\beta/2)$。由两端距离相等，$2a-R$ 至少为半弦长 $Rs$，最小值在 $F'$ 位于弦中点时取得。于是 $a_{\min}=R(1+s)/2$。固定表面半径时活力式随 $a$ 增加而增加，故
+\[v_{\min}^2=\frac\mu R\left(2-\frac2{1+s}\right)=\frac{2\mu}{R}\frac{s}{1+s}.\]
+此最优椭圆的 $e=\cos(\beta/2)/(1+s)$、$p=Rs$，所以表面切向速度平方 $v_t^2=\mu p/R^2=\mu s/R$。由 $v_r^2=v_{\min}^2-v_t^2$ 得
+\[\tan\alpha=\frac{v_r}{v_t}=\sqrt{\frac{1-s}{1+s}},\qquad\alpha=\frac\pi4-\frac\beta4.\]
+取初始朝外的正径向分量。$\beta\to0$ 恢复小范围抛射的45度极限，$\beta=\pi$ 给近表面圆轨道的半周，仰角为零。所取外侧弧满足到达要求，完整椭圆在球内的另一段不属于飞行过程。\end{solution}
+\begin{question}\begin{example}[一般半径下向外径向脉冲的返回条件]\label{at3:example:7}
+卫星原在半径 $r_0>R$ 的圆轨道，圆速 $v_c$，中心天体半径 $R$。施加纯径向向外脉冲 $w>0$。求其在未来返回并碰到表面的充要条件，允许擦碰。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:7:s}\fig{fig:at3:example:7:s}{题设：一般半径下向外径向脉冲的返回条件}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.2);\draw[guide](0,0)circle(1.8);\fill(1.8,0)circle(2pt);\draw[force](1.8,0)--(3,0)node[above]{$w$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at3:example:7:s} 保留原切向速度，所以 $h^2=\mu r_0$、$p=r_0$、$e=w/v_c$。由于起初向外，必须保持束缚椭圆才能在未来返回，即 $0<w<v_c$。
+  \typeout{ASTROFIG:fig:at3:example:7:p}\fig{fig:at3:example:7:p}{解答过程：一般半径下向外径向脉冲的返回条件}{\begin{tikzpicture}[scale=.85]
+\draw[axis](0,0)--(4,0)node[right]{$w/v_c$};\draw[very thick,blue](1,0)--(3,0);\node[below]at(1,0){$r_0/R-1$};\node[below]at(3,0){$1$};\fill(1,0)circle(2pt);\draw[fill=white](3,0)circle(2pt);\node at(2,1){可达区间};
+\end{tikzpicture}}
+
+  图\ref{fig:at3:example:7:p} 对该椭圆，最近距离 $r_p=r_0/(1+w/v_c)$。要求 $r_p\le R$，得 $w/v_c\ge r_0/R-1$。合并为
+  \[r_0/R-1\le w/v_c<1.\]
+  因此只有 $R<r_0<2R$ 时存在这样的向外脉冲；$r_0\ge2R$ 时没有解。$r_0=2R$ 的等号要求抛物线，而向外抛物线不返回。这个一般结果也说明，不能把某一特定半径下的“不可能”扩大成所有半径下的结论。\end{solution}
+\begin{question}\begin{example}[同时改变速率与轨道平面]\label{at3:example:8}
+在两轨道交线上的点，点火前后速度方向夹角 $i$，速率分别 $v_1,v_2$。求一次脉冲大小，比较“先改速率、再改方向”的同点两次方案。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:8:s}\fig{fig:at3:example:8:s}{题设：同时改变速率与轨道平面}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(3,0)node[right]{$\bm v_1$};\draw[flow,blue](0,0)--(2,1.8)node[right]{$\bm v_2$};\draw(.8,0)arc(0:41.987:.8);\node at(1.05,.3){$i$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at3:example:8:s} 同点一次点火需要 $\Delta\bm v=\bm v_2-\bm v_1$，不是速率之差。由余弦定理
+  \[\Delta v=\sqrt{v_1^2+v_2^2-2v_1v_2\cos i}.
+  \]
+  \typeout{ASTROFIG:fig:at3:example:8:p}\fig{fig:at3:example:8:p}{解答过程：同时改变速率与轨道平面}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(3,0)node[midway,below]{$\bm v_1$};\draw[flow,blue](0,0)--(2,1.8)node[midway,left]{$\bm v_2$};\draw[force](3,0)--(2,1.8)node[midway,right]{$\Delta\bm v$};\draw(.8,0)arc(0:41.987:.8);\node at(1.05,.3){$i$};
+\end{tikzpicture}}
+
+  图\ref{fig:at3:example:8:p} 若先改到速率 $v_2$ 再改方向，两次大小之和为 $|v_2-v_1|+2v_2\sin(i/2)$。速度平面三角不等式保证这个和不小于一次合成的矢量差。若 $v_1=v_2=v$，恢复 $2v\sin(i/2)$，轨道机械能没变，燃料成本却非零。此比较限于相同位置的动作；把点火移到别处，还需计算抵达该处的额外变轨。\end{solution}
+\begin{question}\begin{example}[一周相位轨道的追赶条件]\label{at3:example:9}
+原圆轨道半径 $r_0$、周期 $T_0$。目标卫星在同轨道领先角 $\phi$，$0<\phi<2\pi$。追赶卫星在当前位置进入以内侧为主、以此处为远地点的椭圆，绕一周后与目标在出发点会合并圆化。求椭圆半长轴、两次脉冲总量和安全条件。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:9:s}\fig{fig:at3:example:9:s}{题设：一周相位轨道的追赶条件}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(3);\draw[world](-.9,0)ellipse(2.1 and 1.897367);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(-3,0)circle(2pt)node[left]{当前点 $A$};\fill(-1.5,-2.598)circle(2pt)node[below]{目标};\node at(0,3.7){目标在原圆轨道领先 $\phi$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at3:example:9:s} 目标从领先 $\phi$ 走到出发点还需角位移 $2\pi-\phi$，故相位轨道周期 $T_p=T_0(1-\phi/(2\pi))$。周期律给
+  \[a_p=r_0\left(1-\frac\phi{2\pi}\right)^{2/3},\qquad r_p=2a_p-r_0.
+  \]
+  \typeout{ASTROFIG:fig:at3:example:9:p}\fig{fig:at3:example:9:p}{解答过程：一周相位轨道的追赶条件}{\begin{tikzpicture}[scale=.85]
+\draw[guide](0,0)circle(3);\draw[world](-.9,0)ellipse(2.1 and 1.897367);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(-3,0)circle(2pt)node[left]{当前点 $A$};\fill(-1.5,-2.598)circle(2pt)node[below]{目标};\node at(-.9,.9){$r_a=r_0$};\node at(-.9,-.9){$r_p=2a_p-r_0$};
+\end{tikzpicture}}
+
+  图\ref{fig:at3:example:9:p} 第一次点火需减速至远点速度 $v_a=\sqrt{\mu(2/r_0-1/a_p)}$，一周返回后再加到 $v_c=\sqrt{\mu/r_0}$，总增量 $2(v_c-v_a)$。若中心实体半径为 $R$，安全要求 $2a_p-r_0>R$，取等号仅能擦表面。并非任意大的领先角都能用这一周内侧方案；若不满足安全边界，应换多周相位方案，而不是使用负的近地点距离。\end{solution}
+\begin{question}\begin{example}[慢速螺旋升轨的累计推力]\label{at3:example:10}
+弱推力沿轨道切向持续作用，使卫星由 $r_0$ 缓慢升至 $r_1>r_0$，始终可近似圆轨道。求累计推力速度增量，并与从原圆轨道瞬时逃逸的速度增量比较。
+\end{example}
+\typeout{ASTROFIG:fig:at3:example:10:s}\fig{fig:at3:example:10:s}{题设：慢速螺旋升轨的累计推力}{\begin{tikzpicture}[scale=.85]
+\draw[world,domain=0:720,samples=180]plot({(1+\x/500)*cos(\x)},{(1+\x/500)*sin(\x)});\fill(0,0)circle(3pt);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at3:example:10:s} 缓变模型中，$v=\sqrt{\mu/r}$、$\varepsilon=-\mu/(2r)$。推力功率为 $\dot\varepsilon=a_tv$，故 $a_t\dd t=\dd\varepsilon/v=\sqrt\mu\,\dd r/(2r^{3/2})$。
+  \typeout{ASTROFIG:fig:at3:example:10:p}\fig{fig:at3:example:10:p}{解答过程：慢速螺旋升轨的累计推力}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(4.5,0)node[right]{$r$};\draw[axis](0,-.2)--(0,2.4)node[above]{$v_c$};\draw[world,domain=.5:4,samples=80]plot(\x,{1/sqrt(\x)});\node at(2.5,1.8){$\dd V=\dd\varepsilon/v_c$};
+\end{tikzpicture}}
+
+  图\ref{fig:at3:example:10:p} 累计得到 $\Delta V_{\rm thrust}=\int_{r_0}^{r_1}\sqrt\mu\,\dd r/(2r^{3/2})=\sqrt{\mu/r_0}-\sqrt{\mu/r_1}$。令 $r_1\to\infty$，结果为 $v_c$；从原圆轨道顺行瞬时逃逸只需 $(\sqrt2-1)v_c$。前者在升轨过程中速度逐渐变小，单位推力增量产生的功也变小，故需要更大的累计增量。这个比较依赖近圆缓变假设，不能把公式用于任意大推力螺旋。\end{solution}

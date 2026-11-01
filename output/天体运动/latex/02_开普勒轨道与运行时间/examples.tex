@@ -1,0 +1,199 @@
+\section{例题与分析}
+
+\begin{question}\begin{example}[由近远地点确定整个椭圆]\label{at2:example:1}
+卫星绕质量 $M$ 的天体运动，近、远地点距离为 $r_p,r_a$。求 $a,e,b,h,v_p,v_a,T$，忽略卫星质量。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:1:s}\fig{fig:at2:example:1:s}{题设：由近远地点确定整个椭圆}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:1:s} 的两个端点均从焦点 $F$ 量距离。几何上 $r_p=a(1-e),r_a=a(1+e)$，相加和相减分别给
+\[a=\frac{r_p+r_a}{2},\qquad e=\frac{r_a-r_p}{r_a+r_p},\qquad b=\sqrt{r_pr_a}.\]
+\typeout{ASTROFIG:fig:at2:example:1:p}\fig{fig:at2:example:1:p}{解答过程：由近远地点确定整个椭圆}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[flow](1.5,0)--(1.5,1.1)node[right]{$v_p$};\draw[flow](-4.5,0)--(-4.5,-.9)node[left]{$v_a$};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:1:p} 中端点速度均沿切线。由 $h^2=\mu p=\mu b^2/a$，
+\[h=\sqrt{\frac{2\mu r_pr_a}{r_p+r_a}},\quad
+v_p=\sqrt{\frac{2\mu r_a}{r_p(r_p+r_a)}},\quad
+v_a=\sqrt{\frac{2\mu r_p}{r_a(r_p+r_a)}}.
+\]
+周期为 $T=2\pi\sqrt{(r_p+r_a)^3/(8\mu)}$。若两端相等，$e=0,b=a=r_p$，两速度相同且恢复圆轨道值；若只把远地点抬高，近地点速度会增加，但并不无限增加，而趋于该处逃逸速度。\end{solution}
+\begin{question}\begin{example}[切于地面的轨道与短轴端速度]\label{at2:example:2}
+球形地球半径 $R$、表面重力 $g$。飞船轨道在近地点 $P$ 与地面相切，在另一点 $B$ 的速度大小为 $v$，方向平行于 $FP$。求 $FB$ 和绕行周期。忽略大气与接触耗散。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:2:s}\fig{fig:at2:example:2:s}{题设：切于地面的轨道与短轴端速度}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[world](0,0)circle(1.5);\fill(-1.5,2.598)circle(2pt)node[above]{$B$};\draw[flow](-1.5,2.598)--(-2.7,2.598)node[above]{$v$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:2:s} 中 $FP$ 是椭圆长轴方向。椭圆上切线平行长轴的点是两个短轴端点，因此 $B$ 到焦点的距离为 $a$。这个判断使用了题设的速度方向，不能只凭“某处速度为 $v$”就认定 $FB=a$。
+\typeout{ASTROFIG:fig:at2:example:2:p}\fig{fig:at2:example:2:p}{解答过程：切于地面的轨道与短轴端速度}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[guide](0,0)--(-1.5,2.598)node[midway,right]{$FB=a$};\fill(-1.5,2.598)circle(2pt)node[above]{$B$};\node at(-2,-1.4){$r_p=R$};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:2:p} 取 $r_B=a$ 代入活力公式：$v^2=\mu(2/a-1/a)=\mu/a$，$\mu=gR^2$，所以
+\[FB=a=\frac{gR^2}{v^2},\qquad T=2\pi\sqrt{\frac{a^3}{\mu}}=\frac{2\pi gR^2}{v^3}.\]
+近地点约束 $R=a(1-e)$ 给 $e=1-R/a$，必须有 $a\ge R$，即 $v^2\le gR$。等号时轨道退化为贴近表面的圆；通常椭圆时取严格不等号。真实回收包含大气与碰撞，不再是理想轨道一周的无耗散运动。\end{solution}
+\begin{question}\begin{example}[由面积速度推出周期律]\label{at2:example:3}
+引力椭圆的半长轴为 $a$、半短轴为 $b$，中心天体质量 $M$。从面积速度及动力学关系证明周期公式，并说明同一中心系统的周期比较条件。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:3:s}\fig{fig:at2:example:3:s}{题设：由面积速度推出周期律}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:3:s} 的一整周扫面积等于椭圆总面积 $\pi ab$。单位质量角动量为 $h$，故面积速度恒为 $h/2$，于是 $T=2\pi ab/h$。
+\typeout{ASTROFIG:fig:at2:example:3:p}\fig{fig:at2:example:3:p}{解答过程：由面积速度推出周期律}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\node at(-1.5,1.1){$S=\pi ab$};\node at(-1.5,-1.1){$\dot S=h/2$};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:3:p} 用动力学得到的 $h^2=\mu p=\mu b^2/a$，消去 $h,b$：
+\[T^2=\frac{4\pi^2a^2b^2}{\mu b^2/a}=\frac{4\pi^2a^3}{GM}.\]
+所以同一 $GM$ 下 $T^2/a^3$ 相同，且不依赖离心率。面积速度只给“面积与时间成正比”，还不足以单独得到绝对周期；引力规律提供 $h$ 与轨道尺度的联系。两个双星系统比较时分母要分别用总质量，不能忽略质量差别。\end{solution}
+\begin{question}\begin{example}[长轴端与短轴端的速度和曲率]\label{at2:example:4}
+椭圆长短半轴 $a,b$，左端远地点为 $A$，上方短轴端为 $B$，引力中心为右焦点 $F$。求两点速度及曲率半径。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:4:s}\fig{fig:at2:example:4:s}{题设：长轴端与短轴端的速度和曲率}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(-1.5,2.598)circle(2pt)node[above]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:4:s} 令 $c=\sqrt{a^2-b^2}$。距离 $r_A=a+c$、$r_B=a$，活力公式给
+\[v_A^2=\frac{\mu(a-c)}{a(a+c)},\qquad v_B^2=\frac\mu a.\]
+\typeout{ASTROFIG:fig:at2:example:4:p}\fig{fig:at2:example:4:p}{解答过程：长轴端与短轴端的速度和曲率}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(-1.5,2.598)circle(2pt)node[above]{$B$};\draw[flow](-1.5,2.598)--(-2.7,2.598)node[above]{$v_B$};\draw[force](-1.5,2.598)--(-.9,1.56)node[right]{$\bm g$};\draw[force,blue](-1.5,2.598)--(-1.5,1.56)node[left]{$g_n$};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:4:p} 在 $A$，引力垂直速度，故 $v_A^2/\mathcal R_A=\mu/(a+c)^2$，得到 $\mathcal R_A=(a^2-c^2)/a=b^2/a$。
+
+在 $B$ 切线水平，引力指向斜下方的 $F$；它的竖直法向分量为 $(\mu/a^2)(b/a)$。因此 $v_B^2/\mathcal R_B=\mu b/a^3$，得到 $\mathcal R_B=a^2/b$。水平分量只改变速率，不进入这一步的曲率方程。$a=b$ 时两点的速度和曲率均恢复圆轨道结果。\end{solution}
+\begin{question}\begin{example}[两段等弧长的运行时间]\label{at2:example:5}
+椭圆 $a:b=5:3$，从右端近日点 $P$ 沿上半椭圆到左端远日点 $A$，$B$ 为上短轴端。两段弧 $PB,BA$ 长度相同，求时间之比。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:5:s}\fig{fig:at2:example:5:s}{题设：两段等弧长的运行时间}{\begin{tikzpicture}[scale=.85]
+\draw[world](-2.4,0)ellipse(3 and 1.8);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(0.6,0)circle(1.5pt)node[right]{$P$};\fill(-5.4,0)circle(1.5pt)node[left]{$A$};\draw[guide](-5.4,0)--(0.6,0);\node[below]at(-2.4,0){$O$};\fill(-2.4,1.8)circle(2pt)node[above]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:5:s} 关于短轴对称的两段弧几何长度相同，但焦点不是弧段的对称中心。$e=\sqrt{1-b^2/a^2}=4/5$，$P,B,A$ 的偏近点角依次为 $0,\pi/2,\pi$。
+\typeout{ASTROFIG:fig:at2:example:5:p}\fig{fig:at2:example:5:p}{解答过程：两段等弧长的运行时间}{\begin{tikzpicture}[scale=.85]
+\draw[world](-2.4,0)ellipse(3 and 1.8);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(0.6,0)circle(1.5pt)node[right]{$P$};\fill(-5.4,0)circle(1.5pt)node[left]{$A$};\draw[guide](-5.4,0)--(0.6,0);\node[below]at(-2.4,0){$O$};\fill[blue!9](0,0)--(.6,0)arc(0:90:3 and 1.8)--cycle;\fill(-2.4,1.8)circle(2pt)node[above]{$B$};\draw[guide](0,0)--(-2.4,1.8);
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:5:p} 计算焦点扫过面积，或等价地代入时间式：
+\[t_{PB}=\frac1n\left(\frac\pi2-e\right),\qquad
+t_{BA}=\frac1n\left(\frac\pi2+e\right).
+\]
+因此 $t_{PB}:t_{BA}=(5\pi-8):(5\pi+8)$。前半段靠近引力中心，速度总体更大、用时更短。两时间之和 $\pi/n=T/2$；若误用相等弧长推出相等时间，就会与面积速度和近远速度的差别同时矛盾。\end{solution}
+\begin{question}\begin{example}[由远地点经过短轴端返回近日点]\label{at2:example:6}
+椭圆半轴为 $a,b$，左端远地点 $A$、上短轴端 $B$、右端近日点 $P$。卫星沿上半椭圆按 $A\to B\to P$ 运动，求两段时间。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:6:s}\fig{fig:at2:example:6:s}{题设：由远地点经过短轴端返回近日点}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(-1.5,2.598)circle(2pt)node[above]{$B$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:6:s} 的运动方向与从近日点起逆时针定义的参数方向相反，但每段扫面积取正。令 $e=\sqrt{1-b^2/a^2}$、$n=\sqrt{\mu/a^3}$。上半部从 $P$ 到 $B$ 的面积对应 $(\pi/2-e)/n$，反向走同一几何弧耗时相同。
+\typeout{ASTROFIG:fig:at2:example:6:p}\fig{fig:at2:example:6:p}{解答过程：由远地点经过短轴端返回近日点}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(-1.5,2.598)circle(2pt)node[above]{$B$};\draw[flow](-2.5,2.4)--(-1.9,2.57);\draw[flow](.8,1.55)--(1.2,1);
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:6:p} 先写 $t_{BP}=(\pi/2-e)/n$，再由整个上半椭圆用时 $T/2=\pi/n$，得到
+\[t_{AB}=\frac{\pi/2+e}{n},\qquad t_{BP}=\frac{\pi/2-e}{n}.\]
+两者的差是 $2e/n$，两者的和是半周期。这个推理避免了把递减的参数角直接代入正向时间公式而得到负时间。对于圆轨道 $e=0$，两段都为四分之一周期。\end{solution}
+\begin{question}\begin{example}[以第一宇宙速度竖直上抛]\label{at2:example:7}
+地球半径 $R$、引力参数 $\mu$。从地面以 $v_0=\sqrt{\mu/R}$ 沿径向向上发射，忽略自转与大气。求最大高度及上升时间。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:7:s}\fig{fig:at2:example:7:s}{题设：以第一宇宙速度竖直上抛}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)circle(1.3);\fill(0,0)circle(1.5pt)node[below]{$O$};\draw[dim](0,0)--(35:1.3)node[midway,above]{$R$};\node at(-.65,.55){$M$};\fill(1.3,0)circle(2pt);\draw[flow](1.3,0)--(2.4,0)node[above]{$v_0$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:7:s} 的初速度沿径向，角动量为零。单位质量能量为 $\varepsilon=v_0^2/2-\mu/R=-\mu/(2R)$。最高点速度零，$-\mu/r_{\max}=-\mu/(2R)$，故 $r_{\max}=2R$，高度 $H=R$。
+\typeout{ASTROFIG:fig:at2:example:7:p}\fig{fig:at2:example:7:p}{解答过程：以第一宇宙速度竖直上抛}{\begin{tikzpicture}[scale=.85]
+\draw[world](0,0)--(5,0);\fill(1,0)circle(2pt)node[below]{$R$};\fill(4,0)circle(2pt)node[below]{$2R$};\draw[flow](1,.4)--(3,.4)node[midway,above]{$\dot r>0$};\node at(4,1){$v=0$};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:7:p} 上升阶段取正速度 $\dot r=\sqrt{2\mu(1/r-1/(2R))}$。令 $r=2R\sin^2\theta$，积分上下限为 $\pi/4,\pi/2$，
+\[t_\uparrow=4\sqrt{\frac{R^3}{\mu}}\int_{\pi/4}^{\pi/2}\sin^2\theta\dd\theta
+=\sqrt{\frac{R^3}{\mu}}\left(\frac\pi2+1\right).\]
+最后一步用 $\int\sin^2\theta\dd\theta=\theta/2-\sin2\theta/4$。这里的 $v_0$ 数值虽等于圆轨道速度，方向却不同，运动是径向上抛，不能据其名称套圆周周期。\end{solution}
+\begin{question}\begin{example}[二体椭圆与各自的轨道]\label{at2:example:8}
+质量 $m_1,m_2$ 的天体只受相互引力，相对运动有负能量且非零角动量。证明两者均绕共同质心作椭圆，并给出各半长轴和周期。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:8:s}\fig{fig:at2:example:8:s}{题设：二体椭圆与各自的轨道}{\begin{tikzpicture}[scale=.85]
+\fill(0,0)circle(3pt)node[above]{$m_1$};\fill(5,0)circle(3pt)node[above]{$m_2$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$r$};\fill(3,0)circle(2pt)node[below]{$C$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+图\ref{fig:at2:example:8:s} 取质心为原点，令相对位置 $\bm r=\bm r_1-\bm r_2$，质心式给 $\bm r_1=m_2\bm r/M_\Sigma$、$\bm r_2=-m_1\bm r/M_\Sigma$，其中 $M_\Sigma=m_1+m_2$。
+\typeout{ASTROFIG:fig:at2:example:8:p}\fig{fig:at2:example:8:p}{解答过程：二体椭圆与各自的轨道}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.322876,0)ellipse(2 and 1.5);\draw[world](.661438,0)ellipse(1 and .75);\fill(0,0)circle(2pt)node[below]{$C$};\node at(-2,1.2){$m_1$ 的轨道};\node at(1.7,.9){$m_2$ 的轨道};
+\end{tikzpicture}}
+
+图\ref{fig:at2:example:8:p} 将两体牛顿方程相减，$\ddot{\bm r}=-GM_\Sigma\bm r/r^3$。此相对中心力的能量负、角动量非零，因此相对轨道是半长轴 $a$、离心率 $e<1$ 的椭圆。两位置都是它的恒定比例缩放，故
+\[a_1=\frac{m_2a}{M_\Sigma},\qquad a_2=\frac{m_1a}{M_\Sigma},\qquad T=2\pi\sqrt{\frac{a^3}{GM_\Sigma}}.\]
+共同质心是两椭圆的一个焦点，两椭圆相似、方向相反、周期相同。质心若在另一惯性系中匀速平移，该系看到的轨迹叠加了平移，不宜再直接称为固定焦点椭圆。\end{solution}
+\begin{question}\begin{example}[轨道平均距离不是半长轴]\label{at2:example:9}
+椭圆半长轴 $a$、离心率 $e$。求一个周期的时间平均距离和平均倒数距离，说明为何不能直接等分轨道角度求平均。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:9:s}\fig{fig:at2:example:9:s}{题设：轨道平均距离不是半长轴}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at2:example:9:s} 用偏近点角参数 $r=a(1-e\cos E)$，面积速度给 $\dd t=(1-e\cos E)\dd E/n$。因此
+  \[\langle r\rangle=\frac a{2\pi}\int_0^{2\pi}(1-e\cos E)^2\dd E=a(1+e^2/2).
+  \]
+  \typeout{ASTROFIG:fig:at2:example:9:p}\fig{fig:at2:example:9:p}{解答过程：轨道平均距离不是半长轴}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\node at(-2,1.2){远处停留较久};\node at(-1.5,-1){$\dd t=(1-e\cos E)\dd E/n$};
+\end{tikzpicture}}
+
+  图\ref{fig:at2:example:9:p} 中远地点一侧停留更久。平均倒数距离则为 $\langle1/r\rangle=(2\pi a)^{-1}\int_0^{2\pi}\dd E=1/a$。前一个积分展开为常数项、一阶余弦项和 $e^2\cos^2E$ 项，后二项分别积分为零和 $\pi e^2$。一般 $\langle1/r\rangle\ne1/\langle r\rangle$，因为取平均与取倒数不可交换。\end{solution}
+\begin{question}\begin{example}[椭圆轨道的速度端点圆]\label{at2:example:10}
+以引力焦点为原点、近日点方向为 $x$ 轴，推导速度分量，并证明速度矢量端点在一个圆上。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:10:s}\fig{fig:at2:example:10:s}{题设：椭圆轨道的速度端点圆}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at2:example:10:s} 从 $r=p/(1+e\cos f)$ 对时间求导，$v_r=\dot r=he\sin f/p=\mu e\sin f/h$，横向分量 $v_t=h/r=\mu(1+e\cos f)/h$。
+  \typeout{ASTROFIG:fig:at2:example:10:p}\fig{fig:at2:example:10:p}{解答过程：椭圆轨道的速度端点圆}{\begin{tikzpicture}[scale=.85]
+\draw[axis](-.2,0)--(3.5,0)node[right]{$v_x$};\draw[axis](0,-.2)--(0,3.5)node[above]{$v_y$};\draw[world](0,1)circle(1.7);\fill(0,1)circle(1.5pt)node[left]{$\mu e/h$};\draw[flow](0,0)--(1.6,1.575);\node at(2.1,2.8){半径 $\mu/h$};
+\end{tikzpicture}}
+
+  按 图\ref{fig:at2:example:10:p} 的固定坐标投影，$v_x=v_r\cos f-v_t\sin f=-(\mu/h)\sin f$，$v_y=v_r\sin f+v_t\cos f=(\mu/h)(e+\cos f)$，所以
+  \[v_x^2+(v_y-\mu e/h)^2=(\mu/h)^2.
+  \]
+  速度圆不以原点为中心；从原点到圆上点的距离才是速率。$f=0$ 时 $v_x=0,v_y=\mu(1+e)/h$，与近日点最大速率一致；$f=\pi$ 时向下，大小 $\mu(1-e)/h$。\end{solution}
+\begin{question}\begin{example}[速度偏离当地切向的最大角]\label{at2:example:11}
+椭圆离心率 $0<e<1$，速度与当地横向方向夹角为飞行路径角 $\gamma$。求 $|\gamma|$ 的最大值及对应位置。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:11:s}\fig{fig:at2:example:11:s}{题设：速度偏离当地切向的最大角}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\draw[guide](0,0)--(-1.5,2.598);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at2:example:11:s} 的分量比给 $\tan\gamma=v_r/v_t=e\sin f/(1+e\cos f)$。在去程 $0<f<\pi$ 分母为正，可最大化此比值。
+  \typeout{ASTROFIG:fig:at2:example:11:p}\fig{fig:at2:example:11:p}{解答过程：速度偏离当地切向的最大角}{\begin{tikzpicture}[scale=.85]
+\draw[flow](0,0)--(3,0)node[right]{$v_t$};\draw[flow](3,0)--(3,1.5)node[above]{$v_r$};\draw[force](0,0)--(3,1.5);\draw(.7,0)arc(0:26.565:.7)node[right]{$\gamma$};
+\end{tikzpicture}}
+
+  图\ref{fig:at2:example:11:p} 对 $f$ 求导，分子化为 $e(\cos f+e)$，故驻点满足 $\cos f=-e$，两侧由增转减。此时 $\tan\gamma_{\max}=e/\sqrt{1-e^2}$，所以 $\sin\gamma_{\max}=e$。代回 $r=p/(1-e^2)=a$，对应短轴端。回程角度符号相反、绝对值相同；近远地点径向速度为零，路径角为零。\end{solution}
+\begin{question}\begin{example}[非端点初态确定近远距离]\label{at2:example:12}
+在 $r=r_0$ 处，卫星径向速度向外，$v_r=\tfrac12\sqrt{\mu/r_0}$、$v_t=\sqrt{\mu/r_0}$。求椭圆半长轴、离心率和两端距离，并判断到达远地点前是否还会经过 $r_0$。
+\end{example}
+\typeout{ASTROFIG:fig:at2:example:12:s}\fig{fig:at2:example:12:s}{题设：非端点初态确定近远距离}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\fill(0,2.25)circle(2pt)node[right]{$S$};\draw[flow](0,2.25)--(0,3.15)node[right]{$v_r$};\draw[flow](0,2.25)--(-1.3,2.25)node[above]{$v_t$};\draw[guide](0,0)--(0,2.25);
+\end{tikzpicture}}
+\end{question}
+\begin{solution}
+  图\ref{fig:at2:example:12:s} 初始总速率平方 $5\mu/(4r_0)$，所以 $\varepsilon=-3\mu/(8r_0)$、$h^2=\mu r_0$。由此 $a=4r_0/3$、$p=r_0$、$e=\sqrt{1-p/a}=1/2$。
+  \typeout{ASTROFIG:fig:at2:example:12:p}\fig{fig:at2:example:12:p}{解答过程：非端点初态确定近远距离}{\begin{tikzpicture}[scale=.85]
+\draw[world](-1.5,0)ellipse(3 and 2.598076);\fill(0,0)circle(2pt)node[below right]{$F$};\fill(1.5,0)circle(1.5pt)node[right]{$P$};\fill(-4.5,0)circle(1.5pt)node[left]{$A$};\draw[guide](-4.5,0)--(1.5,0);\node[below]at(-1.5,0){$O$};\node at(-1.5,1){$a=4r_0/3,\ e=1/2$};\node at(-1.5,-1){$f_0=\pi/2$：向外};
+\end{tikzpicture}}
+
+  图\ref{fig:at2:example:12:p} 两端距离 $r_p=2r_0/3,r_a=2r_0$。由 $r_0=p/(1+e\cos f_0)$ 得 $\cos f_0=0$，径向向外选 $f_0=\pi/2$，而不是 $3\pi/2$。去程半径单调增加，到远地点前不会再次经过同一半径；下一次经过在回程，径向速度改为负。仅凭零以外的总速率不能确定初态分支。\end{solution}

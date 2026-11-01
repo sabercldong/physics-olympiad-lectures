@@ -1,0 +1,11 @@
+\documentclass[11pt,border=4pt]{standalone}
+\usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage[fontset=fandol]{ctex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,angles,quotes,decorations.markings,decorations.pathmorphing}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\e}{\mathrm e}
+\tikzset{axis/.style={->,>=Stealth,line width=.45pt},world/.style={line width=.8pt},flow/.style={->,>=Stealth,line width=.7pt},ray/.style={->,>=Stealth,line width=.7pt},guide/.style={dashed,line width=.35pt},aux/.style={dashed,line width=.35pt},dim/.style={<->,>=Stealth,line width=.35pt},every node/.style={font=\small},force/.style={->,>=Stealth,very thick},gas/.style={fill=blue!7}}
+\begin{document}
+\begin{tikzpicture}\draw[axis](0,0)--(5.8,0)node[right]{$v_x$};\draw[axis](0,0)--(0,3.2)node[above]{$v_y$};\draw[world](3,0)circle(1.5);\draw[guide](0,0)--(2.25,1.299);\draw[flow,blue](0,0)--(2.25,1.299);\draw[guide](3,0)--(2.25,1.299);\node[below]at(3,0){$u$};\node[right]at(4.5,1){半径 $w$};\node at(1,.25){$\gamma$};\end{tikzpicture}
+\end{document}

@@ -1,0 +1,23 @@
+\fig{em5:rc-switch}{电容从一个恒压源无缝换接到另一个恒压源；电压按上极板对下极板计}{
+\begin{tikzpicture}[scale=.86]
+\foreach \shift/\src/\state in {0/1/切换前稳态,5.8/2/切换后回路}{
+\begin{scope}[xshift=\shift cm]
+\node at(1.65,3){\state};
+\draw[world](0,0)--(3.3,0)--(3.3,.9)
+ (3.3,1.3)--(3.3,2.3)--(2.2,2.3)
+ (1.2,2.3)--(0,2.3)--(0,1.5) (0,.7)--(0,0);
+\draw[world](0,1.1)circle(.4);
+\node at(0,1.1){$E_{\src}$};
+\node[left]at(-.45,1.5){$+$};
+\draw[world](1.2,2.12)rectangle(2.2,2.48);
+\node[above]at(1.7,2.5){$R$};
+\draw[world](3,.9)--(3.6,.9) (3,1.3)--(3.6,1.3);
+\node[right]at(3.65,1.1){$C$};
+\node[left]at(2.95,1.5){$+$};
+\draw[flow](2.4,2.3)--(3,2.3)node[midway,above]{$i$};
+\end{scope}}
+\node[align=center,text width=4.6cm]at(1.65,-.85){$u_C(0^-)=E_1$\\$i(0^-)=0$};
+\node[align=center,text width=5.2cm]at(7.45,-.85){$u_C(0^+)=E_1$\\$i(0^+)=(E_2-E_1)/R$};
+\end{tikzpicture}}
+
+图\ref{em5:rc-switch}左图先用稳态电流为零确定电容原有电压，右图保留这一电压、换入新电源。沿右图正电流方向列式，得到$E_2-Ri-u_C=0$，再用$i=C\dot u_C$建立下面的暂态方程。电容电压连续，电阻电流却可以立即改变；当$E_2<E_1$时，图中电流的计算值为负，表示实际电流反向。新稳态是$u_C(\infty)=E_2$，不能用它代替初值。

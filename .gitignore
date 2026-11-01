@@ -1,0 +1,57 @@
+# Local builds, temporary files, and editor settings
+/tmp/
+/.codex-build/
+/.codex/
+/.idea/
+/.vscode/
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+
+# LaTeX compilation products (the published PDFs remain tracked)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.bak
+*.swp
+*.swo
+~$*
+.~lock.*
+
+# Keep current complete and topic bundles; omit duplicate historical archives
+*.zip
+!output/物理竞赛一轮讲义_61讲_PDF与TikZ.zip
+!output/*_讲义与TikZ.zip
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+id_rsa
+id_ed25519
+
+# Earlier source drafts and exam exports stored as iCloud placeholders
+/output/latex/
+/output/pdf/
+/output/光学与近代物理_首讲_编辑记录.md
+/output/光学与近代物理_完整讲义_完成清单.md
+/output/光学与近代物理_第二讲_验收记录.json
+/output/第三讲_知识模型与题目核对表.md
+/处理规范/

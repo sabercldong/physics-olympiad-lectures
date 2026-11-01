@@ -1,0 +1,34 @@
+\section{练习}
+
+\begin{question}\begin{drill}[斜碰墙面的冲量]\label{em1:drill:1}
+质量$m$的小球以速率$v$撞上光滑墙面，入射速度与墙面法线夹角为$\alpha$；法向恢复系数为$0\le e\le1$，切向速度不变，$0\le\alpha<\pi/2$。求墙给球的冲量、末速率及冲击损失的动能。
+\end{drill}
+\fig{fig:em1:drill:1:s}{题设：斜碰墙面的冲量}{\begin{tikzpicture}[scale=.9]\draw[world](3,-1.3)--(3,1.6);\draw[guide](0,0)--(4.2,0)node[right]{$n$};\draw[flow](.4,1.2)--(3,0)node[midway,above]{$v$};\draw[world](2.3,0)arc(180:155.22:.7);\node at(2,.25){$\alpha$};\draw[axis](3.3,.7)--(4.3,.7)node[right]{$+n$};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:1}
+\begin{question}\begin{drill}[线性阻力下的返回时刻]\label{em1:drill:2}
+质量$m$的物体从地面以竖直初速$u$上抛，空气阻力为$-kv$，以向上为正。设落回出发高度时速率为$w$，飞行时间为$T$。不用求完整轨迹，建立$T,u,w$的关系。
+\end{drill}
+\fig{fig:em1:drill:2:s}{题设：线性阻力下的返回时刻}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(4.5,0);\fill(2.2,0)circle(.05)node[below]{$O$};\draw[guide](2.2,0)--(2.2,3.1);\fill(2.2,3)circle(.04)node[right]{最高点};\draw[flow](1.7,.2)--(1.7,1.7)node[midway,left]{$u$};\draw[flow](2.7,1.7)--(2.7,.2)node[midway,right]{$w$};\node at(2.2,3.6){沿同一竖直线往返};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:2}
+\begin{question}\begin{drill}[匀速喷流的偏转力]\label{em1:drill:3}
+密度$\rho$、横截面积$S$、速率$u$的水平水流，被固定光滑导流板偏转$\theta$，出流速率不变。忽略高度差，求水对导流板的力，并讨论其大小。
+\end{drill}
+\fig{fig:em1:drill:3:s}{固定导流板使入、出流速率相同，方向转过$\theta$}{\begin{tikzpicture}
+
+\draw[flow,blue](0,0)--(2,0)node[midway,above]{$u,S$};
+\draw[world](2,-.2)..controls(3,-.2)and(3.4,.4)..(3.9,1.3);
+\draw[guide](2,0)..controls(2.9,0)and(3.3,.4)..(3.8,1.3);
+\draw[flow,blue](3.8,1.3)--(4.4,2.38)node[above]{$u$};
+\draw[guide](3.8,1.3)--(5.1,1.3);\draw[world](4.3,1.3)arc(0:60.95:.5);\node at(4.65,1.7){$\theta$};
+
+\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:3}
+\begin{question}\begin{drill}[绳冲击的能量核验]\label{em1:drill:4}
+两个质量均为$m$的小球由松弛轻绳连接，处于光滑水平面内。绳刚绷紧前，$A$的速度大小为$u$、方向与从$B$指向$A$的绳方向成$0\le\alpha<\pi/2$，$B$静止。求刚绷紧后的速度，并求动能减少量。
+\end{drill}
+\fig{fig:em1:drill:4:s}{题设：绳冲击的能量核验}{\begin{tikzpicture}[scale=.9]\draw[guide](0,0)--(4,0)node[midway,below]{$L$};\fill(0,0)circle(.08)node[below]{$B$};\fill(4,0)circle(.08)node[below]{$A$};\draw[flow](4,0)--(5.2,1)node[right]{$u$};\node at(4.7,.2){$\alpha$};\end{tikzpicture}}
+\end{question}
+\answerlink{em1:drill:4}

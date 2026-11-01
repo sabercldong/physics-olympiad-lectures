@@ -1,0 +1,98 @@
+\LectureAnswerSection
+
+\begin{drillsolution}{em2:drill:1}\textbf{把车、杆、球与泥团放入同一系统}\par\nobreak
+图\ref{fig:em2:drill:1:s}中的车、球、杆和泥团组成系统，没有水平外力，且初始总动量为零。粘合后所有部分相对静止，因此只能共同以零水平速度运动，即$\boxed{\text{此后车静止}}$。
+\fig{fig:em2:drill:1:p}{球相对车向左摆下时车向右移动；粘合后各部分共同静止于新位置}{\begin{tikzpicture}
+
+\begin{scope}
+\draw[guide](0,0)rectangle(5,.3);\draw[guide](1.5,.3)--(1.5,2.5)--(3.5,2.5);\fill(3.5,2.5)circle(.08);
+\draw[world](.5,-2.5)rectangle(5.5,-2.2);\draw[world](2,-2.2)--(2,0);\draw[world](2,0)--(2,-2);
+\fill(2,-2)circle(.12)node[right]{球与泥团};\node[right]at(5.5,-2.3){车末态};
+\draw[guide,blue](2.75,-2.8)--(2.75,3.2)node[above]{$X_C$固定};
+\draw[flow,red](0,-3.3)--(.5,-3.3)node[right]{车的有限位移};
+\draw[flow](3.5,1.8)--(2.3,1.8)node[midway,above]{球向左};
+\node at(.2,2.8){初态};\node at(4.2,-1.4){末态：$V_f=0$};
+\end{scope}
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由末态共速和零总动量确定末速度}\par\nobreak
+把最终所有部分的共同速度记为$V_f$，总质量记为$M_\Sigma$，则$M_\Sigma V_f=0$，因总质量非零，所以$V_f=0$。重力和地面支持力虽存在，均无水平分量；泥团的粘合内冲量不能改变水平总动量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用质心固定说明过程中车必移动}\par\nobreak
+但在图\ref{fig:em2:drill:1:p}的摆动阶段，球的水平位置在变化，车必须向相反方向移动，以保持质心水平位置不变。因此“最后静止”不等于“全过程静止”。若求车最后停在哪里，应进一步用初、末各部分位置写质心位移式。\end{drillsolution}
+\begin{drillsolution}{em2:drill:2}\textbf{分开抛出、墙上反弹和接回三个阶段}\par\nobreak
+令图\ref{fig:em2:drill:2:s}中向墙为正，记第$n$次抛出后人车速度为$V_n$。第一次由静止抛球，$MV_1+mv=0$，故$V_1=-mv/M$。若第$n$次仍能接回球，则接球前总动量为$MV_n-mv$；下一次抛出后为$MV_{n+1}+mv$，所以$V_{n+1}=V_n-2mv/M$。
+\fig{fig:em2:drill:2:p}{每次抛出后的车速构成离散数列，第9次越过反弹球可追上的速度边界}{\begin{tikzpicture}
+
+\draw[axis](0,0)--(5.5,0)node[right]{$n$};\draw[axis](0,-3)--(0,.8)node[above]{$V_n/v$};
+\foreach \n in {1,2,3,4,5,6,7,8,9}{\fill[blue]({.5*\n},{-2*(2*\n-1)/16})circle(2pt);}
+\draw[guide](0,-2)--(5.1,-2);\node[left]at(0,-2){$-1$};\node[right]at(5.1,-2){$V_n=-v$};
+\foreach \n in {1,8,9}{\node[above]at({.5*\n},0){$\n$};}
+\draw[guide](4,0)--(4,-1.875);\draw[guide](4.5,0)--(4.5,-2.125);
+\node[blue]at(2.5,-3.3){$V_n/v=-(2n-1)/16$};
+
+\end{tikzpicture}}
+
+\fig{fig:em2:drill:2:catch}{反弹球从车的前方向左追赶，只有它比车向左更快时才能接回}{\begin{tikzpicture}
+
+\draw[world](0,0)rectangle(2,.5);\draw[world](5,-.5)--(5,2.5);\node[right]at(5,1.4){固定墙};
+\fill(3.5,1)circle(.1);\draw[flow,blue](3.5,1)--(1.9,1)node[midway,above]{$-v$};
+\draw[flow,red](.5,-.7)--(-.5,-.7)node[left]{$V_n<0$};
+\draw[dim](2,-1.6)--(3.5,-1.6)node[midway,below]{相遇要求$V_n>-v$};
+
+\end{tikzpicture}}
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{由反弹球与车的追赶关系建立接回条件}\par\nobreak
+图\ref{fig:em2:drill:2:catch}所示的追赶条件应在每一次抛出后重新检查；递推只在此前能够接回时才继续成立。
+
+把递推从第1次到第$n$次相加：$V_n=V_1+(n-1)(-2mv/M)=-[1+2(n-1)]mv/M$。接球前人车速度保持$V_n$，球向左速度为$-v$；球要从人前方向左追到人，必须比人向左更快，即$-v<V_n$。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{累积车速并取首次不能接回的整数}\par\nobreak
+由图\ref{fig:em2:drill:2:p}逐次累积得$V_n=-(2n-1)mv/M$。反弹球以$-v$运动，只有$|V_n|<v$才能追上人车；若$|V_n|\ge v$，不再相遇。因此$2n-1\ge16$的最小整数为$\boxed{n=9}$。固定墙使“球、人、车”的动量在反弹段改变，不能在包括撞墙的整个循环上设总动量不变。\end{drillsolution}
+\begin{drillsolution}{em2:drill:3}\textbf{由弹簧力方向确定两个速度的单调性}\par\nobreak
+按图\ref{fig:em2:drill:3:s}取向右为正，两物体的总动量为$P=3\times4+2\times(-5)=2\,\mathrm{kg\,m/s}$。弹簧压缩时对$A$的力向左、对$B$的力向右，所以$v_A$连续减小、$v_B$连续增大，并始终满足
+\[3v_A+2v_B=2.\]
+\fig{fig:em2:drill:3:p}{解答过程：相向弹簧碰撞的速度区间}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(4.7,0)node[right]{$t$};\draw[axis](0,-1.7)--(0,1.7)node[above]{$v$};\draw[world,domain=0:90,samples=70]plot({\x/22.5},{.3*(.4+3.6*cos(\x))});\draw[world,domain=0:90,samples=70]plot({\x/22.5},{.3*(.4-5.4*cos(\x))});\node[left]at(0,1.2){$4$};\node[left]at(0,-1.5){$-5$};\node at(1,1.4){$A$};\node at(1,-1.5){$B$};\fill(4,.12)circle(.04)node[above right]{$V=0.4$};\fill(3.811,0)circle(2pt);\draw[guide](3.811,0)--(5,-.7)node[right]{$B$先停：$v_A=2/3$};\draw[guide](4,0)--(4,.7);\node[below]at(4,0){$t_m$};\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{先求最大压缩速度，再判断谁先过零}\par\nobreak
+图\ref{fig:em2:drill:3:p}的两条曲线在最大压缩时相交，这时相对速度为零，故共同速度为$V=2/(3+2)=0.4\,\mathrm{m/s}$。在此之前，$v_A$从$4$减到$0.4$，不会停止；$v_B$从$-5$增到$0.4$，必先经过零。令$v_B=0$代回动量式，得此时
+\[\boxed{v_A=2/3\,\mathrm{m/s}}.\]
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{区分向右加速度与速率真正增加}\par\nobreak
+$B$的加速度在压缩段一直向右。它向左运动时速率减小，只有越过零、向右运动后才是加速；这段$v_B$范围为$0<v_B\le0.4$。由$v_A=(2-2v_B)/3$，得到
+\[\boxed{0.4\le v_A<2/3\,\mathrm{m/s}}.\]
+若把开始加速的零速瞬间也计入，则上端点可写等号。图中曲线而非直线表示弹簧力随压缩量改变，不能把两球误当作各自匀加速运动。\end{drillsolution}
+\begin{drillsolution}{em2:drill:4}\textbf{同时计入风扇反力与帆受力}\par\nobreak
+图\ref{fig:em2:drill:4:s}风扇把初始近似静止空气加速到$u$，船受到向后反作用力$-qu$。若帆将气流变为水平静止，帆受到$+qu$，二者相加为$\boxed{F=0}$。
+\fig{fig:em2:drill:4:p}{先分别标出船上风扇与帆的反作用，再对全船相加}{\begin{tikzpicture}
+
+\foreach \yy/\title in {2.6/末态水平速度为零,0/末态水平速度为$-u$}{
+\begin{scope}[yshift=\yy cm]
+\draw[world](0,0)rectangle(5,.3);\node at(1,-.6){风扇};\node at(4,-.6){帆};\node[left]at(-.5,.5){\title};
+\draw[force,red](1,.3)--(-.2,.3)node[midway,above]{$-qu$};
+\end{scope}}
+\draw[force,blue](4,2.9)--(5.2,2.9)node[midway,above]{$+qu$};\node[right]at(5.6,3){$F_{\text{全船}}=0$};
+\draw[force,blue](4,.3)--(6.4,.3)node[midway,above]{$+2qu$};\node[right]at(6.8,.5){$F_{\text{全船}}=qu$};
+\draw[flow](3.8,1.3)--(1.5,1.3)node[midway,above]{$u_{\text{出}}=-u$};
+
+\end{tikzpicture}}
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对零水平出流检查全船净动量流}\par\nobreak
+对于从近似水平静止进入风扇、最终又变为水平静止的空气，整体的水平动量流出率与流入率相等，故它对全船不提供净推力。这与把风扇和帆的两个局部反力相加一致，但整体方法不需要重复计算船内中间气流的动量。
+
+
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{对反向出流相加两处反作用力}\par\nobreak
+若按图\ref{fig:em2:drill:4:p}气流被帆完全反向，帆得到的向前力为$2qu$，加上风扇的$-qu$，总推力为$\boxed{F=qu}$。这个结果也等于最终向后排出动量流的反作用。计算局部帆受力时可以得到较大的$2qu$，但算全船必须同时计入风扇；能否推进由气流离开整体时的动量决定。\end{drillsolution}
