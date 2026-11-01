@@ -9,10 +9,14 @@
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{比较驻点两侧的导数符号}\par\nobreak
-图 \ref{c3e1q} 中，$x^2$ 在零点由减转增，有全局最小值零，无最大值；$x^3$ 虽在零点驻留，导数 $3x^2$ 不变号，故无局部极值，也无全局最值。
+图\ref{c3e1q}中，对$x^2$求导得到$2x$：$x<0$时为负，$x>0$时为正，故零点由减转增，有全局最小值零；$|x|\to\infty$时函数无界，故无最大值。对$x^3$求导得到$3x^2\ge0$，零点两侧不变号，故无局部极值；函数在两端分别趋于正、负无穷，也无全局最值。
 
-对 $x^2+x^{-2}$，定义域排除零。导数方程
-$2x-2/x^3=0$ 两边乘以非零的 $x^3/2$，得到 $x^4=1$，实根只有 $\pm1$。二阶导数为 $2+6/x^4>0$，两点均为极小；代回原函数，值均为 $1+1=2$。全局判断再用
+对$x^2+x^{-2}$，定义域排除零。先按幂函数法则逐项求导，
+\[
+\frac{\dd}{\dd x}(x^2+x^{-2})=2x-2x^{-3},\qquad
+\frac{\dd}{\dd x}(2x-2x^{-3})=2+6x^{-4}>0.
+\]
+令一阶导数为零，$2x-2/x^3=0$两边乘以非零的$x^3/2$，得到$x^4=1$，实根只有$\pm1$。二阶导数均为正，两点均为极小；代回原函数，值均为$1+1=2$。全局判断再用
 $x^2+x^{-2}-2=(x-1/x)^2\ge0$，证明二为全局下界。$|x|\to\infty$ 时平方项无界，故没有最大值。
 \fig{c3e1s}{在 $[-\pi,\pi]$ 内用导数符号判定极值}{\begin{tikzpicture}
 \draw[axis](0,0)--(6.7,0)node[right]{$x$};
@@ -52,7 +56,11 @@ f'(x)=\frac12(1-x^2)^{-1/2}(-2x)
 \[
  U(z)=\frac k2(2\pi z\tan\alpha-L)^2-mgz.
 \]
-对 $z$ 求导时，弹性势能的内层导数为 $2\pi\tan\alpha$，重力项导数为 $-mg$。因而 $U'(z_0)=0$ 给出
+对$z$求导时，$k,L,\alpha,m,g$均为固定参数。先按平方的链式法则写出
+\[
+U'(z)=\frac k2\,2(2\pi z\tan\alpha-L)(2\pi\tan\alpha)-mg.
+\]
+令$U'(z_0)=0$，整理后得到
 \[
  2\pi k\tan\alpha(2\pi z_0\tan\alpha-L)=mg,
 \]
@@ -71,7 +79,12 @@ $2\pi z_0\tan\alpha-L=mg/(2\pi k\tan\alpha)$，再移项并除以 $2\pi\tan\alph
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查张紧条件与恢复作用}\par\nobreak
-如图 \ref{c3e2s}，再求一次导数有 $U''=4\pi^2k\tan^2\alpha>0$，所以升降扰动后存在恢复作用。平衡伸长量为 $mg/(2\pi k\tan\alpha)>0$，也验证绳套处于张紧状态。若圆锥有限长，还须检查 $z_0$ 未越过底边。
+如图\ref{c3e2s}，再对$U'(z)$中的线性项求导，
+\[
+U''(z)=2\pi k\tan\alpha\,(2\pi\tan\alpha)-0
+=4\pi^2k\tan^2\alpha>0.
+\]
+所以升降扰动后存在恢复作用。平衡伸长量为$mg/(2\pi k\tan\alpha)>0$，也验证绳套处于张紧状态。若圆锥有限长，还须检查$z_0$未越过底边。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由绳元的实际速度确定振动惯量}\par\nobreak
@@ -87,8 +100,13 @@ $2\pi z_0\tan\alpha-L=mg/(2\pi k\tan\alpha)$，再移项并除以 $2\pi\tan\alph
 \fill(P)circle(1.3pt)node[left]{绳元};\node at(.3,2){$\alpha$};
 \end{tikzpicture}}
 令 $z=z_0+\eta$，势能在平衡位置附近为 $U_0+2\pi^2k\tan^2\alpha\,\eta^2$。因此
-\[m\sec^2\alpha\ddot\eta+4\pi^2k\tan^2\alpha\,\eta=0,
-\qquad\omega^2=\frac{4\pi^2k}{m}\sin^2\alpha.\]
+\[m\sec^2\alpha\ddot\eta+4\pi^2k\tan^2\alpha\,\eta=0.\]
+代入简谐位移的$\ddot\eta=-\omega^2\eta$，非零振动要求
+\[
+-m\sec^2\alpha\,\omega^2+4\pi^2k\tan^2\alpha=0.
+\]
+于是$\omega^2=4\pi^2k\tan^2\alpha/(m\sec^2\alpha)
+=(4\pi^2k/m)\sin^2\alpha$。
 这一步说明，势能的二阶系数确定回复作用，而频率还必须结合实际速度场确定惯量。若只取竖直速度，就会漏掉径向运动的动能。
 \end{solution}
 
@@ -140,8 +158,12 @@ $U(r)=\tfrac12k(L_0-r)^2-GM^2/r$。
 \[T=2\cdot\frac12M\left(\frac{\dot r}{2}\right)^2
    =\frac12\left(\frac M2\right)\dot r^2.\]
 因此距离坐标的有效质量是 $M/2$。在稳定分支令 $r=r_0+\eta$，线性回复项为 $-U''(r_0)\eta$，有
-\[\frac M2\ddot\eta+k\left(1-\frac{2x}{r_0}\right)\eta=0,\qquad
-\omega^2=\frac{2k}{M}\left(1-\frac{2x}{r_0}\right)>0.\]
+\[\frac M2\ddot\eta+k\left(1-\frac{2x}{r_0}\right)\eta=0.\]
+对简谐位移有$\ddot\eta=-\omega^2\eta$；代回并约去非零解的共同因子，得到
+\[
+-\frac M2\omega^2+k\left(1-\frac{2x}{r_0}\right)=0,
+\qquad \omega^2=\frac{2k}{M}\left(1-\frac{2x}{r_0}\right)>0.
+\]
 图\ref{c3e3s}中当两种力的变化率逐渐接近时，回复系数和频率都减小；在临界等号处，线性频率为零，必须恢复已讨论的三阶势能项，不能据此判为普通的稳定小振动。
 \end{solution}
 
@@ -187,10 +209,16 @@ $U'=-R(kR-mg)\sin\varphi$。
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在各稳定点附近求振动频率}\par\nobreak
 % thirty-c3-ring
 稳定点附近的频率也可由同一势能直接求出。用题设圆心角 $\varphi$，小珠动能为 $T=mR^2\dot\varphi^2/2$。在稳定的最低点 $B$附近令 $\varphi=\eta$，有
-\[mR^2\ddot\eta+R(mg-kR)\eta=0,\qquad
-\omega_B^2=\frac gR-\frac km\quad(kR<mg).\]
-在稳定的最高点 $A$附近令 $\varphi=\pi+\eta$，同理
-\[\omega_A^2=\frac km-\frac gR\quad(kR>mg).\]
+\[mR^2\ddot\eta+R(mg-kR)\eta=0.\]
+代入$\ddot\eta=-\omega_B^2\eta$，得到$-mR^2\omega_B^2+R(mg-kR)=0$，故
+\[\omega_B^2=\frac{R(mg-kR)}{mR^2}
+=\frac gR-\frac km\quad(kR<mg).\]
+在稳定的最高点$A$附近令$\varphi=\pi+\eta$，此处回复系数为$U''_A=R(kR-mg)$。同样代入简谐位移，
+\begin{align*}
+-mR^2\omega_A^2+R(kR-mg)&=0,\\
+\omega_A^2&=\frac{R(kR-mg)}{mR^2}
+=\frac km-\frac gR\quad(kR>mg).
+\end{align*}
 图\ref{c3e4s}中哪一个点是势阱，便在哪一点使用正的频率平方。临界时 $kR=mg$使整个势能严格为常数，而不只是二阶项消失；此时若给予切向初速，小珠会沿环匀速运动，不会自行返回某个唯一平衡点。这与存在四次势阱但线性频率为零的情形不同。
 \end{solution}
 
@@ -204,24 +232,41 @@ $U'=-R(kR-mg)\sin\varphi$。
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{以速度比的平方作为展开参数}\par\nobreak
-图 \ref{c3e5q} 的低速区满足 $\beta=v/c\ll1$，真正进入根式的展开量是 $\beta^2$。用
-$(1-z)^{-1/2}=1+\tfrac12z+\tfrac38z^2+O(z^3)$，
+图\ref{c3e5q}的低速区满足$\beta=v/c\ll1$，真正进入根式的展开量是$z=\beta^2$。令$f(z)=(1-z)^{-1/2}$，先对$z$逐次求导：
+\begin{align*}
+f'(z)&=-\frac12(1-z)^{-3/2}(-1)=\frac12(1-z)^{-3/2},\\
+f''(z)&=\frac12\left(-\frac32\right)(1-z)^{-5/2}(-1)
+=\frac34(1-z)^{-5/2}.
+\end{align*}
+因此$f(0)=1$、$f'(0)=1/2$、$f''(0)=3/4$，代入二阶泰勒式，
 \[
- K=E-m_0c^2
- =\boxed{\frac12m_0v^2+\frac38m_0\frac{v^4}{c^2}
- +O(m_0v^6/c^4)}.
+f(z)=1+\frac12z+\frac{3/4}{2!}z^2+O(z^3)
+=1+\frac12z+\frac38z^2+O(z^3).
 \]
+动能必须减去静能，常数项在这一步抵消：
+\begin{align*}
+K&=m_0c^2\left[1+\frac12\beta^2+\frac38\beta^4
+ +O(\beta^6)-1\right]\\
+&=\frac12m_0c^2\frac{v^2}{c^2}
+ +\frac38m_0c^2\frac{v^4}{c^4}+O(m_0v^6/c^4)\\
+&=\boxed{\frac12m_0v^2+\frac38m_0\frac{v^4}{c^2}
+ +O(m_0v^6/c^4)}.
+\end{align*}
 \fig{c3e5s}{经典动能与四阶近似从下方逐步接近精确动能}{\begin{tikzpicture}
 \begin{scope}[x=6cm,y=4cm]\draw[axis](0,0)--(.94,0)node[right]{$\beta=v/c$};\draw[axis](0,0)--(0,.77)node[above]{$K/(m_0c^2)$};\draw[world,domain=0:.8,samples=70]plot(\x,{1/sqrt(1-(\x)^2)-1});\draw[blue,thick,domain=0:.8,samples=70]plot(\x,{.5*(\x)^2+.375*(\x)^4});\draw[red,dashed,domain=0:.8,samples=70]plot(\x,{.5*(\x)^2});\draw[guide](.8,0)--(.8,.666667);\node[below]at(.8,0){$0.8$};\node[right]at(.8,.666667){精确值};\node[blue,right]at(.8,.4736){四阶};\node[red,right]at(.8,.32){二阶};\end{scope}
 \end{tikzpicture}}
 
 
 
-\par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开到不相消阶并解释修正量}\par\nobreak
-二项式的参数是 $\alpha=-1/2$，代入量为 $-\beta^2$。一次系数为 $(-1/2)(-\beta^2)=\beta^2/2$，二次系数为 $[(-1/2)(-3/2)/2]\beta^4=3\beta^4/8$。乘以 $m_0c^2$ 后，第一项为 $m_0c^2\beta^2/2=m_0v^2/2$，第二项为 $3m_0c^2\beta^4/8=3m_0v^4/(8c^2)$。
-
-图 \ref{c3e5s}将减去静能后的精确动能、二阶近似和四阶近似画在同一坐标系。小 $\beta$ 时三线靠近，速度增大后经典二阶式逐渐低于精确曲线。减去静能时常数项相消，若只保留 $E\simeq m_0c^2$，就无法得到动能。将修正项 $3m_0v^4/(8c^2)$ 除以经典动能 $m_0v^2/2$，得到比值
-$\tfrac34\beta^2+O(\beta^4)$，说明经典式低估动能，且误差按速度比的平方减小。这里始终使用不随速度变化的静质量 $m_0$。
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{以精确动能为基准计算相对误差}\par\nobreak
+图\ref{c3e5s}将减去静能后的精确动能、二阶近似和四阶近似画在同一坐标系。小$\beta$时三线靠近，速度增大后经典二阶式逐渐低于精确曲线。记$K_{\rm cl}=m_0v^2/2$，对非零的小速度，先将分子、分母同除以$K_{\rm cl}$：
+\[
+\frac{K-K_{\rm cl}}{K}
+=\frac{\frac34\beta^2+O(\beta^4)}
+       {1+\frac34\beta^2+O(\beta^4)}
+=\frac34\beta^2+O(\beta^4).
+\]
+因此经典式低估动能，且相对误差首项为$3v^2/(4c^2)$。这里始终使用不随速度变化的静质量$m_0$；若以经典动能作分母，首项相同，更高阶项则应重新计算。
 \end{solution}
 
 \begin{question}
@@ -270,15 +315,16 @@ $\varepsilon_\pm=d^2/(4r^2)\mp(d/r)\cos\theta$。
 电势微分满足
 $\dd V=-E_r\dd r-E_\theta r\dd\theta$，
 与 $\dd V=(\partial V/\partial r)\dd r+(\partial V/\partial\theta)\dd\theta$ 比较系数，得到
-\[
- E_r=-\frac{\partial V}{\partial r}
- \simeq\frac{2\mathcal Kp\cos\theta}{r^3},\qquad
- E_\theta=-\frac1r\frac{\partial V}{\partial\theta}
- \simeq\frac{\mathcal Kp\sin\theta}{r^3}.
-\]
-计算中使用
-$\partial(r^{-2}\cos\theta)/\partial r=-2r^{-3}\cos\theta$、
-$\partial(r^{-2}\cos\theta)/\partial\theta=-r^{-2}\sin\theta$。
+\begin{align*}
+E_r&=-\frac{\partial V}{\partial r}
+\simeq-\mathcal Kp\cos\theta\,\frac{\dd(r^{-2})}{\dd r}\\
+&=-\mathcal Kp\cos\theta(-2r^{-3})
+=\frac{2\mathcal Kp\cos\theta}{r^3},\\
+E_\theta&=-\frac1r\frac{\partial V}{\partial\theta}
+\simeq-\frac{\mathcal Kp}{r^3}\frac{\dd(\cos\theta)}{\dd\theta}\\
+&=-\frac{\mathcal Kp}{r^3}(-\sin\theta)
+=\frac{\mathcal Kp\sin\theta}{r^3}.
+\end{align*}
 横向的 $1/r$ 来自图中实际弧长 $r\dd\theta$，不能遗漏。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查轴向与赤道面的场方向}\par\nobreak
@@ -286,9 +332,13 @@ $\partial(r^{-2}\cos\theta)/\partial\theta=-r^{-2}\sin\theta$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成为矢量并投影到固定坐标轴}\par\nobreak
 把已求的两个场分量合成为矢量，可以避免在轴线与赤道面之间更换符号。图\ref{c3e6resolve}取偶极轴为 $+z$，有
-$\bm e_z=\cos\theta\bm e_r-\sin\theta\bm e_\theta$。于是
-\[\bm E=\frac{\mathcal K}{r^3}
- [3(\bm p\cdot\bm e_r)\bm e_r-\bm p].\]
+$\bm e_z=\cos\theta\bm e_r-\sin\theta\bm e_\theta$。记$\bm p=p\bm e_z$，则$\bm p\cdot\bm e_r=p\cos\theta$。把$-\bm p=-p\cos\theta\bm e_r+p\sin\theta\bm e_\theta$代入，可将两个分量合并成
+\begin{align*}
+\bm E&=\frac{\mathcal Kp}{r^3}
+ (2\cos\theta\bm e_r+\sin\theta\bm e_\theta)\\
+&=\frac{\mathcal K}{r^3}
+ [3(\bm p\cdot\bm e_r)\bm e_r-\bm p].
+\end{align*}
 \fig{c3e6resolve}{径向与角向分量的正方向}{\begin{tikzpicture}
 \draw[axis](0,-.5)--(0,3.3)node[above]{$z$};
 \coordinate(P)at(2.2,1.65);\draw[guide](0,0)--(P);
@@ -300,8 +350,14 @@ $\bm e_z=\cos\theta\bm e_r-\sin\theta\bm e_\theta$。于是
 再取图示子午面内垂直偶极轴的方向为 $x$，则
 $\bm e_r=(\sin\theta,\cos\theta)$、
 $\bm e_\theta=(\cos\theta,-\sin\theta)$。将两个分量投影，得到
-\[E_x=\frac{3\mathcal Kp}{r^3}\sin\theta\cos\theta,\qquad
-E_z=\frac{\mathcal Kp}{r^3}(3\cos^2\theta-1).\]
+\begin{align*}
+E_x&=E_r\sin\theta+E_\theta\cos\theta
+\\&=\frac{\mathcal Kp}{r^3}(2\sin\theta\cos\theta+\sin\theta\cos\theta)
+=\frac{3\mathcal Kp}{r^3}\sin\theta\cos\theta,\\
+E_z&=E_r\cos\theta-E_\theta\sin\theta
+\\&=\frac{\mathcal Kp}{r^3}(2\cos^2\theta-\sin^2\theta)
+=\frac{\mathcal Kp}{r^3}(3\cos^2\theta-1).
+\end{align*}
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用正交分量比较同一球面上的场强}\par\nobreak
 在 $\cos^2\theta=1/3$处，$E_z$虽为零，$E_x$却不为零；某一分量的抵消不能误判为总场消失。利用径向与角向正交，还得
 \[|\bm E|=\sqrt{E_r^2+E_\theta^2}
@@ -323,11 +379,15 @@ E_z=\frac{\mathcal Kp}{r^3}(3\cos^2\theta-1).\]
 \begin{solution}\textbf{先假设部分浸没，按深度积分压强}\par\nobreak
 先假定图 \ref{c3e7q} 所示的部分浸没状态，令杆底深度为 $b$。静水压梯度为 $\dd p/\dd z=\rho(z)g$，顶面在空气中，故净浮力等于
 \[
- F_B=S[p(b)-p(0)]
- =\rho_0gS\int_0^b\e^{z/\ell}\dd z
- =\rho_0gS\ell(\e^{b/\ell}-1).
+ \begin{aligned}
+ F_B&=S[p(b)-p(0)]
+=\rho_0gS\int_0^b\e^{z/\ell}\dd z\\
+&=\rho_0gS[\ell\e^{z/\ell}]_0^b
+=\rho_0gS(\ell\e^{b/\ell}-\ell\e^0)\\
+&=\rho_0gS\ell(\e^{b/\ell}-1).
+ \end{aligned}
 \]
-积分的原函数是 $\ell\e^{z/\ell}$，在 $0,b$ 处的差为 $\ell(\e^{b/\ell}-1)$。令浮力等于杆重 $3\rho_0gS\ell/2$，约去正的共同因子 $\rho_0gS\ell$，得到 $\e^{b/\ell}-1=3/2$，所以 $\e^{b/\ell}=5/2$，取对数得
+指数项的原函数可由$\dd(\ell\e^{z/\ell})/\dd z=\ell\e^{z/\ell}(1/\ell)=\e^{z/\ell}$核验。令浮力等于杆重$3\rho_0gS\ell/2$，约去正的共同因子$\rho_0gS\ell$，得到$\e^{b/\ell}-1=3/2$，所以$\e^{b/\ell}=5/2$，取对数得
 \[
  b=\ell\ln(5/2)\simeq0.91629\ell<\ell.
 \]
@@ -345,12 +405,22 @@ E_z=\frac{\mathcal Kp}{r^3}(3\cos^2\theta-1).\]
 \[
  \boxed{h_{\rm top}=\ell[1-\ln(5/2)]\simeq0.08371\ell}.
 \]
-若强行假定完全浸没，杆顶深度为 $z_0\ge0$，杆底深度为 $z_0+\ell$，浮力积分应改为
-$\rho_0gS\ell[\e^{(z_0+\ell)/\ell}-\e^{z_0/\ell}]$。
+若强行假定完全浸没，杆顶深度为$z_0\ge0$，杆底深度为$z_0+\ell$，上下边界必须同时改变：
+\begin{align*}
+F_B&=\rho_0gS\int_{z_0}^{z_0+\ell}\e^{z/\ell}\dd z
+=\rho_0gS[\ell\e^{z/\ell}]_{z_0}^{z_0+\ell}\\
+&=\rho_0gS\ell
+ [\e^{(z_0+\ell)/\ell}-\e^{z_0/\ell}]
+=\rho_0gS\ell\e^{z_0/\ell}(\e-1).
+\end{align*}
 
 与重量相等、提出 $\e^{z_0/\ell}$ 后，应满足
 $\e^{z_0/\ell}=\tfrac{3}{2(\e-1)}<1$，反而要求 $z_0<0$，不自洽。对实际部分浸没状态，
-$\dd F_B/\dd b=\rho_0gS\e^{b/\ell}>0$。
+\[
+\frac{\dd F_B}{\dd b}
+=\rho_0gS\ell\e^{b/\ell}\frac1\ell
+=\rho_0gS\e^{b/\ell}>0.
+\]
 下沉小量 $\delta b>0$ 时重量不变、浮力增加，向下的合力变化为 $-\rho_0gS\e^{b/\ell}\delta b<0$，故竖直平移方向稳定。
 
 
@@ -401,7 +471,7 @@ Q(\eta)&=mg-F_B(b_0+\eta)\\
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{分别选取函数式与椭圆参数式}\par\nobreak
-抛物线顶点处 $y'=0,y''=2a$，所以 $\rho=1/(2a)$。其中 $a$ 的量纲为逆长度，所得半径量纲正确。
+对抛物线固定$a$，先在一般位置求导：$y'=a\,2x=2ax$，$y''=2a$。顶点$x=0$处才有$y'=0$，代入曲率公式得到$\rho=(1+0^2)^{3/2}/|2a|=1/(2a)$。其中$a$的量纲为逆长度，所得半径量纲正确。
 
 对图 \ref{c3e8q} 的椭圆，取正则参数 $x=A\cos\theta,y=B\sin\theta$。有
 \[
@@ -475,13 +545,15 @@ $\overrightarrow{OP}\cdot\overrightarrow{AP}=X(X-x)+Y^2=0$。
 \[
  X=\frac{R^2}{x},\qquad Y=\frac{R\sqrt{x^2-R^2}}x.
 \]
-求导时 $\dot x=u$，而 $X,Y$ 都通过 $x(t)$ 随时间变化。对 $Y=R\sqrt{x^2-R^2}/x$ 用商法则，先得
-\[
- \frac{\dd Y}{\dd x}
- =\frac R{x^2}\left(\frac{x^2}{\sqrt{x^2-R^2}}
- -\sqrt{x^2-R^2}\right)
- =\frac{R^3}{x^2\sqrt{x^2-R^2}}.
-\]
+求导时$\dot x=u$，而$X,Y$都通过$x(t)$随时间变化。先记$W=\sqrt{x^2-R^2}>0$，按链式法则求出根式的导数，再对$Y=RW/x$使用商法则：
+\begin{align*}
+W'&=\frac12(x^2-R^2)^{-1/2}(2x)=\frac xW,\\
+\frac{\dd Y}{\dd x}
+&=R\frac{W'x-W}{x^2}
+=\frac{R(x^2-W^2)}{x^2W}
+=\frac{R[x^2-(x^2-R^2)]}{x^2W}\\
+&=\frac{R^3}{x^2\sqrt{x^2-R^2}}.
+\end{align*}
 再乘以 $\dot x=u$，得到
 \[
  \dot X=-\frac{R^2u}{x^2},\qquad
@@ -505,7 +577,11 @@ $\overrightarrow{OP}\cdot\overrightarrow{AP}=X(X-x)+Y^2=0$。
 \[
  \boxed{v_P=\frac{R^2u}{x\sqrt{x^2-R^2}}}.
 \]
-由直角三角形 $AP=\sqrt{x^2-R^2}$，
-$\dd(AP)/\dd t=xu/\sqrt{x^2-R^2}$。
+由直角三角形$AP=\sqrt{x^2-R^2}$，再次追踪$x(t)$的内层导数：
+\[
+\frac{\dd(AP)}{\dd t}
+=\frac{1}{2\sqrt{x^2-R^2}}\,2x\dot x
+=\frac{xu}{\sqrt{x^2-R^2}}.
+\]
 这是切线段的伸长率，与切点速率不同。$x\to R^+$ 时二者发散，提醒我们外点接近圆周时，切点几何对应关系对位置变化异常敏感。
 \end{solution}

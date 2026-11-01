@@ -65,7 +65,7 @@
 代入上下限得到
 \[\ln\frac{T_f}{T_i}=-\frac R{C_V}\ln\frac{V_f}{V_i}.
 \]
-由 $R/C_V=\gamma-1$，得到三种等价形式
+由$R/C_V=\gamma-1$，对上式取指数，先得$T_f/T_i=(V_i/V_f)^{\gamma-1}$，整理为$T_fV_f^{\gamma-1}=T_iV_i^{\gamma-1}$。再将$T=pV/(nR)$代入，左、右两边分别成为$pV^\gamma/(nR)$，故$pV^\gamma$不变。若改用$V=nRT/p$消去体积，则$TV^{\gamma-1}=(nR)^{\gamma-1}T^\gamma p^{1-\gamma}$；固定气体量时前面的因子也是常量。因此得到三种等价形式
 \[\boxed{TV^{\gamma-1}=\text{常量}},\qquad
 \boxed{pV^\gamma=\text{常量}},\qquad
 \boxed{T^\gamma p^{1-\gamma}=\text{常量}}.
@@ -100,9 +100,13 @@
 若给定过程满足 $pV^m=K$，且 $m$为常量，则称为多方过程。固定气体量、准静态且 $m\ne1$时，将 $p=KV^{-m}$代入功的积分，依次得到
 
 \[
- W=K\left[\frac{V^{1-m}}{1-m}\right]_{V_i}^{V_f}
- =\frac{p_fV_f-p_iV_i}{1-m}
+\begin{aligned}
+ W&=K\int_{V_i}^{V_f}V^{-m}\,\dd V
+ =K\left[\frac{V^{1-m}}{1-m}\right]_{V_i}^{V_f}\\
+ &=\frac{K}{1-m}(V_f^{1-m}-V_i^{1-m})\\
+ &=\frac{p_fV_f-p_iV_i}{1-m}
  =\frac{nR\Delta T}{1-m}.
+\end{aligned}
 \]
 再将 $\Delta U=nC_V\Delta T$代入第一定律，才有
 \[

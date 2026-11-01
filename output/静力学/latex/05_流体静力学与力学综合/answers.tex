@@ -58,10 +58,14 @@ F=\rho gb\int_{z_0}^{z_0+h}z\,\dd z
 
 \end{tikzpicture}}
 
-图\ref{fig:s5:drill:2:p}对液面取力矩：
+图\ref{fig:s5:drill:2:p}中，以$Fz_P$匹配刚求出的总力矩，并展开三次差、约去$\rho gbh$：
 \[
 z_P=\frac{\rho gb[(z_0+h)^3-z_0^3]/3}{F}
-=z_0+\frac h2+\frac{h^2}{12(z_0+h/2)}.
+=\frac{z_0^2+z_0h+h^2/3}{z_0+h/2}.
+\]
+把分子写成$(z_0+h/2)^2+h^2/12$，才得到
+\[
+z_P=z_0+\frac h2+\frac{h^2}{12(z_0+h/2)}.
 \]
 因此压力中心低于面积中心；$z_0=0$时给$2h/3$，$z_0\gg h$时趋近中心，反映压强分布趋于均匀。\end{drillsolution}
 \begin{drillsolution}{s5:drill:3}\textbf{由相同重力确定时间缩放}\par\nobreak
@@ -89,7 +93,7 @@ z_P=\frac{\rho gb[(z_0+h)^3-z_0^3]/3}{F}
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求竖直分量及雨对地速度}\par\nobreak
 图\ref{fig:s5:drill:4:p}第二条件给$(18-v_x)/v_y=\tan30^\circ$，因此$v_y=12\sqrt3\,\mathrm{km/h}$，雨速$v=\sqrt{6^2+(12\sqrt3)^2}=6\sqrt{13}\,\mathrm{km/h}$。其方向相对竖直向前偏，$\tan\gamma=v_x/v_y=1/(2\sqrt3)$。必须先作相对速度相减，再对应遮挡边界。\end{drillsolution}
 \begin{drillsolution}{s5:drill:5}\textbf{由切线约束确定展开轨迹}\par\nobreak
-图\ref{fig:s5:drill:5:s}在每一段绳仍与圆柱相切的阶段，质点速度垂直自由绳，张力不做功，速率为$v$。用展开角$\phi$计自由绳长$s=R\phi$，切点$Q=R(\cos\phi,\sin\phi)$，向量取一条渐开线分支：
+图\ref{fig:s5:drill:5:s}在每一段绳仍与圆柱相切的阶段，质点速度垂直自由绳，张力不做功，速率为$v$。用展开角$\phi$计自由绳长$R\phi$，切点位置为$\boldsymbol r_Q=R(\cos\phi,\sin\phi)$；沿所选展开方向的自由绳单位向量为$(\sin\phi,-\cos\phi)$。因此质点位置为$\boldsymbol r=\boldsymbol r_Q+R\phi(\sin\phi,-\cos\phi)$，分量相加得到一条渐开线分支：
 \[
 \boldsymbol r(\phi)=R(\cos\phi+\phi\sin\phi,\ \sin\phi-\phi\cos\phi).
 \]
@@ -108,7 +112,7 @@ z_P=\frac{\rho gb[(z_0+h)^3-z_0^3]/3}{F}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求轨迹导数并积分路径长}\par\nobreak
-把切点位置写成$\boldsymbol r_Q=R(\cos\phi,\sin\phi)$，沿所选展开方向的自由绳单位向量为$(\sin\phi,-\cos\phi)$，自由绳长$R\phi$。两矢量相加得到质点坐标。对每个含 $\phi$的乘积求导，
+对刚得到的坐标逐项求导，特别保留每个含$\phi$的乘积产生的两项，
 \begin{align*}
  \frac{\dd x}{\dd\phi}&=R[-\sin\phi+\sin\phi+\phi\cos\phi]=R\phi\cos\phi,\\
  \frac{\dd y}{\dd\phi}&=R[\cos\phi-\cos\phi+\phi\sin\phi]=R\phi\sin\phi.
@@ -143,11 +147,12 @@ z_P=\frac{\rho gb[(z_0+h)^3-z_0^3]/3}{F}
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入全展开半圆、卷回和反射返程}\par\nobreak
 图\ref{fig:s5:drill:5:p}的一段展开耗时为已求路径长除以速率，即 $L^2/(2Rv)$。绳完全展开后，质点还要以固定端为圆心、半径$L$绕行半周，才从另一侧重新接触圆柱；这段长$\pi L$，不能漏去。随后另一侧卷回渐开线耗时同前。到柱面弹性反射后逆程返回，故完整相空间周期为
 \[
-T=\frac{2L^2}{Rv}+\frac{2\pi L}{v}.
+T=\frac2v\left(2\cdot\frac{L^2}{2R}+\pi L\right)
+=\frac{2L^2}{Rv}+\frac{2\pi L}{v}.
 \]
 这里固定端位于柱面且无导向阻挡；若题目另有限制使全展开后立即反向，周期模型将不同。\end{drillsolution}
 \begin{drillsolution}{s5:drill:6}\textbf{保留支点到零刻度的力矩偏置}\par\nobreak
-图\ref{fig:s5:drill:6:s}令单秤砣质量$m$，物体力臂$a$，每千克刻度长度$\ell$，零刻度距支点$c$。单秤砣标定使$m\ell=a$，杆盘自身力矩记为$K=mgc$。
+图\ref{fig:s5:drill:6:s}令单秤砣质量$m$，物体力臂$a$，每千克刻度长度$\ell$，零刻度距支点$c$，杆盘自身力矩记为$K$。先由单秤砣的准确读数确定这些量的关系。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用单秤砣标定关系消去秤的参数}\par\nobreak

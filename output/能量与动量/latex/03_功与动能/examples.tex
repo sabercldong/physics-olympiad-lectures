@@ -119,13 +119,13 @@ $E=k\int_0^d x\dd x=k[x^2/2]_0^d=kd^2/2$。
 设第二击后总深度为 $D$，从已有深度 $d$ 积起，第二击耗功为
 $k\int_d^D x\dd x=k[x^2/2]_d^D=k(D^2-d^2)/2$。
 第二击同样输入能量 $E$，因此
-\[\frac{k}{2}(D^2-d^2)=\frac{k}{2}d^2,\qquad D=\sqrt2d.\]
+\[\frac{k}{2}(D^2-d^2)=\frac{k}{2}d^2.\]
 \fig{fig:em3:example:4:p}{解答过程：阻力随深度增加的钉入过程}{\begin{tikzpicture}[scale=.9]\draw[axis](0,0)--(5,0)node[right]{$x$};\draw[axis](0,0)--(0,2.4)node[above]{$F$};\draw[world](0,0)--(4,2);\fill[gray!15](0,0)--(2,1)--(2,0)--cycle;\fill[gray!40](2,0)--(2,1)--(2.828,1.414)--(2.828,0)--cycle;\node[below]at(2,0){$d$};\node[below]at(2.828,0){$D$};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由总深度减去第一击深度}\par\nobreak
-第二击的阻力功应从已进入的$d$积分到$D$：$\int_d^Dkx\dd x=k(D^2-d^2)/2$。令其等于第一击能量后，$D^2-d^2=d^2$，取深度非负的根$D=\sqrt2d$，最后再减去已有深度$d$才是本次新增量。
+将两击能量相等式约去$k/2>0$，得$D^2-d^2=d^2$，即$D^2=2d^2$。因总深度$D>d>0$，取正根$D=\sqrt2d$；最后再减去已有深度$d$才是本次新增量。
 
 图\ref{fig:em3:example:4:p}中第二段的积分面积等于第一段，但力已更大，故新增深度
 \[\boxed{\Delta d=(\sqrt2-1)d\approx0.414\,\mathrm{cm}}.\]
@@ -162,13 +162,18 @@ $k\int_d^D x\dd x=k[x^2/2]_d^D=k(D^2-d^2)/2$。
 \draw[guide](0,-.9)--(1.667,-.9)--(1.667,0);\node[left]at(0,-.9){$-1/3$};\node[above]at(1.667,0){$1/3$};
 \draw[dashed,red](0,-.54)--(4.2,-.54)node[right]{$-M/(2m)$};
 \fill(2.721,-.54)circle(.055);\node[below right]at(2.721,-.54){首次$T=0$};\node[below]at(5,0){$1$};
-\draw[flow](4.8,1.3)--(3.6,1.3)node[midway,above]{$c\text{减小}$};
+\draw[flow](2.6,1.5)--(1.2,1.5)node[midway,above]{$c\text{减小}$};
 \end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用张力最小值与首次零点判定条件}\par\nobreak
-图\ref{fig:em3:example:5:curve}的水平线必须不低于抛物线最低点，张力才能到零，即要求$\boxed{m/M\ge3/2}$。下降时$c$从$1$减小，首次到零取较大根：
+图\ref{fig:em3:example:5:curve}中抛物线的最低值为$T_{\min}=Mg-2mg/3$，故张力能到零要求$Mg-2mg/3\le0$，即$\boxed{m/M\ge3/2}$。令张力式为零，移项并除以$6mg$，
+\[
+\left(c-\frac13\right)^2=\frac19-\frac{M}{6m}
+=\frac19\left(1-\frac{3M}{2m}\right).
+\]
+当根号实数时，两根为$c=1/3\pm\sqrt{1-3M/(2m)}/3$。下降时$c$从$1$减小，先遇到较大根，因此
 \[\boxed{\cos\theta_* =\frac{1+\sqrt{1-3M/(2m)}}3}.\]
 到此以后环可能运动，不能继续用“大环固定”的同一组方程。临界$m/M=3/2$时只在$c=1/3$处恰好触及零。\end{solution}
 \begin{question}\begin{example}[有限容器中压沉浮木]\label{em3:example:6}
@@ -262,11 +267,20 @@ W=\int_0^\tau F(t)v(t)\dd t
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿半周积分摩擦功}\par\nobreak
 由图\ref{fig:em3:example:8:p}弧长微元$\dd s=R\dd\theta$，摩擦力始终逆运动方向，故
-\[W_f=-\int_0^\pi\mu NR\dd\theta=-\mu m\int_0^\pi(v^2+gR\cos\theta)\dd\theta=\boxed{-\pi\mu mv^2}.\]
+\[
+W_f=-\int_0^\pi\mu NR\dd\theta
+=-\mu m\int_0^\pi(v^2+gR\cos\theta)\dd\theta.
+\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释重力修正项为何相消}\par\nobreak
-积分的两部分分别为$\int_0^\pi v^2\dd\theta=\pi v^2$与$\int_0^\pi gR\cos\theta\dd\theta=gR[\sin\theta]_0^\pi=0$。消去的是重力对法向压力修正的积分，并不是球在升高过程中重力不做功；重力本身的功仍为$-2mgR$。
+积分的两部分须分别代入上下限：
+\[
+\int_0^\pi v^2\dd\theta=v^2[\theta]_0^\pi=\pi v^2,
+\qquad
+\int_0^\pi gR\cos\theta\dd\theta=gR[\sin\theta]_0^\pi=0.
+\]
+所以$\boxed{W_f=-\pi\mu mv^2}$。消去的是重力对法向压力修正的积分，并不是球在升高过程中重力不做功；重力本身的功仍为$-2mgR$。
 
 重力项在半周积分为零，但摩擦力本身并不恒定。小车动能不变，驱动力功必须补偿重力势能增加$2mgR$以及上述摩擦耗散。\end{solution}
 \begin{question}\begin{example}[动滑轮拉力的瞬时功率]\label{em3:example:9}
@@ -339,7 +353,13 @@ U(h)=-\frac{mg}{L}\int_0^h y\,\dd y
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{改变摩擦因数时取第一个可达零点}\par\nobreak
-图\ref{fig:em3:example:10:p}给出重力功$W_g=U_0-U_s$。再令$z=s/L$，将总动能画成图\ref{fig:em3:example:10:roots}。粗糙段$K/(mgL)=2z+z^2/2-(\mu M/m)(z-1)$。改用$\mu'=21m/(4M)$，得$K/(mgL)=\tfrac12(z-3)(z-3.5)$。首先遇到的零点为$z=3$，故首次停在$\boxed{D}$；此处悬垂重力$5mg$小于$\mu'Mg=5.25mg$，若最大静摩擦不小于动摩擦，则可保持停止。
+图\ref{fig:em3:example:10:p}给出重力功$W_g=U_0-U_s$。再令$z=s/L$，粗糙段有$K/(mgL)=2z+z^2/2-(\mu M/m)(z-1)$。改用$\mu'=21m/(4M)$，展开并分解：
+\[
+\frac{K}{mgL}=\frac{z^2}{2}-\frac{13z}{4}+\frac{21}{4}
+=\frac{(2z-7)(z-3)}4
+=\frac12(z-3)\left(z-\frac72\right).
+\]
+如图\ref{fig:em3:example:10:roots}，从$B$的$z=1$向右运动，首先遇到的零点为$z=3$，故首次停在$\boxed{D}$；另一根$z=7/2$在中间负动能区域之后，不可到达。此处悬垂重力$5mg$小于$\mu'Mg=5.25mg$，若最大静摩擦不小于动摩擦，则可保持停止。
 
 \fig{fig:em3:example:10:roots}{放大首次零点附近；虚线负动能段不属于实际运动}{\begin{tikzpicture}
 
@@ -358,7 +378,13 @@ U(h)=-\frac{mg}{L}\int_0^h y\,\dd y
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{排除能量等式成立却无法到达E的根}\par\nobreak
-若强令$E$处$z=4$为零，需$\mu=16m/(3M)$，但此时$K/(mgL)=\tfrac12(z-8/3)(z-4)$，在$z=8/3$就先停住，不能穿过负动能区到$E$。因此不存在所问的摩擦因数。只检查$E$处的能量等式会产生一个不能实现的解。\end{solution}
+若强令$E$处$z=4$为零，将其代入一般能量式，有$0=8+8-3\mu M/m$，解得$\mu=16m/(3M)$。再检查途中动能：
+\[
+\frac{K}{mgL}=\frac{z^2}{2}-\frac{10z}{3}+\frac{16}{3}
+=\frac{(3z-8)(z-4)}6
+=\frac12\left(z-\frac83\right)(z-4).
+\]
+在$z=8/3$就先停住，不能穿过负动能区到$E$。因此不存在所问的摩擦因数。只检查$E$处的能量等式会产生一个不能实现的解。\end{solution}
 \begin{question}\begin{example}[船上抛球与内力做功]\label{em3:example:11}
 人和船总质量$M$，另有质量$m$的球，最初共同以$v$运动。球以相对抛球后船的速度$u$水平抛出，分别沿船前进方向与反方向。忽略水阻，求系统所需增加的机械能，并求球和船各自的动能变化。
 \end{example}
@@ -505,7 +531,19 @@ $v\simeq C\delta$，其中 $C=\sqrt{gR/\pi}$。
 \fig{fig:em3:example:15:s}{题设：传送带加速物块的能量分配}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\draw[world](.5,.3)rectangle(1.3,1);\node at(.9,.65){$m$};\draw[flow](2,-.5)--(4,-.5)node[above]{$U$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{由加速过程求物块位移与带面滑程}\par\nobreak
-图\ref{fig:em3:example:15:s}物块受向右摩擦$f=\mu mg$，加速度$\mu g$，到$U$所需$t_*=U/(\mu g)$，物块位移$x=U^2/(2\mu g)$。同一时间带面前进$s_B=Ut_*=U^2/(\mu g)$，相对滑程$s_{\text{相}}=s_B-x=U^2/(2\mu g)$。
+图\ref{fig:em3:example:15:s}物块受向右摩擦$f=\mu mg$，加速度$\mu g$。从初速度零积分，
+\[
+v(t)=\int_0^t\mu g\dd\tau=\mu g[\tau]_0^t=\mu gt.
+\]
+共速条件$v(t_*)=U$给$t_*=U/(\mu g)$。再分别积分物块和带面的速度，
+\begin{align*}
+x&=\int_0^{t_*}\mu gt\dd t
+=\mu g\left[\frac{t^2}{2}\right]_0^{t_*}
+=\frac{\mu g}{2}\frac{U^2}{\mu^2g^2}=\frac{U^2}{2\mu g},\\
+s_B&=\int_0^{t_*}U\dd t=U[t]_0^{t_*}
+=Ut_* =\frac{U^2}{\mu g}.
+\end{align*}
+在$t<t_*$时$U-v(t)>0$，所用摩擦方向始终有效；相对滑程为$s_{\text{相}}=s_B-x=U^2/(2\mu g)$。
 \fig{fig:em3:example:15:p}{速度图的两个三角形分别给出物块位移和相对滑程}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(5.1,0)node[right]{$t$};\draw[axis](0,0)--(0,3)node[above]{$v$};
@@ -559,12 +597,21 @@ $v\simeq C\delta$，其中 $C=\sqrt{gR/\pi}$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用余弦变量化为多项式极值}\par\nobreak
-最大化$P^2$与最大化非负的$P$具有同一位置，这样可以避免直接对根式求导。将$\sin^2\theta=1-\cos^2\theta$代入后，待求函数为$c-c^3$，在$c=0,1$两端为零；内部只有$1-3c^2=0$给出的一个非负根。
+最大化$P^2$与最大化非负的$P$具有同一位置。令$c=\cos\theta\in[0,1]$，将$\sin^2\theta=1-c^2$代入，有
+\[
+\frac{P^2}{2m^2g^3\ell}=f(c)=c(1-c^2)=c-c^3,
+\qquad f'(c)=1-3c^2.
+\]
+令$f'=0$，得$c=\pm1/\sqrt3$；负根不在物理区间内，只保留$c_*=1/\sqrt3$。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较内部极值与两个端点}\par\nobreak
-按图\ref{fig:em3:example:16:p}令$c=\cos\theta\in[0,1]$，最大化$P^2/(2m^2g^3\ell)=c(1-c^2)$。导数为$1-3c^2$，内部极大点$c=1/\sqrt3$，端点功率均为零。所以
+按图\ref{fig:em3:example:16:p}，$f'$在$c<c_*$时为正、$c>c_*$时为负；又$f(0)=f(1)=0$，故$c_*$给全局最大值。代入计算
+\[
+f(c_*)=\frac1{\sqrt3}-\frac1{3\sqrt3}=\frac2{3\sqrt3}.
+\]
+再由$P\ge0$取平方根，所以
 \[\boxed{P_{\max}=mg\sqrt{2g\ell}\sqrt{\frac{2}{3\sqrt3}},\quad\cos\theta=\frac1{\sqrt3}}.\]
 最低点速度最大，但重力与速度垂直，功率反而为零。绳张力在整个理想摆动中都不做功，不能用$Tv$充当其功率。\end{solution}
 \begin{question}\begin{example}[固定球面上的脱离与落点]\label{em3:example:17}
@@ -597,8 +644,16 @@ $v\simeq C\delta$，其中 $C=\sqrt{gR/\pi}$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从脱离点切换到抛体运动并求落地根}\par\nobreak
-在图\ref{fig:em3:example:17:p}取球心为原点，脱离点$(x_d,y_d)=(\sqrt5R/3,2R/3)$，沿右下切线飞出，速度分量为$(2v_d/3,-\sqrt5v_d/3)$。后续$y=2R/3-(\sqrt5v_d/3)t-gt^2/2$，令$y=0$取正根
-\[t_f=\frac{-\sqrt5v_d/3+\sqrt{5v_d^2/9+4gR/3}}{g},\quad\boxed{x_f=\frac{\sqrt5R}{3}+\frac{2v_d}{3}t_f}.\]
+在图\ref{fig:em3:example:17:p}取球心为原点，脱离点$(x_d,y_d)=(\sqrt5R/3,2R/3)$，沿右下切线飞出，速度分量为$(2v_d/3,-\sqrt5v_d/3)$。令$b=\sqrt5v_d/3>0$，后续竖直位置为$y=y_d-bt-gt^2/2$。落地条件$y=0$乘$2g$并配方，
+\[
+g^2t^2+2gbt=2gy_d,\qquad
+(gt+b)^2=b^2+2gy_d.
+\]
+两根为$t=(-b\pm\sqrt{b^2+2gy_d})/g$。因为$y_d>0$，只有正号给正时间，故
+\[
+t_f=\frac{-\sqrt5v_d/3+\sqrt{5v_d^2/9+4gR/3}}{g},
+\qquad \boxed{x_f=\frac{\sqrt5R}{3}+\frac{2v_d}{3}t_f}.
+\]
 能量式本身会允许球继续沿圆弧下降，但所需$N$变负时单侧球面无法维持约束，必须在此切换为抛体运动。\end{solution}
 \begin{question}\begin{example}[不能定义单值势能的平面力场]\label{em3:example:18}
 质点在平面力场$\bm F=(-ky,kx)$中沿半径$R$圆周绕原点逆时针一周，$k>0$。求该力做功，判断它是否为保守力，并讨论沿相反方向运动的功。
@@ -612,12 +667,7 @@ $v\simeq C\delta$，其中 $C=\sqrt{gR/\pi}$。
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{参数化圆周并写出位移微元}\par\nobreak
-按图\ref{fig:em3:example:18:s}参数化$x=R\cos\phi,y=R\sin\phi$，则$\dd\bm r=(-R\sin\phi,R\cos\phi)\dd\phi$。力恰沿逆时针切向，大小$kR$，所以
-\[
-W=\int_0^{2\pi}\bm F\cdot\dd\bm r
-=kR^2\int_0^{2\pi}\dd\phi
-=kR^2[\phi]_0^{2\pi}=\boxed{2\pi kR^2}.
-\]
+按图\ref{fig:em3:example:18:s}参数化$x=R\cos\phi,y=R\sin\phi$，逐项微分得到$\dd x=-R\sin\phi\dd\phi$、$\dd y=R\cos\phi\dd\phi$。因此$\dd\bm r=(-R\sin\phi,R\cos\phi)\dd\phi$；力也沿逆时针切向，大小为$kR$。
 \fig{fig:em3:example:18:p}{在任意角度点积均为正；反向路径只改变位移微元方向}{\begin{tikzpicture}
 
 \draw[world](0,0)circle(1.8);\coordinate(P)at(1.273,1.273);\draw[guide](0,0)--(P)node[midway,below]{$R$};\fill(P)circle(.065)node[right]{$P$};
@@ -630,7 +680,19 @@ W=\int_0^{2\pi}\bm F\cdot\dd\bm r
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用切向力积分闭路功}\par\nobreak
-点积可直接展开：$(-kR\sin\phi)(-R\sin\phi)+(kR\cos\phi)(R\cos\phi)=kR^2$，因$\sin^2\phi+\cos^2\phi=1$而为常量。闭合路径的非零功已经足以否定保守性，无需先猜势能函数再求解。
+图\ref{fig:em3:example:18:p}中，点积展开为
+\[
+\bm F\cdot\dd\bm r
+=[(-kR\sin\phi)(-R\sin\phi)+(kR\cos\phi)(R\cos\phi)]\dd\phi
+=kR^2\dd\phi.
+\]
+利用$\sin^2\phi+\cos^2\phi=1$后，被积函数为常量。逆时针一周对应$\phi:0\to2\pi$，故
+\[
+W=\int_0^{2\pi}\bm F\cdot\dd\bm r
+=kR^2\int_0^{2\pi}\dd\phi
+=kR^2[\phi]_0^{2\pi}=\boxed{2\pi kR^2}.
+\]
+闭合路径的非零功足以否定保守性，无需先猜势能函数。
 
 
 

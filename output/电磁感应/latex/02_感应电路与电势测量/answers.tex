@@ -122,7 +122,20 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算阈值处热量并核验一般功率平衡}\par\nobreak
 临界 $e=2E$ 时，$i_1=0,i_2=E/R,i_3=-E/R$，总热功率为 $2E^2/R$，全部由感应驱动提供。
 
-一般情形的能量校验是 $Ei_1+ei_2=R(i_1^2+i_2^2+i_3^2)$。把上述三电流代入，两边都等于 $2(E^2+e^2-Ee)/(3R)$。直流源吸收功率与其内阻发热不是同一项，电源支路的电阻仍按 $i_1^2R$ 发热。\end{drillsolution}
+一般情形分别计算驱动功率和热功率，不能先假定二者相等：
+\[
+ \begin{aligned}
+ P_{\text{驱}}&=Ei_1+ei_2
+ =\frac{E(2E-e)+e(2e-E)}{3R}
+ =\frac{2(E^2+e^2-Ee)}{3R},\\
+ P_J&=R(i_1^2+i_2^2+i_3^2)
+ =\frac{(2E-e)^2+(2e-E)^2+(E+e)^2}{9R}\\
+ &=\frac{(4E^2-4Ee+e^2)+(4e^2-4Ee+E^2)+(E^2+2Ee+e^2)}{9R}\\
+ &=\frac{6E^2+6e^2-6Ee}{9R}
+ =\frac{2(E^2+e^2-Ee)}{3R}.
+ \end{aligned}
+\]
+两者相等，完成能量校验。直流源吸收功率与其内阻发热不是同一项，电源支路的电阻仍按 $i_1^2R$ 发热。\end{drillsolution}
 \begin{drillsolution}{em2:drill:8}\textbf{分别列总电压关系与孤立导体净电荷关系}\par\nobreak
 图\ref{fig:em2:drill:8:s}的电容支路稳定后无电流，因此不改变电阻网络给出的 $U$。沿支路积分，两个电容电压满足 $u_1+u_2=U+e_c=T$。中间导体由第一只电容的右极板和第二只的左极板相连而成，其电荷是 $-C_1u_1+C_2u_2=Q_X$。这是独立于电压和式的第二个约束，不能随意把两电容电荷设成相等。
 \fig{fig:em2:drill:8:p}{孤立中间导体包括两块内侧极板及连线，净电荷约束独立于总电压关系}{\begin{tikzpicture}
@@ -134,10 +147,23 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立两约束并将储能整理成两个平方项}\par\nobreak
-按图\ref{fig:em2:drill:8:p}标出的板电荷，联立得
+按图\ref{fig:em2:drill:8:p}标出的板电荷，用 $u_2=T-u_1$ 代入电荷约束，
+\[
+ -C_1u_1+C_2(T-u_1)=Q_X,
+ \qquad (C_1+C_2)u_1=C_2T-Q_X.
+\]
+除以 $C_1+C_2>0$ 求 $u_1$，再以 $T-u_1$ 求 $u_2$，得到
 \[u_1=\frac{C_2T-Q_X}{C_1+C_2},\qquad u_2=\frac{C_1T+Q_X}{C_1+C_2}.\]
-代回电荷约束、相加电压，均恢复原条件。总电能为
-\[W_C=\frac12C_1u_1^2+\frac12C_2u_2^2=\frac{C_1C_2T^2+Q_X^2}{2(C_1+C_2)}.\]
+代回电荷约束、相加电压，均恢复原条件。把两个电压代入场能并展开平方，
+\[
+ \begin{aligned}
+ W_C&=\frac{C_1(C_2T-Q_X)^2+C_2(C_1T+Q_X)^2}{2(C_1+C_2)^2}\\
+ &=\frac{C_1C_2^2T^2-2C_1C_2TQ_X+C_1Q_X^2}{2(C_1+C_2)^2}\\
+ &\quad+\frac{C_2C_1^2T^2+2C_1C_2TQ_X+C_2Q_X^2}{2(C_1+C_2)^2}\\
+ &=\frac{C_1C_2(C_1+C_2)T^2+(C_1+C_2)Q_X^2}{2(C_1+C_2)^2}
+ =\frac{C_1C_2T^2+Q_X^2}{2(C_1+C_2)}.
+ \end{aligned}
+\]
 前一项随端口及引线驱动变化，后一项是由孤立导体净电荷固定的部分。$Q_X=0$ 时恢复通常的等量异号串联电容；$T=0$ 时如果 $Q_X\ne0$，两电压仍可相反且不为零。
 
 

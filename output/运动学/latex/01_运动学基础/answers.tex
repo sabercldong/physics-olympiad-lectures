@@ -5,8 +5,10 @@
 \[\frac l{X-x}=\frac hX,
 \qquad lX=h(X-x),\qquad (h-l)X=hx.\]
 所以 $X=hx/(h-l)$、$\ell=lx/(h-l)$。对时间求导，题设 $\dot x=v$为常量，得到
-\[\boxed{\dot X=\frac h{h-l}v},\qquad
-\boxed{\dot\ell=\frac l{h-l}v}.\]
+\[
+\dot X=\frac h{h-l}\dot x=\boxed{\frac h{h-l}v},\qquad
+\dot\ell=\frac l{h-l}\dot x=\boxed{\frac l{h-l}v}.
+\]
 \fig{k1p9s}{路灯与太阳形成的影子：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(6.5,0) (0,0)--(0,3);\draw[world](2,0)--(2,1.5) (2.8,0)--(2.8,1.5);\draw[guide](0,3)--(4,0) (0,3)--(5.6,0);\draw[dim](2,-.5)--(2.8,-.5)node[midway,below]{$\Delta x$};\draw[dim,blue](4,-1.2)--(5.6,-1.2)node[midway,below]{$\Delta X=\dfrac h{h-l}\Delta x$};\end{tikzpicture}}
 
 
@@ -31,8 +33,11 @@
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查光线倾角随时间变化时的适用条件}\par\nobreak
 图\ref{k1p9sun}的等影长结论依赖 $\gamma$在行走期间保持不变。若观察时间足够长，需要计入太阳方向的变化，就保留 $\gamma(t)$再求导：
-\[\dot\ell=-l\csc^2\gamma\,\dot\gamma,\qquad
-\dot X=v-l\csc^2\gamma\,\dot\gamma.\]
+\begin{align*}
+\dot\ell&=l\frac{\dd(\cot\gamma)}{\dd\gamma}\dot\gamma
+=-l\csc^2\gamma\,\dot\gamma,\\
+\dot X&=\dot x+\dot\ell=v-l\csc^2\gamma\,\dot\gamma.
+\end{align*}
 太阳升高时 $\dot\gamma>0$，影子缩短；只有忽略这一变化时，才恢复本题影端与人同速的结果。
 
 角速度在此按弧度每时间计，且上述关系仍要求地面水平、身高不变。
@@ -43,7 +48,7 @@
 \[x^2+y^2=R^2,\qquad (x-d)^2+y^2=R^2.\]
 作差得 $2dx=d^2$。在 $0<d<2R$的题设区间内，可以除以 $2d$，再代回第一式，得到
 \[x=\frac d2,\qquad y=\sqrt{R^2-\frac{d^2}4}.\]
-由 $\dot d=v$先得 $v_x=v/2$；对固定左圆的约束求导，则
+由$x=d/2$求导，先得$v_x=\dot d/2=v/2$；对固定左圆的约束逐项求时间导数，得到$2x\dot x+2y\dot y=0$。约去公因子$2$，再利用$y>0$解出竖直分量：
 \[xv_x+yv_y=0,\qquad
 v_y=-\frac{xv_x}{y}=-\frac{dv}{4y}.\]
 所以两分量为 $\boxed{v_x=v/2,\ v_y=-dv/(4y)}$，合速率应把分量平方后相加：
@@ -63,8 +68,11 @@ v_y=-\frac{xv_x}{y}=-\frac{dv}{4y}.\]
 两端还需区别处理：$d=0$时两圆重合，交点不唯一；$d\uparrow2R$时上、下交点合并，根式分支不再光滑。速率发散反映几何位置对参数的敏感，不表示有一个物质点被加速到无限快。
 
 发散也不等于这段路径长度无限。特取 $v>0$，在图\ref{k1p10s}中记 $\theta$为 $O_1P$从竖直方向转过的角，则 $d=2R\sin\theta$、$\dd s=R\dd\theta$。从当前 $P$到相切位置 $Q$的剩余圆弧为
-\[s_{PQ}=\int_\theta^{\pi/2}R\dd\phi
- =R\left[\frac\pi2-\arcsin\frac d{2R}\right].\]
+\[
+s_{PQ}=\int_\theta^{\pi/2}R\dd\phi
+=R[\phi]_\theta^{\pi/2}=R\left(\frac\pi2-\theta\right)
+=R\left[\frac\pi2-\arcsin\frac d{2R}\right].
+\]
 当 $d\uparrow2R$时该长度趋零。几何交点可以在有限时间沿有限弧段到达分支终点；此时应结束当前交点模型，不能把发散公式继续延伸到两圆已经分离之后。
 \end{drillsolution}
 
@@ -83,8 +91,26 @@ v_y=-\frac{xv_x}{y}=-\frac{dv}{4y}.\]
 在一小段时间内物体向右移动 $u\dd t$，它沿当前绳向的投影才是斜段缩短的一阶量 $u\cos\alpha\dd t$。垂直绳向的位移只在更高阶影响长度，因此不能把物体沿水平移动的全部长度都算作收绳量。所得关系还说明 $u\ge v$，等号仅在绳水平时成立，这与图中的投影长度关系完全一致。\end{drillsolution}
 
 \begin{drillsolution}{k1p12}\textbf{同时对分量和转动基矢求导}\par\nobreak
-图\ref{k1p12q}的基矢随质点方位转动，不能当作常矢量。由 $\bm e_\rho=(\cos\theta,\sin\theta)$、$\bm e_\theta=(-\sin\theta,\cos\theta)$，逐分量求导得 $\dot{\bm e}_\rho=\omega\bm e_\theta$、$\dot{\bm e}_\theta=-\omega\bm e_\rho$。因此
-\[\begin{aligned}\bm a&=\dot v_\rho\bm e_\rho+v_\rho\omega\bm e_\theta+(\dot\rho\omega+\rho\dot\omega)\bm e_\theta-\rho\omega^2\bm e_\rho\\&=\boxed{(\ddot\rho-\rho\omega^2)\bm e_\rho+(2\dot\rho\omega+\rho\dot\omega)\bm e_\theta}.\end{aligned}\]
+图\ref{k1p12q}的基矢随质点方位转动，不能当作常矢量。由$\bm e_\rho=(\cos\theta,\sin\theta)$、$\bm e_\theta=(-\sin\theta,\cos\theta)$，逐分量使用链式法则，
+\begin{align*}
+\dot{\bm e}_\rho&=(-\sin\theta\,\dot\theta,\cos\theta\,\dot\theta)
+=\omega\bm e_\theta,\\
+\dot{\bm e}_\theta&=(-\cos\theta\,\dot\theta,-\sin\theta\,\dot\theta)
+=-\omega\bm e_\rho.
+\end{align*}
+速度中的径向项与横向项分别应用乘积法则，第二项还需同时改变$\rho$、$\omega$与基矢：
+\begin{align*}
+\frac{\dd(v_\rho\bm e_\rho)}{\dd t}
+&=\dot v_\rho\bm e_\rho+v_\rho\omega\bm e_\theta,\\
+\frac{\dd(\rho\omega\bm e_\theta)}{\dd t}
+&=(\dot\rho\omega+\rho\dot\omega)\bm e_\theta
+  -\rho\omega^2\bm e_\rho.
+\end{align*}
+两项相加，再代入$v_\rho=\dot\rho$、$\dot v_\rho=\ddot\rho$，得到
+\[
+\bm a=\boxed{(\ddot\rho-\rho\omega^2)\bm e_\rho
+ +(2\dot\rho\omega+\rho\dot\omega)\bm e_\theta}.
+\]
 \fig{k1p12s}{极坐标速度的矢量求导：解答过程}{\begin{tikzpicture}\draw[axis](-1.8,0)--(3.1,0)node[right]{$\bm e_\rho$};\draw[axis](0,0)--(0,2)node[above]{$\bm e_\theta$};\node[below left]at(0,0){$P$};\draw[flow,red](0,0)--(-1.4,0)node[midway,above]{$-\rho\omega^2$};\draw[flow,green!50!black](0,0)--(1.5,0)node[midway,below]{$\ddot\rho$};\draw[flow,blue](.15,0)--(.15,1.4)node[right]{$2\dot\rho\omega+\rho\dot\omega$};\node at(.7,-.8){各项方向按其符号确定};\end{tikzpicture}}
 
 
@@ -101,10 +127,15 @@ v_y=-\frac{xv_x}{y}=-\frac{dv}{4y}.\]
 $P=(a,ut)$，其中 $a,u>0$，则
 \[\rho=\sqrt{a^2+u^2t^2},\qquad
 \theta=\arctan\frac{ut}{a}.\]
-由根式与反正切的导数，依次得到
-\[\dot\rho=\frac{u^2t}{\rho},\qquad
-\ddot\rho=\frac{u^2}{\rho}-\frac{u^4t^2}{\rho^3}
- =\frac{a^2u^2}{\rho^3},\]
+先对根式作链式求导，再对所得商式求导：
+\begin{align*}
+\dot\rho&=\frac1{2\sqrt{a^2+u^2t^2}}\,2u^2t
+=\frac{u^2t}{\rho},\\
+\ddot\rho&=u^2\frac{\rho-t\dot\rho}{\rho^2}
+=\frac{u^2}{\rho}-\frac{u^4t^2}{\rho^3}\\
+&=\frac{u^2(\rho^2-u^2t^2)}{\rho^3}
+=\frac{a^2u^2}{\rho^3}.
+\end{align*}
 反正切的内层为 $ut/a$，所以 $\dot\theta=[1+(ut/a)^2]^{-1}(u/a)=au/(a^2+u^2t^2)$。用 $\rho^2=a^2+u^2t^2$ 并再按链式法则求导，得到
 \[\omega=\frac{au}{\rho^2},\qquad
 \dot\omega=-\frac{2au\dot\rho}{\rho^3}

@@ -258,8 +258,15 @@ $\Delta y=f'(u)g'(x)h+o(h)$。因此两个局部变化率相乘，是逐级传�
 
 
 \subsection{复合运动的二次求导}
-图\ref{c1k-secondchain}中，等时间内的水平位移均为 $u\Delta t$，竖直位移却越来越大，说明水平匀速不能推出竖直匀速。对一般的 $y=f(x(t))$作两次时间求导：第一次得到 $\dot y=f'(x)\dot x$；第二次是两个因子的乘积求导，故
-\[\ddot y=f''(x)\dot x^2+f'(x)\ddot x.\]
+图\ref{c1k-secondchain}中，等时间内的水平位移均为$u\Delta t$，竖直位移却越来越大，说明水平匀速不能推出竖直匀速。对一般的$y=f(x(t))$，第一次用链式法则得到$\dot y=f'(x)\dot x$。第二次求导时，$f'(x(t))$和$\dot x(t)$都随时间变化，必须分别求导：
+\begin{align*}
+\ddot y
+&=\frac{\dd}{\dd t}\bigl[f'(x(t))\dot x(t)\bigr]\\
+&=\frac{\dd f'(x(t))}{\dd t}\dot x
+  +f'(x)\frac{\dd\dot x}{\dd t}\\
+&=\bigl[f''(x)\dot x\bigr]\dot x+f'(x)\ddot x
+=f''(x)\dot x^2+f'(x)\ddot x.
+\end{align*}
 第一项来自曲线斜率随位置变化，第二项来自水平运动本身的加速。对 $y=\beta x^2$，即使 $\ddot x=0$，仍有 $\ddot y=2\beta\dot x^2$。若水平速度也变化，就必须加上 $2\beta x\ddot x$。单纯把 $y''$改写为 $\ddot y$既漏掉速度因子，也混淆了两个不同的自变量。
 \fig{c1k-secondchain}{沿抛物线前进时，即使水平位移相等，竖直增量仍逐段增加}{\begin{tikzpicture}
 
@@ -322,8 +329,17 @@ $\bm a=\dot v\bm e_\tau+v\,\dd\bm e_\tau/\dd t$。单位向量的长度恒为一
 运动约束常以 $F(x,y)=0$出现，$x,y$均随同一个时间变化。若 $F$可微，链式法则给出
 \[F_x\dot x+F_y\dot y=0.\]
 这通常只是一个速度方程，还需配合题设的驱动规律才能确定所有速度。例如固定圆上的点满足 $x^2+y^2=R^2$。先求一次，再对所得乘积逐项求导：
-\[x\dot x+y\dot y=0,\qquad
-\dot x^2+\dot y^2+x\ddot x+y\ddot y=0.\]
+\begin{align*}
+\frac{\dd}{\dd t}(x^2+y^2-R^2)=0
+&\quad\Longrightarrow\quad 2x\dot x+2y\dot y=0,\\
+\frac{\dd}{\dd t}(x\dot x+y\dot y)
+&=(\dot x\dot x+x\ddot x)+(\dot y\dot y+y\ddot y)=0.
+\end{align*}
+约去第一式的公因子$2$，再整理第二式，分别得到
+\[
+x\dot x+y\dot y=0,\qquad
+\dot x^2+\dot y^2+x\ddot x+y\ddot y=0.
+\]
 第一式是 $\bm r\cdot\bm v=0$，表示速度与图\ref{c1k-turn}中的半径垂直；第二式是 $\bm r\cdot\bm a=-v^2$，只确定加速度的径向投影，并未要求切向加速度为零。两个速度平方项分别来自 $x\dot x$、$y\dot y$的乘积求导，不能遗漏。
 
 若把第一式改写成 $\dot x=-y\dot y/x$，还要确认 $x\ne0$。在 $x=0,y=\pm R$处，未相除的方程仍有效，并给出 $\dot y=0$；它没有单凭圆形轨道就确定 $\dot x$。因此分式的分母为零时，应先回到几何约束及驱动条件，不能立即认定真实速度无穷。

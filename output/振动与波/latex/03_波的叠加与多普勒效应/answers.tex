@@ -20,7 +20,17 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{先用闭口条件消去余弦，再用开口条件筛选波数}\par\nobreak
-令空气位移为$y=X(x)\cos\omega t$。代入波动方程，$-\omega^2X\cos\omega t=u^2X''\cos\omega t$，因而空间振幅满足$X''+k^2X=0$、$k=\omega/u$。试取$X=e^{sx}$得$s^2+k^2=0$，两根$\pm\mathrm ik$给出实数通解$X=C\sin kx+D\cos kx$。闭端$X(0)=0$使$D=0$，故$X=C\sin kx$。对空间求导，$X'=C\cos(kx)\,\dd(kx)/\dd x=Ck\cos kx$。开端$x=L$处压力扰动与$-\partial_xy$成正比，故$kC\cos kL=0$。非零振幅要求$kL=(2n-1)\pi/2$。
+令空气位移为$y=X(x)\cos\omega t$。求时间导数时固定$x$，求空间导数时固定$t$，分别得到
+\[
+y_t=-\omega X\sin\omega t,\qquad
+y_{tt}=-\omega^2X\cos\omega t,\qquad
+y_{xx}=X''\cos\omega t.
+\]
+代入波动方程$y_{tt}=u^2y_{xx}$，比较共同时间因子的系数，空间振幅满足$X''+k^2X=0$，其中$k=\omega/u$。试取$X=e^{sx}$，两次求导为$X'=se^{sx}$、$X''=s^2e^{sx}$，代回得到
+\[
+(s^2+k^2)e^{sx}=0.
+\]
+指数不为零，故$s^2=-k^2$，两根$s=\pm\mathrm ik$给出实数通解$X=C\sin kx+D\cos kx$。闭端$X(0)=0$使$D=0$，故$X=C\sin kx$。对空间求导，$X'=C\cos(kx)\,\dd(kx)/\dd x=Ck\cos kx$。开端$x=L$处压力扰动与$-\partial_xy$成正比，故$kC\cos kL=0$。非零振幅要求$kL=(2n-1)\pi/2$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从允许波数求频率序列和相邻间隔}\par\nobreak
 由$f=\omega/(2\pi)=uk/(2\pi)$逐步得到$f_n=(2n-1)u/(4L)$；相邻$n$相减得到间隔$2u/(4L)=u/(2L)$。
@@ -84,7 +94,14 @@
 \[
 f_{\rm echo}=\frac{u+V}{u-V}f.
 \]
-当$V\ll u$，相对频移近似$2V/u$。两个因子分别属于接收和再发射，不能只计算一次。\end{drillsolution}
+求低速近似前，先写相对频移的精确式。令$\varepsilon=V/u$，则
+\[
+\frac{f_{\rm echo}-f}{f}
+=\frac{u+V-(u-V)}{u-V}
+=\frac{2\varepsilon}{1-\varepsilon}
+=2\varepsilon+\frac{2\varepsilon^2}{1-\varepsilon}.
+\]
+当$V\ll u$时，舍去最后的二阶小量，才得到相对频移近似$2V/u$。两个因子分别属于接收和再发射，不能只计算一次。\end{drillsolution}
 \begin{drillsolution}{w3:drill:6}\textbf{固定截面分别求空间斜率和材料点速度}\par\nobreak
 在图\ref{fig:w3:drill:6:s}取正$x$为功率正方向，$P=-\mathcal T(\partial_xy)(\partial_ty)$。空间求导时$\cos\omega t$为常数，时间求导时$\sin kx$为常数，因此
 \[
@@ -107,15 +124,25 @@ f_{\rm echo}=\frac{u+V}{u-V}f.
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把张力做功改写成通过截面的瞬时功率}\par\nobreak
 把同一截面的两导数代入功率式，得到
 \[
-P=\frac{\mathcal T B^2k\omega}{4}\sin2kx\sin2\omega t.
+\begin{aligned}
+P&=-\mathcal T(Bk\cos kx\cos\omega t)
+(-B\omega\sin kx\sin\omega t)\\
+&=\mathcal T B^2k\omega(\cos kx\sin kx)
+(\cos\omega t\sin\omega t)\\
+&=\frac{\mathcal T B^2k\omega}{4}\sin2kx\sin2\omega t.
+\end{aligned}
 \]
 图\ref{fig:w3:drill:6:p}取$P_0=\mathcal T B^2k\omega/4$，在$t=T/8$时$\sin2\omega t=1$，故左半段$P>0$、右半段$P<0$，能量都流向中部。式中$\cos kx\sin kx=\tfrac12\sin2kx$、$\cos\omega t\sin\omega t=\tfrac12\sin2\omega t$，故系数出现$1/4$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用时间平均与波节条件区分瞬时交换和净输运}\par\nobreak
 对一个周期积分，固定$x$后的空间系数不参与积分。令$z=2\omega t$，则$\dd t=\dd z/(2\omega)$，$t=0,T$分别对应$z=0,4\pi$，所以
 \[
+\begin{aligned}
 \frac1T\int_0^T\sin2\omega t\,\dd t
-=\frac1{2\omega T}\int_0^{4\pi}\sin z\,\dd z
-=\frac1{2\omega T}[-\cos z]_0^{4\pi}=0.
+&=\frac1{2\omega T}\int_0^{4\pi}\sin z\,\dd z\\
+&=\frac1{2\omega T}[-\cos z]_0^{4\pi}\\
+&=\frac{-\cos4\pi+\cos0}{2\omega T}
+=\frac{-1+1}{2\omega T}=0.
+\end{aligned}
 \]
 因此时间平均功率为零，但一般位置的瞬时值不为零。波节$\sin kx=0$，故截面速度及功率恒为零；这与节间的局部能量交换并不矛盾。\end{drillsolution}

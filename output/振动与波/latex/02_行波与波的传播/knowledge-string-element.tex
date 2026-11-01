@@ -9,8 +9,11 @@
 图\ref{fig:w2:energyflux}取$y_x<0$的一个瞬间。左侧对右侧的张力指向左上，其竖直分量为$-\mathcal T y_x>0$；右侧端点此刻也向上，所以左侧向右侧做正功。若$y_x>0$，力与速度的竖直分量同时变负，功率仍为正。这里计算通过截面的能流，故应取左侧作用于右侧的力，不能误取反作用力。
 
 由弦元的牛顿方程，还可直接检验局部能量守恒。令$u_E=\mu_\ell y_t^2/2+\mathcal T y_x^2/2$，则
-\[
- \partial_tu_E=\mu_\ell y_t y_{tt}+\mathcal T y_x y_{xt}
- =\mathcal T\partial_x(y_t y_x)=-\partial_xP.
-\]
+\begin{align*}
+\partial_tu_E
+&=\frac{\mu_\ell}{2}(2y_ty_{tt})+\frac{\mathcal T}{2}(2y_xy_{xt})\\
+&=\mathcal T(y_ty_{xx}+y_xy_{xt})
+=\mathcal T\partial_x(y_ty_x)=-\partial_xP.
+\end{align*}
+第二行先代入$\mu_\ell y_{tt}=\mathcal T y_{xx}$，再用$\partial_x(y_ty_x)=y_{tx}y_x+y_ty_{xx}$与混合偏导$y_{tx}=y_{xt}$合并为乘积导数。
 因此一小段弦内能量的增加等于左端流入功率减去右端流出功率。对单一右行波还有$P=u u_E$；对含入射与反射的叠加场，能量密度依然非负，净功率却可能为零，不能把总能量密度乘$u$一律视为净能流。

@@ -41,7 +41,13 @@
  {\sqrt{2(9.109\times10^{-31})(1.602\times10^{-19})(150)}}
  =\boxed{1.00\times10^{-10}\,\mathrm m=0.100\,\mathrm{nm}}.
 \]
-若用相对论式 \(\lambda=hc/\sqrt{eU(eU+2m_ec^2)}\)，结果约相对减小 \(7.3\times10^{-5}\)，远小于本题保留三位有效数字的要求。把电子动能代入光子的 \(\lambda=hc/E\) 则会得到错误结果，因为有静质量的电子不满足 \(E=pc\)。
+为量化近似，记上式为 $\lambda_{\rm nr}$，相对论波长为 $\lambda_{\rm rel}=hc/\sqrt{eU(eU+2m_ec^2)}$。两式相除，令 $x=eU/(2m_ec^2)=1.47\times10^{-4}$，则
+\[
+ \frac{\lambda_{\rm rel}}{\lambda_{\rm nr}}=\frac1{\sqrt{1+x}},\qquad
+ \frac{\lambda_{\rm nr}-\lambda_{\rm rel}}{\lambda_{\rm nr}}
+ =\frac{x}{\sqrt{1+x}(\sqrt{1+x}+1)}\simeq\frac x2.
+\]
+故相对减小量约为 \(7.3\times10^{-5}\)，远小于本题保留三位有效数字的要求。把电子动能代入光子的 \(\lambda=hc/E\) 则会得到错误结果，因为有静质量的电子不满足 \(E=pc\)。
 
 
 
@@ -302,7 +308,11 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出发射频率并检查微小反冲修正}\par\nobreak
-令 \(\delta=\Delta/(m_0c^2)\)，得到
+将平方中的 $(m_0c^2+\Delta)^2$ 展开，减去 $m_0^2c^4$，得到 $2(m_0c^2+\Delta)\varepsilon=2m_0c^2\Delta+\Delta^2$。于是
+\[
+ \varepsilon=\frac{\Delta(2m_0c^2+\Delta)}{2(m_0c^2+\Delta)}.
+\]
+令 \(\delta=\Delta/(m_0c^2)\)，分子、分母同除 $2m_0c^2$，并用 $\nu_1=\Delta/h$，得到
 \[
  \boxed{\nu_{\rm em}=\nu_1\frac{1+\delta/2}{1+\delta}},\qquad
  \boxed{\Delta\nu=\nu_1\frac{\delta}{2(1+\delta)}}.
@@ -343,7 +353,12 @@
  m_0c^2+\varepsilon_a
  =\sqrt{(m_0c^2+\Delta)^2+\varepsilon_a^2}.
 \]
-平方后同样消去 \(\varepsilon_a^2\)，得
+平方后同样消去 \(\varepsilon_a^2\)，先得
+\[
+ m_0^2c^4+2m_0c^2\varepsilon_a
+ =m_0^2c^4+2m_0c^2\Delta+\Delta^2.
+\]
+消去共同静能平方，再除以 $2m_0c^2$，得
 \[
  \boxed{h\nu_{\rm abs}=\Delta\left(1+\frac{\delta}{2}\right)},\qquad
  \boxed{\nu_{\rm abs}=\nu_1\left(1+\frac{\delta}{2}\right)>\nu_1}.
@@ -388,7 +403,7 @@
  \quad\Longrightarrow\quad
  \gamma_b(1+b)=\frac{m_*}{m_0}=1+\delta.
 \]
-于是 \(b=[(1+\delta)^2-1]/[(1+\delta)^2+1]\)。入射光子在两系间满足纵向多普勒关系
+两边平方并用 $\gamma_b^2=(1-b^2)^{-1}$，得到 $(1+b)/(1-b)=(1+\delta)^2$。记右侧为 $a$，则 $1+b=a-ab$，移项得 $b(1+a)=a-1$，即 \(b=[(1+\delta)^2-1]/[(1+\delta)^2+1]\)。入射光子在两系间满足纵向多普勒关系
 \(\varepsilon'_a=\gamma_b(1-b)\varepsilon_a\)，故
 \[
  \varepsilon_a=\frac{m_0c^2b}{1-b}
@@ -563,7 +578,12 @@
  v_{\rm rel}=v_1-v_2,\qquad
  \mu_c=\frac{mM}{m+M}.
 \]
-这里 \(\mu_c\) 是碰撞两物体的约化质量，与原子内部电子和核的约化质量不同。初始动能可分为
+这里 \(\mu_c\) 是碰撞两物体的约化质量，与原子内部电子和核的约化质量不同。由定义反解两初速度，得 $v_1=V+Mv_{\rm rel}/(m+M)$、$v_2=V-mv_{\rm rel}/(m+M)$。代入两份动能并展开平方：$Vv_{\rm rel}$ 的系数为 $mM/(m+M)-Mm/(m+M)=0$，而 $v_{\rm rel}^2/2$ 的系数为
+\[
+ \frac{mM^2+Mm^2}{(m+M)^2}
+ =\frac{mM(m+M)}{(m+M)^2}=\mu_c.
+\]
+将整体速度的平方项合并，初始动能因此分为
 \[
  \frac12mv_1^2+\frac12Mv_2^2
  =\frac12(m+M)V^2+\frac12\mu_c v_{\rm rel}^2.

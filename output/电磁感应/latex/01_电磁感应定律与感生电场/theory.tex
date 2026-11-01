@@ -114,7 +114,14 @@
 
 \subsection{电流、电量与热量使用不同的积分}
 自感可以忽略、总电阻恒定、又没有其他电源时，任意时刻有 $i=-\dot\Phi/R$。对时间积分，得到某一截面通过的有向电量
-\[\Delta Q=\int_{t_1}^{t_2}i\dd t=-\frac{\Phi(t_2)-\Phi(t_1)}{R}.\]
+\[
+ \begin{aligned}
+ \Delta Q&=\int_{t_1}^{t_2}i\dd t
+ =-\frac1R\int_{t_1}^{t_2}\frac{\dd\Phi}{\dd t}\dd t
+ =-\frac1R[\Phi(t)]_{t_1}^{t_2}\\
+ &=-\frac{\Phi(t_2)-\Phi(t_1)}{R}.
+ \end{aligned}
+\]
 因此始末磁通给定时，有向电量与磁通变化的快慢无关。可是总共通过的电荷绝对量是 $\int|i|\dd t$；若电流反向，这个量会大于有向电量的绝对值。总焦耳热则为 $\int i^2R\dd t$，还依赖变化速度，不能只看始末状态。
 
 
@@ -289,9 +296,10 @@ E_\theta(r,t)=-\frac1r\int_0^r\frac{\partial B_z}{\partial t}\rho\dd\rho.\]
 粒子沿定半径轨道运动时，切向动力学可直接对时间积分。若 $B$ 在轨道内均匀，且粒子起初位于 $B_i$、速度为 $v_i$ 的状态，切向方程是
 $m\dot v=-qr\dot B/2$，固定的半径可以提出积分号。以初态为下限，
 \[
-m\int_{v_i}^{v}\dd z=-\frac{qr}{2}\int_{B_i}^{B}\dd b,
-\qquad v-v_i=-\frac{qr}{2m}(B-B_i).
+ m\int_{v_i}^{v}\dd z=-\frac{qr}{2}\int_{B_i}^{B}\dd b,
+ \qquad m[z]_{v_i}^{v}=-\frac{qr}{2}[b]_{B_i}^{B}.
 \]
+代入两端并除以 $m$，有 $v-v_i=-qr(B-B_i)/(2m)$。
 这个速度是逆时针为正的有向量。径向磁力则为 $qvB$，向外为正；$v$ 与 $B$ 反号时磁力向内。支持力应从 $F_r+qvB=-mv^2/r$ 求出，不凭图形先假设其方向。若轨道是细管，它可双向施力；若只是单侧挡壁，应进一步检查接触是否能保持。
 
 

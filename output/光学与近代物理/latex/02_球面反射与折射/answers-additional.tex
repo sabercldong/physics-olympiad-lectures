@@ -71,10 +71,15 @@ x_F=R(\cos\theta-1)-\frac{R\cos2\theta}{2\cos\theta}
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由焦点偏移确定孔径限制}\par\nobreak
 当 $h/R=1/2$，$\cos\theta=\sqrt3/2$，故 $s=20(1-1/\sqrt3)\,\mathrm{cm}\simeq8.453\,\mathrm{cm}$；近轴值为 $10.0\,\mathrm{cm}$，相对偏差约 $15.47\%$。图\ref{fig:d25s}的交点顺序与 $s<R/2$ 一致。
 
-一般地，相对偏差为 $\sec\theta-1$。要求它不超过 $0.0100$，等价于 $\cos\theta\ge100/101$，从而
+一般地，$s<R/2$，相对偏差为 $(R/2-s)/(R/2)=\sec\theta-1$。要求它不超过 $0.0100$，先得 $1/\cos\theta\le101/100$。因 $0<\theta<45^\circ$，两边正，取倒数得到 $\cos\theta\ge100/101$。再用 $h/R=\sin\theta=\sqrt{1-\cos^2\theta}$，
+\[
+ \frac hR\le\sqrt{1-\frac{10000}{10201}}
+ =\frac{\sqrt{201}}{101},
+\]
+从而
 \[
 \boxed{h_{\max}=R\frac{\sqrt{201}}{101}\simeq2.807\,\mathrm{cm}}
 \quad(R=20.0\,\mathrm{cm}).
 \]
-$h\to0$ 时精确式恢复 $s\to R/2$，而误差首项为 $h^2/(2R^2)$。孔径限制来自球面反射的几何像差，与衍射限制是不同的问题。
+$h\to0$ 时精确式恢复 $s\to R/2$。若令 $\epsilon=h^2/R^2$，相对偏差为 $(1-\epsilon)^{-1/2}-1$；在零点的函数值为零，导数为 $\tfrac12(1-\epsilon)^{-3/2}$、零点导数为 $1/2$，故误差为 $\epsilon/2+O(\epsilon^2)$，首项即 $h^2/(2R^2)$。孔径限制来自球面反射的几何像差，与衍射限制是不同的问题。
 \end{drillsolution}

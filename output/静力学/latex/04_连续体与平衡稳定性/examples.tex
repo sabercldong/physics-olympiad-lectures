@@ -166,13 +166,16 @@ $2n$个等长均匀刚性链节、每节重$mg$，铰接组成对称悬链，两
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离端节，对下端铰链取矩}\par\nobreak
 图\ref{fig:s4:example:4:p}中端点支持力的力臂为$l\sin\theta$，水平摩擦力臂为$l\cos\theta$，自身重力力臂为$(l/2)\sin\theta$。故
 \[
-Nl\sin\theta-Hl\cos\theta-\frac{mgl}{2}\sin\theta=0,
-\quad \tan\theta=\frac{2n\mu}{2n-1}.
+Nl\sin\theta-Hl\cos\theta-\frac{mgl}{2}\sin\theta=0.
 \]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入摩擦边界并恢复允许范围}\par\nobreak
-将$N=nmg$、$H=\mu nmg$代入力矩式，约去$mgl$，得$(n-\tfrac12)\sin\theta=\mu n\cos\theta$；除以$(n-\tfrac12)\cos\theta$即得上式。允许静止时应有$\tan\theta\le2n\mu/(2n-1)$，等号只是开始滑动的边界。当$n$很大时趋于$\tan\theta=\mu$，有限节长的自重力矩带来分母中的$-1$。\end{solution}
+将$N=nmg$、$H=\mu nmg$代入力矩式，约去$mgl$，得$(n-\tfrac12)\sin\theta=\mu n\cos\theta$。因$n\ge1$且$0\le\theta<\pi/2$，可以除以$(n-\tfrac12)\cos\theta$，得到临界值
+\[
+\tan\theta=\frac{n\mu}{n-1/2}=\frac{2n\mu}{2n-1}.
+\]
+允许静止时以$H\le\mu nmg$代入同一力矩式，故$\tan\theta\le2n\mu/(2n-1)$，等号只是开始滑动的边界。当$n$很大时趋于$\tan\theta=\mu$，有限节长的自重力矩带来分母中的$-1$。\end{solution}
 \begin{question}\begin{example}[球面上的水平弹性绳圈]\label{s4:example:5}
 半径$R$的固定光滑球上放质量$M$的均匀弹性圈，原长$2\pi a$，$R=2a$。静止时圈半径$b=\sqrt2a$且在上半球，整圈张力定义为$\tau=k\,2\pi(b-a)$。求$k$。
 \end{example}
@@ -325,7 +328,12 @@ z_C=(R+h/2)\cos\theta+R\theta\sin\theta.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立杆长约束选取曲线分支}\par\nobreak
-图\ref{fig:s4:example:8:p}杆长约束$x^2+(Y-y)^2=L^2$给$x^2+(L-2y)^2=L^2$。取经过原点的下支，
+图\ref{fig:s4:example:8:p}杆长约束$x^2+(Y-y)^2=L^2$给$x^2+(L-2y)^2=L^2$。在$x<L$时，解平方关系得到
+\[
+L-2y=\pm\sqrt{L^2-x^2},\qquad
+y=\frac L2\mp\frac12\sqrt{L^2-x^2}.
+\]
+在$x=0$处，两支分别给$y=0,L$；要求经过原点且墙端在曲线端上方，应取$L-2y>0$，故
 \[
 y=\frac L2-\frac12\sqrt{L^2-x^2},\quad 0\le x<L.
 \]

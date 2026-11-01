@@ -194,7 +194,7 @@ $A,B$两物体质量为$2\,\mathrm{kg},1\,\mathrm{kg}$，与水平面的动摩�
 \fig{fig:em1:example:7:s}{题设：碰撞前后滑行的时间}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$A$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$B$};\draw[flow](0.7,0.8)--++(1.5,0)node[above]{$v_0$};\draw[dim](1,-.8)--(4.3,-.8)node[midway,below]{$9.5\,\mathrm m$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{从接近距离求碰撞时刻并筛选根}\par\nobreak
-图\ref{fig:em1:example:7:s}中两物体滑动减速度大小均为$\mu g=1\,\mathrm{m/s^2}$。设碰前时间$t$，则$10t-\tfrac12t^2=9.5$，解得$t=1\,\mathrm s$或$19\,\mathrm s$。后者已超过未碰撞时的停止时刻，必须舍去；故碰前$u_A=9\,\mathrm{m/s}$。
+图\ref{fig:em1:example:7:s}中两物体滑动减速度大小均为$\mu g=1\,\mathrm{m/s^2}$。碰前$B$静止，设接近所需时间为$t$，由$A$的位移等于初始间距，得$10t-\tfrac12t^2=9.5$。
 \fig{fig:em1:example:7:p}{碰撞使速度瞬时跳变，碰后两物体以相同减速度分别滑行至停止}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(5.2,0)node[right]{$t/\mathrm s$};\draw[axis](0,0)--(0,3)node[above]{$v/(\mathrm{m/s})$};
@@ -208,7 +208,7 @@ $A,B$两物体质量为$2\,\mathrm{kg},1\,\mathrm{kg}$，与水平面的动摩�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查数学根对应的运动区间}\par\nobreak
-二次方程可化为$t^2-20t+19=0$，即$(t-1)(t-19)=0$。未碰撞时$A$在$10\,\mathrm s$便停止，故后一个数学根不在所用匀减速公式的有效区间。碰撞前的接近距离在$t=1\,\mathrm s$确实为$10-0.5=9.5\,\mathrm m$。
+把位移式乘$-2$并移项，得$t^2-20t+19=0$，因式分解为$(t-1)(t-19)=0$，所以$t=1\,\mathrm s$或$19\,\mathrm s$。未碰撞时$A$在$10\,\mathrm s$便停止，故后一个数学根不在所用匀减速公式的有效区间。取$t=1\,\mathrm s$，碰前速度$u_A=10-(\mu g)t=9\,\mathrm{m/s}$，接近距离也确实为$10-0.5=9.5\,\mathrm m$。
 
 
 
@@ -238,12 +238,15 @@ $A,B$两物体质量为$2\,\mathrm{kg},1\,\mathrm{kg}$，与水平面的动摩�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{将速度约束投影到各自绳方向}\par\nobreak
-图\ref{fig:em1:example:8:p}中每根绳两端的沿绳速度必须相等。把速度代入$(\bm v_A-\bm v_B)\cdot\bm e_1=0$与$(\bm v_C-\bm v_B)\cdot\bm e_2=0$，得到
-\[I-2J_1+\tfrac12J_2=0,\qquad \tfrac12J_1-2J_2=0.\]
+图\ref{fig:em1:example:8:p}中每根绳两端的沿绳速度必须相等，故分别有$(\bm v_A-\bm v_B)\cdot\bm e_1=0$与$(\bm v_C-\bm v_B)\cdot\bm e_2=0$。先用$\bm e_1\cdot\bm e_2=-1/2$展开投影，再求两绳冲量。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开投影以保留两绳夹角}\par\nobreak
-投影的中间计算例如$ m\bm v_B\cdot\bm e_1=J_1-J_2/2$，而$m\bm v_A\cdot\bm e_1=I-J_1$；两者相等便给第一式。沿$\bm e_2$，分别有$m\bm v_C\cdot\bm e_2=-J_2$及$m\bm v_B\cdot\bm e_2=-J_1/2+J_2$，从而得到第二式。夹角的余弦已经通过这两个投影进入方程。
+沿$\bm e_1$，有$m\bm v_B\cdot\bm e_1=J_1-J_2/2$、$m\bm v_A\cdot\bm e_1=I-J_1$；沿$\bm e_2$，有$m\bm v_C\cdot\bm e_2=-J_2$、$m\bm v_B\cdot\bm e_2=-J_1/2+J_2$。分别令两端投影相等，移项后得到
+\[
+I-2J_1+\tfrac12J_2=0,\qquad \tfrac12J_1-2J_2=0.
+\]
+夹角的余弦通过这两个投影进入方程。
 
 
 
@@ -272,7 +275,14 @@ $B$的$y$速度始终为零，这由槽壁额外提供的约束冲量保证。
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解绳冲量并区分两个动量分量}\par\nobreak
 由图\ref{fig:em1:example:9:p}的绷紧约束$(\bm v_A-\bm v_B)\cdot\bm n=0$，得到
 \[\frac{\sqrt3}{2}v_0-\frac{7J}{4m}=0,\quad J=\frac{2\sqrt3}{7}mv_0,\quad\boxed{v_B=\frac37v_0}.\]
-进而$v_{Ax}=4v_0/7$、$v_{Ay}=\sqrt3v_0/7$。沿槽的总动量仍为$mv_0$；垂直槽的总动量增加了$\sqrt3mv_0/7$，正是槽给系统的外冲量。碰后动能为$2mv_0^2/7$，小于碰前的$mv_0^2/2$，符合松绳突然绷紧的耗能性质。\end{solution}
+进而$v_{Ax}=4v_0/7$、$v_{Ay}=\sqrt3v_0/7$。沿槽的总动量仍为$mv_0$；垂直槽的总动量增加了$\sqrt3mv_0/7$，正是槽给系统的外冲量。把两球各分量平方求和，碰后动能为
+\[
+K_+=\frac m2\left[\left(\frac{4v_0}{7}\right)^2
++\left(\frac{\sqrt3v_0}{7}\right)^2
++\left(\frac{3v_0}{7}\right)^2\right]
+=\frac{mv_0^2}{98}(16+3+9)=\frac27mv_0^2.
+\]
+故损失为$mv_0^2/2-2mv_0^2/7=3mv_0^2/14>0$，符合松绳突然绷紧的耗能性质。\end{solution}
 \begin{question}\begin{example}[下落链条对秤盘的作用]\label{em1:example:10}
 长$\ell$、线密度$\lambda$的柔软链条竖直悬于秤盘上方，下端恰接触盘面。由静止释放，假定链节落到盘后立即静止，尚未到盘的部分自由下落且互不牵制。求已有长度$x$堆在秤盘上时的示数。
 \end{example}
@@ -313,7 +323,8 @@ $B$的$y$速度始终为零，这由槽壁额外提供的约束冲量保证。
 \[
 \int_0^v w\,\dd w=\frac{2g}{\ell}\int_\varepsilon^x\xi\,\dd\xi,
 \qquad
-\frac{v^2}{2}=\frac g\ell[\xi^2]_\varepsilon^x
+\left[\frac{w^2}{2}\right]_0^v=\frac g\ell[\xi^2]_\varepsilon^x,
+\qquad \frac{v^2}{2}
 =\frac g\ell(x^2-\varepsilon^2).
 \]
 令 $\varepsilon\to0^+$，得到题设微小扰动极限 $v^2=2gx^2/\ell$。完全对称且严格静止的状态不会自行开始运动；这里比较的是扰动后到达同一 $x>0$ 时的极限速度。
@@ -330,8 +341,7 @@ $B$的$y$速度始终为零，这由槽壁额外提供的约束冲量保证。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别处理两个直链段的边界流动}\par\nobreak
-对图\ref{fig:em1:example:11:p}的上行左链和下行右链分别考虑动量流。若以小滑轮两切点处张力为$T$，直段满足$T=\lambda(\ell/2-x)(g+a)$和$T=\lambda(\ell/2+x)(g-a)$，两者都给
-\[T=\lambda g\left(\frac\ell2-\frac{2x^2}{\ell}\right).\]
+对图\ref{fig:em1:example:11:p}的上行左链和下行右链分别考虑动量流，记小滑轮两切点处张力为$T$。先对两直段写动量方程，保留因链长改变产生的项。
 对左直段取向上为正，$P_L=\lambda(\ell/2-x)v$。乘积求导并用 $\dot x=v,\dot v=a$，得
 \[
 \dot P_L=\lambda(-\dot x)v+\lambda(\ell/2-x)\dot v
@@ -340,8 +350,19 @@ $B$的$y$速度始终为零，这由槽壁额外提供的约束冲量保证。
 其上端每秒流出向上动量 $\lambda v^2$，故
 $\dot P_L=T-\lambda(\ell/2-x)g-\lambda v^2$。
 两式中的流出项抵消，留下 $T-\lambda(\ell/2-x)g=\lambda(\ell/2-x)a$。
-右段取向下为正时，$\dot P_R=\lambda v^2+\lambda(\ell/2+x)a$，而外力与流入项给
-$\dot P_R=\lambda(\ell/2+x)g-T+\lambda v^2$，同样得到前面的右段方程。这解释了两式为何可以写成“该段质量乘加速度”，而不是忽略了边界流动。
+右段取向下为正时，由$P_R=\lambda(\ell/2+x)v$求导得$\dot P_R=\lambda\dot x\,v+\lambda(\ell/2+x)\dot v=\lambda v^2+\lambda(\ell/2+x)a$，而外力与流入项给
+$\dot P_R=\lambda(\ell/2+x)g-T+\lambda v^2$。消去流入项后，两个直段依次给出
+\[
+T=\lambda(\ell/2-x)(g+a),\qquad
+T=\lambda(\ell/2+x)(g-a).
+\]
+代入$a=2gx/\ell$，例如左段有
+\[
+T=\lambda g\left(\frac\ell2-x\right)\left(1+\frac{2x}{\ell}\right)
+=\lambda g\left(\frac\ell2+x-x-\frac{2x^2}{\ell}\right)
+=\lambda g\left(\frac\ell2-\frac{2x^2}{\ell}\right).
+\]
+两段结果相同。它们可化为“该段质量乘加速度”的形式，是因为质量变化项与边界动量流相消。
 
 
 
@@ -416,7 +437,12 @@ f'(c)=\frac12[2c(1-c)-c^2]=\frac{c(2-3c)}2.
 \fig{fig:em1:example:14:s}{题设：从地面连续拉起链条}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\draw[very thick](2,0)--(2,2.6);\draw[world](1,.1)--(3,.1)--(1.2,.2)--(2.8,.2);\draw[force](2,2.6)--(2,3.6)node[above]{$F$};\draw[dim](3.7,0)--(3.7,2.6)node[midway,right]{$x$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{保留静止链节接入带来的动量项}\par\nobreak
-按图\ref{fig:em1:example:14:s}移动部分质量为$\lambda x$，下端以速率$v=\dot x$接入原来静止的链节。封闭微元动量式给$F-\lambda xg=\lambda x\dot v+\lambda v^2$。
+按图\ref{fig:em1:example:14:s}移动部分质量为$\lambda x$，下端以速率$v=\dot x$接入原来静止的链节。在$\dd t$内选原运动链及即将接入的$\lambda\dd x$为封闭系统，初动量为$\lambda xv$。末动量展开并舍去二阶量，
+\[
+(\lambda x+\lambda\dd x)(v+\dd v)-\lambda xv
+=\lambda x\dd v+\lambda v\dd x+O(\dd t^2).
+\]
+重力新增部分的冲量也是二阶量，故一阶动量式为$(F-\lambda xg)\dd t=\lambda x\dd v+\lambda v\dd x$。代入$\dd x=v\dd t$，除以$\dd t$得到$F-\lambda xg=\lambda x\dot v+\lambda v^2$。
 令 $y(x)=v(x)^2$，有 $y'=2v\,\dd v/\dd x$；同时链式法则给
 $\dot v=(\dd v/\dd x)\dot x=v\,\dd v/\dd x=y'/2$。
 代入再除以 $\lambda x/2$，得到 $y'+2y/x=2F/(\lambda x)-2g$。
@@ -538,7 +564,14 @@ $x_0>0$避免了从零运动质量起步的模型奇点。\end{solution}
 按图\ref{fig:em1:example:16:p}两式联立，$(n+1)^2V_{n+1}^2=n^2V_n^2+2nF\ell/m$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{累加递推并检查初值和极限}\par\nobreak
-令$A_n=n^2V_n^2$，递推成为$A_{n+1}-A_n=2nF\ell/m$。从$1$累加到$n-1$，左边只剩$A_n-A_1$，右边为$(2F\ell/m)\sum_{j=1}^{n-1}j=(F\ell/m)n(n-1)$。由$V_1=0$得$A_1=0$，再除以$n^2$得到$V_n^2$；将其代回连续加速段，才得到$U_n^2$。所以
+令$A_n=n^2V_n^2$，递推成为$A_{n+1}-A_n=2nF\ell/m$。从$1$累加到$n-1$，左边只剩$A_n-A_1$，右边为$(2F\ell/m)\sum_{j=1}^{n-1}j=(F\ell/m)n(n-1)$。由$V_1=0$得$A_1=0$，再除以$n^2$，并代回连续加速段：
+\[
+V_n^2=\frac{F\ell}{m}\frac{n(n-1)}{n^2}
+=\frac{F\ell}{m}\frac{n-1}{n},\qquad
+U_n^2=\frac{F\ell}{m}\left(\frac{n-1}{n}+\frac2n\right)
+=\frac{F\ell}{m}\frac{n+1}{n}.
+\]
+两速度均向前，取非负平方根，所以
 \[\boxed{V_n=\sqrt{\frac{F\ell}{m}\frac{n-1}{n}},\qquad U_n=\sqrt{\frac{F\ell}{m}\frac{n+1}{n}}}.\]
 $n\to\infty$时二者都趋于$\sqrt{F\ell/m}$。若误把每次粘合当弹性过程，速度递推和极限都会不同。\end{solution}
 \begin{question}\begin{example}[移动反射板受到的水流推力]\label{em1:example:17}

@@ -123,7 +123,18 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用全部横档电流之和核对归一化}\par\nobreak
-核对横档总和：$J_0+2\sum_{n\ge1}J_n=(I/\sqrt3)(1+\lambda)/(1-\lambda)=I$。该核验同时检查了左右两侧的倍数。\end{solution}
+先对左右各 $N$ 列求和。令 $S_N=\lambda+\lambda^2+\cdots+\lambda^N$，将 $S_N-\lambda S_N$ 逐项抵消，得到 $(1-\lambda)S_N=\lambda-\lambda^{N+1}$。于是
+\[
+ J_0+2\sum_{n=1}^NJ_n
+ =\frac I{\sqrt3}\left[1+\frac{2\lambda(1-\lambda^N)}{1-\lambda}\right].
+\]
+由 $0<\lambda<1$，取 $N\to\infty$ 后为 $I(1+\lambda)/[\sqrt3(1-\lambda)]$。再用 $\lambda=2-\sqrt3$，
+\[
+ \frac{1+\lambda}{1-\lambda}
+ =\frac{3-\sqrt3}{\sqrt3-1}=\sqrt3,
+ \qquad J_0+2\sum_{n\ge1}J_n=I.
+\]
+该核验同时检查了左右两侧的倍数。\end{solution}
 \begin{question}\begin{example}[公共回流线上的任意距离端口]\label{c4:example:5}
 单有阻上导轨网络向左右无限延伸，每段上轨及每横档均为 $r$，下导线理想。上轨节点 $A_0,A_n$ 间隔 $n$ 段。求 $R_n$、相邻端口值和 $n\to\infty$ 极限。
 \end{example}
@@ -681,11 +692,17 @@ $1/(3y)=(3x+2R)/[3R(2x+R)]$，所以
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从一个环的真实边界逐层递推}\par\nobreak
-只有一个开环时 $x\to\infty$，首臂 $x_1=2R/3$。逐层递推
+只有一个六边形环、没有后续负载时，令 $x\to\infty$，首臂为 $x_1=2R/3$。记无量纲量 $a_j=x_j/R$，递推式为 $a_{j+1}=(2a_j+1)/(3a_j+2)$。把每一级的结果代入下一层，
 \[
- \frac{x_1}R=\frac23,\quad\frac{x_2}R=\frac7{12},\quad
- \frac{x_3}R=\frac{26}{45},\quad\frac{x_4}R=\frac{97}{168},\quad
- \frac{x_5}R=\frac{362}{627}.
+ \begin{aligned}
+ a_2&=\frac{2(2/3)+1}{3(2/3)+2}=\frac{7/3}{4}=\frac7{12},\\
+ a_3&=\frac{2(7/12)+1}{3(7/12)+2}
+ =\frac{26/12}{45/12}=\frac{26}{45},\\
+ a_4&=\frac{2(26/45)+1}{3(26/45)+2}
+ =\frac{97/45}{168/45}=\frac{97}{168},\\
+ a_5&=\frac{2(97/168)+1}{3(97/168)+2}
+ =\frac{362/168}{627/168}=\frac{362}{627}.
+ \end{aligned}
 \]
 
 
@@ -707,7 +724,16 @@ $1/(3y)=(3x+2R)/[3R(2x+R)]$，所以
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算内部界面左右三端网络的并联}\par\nobreak
 图\ref{c4:e18:internal-interface}的三个共享端点是 $D_5$ 的 $1,3,5$。
 
-$D_5$ 奇数端组三点同时接左侧四环和右侧本环，其等效星臂分别为 $x_4$ 与 $x_1$。两星心均为三端平均势，等势合并后逐臂并联，故 $R_{13}^{(D_5)}=2(x_4\parallel x_1)=388R/627$。端口位于首端还是内部界面，边界负载不同，结果不能照搬。\end{solution}
+$D_5$ 奇数端组三点同时接左侧四环和右侧本环，其等效星臂分别为 $x_4$ 与 $x_1$。两星心均为三端平均势，等势合并后逐臂并联，故
+\[
+ \begin{aligned}
+ R_{13}^{(D_5)}&=2(x_4\parallel x_1)
+ =2R\frac{(97/168)(2/3)}{97/168+2/3}\\
+ &=2R\frac{194/504}{209/168}
+ =\frac{388R}{627}.
+ \end{aligned}
+\]
+端口位于首端还是内部界面，边界负载不同，结果不能照搬。\end{solution}
 \begin{question}\begin{example}[圆环式自相似网络的固定点]\label{c4:example:19}
 每层有端点 $A,B,M$，外三支路各为 $r/3$，另在 $M,B$ 间接串联的 $r$、下一层同型网络、$r$。各层不断重复。求最外 $A,B$ 间电阻。
 \end{example}
@@ -731,7 +757,13 @@ $D_5$ 奇数端组三点同时接左侧四环和右侧本环，其等效星臂�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{去分母后求被动代数根}\par\nobreak
-内层先化为 $(x+2)/(3x+7)$，再加 $1/3$ 得 $(6x+13)/[3(3x+7)]$；最外并联给 $x=(6x+13)/(27x+60)$，故 $27x^2+54x-13=0$。取正根
+内层先化为 $(x+2)/(3x+7)$，再加 $1/3$ 得 $(6x+13)/[3(3x+7)]$；最外并联给 $x=(6x+13)/(27x+60)$，故 $27x^2+54x-13=0$。除以 $27$ 并配方，
+\[
+ x^2+2x=\frac{13}{27},\qquad
+ (x+1)^2=\frac{40}{27},\qquad
+ x=-1\pm\sqrt{\frac{40}{27}}=-1\pm\frac{2\sqrt{30}}9.
+\]
+负号根小于零，取正根
 \[
  X=\left(\frac{2\sqrt{30}}9-1\right)r\simeq0.21716r.
 \]

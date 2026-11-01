@@ -4,7 +4,17 @@
  m\dot v=-\gamma v,\qquad
  m\frac{\dd v}{\dd x}=-\gamma.
 \]
-全部进入时两边动生作用相消，速度保持不变；退出时电流反向，但合磁力仍阻碍运动。在进入段，以 $x=0,v=v_0$ 为初态积分，$m(v-v_0)=-\gamma x$；在退出段，以 $x=d,v=v_1$ 为初态积分，$m(v-v_1)=-\gamma(x-d)$。若能够穿出，连续接续得到
+全部进入时两边动生作用相消，速度保持不变；退出时电流反向，但合磁力仍阻碍运动。在进入段，以 $x=0,v=v_0$ 为初态积分，
+\[
+ m\int_{v_0}^{v(x)}\dd z=-\gamma\int_0^x\dd\xi,
+ \qquad m[z]_{v_0}^{v(x)}=-\gamma[\xi]_0^x,
+\]
+所以 $m(v-v_0)=-\gamma x$。退出段的初态改为 $x=d,v=v_1$，
+\[
+ m\int_{v_1}^{v(x)}\dd z=-\gamma\int_d^x\dd\xi,
+ \qquad m[z]_{v_1}^{v(x)}=-\gamma[\xi]_d^x,
+\]
+所以 $m(v-v_1)=-\gamma(x-d)$。若能够穿出，连续接续得到
 \[
  v(x)=
  \begin{cases}

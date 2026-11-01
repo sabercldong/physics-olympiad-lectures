@@ -100,7 +100,13 @@
 \fig{k6t-cycloid}{摆线的相位和两个触地点}{\begin{tikzpicture}\draw[world](-.3,0)--(7,0);\draw[blue,world]plot[domain=0:360,samples=100]({rad(\x)-sin(\x)},{1-cos(\x)});\foreach \x/\s in {0/0,3.14159/\pi,6.28318/{2\pi}}\node[below]at(\x,0){$\varphi=\s$};\fill(3.14159,2)circle(2pt)node[above]{最高点};\end{tikzpicture}}
 
 \subsection{可达区域与包络线}
-对给定初速的一族轨迹，令 $p=\tan\alpha$、$K=gx^2/(2v_0^2)>0$，可把高度直接配方成
+对给定初速的一族轨迹，在固定 $x\ne0$处令 $p=\tan\alpha$、$K=gx^2/(2v_0^2)>0$。轨迹高度为 $y=xp-K(1+p^2)$，先提取二次项的系数，再在括号中补成平方：
+\begin{align*}
+ y&=-K\left(p^2-\frac xKp\right)-K\\
+ &=-K\left[\left(p-\frac{x}{2K}\right)^2
+ -\frac{x^2}{4K^2}\right]-K.
+\end{align*}
+代入 $x^2/(4K)=v_0^2/(2g)$，得到
 \[y=-K\left(p-\frac{x}{2K}\right)^2
 +\frac{v_0^2}{2g}-\frac{gx^2}{2v_0^2}.
 \]

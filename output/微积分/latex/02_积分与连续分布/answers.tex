@@ -6,8 +6,9 @@
 v(t)-v_0&=\int_0^t(a_0+b\tau)\dd\tau
  =\left[a_0\tau+\frac b2\tau^2\right]_0^t
  =a_0t+\frac b2t^2,\\
-x(t)-x_0&=\int_0^t\left(v_0+a_0\tau+\frac b2\tau^2\right)\dd\tau
- =v_0t+\frac{a_0}2t^2+\frac b6t^3.
+x(t)-x_0&=\int_0^t\left(v_0+a_0\tau+\frac b2\tau^2\right)\dd\tau\\
+&=\left[v_0\tau+\frac{a_0}{2}\tau^2+\frac b6\tau^3\right]_0^t
+=v_0t+\frac{a_0}2t^2+\frac b6t^3.
 \end{align*}
 因此 $v=v_0+a_0t+bt^2/2$，$x=x_0+v_0t+a_0t^2/2+bt^3/6$。
 \fig{c2d1s}{同一组初值下，加速度面积依次决定速度和位置的增量}{\begin{tikzpicture}
@@ -23,7 +24,13 @@ x(t)-x_0&=\int_0^t\left(v_0+a_0\tau+\frac b2\tau^2\right)\dd\tau
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向求导及参数退化检查}\par\nobreak
-图\ref{c2d1s}以 $a_0,v_0,x_0,b$ 均为正的情形示意：速度曲线的切线斜率跟随加速度，位置曲线的切线斜率跟随速度。每一级积分都保留相应的初值。反向求导时，位置的一阶导数恢复所得速度，二阶导数恢复 $a_0+bt$；令 $t=0$又分别恢复 $x_0,v_0$。参数 $b$具有长度每时间三次方的单位，故 $bt^3$具有位置的量纲。
+图\ref{c2d1s}以$a_0,v_0,x_0,b$均为正的情形示意：速度曲线的切线斜率跟随加速度，位置曲线的切线斜率跟随速度。反向求导可以逐项核验两次积分中的系数：
+\begin{align*}
+\dot x&=0+v_0+\frac{a_0}{2}(2t)+\frac b6(3t^2)
+=v_0+a_0t+\frac b2t^2=v(t),\\
+\dot v&=0+a_0+\frac b2(2t)=a_0+bt=a(t).
+\end{align*}
+令$t=0$又分别恢复$x_0,v_0$。参数$b$具有长度每时间三次方的单位，故$bt^3$具有位置的量纲。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验恒加速度的退化情形}\par\nobreak
@@ -62,7 +69,13 @@ N=\int_0^L n(x)\dd x=\gamma\left[\frac{x^2}2\right]_0^L
  =\frac{bH^2}{2c}\ge0.\]
 当 $b=0$时偏差为零，恢复匀速情形；$b>0$时末速估计偏大。
 
-相对于实际时间的误差为 $bH/(2a+bH)$，因而只有 $bH\ll a$时，才可把速度变化的影响视为较小修正。相对误差只由无量纲参数 $bH/a$决定，选用不同长度单位不会改变这一判断。
+相对于实际时间的误差为
+\[
+\frac{H/v(H)-t}{t}
+=\frac{bH^2/(2c)}{aH/c+bH^2/(2c)}
+=\frac{bH}{2a+bH}.
+\]
+因而只有$bH\ll a$时，才可把速度变化的影响视为较小修正。相对误差只由无量纲参数$bH/a$决定，选用不同长度单位不会改变这一判断。
 \end{drillsolution}
 \begin{drillsolution}{c2d3}\textbf{根据旋转体内部确定圆盘微元}\par\nobreak
 图 \ref{c2d3q} 中先指定内部 $0\le r\le\sqrt{\ell z}$，再取图 \ref{c2d3s} 的圆盘，得到 $\dd V=\pi\ell z\dd z$。
@@ -84,8 +97,7 @@ $V=\int_0^H\pi\ell z\dd z=\pi\ell[z^2/2]_0^H=\boxed{\pi\ell H^2/2}$。
 \begin{drillsolution}{c2d4}\textbf{把四维体积分成三维球截面}\par\nobreak
 图 \ref{c2d4q} 的线段只是截面示意，实际截面是三维球，故
 \[
- V_4=\int_{-R}^R\frac{4\pi}3(R^2-w^2)^{3/2}\dd w
- =\frac{4\pi R^4}3\int_0^\pi\sin^4\theta\dd\theta.
+ V_4=\int_{-R}^R\frac{4\pi}3(R^2-w^2)^{3/2}\dd w.
 \]
 \fig{c2d4s}{固定第四坐标后得到三维球，截面体积随第四坐标变化}{\begin{tikzpicture}
 \begin{scope}\draw[world](0,1.2)circle(1.2);\draw[world](0,1.2)ellipse(1.2 and .32);\draw[guide](0,0)--(0,2.4);\draw[dim](0,1.2)--(1.2,1.2);\node[above]at(.55,1.2){$r_w$};\node at(0,-.6){$x^2+y^2+z^2\le r_w^2$};\node at(0,-1.2){$r_w=\sqrt{R^2-w^2}$};\node at(0,3){固定 $w$ 的三维截面};\end{scope}
@@ -95,7 +107,17 @@ $V=\int_0^H\pi\ell z\dd z=\pi\ell[z^2/2]_0^H=\boxed{\pi\ell H^2/2}$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{保留三次截面半径与一阶微元因子}\par\nobreak
-换元时 $w=R\cos\theta$、$\dd w=-R\sin\theta\dd\theta$，根式的三次幂为 $R^3\sin^3\theta$，相乘才得到 $R^4\sin^4\theta$。旧上下限 $-R,R$ 分别对应新上下限 $\pi,0$，反转后吸收负号。
+令$w=R\cos\theta$，选择$0\le\theta\le\pi$，则$\sin\theta\ge0$，且
+\[
+\dd w=-R\sin\theta\dd\theta,\qquad
+(R^2-w^2)^{3/2}=R^3|\sin\theta|^3=R^3\sin^3\theta.
+\]
+旧上下限$w=-R,R$分别对应新上下限$\theta=\pi,0$。把函数、微元与端点一同代入，再交换上下限吸收负号：
+\begin{align*}
+V_4&=\frac{4\pi}{3}\int_\pi^0
+ R^3\sin^3\theta(-R\sin\theta)\dd\theta\\
+&=\frac{4\pi R^4}{3}\int_0^\pi\sin^4\theta\dd\theta.
+\end{align*}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算换元后的积分与边界测度}\par\nobreak
@@ -120,8 +142,18 @@ $\sin^4\theta=(3-4\cos2\theta+\cos4\theta)/8$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由下一维递推核对边界的量纲}\par\nobreak
 截面递推还可延续一步，以检查“维数”与边界测度的关系。五维球在固定第五坐标 $z$的截面是半径 $\sqrt{R^2-z^2}$的四维球，因此
-\[V_5(R)=\int_{-R}^{R}\frac{\pi^2}{2}(R^2-z^2)^2\dd z
- =\pi^2\left[R^4z-\frac23R^2z^3+\frac15z^5\right]_0^R
- =\frac{8\pi^2}{15}R^5.\]
-相应边界的四维测度为 $S_4=\dd V_5/\dd R=8\pi^2R^4/3$。图\ref{c2d4q}只表示截面与剩余半径的关系，并不是把高维球当作普通三维物体画出。一般地，若 $V_n(R)=C_nR^n$，增厚 $\dd R$形成薄层，便有 $S_{n-1}(R)=nC_nR^{n-1}$；两式的长度量纲相差一次，符合边界比内部少一个维度。
+\begin{align*}
+V_5(R)&=\frac{\pi^2}{2}\int_{-R}^{R}(R^2-z^2)^2\dd z\\
+&=\pi^2\int_0^R(R^4-2R^2z^2+z^4)\dd z\\
+&=\pi^2\left[R^4z-\frac23R^2z^3+\frac15z^5\right]_0^R\\
+&=\pi^2R^5\left(1-\frac23+\frac15\right)
+=\frac{8\pi^2}{15}R^5.
+\end{align*}
+第二行利用了被积式关于$z$的偶对称。相应边界的四维测度由固定其他参数、对$R$求导得到：
+\[
+S_4=\frac{\dd V_5}{\dd R}
+=\frac{8\pi^2}{15}\frac{\dd R^5}{\dd R}
+=\frac{8\pi^2}{15}\,5R^4=\frac{8\pi^2}{3}R^4.
+\]
+图\ref{c2d4q}只表示截面与剩余半径的关系，并不是把高维球当作普通三维物体画出。一般地，若$V_n(R)=C_nR^n$，增厚$\dd R$形成薄层，便有$S_{n-1}(R)=\dd(C_nR^n)/\dd R=nC_nR^{n-1}$；两式的长度量纲相差一次，符合边界比内部少一个维度。
 \end{drillsolution}

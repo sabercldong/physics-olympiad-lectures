@@ -216,7 +216,13 @@
 接回 $5\,\Omega$ 桥臂，$I_{MN}=2/(5+17/6)=12/47\,\mathrm A$，由 $M$ 到 $N$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{定量比较忽略端口内阻造成的误差}\par\nobreak
-若直接用 $2/5=0.4\,\mathrm A$，相当于误把端口内阻设为零；相对正确值高估 $17/30$，约 $56.7\%$。实际桥端电压为 $60/47\,\mathrm V$，小于开路值 $2\,\mathrm V$，说明负载确实改变了两中点电势。\end{solution}
+若直接用 $I_{\rm app}=2/5=0.4\,\mathrm A$，相当于误把端口内阻设为零。以正确值为分母，计算相对误差：
+\[
+ \frac{I_{\rm app}-I_{MN}}{I_{MN}}
+ =\frac{2/5}{12/47}-1
+ =\frac{47}{30}-1=\frac{17}{30}\approx56.7\%.
+\]
+实际桥端电压为 $5I_{MN}=60/47\,\mathrm V$，小于开路值 $2\,\mathrm V$，说明负载确实改变了两中点电势。\end{solution}
 \begin{question}\begin{example}[相同电池的串并联组合]\label{c2:example:7}
 有 $N$ 节相同电池，每节电动势 $\mathcal E$、内阻 $r$。每组串联 $n$ 节，共 $m$ 组并联，$mn=N$，接负载 $R$。求负载电流；先把 $n$ 视为连续变量求最优条件，再说明整数约束。
 \end{example}
@@ -246,13 +252,25 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在连续模型下求电流最大值}\par\nobreak
-图\ref{fig:c2:example:7:p}按连续最优电流 $I_*=\mathcal E\sqrt{N}/(2\sqrt{Rr})$ 归一化，曲线为 $I/I_*=2q/(1+q^2)$。原式分母 $R/n+nr/N$ 的两项乘积固定，故和在两项相等时最小。直接对电流的商求导也得到
+图\ref{fig:c2:example:7:p}的峰值先由原函数确定。原式分母 $R/n+nr/N$ 的两项乘积固定，故和在两项相等时最小。直接对电流的商求导也得到
 \[
  I'(n)=\mathcal E
  \frac{(R+n^2r/N)-n(2nr/N)}{(R+n^2r/N)^2}
  =\mathcal E\frac{R-n^2r/N}{(R+n^2r/N)^2}.
 \]
 分母为正，$I'(n)$ 的符号由 $R-n^2r/N$ 决定，所以连续最优值为 $n_*=\sqrt{NR/r}$，对应内阻 $n_*^2r/N=R$。
+把该值代入电流原式，分母变为 $2R$，因此
+\[
+ I_*=\frac{\mathcal E\sqrt{NR/r}}{2R}
+ =\frac{\mathcal E\sqrt N}{2\sqrt{Rr}}.
+\]
+再令 $q=n/n_*$，则 $n^2r/N=q^2R$，从而
+\[
+ \frac{I}{I_*}
+ =\frac{q n_*\mathcal E/[R(1+q^2)]}{n_*\mathcal E/(2R)}
+ =\frac{2q}{1+q^2}.
+\]
+这就是图中的归一化曲线，其峰值位于 $q=1$。
 
 
 

@@ -15,7 +15,14 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求零支持力时刻并检验前后阶段}\par\nobreak
 图\ref{n3e1s}零点给 $x_s=m(g-a)/k$，进而
 \[t_s=\sqrt{\frac{2m(g-a)}{ka}}.\]
-在此前 $N>0$，接触假设成立；此后若继续同板运动会需 $N<0$，故必须分离。$a\to0^+$ 时所需时间趋于无穷，$a\to g^-$ 时趋于零。若一开始 $a\ge g$，板不能靠向下的拉力带动物块，接触立即解除，不能继续使用上式的负根号。
+在此前 $N>0$，接触假设成立；此后若继续同板运动会需 $N<0$，故必须解除约束。
+
+还可直接核对间隙是否打开。令向下坐标分别为 $x_P$、$x_B$，间隙取 $q=x_B-x_P$，分离边界处 $q=\dot q=0$。取消支持力后，物块有 $\ddot x_P=g-kx_P/m$，托板仍有 $\ddot x_B=a$；在 $x_P=x_s$处两者加速度相同，故 $\ddot q=0$。再求时间导数，
+\[
+ \dddot q=\frac{k}{m}\dot x_P,\qquad
+ \dddot q(t_s^+)=\frac{k}{m}at_s>0.
+\]
+所以当地时间 $\tau=t-t_s>0$足够小时，$q=(kat_s/6m)\tau^3+O(\tau^4)>0$，确实分开。$a\to0^+$时所需时间趋于无穷，$a\to g^-$时趋于零。若一开始 $a\ge g$，板不能靠向下的拉力带动物块，接触立即解除，不能继续使用上式的负根号。
 \end{solution}
 
 \begin{question}\begin{example}[向上匀加速提离弹簧秤盘]\label{n3e2}
@@ -77,8 +84,16 @@ $b=6$ 时，$m_2g-m_1b=96\,\mathrm N$，$t_s=\sqrt{192/4800}=0.2\,\mathrm s$。�
 &=\frac k2(x_0^2-q^2)-D(q+x_0)\\
 &=(q+x_0)\left[\frac k2(x_0-q)-D\right].
 \end{align*}
-令乘积为零，除初始根 $q=-x_0$，下一速度零点为 $q_t=x_0-2D/k$。若 $q_s<q_t$，两块在仍向右运动时以 $N=0$ 分离；此条件等价于
-\[kx_0>g\{M_A(\mu_A+\mu_B)+2\mu_BM_B\}.\]
+令乘积为零，除初始根 $q=-x_0$，下一速度零点为 $q_t=x_0-2D/k$。若 $q_s<q_t$，两块在仍向右运动时以 $N=0$分离。这个条件还可用初始压缩量表示。
+将 $q_s,q_t$的表达式代入 $q_s<q_t$，因 $k>0$，得到
+\[
+ M_Ag(\mu_B-\mu_A)<kx_0-2D.
+\]
+移项并代入 $D=(\mu_AM_A+\mu_BM_B)g$，右侧应满足的阈值为
+\begin{align*}
+ kx_0&>2D+M_Ag(\mu_B-\mu_A)\\
+ &=g\{M_A(\mu_A+\mu_B)+2\mu_BM_B\}.
+\end{align*}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{停止后重新判断静止或反向分离}\par\nobreak
@@ -235,7 +250,8 @@ f=m(g\sin\alpha+a)=\frac{2Mm}{M+m}g\sin\alpha.
 \[
 \int_0^l xa(x)\dd m
 =\frac Fl\int_0^l\left(\frac{6x^2}{l}-2x\right)\dd x
-=\frac Fl\left[\frac{2x^3}{l}-x^2\right]_0^l=Fl,
+=\frac Fl\left[\frac{2x^3}{l}-x^2\right]_0^l
+=\frac Fl(2l^2-l^2)=Fl,
 \]
 同外力矩相等。两项积分分别核查加速度分布的平均值与位置权重，不能只用其中一项确定两个待定系数。
 \end{solution}
@@ -376,7 +392,12 @@ p(r)-p(0)=\rho\omega^2\int_0^r s\,\dd s
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{结合液量守恒求液高和轴处压强}\par\nobreak
-两压强式相减，按图\ref{n3e15s}得 $h_2-h_1=3\omega^2l^2/(2g)$，因此
+两压强式相减，按图\ref{n3e15s}得 $\rho g(h_2-h_1)=(2-1/2)\rho\omega^2l^2$，约去 $\rho g$即 $h_2-h_1=3\omega^2l^2/(2g)$。再与和式 $h_1+h_2=2h$相加、相减，分别除以2，得到两液高。轴处压强由左支管回代：
+\[
+ p=p_0+\rho gh_1-\frac12\rho\omega^2l^2
+ =p_0+\rho gh-\left(\frac34+\frac12\right)\rho\omega^2l^2.
+\]
+因此
 \[
  h_1=h-\frac{3\omega^2l^2}{4g},\quad
  h_2=h+\frac{3\omega^2l^2}{4g},\quad
@@ -439,7 +460,16 @@ p_B-p_A=-\rho a_0\int_{x_A}^{x_B}\dd x
 \fig{n3e17s}{向上的坐标轴与向后下的水流方向分别标明}{\begin{tikzpicture}
 \draw[axis](0,0)--(1.6,0)node[right]{$x'$};\draw[axis](0,-.2)--(0,1.4)node[above]{$z'$};\fill(0,0)circle(2pt)node[above left]{出口};\draw[world](0,0)--(-2,-2.6);\draw[flow,blue](-.8,-1.04)--(-1.4,-1.82)node[left]{$\bm v_{\rm rel}$};\draw[flow,red](2.2,-.8)--(1.6,-1.58)node[right]{$(-a,-g)$};\draw[guide](-2,-2.6)--(.5,-2.6);\draw[dim](.4,0)--(.4,-2.6)node[midway,right]{$h=-z'$};\draw[line width=2pt,blue](-1.6,-2.08)--(-1.8,-2.34)node[midway,left]{$\dd s$};
 \end{tikzpicture}}
-第三问在图\ref{n3e17s}桶系内，离口后经过时间 $\tau$ 的水滴相对位移为 $x'=-a\tau^2/2$、$z'=-g\tau^2/2$，所以水流沿直线 $x'=az'/g$。$h=-z'$ 给 $\tau=\sqrt{2h/g}$，相对流速大小 $v_{\rm rel}=\sqrt{a^2+g^2}\,\tau$。
+第三问在图\ref{n3e17s}桶系内，以某滴水离口时为当地时间零点，相对初速度近似为零，相对加速度为 $(-a,-g)$。先积分得到速度，再积分位置：
+\begin{align*}
+ v_x'(\tau)&=\int_0^\tau(-a)\dd s=[-as]_0^\tau=-a\tau,\\
+ v_z'(\tau)&=\int_0^\tau(-g)\dd s=[-gs]_0^\tau=-g\tau,\\
+ x'(\tau)&=\int_0^\tau(-as)\dd s
+ =\left[-\frac a2s^2\right]_0^\tau=-\frac{a\tau^2}{2},\\
+ z'(\tau)&=\int_0^\tau(-gs)\dd s
+ =\left[-\frac g2s^2\right]_0^\tau=-\frac{g\tau^2}{2}.
+\end{align*}
+两坐标之比恒定，所以水流沿直线 $x'=az'/g$。由 $h=-z'=g\tau^2/2$取正时间根，得 $\tau=\sqrt{2h/g}$；两个速度分量平方相加，得到 $v_{\rm rel}=\sqrt{a^2+g^2}\,\tau$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际流线长度换算质量线密度}\par\nobreak
 长度微元 $\dd s=v_{\rm rel}\dd\tau$ 内质量 $\dd m=Q\dd\tau$，故
@@ -515,7 +545,12 @@ p_B-p_A=-\rho a_0\int_{x_A}^{x_B}\dd x
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用固定端与自由端条件确定映射}\par\nobreak
-令 $\beta=\omega\sqrt{m_0/k}$。当 $\beta>0$，试取 $r=e^{\lambda u}$，代入得到 $\lambda^2+(\beta/L_0)^2=0$，根为 $\lambda=\pm i\beta/L_0$。用欧拉公式组合成实数通解，
+令 $\beta=\omega\sqrt{m_0/k}$。当 $\beta>0$，试取 $r=e^{\lambda u}$，则 $r'=\lambda e^{\lambda u}$、$r''=\lambda^2e^{\lambda u}$。代入方程并约去非零的指数因子，
+\[
+ [\lambda^2+(\beta/L_0)^2]e^{\lambda u}=0
+ \quad\Longrightarrow\quad \lambda^2=-\frac{\beta^2}{L_0^2}.
+\]
+两根为 $\lambda=\pm i\beta/L_0$。用欧拉公式组合成实数通解，
 \[
 r=C\sin(\beta u/L_0)+D\cos(\beta u/L_0).
 \]
@@ -523,7 +558,12 @@ r=C\sin(\beta u/L_0)+D\cos(\beta u/L_0).
 $r'(u)=C(\beta/L_0)\cos(\beta u/L_0)$；
 自由端 $T(L_0)=kL_0[r'(L_0)-1]=0$ 给
 $C(\beta/L_0)\cos\beta=1$，所以 $C=L_0/(\beta\cos\beta)$。
-当 $\beta=0$ 时，方程直接为 $r''=0$，两次积分给 $r=C_0u+D_0$；边界给 $D_0=0,C_0=1$，即未伸长的 $r=u$，也等于上述解的连续极限。
+当 $\beta=0$时，方程直接为 $r''=0$。设 $r'(0)=C_0$、$r(0)=D_0$，逐次积分为
+\[
+ r'(u)-C_0=\int_0^u0\dd s=0,\qquad
+ r(u)-D_0=\int_0^u C_0\dd s=[C_0s]_0^u=C_0u.
+\]
+固定端边界给 $D_0=0$，自由端 $r'(L_0)=1$给 $C_0=1$，即未伸长的 $r=u$，也等于上述解的连续极限。
 \fig{n3e20s}{径向映射由两端边界确定，不能假设均匀伸长}{\begin{tikzpicture}
 \draw[axis](0,0)--(4.6,0)node[right]{$u/L_0$};\draw[axis](0,0)--(0,3.1)node[above]{$r/L_0$};\draw[guide](0,0)--(4,1.8)node[right]{无伸长};\draw[world,domain=0:1,samples=40]plot({4*\x},{1.8*sin(45*\x)/(pi/4*cos(45))});\node[below]at(4,0){$1$};\node at(2.1,2.85){示意 $0<\beta<\pi/2$};
 \end{tikzpicture}}
@@ -534,7 +574,18 @@ $C(\beta/L_0)\cos\beta=1$，所以 $C=L_0/(\beta\cos\beta)$。
 由图\ref{n3e20s}的末端值，
 \[L=L_0\frac{\tan\beta}{\beta},\qquad
 \Delta L=L_0\left(\frac{\tan\beta}{\beta}-1\right).\]
-物理拉伸分支要求 $0\le\beta<\pi/2$，使映射单调且轴力非负。小角速度展开给 $\Delta L\simeq m_0\omega^2L_0/(3k)$。当 $\beta\to\pi/2$ 时理想解发散，表明该稳定分支失效，不能把三角函数的后续周期分支解释成普通稳定弹簧；真实材料的线弹性范围通常更早就会限制模型。
+由求出的映射，$r'(u)=\cos(\beta u/L_0)/\cos\beta$，轴力为
+\[
+ T(u)=kL_0\left[\frac{\cos(\beta u/L_0)}{\cos\beta}-1\right].
+\]
+物理拉伸分支取 $0\le\beta<\pi/2$，此时 $r'>0$且 $T\ge0$。小角速度时，不直接跳到伸长近似，而先将正弦、余弦的展开代入长度比：
+\begin{align*}
+ \frac{\tan\beta}{\beta}
+ &=\frac{1-\beta^2/6+O(\beta^4)}{1-\beta^2/2+O(\beta^4)}\\
+ &=[1-\beta^2/6+O(\beta^4)][1+\beta^2/2+O(\beta^4)]\\
+ &=1+\frac{\beta^2}{3}+O(\beta^4).
+\end{align*}
+所以 $\Delta L=L_0\beta^2/3+O(L_0\beta^4)$，再用 $\beta^2=m_0\omega^2/k$，得到 $\Delta L\simeq m_0\omega^2L_0/(3k)$。当 $\beta\to\pi/2$时理想解发散，表明该稳定分支失效，不能把三角函数的后续周期分支解释成普通稳定弹簧；真实材料的线弹性范围通常更早就会限制模型。
 \end{solution}
 
 \begin{question}\begin{example}[不等端力下弹簧的共同加速]\label{n3e21}

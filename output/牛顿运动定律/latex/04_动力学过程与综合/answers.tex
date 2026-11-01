@@ -33,7 +33,13 @@ H=\int_0^{v_0}\frac{v\dd v}{g(1+v^2/u^2)}
  =\frac12\ln\frac{1+w/u}{1-w/u}.
 \]
 这里用了 $1/(1-z^2)=[1/(1-z)+1/(1+z)]/2$。
-将对数式指数化并解出 $w$，得到
+将对数式指数化，记 $E=\e^{2g\tau/u}$、$z=w/u$，则 $E=(1+z)/(1-z)$。逐步解出 $z$：
+\[
+ E(1-z)=1+z
+ \quad\Longrightarrow\quad E-1=(E+1)z
+ \quad\Longrightarrow\quad z=\frac{E-1}{E+1}.
+\]
+乘以 $u$，得到
 \[
  w=u\frac{\e^{2g\tau/u}-1}{\e^{2g\tau/u}+1}
    =u\tanh\frac{g\tau}{u}.
@@ -60,9 +66,18 @@ $\dd\ln\cosh x/\dd x=(\e^x-\e^{-x})/(2\cosh x)=\tanh x$。
 \]
 把 $\cosh x=(\e^x+\e^{-x})/2$ 代入，令 $Y=\e^x\ge1$，可得
 $Y^2-2\sqrt{1+r^2}Y+1=0$。
-两个根互为倒数；下降时间非负，故应取
-$Y=\sqrt{1+r^2}+r$。再由 $\tanh x=\sqrt{\cosh^2x-1}/\cosh x$
-求返回速率，图\ref{n4d1s}的返回状态为
+用求根公式先得到
+\[
+ Y=\sqrt{1+r^2}\pm\sqrt{(1+r^2)-1}
+ =\sqrt{1+r^2}\pm r.
+\]
+两个根互为倒数；下降时间非负，且 $r=v_0/u>0$，故应取 $Y\ge1$的根 $Y=\sqrt{1+r^2}+r$。再由 $\tanh x=\sqrt{\cosh^2x-1}/\cosh x$求返回速率，
+\[
+ v_f=u\tanh x
+ =u\frac{\sqrt{(1+r^2)-1}}{\sqrt{1+r^2}}
+ =\frac{ur}{\sqrt{1+r^2}}=\frac{v_0}{\sqrt{1+r^2}}.
+\]
+图\ref{n4d1s}的返回状态为
 \[
  t_\downarrow=\frac ug\ln\left(r+\sqrt{1+r^2}\right),\qquad
  v_f=\frac{v_0}{\sqrt{1+r^2}}.
@@ -127,7 +142,12 @@ f'(c)=b\frac{(\eta+c+b)-(\eta+c)}{(\eta+c+b)^2}
 令 $c$ 为极限，固定点式给
 $(c-1)(\eta+c+b)=b(\eta+c)$。整理成
 $(c-1)(c+\eta)=b(\eta+1)=\eta$，
-即 $c^2+(\eta-1)c-2\eta=0$。舍去负根，所以
+即 $c^2+(\eta-1)c-2\eta=0$。用二次方程求根公式，
+\[
+ c=\frac{-(\eta-1)\pm\sqrt{(\eta-1)^2+8\eta}}2
+ =\frac{1-\eta\pm\sqrt{\eta^2+6\eta+1}}2.
+\]
+两根乘积为 $-2\eta<0$，一正一负；支持系数非负，舍去负根，所以
 \[N_\infty=\frac{1-\eta+\sqrt{\eta^2+6\eta+1}}2\,mg.\]
 $\eta=1$ 给 $\sqrt2mg$；$\eta\to0$ 直接代入给 $mg$。为计算 $\eta\to\infty$，将正根有理化，
 \[
@@ -152,7 +172,24 @@ c=\frac{4\eta}{\sqrt{\eta^2+6\eta+1}+\eta-1}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求内部极值并检查角度边界}\par\nobreak
-令 $\delta=\arctan\mu$，$\cos\beta-\mu\sin\beta=\sqrt{1+\mu^2}\cos(\beta+\delta)$。分母除去正常数后为 $[\cos(\alpha+\delta)+\cos(2\beta+\delta-\alpha)]/2$。当 $\alpha\ge\delta$，内部最大值在 $\beta_*=(\alpha-\delta)/2$；当 $\alpha<\delta$，这个角为负，超出题设范围，图\ref{n4d4s}最优改为边界 $\beta_*=0$。
+令 $\delta=\arctan\mu$，则 $\cos\delta=1/\sqrt{1+\mu^2}$、$\sin\delta=\mu/\sqrt{1+\mu^2}$，所以
+\[
+ \cos\beta-\mu\sin\beta
+ =\sqrt{1+\mu^2}\cos(\beta+\delta).
+\]
+分母除去正常数 $\sqrt{1+\mu^2}$后，令其余部分为
+\[
+ Q(\beta)=\cos(\beta+\delta)\cos(\alpha-\beta)
+ =\frac{\cos(\alpha+\delta)+\cos(2\beta+\delta-\alpha)}2.
+\]
+必须在 $0\le\beta<\pi/2-\delta$内求最大值，才能保证沿槽加速度为正；在此区间 $\cos(\alpha-\beta)>0$也成立。对 $\beta$求导，内层角的导数为2：
+\[
+ Q'(\beta)=\frac12[-\sin(2\beta+\delta-\alpha)]\cdot2
+ =-\sin(2\beta+\delta-\alpha).
+\]
+当 $\alpha>\delta$，取 $2\beta+\delta-\alpha=0$得到 $\beta_*=(\alpha-\delta)/2$，在允许区间内部，且余弦项达到全局上界1。
+
+当 $\alpha\le\delta$，上述候选角非正；对允许的 $\beta>0$，有 $0<2\beta+\delta-\alpha<\pi$，所以 $Q'<0$，分母随 $\beta$增大严格减小。图\ref{n4d4s}的最优因此在边界 $\beta_*=0$，包括 $\alpha=\delta$时的临界情形。
 
 
 

@@ -7,9 +7,18 @@
 \end{question}
 \begin{solution}\textbf{用同一线密度分别对两条轴积分}\par\nobreak
 按图\ref{fig:em6:example:1:s}线密度$\lambda=m/\ell$，取沿杆的坐标。绕质心轴，
-\[I_C=\lambda\int_{-\ell/2}^{\ell/2}x^2\dd x=m\ell^2/12;\]
+\[
+I_C=\lambda\int_{-\ell/2}^{\ell/2}x^2\dd x
+=\frac m\ell\left[\frac{x^3}{3}\right]_{-\ell/2}^{\ell/2}
+=\frac m{3\ell}\left[\left(\frac\ell2\right)^3-\left(-\frac\ell2\right)^3\right]
+=\frac{m\ell^2}{12};
+\]
 绕端点轴，
-\[I_O=\lambda\int_0^\ell x^2\dd x=m\ell^2/3.\]
+\[
+I_O=\lambda\int_0^\ell x^2\dd x
+=\frac m\ell\left[\frac{x^3}{3}\right]_0^\ell
+=\frac m\ell\frac{\ell^3-0}{3}=\frac{m\ell^2}{3}.
+\]
 
 \fig{fig:em6:example:1:p}{同一质量微元到两条平行轴的距离相差$\ell/2$}{\begin{tikzpicture}
 
@@ -21,7 +30,7 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对积分限与惯量量纲}\par\nobreak
-上述两个积分的原函数均为$x^3/3$。质心轴代入上下限得到$[(\ell/2)^3-(-\ell/2)^3]/3=\ell^3/12$，端点轴则为$\ell^3/3$；再乘线密度$m/\ell$。两者有同一$m\ell^2$量纲，但系数因轴到各质元距离不同而改变。
+图\ref{fig:em6:example:1:p}两种坐标的原点不同：质心轴两边均有杆，故下限为负；端点轴的杆全在同一侧，故下限为零。两个结果都有$m\ell^2$量纲，系数的差别反映各质元到轴的平方距离不同。
 
 
 
@@ -299,7 +308,14 @@ $I\to0$时两张力趋于相等；$m_1=m_2$时加速度为零。$I/r^2$具有质
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求回滚速度并切换到无摩擦纯滚动}\par\nobreak
-图\ref{fig:em6:example:10:p}中，质心在$t_v=v_0/(\mu g)$停止后继续向左加速，接触点却仍向右滑，所以摩擦方向暂不改变。到$t_*$时
+图\ref{fig:em6:example:10:p}中，质心在$t_v=v_0/(\mu g)$停止后继续向左加速，接触点却仍向右滑，所以摩擦方向暂不改变。把$t_*=2(v_0+R\omega_0)/(5\mu g)$分别代回两速度式，
+\begin{align*}
+v_*&=v_0-\frac25(v_0+R\omega_0)
+=\frac{3v_0-2R\omega_0}{5},\\
+\omega_*&=\omega_0-\frac{3}{5R}(v_0+R\omega_0)
+=\frac{2R\omega_0-3v_0}{5R}.
+\end{align*}
+因此
 \[\boxed{v_*=(3v_0-2R\omega_0)/5<0,\quad\omega_*=(2R\omega_0-3v_0)/(5R)>0}.\]
 两者满足$v_*=-R\omega_*$，此后摩擦为零，向左匀速纯滚。不能在质心反向时就把摩擦反向；应一直检查接触点的相对滑速。\end{solution}
 \begin{question}\begin{example}[自由细杆的端点弹性冲击]\label{em6:example:11}
@@ -328,7 +344,16 @@ $I\to0$时两张力趋于相等；$m_1=m_2$时加速度为零。$I/r^2$具有质
 
 故$J=2mMv/(M+4m)$，得到
 \[\boxed{v'=\frac{4m-M}{M+4m}v,\quad V=\frac{2m}{M+4m}v,\quad\omega=-\frac{6m}{(M+4m)\ell}v}.\]
-角速度负号表示顺时针。若$m=M/4$，球碰后停止；小球很轻时近似反弹。核验能量时必须同时计入杆的平动与转动。\end{solution}
+角速度负号表示顺时针。若$m=M/4$，球碰后停止；小球很轻时近似反弹。核验能量时同时计入杆的平动与转动，把三项统一到同一分母：
+\begin{align*}
+K_f&=\frac12mv'^2+\frac12MV^2+\frac12I_C\omega^2\\
+&=\frac{v^2}{(M+4m)^2}
+\left[\frac m2(4m-M)^2+2Mm^2+6Mm^2\right]\\
+&=\frac{mv^2}{2(M+4m)^2}
+\left[(4m-M)^2+16Mm\right]
+=\frac12mv^2.
+\end{align*}
+最后一步用到$(4m-M)^2+16Mm=M^2+8Mm+16m^2=(M+4m)^2$，与碰前动能相等。\end{solution}
 \begin{question}\begin{example}[无摩擦地面上倒下的细杆]\label{em6:example:12}
 均匀细杆质量$m$、长$\ell$，从几乎竖直的位置静止释放，下端与光滑水平地面接触，允许水平滑动。以杆与向上竖直方向夹角$\theta$表示姿态，求角速度与地面对杆的支持力，并检查杆是否提前离地。
 \end{example}
@@ -387,7 +412,13 @@ $I\to0$时两张力趋于相等；$m_1=m_2$时加速度为零。$I/r^2$具有质
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由质心竖直加速度求支持力}\par\nobreak
 代入$\ddot y_C=-\ell(c\dot\theta^2+\sin\theta\ddot\theta)/2$及$N-mg=m\ddot y_C$，先将两项加速度分别代入，得
 \[\frac{N}{mg}=1-\frac{6c(1-c)}D-\frac{3(1-c^2)[D-6c(1-c)]}{D^2}.\]
-统一分母为$D^2$，将$D=4-3c^2$展开，分子中四次项抵消，剩余$4-6c+3c^2$，因此得到
+统一分母为$D^2$，分子为$D^2-6c(1-c)D-3(1-c^2)[D-6c(1-c)]$。将$D=4-3c^2$代入，三部分分别展开为
+\begin{align*}
+D^2&=16-24c^2+9c^4,\\
+-6c(1-c)D&=-24c+24c^2+18c^3-18c^4,\\
+-3(1-c^2)[D-6c(1-c)]&=-12+18c+3c^2-18c^3+9c^4.
+\end{align*}
+相加时三次、四次项均抵消，剩下$4-6c+3c^2$，因此得到
 \[\boxed{N=mg\frac{4-6c+3c^2}{(4-3c^2)^2}}.\]
 
 

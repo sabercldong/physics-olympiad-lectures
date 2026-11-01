@@ -235,7 +235,13 @@ $A$ 端电量
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定中点净量求微分电容}\par\nobreak
-图\ref{fig:e4:example:8:p} 保持 $Q_0$ 不变微调 $U$ 时，$\dd Q_A/\dd U=2C/3$。这与无初始电量时串联等效电容相同，但 $Q_A/U$ 还含感应偏置项，并不恒等于 $2C/3$。这也说明多导体环境中应先写电荷—电势关系，再解释电容。\end{solution}
+图\ref{fig:e4:example:8:p}保持$Q_0$不变微调$U$时，$C$也由固定几何确定，故
+\[
+\frac{\dd Q_A}{\dd U}
+=\frac{2C}{3}\frac{\dd U}{\dd U}-\frac23\frac{\dd Q_0}{\dd U}
+=\frac{2C}{3}\cdot1-\frac23\cdot0=\frac{2C}{3}.
+\]
+这与无初始电量时串联等效电容相同，但$Q_A/U$还含感应偏置项，并不恒等于$2C/3$。这也说明多导体环境中应先写电荷—电势关系，再解释电容。\end{solution}
 \begin{question}\begin{example}[连接顺序改变的三电容系统]\label{e4:example:9}
 三只相同电容 $C$，第一只初电压 $U_0$，其余未充电。先把第一、二只同极连接并平衡，再断开二者；然后把第二、三只同极连接并平衡。求最终各电压和全过程释放能量。
 \end{example}
@@ -262,7 +268,17 @@ $A$ 端电量
  W_f=\frac C2\left(\frac{U_0^2}4+\frac{U_0^2}{16}+\frac{U_0^2}{16}\right)
  =\frac{3CU_0^2}{16}.
 \]
-释放 $5CU_0^2/16$。各阶段分别释放 $CU_0^2/4$ 和 $CU_0^2/16$，相加一致。如果三只始终并联则末电压均为 $U_0/3$，与此顺序不同，因为第一只在第二阶段已被隔离。\end{solution}
+因此全过程释放$CU_0^2/2-3CU_0^2/16=5CU_0^2/16$。再分别核验两个连接阶段：
+\[
+\begin{aligned}
+\Delta W_1&=\frac12CU_0^2-2\left[\frac12C(U_0/2)^2\right]
+=\frac14CU_0^2,\\
+\Delta W_2&=\frac12C(U_0/2)^2-2\left[\frac12C(U_0/4)^2\right]
+=\frac1{16}CU_0^2.
+\end{aligned}
+\]
+两者相加为$5CU_0^2/16$。第二阶段只比较第二、三只的储能，第一只已隔离且储能不变。如果三只始终并联则末电压均为$U_0/3$，与此顺序不同。
+\end{solution}
 \begin{question}\begin{example}[电容桥的非对称中点]\label{e4:example:10}
 $A$ 电势 $U$、$B$ 零势，上支 $A-M-B$ 电容分别为 $C,2C$，下支 $A-N-B$ 为 $2C,C$，桥支 $M,N$ 间为 $C$。两中点原中性。求中点势和端口电容。
 \end{example}
@@ -288,6 +304,13 @@ $A$ 电势 $U$、$B$ 零势，上支 $A-M-B$ 电容分别为 $C,2C$，下支 $A-
 \[
  Q_A=C(U-V_M)+2C(U-V_N)=\frac75CU,
 \]
-故端口电容 $7C/5$。储能逐支计算为
-$\tfrac12C[(3U/5)^2+2(2U/5)^2+2(2U/5)^2+(3U/5)^2+(U/5)^2]=7CU^2/10$，
-等于端口 $\tfrac12C_{\rm eq}U^2$，核对中点与桥支。\end{solution}
+故端口电容$7C/5$。储能按图中五条支路逐项计算，
+\[
+\begin{aligned}
+W&=\frac C2\left[(3U/5)^2+2(2U/5)^2
++2(2U/5)^2+(3U/5)^2+(U/5)^2\right]\\
+&=\frac{CU^2}{50}(9+8+8+9+1)
+=\frac{35CU^2}{50}=\frac7{10}CU^2.
+\end{aligned}
+\]
+等于端口$\tfrac12C_{\rm eq}U^2$，核对中点与桥支。\end{solution}

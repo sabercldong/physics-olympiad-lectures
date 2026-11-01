@@ -34,7 +34,14 @@
 \[\bm L_A=\bm L_O-\bm a\times\bm P.\]
 因此系统总动量为零时，关于任意两个固定原点的总角动量相同；总动量不为零时，角动量数值会随原点改变。比较碰撞前后的角动量时必须固定参考点，不能碰前对一个点取矩、碰后又换到另一个点而不补上这一项。
 
-进一步把每个质点位置写成$\bm r_i=\bm R_C+\bm\rho_i$，速度写成$\bm v_i=\bm V_C+\bm u_i$。由质心定义$\sum m_i\bm\rho_i=0$、$\sum m_i\bm u_i=0$，展开叉积求和得到
+进一步把每个质点位置写成$\bm r_i=\bm R_C+\bm\rho_i$，速度写成$\bm v_i=\bm V_C+\bm u_i$。把每个叉积的四项分别求和，
+\begin{align*}
+\bm L_O={}&\bm R_C\times\left(\sum_i m_i\right)\bm V_C
++\bm R_C\times\sum_i m_i\bm u_i\\
+&+\left(\sum_i m_i\bm\rho_i\right)\times\bm V_C
++\sum_i\bm\rho_i\times m_i\bm u_i.
+\end{align*}
+由质心定义$\sum_i m_i\bm\rho_i=0$、$\sum_i m_i\bm u_i=0$，中间两项为零，得到
 \[\bm L_O=\bm R_C\times M\bm V_C+\sum_i\bm\rho_i\times m_i\bm u_i.\]
 第一项是质心绕$O$运动的角动量，第二项是相对质心的内部角动量。自由刚杆的偏心碰撞既改变第一项也改变第二项；下一讲用线冲量与绕质心角冲量分别计算，正是这一分解的直接应用。
 
@@ -102,13 +109,13 @@ $f'(r_0)=(n-3)kr_0^{-n-1}$。
 一阶展开 $f(r_0+\xi)\simeq f(r_0)+f'(r_0)\xi$ 中第一项为零，得到
 \[m\ddot\xi=-(3-n)k r_0^{-n-1}\xi.\]
 若 $n<3$，令 $\omega_r^2=(3-n)k/(mr_0^{n+1})$，方程为 $\ddot\xi+\omega_r^2\xi=0$。
-试解 $\e^{st}$ 给根 $s=\pm i\omega_r$，故
+试取$\xi=\e^{st}$，则$\dot\xi=s\e^{st}$、$\ddot\xi=s^2\e^{st}$。代入后$(s^2+\omega_r^2)\e^{st}=0$，约去非零指数，得$s^2+\omega_r^2=0$，两根$s=\pm i\omega_r$。用$\e^{\pm i\omega_rt}=\cos\omega_rt\pm i\sin\omega_rt$组成实通解，故
 $\xi=A\cos\omega_rt+B\sin\omega_rt$。
 求导得 $\dot\xi=-A\omega_r\sin\omega_rt+B\omega_r\cos\omega_rt$；
 给定 $\xi(0)=\xi_0,\dot\xi(0)=w_0$，得到
 $A=\xi_0,B=w_0/\omega_r$，偏离有界并作小振动。
 
-若 $n>3$，令 $\kappa^2=(n-3)k/(mr_0^{n+1})$，特征方程变为 $s^2-\kappa^2=0$，通解为
+若$n>3$，令$\kappa^2=(n-3)k/(mr_0^{n+1})$，运动方程为$\ddot\xi-\kappa^2\xi=0$。仍试取$\xi=\e^{st}$，两次求导为$s\e^{st}$、$s^2\e^{st}$，代入得$(s^2-\kappa^2)\e^{st}=0$。因此$s^2-\kappa^2=(s-\kappa)(s+\kappa)=0$，两根为$\pm\kappa$，通解为
 $\xi=A\e^{\kappa t}+B\e^{-\kappa t}$。
 初值给 $A+B=\xi_0,\kappa(A-B)=w_0$，所以
 $A=(\xi_0+w_0/\kappa)/2$、$B=(\xi_0-w_0/\kappa)/2$。
@@ -190,11 +197,21 @@ $I(1-\eta)^2+mR^2\eta^2
 
 细绳不能推，未粘连的接触面不能拉。因此守恒方程只给候选状态，还须检查张力、支持力是否非负。弹簧托住但未连接的物块，压缩量到零且相对运动仍向外时应结束接触；此后物块与托盘的加速度不同，不能继续当作一个整体。
 
-设分离瞬间物块相对托盘向上的速度为$w>0$，以此刻接触高度差为相对坐标零点。若随后物块自由下落、托盘的向上加速度为常量$a_T$，则图\ref{fig:em5:relative-flight}的相对坐标为
+设分离瞬间物块相对托盘向上的速度为$w>0$，以此刻接触高度差为相对坐标零点。若随后物块自由下落、托盘的向上加速度为常量$a_T$，图\ref{fig:em5:relative-flight}的相对加速度为$\ddot\zeta=-(g+a_T)$。先从$\dot\zeta(0)=w$积分，
+\[
+\dot\zeta(t)-w=-(g+a_T)\int_0^t\dd\tau
+=-(g+a_T)t.
+\]
+再用$\zeta(0)=0$积分相对速度，
+\[
+\zeta(t)=\int_0^t[w-(g+a_T)\tau]\dd\tau
+=\left[w\tau-\frac12(g+a_T)\tau^2\right]_0^t.
+\]
+代入上下限，得到
 \[
  \zeta(t)=wt-\tfrac12(g+a_T)t^2.
 \]
-只有$g+a_T>0$，在这一阶段内才有第二个相遇根$t=2w/(g+a_T)$；还须确认托盘在此之前没有改变受力或碰到边界。若$a_T$不是常量，应积分其实际运动，不能套固定抛出点的$2v/g$。
+令$\zeta=0$，可分解为$t[w-(g+a_T)t/2]=0$。除去分离时刻$t=0$，只有$g+a_T>0$时才有正的再次相遇根$t=2w/(g+a_T)$；还须确认托盘在此之前没有改变受力或碰到边界。若$a_T$不是常量，应积分其实际运动，不能套固定抛出点的$2v/g$。
 
 \fig{fig:em5:relative-flight}{分离后间距先增后减，相遇时间取相对位移的第二个零点}{\begin{tikzpicture}
 \draw[world](-.7,0)--(1.2,0);\fill(.2,1.4)circle(.1)node[right]{物块};\draw[force](.2,1.4)--(.2,.5)node[left]{$mg$};\draw[flow](1.4,-.7)--(1.4,.4)node[right]{$a_T$正向向上};

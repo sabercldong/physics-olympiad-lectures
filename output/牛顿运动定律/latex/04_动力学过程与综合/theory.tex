@@ -100,7 +100,7 @@ x(t)=v_0\int_0^t\e^{-t'/\tau}\dd t'
 \]
 在同一个 $v>0$ 的运动段，也可写 $mv\dd v/\dd x=-kv$，约去 $v$ 后积分：
 $\int_{v_0}^v\dd w=-(k/m)\int_0^x\dd\xi$，
-得到 $v-v_0=-kx/m$，即速度随位置线性下降。两种关系描述同一运动，位置线性并不意味着时间线性。
+两边分别用原函数 $w,\xi$代入端点，$[w]_{v_0}^v=-(k/m)[\xi]_0^x$，得到 $v-v_0=-kx/m$，即速度随位置线性下降。两种关系描述同一运动，位置线性并不意味着时间线性。
 
 \fig{n4t-drag}{速度随时间指数衰减，随位置则为直线}{\begin{tikzpicture}
 \begin{scope}\draw[axis](0,0)--(2.8,0)node[right]{$t$};\draw[axis](0,0)--(0,1.9)node[above]{$v$};\draw[world,domain=0:2.5,samples=40]plot(\x,{1.6*exp(-1.2*\x)});\end{scope}
@@ -110,13 +110,17 @@ $\int_{v_0}^v\dd w=-(k/m)\int_0^x\dd\xi$，
 
 判断是否有限时间到达某位置，可用 $\Delta t=\int\dd x/v(x)$。若接近终点时 $v(x)$ 近似为 $C(x_*-x)^p$，$C>0$，考虑从 $x_*-\varepsilon$ 到 $x_*-\delta$ 的一小段，$0<\delta<\varepsilon$。换元 $y=x_*-x$，有 $\dd x=-\dd y$，上下限从 $\varepsilon$ 变到 $\delta$，故
 \[
-\Delta t\simeq\frac1C\int_\delta^\varepsilon y^{-p}\dd y
-=\begin{cases}
-\dfrac{\varepsilon^{1-p}-\delta^{1-p}}{C(1-p)},&p\ne1,\\[3pt]
-\dfrac1C\ln(\varepsilon/\delta),&p=1.
-\end{cases}
+\Delta t\simeq\frac1C\int_\delta^\varepsilon y^{-p}\dd y.
 \]
-第一行的原函数为 $y^{1-p}/(1-p)$，第二行为 $\ln y$。令 $\delta\to0^+$：$p<1$ 时剩余时间有限，$p\ge1$ 时发散。恒定反向合力给 $v\propto\sqrt{x_*-x}$，所以有限时间停下；线性速度阻力给 $v\propto x_*-x$，则只能无限接近。这里比较的是不同物理阻力模型的终点行为，不能只看空间表达式都存在一个零点。
+对 $p\ne1$，先写原函数再代入两端；对 $p=1$另用对数原函数：
+\begin{align*}
+ p\ne1:\quad\Delta t&\simeq\frac1C
+ \left[\frac{y^{1-p}}{1-p}\right]_\delta^\varepsilon
+ =\frac{\varepsilon^{1-p}-\delta^{1-p}}{C(1-p)},\\
+ p=1:\quad\Delta t&\simeq\frac1C[\ln y]_\delta^\varepsilon
+ =\frac1C\ln\frac\varepsilon\delta.
+\end{align*}
+令 $\delta\to0^+$：$p<1$时 $\delta^{1-p}\to0$，剩余时间有限；$p>1$时 $\delta^{1-p}\to\infty$，而 $1-p<0$使时间趋于正无穷；$p=1$时对数也趋于正无穷。恒定反向合力给 $v\propto\sqrt{x_*-x}$，所以有限时间停下；线性速度阻力给 $v\propto x_*-x$，则只能无限接近。这里比较的是不同物理阻力模型的终点行为，不能只看空间表达式都存在一个零点。
 
 \section{相对运动、碰撞与重复过程}
 \subsection{最近距离由相对速度为零确定}

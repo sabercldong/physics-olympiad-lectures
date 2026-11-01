@@ -12,7 +12,29 @@
 \[
 M=\frac{F(\cos\delta+\mu\sin\delta)}{g(\sin15^\circ+\mu\cos15^\circ)}.
 \]
-由$\cos\delta+\mu\sin\delta\le\sqrt{1+\mu^2}$，最优$\delta=\arctan\mu=30^\circ$，取$F=mg$，代入得$M_{\max}=\sqrt2m$。此时力与水平成$45^\circ$。法向力$N=\sqrt2mg\cos15^\circ-mg\sin30^\circ>0$，未脱离。若另限制只能向面内压，最优方向和上限会改变，不能采用本题自由施力的结果。\end{drillsolution}
+因$\mu=1/\sqrt3$，用差角公式写成
+\[
+\cos\delta+\frac1{\sqrt3}\sin\delta
+=\frac2{\sqrt3}\cos(\delta-30^\circ)
+\le\frac2{\sqrt3}.
+\]
+等号在$\delta=30^\circ$成立。质量又与$F$成正比，故取$F=mg$。分母的角函数也先化简：
+\[
+\sin15^\circ+\frac1{\sqrt3}\cos15^\circ
+=\frac2{\sqrt3}\sin(15^\circ+30^\circ)
+=\sqrt{\frac23}.
+\]
+因此
+\[
+M_{\max}=\frac{mg(2/\sqrt3)}{g\sqrt{2/3}}=\sqrt2m.
+\]
+此时力与水平成$45^\circ$。代回法向平衡，并用$\cos15^\circ=(\sqrt6+\sqrt2)/4$，有
+\[
+N=\sqrt2mg\cos15^\circ-mg\sin30^\circ
+=mg\left(\frac{\sqrt3+1}{2}-\frac12\right)
+=\frac{\sqrt3}{2}mg>0.
+\]
+最优力确能保持接触。若另限制只能向面内压，最优方向和上限会改变。\end{drillsolution}
 \begin{drillsolution}{s3:drill:2}\textbf{由真实力臂求绳力和支承力}\par\nobreak
 图\ref{fig:s3:drill:2:s}对杆底取矩，$Tl\cos\theta=Fh$。水平平衡给$f=F-T\cos\theta=F(1-h/l)$，竖直平衡给$N=G+T\sin\theta=G+F(h/l)\tan\theta$。
 绳的水平分量$T\cos\theta$在高度$l$处向左，与高度$h$处向右的$F$产生反向力矩；因此先由力矩解$T\cos\theta=Fh/l$。$h\le l$确保剩余水平力$F(1-h/l)$向右，所需地面摩擦向左；若超出此高度区间，应先改用摩擦绝对值再分类。
@@ -109,12 +131,22 @@ f=\frac{Gx}{2H}.
 =\int_1^{\cos\phi}\frac{\dd u}{u}
 =[\ln u]_1^{\cos\phi}=\ln\cos\phi.
 \]
-在$0\le\phi<\pi/2$的运动分支上$\rho>0$、$\cos\phi>0$，两侧取指数，得到$\rho=\rho_0\cos\phi$。代入水平力平衡还可得$T=2G\sin\theta\sin\phi\ge0$，与绳只能施加拉力一致。
+在$0\le\phi<\pi/2$的运动分支上$\rho>0$、$\cos\phi>0$，两侧取指数，得到$\rho=\rho_0\cos\phi$。再把$\beta=\pi/2+2\phi$代入水平力平衡，利用$\cos\beta=-\sin2\phi$，得到
+\[
+T\cos\phi=G\sin\theta\sin2\phi
+=2G\sin\theta\sin\phi\cos\phi.
+\]
+因$\cos\phi>0$可约去，故$T=2G\sin\theta\sin\phi\ge0$，与绳只能施加拉力一致。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释圆弧分支与端点适用范围}\par\nobreak
-因此 $x^2+y_d^2=\rho_0x$，换回题设向上坡为正的 $y=-y_d$，即 $x^2+y^2=\rho_0x$，轨迹为直径 $OP_0$ 的下半圆。木块先下移，经过圆弧最低点后再上移；“缓拉”并不要求全过程向下坡运动。起点处绳力趋零，是从微小缓动建立的极限；终点接近滑轮时实际装置尺寸会限制轨迹。\end{drillsolution}
+将$\rho=\rho_0\cos\phi$两边同乘$\rho$，再用$\rho^2=x^2+y_d^2$、$\rho\cos\phi=x$，得$x^2+y_d^2=\rho_0x$。换回题设向上坡为正的$y=-y_d$，配方得
+\[
+\left(x-\frac{\rho_0}{2}\right)^2+y^2
+=\frac{\rho_0^2}{4},\qquad y\le0.
+\]
+轨迹为直径$OP_0$的下半圆。木块先下移，经过圆弧最低点后再上移；“缓拉”并不要求全过程向下坡运动。起点处绳力趋零，是从微小缓动建立的极限；终点接近滑轮时实际装置尺寸会限制轨迹。\end{drillsolution}
 \Needspace{26\baselineskip}
 \begin{drillsolution}{s3:drill:6}\textbf{判断旋转趋势对应的两处摩擦方向}\par\nobreak
 图\ref{fig:s3:drill:6:s}逆时针趋势使地面摩擦向左、墙摩擦向上。记地面摩擦$f$、墙摩擦$h$，水平平衡$N_w=f$，竖直$N_g+h=G+F$，抵抗力矩$r(f+h)$。

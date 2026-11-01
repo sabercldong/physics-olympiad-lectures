@@ -48,11 +48,23 @@
 \[
 \dot v+\frac v\tau=\frac{v_\infty}{\tau}.
 \]
-乘积分因子 $e^{t/\tau}$，左侧成为乘积的导数：
+乘积分因子$e^{t/\tau}$。因$\dd(e^{t/\tau})/\dd t=e^{t/\tau}/\tau$，乘积法则给出
+\[
+\frac{\dd}{\dd t}(e^{t/\tau}v)
+=e^{t/\tau}\dot v+\frac1\tau e^{t/\tau}v
+=e^{t/\tau}\left(\dot v+\frac v\tau\right).
+\]
+因此方程左侧确实可以合成乘积导数：
 \[
 \frac{\dd}{\dd t}(e^{t/\tau}v)=\frac{v_\infty}{\tau}e^{t/\tau}.
 \]
-先作不定积分，得 $e^{t/\tau}v=v_\infty e^{t/\tau}+C$，故通解为 $v=v_\infty+Ce^{-t/\tau}$。初条件 $v(0)=0$ 给 $C=-v_\infty$，即
+先作不定积分，右侧的原函数为
+\[
+\int\frac{v_\infty}{\tau}e^{t/\tau}\,\dd t
+=\frac{v_\infty}{\tau}\,\tau e^{t/\tau}+C
+=v_\infty e^{t/\tau}+C.
+\]
+故$e^{t/\tau}v=v_\infty e^{t/\tau}+C$，通解为$v=v_\infty+Ce^{-t/\tau}$。初条件$v(0)=0$给$C=-v_\infty$，即
 \[
 v(t)=v_\infty(1-e^{-t/\tau}).
 \]
@@ -77,7 +89,7 @@ x(t)&=v_\infty\int_0^t(1-e^{-s/\tau})\,\dd s\\
 \typeout{ECFIG:fig:e6:example:3:p}\fig{fig:e6:example:3:p}{三个代表点的实际几何位置与棱中点非零场}{\begin{tikzpicture}
 
 \draw[world](0.0,0.0)--(3.0,0.0);\draw[world](0.0,0.0)--(0.0,3.0);\draw[world](0.0,0.0)--(1.15,1.15);\draw[world](3.0,0.0)--(3.0,3.0);\draw[world](3.0,0.0)--(4.15,1.15);\draw[world](0.0,3.0)--(3.0,3.0);\draw[world](0.0,3.0)--(1.15,4.15);\draw[world](3.0,3.0)--(4.15,4.15);\draw[world](1.15,1.15)--(4.15,1.15);\draw[world](1.15,1.15)--(1.15,4.15);\draw[world](4.15,1.15)--(4.15,4.15);\draw[world](1.15,4.15)--(4.15,4.15);\node[fill=white,inner sep=1pt]at(0.0,0.0){$+q$};\node[fill=white,inner sep=1pt]at(3.0,0.0){$-q$};\node[fill=white,inner sep=1pt]at(0.0,3.0){$-q$};\node[fill=white,inner sep=1pt]at(3.0,3.0){$+q$};\node[fill=white,inner sep=1pt]at(1.15,1.15){$-q$};\node[fill=white,inner sep=1pt]at(4.15,1.15){$+q$};\node[fill=white,inner sep=1pt]at(1.15,4.15){$+q$};\node[fill=white,inner sep=1pt]at(4.15,4.15){$-q$};
-\fill(2.075,2.075)circle(2pt)node[above left]{$O$};\fill(3.575,2.075)circle(2pt)node[above right]{$F$};\fill(3,1.5)circle(2pt)node[right]{$M$};\draw[force](3,1.5)--(3,.55)node[right]{$E_M\ne0$};\node at(2,-.9){$O$：体心；$F$：面心；$M$：棱中点};
+\fill(2.075,2.075)circle(2pt)node[above left]{$O$};\fill(3.575,2.075)circle(2pt)node[above right]{$F$};\fill(3,1.5)circle(2pt)node[right]{$M$};\draw[force](3,1.5)--(3,.55)node[left]{$E_M\ne0$};\node at(2,-.9){$O$：体心；$F$：面心；$M$：棱中点};
 \end{tikzpicture}}
 
 
@@ -86,7 +98,21 @@ x(t)&=v_\infty\int_0^t(1-e^{-s/\tau})\,\dd s\\
 在 图\ref{fig:e6:example:3:p} 面心 $(a,0,0)$，固定 $s$ 的四个顶点距该点相同；$x$ 分量含 $\sum_{t,u}tu=0$，$y,z$ 分量分别含 $\sum u$、$\sum t$，也为零，故各面心零场。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对代表棱中点累计全部八个场分量}\par\nobreak
-棱中点如 $(a,a,0)$，该棱两电荷在 $z=\pm a$ 且异号，对中点的场同向而不相消；其他棱上两端的场也须一起计算，不能仅凭最近一对就下结论。把八个电荷对该点的 $z$ 分量全部相加，得到
+棱中点如$(a,a,0)$，该棱两电荷在$z=\pm a$且异号，对中点的场同向而不相消；其他棱上两端的场也须一起计算，不能仅凭最近一对就下结论。对源点$(sa,ta,ua)$，到场点的位移为$a(1-s,1-t,-u)$，所以单个源的$z$分量为
+\[
+E_z^{(s,t,u)}=-\frac{kq}{a^2}
+\frac{st}{[(1-s)^2+(1-t)^2+1]^{3/2}}.
+\]
+它不依赖$u$，每个固定$s,t$的上下两源贡献相同。其余两个符号的四种取值为
+\[
+(s,t)=(1,1),\ (1,-1),\ (-1,1),\ (-1,-1).
+\]
+四组的距离平方分别为$a^2,5a^2,5a^2,9a^2$，按电荷符号相加，
+\[
+E_z=-\frac{2kq}{a^2}
+\left(\frac1{1^{3/2}}-\frac1{5^{3/2}}-\frac1{5^{3/2}}+\frac1{9^{3/2}}\right),
+\]
+合并两项相同的分母，得到
 \[
  E_z=-\frac{2kq}{a^2}\left(1-\frac{2}{5^{3/2}}+\frac1{9^{3/2}}\right)\ne0
 \]
@@ -354,7 +380,15 @@ f'(s)&=\frac{(2s-\tfrac12)(3-2s^2)
 按 图\ref{fig:e6:example:11:s} 从 $B$ 向 $A$ 取正方向，前半周加速度 $+a$，后半周 $-a$，其中 $a=qU_0/(md)=4.0\times10^5\,\mathrm{m/s^2}$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段接续速度并累计单周期位移}\par\nobreak
-令 $H=T/2$。一个完整周期内，速度先由零升至 $aH$，再降至零，但位移始终增加，
+令$H=T/2$。前半周从静止开始，$v_1(t)=\int_0^t a\,\dd s=at$；后半周以换向后的经过时间$s$计，$v_2(s)=aH-as$。两个半周分别积分位移，
+\[
+\begin{aligned}
+x_1&=\int_0^H at\,\dd t=[at^2/2]_0^H=aH^2/2,\\
+x_2&=\int_0^H(aH-as)\,\dd s
+=[aHs-as^2/2]_0^H=aH^2/2.
+\end{aligned}
+\]
+一个完整周期内，速度先由零升至$aH$，再降至零，但位移始终增加，
 \[
  \Delta x=\frac12aH^2+\left[aH^2-\frac12aH^2\right]
  =aH^2=\frac{aT^2}{4}=1.0\times10^{-5}\,\mathrm m.
@@ -373,19 +407,44 @@ f'(s)&=\frac{(2s-\tfrac12)(3-2s^2)
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对任意释放相位求第一次向前最远位置}\par\nobreak
-第二问令从释放到下一换向的时长 $\delta=T/2-t_0\in[0,T/4]$。粒子先加速 $\delta$，再反向加速度减速 $\delta$，达到最大向前位移 $x_{\max}=a\delta^2$，随后转向返回；是否跨过下一次换场要继续接续速度。\fig{fig:e6:example:11:phase}{最早允许相位 $t_0=T/4$ 的速度接续：先前进，再返回出发板}{\begin{tikzpicture}
+第二问令从释放到下一换向的时长$\delta=T/2-t_0\in[0,T/4]$。若$\delta=0$，粒子立即受朝向出发板的力而被吸收。对$\delta>0$，第一段末速度、位移为$a\delta,a\delta^2/2$。换向后以$s$计时，先保留该初值再积分：
+\[
+\begin{aligned}
+v_2(s)&=a\delta+\int_0^s(-a)\,\dd u=a\delta-as,\\
+x_2(s)&=\frac{a\delta^2}{2}+\int_0^s(a\delta-au)\,\dd u\\
+&=\frac{a\delta^2}{2}+[a\delta u-au^2/2]_0^s
+=\frac{a\delta^2}{2}+a\delta s-\frac{as^2}{2}.
+\end{aligned}
+\]
+令$v_2=0$得$s=\delta$，代回$x_2(\delta)=a\delta^2$，这才是第一次向前的最大位移。随后转向返回；是否跨过下一次换场要继续接续速度。\fig{fig:e6:example:11:phase}{最早允许相位 $t_0=T/4$ 的速度接续：先前进，再返回出发板}{\begin{tikzpicture}
 
 \fill[blue!12](0,0)--(1,.9)--(2,0)--cycle;\fill[orange!15](2,0)--(3,-.9)--(4,0)--cycle;\draw[axis](0,0)--(4.8,0)node[right]{$t-t_0$};\draw[axis](0,-1.4)--(0,1.6)node[above]{$v_x$};\draw[world](0,0)--(1,.9)--(3,-.9)--(4,0);\foreach \x/\n in{1/{T/4},2/{T/2},3/{3T/4},4/T}{\node[below]at(\x,-.08){$\n$};}\node at(1,.0){};\node at(2,-2){正、负面积相等时回到 $B$，此后吸收};\node at(2,2.1){换场时刻：横坐标 $T/4,\ 3T/4$};
 
 \end{tikzpicture}}\par 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{继续接续返程，核对吸收边界}\par\nobreak
-图\ref{fig:e6:example:11:phase}表明，返回 $B$ 可能跨过下一次换场，不能假定整个返程加速度都为负。令 $H=T/2$，若粒子到 $t=T$ 尚未返回，则
+图\ref{fig:e6:example:11:phase}表明，返回$B$可能跨过下一次换场，不能假定整个返程加速度都为负。令$H=T/2$，若粒子到$t=T$尚未返回，则在上段公式中代$s=H$，有$x(T)=a\delta^2/2+a\delta H-aH^2/2$、$v(T)=a\delta-aH$，整理为
 \[
  x(T)=\tfrac a2(\delta^2+2H\delta-H^2),\qquad
  v(T)=-a(H-\delta).
 \]
-下一正加速度阶段使它停止前尚需向左走 $a(H-\delta)^2/2$；这一距离减去 $x(T)$ 为 $aH(H-2\delta)\ge0$。因此所有 $0\le\delta\le H/2$ 的粒子都先接触 $B$，不能另起一轮向前运动；等号恰零速回板，也按题设吸收。
+下一正加速度阶段，以经过时间$u$计，速度$v_3(u)=-a(H-\delta)+au$，停止需$u_*=H-\delta$。停止前的有符号位移为
+\[
+\begin{aligned}
+\Delta x_3&=\int_0^{H-\delta}[-a(H-\delta)+au]\,\dd u\\
+&=[-a(H-\delta)u+au^2/2]_0^{H-\delta}
+=-\frac a2(H-\delta)^2.
+\end{aligned}
+\]
+所需向左距离减去距$B$的位置，
+\[
+\begin{aligned}
+\frac a2(H-\delta)^2-x(T)
+&=\frac a2[(H-\delta)^2-\delta^2-2H\delta+H^2]\\
+&=aH(H-2\delta)\ge0.
+\end{aligned}
+\]
+因此所有$0\le\delta\le H/2$的粒子都先接触$B$，不能另起一轮向前运动；等号恰零速回板，也按题设吸收。
 
 
 
@@ -478,7 +537,7 @@ $E/E_0=U/U_0=2/(1+S^\prime/S)$ 增大。
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在小偏离近似下求周期并检查极限}\par\nobreak
 当 $|\phi|\ll1$，取 $\sin\phi\simeq\phi$，方程成为
 $\ddot\phi+\omega^2\phi=0$，其中 $\omega^2=g_{\rm eff}/l$。
-试取 $\phi=e^{\lambda t}$，代入得 $(\lambda^2+\omega^2)e^{\lambda t}=0$，特征根为 $\lambda=\pm i\omega$。实通解为
+试取$\phi=e^{\lambda t}$，两次求导为$\dot\phi=\lambda e^{\lambda t}$、$\ddot\phi=\lambda^2e^{\lambda t}$，代入得$(\lambda^2+\omega^2)e^{\lambda t}=0$，特征根为$\lambda=\pm i\omega$。实通解为
 \[
 \phi(t)=A\cos\omega t+B\sin\omega t.
 \]
@@ -527,12 +586,12 @@ W&=qE_0\int_0^X(1+x/a)^{-2}\,\dd x
 求出。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用双曲代换完成积分}\par\nobreak
-令 $x=a\sinh^2u$，并选 $u\ge0$。此时
+原时间积分在$x=0$处是反常积分，先从正下限$\epsilon>0$积起，最后令$\epsilon\to0^+$。令$x=a\sinh^2u$，并选$u\ge0$。此时
 \[
 \dd x=2a\sinh u\cosh u\,\dd u,\qquad
 \sqrt{\frac{a+x}{x}}=\frac{\cosh u}{\sinh u}.
 \]
-当 $x=0$ 时 $u=0$，当 $x=X$ 时
+下限$x=\epsilon$对应$u=\operatorname{arsinh}\sqrt{\epsilon/a}$，随$\epsilon\to0^+$趋于0。约去$\sinh u$后，被积式为$2a\cosh^2u$，在$u=0$连续，因此新积分可直接以下限0计算。当$x=X$时
 $u=u_X=\operatorname{arsinh}\sqrt{X/a}$。乘积中 $\sinh u$ 抵消，利用 $2\cosh^2u=1+\cosh2u$：
 \begin{align*}
 t(X)&=\frac{2a}{v_\infty}\int_0^{u_X}\cosh^2u\,\dd u
@@ -564,9 +623,13 @@ $\ell=mr^2\dot\varphi$。图\ref{fig:e6:example:16:p}的 $P$ 是最近点，速�
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按最近点对称性求中心力轨道}\par\nobreak
 令 $u=1/r$，撇号表示对极角 $\varphi$ 求导。角动量关系先把时间导数换成极角导数：
 \[
- \dot\varphi=\frac{\ell u^2}{m},\qquad
- \dot r=-\frac{u'}{u^2}\dot\varphi=-\frac\ell m u',\qquad
- \ddot r=-\frac{\ell^2}{m^2}u^2u''.
+\begin{aligned}
+ \dot\varphi&=\frac{\ell u^2}{m},\\
+ \dot r&=-\frac{u'}{u^2}\dot\varphi=-\frac\ell m u',\\
+ \ddot r&=-\frac\ell m\frac{\dd u'}{\dd t}
+ =-\frac\ell m u''\dot\varphi
+ =-\frac{\ell^2}{m^2}u^2u''.
+\end{aligned}
 \]
 径向向外为正，库仑斥力为 $\alpha/r^2$。代入径向牛顿方程，得到
 \begin{align*}
@@ -575,7 +638,7 @@ $\ell=mr^2\dot\varphi$。图\ref{fig:e6:example:16:p}的 $P$ 是最近点，速�
  \qquad u''+u=-\frac{m\alpha}{\ell^2}.
 \end{align*}
 令 $c=m\alpha/\ell^2$，先取常数特解 $u_p=-c$，再令 $w=u+c$，
-便有 $w''+w=0$。试取 $w=e^{s\varphi}$，代入得
+便有$w''+w=0$。试取$w=e^{s\varphi}$，两次对极角求导为$w'=se^{s\varphi}$、$w''=s^2e^{s\varphi}$，代入得
 $(s^2+1)e^{s\varphi}=0$，特征根为 $s=\pm i$。
 由 $e^{\pm i\varphi}=\cos\varphi\pm i\sin\varphi$ 合成两个独立实解，
 所以

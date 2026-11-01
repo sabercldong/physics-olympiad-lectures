@@ -4,7 +4,13 @@
 
 在确定的惯性参考系中，质量为$m$、速度为$\bm v$的质点具有动量$\bm p=m\bm v$。动量是矢量；两次速率相同，并不意味着动量没有变化。例如小球以相同速率撞墙反弹，法向动量反号，其变化量为原法向动量的两倍。计算前应先画出初、末速度，并在同一坐标系中相减，而不能把速率差乘质量当作动量变化。
 
-对质量不变的质点，$\bm F_{\text{合}}=m\dd\bm v/\dd t=\dd\bm p/\dd t$。在$t_1$至$t_2$之间积分，得到
+对质量不变的质点，$\bm F_{\text{合}}=m\dd\bm v/\dd t=\dd\bm p/\dd t$。在$t_1$至$t_2$之间积分，各分量都可使用微积分基本定理，例如
+\[
+\int_{t_1}^{t_2}F_x\dd t
+=\int_{t_1}^{t_2}\frac{\dd p_x}{\dd t}\dd t
+=[p_x(t)]_{t_1}^{t_2}=p_x(t_2)-p_x(t_1).
+\]
+把各分量合成矢量，得到
 \begin{equation}\bm I_{\text{合}}=\int_{t_1}^{t_2}\bm F_{\text{合}}\dd t=\bm p_2-\bm p_1.\label{eq:em1:impulse}\end{equation}
 式中每一项都属于同一个研究对象和同一段时间。某一个力的冲量一般不等于动量变化，只有合力的冲量才直接满足式\eqref{eq:em1:impulse}。若力恒定，可写为$\bm I=\bm F\Delta t$；若力方向固定而大小变化，沿该方向的冲量是$F-t$图线下的有向面积；若方向也变化，则应先分解再积分。
 
@@ -68,7 +74,7 @@
 \section{有限接触时间中的力峰值}
 
 冲量确定以后，为什么还不能唯一决定最大接触力？可以建立一个简单而完整的接触模型回答。把固定墙面附近的可恢复形变等效为劲度系数$k$的轻弹簧，小球质量$m$，入射速度$v$，接触开始时形变量$x=0$。以压入墙面的方向为正，在压缩、恢复的接触阶段，运动方程是$m\ddot x=-kx$。
-令 $\omega^2=k/m$，试解 $x=\e^{st}$，则 $s^2+\omega^2=0$，两根为 $\pm i\omega$，组合成实数通解 $x=A\cos\omega t+B\sin\omega t$。
+令$\omega^2=k/m$，试解$x=\e^{st}$，依次求导有$\dot x=s\e^{st}$、$\ddot x=s^2\e^{st}$。代入方程得到$(s^2+\omega^2)\e^{st}=0$；因指数不为零，特征方程为$s^2+\omega^2=0$，两根为$\pm i\omega$。利用$\e^{\pm i\omega t}=\cos\omega t\pm i\sin\omega t$，组合成实数通解$x=A\cos\omega t+B\sin\omega t$。
 链式求导得 $\dot x=-A\omega\sin\omega t+B\omega\cos\omega t$。
 初值 $x(0)=0$ 给 $A=0$，$\dot x(0)=v$ 给 $B=v/\omega$，因此
 \[x(t)=\frac v\omega\sin\omega t,\qquad\dot x(t)=v\cos\omega t,\qquad\omega=\sqrt{k/m}.\]

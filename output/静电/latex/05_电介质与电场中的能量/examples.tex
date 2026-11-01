@@ -145,11 +145,14 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用两侧相反外法向合计束缚密度}\par\nobreak
-图\ref{fig:e5:example:6:p} 界面第一层的外法向顺场，第二层外法向逆场，两个贴邻束缚面电荷相加，
+图\ref{fig:e5:example:6:p}界面第一层的外法向顺场，第二层外法向逆场。各层先由本构关系求极化，$P_i=\varepsilon_0(\kappa_i-1)E_i=D(1-1/\kappa_i)$；两个贴邻束缚面电荷代数相加，
 \[
- \sigma_b=P_1-P_2
- =D\left(\frac1{\kappa_2}-\frac1{\kappa_1}\right)
+\begin{aligned}
+ \sigma_b&=P_1-P_2
+ =D\left[\left(1-\frac1{\kappa_1}\right)-\left(1-\frac1{\kappa_2}\right)\right]\\
+ &=D\left(\frac1{\kappa_2}-\frac1{\kappa_1}\right)
  =\varepsilon_0(E_2-E_1).
+\end{aligned}
 \]
 它通常不为零，而自由界面密度为零；把这两个不同概念混同会误写成场连续。取 $\kappa_1=\kappa_2$，界面束缚电荷相消、两层场相同，回到均匀介质。\end{solution}
 \begin{question}\begin{example}[部分插入介质的两种受力过程]\label{e5:example:7}
@@ -163,7 +166,7 @@
 图\ref{fig:e5:example:7:s} 已插入与未插入部分并联，$C(x)=\alpha[L+(\kappa-1)x]$，其中 $\alpha=\varepsilon_0b/d$。图\ref{fig:e5:example:7:p} 将 $x$ 增加作为吸入方向。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在恒压条件下计算力与功}\par\nobreak
-定压时
+保持板的尺寸、$\kappa$与$\alpha$不变，先对电容求导，$C'(x)=\alpha[0+(\kappa-1)\cdot1]=\alpha(\kappa-1)$。再代入包含电源功的恒压场力式，定压时
 \[
  F_U=\tfrac12U^2\alpha(\kappa-1).
 \]
@@ -248,7 +251,7 @@ Q_{b,\text{体}}=\int_0^d \rho_b S\,\dd x
 =Q[u^{-1}]_1^{1+\alpha}
 =-\frac{Q\alpha}{1+\alpha}.
 \]
-下端面电量为 $SP(d)=Q\alpha/(1+\alpha)$，上端面为零，三者之和为零，满足电荷守恒。$\alpha\to0$ 时 $\ln(1+\alpha)\sim\alpha$，电容回到真空结果。\end{solution}
+下端面电量为$SP(d)=Q\alpha/(1+\alpha)$，上端面为零，三者之和为零，满足电荷守恒。检查$\alpha\to0$时，令$F(\alpha)=\ln(1+\alpha)$，有$F(0)=0$、$F'(\alpha)=1/(1+\alpha)$，故$F'(0)=1$。一阶展开为$\ln(1+\alpha)=\alpha+O(\alpha^2)$，因而$C=(\varepsilon_0S/d)/[1+O(\alpha)]\to\varepsilon_0S/d$，回到真空结果。\end{solution}
 \begin{question}\begin{example}[连续介质参数改变的定量与定压能量]\label{e5:example:9}
 电容器几何不变，介电常数缓慢从 $\varepsilon_0$ 增至 $\kappa\varepsilon_0$，初电容 $C_0$、初电压 $U_0$。分别在孤立和始终接电源的条件下，求电场能、电源功与可对外作的机械功。
 \end{example}
@@ -462,7 +465,14 @@ F_e^\prime-K=\frac{2Kx}{d_0-x}-K<0
 f'(x)=(d_0-x)^2+x\cdot2(d_0-x)(-1)
 =(d_0-x)(d_0-3x).
 \]
-它在稳定支上升，极值出现在 $x=d_0/3$，故临界电压
+它在稳定支上升，极值出现在$x=d_0/3$。将该位置代回平衡式，先求电压平方，
+\[
+U_c^2=\frac{2K}{\varepsilon_0S}\frac{d_0}{3}
+\left(d_0-\frac{d_0}{3}\right)^2
+=\frac{2K}{\varepsilon_0S}\frac{d_0}{3}\frac{4d_0^2}{9}
+=\frac{8Kd_0^3}{27\varepsilon_0S}.
+\]
+取电压的非负大小，得到临界电压
 \[
  U_c=\sqrt{\frac{8Kd_0^3}{27\varepsilon_0S}}.
 \]

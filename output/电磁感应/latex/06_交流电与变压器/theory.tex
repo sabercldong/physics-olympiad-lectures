@@ -178,9 +178,9 @@
 \[
  \int_{U_{\max}}^{u(t)}\frac{\dd z}{z}
  =-\frac1{R_LC}\int_0^t\dd s,\qquad
- u(t)=U_{\max}\e^{-t/(R_LC)}.
+ [\ln|z|]_{U_{\max}}^{u(t)}=-\frac1{R_LC}[s]_0^t.
 \]
-若 $t/(R_LC)\ll1$，展开指数为 $u(t)\simeq U_{\max}[1-t/(R_LC)]$，即近似线性放电。若峰间放电电流近似为 $I_L$、相邻充电峰间隔为 $1/f_r$，电荷缺额由
+初值为正且有限时间内不穿过零，故 $\ln[u(t)/U_{\max}]=-t/(R_LC)$，指数化得到 $u(t)=U_{\max}\e^{-t/(R_LC)}$。令 $x=t/(R_LC)$，函数 $g(x)=\e^{-x}$ 满足 $g(0)=1$、$g'(x)=-\e^{-x}$、$g'(0)=-1$，因此 $g(x)=1-x+O(x^2)$。在 $x\ll1$ 时，$u(t)\simeq U_{\max}[1-t/(R_LC)]$，即近似线性放电。若峰间放电电流近似为 $I_L$、相邻充电峰间隔为 $1/f_r$，电荷缺额由
 $\Delta q=\int_0^{1/f_r}I_L\dd t=I_L[t]_0^{1/f_r}=I_L/f_r$ 给出，从而
 \[\Delta U\simeq\frac{I_L}{f_rC},\qquad
 \overline U_o\simeq U_{\max}-\frac{\Delta U}{2}.\]
@@ -274,7 +274,12 @@ P_L=\frac{E^2R'}{(r_s+R')^2}.
 \node at(1,-2.9){$\underline U_{ab}=\underline U_a-\underline U_b$};
 
 \end{tikzpicture}}
-图\ref{em6:phase-voltage-difference}取 $\underline U_a=U_\phi$、$\underline U_b=U_\phi\e^{-\mathrm j2\pi/3}$。从 $\underline U_a$ 的箭头端再加 $-\underline U_b$，得到 $\underline U_{ab}=\sqrt3U_\phi\e^{\mathrm j\pi/6}$，所以线电压比相电压大 $\sqrt3$ 倍，并有相位差。三角形节点的电流相减以相同方法处理；只比较支路电流大小而不处理相位，会遗漏线电流的 $\sqrt3$ 因子。
+图\ref{em6:phase-voltage-difference}取 $\underline U_a=U_\phi$、$\underline U_b=U_\phi\e^{-\mathrm j2\pi/3}$。从 $\underline U_a$ 的箭头端再加 $-\underline U_b$。由于 $\e^{-\mathrm j2\pi/3}=-1/2-\mathrm j\sqrt3/2$，相减得到
+\[
+ \underline U_{ab}=U_\phi\left(\frac32+\mathrm j\frac{\sqrt3}{2}\right),\qquad
+ |\underline U_{ab}|=U_\phi\sqrt{\frac94+\frac34}=\sqrt3U_\phi.
+\]
+实部与虚部均为正，相角为 $\arctan[(\sqrt3/2)/(3/2)]=\pi/6$，故 $\underline U_{ab}=\sqrt3U_\phi\e^{\mathrm j\pi/6}$。所以线电压比相电压大 $\sqrt3$ 倍，并有相位差。三角形节点的电流相减以相同方法处理；只比较支路电流大小而不处理相位，会遗漏线电流的 $\sqrt3$ 因子。
 
 
 \subsection{中性线断开后的浮动节点}

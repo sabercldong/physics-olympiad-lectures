@@ -308,7 +308,7 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按是否交轴拆出实像与虚像两种几何支路}\par\nobreak
-绝对值给出两个分支：
+将绝对值拆成 $1-b/v=-5$ 或 $1-b/v=5$。前者给出 $b/v=6$，后者给出 $b/v=-4$，故有两个分支：
 \[
  \text{交叉后到屏：}\quad v=\frac b6;
  \qquad
@@ -336,7 +336,12 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别代入成像式，按给定镜型筛选焦距}\par\nobreak
-图\ref{fig:o36s}甲实际会聚于 \(I\)，穿过后上下颠倒；乙的反向延长线交于 \(I\)，实际光束仍发散。分别代入透镜公式：
+图\ref{fig:o36s}甲实际会聚于 \(I\)，穿过后上下颠倒；乙的反向延长线交于 \(I\)，实际光束仍发散。分别代入透镜公式，
+\[
+ \frac1{f_1}=\frac1a+\frac6b=\frac{b+6a}{ab},\qquad
+ \frac1{f_2}=\frac1a-\frac4b=\frac{b-4a}{ab}.
+\]
+取倒数，得到
 \[
  \boxed{f_1=\frac{ab}{b+6a}},\qquad
  \boxed{f_2=\frac{ab}{b-4a}}.
@@ -686,8 +691,9 @@
 \begin{align*}
  x'(y)&=-\frac1a\frac{2ay}{2\sqrt{A^2+ay^2}}
        =-\frac y{\sqrt{A^2+ay^2}},\\
- x''(y)&=-\frac1{\sqrt{A^2+ay^2}}
-         +\frac{ay^2}{(A^2+ay^2)^{3/2}}.
+ x''(y)&=-(A^2+ay^2)^{-1/2}
+ -y\left(-\frac12\right)(A^2+ay^2)^{-3/2}(2ay)\\
+ &=-\frac1{\sqrt{A^2+ay^2}}+\frac{ay^2}{(A^2+ay^2)^{3/2}}.
 \end{align*}
 在顶点 $x'(0)=0$、$x''(0)=-1/A$。由于 $x(y)$ 是偶函数，
 泰勒式的奇次项消失，从而
@@ -725,7 +731,13 @@ x(y)=t-\frac{y^2}{2(nf'-K)}+O(y^4),\qquad
 \end{question}
 
 \begin{solution}\textbf{按实际传播顺序求两镜间总矩阵与有效焦距}\par\nobreak
-按图\ref{fig:r31q}顺序，\(M=L(20)P(5)L(10)\)，故
+按图\ref{fig:r31q}顺序，\(M=L(20)P(5)L(10)\)。以下各长度数值以厘米计，先算传播与第一镜的乘积，
+\[
+ P(5)L(10)=\begin{pmatrix}1&5\\0&1\end{pmatrix}
+ \begin{pmatrix}1&0\\-0.10&1\end{pmatrix}
+ =\begin{pmatrix}0.50&5\\-0.10&1\end{pmatrix}.
+\]
+再由第二镜作用，左下元为 $(-0.05)(0.50)-0.10=-0.125$，右下元为 $(-0.05)5+1=0.75$；上行不变。因此恢复各元的量纲后，
 \[
  M=\begin{pmatrix}0.50&5.00\,\mathrm{cm}\\
  -0.125\,\mathrm{cm^{-1}}&0.75\end{pmatrix},

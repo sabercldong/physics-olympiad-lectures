@@ -59,8 +59,19 @@ $\Delta m=\lambda(x)\Delta x+o(\Delta x)$。
 \draw[guide](0,0)--(P)node[midway,below]{$R$};
 \fill(P)circle(1.5pt)node[below right]{$P$};\node at(4,1){$\dd S=2\pi r\,\dd s$};
 \end{tikzpicture}}
-图 \ref{c2k-surface} 的蓝段是球面母线的局部切线段。旋转一周时，它扫出窄带，所以面积应为圆周长乘 $\dd s$。由 $r^2+z^2=R^2$ 得 $\dd r/\dd z=-z/r$，故
-$\dd s=\sqrt{1+(\dd r/\dd z)^2}\,|\dd z|=R|\dd z|/r$，进而 $\dd S=2\pi R|\dd z|$。若直接用 $2\pi r|\dd z|$，就漏掉了图中的倾斜因素；即使分割无限细，这个同阶误差也不会消失。
+图\ref{c2k-surface}的蓝段是球面母线的局部切线段。旋转一周时，它扫出窄带，所以面积应为圆周长乘$\dd s$。在$r>0$的球面部分，固定$R$，对$r(z)^2+z^2=R^2$求导：
+\[
+2r\frac{\dd r}{\dd z}+2z=0,
+\qquad \frac{\dd r}{\dd z}=-\frac zr.
+\]
+由局部切线段的勾股关系，再把$r^2+z^2=R^2$代回，得到
+\begin{align*}
+\dd s&=\sqrt{1+\left(\frac{\dd r}{\dd z}\right)^2}\,|\dd z|
+=\sqrt{\frac{r^2+z^2}{r^2}}\,|\dd z|
+=\frac Rr|\dd z|,\\
+\dd S&=2\pi r\,\dd s=2\pi r\frac Rr|\dd z|=2\pi R|\dd z|.
+\end{align*}
+两极处的表达式可由邻近窄带的极限理解。若直接用$2\pi r|\dd z|$，就漏掉了图中的倾斜因素；即使分割无限细，这个同阶误差也不会消失。
 
 \fig{c2k-band}{窄带周长随极角变化，沿面宽度取弧长}{\begin{tikzpicture}
 \draw[world](0,0)circle(1.7);\draw[axis](0,-2)--(0,2.2)node[above]{$z$};
@@ -85,7 +96,7 @@ $\dd s=\sqrt{1+(\dd r/\dd z)^2}\,|\dd z|=R|\dd z|/r$，进而 $\dd S=2\pi R|\dd 
 \]
 所以 $A'(x)=f(x)$。微小区间内的平均高度趋近局部高度，正是“累积”与“求变化率”互相联系的原因。
 
-如果 $F'(x)=f(x)$，那么 $A-F$ 的导数为零，故在一个连通区间内二者相差常数。由 $A(a)=0$ 得
+如果$F'(x)=f(x)$，那么$(A-F)'=f-f=0$，故在一个连通区间内$A(x)-F(x)=C$。代入起点，$C=A(a)-F(a)=-F(a)$，所以$A(x)=F(x)-F(a)$；最后取$x=b$，得到
 \begin{equation}\label{eq:c2fundamental}
  \boxed{\int_a^b f(x)\dd x=F(b)-F(a)}.
 \end{equation}
@@ -106,8 +117,12 @@ $\dd[\int_a^{g(t)}f(s)\dd s]/\dd t=f(g(t))g'(t)$。
 因此积分常数的处理与求导方向相连。对不定积分，相差常数的函数具有相同导数；对给定初值的运动，初值从这一族函数中选出唯一成员。用定积分表示初值问题，可以在书写上直接保留起始时刻和起始状态，减少漏常数的机会。
 
 \subsection{积分边界移动时的增量}
-若累积量为 $A(x)=\int_a^x f(s)\dd s$，增加上限 $\Delta x$只会增加末端的一小条，故 $\Delta A=f(x)\Delta x+o(\Delta x)$，于是 $A'=f(x)$。若上下限都变化，$B(t)=\int_{a(t)}^{b(t)}f(x)\dd x$，末端增加和起端删去分别贡献
-\[\dot B=f(b(t))\dot b-f(a(t))\dot a.\]
+若累积量为$A(x)=\int_a^x f(s)\dd s$，增加上限$\Delta x$只会增加末端的一小条，故$\Delta A=f(x)\Delta x+o(\Delta x)$，于是$A'=f(x)$。若上下限都变化，$B(t)=\int_{a(t)}^{b(t)}f(x)\dd x$，可先用原函数写成$B(t)=F(b(t))-F(a(t))$，再对两项分别应用链式法则：
+\begin{align*}
+\dot B
+&=F'(b(t))\dot b-F'(a(t))\dot a\\
+&=f(b(t))\dot b-f(a(t))\dot a.
+\end{align*}
 负号由下限移动时被删去的部分决定。例如同一密度分布中一段滑动窗口的质量变化，应比较两端的流入与流出，而不是仅看窗口长度是否不变。若被积函数本身也随时间变化，还须把区间内部的变化加入；这里只讨论固定的 $f(x)$。
 
 这一方法把积分与守恒思想联系起来：总量变化可由边界通量决定。使用之前，应说明积分变量、正向和两端的运动；若把随时间移动的边界误当常量，即使原函数算对，也会漏掉真实的变化率。
@@ -146,9 +161,14 @@ $\dd[\int_a^{g(t)}f(s)\dd s]/\dd t=f(g(t))g'(t)$。
 
 图\ref{c2deep:improper}给出不能跨越奇点使用端点差的典型情形。对 $1/x$，若从两侧分别截去零点附近的小区间，则
 \[
- \int_{-1}^{-\varepsilon}\frac{\dd x}{x}=\ln\varepsilon\to-\infty,
- \qquad
- \int_{\eta}^{1}\frac{\dd x}{x}=-\ln\eta\to+\infty.
+ \begin{aligned}
+ \int_{-1}^{-\varepsilon}\frac{\dd x}{x}
+ &=[\ln|x|]_{-1}^{-\varepsilon}
+ =\ln\varepsilon-\ln1\longrightarrow-\infty,\\
+ \int_{\eta}^{1}\frac{\dd x}{x}
+ &=[\ln|x|]_{\eta}^{1}
+ =\ln1-\ln\eta\longrightarrow+\infty.
+ \end{aligned}
 \]
 两侧反常积分都不收敛，通常意义下的定积分不存在。人为令 $\eta=\varepsilon$ 得到的对称抵消是另一种限制过程，不能用它代替分别收敛的要求。图上的正、负面积看似对称，不是将两个无穷量相减的依据。
 \fig{c2deep:improper}{奇点两侧须分别取极限，不能仅因图形对称就抵消}{\begin{tikzpicture}[x=2cm,y=.55cm]
@@ -200,6 +220,8 @@ $1/[(x+3)(x+4)]=1/(x+3)-1/(x+4)$，
 这里的一次矩可以进一步从窄条内部积分验证。若面密度为 $\sigma$，窄条内高度 $y$ 到 $y+\dd y$ 的质量为 $\sigma\,\dd x\,\dd y$，它对横轴的一次矩为 $y\sigma\,\dd x\,\dd y$。由下到上积分，
 \[
  \dd(M y_C)=\sigma\dd x\int_0^{f(x)}y\dd y
+ =\sigma\dd x\left[\frac{y^2}{2}\right]_0^{f(x)}
+ =\sigma\dd x\left(\frac{f(x)^2}{2}-0\right)
  =\frac{\sigma}{2}f(x)^2\dd x.
 \]
 再沿 $x$ 累加，并用总质量 $M=\sigma\int f(x)\dd x$ 相除，就得到上式。若改用水平条，必须先写清该高度处左右边界；同一条物理微元不能重复计算两次。
@@ -263,11 +285,14 @@ $1/[(x+3)(x+4)]=1/(x+3)-1/(x+4)$，
  v(t)=v_0+\int_0^t a(s)\dd s,\qquad
  x(t)=x_0+\int_0^t v(s)\dd s.
 \]
-若加速度给为位置函数，一维定质量运动还可用
-$a=v\,\dd v/\dd x$，得到 $F(x)\dd x=m v\dd v$，即
-\[
- \int_{x_0}^{x_1}F(x)\dd x=\frac12mv_1^2-\frac12mv_0^2.
-\]
+若加速度给为位置函数，在一个位置单调变化的运动段内，链式法则给出
+$a=\dd v/\dd t=(\dd v/\dd x)(\dd x/\dd t)=v\,\dd v/\dd x$。于是定质量的一维牛顿方程可写成$F(x)\dd x=m v\dd v$。位置端点$x_0,x_1$对应速度端点$v_0,v_1$，两边必须沿同一过程积分：
+\begin{align*}
+\int_{x_0}^{x_1}F(x)\dd x
+&=m\int_{v_0}^{v_1}u\dd u
+=m\left[\frac{u^2}{2}\right]_{v_0}^{v_1}\\
+&=\frac12mv_1^2-\frac12mv_0^2.
+\end{align*}
 此式是牛顿定律在过程上的积分结果。对转向点，$v=0$ 处应避免无依据地除以 $v$；可以先在单调运动段推导，再以连续性接到转向点。变质量系统的动量流入问题还需另行建立方程，不能直接把这里的 $m$ 换成随时间变化的质量。
 
 

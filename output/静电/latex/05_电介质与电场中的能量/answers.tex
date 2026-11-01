@@ -13,7 +13,12 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{通分比较并检查介质体积分数的含义}\par\nobreak
 按 图\ref{fig:e5:drill:1:p} 通分，
 \[
- C_A-C_T=C_0\frac{(\kappa-1)^2}{2(\kappa+1)}\ge0.
+\begin{aligned}
+C_A-C_T&=C_0\left(\frac{1+\kappa}{2}-\frac{2\kappa}{1+\kappa}\right)\\
+&=C_0\frac{(1+\kappa)^2-4\kappa}{2(1+\kappa)}
+=C_0\frac{\kappa^2-2\kappa+1}{2(1+\kappa)}\\
+&=C_0\frac{(\kappa-1)^2}{2(\kappa+1)}\ge0.
+\end{aligned}
 \]
 仅 $\kappa=1$ 相等。两种情况下介质体积相同，却因场的约束不同而电容不同；不能只按介质所占体积分数平均介电常数。\end{drillsolution}
 \begin{drillsolution}{e5:drill:2}\textbf{对整个并联极板组保留断电后的总电量}\par\nobreak
@@ -28,9 +33,15 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算各支电量变化和实际转移方向}\par\nobreak
-图\ref{fig:e5:drill:2:p} 第一只增加
-$\Delta Q_1=\kappa C_1U_f-C_1U_0=C_1C_2(\kappa-1)U_0/(\kappa C_1+C_2)$，
-第二只减少相同量。它与接恒压源的情况不同：此处电源不能补充电荷，只有两电容之间转移。
+图\ref{fig:e5:drill:2:p}第一只的初、末电量之差为
+\[
+\begin{aligned}
+\Delta Q_1&=\kappa C_1U_f-C_1U_0\\
+&=C_1U_0\frac{\kappa(C_1+C_2)-(\kappa C_1+C_2)}{\kappa C_1+C_2}\\
+&=\frac{C_1C_2(\kappa-1)U_0}{\kappa C_1+C_2}.
+\end{aligned}
+\]
+第二只的变化$\Delta Q_2=C_2(U_f-U_0)=-\Delta Q_1$，总转移量相抵。若$U_0>0$且$\kappa>1$，第一只正极电量增加，第二只减少。此处电源不能补充电荷，只有两电容之间转移。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总电容增大检查能量趋势}\par\nobreak
 末场能由总固定电量与总电容决定，因总电容增大而降低。\end{drillsolution}

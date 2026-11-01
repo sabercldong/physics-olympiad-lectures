@@ -54,14 +54,22 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力求角加速度后再回代}\par\nobreak
-按图\ref{fig:em6:drill:2:p}转矩式$2rT_b-rT_s=I\alpha$，代入张力后得$mgr=(I+5mr^2)\alpha=(19/2)mr^2\alpha$。所以
+按图\ref{fig:em6:drill:2:p}转矩式$2rT_b-rT_s=I\alpha$，先代入$T_b=mg-2mr\alpha$、$T_s=mg+mr\alpha$，
+\[
+2r(mg-2mr\alpha)-r(mg+mr\alpha)=I\alpha.
+\]
+展开左边并移项，得$mgr=(I+5mr^2)\alpha=(19/2)mr^2\alpha$，所以
 \[\boxed{\alpha=2g/(19r)},\]
 
 \[\boxed{T_s=21mg/19,\ T_b=15mg/19}.\]
 两边质量虽相等，力臂不同，所以仍可加速；两重物线加速度也不同，不能按普通等半径阿特伍德装置处理。\end{drillsolution}
 \begin{drillsolution}{em6:drill:3}\textbf{沿半圆细线的均匀质量微元积分质心}\par\nobreak
 按图\ref{fig:em6:drill:3:s}取圆心为原点，圆弧参数$-\pi/2\le\phi\le\pi/2$，向下坐标$y=R\cos\phi$。半圆弧长为$\pi R$，所以线密度$\lambda=m/(\pi R)$；对应角宽$\dd\phi$的弧长是$R\dd\phi$，质量微元$\dd m=\lambda R\dd\phi=(m/\pi)\dd\phi$。左右对称使质心横坐标为零，质心下移距离为
-\[d=m^{-1}\int y\dd m=(R/\pi)\int_{-\pi/2}^{\pi/2}\cos\phi\dd\phi=2R/\pi.\]
+\[
+d=\frac1m\int y\dd m
+=\frac1m\int_{-\pi/2}^{\pi/2}R\cos\phi\frac m\pi\dd\phi
+=\frac R\pi\int_{-\pi/2}^{\pi/2}\cos\phi\dd\phi.
+\]
 
 \fig{fig:em6:drill:3:p}{先沿未偏转圆弧求质心，再用质心重力矩求小振动周期}{\begin{tikzpicture}
 

@@ -28,10 +28,17 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把即将流入的物质并入短时闭合系统}\par\nobreak
 右侧装置若以速率 $\dot m$ 接收速度为 $u$ 的物质，取“装置及即将进入的物质”为短时闭合系统，在一维情形有
 \[
- mv+u\dd m+F\dd t=(m+\dd m)(v+\dd v),\quad
- m\dot v=F+(u-v)\dot m.
+ mv+u\dd m+F\dd t=(m+\dd m)(v+\dd v).
 \]
-略去二阶小量 $\dd m\dd v$ 后才得到后式。它表明外力并非一般等于装置自身的 $\dd(mv)/\dd t$，还须计入穿过边界的动量。
+右边展开为 $mv+m\dd v+v\dd m+\dd m\dd v$。先消去共同的 $mv$项，再略去二阶小量 $\dd m\dd v$，得到
+\[
+ m\dd v=F\dd t+(u-v)\dd m.
+\]
+除以 $\dd t$并取瞬时极限，得到 $m\dot v=F+(u-v)\dot m$。它表明外力并非一般等于装置自身的 $\dd(mv)/\dd t$，还须计入穿过边界的动量。事实上，乘积法则给出
+\[
+ \frac{\dd(mv)}{\dd t}=m\dot v+v\dot m=F+u\dot m,
+\]
+流入动量率 $u\dot m$正是不能省掉的边界项。
 \end{solution}
 
 \begin{question}\begin{example}[悬挂滑轮的弹簧秤]\label{n1e2}
@@ -76,9 +83,13 @@
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{扩大子系统求近端张力的改变量}\par\nobreak
 对图\ref{n1e3s}下方的左侧整体，$T_a'=F(m_B+m_C+m)/(M_0+m)$。与 $T_a=F(m_B+m_C)/M_0$ 相减，得到
-\[
- T_a'-T_a=\frac{Fm_Am}{M_0(M_0+m)}>0.
-\]
+记原来张力左侧的质量为 $Q=m_B+m_C$，则 $M_0-Q=m_A$。相减时先通分：
+\begin{align*}
+ T_a'-T_a&=F\left(\frac{Q+m}{M_0+m}-\frac{Q}{M_0}\right)\\
+ &=F\frac{M_0(Q+m)-Q(M_0+m)}{M_0(M_0+m)}\\
+ &=F\frac{m(M_0-Q)}{M_0(M_0+m)}
+ =\frac{Fm_Am}{M_0(M_0+m)}>0.
+\end{align*}
 所以靠近拉力的一段张力增大，另一段减小。判断的依据是各段绳实际拉动的质量和共同加速度同时改变，而不是简单认为“总加速度减小，所以所有张力都减小”。
 \end{solution}
 
@@ -118,7 +129,17 @@
  T\sin\varphi=ma\cos\theta,\qquad
  T\cos\varphi-mg=-ma\sin\theta.
 \]
-由第二式消去 $T$ 后整理：$a(\cos\theta+\sin\theta\tan\varphi)=g\tan\varphi$，所以
+先将第一式乘 $\cos\varphi$、第二式乘 $\sin\varphi$后相减，消去 $T$：
+\[
+ mg\sin\varphi
+ =ma(\cos\theta\cos\varphi+\sin\theta\sin\varphi)
+ =ma\cos(\theta-\varphi).
+\]
+再将第一式乘 $\sin\theta$、第二式乘 $\cos\theta$后相加，消去 $a$：
+\[
+ T(\sin\varphi\sin\theta+\cos\varphi\cos\theta)=mg\cos\theta.
+\]
+两式的三角组合都等于 $\cos(\theta-\varphi)$，在它为正的可实现范围内相除，所以
 \[
  a=\frac{g\sin\varphi}{\cos(\theta-\varphi)},\qquad
  T=\frac{mg\cos\theta}{\cos(\theta-\varphi)}.
@@ -184,11 +205,12 @@
 由图\ref{n1e8q}，张力对球向左上，加速度向左下。取水平向左、竖直向上为正，得到 $T\sin\beta=ma\cos\alpha$ 与 $T\cos\beta-mg=-ma\sin\alpha$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力得到沿轨道加速度}\par\nobreak
-第二式写成 $T\cos\beta=m(g-a\sin\alpha)$，两式相除并整理：
-\[
- a\cos\alpha=(g-a\sin\alpha)\tan\beta,
- \quad a=\frac{g\sin\beta}{\cos(\alpha-\beta)}.
-\]
+第二式写成 $T\cos\beta=m(g-a\sin\alpha)$，两式相除，得到 $a\cos\alpha=(g-a\sin\alpha)\tan\beta$。将含 $a$的项移到同一侧，再乘 $\cos\beta$，
+\begin{align*}
+ a(\cos\alpha+\sin\alpha\tan\beta)&=g\tan\beta,\\
+ a(\cos\alpha\cos\beta+\sin\alpha\sin\beta)&=g\sin\beta.
+\end{align*}
+括号内为 $\cos(\alpha-\beta)$，所以 $a=g\sin\beta/\cos(\alpha-\beta)$。
 \fig{n1e8s}{沿轨道加速度的水平、竖直投影}{\begin{tikzpicture}
 \fill(0,0)circle(2pt);\draw[force,blue](0,0)--(-.6,1.4)node[above]{$T$};\draw[force,red](0,0)--(0,-1.2)node[right]{$mg$};\draw[flow](4.5,.8)--(2.5,-.3)node[below left]{$\bm a$};\draw[guide](4.5,.8)--(2.5,.8)--(2.5,-.3);\node[above]at(3.5,.8){$a\cos\alpha$};\node[left]at(2.5,.25){$a\sin\alpha$};
 \end{tikzpicture}}
@@ -321,7 +343,13 @@
 \[
  ma_{C,e}=mg\cos\theta+mg\tan\theta\sin\theta-T.
 \]
-相等后得 $T=mg\sin^2\theta/\cos\theta$，共同分量为 $g\cos\theta$。
+将两式右端相等，消去共同重力项，得到
+\[
+ -mg\tan\theta\sin\theta+T
+ =mg\tan\theta\sin\theta-T,
+ \qquad 2T=2mg\tan\theta\sin\theta.
+\]
+因此 $T=mg\sin^2\theta/\cos\theta$。回代任一个径向式，弹簧的投影与张力抵消，均剩 $ma_e=mg\cos\theta$，故共同分量为 $g\cos\theta$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别计算切向分量和上球加速度}\par\nobreak
 垂直绳方向不受张力影响。沿$\bm t$逐球投影，
@@ -425,7 +453,11 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 \[
  \frac{m_2m_3g}{m_1+m_2+m_3}\le\mu m_1g.
 \]
-代入数值得 $m_3\le0.5\,\mathrm{kg}$，这一范围 $a_1=a_2=a_3=m_3g/(1.5\,\mathrm{kg}+m_3)$。
+约去 $g$，因分母为正，可交叉相乘整理为
+\[
+ (m_2-\mu m_1)m_3\le\mu m_1(m_1+m_2).
+\]
+代入 $m_1=0.5$kg、$m_2=1$kg、$\mu=0.5$，有 $(0.75\,\mathrm{kg})m_3\le0.375\,\mathrm{kg^2}$，所以 $m_3\le0.5\,\mathrm{kg}$。这一范围 $a_1=a_2=a_3=m_3g/(1.5\,\mathrm{kg}+m_3)$。
 \fig{n1e18s}{滑动后张力沿绳关联上块与悬重，下板仅由摩擦加速}{\begin{tikzpicture}
 \begin{scope}\node[draw](A)at(0,0){$m_1$};\draw[force](A.east)--(1.8,0)node[right]{$T$};\draw[force,blue](A.west)--(-1.7,0)node[left]{$f_k$};\draw[flow](0,.8)--(1,.8)node[right]{$a_1$};\end{scope}
 \begin{scope}[xshift=5cm]\node[draw](B)at(0,0){$m_3$};\draw[force](B.north)--(0,1.3)node[above]{$T$};\draw[force,red](B.south)--(0,-1.5)node[below]{$m_3g$};\draw[flow](1,.5)--(1,-.5)node[right]{$a_3=a_1$};\end{scope}
@@ -438,12 +470,12 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 当 $m_3>0.5\,\mathrm{kg}$，按图\ref{n1e18s}使用滑动摩擦：
 \[
  (m_1+m_3)a_1=m_3g-\mu m_1g,\quad
- a_2=\frac{\mu m_1g}{m_2}=2.5\,\mathrm{m/s^2},\quad a_3=a_1.
+ a_2=\frac{\mu m_1g}{m_2}=\frac g4,\quad a_3=a_1.
 \]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入数值并检查滑动方向和临界连续性}\par\nobreak
-在 $g=10\,\mathrm{m/s^2}$ 时，$a_1=10(m_3-0.25\,\mathrm{kg})/(m_3+0.5\,\mathrm{kg})\,\mathrm{m/s^2}$，且 $a_1>a_2$，验证上块相对下板向右滑动。临界值处两式都给出 $2.5\,\mathrm{m/s^2}$。
+在 $g=10\,\mathrm{m/s^2}$ 时，$a_2=2.5\,\mathrm{m/s^2}$，$a_1=10(m_3-0.25\,\mathrm{kg})/(m_3+0.5\,\mathrm{kg})\,\mathrm{m/s^2}$，且 $a_1>a_2$，验证上块相对下板向右滑动。临界值处两式都给出 $2.5\,\mathrm{m/s^2}$。
 \end{solution}
 
 \begin{question}\begin{example}[与推车侧壁保持接触的悬块]\label{n1e19}
@@ -482,7 +514,11 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去张力并确定质量比的可行条件}\par\nobreak
-按图\ref{n1e20s}平方相加，$(m_1^2-m_2^2)a^2=m_2^2g^2$。只有 $m_1>m_2$ 才存在有限正解：
+按图\ref{n1e20s}将张力的两个分量平方相加，
+\[
+ T^2(\cos^2\varphi+\sin^2\varphi)=m_2^2g^2+m_2^2a^2.
+\]
+左边为 $T^2$，再代入顶部物块给出的 $T=m_1a$，得到 $m_1^2a^2=m_2^2g^2+m_2^2a^2$。移项得 $(m_1^2-m_2^2)a^2=m_2^2g^2$。右边严格为正，故只有 $m_1>m_2$才存在有限正解；取 $a>0$的根，并回代张力方程：
 \[
  a=\frac{m_2g}{\sqrt{m_1^2-m_2^2}},\quad
  F'=(m_1+m_2+m_3)a,\quad \sin\varphi=\frac{m_2}{m_1}.
@@ -514,7 +550,13 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{先检查接触可行，再讨论摩擦阈值}\par\nobreak
-此式首先要求分母为正，即 $a<g\sqrt{(m_1/m_2)^2-1}$。到达上限时 $N\to0$ 而所需摩擦仍为正，任何有限摩擦因数都不能维持题设状态。只检查 $f\le\mu_sN$ 的形式而不检查 $N>0$，会得到没有物理意义的负因数。
+此式首先要求分母为正。因两边均正，平方不改变不等号方向：
+\[
+ m_1g>m_2\sqrt{g^2+a^2}
+ \quad\Longleftrightarrow\quad
+ m_1^2g^2>m_2^2(g^2+a^2).
+\]
+移项、除以 $m_2^2$，得到 $a^2<g^2[(m_1/m_2)^2-1]$。题设 $a>0$，故 $a<g\sqrt{(m_1/m_2)^2-1}$。到达上限时 $N\to0$而所需摩擦仍为正，任何有限摩擦因数都不能维持题设状态。只检查 $f\le\mu_sN$的形式而不检查 $N>0$，会得到没有物理意义的负因数。
 \end{solution}
 
 \begin{question}\begin{example}[固定斜面的地面作用力]\label{n1e22}
@@ -681,7 +723,20 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以法向接触约束关闭方程组}\par\nobreak
-斜面仅平移且是直面，图\ref{n1e29s}的法向 $\bm n=(-\sin\theta,\cos\theta)$ 不转动。接触条件给 $-a_x\sin\theta+a_y\cos\theta=-A\sin\theta$。代入两条物块方程，化为 $N/m-g\cos\theta=-A\sin\theta$。再结合 $MA=N\sin\theta$，得到
+斜面仅平移且是直面，图\ref{n1e29s}的法向 $\bm n=(-\sin\theta,\cos\theta)$不转动。接触条件给 $-a_x\sin\theta+a_y\cos\theta=-A\sin\theta$。将两条物块方程代入左边，
+\begin{align*}
+ -\left(-\frac Nm\sin\theta\right)\sin\theta
+ +\left(\frac Nm\cos\theta-g\right)\cos\theta
+ &=\frac Nm-g\cos\theta.
+\end{align*}
+所以 $N/m-g\cos\theta=-A\sin\theta$。再用斜面方程 $A=N\sin\theta/M$消去 $A$，把含 $N$的项移到同一侧：
+\[
+ N\left(\frac1m+\frac{\sin^2\theta}{M}\right)=g\cos\theta,
+ \qquad
+ \frac1m+\frac{\sin^2\theta}{M}
+ =\frac{M+m\sin^2\theta}{mM}.
+\]
+因此
 \[
  N=\frac{mMg\cos\theta}{M+m\sin^2\theta},\qquad
  A=\frac{mg\sin\theta\cos\theta}{M+m\sin^2\theta}.
@@ -689,7 +744,13 @@ ma_{C,t}=mg\sin\theta-mg\tan\theta\cos\theta=0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{恢复滑块加速度并作整体与极限检查}\par\nobreak
-物块对地分量为
+记共同分母 $D=M+m\sin^2\theta>0$。将支持力回代，水平分量为 $a_x=-N\sin\theta/m=-Mg\sin\theta\cos\theta/D$；竖直分量需先通分，
+\[
+ a_y=\frac{N\cos\theta}{m}-g
+ =\frac{Mg\cos^2\theta-g(M+m\sin^2\theta)}{D}
+ =-\frac{(M+m)g\sin^2\theta}{D}.
+\]
+故物块对地分量为
 \[
  a_x=-\frac{Mg\sin\theta\cos\theta}{M+m\sin^2\theta},\qquad
  a_y=-\frac{(M+m)g\sin^2\theta}{M+m\sin^2\theta}.
@@ -711,7 +772,12 @@ $MA+ma_x=0$，符合整体无水平外力；$M\to\infty$ 时 $A\to0$，物块回
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿固定斜面投影楔块方程并消去支持力}\par\nobreak
-对图\ref{n1e30s}右侧楔块沿固定斜面投影，支持力 $N_1$ 没有沿面分量，故 $Ma_A=(Mg+N_2)\sin\theta$。代入 $N_2=m(g-a_A\sin\theta)$ 得
+对图\ref{n1e30s}右侧楔块沿固定斜面投影，支持力 $N_1$没有沿面分量，故 $Ma_A=(Mg+N_2)\sin\theta$。代入 $N_2=m(g-a_A\sin\theta)$并展开，
+\begin{align*}
+ Ma_A&=Mg\sin\theta+mg\sin\theta-ma_A\sin^2\theta,\\
+ (M+m\sin^2\theta)a_A&=(M+m)g\sin\theta.
+\end{align*}
+移项后 $a_A$的系数为正，可以相除，得
 \[
  a_A=\frac{(M+m)g\sin\theta}{M+m\sin^2\theta}
  =\frac{2(M+m)g}{4M+m},
@@ -719,5 +785,12 @@ $MA+ma_x=0$，符合整体无水平外力；$M\to\infty$ 时 $A\to0$，物块回
 方向沿固定斜面向下。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以正支持力检查释放后的接触状态}\par\nobreak
-再代回得$N_2=mMg\cos^2\theta/(M+m\sin^2\theta)>0$，所以在$B$尚未滑出水平顶面范围内接触能够维持。此题只要求法向运动相同，不能把$B$的完整加速度也设为沿斜面方向。
+将 $a_A$代入 $N_2=m(g-a_A\sin\theta)$，
+\begin{align*}
+ N_2&=mg\left[1-\frac{(M+m)\sin^2\theta}{M+m\sin^2\theta}\right]\\
+ &=mg\frac{M+m\sin^2\theta-M\sin^2\theta-m\sin^2\theta}
+ {M+m\sin^2\theta}
+ =\frac{mMg\cos^2\theta}{M+m\sin^2\theta}>0.
+\end{align*}
+所以在 $B$尚未滑出水平顶面范围内接触能够维持。此题只要求法向运动相同，不能把 $B$的完整加速度也设为沿斜面方向。
 \end{solution}

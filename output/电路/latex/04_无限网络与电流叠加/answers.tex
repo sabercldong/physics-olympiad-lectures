@@ -37,7 +37,17 @@ $\lambda=1+r/R-\sqrt{r^2/R^2+2r/R}$。
 \[
  R_{\text{入}}=\frac{V_0}{I}=\frac{rR}{\sqrt{r^2+2rR}}.
 \]
-$R\to0$ 时，$R_{\text{入}}\sim R$，中央横档近似短路；$R\to\infty$ 时，$R_{\text{入}}\sim\sqrt{rR/2}\to\infty$，两轨间连接逐渐消失，不能在无横档情况下形成有限两端电阻。$R=r$ 回到 $r/\sqrt3$。\end{drillsolution}
+两个极限分别提出根号中的 $r^2$ 和 $2rR$，写成
+\[
+ \begin{aligned}
+ R_{\text{入}}&=R\left(1+\frac{2R}{r}\right)^{-1/2}
+ \sim R\qquad(R\to0),\\
+ R_{\text{入}}&=\sqrt{\frac{rR}{2}}
+ \left(1+\frac{r}{2R}\right)^{-1/2}
+ \sim\sqrt{\frac{rR}{2}}\qquad(R\to\infty).
+ \end{aligned}
+\]
+第一种情形中中央横档近似短路；第二种情形中结果趋于无穷大，两轨间连接逐渐消失，不能在无横档情况下形成有限两端电阻。$R=r$ 回到 $r/\sqrt3$。\end{drillsolution}
 \begin{drillsolution}{c4:drill:2}\textbf{补回直接边后按端口拆分并联网络}\par\nobreak
 先把图\ref{fig:c4:drill:2:s}的断口补回，完整方格网络的端口电阻为 $r/2$。把直接边 $r$ 和其余绕行网络 $X$ 分开，它们跨接同一端口，故 $r/2=r\parallel X$。
 \typeout{ECFIG:fig:c4:drill:2:p}\fig{fig:c4:drill:2:p}{解答过程：无限方格去掉直接边}{\begin{tikzpicture}[scale=.88]

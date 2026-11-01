@@ -4,7 +4,21 @@
 \fig{k6p1q}{斜冰面上的网格轨迹：题设关系}{\begin{tikzpicture}\draw[step=.75,gray!40,thin](-2.25,-1.5)grid(2.25,.75);\draw[axis](-2.5,0)--(2.6,0)node[right]{$\xi$};\draw[axis](0,-1.7)--(0,1.1)node[above]{$\eta$};\draw[world]plot[domain=-2:2,samples=60]({\x},{-(\x)^2/3});\fill(-1.5,-.75)circle(2pt)node[below left]{$A$};\fill(0,0)circle(2pt)node[above right]{$B$};\node at(1.4,.7){每格2.5m};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{用等高线方向的恒速读取两点间时间}\par\nobreak
-沿图\ref{k6p1q}等高线方向的重力分量为零，故 $v_\xi=10\cos60^\circ=5$m/s。$A$至 $B$的横向距离为5m，用时 $\Delta t=1$s。$B$为沿面轨迹的最高点，$v_{\eta B}=0$，因此从 $B$倒推这一秒，向上位移为 $g\sin\alpha\,\Delta t^2/2=2.5$m。
+沿图\ref{k6p1q}等高线方向的重力分量为零，故 $v_\xi=10\cos60^\circ=5$m/s。$A$至 $B$的横向距离为 $2\times2.5=5$m，用时 $\Delta t=5/5=1$s。
+
+$B$为沿面轨迹的最高点，$v_{\eta B}=0$。以经过 $A$为当地时间 $\tau=0$，沿面向上加速度为 $-g\sin\alpha$，因此
+\[
+ 0=v_{\eta A}-g\sin\alpha\,\Delta t
+ \quad\Longrightarrow\quad v_{\eta A}=g\sin\alpha\,\Delta t.
+\]
+用这个末速度条件消去未知的 $v_{\eta A}$，再计算向上位移：
+\begin{align*}
+ \Delta\eta&=\int_0^{\Delta t}
+ (v_{\eta A}-g\sin\alpha\,\tau)\dd\tau\\
+ &=\left[v_{\eta A}\tau-\frac{g\sin\alpha}{2}\tau^2\right]_0^{\Delta t}
+ =\frac12g\sin\alpha\,\Delta t^2.
+\end{align*}
+图中上升一格，即 $\Delta\eta=2.5$m。
 \fig{k6p1s}{斜冰面上的网格轨迹：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(4,0)node[right]{$\Delta t$};\draw[axis](0,0)--(0,2.7)node[above]{$v_\eta$};\draw[world](0,2)--(3,0);\node[below]at(3,0){$1$s};\node[left]at(0,2){$5$m/s};\node at(1.6,.5){面积 $2.5$m};\node[above]at(3,.1){$B$};\end{tikzpicture}}
 
 
@@ -12,7 +26,7 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从到顶点的竖直面积反求沿面加速度}\par\nobreak
 得到 $\boxed{\sin\alpha=1/2,\ \alpha=30^\circ}$。图\ref{k6p1s}中沿面向下的加速度大小为5m/s$^2$，不是完整的 $g$；图上最高点也不是空间中自由抛射的最高点。发射角 $60^\circ$用于确定恒定的横向分量，不能再把该角套到并非发射点的 $A$处。
 
-从 $B$倒推时使用 $\Delta\eta=\tfrac12g\sin\alpha\,\Delta t^2$，是因为 $B$的沿面向上分速度为零；若从 $A$正向计算，应写 $\Delta\eta=v_{\eta A}\Delta t-\tfrac12g\sin\alpha\,\Delta t^2$并用 $v_{\eta A}=g\sin\alpha\Delta t$消元。两者相同。由此可得 $v_{\eta A}=5$m/s，而非发射时的 $10\sin60^\circ$，明确了 $A$不是发射点。\end{solution}
+代回可得 $v_{\eta A}=10\times(1/2)\times1=5$m/s，而非发射时的 $10\sin60^\circ$，明确了 $A$不是发射点。\end{solution}
 
 \begin{question}\begin{example}[斜面弹跳后回到原点]\label{k6p2}
 斜面向右上倾角 $\theta$，球从斜面上原点以 $v_0$发射，方向比斜面再向上抬 $\theta$。与斜面每次碰撞均光滑完全弹性。求球恰在第 $N$次碰撞回到原点的条件及总时间。\end{example}
@@ -32,9 +46,19 @@ $T=2v_0\sin\theta/(g\cos\theta)=2v_0\tan\theta/g$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{将沿面返回时间与整数次碰撞同步}\par\nobreak
-切向运动不受反射改变，回到 $s=0$的非零时间为 $t_r=2v_0\cot\theta/g$。图\ref{k6p2s}要求此时法向也归零，故 $t_r=NT$，得到 $\boxed{N=\cot^2\theta\in\mathbb N^+}$，总时间 $\boxed{t_r=2v_0\cot\theta/g}$。若 $\cot^2\theta$不是正整数，球在切向回到原坐标时仍在空中，不能称回到原点。
-
-切向坐标为 $s=v_0\cos\theta\,t-g\sin\theta\,t^2/2$，反射只使法向速度跳变，因此该切向式可跨越各次碰撞保持成立。第 $N$次碰撞时刻是 $NT$，代入 $s=0$并约去非零的 $NT$，同样给 $N=\cot^2\theta$。如果只满足切向返回，球的法向坐标还可能为正；整数条件正是把“投影返回”提升为“实际回到原点”的必要部分。\end{solution}
+切向运动不受反射改变，所以从发射开始的切向坐标可跨越碰撞使用：
+\[
+ s(t)=v_0\cos\theta\,t-\frac12g\sin\theta\,t^2
+ =t\left(v_0\cos\theta-\frac12g\sin\theta\,t\right).
+\]
+回到 $s=0$时排除零根，解括号为零，得到 $t_r=2v_0\cos\theta/(g\sin\theta)=2v_0\cot\theta/g$。图\ref{k6p2s}要求此时法向也归零，故必须恰为第 $N$次碰撞时刻 $NT$。将两个时间式相除，
+\[
+ N=\frac{t_r}{T}
+ =\frac{2v_0\cos\theta}{g\sin\theta}
+   \frac{g\cos\theta}{2v_0\sin\theta}
+ =\frac{\cos^2\theta}{\sin^2\theta}=\cot^2\theta.
+\]
+所以条件为 $\boxed{N=\cot^2\theta\in\mathbb N^+}$，总时间为 $\boxed{t_r=2v_0\cot\theta/g}$。若 $\cot^2\theta$不是正整数，球在切向回到原坐标时仍在空中，不能称回到原点；整数条件把“投影返回”与实际碰撞同步。\end{solution}
 
 \begin{question}\begin{example}[到达斜面的最短滑行时间]\label{k6p3}
 点 $A$在倾角 $\theta\in[0,\pi/2)$ 的斜面上方，沿竖直方向到斜面的距离为 $h$。斜面向右上方延伸。从 $A$铺一条光滑直木板至斜面任一点，物块由静止沿板滑下。木板方向可选，求到达斜面的最短时间及木板方向。\end{example}
@@ -53,7 +77,12 @@ $T=2v_0\sin\theta/(g\cos\theta)=2v_0\tan\theta/g$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以等时圆首次相切证明全局最优}\par\nobreak
-等时圆可由坐标直接证明：向下取竖直坐标 $z$，静止滑行时间 $t$后有 $s=\tfrac12g\sin\varphi\,t^2$，所以 $x=K\sin\varphi\cos\varphi$、$z=K\sin^2\varphi$，其中 $K=gt^2/2$。消去角度得 $x^2+(z-K/2)^2=(K/2)^2$。随时间增大圆才首次碰到斜面，相切给全局最短时间；$\theta=0$时最优板竖直，时间退化为 $\sqrt{2h/g}$，与自由落体一致。\end{solution}
+等时圆可由坐标直接证明：向下取竖直坐标 $z$，静止滑行时间 $t$后有 $s=\tfrac12g\sin\varphi\,t^2$，所以 $x=K\sin\varphi\cos\varphi$、$z=K\sin^2\varphi$，其中 $K=gt^2/2$。先算平方和，
+\[
+ x^2+z^2=K^2\sin^2\varphi(\cos^2\varphi+\sin^2\varphi)
+ =K^2\sin^2\varphi=Kz.
+\]
+再将 $z^2-Kz$配方，得到 $x^2+(z-K/2)^2=(K/2)^2$。随时间增大圆才首次碰到斜面，相切给全局最短时间；$\theta=0$时最优板竖直，时间退化为 $\sqrt{2h/g}$，与自由落体一致。\end{solution}
 
 \begin{question}\begin{example}[四杆机构的速度与加速度]\label{k6p4}
 $A=(0,0)$、$B=(4l,0)$为固定铰。某瞬间 $C=(0,2l)$、$D=(l,3l)$，故 $CD=\sqrt2l$且 $CD\perp BD$。杆 $AC$以恒定角速度大小 $\omega$顺时针转动。求 $D$点的速度与加速度。\end{example}
@@ -253,9 +282,14 @@ r\sin\theta+x\cos\theta=\sqrt2r-b,\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成速度并检查沿杆相对滑动}\par\nobreak
-联立得 $\boxed{\bm v_P=(\sqrt3l\omega,l\omega)}$，速率 $2l\omega$，向右上与水平成 $30^\circ$。图\ref{k6p6s}的两个法向投影分别属于两杆，交点速度本身不必垂直任一杆。若误把 $P$当成两杆上同一个固定物质点，会同时要求两个不同的物质速度而导致矛盾。
+两条法向方程相加，消去 $v_y$，得 $-\sqrt3v_x=-3l\omega$，故 $v_x=\sqrt3l\omega$；用第一式减第二式得 $v_y=l\omega$。因此
+\[
+ \boxed{\bm v_P=(\sqrt3l\omega,l\omega)},\qquad
+ |\bm v_P|=\sqrt{3l^2\omega^2+l^2\omega^2}=2l\omega.
+\]
+两个分量均正，且 $v_y/v_x=1/\sqrt3$，所以向右上与水平成 $30^\circ$。图\ref{k6p6s}的两个法向投影分别属于两杆，交点速度本身不必垂直任一杆。若误把 $P$当成两杆上同一个固定物质点，会同时要求两个不同的物质速度而导致矛盾。
 
-两条法向方程相加得 $-\sqrt3v_x=-3l\omega$，相减得 $v_y=l\omega$，所以速率 $\sqrt{3l^2\omega^2+l^2\omega^2}=2l\omega$。将答案分别减去两杆当前材料点速度 $(\sqrt3l\omega/2,-l\omega/2)$与 $(\sqrt3l\omega,l\omega)$，所得相对速度各自沿对应杆，第一杆允许滑动、第二杆在此瞬间相对滑动恰为零。这是当前构形的结果，不能据此预设交点永远固定在第二杆上。\end{solution}
+将答案分别减去两杆当前材料点速度 $(\sqrt3l\omega/2,-l\omega/2)$与 $(\sqrt3l\omega,l\omega)$，所得相对速度各自沿对应杆，第一杆允许滑动、第二杆在此瞬间相对滑动恰为零。这是当前构形的结果，不能据此预设交点永远固定在第二杆上。\end{solution}
 
 \begin{question}\begin{example}[水平端匀速的滑杆]\label{k6p7}
 杆长 $l$，$A=(l\cos\theta,0)$沿水平导轨向右匀速 $v_0$，$B=(0,l\sin\theta)$沿竖直导轨运动，$0<\theta<\pi/2$。杆上 $C$满足 $AC=\lambda l$，求 $B,C$的速度，并给出 $C$的轨迹。\end{example}
@@ -293,13 +327,23 @@ y_C=\lambda l\sin\theta.\]
 \fig{k6p8q}{两斜面夹轮的约束检验：题设关系}{\begin{tikzpicture}\draw[world](-3,1.73205)--(0,0)--(2.7,2.7);\draw[world](-.164525,1.249689)circle(1);\draw[flow,blue](-2.8,.5)--(-1.5,.5)node[below]{$v_1$};\draw[flow,red](2.8,.5)--(1.5,.5)node[below]{$v_2$};\node at(-.8,.23){$\theta_1$};\node at(.8,.3){$\theta_2$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{先检验两处完整无滑动条件是否相容}\par\nobreak
-设图\ref{k6p8q}两接触处指向圆心的单位法线为 $\bm n_1=(\sin\theta_1,\cos\theta_1)$、$\bm n_2=(-\sin\theta_2,\cos\theta_2)$。若两处均无滑动，轮上接触点速度须分别为 $(v_1,0)$、$(-v_2,0)$。相减的竖直分量给 $\Omega r(\sin\theta_1+\sin\theta_2)=0$，所以 $\Omega=0$；但此时两点速度相同，与 $v_1,-v_2$矛盾。因此相向移动时两处同时无滑动不可能。
+设图\ref{k6p8q}两接触处指向圆心的单位法线为 $\bm n_1=(\sin\theta_1,\cos\theta_1)$、$\bm n_2=(-\sin\theta_2,\cos\theta_2)$。设圆心速度为 $(V_x,V_y)$、逆时针角速度为 $\Omega$，则两个接触点相对圆心的位矢分别为 $-r\bm n_1,-r\bm n_2$。若两处均无滑动，用刚体速度式必须同时满足
+\begin{align*}
+ (V_x+r\Omega\cos\theta_1,\ V_y-r\Omega\sin\theta_1)&=(v_1,0),\\
+ (V_x+r\Omega\cos\theta_2,\ V_y+r\Omega\sin\theta_2)&=(-v_2,0).
+\end{align*}
+两式竖直分量相减得 $\Omega r(\sin\theta_1+\sin\theta_2)=0$。两个斜面倾角均为锐角，正弦和非零，故 $\Omega=0$；此时水平分量又要求 $V_x=v_1=-v_2$，与 $v_1,v_2>0$矛盾。因此相向移动时两处同时无滑动不可能。
 \fig{k6p8s}{两斜面夹轮的约束检验：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(1,1.7)node[right]{$\bm n_1$};\draw[flow,red](0,0)--(-1.4,1.4)node[left]{$\bm n_2$};\draw[flow](0,0)--(.3,2.5)node[above]{$\bm V$};\node at(0,-.7){分别投影相对速度};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用两个法向条件求圆心速度}\par\nobreak
-若只要求光滑接触，图\ref{k6p8s}的法向相对速度为零给 $V_y=(v_1-V_x)\tan\theta_1=(v_2+V_x)\tan\theta_2$。解得
+若只要求光滑接触，图\ref{k6p8s}的法向相对速度为零给 $V_y=(v_1-V_x)\tan\theta_1=(v_2+V_x)\tan\theta_2$。将两个表达式相等，含 $V_x$的项移到同一侧：
+\[
+ V_x(\tan\theta_1+\tan\theta_2)
+ =v_1\tan\theta_1-v_2\tan\theta_2.
+\]
+正切和为正，可以相除，再代回任一个 $V_y$式，解得
 \[\boxed{V_x=\frac{v_1\tan\theta_1-v_2\tan\theta_2}{\tan\theta_1+\tan\theta_2}},\]
 \[\boxed{V_y=\frac{(v_1+v_2)\tan\theta_1\tan\theta_2}{\tan\theta_1+\tan\theta_2}}.\]
 对称斜面、等速相向时，圆心水平速度为零、竖直向上，符合挤升的几何变化；自转还需其他条件，不能由光滑接触单独确定。
@@ -367,13 +411,26 @@ y_C=\lambda l\sin\theta.\]
 \fig{k6p10q}{圆盘驱动两类从动机构：题设关系}{\begin{tikzpicture}\foreach \x/\s in {0/甲,4.5/乙}{\draw[world](\x,0)circle(1);\fill({\x-2},0)circle(2pt)node[below]{$C$};\draw[guide]({\x-2},0)--(\x,0);\node[below]at(\x,0){$O$};\fill({\x-.8},.6)circle(2pt)node[above]{$M$};\node[above]at(\x,1.4){\s};}\draw[very thick](-2,.6)--(-.8,.6);\draw[very thick](3.5,-.4)rectangle(3.9,1.4);\draw[very thick](3.7,.6)--(5.8,.6);\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{先求圆盘指定物质点的速度}\par\nobreak
-两机构在图\ref{k6p10q}中虽然接触位置相同，约束不同。圆心速度为 $(0,l\omega)$，圆盘当下物质点 $M$的速度为 $\bm v_M=(-r\omega\sin\theta,\omega(l-r\cos\theta))$。
+两机构在图\ref{k6p10q}中虽然接触位置相同，约束不同。圆心速度由 $\omega\bm e_z\times(l,0)$得到 $(0,l\omega)$；相对圆心的转动速度为
+\[
+ \omega\bm e_z\times r(-\cos\theta,\sin\theta)
+ =(-r\omega\sin\theta,-r\omega\cos\theta).
+\]
+两矢量相加，圆盘当下物质点 $M$的速度为 $\bm v_M=(-r\omega\sin\theta,\omega(l-r\cos\theta))$。
 \fig{k6p10s}{圆盘驱动两类从动机构：解答过程}{\begin{tikzpicture}\draw[flow,blue](0,0)--(-1.7,0)node[left]{$U_A$};\draw[flow,red](0,0)--(-.8,.6)node[above]{$\bm n$};\node at(-.5,-.7){甲：法向相对速度为零};\draw[flow,blue](4,0)--(2.7,0)node[above]{$U_B$};\draw[guide](4,0)--(4,1.4);\node at(4,-.7){乙：横坐标相同};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{光滑接触：约束法向相对速度}\par\nobreak
-甲杆端速度为 $(U_A,0)$，光滑接触只要求相对法向速度为零。法线沿半径方向。将相对速度向 $(-\cos\theta,\sin\theta)$投影，得到\[-U_A\cos\theta-l\omega\sin\theta=0.\]解得 \[\boxed{U_A=-l\omega\tan\theta}.\]
+甲杆端速度为 $(U_A,0)$，光滑接触只要求相对法向速度为零。法线沿半径方向。将相对速度向 $(-\cos\theta,\sin\theta)$投影，逐项展开：
+\begin{align*}
+ 0&=(U_A+r\omega\sin\theta)(-\cos\theta)
+ -\omega(l-r\cos\theta)\sin\theta\\
+ &=-U_A\cos\theta-r\omega\sin\theta\cos\theta
+ -l\omega\sin\theta+r\omega\cos\theta\sin\theta\\
+ &=-U_A\cos\theta-l\omega\sin\theta.
+\end{align*}
+两个含 $r$的项抵消。移项并除以 $\cos\theta>0$，解得 \[\boxed{U_A=-l\omega\tan\theta}.\]
 
 
 
@@ -490,8 +547,19 @@ $\varepsilon=\varepsilon+(c-1/3)\varepsilon^3+O(\varepsilon^5)$，
 \fig{k6p13q}{竖直滑块与曲柄的瞬时角速度：题设关系}{\begin{tikzpicture}\coordinate(O)at(2,0);\coordinate(B)at(.6,1.4);\coordinate(P)at(2,3.5);\draw[world](O)--(B)--(P);\draw[guide](O)--(P);\node[below]at(O){$O$};\node[left]at(B){$B$};\node[draw]at(P){$P$};\node at(1.8,.6){$\varphi$};\node at(1.8,2.7){$\alpha$};\draw[flow,blue](2.7,3.5)--(2.7,2.4)node[right]{$v$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{统一角速度符号后求两端沿杆投影}\par\nobreak
-图\ref{k6p13q}中的参数 $\varphi$沿逆时针转动增加，所以 $\bm v_B=(-r\omega\cos\varphi,-r\omega\sin\varphi)$；滑块速度为 $(0,-v)$。连杆长度不变，要求 $(\bm v_P-\bm v_B)\cdot(\sin\alpha,\cos\alpha)=0$，即
-\[-v\cos\alpha+r\omega\sin(\alpha+\varphi)=0.\]
+图\ref{k6p13q}中的参数 $\varphi$沿逆时针转动增加，$\dot\varphi=\omega$。对曲柄端坐标分别求导：
+\[
+ \dot x_B=-r\cos\varphi\,\dot\varphi=-r\omega\cos\varphi,
+ \qquad \dot y_B=-r\sin\varphi\,\dot\varphi=-r\omega\sin\varphi.
+\]
+滑块速度为 $(0,-v)$。连杆长度不变，要求 $(\bm v_P-\bm v_B)\cdot(\sin\alpha,\cos\alpha)=0$。先写两个沿杆投影：
+\begin{align*}
+ \bm v_P\cdot\bm e_{BP}&=-v\cos\alpha,\\
+ \bm v_B\cdot\bm e_{BP}
+ &=-r\omega(\cos\varphi\sin\alpha+\sin\varphi\cos\alpha)
+ =-r\omega\sin(\alpha+\varphi).
+\end{align*}
+两者相等，故 $-v\cos\alpha+r\omega\sin(\alpha+\varphi)=0$。
 \fig{k6p13s}{竖直滑块与曲柄的瞬时角速度：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(1.4,2.1);\draw[flow,blue](1.4,2.1)--(1.4,.9)node[right]{$\bm v_P$};\draw[flow,red](0,0)--(-.72,-.72)node[left]{$\bm v_B$};\draw[guide](0,0)--(.7,1.05)node[midway,above left=5pt]{$\bm e_{BP}$};\node[above]at(1.4,2.1){$P$};\node[below right]at(0,0){$B$};\end{tikzpicture}}
 
 
@@ -499,11 +567,7 @@ $\varepsilon=\varepsilon+(c-1/3)\varepsilon^3+O(\varepsilon^5)$，
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解出角速度并检查死点}\par\nobreak
 于是 $\boxed{\omega=v\cos\alpha/[r\sin(\alpha+\varphi)]}$，在图示锐角构形中为逆时针。图\ref{k6p13s}所画沿杆投影相等，连杆长度不进入瞬时速度结果。若 $\sin(\alpha+\varphi)=0$而分子非零，该构形无法以有限曲柄角速度实现指定滑块速度；这是机构死点处的运动约束，不能直接除零。
 
-连杆只能传递沿杆的长度约束，不能要求滑块与曲柄端的完整速度相同。投影中 
-\[
-\bm v_B\cdot\bm e_{BP}=-r\omega(\cos\varphi\sin\alpha+\sin\varphi\cos\alpha)=-r\omega\sin(\alpha+\varphi)
-\]
-；滑块投影是 $-v\cos\alpha$，两负号相等才得到正的逆时针角速度。图上曲柄端向左下运动，与这个符号一致。\end{solution}
+连杆只能传递沿杆的长度约束，不能要求滑块与曲柄端的完整速度相同。两个沿杆投影均为负，两负号相等才得到正的逆时针角速度。图上曲柄端向左下运动，与这个符号一致。\end{solution}
 
 \begin{question}\begin{example}[斜绳牵引上侧出绳线轴]\label{k6p14}
 线轴外半径 $R$、内半径 $r$，在地面向右纯滚动。绳从内轴上侧沿切线向右上方引出，与水平成 $\alpha$，沿绳拉动速率为 $v_0$。求线轴圆心速度，并与下侧出绳比较。\end{example}

@@ -4,10 +4,13 @@
 在空气中，$1.80\sin40^\circ\simeq1.157>1$，不存在题设双面透射光路。在液体中 $N=1.50$，$1.50\sin40^\circ\simeq0.9642<1$，光路存在。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在可行区间证明最小偏向的对称条件}\par\nobreak
-令 $g(r)=\arcsin(N\sin r)$，则 $i_1=g(r_1)$、$i_2=g(r_2)$，偏向角为 $\delta=g(r_1)+g(A-r_1)-A$。在 $0<r<r_c$，
-\[
-g''(r)=\frac{N(N^2-1)\sin r}{(1-N^2\sin^2r)^{3/2}}>0.
-\]
+令 $g(r)=\arcsin(N\sin r)$，则 $i_1=g(r_1)$、$i_2=g(r_2)$，偏向角为 $\delta=g(r_1)+g(A-r_1)-A$。反正弦链式求导给出 $g'(r)=N\cos r(1-N^2\sin^2r)^{-1/2}$。在 $0<r<r_c$，再用乘积与链式法则，
+\begin{align*}
+g''(r)&=-N\sin r(1-N^2\sin^2r)^{-1/2}\\
+&\quad+N\cos r\left(-\frac12\right)(1-N^2\sin^2r)^{-3/2}(-2N^2\sin r\cos r)\\
+&=\frac{N\sin r[-1+N^2\sin^2r+N^2\cos^2r]}{(1-N^2\sin^2r)^{3/2}}
+ =\frac{N(N^2-1)\sin r}{(1-N^2\sin^2r)^{3/2}}>0.
+\end{align*}
 因此和式关于 $r_1=A/2$ 对称且严格凸，唯一最小值在 $r_1=r_2=40^\circ$。图\ref{fig:d14s}的内部线段平行底面，两次折射关于棱镜对称轴互为逆过程。
 \fig{fig:d14s}{液体中的最小偏向光路，两内部角均从各自法线量起}{\begin{tikzpicture}
 \pgfmathsetmacro{\ii}{asin(1.5*sin(40))}

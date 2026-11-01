@@ -213,7 +213,21 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查小步长近似及电势变化符号}\par\nobreak
-若 $s\ll r$ 且 $s\ll d+r$，可写成 $\Delta V\simeq-E_x(A)s>0$，即远离收集点时电势升高并趋近零。注意这里求的是“终点减起点”的电势变化；若求 $U_{A,A+s}$，符号应相反。点电极模型只能用于远处场，不能把 $r=0$ 代入计算总接触电阻。\end{solution}
+求小步长变化时，把 $d,I,\rho$ 固定，对位置 $r$ 求导。由幂函数和链式法则，
+\[
+ \begin{aligned}
+ V'(r)&=\frac{\rho I}{2\pi}
+ \left[-(d+r)^{-2}\frac{\dd(d+r)}{\dd r}+r^{-2}\right]\\
+ &=\frac{\rho I}{2\pi}\left[\frac1{r^2}-\frac1{(d+r)^2}\right]
+ =-E_x(A)>0.
+ \end{aligned}
+\]
+若 $s\ll r$ 且 $s\ll d+r$，在 $r$ 处保留泰勒展开的一阶项，
+\[
+ V(r+s)=V(r)+V'(r)s+O(s^2),\qquad
+ \Delta V\simeq-E_x(A)s>0.
+\]
+即远离收集点时电势升高并趋近零。注意这里求的是“终点减起点”的电势变化；若求 $U_{A,A+s}$，符号应相反。点电极模型只能用于远处场，不能把 $r=0$ 代入计算总接触电阻。\end{solution}
 \begin{question}\begin{example}[由宏观电阻率求电子的有效阻力]\label{c1:example:7}
 金属中自由电子数密度为 $n$，电阻率为 $\rho$。电子以速率 $v$ 稳恒漂移。用宏观欧姆定律求单个电子所受平均阻力大小，并写出相应动量弛豫时间。
 \end{example}

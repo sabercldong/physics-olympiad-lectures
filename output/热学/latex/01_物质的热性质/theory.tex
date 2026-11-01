@@ -16,7 +16,14 @@
 
 从相对变化看，$\Delta L/L_0=\alpha\Delta T$。多数金属的 $\alpha$ 很小，所以在常见温差下可以保留一阶小量。若长度的变化进入周期、密度等非线性表达式，应先写精确的量之间关系，再统一展开，避免对不同量随意作同一种近似。
 
-热膨胀系数给出的是材料的响应，题目要求的往往是装置的响应。以摆钟为例，温度先改变摆长，摆长再改变一次摆动所需的时间，最后才改变一天内完成的摆动次数。这三个环节应分别列式。若把“长度增加万分之几”直接当成“钟少走万分之几”，便忽略了周期对长度的平方根依赖。对于随长度的幂次变化的量 $Y\propto L^q$，小变化满足 $\Delta Y/Y\simeq q\alpha\Delta T$；但比较实际时间与仪器读数时，还要再写清读数的定义。
+热膨胀系数给出的是材料的响应，题目要求的往往是装置的响应。以摆钟为例，温度先改变摆长，摆长再改变一次摆动所需的时间，最后才改变一天内完成的摆动次数。这三个环节应分别列式。若把“长度增加万分之几”直接当成“钟少走万分之几”，便忽略了周期对长度的平方根依赖。
+
+对于随长度的幂次变化的量$Y\propto L^q$，令$\varepsilon=\alpha\Delta T$，先写$Y/Y_0=(1+\varepsilon)^q$。对$F(\varepsilon)=(1+\varepsilon)^q$求导，
+\[
+F'(\varepsilon)=q(1+\varepsilon)^{q-1},\qquad
+F(0)=1,\quad F'(0)=q.
+\]
+在$|\varepsilon|\ll1$时，一阶展开$F(\varepsilon)=F(0)+F'(0)\varepsilon+O(\varepsilon^2)$才给出$\Delta Y/Y_0\simeq q\alpha\Delta T$。比较实际时间与仪器读数时，还须由计数方式判断应用的是周期本身，还是周期的倒数。
 
 若膨胀系数显著依赖温度，可用微分定义 $\alpha=(1/L)(\dd L/\dd T)$。将变量分离为$\dd L/L=\alpha(T)\dd T$，并把基准状态$L(T_0)=L_0$作为积分下限，得到
 \[
@@ -34,7 +41,7 @@
 对各向同性材料，三个方向按同一长度比例变化。因此面积与体积分别满足
 \[\frac A{A_0}=(1+\alpha\Delta T)^2\simeq1+2\alpha\Delta T,\qquad
 \frac V{V_0}=(1+\alpha\Delta T)^3\simeq1+3\alpha\Delta T.\]
-面积膨胀系数约为 $2\alpha$、体膨胀系数约为 $3\alpha$，前提是材料各向同性且只保留一阶。若质量不变，密度相应变为 $\rho\simeq\rho_0(1-3\alpha\Delta T)$。
+令$\varepsilon=\alpha\Delta T$，平方与立方的实际展开为$1+2\varepsilon+\varepsilon^2$和$1+3\varepsilon+3\varepsilon^2+\varepsilon^3$。舍去二阶及更高项，才得到面积膨胀系数约为$2\alpha$、体膨胀系数约为$3\alpha$；前提是材料各向同性。质量不变时，先用$\rho V=\rho_0V_0$得$\rho/\rho_0=(1+\varepsilon)^{-3}$，再在上面的幂函数展开中取$q=-3$，得到$\rho\simeq\rho_0(1-3\alpha\Delta T)$。
 
 孔洞随整体的几何尺度扩大。可把孔暂时用同种材料填满，整体自由、均匀膨胀后再取出填充部分；孔的边界会移动到相同的放大位置。这个论证要求自由膨胀，不能直接用于外边界被夹紧的金属环。
 

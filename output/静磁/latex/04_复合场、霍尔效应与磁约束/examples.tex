@@ -20,11 +20,26 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{选连续正根并比较速率与轴上自生场}\par\nobreak
-解图\ref{fig:mg4:example:1:p}两个二次方程，取与原转向连续的正根：
+在图\ref{fig:mg4:example:1:p}中记 $a=eB_0R/m>0$。两方程依次化为
+\[
+ \begin{aligned}
+ v_-^2+av_--v_0^2=0
+ &\ \Longrightarrow\ (v_-+a/2)^2=v_0^2+a^2/4,\\
+ v_+^2-av_+-v_0^2=0
+ &\ \Longrightarrow\ (v_+-a/2)^2=v_0^2+a^2/4.
+ \end{aligned}
+\]
+因 $\sqrt{v_0^2+a^2/4}>a/2$，两式取负平方根时都给负速率，应舍去；与原转向连续的正根为
 \[
 v_\pm=\frac{\sqrt{(eB_0R/m)^2+4v_0^2}\ \pm eB_0R/m}{2}.
 \]
-所以向里时 $v_-<v_0$、自生场减小；向外时 $v_+>v_0$、自生场增大。在弱场参数 $eB_0R/(mv_0)\ll1$ 下，展开根式得 $v_\pm\simeq v_0\pm eB_0R/(2m)$，轨道磁矩的增量均反抗外场。该比较描述固定半径圆轨道的力平衡；实际建立外场的阶段还存在感生电场，不能用最终磁力不做功否定上述弱场速度变化。\end{solution}
+所以向里时 $v_-<v_0$、自生场减小；向外时 $v_+>v_0$、自生场增大。为求弱场近似，令 $\epsilon=a/v_0\ll1$，则
+\[
+ \frac{v_\pm}{v_0}=\sqrt{1+\epsilon^2/4}\pm\frac\epsilon2.
+\]
+函数 $G(u)=\sqrt{1+u}$ 满足 $G(0)=1$、$G'(u)=1/(2\sqrt{1+u})$、$G'(0)=1/2$，故
+$G(\epsilon^2/4)=1+\epsilon^2/8+O(\epsilon^4)$。
+保留外场的一阶项，得到 $v_\pm\simeq v_0\pm eB_0R/(2m)$，轨道磁矩的增量均反抗外场。该比较描述固定半径圆轨道的力平衡；实际建立外场的阶段还存在感生电场，不能用最终磁力不做功否定上述弱场速度变化。\end{solution}
 \begin{question}\begin{example}[重力与库仑力共同约束的水平圆轨道]\label{mg4:example:2}
 原点固定正点电荷 $Q$，匀强磁场沿竖直 $+y$。另一正电荷 $q$、质量 $m$ 的粒子以 $y$ 轴上 $(0,h,0)$ 为圆心作水平圆周运动，角速度大小为 $\omega$，转向使磁力向心。考虑重力，求 $h$ 和水平半径，并给出存在条件。
 \end{example}
@@ -54,7 +69,15 @@ h=\frac{mg}{D},\qquad s=\left(\frac{k_eQq}{D}\right)^{1/3},\qquad
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{将实半径条件化为严格的存在下界并检查退化}\par\nobreak
-存在条件还可整理为 $D>\sqrt{m^3g^3/(k_eQq)}$，由此可知仅满足 $D>0$ 并不足够。该下界来自球到原点的总距离必须大于高度，若等号成立，水平半径缩为零，原先的圆周转动模型退化。\end{solution}
+由于 $D>0$，可将 $\rho^2>0$ 两侧同乘 $D^2$，再对正数取 $3/2$ 次幂：
+\[
+ \begin{aligned}
+ (k_eQq)^{2/3}D^{4/3}&>m^2g^2,\\
+ k_eQqD^2&>m^3g^3,\\
+ D&>\sqrt{\frac{m^3g^3}{k_eQq}}.
+ \end{aligned}
+\]
+由此可知仅满足 $D>0$ 并不足够。该下界来自球到原点的总距离必须大于高度，若等号成立，水平半径缩为零，原先的圆周转动模型退化。\end{solution}
 \begin{question}\begin{example}[平行电磁场中再次经过轴线]\label{mg4:example:3}
 匀强磁场为 $B\bm e_z$，电场为 $-E\bm e_z$。粒子质量 $m$、电荷 $-q$，从原点以 $v_0\bm e_x$ 出发，不计重力。求首次再次经过 $z$ 轴的时间与坐标，并比较相邻回旋周的轴向推进距离。
 \end{example}
@@ -64,16 +87,24 @@ h=\frac{mg}{D},\qquad s=\left(\frac{k_eQq}{D}\right)^{1/3},\qquad
 \end{question}
 \begin{solution}\textbf{分别求负电荷的横向回旋与轴向加速}\par\nobreak
 图\ref{fig:mg4:example:3:s}中负电荷受电力沿 $+z$，轴向加速度为 $qE/m$。横向圆心在 $+y$ 方向，令 $\Omega=qB/m$、$r=mv_0/(qB)$，横向速度方程为 $\dot v_x=-\Omega v_y,\dot v_y=\Omega v_x$。
-消元得 $\ddot v_x+\Omega^2v_x=0$，特征根 $\pm\mathrm i\Omega$，
-初值 $v_x(0)=v_0,\dot v_x(0)=0$ 给
+对第一式求导得 $\ddot v_x=-\Omega\dot v_y=-\Omega^2v_x$。
+试取 $v_x=e^{st}$，两次求导为 $se^{st},s^2e^{st}$，
+代回得 $s^2+\Omega^2=0$，根为 $\pm\mathrm i\Omega$。
+通解 $v_x=A\cos\Omega t+D\sin\Omega t$ 的导数为
+$\dot v_x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。
+初值 $v_x(0)=v_0,\dot v_x(0)=0$ 给 $A=v_0,D=0$，所以
 $v_x=v_0\cos\Omega t,\ v_y=-\dot v_x/\Omega=v_0\sin\Omega t$。
 分别积分，并由静止的轴向初态积分 $\dot v_z=qE/m$：
 \[
- x=\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\Omega t,\quad
- y=-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\Omega t),
+ \begin{aligned}
+ x&=v_0\int_0^t\cos\Omega s\dd s
+   =\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\Omega t,\\
+ y&=v_0\int_0^t\sin\Omega s\dd s
+   =-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\Omega t),
+ \end{aligned}
 \]
 \[
- v_z=\frac{qE}{m}[s]_0^t=\frac{qEt}{m},\qquad
+ v_z=\frac{qE}{m}\int_0^t\dd s=\frac{qE}{m}[s]_0^t=\frac{qEt}{m},\qquad
  z=\frac{qE}{m}\int_0^t s\dd s=\frac{qE}{m}[s^2/2]_0^t
  =\frac{qEt^2}{2m}.
 \]
@@ -110,8 +141,10 @@ t_1=\frac{2\pi m}{qB},\qquad (x,y,z)=\left(0,0,\frac{2\pi^2mE}{qB^2}\right).
 \begin{solution}\textbf{从带电荷号的分量方程求速度}\par\nobreak
 按图\ref{fig:mg4:example:4:s}作叉乘，$m\dot v_y=-qE-qBv_z$、$m\dot v_z=qBv_y$。记 $\Omega=qB/m$、$V=E/B$，令 $w=v_z+V$，则 $\dot v_y=-\Omega w$、$\dot w=\Omega v_y$。对 $\dot v_y=-\Omega w$ 求导，得
 $\ddot v_y=-\Omega\dot w=-\Omega^2v_y$。
-特征根为 $\pm\mathrm i\Omega$，故
-$v_y=A\cos\Omega t+D\sin\Omega t$。
+试取 $v_y=e^{st}$，则 $\dot v_y=se^{st}$、$\ddot v_y=s^2e^{st}$，
+代入得 $(s^2+\Omega^2)e^{st}=0$，根为 $\pm\mathrm i\Omega$，故
+$v_y=A\cos\Omega t+D\sin\Omega t$，
+其导数为 $\dot v_y=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。
 初态 $v_y(0)=0,w(0)=V$ 给 $A=0$、
 $\Omega D=\dot v_y(0)=-\Omega V$，所以
 $v_y=-V\sin\Omega t$、$w=-\dot v_y/\Omega=V\cos\Omega t$，
@@ -182,16 +215,24 @@ $y$ 轴竖直向上，匀强电场平行 $x$ 轴。质量 $m$、电荷 $-q$ 的�
 令 $a_x=qE/m=gl/H$，并取 $\omega=q|B|/m>0$。在 $\bm B\parallel-x$ 分支，分量方程为
 $\dot v_x=a_x,\dot v_y=-g+\omega v_z,\dot v_z=-\omega v_y$。
 令 $w=v_z-g/\omega$，则 $\dot v_y=\omega w,\dot w=-\omega v_y$，
-所以 $\ddot v_y+\omega^2v_y=0$。特征根为 $\pm\mathrm i\omega$，
-初值 $v_y(0)=0,\dot v_y(0)=-g$ 给
-$v_y=-(g/\omega)\sin\omega t$，再由
+所以 $\ddot v_y=\omega\dot w=-\omega^2v_y$。
+试取 $v_y=e^{st}$，两次求导为 $se^{st},s^2e^{st}$，
+代回得特征方程 $s^2+\omega^2=0$，根为 $\pm\mathrm i\omega$。
+通解为 $v_y=A\cos\omega t+D\sin\omega t$，
+$\dot v_y=-A\omega\sin\omega t+D\omega\cos\omega t$。
+初值 $v_y(0)=0,\dot v_y(0)=-g$ 给 $A=0,D=-g/\omega$，
+故 $v_y=-(g/\omega)\sin\omega t$，再由
 $v_z=g/\omega+\dot v_y/\omega$ 得
 $v_z=(g/\omega)(1-\cos\omega t)$。
 对三个速度分量从零积分，
 \[
- x=a_x[s^2/2]_0^t,\quad
- y-H=\frac g{\omega^2}[\cos\omega s]_0^t,\quad
- z=\frac g\omega[s-\sin\omega s/\omega]_0^t.
+ \begin{aligned}
+ x&=\int_0^ta_xs\dd s=a_x[s^2/2]_0^t,\\
+ y-H&=-\frac g\omega\int_0^t\sin\omega s\dd s
+     =\frac g{\omega^2}[\cos\omega s]_0^t,\\
+ z&=\frac g\omega\int_0^t(1-\cos\omega s)\dd s
+   =\frac g\omega[s-\sin\omega s/\omega]_0^t.
+ \end{aligned}
 \]
 因此轴向 $x=a_xt^2/2$ 不受磁力影响，而
 \[
@@ -202,16 +243,24 @@ $v_z=(g/\omega)(1-\cos\omega t)$。
 
 在 $\bm B\parallel-y$ 分支，$\dot v_y=-g$，
 $\dot v_x=a_x-\omega v_z,\dot v_z=\omega v_x$。
-对第一条横向式求导，得到 $\ddot v_x+\omega^2v_x=0$；
-由 $v_x(0)=0,\dot v_x(0)=a_x$，其解为
+对第一条横向式求导，得到 $\ddot v_x=-\omega\dot v_z=-\omega^2v_x$；
+试取 $v_x=e^{st}$，两次求导为 $se^{st},s^2e^{st}$，
+代回得 $s^2+\omega^2=0$。通解为
+$v_x=C\cos\omega t+F\sin\omega t$，导数为
+$\dot v_x=-C\omega\sin\omega t+F\omega\cos\omega t$。
+由 $v_x(0)=0,\dot v_x(0)=a_x$ 得 $C=0,F=a_x/\omega$，所以
 $v_x=(a_x/\omega)\sin\omega t$，再由
 $v_z=(a_x-\dot v_x)/\omega$ 得
 $v_z=(a_x/\omega)(1-\cos\omega t)$。
 于是
 \[
- x=-\frac{a_x}{\omega^2}[\cos\omega s]_0^t,\quad
- y=H-g[s^2/2]_0^t,\quad
- z=\frac{a_x}{\omega}[s-\sin\omega s/\omega]_0^t.
+ \begin{aligned}
+ x&=\frac{a_x}{\omega}\int_0^t\sin\omega s\dd s
+   =-\frac{a_x}{\omega^2}[\cos\omega s]_0^t,\\
+ y&=H-\int_0^tgs\dd s=H-g[s^2/2]_0^t,\\
+ z&=\frac{a_x}{\omega}\int_0^t(1-\cos\omega s)\dd s
+   =\frac{a_x}{\omega}[s-\sin\omega s/\omega]_0^t.
+ \end{aligned}
 \]
 竖直下落不受磁力影响，仍在 $t_0=\sqrt{2H/g}$ 落地，而 $c=a_x(1-\cos\omega t_0)/\omega^2<a_xt_0^2/2=l$。因此
 \[
@@ -325,7 +374,18 @@ V_{\text{右}}-V_{\text{左}}=v_dBw
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{反求质量与色散，核对电荷态和入射准备条件}\par\nobreak
-由图\ref{fig:mg4:example:9:p}可解 $m=qB_sB_aD/(2E)$，且小质量差满足 $\Delta D/D=\Delta m/m$。若改为从静止经过相同电压加速，则 $D\propto\sqrt m$，色散系数只有一半。两者并不矛盾，前者选择共同速度，后者选择共同单位电荷能量。若离子电荷不同，装置直接区分的是相应的 $m/q$，不能仅凭落点将电荷态不同的离子认作不同质量。\end{solution}
+由图\ref{fig:mg4:example:9:p}可解 $m=qB_sB_aD/(2E)$。令 $C=2E/(qB_sB_a)$，则 $D=Cm$，相同电荷、固定场条件下 $\Delta D/D=\Delta m/m$ 精确成立。若改为从静止经过相同电压 $U$ 加速，先用 $mv^2/2=qU$，得到
+\[
+ D=\frac{2mv}{qB_a}=\frac2{B_a}\sqrt{\frac{2mU}{q}}=C_Um^{1/2},
+ \qquad C_U=\frac2{B_a}\sqrt{\frac{2U}{q}}.
+\]
+保持 $U,q,B_a$ 固定，实际求导并除以原距离：
+\[
+ \frac{\dd D}{\dd m}=\frac{C_U}{2}m^{-1/2},\qquad
+ \frac{\dd D}{D}=\frac{(C_U/2)m^{-1/2}\dd m}{C_Um^{1/2}}
+ =\frac12\frac{\dd m}{m}.
+\]
+所以小质量差的相对色散系数为前一种的一半。前者选择共同速度，后者选择共同单位电荷能量。若离子电荷不同，装置直接区分的是相应的 $m/q$，不能仅凭落点将电荷态不同的离子认作不同质量。\end{solution}
 \begin{question}\begin{example}[磁镜的反射条件与损失锥]\label{mg4:example:10}
 粒子从场强 $B_0$ 处以总速率 $v_0$、俯仰角 $0\le\alpha_0<\pi/2$ 向缓变强场端运动，该端最大场为 $B_m>B_0$。满足绝热近似，不存在电场。求镜点场强及能够反射的初始角范围。
 \end{example}
@@ -372,11 +432,12 @@ V_{\text{右}}-V_{\text{左}}=v_dBw
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始位置、平行速度求振幅与镜点}\par\nobreak
 由图\ref{fig:mg4:example:11:p}，$\omega_z=\sqrt{2\mu B_0/(mL^2)}=v_{\perp0}/L$。在 $m\ddot z+(2\mu B_0/L^2)z=0$ 中令
-$z\propto\e^{st}$，得特征方程 $s^2+\omega_z^2=0$，
+$z=\e^{st}$，两次求导为 $\dot z=s\e^{st}$、$\ddot z=s^2\e^{st}$，
+代回得 $(s^2+\omega_z^2)\e^{st}=0$，故特征方程为 $s^2+\omega_z^2=0$，
 因此实通解为 $z=A\cos\omega_zt+D\sin\omega_zt$。
 求导得 $\dot z=-A\omega_z\sin\omega_zt+D\omega_z\cos\omega_zt$。
 从 $z(0)=0,\dot z(0)=v_{\parallel0}$ 得 $A=0,D=v_{\parallel0}/\omega_z$，
-所以 $z=(v_{\parallel0}/\omega_z)\sin\omega_zt$，所以镜点 $|z_m|=L|v_{\parallel0}|/v_{\perp0}$。也可用 $mv_{\parallel0}^2/2=\mu[B(z_m)-B_0]$ 独立检查。必须同时满足回旋频率远大于 $\omega_z$，并保证运动范围内近轴和缓变近似有效，才能把这个平均轴向方程当作原轨迹的近似描述。
+所以 $z=(v_{\parallel0}/\omega_z)\sin\omega_zt$。令 $\dot z=v_{\parallel0}\cos\omega_zt=0$，非零振幅时镜点对应正弦为 $\pm1$，故 $|z_m|=|v_{\parallel0}|/\omega_z=L|v_{\parallel0}|/v_{\perp0}$。也可用 $mv_{\parallel0}^2/2=\mu[B(z_m)-B_0]$ 独立检查。必须同时满足回旋频率远大于 $\omega_z$，并保证运动范围内近轴和缓变近似有效，才能把这个平均轴向方程当作原轨迹的近似描述。
 
 
 
@@ -392,9 +453,13 @@ $z\propto\e^{st}$，得特征方程 $s^2+\omega_z^2=0$，
 \begin{solution}\textbf{移到抵消电场的恒速系，确定初始相对回旋速度}\par\nobreak
 图\ref{fig:mg4:example:12:s}令 $\bm v_D=\bm E\times\bm B/B^2$，则 $\bm E+\bm v_D\times\bm B=0$。写 $\bm v_\perp=\bm v_D+\bm u$，运动方程化为 $m\dot{\bm u}=q\bm u\times\bm B$，取 $\bm B=B\bm e_z$，并定义带符号的 $\omega=qB/m$，
 则 $\dot u_x=\omega u_y,\dot u_y=-\omega u_x$。
-再次求导得 $\ddot u_x+\omega^2u_x=0$，特征根为
-$\pm\mathrm i\omega$。初值 $u_x(0)=u_{x0}$、
-$\dot u_x(0)=\omega u_{y0}$ 确定
+再次求导得 $\ddot u_x=\omega\dot u_y=-\omega^2u_x$。
+试取 $u_x=e^{st}$，两次导数为 $se^{st},s^2e^{st}$，代回得
+$s^2+\omega^2=0$，根为 $\pm\mathrm i\omega$。
+通解 $u_x=A\cos\omega t+D\sin\omega t$ 的导数为
+$\dot u_x=-A\omega\sin\omega t+D\omega\cos\omega t$。
+初值 $u_x(0)=u_{x0}$ 给 $A=u_{x0}$，
+$\dot u_x(0)=\omega u_{y0}$ 给 $D=u_{y0}$，再用 $u_y=\dot u_x/\omega$，得到
 \[
  u_x=u_{x0}\cos\omega t+u_{y0}\sin\omega t,\qquad
  u_y=u_{y0}\cos\omega t-u_{x0}\sin\omega t.
@@ -437,8 +502,11 @@ $\dot u_x(0)=\omega u_{y0}$ 确定
 \end{question}
 \begin{solution}\textbf{在重力与磁力的带符号分量方程中求速度与坐标}\par\nobreak
 按图\ref{fig:mg4:example:13:s}的坐标，$m\dot v_x=qBv_y$，$m\dot v_y=-mg-qBv_x$。定义 $\Omega=qB/m$，$V=mg/(qB)$。取 $u_x=v_x+V$，则 $\dot u_x=\Omega v_y$，$\dot v_y=-\Omega u_x$，初始 $u_x(0)=V$、$v_y(0)=0$。对 $\dot u_x=\Omega v_y$ 再求导，得
-$\ddot u_x+\Omega^2u_x=0$。特征根 $\pm\mathrm i\Omega$，
+$\ddot u_x=\Omega\dot v_y=-\Omega^2u_x$。
+试取 $u_x=e^{st}$，两次求导为 $se^{st},s^2e^{st}$，代回得
+$s^2+\Omega^2=0$，特征根为 $\pm\mathrm i\Omega$，
 通解 $u_x=A\cos\Omega t+D\sin\Omega t$；
+求导得 $\dot u_x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$，
 初值 $u_x(0)=V,\dot u_x(0)=0$ 给 $A=V,D=0$。
 因此 $v_x=V(\cos\Omega t-1)$，
 $v_y=\dot u_x/\Omega=-V\sin\Omega t$。

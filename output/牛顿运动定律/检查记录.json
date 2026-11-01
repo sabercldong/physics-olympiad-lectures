@@ -1,13 +1,13 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "牛顿运动定律",
       "工程": "01_牛顿运动定律与相互作用",
       "名称": "牛顿运动定律与相互作用",
       "PDF": "牛顿运动定律/pdf/牛顿运动定律第一讲_牛顿运动定律与相互作用.pdf",
-      "页数": 44,
+      "页数": 45,
       "例题": 30,
       "练习": 4,
       "题数": 34,
@@ -17,20 +17,40 @@
       "题设图": 34,
       "有过程图并引用的解答": 34,
       "已逐题复核": 34,
-      "PDFsha256": "afdd781a63fba81d6034200bf3b1f8056f9854a0f884e8f606bdaef7ccef2c38",
-      "TeXsha256": "b23c619394b138d984718034039d9403ff13fcf74c1db930ab52daea0758e700",
+      "PDFsha256": "642387be551805a3d073f6fff396088593506a66ca3448df3b6e743eb6e8b372",
+      "TeXsha256": "0373964dae8f448b80d2a6b377a2ec8eefc73e361c587f7126f043132ec9b798",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/牛顿运动定律/01_牛顿运动定律与相互作用/main.pdf"
+      "本次重点页面复核PDF页序": [
+        12,
+        13,
+        28,
+        29,
+        38,
+        39,
+        40,
+        41
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/牛顿运动定律/01_牛顿运动定律与相互作用/main.pdf",
+      "本轮数学过程全文复核题数": 34,
+      "本轮数学过程修改题数": 11,
+      "源码各文件SHA256": {
+        "knowledge-light-pulley.tex": "d774331c9a1cd1a9da44a2454825cd9a2a4aac0adccf276cd5c3bea6436d3288",
+        "examples.tex": "38b48b547766199dac84a6ef4af8c0e358891ea44150594396ea18e4ffca9124",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "7328f3d5ef7b97549533fdccdd8384de1ee37e6f11655d8a620c5eaf0a43d0b3",
+        "theory.tex": "1075095fdfe0e130e68a384e2cfc3c20bdde9c2b9d7fe9cd31722e29dcb32d54",
+        "practice.tex": "5b75f976b71d477c35600ccc8ce71855aaffe59f8abdbafbb8da49efcfeb34ba",
+        "answers.tex": "47fa0f7c39fd815bf1675494cd7c47009fbc1b0dc6de5f8f1a9057f835c93ccf"
+      }
     },
     {
       "专题": "牛顿运动定律",
       "工程": "02_摩擦、约束与加速参考系",
       "名称": "摩擦、约束与加速参考系",
       "PDF": "牛顿运动定律/pdf/牛顿运动定律第二讲_摩擦、约束与加速参考系.pdf",
-      "页数": 38,
+      "页数": 39,
       "例题": 21,
       "练习": 4,
       "题数": 25,
@@ -40,20 +60,40 @@
       "题设图": 25,
       "有过程图并引用的解答": 25,
       "已逐题复核": 25,
-      "PDFsha256": "69d775565218176da21d86ff87ac1d0ad9b2c19affe53f1e02683733ed78cfca",
-      "TeXsha256": "653b131f71bf06c287b458eab0e60c7996866712c13e1b699c95058ee1e731c3",
+      "PDFsha256": "f7eb917c9b9a98cde844239699bf65b0ad43db2ce9d90ae6e5a3df2289eae745",
+      "TeXsha256": "3dc5d167de1db4298d167eb81cd583670a050af3fe13d5938e2e6aa0f73ec653",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/牛顿运动定律/02_摩擦、约束与加速参考系/main.pdf"
+      "本次重点页面复核PDF页序": [
+        16,
+        17,
+        25,
+        26,
+        33,
+        34,
+        37,
+        38
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/牛顿运动定律/02_摩擦、约束与加速参考系/main.pdf",
+      "本轮数学过程全文复核题数": 25,
+      "本轮数学过程修改题数": 12,
+      "源码各文件SHA256": {
+        "examples.tex": "a124c9d43c4e0a8de9e6048cdb3e1c32aebed90011baf0ad6031c0b8e90e0699",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "5171a02de97b6745d3e9a46ff1ca1f74e17dd15c591c65c0896c01f2e8e4b64f",
+        "theory.tex": "680b476bf74be083c6a143e05dbef44d6d24cc5315a4a8420d479bd8825d3f1f",
+        "practice.tex": "43b3d5749f3e1519dcb6ac059138f6d161127dc518c641f3db24945a06dfb767",
+        "knowledge-axle-load.tex": "23de359312d2ec25c64556c5babb4c53c6a1661de61f10723079827cf823c4e7",
+        "answers.tex": "63529c7f76d53428ed219b80f7e9139327930c9e044486d4999439be5e46f1b9"
+      }
     },
     {
       "专题": "牛顿运动定律",
       "工程": "03_分离、轻物与连续介质",
       "名称": "分离、轻物与连续介质",
       "PDF": "牛顿运动定律/pdf/牛顿运动定律第三讲_分离、轻物与连续介质.pdf",
-      "页数": 41,
+      "页数": 44,
       "例题": 20,
       "练习": 4,
       "题数": 24,
@@ -63,20 +103,40 @@
       "题设图": 24,
       "有过程图并引用的解答": 24,
       "已逐题复核": 24,
-      "PDFsha256": "015309054fd6c6c66de4ed83747fac26644baac8f6c2b99dfba9d34197305496",
-      "TeXsha256": "a2715068175b64e48fcf5e0010155b82e15a2310e35707498c622bc52bf8987a",
+      "PDFsha256": "b623facbdc1af2386fcf7e1e1a8717b8f869f87616f79359e1dcf410d5f6607f",
+      "TeXsha256": "dad5d05d6f77390b4d504e8c002504ac5ffa5a4bf79513ee0dd0d9409417134f",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/牛顿运动定律/03_分离、轻物与连续介质/main.pdf"
+      "本次重点页面复核PDF页序": [
+        14,
+        15,
+        32,
+        33,
+        35,
+        36,
+        37,
+        44
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/牛顿运动定律/03_分离、轻物与连续介质/main.pdf",
+      "本轮数学过程全文复核题数": 24,
+      "本轮数学过程修改题数": 10,
+      "源码各文件SHA256": {
+        "examples.tex": "f306890b78ca1e687a9e3ce35cae71155226fe62f89383bacda3d81665c8d681",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "7d290288f2b1c26651db44866e9bb370d1560c6f36e0f8ba92d316afbf6ffcbe",
+        "theory.tex": "68ced8a7f420bcba2891b638d585c2f0223c3ad6526307206bd8f2c4d3340efd",
+        "practice.tex": "a3afc37f2676a37e272edda137be6f84d042d89c1e9cdd71fbac211e040db0cb",
+        "answers.tex": "8b6f8b50e8d151c5e957aa8c82795a47fd4b3224e721ac602b63527bfa7dd740",
+        "knowledge-rotating-liquid.tex": "fcf1d9cca58d4bbafde16def02864417effaf5fe17346519fda2ae96707a40fe"
+      }
     },
     {
       "专题": "牛顿运动定律",
       "工程": "04_动力学过程与综合",
       "名称": "动力学过程与综合",
       "PDF": "牛顿运动定律/pdf/牛顿运动定律第四讲_动力学过程与综合.pdf",
-      "页数": 36,
+      "页数": 38,
       "例题": 16,
       "练习": 4,
       "题数": 20,
@@ -86,13 +146,32 @@
       "题设图": 20,
       "有过程图并引用的解答": 20,
       "已逐题复核": 20,
-      "PDFsha256": "e42f7c5ff2c3e5a93f2605c9d3cab21f5eaf5e9eb7f65734eeb1f0bb79bd2e4e",
-      "TeXsha256": "e0746b58f5bf36a65497a731af2f28f84d31145006cfcb9a58485857a8a308bf",
+      "PDFsha256": "ca2b0b663a583d27d90db25068748a25886207f6ab343a05c313bcb72ace03d0",
+      "TeXsha256": "287e300a8f0939018766887d9c540b939bdbc4e5f964bbd2ba13f8060f5de859",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/牛顿运动定律/04_动力学过程与综合/main.pdf"
+      "本次重点页面复核PDF页序": [
+        21,
+        22,
+        26,
+        27,
+        34,
+        35,
+        38
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/牛顿运动定律/04_动力学过程与综合/main.pdf",
+      "本轮数学过程全文复核题数": 20,
+      "本轮数学过程修改题数": 9,
+      "源码各文件SHA256": {
+        "examples.tex": "e9cc14bc36e97fad6cde8cd45dc1fbdcb61887f8392787288ddc4e8e12ab6136",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "knowledge-gap.tex": "81dc5cacdf21b7622fd83ecebbdebcb48d2afabe2f4c183a120dbd95d262069e",
+        "main.tex": "d2a785a7e239adee08c3ec8a80e406e8dee4d95088ff09dcc3a188dff446aac8",
+        "theory.tex": "bf290545899f714d1571ec65b031c9ac7a39b95acf67059713ea5857ce0f163b",
+        "practice.tex": "6cf6bc7678e173d4f5555d38cf3d0ab1dbecc059e049c1394dd5bcd457a00f74",
+        "answers.tex": "e8c88665e90521ab16afccd5eb5af8e2956f841a02da4dbe0d926a1d1a69918a"
+      }
     }
   ]
 }

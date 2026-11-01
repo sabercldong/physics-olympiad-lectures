@@ -95,12 +95,15 @@ x(t)-x(t_0)
 
 此时电场对粒子的机械能不再满足简单的 $K+qV=\text{常量}$。沿粒子轨迹对势 $V(\bm r(t),t)$ 使用链式法则：
 \[
+\begin{aligned}
 \frac{\dd(qV)}{\dd t}
-=q\nabla V\cdot\bm v+q\frac{\partial V}{\partial t},
-\qquad
-\frac{\dd K}{\dd t}=q\bm E\cdot\bm v=-q\nabla V\cdot\bm v.
+&=q\nabla V\cdot\bm v+q\frac{\partial V}{\partial t},\\
+\frac{\dd K}{\dd t}
+&=\frac m2(\dot{\bm v}\cdot\bm v+\bm v\cdot\dot{\bm v})
+=q\bm E\cdot\bm v.
+\end{aligned}
 \]
-两式相加，空间梯度项抵消，得到
+这里用$m\dot{\bm v}=q\bm E$，再以$\bm E=-\nabla V$改写为$\dd K/\dd t=-q\nabla V\cdot\bm v$。两式相加，空间梯度项抵消，得到
 \[
 \frac{\dd(K+qV)}{\dd t}=q\frac{\partial V}{\partial t}.
 \]

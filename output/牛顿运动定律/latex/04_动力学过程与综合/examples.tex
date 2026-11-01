@@ -79,7 +79,19 @@ m\int_{v_0}^{v_l}w\dd w
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对等位移段求和并检查终点可达性}\par\nobreak
-图\ref{n4e4s}分段情形不必取极限，每段精确满足 $v_{j+1}^2-v_j^2=2F_j(l/n)/m$。相加后中间速度平方消去，而 $\sum_{j=1}^nF_j=n(F_0+F_l)/2$，所以末速仍为同一表达式。这里相同来自等位移权重和等差力序列，不表示两个过程的 $v(t)$ 或所需时间相同。若 $F$ 是驱动力而非合力，还须另外扣除摩擦功；若根号内虽为正但中途先停下，也要检查该终点是否实际可达。
+图\ref{n4e4s}分段情形不必取极限。取 $n\ge2$，第 $j$段两端速度记为 $v_{j-1},v_j$，每段精确满足 $v_j^2-v_{j-1}^2=2F_j(l/n)/m$。相加后中间速度平方逐项消去：
+\[
+ (v_1^2-v_0^2)+\cdots+(v_n^2-v_{n-1}^2)
+ =v_n^2-v_0^2=\frac{2l}{mn}\sum_{j=1}^nF_j.
+\]
+等差序列的第 $j$项为 $F_j=F_0+(j-1)(F_l-F_0)/(n-1)$，因此
+\begin{align*}
+ \sum_{j=1}^nF_j
+ &=nF_0+\frac{F_l-F_0}{n-1}\sum_{j=1}^n(j-1)\\
+ &=nF_0+\frac{F_l-F_0}{n-1}\frac{n(n-1)}2
+ =\frac{n(F_0+F_l)}2.
+\end{align*}
+代回后 $v_n^2-v_0^2=(F_0+F_l)l/m$，所以末速仍为同一表达式。这里相同来自等位移权重和等差力序列，不表示两个过程的 $v(t)$或所需时间相同。$n=1$时只有一个力值，首末项必须相同，另按恒力处理。若 $F$是驱动力而非合力，还须另外扣除摩擦功；若根号内虽为正但中途先停下，也要检查该终点是否实际可达。
 \end{solution}
 
 \begin{question}\begin{example}[由撤力后的时间反推驱动力]\label{n4e5}
@@ -127,7 +139,13 @@ m\int_{v_0}^{v_l}w\dd w
 \end{tikzpicture}}
 图\ref{n4deep:brakingheight}中，恢复动力是中间事件，物体此时仍有向下速度；允许延迟由两段下降距离之和确定。
 
-制动到零还需向下距离 $(8t)^2/(2\times6)=16t^2/3$。不触地要求 $4t^2+16t^2/3<42$，即 $t<3/\sqrt2\,\mathrm s$，临界最长延迟为 $2.12\,\mathrm s$。恢复后停住若仍有动力，下一段重新上升，加速度才变回 $2\,\mathrm{m/s^2}$。
+制动到零还需向下距离 $(8t)^2/(2\times6)=16t^2/3$。不触地要求
+\[
+ 4t^2+\frac{16t^2}{3}<42
+ \quad\Longleftrightarrow\quad \frac{28}{3}t^2<42
+ \quad\Longleftrightarrow\quad t^2<\frac92.
+\]
+由于 $t\ge0$，得到 $t<3/\sqrt2\,\mathrm s$。临界延迟约为 $2.12\,\mathrm s$；严格不触地时它是上确界，不能在等号处取得，因为等号使最低点恰在地面。恢复后停住若仍有动力，下一段重新上升，加速度才变回 $2\,\mathrm{m/s^2}$。
 \end{solution}
 
 \begin{question}\begin{example}[不同摩擦下的重复弹性碰撞]\label{n4e7}
@@ -157,7 +175,13 @@ m\int_{v_0}^{v_l}w\dd w
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立速度递推并累加碰撞位置}\par\nobreak
-下次碰前 $A$ 走过 $d_j$，速度 $u_{j+1}=\sqrt{2ad_j}=u_j\sqrt{a/b}=u_j\sqrt{2/3}$；$B$ 此时静止，交换速度后又回到同类初态。于是 $u_j^2=(2/3)^{j-1}$，$d_j=0.2(2/3)^{j-1}\,\mathrm m$。累加得到
+下次碰前 $A$走过 $d_j$，速度 $u_{j+1}=\sqrt{2ad_j}=u_j\sqrt{a/b}=u_j\sqrt{2/3}$；$B$此时静止，交换速度后又回到同类初态。将递推式平方，$u_{j+1}^2=(2/3)u_j^2$，由 $u_1=1\,\mathrm{m/s}$得到 $u_j^2=(2/3)^{j-1}\,\mathrm{m^2/s^2}$。再用 $d_j=u_j^2/(2b)$，有 $d_j=0.2(2/3)^{j-1}\,\mathrm m$。从首次接触位置开始累计：
+\begin{align*}
+ s_{A,n}&=L+\sum_{j=1}^{n-1}d_j\\
+ &=0.3+0.2\frac{1-(2/3)^{n-1}}{1-2/3}
+ \quad(\mathrm m).
+\end{align*}
+等比求和中的分母为 $1/3$，所以
 \[s_{A,n}=0.3+0.6\left[1-(2/3)^{n-1}\right]\quad(\mathrm m).\]
 
 
@@ -191,7 +215,17 @@ m\int_{v_0}^{v_l}w\dd w
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用速度差面积计算实际滑动距离}\par\nobreak
-图\ref{n4e8s}中直到 $2\,\mathrm s$ 板始终比块快，故相对滑动距离等于速度差面积：第一段 $1$，第二段 $(2+1.5)\times0.5/2=0.875$，第三段 $1.5\times0.5/2=0.375$，合计 $2.25\,\mathrm m$。达到速度相同时才切换到共同运动，不能在撤力的 $1.5\,\mathrm s$ 就提前停止计算滑动。
+图\ref{n4e8s}中直到 $2\,\mathrm s$板始终比块快，故相对滑动距离等于速度差的积分。以下时间以秒、速度以米每秒计；每段另取当地时间 $\tau$，保留该段的初始速度差：
+\begin{align*}
+ s_1&=\int_0^1 2\tau\dd\tau=[\tau^2]_0^1=1\,\mathrm m,\\
+ s_2&=\int_0^{0.5}(2-\tau)\dd\tau
+ =\left[2\tau-\frac{\tau^2}{2}\right]_0^{0.5}
+ =0.875\,\mathrm m,\\
+ s_3&=\int_0^{0.5}(1.5-3\tau)\dd\tau
+ =\left[1.5\tau-\frac32\tau^2\right]_0^{0.5}
+ =0.375\,\mathrm m.
+\end{align*}
+共同运动后的速度差为零，所以 $0$--$3\,\mathrm s$总滑动距离为 $s_1+s_2+s_3=2.25\,\mathrm m$。达到速度相同时才切换到共同运动，不能在撤力的 $1.5\,\mathrm s$就提前停止计算滑动。
 \end{solution}
 
 \begin{question}\begin{example}[两变力驱动相邻物块的分离]\label{n4e10}
@@ -293,7 +327,15 @@ v_B-v_A=\int_0^\tau3s\,\dd s=[3s^2/2]_0^\tau
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{证明有界收敛再求无限层极限}\par\nobreak
-第一层为 $c_1=4/3$。若 $0\le c<\sqrt2$，此映射仍小于 $\sqrt2$，且与 $c$ 之差为 $(4-2c^2)/(2c+3)>0$，故数列递增有上界，极限存在。令极限 $c_\infty$ 满足同一递推，$2c_\infty^2=4$，取正根得到
+第一层为 $c_1=4/3$。记映射为 $f(c)=(3c+4)/(2c+3)$，在 $0\le c<\sqrt2$时分别检查上界和递增性：
+\begin{align*}
+ \sqrt2-f(c)
+ &=\frac{(2\sqrt2-3)c+3\sqrt2-4}{2c+3}
+ =\frac{(3-2\sqrt2)(\sqrt2-c)}{2c+3}>0,\\
+ f(c)-c&=\frac{3c+4-c(2c+3)}{2c+3}
+ =\frac{4-2c^2}{2c+3}>0.
+\end{align*}
+因此数列递增且始终小于 $\sqrt2$，极限存在。令极限 $c_\infty$满足同一递推，交叉相乘得 $c_\infty(2c_\infty+3)=3c_\infty+4$，约去共同一次项，得到 $2c_\infty^2=4$。取正根，得到
 \[N_\infty=\sqrt2\,mg.\]
 总质量趋于无穷却得到有限支持力，是因为上层接近自由落体，传给下层的有效重量递减；它不是静止时无穷总重量的平衡。先用有限层定义极限，也避免直接把无穷质量代进整体 $F=Ma$。
 \end{solution}
@@ -395,7 +437,13 @@ x(t)=v_0\int_0^t\e^{-ks/m}\dd s
 \end{tikzpicture}}
 \end{example}\end{question}
 \begin{solution}\textbf{对多项式速度求导并检查单位}\par\nobreak
-图\ref{n4e18q}第一种过程的加速度为 $a=\dd v/\dd t=3\beta t^2$，所以 $F(t)=3m\beta t^2$；$v_0$ 只改变初始速度，不改变该过程给定的加速度。若 $\beta$ 单位为 $\mathrm{m/s^4}$，乘 $mt^2$ 后力单位正确。
+图\ref{n4e18q}第一种过程中，$v_0,\beta$均为常量。逐项对时间求导，
+\[
+ a=\frac{\dd(v_0+\beta t^3)}{\dd t}
+ =0+\beta(3t^2)=3\beta t^2,
+ \qquad F(t)=ma=3m\beta t^2.
+\]
+$v_0$只改变初始速度，不改变该过程给定的加速度。若 $\beta$单位为 $\mathrm{m/s^4}$，乘 $mt^2$后力单位正确。
 \fig{n4e18s}{正弦速度的合力比速度在相位上提前四分之一周期}{\begin{tikzpicture}
 \begin{scope}\draw[axis](0,0)--(2.7,0)node[right]{$t$};\draw[axis](0,0)--(0,2.2)node[above]{$F$};\draw[world,domain=0:2,samples=30]plot(\x,{.45*\x*\x});\node at(1.4,2.4){$3m\beta t^2$};\end{scope}
 \begin{scope}[shift={(4,0)}]\draw[axis](0,0)--(3,0)node[right]{$t$};\draw[axis](0,-1.3)--(0,1.7)node[above]{$F$};\draw[world,domain=0:2.7,samples=50]plot(\x,{cos(160*\x)});\node at(1.5,2){$mv_0\omega\cos\omega t$};\end{scope}

@@ -371,7 +371,21 @@ $q/(\alpha x_0)^2=Q/(\alpha x_0+d)^2$。设 $s=\sqrt{Q/q}>1$，代入 $d/x_0=s^2
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由平方距离配方得到球面}\par\nobreak
-移项、除以 $n^2-1$ 并配方，得到
+先展开右侧$(x-d)^2=x^2-2dx+d^2$，移项得到
+\[
+(n^2-1)(x^2+y^2+z^2)-2n^2dx+n^2d^2=0.
+\]
+因$n>1$，可除以$n^2-1$，再把常数项移到右侧：
+\[
+x^2-\frac{2n^2d}{n^2-1}x+y^2+z^2
+=-\frac{n^2d^2}{n^2-1}.
+\]
+两边同加$[n^2d/(n^2-1)]^2$以配成完全平方；右边通分后为
+\[
+\frac{n^4d^2-n^2d^2(n^2-1)}{(n^2-1)^2}
+=\frac{n^2d^2}{(n^2-1)^2}.
+\]
+因此得到
 \[
  \left(x-\frac{n^2d}{n^2-1}\right)^2+y^2+z^2
  =\left(\frac{nd}{n^2-1}\right)^2.

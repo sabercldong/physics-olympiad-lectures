@@ -149,7 +149,18 @@ S(a,b)=\sum_{i=1}^N(U_i-a-bI_i)^2.
 b\left(\sum I_i^2-N\bar I^2\right)
 =\sum I_iU_i-N\bar I\bar U.
 \]
-括号分别等于$\sum(I_i-\bar I)^2$与$\sum(I_i-\bar I)(U_i-\bar U)$，因而
+为把分子、分母写成相对平均值的形式，利用 $\sum I_i=N\bar I$、$\sum U_i=N\bar U$，逐项展开：
+\[
+ \begin{aligned}
+ \sum(I_i-\bar I)^2
+ &=\sum I_i^2-2\bar I\sum I_i+N\bar I^2
+ =\sum I_i^2-N\bar I^2,\\
+ \sum(I_i-\bar I)(U_i-\bar U)
+ &=\sum I_iU_i-\bar U\sum I_i-\bar I\sum U_i+N\bar I\bar U\\
+ &=\sum I_iU_i-N\bar I\bar U.
+ \end{aligned}
+\]
+因而
 \[
 b=\frac{\sum(I_i-\bar I)(U_i-\bar U)}{\sum(I_i-\bar I)^2},
 \qquad a=\bar U-b\bar I.

@@ -30,7 +30,12 @@ y=-A\sin\!\left[\frac{\pi}{2}(x-2t)\right]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{固定观察位置并用初速度核对振动图}\par\nobreak
-代入$P$的$x=2$得$y_P=-A\sin(\pi t)$。图\ref{fig:w2:example:1:p}显示$t=0$经过平衡位置向下，此后在$0.5\,\mathrm s$到负端点，$1\,\mathrm s$向上过平衡。由原波形$P$处正斜率，也可独立核对初速度为负。\end{solution}
+代入$P$的$x=2$，先用$\sin(\pi t-\pi)=-\sin\pi t$，得$y_P=-A\sin(\pi t)$。固定这个材料点，对时间求导，
+\[
+v_P(t)=(-A\cos\pi t)\pi=-A\pi\cos\pi t,
+\qquad v_P(0)=-A\pi<0.
+\]
+图\ref{fig:w2:example:1:p}显示$t=0$经过平衡位置向下，此后在$0.5\,\mathrm s$到负端点，$1\,\mathrm s$向上过平衡。由原波形$P$处正斜率，也可独立核对初速度为负。\end{solution}
 \begin{question}\begin{example}[两振动图的波长分支]\label{w2:example:2}
 波上$P,Q$分别位于$x_P=12\,\mathrm{cm}$、$x_Q=18\,\mathrm{cm}$。两点振幅$4\,\mathrm{cm}$、周期$1.2\,\mathrm s$；$P$在$t=0.3\,\mathrm s$向上过零，$Q$在$t=0$向上过零。求可能的波长和波速。
 \end{example}
@@ -38,7 +43,12 @@ y=-A\sin\!\left[\frac{\pi}{2}(x-2t)\right]
 \end{question}
 \begin{solution}\textbf{把两点向上过零条件转换为相位差}\par\nobreak
 图\ref{fig:w2:example:2:s}表明$Q$相位比$P$超前$\pi/2$（模$2\pi$），频率确定为$f=1/1.2=5/6\,\mathrm{Hz}$，但波向未知。
-同样可把两点写为$y_Q=A\sin\omega t$和$y_P=A\sin(\omega t-\pi/2)$，其中$\omega=2\pi/1.2$；它们在指定时刻的导数均为$A\omega>0$，确是向上过零。两曲线只给相位差的余数，不能判断$P,Q$之间还包含多少整波长。
+同样可把两点写为$y_Q=A\sin\omega t$和$y_P=A\sin(\omega t-\pi/2)$，其中$\omega=2\pi/1.2$。固定各材料点，分别对时间求导，
+\[
+v_Q=A\omega\cos\omega t,\qquad
+v_P=A\omega\cos(\omega t-\pi/2).
+\]
+在$Q$的$t=0$处相位为零；在$P$的$t=0.3\,\mathrm s$处，相位为$(2\pi/1.2)\times0.3-\pi/2=0$，故两者在指定过零时刻都有$v=A\omega>0$，确是向上过零。两曲线只给相位差的余数，不能判断$P,Q$之间还包含多少整波长。
 \fig{fig:w2:example:2:p}{两种波向的最短相位间隔分支；图中均取$n=0$，再添整周仍满足两点初态}{\begin{tikzpicture}
 
 \draw[axis](-.3,0)--(4.1,0)node[right]{$x$};\draw[blue,thick,domain=0:3,samples=80]plot(\x,{-cos(90*\x)});\fill(0,-1)circle(.05);\fill(3,0)circle(.05);\node[below]at(0,0){$P$};\node[below]at(3,0){$Q$};\draw[flow](3,0)--(3,.7)node[right]{$v_Q>0$};

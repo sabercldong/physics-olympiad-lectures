@@ -16,7 +16,7 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按电流对应的下降极角积分，检查微元力方向}\par\nobreak
 图\ref{fig:mg2:drill:1:p}中 $\dd F_x=IBR\cos\varphi\,\dd\varphi$，$\dd F_y=IBR\sin\varphi\,\dd\varphi$。从 $\pi$ 到0积分，水平分量为
 $IBR\int_\pi^0\cos\varphi\dd\varphi=IBR[\sin\varphi]_\pi^0=0$，
-竖直分量为 $IBR[-\cos\varphi]_\pi^0=-2IBR$。负积分方向与电流绕向一致，因此直接法与端点法相符。这里微元积分用于核验方向；一般题目若已满足均匀场条件，可直接使用端点式。\end{drillsolution}
+竖直分量为 $IBR\int_\pi^0\sin\varphi\dd\varphi=IBR[-\cos\varphi]_\pi^0=IBR(-1-1)=-2IBR$。负积分方向与电流绕向一致，因此直接法与端点法相符。这里微元积分用于核验方向；一般题目若已满足均匀场条件，可直接使用端点式。\end{drillsolution}
 \begin{drillsolution}{mg2:drill:2}\textbf{在微段切向与法向分别列平衡}\par\nobreak
 图\ref{fig:mg2:drill:2:s}取弧长 $\dd s$ 的微段。磁力总与导线切向垂直，因此切向受力平衡要求张力大小 $T$ 沿弧不变。若两端切线转角为 $\dd\psi$，两个张力的法向合量为 $T\dd\psi$，磁力大小为 $IB\dd s$，故曲率 $\dd\psi/\dd s=IB/T$ 为常数。
 \fig{fig:mg2:drill:2:p}{局部张力沿两端切线，磁力沿法向；整段的圆心角再把曲率与弦长联系起来}{\begin{tikzpicture}
@@ -31,15 +31,23 @@ $IBR\int_\pi^0\cos\varphi\dd\varphi=IBR[\sin\varphi]_\pi^0=0$，
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把恒曲率写成圆弧，并消去圆心角与半径}\par\nobreak
-图\ref{fig:mg2:drill:2:p}中取定曲率符号为正，记 $k=IB/T$，由
-$\dd\psi/\dd s=k$ 得 $\psi(s)=\psi_0+ks$。
-再由切线分量 $\dd x/\dd s=\cos\psi,\dd y/\dd s=\sin\psi$，
+图\ref{fig:mg2:drill:2:p}中取定曲率符号为正，记 $k=IB/T$。先从弧长零点积分角度，
 \[
- x-x_0=\frac{\sin(\psi_0+ks)-\sin\psi_0}{k},\qquad
- y-y_0=\frac{\cos\psi_0-\cos(\psi_0+ks)}{k}.
+ \psi(s)-\psi_0=\int_0^s k\dd\sigma=k[\sigma]_0^s=ks.
 \]
-两式分别来自 $\int_0^s\cos(\psi_0+k\sigma)\dd\sigma$、
-$\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导。
+再由切线分量 $\dd x/\dd s=\cos\psi,\dd y/\dd s=\sin\psi$，分别积分。令 $u=\psi_0+k\sigma$，则 $\dd\sigma=\dd u/k$，上下限从 $0,s$ 变为 $\psi_0,\psi_0+ks$，所以
+\[
+ \begin{aligned}
+ x-x_0&=\int_0^s\cos(\psi_0+k\sigma)\dd\sigma
+ =\frac1k\int_{\psi_0}^{\psi_0+ks}\cos u\dd u\\
+ &=\frac1k[\sin u]_{\psi_0}^{\psi_0+ks}
+ =\frac{\sin(\psi_0+ks)-\sin\psi_0}{k},\\
+ y-y_0&=\int_0^s\sin(\psi_0+k\sigma)\dd\sigma
+ =\frac1k\int_{\psi_0}^{\psi_0+ks}\sin u\dd u\\
+ &=\frac1k[-\cos u]_{\psi_0}^{\psi_0+ks}
+ =\frac{\cos\psi_0-\cos(\psi_0+ks)}{k}.
+ \end{aligned}
+\]
 移到圆心 $(x_0-\sin\psi_0/k,y_0+\cos\psi_0/k)$ 后，两坐标平方和为 $1/k^2$，
 故平衡曲线是半径 $r=1/k=T/(IB)$ 的圆弧。设圆心角为 $\varphi$，则 $s=r\varphi$、$2a=2r\sin(\varphi/2)$。消去 $r$ 后，也可直接把弦长与张力写成\[\boxed{2a=\frac{2T}{IB}\sin\!\left(\frac{IBs}{2T}\right)}.\]因此应先由 $a/s=\sin(\varphi/2)/\varphi$ 确定所选支的角度，再得 $T=IBs/\varphi$。
 
@@ -96,7 +104,17 @@ $\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两条函数的交点，核对正半径与小应变条件}\par\nobreak
-联立图\ref{fig:mg2:drill:5:p}两式，得 $R=R_0/[1-IBR_0/(YA)]$。正半径要求 $IBR_0<YA$，但线弹性还要求 $(R-R_0)/R_0\ll1$，即参数 $IBR_0/(YA)$ 实际应远小于1。分母接近零时算得的巨大半径已超出小应变模型，不能解释为实际圆环可无限伸长。此题固定的是电流，区别于固定电量、固定角速度的旋转带电环。\end{drillsolution}
+联立图\ref{fig:mg2:drill:5:p}两式，先乘自然半径，再把含 $R$ 的项收集：
+\[
+ YA(R-R_0)=IBRR_0,\qquad
+ (YA-IBR_0)R=YAR_0.
+\]
+所以 $R=R_0/[1-IBR_0/(YA)]$。记 $\epsilon=IBR_0/(YA)$，正半径要求 $\epsilon<1$，而实际应变为
+\[
+ \frac{R-R_0}{R_0}=\frac1{1-\epsilon}-1
+ =\frac{\epsilon}{1-\epsilon}.
+\]
+线弹性要求该量远小于 $1$，即参数 $\epsilon$ 实际应远小于 $1$。分母接近零时算得的巨大半径已超出小应变模型，不能解释为实际圆环可无限伸长。此题固定的是电流，区别于固定电量、固定角速度的旋转带电环。\end{drillsolution}
 \begin{drillsolution}{mg2:drill:6}\textbf{先求一条线在另一条线处的场，再求单位长度受力}\par\nobreak
 图\ref{fig:mg2:drill:6:s}中先把左线作为场的产生者，右线所在处场大小为 $B_1=\mu_0I_1/(2\pi d)$，方向与右线电流垂直。右线长度 $l$ 受力 $F_2=I_2lB_1$，故 $f=F_2/l=\mu_0I_1I_2/(2\pi d)$，方向朝向左线。交换研究对象得到相反等大的力。
 \fig{fig:mg2:drill:6:p}{解答过程：两平行导线的每单位长度作用力}{\begin{tikzpicture}[scale=.88]
@@ -108,7 +126,13 @@ $\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导�
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时比较电流乘积与线距，并检查力密度单位}\par\nobreak
 图\ref{fig:mg2:drill:6:p}同向电流相吸。两个电流同时加倍使乘积增为4倍，线距加倍又使力密度减半，合计增为2倍。量纲检查：$\mu_0I_1I_2/d$ 的单位为 $\mathrm{N/m}$，这与力本身不同。若只取一小段导线作研究对象，还应考虑连接段对完整系统动量传递的作用，本式给出的是理想长线区域的局部作用。\end{drillsolution}
 \begin{drillsolution}{mg2:drill:7}\textbf{在固定磁矩条件下由势能梯度求恒力}\par\nobreak
-图\ref{fig:mg2:drill:7:s}中磁矩的方向由约束保持，且电流恒定，机械势能为 $U(z)=-m_B[B_0+\beta z]$。因此 $F_z=-\dd U/\dd z=m_B\beta$，是常力。$\beta>0$ 时线圈被拉向场较强处，$\beta<0$ 时反向。
+图\ref{fig:mg2:drill:7:s}中磁矩的方向由约束保持，且电流恒定，机械势能为 $U(z)=-m_B[B_0+\beta z]$。求导时 $m_B,B_0,\beta$ 都为常数，
+\[
+ F_z=-\frac{\dd U}{\dd z}
+ =m_B\left(\frac{\dd B_0}{\dd z}+\beta\frac{\dd z}{\dd z}\right)
+ =m_B(0+\beta)=m_B\beta.
+\]
+这是常力。$\beta>0$ 时线圈被拉向场较强处，$\beta<0$ 时反向。
 \fig{fig:mg2:drill:7:p}{由场梯度决定的轴向恒力，作功是对应力—位移图下的有向面积}{\begin{tikzpicture}
 
 \draw[axis](0,-.6)--(0,3)node[above]{$z$};\foreach \y/\lab in {0/z_1,1.8/z_2}{\draw[world](0,\y)ellipse(.9 and .2);\draw[->,red,thick](1.3,\y)--(1.3,\y+.9);\node[left]at(-1,\y){$\lab$};}
@@ -126,7 +150,12 @@ $\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导�
 由图\ref{fig:mg2:drill:7:p}，磁力功 $W=m_B\beta\int_{z_1}^{z_2}\dd z
 =m_B\beta[z]_{z_1}^{z_2}=m_B\beta(z_2-z_1)$，也等于势能减少量。若线圈可自由翻转，其磁矩方向还受力矩控制；若线圈尺寸已与变化尺度相当，小偶极近似就不足，应逐段积分。特别地，$\beta=0$ 时均匀场的合力为零，即使该场 $B_0$ 很大也不会给出轴向推动力。\end{drillsolution}
 \begin{drillsolution}{mg2:drill:8}\textbf{在同一空间权重下比较电荷与质量积分}\par\nobreak
-图\ref{fig:mg2:drill:8:s}中每个体元到转轴的距离为 $r_\perp$。磁矩积分为 $\bm m_B=(\omega\bm n/2)\int r_\perp^2\dd q$，角动量为 $\bm L=\omega\bm n\int r_\perp^2\dd M$。把逐点成立的 $\dd q=(Q/M)\dd M$ 代入磁矩式，立即得到所证比例。
+图\ref{fig:mg2:drill:8:s}中每个体元到转轴的距离为 $r_\perp$。磁矩积分为 $\bm m_B=(\omega\bm n/2)\int r_\perp^2\dd q$，角动量为 $\bm L=\omega\bm n\int r_\perp^2\dd M$。把逐点成立的 $\dd q=(Q/M)\dd M$ 代入，并将不随位置变化的 $Q/M$ 提到积分号外，
+\[
+ \bm m_B=\frac{\omega\bm n}{2}\frac QM\int r_\perp^2\dd M
+ =\frac{Q}{2M}\left(\omega\bm n\int r_\perp^2\dd M\right)
+ =\frac{Q}{2M}\bm L.
+\]
 \fig{fig:mg2:drill:8:p}{薄环与薄盘具有不同的半径平方平均，但同比分布使磁矩与角动量保留同一比值}{\begin{tikzpicture}
 
 \draw[world](0,0)circle(1.4);\draw[flow](45:1.4)arc(45:125:1.4);\node at(0,0){$\odot\omega$};\node[align=center]at(0,-2.3){薄环\\$m_B=Q\omega R^2/2$\\$L=M\omega R^2$};
@@ -143,9 +172,11 @@ $\int_0^s\sin(\psi_0+k\sigma)\dd\sigma$，原函数的 $1/k$ 来自链式求导�
 图\ref{fig:mg2:drill:8:p}中薄环有 $m_B=Q\omega R^2/2$、$L=M\omega R^2$；薄盘的窄环质量、电荷分别为
 $\dd M=2Mr\dd r/R^2$、$\dd q=2Qr\dd r/R^2$，于是
 \[
- m_B=\frac{\omega}{2}\frac{2Q}{R^2}\int_0^Rr^3\dd r
- =\frac{Q\omega}{R^2}[r^4/4]_0^R=\frac{Q\omega R^2}{4},
- \qquad
- L=\frac{2M\omega}{R^2}[r^4/4]_0^R=\frac{M\omega R^2}{2}.
+ \begin{aligned}
+ m_B&=\frac{\omega}{2}\frac{2Q}{R^2}\int_0^Rr^3\dd r
+ =\frac{Q\omega}{R^2}[r^4/4]_0^R=\frac{Q\omega R^2}{4},\\
+ L&=\frac{2M\omega}{R^2}\int_0^Rr^3\dd r
+ =\frac{2M\omega}{R^2}[r^4/4]_0^R=\frac{M\omega R^2}{2}.
+ \end{aligned}
 \]
 两者比值都为 $Q/(2M)$。同一总电荷与总质量并不自动保证比例成立，关键是空间分布也同比。负电荷时磁矩与机械角动量反向；这个符号关系对于理解电子轨道电流尤其重要。\end{drillsolution}

@@ -177,8 +177,10 @@ W_{\rm ext}=\int_0^s F(s')\dd s'
 若动力装置始终以功率$P$作用于质量$m$的质点，且没有其他力做功，则 $mv\dot v=P$。从静止计时，
 \[
 m\int_0^{v}w\,\dd w=P\int_0^t\dd\tau,
-\qquad
-\frac12mv^2=Pt,\qquad
+\qquad m\left[\frac{w^2}{2}\right]_0^v=P[\tau]_0^t.
+\]
+代入两个端点，得$mv^2/2=Pt$，所以
+\[
 v=\sqrt{\frac{2P}{m}}\,t^{1/2}.
 \]
 初始速度取正向增长的根。令 $s(0)=0$，再对速度积分：
@@ -209,7 +211,10 @@ s(t)=\sqrt{\frac{2P}{m}}\int_0^t\tau^{1/2}\dd\tau
 图\ref{fig:em3:power}右图在无阻力时以$t_c=mv_c/F_{\max}=mP/F_{\max}^2$为切换时刻。第一段$v=F_{\max}t/m$；第二段需从已有速度$v_c$继续积分，故
 \[
 m\int_{v_c}^v w\,\dd w=P\int_{t_c}^{t}\dd\tau,
-\qquad
+\qquad m\left[\frac{w^2}{2}\right]_{v_c}^v=P[\tau]_{t_c}^t,
+\]
+代入切换处的下限，得到
+\[
 \frac m2(v^2-v_c^2)=P(t-t_c).
 \]
 所以 $v^2=v_c^2+2P(t-t_c)/m$，只用于 $t\ge t_c$。

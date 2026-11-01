@@ -151,12 +151,32 @@ r(0)=r_0,\quad\dot r(0)=-v_0,\quad\theta(0)=0,
 \dot r(s)=-v_0+\frac{\Gamma^2}{m^2}
 \int_0^s\frac{\xi^2}{r(\xi)^3}\dd\xi,
 \]
+为求位置，将速度积分再从 $0$ 积到 $s$，不能把加速度当常数：
 \[
-r(s)=r_0-v_0s+\frac{\Gamma^2}{m^2}
-\int_0^s\frac{(s-\xi)\xi^2}{r(\xi)^3}\dd\xi,\qquad
-\theta(s)=\frac{\Gamma}{m}\int_0^s\frac{\xi}{r(\xi)^2}\dd\xi.
+ r(s)-r_0=-v_0\int_0^s\dd\eta
+ +\frac{\Gamma^2}{m^2}\int_0^s
+   \left[\int_0^\eta\frac{\xi^2}{r(\xi)^3}\dd\xi\right]\dd\eta.
 \]
-第二式由径向加速度连续积两次得到，内层累计贡献在余下的 $s-\xi$ 时间内继续改变位置。因未知的 $r(\xi)$ 仍在被积函数中，一般须联立作数值积分，并调节未定的初始距离；不能直接把 $r$ 当常量积分。之后检验首次满足 $r(t)=R,\dot r(t)=0,\theta(t)=\alpha$，且此前 $r>R$。因径向加速度非负，径向速度从负值增加到零，这个切点对应最近距离。初始距离未给时，它仍是待由轨迹匹配的参数；任取一组根式为实数的 $t,\alpha$，并不能跳过这些边界条件。题设图示取一条满足条件的轨迹，突出柱外电场导致的弯曲，而不把整个柱外区域误作无力区。
+在三角形积分域 $0\le\xi\le\eta\le s$ 中交换次序：
+\[
+ \begin{aligned}
+ \int_0^s\!\dd\eta\int_0^\eta\frac{\xi^2}{r(\xi)^3}\dd\xi
+ &=\int_0^s\frac{\xi^2}{r(\xi)^3}
+     \left(\int_\xi^s\dd\eta\right)\dd\xi\\
+ &=\int_0^s\frac{\xi^2}{r(\xi)^3}[\eta]_\xi^s\dd\xi
+ =\int_0^s\frac{(s-\xi)\xi^2}{r(\xi)^3}\dd\xi.
+ \end{aligned}
+\]
+常量项为 $-v_0[\eta]_0^s=-v_0s$，所以位置满足
+\[
+ r(s)=r_0-v_0s+\frac{\Gamma^2}{m^2}
+ \int_0^s\frac{(s-\xi)\xi^2}{r(\xi)^3}\dd\xi.
+\]
+再把角速度从 $0$ 积到 $s$，由 $\theta(0)=0$ 得
+\[
+ \theta(s)=\frac{\Gamma}{m}\int_0^s\frac{\xi}{r(\xi)^2}\dd\xi.
+\]
+因未知的 $r(\xi)$ 仍在被积函数中，一般须联立作数值积分，并调节未定的初始距离；不能直接把 $r$ 当常量积分。之后检验首次满足 $r(t)=R,\dot r(t)=0,\theta(t)=\alpha$，且此前 $r>R$。因径向加速度非负，径向速度从负值增加到零，这个切点对应最近距离。初始距离未给时，它仍是待由轨迹匹配的参数；任取一组根式为实数的 $t,\alpha$，并不能跳过这些边界条件。题设图示取一条满足条件的轨迹，突出柱外电场导致的弯曲，而不把整个柱外区域误作无力区。
 \end{drillsolution}
 \begin{drillsolution}{em1:drill:6}\textbf{把纯滚动分解并排除转动项的切向贡献}\par\nobreak
 图\ref{fig:em1:drill:6:s}中的刚体速度可分为圆心平动与绕圆心转动。对于转动部分，$\bm u_{\text{转}}\times\bm B$ 沿径向，而金属圆环的线元沿切向，点积恒为零。因此不能把最上端速度 $2v_0$ 直接乘缺口长度。

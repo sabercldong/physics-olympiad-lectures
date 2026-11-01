@@ -57,8 +57,23 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分段恒流计算每段热量}\par\nobreak
-图\ref{fig:em1:example:2:p}的阶梯高度由各段斜率决定。各段电流恒定，先求各段热，再求和：
-\[Q_1=\frac{2\Phi_0^2}{R\,\mathrm s},\quad Q_2=0,\quad Q_3=\frac{8\Phi_0^2}{R\,\mathrm s},\quad Q_4=\frac{\Phi_0^2}{R\,\mathrm s}.\]
+图\ref{fig:em1:example:2:p}的阶梯高度由各段斜率决定。各段电流恒定，故对任一段先有
+\[
+ Q_j=\int_{t_{j-1}}^{t_j}i_j^2R\dd t
+ =\frac{\mathcal E_j^2}{R}[t]_{t_{j-1}}^{t_j}
+ =\frac{\mathcal E_j^2}{R}(t_j-t_{j-1}).
+\]
+逐段代入幅度和持续时间，
+\[
+ \begin{aligned}
+ Q_1&=\frac{(\Phi_0/\mathrm s)^2}{R}(2\,\mathrm s)
+ =\frac{2\Phi_0^2}{R\,\mathrm s},& Q_2&=0,\\
+ Q_3&=\frac{(2\Phi_0/\mathrm s)^2}{R}(2\,\mathrm s)
+ =\frac{8\Phi_0^2}{R\,\mathrm s},&
+ Q_4&=\frac{[\Phi_0/(2\,\mathrm s)]^2}{R}(4\,\mathrm s)
+ =\frac{\Phi_0^2}{R\,\mathrm s}.
+ \end{aligned}
+\]
 因此第三段不仅电动势最大，其发热贡献也最大。各段相加得 $Q=11\Phi_0^2/(R\,\mathrm s)$。单位为 $\mathrm{Wb}^2/(\Omega\,\mathrm s)=\mathrm J$。
 
 
@@ -195,8 +210,12 @@ V_N-V_M=\frac{B\omega}{2}\int_{OM^2}^{ON^2}\dd z
 \[
 m\int_0^{v(t)}\dd z=-\frac{qrB_0}{2T}\int_0^t\dd s,
 \]
-常加速度的积分为初末速度差，所以
-\[m\dot v=qE_\theta,\qquad v(t)=-\frac{qrB_0}{2mT}t=-\frac{qrB(t)}{2m}.\]
+两边原函数分别为速度变量 $z$ 和时间变量 $s$，所以
+\[
+ m[z]_0^{v(t)}=-\frac{qrB_0}{2T}[s]_0^t,
+ \qquad mv(t)=-\frac{qrB_0}{2T}t.
+\]
+除以 $m$，得到 $v(t)=-qrB_0t/(2mT)=-qrB(t)/(2m)$。
 以后切向场为零，速率保持 $|v(T)|$，方向顺时针。图\ref{fig:em1:example:7:p}右端小珠的速度向下，磁力向左，指向圆心。
 \fig{fig:em1:example:7:p}{细管对小珠的力向外，小珠对细管的反作用向内；两者的符号不能互换}{\begin{tikzpicture}
 
@@ -232,7 +251,12 @@ m\int_0^{v(t)}\dd z=-\frac{qrB_0}{2T}\int_0^t\dd s,
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由环流和切向动力学积分出速度}\par\nobreak
 法拉第定律给出 $2\pi rE_\theta=-\dot\Phi$，将上式对时间求导再除以 $2\pi r$，所以切向电场为 $-\dot b(r^2+2R^2)/(2r)$。由于题设半径固定，切向加速度就是 $\dot v$，故 $m\dd v=-q(r^2+2R^2)\dd b/(2r)$。两侧从 $b=0,v=0$ 积分，
 $m\int_0^{v}\dd z=-q(r^2+2R^2)\int_0^{b}\dd\beta/(2r)$。
-两边都是常系数乘变量差，先得有向速度 $v=-qb(r^2+2R^2)/(2mr)$，再取大小，得 $|v|=qb(r^2+2R^2)/(2mr)$。
+写出原函数并代入两端，
+\[
+ m[z]_0^v=-\frac{q(r^2+2R^2)}{2r}[\beta]_0^b,
+ \qquad mv=-\frac{q(r^2+2R^2)}{2r}b.
+\]
+先得有向速度 $v=-qb(r^2+2R^2)/(2mr)$，再取大小，得 $|v|=qb(r^2+2R^2)/(2mr)$。
 \fig{fig:em1:example:8:p}{内盘附加磁通决定切向加速，当地环隙磁场单独提供径向向心力}{\begin{tikzpicture}
 
 \fill[blue!7](0,0)circle(2);\fill[orange!15](0,0)circle(1);\draw[world](0,0)circle(1)circle(2);\draw[guide](0,0)circle(1.414214);\fill(1.414214,0)circle(2pt);
@@ -268,7 +292,12 @@ $m\int_0^{v}\dd z=-q(r^2+2R^2)\int_0^{b}\dd\beta/(2r)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{先在可行电阻范围内确定固定电阻的功率}\par\nobreak
-图\ref{fig:em1:example:9:p}表示允许的电阻区间为 $x\ge\lambda l$。$P_R$ 随 $x$ 增大而减小，故在 $\theta=\pi/2$ 最大。对棒功率求导，
+图\ref{fig:em1:example:9:p}表示允许的电阻区间为 $x\ge\lambda l$。固定 $B,v,l,R$ 对 $P_R$ 求导，
+\[
+ \frac{\dd P_R}{\dd x}=(Bvl)^2R(-2)(R+x)^{-3}\frac{\dd(R+x)}{\dd x}
+ =-\frac{2(Bvl)^2R}{(R+x)^3}<0.
+\]
+因此 $P_R$ 随 $x$ 增大而减小，在最小允许电阻 $x=\lambda l$，即 $\theta=\pi/2$ 时最大。对棒功率求导，
 \[\begin{aligned}
 \frac{\dd P_{\text{棒}}}{\dd x}
 &=(Bvl)^2\frac{\dd}{\dd x}\left[x(R+x)^{-2}\right]\\

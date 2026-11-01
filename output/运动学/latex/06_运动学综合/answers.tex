@@ -1,7 +1,13 @@
 \LectureAnswerSection
 
 \begin{drillsolution}{k6p15}\textbf{在实际斜绳上求杆端速度的投影}\par\nobreak
-投影法：设图\ref{k6p15q}的 $A=(x,y)$，则杆端速度为 $(\omega y,-\omega x)$，沿 $B\to A$的单位方向为 $(x,y-h)/\ell$，所以斜段增长率为 $\omega hx/\ell=\omega h\sin\alpha$。悬挂段相应缩短，悬物向上。
+投影法：设图\ref{k6p15q}的 $A=(x,y)$，则杆端速度为 $(\omega y,-\omega x)$，沿 $B\to A$的单位方向为 $(x,y-h)/\ell$。点积逐项相乘，斜段增长率为
+\[
+ \bm v_A\cdot\bm e_{BA}
+ =\frac{\omega xy-\omega x(y-h)}\ell
+ =\frac{\omega hx}{\ell}=\omega h\sin\alpha.
+\]
+最后一步使用 $x/\ell=\sin\alpha$。悬挂段相应缩短，悬物向上。
 \fig{k6p15s}{同一斜绳上，速度投影对应长度的微小变化}{\begin{tikzpicture}
 \coordinate(O)at(0,0);\coordinate(B)at(0,2.6);\coordinate(A)at(2.4,.8);
 \draw[world](O)--(A);\draw[world](B)--(A);\draw[guide](O)--(B)node[midway,left]{$h$};
@@ -14,12 +20,36 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对同一几何长度微分并核对正负号}\par\nobreak
-绳长法：$\ell^2=x^2+(y-h)^2$，两侧求导得 $\ell\dot\ell=x\dot x+(y-h)\dot y$；代入 $\dot x=\omega y,\dot y=-\omega x$，仍有 $\dot\ell=\omega hx/\ell$。因此 $\boxed{v_{\text{上}}=\omega h\sin\alpha}$。图\ref{k6p15s}把杆端微小位移沿 $BA$ 投影，红色投影就是斜绳增长量；用坐标展开这一投影便得到长度微分式，二者可互查正负号。若转向改为逆时针，$\dot x,\dot y$同时反号，悬物改为向下同速，不能只更改图上箭头而保留“上升”结论。
+绳长法：$\ell^2=x^2+(y-h)^2$，$h$恒定，链式求导得
+\[
+ 2\ell\dot\ell=2x\dot x+2(y-h)\dot y.
+\]
+除以正的 $2\ell$，再代入 $\dot x=\omega y,\dot y=-\omega x$，
+\[
+ \dot\ell=\frac{x(\omega y)+(y-h)(-\omega x)}\ell
+ =\frac{\omega xy-\omega xy+\omega hx}{\ell}
+ =\frac{\omega hx}{\ell}.
+\]
+因此 $\boxed{v_{\text{上}}=\omega h\sin\alpha}$。图\ref{k6p15s}把杆端微小位移沿 $BA$投影，红色投影就是斜绳增长量；用坐标展开这一投影便得到长度微分式，二者可互查正负号。若转向改为逆时针，$\dot x,\dot y$同时反号，悬物改为向下同速，不能只更改图上箭头而保留“上升”结论。
 
 两种方法的共同基础是距离导数 $\dot\ell=\bm e_{BA}\cdot(\bm v_A-\bm v_B)$，本题 $B$固定。用坐标求长度微分只是将同一点积展开，速度投影则直接读出它的几何意义。悬挂段若用向下坐标，便有 $\dot y_M=-\dot\ell$；改用向上坐标后符号再反转，才得到正的上升速率。这一步统一了方程正号与图中箭头。\end{drillsolution}
 
 \begin{drillsolution}{k6p16}\textbf{固定横坐标后优化发射角参数}\par\nobreak
-对图\ref{k6p16q}的 $x\ne0$，令 $p=\tan\alpha$，轨迹为 $y=xp-gx^2(1+p^2)/(2v_0^2)$。对固定 $x$，这是关于 $p$开口向下的二次函数，最大值在 $p=v_0^2/(gx)$，代入得
+对图\ref{k6p16q}的 $x\ne0$，令 $p=\tan\alpha$，轨迹为 $y=xp-gx^2(1+p^2)/(2v_0^2)$。在固定 $x$处对 $p$求导时，$x,v_0,g$均为常量：
+\begin{align*}
+ \frac{\partial y}{\partial p}
+ &=x-\frac{gx^2}{2v_0^2}(2p)
+ =x-\frac{gx^2}{v_0^2}p,\\
+ \frac{\partial^2y}{\partial p^2}&=-\frac{gx^2}{v_0^2}<0.
+\end{align*}
+令一阶导数为零，得到唯一最大值的参数 $p_*=v_0^2/(gx)$。代回高度时分别计算一次项、平方项和常数项：
+\begin{align*}
+ y(p_*)&=x\frac{v_0^2}{gx}
+ -\frac{gx^2}{2v_0^2}
+ -\frac{gx^2}{2v_0^2}\frac{v_0^4}{g^2x^2}\\
+ &=\frac{v_0^2}{g}-\frac{gx^2}{2v_0^2}-\frac{v_0^2}{2g}.
+\end{align*}
+合并同类项，得到
 \[\boxed{y_{\rm env}=\frac{v_0^2}{2g}-\frac{gx^2}{2v_0^2}}.\]
 \fig{k6p16s}{给定初速的抛射包络：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$p=\tan\alpha$};\draw[axis](0,0)--(0,3)node[above]{$y(x,p)$};\draw[world]plot[domain=.1:4.2,samples=50]({\x},{2.5-.5*(\x-2.2)^2});\draw[guide](2.2,0)--(2.2,2.5);\node[below]at(2.2,0){$v_0^2/(gx)$};\node[above]at(2.2,2.5){包络高度};\end{tikzpicture}}
 
@@ -31,7 +61,13 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用配方验证上界并恢复实际时间方向}\par\nobreak
-还可在固定 $x\ne0$处配方写 $y=y_{\rm env}-[gx^2/(2v_0^2)](p-v_0^2/(gx))^2$，因此每一轨迹都在包络下方；等号给相切位置对应的发射角。对地面以上、$x>0$的点，两实根都应选 $\cos\alpha>0$的代表角，保证正时间；若仅使用正切而忘记角度所在象限，可能把指向目标反方向的角也重复计入。\end{drillsolution}
+还可在固定 $x\ne0$处记 $K=gx^2/(2v_0^2)>0$，将高度配方：
+\begin{align*}
+ y&=-K\left[p^2-\frac xKp+\frac{x^2}{4K^2}\right]
+ +\frac{x^2}{4K}-K\\
+ &=y_{\rm env}-K\left(p-\frac{v_0^2}{gx}\right)^2.
+\end{align*}
+平方项非负，因此每一轨迹都在包络下方；等号给相切位置对应的发射角。对地面以上、$x>0$的点，两实根都应选 $\cos\alpha>0$的代表角，保证正时间；若仅使用正切而忘记角度所在象限，可能把指向目标反方向的角也重复计入。\end{drillsolution}
 
 \begin{drillsolution}{k6p17}\textbf{用跑游时间比例建立平均速度}\par\nobreak
 取图\ref{k6p17q}的岸线为 $x$轴，向水面为 $y$正向。若在总时间 $T$后追上，跑步占比为 $\lambda\in[0,1)$，游泳方向为单位矢量 $\bm e$，两者总位移相等给
@@ -52,10 +88,13 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{构造达到上界的游向及时间比例}\par\nobreak
-现在还须构造达到上界的方案：取游泳方向 $\bm e=\bm n$，即与岸成60°，由纵分量要求
-\[2\sqrt2\sin15^\circ=\sqrt3(1-\lambda),\qquad
-\lambda=\frac1{\sqrt3}.
+现在还须构造达到上界的方案：取游泳方向 $\bm e=\bm n$，即与岸成60°。由纵分量要求 $2\sqrt2\sin15^\circ=\sqrt3(1-\lambda)$。先用差角公式计算
+\[
+ \sin15^\circ=\sin(45^\circ-30^\circ)
+ =\frac{\sqrt6-\sqrt2}{4},\qquad
+ 2\sqrt2\sin15^\circ=\sqrt3-1.
 \]
+因此 $\sqrt3(1-\lambda)=\sqrt3-1$，移项得 $\sqrt3\lambda=1$，即 $\lambda=1/\sqrt3$。
 再检验横分量：$4\lambda+(1-\lambda)=1+\sqrt3=2\sqrt2\cos15^\circ$，也恰好满足，且 $0<\lambda<1$。所以给出的跑、游阶段都具有正时间，确实能到同一相遇点。最终
 \[\boxed{U_{\max}=2\sqrt2\ \mathrm{m/s}},\qquad
 \boxed{t_{\text{跑}}:t_{\text{游}}=1:(\sqrt3-1)}.

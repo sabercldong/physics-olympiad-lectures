@@ -234,11 +234,27 @@ p_2=p_0+\frac{kx_f}{S}=2.0\times10^5\,\mathrm{Pa}.\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用各室的质量热容与气体量求熵差}\par\nobreak
-左室 $m_Lc_V=16\,\mathrm{J/K}$，由初态求得 $n_LR=p_iV_i/T_i=20/3\,\mathrm{J/K}$，故
-\[\Delta S_L=16\ln\frac{540}{300}+\frac{20}{3}\ln\frac{15}{20}
-=7.4867\,\mathrm{J/K}.\]
-右室 $n_RR=20\,\mathrm{J/K}$，温度不变，
-\[\Delta S_R=20\ln\frac{25}{20}=4.4629\,\mathrm{J/K}.\]
+左室$m_Lc_V=16\,\mathrm{J/K}$，由初态求得$n_LR=p_iV_i/T_i=20/3\,\mathrm{J/K}$。选先等容调温、再在末温下可逆改变体积的参考路径，用$v=V/(1\,\mathrm L)$表示无量纲体积，逐项积分为
+\[
+\begin{aligned}
+\Delta S_L
+&=16\int_{300}^{540}\frac{\dd T}{T}
++\frac{20}{3}\int_{20}^{15}\frac{\dd v}{v}\\
+&=16\left[\ln\frac{T}{300}\right]_{300}^{540}
++\frac{20}{3}\left[\ln\frac v{20}\right]_{20}^{15}\\
+&=16(\ln1.8-\ln1)+\frac{20}{3}(\ln0.75-\ln1)\\
+&=7.4867\,\mathrm{J/K}.
+\end{aligned}
+\]
+右室$n_RR=20\,\mathrm{J/K}$，初末同温，参考路径可直接选可逆等温膨胀：
+\[
+\begin{aligned}
+\Delta S_R&=20\int_{20}^{25}\frac{\dd v}{v}
+=20\left[\ln\frac v{20}\right]_{20}^{25}\\
+&=20(\ln1.25-\ln1)=4.4629\,\mathrm{J/K}.
+\end{aligned}
+\]
+这些参考路径只用来计算端点熵差，不代表释放连杆后的实际运动。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计入热源熵减并检验总熵符号}\par\nobreak

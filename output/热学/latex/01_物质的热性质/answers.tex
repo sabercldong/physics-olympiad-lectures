@@ -13,7 +13,16 @@
 分别写两种面积，得到
 \[A_h'=\pi a^2(1+\alpha\Delta T)^2,\qquad
 A_m'=\pi(b^2-a^2)(1+\alpha\Delta T)^2.\]
-扣除初面积并舍去二阶小量，
+令$\varepsilon=\alpha\Delta T$。先扣除初面积，并完整展开平方差，
+\[
+\begin{aligned}
+\Delta A_h&=\pi a^2[(1+\varepsilon)^2-1]
+=\pi a^2(2\varepsilon+\varepsilon^2),\\
+\Delta A_m&=\pi(b^2-a^2)[(1+\varepsilon)^2-1]
+=\pi(b^2-a^2)(2\varepsilon+\varepsilon^2).
+\end{aligned}
+\]
+在$|\varepsilon|\ll1$时舍去二阶项$\varepsilon^2$，才有一阶变化
 \[\boxed{\Delta A_h=2\alpha\Delta T\,\pi a^2,\qquad
 \Delta A_m=2\alpha\Delta T\,\pi(b^2-a^2)}.\]
 

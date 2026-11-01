@@ -31,7 +31,11 @@ $K_f=mv_0^2/2+|q|Ed=4.6\times10^{-13}\,\mathrm J$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按初始竖直分量求到达时间并取最小值}\par\nobreak
-在 图\ref{fig:e6:drill:2:p} 设初速度向下分量 $w\in[0,v_0]$，有 $d=wt+at^2/2$，解这个关于 $t$ 的二次方程并取正根，得 $t=(\sqrt{w^2+2ad}-w)/a$。对初始向下速度 $w$ 求导：
+在图\ref{fig:e6:drill:2:p}设初速度向下分量$w\in[0,v_0]$，有$d=wt+at^2/2$。两边乘$2a$，把含时间的项配成平方，
+\[
+a^2t^2+2awt=2ad,\qquad (at+w)^2=w^2+2ad.
+\]
+时间$t>0$、$w\ge0$，所以$at+w>0$，只能取正平方根，得到$t=(\sqrt{w^2+2ad}-w)/a$。对初始向下速度$w$求导：
 \[
 t'(w)=\frac1a\left[\frac{2w}{2\sqrt{w^2+2ad}}-1\right]
 =\frac1a\left(\frac{w}{\sqrt{w^2+2ad}}-1\right)<0.
@@ -60,7 +64,7 @@ $r_{\max}=v_0\sqrt{2d/a}=\sqrt{2.4}\,\mathrm m$。各方位与中间方向连续
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查静止初态为何对应直线轨迹}\par\nobreak
 恒力运动并非总是抛物线，只有初速度与加速度不平行时才有非退化抛物线。\end{drillsolution}
 \begin{drillsolution}{e6:drill:4}\textbf{按正电荷符号列回复力方程}\par\nobreak
-图\ref{fig:e6:drill:4:s} 正粒子受回复力 $-q\beta x$，方程 $\ddot x+\omega^2x=0$，$\omega=\sqrt{q\beta/m}$。试取指数解 $x=e^{\lambda t}$，代入得特征方程
+图\ref{fig:e6:drill:4:s}正粒子受回复力$-q\beta x$，方程$\ddot x+\omega^2x=0$，$\omega=\sqrt{q\beta/m}$。试取指数解$x=e^{\lambda t}$，则$\dot x=\lambda e^{\lambda t}$、$\ddot x=\lambda^2e^{\lambda t}$，代回有$(\lambda^2+\omega^2)e^{\lambda t}=0$，因指数不为零，得到特征方程
 $\lambda^2+\omega^2=0$，两根为 $\lambda=\pm i\omega$。实通解为
 \[
 x=C_1\cos\omega t+C_2\sin\omega t.
@@ -89,7 +93,7 @@ V(x)-V(0)=-\int_0^x E(s)\,\dd s
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{改变电荷符号后重新判断稳定性}\par\nobreak
 若为负粒子，令 $\Omega=\sqrt{|q|\beta/m}$，方程为
-$\ddot x-\Omega^2x=0$。特征方程 $\lambda^2-\Omega^2=0$ 给实根
+$\ddot x-\Omega^2x=0$。仍取$x=e^{\lambda t}$及上述两次导数，代回为$(\lambda^2-\Omega^2)e^{\lambda t}=0$。特征方程$\lambda^2-\Omega^2=0$给实根
 $\lambda=\pm\Omega$，故通解为 $x=C_+e^{\Omega t}+C_-e^{-\Omega t}$。
 同样的初条件给
 \[
@@ -117,8 +121,12 @@ x=A\cosh\Omega t,\qquad v=A\Omega\sinh\Omega t.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解最近距离的二次方程并检查极限}\par\nobreak
-在 图\ref{fig:e6:drill:5:p} 令 $\eta=kqQ/(mv^2)>0$，整理为 $r_{\min}^2-2\eta r_{\min}-b^2=0$，取正根
-$r_{\min}=\eta+\sqrt{\eta^2+b^2}$。$b=0$ 时最近点总速度才为零，距离 $2\eta$；$Q\to0$ 则距离趋于几何瞄准距 $b$。\end{drillsolution}
+在图\ref{fig:e6:drill:5:p}令$\eta=kqQ/(mv^2)>0$，将能量式乘$2r_{\min}^2/(mv^2)$，得到$r_{\min}^2=b^2+2\eta r_{\min}$。移项配方，
+\[
+(r_{\min}-\eta)^2=\eta^2+b^2,\qquad
+r_{\min}=\eta\pm\sqrt{\eta^2+b^2}.
+\]
+负号根不为正；物理距离取$r_{\min}=\eta+\sqrt{\eta^2+b^2}$。$b=0$时最近点总速度才为零，距离$2\eta$；$Q\to0$则距离趋于几何瞄准距$b$。\end{drillsolution}
 \begin{drillsolution}{e6:drill:6}\textbf{先求第一段末状态作为下一段初态}\par\nobreak
 图\ref{fig:e6:drill:6:s} 第一段末速度 $v_0=at_0$、位移 $x_0=at_0^2/2$。
 

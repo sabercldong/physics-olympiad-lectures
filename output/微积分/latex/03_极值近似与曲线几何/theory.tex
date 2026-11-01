@@ -48,13 +48,27 @@
 
 \subsection{平衡坐标改变后，惯量也要改变}
 势能曲线的最低点确定稳定位置，却不能单独给出振动频率。若系统用坐标 $q$描述，动能为 $T=J(q)\dot q^2/2$，在平衡点附近令 $q=q_0+\eta$，最低阶动能为 $J(q_0)\dot\eta^2/2$，势能为 $U_0+U''(q_0)\eta^2/2$。对保守运动，先对精确能量逐项求导：
-\[
- \frac{\dd(T+U)}{\dd t}
- =\frac12J'(q)\dot q^3+J(q)\dot q\ddot q+U'(q)\dot q=0.
-\]
+\begin{align*}
+\frac{\dd(T+U)}{\dd t}
+&=\frac12\frac{\dd J(q)}{\dd t}\dot q^2
+  +\frac12J(q)\frac{\dd(\dot q^2)}{\dd t}
+  +\frac{\dd U(q)}{\dd t}\\
+&=\frac12[J'(q)\dot q]\dot q^2
+  +\frac12J(q)(2\dot q\ddot q)+U'(q)\dot q\\
+&=\frac12J'(q)\dot q^3+J(q)\dot q\ddot q+U'(q)\dot q=0.
+\end{align*}
 在 $\dot q\ne0$ 的运动段除以 $\dot q$，再以连续性接到转向点，得到 $J(q)\ddot q+J'(q)\dot q^2/2+U'(q)=0$。令位移和速度均为一阶小量，$J'(q)\dot q^2/2$ 至少二阶；$U'(q_0)=0$ 且 $U'(q_0+\eta)=U''(q_0)\eta+O(\eta^2)$。保留一阶，线性方程就是
-\[J(q_0)\ddot\eta+U''(q_0)\eta=0,\qquad
-\omega^2=\frac{U''(q_0)}{J(q_0)}.\]
+\[J(q_0)\ddot\eta+U''(q_0)\eta=0.\]
+在$J(q_0)>0$、$U''(q_0)>0$时，试取$\eta=C\cos\omega t+D\sin\omega t$。固定$C,D,\omega$，逐次求导有
+\begin{align*}
+\dot\eta&=-C\omega\sin\omega t+D\omega\cos\omega t,\\
+\ddot\eta&=-C\omega^2\cos\omega t-D\omega^2\sin\omega t=-\omega^2\eta.
+\end{align*}
+代入线性方程，非零振动要求$[-J(q_0)\omega^2+U''(q_0)]\eta=0$，所以
+\[
+\omega^2=\frac{U''(q_0)}{J(q_0)}.
+\]
+若初始位移为$\eta_0$、初速度为$u_0$，则$\eta(0)=C=\eta_0$、$\dot\eta(0)=D\omega=u_0$，由此确定两个常数。该解描述稳定平衡附近的一阶近似运动。
 坐标是长度时 $J$通常是有效质量；坐标是角度时则是相应转动惯量。若把角坐标换成弧长 $s=R\eta$，势能二阶系数与惯量都会除以 $R^2$，比值不变，实际频率自然不依赖坐标名称。
 
 图\ref{c3k-coordinate}表示同一个约束位移的两种计量。只改势能导数、却仍用原来的质量或惯量，会多出或少掉 $R^2$。对两球相对距离的扰动，也必须使用相对运动的有效质量，而非任取一个球的质量。
@@ -170,7 +184,8 @@ $f''(x)=\alpha(\alpha-1)(1+x)^{\alpha-2}$。
 在任意闭区间$|x|\le q<1$内，$1+t\ge1-q>0$，因此
 \[
 |R_N(x)|\le\frac1{1-q}\int_0^{|x|}s^{N+1}\,\dd s
-=\frac{|x|^{N+2}}{(1-q)(N+2)}\longrightarrow0.
+=\frac1{1-q}\left[\frac{s^{N+2}}{N+2}\right]_0^{|x|}
+=\frac{|x|^{N+2}-0}{(1-q)(N+2)}\longrightarrow0.
 \]
 取$N\to\infty$，才得到$\ln(1+x)=x-x^2/2+x^3/3-\cdots$。这说明逐项积分的依据是余项的一致控制，不能把形式上的无穷求和任意移过积分号。
 
@@ -225,8 +240,14 @@ $1-\sqrt{1-\epsilon^2}=\epsilon^2/[1+\sqrt{1-\epsilon^2}]$，立即可见最低�
 \]
 因此正弦振动可以由复指数的实部或虚部表示。复表示是一种运算工具，实际位移仍取实数部分；振幅、相位和频率应在取实部之前说明。遇到阻尼振动时，指数实部给出衰减，虚部给出振荡。
 
-例如 $x(t)=A\cos(\omega t+\phi)$ 可以写成
-$x(t)=\operatorname{Re}[A\e^{\mathrm i\phi}\e^{\mathrm i\omega t}]$。对复指数求一次时间导数相当于乘以 $\mathrm i\omega$，求两次则乘以 $-\omega^2$；取实部后恰好得到 $\ddot x=-\omega^2x$。复数的乘法同时记录振幅与相位，因而适合处理线性振动中的叠加。若方程含有非线性项，不能未经核验就把求实部与非线性运算交换。
+例如$x(t)=A\cos(\omega t+\phi)$可以写成$x(t)=\operatorname{Re}z(t)$，其中$z(t)=A\e^{\mathrm i\phi}\e^{\mathrm i\omega t}$。把$A\e^{\mathrm i\phi}$看成常量，对时间应用链式法则：
+\begin{align*}
+\dot z&=A\e^{\mathrm i\phi}\e^{\mathrm i\omega t}
+        \frac{\dd(\mathrm i\omega t)}{\dd t}
+=\mathrm i\omega z,\\
+\ddot z&=\mathrm i\omega\dot z=(\mathrm i\omega)^2z=-\omega^2z.
+\end{align*}
+实部运算是线性的，故$\ddot x=\operatorname{Re}\ddot z=-\omega^2\operatorname{Re}z=-\omega^2x$。复数的乘法同时记录振幅与相位，因而适合处理线性振动中的叠加。若方程含有非线性项，不能未经核验就把求实部与非线性运算交换。
 
 \fig{c3k-complex}{复平面中的转动对应正弦振动的投影}{\begin{tikzpicture}[scale=.9]
 \draw[axis](-.4,0)--(3,0)node[right]{$\operatorname{Re}z$};
@@ -272,7 +293,13 @@ $\dd\psi/\dd x=y''/(1+y'^2)$。
 曲率公式中的 $x,y$ 应是同一空间中的长度坐标。把位置对时间的图线直接当成实际空间轨道，会混淆坐标单位：图线的凹凸能表示加速度符号，却不能直接解释为质点轨道的曲率。对实际轨迹，改变绘图时横纵轴的比例会改变纸面形状，计算仍必须使用实际坐标与一致的长度单位。
 
 \subsection{密切圆的位置也由局部导数确定}
-在平面正则点，曲率半径只给出密切圆的大小，圆心还必须沿曲线内法线定位。若轨迹 $y=f(x)$且 $f''\ne0$，取向上法线单位矢量 $(-f',1)/\sqrt{1+f'^2}$。有符号曲率为 $f''/(1+f'^2)^{3/2}$，故圆心坐标为
+在平面正则点，曲率半径只给出密切圆的大小，圆心还必须沿曲线内法线定位。若轨迹$y=f(x)$且$f''\ne0$，取向上法线单位矢量$\bm n=(-f',1)/\sqrt{1+f'^2}$。有符号曲率为$\kappa_s=f''/(1+f'^2)^{3/2}$，所以从曲线点指向圆心的位移为
+\[
+\bm r_C-\bm r_P=\frac{\bm n}{\kappa_s}
+=\frac{(-f',1)}{\sqrt{1+f'^2}}\frac{(1+f'^2)^{3/2}}{f''}
+=\frac{1+f'^2}{f''}(-f',1).
+\]
+把它的两个分量分别加到$P=(x,f(x))$上，得到圆心坐标
 \[x_C=x-\frac{f'(1+f'^2)}{f''},\qquad
 y_C=f(x)+\frac{1+f'^2}{f''}.\]
 $f''>0$时圆心在向上法线侧，$f''<0$时在另一侧。曲率公式中的绝对值只用于半径大小，若在圆心公式中也随意取绝对值，就会把弯曲方向画反。
@@ -283,7 +310,13 @@ $f''>0$时圆心在向上法线侧，$f''<0$时在另一侧。曲率公式中的
 
 图\ref{c3deep:osculating}把抛物线顶点 $O$、焦点 $F$ 和密切圆心 $C$ 分开标出。圆在 $O$ 的下半支可写成
 \[
- y=\rho-\sqrt{\rho^2-x^2}=\frac{x^2}{2\rho}+O(x^4/\rho^3).
+ \begin{aligned}
+ y&=\rho-\sqrt{\rho^2-x^2}
+=\rho\left[1-\sqrt{1-(x/\rho)^2}\right]\\
+ &=\rho\left[\frac12\left(\frac x\rho\right)^2
+       +O\!\left(\frac{x^4}{\rho^4}\right)\right]
+=\frac{x^2}{2\rho}+O(x^4/\rho^3).
+ \end{aligned}
 \]
 只有取 $\rho=1/(2a)$，二次项才与 $y=ax^2$ 相同。这既验证密切圆半径，也说明密切圆只在局部近似曲线；它不会代替整个抛物线的反射性质。
 \fig{c3deep:osculating}{焦点与局部曲率中心是不同的点}{\begin{tikzpicture}[scale=1.2]

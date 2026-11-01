@@ -9,13 +9,25 @@
 \draw(.4,0)arc(0:40:.4)node[midway,right]{$\theta$};
 \end{tikzpicture}}
 \end{question}
-\begin{solution}\textbf{确定变量与基本关系}\par
-图 \ref{c2e12q} 的整条链长与四分之一圆链条题不同，线密度为 $\lambda=m/(\pi R)$。沿弧仍有 $\dd T=\lambda gR\cos\theta\dd\theta$，由右端 $T(0)=0$ 得
-$T(\theta)=\lambda gR\sin\theta$，因此
+\begin{solution}\textbf{沿圆弧列切向平衡方程}\par
+图\ref{c2e12q}的整条链长为$\pi R$，故线密度$\lambda=m/(\pi R)$。从右端$A$起沿逆时针方向量极角$\theta$。微段的质量为$\lambda R\dd\theta$，重力沿此切向的投影为$-\lambda gR\cos\theta\dd\theta$；光滑圆柱的支持力沿法线。两端张力之差与切向重力平衡，因此
 \[
- \boxed{T_B=\lambda gR=\frac{mg}{\pi}}.
+\dd T-\lambda gR\cos\theta\dd\theta=0.
 \]
-上式来自 $T(\theta)-T(0)=\lambda gR\int_0^\theta\cos\phi\dd\phi=\lambda gR\sin\theta$。在圆顶 $\theta=\pi/2$ 时，$\sin\theta=1$，代入 $\lambda=m/(\pi R)$ 得 $T_B=mg/\pi$；在左端 $\theta=\pi$ 时，张力重新为零，与另一自由端条件一致。
+右自由端给出边界条件$T(0)=0$。从它积到任意截面，张力变量与角度变量的上下限分别对应：
+\begin{align*}
+\int_0^{T(\theta)}\dd\mathcal T
+&=\lambda gR\int_0^\theta\cos\phi\dd\phi,\\
+T(\theta)-0
+&=\lambda gR[\sin\phi]_0^\theta
+=\lambda gR(\sin\theta-\sin0).
+\end{align*}
+所以$T(\theta)=\lambda gR\sin\theta$。在圆顶$\theta=\pi/2$处代入，
+\[
+T_B=\lambda gR\sin\frac\pi2
+=\frac{m}{\pi R}gR=\boxed{\frac{mg}{\pi}}.
+\]
+在左端$\theta=\pi$处，$T(\pi)=\lambda gR\sin\pi=0$，与另一自由端条件相符；在链条内部$0<\theta<\pi$，张力为正。
 \fig{c2e12s}{截取右半段，作沿圆周的虚位移}{\begin{tikzpicture}[scale=1.3]
 \draw[world](1.5,0)arc(0:90:1.5);\draw[guide](0,0)--(1.5,0);\draw[guide](0,0)--(50:1.5);
 \draw[force](0,1.5)--(-.9,1.5)node[left]{$T_B$};
@@ -23,16 +35,18 @@ $T(\theta)=\lambda gR\sin\theta$，因此
 \draw[guide](50:1.5)--++(0,.418)node[right]{$\delta h=\delta s\cos\theta$};
 \end{tikzpicture}}
 
-\par\medskip\Needspace{3\baselineskip}\noindent\textbf{图示分析与后续计算}\par
+\par\medskip\Needspace{3\baselineskip}\noindent\textbf{用半链的虚位移核验顶端张力}\par
 在图 \ref{c2e12s} 中截取 $AB$ 段，圆顶的另一半链对它施加张力 $T_B$。令该段作沿圆周逆时针的虚位移 $\delta s$，各微段升高 $\delta h=\delta s\cos\theta$，支持力始终与位移垂直。
 
 平衡时拉力功等于重力势能增量：
 \[
+ \begin{aligned}
  T_B\delta s
- =\int_0^{\pi/2}\lambda R\dd\theta\,
- g\,\delta s\cos\theta
- =\lambda Rg\,\delta s.
+ &=\lambda Rg\,\delta s\int_0^{\pi/2}\cos\theta\dd\theta\\
+ &=\lambda Rg\,\delta s[\sin\theta]_0^{\pi/2}
+ =\lambda Rg\,\delta s(1-0).
+ \end{aligned}
 \]
-积分中的 $\lambda R\dd\theta$ 是微段质量，$g\delta s\cos\theta$ 是单位质量的势能增量。$\int_0^{\pi/2}\cos\theta\dd\theta=1$，再约去共同的非零虚位移 $\delta s$，得到 $T_B=\lambda Rg=mg/\pi$。不能直接用整条链重量的一半作为顶端张力，因为沿圆周各位置的切向重力分量不同。本题只讨论所给对称静置状态，微小不对称滑动的稳定性需另行分析。
+积分中的$\lambda R\dd\theta$是微段质量，$g\delta s\cos\theta$是单位质量的势能增量。约去共同的非零虚位移$\delta s$，再代入$\lambda=m/(\pi R)$，同样得到$T_B=mg/\pi$。不能直接用整条链重量的一半作为顶端张力，因为沿圆周各位置的切向重力分量不同。本题只讨论所给对称静置状态，微小不对称滑动的稳定性需另行分析。
 
 \end{solution}

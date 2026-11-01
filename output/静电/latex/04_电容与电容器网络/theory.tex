@@ -85,9 +85,14 @@
 \end{tikzpicture}}
 初、末场能之差为
 \[
- \Delta W=\frac12C_1U_1^2+\frac12C_2U_2^2
- -\frac12(C_1+C_2)U_f^2
- =\frac{C_1C_2}{2(C_1+C_2)}(U_1-U_2)^2.
+\begin{aligned}
+ \Delta W&=\frac12C_1U_1^2+\frac12C_2U_2^2
+ -\frac12(C_1+C_2)U_f^2\\
+ &=\frac{(C_1+C_2)(C_1U_1^2+C_2U_2^2)-(C_1U_1+C_2U_2)^2}
+ {2(C_1+C_2)}\\
+ &=\frac{C_1C_2(U_1^2+U_2^2-2U_1U_2)}{2(C_1+C_2)}\\
+ &=\frac{C_1C_2}{2(C_1+C_2)}(U_1-U_2)^2.
+\end{aligned}
 \]
 它非负，原来等势时才为零。小电阻影响耗散速度，不改变最终能量差；实际连接中的焦耳热、辐射等承接这部分能量。理想无耗散线路还可能振荡，不能把“达到静电平衡”的模型外推成能量凭空消失。
 
@@ -114,14 +119,26 @@
  F_x=-\frac{Q^2}{2}\frac{\dd}{\dd x}C(x)^{-1}
  =-\frac{Q^2}{2}\bigl[-C(x)^{-2}C'(x)\bigr]
  =\frac{Q^2C'(x)}{2C(x)^2}.
-\]接恒压源时，图\ref{fig:e4:force}右侧电源微功为 $U\dd Q=U^2\dd C$，场能变化只有 $U^2\dd C/2$，余下才是机械功，得到 $F_x=U^2C'(x)/2$。
+\]接恒压源时，固定的是$U$，而$Q(x)=UC(x)$随几何改变。分别求导有$\dd Q/\dd x=UC'(x)$与$\dd W_{\text{场}}/\dd x=U^2C'(x)/2$。图\ref{fig:e4:force}右侧的能量平衡应写为电源微功等于场能增加与机械功之和：
+\[
+\begin{aligned}
+F_x\dd x&=U\dd Q-\dd W_{\text{场}}\\
+&=U^2C'(x)\dd x-\frac12U^2C'(x)\dd x
+=\frac12U^2C'(x)\dd x.
+\end{aligned}
+\]
+约去同一个坐标微量，得到$F_x=U^2C'(x)/2$。
 \fig{fig:e4:force}{上板沿间距增大方向运动：孤立时电荷固定，恒压时还有电源支路}{\begin{tikzpicture}
 
 \foreach \x in{0,6}{\begin{scope}[xshift=\x cm]\draw[world](0,0)--(3,0)(0,1.8)--(3,1.8);\draw[flow](1.4,1.55)--(1.4,.25)node[midway,right]{$E$};\draw[axis](-.5,1.8)--(-.5,2.8)node[above]{$+d$};\draw[force](2.3,1.8)--(2.3,.8)node[right]{$F_d<0$};\end{scope}}
 \node at(1.5,3.4){断电：$Q$ 固定};\node at(7.5,3.4){接源：$U$ 固定};\draw(9,1.8)--(10,1.8)to[battery1,l={$U$}](10,0)--(9,0);\node at(1.5,-.7){$\dd Q=0$};\node at(7.5,-.7){$U\dd Q=\dd W+F_d\dd d$};
 
 \end{tikzpicture}}
-对板间距 $d$，$C'(d)=-\varepsilon_0S/d^2$，所以力指向减小间距的方向。两约束在同一瞬时状态满足 $Q=CU$ 时都给
+对板间距$d$，先写$C(d)=\varepsilon_0Sd^{-1}$，保持面积不变求导，
+\[
+C'(d)=\varepsilon_0S(-1)d^{-2}=-\frac{\varepsilon_0S}{d^2}.
+\]
+所以力指向减小间距的方向。两约束在同一瞬时状态满足$Q=CU$时都给
 \[
  |F_d|=\frac{Q^2}{2\varepsilon_0S}=\frac12\varepsilon_0SE^2.
 \]
@@ -152,9 +169,12 @@
 普通电压表的有限内阻 $R_V$ 跨接孤立电容，形成图\ref{fig:e4:meter}左侧放电回路，电流由电压表支路流走，故 $C\dd U/\dd t=-U/R_V$。
 对 $U_0\ne0$，分离变量并从 $t=0,U=U_0$ 积至当前状态：
 \[
+\begin{aligned}
  \int_{U_0}^{U(t)}\frac{\dd u}{u}
- =-\frac1{R_VC}\int_0^t\dd t',
- \qquad \ln|U(t)|-\ln|U_0|=-\frac{t}{R_VC}.
+ &=-\frac1{R_VC}\int_0^t\dd t',\\
+ [\ln|u|]_{U_0}^{U(t)}&=-\frac1{R_VC}[t']_0^t,\\
+ \ln|U(t)|-\ln|U_0|&=-\frac{t-0}{R_VC}.
+\end{aligned}
 \]
 解在有限时间内不换号，故取指数后
 $U(t)/U_0=e^{-t/(R_VC)}$，即 $U(t)=U_0e^{-t/(R_VC)}$。

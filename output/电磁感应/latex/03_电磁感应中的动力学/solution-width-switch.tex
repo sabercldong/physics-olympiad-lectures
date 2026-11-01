@@ -16,14 +16,23 @@ $v_P\to u/5,\ v_Q\to2u/5$；两渐近速度并不相等。
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用阶段内速度和位移说明台阶距离的作用}\par\nobreak
 若要确定切换速度，必须知道 $P$ 在初阶段走过的距离。令 $k=Bl$、$\kappa=5k^2/(mR)$，先对 $z=2v_P-v_Q$ 求导，得到 $\dot z=-\kappa z,z(0)=2u$。分离积分
 $\int_{2u}^{z(t)}\dd y/y=-\kappa\int_0^t\dd s$，
-得 $z=2u\e^{-\kappa t}$。联立 $2v_P-v_Q=z$ 与 $v_P+2v_Q=u$，
+写出原函数并代入两端，
+\[
+ [\ln|y|]_{2u}^{z(t)}=-\kappa[s]_0^t,
+ \qquad \ln\frac{z(t)}{2u}=-\kappa t.
+\]
+初始 $z=2u>0$ 的分支给 $z=2u\e^{-\kappa t}$。联立 $2v_P-v_Q=z$ 与 $v_P+2v_Q=u$，
 $5v_P=u+2z$、$5v_Q=2u-z$，所以
 \[
 v_P(t)=\frac u5+\frac{4u}{5}\e^{-\kappa t},\qquad
 v_Q(t)=\frac{2u}{5}(1-\e^{-\kappa t}).
 \]
-若台阶距离为 $D$，位移积分的原函数为
-$ut/5-4u\e^{-\kappa t}/(5\kappa)$，从 $0$ 积到到达时刻 $t_*$ 还须满足
+若台阶距离为 $D$，先对 $P$ 的速度作定积分，
+\[
+ D=\int_0^{t_*}\left(\frac u5+\frac{4u}{5}\e^{-\kappa t}\right)\dd t
+ =\left[\frac{ut}{5}-\frac{4u}{5\kappa}\e^{-\kappa t}\right]_0^{t_*}.
+\]
+代入上下限，到达时刻 $t_*$ 须满足
 \[
 D=\frac u5t_*+\frac{4u}{5\kappa}(1-\e^{-\kappa t_*}),\qquad
 v_*=v_P(t_*).

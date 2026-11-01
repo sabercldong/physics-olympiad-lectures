@@ -1,13 +1,13 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "静力学",
       "工程": "01_质心与力的等效",
       "名称": "质心与力的等效",
       "PDF": "静力学/pdf/静力学第一讲_质心与力的等效.pdf",
-      "页数": 28,
+      "页数": 30,
       "例题": 7,
       "练习": 8,
       "题数": 15,
@@ -17,25 +17,40 @@
       "题设图": 15,
       "有过程图并引用的解答": 15,
       "已逐题复核": 15,
-      "PDFsha256": "513cb8a1a84ac3facd839907f5732f31239fd5befb013ccf77ac235ee23ddf94",
-      "TeXsha256": "ca10475e310d9b820d758d04570584ab05996aba7a236fc140765849766a866f",
+      "PDFsha256": "c1d7afff73ecb356b3adf51ba6a659354e1176febabca0c8dc36320889806109",
+      "TeXsha256": "cc52104c38a4a2271ac7c182988587c99c0a62063710800421bb3d2be9399a23",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        7,
-        8,
-        17,
-        18
+        14,
+        15,
+        25,
+        26,
+        28,
+        29,
+        30
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/静力学/01_质心与力的等效/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/静力学/01_质心与力的等效/main.pdf",
+      "本轮数学过程全文复核题数": 15,
+      "本轮数学过程修改题数": 6,
+      "源码各文件SHA256": {
+        "examples.tex": "a8c195d09e46f04200e9ee0b6f304f64466807c7ed0a91aa197bee69e757b145",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "knowledge-force-couple.tex": "c0bf888b674e6eddc8d18285c28f40313eb75fd43a57356482afc83149ea44d0",
+        "main.tex": "e4f951bea5b6d4c7d3be802737f3e06da09e46a1f1af729bd06a12c60e211689",
+        "theory.tex": "505ec4fc61ba7fcb8277f52c156a3db651413a6425cb41b83d5a9facc25ced99",
+        "practice.tex": "e0e8188447ecb9a067207483a08b81b898652e5ee910b415da0dabccd8d47b8a",
+        "answers.tex": "ab70ff6f0638258f44dfcdb06ff49d2922d8a8685c52a6f7ce0df611e75df340",
+        "summary.tex": "b3618aac9bc96a170b2d5bf2c48500da7f63b8f26ff43d51c302ddfd054b280e"
+      }
     },
     {
       "专题": "静力学",
       "工程": "02_共点力与刚体平衡",
       "名称": "共点力与刚体平衡",
       "PDF": "静力学/pdf/静力学第二讲_共点力与刚体平衡.pdf",
-      "页数": 30,
+      "页数": 31,
       "例题": 9,
       "练习": 7,
       "题数": 16,
@@ -45,20 +60,31 @@
       "题设图": 16,
       "有过程图并引用的解答": 16,
       "已逐题复核": 16,
-      "PDFsha256": "eaac714a7a08c353f84c04946cafc6c839d461f87b547e7ea1f9f98cecffc92e",
-      "TeXsha256": "90578cb7117e167dd74d95ad9ec575a9d2d00c78b24a1c88d2943eee00cbc653",
+      "PDFsha256": "e16ab092d66d236aca9cc655288ef181ebe74d8a03e9efe3f1d83e8c5186bef0",
+      "TeXsha256": "5242f01944235027cf764363610fc87aedb58f4785082ca481842212ff1b5b95",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        4,
-        8,
-        18,
-        19,
-        25,
-        26
+        15,
+        16,
+        17,
+        30,
+        31
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/静力学/02_共点力与刚体平衡/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/静力学/02_共点力与刚体平衡/main.pdf",
+      "本轮数学过程全文复核题数": 16,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "examples.tex": "2426f82d736e8513c89e902e5a41967e339ca50c3dadf96407a6490e5b1342df",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "knowledge-minimum-force.tex": "1fd795750801db1f85098dd0409f5043017cb668eab87cb8840a2daf0ccc56ac",
+        "main.tex": "7cf57dfa3296a0204db1a035298ac163889b415e8ec211424c70cfaa079691b6",
+        "theory.tex": "f7bc3d778eba57504e27b7f11157ecda081d833a65a7cfadfcf500d3487a1723",
+        "practice.tex": "eb5c51e9a85184476f445a780a9241f6fe19f09904cb048b19f0bd2b3fa33c06",
+        "answers.tex": "dc65205893daa4927d4c0e615e91571046de0dffa9ff3b1125f46a3cb830b0d8",
+        "summary.tex": "cce69c0c93da370225c98267870da792effb3fffcf800dd9dec95e42b72cce3b"
+      }
     },
     {
       "专题": "静力学",
@@ -75,27 +101,39 @@
       "题设图": 16,
       "有过程图并引用的解答": 16,
       "已逐题复核": 16,
-      "PDFsha256": "abe5a649b26b3e357da429bd48e5102137e03c4fdb2553111f788899e0768ed4",
-      "TeXsha256": "37652cecf7b7df228b6f3c057325913fe97bbfaa9eb789b5bb512402ab38b8d8",
+      "PDFsha256": "91cba16d88ad4303baa1c415cf19373f7cf5840dd1d1e4461d5e32ddb92aac52",
+      "TeXsha256": "7a1aac3ccbf0a9c2193e5bb2425e5a049ba975c10013a1a1f9226b51eead6356",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        11,
-        24,
-        28,
-        32,
-        33,
-        34
+        19,
+        20,
+        26,
+        27,
+        30,
+        31
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/静力学/03_摩擦与约束平衡/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/静力学/03_摩擦与约束平衡/main.pdf",
+      "本轮数学过程全文复核题数": 16,
+      "本轮数学过程修改题数": 5,
+      "源码各文件SHA256": {
+        "examples.tex": "1e03f89d9f8a06766c12243f0686096fea2e138e3ab8350cfa76d308048e4a11",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "14371f15abe53295f7d0f5b6f835baac72047cd54e51d00d5ff040b47dd4c386",
+        "theory.tex": "d29ce0a606c2f0011fd7a15309a9bebb7675de6f42113a6eaf739864f2ba312e",
+        "knowledge-friction-interval.tex": "93f11f1e4d3d7b479ba2f5492e76323e3e4cde80c30a09bd2c2f937c0bc9baad",
+        "practice.tex": "7e1d32ba43d405659618975b0111d5aa49008bf827aa807663cf874ab49153b2",
+        "answers.tex": "42645bc734f006d2e31c8f4fb146829caee9a5e6ac9ad9d4f3ea196ea771b65a",
+        "summary.tex": "e5a36ca2bceb7cd824f1c0ae18d602f2bb047f802ba4b5f5774626d394d9f684"
+      }
     },
     {
       "专题": "静力学",
       "工程": "04_连续体与平衡稳定性",
       "名称": "连续体与平衡稳定性",
       "PDF": "静力学/pdf/静力学第四讲_连续体与平衡稳定性.pdf",
-      "页数": 35,
+      "页数": 36,
       "例题": 9,
       "练习": 5,
       "题数": 14,
@@ -105,16 +143,36 @@
       "题设图": 14,
       "有过程图并引用的解答": 14,
       "已逐题复核": 14,
-      "PDFsha256": "6c7988a5d60b8557da60a61d7754ea6da7b5bade4367bedb7c822c0f67c33d17",
-      "TeXsha256": "b1e4fce6ed2a4cc2ab0089042c2151dba75c8d8b12677478214bc25452ff5429",
+      "PDFsha256": "f5d6942c4db8e805cdf3bec636f7b93731292d62c1919e60638fe65e5f954b6c",
+      "TeXsha256": "8a6fe95137e2f0195129738147b4edd7e0542e9b65233eb8c3a08ac019fd75db",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        32,
-        33
+        7,
+        8,
+        13,
+        14,
+        24,
+        25,
+        31,
+        32
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/静力学/04_连续体与平衡稳定性/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/静力学/04_连续体与平衡稳定性/main.pdf",
+      "本轮数学过程全文复核题数": 14,
+      "本轮数学过程修改题数": 4,
+      "源码各文件SHA256": {
+        "examples.tex": "0329397f0f897ae73983983292e03620c551c1af33bda1445837bb6be06de2eb",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "solution-five-balls.tex": "d42d278bd2baf9a73b55000565558baefe049a867785ae720f8c9b0d1d7b3dd5",
+        "main.tex": "0c5689bbfdd7d7e67f88a73c5c610afd67069f33ed37a7d2258e61867956d400",
+        "theory.tex": "bff839944e929d3fe3243b0aef56daa8faa3979f7d7437975d6051742b31e404",
+        "practice.tex": "aa3a9f835835fac51fbc7969723937ed33767016f976587218f7ab1cc29cd340",
+        "ring-element.tex": "9441afcc791913a9cba4560e3d238096d0b25f54971300f17135e2b5a71adfb3",
+        "answers.tex": "5f1d8f4d5d536d1e579183064d6755cde189e97b32733a3da56d798e16b4692a",
+        "summary.tex": "08d3cf092454aace894507be293cc5eae8246c5bafb2139f60d5cd12a3b4617f",
+        "knowledge-stability-motion.tex": "abc6d4e2187c609652686eadfee29777f3c81879817341c13923c032e72a6101"
+      }
     },
     {
       "专题": "静力学",
@@ -131,17 +189,34 @@
       "题设图": 13,
       "有过程图并引用的解答": 13,
       "已逐题复核": 13,
-      "PDFsha256": "5781ed8cd0e15ae35dad372984b3d3aca04f8d7f90d748b970d4e5d183334f16",
-      "TeXsha256": "eb99d493f7c80a91c12db283d73b50c77ee0cc63b6662b94cce27e459e2c6f21",
+      "PDFsha256": "a005847bdcddbded0335ca48e5b011599f3a0646da0f59ce892aa3bd94708df6",
+      "TeXsha256": "c00b8eb96a2c75597e1df26a20d2c4b8a1f06ca7e619ffa536d1e4ad3cfda23a",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        17,
-        18,
-        19
+        20,
+        21,
+        22,
+        23,
+        29,
+        30,
+        32,
+        33
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/静力学/05_流体静力学与力学综合/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/静力学/05_流体静力学与力学综合/main.pdf",
+      "本轮数学过程全文复核题数": 13,
+      "本轮数学过程修改题数": 5,
+      "源码各文件SHA256": {
+        "examples.tex": "eb401f2f2c2d716d77ac89cd4acbbd19ef0a2b36ff910e6be250add63cc3d512",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "4dcdc6c10ef664d4815b47bbfc42e50b3c0f8276df1f767ee2c5b7e75c9b7239",
+        "theory.tex": "44eb78a5d0ac258ef24885456480f9cba370c3926566b2c925c03eec07be34d3",
+        "practice.tex": "22cb05f1bdeb95e274ddeb57396789bfeb483c9e9fe42c7e40bdc5da27e85b40",
+        "answers.tex": "93109cef3037852ad5134d92cc100e8b8eb747732348cd253d461e18611c1232",
+        "summary.tex": "5d421b43b467a77e017c8fb6a624c9c5d23b1f3bab78c0ab57dcfe4cbcac5fe1",
+        "knowledge-level-volume.tex": "e9556ffe008712609ee21bb1b24d6c3a4716c14325e25b4da89cc6ebdc14cb98"
+      }
     }
   ]
 }

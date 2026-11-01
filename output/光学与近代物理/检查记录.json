@@ -1,6 +1,6 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "光学与近代物理",
@@ -17,22 +17,36 @@
       "题设图": 20,
       "有过程图并引用的解答": 20,
       "已逐题复核": 20,
-      "PDFsha256": "1f399d996203a24fba04d097213ebb9ca25d5356e886d6fdd4927a583c4503f4",
-      "TeXsha256": "aeb4baefed5f07318b0c8aab453175a0dfb8999f8c6998d639f7ae768fb761ed",
+      "PDFsha256": "6e7bcbead3604a84f4081dd54e1cf929022713e3aafd79d769243e8fe02dfa15",
+      "TeXsha256": "df7e62727c6c3e26d78b731dcc036e28d65eebf8a8e4a005310108ac626c6a01",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        4,
-        8,
-        23,
-        24,
-        32,
-        33,
-        43,
-        44
+        34,
+        35,
+        37,
+        38,
+        40,
+        41,
+        47,
+        48
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/01_几何光学原理/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/01_几何光学原理/main.pdf",
+      "本轮数学过程全文复核题数": 20,
+      "本轮数学过程修改题数": 4,
+      "源码各文件SHA256": {
+        "examples.tex": "d3de991a225517626f611a2139238fe488aa06d2491f0a8932b423e41b5fadd1",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "e73ff4357c5995a84ea2a395a4b83d51ed0cff457f3f67aa58ba6e22f64def3c",
+        "theory.tex": "149dcdd53563e280b55a0ba1cf27ef5b7fe53a3494760493a0536763b5e9c2ae",
+        "practice.tex": "203f8d8542cba2a3f23d70278f117c2c939640c4038a5e1c8ec335fceff72ae1",
+        "practice-additional.tex": "30476fb0a137e0cc8a896bc4b018acd58184b05ea72aab56e002dfd57ee7ed14",
+        "answers.tex": "36caf4cb8a116b299e50e5506c8bbb10fb7c58de461a520a0b68a217a675b25a",
+        "summary.tex": "ffe8b8a9339abf4220724685e07ca8bce86d329e584ec209d234298e3d74870d",
+        "answers-additional.tex": "63c21e6c811057ae08d1b3d58363db055c9b90eeaf3f95ed0425103e953d31ec",
+        "knowledge-critical.tex": "6a6071138d2800d307666a8a5830d95e1334b65b5309d68ac938afc20b69c259"
+      }
     },
     {
       "专题": "光学与近代物理",
@@ -49,16 +63,31 @@
       "题设图": 18,
       "有过程图并引用的解答": 18,
       "已逐题复核": 18,
-      "PDFsha256": "7d1b073346b13b297c63dc31191992eefb9aef75bfae3ea7e20317b7a0eec239",
-      "TeXsha256": "c60b7348dcf75d5292991ef3d1e96de670a3e7370119f79d8fda5ce0bdb53dfd",
+      "PDFsha256": "360b041f80071a6c543697c64f7ca066127945d241ed8462555dc5d3129cf597",
+      "TeXsha256": "025a2a5fa80f1a9d98492d0fdbd0c597631f1f5eb0e5bcf3a4d4a53adb388f54",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        4,
-        8
+        33,
+        34,
+        41
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/02_球面反射与折射/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/02_球面反射与折射/main.pdf",
+      "本轮数学过程全文复核题数": 18,
+      "本轮数学过程修改题数": 2,
+      "源码各文件SHA256": {
+        "examples.tex": "d2db521620b09031fd69eef678f76378648024b36d722bd5d723f1d92a93da01",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "6d8cc558810705bc2976b1a0a17a906fec71585fed2a649ab7fa25121ba4ef37",
+        "theory.tex": "72958166e7685935494fa1ad98622d8f645d18615ee45bf48ba0cff58e19d1c4",
+        "practice.tex": "92f7f5fd3ef85498ab20e2a0e6012cf0390884292a2fe8b6b52b8dccdad1d866",
+        "practice-additional.tex": "83024f8e60ca22abe7050406239fbf5c95ef2b9f0ee5681cede6c97e37caa8bd",
+        "answers.tex": "8063ac76aa82f331169dc0d31c50b5230f2a170450898aa7eb0253d1e44d2a38",
+        "summary.tex": "afeb4cd3b44630604a2b00641087dded867b260c94b08f876dc2f63a907792d2",
+        "answers-additional.tex": "8197c1db1eea3db7835b852f2fc4cc16286346bee091715da856f90ea176e6e4",
+        "knowledge-virtual-classification.tex": "57640a8a1bc2d59de1541f51961f192a16e58209f09c97ec62e04f8488c6008f"
+      }
     },
     {
       "专题": "光学与近代物理",
@@ -75,19 +104,35 @@
       "题设图": 18,
       "有过程图并引用的解答": 18,
       "已逐题复核": 18,
-      "PDFsha256": "7d5290fec3bf3074b3d157dee0126859d0c235d577575eb44ba80bbcecf1a24e",
-      "TeXsha256": "7f88a4b294a57d2df84f12dcbecce243670c6465dff6b23c2fe1cbd29d68ef36",
+      "PDFsha256": "41f3f885b794df0bfbc0224647bc8e06ba01589cccf6e022b12e7fb5c1ddeaf0",
+      "TeXsha256": "9f634d4d401ded3b455e60b015765a84eb23cc7493771cba590e702cfc7ccbc3",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        11,
-        25,
-        26,
-        27,
-        33
+        12,
+        13,
+        21,
+        22,
+        30,
+        31,
+        32
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/03_薄透镜与光学系统/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/03_薄透镜与光学系统/main.pdf",
+      "本轮数学过程全文复核题数": 18,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "examples.tex": "2073f54a1f78ac470470d1667157c2de7e8112587e0d0565e96b1a14b987a1e4",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "13b0628621958386caed339c8300764f58d086040b80de18752689c31fa21a7e",
+        "theory.tex": "73a4f144ffdb93d8c9a70be825e08249718a1c0efe2b9fc7aec94bd9b66eb59c",
+        "practice.tex": "15d2b915f104675419a6d0551d3e88cc701d25b28629288a5e9214935691f429",
+        "practice-additional.tex": "1c09edb283c1f90a7b2628180fdc870510f29e2d8c4a78b3ee2d252cbbc82242",
+        "answers.tex": "80bb4b735726c082b02c715f6b47769956b11269f9010e26bc769fec74329900",
+        "knowledge-ray-matrix.tex": "35f234fccb4b5fbf5f39dc2cddb5fae7db716cd8ba7f1a6e57aadc8a99f41a47",
+        "summary.tex": "606bc89c1dc6a23538aacebb71b72fbbc6f59108a5c1daba2969f7d3102508fe",
+        "answers-additional.tex": "40db6cfe7dc6385b1ae87f202c9b1249bea1f2801453772898d34be1f522b099"
+      }
     },
     {
       "专题": "光学与近代物理",
@@ -104,16 +149,35 @@
       "题设图": 18,
       "有过程图并引用的解答": 18,
       "已逐题复核": 18,
-      "PDFsha256": "8a523d30f57680586864e900931b59dfb22a6896b19c332f3131c35bb4e06d59",
-      "TeXsha256": "b7991424364e2e5b97ec2a1dc6d6d03092126bc2eeb17184bbd843eca812f91f",
+      "PDFsha256": "9ba48a183b1fecdbc8a05db2e9e23e89bfe2074cce5e9ba4e6323e3b66fa1048",
+      "TeXsha256": "aad413ba360d4dbf7d14193d534a690fb2a11c22e012195cea5942f5ac4800c3",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        8,
-        22
+        17,
+        18,
+        19,
+        22,
+        23,
+        29,
+        30
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/04_光学仪器与综合成像/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/04_光学仪器与综合成像/main.pdf",
+      "本轮数学过程全文复核题数": 18,
+      "本轮数学过程修改题数": 4,
+      "源码各文件SHA256": {
+        "knowledge-exit-pupil.tex": "b9b46008db4b3899e0eba7dcfe7fa9dd0a7fd9a5f44df44b4bee365ee4c31268",
+        "examples.tex": "da2d71b7cc20f48bc6603134f4c899aec61c183e3212c47d59a1097f87d0edfe",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "a24205d4f5c318534d03c54593172e6ca35b15b26d9098974318350aaf42f5b2",
+        "theory.tex": "f28239dcb8d8bd21fd171196570a28531df4e99a7ff0b0a498179dde1ee3f1f8",
+        "practice.tex": "fdd06e780bca67d57431c6cbf2f5cec4801a34452d8c01f6c4d4e613e781b2dd",
+        "practice-additional.tex": "b9089305d6912777552607ad0e7f189dbad7b11ff2c69bd6f63aa463b7ff726d",
+        "answers.tex": "c3850dd988eb07e9dc11201ab596eabb56481a2cde07c2e294c0d1a15ecb80c2",
+        "summary.tex": "2ff3c6432a5a4c66415641475be6df7c93e79fb0c7ee6f445f90be567a32396f",
+        "answers-additional.tex": "0366b03543d2afbfddd64ef8b6c4b01c4a0f8f578ca99b47543dda0715bc9bef"
+      }
     },
     {
       "专题": "光学与近代物理",
@@ -130,25 +194,41 @@
       "题设图": 31,
       "有过程图并引用的解答": 31,
       "已逐题复核": 31,
-      "PDFsha256": "6ad2a132e2e0e4b96141b864ca70b6962ac37163ffb9ed69d55b5a86e113c225",
-      "TeXsha256": "22dd9261236edc8fd812bf88b2fcee99459affdcaf9a7bb4f2e373a98685e426",
+      "PDFsha256": "d2759a39ed095726b7c4f831bd7816690c5969b6f9b1ef3d17b62cb3e671dc26",
+      "TeXsha256": "1014c2795d9871a0007cf8c5d14762c986b16042629e3a451d027191e399e778",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        4,
-        8,
-        50,
-        51
+        9,
+        10,
+        33,
+        34,
+        35,
+        46,
+        47,
+        48
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/05_波动光学与光电效应/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/05_波动光学与光电效应/main.pdf",
+      "本轮数学过程全文复核题数": 31,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "examples.tex": "99409a6dc00a75b2d6d4a0e5cd9aaeaabaec5317e530726118f2ea60487d4485",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "40c56d6ff1cf0d72efc591a83a485251de101e7583b4c0f8db86ac0ed8a36a9c",
+        "theory.tex": "72de80db0779e32558543db1eeca343d78d09e322f65b99abaaec44cd42f447d",
+        "practice.tex": "4b9e4699df2aa9a791b1e019ece5d7794f99e560d4b08014abaa11001d98f726",
+        "answers.tex": "a04eff9a93e606af1e03df24e470b1e097373ce24fef58a59f81ac6a32a8756c",
+        "summary.tex": "2d1e6294e436e8bbe89c160b4bf09c612ab68a7b9669190b97b4758be07bb5bd",
+        "knowledge-visibility.tex": "7f6ccb5079eeb7b7afef8194cb3a70d81e20603f1d69f7e1b0ba2dce78d7178a"
+      }
     },
     {
       "专题": "光学与近代物理",
       "工程": "06_相对论基础",
       "名称": "相对论基础",
       "PDF": "光学与近代物理/pdf/06_相对论基础.pdf",
-      "页数": 54,
+      "页数": 55,
       "例题": 13,
       "练习": 10,
       "题数": 23,
@@ -158,20 +238,35 @@
       "题设图": 23,
       "有过程图并引用的解答": 23,
       "已逐题复核": 23,
-      "PDFsha256": "bab6e1881947648fb3ee675f62d949d0b0a521427ae4a3542e4598b146636cdd",
-      "TeXsha256": "467e7c5cf1408aa66d98f2380a733cb949f93d1b547f4b5d7e48b48064035a06",
+      "PDFsha256": "3b560e1bec17d35dc1a6910186af0f912d94fb18d4fa065542656a758d8c7d08",
+      "TeXsha256": "ba1e2c58157397b555335d60b7a56c168d24135db43ca43284dd693c6f95f422",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        4,
         8,
-        32,
-        33,
-        42,
-        43
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        36,
+        37
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/06_相对论基础/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/06_相对论基础/main.pdf",
+      "本轮数学过程全文复核题数": 23,
+      "本轮数学过程修改题数": 1,
+      "源码各文件SHA256": {
+        "examples.tex": "79a246e5e48423f8299b36515ac3ee0a035863e7ce8b54e8c721a0c8c53c9af5",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "knowledge-simultaneity.tex": "149f37125cc124d3e635f9cc881bccf2543f091f4709901a6ecd22702dc3d0b8",
+        "main.tex": "5dbef45ed57b24c892eea5c855c62476a19c1500221e88b25042c17ae049e088",
+        "theory.tex": "9980f1ad08f2ca43120b47d880e0788f40f51225fd1af75079ec44a8c997050b",
+        "practice.tex": "57a7d7ed02ccdaf9cc3ff59f5bb5e92fa0937215855a7a8476b2552a9899e640",
+        "answers.tex": "2cc96303bf5b683a93ebb93e006cf543be3df3d05437b1be56c986e5e76629fd",
+        "summary.tex": "8bc208a9cf52377f3cd376121e4f9072c5abba7ed1a3e41a71c9021a10ba2337"
+      }
     },
     {
       "专题": "光学与近代物理",
@@ -188,16 +283,39 @@
       "题设图": 12,
       "有过程图并引用的解答": 12,
       "已逐题复核": 12,
-      "PDFsha256": "a39d1f3f0eabdbbe8007eb0767f0e7fbfdc2d695f0c66fbb7a1b2b7f27f44689",
-      "TeXsha256": "c0061807bd0373994194c808103ad9df8349044b600660f6c0d67fe262473376",
+      "PDFsha256": "5442b795ca2650588730bbe2faf268d1bcebfcaba34a5e91c896c7df1591f09f",
+      "TeXsha256": "5ff80681fff3b1d6eeb5be38621162af15ad4bec8e8aff1533fb84f5126ace03",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
         4,
-        8
+        5,
+        6,
+        8,
+        9,
+        11,
+        12,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/光学与近代物理/07_物质波与原子模型/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/光学与近代物理/07_物质波与原子模型/main.pdf",
+      "本轮数学过程全文复核题数": 12,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "examples.tex": "354485c849fa87126f0ee3fbdf943216d20e364b1f79ba3b379b0b837ba07097",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "666ba6cf283d441ba4f1743913375cb8a5bf89448d842a7a8536844d07165dde",
+        "theory.tex": "47ccbbf390ddbbf27d25a4ccdbfa7dd32f2846e4ea55dc90641b636a54c50ec9",
+        "knowledge-matter-wave.tex": "f3551547a4dd305f760cc2f2da5b88b4e4a156ead16d01aed3ef7bc24db06309",
+        "practice.tex": "66449353e50e1ec75180e69a9408fe2a04ac06922411f8c1d8962da0393fb234",
+        "answers.tex": "0ef2b72b0b45e391e49acd2c9f5eea6555478db5bcf37ca4d9bcc4898aa038a8",
+        "summary.tex": "805b8258c09dcdd44bf18d43a666d3cc65533fa9f94374e5ceff428ed3c8d6b6"
+      }
     }
   ]
 }

@@ -52,14 +52,31 @@ F=\frac{\mu mgv'}{\sqrt{v^2+v'^2}}.
 \]
 水平反力大小为$\mu mgv/\sqrt{v^2+v'^2}$，应由挡板向左提供，图中挡板须位于木块右侧。$v'\to0$时驱动力趋零，但横向挡板反力仍存在。\end{drillsolution}
 \begin{drillsolution}{s2:drill:5}\textbf{将法向支持代入水平平衡}\par\nobreak
-图\ref{fig:s2:drill:5:s}中$N=G-F\sin\alpha$，水平平衡$F\cos\alpha=\mu N$。代入得$F=\mu G/(\cos\alpha+\mu\sin\alpha)$。
-将法向式代入水平式，$F\cos\alpha=\mu(G-F\sin\alpha)$，把含$F$项移到左边得到$F(\cos\alpha+\mu\sin\alpha)=\mu G$。为了使分式中的$F$最小，应使分母最大；分母必须在$N\ge0$的接触范围内优化，不能先令$N=0$来消除摩擦。
+图\ref{fig:s2:drill:5:s}中 $N=G-F\sin\alpha$，水平平衡 $F\cos\alpha=\mu N$。将法向式代入水平式，$F\cos\alpha=\mu(G-F\sin\alpha)$，把含 $F$的项移到左边，
+\[
+ F(\cos\alpha+\mu\sin\alpha)=\mu G,
+ \qquad F=\frac{\mu G}{\cos\alpha+\mu\sin\alpha}.
+\]
+为了使分式中的 $F$最小，应使分母最大；分母必须在 $N\ge0$的接触范围内优化，不能先令 $N=0$来消除摩擦。
 \fig{fig:s2:drill:5:p}{解答过程：斜向拉箱的最小力}{\begin{tikzpicture}[scale=.88]\fill(2.5,1)circle(2pt)node[below left]{$O$};\draw[force](2.5,1)--++(1.2,0.8)node[anchor=west]{$F$};\draw[force](2.5,1)--++(0,1.3)node[anchor=south]{$N$};\draw[force](2.5,1)--++(-1,0)node[anchor=east]{$\mu N$};\draw[force](2.5,1)--++(0,-1.3)node[anchor=north]{$G$};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最优拉力方向并验证未离地}\par\nobreak
-图\ref{fig:s2:drill:5:p}把分母写成$\sqrt{1+\mu^2}\cos(\alpha-\arctan\mu)$。最大值为$\sqrt{1+\mu^2}$，在$\alpha=\arctan\mu$取得，故$F_{\min}=\mu G/\sqrt{1+\mu^2}$。此时$N=G/(1+\mu^2)>0$，接触有效。\end{drillsolution}
+图\ref{fig:s2:drill:5:p}中令 $\delta=\arctan\mu$，则 $\cos\delta=1/\sqrt{1+\mu^2}$、$\sin\delta=\mu/\sqrt{1+\mu^2}$。用差角公式展开，
+\[
+ \sqrt{1+\mu^2}\cos(\alpha-\delta)
+ =\sqrt{1+\mu^2}(\cos\alpha\cos\delta+\sin\alpha\sin\delta)
+ =\cos\alpha+\mu\sin\alpha.
+\]
+余弦不超过1，故分母最大值为 $\sqrt{1+\mu^2}$，在 $\alpha=\delta$取得，得到 $F_{\min}=\mu G/\sqrt{1+\mu^2}$。回代竖直平衡检查接触，
+\[
+ N=G-F_{\min}\sin\delta
+ =G-\frac{\mu G}{\sqrt{1+\mu^2}}
+       \frac\mu{\sqrt{1+\mu^2}}
+ =\frac{G}{1+\mu^2}>0.
+\]
+因此最优方向在保持接触的允许范围内。\end{drillsolution}
 \begin{drillsolution}{s2:drill:6}\textbf{沿斜面投影确定挡板必须提供的分量}\par\nobreak
 图\ref{fig:s2:drill:6:s}斜面的法向力方向固定。把$G$分解为沿该法线和沿斜面的两个分量，沿斜面向下的分量为$G\sin\beta$，必须由挡板力的沿斜面分量平衡。
 沿斜面上坡取正，斜面自身的支持力完全没有这个方向的分量，所以挡板力必须提供固定投影$G\sin\beta$。一个矢量的模不小于任一方向投影的绝对值，故$N_b\ge G\sin\beta$；只有其方向恰沿上坡时才不含多余的法向分量。

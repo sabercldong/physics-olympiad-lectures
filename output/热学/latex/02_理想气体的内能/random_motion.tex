@@ -13,7 +13,12 @@
 \draw[axis,thick] (0,0)--(3,1.2) node[midway,above left]{$\bm v_j$};
 \node[align=left] at (5.3,.7){$\langle\bm w\rangle=0$\\$\langle w^2\rangle>0$};
 \end{tikzpicture}}
-平方取平均后，交叉项因 $\langle\bm w\rangle=0$ 消失，得到
+先将每个分子的速度作点积展开，$v_j^2=U^2+2\bm U\cdot\bm w_j+w_j^2$。同一局部样本中的$\bm U$不随分子编号改变，可以提出平均号，故
+\[
+\langle v^2\rangle
+=U^2+2\bm U\cdot\langle\bm w\rangle+\langle w^2\rangle.
+\]
+交叉项因$\langle\bm w\rangle=0$消失，再把平均值乘分子总数，得到
 \[
  \langle v^2\rangle=U^2+\langle w^2\rangle,\qquad
  \sum_j\frac12mv_j^2=\frac12NmU^2+\sum_j\frac12mw_j^2.

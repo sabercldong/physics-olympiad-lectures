@@ -22,7 +22,7 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由角动量求角速度并核对耗散}\par\nobreak
-在图\ref{fig:em5:example:1:p}中，取$\omega$为顺时针角速度的大小，有$2mva=10ma^2\omega$，故$\omega=v/(5a)$，
+在图\ref{fig:em5:example:1:p}中，杆端位于$O$下方、入射动量向右，$\bm r\times\bm p$指向纸外，故碰后为逆时针转动。取该方向的角速度为$\omega>0$，有$2mva=10ma^2\omega$，故$\omega=v/(5a)$，
 \[\boxed{v_A=a\omega=v/5},\]
 方向与入射球相同。固定铰点提供外冲量，故不能对全部球写水平线动量守恒。碰后动能为$mv^2/5$，小于碰前$mv^2/2$，与粘合碰撞的耗散一致。\end{solution}
 \begin{question}\begin{example}[小孔两侧的相连物体]\label{em5:example:2}
@@ -38,12 +38,24 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求径向能量方程的候选零点}\par\nobreak
-转折方程除以$mgr_0$后为$9/4=9/(4z^2)+z-1$；再乘$4z^2$，得到$9z^2=9+4z^3-4z^2$。移项才形成下面的三次多项式，其中$z=0$不在绳长范围内，负根也应排除。
+在径向转折点令$\dot r=0$，取$z=r/r_0>0$，代入$v_0^2=9gr_0/2$并除以$mgr_0$，得$9/4=9/(4z^2)+z-1$。再乘$4z^2$并移项，
+\[
+4z^3-13z^2+9=0.
+\]
+初始位置$z=1$已是一个根，除去因子$z-1$，
+\[
+4z^3-13z^2+9=(z-1)(4z^2-9z-9).
+\]
+余下二次方程的根为
+\[
+z=\frac{9\pm\sqrt{81+144}}8=\frac{9\pm15}8,
+\]
+即$3,-3/4$。负绳长不允许，故两个候选径向转折为$z=1,3$。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始运动方向确定最大和最小绳长}\par\nobreak
-在图\ref{fig:em5:example:2:p}的径向转折点令$\dot r=0$，取$z=r/r_0$并代入$v_0^2=9gr_0/2$，得$4z^3-13z^2+9=(z-1)(4z+3)(z-3)=0$。正根为$z=1,3$；初态所需向心张力$mv_0^2/r_0=4.5mg>mg$，放手后半径先增大，故
+图\ref{fig:em5:example:2:p}中，初态若维持圆运动所需张力为$mv_0^2/r_0=4.5mg$，大于悬挂物重力。放手后半径先增大，下面再由两个物体的径向动力学核实这一方向，因此
 \[\boxed{r_{\min}=r_0,\ r_{\max}=3r_0}.\]
 
 
@@ -65,7 +77,13 @@
 \fig{fig:em5:example:3:s}{题设：斜置双球杆撞墙}{\begin{tikzpicture}[scale=.9]\draw[world](3,-1.3)--(3,2.8);\draw[world](1.3,1.7)--(3,0);\fill(1.3,1.7)circle(.07)node[above left]{$A$};\fill(3,0)circle(.07)node[below left]{$B$};\draw[flow](.5,.8)--(1.8,.8)node[midway,above]{$v$};\draw[guide](3,0)--(3,1);\node at(2.7,.7){$45^\circ$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{将墙冲量分成质心平动与绕质心转动}\par\nobreak
-按图\ref{fig:em5:example:3:s}取向墙为$+x$、向上为$+y$。设墙给$B$向左冲量$J$。质心速度$V_x=v-J/(2m)$；质心转动惯量$I_C=m\ell^2/2$，故顺时针角速度$\omega=-J/(\sqrt2m\ell)$。$B$相对质心位置为$(\ell/(2\sqrt2),-\ell/(2\sqrt2))$，所以$v_{Bx}=v-3J/(4m)$。
+按图\ref{fig:em5:example:3:s}取向墙为$+x$、向上为$+y$，角速度以逆时针为正。设墙给$B$向左冲量$J$，由线冲量得$2m(V_x-v)=-J$，故$V_x=v-J/(2m)$。$B$相对质心的位置为$(\ell/(2\sqrt2),-\ell/(2\sqrt2))$，对质心的角冲量为
+\[
+I_C\omega=r_{Bx}J_y-r_{By}J_x
+=0-\left(-\frac\ell{2\sqrt2}\right)(-J)
+=-\frac{J\ell}{2\sqrt2}.
+\]
+用$I_C=2m(\ell/2)^2=m\ell^2/2$相除，得$\omega=-J/(\sqrt2m\ell)<0$，即顺时针转动。
 \fig{fig:em5:example:3:p}{首轮墙冲量使质心反向并引起顺时针转动，两个端点速度需分别合成}{\begin{tikzpicture}
 
 \draw[world](3,-1.6)--(3,3.3);\draw[world](1,2)--(3,0);\fill(1,2)circle(.075)node[left]{$A$};\fill(3,0)circle(.075)node[right]{$B$};
@@ -184,7 +202,15 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由能量分配消去相对出速}\par\nobreak
-由图\ref{fig:em5:example:7:p}两部分动能相加，$E=\tfrac12mw^2[\sin^2\theta+M\cos^2\theta/(M+m)]$，所以$w^2=u^2(M+m)/(M+m\sin^2\theta)$。新射程
+由图\ref{fig:em5:example:7:p}，把炮车与炮弹的速度分别代入动能，
+\begin{align*}
+E&=\frac12M\frac{m^2w^2\cos^2\theta}{(M+m)^2}
++\frac12m\left[\frac{M^2w^2\cos^2\theta}{(M+m)^2}+w^2\sin^2\theta\right]\\
+&=\frac12mw^2\left[\frac{M(m+M)}{(M+m)^2}\cos^2\theta+\sin^2\theta\right]\\
+&=\frac12mw^2\frac{M\cos^2\theta+(M+m)\sin^2\theta}{M+m}
+=\frac12mw^2\frac{M+m\sin^2\theta}{M+m}.
+\end{align*}
+令它等于固定炮车时的$mu^2/2$，约去$m/2$，得到$w^2=u^2(M+m)/(M+m\sin^2\theta)$。代入水平速度与飞行时间的乘积，新射程为
 \[S=\frac{M}{M+m}\frac{w^2\sin2\theta}{g}=\boxed{\frac{M}{M+m\sin^2\theta}s}.\]
 若另行假定“相对炮筒出速不变”而非总有用能量不变，则得到$S=Ms/(M+m)$。两者对应不同发射模型，必须明确条件，不能把它们混合使用。\end{solution}
 \begin{question}\begin{example}[竖直杆与活动半球碗]\label{em5:example:8}
@@ -193,7 +219,7 @@
 \fig{fig:em5:example:8:s}{题设：竖直杆与活动半球碗}{\begin{tikzpicture}[scale=.9]\draw[world](-2,1)arc(180:360:2);\draw[world](1.4,1.7)--(1.4,-.43);\draw[world](1.1,1.4)rectangle(1.7,1.8);\draw[guide](0,1)--(1.4,-.43);\draw[guide](0,1)--(0,-1);\node at(.4,.1){$\theta$};\node at(2.4,1.6){固定套管};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{分别判断套管外力对动量和能量的作用}\par\nobreak
-图\ref{fig:em5:example:8:s}固定套管对杆有水平外力，故杆碗整体的水平动量不守恒。不过此力垂直杆位移，不做功。接触点相对球心坐标为$(R\sin\theta,-R\cos\theta)$，杆横坐标不变，故碗速率$v_B=R\cos\theta|\dot\theta|$，杆速率$v_A=R\sin\theta|\dot\theta|$。
+图\ref{fig:em5:example:8:s}固定套管对杆有水平外力，故杆碗整体的水平动量不守恒。不过此力垂直杆位移，不做功。接触点相对球心坐标为$(R\sin\theta,-R\cos\theta)$，先把杆横坐标固定的条件微分，求两部分速度。
 \fig{fig:em5:example:8:p}{杆横坐标固定，碗心右移与杆端下降由同一个角度变化决定}{\begin{tikzpicture}
 
 \coordinate(O)at(0,1);\coordinate(P)at(1.4,-.428286);\draw[world](-2,1)arc(180:360:2);\draw[world](P)--(1.4,2.5);
@@ -321,7 +347,16 @@ $\ddot Z=\ddot Y-\ddot x$，代入得到 $4\ddot Y-\ddot x=0$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{重新列托盘动力学并求相对返回时间}\par\nobreak
-分离后，图\ref{fig:em5:example:11:p}砝码1加速度向下$g$；托盘与两侧砝码组成质量$m$对$2m$的约束系统。若托盘向上加速度为$a$，侧砝码向下加速度也是$a$，由$mg-T=ma$、$2T-mg=ma$，得$a=g/3$。因此砝码1相对托盘加速度向下$4g/3$，从自然长位置出发的相对位移为$z=wt-\tfrac23gt^2$。再次$z=0$的非零根为
+分离后，图\ref{fig:em5:example:11:p}砝码1加速度向下$g$；托盘与两侧砝码组成质量$m$对$2m$的约束系统。若托盘向上加速度为$a$，侧砝码向下加速度也是$a$，由$mg-T=ma$、$2T-mg=ma$，将第一式的$T=m(g-a)$代入第二式，得$2mg-2ma-mg=ma$，所以$a=g/3$。因此砝码1相对托盘的加速度为$-4g/3$。令分离时相对位置$z(0)=0$、向上相对速度$\dot z(0)=w$，两次积分得
+\[
+\dot z(t)-w=\int_0^t-\frac{4g}{3}\dd\tau=-\frac{4g}{3}t,
+\]
+\[
+z(t)=\int_0^t\left(w-\frac{4g}{3}\tau\right)\dd\tau
+=\left[w\tau-\frac{2g}{3}\tau^2\right]_0^t
+=wt-\frac23gt^2.
+\]
+再次相遇要求$t(w-2gt/3)=0$，排除分离时刻$t=0$，得$T=3w/(2g)$。前面能量式给$w^2=8E_*/(3m)$，代入后$T^2=9[8E_*/(3m)]/(4g^2)=6E_*/(mg^2)$，取正时间，故
 \[\boxed{T=\frac{3w}{2g}=\frac1g\sqrt{\frac{6E_*}{m}}}.\]
 条件$E_*>0$保证能以正速率脱离；若不满足，则题设的分离阶段并不存在。\end{solution}
 \begin{question}\begin{example}[半球碗内的三维回转]\label{em5:example:12}
@@ -352,14 +387,28 @@ $\ddot Z=\ddot Y-\ddot x$，代入得到 $4\ddot Y-\ddot x=0$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立极角转折条件与能量选取正根}\par\nobreak
-图\ref{fig:em5:example:12:p}最低纬度处$\dot\theta=0$，但$v_\phi$非零。令$c=\cos\theta_{\min}>0$，代入$v_\phi=v_0/\sqrt{1-c^2}$，得到$v_0^2c=2gR(1-c^2)$。解得
+图\ref{fig:em5:example:12:p}最低纬度处$\dot\theta=0$，但$v_\phi$非零。令$c=\cos\theta_{\min}>0$，代入$v_\phi=v_0/\sqrt{1-c^2}$，转折方程为$v_0^2/(1-c^2)=v_0^2+2gRc$。两边同乘$1-c^2>0$并移项，
+\[
+v_0^2c^2=2gRc(1-c^2).
+\]
+初始碗口$c=0$是一个转折，但不对应最低纬度。对所求$c>0$约去$c$，收集幂次得$2gRc^2+v_0^2c-2gR=0$。按求根公式，
+\[
+c_\pm=\frac{-v_0^2\pm\sqrt{(v_0^2)^2-4(2gR)(-2gR)}}{4gR}
+=\frac{-v_0^2\pm\sqrt{v_0^4+16g^2R^2}}{4gR}.
+\]
+负号根小于零，取正号根。二次多项式在$c=0$为$-2gR<0$、$c=1$为$v_0^2>0$，其正根确在$(0,1)$内，因此
 \[\boxed{c=\frac{\sqrt{v_0^4+16g^2R^2}-v_0^2}{4gR}}.\]
-转折方程先为$v_0^2/(1-c^2)=v_0^2+2gRc$；移项并除以非零的$c$，得到$2gRc^2+v_0^2c-2gR=0$。负根小于零，所求$c>0$取正根。初始碗口的$c=0$是另一转折，已在除以$c$时明确排除，不能当作最低点的解。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求最大总速率并检查接触压力}\par\nobreak
-小球在该处高度最低，能量式说明总速率最大，故
+小球在该处高度最低，能量式说明总速率最大。将刚求出的$c$代回，
+\[
+v_{\max}^2=v_0^2+2gRc
+=v_0^2+\frac{\sqrt{v_0^4+16g^2R^2}-v_0^2}{2}
+=\frac{v_0^2+\sqrt{v_0^4+16g^2R^2}}2.
+\]
+取速率的非负平方根，故
 \[\boxed{v_{\max}=\sqrt{\frac{v_0^2+\sqrt{v_0^4+16g^2R^2}}2}}.\]
 球面内侧支持力$N=m(v^2/R+g\cos\theta)>0$，接触可维持。有限的非零$L_z$使球无法到达轴线上；若仅守恒能量而忽略角动量，就会错误地让球直接穿过碗底。\end{solution}
 \begin{question}\begin{example}[圆锥摆关于不同点的角动量]\label{em5:example:13}

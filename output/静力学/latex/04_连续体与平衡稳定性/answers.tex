@@ -66,7 +66,18 @@
 因此非退化分支稳定。再检查支持力：碗内端 $A$的法线向圆心，碗口 $B$的支持力垂直杆。水平、竖直平衡给
 \[N_A\cos2\theta=N_B\sin\theta,\qquad
  N_A\sin2\theta+N_B\cos\theta=G.\]
-消去 $N_B$得到 $N_A=G\tan\theta$，再得 $N_B=G\cos2\theta/\cos\theta$，在上述角度区间均为正，所用接触约束可以维持。\end{drillsolution}
+由水平式先写$N_B=N_A\cos2\theta/\sin\theta$，代入竖直式，
+\[
+G=N_A\frac{\sin2\theta\sin\theta+\cos2\theta\cos\theta}{\sin\theta}
+=N_A\frac{\cos(2\theta-\theta)}{\sin\theta}
+=N_A\cot\theta.
+\]
+所以$N_A=G\tan\theta$，再回代得到
+\[
+N_B=\frac{G\tan\theta\cos2\theta}{\sin\theta}
+=\frac{G\cos2\theta}{\cos\theta}.
+\]
+上述角度区间有$\cos^2\theta\ge2/3$，故$\cos2\theta\ge1/3>0$，两支持力均为正，所用接触约束可以维持。\end{drillsolution}
 \input{solution-five-balls}
 \begin{drillsolution}{s4:drill:4}\textbf{先求整体力矩的必要条件}\par\nobreak
 细线只能受拉，因此须同时满足整体平衡和张力 $T\ge0$。下面先保留题设的非退化夹角 $0<\alpha<\pi$，求绷紧时的候选构型，再逐环检查张力。图\ref{fig:s4:drill:4:s}将两环及绳整体取矩，圆轨法向力均过圆心，不产生力矩。设弦中点半径相对竖直向下偏$\gamma$，两端半径角分别为 $\theta_1=\gamma-\alpha/2,\theta_2=\gamma+\alpha/2$。
@@ -127,7 +138,7 @@
 \end{tikzpicture}}
 因此题设细线模型在两环均位于下半圈、$\alpha>0$且细线绷紧时\textbf{不存在静平衡}，不能给出可实现的弦倾角。等质量时形式解虽给 $\gamma=0$、弦水平，张力仍为负；实际细线将松弛，原来的固定夹角不能保持。若连接物改成可受压的轻杆，上面的倾角公式才可作为下半圈构型的平衡结果。\end{drillsolution}
 \begin{drillsolution}{s4:drill:5}\textbf{由无滑动关系求轮自身转角}\par\nobreak
-图\ref{fig:s4:drill:5:s}令轮心连线偏角$\theta$。轮心高度增加$(a-R)(1-\cos\theta)$，内滚使轮相对初态转角大小为$(a-R)\theta/R$、方向与轮心绕行相反。
+图\ref{fig:s4:drill:5:s}令轮心连线偏角$\theta$，轮的自身转角为$\varphi$，二者均以逆时针为正。轮心沿半径$a-R$的圆移动，高度增加$(a-R)(1-\cos\theta)$；自身转角须另由无滑动条件求出。
 内滚的几何约束可由接触点速度为零得到。轮心沿轨道切向速度为$(a-R)\dot\theta$，轮缘相对轮心的切向速度应与它抵消，因此轮的自转角速度为 $\dot\varphi=-(a-R)\dot\theta/R$。取初态 $\theta=0,\varphi=0$，积分得到
 \[\varphi=\int_0^\theta-\frac{a-R}{R}\dd\eta
  =-\frac{a-R}{R}[\eta]_0^\theta=-\frac{a-R}{R}\theta,\]

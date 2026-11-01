@@ -9,12 +9,29 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求公转与自转并按同一时间累积}\par\nobreak
-两式相加得 $\Omega=-2\omega/3$，相减得 $\omega_s=-2\omega$。所以外环转一周期间，$\boxed{\text{圆心顺时针公转 }2/3\text{圈，滚子顺时针自转 }2\text{圈}}$。图\ref{k3p10s}中两个接触点的速度属于同一个地面参考系；一边固定、一边运动，滚子圆心不可能固定。这里自转圈数表示姿态变化，不表示某个轮缘点围绕地面上任意固定点的闭合绕行次数。
+两式相加得 $6r\Omega=-4r\omega$，故 $\Omega=-2\omega/3$；用外侧方程减去内侧方程，得 $2r\omega_s=-4r\omega$，故 $\omega_s=-2\omega$。
+
+设外环从 $t_0$到 $t_1$转一周，以 $\phi_o$表示它的有向转角。外环顺时针，故 $\dd\phi_o=-\omega\dd t$，且 $\Delta\phi_o=-2\pi$。于是
+\begin{align*}
+ \Delta\theta_C&=\int_{t_0}^{t_1}\Omega\dd t
+ =\frac23\int_{\phi_{o0}}^{\phi_{o0}-2\pi}\dd\phi_o
+ =\frac23[\phi_o]_{\phi_{o0}}^{\phi_{o0}-2\pi}=-\frac{4\pi}{3},\\
+ \Delta\phi_s&=\int_{t_0}^{t_1}\omega_s\dd t
+ =2[\phi_o]_{\phi_{o0}}^{\phi_{o0}-2\pi}=-4\pi.
+\end{align*}
+分别除以 $2\pi$并读取负号的方向，得到
+\[\boxed{\text{圆心顺时针公转 }2/3\text{圈，滚子顺时针自转 }2\text{圈}}.\]
+图\ref{k3p10s}中两个接触点的速度属于同一个地面参考系；一边固定、一边运动，滚子圆心不可能固定。这里自转圈数表示姿态变化，不表示某个轮缘点围绕地面上任意固定点的闭合绕行次数。
 
 两式左边都是滚子接触点对地的切向速度：内点的自转速度反向于圆心公转切速，外点则同向。先相加消去自转，再相减消去公转，因而得到的两个未知量各有明确几何意义。把圈数代回可见内点累计切向位移为 $3r(-4\pi/3)-r(-4\pi)=0$，外点为 $-8\pi r$，满足两侧无滑动。\end{drillsolution}
 
 \begin{drillsolution}{k3p11}\textbf{把两环相对速度投影到斜绳方向}\par\nobreak
-取向上为正，图\ref{k3p11q}中竖直绳段 $A'O'$ 的增长率为 $v'$。斜绳从 $O$ 指向 $O'$ 的单位矢量，竖直分量为 $\cos\alpha$；斜段增长率为 $(-v'-v_O)\cos\alpha$。因此
+取向上为正，图\ref{k3p11q}中竖直绳段 $A'O'$ 的增长率为 $v'$。为求斜段的长度变化率，记两杆水平距离为常量 $d$、两环高度差为 $h=y_{O'}-y_O>0$，则 $\ell=\sqrt{d^2+h^2}$，$\dot h=-v'-v_O$。链式求导给出
+\[
+ \dot\ell=\frac{2h\dot h}{2\sqrt{d^2+h^2}}
+ =\frac h\ell(-v'-v_O)=(-v'-v_O)\cos\alpha.
+\]
+图中的 $h/\ell=\cos\alpha$，也正是斜绳单位方向的竖直分量。总绳长不变，因此
 \[v'+(-v'-v_O)\cos\alpha=0,\qquad\boxed{v_O=v'(\sec\alpha-1)}.\]
 \fig{k3p11s}{两圆环与斜绳：解答过程}{\begin{tikzpicture}\draw[world](0,0)--(3,1.6);\draw[flow,blue](0,0)--(0,1.2)node[left]{$v_O$};\draw[flow,red](3,1.6)--(3,.4)node[right]{$v'$};\draw[flow](1,.53)--(2,1.07)node[above]{$\bm e$};\node[below]at(1.5,-.5){斜段缩短率 $(v_O+v')\cos\alpha$};\end{tikzpicture}}
 

@@ -88,7 +88,18 @@ $q$ 可以与 $Q_1$ 异号，外壳常电势项也参与电荷转移。取 $Q_2=
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别用小偏心和近壁极限检查}\par\nobreak
-$b\ll R$ 时 $F\simeq kq^2b/R^3$，与偏移同向，故球心零力位置不稳定。$b=R-a$ 且 $a\ll R$ 时回到平面吸引 $kq^2/(4a^2)$，方向与近壁检验相符。\end{drillsolution}
+在球心附近，先把$R$提出分母，
+\[
+F=\frac{kq^2b}{R^3}(1-b^2/R^2)^{-2}.
+\]
+当$b/R\ll1$，括号的因子为$1+O(b^2/R^2)$，所以关于位移的一次项为$F\simeq kq^2b/R^3$，与偏移同向，球心零力位置不稳定。
+
+近壁时令$b=R-a$，则$R^2-b^2=a(2R-a)$，代回得到
+\[
+F=\frac{kq^2R(R-a)}{a^2(2R-a)^2}
+=\frac{kq^2}{4a^2}\frac{1-a/R}{(1-a/(2R))^2}.
+\]
+当$a/R\ll1$，最后的因子趋于1，回到平面吸引$kq^2/(4a^2)$，方向指向近侧腔壁。\end{drillsolution}
 \begin{drillsolution}{e3:drill:5}\textbf{逐次镜像并补上对角像，满足两边界}\par\nobreak
 图\ref{fig:e3:drill:5:s} 中先对 $x=0$ 反射，需 $-q$ 于 $(-a,b)$；再对 $y=0$ 反射，需 $-q$ 于 $(a,-b)$。为同时抵消第一像在另一平面产生的势，还需 $+q$ 于 $(-a,-b)$。任一轴上，关于该轴的两对电荷各自相消，故两边界均为零势。
 \typeout{ECFIG:fig:e3:drill:5:p}\fig{fig:e3:drill:5:p}{三个像均在真实第一象限之外；两负像分别吸引，对角同号像产生斜向排斥}{\begin{tikzpicture}

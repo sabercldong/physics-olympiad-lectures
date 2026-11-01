@@ -72,8 +72,11 @@ W_L&=\int_0^i Lz\,\dd z
 \]
 常数外加电源对应终态 $q_\infty=C\mathcal E$。令偏差 $u=q-q_\infty$，常数项抵消，得到 $\dot u=-u/(RC)$。对非零初始偏差分离变量，
 \[
-\int_{q_0-q_\infty}^{u(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{RC},
-\quad \ln\left|\frac{u(t)}{q_0-q_\infty}\right|=-\frac t{RC}.
+\begin{aligned}
+\int_{q_0-q_\infty}^{u(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{RC},\\
+[\ln|z|]_{q_0-q_\infty}^{u(t)}&=-\frac1{RC}[s]_0^t,\\
+\ln\left|\frac{u(t)}{q_0-q_\infty}\right|&=-\frac t{RC}.
+\end{aligned}
 \]
 偏差保持原符号，所以 $u=(q_0-q_\infty)\e^{-t/(RC)}$。初始偏差为零时直接取 $u=0$，不作除法。加回稳态电荷，再用链式法则 $\dd\e^{-t/\tau}/\dd t=-\e^{-t/\tau}/\tau$ 求电流，
 \[
@@ -179,16 +182,24 @@ W_L&=\int_0^i Lz\,\dd z
 \]
 稳态 $i_\infty=\mathcal E/R$，令 $v=i-i_\infty$ 得 $\dot v=-(R/L)v$。当 $v(0)\ne0$ 时，
 \[
+\begin{aligned}
 \int_{i_0-i_\infty}^{v(t)}\frac{\dd z}{z}
-=-\frac RL\int_0^t\dd s,\qquad
-\ln\left|\frac{v(t)}{i_0-i_\infty}\right|=-\frac{Rt}{L}.
+&=-\frac RL\int_0^t\dd s,\\
+[\ln|z|]_{i_0-i_\infty}^{v(t)}&=-\frac RL[s]_0^t,\\
+\ln\left|\frac{v(t)}{i_0-i_\infty}\right|&=-\frac{Rt}{L}.
+\end{aligned}
 \]
 指数化时保留初始偏差的符号；$v(0)=0$ 则从开始就是稳态。因此
 \[
  i(t)=i_\infty+(i_0-i_\infty)\e^{-t/\tau_L},\qquad
  \tau_L=\frac LR.
 \]
-电感端电压为 $L\dot i=R(i_\infty-i_0)\e^{-t/\tau_L}$。接通初态 $i_0=0$ 时电感先承担全部电源电压；长时间后电感电压趋零，相当于稳恒短路，但不能据此把整个暂态期间的电感都当成导线。
+对时间求导，常数稳态项的导数为零，指数项给出
+\[
+ L\dot i=L(i_0-i_\infty)\left(-\frac1{\tau_L}\right)\e^{-t/\tau_L}
+ =R(i_\infty-i_0)\e^{-t/\tau_L}.
+\]
+接通初态 $i_0=0$ 时电感先承担全部电源电压；长时间后电感电压趋零，相当于稳恒短路，但不能据此把整个暂态期间的电感都当成导线。
 
 电源切除后若电感与电阻仍构成闭合放电通路，$i=i_0\e^{-Rt/L}$，初始磁场能 $Li_0^2/2$ 最终全部转为电阻热。不同电阻串、并联改变看入电阻，就改变 $\tau_L$。对复杂网络同样可先取电感为负载，求 $U_{\rm th},R_{\rm th}$，再解 $L\dot i+R_{\rm th}i=U_{\rm th}$。
 
@@ -264,10 +275,20 @@ $i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$。
 
 \subsection{阻尼的三种参数区间}
 
-设特征解为 $q\propto\e^{st}$，特征方程 $Ls^2+Rs+1/C=0$。令 $\gamma=R/(2L)$，根为 $s=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$。当 $R<2\sqrt{L/C}$，根有虚部，电荷为衰减振荡，角频率 $\omega=\sqrt{\omega_0^2-\gamma^2}$；等号对应临界阻尼。此时令 $q=y\e^{-\gamma t}$，依次求导为
+设特征解为 $q=\e^{st}$，依次求导为 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$。代入并约去非零指数，特征方程为 $Ls^2+Rs+1/C=0$。令 $\gamma=R/(2L)$，除以 $L$ 后配方，
+\[
+ s^2+2\gamma s+\omega_0^2=0,\qquad
+ (s+\gamma)^2=\gamma^2-\omega_0^2.
+\]
+因此 $s=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$。当 $R<2\sqrt{L/C}$，根有虚部，电荷为衰减振荡，角频率 $\omega=\sqrt{\omega_0^2-\gamma^2}$；等号对应临界阻尼。此时令 $q=y\e^{-\gamma t}$，依次求导为
 $\dot q=(\dot y-\gamma y)\e^{-\gamma t}$、
 $\ddot q=(\ddot y-2\gamma\dot y+\gamma^2y)\e^{-\gamma t}$。
-代入方程后只余 $\ddot y=0$，积分两次得 $y=A+Bt$，所以解为 $(A+Bt)\e^{-\gamma t}$；大于时两根都为负实数，通常不发生周期振荡。
+代入方程后只余 $\ddot y=0$。令 $A=y(0)$、$B=\dot y(0)$，连续积分两次：
+\[
+ \dot y(t)-B=\int_0^t0\,\dd s=0,\qquad
+ y(t)-A=\int_0^t B\,\dd s=B[s]_0^t=Bt.
+\]
+所以 $y=A+Bt$，解为 $(A+Bt)\e^{-\gamma t}$；大于时两根都为负实数，通常不发生周期振荡。
 
 \fig{c5:damping-regimes}{相同 $q(0)=q_0>0,i(0)=0$ 下的三类响应；横轴采用 $\omega_0t$}{\begin{tikzpicture}
 
@@ -309,7 +330,26 @@ $\ddot q=(\ddot y-2\gamma\dot y+\gamma^2y)\e^{-\gamma t}$。
  L\ddot x+\frac{x}{C_s}=U_1-U_2,\qquad
  C_s=\frac{C_1C_2}{C_1+C_2}.
 \]
-平衡转移量为 $x_{\rm eq}=C_s(U_1-U_2)$，真正振荡的坐标是 $x-x_{\rm eq}$，而非两电容总电量。两上极板总电量所决定的共同电压为 $U_f=(C_1U_1+C_2U_2)/(C_1+C_2)$，把能量配方后可写成
+平衡转移量为 $x_{\rm eq}=C_s(U_1-U_2)$，真正振荡的坐标是 $x-x_{\rm eq}$，而非两电容总电量。两上极板总电量所决定的共同电压为 $U_f=(C_1U_1+C_2U_2)/(C_1+C_2)$。为看清哪些能量参与交换，先展开两个电容的储能：
+\[
+ \begin{aligned}
+ W_C(x)&=\frac{C_1}{2}\left(U_1-\frac{x}{C_1}\right)^2
+ +\frac{C_2}{2}\left(U_2+\frac{x}{C_2}\right)^2\\
+ &=W_C(0)-(U_1-U_2)x+\frac{x^2}{2C_s}\\
+ &=W_C(0)-\frac{C_s(U_1-U_2)^2}{2}
+ +\frac{(x-x_{\rm eq})^2}{2C_s}.
+ \end{aligned}
+\]
+常数项通分并展开分子，得到
+\[
+ \begin{aligned}
+ W_C(0)-\frac{C_s(U_1-U_2)^2}{2}
+ &=\frac{(C_1+C_2)(C_1U_1^2+C_2U_2^2)-C_1C_2(U_1-U_2)^2}{2(C_1+C_2)}\\
+ &=\frac{C_1^2U_1^2+2C_1C_2U_1U_2+C_2^2U_2^2}{2(C_1+C_2)}\\
+ &=\frac12(C_1+C_2)U_f^2.
+ \end{aligned}
+\]
+再加电感能，得到
 \[
  W=\frac12(C_1+C_2)U_f^2+
  \frac{(x-x_{\rm eq})^2}{2C_s}+\frac12Li^2.

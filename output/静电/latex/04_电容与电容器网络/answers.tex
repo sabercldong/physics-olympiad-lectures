@@ -22,10 +22,16 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{提出平行板主项并解释修正所用的面积}\par\nobreak
 按 图\ref{fig:e4:drill:1:p} 提出平面主项，$C=[\varepsilon_0(4\pi R^2)/d](1+d/R)$。对球形结构这不是仅近似，而是以所选内球面积表示的精确分解；相对平面主项的一阶修正为 $d/R$。若用中面面积作主项，修正形式会变，不能混淆面积定义。\end{drillsolution}
 \begin{drillsolution}{e4:drill:2}\textbf{由中性浮板确定串联电荷关系}\par\nobreak
-图\ref{fig:e4:drill:2:s} 两间隙电容分别为 $\varepsilon_0S/x$ 和 $\varepsilon_0S/(d-x)$。浮板中性使它们串联，
+图\ref{fig:e4:drill:2:s}两间隙电容分别为$C_1=\varepsilon_0S/x$和$C_2=\varepsilon_0S/(d-x)$。浮板中性使它们的电量等大，可以按串联求端口电容。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去浮板位置求端口电容}\par\nobreak
-倒数相加得 $C^{-1}=d/(\varepsilon_0S)$，所以等效电容与浮板位置无关。
+将两个实际间隙长度代入倒数相加式，
+\[
+\frac1C=\frac1{C_1}+\frac1{C_2}
+=\frac{x}{\varepsilon_0S}+\frac{d-x}{\varepsilon_0S}
+=\frac d{\varepsilon_0S},\qquad C=\frac{\varepsilon_0S}{d}.
+\]
+两段长度相加始终为$d$，所以等效电容与浮板位置无关。
 \typeout{ECFIG:fig:e4:drill:2:p}\fig{fig:e4:drill:2:p}{浮板两侧场强相同，电压力相反}{\begin{tikzpicture}
 
 \foreach \y/\n in{3/A,1.8/M,0/B}{\draw[world](0,\y)--(4.5,\y);\node[right]at(4.5,\y){$\n$};}\node at(.6,2.1){$-Q$};\node at(.6,1.5){$+Q$};\draw[flow](1.5,2.85)--(1.5,1.95)node[midway,right]{$E$};\draw[flow](1.5,1.5)--(1.5,.3)node[midway,right]{$E$};\draw[force](3.4,1.8)--(3.4,2.6)node[right]{$F_{\text{上}}$};\draw[force](3.4,1.8)--(3.4,1)node[right]{$F_{\text{下}}$};\node at(2.2,-.7){图示取上板正、下板负};
@@ -64,7 +70,13 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求总储能并核对限制条件}\par\nobreak
 等效电容 $6/5\,\mu\mathrm F$，储能
 \[
- W=\frac{Q^2}2(1/C_1+1/C_2)=\frac1{60}\,\mathrm J.
+\begin{aligned}
+W&=\frac{Q^2}2\left(\frac1{C_1}+\frac1{C_2}\right)\\
+&=\frac{(200\times10^{-6})^2}{2}
+\left(\frac1{2\times10^{-6}}+\frac1{3\times10^{-6}}\right)\\
+&=(2.0\times10^{-8})\left(\frac56\times10^6\right)
+=\frac1{60}\,\mathrm J.
+\end{aligned}
 \]
 总耐压不是两额定耐压直接相加，只有两只同时恰到耐压时才可相加；实际漏电不一致也会改变长期分压，不能用理想瞬时模型替代均压设计。\end{drillsolution}
 \begin{drillsolution}{e4:drill:5}\textbf{对最终上端组守恒电荷}\par\nobreak
@@ -149,7 +161,9 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求全网节点势}\par\nobreak
-在 图\ref{fig:e4:drill:9:p} 用互补关系代入，第二式化为 $3u_1-u_0-1=0$，所以 $u_0=1/5,u_1=2/5$。第三式为 $3u_2-2=0$，得 $u_2=2/3$，故 $w_1=1/3,w_2=3/5,w_3=4/5$。
+在图\ref{fig:e4:drill:9:p}用$w_1=1-u_2$代入第二式，得到$3u_1-u_0-u_2-(1-u_2)=0$，即$3u_1-u_0-1=0$。第一式给$u_1=2u_0$，再代入有$3(2u_0)-u_0-1=0$，所以$5u_0=1$，得$u_0=1/5,u_1=2/5$。
+
+对第三式代入$w_2=1-u_1$，有$3u_2-u_1-1-(1-u_1)=0$，化为$3u_2-2=0$，故$u_2=2/3$。最后按互补关系逐点回代，$w_1=1-2/3=1/3$、$w_2=1-2/5=3/5$、$w_3=1-1/5=4/5$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{只累计实际接到端口的两支电量}\par\nobreak
 端口 $B$ 只接上轨相邻电容和末竖档，电量

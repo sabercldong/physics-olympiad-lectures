@@ -70,7 +70,15 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{选择首次出界的小圆弧，确定场方向与飞行时间}\par\nobreak
 图\ref{fig:mg3:drill:4:p}从 $P$ 向 $Q$ 的小圆弧是逆时针四分之一圆，正电荷初始受力向上，故磁场向纸内。由 $qvB=mv^2/a$ 得 $B=mv/(qa)$，时间为弧长除以速率，$t=(\pi a/2)/v$，也等于 $\pi/(2\Omega)$。参数角在纯几何上可形式地加上 $2\pi n$，但本题选的是小于半周且首次出界的一支。固定磁区中首次到达 $Q$ 就已离开，不能把区外阶段继续按同一圆周延拓后再称为另一个出界时间。\end{drillsolution}
 \begin{drillsolution}{mg3:drill:5}\textbf{在同一外表面受力模型下解速度二次方程}\par\nobreak
-图\ref{fig:mg3:drill:5:s}竖直支持平衡给出 $N\sin\theta=mg$，磁力向心，径向式为 $qBv-mg\cot\theta=mv^2/R$。写成关于 $v$ 的二次方程后，求根得到
+图\ref{fig:mg3:drill:5:s}竖直支持平衡给出 $N\sin\theta=mg$，磁力向心，径向式为 $qBv-mg\cot\theta=mv^2/R$。乘以 $R$ 并移项，再除以 $m>0$ 配方，
+\[
+ \begin{aligned}
+ mv^2-qBRv+mgR\cot\theta&=0,\\
+ \left(v-\frac{qBR}{2m}\right)^2
+ &=\frac{q^2B^2R^2}{4m^2}-gR\cot\theta.
+ \end{aligned}
+\]
+右端非负时取正负平方根，得到
 \[
 v_\pm=\frac{qBR\pm\sqrt{q^2B^2R^2-4m^2gR\cot\theta}}{2m}.
 \]
@@ -121,4 +129,10 @@ v_\pm=\frac{qBR\pm\sqrt{q^2B^2R^2-4m^2gR\cot\theta}}{2m}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在开角区间求上确界，再核对严格入射条件}\par\nobreak
-图\ref{fig:mg3:drill:8:p}的函数在 $\alpha\to-\pi/2^+$ 时趋向 $2r$，故 $2r$ 是上确界。严格入射要求 $v_x=v\cos\alpha>0$，不包含 $\alpha=-\pi/2$；每一条允许轨道都有 $x_{\max}<2r$。因此该上界不能达到，穿透深度不存在最大值。与边界相切的极限初态不属于本题允许集合。\end{drillsolution}
+图\ref{fig:mg3:drill:8:p}中 $r$ 固定，对入射角求导得
+\[
+ \frac{\dd x_{\max}}{\dd\alpha}
+ =r\left(0-\frac{\dd\sin\alpha}{\dd\alpha}\right)
+ =-r\cos\alpha<0\qquad(-\pi/2<\alpha<\pi/2).
+\]
+所以穿透深度随入射角严格减小，在 $\alpha\to-\pi/2^+$ 时趋向 $r[1-(-1)]=2r$，故 $2r$ 是上确界。严格入射要求 $v_x=v\cos\alpha>0$，不包含 $\alpha=-\pi/2$；每一条允许轨道都有 $x_{\max}<2r$。因此该上界不能达到，穿透深度不存在最大值。与边界相切的极限初态不属于本题允许集合。\end{drillsolution}

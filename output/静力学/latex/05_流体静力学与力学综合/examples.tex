@@ -118,13 +118,29 @@ T=\rho Sg\left[d_c-l(1-\rho_b/\rho)\right]>0,
 图\ref{fig:s5:example:3:p}分层前后液面相同，底压差
 \[
 \Delta p=g[\rho_1h_1+\rho_2h_2-\bar\rho(h_1+h_2)]
-=g(\rho_2-\rho_1)\frac{V_1V_2}{V_1+V_2}
-\left(\frac1{S_2}-\frac1{S_1}\right)>0.
+=g[(\rho_1-\bar\rho)h_1+(\rho_2-\bar\rho)h_2].
 \]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{利用截面单调性判断符号}\par\nobreak
-化简时可先写$\rho_1-\bar\rho=-(\rho_2-\rho_1)V_2/(V_1+V_2)$、$\rho_2-\bar\rho=(\rho_2-\rho_1)V_1/(V_1+V_2)$，再代入$h_i=V_i/S_i$。这样显式保留了质量平均密度与沿高度平均密度的差别。直筒容器两平均截面相同，差为零；上窄下宽则反号。这样同时说明质量守恒为何不能直接推出底压不变。\end{solution}
+将质量平均密度分别从两密度中减去，先通分：
+\begin{align*}
+\rho_1-\bar\rho
+&=\frac{\rho_1(V_1+V_2)-\rho_1V_1-\rho_2V_2}{V_1+V_2}
+=-\frac{(\rho_2-\rho_1)V_2}{V_1+V_2},\\
+\rho_2-\bar\rho
+&=\frac{\rho_2(V_1+V_2)-\rho_1V_1-\rho_2V_2}{V_1+V_2}
+=\frac{(\rho_2-\rho_1)V_1}{V_1+V_2}.
+\end{align*}
+再代入$h_i=V_i/S_i$并提取公共因子，
+\begin{align*}
+\frac{\Delta p}{g}
+&=\frac{\rho_2-\rho_1}{V_1+V_2}
+\left(-V_2\frac{V_1}{S_1}+V_1\frac{V_2}{S_2}\right)\\
+&=(\rho_2-\rho_1)\frac{V_1V_2}{V_1+V_2}
+\left(\frac1{S_2}-\frac1{S_1}\right)>0.
+\end{align*}
+正号来自$S_1>S_2>0$，所以分层后底压增大。直筒容器两平均截面相同，差为零；上窄下宽则反号。质量守恒固定的是体积加权密度，底压却按层厚加权，二者不能直接等同。\end{solution}
 \begin{question}\begin{example}[半球壳何时被水顶起]\label{s5:example:4}
 半径$R$的薄半球壳开口向下贴在水平桌面上，顶部小孔注水。当水面到顶部时壳刚开始抬起。忽略孔面积，水密度$\rho$，求壳质量。
 \end{example}
@@ -184,14 +200,20 @@ z'(x)=
 \frac{\rho Sx(M+\rho Sx)-\rho S(Mh+\rho Sx^2/2)}
 {(M+\rho Sx)^2}.
 \]
-展开分子并合并$\rho^2S^2x^2$项，分子化为$\rho S[Mx+\rho Sx^2/2-Mh]$。唯一非负驻点满足$\rho Sx^2+2Mx-2Mh=0$，故
+展开分子并合并$\rho^2S^2x^2$项，分子化为$\rho S[Mx+\rho Sx^2/2-Mh]$。驻点满足$\rho Sx^2+2Mx-2Mh=0$，用求根公式，
 \[
-x_*=\frac{\sqrt{M^2+2M\rho Sh}-M}{\rho S},\qquad z_{\min}=x_*.
+x_\pm=\frac{-2M\pm\sqrt{(2M)^2-4\rho S(-2Mh)}}{2\rho S}
+=\frac{-M\pm\sqrt{M^2+2M\rho Sh}}{\rho S}.
 \]
+负号根小于零，不在$x\ge0$的注水范围；取正号根$x_*=[\sqrt{M^2+2M\rho Sh}-M]/(\rho S)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{证明水面等于最低质心高度}\par\nobreak
-驻点条件又给$Mh=Mx_*+\rho Sx_*^2/2$，代回$z$的分子，得到$Mh+\rho Sx_*^2/2=x_*(M+\rho Sx_*)$，故$z(x_*)=x_*$，而不是另作猜测。导数分子严格增加，先负后正，确为最低点。水面与总质心等高也能从“新加薄层不再使质心下降”理解。\end{solution}
+驻点条件又给$Mh=Mx_*+\rho Sx_*^2/2$，代回$z$的分子，得到$Mh+\rho Sx_*^2/2=x_*(M+\rho Sx_*)$，所以
+\[
+z(x_*)=\frac{x_*(M+\rho Sx_*)}{M+\rho Sx_*}=x_*.
+\]
+令导数分子中括号内的函数为$Q(x)=Mx+\rho Sx^2/2-Mh$，则$Q'(x)=M+\rho Sx>0$。又$Q(0)=-Mh<0$，在唯一正根$x_*$后为正，因此$z'$先负后正，确有$z_{\min}=x_*$。水面与总质心等高也能从“新加薄层不再使质心下降”理解。\end{solution}
 \begin{question}\begin{example}[锥形活塞的均匀压力合力]\label{s5:example:6}
 重力可忽略的浅液体，表压均匀为$P$。锥台活塞的斜侧面与液体接触，两水平截面半径分别为上$R$、下$r$且$R>r$，液体位于斜面外侧。求侧面压力合力。
 \end{example}

@@ -60,7 +60,12 @@ LC振荡频率为 $f=1/(2\pi\sqrt{LC})$，对应真空波长 $\lambda=c/f=2\pi c
 由图\ref{fig:em6:drill:5:s}近似稳压条件，输出 $P_o=UI$，输入为 $UI+P_0+r_eI^2$，故 $\eta=UI/(UI+P_0+r_eI^2)$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以每单位输出的损耗最小化求最佳电流}\par\nobreak
-对 $I>0$，最大效率等价于使 $(P_0+r_eI^2)/(UI)=P_0/(UI)+r_eI/U$ 最小。其导数为 $-P_0/(UI^2)+r_e/U$，零点给出 $I_*=\sqrt{P_0/r_e}$。
+对 $I>0$，最大效率等价于使 $F(I)=(P_0+r_eI^2)/(UI)=(P_0/U)I^{-1}+(r_e/U)I$ 最小。固定 $P_0,r_e,U$，按幂函数求导，
+\[
+ F'(I)=\frac{P_0}{U}(-1)I^{-2}+\frac{r_e}{U},\qquad
+ F''(I)=\frac{2P_0}{UI^3}>0.
+\]
+驻点条件为 $-P_0+r_eI^2=0$，取正电流得 $I_*=\sqrt{P_0/r_e}$；严格正的二阶导数说明它是唯一最小值点。
 \fig{fig:em6:drill:5:p}{损耗模型给出的效率曲线；横轴采用对数刻度，最佳点的铁损与铜损相等}{\begin{tikzpicture}
 
 \draw[axis](-.2,0)--(6.6,0)node[right]{$I/I_*$};\draw[axis](0,-.2)--(0,2.8)node[above]{$\eta$};
@@ -136,7 +141,19 @@ $I\to0$ 时输出趋零而铁损仍在，效率趋零；大电流时铜损按平
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{连接边界后求内部导数并判定全局极值}\par\nobreak
-图\ref{fig:em6:drill:7:p}两式在 $r=a$ 同为 $\mu_0\varepsilon_0\dot E_0a/4$，边界连续。内部求导得 $\dd B/\dd r=\mu_0\varepsilon_0\dot E_0[1/2-3r^2/(4a^2)]$，零点 $r_*=a\sqrt{2/3}$；导数由正变负，外区又持续下降，故全局最大在此处，$B_{\max}=\mu_0\varepsilon_0\dot E_0a\sqrt{2/3}/3$。
+图\ref{fig:em6:drill:7:p}两式在 $r=a$ 同为 $\mu_0\varepsilon_0\dot E_0a/4$，边界连续。在同一时刻固定 $\dot E_0$，内部场逐项求导为
+\[
+ \frac{\dd B}{\dd r}=\mu_0\varepsilon_0\dot E_0
+ \left[\frac12\frac{\dd r}{\dd r}-\frac1{4a^2}\frac{\dd r^3}{\dd r}\right]
+ =\mu_0\varepsilon_0\dot E_0\left(\frac12-\frac{3r^2}{4a^2}\right).
+\]
+导数为零要求 $2a^2-3r^2=0$，在 $0\le r\le a$ 内取 $r_*=a\sqrt{2/3}$。导数由正变负，外区场又随 $1/r$ 下降，故全局最大在此处。利用 $r_*^2/a^2=2/3$ 代回内部场，
+\[
+ B_{\max}=\mu_0\varepsilon_0\dot E_0r_*
+ \left(\frac12-\frac{r_*^2}{4a^2}\right)
+ =\mu_0\varepsilon_0\dot E_0a\sqrt{\frac23}\left(\frac12-\frac16\right)
+ =\frac{\mu_0\varepsilon_0\dot E_0a}{3}\sqrt{\frac23}.
+\]
 
 
 
@@ -165,7 +182,11 @@ $I\to0$ 时输出趋零而铁损仍在，效率趋零；大电流时铜损按平
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解释节省的电流来自何处并检查过度补偿趋势}\par\nobreak
 负载仍消耗2.2kW，理想电容只在周期内交换能量，节省的是输送相同有功功率所需的总电流。不能把电容电流的大小直接从原源电流大小相减。若过度补偿，净电流转为超前，继续增加电容又会提高线路电流与损耗，故补偿并非越大越好。\end{drillsolution}
 \begin{drillsolution}{em6:drill:9}\textbf{以受端实际电压写恒功率电流并消元}\par\nobreak
-图\ref{fig:em6:drill:9:s}功率因数为1，所以电压电流相量同向，可用实数关系 $U_s=U+IR_\ell$，$P=UI$。消去电流，得到 $U^2-U_sU+PR_\ell=0$。因此
+图\ref{fig:em6:drill:9:s}功率因数为1，所以电压电流相量同向，可用实数关系 $U_s=U+IR_\ell$，$P=UI$。由 $U>0$ 得 $I=P/U$，代入电压关系并乘 $U$，得到 $U_sU=U^2+PR_\ell$。移项配方为
+\[
+ \left(U-\frac{U_s}{2}\right)^2=\frac{U_s^2}{4}-PR_\ell.
+\]
+右侧非负时开平方，保留正负两个分支，得到
 \[U_\pm=\frac{U_s\pm\sqrt{U_s^2-4PR_\ell}}{2}.\]
 
 

@@ -30,7 +30,12 @@ N_g=0,\quad k\Delta l=m_2g,\quad F-m_1g=m_2g.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以右行阶段的新中心求全程最大速度}\par\nobreak
-向右滑动时摩擦向左，$m\ddot x=-kx-f=-k(x+d)$，该段中心在$-d=-1\,\mathrm{cm}$。令$y=x+d$，有$\ddot y+\omega^2y=0$。其特征方程$s^2+\omega^2=0$给出通解$y=C\cos\omega t+D\sin\omega t$。由$y(0)=-6\,\mathrm{cm}$、$\dot y(0)=\omega D=0$，得$C=-6\,\mathrm{cm},D=0$，故$x=-d-(6\,\mathrm{cm})\cos\omega t$，$\dot x=(6\,\mathrm{cm})\omega\sin\omega t$。第一段经过中心时达到全程最大速率
+向右滑动时摩擦向左，$m\ddot x=-kx-f=-k(x+d)$，该段中心在$-d=-1\,\mathrm{cm}$。令$y=x+d$，有$\ddot y+\omega^2y=0$。试取$y=\e^{st}$，则$\dot y=s\e^{st}$、$\ddot y=s^2\e^{st}$，代入得$(s^2+\omega^2)\e^{st}=0$。指数非零，故$s=\pm\mathrm i\omega$，实通解为$y=C\cos\omega t+D\sin\omega t$。由$y(0)=-6\,\mathrm{cm}$、$\dot y(0)=\omega D=0$，得$C=-6\,\mathrm{cm},D=0$，所以
+\[
+x=-d-(6\,\mathrm{cm})\cos\omega t,\qquad
+\dot x=(6\,\mathrm{cm})\omega\sin\omega t.
+\]
+第一段经过中心时达到全程最大速率
 \[
  \boxed{v_{\max}=0.06\omega=0.6\sqrt2\,\mathrm{m/s}}.
 \]
@@ -57,7 +62,7 @@ N_g=0,\quad k\Delta l=m_2g,\quad F-m_1g=m_2g.
 后两段的振幅分别为4厘米与2厘米，小于第一段的6厘米，所以前面计算的最大速率确为全程最大值。不能在最终端点继续延长下一段正弦运动。
 \end{drillsolution}
 \begin{drillsolution}{w1:drill:3}\textbf{由圆弧曲率建立小振动方程}\par\nobreak
-图\ref{fig:w1:drill:3:s}中，取槽内小球的切向位移$s=R\theta$。因弧角小，切向重力$-mg\sin\theta\simeq-mgs/R$，所以$\ddot s+(g/R)s\simeq0$。在线性模型中令$\omega=\sqrt{g/R}$，特征方程的根为$\pm\mathrm i\omega$，故$s=C\cos\omega t+D\sin\omega t$。从左端点静止释放给$s(0)=-a=C$、$\dot s(0)=\omega D=0$，因此$s=-a\cos\omega t$，周期$T\simeq2\pi\sqrt{R/g}$。
+图\ref{fig:w1:drill:3:s}中，取槽内小球的切向位移$s=R\theta$。因弧角小，切向重力$-mg\sin\theta\simeq-mgs/R$，所以$\ddot s+(g/R)s\simeq0$。在线性模型中令$\omega=\sqrt{g/R}$，试取$s=\e^{\lambda t}$，两次求导分别为$\lambda\e^{\lambda t}$、$\lambda^2\e^{\lambda t}$。代入并约去指数后，特征方程为$\lambda^2+\omega^2=0$，根为$\pm\mathrm i\omega$，故$s=C\cos\omega t+D\sin\omega t$。其导数为$\dot s=-C\omega\sin\omega t+D\omega\cos\omega t$。从左端点静止释放给$s(0)=-a=C$、$\dot s(0)=\omega D=0$，因此$s=-a\cos\omega t$，周期$T\simeq2\pi\sqrt{R/g}$。
 \fig{fig:w1:drill:3:p}{槽内小球每隔半个周期经过最低点，必须逐一与自由落体时刻比较}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(6.7,0)node[right]{$t$};\draw[axis](0,-1.6)--(0,1.7)node[above]{$s/a$};\draw[blue,thick,domain=0:540,samples=120]plot({\x/90},{-1.1*cos(\x)});

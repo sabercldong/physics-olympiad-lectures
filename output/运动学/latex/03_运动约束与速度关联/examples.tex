@@ -13,7 +13,7 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以滑轮和物体的相对位移复核方向}\par\nobreak
 图\ref{k3p1s}把竖直段上端的上升和该段本身的缩短分别标出：沿壁段变长，竖直段必须以 $v_0$ 缩短；上端还在上升，故物体上升得更快。$\theta=0$ 时物体上升速率为 $v_0$，$\theta\to90^\circ$ 时趋近 $2v_0$。把“竖直段缩短率”当成物体对地速度会漏掉滑轮的竖直运动。
 
-设滑轮沿斜面位移为 $\Delta s$、物体竖直向上位移为 $\Delta y_M$，两段绳长改变量分别为 $\Delta s$与 $\Delta s\sin\theta-\Delta y_M$。总和为零直接给出 $\Delta y_M=(1+\sin\theta)\Delta s$，固定倾角下求导即恢复速度式。图中物体与滑轮不作同方向运动，应用活动滑轮平均关系时必须先确认两绳段是否平行，本题不能套竖直双段的固定倍数。\end{solution}
+设滑轮沿斜面位移为 $\Delta s$、物体竖直向上位移为 $\Delta y_M$，两段绳长改变量分别为 $\Delta s$与 $\Delta s\sin\theta-\Delta y_M$。总和为零直接给出 $\Delta y_M=(1+\sin\theta)\Delta s$，固定倾角下求导即恢复速度式。图中物体沿竖直线运动，滑轮沿斜壁运动；应用活动滑轮平均关系时必须先确认两绳段是否平行，本题不能套竖直双段的固定倍数。\end{solution}
 
 \begin{question}\begin{example}[碗内小球与弦长]\label{k3p2}
 半径 $R$ 的光滑半圆碗固定，绳从碗内小球 $m_1$ 经右侧碗沿 $A$ 连到竖直悬挂的 $m_2$。绳在碗内为直线且绷紧。令 $\angle AOm_1=\alpha$，$0<\alpha<\pi$；当 $m_2$ 向下速率为 $v_0$ 时，求 $m_1$ 的速率和方向。\end{example}
@@ -50,7 +50,13 @@
 \fig{k3p3q}{平移斜面顶起竖杆：题设关系}{\begin{tikzpicture}\draw[world](-2,1.5)--(2,-.5)--(-2,-.5)--cycle;\draw[very thick](0,.5)--(0,2.5);\draw[world](-.25,1.8)--(.25,1.8);\draw[flow](.5,-.9)--(1.8,-.9)node[right]{$v_0$};\node at(1,-.25){$\theta$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{写出移动斜面与固定竖直线的交点高度}\par\nobreak
-以图\ref{k3p3q}中的杆所在竖直线为 $x=0$，斜面高度可写成 $y=(X(t)-x)\tan\theta+C$，其中 $\dot X=v_0$。杆端高度为 $y_P=X\tan\theta+C$，故 $\boxed{\dot y_P=v_0\tan\theta}$，向上。
+以图\ref{k3p3q}中的杆所在竖直线为 $x=0$，斜面高度可写成 $y=(X(t)-x)\tan\theta+C$，其中 $\dot X=v_0$。将杆的固定横坐标代入，先得 $y_P=X(t)\tan\theta+C$。倾角 $\theta$和 $C$均恒定，对时间求导：
+\[
+ \dot y_P=\dot X\tan\theta+X\frac{\dd(\tan\theta)}{\dd t}
+ +\dot C=v_0\tan\theta,
+ \qquad \boxed{\bm v_P=v_0\tan\theta\,\bm e_y}.
+\]
+在题设锐角范围内它为正，方向向上。
 \fig{k3p3s}{平移斜面顶起竖杆：解答过程}{\begin{tikzpicture}\draw[world](-2,1)--(2,-1);\draw[blue,world](-2,1.35)--(2,-.65);\draw[world](0,-.2)--(0,2);\draw[guide](-2,1)--(-2.6,1) (-2,1.35)--(-2.6,1.35);\draw[dim](-2.6,1)--(-2.6,1.35)node[midway,left]{$\dd y$};\draw[dim](1,-1.4)--(1.7,-1.4)node[midway,below]{$v_0\dd t$};\end{tikzpicture}}
 
 
@@ -145,12 +151,20 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查垂足是在未来还是过去}\par\nobreak
-图\ref{k3p6s}将原点到相对轨迹的垂线画出。若 $v_1+v_2\cos\alpha>0$，垂足在未来，$\boxed{d_{\min}=lv_2\sin\alpha/W}$；否则最近时刻为 $t=0$，距离为 $l$。若轨道只允许有限时段，还应把 $t_*$限制在该时段内再与端点比较。仅求一条无限直线到原点的距离，会把过去的垂足误认为未来的最接近状态。
+图\ref{k3p6s}将原点到相对轨迹的垂线画出。若 $v_1+v_2\cos\alpha>0$，$t_*>0$，垂足在未来，需把 $t_*$代回距离函数求最小值；否则未来最近时刻为 $t=0$，距离为 $l$。若轨道只允许有限时段，还应把 $t_*$限制在该时段内再与端点比较。仅求一条无限直线到原点的距离，会把过去的垂足误认为未来的最接近状态。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代回驻点并检查相对速度的退化情形}\par\nobreak
-距离平方的二阶导数为 $2W^2>0$，故内部驻点确为最小。代入驻点后得到 $d_{\min}^2=l^2[W^2-(v_1+v_2\cos\alpha)^2]/W^2$，分子化为 $v_2^2\sin^2\alpha$，才得距离表达式。在给定 $\alpha\in(0,\pi)$和正速度下 $W>0$，若另讨论退化共线情形，仍应检查相对速度是否为零。\end{solution}
+对一阶导数再求导，得到 $\dd^2(R^2)/\dd t^2=2W^2>0$，故内部驻点确为最小。记 $A=v_1+v_2\cos\alpha$，代入 $t_*=lA/W^2$，
+\begin{align*}
+ d_{\min}^2&=l^2-2lA\frac{lA}{W^2}
+ +W^2\frac{l^2A^2}{W^4}=\frac{l^2(W^2-A^2)}{W^2},\\
+ W^2-A^2&=v_1^2+v_2^2+2v_1v_2\cos\alpha
+ -(v_1^2+2v_1v_2\cos\alpha+v_2^2\cos^2\alpha)\\
+ &=v_2^2(1-\cos^2\alpha)=v_2^2\sin^2\alpha.
+\end{align*}
+在 $\alpha\in(0,\pi)$内 $\sin\alpha>0$，距离取非负根，得到 $\boxed{d_{\min}=lv_2\sin\alpha/W}$。此表达式以 $t_*>0$为前提；在给定角区间和正速度下 $W>0$，若另讨论退化共线情形，仍应检查相对速度是否为零。\end{solution}
 
 \begin{question}\begin{example}[三组铰接菱形的速度]\label{k3p7}
 三组边长比为 $3:2:1$ 的菱形首尾铰接，其共同水平对角线端点依次为 $A_0,A_1,A_2,A_3$；各边与水平线的锐角始终相同，记为 $\theta$。$A_0$固定，$A_3$向右速率为 $v$。求 $\theta=45^\circ$ 时 $A_1,A_2$及第二组上顶点 $B_2$ 的速度。\end{example}
@@ -249,9 +263,14 @@ v_{B_2,y}=2s\cos\theta\dot\theta=-\frac v6\cot\theta.\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{补足驱动加速度再作二阶微分}\par\nobreak
 如果还要进一步求加速度，瞬时给定 $v_A$并不足够，必须知道其变化率。定义竖直端向下的加速度为 $a_A=\dot v_A$，则
-\[a_{B,x}=\frac{\dd}{\dd t}(v_A\cot\theta)
- =a_A\cot\theta-v_A\csc^2\theta\dot\theta
- =a_A\cot\theta-\frac{v_A^2}{L\sin^3\theta}.\]
+这里 $v_A,\theta$均随时间变化，必须保留两项：
+\begin{align*}
+ a_{B,x}&=\frac{\dd}{\dd t}(v_A\cot\theta)
+ =\dot v_A\cot\theta+v_A(-\csc^2\theta)\dot\theta\\
+ &=a_A\cot\theta-\frac{v_A}{\sin^2\theta}
+ \frac{v_A}{L\sin\theta}
+ =a_A\cot\theta-\frac{v_A^2}{L\sin^3\theta}.
+\end{align*}
 固定分点的二次求导仍可按同一比例相加：
 \[\bm a_P=\left(\lambda a_{B,x},-(1-\lambda)a_A\right).\]
 图\ref{k3p8acceleration}特取 $a_A=0$，竖直端匀速下降时，水平端仍有向左加速度。由于它正向右运动，此时在减速，不能把“一个端点匀速”推广成整根杆各点都匀速。

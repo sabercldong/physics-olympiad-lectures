@@ -68,7 +68,12 @@
 \[
 \frac{\dd y}{\dd x}=\frac{T_y}{T_x}=\frac{\lambda g}{H}s.
 \]
-再由弧长关系$\dd s/\dd x=\sqrt{1+y'^2}$，令$a=H/(\lambda g)$，得到$y''=\sqrt{1+y'^2}/a$。图\ref{fig:s4:catenary}的重力与端点张力对应这一段绳，而不是单个质量点。
+令$a=H/(\lambda g)$，上式为$y'=s/a$。对$x$求导，并代入弧长关系，得到
+\[
+y''=\frac1a\frac{\dd s}{\dd x}
+=\frac1a\sqrt{1+y'^2}.
+\]
+图\ref{fig:s4:catenary}的重力与端点张力对应这一段绳，而不是单个质量点。
 \fig{fig:s4:catenary}{最低点至任一点的绳段平衡}{\begin{tikzpicture}[scale=.88]\draw[axis](-.3,0)--(4.2,0)node[right]{$x$};\draw[axis](0,-.3)--(0,3.6)node[above]{$y$};\draw[world,domain=0:2.5,samples=70]plot(\x,{exp(\x/2)+exp(-\x/2)-2});\fill(2.5,1.7768)circle(2pt)node[left]{$P$};\draw[force](0,0)--(-1,0)node[left]{$H$};\draw[force](2.5,1.7768)--(3.5,3.3787)node[right]{$T$};\draw[force](1.3908,.6687)--(1.3908,-.9332)node[right]{$\lambda gs$};\end{tikzpicture}}
 令$p=y'$，分离变量$\dd p/\sqrt{1+p^2}=\dd x/a$，并从最低点初值$p(0)=0$积分：
 \[\int_0^{p(x)}\frac{\dd u}{\sqrt{1+u^2}}=\int_0^x\frac{\dd\xi}{a}=\frac xa.\]
@@ -81,7 +86,17 @@
 y=a\left(\cosh\frac xa-1\right),\qquad
 T=H\sqrt{1+y'^2}=H\cosh\frac xa.
 \]
-这里$\sinh z=(e^z-e^{-z})/2$、$\cosh z=(e^z+e^{-z})/2$，由指数求导可直接核验 $\sinh' z=\cosh z,\cosh' z=\sinh z$。所求曲线满足 $y'=a\sinh(x/a)/a=\sinh(x/a)$及 $y''=\cosh(x/a)/a=\sqrt{1+y'^2}/a$，也满足两个最低点初值。消去$\cosh(x/a)$，得到$T=H+\lambda gy$，与光滑接触绳的张力高度差规律一致，但最低点张力不再为零。边界不同，积分常数就不同。
+这里$\sinh z=(e^z-e^{-z})/2$、$\cosh z=(e^z+e^{-z})/2$。对指数中的$-z$使用链式法则，
+\[
+\frac{\dd}{\dd z}\sinh z=\frac{e^z-(-e^{-z})}{2}=\cosh z,
+\qquad
+\frac{\dd}{\dd z}\cosh z=\frac{e^z-e^{-z}}2=\sinh z.
+\]
+所求曲线满足$y'=a\sinh(x/a)/a=\sinh(x/a)$及$y''=\cosh(x/a)/a=\sqrt{1+y'^2}/a$，也满足两个最低点初值。由$y/a=\cosh(x/a)-1$，得
+\[
+T=H\left(1+\frac ya\right)=H+\lambda gy.
+\]
+这与光滑接触绳的张力高度差规律一致，但最低点张力不再为零。边界不同，积分常数就不同。
 
 悬链线在$|x|\ll a$时有$y\simeq x^2/(2a)$，局部近似抛物线。这个近似来自小斜率展开；完整曲线仍由真实弧长上的均匀载荷决定。
 
@@ -107,7 +122,14 @@ L=2a\sinh\frac d{2a},
  =\frac{z\cosh z-\sinh z}{z^2}.\]
 记分子为 $f(z)$，乘积法则给 $f'(z)=\cosh z+z\sinh z-\cosh z=z\sinh z>0$，且 $f(0)=0$，所以该比值严格增加；当 $z\to\infty$时它趋于无穷。故每个$L/d>1$对应唯一正$a$。若绳长小于跨度，几何上无解；绳长恰等于跨度又有非零自重时，需要$a\to\infty$、水平张力无限大，不能以有限拉力把重绳完全拉直。
 
-小垂度下$z\ll1$，展开得$h\simeq d^2/(8a)$、$L-d\simeq d^3/(24a^2)$，从而$h^2\simeq3d(L-d)/8$。这两个近似应由同一个小参数控制。只在形状上把曲线画得接近直线，却仍采用任意大垂度的近似公式，会使长度和张力不能同时满足。
+小垂度下$z=d/(2a)\ll1$。把$\cosh z=1+z^2/2+O(z^4)$、$\sinh z=z+z^3/6+O(z^5)$分别代入高度和长度：
+\begin{align*}
+h&=a(\cosh z-1)=\frac{az^2}{2}+O(az^4)
+\simeq\frac{d^2}{8a},\\
+L-d&=2a(\sinh z-z)=\frac{az^3}{3}+O(az^5)
+\simeq\frac{d^3}{24a^2}.
+\end{align*}
+第二式乘$3d/8$后为$d^4/(64a^2)$，恰是第一式平方的主项，因而$h^2\simeq3d(L-d)/8$。这两个近似由同一个小参数控制，使用时须同时满足小垂度条件。
 
 \fig{fig:s4:load-measure}{相同水平宽度内，按弧长均匀与按水平投影均匀是两种载荷模型}{\begin{tikzpicture}
 
@@ -238,7 +260,12 @@ T=4\sqrt{\frac{M}{2a}}\int_0^A\frac{\dd q}{\sqrt{A^4-q^4}}
 \[0=\frac{\dd}{\dd t}\left(\frac12M_q\dot q^2+\frac12\kappa q^2\right)
  =M_q\dot q\ddot q+\kappa q\dot q
  =\dot q(M_q\ddot q+\kappa q).\]
-在 $\dot q\ne0$的运动区间约去 $\dot q$，并由运动方程的连续性延伸到转折时刻，得到 $M_q\ddot q+\kappa q=0$。也可由广义回复力 $-\dd U/\dd q=-\kappa q$直接写出此式，避免在转折点相除。令 $\omega_0^2=\kappa/M_q$，试取 $q=\e^{rt}$，代入得到 $r^2+\omega_0^2=0$，两根为 $r=\pm\mathrm i\omega_0$，所以实通解为 $q=A\cos\omega_0t+B\sin\omega_0t$。若 $q(0)=q_0,\dot q(0)=v_q$，则
+在$\dot q\ne0$的运动区间约去$\dot q$，并由运动方程的连续性延伸到转折时刻，得到$M_q\ddot q+\kappa q=0$。也可由广义回复力$-\dd U/\dd q=-\kappa q$直接写出此式，避免在转折点相除。令$\omega_0^2=\kappa/M_q$，试取$q=\e^{rt}$。逐次求导并代入，
+\[
+\dot q=r\e^{rt},\qquad \ddot q=r^2\e^{rt},\qquad
+(r^2+\omega_0^2)\e^{rt}=0.
+\]
+因$\e^{rt}\ne0$，特征方程为$r^2+\omega_0^2=0$，两根为$r=\pm\mathrm i\omega_0$。由$\e^{\pm\mathrm i\omega_0t}=\cos\omega_0t\pm\mathrm i\sin\omega_0t$组成实通解$q=A\cos\omega_0t+B\sin\omega_0t$。若$q(0)=q_0,\dot q(0)=v_q$，则
 \[\dot q=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t,
  \qquad A=q_0,\quad B=\frac{v_q}{\omega_0}.\]
 再求导即有 $\ddot q=-\omega_0^2q$，核验了方程与初值。因此静力学中求出的二阶势能系数，还决定邻近小振动的频率$\sqrt{\kappa/M_q}$。单有回复力矩不够，必须同时确定该坐标对应的惯性参数。

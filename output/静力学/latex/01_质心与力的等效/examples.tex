@@ -23,18 +23,27 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{再求横坐标并核验中线交点}\par\nobreak
-细条中心的坐标可写为$x_{\rm strip}=b/2+(p-b/2)y/h$。将它代入$x_C=S^{-1}\int x_{\rm strip}\,\dd S$，常数项积分为$bS/2$，含$y$项积分为$(p-b/2)Sy_C/h$。除以$S$后，故$x_C=b/2+(p-b/2)(y_C/h)=(b+p)/3$。即$\boldsymbol r_C=(\boldsymbol r_A+\boldsymbol r_B+\boldsymbol r_C^{\,\rm vertex})/3$，位于顶点到底边中点连线的三分之二处。三条中线给出同一点。\end{solution}
+细条中心的坐标可写为 $x_{\rm strip}=b/2+(p-b/2)y/h$，面积微元为 $\dd S=b(1-y/h)\dd y$。将两者一同代入横向一阶矩，按常数项和一次项分开积分：
+\begin{align*}
+ J_x&=\int_0^h\left[\frac b2+\frac{p-b/2}{h}y\right]
+ b(1-y/h)\dd y\\
+ &=\frac{b^2}{2}\left[y-\frac{y^2}{2h}\right]_0^h
+ +\frac{b(p-b/2)}h\left[\frac{y^2}{2}-\frac{y^3}{3h}\right]_0^h\\
+ &=\frac{b^2h}{4}+\frac{b(p-b/2)h}{6}
+ =\frac{bh(b+p)}6.
+\end{align*}
+除以总面积 $S=bh/2$，得 $x_C=(b+p)/3$。结合 $y_C=h/3$，质心坐标等于三个顶点坐标的算术平均。由底边中点 $(b/2,0)$沿指向顶点 $(p,h)$的中线前进全长的 $1/3$，坐标也为 $((b+p)/3,h/3)$，所以它距顶点为中线长度的 $2/3$。对另外两边同理，三条中线经过同一点。\end{solution}
 \begin{question}\begin{example}[三根杆组成的三角框]\label{s1:example:2}
 三根相同线密度的均匀细杆围成三角形，边$a=BC,b=CA,c=AB$。求质心的矢量表达式；直角情形取$A=(0,0),B=(b_0,0),C=(0,a_0)$。
 \end{example}
 \fig{fig:s1:example:2:s}{题设：三根杆组成的三角框}{\begin{tikzpicture}[scale=.88]\draw[world](0,0)--(4,0)--(1,3)--cycle;\node[below]at(0,0){$A$};\node[below]at(4,0){$B$};\node[above]at(1,3){$C$};\node[below]at(2,0){$c$};\node[left]at(.5,1.5){$b$};\node[right]at(2.5,1.5){$a$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{把三根杆分别集中在各自中点}\par\nobreak
-图\ref{fig:s1:example:2:s}每根杆可等效集中在其中点，质量分别为$\lambda a,\lambda b,\lambda c$。令周长$P=a+b+c$，则
+图\ref{fig:s1:example:2:s}每根杆可等效集中在其中点，质量分别为 $\lambda a,\lambda b,\lambda c$。各边中点分别为 $(\boldsymbol r_B+\boldsymbol r_C)/2$、$(\boldsymbol r_C+\boldsymbol r_A)/2$、$(\boldsymbol r_A+\boldsymbol r_B)/2$。总质量为 $\lambda(a+b+c)$，一阶矩为对应的质量与中点位矢相乘后相加。约去各项共同的 $\lambda$，令周长 $P=a+b+c$，得到
 \[
 \boldsymbol r_M=\frac{a(\boldsymbol r_B+\boldsymbol r_C)+b(\boldsymbol r_C+\boldsymbol r_A)+c(\boldsymbol r_A+\boldsymbol r_B)}{2P}.
 \]
-各边中点分别为$(\boldsymbol r_B+\boldsymbol r_C)/2$、$(\boldsymbol r_C+\boldsymbol r_A)/2$、$(\boldsymbol r_A+\boldsymbol r_B)/2$。以杆长作质量权重时，分母是$\lambda(a+b+c)$，分子每项含同一个$\lambda$，可以约去，得到上式。取中点的原因是每根杆均匀，而不是三根杆的质量相等。
+取中点的原因是每根杆均匀，而不是三根杆的质量相等。
 \fig{fig:s1:example:2:p}{各杆的中点是等效质量点，质量权重仍按杆长分配}{\begin{tikzpicture}
 \draw[world](0,0)--(4,0)--(1,3)--cycle;\draw[guide](2,0)--(2.5,1.5)--(.5,1.5)--cycle;\fill(2,0)circle(2pt)node[below]{$\lambda c$};\fill(2.5,1.5)circle(2pt)node[right]{$\lambda a$};\fill(.5,1.5)circle(2pt)node[left]{$\lambda b$};\fill[red](1.770091,0.973911)circle(2pt)node[above]{$M$};\node[below left]at(0,0){$A$};\node[below right]at(4,0){$B$};\node[above]at(1,3){$C$};
 \end{tikzpicture}}

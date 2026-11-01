@@ -32,19 +32,27 @@
 \[
  \omega=\frac{R+r}{r}\Omega.
 \]
-公转一周时$\int\Omega\,\dd t=2\pi$，代入$R=3r$，
-\[
- \Delta\varphi_{\text{外}}=\frac{R+r}{r}2\pi=8\pi,
+以$\theta$表示圆心公转角，$\dd\theta=\Omega\dd t$。公转一周时，角边界从$\theta_0$变为$\theta_0+2\pi$，代入$R=3r$，
+\begin{align*}
+ \Delta\varphi_{\text{外}}
+ &=\int_{t_0}^{t_1}\omega\dd t
+ =\frac{R+r}{r}\int_{\theta_0}^{\theta_0+2\pi}\dd\theta\\
+ &=4[\theta]_{\theta_0}^{\theta_0+2\pi}=8\pi,
  \qquad \boxed{n_{\text{外}}=4\text{圈，逆时针}}.
-\]
+\end{align*}
 
 \par\medskip\Needspace{3\baselineskip}\noindent\textbf{内滚。}
 圆心轨道半径改为$R-r$。图\ref{k3p9s}右侧接触点位于小圆心右方，只有顺时针自转才能产生向下的接触点速度。因此
 \[
- \omega=-\frac{R-r}{r}\Omega,\qquad
- \Delta\varphi_{\text{内}}=-\frac{R-r}{r}2\pi=-4\pi,
- \qquad \boxed{n_{\text{内}}=2\text{圈，顺时针}}.
+ \omega=-\frac{R-r}{r}\Omega.
 \]
+使用相同的公转角边界，
+\[
+ \Delta\varphi_{\text{内}}=-\frac{R-r}{r}
+ \int_{\theta_0}^{\theta_0+2\pi}\dd\theta
+ =-2[\theta]_{\theta_0}^{\theta_0+2\pi}=-4\pi.
+\]
+因此$\boxed{n_{\text{内}}=2\text{圈，顺时针}}$。
 
 \par\medskip\Needspace{3\baselineskip}\noindent\textbf{核对计角参考系。}
 以上角度均相对地面计。若改问相对两圆心连线的姿态变化，还须从有向自转角中减去连线转过的$2\pi$，分别得到$2\pi R/r$与$-2\pi R/r$。只用固定圆周长除以小圆周长，计算的是这一相对角度，会漏掉圆心连线自身转动对地面姿态的贡献。

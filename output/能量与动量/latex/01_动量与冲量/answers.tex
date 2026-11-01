@@ -16,9 +16,19 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{合成末速率并计算法向动能损失}\par\nobreak
-由图\ref{fig:em1:drill:1:p}的分量合成，末速率
+由图\ref{fig:em1:drill:1:p}的两个正交分量，先平方相加：
+\[
+v'^2=(-ev\cos\alpha)^2+(-v\sin\alpha)^2
+=v^2(e^2\cos^2\alpha+\sin^2\alpha).
+\]
+取非负平方根，末速率为
 \[\boxed{v'=v\sqrt{e^2\cos^2\alpha+\sin^2\alpha}},\]
-由两正交分量，$v'^2=(-ev\cos\alpha)^2+(-v\sin\alpha)^2$。初末动能相减时，切向平方项完全抵消，只剩法向动能的损失；因此损失并不由入射总动能全部乘$1-e^2$得到。
+初末动能相减时，先用$1=\cos^2\alpha+\sin^2\alpha$展开：
+\[
+Q=\frac12mv^2[\cos^2\alpha+\sin^2\alpha
+-e^2\cos^2\alpha-\sin^2\alpha].
+\]
+切向平方项完全抵消，只剩法向动能的损失；因此损失并不由入射总动能全部乘$1-e^2$得到。
 
 损失动能为
 \[\boxed{Q=\tfrac12mv^2(1-e^2)\cos^2\alpha}.\]

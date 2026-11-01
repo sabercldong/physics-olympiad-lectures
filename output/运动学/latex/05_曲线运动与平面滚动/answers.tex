@@ -30,15 +30,21 @@
 由 $l\sin\theta=r\sin\alpha$及 $l\cos\theta=\sqrt{l^2-r^2\sin^2\alpha}$，可逐项恢复前式。$l>r$保证根号在图示构形有定义；$\alpha\to0$时滑块到达死点、瞬时速度趋零。若改选右侧装配，位置式的根号符号改变，必须重新求导。\end{drillsolution}
 
 \begin{drillsolution}{k5p19}\textbf{对斜绳长度取两端相对速度的投影}\par\nobreak
-取图\ref{k5p19q}的 $O=(0,0)$、$B=(0,h)$、$A=(x,y)$，令 $\ell=BA$。杆端速度为 $(\omega y,-\omega x)$，所以
-\[\dot\ell=\frac{(x,y-h)\cdot(\omega y,-\omega x)}\ell=\frac{\omega hx}{\ell}=\omega h\sin\alpha.\]
+取图\ref{k5p19q}的 $O=(0,0)$、$B=(0,h)$、$A=(x,y)$，令 $\ell=BA=\sqrt{x^2+(y-h)^2}$。杆端速度为 $(\omega y,-\omega x)$，$h$恒定。用链式法则求斜段长度导数：
+\begin{align*}
+ \dot\ell&=\frac{2x\dot x+2(y-h)\dot y}{2\ell}
+ =\frac{x(\omega y)+(y-h)(-\omega x)}\ell\\
+ &=\frac{\omega xy-\omega xy+\omega hx}{\ell}
+ =\frac{\omega hx}{\ell}=\omega h\sin\alpha.
+\end{align*}
+最后一步由图中的水平投影 $x=\ell\sin\alpha$得到。
 \fig{k5p19s}{转杆通过绳牵引悬物：解答过程}{\begin{tikzpicture}\draw[world](0,2.5)--(2.3,.8);\fill(2.3,.8)circle(1.3pt)node[above right]{$A$};\draw[flow,blue](2.3,.8)--(2.7,-.3)node[right]{$\bm v_A$};\draw[guide](2.3,.8)--(3.2,.14)node[right]{沿 $BA$};\draw[flow,red](-.7,-.2)--(-.7,1)node[left]{$v_M=\dot\ell$};\node[above]at(0,2.5){$B$};\end{tikzpicture}}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由斜段增长确定悬物升降并检验特殊构形}\par\nobreak
 绳长 $BA+BM$恒定，斜段增长多少，悬挂段便缩短多少，因此 $\boxed{v_M=\omega h\sin\alpha}$，向上。图\ref{k5p19s}的沿绳投影与绳长微分给同一结果；杆长在 $x/\ell=\sin\alpha$中消去。若反转杆的转向，符号反转、悬物下降，而不能仍称上升。
 
-绳长微分中的两个点积项为 $x\dot x=\omega xy$与 $(y-h)\dot y=-\omega xy+\omega hx$，前后两项抵消后只剩 $\omega hx$。这解释了杆长为何从最终表达式消去。$h=0$时滑轮与转轴重合，$BA$就是固定杆长，悬物不动；$\alpha=0$时杆端沿绳投影瞬间为零，悬物也瞬间静止，均与答案一致。\end{drillsolution}
+长度导数中两个含 $\omega xy$的项抵消，解释了杆长为何从最终表达式消去。$h=0$时滑轮与转轴重合，$BA$就是固定杆长，悬物不动；$\alpha=0$时杆端沿绳投影瞬间为零，悬物也瞬间静止，均与答案一致。\end{drillsolution}
 
 \begin{drillsolution}{k5p20}\textbf{以杆的纵坐标驱动圆周参数}\par\nobreak
 图\ref{k5p20q}中交点纵坐标随杆下降，$\dot y=-v$。由 $y=r\cos\varphi$，链式求导给 $-r\sin\varphi\,\dot\varphi=-v$，即 $\dot\varphi=v/(r\sin\varphi)$。横坐标 $x=r\sin\varphi$给 $\dot x=r\cos\varphi\,\dot\varphi=v\cot\varphi$。再对余切用链式法则，
@@ -75,7 +81,14 @@ Y=\sqrt{r^2-d^2/4}>0.\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对未相除的约束二次求导}\par\nobreak
 为了求加速度，直接对未除以 $Y$的关系再次求导，避免漏掉分母随时间的变化：
-\[2Y\ddot Y+2\dot Y^2+\frac{w^2+db}{2}=0.\]
+先分别对两个乘积求导，$\dot d=w$、$\dot w=b$：
+\[
+ \frac{\dd(2Y\dot Y)}{\dd t}=2\dot Y^2+2Y\ddot Y,
+ \qquad
+ \frac{\dd(dw/2)}{\dd t}=\frac{\dot d\,w+d\dot w}{2}
+ =\frac{w^2+db}{2}.
+\]
+两项相加为零，得到 $2Y\ddot Y+2\dot Y^2+(w^2+db)/2=0$。
 代入一阶结果，再用 $4Y^2+d^2=4r^2$合并，得到
 \begin{align*}
 \ddot Y

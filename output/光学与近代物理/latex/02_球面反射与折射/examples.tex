@@ -877,15 +877,16 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿实际反射方向求与主轴的交点}\par\nobreak
-由图\ref{fig:r22s}从 \(P\) 沿反射方向消去高度，
-\[
- x_{F_h}=x_P-h\cot2\phi
+由图\ref{fig:r22s}从 \(P\) 沿反射方向走过路程 $\ell$，高度为 $h-\ell\sin2\phi$。令其为零，得 $\ell=h/\sin2\phi$；相应横坐标为 $x_P-\ell\cos2\phi$。代入 $h=R\sin\phi$，并用 $\sin2\phi=2\sin\phi\cos\phi$、$\cos2\phi=2\cos^2\phi-1$，
+\begin{align*}
+ x_{F_h}&=-R+R\cos\phi-\frac{R(2\cos^2\phi-1)}{2\cos\phi}\\
+ &=-R+\frac{R}{2\cos\phi}
  =\boxed{-R+\frac{R}{2\sqrt{1-h^2/R^2}}}.
-\]
+\end{align*}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开交点位置，辨认纵向球差的方向}\par\nobreak
-在本题的小孔径区域，光线向左下方传播，故此交点在实际反射线上。展开得
+在本题的小孔径区域，光线向左下方传播，故此交点在实际反射线上。令 $\epsilon=h^2/R^2$，$g(\epsilon)=(1-\epsilon)^{-1/2}$。链式法则给出 $g'(\epsilon)=(-1/2)(1-\epsilon)^{-3/2}(-1)=\tfrac12(1-\epsilon)^{-3/2}$，所以 $g(0)=1$、$g'(0)=1/2$，即 $g(\epsilon)=1+\epsilon/2+O(\epsilon^2)$。代回 $x_{F_h}=-R+(R/2)g(\epsilon)$，得到
 \[
  x_{F_h}=-\frac R2+\frac{h^2}{4R}
  +O\!\left(\frac{h^4}{R^3}\right).

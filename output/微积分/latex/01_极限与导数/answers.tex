@@ -45,15 +45,28 @@
 \draw[blue,domain=-1.2:1.2,samples=60]plot(\x,{\x*abs(\x)});
 \draw[guide](-1,0)--(1,0);\fill(0,0)circle(1.5pt);
 \end{tikzpicture}}
-图 \ref{c1d2s} 的两侧切线在零点一致。区间内 $g'(x)=2|x|$，与零点的导数连续衔接；这不是由函数连续本身推出的，而是差商计算的结果。
+图\ref{c1d2s}的两侧切线在零点一致。再对两个开区间内的多项式分别求导：
+\[
+g'(x)=
+\begin{cases}
+\dd(x^2)/\dd x=2x,&x>0,\\
+0,&x=0,\\
+\dd(-x^2)/\dd x=-2x,&x<0.
+\end{cases}
+\]
+正半轴上$|x|=x$，负半轴上$|x|=-x$，所以三种情形统一为$g'(x)=2|x|$。它与零点的导数连续衔接；这不是由函数连续本身推出的，而是差商及分段求导的结果。
 \end{drillsolution}
 \begin{drillsolution}{c1d3}\textbf{把几何路径与时间规律结合}\par\nobreak
 图中的几何曲线没有包含行进快慢。必须先把 $x=ut$ 代入，或用链式法则把对 $x$ 的变化率转换成对 $t$ 的变化率。由于水平运动匀速，$\ddot x=0$；竖直坐标仍随时间二次增长，因此竖直加速度并不为零。
 
-图 \ref{c1d3q} 的几何式给出路径，时间式给出走过路径的方式。代入得 $y=\beta u^2t^2$，故
-\[
- \bm v=(u,2\beta u^2t),\qquad \bm a=(0,2\beta u^2).
-\]
+图\ref{c1d3q}的几何式给出路径，时间式给出走过路径的方式。先代入$x=ut$，得到两个位置分量$x(t)=ut$、$y(t)=\beta u^2t^2$；固定参数$u,\beta$后，对同一个时间逐次求导：
+\begin{align*}
+v_x&=\frac{\dd(ut)}{\dd t}=u,
+&v_y&=\beta u^2\frac{\dd(t^2)}{\dd t}=2\beta u^2t,\\
+a_x&=\frac{\dd u}{\dd t}=0,
+&a_y&=2\beta u^2\frac{\dd t}{\dd t}=2\beta u^2.
+\end{align*}
+因此$\bm v=(u,2\beta u^2t)$、$\bm a=(0,2\beta u^2)$。
 \fig{c1d3s}{速度沿切线，加速度沿竖直方向}{\begin{tikzpicture}
 \draw[world,domain=0:3,samples=40]plot(\x,{.22*\x*\x});\coordinate(P)at(2,.88);\fill(P)circle(2pt)node[below]{$P$};
 \draw[force,blue](P)--++(.9,.792)node[right]{$\bm v$};\draw[force,red](P)--++(0,1.3)node[above]{$\bm a$};
@@ -61,9 +74,13 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿图中方向核对加速度与量纲}\par\nobreak
-图 \ref{c1d3s} 中 $\bm a$ 没有水平分量，因为 $\dot x=u$ 为常数。竖直分量的逐步计算为
-$\dot y=2\beta x\dot x=2\beta u^2t$，
-$\ddot y=2\beta(\dot x^2+x\ddot x)=2\beta u^2$。
+图\ref{c1d3s}中$\bm a$没有水平分量，因为$\dot x=u$为常数。还可沿原几何式核对链式法则中产生的因子：
+\begin{align*}
+\dot y&=\frac{\dd y}{\dd x}\dot x=2\beta x\dot x,\\
+\ddot y&=2\beta\frac{\dd}{\dd t}(x\dot x)
+=2\beta(\dot x\dot x+x\ddot x)
+=2\beta(u^2+0)=2\beta u^2.
+\end{align*}
 $y''(x)=2\beta$ 的量纲为逆长度，$\ddot y$ 的量纲为加速度；中间的 $\dot x^2=u^2$ 正是改变自变量时产生的因子，不能省去。
 \end{drillsolution}
 \begin{drillsolution}{c1d4}\textbf{在零点处统一三角函数的自变量}\par\nobreak

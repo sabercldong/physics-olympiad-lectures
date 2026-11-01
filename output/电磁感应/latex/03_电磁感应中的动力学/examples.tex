@@ -139,8 +139,9 @@ $\dd(Bx^2/2)/\dd t=(B/2)(2x)\dot x=Bxv_0$，
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用空间方程求撤力后的速度与位置极限}\par\nobreak
 图\ref{fig:em3:example:5:p}中撤力后 $x_0=v_0t_0$。令 $K=B^2/[\lambda(2+\sqrt2)]$，有 $m\dot v=-Kxv$。使用链式法则 $\dot v=(\dd v/\dd x)\dot x=v\dd v/\dd x$，在 $v>0$ 时约去速度，
 \[
-m\int_{v_0}^{v(x)}\dd z=-K\int_{x_0}^{x}\xi\,\dd\xi
-=-\frac K2(x^2-x_0^2).
+ m\int_{v_0}^{v(x)}\dd z=-K\int_{x_0}^{x}\xi\,\dd\xi,
+ \qquad m[z]_{v_0}^{v(x)}=-K[\xi^2/2]_{x_0}^x
+ =-\frac K2(x^2-x_0^2).
 \]
 所以得 $v=v_0-K(x^2-x_0^2)/(2m)$，故
 \[x_{\rm stop}=\sqrt{x_0^2+2mv_0/K}.\]
@@ -197,7 +198,15 @@ q(t)\e^{t/\tau}-0
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按机械能与真实电容能计算单棒热量}\par\nobreak
 图\ref{fig:em3:example:6:p}左图对应单棒，机械能除一部分留为动能、一部分存入电容外，其余为热，故
-\[Q=\frac12mv_0^2-\frac12mv_\infty^2-\frac{(Ckv_\infty)^2}{2C}=\frac{mv_0^2}{2}\frac{Ck^2}{m+Ck^2}.\]
+\[
+ \begin{aligned}
+ Q&=\frac12mv_0^2-\frac12mv_\infty^2-\frac{(Ckv_\infty)^2}{2C}\\
+ &=\frac12mv_0^2-\frac12(m+Ck^2)
+       \left(\frac{mv_0}{m+Ck^2}\right)^2\\
+ &=\frac12mv_0^2\left(1-\frac m{m+Ck^2}\right)
+ =\frac{mv_0^2}{2}\frac{Ck^2}{m+Ck^2}.
+ \end{aligned}
+\]
 $R\to0^+$ 时热量仍有限，只是充电时间趋零，不能直接用机械能与电场能守恒替代切换过程。
 
 
@@ -233,7 +242,9 @@ v_{\rm right}(t)=\frac{v_0-w(t)}2.
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由位移确定首次接点事件}\par\nobreak
 以左棒初始位置为 $x=0$，图\ref{fig:em3:example:6:interval}中的最近接点位于 $x=a$。从零位移积分左棒速度，
 \[
-x_{\rm left}(t)=\frac{v_0}{2}
+ x_{\rm left}(t)=\int_0^t\frac{v_0}{2}
+ [(1+\lambda)+(1-\lambda)\e^{-s/\tau'}]\dd s
+ =\frac{v_0}{2}
 \left[(1+\lambda)s-(1-\lambda)\tau'\e^{-s/\tau'}\right]_0^t,
 \]
 代入上下限后得到
@@ -258,12 +269,22 @@ x_{\rm left}(t)=\frac{v_0}2\left[(1+\lambda)t
 \end{tikzpicture}}
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分有限阶段的热量并核对能量去向}\par\nobreak
-共同串联电流为 $i=\dot q=kv_0\e^{-t/\tau'}/(2R)$，两棒电阻均发热，所以
+先对电荷的指数求导，
 \[
-Q_J(t)=\frac{k^2v_0^2}{2R}
-\left[-\frac{\tau'}2\e^{-2t'/\tau'}\right]_0^t
-=\frac{mv_0^2}{4}\frac{Ck^2}{m+Ck^2}
+ i=\dot q=q_f\left[-\e^{-t/\tau'}\left(-\frac1{\tau'}\right)\right]
+ =\frac{q_f}{\tau'}\e^{-t/\tau'}
+ =\frac{kv_0}{2R}\e^{-t/\tau'}.
+\]
+两棒电阻均发热，须对总电阻 $2R$ 积分，所以
+\[
+ \begin{aligned}
+ Q_J(t)&=\int_0^t 2Ri(t')^2\dd t'
+ =\frac{k^2v_0^2}{2R}\int_0^t\e^{-2t'/\tau'}\dd t'\\
+ &=\frac{k^2v_0^2}{2R}
+ \left[-\frac{\tau'}2\e^{-2t'/\tau'}\right]_0^t\\
+ &=\frac{mv_0^2}{4}\frac{Ck^2}{m+Ck^2}
  (1-\e^{-2t/\tau'}),\qquad 0\le t<t_*.
+ \end{aligned}
 \]
 到达接点前的累计热量取 $Q_J(t_*^-)$。能量关系为
 \[
@@ -297,18 +318,33 @@ Q_J(t)=\frac{k^2v_0^2}{2R}
 \int_0^t s\e^{s/\tau}\dd s
 =[\tau s\e^{s/\tau}]_0^t-\tau\int_0^t\e^{s/\tau}\dd s
 =\tau t\e^{t/\tau}-\tau^2(\e^{t/\tau}-1),
-\]故先得到下列 $q$；再用 $v=gt-kq/m$ 求速度，并从零位移积分，
-\[
-x=\left[\frac12\alpha gs^2+(1-\alpha)g\tau
-(s+\tau\e^{-s/\tau})\right]_0^t,
 \]
-得到 $x$：
-\begin{align*}q&=C_ekg[t-\tau(1-\e^{-t/\tau})],\\v&=\alpha gt+(1-\alpha)g\tau(1-\e^{-t/\tau}),\\x&=\tfrac12\alpha gt^2+(1-\alpha)g\tau[t-\tau(1-\e^{-t/\tau})].\end{align*}
+将这一积分乘 $kg/(R\e^{t/\tau})$，先得到电荷；再用 $v=gt-kq/m$ 求速度：
+\[
+ q=C_ekg[t-\tau(1-\e^{-t/\tau})],\qquad
+ v=\alpha gt+(1-\alpha)g\tau(1-\e^{-t/\tau}).
+\]
+最后从零位移对速度积分，
+\[
+ \begin{aligned}
+ x&=\int_0^t[\alpha gs+(1-\alpha)g\tau(1-\e^{-s/\tau})]\dd s\\
+ &=\left[\frac12\alpha gs^2+(1-\alpha)g\tau
+ (s+\tau\e^{-s/\tau})\right]_0^t,
+ \end{aligned}
+\]
+代入上下限，得到
+$x=\alpha gt^2/2+(1-\alpha)g\tau[t-\tau(1-\e^{-t/\tau})]$。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按实际落地时间积分电流平方求热量}\par\nobreak
-用最后一式令 $x(T)=h$ 确定落地时间，对电荷求导，$\dot q=C_ekg(1-\e^{-t/\tau})$。平方后保留三项 $1-2\e^{-t/\tau}+\e^{-2t/\tau}$，分别从零积分到 $T$，三项原函数依次是
+用最后一式令 $x(T)=h$ 确定落地时间。对电荷括号内逐项求导，
+\[
+ \dot q=C_ekg\left[1-\tau\left(0-\e^{-t/\tau}\frac{-1}{\tau}\right)\right]
+ =C_ekg(1-\e^{-t/\tau}).
+\]
+所以 $Q=R(C_ekg)^2\int_0^T(1-\e^{-t/\tau})^2\dd t$。
+平方后保留三项 $1-2\e^{-t/\tau}+\e^{-2t/\tau}$，分别从零积分到 $T$，三项原函数依次是
 $t$、$2\tau\e^{-t/\tau}$、$-(\tau/2)\e^{-2t/\tau}$。因此
 \[
 Q=R(C_ekg)^2
@@ -358,9 +394,15 @@ Q=R(C_ekg)^2
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按两段有向端点位移求单环合力}\par\nobreak
-图\ref{fig:em3:example:8:p}中左环长弧从 $C$ 到 $A$、短弧从 $A$ 到 $C$，所以按端点位移计算两部分安培力，均匀磁场中任一载流弧段的合力为 $I\int\dd\bm l\times\bm B=I(\bm r_{\text{末}}-\bm r_{\text{初}})\times\bm B$。公共弦 $AC=a$ 竖直，左长弧电流从下到上，受力向左，大小 $BaI_1$；短弧电流从上到下，受力向右，大小 $BaI_2$。合力因此向左，大小
-\[F=Ba(I_1-I_2)=\frac{9\sqrt3}{5}\frac{kBa^3}{r}.\]
-计算系数时，$I_1-I_2=k[6\pi a^2-18S]/(5r)$，代入 $S$ 后，方括号中的 $6\pi a^2$ 恰抵消，只留下 $9\sqrt3a^2$，得到所列结果。右环受反向等大力，两环有分开的趋势。
+图\ref{fig:em3:example:8:p}中左环长弧从 $C$ 到 $A$、短弧从 $A$ 到 $C$，所以按端点位移计算两部分安培力，均匀磁场中任一载流弧段的合力为 $I\int\dd\bm l\times\bm B=I(\bm r_{\text{末}}-\bm r_{\text{初}})\times\bm B$。公共弦 $AC=a$ 竖直，左长弧电流从下到上，受力向左，大小 $BaI_1$；短弧电流从上到下，受力向右，大小 $BaI_2$。先计算电流之差，
+\[
+ \begin{aligned}
+ I_1-I_2&=\frac{k(6\pi a^2-18S)}{5r}\\
+ &=\frac{ka^2}{5r}\left[6\pi-18\left(\frac\pi3-\frac{\sqrt3}{2}\right)\right]
+ =\frac{9\sqrt3ka^2}{5r}>0.
+ \end{aligned}
+\]
+所以合力向左，大小 $F=Ba(I_1-I_2)=9\sqrt3kBa^3/(5r)$。右环受反向等大力，两环有分开的趋势。
 
 
 
@@ -384,10 +426,13 @@ I_{\text{长}}=\frac{Bva}{5r/6}=\frac{6Bva}{5r}.
 令 $\tau=mR/k^2$，令 $v_\infty=E/k$，从 $v(0)=0$ 分离积分，
 \[
 \int_0^{v(t)}\frac{\dd z}{v_\infty-z}=\int_0^t\frac{\dd s}{\tau},
-\qquad-\ln\frac{v_\infty-v}{v_\infty}=\frac t\tau,
+ \qquad[-\ln(v_\infty-z)]_0^{v(t)}=\frac1\tau[s]_0^t,
 \]
-解得 $v=E(1-\e^{-t/\tau})/k$，电流 $i=E\e^{-t/\tau}/R$。再次积分速度，
-$x=(E/k)[s+\tau\e^{-s/\tau}]_0^t$，得到 $x=E[t-\tau(1-\e^{-t/\tau})]/k$。
+代入端点得 $-\ln[(v_\infty-v)/v_\infty]=t/\tau$，指数化后
+$v=E(1-\e^{-t/\tau})/k$，电流 $i=E\e^{-t/\tau}/R$。
+再次积分速度，
+$x=(E/k)\int_0^t(1-\e^{-s/\tau})\dd s
+=(E/k)[s+\tau\e^{-s/\tau}]_0^t$，得到 $x=E[t-\tau(1-\e^{-t/\tau})]/k$。
 \fig{fig:em3:example:9:p}{启动后速度逐渐接近 $E/k$，电流同时从 $E/R$ 衰减到零}{\begin{tikzpicture}
 
 \foreach \xx/\lab in {0/{kv/E},6/{Ri/E}}{\begin{scope}[xshift=\xx cm]\draw[axis](-.2,0)--(4.7,0)node[right]{$t/\tau$};\draw[axis](0,-.2)--(0,2.8)node[above]{$\lab$};\draw[guide](0,2.2)--(4.3,2.2);\node[left]at(0,2.2){$1$};\end{scope}}
@@ -436,9 +481,10 @@ $Q=(E/R)\int_0^\infty\e^{-t/\tau}\dd t
 由图\ref{fig:em3:example:10:p}分别对质心和相对运动求解，$\tau=\mu R/k^2$，$w_\infty=Fm_1R/(Mk^2)$，相对方程是 $\dot w=(w_\infty-w)/\tau$，由 $w(0)=0$ 积分，
 \[
 \int_0^{w(t)}\frac{\dd z}{w_\infty-z}=\int_0^t\frac{\dd s}{\tau},
-\qquad -\ln\frac{w_\infty-w}{w_\infty}=\frac t\tau.
+ \qquad [-\ln(w_\infty-z)]_0^{w(t)}=\frac1\tau[s]_0^t.
 \]
-于是 $w=w_\infty(1-\e^{-t/\tau})$。
+代入端点得 $-\ln[(w_\infty-w)/w_\infty]=t/\tau$，
+所以 $w=w_\infty(1-\e^{-t/\tau})$。
 \[v_1=\frac{Ft}{M}-\frac{m_2}{M}w,\qquad v_2=\frac{Ft}{M}+\frac{m_1}{M}w,\qquad i=\frac{k}{R}w.\]
 
 
@@ -456,7 +502,11 @@ $Q=(E/R)\int_0^\infty\e^{-t/\tau}\dd t
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{转换为空间方程并积分三次速度曲线}\par\nobreak
 在尚有正速度时用 $\dot v=v\dd v/\dd x$，约去 $v$ 后按位移积分：
-\[m\int_{v_0}^{v(x)}\dd v=-\frac{B_0^2l^2}{Ra^2}\left[\frac{\xi^3}{3}\right]_0^x,\qquad v(x)=v_0-\frac{B_0^2l^2x^3}{3mRa^2}.\]
+\[
+ m\int_{v_0}^{v(x)}\dd z=-\frac{B_0^2l^2}{Ra^2}\int_0^x\xi^2\dd\xi,
+ \qquad m[z]_{v_0}^{v(x)}=-\frac{B_0^2l^2}{Ra^2}[\xi^3/3]_0^x.
+\]
+代入上下限并除以 $m$，得到 $v(x)=v_0-B_0^2l^2x^3/(3mRa^2)$。
 \fig{fig:em3:example:11:p}{若磁区在 $d<x_s$ 截止，速度转为正的常量；未截断的零点只表示渐近停止}{\begin{tikzpicture}
 
 \draw[axis](-.2,0)--(5.2,0)node[right]{$x/x_s$};\draw[axis](0,-.2)--(0,2.8)node[above]{$v/v_0$};\draw[red,thick,domain=0:.65,samples=60]plot({4*\x},{2.3*(1-(\x)^3)});\draw[blue,dashed,domain=.65:1,samples=60]plot({4*\x},{2.3*(1-(\x)^3)});\draw[red,thick](2.6,1.6683625)--(4.8,1.6683625);\draw[guide](2.6,0)--(2.6,2.5);\draw[blue,fill=white](4,0)circle(2pt);\node[below]at(2.6,0){$d/x_s$};\node[below]at(4,0){$1$};\node[left]at(0,2.3){$1$};\node[red]at(4,2.3){出场后匀速};\node at(2.5,-1){红线示意 $d/x_s=0.65$；蓝虚线为未截场的后续解};
@@ -471,12 +521,19 @@ $Q=(E/R)\int_0^\infty\e^{-t/\tau}\dd t
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查到达时间及能量损失}\par\nobreak
-在 $x_s$ 附近，展开 $v(x)\simeq3v_0(x_s-x)/x_s$，设 $x_*=x_s-\epsilon_0$ 已在停止点附近，则
+用 $v(x)=v_0[1-(x/x_s)^3]$ 先分解三次差，
+\[
+ v(x)=v_0\left(1-\frac x{x_s}\right)
+ \left[1+\frac x{x_s}+\left(\frac x{x_s}\right)^2\right]
+ \simeq\frac{3v_0}{x_s}(x_s-x).
+\]
+这里方括号在 $x\to x_s^-$ 时趋于3。设 $x_*=x_s-\epsilon_0$ 已在停止点附近，则
 \[
 \int_{x_*}^{x_s-\epsilon}\frac{\dd x}{v(x)}
 \simeq\frac{x_s}{3v_0}
 \int_{x_*}^{x_s-\epsilon}\frac{\dd x}{x_s-x}
-=\frac{x_s}{3v_0}\ln\frac{\epsilon_0}{\epsilon}
+ =-\frac{x_s}{3v_0}[\ln(x_s-x)]_{x_*}^{x_s-\epsilon}
+ =\frac{x_s}{3v_0}\ln\frac{\epsilon_0}{\epsilon}
 \longrightarrow\infty.
 \]
 因此时间积分对数发散，所以这里的停止不是有限时间到达。若能穿出，磁区内热量为 $m(v_0^2-v_d^2)/2$；未穿出则最终全部初动能变热。\end{solution}
@@ -513,7 +570,7 @@ $Q=(E/R)\int_0^\infty\e^{-t/\tau}\dd t
 \fig{fig:em3:example:13:s}{题设：弹簧导棒的磁阻尼与临界磁场}{\begin{tikzpicture}[scale=.88]\node at (0.3,0.3){$\otimes$};\node at (0.3,1.7){$\otimes$};\node at (1.35,0.3){$\otimes$};\node at (1.35,1.7){$\otimes$};\node at (2.4000000000000004,0.3){$\otimes$};\node at (2.4000000000000004,1.7){$\otimes$};\node at(1.7,1){$\otimes B$};\draw[world](0,0)--(4,0) (0,2)--(4,2);\draw[world,very thick](3,0)node[below]{$b$}--(3,2)node[above]{$a$};\node at(2,-1.6){初态 $x=A,\ \dot x=0$};\draw[dim](5.1,0)--(5.1,2)node[midway,right]{$l$};\draw[world](0,0)--(0,.65) (-.18,.65)rectangle(.18,1.35) (0,1.35)--(0,2);\node[left]at(-.2,1){$R$};\draw[spring](1,2.8)--(3,2.8);\draw[world](1,2.4)--(1,3.2);\draw[guide](3,2)--(3,2.8);\node at(2,3.3){$K$};\draw[flow](.8,3.9)--(3.2,3.9)node[right]{$+x$};\node at(1,-.8){$x$ 为相对平衡位置的伸长};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{分别识别弹簧回复力与速度阻尼}\par\nobreak
-在图\ref{fig:em3:example:13:s}中，以弹簧伸长为 $x$ 的正向，弹簧力 $-Kx$，电流所致磁力为 $-\gamma\dot x$，其中 $\gamma=B^2l^2/R$。方程为 $m\ddot x+\gamma\dot x+Kx=0$。设 $x\propto\e^{st}$，特征方程 $ms^2+\gamma s+K=0$。
+在图\ref{fig:em3:example:13:s}中，以弹簧伸长为 $x$ 的正向，弹簧力 $-Kx$，电流所致磁力为 $-\gamma\dot x$，其中 $\gamma=B^2l^2/R$。方程为 $m\ddot x+\gamma\dot x+Kx=0$。试取 $x=\e^{st}$，其两次导数为 $s\e^{st},s^2\e^{st}$，代入得 $(ms^2+\gamma s+K)\e^{st}=0$；除以非零指数后，特征方程为 $ms^2+\gamma s+K=0$。
 \fig{fig:em3:example:13:p}{从伸长处静止释放的欠阻尼曲线；初始斜率为零，首段速度向负方向}{\begin{tikzpicture}
 
 \draw[axis](-.2,0)--(7,0)node[right]{$\omega_0t$};\draw[axis](0,-2.5)--(0,2.8)node[above]{$x/A$};\draw[world,domain=0:6.5,samples=150]plot(\x,{2*exp(-.2*\x)*(cos(sqrt(.96)*\x r)+.2/sqrt(.96)*sin(sqrt(.96)*\x r))});\node[left]at(0,2){$1$};\draw[guide,blue,domain=0:6.5,samples=60]plot(\x,{2/sqrt(.96)*exp(-.2*\x)});\draw[guide,blue,domain=0:6.5,samples=60]plot(\x,{-2/sqrt(.96)*exp(-.2*\x)});\node at(3.3,3.4){图示 $\zeta=0.2,\quad\omega_0=\sqrt{K/m}$};\node at(3.3,-3.1){包络 $\pm A\e^{-\alpha t}\omega_0/\omega_d$，初态仍为 $x=A,\dot x=0$};

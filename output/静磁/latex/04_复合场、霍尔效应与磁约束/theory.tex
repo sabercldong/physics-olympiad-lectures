@@ -56,15 +56,23 @@ $\bm F_{\rm c}$ 表示绳或支持等约束力。每个分量方程应由同一�
 
 
 举例取 $\bm E=E\bm e_x,\bm B=B\bm e_z$，正粒子从静止出发，$\Omega=qB/m$、$v_D=E/B$。分量方程为 $\dot v_x=\Omega(v_y+v_D)$、$\dot v_y=-\Omega v_x$。令 $u_y=v_y+v_D$，则 $\dot v_x=\Omega u_y,\dot u_y=-\Omega v_x$。
-对第一式求导并消去 $u_y$，得 $\ddot v_x+\Omega^2v_x=0$。
-特征方程 $s^2+\Omega^2=0$ 给出实通解
-$v_x=A\cos\Omega t+D\sin\Omega t$。
-初态 $v_x(0)=0,\dot v_x(0)=\Omega v_D$ 确定 $A=0,D=v_D$，
+由于 $\Omega$ 为常量，$\ddot v_x=\Omega\dot u_y=-\Omega^2v_x$。
+试取 $v_x=e^{st}$，则 $\dot v_x=se^{st}$、$\ddot v_x=s^2e^{st}$，
+代回得 $(s^2+\Omega^2)e^{st}=0$。特征根 $s=\pm\mathrm i\Omega$ 给出实通解及其导数
+\[
+ v_x=A\cos\Omega t+D\sin\Omega t,\qquad
+ \dot v_x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t.
+\]
+初态 $v_x(0)=0$ 给 $A=0$，$\dot v_x(0)=\Omega v_D$ 给 $D\Omega=\Omega v_D$，即 $D=v_D$，
 再由 $u_y=\dot v_x/\Omega$ 求出 $v_y$。
 对速度从 $0$ 积到 $t$，
 \[
- x=v_D[-\cos\Omega s/\Omega]_0^t,\qquad
- y=v_D[\sin\Omega s/\Omega-s]_0^t.
+ \begin{aligned}
+ x&=v_D\int_0^t\sin\Omega s\dd s
+   =v_D[-\cos\Omega s/\Omega]_0^t,\\
+ y&=v_D\int_0^t(\cos\Omega s-1)\dd s
+   =v_D[\sin\Omega s/\Omega-s]_0^t.
+ \end{aligned}
 \]
 原函数中的 $1/\Omega$ 正好抵消三角函数求导带来的 $\Omega$。于是
 

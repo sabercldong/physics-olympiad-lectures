@@ -12,7 +12,10 @@
 \begin{solution}\textbf{用反向求导确定幂函数与复合函数的原函数}\par\nobreak
 图 \ref{c2e1q} 的各条曲线只作竖直平移，斜率相同，因此每个不定积分都要包含常数。由于 $(cx)'=c$，第一式为 $cx+C$；由于 $(x^{n+1})'=(n+1)x^n$，第二式要除以 $n+1$，得到 $x^{n+1}/(n+1)+C$，这也说明为何排除 $n=-1$。第三式令 $u=3x+1$，则 $\dd u=3\dd x$、$\dd x=\dd u/3$，所以
 \[
- \int(3x+1)^2\dd x=\frac{(3x+1)^3}{9}+C.
+ \int(3x+1)^2\dd x
+ =\frac13\int u^2\dd u
+ =\frac13\frac{u^3}{3}+C
+ =\frac{(3x+1)^3}{9}+C.
 \]
 \fig{c2e1s}{换元把同一微小区间的宽度放大三倍}{\begin{tikzpicture}
 
@@ -26,29 +29,41 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别处理降次、指数补偿与对数积分}\par\nobreak
-图 \ref{c2e1s} 中实际先求 $\tfrac13\int u^2\dd u=u^3/9+C$，再把 $u$ 换回 $3x+1$。其余积分按被积函数的形式分别处理：正弦平方先用倍角公式降次，指数函数补偿内层导数 $k$，倒数函数则用对数的导数，得到
+图\ref{c2e1s}中的微元关系说明，外面的$1/3$来自$\dd x=\dd u/3$，不是任意添加的系数。其余积分按被积函数的形式分别处理。正弦平方先用倍角公式降次，再令$u=2x$、$\dd u=2\dd x$计算其中的余弦积分：
+\[
+\int\cos2x\dd x=\frac12\int\cos u\dd u
+=\frac12\sin u+C=\frac12\sin2x+C.
+\]
+因此
 \[
  \begin{aligned}
  \int\sin^2x\dd x
- &=\int\frac{1-\cos2x}{2}\dd x=\frac x2-\frac{\sin2x}4+C,\\
+ &=\frac12\int\dd x-\frac12\int\cos2x\dd x
+ =\frac x2-\frac12\frac{\sin2x}{2}+C,\\
  \int\e^{kx}\dd x&=\frac1k\int\e^u\dd u
- =\frac{\e^{kx}}k+C\quad(u=kx,\ \dd u=k\dd x),\\
+ =\frac{\e^u}k+C=\frac{\e^{kx}}k+C
+ \quad(u=kx,\ \dd u=k\dd x),\\
  \int\frac{\dd x}x&=\ln|x|+C.
  \end{aligned}
 \]
-正弦平方的积分中，余弦项再令 $u=2x$，有 $\int\cos2x\dd x=\frac12\int\cos u\dd u=\frac12\sin2x$，所以外面的 $1/2$ 再乘换元的 $1/2$ 才给出 $1/4$。最后一式在零点两侧各自的连通区间使用。由同一规律还得到
-$\int5x^3\dd x=5x^4/4+C$、
-$\int4\dd x/x=4\ln|x|+C$、
-$\int7\cos2x\dd x=(7/2)\sin2x+C$。
-对上述答案求导，链式法则恰好抵消积分时补入的系数。
+第一式即$x/2-\sin2x/4+C$。最后一式由$(\ln|x|)'=1/x$确定，在零点两侧各自的连通区间使用。常数倍的积分仍先提出系数，再计算原函数，例如
+\begin{align*}
+\int5x^3\dd x&=5\int x^3\dd x=5\frac{x^4}{4}+C,\\
+\int4\frac{\dd x}{x}&=4\int\frac{\dd x}{x}=4\ln|x|+C,\\
+\int7\cos2x\dd x&=\frac72\int\cos u\dd u
+=\frac72\sin u+C=\frac72\sin2x+C,
+\end{align*}
+其中第三式仍取$u=2x$、$\dd x=\dd u/2$。对这些原函数求导，幂函数系数或链式法则产生的系数恰好抵消积分时补入的因子。
 
 % thirty-c2-sineinputs
 对另外两个正弦积分，先从已知导数反向确定符号与系数：
 \[(\cos x)'=-\sin x\quad\Longrightarrow\quad
 \int\sin x\dd x=-\cos x+C,\]
+对$\sin3x$令$u=3x$，则$\dd u=3\dd x$、$\dd x=\dd u/3$。因此
 \[\int\sin3x\dd x
  =\frac13\int\sin u\dd u
- =-\frac13\cos3x+C\qquad(u=3x).\]
+ =-\frac13\cos u+C=-\frac13\cos3x+C
+ .\]
 后式求导时，余弦的负号与内层导数3分别抵消前面的负号与 $1/3$，结果正好是 $\sin3x$。这两个积分不需要使用正弦平方的降次公式。
 \end{solution}
 
@@ -75,19 +90,26 @@ $\int_1^5\dd x/(x^2+7x+12)$。
  &=(v_0b+gb^2/2)-(v_0a+ga^2/2)
  =v_0(b-a)+\frac g2(b^2-a^2).
 \end{align*}
-第二式中，$\cos(kx+\varphi)$求导会带来因子 $-k$，故原函数要补偿为 $-\cos(kx+\varphi)/k$：
-\[\int_a^b\sin(kx+\varphi)\dd x
- =\left[-\frac{\cos(kx+\varphi)}k\right]_a^b
- =\frac{\cos(ka+\varphi)-\cos(kb+\varphi)}k.\]
-第三式的原函数是 $-(a+x)^{-1}$，代入题设的两个边界得到
-\[\int_a^{2a}\frac{\dd x}{(a+x)^2}
- =\left[-\frac1{a+x}\right]_a^{2a}
- =-\frac1{3a}+\frac1{2a}=\frac1{6a}>0.\]
+第二式令$u=kx+\varphi$，则$\dd x=\dd u/k$，旧端点$x=a,b$分别变成$u=ka+\varphi,kb+\varphi$。同时改变函数、微元与边界，得到
+\begin{align*}
+\int_a^b\sin(kx+\varphi)\dd x
+&=\frac1k\int_{ka+\varphi}^{kb+\varphi}\sin u\dd u\\
+&=\frac1k[-\cos u]_{ka+\varphi}^{kb+\varphi}
+=\frac{\cos(ka+\varphi)-\cos(kb+\varphi)}k.
+\end{align*}
+$k<0$时新端点顺序反向，但这里保留了它们的实际次序，仍使用同一个公式。第三式令$u=a+x$、$\dd u=\dd x$，上下限变为$2a,3a$：
+\begin{align*}
+\int_a^{2a}\frac{\dd x}{(a+x)^2}
+&=\int_{2a}^{3a}u^{-2}\dd u
+=[-u^{-1}]_{2a}^{3a}\\
+&=-\frac1{3a}-\left(-\frac1{2a}\right)=\frac1{6a}>0.
+\end{align*}
 
 第四式先因式分解为 $(x+3)(x+4)$。令
 $1/[(x+3)(x+4)]=A/(x+3)+B/(x+4)$，两边同乘分母，得
 $1=A(x+4)+B(x+3)$。比较 $x$的系数与常数项，
-\[A+B=0,\qquad4A+3B=1,\qquad A=1,\quad B=-1.\]
+\[A+B=0,\qquad4A+3B=1.\]
+由第一式$B=-A$，代入第二式得到$4A-3A=1$，所以$A=1$、$B=-1$。
 \fig{c2e2s}{两个倒数函数之间的面积恰好等于所求正积分}{\begin{tikzpicture}
 
 \begin{scope}[x=.85cm,y=8cm]
@@ -224,12 +246,20 @@ $\boxed{(x_C,y_C)=(0,8\ell/5)}$。
 \[A=2\sqrt\ell\int_0^{4\ell}\sqrt{4\ell-y}\dd y.
 \]
 令 $u=4\ell-y$，则 $\dd y=-\dd u$，上下限由 $0,4\ell$变为 $4\ell,0$，故
-\[A=2\sqrt\ell\int_0^{4\ell}u^{1/2}\dd u
- =\frac43\sqrt\ell(4\ell)^{3/2}=\frac{32}3\ell^2.\]
+\begin{align*}
+A&=2\sqrt\ell\int_0^{4\ell}u^{1/2}\dd u
+=2\sqrt\ell\left[\frac23u^{3/2}\right]_0^{4\ell}\\
+&=\frac43\sqrt\ell\bigl[(4\ell)^{3/2}-0\bigr]
+=\frac43\sqrt\ell\,8\ell^{3/2}=\frac{32}3\ell^2.
+\end{align*}
 一次矩同理为
-\[Q_x=2\sqrt\ell\int_0^{4\ell}(4\ell-u)u^{1/2}\dd u
- =2\sqrt\ell\left[\frac{8\ell}{3}u^{3/2}-\frac25u^{5/2}\right]_0^{4\ell}
- =\frac{256}{15}\ell^3.\]
+\begin{align*}
+Q_x&=2\sqrt\ell\int_0^{4\ell}
+      (4\ell u^{1/2}-u^{3/2})\dd u\\
+&=2\sqrt\ell\left[\frac{8\ell}{3}u^{3/2}-\frac25u^{5/2}\right]_0^{4\ell}\\
+&=2\sqrt\ell\left(\frac{64}{3}-\frac{64}{5}\right)\ell^{5/2}
+=\frac{256}{15}\ell^3.
+\end{align*}
 于是 $y_C=Q_x/A=8\ell/5$，与图\ref{c2e4s}的竖直条结果相同。水平条自身的高度就是 $y$，此时不再额外乘 $1/2$；这个因子只出现在把竖直条按其中点计算一次矩时。
 
 % thirty-c2-unitarea
@@ -271,7 +301,7 @@ $x-(x^2-x-3)=4-(x-1)^2\ge0$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{平移到对称轴后积分并核对面积}\par\nobreak
-图 \ref{c2e5s} 中取 $u=x-1$，于是
+图\ref{c2e5s}中取$u=x-1$，则$\dd u=\dd x$，两个端点$x=-1,3$变成$u=-2,2$。因此
 \[
  A=\int_{-1}^3(-x^2+2x+3)\dd x
  =\int_{-2}^2(4-u^2)\dd u
@@ -314,10 +344,14 @@ $x-(x^2-x-3)=4-(x-1)^2\ge0$。
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{沿球面窄带计算面积并核验量纲}\par\nobreak
 于是 $\dd S=2\pi R\sin\theta\,R\dd\theta$，
 \[
- S=\int_0^\pi2\pi R^2\sin\theta\dd\theta
- =\boxed{4\pi R^2}.
+ \begin{aligned}
+ S&=2\pi R^2\int_0^\pi\sin\theta\dd\theta
+ =2\pi R^2[-\cos\theta]_0^\pi\\
+ &=2\pi R^2[-\cos\pi+\cos0]
+ =2\pi R^2[1+1]=\boxed{4\pi R^2}.
+ \end{aligned}
 \]
-这里 $\int_0^\pi\sin\theta\dd\theta=[-\cos\theta]_0^\pi=1-(-1)=2$，所以面积为 $2\pi R^2\times2$。若误用周长乘 $\dd z$，就漏掉球面倾斜。还可独立校验：半径增加 $\dd R$ 时薄壳体积为 $S\dd R$，所以 $S=\dd V/\dd R=4\pi R^2$。
+若误用周长乘$\dd z$，就漏掉球面倾斜。还可独立校验：半径增加$\dd R$时，新增薄壳体积的一阶量为$S\dd R$；对已得体积求导，有$\dd V/\dd R=(4\pi/3)\,3R^2=4\pi R^2$，与曲面窄带积分一致。
 \end{solution}
 
 \begin{question}
@@ -330,14 +364,18 @@ $x-(x^2-x-3)=4-(x-1)^2\ge0$。
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{实心半球按圆盘质量加权}\par\nobreak
-图 \ref{c2e7q} 的两物体都轴对称，质心只能在 $z$ 轴上。实心半球取圆盘微元 $\dd m=\rho\pi(R^2-z^2)\dd z$，故
-\[
- M=\frac23\pi\rho R^3,\quad
- Mz_C=\rho\pi\int_0^R z(R^2-z^2)\dd z
- =\frac14\pi\rho R^4,
-\]
-其中质量积分的原函数为 $R^2z-z^3/3$，一次矩积分的原函数为 $R^2z^2/2-z^4/4$。分别在 $0,R$ 代入，就得到 $M=(2/3)\pi\rho R^3$ 与 $Mz_C=(1/4)\pi\rho R^4$。二者相除，
-$z_C=[(1/4)/(2/3)]R=3R/8$。
+图\ref{c2e7q}的两物体都轴对称，质心只能在$z$轴上。实心半球在高度$z$处的圆盘微元为$\dd m=\rho\pi(R^2-z^2)\dd z$，排列范围为$0\le z\le R$。分别计算总质量与一次矩：
+\begin{align*}
+M&=\rho\pi\int_0^R(R^2-z^2)\dd z
+=\rho\pi\left[R^2z-\frac{z^3}{3}\right]_0^R\\
+&=\rho\pi\left(R^3-\frac{R^3}{3}-0\right)
+=\frac23\pi\rho R^3,\\
+Mz_C&=\rho\pi\int_0^R(R^2z-z^3)\dd z
+=\rho\pi\left[\frac{R^2z^2}{2}-\frac{z^4}{4}\right]_0^R\\
+&=\rho\pi\left(\frac{R^4}{2}-\frac{R^4}{4}-0\right)
+=\frac14\pi\rho R^4.
+\end{align*}
+一次矩除以总质量，得到$z_C=(\pi\rho R^4/4)/(2\pi\rho R^3/3)=3R/8$。
 \fig{c2e7s}{圆盘微元与曲面窄带的区别}{\begin{tikzpicture}
 \draw[world](-1.5,0)arc(180:0:1.5);\draw[fill=blue!20](-1.2,.7)rectangle(1.2,.82);\node[above]at(0,1.65){$\dd m=\rho\pi(R^2-z^2)\dd z$};
 \begin{scope}[xshift=4.5cm]\draw[world](-1.5,0)arc(180:0:1.5);\draw[very thick,blue](35:1.5)arc(35:45:1.5);\node[above]at(0,1.65){$\dd m=\sigma\,2\pi R\,\dd z$};\end{scope}
@@ -349,11 +387,14 @@ $z_C=[(1/4)/(2/3)]R=3R/8$。
 对图 \ref{c2e7s} 的薄壳，上一例的窄带面积为
 $\dd S=2\pi R^2\sin\theta\,|\dd\theta|$。
 由 $z=R\cos\theta$ 得 $|\dd z|=R\sin\theta|\dd\theta|$，因此 $\dd S=2\pi R|\dd z|$。从底面向上排列时取正的 $\dd z$，于是
-\[
- M=2\pi\sigma R^2,\quad
- Mz_C=2\pi\sigma R\int_0^R z\dd z=\pi\sigma R^3,
-\]
-这里 $\int_0^Rz\dd z=[z^2/2]_0^R=R^2/2$，故 $Mz_C=\pi\sigma R^3$。再除以 $M=2\pi\sigma R^2$，得到 $\boxed{z_C=R/2}$。薄壳各等高窄带质量相同，实心半球各圆盘质量随高度减小，因此后者质心更低。
+\begin{align*}
+M&=2\pi\sigma R\int_0^R\dd z
+=2\pi\sigma R[z]_0^R=2\pi\sigma R^2,\\
+Mz_C&=2\pi\sigma R\int_0^R z\dd z
+=2\pi\sigma R\left[\frac{z^2}{2}\right]_0^R
+=2\pi\sigma R\frac{R^2}{2}=\pi\sigma R^3.
+\end{align*}
+再取比值$z_C=(\pi\sigma R^3)/(2\pi\sigma R^2)=\boxed{R/2}$。薄壳各等高窄带质量相同，实心半球各圆盘质量随高度减小，因此后者质心更低。
 \end{solution}
 
 \begin{question}
@@ -419,14 +460,22 @@ Mx_C&=A\int_0^Lx^5\,\dd x
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广密度幂次并检验质心的移动方向}\par\nobreak
-图 \ref{c2e9s} 的质心位于中点右侧，符合右端质量更集中的判断。对一般的 $p>-1$，分别积分总质量和一次矩：
-\[
- M=\frac{\lambda_0}{L^p}\left[\frac{x^{p+1}}{p+1}\right]_0^L
- =\frac{\lambda_0L}{p+1},
- \qquad
- Mx_C=\frac{\lambda_0}{L^p}\left[\frac{x^{p+2}}{p+2}\right]_0^L
- =\frac{\lambda_0L^2}{p+2}.
-\]
+图\ref{c2e9s}的质心位于中点右侧，符合右端质量更集中的判断。对一般的$p>-1$，若$-1<p<0$，密度在原点发散，必须把质量积分理解为反常积分。为统一处理各个$p$，先取$\varepsilon>0$，最后令$\varepsilon\to0^+$：
+\begin{align*}
+M&=\frac{\lambda_0}{L^p}\lim_{\varepsilon\to0^+}
+   \int_\varepsilon^L x^p\dd x
+=\frac{\lambda_0}{L^p}\lim_{\varepsilon\to0^+}
+   \left[\frac{x^{p+1}}{p+1}\right]_\varepsilon^L\\
+&=\frac{\lambda_0}{L^p}
+   \frac{L^{p+1}-0}{p+1}=\frac{\lambda_0L}{p+1},\\
+Mx_C&=\frac{\lambda_0}{L^p}\lim_{\varepsilon\to0^+}
+   \int_\varepsilon^L x^{p+1}\dd x
+=\frac{\lambda_0}{L^p}\lim_{\varepsilon\to0^+}
+   \left[\frac{x^{p+2}}{p+2}\right]_\varepsilon^L\\
+&=\frac{\lambda_0}{L^p}
+   \frac{L^{p+2}-0}{p+2}=\frac{\lambda_0L^2}{p+2}.
+\end{align*}
+$p+1>0$与$p+2>0$分别保证$\varepsilon^{p+1}$、$\varepsilon^{p+2}$趋零。
 先分别得到总质量与一次矩，再作商，才有 $x_C=L(p+1)/(p+2)$。条件 $p>-1$ 保证原点附近质量积分收敛；$p=0$ 恢复均匀杆中点，$p=4$ 恢复本题。若 $p\to+\infty$，质量越来越集中到右端，$x_C\to L$。
 
 密度系数改变时，各质量元和一次矩按相同比例变化，故系数在质心比值中消去。令 $\xi=x/L$还可看出，长度尺度改变只使质心位置随 $L$同比变化，$x_C/L$由密度分布的形状决定。正密度保证质心落在杆内，这是不依赖具体积分结果的检查。
@@ -482,12 +531,20 @@ Mx_C&=A\int_0^Lx^5\,\dd x
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{改变转轴时重新确定杆元的轴距}\par\nobreak
-对图 \ref{c2e11q} 的端点轴，杆元 $\dd m=(m/L)\dd x$，距离为 $x$，因此
-$I_O=(m/L)\int_0^L x^2\dd x=mL^2/3$。
-端点轴的原函数是 $(m/L)x^3/3$，代入 $0,L$ 后为 $mL^2/3$。中点轴把原点移到杆中点，两边都必须计入：
+对图\ref{c2e11q}的端点轴，杆元$\dd m=(m/L)\dd x$，轴距为$x$，所以
 \[
- I_C=\frac mL\int_{-L/2}^{L/2}x^2\dd x=\frac{mL^2}{12}.
+I_O=\frac mL\int_0^L x^2\dd x
+=\frac mL\left[\frac{x^3}{3}\right]_0^L
+=\frac mL\left(\frac{L^3}{3}-0\right)=\frac{mL^2}{3}.
 \]
+中点轴把原点移到杆中点，坐标范围改为$[-L/2,L/2]$，两边都必须计入：
+\begin{align*}
+I_C&=\frac mL\int_{-L/2}^{L/2}x^2\dd x
+=\frac mL\left[\frac{x^3}{3}\right]_{-L/2}^{L/2}\\
+&=\frac m{3L}\left[\left(\frac L2\right)^3
+ -\left(-\frac L2\right)^3\right]
+=\frac m{3L}\frac{L^3}{4}=\frac{mL^2}{12}.
+\end{align*}
 \fig{c2e11s}{圆盘按同心圆环分割}{\begin{tikzpicture}
 \draw[world](0,0)circle(1.5);\draw[blue,very thick](0,0)circle(.95);\draw[guide](0,0)circle(1.05);
 \draw[flow](0,0)--(.95,0)node[midway,above]{$r$};\draw[dim](.95,-.3)--(1.05,-.3); \node[right]at(1.1,-.4){$\dd r$};
@@ -496,14 +553,16 @@ $I_O=(m/L)\int_0^L x^2\dd x=mL^2/3$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用同心圆环计算圆盘惯量}\par\nobreak
-中点积分的上下限代入差为
-$[(L/2)^3-(-L/2)^3]/3=L^3/12$，乘 $m/L$ 得 $mL^2/12$。图 \ref{c2e11s} 中整条窄圆环到轴距离相同，适合作微元。面密度 $\sigma=m/(\pi R^2)$，所以
-\[
- \dd m=\sigma\,2\pi r\dd r,\qquad
- I=\int_0^Rr^2\,2\pi\sigma r\dd r
- =\boxed{\frac12mR^2}.
-\]
-圆盘最后的积分为 $2\pi\sigma[r^4/4]_0^R=\pi\sigma R^4/2$，代入 $\sigma$ 才得到 $mR^2/2$。平行轴关系则来自
+图\ref{c2e11s}中整条窄圆环到轴距离相同，适合作微元。面密度$\sigma=m/(\pi R^2)$，故$\dd m=\sigma\,2\pi r\dd r$。把轴距平方$r^2$乘入质量元，再从中心积到盘边：
+\begin{align*}
+I&=2\pi\sigma\int_0^Rr^3\dd r
+=2\pi\sigma\left[\frac{r^4}{4}\right]_0^R\\
+&=2\pi\sigma\left(\frac{R^4}{4}-0\right)
+=\frac{\pi\sigma R^4}{2}
+=\frac{\pi R^4}{2}\frac{m}{\pi R^2}
+=\boxed{\frac12mR^2}.
+\end{align*}
+平行轴关系则来自
 \[
  I_O=\int(x+d)^2\dd m
  =\int x^2\dd m+2d\int x\dd m+d^2\int\dd m.

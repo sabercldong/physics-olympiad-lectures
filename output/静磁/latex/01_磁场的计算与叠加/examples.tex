@@ -45,9 +45,12 @@
 \begin{solution}\textbf{由同一场点的几何关系求轴向微元}\par\nobreak
 图\ref{fig:mg1:example:2:s}中从任一电流元到 $P$ 的距离均为 $s=\sqrt{R^2+x^2}$。毕奥—萨伐尔式给出 $\dd B=\mu_0I\dd l/(4\pi s^2)$；其轴向投影因子为 $R/s$，而不是 $x/s$。对称电流元的横向分量相消，所以
 \[
-B_x=\int\frac{\mu_0IR}{4\pi s^3}\dd l
-=\frac{\mu_0IR}{4\pi s^3}(2\pi R)
+\begin{aligned}
+B_x&=\int\frac{\mu_0IR}{4\pi s^3}\dd l
+=\frac{\mu_0IR}{4\pi s^3}\int_0^{2\pi}R\dd\varphi\\
+&=\frac{\mu_0IR^2}{4\pi s^3}[\varphi]_0^{2\pi}
 =\frac{\mu_0IR^2}{2(R^2+x^2)^{3/2}}.
+\end{aligned}
 \]
 \fig{fig:mg1:example:2:p}{轴线场关于圆心对称，半高位置由归一化曲线确定}{\begin{tikzpicture}
 
@@ -303,7 +306,17 @@ B(s)=2\frac{\mu_0I}{2\pi\rho}\frac{s}{\rho}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{令二阶导数为零，求间距与中心场}\par\nobreak
-因此图\ref{fig:mg1:example:10:p}的 $B''(0)=0$ 要求 $4a^2-R^2=0$，取正距离 $a=R/2$，两圈间距即 $R$。此时 $B(0)=(4/5)^{3/2}\mu_0I/R$。场在中点附近的首个非零轴向修正是更高阶项，均匀程度提高；远离中心仍会下降。这个“消去局部二阶项”的条件，与声称整个空间为匀强场有不同的适用范围。
+两个内变量 $x-a,x+a$ 对 $x$ 的导数都为 $1$，因此
+\[
+ B''(0)=\frac{\mu_0IR^2}{2}[f''(-a)+f''(a)]
+ =\frac{3\mu_0IR^2(4a^2-R^2)}{(R^2+a^2)^{7/2}}.
+\]
+图\ref{fig:mg1:example:10:p}的 $B''(0)=0$ 因而要求 $4a^2-R^2=0$。取正距离 $a=R/2$，两圈间距即 $R$。将该值代回中心场，
+\[
+ B(0)=\frac{\mu_0IR^2}{[R^2+R^2/4]^{3/2}}
+ =\frac{\mu_0I}{R}\left(\frac45\right)^{3/2}.
+\]
+场在中点附近的首个非零轴向修正是更高阶项，均匀程度提高；远离中心仍会下降。这个“消去局部二阶项”的条件，与声称整个空间为匀强场有不同的适用范围。
 
 
 
@@ -342,13 +355,28 @@ B(s)=2\frac{\mu_0I}{2\pi\rho}\frac{s}{\rho}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{构造中点场近似并展开对数}\par\nobreak
-图\ref{fig:mg1:example:11:p}令中点距离 $d=(a+b)/2$、宽度 $w=b-a$。中点近似给 $\Phi_m=\mu_0Ilw/(2\pi d)$。把精确式写成 $\ln[(1+w/(2d))/(1-w/(2d))]$，令 $g(u)=\ln[(1+u)/(1-u)]$，则
-$g'(u)=1/(1+u)+1/(1-u)=2/(1-u^2)=2(1+u^2+O(u^4))$。
-由 $g(0)=0$，逐项积分为
-$g(u)=2\int_0^u(1+v^2+O(v^4))\dd v
-=2[u+u^3/3+O(u^5)]$，得 $\Phi=\mu_0Il[w/d+w^3/(12d^3)+\cdots]/(2\pi)$。
+图\ref{fig:mg1:example:11:p}令中点距离 $d=(a+b)/2$、宽度 $w=b-a$。中点近似给 $\Phi_m=\mu_0Ilw/(2\pi d)$。把精确式写成 $\ln[(1+w/(2d))/(1-w/(2d))]$，令 $g(u)=\ln(1+u)-\ln(1-u)$，逐项用链式法则求导：
+\[
+ g'(u)=\frac1{1+u}\cdot1-\frac1{1-u}\cdot(-1)
+ =\frac2{1-u^2}.
+\]
+由恒等式 $1/(1-u^2)=1+u^2+u^4/(1-u^2)$，在 $u\to0$ 时有 $g'(u)=2[1+u^2+O(u^4)]$。再用 $g(0)=0$，逐项积分，
+\[
+ \begin{aligned}
+ g(u)&=2\int_0^u[1+v^2+O(v^4)]\dd v\\
+ &=2\left[v+\frac{v^3}{3}\right]_0^u+O(u^5)
+ =2u+\frac{2u^3}{3}+O(u^5).
+ \end{aligned}
+\]
+代入 $u=w/(2d)$，得到 $\Phi=\mu_0Il[w/d+w^3/(12d^3)+\cdots]/(2\pi)$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{给出误差阶数与窄面适用条件}\par\nobreak
+令 $\epsilon=w/d$，把精确磁通提出中点近似值，$\Phi=\Phi_m[1+\epsilon^2/12+O(\epsilon^4)]$。以精确值作分母，相对误差为
+\[
+ \frac{\Phi-\Phi_m}{\Phi}
+ =\frac{\epsilon^2/12+O(\epsilon^4)}{1+\epsilon^2/12+O(\epsilon^4)}
+ =\frac{\epsilon^2}{12}+O(\epsilon^4).
+\]
 故中点近似偏小，相对误差最低阶为 $w^2/(12d^2)$。这里展开要求 $w\ll d$，不是仅要求矩形“看起来很窄”。\end{solution}
 \begin{question}\begin{example}[径向非均匀电流密度]\label{mg1:example:12}
 无限长圆柱半径 $R$，电流密度沿轴且大小 $J(r)=J_0r/R$。求总电流、内外磁场及最大场。
@@ -430,7 +458,12 @@ $\dd[z'(R^2+z'^2)^{-1/2}]/\dd z'
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{用小柱面的零总磁通求径向场}\par\nobreak
-对图\ref{fig:mg1:example:14:s}的小圆柱面应用零磁通，记题设轴线函数为 $f(z)=B_0(1-z^2/L^2)$，最低阶给 $B_r=-rf\prime(z)/2$。因为 $f\prime(z)=-2B_0z/L^2$，所以 $B_r=B_0rz/L^2+O(r^3)$。
+对图\ref{fig:mg1:example:14:s}的小圆柱面应用零磁通，记题设轴线函数为 $f(z)=B_0(1-z^2/L^2)$，最低阶给 $B_r=-rf\prime(z)/2$。求导时 $B_0,L$ 都为常数，
+\[
+ f'(z)=B_0\left(0-\frac1{L^2}\frac{\dd z^2}{\dd z}\right)
+ =-\frac{2B_0z}{L^2}.
+\]
+所以 $B_r=B_0rz/L^2+O(r^3)$。
 \fig{fig:mg1:example:14:p}{解答过程：由轴线函数重建近轴磁场}{\begin{tikzpicture}[scale=.88]
 \draw[axis](0,-.5)--(0,2.8)node[above]{$z$};\fill(1,1.2)circle(2pt)node[below]{$P$};\draw[flow](1,1.2)--(1.9,1.2)node[right]{$B_r>0$};\draw[flow](1,1.2)--(1,2.3)node[above]{$B_z$};
 \end{tikzpicture}}
@@ -438,7 +471,7 @@ $\dd[z'(R^2+z'^2)^{-1/2}]/\dd z'
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用无电流小环路求轴向场的径向修正}\par\nobreak
-图\ref{fig:mg1:example:14:p}再使用无电流小矩形的零环量，$\partial B_z/\partial r=\partial B_r/\partial z=B_0r/L^2$。从轴线积分到半径 $r$，取积分变量 $\rho$，
+图\ref{fig:mg1:example:14:p}再使用无电流小矩形的零环量，$\partial B_z/\partial r=\partial B_r/\partial z$。对 $z$ 求偏导时保持 $r$ 不变，$\partial(B_0rz/L^2)/\partial z=(B_0r/L^2)\cdot1=B_0r/L^2$。从轴线积分到半径 $r$，取积分变量 $\rho$，
 \[
  B_z(r,z)-B_z(0,z)
  =\frac{B_0}{L^2}\int_0^r\rho\dd\rho+O(r^4)

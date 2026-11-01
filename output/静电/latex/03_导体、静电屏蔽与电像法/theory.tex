@@ -175,9 +175,12 @@ $\nabla\cdot(u\nabla u)=|\nabla u|^2+u\nabla^2u$。
 把电荷从 $d$ 缓慢移到无穷远，外力随当前位置 $x$ 变化。
 由图\ref{e3:image-force-energy}中每一位置的真像间距 $2x$，
 \[
- W_{\text{外}}=\frac{kq^2}{4}\lim_{L\to\infty}\int_d^Lx^{-2}\dd x
- =\frac{kq^2}{4}\lim_{L\to\infty}[-x^{-1}]_d^L
+\begin{aligned}
+ W_{\text{外}}&=\frac{kq^2}{4}\lim_{L\to\infty}\int_d^Lx^{-2}\dd x
+ =\frac{kq^2}{4}\lim_{L\to\infty}[-x^{-1}]_d^L\\
+ &=\frac{kq^2}{4}\lim_{L\to\infty}\left(-\frac1L+\frac1d\right)
  =\frac{kq^2}{4d}.
+\end{aligned}
 \]对应相互作用能为 $-kq^2/(4d)$，等于 $q$ 乘像电势的一半。不能直接把真实与像电荷视为两个固定独立电荷计算 $qV_{\text{像}}$，因为像的位置和分布随真实电荷移动，且地线允许电荷交换。用实际受力积分最能避免这个倍数错误。
 
 

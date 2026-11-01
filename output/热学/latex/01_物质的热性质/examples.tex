@@ -30,7 +30,14 @@
 \[\Delta t=t-t_{\text{钟}}=t\left(1-\frac{P_0}{P}\right)
 =86400\left(1-\frac1{\sqrt{1.00030}}\right)
 \simeq\boxed{12.96\,\mathrm s}.\]
-图中摆长增加，所以每次摆动用时增加，同一实际时间内计数减少，结果应是走慢。若只保留一阶，$P/P_0\simeq1+\alpha\Delta T/2$，便有 $\Delta t\simeq86400\alpha\Delta T/2=12.96\,\mathrm s$。该近似与上式相符，也表明日差的相对量级约为 $1.5\times10^{-4}$。
+图中摆长增加，所以每次摆动用时增加，同一实际时间内计数减少，结果应是走慢。检查一阶近似时，令$\varepsilon=\alpha\Delta T=3.0\times10^{-4}$，分别对周期与计数因子使用幂函数展开，
+\[
+\frac P{P_0}=(1+\varepsilon)^{1/2}
+=1+\frac{\varepsilon}{2}+O(\varepsilon^2),\qquad
+\frac{P_0}{P}=(1+\varepsilon)^{-1/2}
+=1-\frac{\varepsilon}{2}+O(\varepsilon^2).
+\]
+因此$\Delta t/t=1-P_0/P\simeq\varepsilon/2$，代入得$\Delta t\simeq86400\times(3.0\times10^{-4})/2=12.96\,\mathrm s$。这与直接计算相符，也表明日差的相对量级约为$1.5\times10^{-4}$。
 \end{solution}
 \par\medskip\noindent\begin{minipage}{\textwidth}
 \begin{example}[受边界约束的肥皂膜细线]\label{t1-2}

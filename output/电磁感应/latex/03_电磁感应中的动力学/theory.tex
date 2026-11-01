@@ -23,7 +23,11 @@
 当 $F$ 恒定，令 $v_\infty=F/\gamma$、$\tau=m/\gamma$，将运动方程改写为 $\dd(v-v_\infty)/(v-v_\infty)=-\dd t/\tau$。当 $v_0\ne v_\infty$ 时，以 $\delta=v-v_\infty$ 为偏差变量，
 \[
 \int_{v_0-v_\infty}^{v-v_\infty}\frac{\dd\delta}{\delta}
-=-\int_0^t\frac{\dd s}{\tau},\qquad
+ =-\int_0^t\frac{\dd s}{\tau},\qquad
+ [\ln|\delta|]_{v_0-v_\infty}^{v-v_\infty}=-\frac1\tau[s]_0^t.
+\]
+代入上下限并合并对数，
+\[
 \ln\left|\frac{v-v_\infty}{v_0-v_\infty}\right|=-\frac t\tau.
 \]
 保留偏差的原符号；若初速度就是终速，直接取恒速解。于是得到
@@ -54,6 +58,8 @@ x-x_0=\int_0^t[v_\infty+(v_0-v_\infty)\e^{-s/\tau}]\dd s
 $m[v-v_0]=-\gamma[x-x_0]$。时间由 $\dd t=\dd x/v$ 给出，令 $z=v_0-\gamma(x-x_0)/m$，则 $\dd x=-m\dd z/\gamma$，所以
 \[
 t=-\frac m\gamma\int_{v_0}^{v}\frac{\dd z}{z}
+=-\frac m\gamma[\ln z]_{v_0}^{v}
+=-\frac m\gamma(\ln v-\ln v_0)
 =\frac m\gamma\ln\frac{v_0}{v}.
 \]
 空间解与时间解共同给出
@@ -216,6 +222,7 @@ m\dot v=mg(\sin\theta-\mu_f\cos\theta)
 \[R\dot q+q/C=kv,\qquad m\dot v=F-k\dot q.\]
 第一式中的电容电压与动生电动势相抗，第二式包含电流的机械反作用。无外力时从 $(v_0,q_0)$ 积分第二式，
 $m\int_{v_0}^{v}\dd z=-k\int_{q_0}^{q}\dd y$，
+两侧原函数给 $m[z]_{v_0}^{v}=-k[y]_{q_0}^{q}$，
 即 $m(v-v_0)+k(q-q_0)=0$，得到 $mv+kq=\text{常量}$；代入第一式即可把问题化成单个充电方程。等效电容 $C_e=(1/C+k^2/m)^{-1}$ 同时包含电储能和机械反馈，不是某两只真实电容直接串联。
 
 
@@ -229,8 +236,10 @@ R\dot q+\left(\frac1C+\frac{k^2}{m}\right)q=kv_0.
 定义 $\eta=Ck^2/m$、$\tau_e=RC/(1+\eta)$，以及 $q_f=Ckv_0/(1+\eta)$。方程成为 $\dot q=(q_f-q)/\tau_e$，从零电荷积分，
 \[
 \int_0^{q(t)}\frac{\dd z}{q_f-z}=\int_0^t\frac{\dd s}{\tau_e},
-\qquad -\ln\frac{q_f-q}{q_f}=\frac t{\tau_e}.
+\qquad [-\ln|q_f-z|]_0^{q(t)}=\frac1{\tau_e}[s]_0^t.
 \]
+对图示 $v_0>0$ 有 $q_f>0$，解沿 $0\le q<q_f$ 的分支，故
+$-\ln[(q_f-q)/q_f]=t/\tau_e$；若初始速度反向，应保留偏差的原符号。
 先求出 $q$，再用 $v=v_0-kq/m$，便有
 \[
 q(t)=\frac{Ckv_0}{1+\eta}(1-\e^{-t/\tau_e}),\qquad

@@ -147,7 +147,16 @@ $D'(\omega)=qB-2m\omega$、$D''(\omega)=-2m<0$，
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求角速度开区间并排除退化边界}\par\nobreak
-当此条件成立，水平线与抛物线交于 $\omega_-,\omega_+$，允许范围为
+将严格不等式先配方，
+\[
+ \begin{aligned}
+ qB\omega-m\omega^2>D_{\min}
+ &\ \Longleftrightarrow\
+ \left(\omega-\frac{qB}{2m}\right)^2
+ <\frac{(qB)^2-4mD_{\min}}{4m^2}.
+ \end{aligned}
+\]
+右端为正时，开平方得到中心 $qB/(2m)$ 两侧的两个端点。水平线与抛物线交于 $\omega_-,\omega_+$，允许范围为
 \[
 \boxed{\omega_-<\omega<\omega_+,\qquad
 \omega_\pm=\frac{qB\pm\sqrt{(qB)^2-4mD_{\min}}}{2m}}.
@@ -192,9 +201,13 @@ v_0>2V &: \text{出现回绕}.
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分量速度复核尖点与回绕的区别}\par\nobreak
 例如取正电荷、$\bm B=B\bm e_z$、$\bm E=E\bm e_y$，令 $u_x=v_x-V$，运动方程为
 $\dot u_x=\Omega v_y,\dot v_y=-\Omega u_x$，
-消元得 $\ddot u_x+\Omega^2u_x=0$，特征根为 $\pm\mathrm i\Omega$。
-初值 $u_x(0)=v_0-V,\dot u_x(0)=0$ 给
-$u_x=(v_0-V)\cos\Omega t$，再由 $v_y=\dot u_x/\Omega$ 得
+对第一式求导得 $\ddot u_x=\Omega\dot v_y=-\Omega^2u_x$。
+试取 $u_x=e^{st}$，两次求导为 $se^{st},s^2e^{st}$，
+代回得 $s^2+\Omega^2=0$，特征根为 $\pm\mathrm i\Omega$。
+通解为 $u_x=A\cos\Omega t+D\sin\Omega t$，
+其导数为 $\dot u_x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。
+初值 $u_x(0)=v_0-V,\dot u_x(0)=0$ 给 $A=v_0-V,D=0$，
+所以 $u_x=(v_0-V)\cos\Omega t$，再由 $v_y=\dot u_x/\Omega$ 得
 \[
 v_x=V+(v_0-V)\cos\Omega t,\qquad v_y=-(v_0-V)\sin\Omega t.
 \]
@@ -235,7 +248,13 @@ v_x=V+(v_0-V)\cos\Omega t,\qquad v_y=-(v_0-V)\sin\Omega t.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查大镜比、临界锥面和无镜约束极限}\par\nobreak
-当 $B_m/B_0\gg1$ 时，$f_{\rm loss}\simeq B_0/(2B_m)$。临界锥面本身的立体角为零；即使光滑峰值处的临界到达时间发散，也不改变上述初始方向比例。若 $B_m=B_0$，没有镜约束，除零测度的垂直方向外均可轴向离开，极限 $f_{\rm loss}=1$ 正确。碰撞持续补充损失锥时的长期损失率还需要动力学信息。\end{drillsolution}
+令 $\epsilon=B_0/B_m$。函数 $F(\epsilon)=1-\sqrt{1-\epsilon}$ 满足
+\[
+ F(0)=0,\qquad
+ F'(\epsilon)=-\frac12(1-\epsilon)^{-1/2}(-1)
+ =\frac1{2\sqrt{1-\epsilon}},\qquad F'(0)=\frac12.
+\]
+因此大镜比对应 $\epsilon\ll1$，有 $f_{\rm loss}=\epsilon/2+O(\epsilon^2)\simeq B_0/(2B_m)$。临界锥面本身的立体角为零；即使光滑峰值处的临界到达时间发散，也不改变上述初始方向比例。若 $B_m=B_0$，没有镜约束，除零测度的垂直方向外均可轴向离开，极限 $f_{\rm loss}=1$ 正确。碰撞持续补充损失锥时的长期损失率还需要动力学信息。\end{drillsolution}
 
 \begin{drillsolution}{mg4:drill:7}\textbf{固定电压接线后列出四组读数}\par\nobreak
 按图\ref{fig:mg4:drill:7:s}，四次测量始终记录 $V_A-V_C$，接线不随输入反向互换。以 $I,B$ 表示正的大小，四个读数为

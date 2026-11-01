@@ -791,10 +791,13 @@ x_* =\frac{bh_1-ah_2}{h_1+h_2}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用凸性证明最小偏向对应对称光路}\par\nobreak
-在透射区 \(0\le r<\arcsin(1/n)\)，函数 \(g(r)=\arcsin(n\sin r)\) 满足
-\[
- g''(r)=\frac{n(n^2-1)\sin r}{(1-n^2\sin^2r)^{3/2}}\ge0.
-\]
+在透射区 \(0\le r<\arcsin(1/n)\)，令 \(g(r)=\arcsin(n\sin r)\)。先用反正弦的链式法则，得 $g'(r)=n\cos r(1-n^2\sin^2r)^{-1/2}$。再用乘积法则，
+\begin{align*}
+ g''(r)&=-\frac{n\sin r}{\sqrt{1-n^2\sin^2r}}
+ +\frac{n^3\sin r\cos^2r}{(1-n^2\sin^2r)^{3/2}}\\
+ &=\frac{n\sin r[-1+n^2\sin^2r+n^2\cos^2r]}{(1-n^2\sin^2r)^{3/2}}
+ =\frac{n(n^2-1)\sin r}{(1-n^2\sin^2r)^{3/2}}\ge0.
+\end{align*}
 固定 \(r_1+r_2=A\)，凸性给出 \(g(r_1)+g(r_2)\ge2g(A/2)\)，等号对应 \(r_1=r_2\)。
 \fig{fig:r12s}{最小偏向时 \(r_1=r_2=A/2\)，入射线与出射线关于对称轴互为镜像}{
 \begin{tikzpicture}[scale=1.8]
@@ -877,7 +880,12 @@ x_* =\frac{bh_1-ah_2}{h_1+h_2}.
 \[
 PF_1+PF_2=2a=\text{常量}.
 \]
-令 $F_1=(-c,0),F_2=(c,0)$，$a>c$，则这一定义给出椭圆
+令 $F_1=(-c,0),F_2=(c,0)$，$a>c$，并记 $d_1=PF_1$、$d_2=PF_2$。两距离的平方差为 $d_1^2-d_2^2=(x+c)^2-(x-c)^2=4cx$。用 $d_1+d_2=2a$ 相除，得 $d_1-d_2=2cx/a$，所以 $d_1=a+cx/a$。再代入 $d_1^2=(x+c)^2+y^2$，
+\[
+ a^2+2cx+\frac{c^2x^2}{a^2}=x^2+2cx+c^2+y^2,
+ \qquad \frac{a^2-c^2}{a^2}x^2+y^2=a^2-c^2.
+\]
+因 $a^2-c^2>0$，两边除以它，得到椭圆
 \[
 \boxed{\frac{x^2}{a^2}+\frac{y^2}{a^2-c^2}=1.}
 \]
@@ -1008,7 +1016,7 @@ n\bm e_x\cdot\bm t=\bm u_{\rm out}\cdot\bm t,
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开中心厚度，并区分精确面形与近轴近似}\par\nobreak
-当 $R/f'$ 很小时，
+令 $\epsilon=R^2/f'^2$，精确厚度写为 $d=f'[\sqrt{1+\epsilon}-1]/(n-1)$。函数 $h(\epsilon)=\sqrt{1+\epsilon}$ 满足 $h(0)=1$、$h'(\epsilon)=\tfrac12(1+\epsilon)^{-1/2}$、$h'(0)=1/2$，故 $h(\epsilon)=1+\epsilon/2+O(\epsilon^2)$。当 $R/f'$ 很小时，代入得到
 \[
 d\simeq\frac{R^2}{2(n-1)f'}.
 \]

@@ -5,7 +5,15 @@
 \end{question}
 \begin{solution}\textbf{把两段相等路程分别换算成时间}\par\nobreak
 图\ref{k1p1q}把总路程记为 $s$。两段时间分别为 $t_1=s/(2v_1)$、$t_2=s/(2v_2)$，同向运动使位移也等于 $s$，故
-\[\frac{s}{v}=\frac{s}{2v_1}+\frac{s}{2v_2},\qquad \boxed{v_2=\frac{vv_1}{2v_1-v}}.\]
+\[
+\frac{s}{v}=\frac{s}{2v_1}+\frac{s}{2v_2}.
+\]
+路程$s>0$，约去$s$后再移项、通分，得到
+\[
+\frac1{v_2}=\frac2v-\frac1{v_1}
+=\frac{2v_1-v}{vv_1},\qquad
+\boxed{v_2=\frac{vv_1}{2v_1-v}}.
+\]
 \fig{k1p1s}{等路程表现为相等面积，各段用时应分别累积}{\begin{tikzpicture}[x=1.4cm,y=1cm]
 \draw[->](0,0)--(4.4,0)node[right]{$t$};\draw[->](0,0)--(0,2.7)node[above]{$v$};
 \fill[blue!12](0,0)rectangle(1,2);\fill[red!12](1,0)rectangle(3.5,.8);
@@ -51,7 +59,23 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{反向阶段分别累计位移与路程}\par\nobreak
 图\ref{k1p3s}中3至6s的阴影在时间轴下方，其面积数值为 $\tfrac12(6-3)\times3=4.5$m，表示反向位移。因此 $\boxed{\Delta x_6=6-4.5=1.5\,\mathrm m}$，而 $\boxed{s_6=6+4.5=10.5\,\mathrm m}$。在3s处速度过零并换号，正是累加路程时的分段点。结果满足 $s_6\ge|\Delta x_6|$。
 
-也可用分段积分核对面积法：1至3s取 $v=3-\tfrac32(t-1)$，其积分为 $[3(t-1)-\tfrac34(t-1)^2]_1^3=6-3=3$m；3至6s取 $v=-(t-3)$，于是 $\int_3^6v\dd t=[-(t-3)^2/2]_3^6=-9/2=-4.5$m。后一段 $|v|=t-3$，故 $\int_3^6|v|\dd t=[(t-3)^2/2]_3^6=4.5$m。负速度表示坐标在减小，绝不是“走过负的路程”。若再求前6s平均速度与平均速率，应分别除以同一个6s，得到0.25m/s和1.75m/s。\end{solution}
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{用分段积分核对图中面积}\par\nobreak
+以秒为时间单位、米为长度单位，1至3s的速度函数是$v=3-\tfrac32(t-1)$，3至6s是$v=-(t-3)$。各段原函数及边界代入为
+\begin{align*}
+\Delta x_{0,1}&=\int_0^1 3\dd t=[3t]_0^1=3,\\
+\Delta x_{1,3}&=\int_1^3\left[3-\frac32(t-1)\right]\dd t\\
+&=\left[3(t-1)-\frac34(t-1)^2\right]_1^3
+=(6-3)-0=3,\\
+\Delta x_{3,6}&=\int_3^6[-(t-3)]\dd t
+=\left[-\frac{(t-3)^2}{2}\right]_3^6
+=-\frac92-0=-4.5.
+\end{align*}
+后一段速度为负，路程积分应改积$|v|=t-3$：
+\[
+s_{3,6}=\int_3^6(t-3)\dd t
+=\left[\frac{(t-3)^2}{2}\right]_3^6=4.5.
+\]
+负速度表示坐标在减小，绝不是“走过负的路程”。把三段位移相加、各段路程相加，分别恢复图中算出的$1.5\,\mathrm m$与$10.5\,\mathrm m$。若再求前6s平均速度与平均速率，应分别除以同一个6s，得到0.25m/s和1.75m/s。\end{solution}
 
 \begin{question}\begin{example}[由分段速度重建位置图]\label{k1p4}
 取 $x(0)=0$，质点在三个连续且等长为 $T$ 的时间段内，速度依次为 $v_0,0,-v_0$，其中 $v_0>0$。写出位置函数并画出位置随时间变化的图。\end{example}
@@ -80,7 +104,19 @@
 \fig{k1p5q}{延迟刹车的安全间距：题设关系}{\begin{tikzpicture}\draw[axis](0,0)--(6.7,0);\draw[world](.2,0)rectangle(1.7,.6) (4.1,0)rectangle(5.6,.6);\node at(.9,.3){后车};\node at(4.8,.3){前车};\draw[dim](1.7,-.6)--(4.1,-.6)node[midway,below]{$d$};\draw[flow](1.8,1)--(2.6,1)node[right]{$v_0$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{分清前后两车各自的制动阶段}\par\nobreak
-图\ref{k1p5q}采用净间距，故不必另计车长。令前车停车时间 $T=v_0/a$，则 $s=v_0^2/(2a)=v_0T/2$。在前车制动阶段，后车比前车多走 $v_0T-s=s$；后车随后制动又走 $s$，而前车不再前进。
+图\ref{k1p5q}采用净间距，故不必另计车长。前车在制动期间的加速度为$-a$，初速为$v_0$，先积分得到
+\[
+v_F(t)=v_0+\int_0^t(-a)\dd\tau
+=v_0+[-a\tau]_0^t=v_0-at.
+\]
+令停车时刻$v_F(T)=0$，得到$T=v_0/a$。再积分速度求停车距离，
+\begin{align*}
+s&=\int_0^T(v_0-at)\dd t
+=\left[v_0t-\frac{at^2}{2}\right]_0^T\\
+&=v_0T-\frac{aT^2}{2}
+=\frac{v_0T}{2}=\frac{v_0^2}{2a},
+\end{align*}
+其中用了$aT=v_0$。在前车制动阶段，后车比前车多走$v_0T-s=s$；后车随后制动又走$s$，而前车不再前进。
 \fig{k1p5s}{延迟刹车的安全间距：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[axis](0,0)--(0,2.5)node[above]{$v$};\fill[blue!12](0,2)--(2.3,2)--(4.6,0)--(2.3,0)--cycle;\draw[world](0,2)--(2.3,0)--(4.6,0);\draw[world,blue](0,2)--(2.3,2)--(4.6,0);\node[below]at(2.3,0){$T$};\node[below]at(4.6,0){$2T$};\node at(1.5,1){$s$};\node at(3,.6){$s$};\end{tikzpicture}}
 
 
@@ -113,7 +149,14 @@ $A,B$两站相距60km。自 $t=0$ 起，$A$站每隔10min发出一辆速度为60
 图\ref{k1p6q}两站单程时间为 $T=60\,\mathrm{min}$，发车间隔为 $\tau=10\,\mathrm{min}$。从 $A$出发的第 $k$辆车在 $k\tau$发车，$k=0,1,\ldots$；令 $B$车在 $t_b=m\tau$出发，$m$为非负整数。将路程与速度均换成千米、分钟后，位置方程为
 \[x_A=u(t-k\tau),\qquad x_B=uT-u(t-t_b),
 \qquad u=1\,\mathrm{km/min}.\]
-相遇要求 $x_A=x_B$，故 $t=(T+t_b+k\tau)/2$。它还必须发生在两车各自离站后、到站前。代入两车的有效时间区间，得到同一组严格不等式：
+相遇要求$x_A=x_B$，约去$u>0$得到$t-k\tau=T-t+t_b$，所以$t=(T+t_b+k\tau)/2$。它还必须发生在两车各自离站后、到站前。分别列出有效时间区间，并代入这个相遇时刻：
+\begin{align*}
+k\tau<t<k\tau+T
+&\quad\Longrightarrow\quad t_b-T<k\tau<t_b+T,\\
+t_b<t<t_b+T
+&\quad\Longrightarrow\quad t_b-T<k\tau<t_b+T.
+\end{align*}
+两车的限制恰好给出同一组严格不等式：
 \[t_b-T<k\tau<t_b+T,\qquad k\ge0.\]
 这里不能取等号，因为等号对应站内相遇。
 
@@ -149,9 +192,16 @@ $A,B$两站相距60km。自 $t=0$ 起，$A$站每隔10min发出一辆速度为60
 \[y=p(x+v_At),\qquad y=-q(x-v_Bt).\]
 两式均对同一时间求导，再消去 $v_y$：
 \[v_y=p(v_x+v_A)=q(v_B-v_x),\]
-\[(p+q)v_x=qv_B-pv_A,\qquad
-v_x=\frac{qv_B-pv_A}{p+q},\qquad
-v_y=\frac{pq(v_A+v_B)}{p+q}.\]
+\[
+(p+q)v_x=qv_B-pv_A,\qquad
+v_x=\frac{qv_B-pv_A}{p+q}.
+\]
+把此水平分量代回$v_y=p(v_x+v_A)$，再通分合并：
+\[
+v_y=p\left(\frac{qv_B-pv_A}{p+q}+v_A\right)
+=\frac{p(qv_B-pv_A+pv_A+qv_A)}{p+q}
+=\frac{pq(v_A+v_B)}{p+q}.
+\]
 本题代入 $p=1/\sqrt3$、$q=\sqrt3$，得到
 \[\boxed{v_x=\frac{3v_B-v_A}{4}},\qquad
 \boxed{v_y=\frac{\sqrt3(v_A+v_B)}4}.\]
@@ -193,7 +243,18 @@ v_B=0:\quad &(v_x,v_y)=\left(-\frac{v_A}{4},\frac{\sqrt3v_A}{4}\right),
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用梯形面积和速度上下界核验}\par\nobreak
 图\ref{k1p8s}将纵轴取为 $1/v$，它随 $h$ 线性增加。梯形两条平行边分别为 $1/v_0=0.5$和 $2/v_0=1$，单位为s/cm，底长20cm，面积为 $20(0.5+1)/2=15$s。速度从2降至1cm/s，所得用时在10s与20s之间，符合快慢界限；若误取 $v$--$h$ 面积，量纲便不是时间。
 
-任意爬高 $H$的用时实际上是 $t(H)=H/v_0+H^2/(2lv_0)$。对 $H$求导有 $\dd t/\dd H=(l+H)/(lv_0)=1/v(H)$，代回即恢复题设。$H\ll l$时第二项相对较小，才可近似按初速匀速计算；本题 $H=l$，该项占总时间三分之一，不能忽略。这里积分的对象是每小段的用时，而不是将首末速度简单平均。
+若积分上限改为任意爬高$H$，同样的原函数给出
+\[
+t(H)=\frac1{lv_0}\left[lh+\frac{h^2}{2}\right]_0^H
+=\frac{lH+H^2/2}{lv_0}
+=\frac H{v_0}+\frac{H^2}{2lv_0}.
+\]
+固定$l,v_0$，对$H$逐项求导有
+\[
+\frac{\dd t}{\dd H}=\frac1{v_0}+\frac{2H}{2lv_0}
+=\frac{l+H}{lv_0}=\frac1{v(H)},
+\]
+代回即恢复题设。$H\ll l$时第二项相对较小，才可近似按初速匀速计算；本题$H=l$，该项占总时间三分之一，不能忽略。这里积分的对象是每小段的用时，而不是将首末速度简单平均。
 
 % thirty-k1-climbtime
 

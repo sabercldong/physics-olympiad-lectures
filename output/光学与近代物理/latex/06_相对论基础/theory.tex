@@ -137,7 +137,14 @@ t'=\gamma\left(t-\frac{Vx}{c^2}\right),\quad y'=y,\ z'=z.}
 x=k^2\left[x-Vt+V\left(t-\frac{Vx}{c^2}\right)\right]
 =k^2(1-\beta^2)x.
 \]
-所以 $k^2(1-\beta^2)=1$，取与 $V=0$ 连续的正根即为 $\gamma$。将两式代入 $c^2\Delta t'^2-\Delta x'^2$，交叉项相消，剩下
+所以 $k^2(1-\beta^2)=1$，取与 $V=0$ 连续的正根即为 $\gamma$。将两式代入 $c^2\Delta t'^2-\Delta x'^2$，先将两个平方展开，
+\begin{align*}
+ c^2\Delta t'^2-\Delta x'^2
+ &=\gamma^2\left[c^2\Delta t^2-2V\Delta t\Delta x
+       +\frac{V^2}{c^2}\Delta x^2\right.\\
+ &\hspace{3.8em}\left.-\Delta x^2+2V\Delta x\Delta t-V^2\Delta t^2\right].
+\end{align*}
+两个交叉项相消，再将 $\Delta t^2$ 和 $\Delta x^2$ 项分别合并，得到
 \[
 c^2\Delta t'^2-\Delta x'^2
 =\gamma^2(1-\beta^2)(c^2\Delta t^2-\Delta x^2)
@@ -160,7 +167,19 @@ u_z=\frac{u'_z}{\gamma(1+Vu'_x/c^2)}.
 \]
 相除得到纵向速度式；再用 $\dd y=\dd y'$、$\dd z=\dd z'$，便得到横向速度式。横向坐标虽不变，横向速度仍会因时间间隔的变化而改变。
 
-把三个速度分量合并，还可得到
+把三个速度分量平方相加，令 $D=1+Vu'_x/c^2$。通分得到
+\[
+ 1-\frac{u^2}{c^2}
+ =\frac{D^2-(u'_x+V)^2/c^2-(1-V^2/c^2)(u_y'^2+u_z'^2)/c^2}{D^2}.
+\]
+其中前两项逐项展开，
+\begin{align*}
+ D^2-\frac{(u'_x+V)^2}{c^2}
+ &=1+\frac{2Vu'_x}{c^2}+\frac{V^2u_x'^2}{c^4}
+   -\frac{u_x'^2}{c^2}-\frac{2Vu'_x}{c^2}-\frac{V^2}{c^2}\\
+ &=\left(1-\frac{V^2}{c^2}\right)\left(1-\frac{u_x'^2}{c^2}\right).
+\end{align*}
+再与横向两项合并，使用 $u'^2=u_x'^2+u_y'^2+u_z'^2$，得到
 \[
 1-\frac{u^2}{c^2}
 =\frac{(1-V^2/c^2)(1-u'^2/c^2)}{(1+Vu'_x/c^2)^2}.
@@ -200,24 +219,19 @@ u_z=\frac{u'_z}{\gamma(1+Vu'_x/c^2)}.
 \draw[aux](5,1)--(5.8,1)--(5.8,-1)--(5,-1);\draw[aux](0,1)--(-.8,1)--(-.8,-1)--(0,-1);
 \node[left]at(-.8,0){分束与合束};\draw[dim](0,.15)--(5,.15)node[midway,above]{$l$};
 \end{tikzpicture}}
-对顺水传播，由前述速度变换得到
-\[
-u_+=\frac{c/n+V}{1+V/(nc)}
-\simeq\frac cn+V\left(1-\frac1{n^2}\right).
-\]
-逆水速度的大小为 $|u_-|\simeq c/n-V(1-1/n^2)$。若以 $k=1-1/n^2$ 表示一阶系数，两束光的时间差为
-\[
-\Delta t=\frac{2l}{c/n-kV}-\frac{2l}{c/n+kV}
-\simeq\frac{4lV(n^2-1)}{c^2}.
-\]
-该结果由介质系与装置系之间的速度变换得到，无须假设一种绝对静止的传播介质。
-
-一阶展开中的两项都须保留。由 $(1+V/(nc))^{-1}\simeq1-V/(nc)$，
-\[
-\left(\frac cn+V\right)\left(1-\frac V{nc}\right)
-=\frac cn+V-\frac V{n^2}+O(V^2/c).
-\]
-可见直接把 $c/n$ 与 $V$ 相加会漏掉 $-V/n^2$。在 $n\to1$ 的真空极限，两方向的速率都回到 $c$；在 $V\to0$ 时，则回到静止介质中的 $c/n$。这两个极限也能检查拖曳系数的形式。
+对顺水传播，速度变换给出 $u_+=(c/n+V)/[1+V/(nc)]$。令 $z=V/(nc)$，函数 $g(z)=(1+z)^{-1}$ 满足 $g(0)=1$、$g'(z)=-(1+z)^{-2}$、$g'(0)=-1$，故 $g(z)=1-z+O(z^2)$。固定 $n$，保留到 $V/c$ 的一阶，
+\begin{align*}
+ u_+&=\left(\frac cn+V\right)\left[1-\frac V{nc}+O(V^2/c^2)\right]\\
+ &=\frac cn+V-\frac V{n^2}+O(V^2/c)
+ \simeq\frac cn+V\left(1-\frac1{n^2}\right).
+\end{align*}
+逆水速率以 $V\to-V$ 得 $|u_-|\simeq c/n-V(1-1/n^2)$。若以 $k=1-1/n^2$ 表示一阶系数，两束光各累计 $2l$，先将时间差通分，
+\begin{align*}
+ \Delta t&=\frac{2l}{c/n-kV}-\frac{2l}{c/n+kV}
+ =\frac{4lkV}{(c/n)^2-k^2V^2}\\
+ &\simeq\frac{4lkVn^2}{c^2}=\frac{4lV(n^2-1)}{c^2}.
+\end{align*}
+最后一步在分母中略去二阶小量，给出所需的一阶时间差。该结果由介质系与装置系之间的速度变换得到，无须假设一种绝对静止的传播介质。直接把 $c/n$ 与 $V$ 相加会漏掉展开中的 $-V/n^2$。在 $n\to1$ 的真空极限，两方向的速率都回到 $c$；在 $V\to0$ 时，则回到静止介质中的 $c/n$。这两个极限也能检查拖曳系数的形式。
 
 \subsection{迈克耳孙—莫雷实验}
 
@@ -235,7 +249,12 @@ t_\parallel=\frac l{c-V}+\frac l{c+V}
 =\frac{2l/c}{1-\beta^2},\qquad
 t_\perp=\frac{2l/c}{\sqrt{1-\beta^2}},\quad \beta=V/c.
 \]
-低速展开得 $t_\parallel-t_\perp\simeq l\beta^2/c$。装置转过 $90^\circ$ 后差值反号，预测的条纹移动为
+为保留首个非零差值，令 $x=\beta^2\ll1$。函数 $g(x)=(1-x)^{-1}$ 的导数为 $(1-x)^{-2}$，在零点的函数值与导数均为 $1$，故 $g(x)=1+x+O(x^2)$。函数 $h(x)=(1-x)^{-1/2}$ 的导数为 $\tfrac12(1-x)^{-3/2}$，零点函数值为 $1$、导数为 $1/2$，故 $h(x)=1+x/2+O(x^2)$。代入两时间之差，
+\[
+ t_\parallel-t_\perp=\frac{2l}{c}[g(x)-h(x)]
+ =\frac{2l}{c}\left[\frac x2+O(x^2)\right]\simeq\frac{l\beta^2}{c}.
+\]
+装置转过 $90^\circ$ 后差值反号，故时间差的改变量大小为 $2l\beta^2/c$；乘以 $c$ 换成光程差，再除以波长，预测的条纹移动为
 \[
 \Delta N\simeq\frac{2l}{\lambda}\frac{V^2}{c^2}.
 \]
@@ -255,10 +274,7 @@ t_\perp=\frac{2l/c}{\sqrt{1-\beta^2}},\quad \beta=V/c.
 \end{equation}
 若将 $E/c^2$ 另记为“动质量” $m_{\text{动}}$，则 $m_{\text{动}}=\gamma_um_0$，$\bm p=m_{\text{动}}\bm u$。这只是另一种记号；计算合成粒子的质量时，须明确所求的是不变质量，不能把各粒子的不变质量直接相加。
 
-力定义为 $\bm F=\dd\bm p/\dd t$，功满足 $\dd K=\bm F\cdot\dd\bm r=\bm u\cdot\dd\bm p$。动能的计算以静止时 $K=0$为边界，积分结果记为
-\begin{equation}\label{eq:hrkinetic}
-\boxed{K=(\gamma_u-1)m_0c^2=E-m_0c^2.}
-\end{equation}
+力定义为 $\bm F=\dd\bm p/\dd t$，功满足 $\dd K=\bm F\cdot\dd\bm r=\bm u\cdot\dd\bm p$。动能须从静止时 $K=0$ 的边界连续积分确定。
 对沿直线的运动，$p=m_0u/\sqrt{1-u^2/c^2}$，先对 $\gamma_u$ 使用链式法则：
 \[
  \frac{\dd\gamma_u}{\dd u}
@@ -280,7 +296,11 @@ t_\perp=\frac{2l/c}{\sqrt{1-\beta^2}},\quad \beta=V/c.
  \qquad K(u)=m_0c^2[\gamma']_1^{\gamma_u}
  =(\gamma_u-1)m_0c^2.
 \]
-这样得到式\eqref{eq:hrkinetic}，积分常量已由静止时的动能零点确定。同一微分关系还给出纵向运动的
+积分常量已由静止时的动能零点确定，故总能量与动能的关系为
+\begin{equation}\label{eq:hrkinetic}
+\boxed{K=(\gamma_u-1)m_0c^2=E-m_0c^2.}
+\end{equation}
+同一微分关系还给出纵向运动的
 \[
 F=m_0\gamma_u^3\frac{\dd u}{\dd t}.
 \]

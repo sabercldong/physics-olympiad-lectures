@@ -325,7 +325,12 @@ E_s=kqs\left(\frac1{r_1^3}-\frac1{r_2^3}\right),\quad E_\varphi=0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较近壁平面极限和远处衰减}\par\nobreak
-当 $d=R+a$ 且 $a\ll R$，力趋于 $-kq^2/(4a^2)$，与局部平面结果一致；$d\gg R$ 时力按 $d^{-3}$ 衰减，说明接地球可以从大地取得净量，不能把它当作孤立中性球。\end{solution}
+近壁时先令$d=R+a$，$d^2-R^2=(d-R)(d+R)=a(2R+a)$，因此
+\[
+F_r=-\frac{kq^2R(R+a)}{a^2(2R+a)^2}
+=-\frac{kq^2}{4a^2}\frac{1+a/R}{(1+a/(2R))^2}.
+\]
+当$a/R\ll1$，最后的无量纲因子趋于1，才回到局部平面力$-kq^2/(4a^2)$。远处同样先提出$d$的幂，$F_r=-(kq^2R/d^3)(1-R^2/d^2)^{-2}$，所以$d\gg R$时按$d^{-3}$衰减。接地球可以从大地取得净量，不能把它当作孤立中性球。\end{solution}
 \begin{question}\begin{example}[孤立带电球的力为零条件]\label{e3:example:9}
 半径 $R$ 的孤立金属球净量 $Q$，点电荷 $q\ne0$ 位于距球心 $d>R$ 处。求点电荷受力；求合力为零时 $q,Q,d$ 的关系，并判断径向平衡稳定性。
 \end{example}
@@ -514,7 +519,19 @@ $\sigma_0(s)=Q_0/[4\pi R\sqrt{R^2-s^2}]$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开局部密度并标明消项和边缘限制}\par\nobreak
-因此在中心附近
+先说明有限尺寸与近轴展开的两个小参数。令$\eta=a/R>0$，用$\arctan(R/a)=\pi/2-\arctan\eta$改写总感应量。函数$G(\eta)=\arctan\eta$满足
+\[
+G'(\eta)=\frac1{1+\eta^2},\qquad
+G''(\eta)=-\frac{2\eta}{(1+\eta^2)^2}.
+\]
+由$G(0)=0$、$G'(0)=1$、$G''(0)=0$，零点附近$G(\eta)=\eta+O(\eta^3)$，因而$Q_g=-q+(2q/\pi)\eta+O(q\eta^3)$，附加净量的主项才是$\Delta Q=Q-Q_g\simeq Q+q$。
+
+另令$z=s^2/R^2$。自由盘密度中的几何因子为$1/[R\sqrt{R^2-s^2}]=R^{-2}(1-z)^{-1/2}$。对$H(z)=(1-z)^{-1/2}$用链式法则，$H'(z)=(-1/2)(1-z)^{-3/2}(-1)=\tfrac12(1-z)^{-3/2}$，所以$H(0)=1$、$H'(0)=1/2$，故
+\[
+\sigma_{\text{加}}(s)=\frac{\Delta Q}{4\pi R^2}
+\left[1+\frac{s^2}{2R^2}+O\!\left(\frac{s^4}{R^4}\right)\right].
+\]
+同时只保留$\eta$和$z$的主项，再叠加接地局部解，得到中心附近
 \[
  \sigma_+(s)\simeq-\frac{qa}{2\pi(s^2+a^2)^{3/2}}
  +\frac{Q+q}{4\pi R^2},\qquad

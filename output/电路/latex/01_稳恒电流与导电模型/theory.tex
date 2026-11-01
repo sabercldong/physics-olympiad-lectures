@@ -165,7 +165,14 @@
  \bm j=\frac{ne^2\tau}{m}\bm E,\qquad
  \rho=\frac{m}{ne^2\tau}.
 \]
-这里 $\tau$ 是动量弛豫时间，其定义已经包含所用碰撞统计模型。若另设一个简化模型，规定每次碰撞把定向速度清零，且两次碰撞严格相隔 $T$，那么随机观察时，距上次碰撞的平均时间为 $T/2$，于是平均速度为 $eET/(2m)$，得到 $\rho=2m/(ne^2T)$。这两个表达式中的时间参数含义不同，不能把 $T$ 直接当成 $\tau$，也不能在一道题中混用。
+这里 $\tau$ 是动量弛豫时间，其定义已经包含所用碰撞统计模型。若另设一个简化模型，规定每次碰撞把定向速度清零，且两次碰撞严格相隔 $T$，随机观察时的加速时间 $t$ 在一个周期内均匀分布。因此
+\[
+ \overline t=\frac1T\int_0^Tt\,\dd t
+ =\frac1T\left[\frac{t^2}{2}\right]_0^T=\frac T2,
+ \qquad \overline{\bm v}=-\frac{e\bm E}{m}\overline t
+ =-\frac{eT}{2m}\bm E.
+\]
+再由 $\bm j=-ne\overline{\bm v}$，得到 $\rho=2m/(ne^2T)$。这两个表达式中的时间参数含义不同，不能把 $T$ 直接当成 $\tau$，也不能在一道题中混用。
 
 \fig{c1:relaxation-collision}{左：阶跃电场后的平均漂移速率；右：严格定时清零模型，时间参数含义不同}{\begin{tikzpicture}
 
@@ -183,16 +190,26 @@
 \end{tikzpicture}}
 图\ref{c1:relaxation-collision}左侧取初值 $\bm v_{\rm d}(0)=0$。把平均运动方程写为
 $\dot{\bm v}_{\rm d}+\bm v_{\rm d}/\tau=-e\bm E/m$，
-乘积分因子 $\e^{t/\tau}$：
+乘积分因子 $\e^{t/\tau}$。由于其导数为 $\e^{t/\tau}/\tau$，乘积法则给出
+\[
+ \frac{\dd}{\dd t}(\e^{t/\tau}\bm v_{\rm d})
+ =\e^{t/\tau}\dot{\bm v}_{\rm d}
+ +\frac1\tau\e^{t/\tau}\bm v_{\rm d}
+ =\e^{t/\tau}\left(\dot{\bm v}_{\rm d}+\frac{\bm v_{\rm d}}\tau\right).
+\]
+于是原方程化为
 \[
  \frac{\dd}{\dd t}(\e^{t/\tau}\bm v_{\rm d})
  =-\frac{e\bm E}{m}\e^{t/\tau}.
 \]
 从 $0$ 到 $t$ 积分，
 \[
- \e^{t/\tau}\bm v_{\rm d}(t)-\bm v_{\rm d}(0)
- =-\frac{e\bm E}{m}[\tau\e^{s/\tau}]_0^t
+ \begin{aligned}
+ [\e^{s/\tau}\bm v_{\rm d}(s)]_0^t
+ &=-\frac{e\bm E}{m}\int_0^t\e^{s/\tau}\dd s\\
+ &=-\frac{e\bm E}{m}[\tau\e^{s/\tau}]_0^t
  =-\frac{e\tau\bm E}{m}(\e^{t/\tau}-1).
+ \end{aligned}
 \]
 除以积分因子并代入零初值，得到
 \[
@@ -210,8 +227,11 @@ $\dot{\bm v}_{\rm d}+\bm v_{\rm d}/\tau=-e\bm E/m$，
 
 金属棒和晶格突然停止时，自由电子因惯性仍有相对晶格的初速度。如果在给定阶段可以忽略新建立的电场及边界效应，电子速度满足 $m\dot v=-bv$，其中 $b=ne^2\rho$。记 $\tau=m/b$。对 $v_0\ne0$，分离变量并用初值，
 \[
- \int_{v_0}^{v(t)}\frac{\dd u}{u}=-\frac1\tau\int_0^t\dd s,
- \qquad \ln\left|\frac{v(t)}{v_0}\right|=-t/\tau.
+ \begin{aligned}
+ \int_{v_0}^{v(t)}\frac{\dd u}{u}&=-\frac1\tau\int_0^t\dd s,\\
+ [\ln|u|]_{v_0}^{v(t)}&=-\frac1\tau[s]_0^t,\\
+ \ln\left|\frac{v(t)}{v_0}\right|&=-t/\tau.
+ \end{aligned}
 \]
 速度在有限时间不变号，故 $v=v_0\e^{-t/\tau}$；
 $v_0=0$ 时直接取零解。再积分位移，
@@ -317,8 +337,17 @@ $v_0=0$ 时直接取零解。再积分位移，
 $\delta=\theta-\theta_*$，则 $C\dot\delta=-k_{\rm eff}\delta$。
 若 $\delta(0)\ne0$，分离变量积分为
 \[
+ \begin{aligned}
  \int_{\delta(0)}^{\delta(t)}\frac{\dd u}{u}
- =-\frac{k_{\rm eff}}{C}\int_0^t\dd s,\qquad
+ &=-\frac{k_{\rm eff}}{C}\int_0^t\dd s,\\
+ [\ln|u|]_{\delta(0)}^{\delta(t)}
+ &=-\frac{k_{\rm eff}}{C}[s]_0^t,\\
+ \ln\left|\frac{\delta(t)}{\delta(0)}\right|
+ &=-\frac{k_{\rm eff}t}{C}.
+ \end{aligned}
+\]
+指数化后先得 $|\delta(t)/\delta(0)|=\e^{-k_{\rm eff}t/C}$。非零初值的解保持原符号，因此
+\[
  \delta(t)=\delta(0)\e^{-k_{\rm eff}t/C}.
 \]
 初始偏差为零时原方程直接给 $\delta=0$。偏差随时间衰减，
@@ -369,4 +398,10 @@ $\delta=\theta-\theta_*$，则 $C\dot\delta=-k_{\rm eff}\delta$。
 \end{scope}
 
 \end{tikzpicture}}
-例如 $U=aI+bI^3\ (a,b>0)$，在图\ref{c1:nonlinear-slopes}的工作点有 $R_{\rm stat}=a+bI^2$、$r_{\rm diff}=a+3bI^2$。前者描述该工作点的总电压与电流之比，后者描述在该点附近的小变化 $\dd U\simeq r_{\rm diff}\dd I$。只有当非线性项可忽略时，二者才近似相同。
+例如 $U=aI+bI^3\ (a,b>0)$，在图\ref{c1:nonlinear-slopes}的工作点，先按定义求割线斜率，再把 $a,b$ 作为常数对 $I$ 求导：
+\[
+ R_{\rm stat}=\frac{aI+bI^3}{I}=a+bI^2,\qquad
+ r_{\rm diff}=a\frac{\dd I}{\dd I}
+ +b\frac{\dd I^3}{\dd I}=a+3bI^2.
+\]
+前者描述该工作点的总电压与电流之比，后者描述在该点附近的小变化 $\dd U\simeq r_{\rm diff}\dd I$。只有当非线性项可忽略时，二者才近似相同。

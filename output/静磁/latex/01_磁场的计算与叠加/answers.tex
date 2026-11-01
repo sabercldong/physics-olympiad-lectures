@@ -96,7 +96,12 @@ B=\begin{cases}0,&r<a,\\
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查两边界连续性与最大值}\par\nobreak
-在 $r=a$ 中间式为零，在 $r=b$ 与外式相等，场连续。导体内中间式的导数为 $\mu_0J(1+a^2/r^2)/2>0$，所以最大值仍在外表面，不能把“导体中电流密度均匀”等同于“场在导体内均匀”。\end{drillsolution}
+在 $r=a$ 中间式为零，在 $r=b$ 与外式相等，场连续。导体内先把中间式改写为 $B=(\mu_0J/2)(r-a^2r^{-1})$，再对 $r$ 求导：
+\[
+ B'(r)=\frac{\mu_0J}{2}[1-a^2(-1)r^{-2}]
+ =\frac{\mu_0J}{2}\left(1+\frac{a^2}{r^2}\right)>0.
+\]
+所以最大值仍在外表面，不能把“导体中电流密度均匀”等同于“场在导体内均匀”。\end{drillsolution}
 \begin{drillsolution}{mg1:drill:6}\textbf{由中面对称和内部矩形环路求线性场}\par\nobreak
 图\ref{fig:mg1:drill:6:s}关于中面反射对称，$\bm B(0)=0$，场沿 $x$。对 $0<y<a$，取长边在中面与高度 $y$ 的矩形，包围电流为 $JyL$。上边的场向 $-x$，环路定理按大小给 $BL=\mu_0JyL$，故 $\bm B=-\mu_0Jy\bm e_x$。反射后该式也适用于负 $y$。
 \fig{fig:mg1:drill:6:p}{解答过程：厚电流层的连续磁场}{\begin{tikzpicture}[scale=.88]
@@ -121,7 +126,13 @@ B=\begin{cases}0,&r<a,\\
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{写出三段场并区分实体边界与薄面跳变}\par\nobreak
 所以图\ref{fig:mg1:drill:7:p}三段场大小依次为 $\mu_0Ir/(2\pi a^2)$、$\mu_0I/(2\pi r)$、0，前两段环向相同。内柱边界 $r=a$ 连续，薄外导体面 $r=b$ 的两侧场则发生跳变，差值 $\mu_0I/(2\pi b)$ 对应外层面电流密度。这里“净包围电流为零推出外场零”依赖圆柱对称，不能把这个推理照搬到任意形状的两条回路线。\end{drillsolution}
 \begin{drillsolution}{mg1:drill:8}\textbf{先成对消去分量，再对离散导线求和}\par\nobreak
-由图\ref{fig:mg1:drill:8:s}，第 $k$ 根线在 $P$ 的场之 $x$ 分量为 $-\mu_0Iy/[2\pi((kd)^2+y^2)]$。正、负 $k$ 两根线的 $y$ 分量相消，因此将这些 $x$ 分量求和。代入给出的恒等式，得到 $\bm B=-[\mu_0I/(2d)]\coth(\pi y/d)\bm e_x$。
+由图\ref{fig:mg1:drill:8:s}，第 $k$ 根线在 $P$ 的场之 $x$ 分量为 $-\mu_0Iy/[2\pi((kd)^2+y^2)]$。正、负 $k$ 两根线的 $y$ 分量相消，因此将这些 $x$ 分量求和。代入给出的恒等式，
+\[
+ B_x=-\frac{\mu_0Iy}{2\pi}\sum_{k=-\infty}^{\infty}
+ \frac1{(kd)^2+y^2}
+ =-\frac{\mu_0Iy}{2\pi}\frac{\pi}{dy}\coth\frac{\pi y}{d}.
+\]
+约去 $\pi,y$，得到 $\bm B=-[\mu_0I/(2d)]\coth(\pi y/d)\bm e_x$。
 \fig{fig:mg1:drill:8:p}{离散场大小大于连续面值，近线极限和1\%阈值由同一曲线给出}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(4.4,0)node[right]{$y/d$};\draw[axis](0,0)--(0,4.3)node[above]{$B/B_c$};
@@ -139,4 +150,13 @@ B=\begin{cases}0,&r<a,\\
 图\ref{fig:mg1:drill:8:p}的连续面值为 $B_c=\mu_0I/(2d)$，故相对增加为 $\coth u-1$，其中 $u=\pi y/d$。用 $\coth u=(\e^{2u}+1)/(\e^{2u}-1)$，不等式化为 $2/(\e^{2u}-1)\le0.01$，依次得到 $\e^{2u}\ge201$、$y/d\ge\ln201/(2\pi)=0.844$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{取近线极限，检查连续近似的适用尺度}\par\nobreak
-当 $y\ll d$，$\coth(\pi y/d)\simeq d/(\pi y)$，结果回到最近那根长直线的 $\mu_0I/(2\pi y)$，把远场与近场两种尺度接续起来。\end{drillsolution}
+令 $u=\pi y/d\to0^+$。指数函数的导数为 $\dd\e^{2u}/\dd u=2\e^{2u}$，故在零点的一阶展开为 $\e^{2u}=1+2u+O(u^2)$。将它代入双曲余切的分式，
+\[
+ \coth u=\frac{2+2u+O(u^2)}{2u+O(u^2)}\sim\frac1u.
+\]
+所以 $y\ll d$ 时 $\coth(\pi y/d)\simeq d/(\pi y)$，磁场大小为
+\[
+ B\simeq\frac{\mu_0I}{2d}\frac{d}{\pi y}
+ =\frac{\mu_0I}{2\pi y},
+\]
+回到最近那根长直线的场，把远场与近场两种尺度接续起来。\end{drillsolution}

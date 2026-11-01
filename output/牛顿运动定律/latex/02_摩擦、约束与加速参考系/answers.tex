@@ -10,7 +10,17 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别解两侧摩擦边界并与驱动范围取交集}\par\nobreak
-右侧不等式给 $A\ge g(\sin\theta-\mu_s\cos\theta)/(\cos\theta+\mu_s\sin\theta)$；左侧在题设 $\mu_s<\cot\theta$ 下给 $A\le g(\sin\theta+\mu_s\cos\theta)/(\cos\theta-\mu_s\sin\theta)$。与 $A\ge0$ 取交集，得到图\ref{n2d1s}的区间
+先解右侧不等式，将常量与含 $A$的项分别移到两侧：
+\[
+ g(\sin\theta-\mu_s\cos\theta)
+ \le A(\cos\theta+\mu_s\sin\theta).
+\]
+右边系数为正，故 $A\ge g(\sin\theta-\mu_s\cos\theta)/(\cos\theta+\mu_s\sin\theta)$。再解左侧不等式，同样整理得
+\[
+ A(\cos\theta-\mu_s\sin\theta)
+ \le g(\sin\theta+\mu_s\cos\theta).
+\]
+题设 $\mu_s<\cot\theta$保证左边系数也为正，相除得到 $A\le g(\sin\theta+\mu_s\cos\theta)/(\cos\theta-\mu_s\sin\theta)$。最后与 $A\ge0$取交集，得到图\ref{n2d1s}的区间
 \[
  \max\left\{0,\frac{g(\sin\theta-\mu_s\cos\theta)}{\cos\theta+\mu_s\sin\theta}\right\}
  \le A\le\frac{g(\sin\theta+\mu_s\cos\theta)}{\cos\theta-\mu_s\sin\theta}.

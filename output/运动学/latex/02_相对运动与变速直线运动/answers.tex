@@ -6,12 +6,35 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检验相对位置顶点能否达到零}\par\nobreak
-对 $F(t)=u(t-T)-a_0t^2/2$ 逐项求导，$F'(t)=u-a_0t$、$F''(t)=-a_0<0$。解 $F'=0$ 得图\ref{k2p15s}的抛物线顶点 $t_*=u/a_0$，代回得 $F(t_*)=u(u/a_0-T)-a_0(u/a_0)^2/2=u^2/(2a_0)-uT$。当顶点在 $t\ge T$ 内时，要追上须该值非负，即 $u\ge2a_0T$，所以 $\boxed{a_0\le g\sin\theta/2}$。此条件也使 $t_*\ge2T$，确实属于下滑结束后的阶段；若顶点早于 $T$，$F$ 在允许区间只会下降，且 $F(T)=-a_0T^2/2<0$，不可能追上。等号时在 $t=2T$ 刚好追上且速度相同；若要求随后超过，应取严格小于。条件与斜面长度无关，因为速度 $u$ 与下滑用时 $T$ 成同一比例。
+对 $F(t)=u(t-T)-a_0t^2/2$求导时，$u,T,a_0$均为常量：
+\[
+ F'(t)=u\frac{\dd(t-T)}{\dd t}-\frac{a_0}{2}(2t)=u-a_0t,
+ \qquad F''(t)=-a_0<0.
+\]
+解 $F'=0$得图\ref{k2p15s}的抛物线顶点 $t_*=u/a_0$，代回逐项化简：
+\[
+ F(t_*)=u\left(\frac u{a_0}-T\right)
+ -\frac{a_0}{2}\frac{u^2}{a_0^2}
+ =\frac{u^2}{2a_0}-uT.
+\]
+当顶点在 $t\ge T$内时，要追上须该值非负。由于 $u,a_0,T>0$，依次得到
+\[
+ \frac{u^2}{2a_0}-uT\ge0
+ \quad\Longleftrightarrow\quad u\ge2a_0T
+ \quad\Longleftrightarrow\quad
+ \boxed{a_0\le\frac{g\sin\theta}{2}}.
+\]
+最后一步代入 $u=g\sin\theta\,T$并约去 $T$。此条件也使 $t_*\ge2T$，确实属于下滑结束后的阶段；若顶点早于 $T$，$F$在允许区间只会下降，且 $F(T)=-a_0T^2/2<0$，不可能追上。等号时在 $t=2T$刚好追上且速度相同；若要求随后超过，应取严格小于。条件与斜面长度无关，因为速度 $u$与下滑用时 $T$成同一比例。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用最早交点核对追及发生的时段}\par\nobreak
-联立位置也可写成 $a_0t^2-2ut+2uT=0$。判别式非负等价于 $u\ge2a_0T$。取最早根 $t_-=[u-\sqrt{u^2-2a_0uT}]/a_0$，通过有理化可见 $T<t_-\le2T$，所以它确实在 $B$到达底端之后；大根代表 $A$继续加速后再次追上 $B$。临界时两根合并，恰是相切的同速相遇。\end{drillsolution}
+联立位置也可写成 $a_0t^2-2ut+2uT=0$。判别式 $4u^2-8a_0uT\ge0$等价于 $u\ge2a_0T$。最早根作有理化，得到
+\[
+ t_- =\frac{u-\sqrt{u^2-2a_0uT}}{a_0}
+ =\frac{2uT}{u+\sqrt{u^2-2a_0uT}}.
+\]
+根号在 $[0,u)$内，分母在 $[u,2u)$内，故 $T<t_-\le2T$，确实在 $B$到达底端之后；大根代表 $A$继续加速后再次追上 $B$。临界时两根合并，恰是相切的同速相遇。\end{drillsolution}
 
 \begin{drillsolution}{k2p16}\textbf{先寻找两车仍在制动时的最大闭合量}\par\nobreak
 对图\ref{k2p16q}先设 $\Delta v=v_1-v_2$。若最危险状态发生在汽车停住前，此时闭合速率为 $\Delta v-(a-a_2)t$；要在这段内由接近转为远离，须 $a>a_2$，过零时刻为 $t_* =\Delta v/(a-a_2)$。从初始时刻积分到它，
@@ -27,7 +50,16 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{前车先停时改用停车距离差}\par\nobreak
-图\ref{k2p16s}区分提前速度相等和前车先停车的情形。若 $s\ge s_*$，最大闭合量在两车均停住后取得，此时用停车距离差：$v_1^2/(2a)-v_2^2/(2a_2)=s$。综上
+图\ref{k2p16s}区分提前速度相等和前车先停车的情形。若 $s\ge s_*$，最大闭合量在后车停车时取得。两车各积分到自己的停车时刻，不把负速度段算入位移：
+\begin{align*}
+ s_1&=\int_0^{v_1/a}(v_1-a\tau)\dd\tau
+ =\left[v_1\tau-\frac a2\tau^2\right]_0^{v_1/a}
+ =\frac{v_1^2}{2a},\\
+ s_2&=\int_0^{v_2/a_2}(v_2-a_2\tau)\dd\tau
+ =\left[v_2\tau-\frac{a_2}{2}\tau^2\right]_0^{v_2/a_2}
+ =\frac{v_2^2}{2a_2}.
+\end{align*}
+临界条件为 $s_1-s_2=s$，即 $v_1^2/a=2s+v_2^2/a_2$，解出 $a=v_1^2/(2s+v_2^2/a_2)$。综上
 \[\boxed{a_{\min}=\begin{cases}a_2+\dfrac{(v_1-v_2)^2}{2s},&s\le s_*,\\[3pt]\dfrac{v_1^2}{2s+v_2^2/a_2},&s\ge s_* .\end{cases}}\]
 两分支在 $s=s_*$ 都给 $a_2v_1/v_2$，连续相接。这里的等号是临界接触极限，严格不接触需略增 $a$。若忽略前车停车后的阶段，小加速度、大间距分支就会被误判。
 
@@ -48,9 +80,14 @@
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{判断后两车属于哪一个制动分支}\par\nobreak
 图\ref{k2p17s}给出三车速度图。对 $A,B$，阈值为 $8(9-8)/(2b)=20/7$m，小于实际5m，应采用最终停车距离差：
-\[\frac{9^2}{2a}-\frac{8^2}{2b}=5,\qquad
-\boxed{a_{A,\min}=\frac{81}{10+64/(7/5)}=\frac{189}{130}\ \mathrm{m/s^2}}.
+\[
+ \frac{9^2}{2a}-\frac{8^2}{2b}=5
+ \quad\Longrightarrow\quad
+ \frac{81}{a}=10+\frac{64}{7/5}=\frac{390}{7}.
 \]
+取倒数并乘以81，得到
+\[\boxed{a_{A,\min}=\frac{81\times7}{390}
+ =\frac{189}{130}\ \mathrm{m/s^2}}.\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按各自危险时刻复查三车间距}\par\nobreak
@@ -62,7 +99,14 @@
 由图\ref{k2p18q}，首碰前 $B$静止，$A$的位移满足 $at_1^2/2=l$，故 $t_1=\sqrt{2l/a}$，碰前速度 $u=at_1=\sqrt{2al}$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从交换后的相对初值求重复间隔}\par\nobreak
-交换后两者相对速度是 $-u$，随后相对加速度为 $a$。再相遇要求 $-u\tau+a\tau^2/2=0$，排除刚碰后的零根，得到 $\tau=2u/a$。碰前相对速度又恢复为 $u$，所以这个间隔逐次重复：
+以每次碰后为当地时间 $\tau=0$，令 $r=x_A-x_B$，则 $r(0)=0$、$\dot r(0)=-u$、$\ddot r=a$。逐次带初值积分：
+\begin{align*}
+ \dot r(\tau)+u&=\int_0^\tau a\dd s=[as]_0^\tau=a\tau,\\
+ r(\tau)&=\int_0^\tau(-u+as)\dd s
+ =\left[-us+\frac a2s^2\right]_0^\tau
+ =-u\tau+\frac a2\tau^2.
+\end{align*}
+再相遇要求 $r=0$，即 $\tau(-u+a\tau/2)=0$。排除刚碰后的零根，得到 $\tau=2u/a$。这时 $\dot r=-u+a(2u/a)=u$；速度交换使相对速度再次变成 $-u$，所以这个间隔逐次重复：
 \[\boxed{t_{n+1}-t_n=2\sqrt{2l/a}},\qquad t_n=(2n-1)t_1.
 \]
 \fig{k2p18s}{交换速度的连续碰撞：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(6.4,0)node[right]{$t$};\draw[axis](0,0)--(0,3.6)node[above]{$v$};\draw[world,blue](0,0)--(1,1);\draw[world,blue](1,0)--(3,2);\draw[world,blue](3,1)--(5,3);\draw[world,red](1,1)--(3,1) (3,2)--(5,2) (5,3)--(6,3);\draw[guide](1,0)--(1,1) (3,1)--(3,2) (5,2)--(5,3);\node[below]at(1,0){$t_1$};\node[below]at(3,0){$t_2$};\node[below]at(5,0){$t_3$};\node[above]at(4,3){蓝：$A$\quad 红：$B$};\end{tikzpicture}}
@@ -70,10 +114,13 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按每段恒速累加前块位移}\par\nobreak
-图\ref{k2p18s}中，第 $k$与第 $k+1$次碰撞间 $B$带速 $ku$，于是从自身初位置累计的位移为
-\[\Delta x_B(n)=\sum_{k=1}^{n-1}ku\frac{2u}{a}
-=\frac{u^2}{a}n(n-1)=\boxed{2ln(n-1)}.
-\]
+图\ref{k2p18s}中，首碰后 $B$带速 $u$，$A$带速零。在下一间隔内 $A$增加速度 $a(2u/a)=2u$，再次交换后 $B$带速 $2u$、$A$带速 $u$。同理，每次交换使 $B$所得速度增加 $u$，故第 $k$与第 $k+1$次碰撞间 $B$带速 $ku$。从自身初位置累计的位移为
+\begin{align*}
+ \Delta x_B(n)&=\sum_{k=1}^{n-1}ku\frac{2u}{a}
+ =\frac{2u^2}{a}\frac{(n-1)n}{2}\\
+ &=\frac{u^2}{a}n(n-1)=\boxed{2ln(n-1)}.
+\end{align*}
+这里使用等差数列求和 $1+\cdots+(n-1)=n(n-1)/2$和 $u^2=2al$；$n=1$时尚无带速前进段，结果为零。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广到两块均有加速度：先比较停车时刻}\par\nobreak
@@ -82,7 +129,22 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{前块先停车时重新建立下一段追及方程}\par\nobreak
-当 $a_1<a_2$，第 $n$次碰后 $A$静止、$B$带速 $u_n$。$B$先停在前方 $u_n^2/(2a_2)$处，$A$追到此处的时间为 $u_n/\sqrt{a_1a_2}>u_n/a_2$，确实晚于 $B$停车。碰前 $A$速率为 $u_n\sqrt{a_1/a_2}$，交换后成为下一段的 $u_{n+1}$。因此
+当 $a_1<a_2$，首次碰后 $A$静止、$B$带速 $u_1$。设第 $n$次碰后仍为 $A$静止、$B$带速 $u_n$，先验证下一碰撞也保持这一形式。$B$的停车时间为 $\tau_s=u_n/a_2$，停车位移为
+\[
+ L_n=\int_0^{u_n/a_2}(u_n-a_2s)\dd s
+ =\left[u_ns-\frac{a_2}{2}s^2\right]_0^{u_n/a_2}
+ =\frac{u_n^2}{2a_2}.
+\]
+在 $B$停车以前，相对位置方程的非零交点候选为 $2u_n/(a_1+a_2)$。它大于 $u_n/a_2$，所以该候选超出共同制动阶段，实际应改用 $B$已停住的方程。$A$从静止追到固定位置 $L_n$，须满足
+\[
+ \frac{a_1}{2}\tau_n^2=\frac{u_n^2}{2a_2},
+ \qquad \tau_n=\frac{u_n}{\sqrt{a_1a_2}}>\frac{u_n}{a_2}.
+\]
+碰前 $A$速率为 $a_1\tau_n=u_n\sqrt{a_1/a_2}$，而 $B$已静止，交换后 $A$又静止，故递推假设成立。令 $q=\sqrt{a_1/a_2}$，则
+\[u_{n+1}=q u_n,\qquad u_n=u_1q^{n-1},\qquad
+ \tau_n=\frac{u_1}{\sqrt{a_1a_2}}q^{n-1}.
+\]
+因此
 \[\boxed{t_{n+1}-t_n=\begin{cases}
 \dfrac{2u_1}{a_1+a_2},&a_1\ge a_2,\\[5pt]
 \dfrac{u_1}{\sqrt{a_1a_2}}\left(\sqrt{\dfrac{a_1}{a_2}}\right)^{n-1},&a_1<a_2.

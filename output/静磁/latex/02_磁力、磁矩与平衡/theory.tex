@@ -145,12 +145,19 @@ IlB\cos\alpha=\mu(mg-IlB\sin\alpha).
 选择零点使 $U(0)=-mB$，得到有效势能 $U=-mB\cos\theta$。其微分满足 $\dd U=mB\sin\theta\dd\theta$；磁力矩作功为 $-\dd U$，因此平行位置势能最低，反平行位置势能最高。
 
 
-在平行位置令 $\theta$ 很小，$U=-mB+mB\theta^2/2+O(\theta^4)$。若转动惯量为 $J$，微振动方程为 $J\ddot\theta+mB\theta=0$，令 $\omega_0^2=mB/J$，以 $\theta\propto\e^{st}$ 代入，特征方程
+在平行位置令 $\theta$ 很小，$U=-mB+mB\theta^2/2+O(\theta^4)$。若转动惯量为 $J$，微振动方程为 $J\ddot\theta+mB\theta=0$，令 $\omega_0^2=mB/J$。试取 $\theta=\e^{st}$，两次求导为 $\dot\theta=s\e^{st}$、$\ddot\theta=s^2\e^{st}$。代入后 $(s^2+\omega_0^2)\e^{st}=0$，约去非零指数，特征方程
 $s^2+\omega_0^2=0$ 给出 $s=\pm\mathrm i\omega_0$。实通解为
 $\theta=A\cos\omega_0t+D\sin\omega_0t$；若
 $\theta(0)=\theta_i,\dot\theta(0)=\Omega_i$，则
-$A=\theta_i,D=\Omega_i/\omega_0$。对通解求导两次得到
-$\ddot\theta=-\omega_0^2\theta$，代回原方程为零，因此角频率为 $\sqrt{mB/J}$。在反平行位置写 $\theta=\pi+\delta$，二次项变成 $-mB\delta^2/2$，小扰动被放大。由能量曲率判断稳定性，与由力矩方向判断相互检验。
+$A=\theta_i,D=\Omega_i/\omega_0$。对通解求导两次核验，
+\[
+ \begin{aligned}
+ \dot\theta&=-A\omega_0\sin\omega_0t+D\omega_0\cos\omega_0t,\\
+ \ddot\theta&=-A\omega_0^2\cos\omega_0t-D\omega_0^2\sin\omega_0t
+ =-\omega_0^2\theta.
+ \end{aligned}
+\]
+代回原方程为零，因此角频率为 $\sqrt{mB/J}$。在反平行位置写 $\theta=\pi+\delta$，二次项变成 $-mB\delta^2/2$，小扰动被放大。由能量曲率判断稳定性，与由力矩方向判断相互检验。
 
 
 这里的 $-mB$ 是维持电流等外界条件下描述机械自由度的有效势能。电流由电源维持时，回路转动伴随磁通改变，电源也可能交换能量，不能把机械势能变化直接等同于整个空间磁场能的变化。若回路电阻、自感及电流的时间变化参与题目，必须另列电路方程；若永久磁矩大小可视为常量，才可直接按固定磁矩处理。说明保持不变的量，是使用势能方法的必要环节。
@@ -235,9 +242,9 @@ F_z=-IaB_r\int_0^{2\pi}\dd\varphi
 对于球对称且电荷质量同比分布的刚体，角动量与角速度平行。在均匀磁场中，$\dd\bm L/\dd t=(Q/2M)\bm L\times\bm B$。这个变化始终垂直于 $\bm L$，所以角动量大小不变，只绕磁场进动。写成 $\dd\bm L/\dd t=\bm\Omega_p\times\bm L$，得到 $\bm\Omega_p=-Q\bm B/(2M)$。负号来自交换叉积次序。也可显式解分量方程：取
 $\bm B=B\bm e_z$，记 $\gamma=QB/(2M)$，则
 $\dot L_x=\gamma L_y,\ \dot L_y=-\gamma L_x,\ \dot L_z=0$。
-对第一式再求导，$\ddot L_x=-\gamma^2L_x$，特征根为
-$\pm\mathrm i\gamma$。由 $L_x(0)=L_{x0}$、
-$\dot L_x(0)=\gamma L_{y0}$ 确定
+对第一式再求导，$\gamma$ 为常数，因此 $\ddot L_x=\gamma\dot L_y=-\gamma^2L_x$。试取 $L_x=\e^{st}$，两次求导为 $s\e^{st},s^2\e^{st}$，代入得到 $(s^2+\gamma^2)\e^{st}=0$，特征根为
+$\pm\mathrm i\gamma$。令 $L_x=A\cos\gamma t+D\sin\gamma t$，求导为 $\dot L_x=-\gamma A\sin\gamma t+\gamma D\cos\gamma t$。由 $L_x(0)=L_{x0}$、
+$\dot L_x(0)=\gamma L_{y0}$ 确定 $A=L_{x0},D=L_{y0}$，再由 $L_y=\dot L_x/\gamma$ 得到
 \[
  L_x=L_{x0}\cos\gamma t+L_{y0}\sin\gamma t,\quad
  L_y=L_{y0}\cos\gamma t-L_{x0}\sin\gamma t,\quad L_z=L_{z0}.

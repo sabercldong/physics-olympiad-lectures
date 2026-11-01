@@ -158,13 +158,16 @@ $x=0,l$ 对应 $u=a,b$；于是
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{线性化扰动判断平衡稳定}\par\nobreak
 图\ref{fig:c1:drill:8:p} 中温升偏离平衡值 $\delta\theta$ 后，满足 $C\delta\dot\theta=-(k-\alpha I^2R_0)\delta\theta$，记 $k_{\rm eff}=k-\alpha I^2R_0>0$，非零初始偏差满足
 \[
- \int_{\delta\theta(0)}^{\delta\theta(t)}
- \frac{\dd u}{u}
- =-\frac{k_{\rm eff}}C\int_0^t\dd s,\qquad
+ \begin{aligned}
+ \int_{\delta\theta(0)}^{\delta\theta(t)}\frac{\dd u}{u}
+ &=-\frac{k_{\rm eff}}C\int_0^t\dd s,\\
+ [\ln|u|]_{\delta\theta(0)}^{\delta\theta(t)}
+ &=-\frac{k_{\rm eff}}C[s]_0^t,\\
  \ln\left|\frac{\delta\theta(t)}{\delta\theta(0)}\right|
- =-\frac{k_{\rm eff}t}{C}.
+ &=-\frac{k_{\rm eff}t}{C}.
+ \end{aligned}
 \]
-所以 $\delta\theta(t)=\delta\theta(0)\e^{-k_{\rm eff}t/C}$；
+取指数先得偏差绝对值之比为 $\e^{-k_{\rm eff}t/C}$。解在有限时间内保持初始符号，所以 $\delta\theta(t)=\delta\theta(0)\e^{-k_{\rm eff}t/C}$；
 初始偏差为零则保持零。偏差衰减，所以平衡稳定。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分析没有非负稳态的参数范围}\par\nobreak
@@ -240,8 +243,15 @@ $\dot I=-(b/m)I$。记 $\tau=m/b$，用 $I(0)=I_0>0$ 积分：
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{加入几何自感说明真实环路测量的约束量}\par\nobreak
 这是题设微观简化模型的估计，不是与环几何无关的普遍实验上限。真实闭合环的电磁自感使总惯性含几何电感，宏观衰减满足 $(L_g+L_k)\dot I+RI=0$，其中动能电感 $L_k=m l/(ne^2S)$。对该宏观方程同样分离变量，
 \[
+ \begin{aligned}
  \int_{I_0}^{I(t)}\frac{\dd i}{i}
- =-\frac{R}{L_g+L_k}\int_0^t\dd s,\qquad
+ &=-\frac{R}{L_g+L_k}\int_0^t\dd s,\\
+ [\ln i]_{I_0}^{I(t)}&=-\frac{R}{L_g+L_k}[s]_0^t,\\
+ \ln\frac{I(t)}{I_0}&=-\frac{Rt}{L_g+L_k}.
+ \end{aligned}
+\]
+这里 $I_0>0$，衰减解保持正号。两边取指数并乘 $I_0$，得到
+\[
  I(t)=I_0\e^{-Rt/(L_g+L_k)}.
 \]
 这说明应由观测到的指数衰减率限制总电感参与后的比值。缺少几何电感资料时，不能把简化数字宣称为任意超导实验的严格电阻率上限；能直接限制的是 $R/(L_g+L_k)$。\end{drillsolution}

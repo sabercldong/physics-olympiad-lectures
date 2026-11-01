@@ -129,7 +129,12 @@ y_t=-u f'(\eta),\quad y_{tt}=(-u)f''(\eta)(-u)=u^2f''(\eta),
 \[
 \dd X=[1+\partial_x\xi]\dd x.
 \]
-横截面积固定时，质量守恒给出$\rho(x,t)[1+\partial_x\xi]=\rho_0$。在线性小形变下展开倒数，得$\Delta\rho=-\rho_0\partial_x\xi$。图\ref{fig:w2:longitudinalmap}中右端位移比左端更小，间距缩短，正对应$\partial_x\xi<0$、密度增加；位移的正负本身并不决定疏密。
+横截面积固定时，质量守恒给出$\rho(x,t)[1+\partial_x\xi]=\rho_0$。令$\varepsilon=\partial_x\xi$，先从精确密度减去平衡密度，
+\[
+\Delta\rho=\frac{\rho_0}{1+\varepsilon}-\rho_0
+=-\frac{\rho_0\varepsilon}{1+\varepsilon}.
+\]
+在$|\varepsilon|\ll1$时，分母用$1$代替造成的误差为二阶量，因此一阶密度变化为$\Delta\rho\simeq-\rho_0\partial_x\xi$。图\ref{fig:w2:longitudinalmap}中右端位移比左端更小，间距缩短，正对应$\partial_x\xi<0$、密度增加；位移的正负本身并不决定疏密。
 
 \fig{fig:w2:longitudinalmap}{相邻质点的间距变化决定压缩和稀疏}{\begin{tikzpicture}[scale=.88]\node[left]at(0,1.5){平衡};\node[left]at(0,0){压缩};\draw[guide](.2,1.5)--(5.4,1.5);\draw[guide](.2,0)--(5.4,0);\fill(1,1.5)circle(3pt)node[above]{$x$};\fill(4.5,1.5)circle(3pt)node[above]{$x+\dd x$};\fill(1.8,0)circle(3pt)node[below]{$X$};\fill(4.2,0)circle(3pt)node[below]{$X+\dd X$};\draw[flow](1,1.25)--(1.8,.25);\draw[flow](4.5,1.25)--(4.2,.25);\draw[dim](1,2.2)--(4.5,2.2)node[midway,above]{$\dd x$};\draw[dim](1.8,-.8)--(4.2,-.8)node[midway,below]{$\dd X<\dd x$};\end{tikzpicture}}
 介质的体积弹性模量记为$B$。小压缩引起的压强增量$p'=-B\partial_x\xi$，其中声波中的$B$应采用相应热过程的有效模量。截面积$S$的微元受到的纵向合力为$-S\partial_xp'\dd x$，质量为$\rho_0S\dd x$，于是
@@ -139,7 +144,12 @@ y_t=-u f'(\eta),\quad y_{tt}=(-u)f''(\eta)(-u)=u^2f''(\eta),
 \]
 柔弦和纵波的回复机制不同，但都由局部形变产生相邻微元的合力，再与惯性比较得到波速。这里未考虑黏滞耗散；对于气体的较快声学扰动，压缩通常接近绝热，不能直接将缓慢等温压缩测得的模量不加说明地代入。
 
-若$\xi=A\cos(\omega t-kx)$，则$p'=-BkA\sin(\omega t-kx)$。位移波峰处空间斜率为零，密度与压强扰动为零；位移过零且斜率最负处才是最强压缩。两类图相差四分之一波长。闭端要求空气不能纵向移动，故位移为零而压强可最大；开端近似与外界等压，情况相反，这为下一讲的声管边界提供依据。
+若$\xi=A\cos(\omega t-kx)$，在固定$t$时对$x$用链式法则，
+\[
+\partial_x\xi=[-A\sin(\omega t-kx)](-k)
+=Ak\sin(\omega t-kx).
+\]
+代入$p'=-B\partial_x\xi$，得到$p'=-BkA\sin(\omega t-kx)$。位移波峰处空间斜率为零，密度与压强扰动为零；位移过零且斜率最负处才是最强压缩。两类图相差四分之一波长。闭端要求空气不能纵向移动，故位移为零而压强可最大；开端近似与外界等压，情况相反，这为下一讲的声管边界提供依据。
 
 \fig{fig:w2:longphase}{同一时刻的纵向位移与压强；压缩峰在位移过零处}{\begin{tikzpicture}
 

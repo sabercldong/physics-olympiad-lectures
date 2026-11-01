@@ -2,8 +2,12 @@
 
 \begin{drillsolution}{em3:drill:1}\textbf{先分自由下落、部分进入和完全进入三阶段}\par\nobreak
 图\ref{fig:em3:drill:1:s}中进入前无电流、磁力为零；下边到上边界时速度 $u=\sqrt{2gh}$。从此刻重新计时 $s$，直到上边也进入磁区，只有一横边受磁力。令 $\gamma=B^2l^2/R$，$v_t=mg/\gamma$、$\tau=m/\gamma$，令 $z=v-v_t$，从初值 $z(0)=u-v_t$ 分离积分，
-$\int_{u-v_t}^{z(s)}\dd y/y=-s/\tau$，所以
-$z=(u-v_t)\e^{-s/\tau}$；若 $u=v_t$，直接取 $z=0$。因此
+\[
+ \int_{u-v_t}^{z(s)}\frac{\dd y}{y}=-\frac1\tau\int_0^s\dd\xi,
+ \qquad [\ln|y|]_{u-v_t}^{z(s)}=-\frac1\tau[\xi]_0^s.
+\]
+代入端点得 $\ln|z(s)/(u-v_t)|=-s/\tau$，取指数并恢复初始偏差符号，
+有 $z=(u-v_t)\e^{-s/\tau}$；若 $u=v_t$，直接取 $z=0$。因此
 \[v=v_t+(u-v_t)\e^{-s/\tau},\quad F_B=-\gamma v.\]
 \fig{fig:em3:drill:1:p}{磁力只在单条横边处于场内时出现；完全进入后的本题区间重新自由落体}{\begin{tikzpicture}
 
@@ -17,7 +21,8 @@ $z=(u-v_t)\e^{-s/\tau}$；若 $u=v_t$，直接取 $z=0$。因此
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用位移确定阻尼阶段终点并接续自由落体}\par\nobreak
 图\ref{fig:em3:drill:1:p}中部分进入阶段先积分
-$y=[v_t\xi-\tau(u-v_t)\e^{-\xi/\tau}]_0^s$，
+$y=\int_0^s[v_t+(u-v_t)\e^{-\xi/\tau}]\dd\xi
+=[v_t\xi-\tau(u-v_t)\e^{-\xi/\tau}]_0^s$，
 代入上下限得到位移为 $y=v_ts+\tau(u-v_t)(1-\e^{-s/\tau})$。由 $y=d$ 求阶段末时刻 $s_1$，得末速 $v_1$。此后两横边同时在场内，电动势相消、磁力为零，框重新自由落体，直到下边到下边界，还下降 $H-d$，末速 $\sqrt{v_1^2+2g(H-d)}$。
 
 
@@ -101,7 +106,8 @@ $(\bm v\times\bm B)\cdot\dd\bm l=-B\omega_jr\,\dd r$。
 \begin{drillsolution}{em3:drill:5}\textbf{由两次指数衰减率建立同一参数组}\par\nobreak
 由图\ref{fig:em3:drill:5:s}的同一回路，在各次实验中 $m\dot v=-(b+B_j^2l^2/R)v$，记 $\Gamma_j=b+B_j^2l^2/R$，从初速 $v_0$ 分离积分，
 $\int_{v_0}^{v(t)}\dd z/z=-(\Gamma_j/m)\int_0^t\dd s$，
-所以 $v=v_0\e^{-\Gamma_jt/m}$。与实测指数 $v_0\e^{-t/\tau_j}$ 比较，得到 $m/\tau_j=\Gamma_j$。两式相减，
+原函数端点给 $[\ln|z|]_{v_0}^{v(t)}=-(\Gamma_j/m)[s]_0^t$，
+即 $\ln[v(t)/v_0]=-\Gamma_jt/m$，所以 $v=v_0\e^{-\Gamma_jt/m}$。与实测指数 $v_0\e^{-t/\tau_j}$ 比较，得到 $m/\tau_j=\Gamma_j$。两式相减，
 \[\frac1R=\frac{m(1/\tau_2-1/\tau_1)}{l^2(B_2^2-B_1^2)}=\frac{0.10(1.25-0.50)}{0.25(0.16-0.04)}=2.5\,\Omega^{-1}.\]
 
 

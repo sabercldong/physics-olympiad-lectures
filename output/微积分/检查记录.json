@@ -1,13 +1,13 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "微积分",
       "工程": "01_极限与导数",
       "名称": "极限与导数",
       "PDF": "微积分/pdf/微积分第一讲_极限与导数.pdf",
-      "页数": 36,
+      "页数": 38,
       "例题": 11,
       "练习": 4,
       "题数": 15,
@@ -17,20 +17,39 @@
       "题设图": 15,
       "有过程图并引用的解答": 15,
       "已逐题复核": 15,
-      "PDFsha256": "13cf5569fecf229694732a3ca95bcd1ee78c572bb1a7760440a11f240b4043e5",
-      "TeXsha256": "07a569243f58ecc07b579d7c25361d58bc86739a05cbad76d5f3bcf68ed81725",
+      "PDFsha256": "1b86214a444952b9fbb58a9e488a91af7392f9529a27ad5e956d4a4685d29ca9",
+      "TeXsha256": "34ee360b5bc9f2791adad66c96b055a57967f3682029432924522dd145fb30bb",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/微积分/01_极限与导数/main.pdf"
+      "本次重点页面复核PDF页序": [
+        23,
+        24,
+        26,
+        27,
+        36,
+        37
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/微积分/01_极限与导数/main.pdf",
+      "本轮数学过程全文复核题数": 15,
+      "本轮数学过程修改题数": 8,
+      "源码各文件SHA256": {
+        "examples.tex": "c8e62011c72364db549e91566a5d8cba55e08d4800a73836631ca7f8a368e238",
+        "knowledge-sine-limit.tex": "98a41e45fcf32ad19c5b36f39ef8ce711fc9e79a45286430456aff8d65382485",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "foundation-variables.tex": "758f0dab09549f81fb4dd4ca497dec94cdce8595589dc10dbe59cd9c12b73f86",
+        "main.tex": "2cb8d9c7f4e15eade48c5405c02ea146a05897a76ebd98acf4a0e882d828fd59",
+        "theory.tex": "6f4740e1aa8426d45462fe47dec3a091ee67d49a71b15407a45aaec1b0e6546d",
+        "practice.tex": "afa8382d17547c161844c7d3b1bc91dba7c419f84227c8684d263ff3c579064c",
+        "answers.tex": "27f140914210ab2874e122cfdeed66208ec79048e45741a087174fc196794cb3"
+      }
     },
     {
       "专题": "微积分",
       "工程": "02_积分与连续分布",
       "名称": "积分与连续分布",
       "PDF": "微积分/pdf/微积分第二讲_积分与连续分布.pdf",
-      "页数": 35,
+      "页数": 37,
       "例题": 12,
       "练习": 4,
       "题数": 16,
@@ -40,20 +59,40 @@
       "题设图": 16,
       "有过程图并引用的解答": 16,
       "已逐题复核": 16,
-      "PDFsha256": "d0826f6c0083aa1f096bec80c22ea9b61e3ce3a06a349cb2144a2912533abf26",
-      "TeXsha256": "23a2489792b4ad75bed58c6782437e867a1cf7f92e78327ff8c769f9b92c6cd0",
+      "PDFsha256": "32df9fe2cf9de2ca82c16c2b8e911c816c1eb21e31948810b6ae90d7d538c08c",
+      "TeXsha256": "75b094e83349f23115dedbc053d6659977fa90a7e030a931a5b9ff9e20b958fc",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/微积分/02_积分与连续分布/main.pdf"
+      "本次重点页面复核PDF页序": [
+        24,
+        25,
+        29,
+        30,
+        31,
+        33,
+        34
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/微积分/02_积分与连续分布/main.pdf",
+      "本轮数学过程全文复核题数": 16,
+      "本轮数学过程修改题数": 12,
+      "源码各文件SHA256": {
+        "examples.tex": "89863adbd499ba6eebfac6e7f7ba08b8521cddc59073343b4888f7994327a736",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "111e3bec093035f13a4440666e03d6daa9262814b595332342195c6854ceb40f",
+        "theory.tex": "b9163d9cf38d00f0f7db0bb25a29efdb2d54b0dc895725fcad46223f1d188b22",
+        "knowledge-disk-inertia.tex": "0f3063bcdebacf7f8a352ccf865baca9ff7601d2090058d03d7782f8bc4c8679",
+        "practice.tex": "4713134523f926b4c4a937fb8183d77efddb32bc95dafdc9fa8a8452d636e261",
+        "chain-extra.tex": "0cfb4c80289c6b2674d5951157a39ab5094ec34e8a93a95783df982d4988df06",
+        "answers.tex": "903f5af04529f6376ad2dd891c140b599070180004280e3bc2b580098c7656f8"
+      }
     },
     {
       "专题": "微积分",
       "工程": "03_极值近似与曲线几何",
       "名称": "极值近似与曲线几何",
       "PDF": "微积分/pdf/微积分第三讲_极值近似与曲线几何.pdf",
-      "页数": 38,
+      "页数": 40,
       "例题": 9,
       "练习": 4,
       "题数": 13,
@@ -63,22 +102,38 @@
       "题设图": 13,
       "有过程图并引用的解答": 13,
       "已逐题复核": 13,
-      "PDFsha256": "b96ac444776816743ad4bcab71794a99c1c0f715c4a0c1d95ba44a8da26e2290",
-      "TeXsha256": "0be53f1ca04b2ca32c5fc290d9121b5ba37d583d9901b6b6d93d06b077946f98",
+      "PDFsha256": "d2b750ef8484d74dad4aefbe755c202d1fa7d4999b9566d60196859fb67da8ba",
+      "TeXsha256": "c39252adc2c726c18663434f5b234118d940f64958c6fe7868c4c9bcfe1d07bd",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        9
+        24,
+        25,
+        26,
+        27,
+        39,
+        40
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/微积分/03_极值近似与曲线几何/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/微积分/03_极值近似与曲线几何/main.pdf",
+      "本轮数学过程全文复核题数": 13,
+      "本轮数学过程修改题数": 11,
+      "源码各文件SHA256": {
+        "examples.tex": "33d5046ce9a58b9ab20c7b7915a03338d3766af384e1ae5cd525be78387c5261",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "ae9d33dc05cfd6b28b03cf9252544e088ef402a334bedf81a0a86ef64dc42a08",
+        "theory.tex": "0d49eb5c90cafe230715fb930c6314eb2b360d37ff6acb4ce098d45bd93ea2c1",
+        "practice.tex": "8e1dbcf993bf37812bbcd83b73a1ba26b248a703aeb2bda8119fba0bf2c83e39",
+        "answers.tex": "d2eac613835c179173c3ae0e0ad9e013ef350c8944c3c53c4a09d67843f409d0",
+        "knowledge-stationary.tex": "dfecd201bb9ea34e3d8d0cbdd3e5138fb582ea12371b75c19192b20b3caabb08"
+      }
     },
     {
       "专题": "微积分",
       "工程": "04_微分方程与物理应用",
       "名称": "微分方程与物理应用",
       "PDF": "微积分/pdf/微积分第四讲_微分方程与物理应用.pdf",
-      "页数": 37,
+      "页数": 40,
       "例题": 14,
       "练习": 4,
       "题数": 18,
@@ -88,15 +143,33 @@
       "题设图": 18,
       "有过程图并引用的解答": 18,
       "已逐题复核": 18,
-      "PDFsha256": "e496dcbf10c5e9f3672907521d35574de23a6958e2ba63dc57c074ab07ced785",
-      "TeXsha256": "1d1de41f764d1b82e1673d6684f60addcd3ebf35e8d8c1057922b10e6fedb7b7",
+      "PDFsha256": "8f35a01ce87186964ec849d8f00e8b0309dca3a6a68fce1faa2977d120dfab4a",
+      "TeXsha256": "b10972e081c61aad785d8e13f98775833c09300d8006821dbd5593aab1189b0b",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        15
+        18,
+        19,
+        20,
+        21,
+        23,
+        24,
+        38,
+        39
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/微积分/04_微分方程与物理应用/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/微积分/04_微分方程与物理应用/main.pdf",
+      "本轮数学过程全文复核题数": 18,
+      "本轮数学过程修改题数": 17,
+      "源码各文件SHA256": {
+        "examples.tex": "c9731ba86cdf3004a107fa1e1839ff084dfedd9ae3243fdb5659dd5faa1ec749",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "d3983220d4648c5cd9c7d320f85e0a4a29b0fb56365170748cc26409d888c36f",
+        "theory.tex": "163d05195dff3a207db400cfbf18fdbc75eddd1567e8b59ac9801b6dc3e049bf",
+        "practice.tex": "851cb1571f9af0ed38fca4c98a200bc279ab1ce04dfe98c885ade55fb8b04b2a",
+        "answers.tex": "2bf77eb084a117334d0e5a09e5382eff432acec71eff5d0e41dc0ca301b137d5",
+        "knowledge-arrival.tex": "9e0f350133e2189a12fa6c8ee864a19aa855a65517af390997a541cb70cede0d"
+      }
     }
   ]
 }

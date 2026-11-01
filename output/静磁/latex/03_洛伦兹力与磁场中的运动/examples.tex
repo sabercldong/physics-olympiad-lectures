@@ -11,8 +11,12 @@
 由图\ref{fig:mg3:example:1:s}，初始磁力向 $+y$，圆心在 $(0,r)$，其中 $r=mv_0/(qB)$。取转角 $\phi=\Omega t$、$\Omega=qB/m$，由知识正文已解出的速度分量
 $v_x=v_0\cos\Omega t,v_y=v_0\sin\Omega t$，
 \[
- x=\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\phi,\qquad
- y=-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\phi).
+ \begin{aligned}
+ x&=v_0\int_0^t\cos\Omega s\dd s
+   =\frac{v_0}{\Omega}[\sin\Omega s]_0^t=r\sin\phi,\\
+ y&=v_0\int_0^t\sin\Omega s\dd s
+   =-\frac{v_0}{\Omega}[\cos\Omega s]_0^t=r(1-\cos\phi).
+ \end{aligned}
 \]
 两个积分下限使用同一入射时刻，初始坐标均为零；对位置求导也分别回到给定速度分量。
 \fig{fig:mg3:example:1:p}{先由磁力确定圆心，再按正的运动转角选出第一次跨越边界的位置}{\begin{tikzpicture}
@@ -68,14 +72,29 @@ $v_x=v_0\cos\Omega t,v_y=v_0\sin\Omega t$，
 \begin{solution}\textbf{用入点切线定位轨道圆并写参数式}\par\nobreak
 图\ref{fig:mg3:example:3:s}中入射处磁力向上，轨道半径 $r=mv/(qB)$，圆心在 $(-a,r)$。速度分量为 $v\cos\Omega t,v\sin\Omega t$。取初始坐标 $(-a,0)$，
 \[
- x=-a+\frac v\Omega[\sin\Omega s]_0^t=-a+r\sin\phi,\qquad
- y=-\frac v\Omega[\cos\Omega s]_0^t=r(1-\cos\phi),
+ \begin{aligned}
+ x&=-a+v\int_0^t\cos\Omega s\dd s
+   =-a+\frac v\Omega[\sin\Omega s]_0^t=-a+r\sin\phi,\\
+ y&=v\int_0^t\sin\Omega s\dd s
+   =-\frac v\Omega[\cos\Omega s]_0^t=r(1-\cos\phi),
+ \end{aligned}
 \]
 其中 $\phi=\Omega t$，积分变量 $s$ 从入射时刻到当前时刻。出界点还应满足磁区圆的方程 $x^2+y^2=a^2$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立磁区边界，除去初始交点}\par\nobreak
-将参数式代入并约去共同项，得 $r(1-\cos\phi)=a\sin\phi$。除去入射时的 $\phi=0$，利用半角公式，得到 $\tan(\phi/2)=a/r$。
+将参数式代入磁区边界，逐项展开：
+\[
+ \begin{aligned}
+ (-a+r\sin\phi)^2+r^2(1-\cos\phi)^2&=a^2,\\
+ -2ar\sin\phi+r^2(\sin^2\phi+1-2\cos\phi+\cos^2\phi)&=0,\\
+ 2r^2(1-\cos\phi)&=2ar\sin\phi.
+ \end{aligned}
+\]
+除以 $2r>0$，再用半角公式，得
+$2r\sin^2(\phi/2)=2a\sin(\phi/2)\cos(\phi/2)$。
+入点对应 $\phi=0$；在首次出点所在的 $0<\phi<\pi$ 内，两个半角函数均为正，故可除以
+$2\sin(\phi/2)\cos(\phi/2)$，得到 $\tan(\phi/2)=a/r$。
 \fig{fig:mg3:example:3:p}{轨道圆与磁区边界相交，除去入点后得到唯一的首次出点；示意取 $a/r=15/14$}{\begin{tikzpicture}
 
 \filldraw[fill=blue!7,world](0,0)circle(1.5);\draw[guide](-1.5,1.4)circle(1.4);\draw[->,red,thick](-1.5,0)arc(-90:3.949868:1.4);
@@ -326,9 +345,34 @@ B\le\frac mq\left(\frac{3v}{2L}+\frac{gc}{v}\right).
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较内部极小点与区间端点，得到两种临界式}\par\nobreak
-将第二项写成 $gc\,v^{-1}$，逐项求导得
-$\dd[3v/(2L)+gc\,v^{-1}]/\dd v=3/(2L)-gc\,v^{-2}$；
-因此右端导数为 $(m/q)[3/(2L)-gc/v^2]$，无约束极小点为 $v_*=\sqrt{2gLc/3}$。它可达的条件是 $v_*\le v_{\max}$，即 $c\le3/4$。因此
+将上界记为 $B_{\rm lim}(v)$。求导时 $m,q,L,g,c$ 固定，
+\[
+ B_{\rm lim}'(v)=\frac mq\left[\frac{3}{2L}+gc(-1)v^{-2}\right]
+ =\frac mq\left(\frac{3}{2L}-\frac{gc}{v^2}\right).
+\]
+导数由负变正的零点为 $v_*=\sqrt{2gLc/3}$。它可达的条件逐步化为
+\[
+ v_*^2\le v_{\max}^2
+ \ \Longleftrightarrow\ \frac{2gLc}{3}\le2gL(1-c)
+ \ \Longleftrightarrow\ \frac c3\le1-c
+ \ \Longleftrightarrow\ c\le\frac34.
+\]
+若可达，由 $v_*^2=2gLc/3$ 得 $gc/v_*=3v_*/(2L)$，所以
+\[
+ B_{\rm lim}(v_*)=\frac mq\frac{3v_*}{L}
+ =\frac mq\sqrt{\frac{6gc}{L}}.
+\]
+若不可达，导数在整个可达区间为负，最小上界位于 $v_{\max}$。代入并通分，
+\[
+ \begin{aligned}
+ B_{\rm lim}(v_{\max})
+ &=\frac mq\sqrt{\frac g{2L}}
+   \left[3\sqrt{1-c}+\frac c{\sqrt{1-c}}\right]\\
+ &=\frac mq\sqrt{\frac g{2L}}\frac{3(1-c)+c}{\sqrt{1-c}}
+ =\frac mq\sqrt{\frac g{2L}}\frac{3-2c}{\sqrt{1-c}}.
+ \end{aligned}
+\]
+因此
 \[
 B_{\max}=\begin{cases}
 \dfrac mq\sqrt{\dfrac{6gc}{L}},&0<c\le3/4,\\[1mm]
@@ -389,7 +433,15 @@ B_{\max}=\begin{cases}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开余弦求最低阶焦距偏差并说明准备条件}\par\nobreak
-图\ref{fig:mg3:example:10:p}的近轴焦距 $f_0=vT$ 采用了 $\cos\beta\simeq1$。用 $\cos\beta=1-\beta^2/2+O(\beta^4)$，得 $\Delta z=z-f_0=-f_0\beta^2/2+O(\beta^4)$，斜角粒子较早回到轴线。若粒子从静止经电压 $U$ 加速，$v=\sqrt{2|q|U/m}$，则 $f_0=2\pi\sqrt{2mU/|q|}/B$。共同回旋周期并不能保证任意大角度都在同一轴向点聚焦，近轴条件正是压低该差异的条件。\end{solution}
+图\ref{fig:mg3:example:10:p}的近轴焦距 $f_0=vT$ 采用了 $\cos\beta\simeq1$。令 $F(\beta)=\cos\beta$，则
+\[
+ F'=-\sin\beta,\qquad F''=-\cos\beta,\qquad F'''=\sin\beta.
+\]
+在零点的函数值和前三阶导数分别为 $1,0,-1,0$，所以泰勒展开为
+\[
+ F(\beta)=1+0\beta-\frac{\beta^2}{2!}+0\beta^3+O(\beta^4).
+\]
+从 $z=f_0F(\beta)$ 中减去 $f_0$，得 $\Delta z=-f_0\beta^2/2+O(\beta^4)$，斜角粒子较早回到轴线。若粒子从静止经电压 $U$ 加速，$v=\sqrt{2|q|U/m}$，则 $f_0=2\pi\sqrt{2mU/|q|}/B$。共同回旋周期并不能保证任意大角度都在同一轴向点聚焦，近轴条件正是压低该差异的条件。\end{solution}
 \begin{question}\begin{example}[回旋加速器的能量与尺寸]\label{mg3:example:11}
 理想回旋加速器磁场为 $B$，粒子质量 $m$、正电荷 $q$，D形盒最大半径 $R$。每次过缝电压差使动能增加 $qU$，缝内时间忽略。求同步频率、最大动能，以及从很小初能起约需转动的圈数。
 \end{example}
@@ -495,7 +547,12 @@ $\dd D/\dd m=A(1/2)m^{-1/2}$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在实际速率区间证明场强上界的最小位置}\par\nobreak
-图\ref{fig:mg3:example:14:p}实际区间为 $2\sqrt{gL}\le v\le\sqrt{8gL}$。要求 $T\ge0$ 等价于 $B\le[m(3v/(2L)-3g/v)]/q$。右侧导数为 $(m/q)[3/(2L)+3g/v^2]>0$，故最小上界在最高点。代入最高点速率，
+图\ref{fig:mg3:example:14:p}实际区间为 $2\sqrt{gL}\le v\le\sqrt{8gL}$。要求 $T\ge0$ 等价于 $B\le[m(3v/(2L)-3g/v)]/q$。把右侧记为 $B_{\rm lim}(v)$，固定其余参数逐项求导，
+\[
+ B_{\rm lim}'(v)=\frac mq\left[\frac{3}{2L}-3g(-1)v^{-2}\right]
+ =\frac mq\left(\frac{3}{2L}+\frac{3g}{v^2}\right)>0.
+\]
+故最小上界在速率最小的最高点。代入最高点速率，
 \[
 B_{\max}=\frac mq\left(3\sqrt{g/L}-\frac32\sqrt{g/L}\right)
 =\frac{3m}{2q}\sqrt{g/L}.

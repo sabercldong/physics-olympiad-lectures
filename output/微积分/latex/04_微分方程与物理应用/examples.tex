@@ -12,11 +12,13 @@
 图 \ref{c4e1q} 中的局部规律为 $\dot N=-\lambda N$。$N_0>0$ 时分离变量，
 \[
  \int_{N_0}^{N(t)}\frac{\dd n}{n}
- =-\lambda\int_0^t\dd s
- \quad\Rightarrow\quad
- \boxed{N=N_0\e^{-\lambda t}}.
+ =-\lambda\int_0^t\dd s,
+ \qquad [\ln n]_{N_0}^{N(t)}=-\lambda[s]_0^t.
 \]
-左侧积分为 $\ln N-\ln N_0=\ln(N/N_0)$，右侧为 $-\lambda t$。两边取指数，得到 $N/N_0=\e^{-\lambda t}$。
+代入两个端点，$\ln N(t)-\ln N_0=-\lambda(t-0)$，即$\ln[N(t)/N_0]=-\lambda t$。两边取指数，再乘回$N_0$，得到
+\[
+N(t)/N_0=\e^{-\lambda t},\qquad\boxed{N(t)=N_0\e^{-\lambda t}}.
+\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由衰减解反求半衰期}\par\nobreak
 令 $N=N_0/2$，则 $-\ln2=-\lambda t_{1/2}$，所以 $t_{1/2}=\ln2/\lambda$。
@@ -28,7 +30,14 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{改用增长率并检查零初值}\par\nobreak
-理想种群的方程为 $\dot N=+\lambda N$，图 \ref{c4e1s} 的增长支对应 $N=N_0\e^{\lambda t}$。$N_0=0$ 时两方程都有恒零解。连续比例率与“每过一个单位时间增加固定百分数”的离散模型需区分：若离散增长因子为 $1+p$、单位时长为 $\Delta t$，对应连续率为 $\ln(1+p)/\Delta t$。
+理想种群的方程为$\dot N=+\lambda N$。对$N_0>0$仍先分离变量，只改变时间积分前的符号：
+\[
+\int_{N_0}^{N(t)}\frac{\dd n}{n}=\lambda\int_0^t\dd s,
+\qquad[\ln n]_{N_0}^{N(t)}=\lambda[s]_0^t.
+\]
+因此$\ln[N(t)/N_0]=\lambda t$，取指数得到图\ref{c4e1s}的增长支$N(t)=N_0\e^{\lambda t}$。$N_0=0$时两方程都有恒零解，应在除以$N$以前单独保留。
+
+连续比例率与“每过一个单位时间增加固定百分数”的离散模型需区分：若离散增长因子为$1+p$、单位时长为$\Delta t$，由$\e^{\lambda\Delta t}=1+p$取对数，才得到对应连续率$\lambda=\ln(1+p)/\Delta t$。
 \end{solution}
 
 \begin{question}
@@ -49,12 +58,13 @@
 [\ln u]_{v_0}^{v(t)}=-\frac{k}{m}[s]_0^t.
 \]
 代入端点，得到$\ln[v(t)/v_0]=-kt/m$。
-定义 $\tau=m/k$，取指数后得速度；再从 $x(0)=0$ 对速度积分，得到
-\[
- v=v_0\e^{-t/\tau},\qquad
- x=\int_0^t v_0\e^{-s/\tau}\dd s
- =v_0\tau(1-\e^{-t/\tau}).
-\]
+定义$\tau=m/k$，对上式取指数，得到$v(t)=v_0\e^{-t/\tau}$。再使用$x(0)=0$对速度积分，指数中的系数$-1/\tau$使原函数多出$-\tau$：
+\begin{align*}
+x(t)-0&=\int_0^t v_0\e^{-s/\tau}\dd s
+=[-v_0\tau\e^{-s/\tau}]_0^t\\
+&=-v_0\tau\e^{-t/\tau}-(-v_0\tau\e^0)
+=v_0\tau(1-\e^{-t/\tau}).
+\end{align*}
 \fig{c4e2s}{速度渐近为零，位置渐近到有限值}{\begin{tikzpicture}[x=1.1cm,y=1.8cm]
 \draw[axis](0,0)--(4.8,0)node[right]{$t/\tau$};\draw[axis](0,0)--(0,1.4);
 \draw[blue,domain=0:4.3,samples=60]plot(\x,{exp(-\x)});\draw[red,domain=0:4.3,samples=60]plot(\x,{1-exp(-\x)});
@@ -64,7 +74,7 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求极限距离并判断是否有限时停止}\par\nobreak
-位置积分的原函数是 $-v_0\tau\e^{-t/\tau}$，上下限代入后为 $-v_0\tau\e^{-t/\tau}+v_0\tau$，所以得到上式。图 \ref{c4e2s} 显示 $t\to\infty$ 时 $x\to v_0\tau=mv_0/k$；有限 $t$ 时指数始终为正，故没有有限停止时刻。
+图\ref{c4e2s}显示$t\to\infty$时$x\to v_0\tau=mv_0/k$；有限$t$时指数始终为正，故没有有限停止时刻。代入$t=0$得到$x(0)=0$，而$\dot x=v_0\tau[-\e^{-t/\tau}(-1/\tau)]=v_0\e^{-t/\tau}$，又恢复前面求得的速度。
 
 另在 $v>0$ 的段内，$m v\,\dd v/\dd x=-kv$ 可除以 $v$，变为 $\dd v=-(k/m)\dd x$。取$x(0)=0,v(0)=v_0$，将变量与上下限对应后积分：
 \[
@@ -134,15 +144,30 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{带初始液面积分，并在排空处终止支路}\par\nobreak
-按 $h:H\to h(t)$、$t:0\to t$ 积分，左侧是 $2(\sqrt h-\sqrt H)$，右侧是 $-(S_0/S)\sqrt{2g}\,t$。除以二并移项，图 \ref{c4e4s} 对应
+按$h:H\to h(t)$、$t:0\to t$写出两个有向积分，用$\eta,s$区分积分变量与上限：
+\begin{align*}
+\int_H^{h(t)}\eta^{-1/2}\dd\eta
+&=-\frac{S_0}{S}\sqrt{2g}\int_0^t\dd s,\\
+[2\sqrt\eta]_H^{h(t)}
+&=-\frac{S_0}{S}\sqrt{2g}\,[s]_0^t,\\
+2(\sqrt h-\sqrt H)&=-\frac{S_0}{S}\sqrt{2g}\,t.
+\end{align*}
+除以二并移项，图\ref{c4e4s}对应$\sqrt h=\sqrt H-(S_0/S)\sqrt{g/2}\,t$。只要右侧非负，才可以取平方写成
 \[
- \sqrt h=\sqrt H-\frac{S_0}{S}\sqrt{\frac g2}\,t,
-\quad
- t_{1/2}=\boxed{\frac S{S_0}\sqrt{\frac{2H}{g}}
- \left(1-\frac1{\sqrt2}\right)}.
+\boxed{h(t)=\left(\sqrt H-\frac{S_0}{S}\sqrt{\frac g2}\,t\right)^2}.
 \]
-为求半高时间，将 $\sqrt h$ 换成 $\sqrt{H/2}=\sqrt H/\sqrt2$，有
-$(S_0/S)\sqrt{g/2}\,t_{1/2}=\sqrt H(1-1/\sqrt2)$，除去时间系数便得到上式。排空时同理取 $\sqrt h=0$，有 $t_{\rm empty}=(S/S_0)\sqrt{2H/g}$。高度公式只在 $0\le t\le t_{\rm empty}$ 使用。若把平方后的式子继续延伸，会得到液深重新增加的非物理解。由流量守恒，液面速率为 $(S_0/S)v$，所以被忽略的动能与孔口动能之比为 $(S_0/S)^2$。
+为求半高时间，代入$h=H/2$，先解线性方程
+\[
+\frac{S_0}{S}\sqrt{\frac g2}\,t_{1/2}
+=\sqrt H-\sqrt{H/2}
+=\sqrt H\left(1-\frac1{\sqrt2}\right).
+\]
+所以
+\[
+t_{1/2}=\boxed{\frac S{S_0}\sqrt{\frac{2H}{g}}
+\left(1-\frac1{\sqrt2}\right)}.
+\]
+排空时取$\sqrt h=0$，同理得到$t_{\rm empty}=(S/S_0)\sqrt{2H/g}$。高度公式只在$0\le t\le t_{\rm empty}$使用；此后液体已排空。若把平方后的式子继续延伸，会得到液深重新增加的非物理解。由流量守恒，液面速率为$(S_0/S)v$，所以被忽略的动能与孔口动能之比为$(S_0/S)^2$。
 \end{solution}
 
 \begin{question}
@@ -161,8 +186,8 @@ $(S_0/S)\sqrt{g/2}\,t_{1/2}=\sqrt H(1-1/\sqrt2)$，除去时间系数便得到�
 $p(z)S-p(z+\dd z)S-\rho gS\dd z=0$，即 $\dd p/\dd z=-\rho g$。
 图中的红色向下箭头是薄层自重，不能在平衡式中遗漏。理想气体满足 $pV=\nu RT$，薄层质量为 $\mu\nu$，所以 $\rho=\mu\nu/V=\mu p/(RT)$。代入静水平衡式，得到 $\dd p/\dd z=-\mu gp/(RT)$，再分离变量并用 $p(0)=p_0$ 积分，
 \[
- \frac{\dd p}{p}=-\frac{\mu g}{RT}\dd z,\qquad
- \boxed{p=p_0\e^{-z/H_s}},\quad H_s=\frac{RT}{\mu g}.
+ \frac{\dd p}{p}=-\frac{\mu g}{RT}\dd z,
+ \qquad H_s=\frac{RT}{\mu g}.
 \]
 \fig{c4e5s}{压强和密度具有同一标高}{\begin{tikzpicture}[x=1cm,y=1cm]
 \draw[axis](0,0)--(4,0)node[right]{$z/H_s$};\draw[axis](0,0)--(0,2.4)node[above]{$p/p_0$};
@@ -173,10 +198,18 @@ $p(z)S-p(z+\dd z)S-\rho gS\dd z=0$，即 $\dd p/\dd z=-\rho g$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由地面边界得到压强与密度分布}\par\nobreak
-具体积分为
-$\int_{p_0}^{p(z)}\dd p/p=-(\mu g/RT)\int_0^z\dd z$，
-即 $\ln[p(z)/p_0]=-\mu gz/(RT)$。取指数后得到上式；再代回 $\rho=\mu p/(RT)$，便有
-$\rho(z)=\mu p_0\e^{-z/H_s}/(RT)$。
+在$T,\mu,g$均保持不变的近似下，从地面$z=0,p=p_0$积分到所求高度：
+\begin{align*}
+\int_{p_0}^{p(z)}\frac{\dd P}{P}
+&=-\frac{\mu g}{RT}\int_0^z\dd\zeta,\\
+[\ln P]_{p_0}^{p(z)}&=-\frac{\mu g}{RT}[\zeta]_0^z,\\
+\ln p(z)-\ln p_0&=-\frac{\mu g}{RT}(z-0)=-\frac z{H_s}.
+\end{align*}
+取指数得到$p(z)/p_0=\e^{-z/H_s}$，所以
+\[
+\boxed{p(z)=p_0\e^{-z/H_s}},\qquad
+\rho(z)=\frac{\mu}{RT}p(z)=\frac{\mu p_0}{RT}\e^{-z/H_s}.
+\]
 图 \ref{c4e5s} 因而同时表示压强和密度的归一化变化。$H_s$ 的单位为长度，温度越高衰减越慢；使用中要求温度与 $g$ 在该高度范围内近似不变。
 \end{solution}
 
@@ -193,9 +226,8 @@ $\rho(z)=\mu p_0\e^{-z/H_s}/(RT)$。
 \begin{solution}\textbf{由恒定力矩求角加速度}\par\nobreak
 图 \ref{c4e6q} 的力臂始终为 $L$，力矩 $M_O=FL$。用上一讲积分所得 $I_O=mL^2/3$，
 \[
- \beta=\ddot\theta=\frac{3F}{mL},\quad
- \omega=\beta t,\quad
- \theta=\theta_0+\frac12\beta t^2.
+ \beta=\ddot\theta=\frac{M_O}{I_O}
+ =\frac{FL}{mL^2/3}=\frac{3F}{mL}.
 \]
 \fig{c4e6s}{端点加速度分为切向和法向}{\begin{tikzpicture}
 \coordinate(P)at(2.5,1.25);\draw[world](0,0)--(P);\node[below]at(0,0){$O$};\fill(P)circle(2pt)node[right]{$P$};
@@ -205,10 +237,20 @@ $\rho(z)=\mu p_0\e^{-z/H_s}/(RT)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐次积分引入初值并分解端点加速度}\par\nobreak
-上面先用 $\beta=FL/(mL^2/3)=3F/(mL)$，再由
-$\omega-\omega(0)=\int_0^t\beta\dd s=\beta t$、
-$\theta-\theta_0=\int_0^t\beta s\dd s=\beta t^2/2$，逐次引入两个初值。图 \ref{c4e6s} 中切向加速度为 $L\beta=3F/m$，法向加速度为 $L\omega^2=L\beta^2t^2$，指向轴，所以合加速度不恒定。能量检查为
-$\tfrac12I_O\omega^2=FL(\theta-\theta_0)$，符合恒力矩做功。若力方向在空间固定而不随杆转动，力矩一般不再恒定，本题解法就不适用。
+先用静止初值$\omega(0)=0$积分角加速度，再用初角$\theta(0)=\theta_0$积分角速度：
+\begin{align*}
+\omega(t)-0&=\int_0^t\beta\dd s=[\beta s]_0^t=\beta t,\\
+\theta(t)-\theta_0&=\int_0^t\beta s\dd s
+=\left[\frac{\beta s^2}{2}\right]_0^t
+=\frac{\beta t^2}{2}.
+\end{align*}
+图\ref{c4e6s}中切向加速度为$L\beta=3F/m$，法向加速度为$L\omega^2=L\beta^2t^2$，指向轴，所以合加速度不恒定。力矩所做的功为
+\[
+W=\int_{\theta_0}^{\theta}FL\dd\phi
+=FL[\phi]_{\theta_0}^{\theta}=FL(\theta-\theta_0).
+\]
+而$\tfrac12I_O\omega^2=\tfrac12I_O\beta^2t^2
+=FL\,\beta t^2/2=FL(\theta-\theta_0)$，其中用了$I_O\beta=FL$，故功与动能一致。若力方向在空间固定而不随杆转动，力矩一般不再恒定，本题解法就不适用。
 \end{solution}
 
 \begin{question}
@@ -229,8 +271,7 @@ $\ddot x+\omega_0^2x=0$，$\omega_0=\sqrt{k/m}$。
  \boxed{x=x_0\cos\omega_0t+\frac{v_0}{\omega_0}\sin\omega_0t},
 \]
 \[
- v=-\omega_0x_0\sin\omega_0t+v_0\cos\omega_0t,\quad
- A=\sqrt{x_0^2+(v_0/\omega_0)^2}.
+ v=-\omega_0x_0\sin\omega_0t+v_0\cos\omega_0t.
 \]
 \fig{c4e7s}{守恒能量对应相平面椭圆}{\begin{tikzpicture}
 \draw[axis](-2.4,0)--(2.6,0)node[right]{$x$};\draw[axis](0,-1.7)--(0,1.9)node[above]{$v$};
@@ -241,10 +282,18 @@ $\ddot x+\omega_0^2x=0$，$\omega_0=\sqrt{k/m}$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从相图确定振幅、相位与能量}\par\nobreak
-将位移写成 $A\cos(\omega_0t+\phi)$，比较余弦、正弦系数有 $A\cos\phi=x_0$、$-A\sin\phi=v_0/\omega_0$。两式平方相加，才得到振幅 $A=\sqrt{x_0^2+(v_0/\omega_0)^2}$。若两个初值都为零，则物体始终静止在原点，以下相椭圆关系只针对 $A>0$。
+将位移写成$A\cos(\omega_0t+\phi)$，展开角和并比较余弦、正弦系数，得到$A\cos\phi=x_0$、$-A\sin\phi=v_0/\omega_0$。两式平方相加：
+\[
+A^2(\cos^2\phi+\sin^2\phi)=x_0^2+(v_0/\omega_0)^2.
+\]
+由于振幅$A\ge0$，取正根得到$A=\sqrt{x_0^2+(v_0/\omega_0)^2}$。若两个初值都为零，则物体始终静止在原点，以下相椭圆关系只针对$A>0$。
 
-机械能求导时，分别对动能和势能使用链式法则：
-$\dot E=v(m\dot v+kx)=0$，所以
+机械能求导时，分别对动能和势能使用链式法则，再代入$m\dot v=-kx$：
+\[
+\dot E=\frac m2(2v\dot v)+\frac k2(2x\dot x)
+=v(m\dot v+kx)=0.
+\]
+所以
 \[
  E=\frac12mv^2+\frac12kx^2
  =\frac12mv_0^2+\frac12kx_0^2=\frac12kA^2.
@@ -266,10 +315,12 @@ $E(0)=mv_0^2/2+kx_0^2/2=kA^2/2$。将一般时刻的能量式除以 $kA^2/2$，�
 \begin{solution}\textbf{建立运动方程并求特征根}\par\nobreak
 图 \ref{c4e8q} 所示状态下两力都向左；一般符号应写入方程而不是固定图上的方向：
 \[
- \ddot x+2\gamma\dot x+\omega_0^2x=0,\qquad
- r_\pm=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}.
+ \ddot x+2\gamma\dot x+\omega_0^2x=0.
 \]
-特征根的计算先令 $x=\e^{rt}$，则 $\dot x=r\e^{rt}$、$\ddot x=r^2\e^{rt}$。代入方程并除以非零的 $\e^{rt}$，得到 $r^2+2\gamma r+\omega_0^2=0$；配方为 $(r+\gamma)^2=\gamma^2-\omega_0^2$，才得到上面的两根。
+特征根的计算先令$x=\e^{rt}$，则$\dot x=r\e^{rt}$、$\ddot x=r^2\e^{rt}$。代入方程并除以非零的$\e^{rt}$，得到$r^2+2\gamma r+\omega_0^2=0$；配方为$(r+\gamma)^2=\gamma^2-\omega_0^2$，再开方并移项，得到
+\[
+r_\pm=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}.
+\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{欠阻尼：由复根组合实解并代入初值}\par\nobreak
 欠阻尼 $0<\gamma<\omega_0$ 时，记 $\Omega=\sqrt{\omega_0^2-\gamma^2}$。复根为 $-\gamma\pm\mathrm i\Omega$，由欧拉公式组合成实解
@@ -287,11 +338,23 @@ $x=\e^{-\gamma t}(C_1\cos\Omega t+C_2\sin\Omega t)$。
 \]
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{临界阻尼：用重根构造第二个独立解}\par\nobreak
 临界阻尼 $\gamma=\omega_0$ 时两根重合，只写两个相同的指数函数不能给出两个独立常数。此时令 $x=\e^{-\omega_0t}y(t)$，逐次求导为
+\begin{align*}
+\dot x&=\e^{-\omega_0t}\dot y-\omega_0\e^{-\omega_0t}y
+=\e^{-\omega_0t}(\dot y-\omega_0y),\\
+\ddot x&=\e^{-\omega_0t}
+ [-\omega_0(\dot y-\omega_0y)+\ddot y-\omega_0\dot y]\\
+&=\e^{-\omega_0t}(\ddot y-2\omega_0\dot y+\omega_0^2y).
+\end{align*}
+代入$\ddot x+2\omega_0\dot x+\omega_0^2x=0$并约去指数因子，各项实际组合为
 \[
- \dot x=\e^{-\omega_0t}(\dot y-\omega_0y),\qquad
- \ddot x=\e^{-\omega_0t}(\ddot y-2\omega_0\dot y+\omega_0^2y).
+\ddot y-2\omega_0\dot y+\omega_0^2y
++2\omega_0(\dot y-\omega_0y)+\omega_0^2y=0.
 \]
-代入 $\ddot x+2\omega_0\dot x+\omega_0^2x=0$，$\dot y$ 项与 $y$ 项分别抵消，约去指数因子后只剩 $\ddot y=0$。先积分 $\dot y(t)-\dot y(0)=\int_0^t0\dd s=0$，令常值 $\dot y(0)=C_2$；再积分 $y(t)-y(0)=\int_0^t C_2\dd s=C_2t$，令 $y(0)=C_1$，便得到 $y=C_1+C_2t$。
+$\dot y$项与$y$项分别抵消，只剩$\ddot y=0$。先积分$\dot y(t)-\dot y(0)=\int_0^t0\dd s=0$，令常值$\dot y(0)=C_2$；再积分
+\[
+y(t)-y(0)=\int_0^t C_2\dd s=[C_2s]_0^t=C_2t.
+\]
+令$y(0)=C_1$，便得到$y=C_1+C_2t$。
 
 由 $x(0)=C_1=x_0$ 和 $v_0=C_2-\omega_0C_1$，得 $C_2=v_0+\omega_0x_0$，因此
 \[
@@ -346,10 +409,11 @@ $A+B=x_0$、$r_+A+r_-B=v_0$。
 图 \ref{c4e9q} 中 $Q=CU,I=\dot Q=C\dot U$。回路电压关系为
 $\mathcal E=RI+U$，代入 $I=C\dot U$ 得 $RC\dot U+U=\mathcal E$。令 $\tau=RC$、$W=\mathcal E-U$。由于电源恒压，$\dot W=-\dot U$，方程化为 $\dot W=-W/\tau$。初始不带电意味着 $U(0)=0$、$W(0)=\mathcal E$，所以
 \[
- \int_{\mathcal E}^{W(t)}\frac{\dd W}{W}=-\frac1\tau\int_0^t\dd s,
- \qquad W=\mathcal E\e^{-t/\tau}.
+ \int_{\mathcal E}^{W(t)}\frac{\dd w}{w}
+ =-\frac1\tau\int_0^t\dd s,
+ \qquad[\ln w]_{\mathcal E}^{W(t)}=-\frac1\tau[s]_0^t.
 \]
-左侧积分为 $[\ln W]_{\mathcal E}^{W(t)}=\ln[W(t)/\mathcal E]$，右侧为 $-t/\tau$；取指数才得到 $W(t)$。用 $U=\mathcal E-W$ 换回，并逐项求导：$\dot U=-\mathcal E\e^{-t/\tau}(-1/\tau)=\mathcal E\e^{-t/\tau}/\tau$。再乘 $C$、用 $\tau=RC$，得到
+代入端点得$\ln[W(t)/\mathcal E]=-t/\tau$，取指数后有$W(t)=\mathcal E\e^{-t/\tau}$。用$U=\mathcal E-W$换回，并逐项求导：$\dot U=-\mathcal E\e^{-t/\tau}(-1/\tau)=\mathcal E\e^{-t/\tau}/\tau$。再乘$C$、用$\tau=RC$，得到
 \[
  \boxed{U=\mathcal E(1-\e^{-t/\tau})},\qquad
  \boxed{I=\frac{\mathcal E}{R}\e^{-t/\tau}}.
@@ -371,9 +435,13 @@ $\mathcal E=RI+U$，代入 $I=C\dot U$ 得 $RC\dot U+U=\mathcal E$。令 $\tau=R
 \node[above]at(1.4,2.2){$R$};\node[right]at(3.5,1.05){$C,\ U$};
 \node[left]at(2.5,1.35){$+$};\draw[flow](2.6,2.65)--(.5,2.65)node[midway,above]{实际放电电流};
 \end{tikzpicture}}
-初值 $U(0)=\mathcal E$ 给出
-$\int_{\mathcal E}^{U(t)}\dd U/U=-t/\tau$，即 $\ln[U(t)/\mathcal E]=-t/\tau$，所以
-$U=\mathcal E\e^{-t/\tau}$。
+初值$U(0)=\mathcal E$对应新的积分边界，
+\[
+\int_{\mathcal E}^{U(t)}\frac{\dd u}{u}
+=-\frac1\tau\int_0^t\dd s,
+\qquad [\ln u]_{\mathcal E}^{U(t)}=-\frac1\tau[s]_0^t.
+\]
+代入端点得$\ln U(t)-\ln\mathcal E=-t/\tau$，所以$U/\mathcal E=\e^{-t/\tau}$，即$U=\mathcal E\e^{-t/\tau}$。
 
 对它求导并乘 $C$，得到
 $I=C[-\mathcal E\e^{-t/\tau}/\tau]=-\mathcal E\e^{-t/\tau}/R$。
@@ -408,7 +476,7 @@ $\rho_fgSb_0=\rho_bgSL$，所以 $b_0=\rho_bL/\rho_f$。以向下偏移 $\eta$ �
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去平衡项并检查小振动范围}\par\nobreak
 扰动后，向下的重量仍为 $\rho_bgSL$，向上的浮力为 $\rho_fgS(b_0+\eta)$。利用平衡式 $\rho_bgSL=\rho_fgSb_0$，两者相减只剩 $-\rho_fgS\eta$，这就是图 \ref{c4e10s} 的恢复力。再将运动方程除以正的惯性质量 $\rho_bSL$，得到
 $\ddot\eta+[\rho_fg/(\rho_bL)]\eta=0$。
-与 $\ddot\eta+\omega_0^2\eta=0$ 比较系数，得到
+取简谐形式$\eta=A\cos(\omega_0t+\phi)$，求导有$\dot\eta=-A\omega_0\sin(\omega_0t+\phi)$、$\ddot\eta=-A\omega_0^2\cos(\omega_0t+\phi)=-\omega_0^2\eta$。代入方程，非零振动要求$-\omega_0^2+\rho_fg/(\rho_bL)=0$。因此取正的角频率，并用$T=2\pi/\omega_0$换算周期，得到
 \[
  \boxed{\omega_0=\sqrt{\frac{\rho_fg}{\rho_bL}}},\qquad
  \boxed{T=2\pi\sqrt{\frac{\rho_bL}{\rho_fg}}}.
@@ -429,9 +497,16 @@ $\ddot\eta+[\rho_fg/(\rho_bL)]\eta=0$。
 \begin{solution}\textbf{保留径向冲量不改变的角动量}\par\nobreak
 记 $\mu=GM$。原圆轨道满足 $v_c^2/r_0=\mu/r_0^2$，因此 $v_c=\sqrt{\mu/r_0}$、$n=v_c/r_0=\sqrt{\mu/r_0^3}$。图 \ref{c4e11q} 的径向冲量与半径平行，对中心无力矩，故单位质量角动量保持 $h=r_0v_c=\sqrt{\mu r_0}$。
 
-为明确径向运动方程，将位置写成 $\bm r=r\bm e_r$。极坐标基矢满足 $\dot{\bm e}_r=\dot\theta\bm e_\theta$、$\dot{\bm e}_\theta=-\dot\theta\bm e_r$，所以一次求导为
-$\bm v=\dot r\bm e_r+r\dot\theta\bm e_\theta$，
-再求导的径向分量为 $\ddot r-r\dot\theta^2$。引力只有向内的径向分量，结合角动量守恒，得到
+为明确径向运动方程，将位置写成$\bm r=r\bm e_r$。在固定坐标中$\bm e_r=(\cos\theta,\sin\theta)$、$\bm e_\theta=(-\sin\theta,\cos\theta)$，逐分量应用链式法则，得到$\dot{\bm e}_r=\dot\theta\bm e_\theta$、$\dot{\bm e}_\theta=-\dot\theta\bm e_r$。先用乘积法则求速度，再对速度的两项分别求导：
+\begin{align*}
+\bm v&=\dot r\bm e_r+r\dot\theta\bm e_\theta,\\
+\bm a&=\ddot r\bm e_r+\dot r\dot\theta\bm e_\theta
+ +(\dot r\dot\theta+r\ddot\theta)\bm e_\theta
+ -r\dot\theta^2\bm e_r\\
+&=(\ddot r-r\dot\theta^2)\bm e_r
+ +(2\dot r\dot\theta+r\ddot\theta)\bm e_\theta.
+\end{align*}
+所以径向加速度为$\ddot r-r\dot\theta^2$，并非单独的$\ddot r$。引力只有向内的径向分量，结合角动量守恒，得到
 \[
  \ddot r-r\dot\theta^2=-\frac{\mu}{r^2},\qquad
  r^2\dot\theta=h.
@@ -477,11 +552,19 @@ $\boxed{\eta=(u/n)\sin nt}$。
 \begin{solution}\textbf{先判断能否启动，再求首个滑动半周}\par\nobreak
 设 $d=\mu mg/k$。图 \ref{c4e12q} 中初始弹力超过最大静摩擦才会启动，故要求 $A_0>d$。向右滑动时
 $m\ddot x=-kx-\mu mg=-k(x+d)$，
-令 $y=x+d$，方程就变成 $\ddot y+\omega_0^2y=0$。试取 $y=\e^{rt}$ 得 $r^2+\omega_0^2=0$，两根 $\pm\mathrm i\omega_0$ 给出实通解 $y=C_1\cos\omega_0t+C_2\sin\omega_0t$。其导数为 $\dot y=-\omega_0C_1\sin\omega_0t+\omega_0C_2\cos\omega_0t$。初值 $y(0)=d-A_0$、$\dot y(0)=0$ 分别给出 $C_1=d-A_0$、$C_2=0$，所以 $y=(d-A_0)\cos\omega_0t$，换回 $x$ 得
+令$y=x+d$。由于$d$是常量，$\ddot y=\ddot x$，方程变成$\ddot y+\omega_0^2y=0$，其中$\omega_0^2=k/m$。
+
+\par\medskip\Needspace{4\baselineskip}\noindent\textbf{平移坐标后求通解并代入释放初值}\par\nobreak
+试取$y=\e^{rt}$，代入$\ddot y=r^2\e^{rt}$，约去非零指数得到$r^2+\omega_0^2=0$。两根$\pm\mathrm i\omega_0$对应实通解及其导数
+\begin{align*}
+y&=C_1\cos\omega_0t+C_2\sin\omega_0t,\\
+\dot y&=-\omega_0C_1\sin\omega_0t+\omega_0C_2\cos\omega_0t.
+\end{align*}
+代入两个初值，$y(0)=C_1=d-A_0$，$\dot y(0)=\omega_0C_2=0$，所以$C_2=0$。由此$y=(d-A_0)\cos\omega_0t$，最后换回$x=y-d$，得到
 \[
  x(t)=-d-(A_0-d)\cos\omega_0t,\qquad \omega_0=\sqrt{k/m}.
 \]
-求导得 $v=\omega_0(A_0-d)\sin\omega_0t$。因 $A_0>d$，在 $0<t<\pi/\omega_0$ 内速度始终为正，摩擦力向左的假设自洽。首次速度再次为零发生在 $t_1=\pi/\omega_0$，此时 $\cos\pi=-1$，所以 $x_1=-d+(A_0-d)=A_0-2d$。
+对位移求导时，常量$-d$的导数为零，余弦项需乘内层导数$\omega_0$，因此$v=-(A_0-d)[-\sin\omega_0t]\omega_0=\omega_0(A_0-d)\sin\omega_0t$。因$A_0>d$，在$0<t<\pi/\omega_0$内速度始终为正，摩擦力向左的假设自洽。首次速度再次为零发生在$t_1=\pi/\omega_0$，此时$\cos\pi=-1$，所以$x_1=-d+(A_0-d)=A_0-2d$。
 \fig{c4e12s}{停点落入静摩擦可维持的区间才会停住}{\begin{tikzpicture}
 \draw[axis](-3,0)--(3.2,0)node[right]{$x$};\fill[blue!12](-1,-.16)rectangle(1,.16);
 \node[below]at(-1,-.16){$-d$};\node[below]at(1,-.16){$d$};\node[below]at(0,-.16){$0$};
@@ -581,12 +664,17 @@ $\dot v=(\dd v/\dd x)\dot x=v\,\dd v/\dd x$。
  \boxed{v^2(x)=\frac{F_0}{\lambda}\left(1-\frac{x_0^2}{x^2}\right)
  -\frac{2g}{3}\left(x-\frac{x_0^3}{x^2}\right)}.
 \]
+在持续向上运动的支路，速度$v(x)$取此式右侧的正平方根；在初始端点$x=x_0$取$v=0$。不能由平方速度另取负根来表示本题的提起过程。
 图 \ref{c4e13s} 的加速过程不能忽略。运动部分的质心在高度 $x/2$，所以机械能为
 $E=\lambda xv^2/2+\lambda gx^2/2$。
 两项求导时都要考虑 $x$ 变化：
-\[
- \dot E=\frac{\lambda}{2}v^3+\lambda xv\dot v+\lambda gxv.
-\]
+\begin{align*}
+\dot E&=\frac\lambda2\frac{\dd(xv^2)}{\dd t}
+       +\frac{\lambda g}{2}\frac{\dd(x^2)}{\dd t}\\
+&=\frac\lambda2(\dot x\,v^2+x\,2v\dot v)
+       +\lambda gx\dot x\\
+&=\frac\lambda2v^3+\lambda xv\dot v+\lambda gxv.
+\end{align*}
 将动量方程乘以 $v$，得
 $\lambda xv\dot v=F_0v-\lambda gxv-\lambda v^3$。
 
@@ -618,7 +706,12 @@ $v_L^2=F_0/\lambda-2gL/3$。
  \dot\ell=(\bm v_B-\bm v_A)\cdot\bm e_{AB}
  =v\cos120^\circ-v=-\frac32v.
 \]
-由 $\dot\ell=-3v/2$ 积分，有 $\ell(t)-\ell(0)=-3vt/2$，用 $\ell(0)=a$ 得 $\ell=a-3vt/2$。
+用初值$\ell(0)=a$对$\dot\ell=-3v/2$积分，
+\[
+\int_a^{\ell(t)}\dd u=-\frac{3v}{2}\int_0^t\dd s,
+\qquad [u]_a^{\ell(t)}=-\frac{3v}{2}[s]_0^t.
+\]
+代入端点得到$\ell(t)-a=-3vt/2$，所以$\ell(t)=a-3vt/2$。
 
 相遇要求 $\ell=0$，所以 $\boxed{t_c=2a/(3v)}$。
 \fig{c4e14s}{速度相对内径向夹角为三十度}{\begin{tikzpicture}
@@ -637,6 +730,8 @@ $v_L^2=F_0/\lambda-2gL/3$。
  \dot r=-\frac{\sqrt3}2v,\qquad
  \dot\theta=\frac{v}{2r}.
 \]
+第一式也可由已经求出的边长函数核验：$r(t)=\ell(t)/\sqrt3
+=a/\sqrt3-\sqrt3vt/2$，其有效区间为$0\le t\le t_c$。
 以 $\dot r/\dot\theta$ 消去时间，得到
 $\dd r/\dd\theta=(-\sqrt3v/2)/(v/(2r))=-\sqrt3r$。
 再分离为$\dd r/r=-\sqrt3\,\dd\theta$。在$r>0$的运动段，取初值$r(\theta_0)=r_0=a/\sqrt3$，得到

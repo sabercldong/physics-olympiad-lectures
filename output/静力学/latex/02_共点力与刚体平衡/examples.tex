@@ -93,7 +93,19 @@ $AC,CD,DB$三根轻杆长均为$l$，$A,B$固定在水平天花板且$AB=2l$。$
 \[
 s^2=\frac{4+4n-3n^2}{16(1+n)}.
 \]
-分离要求$3R\sin\theta\ge R$，即$s\ge1/3$，代入$s^2\ge1/9$，得$27n^2-20n-20\le0$；取$n>0$的区间，因此
+两大球不重叠要求 $3R\sin\theta\ge R$，即 $s\ge1/3$，严格分离时取严格大于。将求出的 $s^2$代入，因 $n>0$时分母为正，
+\[
+ \frac{4+4n-3n^2}{16(1+n)}\ge\frac19
+ \quad\Longleftrightarrow\quad
+ 9(4+4n-3n^2)\ge16(1+n).
+\]
+展开并移项得到 $27n^2-20n-20\le0$。求边界二次式的两个根，
+\[
+ n_{\pm}=\frac{20\pm\sqrt{400+2160}}{54}
+ =\frac{20\pm16\sqrt{10}}{54}
+ =\frac{10\pm8\sqrt{10}}{27}.
+\]
+开口向上的二次式在两根之间非正；负号根小于零，再与 $n>0$取交集，因此
 \[
 0<n\le n_c=\frac{10+8\sqrt{10}}{27}.
 \]
@@ -105,7 +117,19 @@ s^2=\frac{4+4n-3n^2}{16(1+n)}.
 \[
 H=Mg\left[\frac{1+n/2}{2\sqrt2}-\frac n{\sqrt5}\right].
 \]
-$H\ge0$也给$n\le n_c$。$n<n_c$时有两个对称平衡构型；等号时两分支重合；超过阈值两者均不可实现。这里讨论存在性，并未由静力方程直接断言稳定性。\end{solution}
+从接触力非负条件也应独立求同一阈值。约去 $Mg$，把含 $n$的项移到右侧：
+\[
+ \frac{1+n/2}{2\sqrt2}\ge\frac n{\sqrt5}
+ \quad\Longleftrightarrow\quad
+ 2\sqrt5\ge n(4\sqrt2-\sqrt5).
+\]
+系数 $4\sqrt2-\sqrt5>0$，相除后有理化，
+\[
+ n\le\frac{2\sqrt5}{4\sqrt2-\sqrt5}
+ =\frac{2\sqrt5(4\sqrt2+\sqrt5)}{32-5}
+ =\frac{10+8\sqrt{10}}{27}=n_c.
+\]
+$0<n<n_c$时有两个对称平衡构型；等号时两分支重合；超过阈值两者均不可实现。这里讨论存在性，并未由静力方程直接断言稳定性。\end{solution}
 \begin{question}\begin{example}[两光滑斜面之间的球]\label{s2:example:4}
 重$G$的球置于V形光滑槽内，左右斜面分别与水平成$\alpha,\beta$，$0<\alpha,\beta<90^\circ$。求两支持力。
 \end{example}
@@ -193,8 +217,7 @@ m_1(l+R)\sin\theta=m_2R-m_2(l+R)\sin\theta.
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{由物块将绳力分量传到节点}\par\nobreak
-图\ref{fig:s2:example:7:s}中物块受力给绳张力$T=\sqrt{G^2+F^2}$。绳对$P$的力有向右分量$F$和向下分量$G$，无需先求绳倾角。
-先对物块列两个正交方向的平衡：绳在物块处的水平分量必须向左、大小$F$，竖直分量必须向上、大小$G$。由作用与反作用，节点$P$受到的绳力恰为$(F,-G)$；其模长才是$\sqrt{F^2+G^2}$。节点方程应使用这两个分量，不能把整股绳张力误当竖直力。
+先对图\ref{fig:s2:example:7:s}中的物块列两个正交方向的平衡：绳在物块处的水平分量必须向左、大小 $F$，竖直分量必须向上、大小 $G$。所以张力平方为 $T^2=(-F)^2+G^2$，取非负根得 $T=\sqrt{F^2+G^2}$。同一轻绳在节点端沿相反方向拉节点，故 $P$受到的绳力为 $(F,-G)$，无需先求绳倾角。节点方程应使用这两个分量，不能把整股绳张力误当竖直力。
 \fig{fig:s2:example:7:p}{物块与节点分开画，绳端力按作用与反作用传递}{\begin{tikzpicture}
 
 \begin{scope}

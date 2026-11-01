@@ -175,8 +175,7 @@
 \fig{fig:em2:example:7:s}{题设：物块滑上自由木板}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)rectangle(5,.3);\node at(4,.55){$M$};\draw[world](.5,.3)rectangle(1.3,1);\node at(.9,.65){$m$};\draw[flow](.5,1.4)--(2,1.4)node[above]{$v_0$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{由两物体加速度求相对减速率}\par\nobreak
-图\ref{fig:em2:example:7:s}中滑动时摩擦力$f=\mu mg$，对块向左、对板向右。两者加速度分别为$-\mu g$、$\mu mg/M$，相对加速度为$-\mu g(1+m/M)$。相对速度由$v_0$减为零，因此
-\[\boxed{t_* =\frac{Mv_0}{\mu g(M+m)}}.\]
+图\ref{fig:em2:example:7:s}中滑动时摩擦力$f=\mu mg$，对块向左、对板向右。两者加速度分别为$-\mu g$、$\mu mg/M$，相对加速度为$-\mu g(1+m/M)$。先用各自的初速度积分，再确定何时相对速度降为零。
 \fig{fig:em2:example:7:p}{共速前两速度之差始终为正，两条速度线之间的面积是相对滑程}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(4.8,0)node[right]{$t$};\draw[axis](0,0)--(0,2.9)node[above]{$v$};
@@ -190,12 +189,28 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求共同速度并检查摩擦方向}\par\nobreak
-在共速前，块与板的速度为$v_m=v_0-\mu gt$、$v_M=(\mu mg/M)t$。令两者相等，得$v_0=\mu g(1+m/M)t_*$；代入板的速度式便得到共同速度$mv_0/(M+m)$。两条直线在$t_*$以前没有交点，故摩擦方向在整段内一致。
+在共速前，分别由初值$v_m(0)=v_0$、$v_M(0)=0$积分，
+\[
+v_m-v_0=\int_0^t-\mu g\dd\tau=-\mu g[\tau]_0^t=-\mu gt,
+\qquad
+v_M=\int_0^t\frac{\mu mg}{M}\dd\tau=\frac{\mu mg}{M}t.
+\]
+令两速度相等，得$v_0=\mu g(1+m/M)t_*$，因而
+\[
+t_*=\frac{v_0}{\mu g(1+m/M)}=\frac{Mv_0}{\mu g(M+m)}.
+\]
+在$0\le t<t_*$，相对速度$u(t)=v_0[1-t/t_*]>0$，故摩擦方向与假设一致。代入板的速度式，得共同速度$V=(\mu mg/M)t_*=mv_0/(M+m)$。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以两速度线间的面积求最小板长}\par\nobreak
-由图\ref{fig:em2:example:7:p}两条速度线相交，或由总动量守恒，得到$\boxed{V=mv_0/(M+m)}$。相对位移等于相对速度图下的三角形面积，故
+图\ref{fig:em2:example:7:p}中两条速度线之间的面积为相对位移。按刚求出的$u(t)$积分，
+\[
+L_{\min}=\int_0^{t_*}v_0\left(1-\frac{t}{t_*}\right)\dd t
+=v_0\left[t-\frac{t^2}{2t_*}\right]_0^{t_*}
+=v_0\left(t_*-\frac{t_*}{2}\right)=\frac12v_0t_*.
+\]
+因此
 \[\boxed{L_{\min}=\frac12v_0t_* =\frac{Mv_0^2}{2\mu g(M+m)}}.\]
 实际板长应不小于此值，并留意题目对“刚好到边缘”是否容许。两物体对地位移均不是这个最小长度；板在接收动量的同时已经向前移动。\end{solution}
 \begin{question}\begin{example}[活动半圆槽中的位移]\label{em2:example:8}
@@ -233,13 +248,18 @@
 \fig{fig:em2:example:9:s}{题设：弹簧释放与悬绳张力}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\fill(0,0)circle(.08)node[left]{$O$};\draw[world](5,0)--(5,2.2)node[above]{$C$};\draw[dim](0,-.6)--(5,-.6)node[midway,below]{$L$};\draw[world](1,.0)rectangle(1.7,.6);\node at(1.35,.3){$A$};\draw[spring](1.7,.3)--(3.3,.3);\draw[world](3.3,0)rectangle(4,.6);\node at(3.65,.3){$B$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{隔离两物块，确定给板的竖直载荷}\par\nobreak
-图\ref{fig:em2:example:9:s}的弹簧力水平且内部成对，故对两物块组成的系统，$m_Ax_A+m_Bx_B$保持不变。它们没有竖直加速度，各自给板的向下作用力分别为$m_Ag,m_Bg$。
+图\ref{fig:em2:example:9:s}的弹簧力水平且内部成对，板面对物块没有水平力，故两物块的总水平动量守恒。它们没有竖直加速度，各自给板的向下作用力分别为$m_Ag,m_Bg$。
 \fig{fig:em2:example:9:p}{解答过程：弹簧释放与悬绳张力}{\begin{tikzpicture}[scale=.9]\draw[world](0,0)--(5,0);\fill(0,0)circle(.04)node[left]{$O$};\draw[force](1,0)--(1,-1.15)node[below]{$m_Ag$};\draw[force](2.5,0)--(2.5,-1.15)node[below]{$M_{\text{板}}g$};\draw[force](4,0)--(4,-1.15)node[below]{$m_Bg$};\draw[force](5,0)--(5,1.5)node[above]{$T$};\draw[dim](0,.55)--(1,.55)node[midway,above]{$x_A$};\draw[dim](0,1.1)--(2.5,1.1)node[midway,above]{$x_{\text{板}}$};\draw[dim](0,1.65)--(4,1.65)node[midway,above]{$x_B$};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由水平总动量零证明加权位置不变}\par\nobreak
-若弹簧释放前两块均静止，水平合动量为零，故对任意时刻都有$m_A\dot x_A+m_B\dot x_B=0$。从初态积分便得$m_Ax_A+m_Bx_B$不变。这项加权和恰好出现在两块重力对铰点的力矩中，因此不需要知道弹簧力随时间的具体变化。
+若弹簧释放前两块均静止，水平合动量为零，故对任意时刻都有$m_A\dot x_A+m_B\dot x_B=0$。从初始时刻积至$t$，
+\begin{align*}
+0&=\int_0^t(m_A\dot x_A+m_B\dot x_B)\dd\tau\\
+&=m_A[x_A(\tau)]_0^t+m_B[x_B(\tau)]_0^t.
+\end{align*}
+把初始位置项移到右侧，得$m_Ax_A(t)+m_Bx_B(t)=m_Ax_A(0)+m_Bx_B(0)$。这项加权和恰好出现在两块重力对铰点的力矩中，因此不需要求弹簧力的具体变化。
 
 
 
@@ -319,7 +339,12 @@ $\dd(\cos\theta)/\dd t=-\sin\theta\,\dot\theta$。
 \dot x=(1-\eta)R\cos\theta\dot\theta,\quad
 \dot y=-R\sin\theta\dot\theta.
 \]
-两物体的动能必须一起计入。将它们相加并合并$\cos^2\theta$项，得
+两物体的动能必须一起计入。先代入各速度，
+\[
+K=\frac12R^2\dot\theta^2
+\left\{[M\eta^2+m(1-\eta)^2]\cos^2\theta+m\sin^2\theta\right\}.
+\]
+其中$M\eta^2+m(1-\eta)^2=(Mm^2+mM^2)/(M+m)^2=mM/(M+m)=m(1-\eta)$，所以括号化为$m[(1-\eta)\cos^2\theta+\sin^2\theta]=m(1-\eta\cos^2\theta)$。于是
 \[
 K=\frac12M\dot X^2+\frac12m(\dot x^2+\dot y^2)
 =\frac12mR^2\dot\theta^2(1-\eta\cos^2\theta).
@@ -331,7 +356,16 @@ R\dot\theta^2=\frac{2g(1-\cos\theta)}{1-\eta\cos^2\theta}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以单向接触条件截取实际轨迹}\par\nobreak
-脱离边界$N=0$时，半球水平加速度也为零，球相对球心的向心方程才化为$R\dot\theta^2=g\cos\theta$。令$c=\cos\theta_d$，联立两式，$2(1-c)=c(1-\eta c^2)$。
+为确定何时首次失去接触，先保留图中球面支持力$N$。半球的水平运动方程为$M\ddot X=-N\sin\theta$。对小球沿球心指向小球的径向向外投影，绝对加速度在该方向为$\ddot X\sin\theta-R\dot\theta^2$，故
+\[
+m(\ddot X\sin\theta-R\dot\theta^2)=N-mg\cos\theta.
+\]
+代入$\ddot X=-N\sin\theta/M$并收集$N$项，
+\[
+N\left(1+\frac mM\sin^2\theta\right)
+=m(g\cos\theta-R\dot\theta^2).
+\]
+括号始终为正，故脱离边界$N=0$要求$R\dot\theta^2=g\cos\theta$；此时半球水平加速度也为零。令$c=\cos\theta_d$，与能量式联立，交叉相乘得$2(1-c)=c(1-\eta c^2)$。
 
 
 所以离开角满足
@@ -458,11 +492,19 @@ R\dot\theta^2=\frac{2g(1-\cos\theta)}{1-\eta\cos^2\theta}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对变质量微分式积分并检查符号}\par\nobreak
-按图\ref{fig:em2:example:15:p}从$M_0$积分至$M$：
-\[\int_{V_0}^V\dd V=-u\int_{M_0}^M\dd M/M,\]
-故
+按图\ref{fig:em2:example:15:p}从初始质量$M_0$积分至$M$，以$\mathcal M$作质量积分变量，
+\[
+\int_{V_0}^V\dd W=-u\int_{M_0}^M\frac{\dd\mathcal M}{\mathcal M}.
+\]
+右侧令$q=\mathcal M/M_0$，则$\dd\mathcal M=M_0\dd q$，上下限由$M_0,M$变为$1,M/M_0$，所以
+\[
+V-V_0=-u\int_1^{M/M_0}\frac{\dd q}{q}
+=-u[\ln q]_1^{M/M_0}
+=-u[\ln(M/M_0)-\ln1].
+\]
+因此
 \[\boxed{V=V_0+u\ln(M_0/M)}.\]
-积分右边为$-u[\ln M-\ln M_0]=u\ln(M_0/M)$；质量下降时括号内的对数为负，因此速度增量为正。对数的自变量必须是无量纲质量比，不能单独把有单位的$M$写进最终对数。若只喷出很少燃料$\Delta M\ll M_0$，可用$\ln(M_0/M)\simeq\Delta M/M_0$核对单次微元式。
+质量下降时$\ln(M/M_0)<0$，所以速度增量为正。对数的自变量是无量纲质量比。若只喷出很少燃料$\Delta M\ll M_0$，可用$\ln(M_0/M)\simeq\Delta M/M_0$核对单次微元式。
 
 
 

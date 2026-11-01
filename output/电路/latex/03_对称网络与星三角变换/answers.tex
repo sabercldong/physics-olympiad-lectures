@@ -1,7 +1,7 @@
 \LectureAnswerSection
 
 \begin{drillsolution}{c3:drill:1}\textbf{在当前端口下证明内部两点等势}\par\nobreak
-图\ref{fig:c3:drill:1:s} 中交换 $P,Q$ 保持端口，故二者等势。删去 $PQ$ 不改变其零电流条件，剩余 $r,2r,2r$ 三通道并联，结果为 $r/2$。
+图\ref{fig:c3:drill:1:s} 中交换 $P,Q$ 保持端口，故二者等势。删去 $PQ$ 不改变其零电流条件，剩余 $r,2r,2r$ 三通道并联。
 \fig{c3:d1:remove-internal}{删去内部边 $PQ$ 后，直接通道与经 $P,Q$ 的两条通道均保留}{\begin{tikzpicture}
 
 \draw(0,0)to[R,l={$r$}](6,0);
@@ -14,7 +14,7 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算删去内部边后的三通道并联}\par\nobreak
-图\ref{c3:d1:remove-internal}中三个通道的电导和为 $1/r+1/(2r)+1/(2r)=2/r$。
+图\ref{c3:d1:remove-internal}中三个通道的电导和为 $1/r+1/(2r)+1/(2r)=2/r$。取倒数得到这一情形的端口电阻 $r/2$。
 
 \typeout{ECFIG:fig:c3:drill:1:p}\fig{fig:c3:drill:1:p}{解答过程：移除完全图中的两种边}{\begin{tikzpicture}[scale=.88]
 \draw(0,0)--(0,1)to[R,l={$2r$}](4,1)--(4,0);\draw(0,0)--(0,-1)to[R,l={$2r$}](4,-1)--(4,0);\node[left]at(0,0){$A$};\node[right]at(4,0){$B$};
@@ -137,7 +137,18 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{推广维数并以三维、五维结果检验}\par\nobreak
-相同构造对 $d$ 维相邻端口给出 $R_{\text{邻}}=2(1-2^{-d})r/d$。代入 $d=3$ 为 $7r/12$，与三维立方体结果相同；代入 $d=5$ 为 $31r/80$。后者来自 $32$ 个节点、每点 $5$ 条等价边：叠加边电压 $2Ir/5$，端口电流 $32I/31$，相除正得 $31r/80$。这里是同一连接规则的维数核验，不能与体对角线端口或相距两步端口混用。\end{drillsolution}
+对 $d$ 维网络有 $2^d$ 个节点，每点有 $d$ 条邻边。第一辅助问题的邻边电流为 $I/d$；第二辅助问题贡献同样的端口电势差。因此
+\[
+ U_{AB}=\frac{2Ir}{d},\qquad
+ I_{\text{端}}=I+\frac{I}{2^d-1}=\frac{2^dI}{2^d-1}.
+\]
+相除并约去 $I$，得到
+\[
+ R_{\text{邻}}=\frac{2Ir/d}{2^dI/(2^d-1)}
+ =\frac{2r}{d}\frac{2^d-1}{2^d}
+ =\frac{2r}{d}(1-2^{-d}).
+\]
+代入 $d=3$ 为 $7r/12$，与三维立方体结果相同；代入 $d=5$ 为 $31r/80$。后者来自 $32$ 个节点、每点 $5$ 条等价边：叠加边电压 $2Ir/5$，端口电流 $32I/31$，相除正得 $31r/80$。这里是同一连接规则的维数核验，不能与体对角线端口或相距两步端口混用。\end{drillsolution}
 \begin{drillsolution}{c3:drill:8}\textbf{把端口棱分段并证明端点成对等势}\par\nobreak
 图\ref{fig:c3:drill:8:s} 中端口所在两棱各被拆成两个 $r/2$。交换每条端口棱的两个端点而保持 $M,N$ 的对称变换，使该棱两端等势。因此每一端口到其端点组的两个 $r/2$ 并联为 $r/4$。
 \typeout{ECFIG:fig:c3:drill:8:p}\fig{fig:c3:drill:8:p}{端口半棱先并联为 $r/4$，八个顶点分为四个双节点组，再保留四条跨组通道}{\begin{tikzpicture}

@@ -28,9 +28,11 @@
 \begin{drillsolution}{c5:drill:2}\textbf{保持原电容正向并继承切换初态}\par\nobreak
 图\ref{fig:c5:drill:2:s} 取原电容电压正向不变，初值 $+\mathcal E$、终值 $-\mathcal E$。回路式为 $RC\dot u_C+u_C=-\mathcal E$。令 $w=u_C+\mathcal E$，则 $w(0)=2\mathcal E$，分离积分为
 \[
-\int_{2\mathcal E}^{w(t)}\frac{\dd z}{z}
-=-\int_0^t\frac{\dd s}{RC},\qquad
-\ln\frac{w}{2\mathcal E}=-\frac t{RC}.
+\begin{aligned}
+\int_{2\mathcal E}^{w(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{RC},\\
+[\ln z]_{2\mathcal E}^{w(t)}&=-\frac1{RC}[s]_0^t,\\
+\ln\frac{w}{2\mathcal E}&=-\frac t{RC}.
+\end{aligned}
 \]
 所以 $u_C=-\mathcal E+2\mathcal E\e^{-t/(RC)}$。
 \typeout{ECFIG:fig:c5:drill:2:p}\fig{fig:c5:drill:2:p}{反向电源使电压从 $+\mathcal E$ 趋向 $-\mathcal E$；零点对应半个初始偏差}{\begin{tikzpicture}
@@ -54,9 +56,11 @@
 \begin{drillsolution}{c5:drill:3}\textbf{由连续初电流求闭合回路的指数衰减}\par\nobreak
 图\ref{fig:c5:drill:3:s} 两电阻总看入电阻为 $R_s=R_1+R_2$，由 $L\dot i+R_si=0$，
 \[
-\int_{I_0}^{i(t)}\frac{\dd z}{z}
-=-\frac{R_s}{L}\int_0^t\dd s,\qquad
-\ln\left|\frac{i(t)}{I_0}\right|=-\frac{R_st}{L}.
+\begin{aligned}
+\int_{I_0}^{i(t)}\frac{\dd z}{z}&=-\frac{R_s}{L}\int_0^t\dd s,\\
+[\ln|z|]_{I_0}^{i(t)}&=-\frac{R_s}{L}[s]_0^t,\\
+\ln\left|\frac{i(t)}{I_0}\right|&=-\frac{R_st}{L}.
+\end{aligned}
 \]
 非零初流保留原符号；若 $I_0=0$，直接取恒零解。所以 $i=I_0\e^{-(R_1+R_2)t/L}$。初磁能为 $LI_0^2/2$，最终电流零，全部变热。
 \typeout{ECFIG:fig:c5:drill:3:p}\fig{fig:c5:drill:3:p}{两个电阻分别保留在同一闭合续流回路中，电流在各元件中相同}{\begin{tikzpicture}
@@ -86,7 +90,7 @@ Q_j=R_jI_0^2\int_0^\infty\e^{-2R_st/L}\dd t
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对总能量与衰减快慢的区别}\par\nobreak
 二者之和等于初磁能。增大某个电阻会缩短衰减时间，但并不改变总释放能量；它只改变分配比例和释放速率。\end{drillsolution}
 \begin{drillsolution}{c5:drill:4}\textbf{同时利用电荷初值与零初电流}\par\nobreak
-按 图\ref{fig:c5:drill:4:s} 的 $i=\dot q$，由回路得 $L\ddot q+q/C=0$。令 $\omega_0=1/\sqrt{LC}$，指数试解的特征方程是 $s^2+\omega_0^2=0$，故 $q=A\cos\omega_0t+B\sin\omega_0t$。初电荷给出 $A=q_0$，初流 $B\omega_0=0$ 给出 $B=0$；对余弦用链式法则求导，解为 $q=q_0\cos\omega_0t$，$i=-\omega_0q_0\sin\omega_0t$。
+按 图\ref{fig:c5:drill:4:s} 的 $i=\dot q$，由回路得 $L\ddot q+q/C=0$。令 $\omega_0=1/\sqrt{LC}$，试取 $q=\e^{st}$，则 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$。代入并约去指数，得到 $s^2+\omega_0^2=0$，根为 $\pm\mathrm j\omega_0$，故 $q=A\cos\omega_0t+B\sin\omega_0t$。初电荷给出 $A=q_0$；通解求导为 $i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$，初流 $B\omega_0=0$ 给出 $B=0$。所以 $q=q_0\cos\omega_0t$，再用 $\dd(\cos\omega_0t)/\dd t=-\omega_0\sin\omega_0t$ 得 $i=-\omega_0q_0\sin\omega_0t$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{选取首次到达的相位与时刻}\par\nobreak
 首次 $q=q_0/2$ 时 $\omega_0t=\pi/3$，故 $t=\pi/(3\omega_0)$。
@@ -144,8 +148,13 @@ $i=q_0[\gamma-\gamma(1+\gamma t)]\e^{-\gamma t}
 初始斜率为零，长时间趋零，符合初态和耗散条件。临界阻尼的解有乘 $t$ 的项，不能把两个相同根的指数简单相加当作两个独立解。\end{drillsolution}
 \begin{drillsolution}{c5:drill:6}\textbf{用最低值与最高值连接两段一阶过程}\par\nobreak
 令 图\ref{fig:c5:drill:6:s} 中稳定循环的最低、最高电压为 $u_-,u_+$，$a=\e^{-T/(RC)}$。接 $U$ 的一段满足 $RC\dot u=U-u$，从局部时间 $0$ 到 $t$ 积分，
-$\int_{u_-}^{u(t)}\dd z/(U-z)=t/(RC)$，即
-$\ln[(U-u_-)/(U-u(t))]=t/(RC)$。
+\[
+ \begin{aligned}
+ \int_{u_-}^{u(t)}\frac{\dd z}{U-z}&=\frac1{RC}\int_0^t\dd s,\\
+ [-\ln(U-z)]_{u_-}^{u(t)}&=\frac1{RC}[s]_0^t,\\
+ \ln\frac{U-u_-}{U-u(t)}&=\frac{t}{RC}.
+ \end{aligned}
+\]
 在 $t=T$ 代入 $u(T)=u_+$，所以 $u_+=U+(u_--U)a$。随后接零，从 $u_+$ 放电到 $u_-$。在放电阶段另以$s=0$为起点，满足$\dd u/u=-\dd s/(RC)$、$u(0)=u_+$。因此
 \[
 \int_{u_+}^{u(s)}\frac{\dd \xi}{\xi}

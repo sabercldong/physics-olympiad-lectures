@@ -42,7 +42,7 @@ U(r)-U(b)=GMm\int_b^r s^{-2}\dd s
 能量线与势能曲线相交处是$K=0$的候选转折点；若当地$U'\ne0$，速度虽为零，力却不为零，物体随即反向。平衡点还需$U'=0$。若$U''(x_0)>0$，令$\xi=x-x_0$，局部有$U\simeq U(x_0)+U''(x_0)\xi^2/2$。对位置求导时 $\dd\xi/\dd x=1$，故
 $F_x=-\dd U/\dd x\simeq-U''(x_0)\xi$，从而
 $\ddot\xi+\omega^2\xi=0$，其中 $\omega^2=U''(x_0)/m>0$。
-试解 $\e^{st}$ 得特征根 $s=\pm i\omega$，所以
+试取$\xi=\e^{st}$，则$\dot\xi=s\e^{st}$、$\ddot\xi=s^2\e^{st}$。代入运动方程得$(s^2+\omega^2)\e^{st}=0$，约去非零指数，特征方程为$s^2+\omega^2=0$，两根$s=\pm i\omega$。用$\e^{\pm i\omega t}=\cos\omega t\pm i\sin\omega t$组成实通解，所以
 $\xi=A\cos\omega t+B\sin\omega t$。
 速度为 $\dot\xi=-A\omega\sin\omega t+B\omega\cos\omega t$；
 给定 $\xi(0)=\xi_0,\dot\xi(0)=w_0$ 后，$A=\xi_0,B=w_0/\omega$。
@@ -80,7 +80,13 @@ $\xi=A\cos\omega t+B\sin\omega t$。
 
 \input{knowledge-collision-frames}
 
-将上述两式代入$K=m_1v_1^2/2+m_2v_2^2/2$，交叉项$\pm(m_1m_2/M)\bm V_C\cdot\bm u$相消，得到
+将上述两式代入$K=m_1v_1^2/2+m_2v_2^2/2$，保留两个平方中的所有项，
+\begin{align*}
+K={}&\frac12MV_C^2
++\left(\frac{m_1m_2}{M}-\frac{m_2m_1}{M}\right)\bm V_C\cdot\bm u\\
+&+\frac{m_1m_2^2+m_2m_1^2}{2M^2}u^2.
+\end{align*}
+交叉项相消；最后一项的分子提取$m_1m_2$后剩$m_1+m_2=M$，因此$u^2$的系数化为$m_1m_2/(2M)=\mu/2$，得到
 \begin{equation}
  K=\frac12MV_C^2+\frac12\mu u^2,\qquad
  \mu=\frac{m_1m_2}{m_1+m_2}.
@@ -135,7 +141,7 @@ v_2&=\frac{(1+e)m_1u_1+(m_2-em_1)u_2}{M}.
 \draw[flow](.7,1)--(-.1,1);\draw[flow](4.4,1)--(5.6,1);\end{tikzpicture}}
 
 以自然长接触、相对接近速率 $u>0$ 为初态，令 $\omega=\sqrt{k/\mu}$。
-在 $x''+\omega^2x=0$ 中试取 $x=\e^{st}$，特征方程 $s^2+\omega^2=0$ 给根 $\pm i\omega$，故通解为
+在$x''+\omega^2x=0$中试取$x=\e^{st}$，依次求导为$x'=s\e^{st}$、$x''=s^2\e^{st}$。代入后$(s^2+\omega^2)\e^{st}=0$，指数不为零，故$s^2+\omega^2=0$，根为$\pm i\omega$；将两指数解组合成实函数，通解为
 \[
 x=A\cos\omega t+B\sin\omega t,\qquad
 \dot x=-A\omega\sin\omega t+B\omega\cos\omega t.

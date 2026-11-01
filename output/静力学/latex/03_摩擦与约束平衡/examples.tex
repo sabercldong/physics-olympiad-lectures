@@ -60,7 +60,13 @@ h_{\max}=\frac{1/\sqrt2}{1+2(1/\sqrt2)^2}=\frac1{2\sqrt2}.
 \[
 \frac G2+W(1-x/l)\le\mu\cot\theta\left(\frac G2+\frac{Wx}{l}\right).
 \]
-空杆需$\mu\ge\tan\theta$。在此条件下，对所有$W\ge0$成立还需$W$的系数不为正，即
+令$W=0$，约去正的$G/2$，得$1\le\mu\cot\theta$，即空杆需$\mu\ge\tan\theta$。在此条件下，对所有$W\ge0$成立还需移项后$W$的系数不为正：
+\[
+1-\frac xl-\mu\cot\theta\frac xl\le0
+\quad\Longleftrightarrow\quad
+\frac xl(1+\mu\cot\theta)\ge1.
+\]
+因$0<\theta<\pi/2$，括号为正，除后再把分子、分母同乘$\tan\theta$，得到
 \[
 x\ge x_c=\frac{l\tan\theta}{\mu+\tan\theta}.
 \]
@@ -137,7 +143,28 @@ N_1L\sin\theta+f_1L\cos\theta=\frac{GL}2\cos\theta.
 a\ge\frac1{2(\mu+\tan\theta)},\qquad
 a(1-\mu\tan\theta)\le\frac\mu2.
 \]
-当$\mu$取可行的最小值时，两端可行区间刚相接，因而此边界两处同时取等号，$f_1=\mu N_1$、$N_1=\mu N_2$。由$N_2=G-\mu N_1$得$N_1=\mu G/(1+\mu^2)$。代入力矩式得$\mu^2+2\mu\tan\theta-1=0$，正根$\mu_{\min}=\sec\theta-\tan\theta$。这是特定单参数极限，不能推广成所有双接触题都同时达极限。\end{solution}
+先在$\mu\tan\theta<1$内找首次可行的边界。第二个不等式给$a\le\mu/[2(1-\mu\tan\theta)]$，与下界相容须
+\[
+\frac1{2(\mu+\tan\theta)}\le
+\frac\mu{2(1-\mu\tan\theta)}.
+\]
+分母均为正，交叉相乘，得
+\[
+1-\mu\tan\theta\le\mu(\mu+\tan\theta)
+\quad\Longleftrightarrow\quad
+(\mu+\tan\theta)^2\ge1+\tan^2\theta=\sec^2\theta.
+\]
+因$\mu+\tan\theta>0$，取正平方根，得到
+\[
+\mu\ge\sec\theta-\tan\theta
+=\frac1{\sec\theta+\tan\theta}.
+\]
+该候选值满足$\mu\tan\theta=\sin\theta/(1+\sin\theta)<1$，确在所讨论区间内。在等号处上下界相等，两处摩擦同时取极限；由$N_2=G-\mu N_1$和$N_1=\mu N_2$得
+\[
+N_1=\frac{\mu G}{1+\mu^2}>0,\qquad
+N_2=\frac{G}{1+\mu^2}>0,\qquad f_1=\mu N_1>0.
+\]
+所以此边界可以实现，$\mu_{\min}=\sec\theta-\tan\theta$。这是由本题可行区间相接推得的特定极限，不能推广成所有双接触题都同时达极限。\end{solution}
 \begin{question}\begin{example}[轻圆筒何时翻倒]\label{s3:example:6}
 半径$a$、高$4a$、重$w$的两端开口薄圆筒置于光滑地面。筒内两相同光滑球半径$r$、各重$G$，一球落地且分别靠左右筒壁，$a/2<r<a$。求圆筒不翻倒条件。
 \end{example}
@@ -256,7 +283,14 @@ N_1,N_2\ge0,\quad |T|\le\mu_1N_1,\quad |T|\le\mu_2N_2.
 \fig{fig:s3:example:10:s}{题设：开合木板夹持圆柱的转向}{\begin{tikzpicture}[scale=.88]\draw[world](0,4)--(0,0)--(4,3);\draw[world](.8,1.6)circle(.8);\node at(.35,.7){$\theta$};\node[below]at(0,0){$O$};\draw[guide](.8,1.6)--(0,1.6);\node[above]at(.4,1.6){$R$};\node at(2.5,3.3){$\dot\theta>0$，缓慢开板};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{由两处相切几何求中心下降速度}\par\nobreak
-图\ref{fig:s3:example:10:s}的圆心位于$(R,R\cot(\theta/2))$。先对余切函数求导：
+图\ref{fig:s3:example:10:s}中圆心到墙的距离恒为$R$。设圆心高$Y$，它到板直线的垂距亦为$R$，故
+\[
+Y\sin\theta-R\cos\theta=R,\qquad
+Y=\frac{R(1+\cos\theta)}{\sin\theta}
+=\frac{2R\cos^2(\theta/2)}{2\sin(\theta/2)\cos(\theta/2)}
+=R\cot\frac\theta2.
+\]
+圆心位于$(R,R\cot(\theta/2))$。先对余切函数求导：
 \[
 \frac{\dd}{\dd u}\cot u
 =\frac{(-\sin u)\sin u-\cos u\cos u}{\sin^2u}
@@ -268,7 +302,7 @@ V_y=\frac{\dd}{\dd t}\bigl[R\cot(\theta/2)\bigr]
 =-\frac{R}{\sin^2(\theta/2)}\frac{\dot\theta}{2}<0.
 \]
 因此圆心向下移动。取逆时针角速度$\omega$为正，墙接触相对速度为$V_y-R\omega$，板接触沿板向上分量为$V_y\cos\theta+R\omega$。两处同时粘着只在$\dot\theta=0$时可能。
-圆心到墙的距离恒为$R$。设中心高$Y$，它到板直线的垂距亦为$R$，得到$Y\sin\theta-R\cos\theta=R$，即$Y=R(1+\cos\theta)/\sin\theta=R\cot(\theta/2)$。这一几何式先决定中心的运动方向，再用接触点的刚体速度确定滑动方向，不能单凭开板方向猜圆柱转向。
+几何式决定圆心的运动方向，接触点的刚体速度再确定滑动方向。
 \fig{fig:s3:example:10:p}{在墙、板实际接触点分别标法向力与切向力}{\begin{tikzpicture}
 
 \draw[world](0,6.5)--(0,0)--(6,4.5);\draw[world](2,4)circle(2);\fill(2,4)circle(2pt)node[above right]{$C$};\node[below]at(0,0){$O$};\draw[force](0,4)--(0,5.5)node[left]{$f_w$};\draw[force](0,4)--(1.4,4)node[midway,above]{$N_w$};\draw[force](3.2,2.4)--(4.8,3.6)node[right]{$f_b$};\draw[force](3.2,2.4)--(2,4)node[midway,right]{$N_b$};\draw[force](2,4)--(2,2.7)node[left]{$G$};\draw(0,.8)arc(90:36.87:.8);\node at(.35,1){$\theta$};
@@ -285,11 +319,28 @@ G=N_b\sin\theta+f(1+\cos\theta).
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别检验墙粘着和板粘着分支}\par\nobreak
-若墙粘着，$\omega=V_y/R<0$，圆柱顺时针；板向下滑，$f=\mu_bN_b$。墙能粘着的条件为
+若墙粘着，$\omega=V_y/R<0$，圆柱顺时针；板向下滑，$f=\mu_bN_b$。代入力平衡式，先求
+\[
+N_b=\frac{G}{\sin\theta+\mu_b(1+\cos\theta)},\qquad
+N_w=N_b(\cos\theta-\mu_b\sin\theta).
+\]
+墙须提供同样大小的$f$，因此$\mu_bN_b\le\mu_wN_w$。约去正的$N_b$，墙能粘着的条件为
 \[
 \mu_b\le\mu_w(\cos\theta-\mu_b\sin\theta).
 \]
-若板粘着，$\omega=-V_y\cos\theta/R>0$，圆柱逆时针；墙处向下滑，$f=\mu_wN_w$。板能粘着条件为$\mu_w\cos\theta\le\mu_b(1+\mu_w\sin\theta)$。
+若板粘着，$\omega=-V_y\cos\theta/R>0$，圆柱逆时针；墙处向下滑，$f=\mu_wN_w$。先代入水平平衡式，得到
+\[
+N_w=N_b\cos\theta-\mu_wN_w\sin\theta,
+\qquad
+\frac{N_w}{N_b}=\frac{\cos\theta}{1+\mu_w\sin\theta}.
+\]
+板摩擦须满足$f\le\mu_bN_b$，故
+\[
+\frac{\mu_w\cos\theta}{1+\mu_w\sin\theta}\le\mu_b
+\quad\Longleftrightarrow\quad
+\mu_w\cos\theta\le\mu_b(1+\mu_w\sin\theta).
+\]
+其中$N_b=G/\{\sin\theta+\mu_w\cos\theta(1+\cos\theta)/(1+\mu_w\sin\theta)\}>0$，且$N_w>0$，接触未被破坏。
 
 
 

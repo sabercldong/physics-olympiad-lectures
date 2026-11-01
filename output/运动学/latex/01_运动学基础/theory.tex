@@ -32,7 +32,14 @@
 测量所得数值还应与模型尺度对应。计算列车通过桥梁的历时，列车长度参与车头到车尾通过的距离，此时不能把整列车缩成一个点；研究列车在相距很远的两站之间的平均速度，车长往往可以忽略。质点不是“体积很小的物体”的别名，而是所求结果对形状、转动和大小不敏感时采用的近似。同一物体在同一道题的不同阶段，也可能需要不同程度的模型描述。
 
 \subsection{分段过程中的局部时间与连续条件}
-设 $t=t_1$处运动条件改变，第二段用局部时间 $\tau=t-t_1$计算。若改变前速度为 $v_1$、位置为 $x_1$，第二段恒加速度为 $a_2$，则
+设$t=t_1$处运动条件改变，第二段用局部时间$\tau=t-t_1$计算。若改变前速度为$v_1$、位置为$x_1$，第二段恒加速度为$a_2$，则局部初值是$v(0)=v_1$、$x(0)=x_1$。先积分速度变化，再积分位置变化：
+\begin{align*}
+v-v_1&=\int_0^\tau a_2\dd s=[a_2s]_0^\tau=a_2\tau,\\
+x-x_1&=\int_0^\tau(v_1+a_2s)\dd s
+=\left[v_1s+\frac{a_2s^2}{2}\right]_0^\tau
+=v_1\tau+\frac{a_2\tau^2}{2}.
+\end{align*}
+最后换回全局时间$t$，得到
 \[v(t)=v_1+a_2(t-t_1),\qquad
 x(t)=x_1+v_1(t-t_1)+\frac12a_2(t-t_1)^2.\]
 $x_1,v_1$由第一段末态求出，不能重新置零。无瞬时冲量时速度连续；加速度却可以在外力改变时跳变。若发生理想碰撞，位置仍连续，速度则按碰撞条件突变。把这些不同的连续性要求先写清，比事后猜图像的连接方式更可靠。
@@ -110,8 +117,14 @@ $x_1,v_1$由第一段末态求出，不能重新置零。无瞬时冲量时速�
 \bigl(2\dot x\ddot x+2\dot y\ddot y\bigr)
 =\frac{\dot x\ddot x+\dot y\ddot y}{v},\qquad v\ne0.\]
 这只是加速度沿速度方向的分量。以 $x=A\cos\omega t$、$y=B\sin\omega t$为例，
-\[\bm v=\omega(-A\sin\omega t,B\cos\omega t),\qquad
-\bm a=-\omega^2(A\cos\omega t,B\sin\omega t).\]
+先对两个位置分量分别求导，再对所得速度分量求导，$A,B,\omega$均保持不变：
+\begin{align*}
+v_x&=A[-\sin(\omega t)]\omega=-A\omega\sin\omega t,\\
+v_y&=B\cos(\omega t)\omega=B\omega\cos\omega t,\\
+a_x&=-A\omega\cos(\omega t)\omega=-A\omega^2\cos\omega t,\\
+a_y&=B\omega[-\sin(\omega t)]\omega=-B\omega^2\sin\omega t.
+\end{align*}
+这四个分量合成为$\bm v=\omega(-A\sin\omega t,B\cos\omega t)$、$\bm a=-\omega^2(A\cos\omega t,B\sin\omega t)$。
 加速度始终指向原点，但若 $A\ne B$，速率一般不恒定，因为 $v^2=\omega^2(A^2\sin^2\omega t+B^2\cos^2\omega t)$。只有 $A=B$才退化为匀速圆周运动。故“指向固定中心”不足以单独推出匀速，也不足以推出轨迹为圆。
 
 求得分量后，可用三个独立信息检查：位置是否满足轨迹方程，速度是否沿轨迹切线，加速度与速度的点积是否符合速率增减。若某瞬间速度为零，不能使用除以 $v$的式子，应回到位置或速度的局部展开。模型条件、参数范围与特殊点的检验应贯穿整个求解过程。
@@ -196,8 +209,12 @@ $x$--$t$ 图的斜率为速度，$v$--$t$ 图的斜率为加速度；$v$--$t$ �
 
 \subsection{轨迹与时间规律分别确定什么}
 若轨迹给成 $\bm r=\bm R(q)$，其中 $q$只是参数而非时间，则链式法则给出
-\[\bm v=\bm R'(q)\dot q,\qquad
-\bm a=\bm R''(q)\dot q^{\,2}+\bm R'(q)\ddot q.\]
+\begin{align*}
+\bm v&=\frac{\dd\bm R}{\dd q}\frac{\dd q}{\dd t}=\bm R'(q)\dot q,\\
+\bm a&=\frac{\dd}{\dd t}\bigl[\bm R'(q)\dot q\bigr]
+=\bigl[\bm R''(q)\dot q\bigr]\dot q+\bm R'(q)\ddot q\\
+&=\bm R''(q)\dot q^{\,2}+\bm R'(q)\ddot q.
+\end{align*}
 第一式中，$\bm R'$决定切线，$\dot q$决定通过的快慢及方向。第二式包含因路径弯曲产生的项和因参数速度变化产生的项。同一轨迹采用不同的 $q(t)$，速度和加速度通常都不同。只有轨迹方程而没有时间条件时，题目对运动的描述尚不完整。
 
 对直线位置函数也可作反向检查。先由给定速度积分再代入初始位置，可以恢复唯一的位置函数；若少给一个初始值，便留有任意常数。加速度需要两个初值才能确定直线运动。求出一个函数只是建立模型的一部分，还应将它求导代回已知条件，并检查所取时间区间内的位置是否越过墙、杆端或其他边界。
@@ -219,7 +236,14 @@ $x$--$t$ 图的斜率为速度，$v$--$t$ 图的斜率为加速度；$v$--$t$ �
 设约束为 $F(x,y,t)=0$，对时间求导得到 $F_x\dot x+F_y\dot y+F_t=0$。式中显含时间的项表示边界本身在运动。若需要加速度，还须再次求导，并保留速度平方产生的项。只把速度关系中的 $v$ 换成 $a$，一般不能得到正确的加速度关系。
 
 \subsection{转动基矢为什么也要求导}
-极坐标用距离 $\rho$ 和方位角 $\theta$ 描述位置，径向单位矢量 $\bm e_\rho=(\cos\theta,\sin\theta)$，横向单位矢量 $\bm e_\theta=(-\sin\theta,\cos\theta)$。它们的长度恒为1，但方向随 $\theta$ 改变。逐分量求导可得 $\dot{\bm e}_\rho=\dot\theta\bm e_\theta$、$\dot{\bm e}_\theta=-\dot\theta\bm e_\rho$。因此 $\bm r=\rho\bm e_\rho$ 的导数是 $\bm v=\dot\rho\bm e_\rho+\rho\dot\theta\bm e_\theta$。
+极坐标用距离$\rho$和方位角$\theta$描述位置，径向单位矢量$\bm e_\rho=(\cos\theta,\sin\theta)$，横向单位矢量$\bm e_\theta=(-\sin\theta,\cos\theta)$。它们的长度恒为1，但方向随$\theta(t)$改变。对每个三角函数分量使用链式法则，
+\begin{align*}
+\dot{\bm e}_\rho&=(-\sin\theta\,\dot\theta,\cos\theta\,\dot\theta)
+=\dot\theta\bm e_\theta,\\
+\dot{\bm e}_\theta&=(-\cos\theta\,\dot\theta,-\sin\theta\,\dot\theta)
+=-\dot\theta\bm e_\rho.
+\end{align*}
+因此$\bm r=\rho\bm e_\rho$的导数要同时改变长度与方向：$\bm v=\dot\rho\bm e_\rho+\rho\dot{\bm e}_\rho=\dot\rho\bm e_\rho+\rho\dot\theta\bm e_\theta$。
 
 这里的 $\rho\dot\theta$ 是横向分速度，不是一般轨迹的总速率。只有 $\dot\rho=0$ 时，速率才等于 $\rho|\dot\theta|$。继续求加速度时，既要对分量求导，也要对基矢求导；这一规则在圆周运动、转杆及曲线运动中会反复出现。极坐标在 $\rho=0$ 处方位角不确定，经过原点的运动宜改用直角坐标或分段描述。
 \subsection{由图像估算与检查量纲}

@@ -12,7 +12,13 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消去运动时间并明确模型范围}\par\nobreak
 图\ref{k2p1s}表示木板扫过的空间柱体，其体积只由面积与路程决定。只要 $V>0$、$D$固定，车速在撞击数率和总时间中相消，竖直雨速也不影响这个零厚度、单一竖直板面的结果。若计车顶或有限厚度物体的其他表面，便需要另加相应法向通量，不能直接推广为“跑快跑慢淋雨总量一定相同”。
 
-用随车参考系也得到相同结果：相对雨速虽有水平、竖直两分量，但撞向竖直板的法向只有水平分量 $V$。竖直分量只使雨滴在板面上的交点上下改变。若行驶中速度随时间变化而始终向前，数量仍为 $nS\int V(t)\dd t=nSD$；若往返，则应按实际扫过的路程与重复穿越的统计规则重新计数。\end{solution}
+用随车参考系也得到相同结果：相对雨速虽有水平、竖直两分量，但撞向竖直板的法向只有水平分量 $V$。竖直分量只使雨滴在板面上的交点上下改变。若行驶中速度随时间变化而始终向前，取出发时 $x(0)=0$，到达时 $x(T)=D$，则
+\[
+ N=nS\int_0^T V(t)\dd t
+ =nS\int_{x(0)}^{x(T)}\dd x
+ =nS[x]_0^D=nSD.
+\]
+这里换元用 $\dd x=V(t)\dd t$，积分边界由时刻变成对应的位置。若往返，则应按实际扫过的路程与重复穿越的统计规则重新计数。\end{solution}
 
 \begin{question}\begin{example}[挡风玻璃上的垂直入射]\label{k2p2}
 无风时雨滴对地竖直下落。汽车向右以30m/s行驶，挡风玻璃由左上向右下倾斜，与水平面成 $37^\circ$。司机看到雨滴相对汽车垂直射向玻璃。求雨滴对地速率，取 $\sin37^\circ=3/5$、$\cos37^\circ=4/5$。\end{example}
@@ -76,7 +82,13 @@ T=\frac d{w\cos\beta}=\frac d{\sqrt{w^2-u^2}}.\]
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{原点在速度圆外：作切线求最短航程}\par\nobreak
 当 $w<u$时，原点在速度圆外，合速度与河岸的最大夹角对应上侧切线。令合速度端点为 $V$、圆心为 $W$，则 $OV\perp WV$。由直角三角形 $OWV$，$\sin\gamma=w/u$、$|OV|=\sqrt{u^2-w^2}$，所以
 \[\boxed{S_{\min}=\frac d{\sin\gamma}=\frac{du}{w}}.\]
-同一切线条件也可写成 $\bm V\cdot(\bm V-u\bm e_x)=0$；代入分量得到 $w^2-uw\sin\beta=0$，因此 $\sin\beta=w/u$。进而
+同一切线条件也可写成 $\bm V\cdot(\bm V-u\bm e_x)=0$。将 $\bm V-u\bm e_x=(-w\sin\beta,w\cos\beta)$代入，逐项展开：
+\begin{align*}
+ 0&=(u-w\sin\beta)(-w\sin\beta)+(w\cos\beta)^2\\
+  &=-uw\sin\beta+w^2(\sin^2\beta+\cos^2\beta)
+   =w^2-uw\sin\beta.
+\end{align*}
+因 $u,w>0$，除以 $uw$得到 $\sin\beta=w/u$。又因 $\cos\beta>0$，有 $\cos\beta=\sqrt{u^2-w^2}/u$，进而
 \[V_x=\frac{u^2-w^2}{u},\qquad
 V_y=\frac{w\sqrt{u^2-w^2}}u,\qquad
 T=\frac{du}{w\sqrt{u^2-w^2}}.\]
@@ -98,7 +110,7 @@ T=\frac{du}{w\sqrt{u^2-w^2}}.\]
 \end{tikzpicture}}
 图\ref{k2deep:riverlimit}左图的纵轴交点对应有限的过河分速度；右图要趋向纵轴方向，合速度端点也同时趋近原点。因而必须同时检查航程和用时。
 
-当 $w=u$时，航程式直接化为
+当 $w=u$时，先用 $(1-\sin\beta)^2+\cos^2\beta=2(1-\sin\beta)$，再用 $\cos^2\beta=(1-\sin\beta)(1+\sin\beta)$。在有限时间的允许范围内 $\sin\beta<1$，可以约去 $1-\sin\beta$，所以
 \[S=d\frac{\sqrt{(1-\sin\beta)^2+\cos^2\beta}}{\cos\beta}
    =d\sqrt{\frac{2}{1+\sin\beta}}.\]
 要使它趋近 $d$，需 $\beta\to\pi/2$，但这使 $V_y\to0$、$T\to\infty$。所以此时只有航程下确界 $d$，有限时间内不能取得。三个分支的时间和几何条件均须一同保留。\end{solution}
@@ -113,7 +125,16 @@ T=\frac{du}{w\sqrt{u^2-w^2}}.\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立消元并恢复风对地的方向}\par\nobreak
-解得 $\boxed{W_x=10,\ W_y=10\sqrt3\ \mathrm{km/h}}$，风速为 $\boxed{20\,\mathrm{km/h}}$，流动方向与航向正向成 $60^\circ$。
+角关系的两边同乘 $\sqrt3$，先消去 $W_y$：
+\[
+ 3(20-W_x)=40-W_x
+ \quad\Longrightarrow\quad 20=2W_x
+ \quad\Longrightarrow\quad W_x=10.
+\]
+回代得到 $W_y=\sqrt3(20-10)=10\sqrt3$，所以
+\[\boxed{W_x=10,\quad W_y=10\sqrt3\ \mathrm{km/h}}.\]
+\[W=\sqrt{W_x^2+W_y^2}=\sqrt{100+300}=\boxed{20\,\mathrm{km/h}}.\]
+真风的两个分量均正，且 $W_y/W_x=\sqrt3$，因此流动方向与航向正向成 $60^\circ$。
 \fig{k2p5s}{两次旗向反求风速：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5,0)node[right]{$V$};\draw[flow,blue](0,0)--(1,1.73)node[above]{$\bm W$};\draw[flow](2,0)--(1,1.73);\draw[flow](4,0)--(1,1.73);\node[below]at(1,0){$10$};\node[below]at(2,0){$20$};\node[below]at(4,0){$40$};\end{tikzpicture}}
 
 
@@ -121,7 +142,7 @@ T=\frac{du}{w\sqrt{u^2-w^2}}.\]
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{令相对风纵向分量为零并回代两次旗角}\par\nobreak
 图\ref{k2p5s}画出真风与两次船速；相对风的竖直分量相同，水平分量改变20km/h。旗与航向垂直要求 $W_x-V=0$，故船速应为 $\boxed{10\,\mathrm{km/h}}$。风的来向与上述流动方向相反，不能把旗尖方向直接称为风的来向。
 
-将角关系的两边同乘 $\sqrt3$，得到 $3(20-W_x)=40-W_x$，由此先求 $W_x=10$，再回代求横向风分量。检查两次相对风分别为 $(-10,10\sqrt3)$与 $(-30,10\sqrt3)$km/h，确实都朝船后，锐角正切分别为 $\sqrt3$和 $1/\sqrt3$。若只取正切大小却不检查后向条件，可能误保留另一套方向分支。\end{solution}
+检查两次相对风分别为 $(-10,10\sqrt3)$与 $(-30,10\sqrt3)$km/h，确实都朝船后，锐角正切分别为 $\sqrt3$和 $1/\sqrt3$。若只取正切大小却不检查后向条件，可能误保留另一套方向分支。\end{solution}
 
 \begin{question}\begin{example}[骑行者看到的风向]\label{k2p6}
 自行车向正东以5km/h行驶时，骑车人感到风从正北吹来；车速增加两倍，即增至15km/h时，风从正东北吹来。求风对地的速度和来向。\end{example}
@@ -223,13 +244,24 @@ $v-U_x=vk^2/(1+k^2)=kU_y>0$，故 $|U_x-v|b/U_y=a$。
 \fig{k2p10q}{绿灯剩余时间与停车距离：题设关系}{\begin{tikzpicture}\draw[world](0,0)--(6,0);\draw[world](.2,0)rectangle(1.5,.6);\draw[very thick](5,-.3)--(5,1.1)node[above]{停车线};\draw[dim](1.5,-.5)--(5,-.5)node[midway,below]{$18\,\mathrm m$};\draw[flow](1.6,.6)--(2.8,.6)node[right]{$8\,\mathrm{m/s}$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{检验加速通过的时间与限速}\par\nobreak
-图\ref{k2p10q}先检查加速段：在2s内位移为 $16+2a$，故 $a>1$m/s$^2$可在2s前通过。取最大 $a=2$，由 $18=8t+t^2$ 得 $t=\sqrt{34}-4\approx1.831$s，通过速度为 $8+2t\approx11.66$m/s，低于限速，因而可行。
+图\ref{k2p10q}先检查加速段：在2s内位移为 $8\times2+a\times2^2/2=16+2a$，故 $a>1$m/s$^2$可在2s前通过。取最大 $a=2$，到线条件为
+\[
+ 18=8t+t^2\quad\Longrightarrow\quad(t+4)^2=34
+ \quad\Longrightarrow\quad t=-4\pm\sqrt{34}.
+\]
+只保留正时间 $t=\sqrt{34}-4\approx1.831$s，通过速度为 $8+2t\approx11.66$m/s，低于限速，因而可行。
 \fig{k2p10s}{绿灯剩余时间与停车距离：解答过程}{\begin{tikzpicture}\draw[axis](0,0)--(5.5,0)node[right]{$t$};\draw[axis](0,0)--(0,3.1)node[above]{$v$};\draw[blue,world](0,1.8)--(4,2.7);\draw[red,world](0,1.8)--(3.2,0)--(5,0);\draw[guide](4,0)--(4,2.7);\node[below]at(4,0){$2$};\node[below]at(3.2,0){$1.6$};\node[left]at(0,1.8){$8$};\end{tikzpicture}}
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别比较两种制动方案的剩余距离}\par\nobreak
-图\ref{k2p10s}中制动速度在 $t=8/5=1.6$s时归零，此后的速度取零。停车距离 $8^2/(2\times5)=6.4$m，小于18m，立即制动不会通过停车线。若只余5m才开始制动，6.4m的停车距离超过剩余距离，不能停在线前。不能把 $8t-5t^2/2$ 外推到停车之后，更不能由“加速通过”直接断言一定超速。
+图\ref{k2p10s}中，以开始制动为当地时间零点，$v(\tau)=8-5\tau$在 $\tau_s=8/5=1.6$s时归零，此后取零。制动阶段的停车距离为
+\[
+ s_{\rm stop}=\int_0^{8/5}(8-5\tau)\dd\tau
+ =\left[8\tau-\frac52\tau^2\right]_0^{8/5}
+ =\frac{64}{5}-\frac{32}{5}=6.4\,\mathrm m.
+\]
+它小于18m，立即制动不会通过停车线。若只余5m才开始制动，停车距离仍为6.4m，超过剩余距离，不能停在线前。不能把 $8\tau-5\tau^2/2$ 外推到停车之后。
 
 
 
@@ -256,7 +288,15 @@ $A,B,C$同时同地出发，20s后均位于同一正坐标 $x_0$。$B,C$全程�
 \fig{k2p12q}{共同重力下的四球构形：题设关系}{\begin{tikzpicture}\fill(0,0)circle(2pt)node[below right]{$O$};\foreach \a/\s in {0/右,90/上,180/左,270/下}\draw[flow](0,0)--(\a:1.5)node[pos=1.25]{\s};\node at(3,0){各速率 $v_0$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{抽去四球共有的自由落体位移}\par\nobreak
-把图\ref{k2p12q}的抛出点取为原点，$y$轴向上。四球均有位移项 $(0,-gt^2/2)$，另有初速度造成的位移。令 $G=(0,-gt^2/2)$，则四个位置为 $G+(0,v_0t)$、$G+(0,-v_0t)$、$G+(-v_0t,0)$、$G+(v_0t,0)$。
+把图\ref{k2p12q}的抛出点取为原点，$y$轴向上。对任意一个初速度为 $\bm v_{i0}$的小球，先积分共同加速度，再用共同的初位置为零：
+\begin{align*}
+ \bm v_i(t)-\bm v_{i0}&=\int_0^t(-g\bm e_y)\dd\tau
+ =[-g\tau\bm e_y]_0^t=-gt\bm e_y,\\
+ \bm r_i(t)&=\int_0^t(\bm v_{i0}-g\tau\bm e_y)\dd\tau
+ =\left[\bm v_{i0}\tau-\frac g2\tau^2\bm e_y\right]_0^t
+ =\bm v_{i0}t-\frac{gt^2}{2}\bm e_y.
+\end{align*}
+令共同平移后的中心为 $G=(0,-gt^2/2)$，代入四个初速度，四个位置分别为 $G+(0,v_0t)$、$G+(0,-v_0t)$、$G+(-v_0t,0)$、$G+(v_0t,0)$。
 \fig{k2p12s}{共同重力下的四球构形：解答过程}{\begin{tikzpicture}\coordinate(G)at(0,0);\draw[world](0,1.6)--(1.6,0)--(0,-1.6)--(-1.6,0)--cycle;\foreach \p in {(0,1.6),(1.6,0),(0,-1.6),(-1.6,0)}\fill\p circle(1.5pt);\draw[guide](-1.6,0)--(1.6,0) (0,-1.6)--(0,1.6);\fill(0,0)circle(1pt)node[below right]{$G$};\node[above]at(0,2.4){$O$};\draw[flow,blue](.4,2.4)--(.4,0)node[midway,right]{$gt^2/2$};\end{tikzpicture}}
 
 
@@ -316,6 +356,12 @@ s_{\text{乙}}&=\underbrace{\tfrac12(2a)T^2}_{\text{第一段}}+
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由曲线零点确定首次正向到达的范围}\par\nobreak
-图\ref{k2p14s}的 $v^2$--$x$ 图为开口向下的抛物线，$x=a_0/k$处速率最大。首个正向分支至 $x_+=(a_0+\sqrt{a_0^2+kv_0^2})/k$ 停止，故 $0\le s_0\le x_+$；端点速度为零，中间取正根。之后若反向回到同一位置，速度应取负根，不能用同一正号表达全程。
+图\ref{k2p14s}的 $v^2$--$x$ 图为开口向下的抛物线，$x=a_0/k$处速率最大。求其零点需解
+\[
+ kx^2-2a_0x-v_0^2=0,\qquad
+ x_{\pm}=\frac{2a_0\pm\sqrt{4a_0^2+4kv_0^2}}{2k}
+ =\frac{a_0\pm\sqrt{a_0^2+kv_0^2}}k.
+\]
+因 $v_0>0$，根号严格大于 $a_0$，所以 $x_-<0<x_+$。首个正向分支到 $x_+$停止，故 $0\le s_0\le x_+$；端点速度为零，中间取正根。之后若反向回到同一位置，速度应取负根，不能用同一正号表达全程。
 
 令 $x_c=a_0/k$，则 $v^2=v_0^2+a_0^2/k-k(x-x_c)^2$。质点从原点向右时，先因 $a>0$增速，过 $x_c$后因 $a<0$减速，直到正根 $x_+$停止。负根在原点左侧，不属于首次正向到达的区间。停止处 $a(x_+)=-\sqrt{a_0^2+kv_0^2}<0$，故随后确实反向，而不是静止保持在该点。\end{solution}

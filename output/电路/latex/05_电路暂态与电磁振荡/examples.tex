@@ -13,9 +13,11 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离偏差变量并代入初电荷}\par\nobreak
 当偏差不为零时，先写 $\dd u/u=-\dd t/(RC)$，再以初态为下限，
 \[
-\int_{u(0)}^{u(t)}\frac{\dd z}{z}
-=-\int_0^t\frac{\dd s}{RC},\qquad
-\ln\left|\frac{u(t)}{u(0)}\right|=-\frac t{RC}.
+\begin{aligned}
+\int_{u(0)}^{u(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{RC},\\
+[\ln|z|]_{u(0)}^{u(t)}&=-\frac1{RC}[s]_0^t,\\
+\ln\left|\frac{u(t)}{u(0)}\right|&=-\frac t{RC}.
+\end{aligned}
 \]
 偏差的符号不改变，且偏差零时解恒定。电流由
 $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
@@ -44,9 +46,11 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \begin{solution}\textbf{区分流入极板的参考电流与实际放电方向}\par\nobreak
 图\ref{fig:c5:example:2:s} 的参考电流流入上极板，与实际初始放电方向相反。回路式 $R\dot q+q/C=0$ 分离后为 $\dd q/q=-\dd t/(RC)$。由初值 $q(0)=CU_0$，
 \[
-\int_{CU_0}^{q(t)}\frac{\dd z}{z}
-=-\int_0^t\frac{\dd s}{RC},\qquad
-\ln\frac{q(t)}{CU_0}=-\frac t{RC},
+\begin{aligned}
+\int_{CU_0}^{q(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{RC},\\
+[\ln z]_{CU_0}^{q(t)}&=-\frac1{RC}[s]_0^t,\\
+\ln\frac{q(t)}{CU_0}&=-\frac t{RC}.
+\end{aligned}
 \]
 给出 $q=CU_0\e^{-t/(RC)}$，参考电流 $\dot q=-U_0\e^{-t/(RC)}/R$。
 \typeout{ECFIG:fig:c5:example:2:p}\fig{fig:c5:example:2:p}{左图改用实际放电方向为正；右图中剩余电荷与已通过电荷的归一化曲线之和恒为 $1$}{\begin{tikzpicture}
@@ -89,8 +93,11 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \begin{solution}\textbf{从电压比例改写剩余偏差}\par\nobreak
 图\ref{fig:c5:example:3:s} 中令 $\tau=RC$。回路给出 $\tau\dot u_C=\mathcal E-u_C$，以 $u_C(0)=0$ 积分，
 \[
-\int_0^{u_C}\frac{\dd z}{\mathcal E-z}=\frac t\tau,\qquad
--\ln\frac{\mathcal E-u_C}{\mathcal E}=\frac t\tau.
+\begin{aligned}
+\int_0^{u_C(t)}\frac{\dd z}{\mathcal E-z}&=\frac1\tau\int_0^t\dd s,\\
+[-\ln(\mathcal E-z)]_0^{u_C(t)}&=\frac1\tau[s]_0^t,\\
+-\ln\frac{\mathcal E-u_C}{\mathcal E}&=\frac t\tau.
+\end{aligned}
 \]
 因此 $u_C=\mathcal E(1-\e^{-t/\tau})$，初电流 $i_0=\mathcal E/R$。达到 $f\mathcal E$ 时，$1-f=\e^{-t/\tau}$，故 $t=-\tau\ln(1-f)$。
 \typeout{ECFIG:fig:c5:example:3:p}\fig{fig:c5:example:3:p}{达到给定比例相当于剩余偏差达到 $0.1,0.01$；时间横轴以 $\tau=RC$ 归一化}{\begin{tikzpicture}
@@ -125,9 +132,13 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \begin{solution}\textbf{继承原电容电压并确定新的终态}\par\nobreak
 图\ref{fig:c5:example:4:s} 切换瞬间电容电压保持 $U_1$，终态为 $U_2$。由 $RC\dot u_C+u_C=U_2$，令 $w=u_C-U_2$，得
 \[
-\int_{U_1-U_2}^{w(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{RC},
-\qquad w(t)=(U_1-U_2)\e^{-t/(RC)}.
+\begin{aligned}
+\int_{U_1-U_2}^{w(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{RC},\\
+[\ln z]_{U_1-U_2}^{w(t)}&=-\frac1{RC}[s]_0^t,\\
+\ln\frac{w(t)}{U_1-U_2}&=-\frac{t}{RC}.
+\end{aligned}
 \]
+初偏差为正，解也保持正号。两边取指数，再乘 $U_1-U_2$，得到 $w(t)=(U_1-U_2)\e^{-t/(RC)}$。
 电流为 $C\dot u_C=C(U_1-U_2)(-1/RC)\e^{-t/(RC)}$，所以
 \[
  u_C=U_2+(U_1-U_2)\e^{-t/(RC)},\quad
@@ -162,7 +173,16 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用瞬时焦耳功率独立核验}\par\nobreak
-直接积分 $Ri^2$：$R[(U_1-U_2)/R]^2\left[-\frac{RC}{2}\e^{-2t/(RC)}\right]_0^\infty=C(U_1-U_2)^2/2$，核验通过。电源仍接着并不意味着它一定供能。\end{solution}
+以有限上限 $T$ 积分 $Ri^2$，再令 $T\to\infty$：
+\[
+ \begin{aligned}
+ Q_R(T)&=\frac{(U_1-U_2)^2}{R}\int_0^T\e^{-2t/(RC)}\dd t\\
+ &=\frac{(U_1-U_2)^2}{R}
+ \left[-\frac{RC}{2}\e^{-2t/(RC)}\right]_0^T\\
+ &=\frac{C(U_1-U_2)^2}{2}(1-\e^{-2T/(RC)}).
+ \end{aligned}
+\]
+指数项趋零，回到同一总热，核验通过。电源仍接着并不意味着它一定供能。\end{solution}
 \begin{question}\begin{example}[经分压网络充电的时间常数]\label{c5:example:5}
 恒压源 $\mathcal E$ 经 $R_1$ 到节点 $A$，$A$ 经 $R_2$ 接地，电容 $C$ 并联于 $R_2$，初始未带电。求电容电压、源电流及终态。
 \end{example}
@@ -181,8 +201,11 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电容电压的完整暂态}\par\nobreak
 图\ref{fig:c5:example:5:p} 得到 $\tau=R_{\rm th}C$。回路式 $\tau\dot u_C+u_C=U_{\rm th}$ 给出
 \[
-\int_0^{u_C(t)}\frac{\dd z}{U_{\rm th}-z}=\int_0^t\frac{\dd s}{\tau},
-\qquad-\ln\frac{U_{\rm th}-u_C}{U_{\rm th}}=\frac t\tau,
+\begin{aligned}
+\int_0^{u_C(t)}\frac{\dd z}{U_{\rm th}-z}&=\int_0^t\frac{\dd s}{\tau},\\
+[-\ln(U_{\rm th}-z)]_0^{u_C(t)}&=\frac1\tau[s]_0^t,\\
+-\ln\frac{U_{\rm th}-u_C}{U_{\rm th}}&=\frac t\tau.
+\end{aligned}
 \]
 所以 $u_C=U_{\rm th}(1-\e^{-t/\tau})$。
 
@@ -218,7 +241,11 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 [\ln|\eta|]_{-x_\infty}^{y(t)}=-\frac{t}{RC_s}.
 \]
 故$\ln|y/(-x_\infty)|=-t/(RC_s)$；若 $U_1=U_2$，初态即平衡，$x=i=0$。
-对非平衡初态还原 $x$ 并求导，故 $x=x_\infty(1-\e^{-t/(RC_s)})$，$i=(U_1-U_2)\e^{-t/(RC_s)}/R$。
+对非平衡初态还原 $x=x_\infty(1-\e^{-t/(RC_s)})$。将 $x_\infty$ 作为常数，对时间求导，
+\[
+ i=\dot x=x_\infty\left[-\left(-\frac1{RC_s}\right)\e^{-t/(RC_s)}\right]
+ =\frac{U_1-U_2}{R}\e^{-t/(RC_s)}.
+\]
 \typeout{ECFIG:fig:c5:example:6:p}\fig{fig:c5:example:6:p}{固定从左向右的转移坐标；左上极板电荷减少 $x$，右上极板电荷增加 $x$}{\begin{tikzpicture}
 
 \draw(0,0)to[C,l={$C_1$}](0,3)to[R,l={$R$}](7,3)to[C,l={$C_2$}](7,0)--(0,0);
@@ -238,8 +265,12 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求总热并区分两种等效电容的用途}\par\nobreak
 初末储能差给出
 \[
- Q_R=\frac12C_1U_1^2+\frac12C_2U_2^2-\frac12(C_1+C_2)U_f^2
+ \begin{aligned}
+ Q_R&=\frac12C_1U_1^2+\frac12C_2U_2^2-\frac12(C_1+C_2)U_f^2\\
+ &=\frac{(C_1+C_2)(C_1U_1^2+C_2U_2^2)-(C_1U_1+C_2U_2)^2}{2(C_1+C_2)}\\
+ &=\frac{C_1C_2(U_1^2-2U_1U_2+U_2^2)}{2(C_1+C_2)}
  =\frac12C_s(U_1-U_2)^2.
+ \end{aligned}
 \]
 差压的时间常数用串联等效 $C_s$，终态总储能用并联总电容 $C_1+C_2$，二者用途不同。\end{solution}
 \begin{question}\begin{example}[斜坡电压驱动RC电路]\label{c5:example:7}
@@ -312,7 +343,12 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按关联方向求电感及电阻电压}\par\nobreak
-图\ref{fig:c5:example:8:p} 的电感端电压 $u_L=L\dot i=\mathcal E\e^{-Rt/L}$，电阻电压 $u_R=\mathcal E(1-\e^{-Rt/L})$，二者之和始终为 $\mathcal E$。
+对已求出的电流用链式法则，
+\[
+ \dot i=\frac{\mathcal E}{R}\left[-\left(-\frac RL\right)\e^{-Rt/L}\right]
+ =\frac{\mathcal E}{L}\e^{-Rt/L}.
+\]
+所以图\ref{fig:c5:example:8:p} 的电感端电压 $u_L=L\dot i=\mathcal E\e^{-Rt/L}$，电阻电压 $u_R=\mathcal E(1-\e^{-Rt/L})$，二者之和始终为 $\mathcal E$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求电流达到一半的时刻}\par\nobreak
 令 $i=(\mathcal E/R)/2$，得 $t=(L/R)\ln2$。
@@ -329,8 +365,11 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \begin{solution}\textbf{保留闭合续流路径并继承初始电流}\par\nobreak
 图\ref{fig:c5:example:9:s} 保留原电流方向为正，电流连续给出 $i(0^+)=I_0$。回路方程 $L\dot i+Ri=0$，所以
 \[
-\int_{I_0}^{i(t)}\frac{\dd z}{z}=-\frac RL\int_0^t\dd s,
-\qquad\ln\frac{i}{I_0}=-\frac{Rt}{L},
+\begin{aligned}
+\int_{I_0}^{i(t)}\frac{\dd z}{z}&=-\frac RL\int_0^t\dd s,\\
+[\ln z]_{I_0}^{i(t)}&=-\frac RL[s]_0^t,\\
+\ln\frac{i}{I_0}&=-\frac{Rt}{L}.
+\end{aligned}
 \]
 故 $i=I_0\e^{-Rt/L}$。
 \fig{c5:e9:polarity}{释放磁能时电感电流保持原方向，但电感实际端电势为下高上低}{\begin{tikzpicture}
@@ -388,9 +427,13 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用继承的初始电流求完整响应}\par\nobreak
 由 图\ref{fig:c5:example:10:p} 的等效回路，$L\dot i+(R/2)i=\mathcal E/2$。终态 $i_\infty=\mathcal E/R$，时间常数 $\tau=2L/R$。令 $j=i-i_\infty$，分离积分得
 \[
-\int_{I_0-i_\infty}^{j(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau},
-\qquad j(t)=(I_0-i_\infty)\e^{-t/\tau}.
+\begin{aligned}
+\int_{I_0-i_\infty}^{j(t)}\frac{\dd z}{z}&=-\int_0^t\frac{\dd s}{\tau},\\
+[\ln|z|]_{I_0-i_\infty}^{j(t)}&=-\frac1\tau[s]_0^t,\\
+\ln\left|\frac{j(t)}{I_0-i_\infty}\right|&=-\frac t\tau.
+\end{aligned}
 \]
+取指数后得到偏差绝对值之比为 $\e^{-t/\tau}$。结合初始符号，$j(t)=(I_0-i_\infty)\e^{-t/\tau}$。
 若初流恰等于终值，直接取 $j=0$；其余情形保留初始偏差的正负号，所以
 \[
  i(t)=\frac{\mathcal E}{R}+\left(I_0-\frac{\mathcal E}{R}\right)\e^{-Rt/(2L)}.
@@ -410,7 +453,7 @@ $\dot q=(q_0-C\mathcal E)(-1/RC)\e^{-t/(RC)}$ 求出，所以
 图\ref{fig:c5:example:11:s} 沿关联参考方向列式 $L\dot i+q/C=0$，结合 $i=\dot q$ 得 $\ddot q+\omega_0^2q=0$，$\omega_0=1/\sqrt{LC}$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{同时代入电荷与电流两个初值}\par\nobreak
-试取 $q=\e^{st}$，得到特征方程 $s^2+\omega_0^2=0$，所以一般实解 $q=A\cos\omega_0t+B\sin\omega_0t$。求导为 $i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$，由初值 $A=q_0,\omega_0B=I_0$，
+试取 $q=\e^{st}$，则 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$。代入有 $(s^2+\omega_0^2)\e^{st}=0$，约去指数得到特征方程 $s^2+\omega_0^2=0$，两根为 $\pm\mathrm j\omega_0$。所以一般实解 $q=A\cos\omega_0t+B\sin\omega_0t$。求导为 $i=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t$，由初值 $A=q_0,\omega_0B=I_0$，
 \[
  q=q_0\cos\omega_0t+\frac{I_0}{\omega_0}\sin\omega_0t,\quad
  i=-\omega_0q_0\sin\omega_0t+I_0\cos\omega_0t.
@@ -451,7 +494,7 @@ $C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{移到差电压的平衡坐标并代入两个初值}\par\nobreak
-令 $y=x-C_sU$，得 $\ddot y+\omega^2y=0$，$\omega=1/\sqrt{LC_s}$。特征方程 $s^2+\omega^2=0$ 给出 $y=A\cos\omega t+B\sin\omega t$。初位移变为 $y(0)=-C_sU$，故 $A=-C_sU$；初速度为零给出 $\omega B=0$。因此 $y=-C_sU\cos\omega t$，还原 $x=y+C_sU$ 并求导，得到
+令 $y=x-C_sU$，得 $\ddot y+\omega^2y=0$，$\omega=1/\sqrt{LC_s}$。试取 $y=\e^{st}$，两次求导为 $\dot y=s\e^{st}$、$\ddot y=s^2\e^{st}$。代入有 $(s^2+\omega^2)\e^{st}=0$，两根 $s=\pm\mathrm j\omega$ 给出 $y=A\cos\omega t+B\sin\omega t$。初位移变为 $y(0)=-C_sU$，故 $A=-C_sU$；由 $\dot y=-A\omega\sin\omega t+B\omega\cos\omega t$，初速度为零给出 $\omega B=0$。因此 $y=-C_sU\cos\omega t$，还原 $x=y+C_sU$。再用 $\dd(\cos\omega t)/\dd t=-\omega\sin\omega t$ 求导，得到
 \[
  x=C_sU(1-\cos\omega t),\quad i=C_sU\omega\sin\omega t.
 \]
@@ -482,7 +525,7 @@ $C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理�
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{求欠阻尼特征根及完整实解}\par\nobreak
-图\ref{fig:c5:example:13:s} 的方程是 $L\ddot q+R\dot q+q/C=0$。设 $\gamma=R/(2L)$、$\omega=\sqrt{1/(LC)-\gamma^2}$，试取 $q=\e^{st}$ 后得到 $Ls^2+Rs+1/C=0$，除以 $L$ 并配方为 $(s+\gamma)^2+\omega^2=0$，特征根为 $-\gamma\pm i\omega$，一般实解 $q=\e^{-\gamma t}(A\cos\omega t+B\sin\omega t)$。
+图\ref{fig:c5:example:13:s} 的方程是 $L\ddot q+R\dot q+q/C=0$。设 $\gamma=R/(2L)$、$\omega=\sqrt{1/(LC)-\gamma^2}$，试取 $q=\e^{st}$，有 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$。代入有 $(Ls^2+Rs+1/C)\e^{st}=0$，约去非零指数，得到 $Ls^2+Rs+1/C=0$。除以 $L$ 并配方为 $(s+\gamma)^2+\omega^2=0$，特征根为 $-\gamma\pm i\omega$，一般实解 $q=\e^{-\gamma t}(A\cos\omega t+B\sin\omega t)$。
 \typeout{ECFIG:fig:c5:example:13:p}\fig{fig:c5:example:13:p}{图取 $\gamma/\omega_0=0.3$；实线满足零初始电流，虚线是由两正交系数组成的真实包络}{\begin{tikzpicture}
 
 \draw[axis](0,0)--(6.8,0)node[right]{$\omega_0t$};
@@ -501,8 +544,12 @@ $C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理�
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初始斜率确定正弦项系数}\par\nobreak
 图\ref{fig:c5:example:13:p} 初值 $A=q_0$。乘积求导为
 \[
-\dot q=\e^{-\gamma t}
+\begin{aligned}
+\dot q&=-\gamma\e^{-\gamma t}(A\cos\omega t+B\sin\omega t)\\
+&\quad+\e^{-\gamma t}(-A\omega\sin\omega t+B\omega\cos\omega t)\\
+&=\e^{-\gamma t}
 [(-\gamma A+\omega B)\cos\omega t+(-\gamma B-\omega A)\sin\omega t].
+\end{aligned}
 \]
 在 $t=0$ 为 $\dot q(0)=-\gamma A+\omega B=0$，因此 $B=\gamma q_0/\omega$，得到
 \[
@@ -522,10 +569,17 @@ $C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理�
 \begin{solution}\textbf{求脉冲期间的充电过程}\par\nobreak
 图\ref{fig:c5:example:14:s} 令 $\tau=RC$。脉冲期间满足 $\tau\dot u=E-u$，以 $u(0)=0$ 积分得
 \[
-\int_0^{u(t)}\frac{\dd z}{E-z}=\int_0^t\frac{\dd s}{\tau},
-\qquad-\ln\frac{E-u}{E}=\frac t\tau.
+\begin{aligned}
+\int_0^{u(t)}\frac{\dd z}{E-z}&=\int_0^t\frac{\dd s}{\tau},\\
+[-\ln(E-z)]_0^{u(t)}&=\frac1\tau[s]_0^t,\\
+-\ln\frac{E-u}{E}&=\frac t\tau.
+\end{aligned}
 \]
-解出电压并用 $i=C\dot u$ 求导，$u=E(1-e^{-t/\tau})$、$i=(E/R)e^{-t/\tau}$。
+取指数后 $E-u=E\e^{-t/\tau}$，因此 $u=E(1-\e^{-t/\tau})$。再求导，
+\[
+ i=C\dot u=CE\left[-\left(-\frac1\tau\right)\e^{-t/\tau}\right]
+ =\frac ER\e^{-t/\tau}.
+\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把连续的电容电压继承为第二段初值}\par\nobreak
 在结束时 $u_1=E(1-e^{-t_0/\tau})$，电容电压连续。
@@ -554,26 +608,48 @@ $C_1$ 初电压 $U>0$，$C_2$ 未带电，两负极板共接，正极板用理�
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求断源放电并检查电流跳变}\par\nobreak
 图\ref{fig:c5:example:14:p} 输入变零后满足 $\dot u=-u/\tau$。从切换时刻积分，
 \[
-\int_{u_1}^{u(t)}\frac{\dd z}{z}
-=-\int_{t_0}^t\frac{\dd s}{\tau},
-\qquad \ln\frac{u(t)}{u_1}=-\frac{t-t_0}{\tau}.
+\begin{aligned}
+\int_{u_1}^{u(t)}\frac{\dd z}{z}&=-\int_{t_0}^t\frac{\dd s}{\tau},\\
+[\ln z]_{u_1}^{u(t)}&=-\frac1\tau[s]_{t_0}^t,\\
+\ln\frac{u(t)}{u_1}&=-\frac{t-t_0}{\tau}.
+\end{aligned}
 \]
 所以是以 $u_1$ 为初值的放电，$u=u_1e^{-(t-t_0)/\tau}$，$i=-(u_1/R)e^{-(t-t_0)/\tau}$。电流可因电源突变而跳变，电容电压不跳变。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用电源功和末态能量求总热}\par\nobreak
-电源只在第一段供能，$W_s=(E^2/R)[-\tau e^{-t/\tau}]_0^{t_0}=CE^2(1-e^{-t_0/\tau})$。末态电容能为零，所以总热等于 $W_s$。
+电源只在第一段供能，积分其功率：
+\[
+ \begin{aligned}
+ W_s&=\int_0^{t_0}Ei(t)\dd t
+ =\frac{E^2}{R}\int_0^{t_0}\e^{-t/\tau}\dd t\\
+ &=\frac{E^2}{R}[-\tau\e^{-t/\tau}]_0^{t_0}
+ =CE^2(1-\e^{-t_0/\tau}).
+ \end{aligned}
+\]
+末态电容能为零，所以总热等于 $W_s$。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{逐段积分焦耳热并检查长短脉冲极限}\par\nobreak
 对平方电流分别积分，令第二段局部时间 $s=t-t_0$：
 \[
-H_1=\frac{E^2}{R}\left[-\frac\tau2 e^{-2t/\tau}\right]_0^{t_0}
-=\frac{CE^2}{2}(1-e^{-2t_0/\tau}),
+\begin{aligned}
+H_1&=\frac{E^2}{R}\int_0^{t_0}\e^{-2t/\tau}\dd t\\
+&=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^{t_0}
+=\frac{CE^2}{2}(1-\e^{-2t_0/\tau}),
+\end{aligned}
 \]
 \[
-H_2=\frac{u_1^2}{R}\left[-\frac\tau2 e^{-2s/\tau}\right]_0^\infty
+\begin{aligned}
+H_2&=\frac{u_1^2}{R}\int_0^\infty\e^{-2s/\tau}\dd s\\
+&=\frac{u_1^2}{R}\left[-\frac\tau2\e^{-2s/\tau}\right]_0^\infty
 =\frac12Cu_1^2.
+\end{aligned}
 \]
-指数原函数中的 $\tau/2$ 正是平方电流带来的时间尺度。相加为同一结果。长脉冲极限总热为 $CE^2$，分别包含充电与随后放电的两部分；短脉冲极限为 $E^2t_0/R$，此时电容电压尚小。
+第二个反常积分按有限上限再趋于无穷理解，指数项在上端趋零。指数原函数中的 $\tau/2$ 正是平方电流带来的时间尺度。令 $a=\e^{-t_0/\tau}$，代入 $u_1=E(1-a)$ 后相加，
+\[
+ H_1+H_2=\frac{CE^2}{2}[(1-a^2)+(1-2a+a^2)]
+ =CE^2(1-a)=W_s.
+\]
+长脉冲极限总热为 $CE^2$，分别包含充电与随后放电的两部分；短脉冲极限用 $1-\e^{-x}=x+O(x^2)$、$x=t_0/\tau$，得到 $W_s\simeq CE^2t_0/\tau=E^2t_0/R$，此时电容电压尚小。
 \end{solution}

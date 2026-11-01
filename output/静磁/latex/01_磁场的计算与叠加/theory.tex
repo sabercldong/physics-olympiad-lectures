@@ -20,8 +20,7 @@
 先看沿 $z$ 轴的直线段，场点到轴的垂距为 $a$，垂足取 $z=0$。每一电流元的场都沿同一环向，因此可先确定方向，再积大小。由 $r^2=a^2+z^2$、$\sin\theta=a/r$，得到
 
 \[
-B=\frac{\mu_0 I}{4\pi}\int_{z_1}^{z_2}\frac{a\,\dd z}{(a^2+z^2)^{3/2}}
-=\frac{\mu_0I}{4\pi a}\left[\frac{z}{\sqrt{a^2+z^2}}\right]_{z_1}^{z_2}.
+B=\frac{\mu_0 I}{4\pi}\int_{z_1}^{z_2}\frac{a\,\dd z}{(a^2+z^2)^{3/2}}.
 \]
 原函数可由三角换元得到：令 $z=a\tan\alpha$，
 $\dd z=a\sec^2\alpha\dd\alpha$，其中 $-\pi/2<\alpha<\pi/2$，故
@@ -32,7 +31,17 @@ $\dd z=a\sec^2\alpha\dd\alpha$，其中 $-\pi/2<\alpha<\pi/2$，故
  =\frac{\sin\alpha}{a}
  =\frac{z}{a\sqrt{a^2+z^2}}.
 \]
-上下限分别变为 $\alpha_j=\arctan(z_j/a)$，便有 $B=\mu_0I(\sin\alpha_2-\sin\alpha_1)/(4\pi a)$。端点分居垂足两侧时两个角一正一负，结果表现为两个正弦的和；垂足在延长线上时应保留有向角，不能仍照抄“相加”。
+上下限分别变为 $\alpha_j=\arctan(z_j/a)$，将它们代入原函数，
+\[
+ \begin{aligned}
+ B&=\frac{\mu_0I}{4\pi a}\int_{\alpha_1}^{\alpha_2}\cos\alpha\dd\alpha
+ =\frac{\mu_0I}{4\pi a}[\sin\alpha]_{\alpha_1}^{\alpha_2}\\
+ &=\frac{\mu_0I}{4\pi a}(\sin\alpha_2-\sin\alpha_1)\\
+ &=\frac{\mu_0I}{4\pi a}
+ \left(\frac{z_2}{\sqrt{a^2+z_2^2}}-\frac{z_1}{\sqrt{a^2+z_1^2}}\right).
+ \end{aligned}
+\]
+端点分居垂足两侧时两个角一正一负，结果表现为两个正弦的和；垂足在延长线上时应保留有向角，不能仍照抄“相加”。
 
 
 取两端分别趋于负无穷与正无穷，得到长直导线 $B=\mu_0I/(2\pi a)$。只留一侧半无限导线时，结果减半。这些系数来自积分边界，而不是由图形看起来“很长”决定。实际长度是否足够大，可以用有限长度结果估计误差。
@@ -209,9 +218,13 @@ B_z(z)=\frac{\mu_0nIR^2}{2}\int_{-l/2}^{l/2}
 \]
 把 $u=z-z'$ 作为新变量时，$\dd z'=-\dd u$，积分上下限也同时反向。原来的下限 $z'=-l/2$ 对应 $u=z+l/2$，上限 $z'=l/2$ 对应 $u=z-l/2$；负微分将次序交换。原函数来自
 \[
+ \begin{aligned}
  \frac{\dd}{\dd u}\left[u(R^2+u^2)^{-1/2}\right]
- =(R^2+u^2)^{-1/2}-u^2(R^2+u^2)^{-3/2}
+ &=(R^2+u^2)^{-1/2}
+ +u\left(-\frac12\right)(R^2+u^2)^{-3/2}(2u)\\
+ &=\frac{R^2+u^2-u^2}{(R^2+u^2)^{3/2}}
  =\frac{R^2}{(R^2+u^2)^{3/2}}.
+ \end{aligned}
 \]
 于是 $B_z=(\mu_0nI/2)[u/\sqrt{R^2+u^2}]_{z-l/2}^{z+l/2}$，得到
 
@@ -296,8 +309,11 @@ B_z(r,z)=B_0(z)-\frac{r^2}{4}B_0''(z)+O(r^4).
  \frac{-y\bm e_x+(x-a)\bm e_y}{(x-a)^2+y^2}
  +\frac{-y\bm e_x+(x+a)\bm e_y}{(x+a)^2+y^2}\right].
 \]
-当 $|x|,|y|\ll a$，利用 $(1+\epsilon)^{-1}=1-\epsilon+O(\epsilon^2)$，
-两分母的倒数分别为 $a^{-2}(1+2x/a)+O((x^2+y^2)/a^4)$、
+当 $|x|,|y|\ll a$，两分母先提出 $a^2$，分别写成 $a^2(1+\epsilon_\pm)$，其中
+\[
+ \epsilon_\pm=\mp\frac{2x}{a}+\frac{x^2+y^2}{a^2}.
+\]
+对 $F(\epsilon)=(1+\epsilon)^{-1}$ 求导，$F'(\epsilon)=-(1+\epsilon)^{-2}$，故 $F(0)=1,F'(0)=-1$，一阶展开为 $F(\epsilon)=1-\epsilon+O(\epsilon^2)$。舍去坐标的二次及以上项，两分母的倒数分别为 $a^{-2}(1+2x/a)+O((x^2+y^2)/a^4)$、
 $a^{-2}(1-2x/a)+O((x^2+y^2)/a^4)$。
 故 $B_x=-2cy/a^2+\cdots$，而
 $B_y=c[(-a-x)+(a-x)]/a^2+\cdots=-2cx/a^2+\cdots$。
@@ -308,8 +324,11 @@ $B_y=c[(-a-x)+(a-x)]/a^2+\cdots=-2cx/a^2+\cdots$。
 \]
 中点场为零，沿 $+x$ 移动时场朝 $-y$，沿 $+y$ 移动时场朝 $-x$，邻近方向随位置快速改变。磁感线的切线条件为 $\dd y/\dd x=B_y/B_x=x/y$，在 $y\ne0$ 的局部区间分离变量为 $y\dd y=x\dd x$。从场线上一点 $(x_0,y_0)$ 积分，
 \[
- \int_{y_0}^{y}v\dd v=\int_{x_0}^{x}u\dd u,\qquad
- \frac{y^2-y_0^2}{2}=\frac{x^2-x_0^2}{2},
+ \begin{aligned}
+ \int_{y_0}^{y}v\dd v&=\int_{x_0}^{x}u\dd u,\\
+ [v^2/2]_{y_0}^{y}&=[u^2/2]_{x_0}^{x},\\
+ \frac{y^2-y_0^2}{2}&=\frac{x^2-x_0^2}{2}.
+ \end{aligned}
 \]
 所以 $y^2-x^2=y_0^2-x_0^2=\text{常量}$。在 $y=0$ 附近应改用参数曲线理解，不能除以零；所得隐式关系仍可连续延拓，两条对角线构成过零点的分界方向。
 

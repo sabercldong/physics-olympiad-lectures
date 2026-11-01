@@ -64,7 +64,14 @@
  \qquad
  y(t)=\left[y_0^{1-\alpha}-k(1-\alpha)t\right]^{1/(1-\alpha)}.
 \]
-若 $0<\alpha<1$，括号在 $T=y_0^{1-\alpha}/[k(1-\alpha)]$时首次变为零。此后保持 $y=0$仍满足方程，不能把正值分支越过 $T$继续外推。若 $\alpha>1$，括号随时间增大而外层指数为负，解只在无限时间趋零。$\alpha=1$须单独积分，得到 $y=y_0\e^{-kt}$，同样不会在有限时间达到零。
+若$0<\alpha<1$，括号在$T=y_0^{1-\alpha}/[k(1-\alpha)]$时首次变为零。此后保持$y=0$仍满足方程，不能把正值分支越过$T$继续外推。若$\alpha>1$，括号随时间增大而外层指数为负，解只在无限时间趋零。
+
+$\alpha=1$时不能使用含$1-\alpha$的分母，应单独写成
+\[
+\int_{y_0}^{y(t)}\frac{\dd u}{u}=-k\int_0^t\dd s,
+\qquad[\ln u]_{y_0}^{y(t)}=-k[s]_0^t.
+\]
+代入端点得到$\ln(y/y_0)=-kt$，取指数才有$y=y_0\e^{-kt}$，同样不会在有限时间达到零。
 
 因此，液面按 $\dot h\propto-\sqrt h$下降的理想排水过程可以有限排空，指数衰减则只能逐渐接近零。二者都有零平衡解，差别来自平衡附近的变化率：$0<\alpha<1$时，右侧对 $y$的导数在零点无界，有限到达不违反前面所述光滑方程的性质。检验分离变量结果时，除了代回方程，还应确定积分所得分支在哪个时刻终止，以及终止后模型允许怎样延续。
 
@@ -170,8 +177,7 @@ $\dd(T+U)/\dd t=\dot\eta(M_{\rm eff}\ddot\eta+K_{\rm eff}\eta)$。在非零速�
  ml\ddot\theta=-mg\sin\theta,\qquad
  \ddot\theta+\frac gl\sin\theta=0.
 \]
-在 $|\theta|\ll1$、角度采用弧度时，$\sin\theta\simeq\theta$，从而
-$\omega_0=\sqrt{g/l}$。精确势能为 $mgl(1-\cos\theta)$，小角近似为 $mgl\theta^2/2$；动能为 $ml^2\dot\theta^2/2$。摆长改变惯量与恢复系数，所以不能只比较重力的大小。
+在$|\theta|\ll1$、角度采用弧度时，$\sin\theta\simeq\theta$，线性方程为$\ddot\theta+(g/l)\theta=0$。代入简谐解的$\ddot\theta=-\omega_0^2\theta$，得到$(-\omega_0^2+g/l)\theta=0$，所以非零振动的$\omega_0=\sqrt{g/l}$。精确势能为$mgl(1-\cos\theta)$，小角近似为$mgl\theta^2/2$；动能为$ml^2\dot\theta^2/2$。摆长改变惯量与恢复系数，所以不能只比较重力的大小。
 
 \fig{c4k-pendulum}{角坐标同时决定摆球的路径、惯量与势能}{\begin{tikzpicture}[scale=.85]
 \coordinate(O)at(0,2.8);\coordinate(P)at(1.4,.375);
@@ -189,7 +195,12 @@ $\omega_0=\sqrt{g/l}$。精确势能为 $mgl(1-\cos\theta)$，小角近似为 $m
 \subsection{黏滞阻尼与库仑摩擦}
 黏滞阻力 $-c\dot x$ 连续随速度变化，弹簧振子满足
 $m\ddot x+c\dot x+kx=0$。设 $\gamma=c/(2m)$、$\omega_0=\sqrt{k/m}$，特征方程为
-$r^2+2\gamma r+\omega_0^2=0$。判别式决定欠阻尼、临界阻尼或过阻尼，详见例题。机械能变化率为 $-c\dot x^2\le0$。
+$r^2+2\gamma r+\omega_0^2=0$。判别式决定欠阻尼、临界阻尼或过阻尼，详见例题。机械能$E=m\dot x^2/2+kx^2/2$的导数要分别计算两项：
+\begin{align*}
+\dot E&=\frac m2(2\dot x\ddot x)+\frac k2(2x\dot x)\\
+&=\dot x(m\ddot x+kx)=-c\dot x^2\le0.
+\end{align*}
+最后一步代入原来的运动方程，而没有假定机械能守恒。
 
 干摩擦则在滑动时大小近似恒定，方向随速度反转；静止时静摩擦在允许范围内取值以维持平衡。不能把滑动摩擦的符号函数直接延伸成零速时唯一的力。判断是否再次反向，必须在每个停点重新检查静摩擦条件。
 
@@ -207,7 +218,12 @@ $r^2+2\gamma r+\omega_0^2=0$。判别式决定欠阻尼、临界阻尼或过阻�
 对黏滞阻尼，机械能连续转化，振幅的包络随时间衰减；对干摩擦，滑动区间内可分段求解，每次停下后还要检查能否保持静止。两者都使机械能减少，却具有不同的零速边界。若不区分这一点，就会把实际已经停住的物体继续延伸成新的滑动半周。
 
 \subsection{阻尼率与无量纲阻尼比}
-对 $m\ddot x+c\dot x+kx=0$，定义 $\omega_0=\sqrt{k/m}$、$\gamma=c/(2m)$，则方程为 $\ddot x+2\gamma\dot x+\omega_0^2x=0$。$\gamma$有时间倒数的量纲。再定义无量纲阻尼比 $\zeta=\gamma/\omega_0=c/(2\sqrt{mk})$，特征根为
+对$m\ddot x+c\dot x+kx=0$，定义$\omega_0=\sqrt{k/m}$、$\gamma=c/(2m)$，则方程为$\ddot x+2\gamma\dot x+\omega_0^2x=0$。$\gamma$有时间倒数的量纲。再定义无量纲阻尼比$\zeta=\gamma/\omega_0=c/(2\sqrt{mk})$。特征方程的配方过程为
+\[
+r^2+2\gamma r+\omega_0^2=0
+\quad\Longrightarrow\quad(r+\gamma)^2=\gamma^2-\omega_0^2.
+\]
+取平方根，再减去$\gamma$，得到
 \[r_\pm=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}
  =\omega_0(-\zeta\pm\sqrt{\zeta^2-1}).\]
 欠阻尼、临界阻尼、过阻尼分别由 $0<\zeta<1$、$\zeta=1$、$\zeta>1$区分。比较的两个量必须同量纲，不能把有量纲的 $\gamma$直接与数字一比较。无阻尼 $c=0$应单独恢复简谐振动。
@@ -231,7 +247,12 @@ $r^2+2\gamma r+\omega_0^2=0$。判别式决定欠阻尼、临界阻尼或过阻�
 \subsection{定轴转动中的两种加速度}
 绕固定轴转动的刚体有 $M_O=I_O\ddot\theta$。角加速度产生的切向加速度为 $r_\perp\ddot\theta$，转动还产生法向加速度 $r_\perp\dot\theta^2$。端点受恒定切向力矩时，只有角加速度恒定，端点的全部线加速度并不恒定。
 
-求端点加速度时，切向项与法向项应按互相垂直的矢量合成。例如角加速度为常数 $\beta$ 时，若从静止开始，$\omega=\beta t$，则 $a_\tau=r_\perp\beta$ 恒定，而 $a_n=r_\perp\beta^2t^2$ 随时间增加。把“恒定角加速度”简写为“恒定加速度”，就会遗漏越来越明显的转向作用。
+求端点加速度时，切向项与法向项应按互相垂直的矢量合成。例如角加速度为常数$\beta$且从静止开始，先对$\dot\omega=\beta$带初值积分：
+\[
+\int_0^{\omega(t)}\dd\Omega=\beta\int_0^t\dd s,
+\qquad\omega(t)-0=\beta[s]_0^t=\beta t.
+\]
+因此$a_\tau=r_\perp\beta$恒定，而$a_n=r_\perp\beta^2t^2$随时间增加。把“恒定角加速度”简写为“恒定加速度”，就会遗漏越来越明显的转向作用。
 
 
 图\ref{c4deep:rotation}将同一端点的加速度分别画在早、晚两个时刻，图中切向方向均为转角增加方向。恒定角加速度 $\beta$ 给出相同大小的切向箭头；角速度变大后，法向箭头变长，合加速度的大小和方向都会改变：
@@ -281,9 +302,14 @@ $T=Mv_C^2/2+I_C\omega^2/2$。它来自各质点速度写成质心速度与相对
 
 
 \subsection{连线方向与追及速度}
-追及问题需要对同一时间求相对位置的变化。若两点距离为 $r=|\bm r_A-\bm r_B|$，则
+追及问题需要对同一时间求相对位置的变化。记$\bm R=\bm r_A-\bm r_B$，两点距离$r=|\bm R|$。先对$r^2=\bm R\cdot\bm R$求导：
 \[
- \dot r=(\bm v_A-\bm v_B)\cdot\bm e_r.
+2r\dot r=\dot{\bm R}\cdot\bm R+\bm R\cdot\dot{\bm R}
+=2\bm R\cdot(\bm v_A-\bm v_B).
+\]
+相遇前$r>0$，可以除以$2r$；取从$B$指向$A$的$\bm e_r=\bm R/r$，得到
+\[
+\dot r=(\bm v_A-\bm v_B)\cdot\bm e_r.
 \]
 只有相对速度沿连线的投影改变距离，横向部分改变连线方向。对称性可大幅简化问题，但须先解释为什么运动规则保持该对称性，再把二维曲线化为径向或边长的一阶方程。
 

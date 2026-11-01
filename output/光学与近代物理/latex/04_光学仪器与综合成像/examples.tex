@@ -285,7 +285,7 @@
 \[
  l=u_2-u_1=\frac{f^2}{L-f}=9\,\mathrm{cm}.
 \]
-统一以厘米计算，\(f^2+9f-36=0\)，两根为 \(3,-12\)。凸透镜要求 \(f>0\)，并须满足 \(f<L=4\)，故
+统一以厘米计算，\(f^2+9f-36=0\)，因式分解为 $(f-3)(f+12)=0$，两根为 \(3,-12\)。凸透镜要求 \(f>0\)，并须满足 \(f<L=4\)，故
 \[
  \boxed{f=3\,\mathrm{cm}},\qquad u_1=3\,\mathrm{cm},\quad u_2=12\,\mathrm{cm}.
 \]
@@ -294,10 +294,18 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用完整往返矩阵检验是否遗漏其他位置}\par\nobreak
-把平面反射展开，两次透镜间的传播长度为 \(2L\)，令 \(P(a)=\begin{psmallmatrix}1&a\\0&1\end{psmallmatrix}\)、\(T=\begin{psmallmatrix}1&0\\-1/f&1\end{psmallmatrix}\)，往返矩阵为 \(P(u)TP(2L)TP(u)\)。其成像条件
+把平面反射展开，两次透镜间的传播长度为 \(2L\)，令 \(P(a)=\begin{psmallmatrix}1&a\\0&1\end{psmallmatrix}\)、\(T=\begin{psmallmatrix}1&0\\-1/f&1\end{psmallmatrix}\)，往返矩阵为 \(P(u)TP(2L)TP(u)\)。先算 $P(2L)T=\begin{psmallmatrix}1-2L/f&2L\\-1/f&1\end{psmallmatrix}$，再左乘 $T$，得
 \[
- B=\frac{2(f-u)\,[fL+fu-Lu]}{f^2}=0
+ S=TP(2L)T=
+ \begin{pmatrix}1-2L/f&2L\\2(L-f)/f^2&1-2L/f\end{pmatrix}.
 \]
+补上两端的 $P(u)$ 后，右上元依次为
+\begin{align*}
+ B&=(1-2L/f)u+2L+u[2(L-f)u/f^2+1-2L/f]\\
+ &=2L+2u(1-2L/f)+2(L-f)u^2/f^2\\
+ &=\frac{2(f-u)\,[fL+fu-Lu]}{f^2}.
+\end{align*}
+成像要求 $B=0$，
 恰给出上述两位置。第一位置的横向放大率为 \(-1\)，第二位置为 \(+1\)；方格纸都能承接清晰像，并不要求两次的正倒相同。
 \end{solution}
 
@@ -335,7 +343,7 @@
  \frac1{a+4}-\frac1{a+5}=\frac1{30}
  \quad\Longrightarrow\quad (a+4)(a+5)=30.
 \]
-根为 \(a=1\,\mathrm{cm}\) 或 \(-10\,\mathrm{cm}\)。
+展开为 $a^2+9a-10=0$，因式分解为 $(a-1)(a+10)=0$，故根为 \(a=1\,\mathrm{cm}\) 或 \(-10\,\mathrm{cm}\)。
 
 
 
@@ -506,7 +514,7 @@
 \[
  u^2-Du+fD=0.
 \]
-有两个不同的实透镜位置要求 \(D>4f\)。两位置间距 \(d=\sqrt{D(D-4f)}\)，因此还可用位移法公式 \(f=(D^2-d^2)/(4D)\) 检查，本题确得 \(30\,\mathrm{mm}\)。
+配方为 $(u-D/2)^2=D^2/4-fD$，故有两个不同的实透镜位置要求 \(D>4f\)。两根为 $u_\pm=[D\pm\sqrt{D^2-4fD}]/2$，相减得两位置间距 \(d=\sqrt{D(D-4f)}\)。再把 $d^2=D^2-4fD$ 移项并除以 $4D>0$，得到位移法公式 \(f=(D^2-d^2)/(4D)\)，本题代入 $(160^2-80^2)/(4\times160)$ 确得 \(30\,\mathrm{mm}\)。
 \end{solution}
 
 \begin{question}
@@ -801,7 +809,13 @@
 \[
  \boxed{x=R\sqrt{\frac{1-r/\sqrt{f^2+r^2}}{2}}}.
 \]
-当 \(r/f\ll1\)，\(x\approx(R/\sqrt2)(1-r/(2f))\)。这里不能把球面镜简单替成焦距 \(R/2\) 的近轴镜，因为反射点 \(\rho\) 约为 \(R/\sqrt2\)，镜面入射并不近轴；小角条件只用于末端透镜准直。
+为求小环半径近似，令 $\epsilon=r/f$、$\delta=\epsilon/\sqrt{1+\epsilon^2}$。有
+\[
+ \delta-\epsilon
+ =-\frac{\epsilon^3}{\sqrt{1+\epsilon^2}(1+\sqrt{1+\epsilon^2})}
+ =O(\epsilon^3).
+\]
+而 $g(\delta)=\sqrt{1-\delta}$ 满足 $g(0)=1$、$g'(\delta)=-\tfrac12(1-\delta)^{-1/2}$、$g'(0)=-1/2$，故 $g(\delta)=1-\delta/2+O(\delta^2)$。代回 $x=Rg(\delta)/\sqrt2$，在 \(r/f\ll1\) 时得到 \(x\approx(R/\sqrt2)(1-r/(2f))\)。这里不能把球面镜简单替成焦距 \(R/2\) 的近轴镜，因为反射点 \(\rho\) 约为 \(R/\sqrt2\)，镜面入射并不近轴；小角条件只用于末端透镜准直。
 
 
 

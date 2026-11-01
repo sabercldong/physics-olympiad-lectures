@@ -59,7 +59,13 @@
 \node at(1,-.7){永久粘合，$u=0$};\node at(1,-1.4){相对运动能量转为内能等};
 \end{scope}
 \end{tikzpicture}}
-图\ref{fig:em2:same-speed}中若合外冲量为零，$V_C$始终固定。把前面的两个速度表达代入$K=m_1v_1^2/2+m_2v_2^2/2$，交叉项相消，得到
+图\ref{fig:em2:same-speed}中若合外冲量为零，$V_C$始终固定。把前面的两个速度表达代入$K=m_1v_1^2/2+m_2v_2^2/2$，逐项展开：
+\begin{align*}
+K={}&\frac12(m_1+m_2)V_C^2
++\left(\frac{m_1m_2}{M_\Sigma}-\frac{m_2m_1}{M_\Sigma}\right)V_Cu\\
+&+\frac12\frac{m_1m_2^2+m_2m_1^2}{M_\Sigma^2}u^2.
+\end{align*}
+交叉项为零，最后一项的系数中$m_1m_2^2+m_2m_1^2=m_1m_2M_\Sigma$，约去一个$M_\Sigma$，得到
 \[
 K=\frac12M_\Sigma V_C^2+\frac12\mu_r u^2,
 \qquad \mu_r=\frac{m_1m_2}{m_1+m_2}.
@@ -69,7 +75,13 @@ K=\frac12M_\Sigma V_C^2+\frac12\mu_r u^2,
 
 \section{选择参考系时守恒式怎样变化}
 
-两个惯性系以恒定速度$U$相对平动时，各物速度都减去$U$，系统总动量变为$P'=P-M_{\Sigma}U$。质量固定且外冲量为零时，两个系都能写动量守恒，因为减去的是同一个常量。相对速度不变，也使恢复系数在伽利略变换下保持不变。若比较动能，则还多出$-UP+M_{\Sigma}U^2/2$，所以动能数值本身随参考系变化。
+两个惯性系以恒定速度$U$相对平动时，各物速度都减去$U$，系统总动量变为$P'=P-M_{\Sigma}U$。质量固定且外冲量为零时，两个系都能写动量守恒，因为减去的是同一个常量。相对速度不变，也使恢复系数在伽利略变换下保持不变。动能则须把每个速度的平方完整展开：
+\[
+K'=\frac12\sum_i m_i(v_i-U)^2
+=\frac12\sum_i m_iv_i^2-U\sum_i m_iv_i+\frac{U^2}{2}\sum_i m_i
+=K-UP+\frac12M_\Sigma U^2.
+\]
+所以动能数值本身随参考系变化。
 
 \fig{fig:em2:galilean}{更换惯性系使两速度同时减去$U$，速度差保持不变}{\begin{tikzpicture}
 
@@ -224,7 +236,12 @@ v_m=v_0-\frac fm t,\qquad v_M=\frac fM t,
 \section{变质量喷射与封闭系统}
 
 火箭的推力来自喷出物的动量变化。设火箭质量为$M$、速度为$V$，短时间内喷出正质量$\delta m$，喷气相对火箭向后速度为$u$。忽略二阶量，在地面系中，喷气的速度应写成$V-u$，而不是$-u$。选“喷气前的整个火箭”为封闭系统，有
-\[MV=(M-\delta m)(V+\dd V)+\delta m(V-u),\qquad M\dd V=u\delta m.\]
+\[MV=(M-\delta m)(V+\dd V)+\delta m(V-u).\]
+把右边的两个乘积展开，$MV+M\dd V-V\delta m-\delta m\dd V+V\delta m-u\delta m$中，两项$V\delta m$相消；再约去$MV$，得
+\[
+M\dd V-u\delta m-\delta m\dd V=0.
+\]
+舍去二阶乘积$\delta m\dd V$，所以$M\dd V=u\delta m$。
 因$\dd M=-\delta m$，故$\dd V=-u\dd M/M$。若无外力、$u$为常量，质量从 $M_0$ 降到 $M$，速度从 $V_0$ 升到 $V$，有
 \[
 \int_{V_0}^{V}\dd W=-u\int_{M_0}^{M}\frac{\dd\mu}{\mu}.
@@ -255,5 +272,9 @@ V-V_0=-u[\ln q]_1^{M/M_0}
 
 若要与一次抛出比较，必须说明“相对喷出速率”相对哪一个末态。假设初始质量$M_0$，一次抛出燃料$M_0-M$，燃料相对最终火箭向后速率仍为$u$，则燃料对地速度为$V-u$。动量式$M_0V_0=MV+(M_0-M)(V-u)$给
 \[V-V_0=u\left(1-\frac{M}{M_0}\right).\]
-连续喷射则给$u\ln(M_0/M)$。令质量比$r=M_0/M>1$，有$\ln r>1-1/r$，故在这项相同相对喷速的约定下，连续喷射的速度增量较大。比较并不代表二者所耗能量相同；只给相对喷速，不能同时擅自要求输入能量也相等。
+连续喷射则给$u\ln(M_0/M)$。令质量比$r=M_0/M>1$，比较函数$D(r)=\ln r-1+1/r$。有
+\[
+D(1)=0,\qquad D'(r)=\frac1r-\frac1{r^2}=\frac{r-1}{r^2}>0.
+\]
+所以$D(r)>0$，即$\ln r>1-1/r$。在这项相同相对喷速的约定下，连续喷射的速度增量较大。比较并不代表二者所耗能量相同；只给相对喷速，不能同时擅自要求输入能量也相等。
 

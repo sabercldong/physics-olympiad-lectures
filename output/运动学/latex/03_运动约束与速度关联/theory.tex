@@ -2,7 +2,12 @@
 \subsection{独立坐标与自由度}
 运动约束把原本可以独立变化的坐标联系起来。一个平面质点通常需要两个坐标；若它始终沿给定直线运动，只需一个坐标。刚性细杆的两个端点不能各自任意移动，因为端点间距离固定。判断自由度时，应先列坐标，再列彼此独立的约束；重复写出同一几何关系不会额外减少自由度。
 
-例如长为 $L$ 的杆两端分别沿水平、竖直导轨运动，若端点到交点的距离为 $x,y>0$，就有 $x^2+y^2=L^2$。一个坐标确定后，另一个坐标在给定象限内随之确定。直接求导得 $x\dot x+y\dot y=0$，说明两端沿杆方向的速度投影相同。式中 $\dot x,\dot y$ 带正负，不能把所有速率都当正数代入。
+例如长为 $L$ 的杆两端分别沿水平、竖直导轨运动，若端点到交点的距离为 $x,y>0$，就有 $x^2+y^2=L^2$。一个坐标确定后，另一个坐标在给定象限内随之确定。$L$恒定，$x,y$均为时间函数，链式求导给出
+\[
+ 2x\dot x+2y\dot y=0
+ \quad\Longrightarrow\quad x\dot x+y\dot y=0.
+\]
+它说明两端沿杆方向的速度投影相同。式中 $\dot x,\dot y$ 带正负，不能把所有速率都当正数代入。
 \fig{k3t-rod}{定长约束先确定位置，再联系速度}{\begin{tikzpicture}\draw[axis](0,0)--(4.8,0)node[right]{$x$};\draw[axis](0,0)--(0,3.2)node[above]{$y$};\draw[world](0,2.5)node[left]{$A$}--(3.3,0)node[below]{$B$}node[midway,above right]{$L$};\draw[flow,blue](0,2.5)--(0,1.5)node[left]{$\dot y<0$};\draw[flow,red](3.3,0)--(4.3,0)node[above]{$\dot x>0$};\end{tikzpicture}}
 
 图\ref{k3t-rod}的杆长在任意时刻不变，所以端点坐标先满足平方和条件。对同一时间求导后，两个速度项分别乘以各自位置坐标；图中哪一段接近零，会直接决定分式速度关系的适用范围，不能略去该几何边界。
@@ -83,7 +88,14 @@ a_2\dot x+b_2\dot y=\dot c_2.\]
 \subsection{比例关系必须在全程成立}
 若两个坐标始终满足 $x_2=kx_1+C$，且 $k,C$恒定，对时间求导便有 $v_2=kv_1$、$a_2=ka_1$。这适用于由相似形或固定传动比产生的等比例运动。但某一瞬间恰有 $x_2=kx_1$，不足以推出速度也成比例；两个函数在一个点相交，不代表斜率相同。
 
-若比例系数随时间变化，正确关系为 $v_2=kv_1+\dot kx_1$，加速度还含 $2\dot kv_1+\ddot kx_1$。多组铰接菱形的水平投影有共同的 $\cos\theta$因子，比例系数为固定边长比，因此可以直接比较水平速度；上顶点另有竖直分量，不能把水平比例扩展为总速率比例。
+若比例系数随时间变化，而 $C$仍恒定，须两次使用乘积法则：
+\begin{align*}
+ v_2&=\frac{\dd}{\dd t}(kx_1+C)=\dot kx_1+k\dot x_1
+ =\dot kx_1+kv_1,\\
+ a_2&=\ddot kx_1+\dot k\dot x_1+\dot kv_1+k\dot v_1
+ =\ddot kx_1+2\dot kv_1+ka_1.
+\end{align*}
+多组铰接菱形的水平投影有共同的 $\cos\theta$因子，比例系数为固定边长比，因此可以直接比较水平速度；上顶点另有竖直分量，不能把水平比例扩展为总速率比例。
 
 \section{投影法与微分法的联系}
 \subsection{定长杆两端的沿杆投影}
@@ -98,9 +110,14 @@ a_2\dot x+b_2\dot y=\dot c_2.\]
 当分母出现 $\sin\theta$ 或 $\cos\theta$，须单独检查它趋零的构形。有的速度发散只是几何交点的放大效应；若求的是有质量的真实物体，则通常意味着保持给定驱动速度需要越来越大的作用，理想运动难以持续至奇异点。推导没有授权在分母为零处直接使用公式。
 
 \subsection{刚杆二阶约束中的速度平方项}
-图\ref{k3t-rod-coach}中，定长杆 $AB$的单位方向为 $\bm e$，相对速度 $\bm u=\bm v_B-\bm v_A$必垂直杆。由 $(\bm r_B-\bm r_A)^2=l^2$先求一次导数，再求一次导数，分别得到
-\[(\bm r_B-\bm r_A)\cdot\bm u=0,\qquad
-u^2+(\bm r_B-\bm r_A)\cdot(\bm a_B-\bm a_A)=0.\]
+图\ref{k3t-rod-coach}中，定长杆 $AB$的单位方向为 $\bm e$。记 $\bm R=\bm r_B-\bm r_A$、$\bm u=\dot{\bm R}=\bm v_B-\bm v_A$，先对 $\bm R\cdot\bm R=l^2$求导，再对所得点积使用乘积法则：
+\begin{align*}
+ \dot{\bm R}\cdot\bm R+\bm R\cdot\dot{\bm R}&=0
+ \quad\Longrightarrow\quad \bm R\cdot\bm u=0,\\
+ \frac{\dd}{\dd t}(\bm R\cdot\bm u)
+ &=\dot{\bm R}\cdot\bm u+\bm R\cdot\dot{\bm u}\\
+ &=u^2+\bm R\cdot(\bm a_B-\bm a_A)=0.
+\end{align*}
 所以 $(\bm a_B-\bm a_A)\cdot\bm e=-u^2/l$。速度的沿杆投影相等，加速度的沿杆投影却通常不相等。第二式中的 $u^2$正来自连线方向正在转动；把第一式中的速度简单替换成加速度，会漏掉这个项。
 \fig{k3t-rod-coach}{定长杆的相对速度垂直杆，相对加速度具有沿杆内向分量}{\begin{tikzpicture}
 \coordinate(A)at(0,0);\coordinate(B)at(3.4,1.7);
@@ -122,7 +139,12 @@ u^2+(\bm r_B-\bm r_A)\cdot(\bm a_B-\bm a_A)=0.\]
 
 
 \subsection{两端距离导数的一般写法}
-对任意两点 $A,B$，令 $\bm R=\bm r_B-\bm r_A$、$\ell=|\bm R|$、$\bm e=\bm R/\ell$。由 $\ell^2=\bm R\cdot\bm R$，得 $\dot\ell=\bm e\cdot(\bm v_B-\bm v_A)$。这统一了定长杆、斜绳和最近距离的投影：定长时导数为零，绳段增长时导数为正，最近距离内部驻点也要求该点积为零。
+对任意两点 $A,B$，令 $\bm R=\bm r_B-\bm r_A$、$\ell=|\bm R|$、$\bm e=\bm R/\ell$。在 $\ell>0$时，由 $\ell^2=\bm R\cdot\bm R$两侧求导，
+\[
+ 2\ell\dot\ell=\dot{\bm R}\cdot\bm R+\bm R\cdot\dot{\bm R}
+ =2\bm R\cdot(\bm v_B-\bm v_A).
+\]
+除以 $2\ell$，得到 $\dot\ell=\bm e\cdot(\bm v_B-\bm v_A)$。这统一了定长杆、斜绳和最近距离的投影：定长时导数为零，绳段增长时导数为正，最近距离内部驻点也要求该点积为零。
 
 \fig{k3deep:length}{距离变化由相对速度沿连线的分量决定}{\begin{tikzpicture}
 \coordinate(A)at(0,0);\coordinate(B)at(3.3,0);\coordinate(C)at(4.1,1.3);
@@ -162,7 +184,19 @@ u^2+(\bm r_B-\bm r_A)\cdot(\bm a_B-\bm a_A)=0.\]
 外滚时自转与公转同向，内滚时反向。这些都是对地角速度；相对连心线的姿态角变化率还要取 $\omega-\Omega$。只有半径恒定且全程无滑动，才能把瞬时关系积分为固定转角比。
 
 \subsection{对滚动角度作一周累积}
-设圆心逆时针公转一周，累积公转角 $\Delta\theta=2\pi$。将前面的有符号滚动关系积分，外滚得到 $\Delta\phi=(R+r)\Delta\theta/r$，对地自转圈数为 $R/r+1$；内滚得到 $\Delta\phi=-(R-r)\Delta\theta/r$，对地自转圈数为 $-(R/r-1)$。负号记录内滚自转的反向，不能在累积之前只取角速度大小。
+设圆心从时刻 $t_0$到 $t_1$逆时针公转一周，角坐标从 $\theta_0$变为 $\theta_0+2\pi$。外滚中 $\dd\phi/\dd t=(R+r)\dot\theta/r$，用 $\dd\theta=\dot\theta\dd t$换元，得到
+\[
+ \Delta\phi=\int_{t_0}^{t_1}\omega(t)\dd t
+ =\frac{R+r}{r}\int_{\theta_0}^{\theta_0+2\pi}\dd\theta
+ =\frac{R+r}{r}[\theta]_{\theta_0}^{\theta_0+2\pi}
+ =2\pi\frac{R+r}{r}.
+\]
+内滚同理，常系数改为负值：
+\[
+ \Delta\phi=-\frac{R-r}{r}[\theta]_{\theta_0}^{\theta_0+2\pi}
+ =-2\pi\frac{R-r}{r}.
+\]
+两种对地自转圈数分别为 $R/r+1$和 $-(R/r-1)$。负号记录内滚自转的反向，不能在累积之前只取角速度大小。
 
 若要观察轮上标记相对连心线的转动，应计算 $\Delta\phi-\Delta\theta$。外滚时它等于 $2\pi R/r$，内滚时等于 $-2\pi R/r$。这样，对地圈数中外滚的“多一圈”和内滚的“少一圈”都有了明确的参照解释，而不必重新计算接触速度。
 

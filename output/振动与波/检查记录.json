@@ -1,6 +1,6 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "振动与波",
@@ -17,13 +17,33 @@
       "题设图": 12,
       "有过程图并引用的解答": 12,
       "已逐题复核": 12,
-      "PDFsha256": "e65a7773a1556c4d937ff724ff68c0bc646f5e16ac4b57763a713e9a4b5e7731",
-      "TeXsha256": "d8bab77d61bdf08f416ce554d3c2552d9a45720c8e89b983b1e9b8780e597f5b",
+      "PDFsha256": "5c632cd7127f0f59e6b74b5f035c57fa0a8588ec9a11cefe8159bbc73739b89a",
+      "TeXsha256": "d4a5ee5fd7191c20868b898d8464637b3a06433730862557a60dfb9036416a1a",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/振动与波/01_机械振动/main.pdf"
+      "本次重点页面复核PDF页序": [
+        18,
+        19,
+        20,
+        21,
+        26,
+        27,
+        28
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/振动与波/01_机械振动/main.pdf",
+      "本轮数学过程全文复核题数": 12,
+      "本轮数学过程修改题数": 4,
+      "源码各文件SHA256": {
+        "examples.tex": "5c07d7288376b7fcdfc6ca58783dc15dc4ccc840dfc9bef8862f879e2a624294",
+        "knowledge-oscillator-state.tex": "baf77e58397877e4078239f822349eefb5dd20c03baf9b96461f7a435e7c536c",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "894757173c3ba2307ca95d9055276b0bedfb86bd7c24dd2e566fef9f9f105bae",
+        "theory.tex": "8c69550868425a7dd681a5d56828b369009dc3d94dfbd6ebb2a89a17d1464e11",
+        "practice.tex": "71fcdeabf84c7f5bef95f5a4b0192a4f54aac8e8820082de90778aca50d8dd52",
+        "answers.tex": "3b6d7c71643e7b925aad476b799fff0e0255bf4b8a45ae408cb7bc7c093ad9c1",
+        "summary.tex": "252754a9953c345c1db24f79e346828ab3eea95c31c9ca2e83d60cb820d59c7d"
+      }
     },
     {
       "专题": "振动与波",
@@ -40,20 +60,41 @@
       "题设图": 10,
       "有过程图并引用的解答": 10,
       "已逐题复核": 10,
-      "PDFsha256": "2c4023d3cff20418a9ebfd26490bb195cff77354e191105628641c7f41e952d8",
-      "TeXsha256": "3ae186316a883710181e6722e333d0bf72a2a38045206b6971afeab3d9c0f68e",
+      "PDFsha256": "73c51c1da4610a338ab97432baef66171881e0a9320ffb03ded61c1fb27d7206",
+      "TeXsha256": "c5efca38728f75b5bff787d98afe799c3749008a972db35a5f86aadc82dfb5f8",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/振动与波/02_行波与波的传播/main.pdf"
+      "本次重点页面复核PDF页序": [
+        10,
+        11,
+        16,
+        17,
+        25,
+        26
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/振动与波/02_行波与波的传播/main.pdf",
+      "本轮数学过程全文复核题数": 10,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "knowledge-string-element.tex": "f215a23afdb8c37157f1c3029c56092942ee0f803483eccf4d0b8bcf103b6eb9",
+        "examples.tex": "9af1474e11aeafdf8ff9c8d342d4cb32eabaf34a03b4313bd34706f0b9817ae2",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "f089ec2ef6a2d4300473997506ab7a971871bdf12b1d1c63ac842ee278855109",
+        "theory.tex": "601fefa5191ac958bfaad521d8339e94d373a74261c2099952cfd42bffda10b3",
+        "practice.tex": "41852c760cfc27274ab028496544c9d6140d18837b16315891fe47ed8ba1ebc7",
+        "answers.tex": "574eb6c70cb53e6010105855b3174859c296b97c31c9bb483021bb3158f6f478",
+        "solution-longitudinal-density.tex": "68d3188409a8de7806a44907c12d47ad5897cc0441c1d6550d7901ede8a1e8d0",
+        "summary.tex": "4b197110d0d2b6bcc9648dbc6fe94ebf1228bf60ccd40567478e488e5dce7a84",
+        "wave-delay-diagram.tex": "417fca356ae82f45feafbb8b1d6090b1016ee289ce56d4bdc9586657159105a8"
+      }
     },
     {
       "专题": "振动与波",
       "工程": "03_波的叠加与多普勒效应",
       "名称": "波的叠加与多普勒效应",
       "PDF": "振动与波/pdf/振动与波第三讲_波的叠加与多普勒效应.pdf",
-      "页数": 25,
+      "页数": 26,
       "例题": 4,
       "练习": 6,
       "题数": 10,
@@ -63,15 +104,32 @@
       "题设图": 10,
       "有过程图并引用的解答": 10,
       "已逐题复核": 10,
-      "PDFsha256": "8872cfbff2edeaaa017375679c7257f9e57dee3df598ce4f8101e2c4a6868f04",
-      "TeXsha256": "4a959cc702721f1677f7b76d73c4948a112be93fc30c98a7b833a97e586c6edb",
+      "PDFsha256": "2c006fbf120323997c561a0b18cd205c9c57732dd5195c96c85eceb10868c3a0",
+      "TeXsha256": "e3a64fdb1bb8a2e4de0996377842587cf3afc6a9cc100b5b4d0f88b0aa557b4e",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        7
+        13,
+        14,
+        21,
+        22,
+        25,
+        26
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/振动与波/03_波的叠加与多普勒效应/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/振动与波/03_波的叠加与多普勒效应/main.pdf",
+      "本轮数学过程全文复核题数": 10,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "examples.tex": "dc6caf619d15968a2dc28e45c77c2768b96d6919faf575c99c11d59cd93d7e9e",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "b9a8fb230d9ebff4efca9d9c29b890045ac35934b545133b4166b27cdfdb586d",
+        "theory.tex": "c29441740bd7d5c5cea1cc709aa0e4e38633c977cbda995e18e784a93d5546f7",
+        "practice.tex": "db09a4f7d76b233407bbdea70f14a438dd274af9c51f6e94c42baa90eb67017e",
+        "answers.tex": "9b9f1ffb61d66a4ca271ec19003b8dc321bb3c044d7c24d5d9a562961dee64e1",
+        "summary.tex": "58566deaff04dc2f25039df3ad7f1795ae65a8913409c7d04800a90de336008c",
+        "knowledge-beats.tex": "fc6a1636da38814489bd7ab2da45ee3aa24068156e70102e6571378fe6b8986d"
+      }
     }
   ]
 }

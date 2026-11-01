@@ -40,8 +40,10 @@
 \end{question}
 \begin{solution}\textbf{沿斜面法向建立距离函数并确定飞行区间}\par\nobreak
 沿图\ref{k4p2q}斜面的外法向取正坐标 $n$。水平初速度在此方向的分量为 $u_n=v_0\sin\theta$，重力加速度的法向分量为 $-g_n=-g\cos\theta$，故
-\[n(t)=u_nt-\frac12g_nt^2,\qquad
-\dot n=u_n-g_nt,\qquad g_n>0.\]
+\[n(t)=u_nt-\frac12g_nt^2,\qquad g_n>0.\]
+这里 $u_n,g_n$均为常量，逐项求导有
+\[\dot n=u_n-\frac{g_n}{2}(2t)=u_n-g_nt,\qquad
+ \ddot n=-g_n<0.\]
 先用位置条件确定飞行区间：由 $n=0$得到发射时刻0和再次落面时刻 $T=2u_n/g_n$；两根之间 $n>0$。再令 $\dot n=0$，得内部驻点 $t_m=u_n/g_n=T/2$。将该时刻代回距离式，
 \[n_{\max}=\frac{u_n^2}{g_n}-\frac{u_n^2}{2g_n}
  =\boxed{\frac{v_0^2\sin^2\theta}{2g\cos\theta}},
@@ -91,9 +93,15 @@ n_{\max}=n_0+\frac{u_n^2}{2g_n}.\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把水平位移换成沿面射程}\par\nobreak
 水平位移为 $v_0\cos\alpha\,T$，而沿面射程是它除以 $\cos\theta$，因此
-\[S=\frac{2v_0^2\cos\alpha\sin(\alpha+\theta)}{g\cos^2\theta}
-=\frac{v_0^2[\sin(2\alpha+\theta)+\sin\theta]}{g\cos^2\theta}.
-\]
+\[S=\frac{2v_0^2\cos\alpha\sin(\alpha+\theta)}{g\cos^2\theta}.\]
+为把含 $\alpha$的因子化为一个三角函数，用和差公式逐项相加：
+\begin{align*}
+ \sin(2\alpha+\theta)+\sin\theta
+ &=\sin[(\alpha+\theta)+\alpha]+\sin[(\alpha+\theta)-\alpha]\\
+ &=2\sin(\alpha+\theta)\cos\alpha.
+\end{align*}
+因此
+\[S=\frac{v_0^2[\sin(2\alpha+\theta)+\sin\theta]}{g\cos^2\theta}.\]
 \fig{k4p3s}{斜面上的最大射程：解答过程}{\begin{tikzpicture}
 \draw[axis](0,0)--(3.65,0)node[right]{$2\alpha+\theta$};
 \draw[axis](0,0)--(0,1.5)node[above]{$\sin(2\alpha+\theta)$};
@@ -152,7 +160,20 @@ v_{n,T}=v_{n,0}-gT\cos\theta=-v_{n,0}.\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按各自飞行阶段联立墙顶高度}\par\nobreak
-在墙处令 $z=x/X$。直接抛球高度为 $H(1-z^2)$；反弹球在第二段的高度为 $H[1-(3z-2)^2]$，有效区间为 $1/3<z<1$。联立得 $z^2=(3z-2)^2$，解为 $z=1/2,1$，其中共同落点 $z=1$不作中间墙。因此 $\boxed{x=X/2,\ h=3H/4}$。图\ref{k4p4s}标出相交前后谁的轨迹较低，墙高要同时不超过两条曲线，共同交点给出这处墙的临界高度。
+在墙处令 $z=x/X$。两球到达该横坐标的时间分别为 $t_1=zT$、$t_2=3zT$。第一球仍在初落段，因此 $y_1=H-g(zT)^2/2=H(1-z^2)$，用到了 $gT^2/2=H$。
+
+第二球若仍在初落段，则 $y_2=H(1-9z^2)$，与 $y_1$相等只给出发点 $z=0$，故中间墙只能在它反弹以后。反弹后的竖直初速度为 $gT$，当地时间为 $\tau=t_2-T=(3z-1)T$，于是
+\begin{align*}
+ y_2&=gT\tau-\frac g2\tau^2
+ =H[2(3z-1)-(3z-1)^2]\\
+ &=H[1-(3z-2)^2],\qquad \frac13<z<1.
+\end{align*}
+两球都掠过同一墙顶，故联立 $y_1=y_2$。用平方差因式分解，
+\[
+ z^2-(3z-2)^2=[z-(3z-2)][z+(3z-2)]
+ =(2-2z)(4z-2)=0.
+\]
+得到 $z=1/2,1$，其中共同落点 $z=1$不作中间墙。代入内部根，$x=X/2$，$h=H(1-1/4)=3H/4$，所以 $\boxed{x=X/2,\ h=3H/4}$。图\ref{k4p4s}标出相交前后谁的轨迹较低，墙高要同时不超过两条曲线，共同交点给出这处墙的临界高度。
 
 
 
@@ -185,7 +206,12 @@ v_{n,T}=v_{n,0}-gT\cos\theta=-v_{n,0}.\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由有实根的条件求初速下界}\par\nobreak
-令 $z=v_0^2>0$，解 $z^2-2gyz-g^2x^2\ge0$。另一根 $g(y-\sqrt{x^2+y^2})$为负，所以有效条件是 $z\ge g(y+\sqrt{x^2+y^2})$。本题距离为5m，故
+令 $z=v_0^2>0$，需解 $z^2-2gyz-g^2x^2\ge0$。先求边界二次式的两个零点：
+\[
+ z_{\pm}=\frac{2gy\pm\sqrt{4g^2y^2+4g^2x^2}}{2}
+ =g\left(y\pm\sqrt{x^2+y^2}\right).
+\]
+因 $x>0$，有 $\sqrt{x^2+y^2}>|y|$，故 $z_-<0<z_+$。二次式开口向上，非负区间为 $z\le z_-$或 $z\ge z_+$，再与 $z>0$相交，只剩 $z\ge z_+$。本题 $\sqrt{3^2+4^2}=5$m，$z_+=10(4+5)=90\,\mathrm{m^2/s^2}$，故
 \[\boxed{v_{\min}^2=90\ \mathrm{m^2/s^2}},\qquad
 \boxed{v_{\min}=3\sqrt{10}\ \mathrm{m/s}}.
 \]

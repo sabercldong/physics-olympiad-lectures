@@ -94,7 +94,9 @@
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解无源回路的衰减方程}\par\nobreak
 闭合环满足 $L\dot i+Ri=0$，把方程两侧除以非零电流，$\dd i/i=-(R/L)\dd t$，以初末状态作定积分，
-$\int_{I_0}^{i(T)}\dd z/z=-(R/L)\int_0^T\dd t$，得到 $\ln[i(T)/I_0]=-RT/L$，故 $i(T)=I_0\e^{-RT/L}$。
+$\int_{I_0}^{i(T)}\dd z/z=-(R/L)\int_0^T\dd t$，原函数端点给
+$[\ln|z|]_{I_0}^{i(T)}=-(R/L)[t]_0^T$。
+正初始电流衰减时不变号，故 $\ln[i(T)/I_0]=-RT/L$，指数化得 $i(T)=I_0\e^{-RT/L}$。
 \fig{fig:em4:example:3:p}{将极小衰减改用对数坐标表示；一年后的实测点须落在上限以下}{\begin{tikzpicture}
 
 \draw[axis](-.2,0)--(4.9,0)node[right]{$t/T$};\draw[axis](0,-.2)--(0,2.8)node[above]{$-\ln(i/I_0)/\delta$};
@@ -106,7 +108,11 @@ $\int_{I_0}^{i(T)}\dd z/z=-(R/L)\int_0^T\dd t$，得到 $\ln[i(T)/I_0]=-RT/L$，
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把相对衰减的实验上限换成电阻上限}\par\nobreak
-图\ref{fig:em4:example:3:p}用归一化对数显示极小衰减；蓝线仅示一条允许的衰减，实验没有测定其中的具体斜率。实验界限是 $(I_0-i(T))/I_0<10^{-8}$，先移项得到 $\e^{-RT/L}>1-10^{-8}$，两侧取对数，再乘负号时不等号反向，得 $RT/L<-\ln(1-10^{-8})\simeq10^{-8}$。取一年 $T=3.156\times10^7\,\mathrm s$，有 $R<1.87\times10^{-22}\,\Omega$。
+图\ref{fig:em4:example:3:p}用归一化对数显示极小衰减；蓝线仅示一条允许的衰减，实验没有测定其中的具体斜率。实验界限是 $(I_0-i(T))/I_0<10^{-8}$，先移项得到 $\e^{-RT/L}>1-10^{-8}$，两侧取对数，再乘负号时不等号反向，得 $RT/L<-\ln(1-10^{-8})$。令 $f(\epsilon)=-\ln(1-\epsilon)$，有 $f(0)=0$，且
+\[
+ f'(\epsilon)=-\frac{-1}{1-\epsilon}=\frac1{1-\epsilon},\qquad f'(0)=1.
+\]
+所以 $f(\epsilon)=\epsilon+O(\epsilon^2)$，在 $\epsilon=10^{-8}$ 时可取 $RT/L\lesssim10^{-8}$。取一年 $T=3.156\times10^7\,\mathrm s$，有 $R<1.87\times10^{-22}\,\Omega$ 的近似上限。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用导线长度和截面积换算电阻率上限}\par\nobreak
 由 $R=\rho\,2\pi b/(\pi a^2)=2\rho b/a^2$，得到 $\rho<9.4\times10^{-28}\,\Omega\,\mathrm m$。这是模型下的上限估计，测不出衰减并不等于实验上证明电阻恰为零。\end{solution}
@@ -134,7 +140,7 @@ $\int_{I_0}^{i(T)}\dd z/z=-(R/L)\int_0^T\dd t$，得到 $\ln[i(T)/I_0]=-RT/L$，
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在部分进入区间求运动并核对能量}\par\nobreak
-图\ref{fig:em4:example:4:p}把机械能向磁能的转移画出。由 $m\ddot x=-(B^2l^2/L)x$，令 $\Omega=Bl/\sqrt{mL}$，试取 $x=\e^{st}$ 得特征方程 $s^2+\Omega^2=0$，共轭根 $\pm\mathrm j\Omega$ 给出一般实解 $x=A\cos\Omega t+D\sin\Omega t$。求导为 $\dot x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。$x(0)=0$ 给出 $A=0$，$\dot x(0)=v_0$ 给出 $D=v_0/\Omega$，于是
+图\ref{fig:em4:example:4:p}把机械能向磁能的转移画出。由 $m\ddot x=-(B^2l^2/L)x$，令 $\Omega=Bl/\sqrt{mL}$。试取 $x=\e^{st}$，两次求导为 $\dot x=s\e^{st}$、$\ddot x=s^2\e^{st}$，代回得 $(s^2+\Omega^2)\e^{st}=0$，故特征方程为 $s^2+\Omega^2=0$。共轭根 $\pm\mathrm j\Omega$ 给出一般实解 $x=A\cos\Omega t+D\sin\Omega t$。求导为 $\dot x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。$x(0)=0$ 给出 $A=0$，$\dot x(0)=v_0$ 给出 $D=v_0/\Omega$，于是
 \[x=\frac{v_0}{\Omega}\sin\Omega t,\quad v=v_0\cos\Omega t,\quad \frac12mv^2+\frac{B^2l^2x^2}{2L}=\frac12mv_0^2.\]
 \fig{em4:e4:energy}{部分进入阶段的能量交换；横坐标到 $x=d$ 时即须终止这一模型}{\begin{tikzpicture}
 
@@ -337,8 +343,9 @@ f'=(b^2+z^2)^{-5/2}
 这里 $L_e>0$，由耦合能量约束保证。初级回路因此满足 $L_e\dot i_1+Ri_1=E$，令 $j=i_1-E/R$，得到 $\dot j=-(R/L_e)j$。由 $j(0)=-E/R$，
 \[
 \int_{-E/R}^{j(t)}\frac{\dd z}{z}=-\frac R{L_e}\int_0^t\dd s,
-\qquad j(t)=-\frac ER\e^{-Rt/L_e}.
+ \qquad [\ln|z|]_{-E/R}^{j(t)}=-\frac R{L_e}[s]_0^t.
 \]
+端点代入给 $\ln|j(t)/(-E/R)|=-Rt/L_e$。初始偏差为负，恢复这个符号，得 $j(t)=-(E/R)\e^{-Rt/L_e}$。
 加回稳态电流后得到 $i_1=E(1-\e^{-Rt/L_e})/R$，$i_2=-Mi_1/L_2$。
 \fig{fig:em4:example:9:p}{闭合超导次级降低初级建立电流的时间常量；负次级电流与初级同步增长}{\begin{tikzpicture}
 
@@ -351,7 +358,17 @@ f'=(b^2+z^2)^{-5/2}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算总磁能并比较次级开路的建立过程}\par\nobreak
-将这两电流代入完整磁能式，$W_B=L_1i_1^2/2+L_2i_2^2/2+Mi_1i_2=L_ei_1^2/2$，可见端口等效电感也正确描述该约束下的总储能。图\ref{fig:em4:example:9:p}显示，与次级开路时相比，时间常量从 $L_1/R$ 减为 $L_e/R$，初级电流建立更快；最终初级电流仍为 $E/R$，但次级保留反向持久电流。
+将 $i_2=-Mi_1/L_2$ 代入完整磁能式，各项分别为
+\[
+ \begin{aligned}
+ W_B&=\frac{L_1i_1^2}{2}
+ +\frac{L_2}{2}\frac{M^2i_1^2}{L_2^2}
+ -\frac{M^2i_1^2}{L_2}\\
+ &=\frac12\left(L_1+\frac{M^2}{L_2}-\frac{2M^2}{L_2}\right)i_1^2
+ =\frac12L_ei_1^2.
+ \end{aligned}
+\]
+可见端口等效电感也正确描述该约束下的总储能。图\ref{fig:em4:example:9:p}显示，与次级开路时相比，时间常量从 $L_1/R$ 减为 $L_e/R$，初级电流建立更快；最终初级电流仍为 $E/R$，但次级保留反向持久电流。
 
 
 
@@ -390,11 +407,21 @@ L_2[i_2(0^+)-i_2(0^-)]+R\int_{0^-}^{0^+}i_2\dd t
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在初级恒流阶段解次级衰减并积分焦耳热}\par\nobreak
 图\ref{fig:em4:example:10:p}将快建立与慢衰减分开。之后初级电流不再变化，次级满足 $L_2\dot i_2+Ri_2=0$。以 $I_{20}=-MI_0/L_2$ 为初流，分离积分
 $\int_{I_{20}}^{i_2(t)}\dd z/z=-(R/L_2)\int_0^t\dd s$，
-得 $\ln|i_2/I_{20}|=-Rt/L_2$，保持初始负号。热量积分中
-$\int_0^\infty\e^{-2Rt/L_2}\dd t
-=[-L_2\e^{-2Rt/L_2}/(2R)]_0^\infty=L_2/(2R)$。
-因此
-\[i_2(t)=-\frac{MI_0}{L_2}\e^{-Rt/L_2},\quad Q_J=R\int_0^\infty i_2^2\dd t=\frac{M^2I_0^2}{2L_2}.\]
+原函数端点给 $[\ln|z|]_{I_{20}}^{i_2(t)}=-(R/L_2)[s]_0^t$，
+即 $\ln|i_2/I_{20}|=-Rt/L_2$，保持初始负号后
+\[
+ i_2(t)=-\frac{MI_0}{L_2}\e^{-Rt/L_2}.
+\]
+再代入热量积分，先取有限上限 $T$：
+\[
+ \begin{aligned}
+ Q_J(T)&=R\frac{M^2I_0^2}{L_2^2}\int_0^T\e^{-2Rt/L_2}\dd t\\
+ &=R\frac{M^2I_0^2}{L_2^2}
+   \left[-\frac{L_2}{2R}\e^{-2Rt/L_2}\right]_0^T\\
+ &=\frac{M^2I_0^2}{2L_2}(1-\e^{-2RT/L_2}).
+ \end{aligned}
+\]
+最后令 $T\to\infty$，得到 $Q_J=M^2I_0^2/(2L_2)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用磁能与总电量分别检查结果}\par\nobreak

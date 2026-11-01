@@ -31,9 +31,18 @@ p_z=v_\parallel T.\end{equation}
  \dot v_x=-\Omega v_y,\qquad \dot v_y=\Omega v_x,\qquad
  \Omega=qB/m>0.
 \]
-对第一式求导并消去 $v_y$，得 $\ddot v_x+\Omega^2v_x=0$，
-特征根为 $\pm\mathrm i\Omega$。通解 $v_x=A\cos\Omega t+D\sin\Omega t$，
-由 $v_x(0)=v_0,\dot v_x(0)=-\Omega v_y(0)=0$ 得 $A=v_0,D=0$。
+这里 $\Omega$ 为常量。对第一式求导，代入第二式，
+\[
+ \ddot v_x=-\Omega\dot v_y=-\Omega(\Omega v_x)=-\Omega^2v_x.
+\]
+试取 $v_x=e^{st}$，则 $\dot v_x=se^{st}$、$\ddot v_x=s^2e^{st}$。
+代回得 $(s^2+\Omega^2)e^{st}=0$，故特征根为 $s=\pm\mathrm i\Omega$。
+实通解及其导数为
+\[
+ v_x=A\cos\Omega t+D\sin\Omega t,\qquad
+ \dot v_x=-A\Omega\sin\Omega t+D\Omega\cos\Omega t.
+\]
+由 $v_x(0)=v_0$ 得 $A=v_0$，由 $\dot v_x(0)=-\Omega v_y(0)=0$ 得 $D\Omega=0$，即 $D=0$。
 再用 $v_y=-\dot v_x/\Omega$，得到 $v_y=v_0\sin\Omega t$。
 位置从初始原点积分：
 \[

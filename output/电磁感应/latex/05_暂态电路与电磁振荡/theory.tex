@@ -45,7 +45,11 @@
 理想电感 $L$ 串联电阻 $R$ 接到恒压 $E$ 上，回路有 $L\dot i+Ri=E$。令最终电流 $I_\infty=E/R$，减去稳态关系后得 $L\dd(i-I_\infty)/\dd t=-R(i-I_\infty)$。令 $\delta=i-I_\infty$。若 $\delta(0)\ne0$，分离变量并保留积分上下限，
 \[
 \int_{\delta(0)}^{\delta(t)}\frac{\dd z}{z}
-=-\frac RL\int_0^t\dd s,\qquad
+ =-\frac RL\int_0^t\dd s,\qquad
+ [\ln|z|]_{\delta(0)}^{\delta(t)}=-\frac RL[s]_0^t.
+\]
+代入上下限并合并对数，
+\[
 \ln\left|\frac{\delta(t)}{\delta(0)}\right|=-\frac{Rt}{L}.
 \]
 偏差的符号不会在有限时间内改变，故 $\delta(t)=\delta(0)\e^{-Rt/L}$；若初始偏差为零，原方程直接给出恒定的稳态解。代入 $\delta(0)=I_0-I_\infty$，得到
@@ -55,9 +59,11 @@
 电容充电回路满足 $R\dot q+q/C=E$。令 $z=q-CE$，则 $\dot z=-z/(RC)$，于是
 \[
 \int_{q_0-CE}^{q-CE}\frac{\dd z}{z}
-=-\int_0^t\frac{\dd s}{RC},\qquad
-q-CE=(q_0-CE)\e^{-t/(RC)}.
+ =-\int_0^t\frac{\dd s}{RC},\qquad
+ [\ln|z|]_{q_0-CE}^{q-CE}=-\frac1{RC}[s]_0^t.
 \]
+当 $q_0\ne CE$ 时，端点给出 $\ln|(q-CE)/(q_0-CE)|=-t/(RC)$。
+指数化并恢复偏差的原符号，得 $q-CE=(q_0-CE)\e^{-t/(RC)}$。
 初始偏差为零时仍应单独取恒定解；其他初态给出 $q=CE+(q_0-CE)\e^{-t/(RC)}$。时间常量 $RC$ 与电感的 $L/R$ 对电阻的依赖相反：电阻越大，电容充电越慢，电感电流建立相对最终值则越快。这里比较的是归一化时间过程，电感的最终电流 $E/R$ 本身还会随电阻改变。
 
 \input{first-order-curves}
@@ -184,7 +190,13 @@ Q(T)=\frac ER\left[t+\tau_L\e^{-t/\tau_L}\right]_0^T
 
 在无电阻的闭合 LC 回路，约定电容上极板电荷为 $q$，电流 $i=-\dot q$ 表示上极板放电。回路电压关系为 $L\dot i=q/C$，消去电流得 $\ddot q+q/(LC)=0$。令 $\omega_0=1/\sqrt{LC}$，试取 $q=\e^{st}$，则 $\dot q=s\e^{st}$、$\ddot q=s^2\e^{st}$。代入并约去指数得 $s^2+\omega_0^2=0$，两个根为 $s=\pm\mathrm j\omega_0$；将共轭指数解合成实函数，一般解为
 \[q=A\cos\omega_0t+B\sin\omega_0t.\]
-两个常数分别由初始电荷和初始电流决定。若 $q(0)=Q_0,i(0)=I_0$，则 $A=Q_0,B=-I_0/\omega_0$，因而 $i=Q_0\omega_0\sin\omega_0t+I_0\cos\omega_0t$。周期 $T_0=2\pi\sqrt{LC}$，电流与电荷相差四分之一周期，但谁先达到峰值须结合符号与初态判断。
+两个常数分别由初始电荷和初始电流决定。先对一般解求导，
+\[
+ \dot q=-A\omega_0\sin\omega_0t+B\omega_0\cos\omega_0t,
+ \qquad i=-\dot q.
+\]
+若 $q(0)=Q_0,i(0)=I_0$，则 $A=Q_0$、$-B\omega_0=I_0$，
+故 $B=-I_0/\omega_0$，因而 $i=Q_0\omega_0\sin\omega_0t+I_0\cos\omega_0t$。周期 $T_0=2\pi\sqrt{LC}$，电流与电荷相差四分之一周期，但谁先达到峰值须结合符号与初态判断。
 
 两端能量为 $W_E=q^2/(2C)$、$W_B=Li^2/2$。逐项使用复合函数求导，
 \[
@@ -212,7 +224,11 @@ Q(T)=\frac ER\left[t+\tau_L\e^{-t/\tau_L}\right]_0^T
 图\ref{em5:rlc-circuit}与理想 LC 采用相同正向，先列 $L\dot i+Ri=q/C$，再代 $i=-\dot q$，便得到电荷方程。这样可以核对阻尼项的正号；若错误地得到 $-R\dot q$，就会预言无外源时能量自发增长。
 
 
-含电阻的串联 RLC 自由电路，电荷满足 $L\ddot q+R\dot q+q/C=0$。设 $q=\e^{st}$，特征方程 $Ls^2+Rs+1/C=0$。当 $R<2\sqrt{L/C}$，根为 $-R/(2L)\pm\mathrm j\omega_d$，$\omega_d=\sqrt{1/(LC)-R^2/(4L^2)}$，振幅指数衰减；等号时临界阻尼；更大时两根均为负实数，没有周期反向的振荡。把所有含电感和电容的电路都称为等幅振荡是不对的。
+含电阻的串联 RLC 自由电路，电荷满足 $L\ddot q+R\dot q+q/C=0$。试取 $q=\e^{st}$，其导数为 $s\e^{st},s^2\e^{st}$，代回并除以非零指数，得 $Ls^2+Rs+1/C=0$。再除以 $L$ 并配方，
+\[
+ \left(s+\frac R{2L}\right)^2=\frac{R^2}{4L^2}-\frac1{LC}.
+\]
+当 $R<2\sqrt{L/C}$ 时右端为负，根为 $-R/(2L)\pm\mathrm j\omega_d$，$\omega_d=\sqrt{1/(LC)-R^2/(4L^2)}$，振幅指数衰减；等号时临界阻尼；更大时两根均为负实数，没有周期反向的振荡。把所有含电感和电容的电路都称为等幅振荡是不对的。
 
 阻尼电路的总能量变化率为 $-Ri^2$，始终非正，但瞬时衰减率不是常量。弱阻尼时才可将一个周期内的能量变化近似平均，得到包络按 $\e^{-Rt/L}$ 衰减。求振幅、周期或热量时，应区分严格解与弱阻尼近似，并检查电压和电流的连续初值是否都已使用。
 
@@ -321,8 +337,9 @@ L_1i_1-L_2i_2=D_0=\text{常量}.\]
 令 $\tau=L_1L_2/[R(L_1+L_2)]$，总电流方程的分离变量式为
 \[
 \int_{S(0)}^{S(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau},
-\qquad S(t)=S(0)\e^{-t/\tau}.
+ \qquad [\ln|z|]_{S(0)}^{S(t)}=-\frac1\tau[s]_0^t.
 \]
+非零初始和给出 $\ln|S(t)/S(0)|=-t/\tau$，保持其初始符号，故 $S(t)=S(0)\e^{-t/\tau}$。
 若 $S(0)=0$，直接取 $S(t)=0$；磁链差则由
 $\dd(L_1i_1-L_2i_2)/\dd t=u-u=0$ 得到，因此不衰减。末态 $S=0$，于是 $i_{1\infty}=D_0/(L_1+L_2)$、$i_{2\infty}=-i_{1\infty}$，可保留非零环流。完整磁能可分解为
 \[W_B=\frac12\frac{L_1L_2}{L_1+L_2}S^2+

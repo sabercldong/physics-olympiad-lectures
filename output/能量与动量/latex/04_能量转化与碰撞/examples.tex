@@ -39,8 +39,12 @@
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{用相对减速度确定共速时间和深入量}\par\nobreak
-按图\ref{fig:em4:example:2:s}整体水平动量守恒，共速$V=mv_0/(M+m)$。记约化质量 $\mu=mM/(m+M)$。子弹相对木块的减速度大小为$f/m+f/M=f/\mu$，所以相对速度$v_0$降为零所需时间$t=\mu v_0/f$，相对深入$D=v_0t/2=\mu v_0^2/(2f)$。同一时间木块从静止以 $f/M$ 加速，故
-$X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
+按图\ref{fig:em4:example:2:s}整体水平动量守恒，共速$V=mv_0/(M+m)$。记约化质量$\mu=mM/(m+M)$，相对速度为$u$。子弹、木块的加速度分别为$-f/m$、$f/M$，所以$\dot u=-f(1/m+1/M)=-f/\mu$。从开始射入的$u(0)=v_0$积分，
+\[
+u(\tau)-v_0=-\frac f\mu\int_0^\tau\dd\eta
+=-\frac f\mu[\eta]_0^\tau=-\frac f\mu\tau.
+\]
+在首次共速时$u(t)=0$，故$t=\mu v_0/f$。
 \fig{fig:em4:example:2:p}{在固定地面坐标中比较木块边界与子弹的位置，位移之差等于穿入深度}{\begin{tikzpicture}
 
 \draw[world](0,2)rectangle(3.7,3);\fill(0,2.5)circle(.09)node[above left]{开始射入};\node at(2.8,2.5){$M$};
@@ -54,7 +58,19 @@ $X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把两物体的对地位移相减}\par\nobreak
-由相对速度直线下降，$D=(v_0+0)t/2$；再代入$t=\mu v_0/f$才得到$D=\mu v_0^2/(2f)$，其中$\mu=mM/(m+M)$。把它与$X=\mu^2v_0^2/(2Mf)$相除，$X/D=\mu/M=m/(m+M)$，即可消去未知阻力和作用时间。
+由图\ref{fig:em4:example:2:p}，相对深入量应积相对速度：
+\[
+D=\int_0^t\left(v_0-\frac f\mu\tau\right)\dd\tau
+=\left[v_0\tau-\frac f{2\mu}\tau^2\right]_0^t
+=v_0t-\frac{ft^2}{2\mu}=\frac{\mu v_0^2}{2f}.
+\]
+木块的初速度为零，由$\dot V_M=f/M$积分得到$V_M(\tau)=f\tau/M$；再积分求位移，
+\[
+X=\int_0^t\frac fM\tau\dd\tau
+=\frac fM\left[\frac{\tau^2}{2}\right]_0^t
+=\frac{ft^2}{2M}=\frac{\mu^2v_0^2}{2Mf}.
+\]
+两式相除，$X/D=\mu/M=m/(m+M)$，消去了未知阻力和作用时间。
 
 
 
@@ -96,7 +112,18 @@ $X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用上升高度核对绳始终绷紧}\par\nobreak
-还需核实确实存在绳绷紧的转折点。碰后动能为$Mu^2/8$，共速时为$Mu^2/72$，差值$Mu^2/9$转为摆球势能，故上升高度$h=4u^2/(9g)\approx0.144\,\mathrm m<\ell$（取$g=10$）。转折点在水平线以下，绳张力可保持正值，前述末态成立。\end{solution}
+还需核实确实存在绳绷紧的转折点。碰后只有摆球运动，$K_0=\tfrac12(M/4)u^2=Mu^2/8$；转折共速时
+\[
+K_f=\frac12\left(2M+\frac M4\right)\left(\frac u9\right)^2
+=\frac{Mu^2}{72}.
+\]
+两者之差为$Mu^2(1/8-1/72)=Mu^2/9$，转为摆球势能，因此
+\[
+\frac M4gh=\frac{Mu^2}{9},\qquad
+h=\frac{4u^2}{9g}\approx0.144\,\mathrm m<\ell
+\quad(g=10\,\mathrm{m/s^2}).
+\]
+转折点在水平线以下，绳张力可保持正值，前述末态成立。\end{solution}
 \begin{question}\begin{example}[落块与竖直弹簧钢板]\label{em4:example:4}
 质量$m$的钢板连在竖直弹簧上，静平衡时压缩$x_0$，自然长位置为$O$，比平衡板面高$x_0$。物块从平衡板面上方$3x_0$处释放，与板短时碰撞后共同向下运动但不粘连。若物块质量$m$，恰好回到$O$停止；改为$2m$，求物块最后超过$O$的最高高度。
 \end{example}
@@ -164,7 +191,7 @@ $X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
 \fig{fig:em4:example:6:s}{题设：弹簧连接的等质量两球}{\begin{tikzpicture}[scale=.9]\draw[world](-.6,-.3)--(6.1,-.3);\draw[axis](5.3,.6)--(6.1,.6)node[right]{$x$};\draw[world](0.6-.35,-.3)rectangle(0.6+.35,.3);\node at(0.6,0){$m$};\draw[world](4.6-.35,-.3)rectangle(4.6+.35,.3);\node at(4.6,0){$m$};\draw[flow](0.6,0.8)--++(1.5,0)node[above]{$u_0$};\draw[spring](1,0)--(4.2,0);\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{列自然长末态的两个守恒式}\par\nobreak
-图\ref{fig:em4:example:6:s}中总动量为$mu_0$，质心速度$u_0/2$，相对速度由$u_0$先减为零再反向。弹簧第一次恢复自然长时势能重新为零，所以$v_1+v_2=u_0$、$v_1^2+v_2^2=u_0^2$。代数根为$(u_0,0)$或$(0,u_0)$。
+图\ref{fig:em4:example:6:s}中总动量为$mu_0$，质心速度$u_0/2$，相对速度由$u_0$先减为零再反向。弹簧第一次恢复自然长时势能重新为零，所以$v_1+v_2=u_0$、$v_1^2+v_2^2=u_0^2$。先联立这两式，再用分离方向筛选末态。
 \fig{fig:em4:example:6:p}{等质量双球在半个相对周期后第一次回到自然长并交换速度}{\begin{tikzpicture}
 
 \foreach \yy/\xx/\rr/\lab in {4/0/3.4/初始,2/.7/2.7/最大压缩,0/.3/3.7/首次自然长}{\begin{scope}[yshift=\yy cm]
@@ -177,7 +204,7 @@ $X=ft^2/(2M)=\mu^2v_0^2/(2Mf)$。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用恢复自然长时的分离方向舍根}\par\nobreak
-将第一条式子平方，得$v_1^2+v_2^2+2v_1v_2=u_0^2$，与第二条相减得$v_1v_2=0$。于是两个候选态只有一球运动；要区分哪一球，必须再看首次恢复自然长时两球已由接近转为分离，即$v_2-v_1>0$。
+将第一条式子平方，得$v_1^2+v_2^2+2v_1v_2=u_0^2$，与第二条相减得$v_1v_2=0$。若$v_1=0$，由和式得$v_2=u_0$；若$v_2=0$，则$v_1=u_0$。两个候选态为$(0,u_0)$与$(u_0,0)$。要区分哪一球运动，必须再看首次恢复自然长时两球已由接近转为分离，即$v_2-v_1>0$。
 
 按图\ref{fig:em4:example:6:p}的压缩、回弹顺序，左球减速、右球加速，第一次返回应取
 \[\boxed{v_1=0,\ v_2=u_0}.\]
@@ -355,7 +382,7 @@ U形管中在同一水平液面取等压点，沿测压气柱和液柱逐段增�
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{沿接触法线和切线分解冲击}\par\nobreak
-图\ref{fig:em4:example:12:s}接触光滑，冲量沿法线，因此各球切向速度不变：$v_{1t}=u_{1t}$、$v_{2t}=u_{2t}$。法向冲量大小由恢复系数给$J=\mu(1+e)(u_{1n}-u_{2n})$。
+图\ref{fig:em4:example:12:s}接触光滑，冲量沿法线，因此各球切向速度不变：$v_{1t}=u_{1t}$、$v_{2t}=u_{2t}$。记法向冲量大小为$J$，先用各球的法向动量定理和恢复条件求它。
 \fig{fig:em4:example:12:p}{在各球的速度平面上，冲量仅平移法向分量，切向分量不变}{\begin{tikzpicture}
 
 \begin{scope}\draw[axis](-1,0)--(2.1,0)node[right]{$n$};\draw[axis](0,-.3)--(0,1.8)node[above]{$t$};
@@ -371,7 +398,17 @@ U形管中在同一水平液面取等压点，沿测压气柱和液柱逐段增�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由恢复条件确定法向冲量}\par\nobreak
-法向分量分别满足$m_1(v_{1n}-u_{1n})=-J$、$m_2(v_{2n}-u_{2n})=J$，两式相减再代入恢复条件，即可得到法向冲量。切向无冲量则各自分量不变；最后需将两个正交分量合成为各球的完整矢量，而不能把法向末速当作总速率。
+法向分量分别满足$m_1(v_{1n}-u_{1n})=-J$、$m_2(v_{2n}-u_{2n})=J$。先除以各自质量，再相减，
+\[
+v_{2n}-v_{1n}=u_{2n}-u_{1n}
++J\left(\frac1{m_1}+\frac1{m_2}\right).
+\]
+用恢复条件$v_{2n}-v_{1n}=e(u_{1n}-u_{2n})$替换左边，把初始速度差移到同一边，
+\[
+\frac J\mu=(1+e)(u_{1n}-u_{2n}),\qquad
+J=\mu(1+e)(u_{1n}-u_{2n})>0.
+\]
+切向无冲量，各自分量不变；最后应将两个正交分量合成为完整速度矢量。
 
 
 
@@ -425,7 +462,12 @@ $m=M$时圆过原点，非零末速度只能偏到接近$90^\circ$，极限处�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用均值不等式确定最优中间质量}\par\nobreak
-在图\ref{fig:em4:example:14:p}把分母除以$x$，得到$V_M=4mu/[m+M+x+mM/x]$。由$x+mM/x\ge2\sqrt{mM}$，等号在$x=\sqrt{mM}$时成立，所以
+在图\ref{fig:em4:example:14:p}把分母除以$x>0$，得到$V_M=4mu/[m+M+x+mM/x]$。分母中只有$x+mM/x$随中间质量改变，而且
+\[
+x+\frac{mM}{x}-2\sqrt{mM}
+=\left(\sqrt x-\sqrt{\frac{mM}{x}}\right)^2\ge0.
+\]
+等号要求$x=mM/x$，因$x>0$，故$x=\sqrt{mM}$。此时分母为$m+M+2\sqrt{mM}=(\sqrt m+\sqrt M)^2$，所以
 \[\boxed{x_{\mathrm{opt}}=\sqrt{mM},\qquad V_{M,\max}=\frac{4m}{(\sqrt m+\sqrt M)^2}u}.\]
 目标动能占初始动能的比例为$16mM/(\sqrt m+\sqrt M)^4$。若要求整个后续全过程末态，还应检查反弹的入射球是否追上中间球；本题明确只计指定的两次传递。\end{solution}
 \begin{question}\begin{example}[移动墙面的弹性反射]\label{em4:example:15}
@@ -487,7 +529,16 @@ $m=M$时圆过原点，非零末速度只能偏到接近$90^\circ$，极限处�
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对停止前的各段飞行求和}\par\nobreak
 图\ref{fig:em4:example:16:p}每两次碰撞之间飞行时间均为$T=2w/g$。第$N$次碰撞后水平速度为零，故所求路程只包括前$N-1$段飞行：
-\[\boxed{S=\frac{2w}{g}\sum_{n=1}^{N-1}(u-2n\mu w)=\frac{2w}{g}(N-1)(u-\mu wN)}.\]
+\[
+S=\frac{2w}{g}\sum_{n=1}^{N-1}(u-2n\mu w).
+\]
+当$N\ge2$时，分别求常数项和等差项之和，
+\[
+\sum_{n=1}^{N-1}(u-2n\mu w)
+=(N-1)u-2\mu w\frac{(N-1)N}{2}
+=(N-1)(u-\mu wN).
+\]
+故$\boxed{S=\dfrac{2w}{g}(N-1)(u-\mu wN)}$。
 $N=1$时$S=0$，即第一次冲击就消除了水平滑动。以后竖直弹跳仍继续；最后一次的实际切向冲量只取消除剩余水平速度所需值，不再强行等于$2\mu mw$。\end{solution}
 \begin{question}\begin{example}[碰撞耗散与惯性系变换]\label{em4:example:17}
 两物体质量$m_1,m_2$在直线上发生孤立碰撞，初末总动量均为$P$。另一个惯性系相对原系以速度$U$运动。证明总动能损失在两个惯性系中相同，并说明个体动能变化是否也不变。
@@ -496,7 +547,12 @@ $N=1$时$S=0$，即第一次冲击就消除了水平滑动。以后竖直弹跳�
 \end{question}
 \begin{solution}\textbf{展开同一状态在另一惯性系的总动能}\par\nobreak
 按图\ref{fig:em4:example:17:s}每个速度变成$v'_i=v_i-U$，所以总动能
-\[K'=\sum\frac12m_i(v_i-U)^2=K-UP+\frac12(m_1+m_2)U^2.\]
+\begin{align*}
+K'&=\sum_i\frac12m_i(v_i-U)^2
+=\sum_i\frac12m_i(v_i^2-2Uv_i+U^2)\\
+&=K-U\sum_i m_iv_i+\frac{U^2}{2}\sum_i m_i
+=K-UP+\frac12(m_1+m_2)U^2.
+\end{align*}
 初末总动量相同，后两项在碰撞前后相同，因此
 \[\boxed{K_i'-K_f'=K_i-K_f}.\]
 

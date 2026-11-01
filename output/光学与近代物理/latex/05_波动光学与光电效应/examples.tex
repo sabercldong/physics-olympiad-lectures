@@ -512,7 +512,7 @@
 \[
  \boxed{I=I_{\max}\cos^2\alpha}.
 \]
-小 $\alpha$ 时（角度用弧度），$I/I_{\max}\simeq1-\alpha^2$，强度降低可能很小；不能一概称为明显减弱。
+强度变化由偏振方向与检偏器透振轴的夹角决定；下面用实际导数判断微小旋光角的亮度灵敏度。
 \fig{fig:m28s}{沿传播方向看横截面；虚线为 \(B\) 最初的透振方向}{
 \begin{tikzpicture}
 \draw[aux] (0,-1.2)--(0,1.2);
@@ -533,7 +533,12 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查微小角的亮度灵敏度}\par\nobreak
-如果只靠亮度变化判断微小旋光角，最大亮度附近的变化是二阶量；$\dd I/\dd\alpha=-I_p\sin2\alpha$，在平行和正交位置斜率均为零。强度随角度的一阶变化在约 $45^\circ$ 处最大；实际角度测量还应兼顾亮度噪声和所用检偏方法，不能把“接近消光”简单等同于斜率最大。
+固定 $I_p$，对 $I=I_p\cos^2\alpha$ 使用链式法则，
+\[
+ \frac{\dd I}{\dd\alpha}=2I_p\cos\alpha(-\sin\alpha)=-I_p\sin2\alpha,
+ \qquad \frac{\dd^2I}{\dd\alpha^2}=-2I_p\cos2\alpha.
+\]
+在 $\alpha=0$，三项分别为 $I_p,0,-2I_p$；函数关于零点为偶函数，因此泰勒式给出 $I/I_p=1-\alpha^2+O(\alpha^4)$，角度须用弧度。最大亮度附近的变化是二阶量，微小转角造成的降低可能很小。在平行和正交位置，一阶导数均为零；其绝对值在约 $45^\circ$ 处最大。实际角度测量还应兼顾亮度噪声和所用检偏方法，不能把“接近消光”简单等同于斜率最大。
 
 
 
@@ -588,11 +593,14 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由等效双光源求几何路程差}\par\nobreak
-对于屏上任意点 \(P(L,y)\)，反射光路长等于 \(S'P\)，因此几何路程差
-\[
- \delta=\sqrt{L^2+(y+a)^2}-\sqrt{L^2+(y-a)^2}
+对于屏上任意点 \(P(L,y)\)，反射光路长等于 \(S'P\)。用两根式的平方差消去相减，几何路程差为
+\begin{align*}
+ \delta&=\sqrt{L^2+(y+a)^2}-\sqrt{L^2+(y-a)^2}\\
+ &=\frac{(y+a)^2-(y-a)^2}
+ {\sqrt{L^2+(y+a)^2}+\sqrt{L^2+(y-a)^2}}\\
+ &=\frac{4ay}{\sqrt{L^2+(y+a)^2}+\sqrt{L^2+(y-a)^2}}
  \simeq\frac{2ay}{L}.
-\]
+\end{align*}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求相邻同类条纹的近轴间距}\par\nobreak
@@ -1053,7 +1061,12 @@ X射线管中阴极 \(K\) 发射初速可忽略的电子，电子经 \(U=30\,\ma
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{叠加强度并分离快慢变化因子}\par\nobreak
-不同频率之间的交叉项平均为零，总强度为
+不同频率之间的交叉项平均为零，所以先将两种强度相加。令 $\phi_j=2\pi\delta/\lambda_j$，用 $\cos^2(\phi_j/2)=(1+\cos\phi_j)/2$，
+\[
+ \frac I{I_0}=1+\frac{\cos\phi_1+\cos\phi_2}{2}
+ =1+\cos\frac{\phi_1-\phi_2}{2}\cos\frac{\phi_1+\phi_2}{2}.
+\]
+将两个相位的和、差分别代入，得到总强度
 \[
  \boxed{\frac I{I_0}=1+
  \cos\!\left[\pi\delta\left(\frac1{\lambda_1}-\frac1{\lambda_2}\right)\right]
@@ -1107,7 +1120,12 @@ X射线管中阴极 \(K\) 发射初速可忽略的电子，电子经 \(U=30\,\ma
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查节点亮度和几何近似误差}\par\nobreak
-图\ref{fig:r51s}下方的两个局部图采用相同纵轴尺度：中心附近强度起伏明显，节点附近强度只在 \(I_0\) 周围微小变化。这里 \(\delta_0/d=0.031375\)，近轴位置近似的相对误差约为 \((\delta_0/d)^2/2=4.9\times10^{-4}\)；远场几何还要求 \(L\gg d\)，本题满足。
+图\ref{fig:r51s}下方的两个局部图采用相同纵轴尺度：中心附近强度起伏明显，节点附近强度只在 \(I_0\) 周围微小变化。为检查近轴误差，令 $s=\delta_0/d=0.031375$。在远场方向关系 $\sin\theta=s$ 下，准确屏坐标为 $x=L\tan\theta=Ls/\sqrt{1-s^2}$，近轴值为 $x_{\rm p}=Ls$。以准确值为分母，
+\[
+ \frac{x-x_{\rm p}}x=1-\sqrt{1-s^2}
+ =\frac{s^2}{1+\sqrt{1-s^2}}\simeq\frac{s^2}{2}=4.9\times10^{-4}.
+\]
+远场几何还要求 \(L\gg d\)，本题满足。
 \end{solution}
 
 \begin{question}

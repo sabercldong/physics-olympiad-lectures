@@ -88,8 +88,15 @@ n_fC_VT_f=\int_0^{n_f}C_pT_s\,\dd n_{\text{入}}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{只借助可逆参考路径算熵差，检验孤立容器能否自行复原}\par\nobreak
-熵差只看端点。可另选一条连接相同端点的假想可逆等温路径来计算，或直接用理想气体熵差公式：
-\[\Delta S=C_V\ln\frac{T_f}{T_i}+R\ln\frac{2V}{V}=\boxed{R\ln2>0}.\]
+熵差只看端点。另选一条连接相同端点的假想可逆等温路径；沿它有$\dd U=0$、$\delta Q_{\rm rev}=p\dd\mathcal V$，而1mol气体满足$p=RT/\mathcal V$。温度为常量，因此
+\[
+\begin{aligned}
+\Delta S&=\int_V^{2V}\frac{\delta Q_{\rm rev}}{T}
+=R\int_V^{2V}\frac{\dd\mathcal V}{\mathcal V}\\
+&=R\left[\ln\frac{\mathcal V}{V}\right]_V^{2V}
+=R(\ln2-\ln1)=\boxed{R\ln2>0}.
+\end{aligned}
+\]
 图\ref{fig:t3-13s}显示内能保持不变与熵增加可以同时发生。若容器孤立，要求气体自行退回原半边并恢复初温，就会使整体熵减少 $R\ln2$，第二定律不允许。
 
 

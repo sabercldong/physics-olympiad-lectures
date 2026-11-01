@@ -138,7 +138,13 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入最大值并核对两端极限}\par\nobreak
-导数在 $x=R/\sqrt2$ 两侧由正变负，故最大场强为 $2kQ/(3\sqrt3R^2)$。$x=0$ 时场为零；$x\gg R$ 时 $E_x\simeq kQ/x^2$，与总电荷点模型一致。带符号表达式 $E_x=kQx/(R^2+x^2)^{3/2}$ 同样适用于负轴，$E_x(-x)=-E_x(x)$；若只求大小，分子应取 $kQ|x|$。\end{solution}
+导数分母为正，令分子$R^2-2x^2=0$，在$x>0$中得$x=R/\sqrt2$；其两侧导数由正变负。将该位置代回原场强，
+\[
+E_{\max}=\frac{kQ(R/\sqrt2)}{(R^2+R^2/2)^{3/2}}
+=\frac{kQ}{R^2}\frac{1/\sqrt2}{(3/2)^{3/2}}
+=\frac{2kQ}{3\sqrt3R^2}.
+\]
+$x=0$时场为零；$x\gg R$时$E_x\simeq kQ/x^2$，与总电荷点模型一致。带符号表达式$E_x=kQx/(R^2+x^2)^{3/2}$同样适用于负轴，$E_x(-x)=-E_x(x)$；若只求大小，分子应取$kQ|x|$。\end{solution}
 \begin{question}\begin{example}[环形平面电荷的轴向电场]\label{e1:example:5}
 内外半径 $R_1,R_2$ 的环形平面均匀带面电荷密度 $\sigma>0$。求垂直轴线上 $x>0$ 处电场，利用量纲和极限检查公式。
 \end{example}
@@ -178,7 +184,14 @@ $R_1^2+x^2$ 和 $R_2^2+x^2$。把换元与原函数代入连续写出：
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用量纲、退化区域与远场检查}\par\nobreak
-图\ref{fig:e1:example:5:p}中的细环从内边界 $R_1$ 扫到外边界 $R_2$；也可把整个区域理解为外圆盘减内圆盘。$k\sigma$ 已有场强量纲，括号乘 $x$ 必须无量纲。令 $R_2=R_1$，电荷区域消失，场为零；$x\to0$ 且 $R_1>0$ 时场也趋零。远处展开括号为 $(R_2^2-R_1^2)/(2x^3)$，得 $E_x\simeq k[\pi\sigma(R_2^2-R_1^2)]/x^2$，回到总电荷的点电荷场。\end{solution}
+图\ref{fig:e1:example:5:p}中的细环从内边界$R_1$扫到外边界$R_2$；也可把整个区域理解为外圆盘减内圆盘。$k\sigma$已有场强量纲，括号乘$x$必须无量纲。令$R_2=R_1$，电荷区域消失，场为零；$x\to0$且$R_1>0$时场也趋零。
+
+远处须有$x\gg R_2$。令$z_i=R_i^2/x^2$，由$F(z)=(1+z)^{-1/2}$、$F'(z)=-\tfrac12(1+z)^{-3/2}$知$F(0)=1$、$F'(0)=-1/2$，所以
+\[
+\frac1{\sqrt{x^2+R_i^2}}
+=\frac1x\left(1-\frac{R_i^2}{2x^2}+O\!\left(\frac{R_i^4}{x^4}\right)\right).
+\]
+两式相减时$1/x$项抵消，括号中首个非零项为$(R_2^2-R_1^2)/(2x^3)$。乘回$2\pi k\sigma x$，得$E_x\simeq k[\pi\sigma(R_2^2-R_1^2)]/x^2$，回到总电荷的点电荷场。\end{solution}
 \begin{question}\begin{example}[偶极轴线与中垂线的远场]\label{e1:example:6}
 电荷 $-q,+q$ 位于 $x=-a,+a$。$M=(L,0),N=(0,L)$，$L\gg a$。求两点电场首阶远场、大小比与方向。
 \end{example}
@@ -190,14 +203,14 @@ $R_1^2+x^2$ 和 $R_2^2+x^2$。把换元与原函数代入连续写出：
 图\ref{fig:e1:example:6:s} 中偶极矩 $\bm p=2aq\,\hat{\bm x}$。在 $M$，正电荷场向右、负电荷场向左，
 \[
  E_M=kq\left[\frac1{(L-a)^2}-\frac1{(L+a)^2}\right]
- =\frac{4kqaL}{(L^2-a^2)^2}\simeq\frac{4kqa}{L^3}.
+ =\frac{4kqaL}{(L^2-a^2)^2}.
 \]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在中垂线上先消去竖直分量}\par\nobreak
 在 $N$ 两电场竖直分量抵消，水平分量都向左，
 \[
- E_{Nx}=-\frac{2kqa}{(L^2+a^2)^{3/2}}\simeq-\frac{2kqa}{L^3}.
+ E_{Nx}=-\frac{2kqa}{(L^2+a^2)^{3/2}}.
 \]
 \typeout{ECFIG:fig:e1:example:6:p}\fig{fig:e1:example:6:p}{两点距偶极中心相同，远场合矢量的长度按 $2:1$ 示意；分量图先于远场近似}{\begin{tikzpicture}
 
@@ -212,7 +225,16 @@ $R_1^2+x^2$ 和 $R_2^2+x^2$。把换元与原函数代入连续写出：
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{比较方向、比例与近似阶次}\par\nobreak
-图\ref{fig:e1:example:6:p} 中 $M$ 场沿 $\bm p$，$N$ 场反向于 $\bm p$，所以大小比为 $2:1$，方向相反。两者都随 $a$ 成正比、随 $L^{-3}$ 衰减。$a=0$ 时两个电荷在同一点抵消，电场趋零，检查通过。不能分别把两点电荷都只保留 $kq/L^2$，因为这一阶恰好相消，须保留下一阶。\end{solution}
+先令$z=a^2/L^2\ll1$，将精确式写成无量纲小参数的函数，再用正文已求导得到的展开：
+\[
+\begin{aligned}
+E_M&=\frac{4kqa}{L^3}(1-z)^{-2}
+=\frac{4kqa}{L^3}[1+2z+O(z^2)],\\
+E_{Nx}&=-\frac{2kqa}{L^3}(1+z)^{-3/2}
+=-\frac{2kqa}{L^3}[1-3z/2+O(z^2)].
+\end{aligned}
+\]
+保留首项，$E_M\simeq4kqa/L^3$、$E_{Nx}\simeq-2kqa/L^3$。图\ref{fig:e1:example:6:p}中$M$场沿$\bm p$，$N$场反向于$\bm p$，所以大小比为$2:1$，方向相反。两者都随$a$成正比、随$L^{-3}$衰减。$a=0$时两个电荷在同一点抵消，电场趋零，检查通过。不能分别把两点电荷都只保留$kq/L^2$，因为这一阶恰好相消，须保留下一阶。\end{solution}
 \begin{question}\begin{example}[加速金属板中的电荷分离]\label{e1:example:7}
 一厚度为 $h$ 的大金属板沿法线 $+x$ 以加速度 $a$ 平动。采用固定晶格、忽略形变的模型，电子质量 $m$、电荷 $-e$，已达到无相对漂移的状态。求板内电场和两大面的电荷面密度。
 \end{example}
@@ -347,7 +369,7 @@ $R_1^2+x^2$ 和 $R_2^2+x^2$。把换元与原函数代入连续写出：
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{接入初值求首次过中面的时刻}\par\nobreak
 运动方程为 $\ddot x+\omega^2x=0$。
-取指数试解 $x=e^{st}$，代入得 $(s^2+\omega^2)e^{st}=0$，
+取指数试解$x=e^{st}$，两次求导为$\dot x=se^{st}$、$\ddot x=s^2e^{st}$，代入得$(s^2+\omega^2)e^{st}=0$，
 所以 $s=\pm i\omega$，实通解为
 \[
  x=A\cos\omega t+B\sin\omega t,\qquad

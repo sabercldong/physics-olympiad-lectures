@@ -28,7 +28,13 @@
 \]
 
 \par\medskip\Needspace{3\baselineskip}\noindent\textbf{在小应变条件下展开密度}
-题设$|\partial_x\xi|\le Ak\ll1$保证长度映射为正，并允许使用$(1+\varepsilon)^{-1}=1-\varepsilon+O(\varepsilon^2)$。因此一阶密度变化为
+题设$|\partial_x\xi|\le Ak\ll1$保证长度映射为正。令$\varepsilon=\partial_x\xi$，先将精确密度与平衡密度相减：
+\[
+\mu-\mu_0=\frac{\mu_0}{1+\varepsilon}-\mu_0
+=-\frac{\mu_0\varepsilon}{1+\varepsilon}
+=-\mu_0\varepsilon+\frac{\mu_0\varepsilon^2}{1+\varepsilon}.
+\]
+最后一项是二阶小量，舍去后，一阶密度变化为
 \[
  \delta\mu=\mu-\mu_0=-\mu_0\partial_x\xi.
 \]

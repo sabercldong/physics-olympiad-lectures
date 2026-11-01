@@ -45,7 +45,13 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{将半径范围转回钉子的水平位置}\par\nobreak
 两条件合并为$L/4\le r\le L/3$。
 
-把$r$代回几何关系，得到
+由$r=L-AP$，半径范围反向转成$2L/3\le AP\le3L/4$。再代入$AP=\sqrt{x^2+L^2/4}$，两端非负，可以平方：
+\[
+\frac{4L^2}{9}\le x^2+\frac{L^2}{4}\le\frac{9L^2}{16}
+\quad\Longrightarrow\quad
+\frac{7L^2}{36}\le x^2\le\frac{5L^2}{16}.
+\]
+由题设$x>0$取正平方根，得到
 \[\boxed{\sqrt7L/6\le x\le\sqrt5L/4}.\]
 阻挡前旧圆弧的张力不超过$3mg$，故真正上限来自新小圆底部。这里根号不能漏写，否则坐标范围甚至会违背$AP<L$。\end{drillsolution}
 \begin{drillsolution}{em3:drill:3}\textbf{在松绳点联立几何与零张力条件}\par\nobreak
@@ -62,6 +68,12 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用允许的释放高度求钉距下限}\par\nobreak
 图\ref{fig:em3:drill:3:p}中自由飞行后只有重力作用，轨迹再次经过圆心并不意味着沿径向返回。由所得$c=-1/\sqrt3$，松绳点相对$O$的高度为$-x+r/\sqrt3$，速率平方为$gr/\sqrt3$。因此所需初始释放高度$h_0$满足
 \[gh_0=g(-x+r/\sqrt3)+\frac12\frac{gr}{\sqrt3}=g\left(-x+\frac{\sqrt3}{2}r\right).\]
-释放点不高于$O$，要求$h_0\le0$，于是$x\ge\sqrt3(\ell-x)/2$，得到
+释放点不高于$O$，要求$h_0\le0$，于是$2x\ge\sqrt3(\ell-x)$。把$x$项收集在左边，$(2+\sqrt3)x\ge\sqrt3\ell$，除以正系数并有理化：
+\[
+x\ge\frac{\sqrt3}{2+\sqrt3}\ell
+=\frac{\sqrt3(2-\sqrt3)}{(2+\sqrt3)(2-\sqrt3)}\ell
+=(2\sqrt3-3)\ell.
+\]
+因此
 \[\boxed{x_{\min}=(2\sqrt3-3)\ell}.\]
 临界时从与$O$等高的水平位置释放；代入上述抛体方程可直接核验确实击中钉子。\end{drillsolution}

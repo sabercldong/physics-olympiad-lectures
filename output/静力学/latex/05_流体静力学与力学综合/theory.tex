@@ -267,7 +267,12 @@ z_B=\frac{\rho_2a_2(a_2/2)+\rho_1a_1(a_2+a_1/2)}
 图\ref{fig:s5:added-layer}是质量增加问题。原系统总质量$M_t$、质心高$z_C$，在水面高度$x$处加入$\dd m$后，有
 \[
 z_C+\dd z_C=\frac{M_tz_C+x\dd m}{M_t+\dd m},
-\qquad \dd z_C\simeq\frac{x-z_C}{M_t}\dd m.
+\]
+先通分减去原来的$z_C$，再保留关于新增质量的一阶量：
+\[
+\dd z_C=\frac{M_tz_C+x\dd m-z_C(M_t+\dd m)}{M_t+\dd m}
+=\frac{x-z_C}{M_t+\dd m}\dd m
+\simeq\frac{x-z_C}{M_t}\dd m.
 \]
 所以极值候选条件为$x=z_C$。它来自新增质量的一阶矩，与浮力是否等于重力无关；在例题中还须用导数符号确认确为极小。
 

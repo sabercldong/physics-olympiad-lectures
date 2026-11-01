@@ -14,9 +14,9 @@
 图\ref{fig:em5:example:1:s}中总电阻为 $R_\Sigma=R+r$，$L\dot i+R_\Sigma i=E$。令 $\tau=L/R_\Sigma$，先减去新稳态电流 $I_\infty=E/R_\Sigma$，令 $j=i-I_\infty$，则 $\dot j=-j/\tau$。分离变量，
 \[
 \int_{j(0)}^{j(t)}\frac{\dd z}{z}=-\int_0^t\frac{\dd s}{\tau},
-\qquad \ln\left|\frac{j(t)}{j(0)}\right|=-\frac t\tau,
+ \qquad [\ln|z|]_{j(0)}^{j(t)}=-\frac1\tau[s]_0^t,
 \]
-保持初始偏差的符号，得 $j(t)=j(0)\e^{-t/\tau}$；接通前电流为零，故 $j(0)=-I_\infty$，代回得 $i=E(1-\e^{-t/\tau})/R_\Sigma$。
+代入两端得 $\ln|j(t)/j(0)|=-t/\tau$。保持初始偏差的符号，得 $j(t)=j(0)\e^{-t/\tau}$；接通前电流为零，故 $j(0)=-I_\infty$，代回得 $i=E(1-\e^{-t/\tau})/R_\Sigma$。
 \fig{fig:em5:example:1:p}{有限时间的通过电量和暂态欠额对应不同面积；横轴以 $\tau=L/(R+r)$ 归一化}{\begin{tikzpicture}
 
 
@@ -34,7 +34,17 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对实际电流积分求有限时间电量}\par\nobreak
-图\ref{fig:em5:example:1:p}中曲线下面积给出通过电量。逐项积分 $Q(T)=\int_0^T (E/R_\Sigma)(1-\e^{-t/\tau})\dd t$，其中常量项为 $(E/R_\Sigma)[t]_0^T=ET/R_\Sigma$，指数项的原函数是 $-\tau\e^{-t/\tau}$，故其定积分为 $(E/R_\Sigma)[-\tau\e^{-t/\tau}]_0^T=(E\tau/R_\Sigma)(1-\e^{-T/\tau})$，相减得 $Q(T)=E[T-\tau(1-\e^{-T/\tau})]/R_\Sigma$；
+图\ref{fig:em5:example:1:p}中曲线下面积给出通过电量。先分别积分常量项和指数项，
+\[
+ \begin{aligned}
+ Q(T)&=\frac E{R_\Sigma}\int_0^T(1-\e^{-t/\tau})\dd t\\
+ &=\frac E{R_\Sigma}[t]_0^T
+   -\frac E{R_\Sigma}[-\tau\e^{-t/\tau}]_0^T\\
+ &=\frac E{R_\Sigma}T-\frac{E\tau}{R_\Sigma}(1-\e^{-T/\tau})\\
+ &=\frac E{R_\Sigma}[T-\tau(1-\e^{-T/\tau})].
+ \end{aligned}
+\]
+指数原函数的导数为 $(-\tau)(-1/\tau)\e^{-t/\tau}=\e^{-t/\tau}$，与被积项一致。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{另积暂态欠额并判断无限时间总电量}\par\nobreak
 渐近水平线与曲线之间的面积为
@@ -74,9 +84,10 @@
 令括号为 $R_t$，右端为 $E_t$，再令 $j=i_1-E_t/R_t$。方程成为 $\dot j=-(R_t/L)j$，从 $j(0)=-E_t/R_t$ 积分，
 \[
 \int_{-E_t/R_t}^{j(t)}\frac{\dd z}{z}
-=-\frac{R_t}{L}\int_0^t\dd s,\qquad
-j(t)=-\frac{E_t}{R_t}\e^{-R_tt/L}.
+ =-\frac{R_t}{L}\int_0^t\dd s,\qquad
+ [\ln|z|]_{-E_t/R_t}^{j(t)}=-\frac{R_t}{L}[s]_0^t.
 \]
+所以 $\ln|j(t)/(-E_t/R_t)|=-R_tt/L$，保留负初始偏差得 $j(t)=-(E_t/R_t)\e^{-R_tt/L}$。
 加回稳态项，解出 $i_1=(E_t/R_t)(1-\e^{-R_tt/L})$。其中 $E_t/R_t=E/(2r+R_d)$，所以稳态两灯电流同为 $I=E/(2r+R_d)$。
 \fig{fig:em5:example:2:p}{断开电源后，电感原方向电流经两只灯续流，第二灯的实际电流反向}{\begin{tikzpicture}
 
@@ -94,6 +105,7 @@ j(t)=-\frac{E_t}{R_t}\e^{-R_tt/L}.
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{断开电源后按真实续流通路求两灯电流}\par\nobreak
 图\ref{fig:em5:example:2:p}表示断开后保留的真实续流回路，以下重新从断开瞬间计时。电感电流仍沿原第一支路向下，节点电流要求第二支路向上，故 $i_1=I_c,i_2=-I_c$。电感沿这条闭合路径克服两只灯的电阻降，有 $L\dot I_c+2R_dI_c=0$。用连续初值 $I_c(0)=I$ 积分，
 $\int_I^{I_c(t)}\dd z/z=-(2R_d/L)\int_0^t\dd s$，
+原函数端点给 $[\ln z]_I^{I_c(t)}=-(2R_d/L)[s]_0^t$，
 即 $\ln(I_c/I)=-2R_dt/L$，得 $I_c=I\e^{-2R_dt/L}$。
 
 
@@ -126,7 +138,12 @@ Q_J=2R_dI^2\int_0^\infty\e^{-4R_dt/L}\dd t
 令 $\tau_{\mathrm{on}}=2L/R_d$、$j=i_L-E/R_d$，有
 $\dd j/j=-\dd t/\tau_{\mathrm{on}}$。由 $j(0)=-E/R_d$，
 \[
-\ln\left|\frac{j(t)}{-E/R_d}\right|=-\frac t{\tau_{\mathrm{on}}},
+ \int_{-E/R_d}^{j(t)}\frac{\dd z}{z}
+ =-\frac1{\tau_{\mathrm{on}}}\int_0^t\dd s,\qquad
+ [\ln|z|]_{-E/R_d}^{j(t)}=-\frac1{\tau_{\mathrm{on}}}[s]_0^t.
+\]
+端点给 $\ln|j(t)/(-E/R_d)|=-t/\tau_{\mathrm{on}}$；初始偏差为负，故
+\[
 \qquad j=-\frac E{R_d}\e^{-t/\tau_{\mathrm{on}}}.
 \]
 再用 $i_{D_1}=L\dot i_L/R_d$、$i_{D_2}=i_L+i_{D_1}$，逐项求导 $\dot i_L=(E/R_d)\e^{-t/\tau_{\mathrm{on}}}/\tau_{\mathrm{on}}$，解出
@@ -188,7 +205,7 @@ i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{解电压振荡方程并还原电感电流}\par\nobreak
-图\ref{fig:em5:example:4:p}给出 $u(0)=0,\dot u(0)=-I_0/C$，对节点方程求导，并用 $\dot i_L=u/L$，得到 $C\ddot u+u/L=0$，即 $\ddot u+\omega_0^2u=0$。试取 $u=\e^{st}$，特征方程为 $s^2+\omega_0^2=0$，根 $s=\pm\mathrm j\omega_0$ 给出实通解 $u=A\cos\omega_0t+D\sin\omega_0t$。求导为 $\dot u=-A\omega_0\sin\omega_0t+D\omega_0\cos\omega_0t$，初压使 $A=0$，初始导数使 $D\omega_0=-I_0/C$。因此
+图\ref{fig:em5:example:4:p}给出 $u(0)=0,\dot u(0)=-I_0/C$，对节点方程求导，并用 $\dot i_L=u/L$，得到 $C\ddot u+u/L=0$，即 $\ddot u+\omega_0^2u=0$。试取 $u=\e^{st}$，则 $\dot u=s\e^{st},\ddot u=s^2\e^{st}$，代入并除以指数后，特征方程为 $s^2+\omega_0^2=0$。根 $s=\pm\mathrm j\omega_0$ 给出实通解 $u=A\cos\omega_0t+D\sin\omega_0t$。求导为 $\dot u=-A\omega_0\sin\omega_0t+D\omega_0\cos\omega_0t$，初压使 $A=0$，初始导数使 $D\omega_0=-I_0/C$。因此
 \[u=-I_0\sqrt{L/C}\sin(t/\sqrt{LC}),\quad i_L=I_0\cos(t/\sqrt{LC}).\]
 
 
@@ -226,8 +243,9 @@ i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
 时间常量 $\tau=L/R_t=25/12\,\mathrm s$。把电流数值以安培计，令 $j=i-12$，则 $\dot j=-12j/25$、$j(0)=1$。分离变量积分，
 \[
 \int_1^{j(t)}\frac{\dd z}{z}=-\frac{12}{25}\int_0^t\dd s,
-\qquad j(t)=\e^{-12t/25}.
+ \qquad [\ln z]_1^{j(t)}=-\frac{12}{25}[s]_0^t.
 \]
+所以 $\ln j(t)-\ln1=-12t/25$，取指数得 $j(t)=\e^{-12t/25}$。
 自感电动势由 $-L\dot i=-2(-12/25)\e^{-12t/25}$ 还原，所以
 \[i(t)=12+\e^{-12t/25}\,\mathrm A,\qquad\varepsilon_L(t)=\frac{24}{25}\e^{-12t/25}\,\mathrm V.\]
 自感电动势在切换后最大，随后衰减为零；电感电流始终连续，电压则可以在切换时改变。\end{solution}
@@ -258,7 +276,7 @@ i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用冲量后的相对初速求相对振荡}\par\nobreak
-图\ref{fig:em5:example:6:p}中 $\Omega=k\sqrt{2/(mL)}$，$\xi(0)=0,\dot\xi(0)=v_0$。由 $\ddot\xi+\Omega^2\xi=0$ 的特征方程 $s^2+\Omega^2=0$，写 $\xi=A\cos\Omega t+D\sin\Omega t$；其导数为 $-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。两初态依次给出 $A=0,D=v_0/\Omega$，故 $\xi=v_0\sin\Omega t/\Omega$。
+图\ref{fig:em5:example:6:p}中 $\Omega=k\sqrt{2/(mL)}$，$\xi(0)=0,\dot\xi(0)=v_0$。在 $\ddot\xi+\Omega^2\xi=0$ 中试取 $\xi=\e^{st}$，两次求导为 $s\e^{st},s^2\e^{st}$，代入得 $(s^2+\Omega^2)\e^{st}=0$，根为 $\pm\mathrm j\Omega$。因此写 $\xi=A\cos\Omega t+D\sin\Omega t$；其导数为 $-A\Omega\sin\Omega t+D\Omega\cos\Omega t$。两初态依次给出 $A=0,D=v_0/\Omega$，故 $\xi=v_0\sin\Omega t/\Omega$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{另求质心匀速运动，再还原两棒位置与电流}\par\nobreak
 先把两受力式相加，可得 $\ddot X=0$，其中 $X=(x_1+x_2)/2$。冲量后 $X(0)=x_0/2,\dot X(0)=v_0/2$，先积 $\dot X(t)-v_0/2=\int_0^t0\,\dd s=0$，再积 $X(t)-x_0/2=\int_0^t(v_0/2)\dd s=v_0t/2$，所以质心位置为 $x_0/2+v_0t/2$，因此
@@ -282,9 +300,9 @@ i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
 由图\ref{fig:em5:example:7:s}的上极板参考方向，回路满足 $RC\dot u+u=e_s$。令 $\tau=RC$，第一阶段从 $u(0)=0$ 出发，
 \[
 \int_0^{u(t)}\frac{\dd z}{E-z}=\int_0^t\frac{\dd s}{\tau},
-\qquad -\ln\frac{E-u}{E}=\frac t\tau,
+ \qquad [-\ln(E-z)]_0^{u(t)}=\frac1\tau[s]_0^t,
 \]
-所以 $u=E(1-\e^{-t/\tau})$，故切换电压 $U_T=E(1-\e^{-T/\tau})$。
+端点代入给 $-\ln[(E-u)/E]=t/\tau$，所以 $u=E(1-\e^{-t/\tau})$，故切换电压 $U_T=E(1-\e^{-T/\tau})$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{以同一电压初值接续反向电源阶段}\par\nobreak
 电压连续，第二阶段以 $s=t-T$ 计时。方程变为 $\tau\dot u+u=-E$，令 $w=u+E$，此时$\dd w/w=-\dd s/\tau$，初值为$w(0)=U_T+E$。因此
@@ -315,9 +333,11 @@ i_{D_2}=\frac E{R_d}\left(1-\frac12\e^{-t/\tau_{\mathrm{on}}}\right).\]
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分阶段积分焦耳热并核对反接电源的有向功}\par\nobreak
 指数项的原函数为 $-(\tau/2)\e^{-2t/\tau}$，因为求导时指数的 $-2/\tau$ 与前系数相消。两阶段分别使用有限终点和无穷终点：
 \begin{align*}
-Q_1&=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^T
+Q_1&=\frac{E^2}{R}\int_0^T\e^{-2t/\tau}\dd t
+=\frac{E^2}{R}\left[-\frac\tau2\e^{-2t/\tau}\right]_0^T
 =\frac{CE^2}{2}(1-\e^{-2T/\tau}),\\
-Q_2&=\frac{(U_T+E)^2}{R}
+Q_2&=\frac{(U_T+E)^2}{R}\int_0^\infty\e^{-2s/\tau}\dd s\\
+&=\frac{(U_T+E)^2}{R}
 \left[-\frac\tau2\e^{-2s/\tau}\right]_0^\infty
 =\frac C2(U_T+E)^2.
 \end{align*}反向电源做功为 $(-E)C(-E-U_T)=CE(E+U_T)>0$，且它加上初始电能 $CU_T^2/2$，减去最终 $CE^2/2$，正好等于 $Q_2$。反接阶段电源依然供能，不能因电源符号负就判断其吸收能量。\end{solution}
@@ -334,10 +354,15 @@ Q_2&=\frac{(U_T+E)^2}{R}
 \begin{solution}\textbf{只在正电流导通阶段求续流解}\par\nobreak
 图\ref{fig:em5:example:8:s}的电流沿顺时针流动，电感端电压必须补偿两个被动压降，因此 $L\dot i+Ri+V_c=0$。只在 $i>0$ 的导通阶段，分离变量得
 \[
-\int_{I_0}^{i(t)}\frac{\dd z}{Rz+V_c}=-\int_0^t\frac{\dd s}{L},
-\qquad \frac1R\ln\frac{Ri+V_c}{RI_0+V_c}=-\frac tL.
+ \int_{I_0}^{i(t)}\frac{\dd z}{Rz+V_c}=-\int_0^t\frac{\dd s}{L}.
 \]
-这里以 $y=Rz+V_c$ 换元，$\dd z=\dd y/R$，因此对数前有 $1/R$。指数化并移项，得
+左侧以 $y=Rz+V_c$ 换元，$\dd z=\dd y/R$，上下限从 $I_0,i(t)$ 变成 $RI_0+V_c,Ri(t)+V_c$，所以
+\[
+ \frac1R\int_{RI_0+V_c}^{Ri(t)+V_c}\frac{\dd y}{y}
+ =\frac1R[\ln y]_{RI_0+V_c}^{Ri(t)+V_c}
+ =\frac1R\ln\frac{Ri(t)+V_c}{RI_0+V_c}.
+\]
+右侧为 $-[s]_0^t/L=-t/L$。将两侧相等的关系指数化并移项，得
 \[i=(I_0+V_c/R)\e^{-Rt/L}-V_c/R.\]
 
 
@@ -356,15 +381,29 @@ Q_2&=\frac{(U_T+E)^2}{R}
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{积分有效电流求限压吸能与电阻热}\par\nobreak
 图\ref{fig:em5:example:8:p}标出的曲线在 $t_c$ 截断。只对有效导通时间积分，
 \[
-Q_e=\left[-\frac LR\left(I_0+\frac{V_c}{R}\right)\e^{-Rt/L}
--\frac{V_c}{R}t\right]_0^{t_c}.
+ \begin{aligned}
+ Q_e&=\int_0^{t_c}\left[\left(I_0+\frac{V_c}{R}\right)\e^{-Rt/L}-\frac{V_c}{R}\right]\dd t\\
+ &=\left[-\frac LR\left(I_0+\frac{V_c}{R}\right)\e^{-Rt/L}
+ -\frac{V_c}{R}t\right]_0^{t_c}.
+ \end{aligned}
 \]
 用截止条件 $(I_0+V_c/R)\e^{-Rt_c/L}=V_c/R$ 化简，得 $Q_e=(L/R)I_0-(V_c/R)t_c$，故限压元件吸收 $W_c=V_cQ_e$。初始磁能全部耗散，电阻热为 $Q_R=LI_0^2/2-W_c$。也可用原方程乘以 $i$ 后积分，逐项得到 $\Delta(Li^2/2)+Q_R+W_c=0$，说明没有遗漏截止事件的能量。
 
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在原方程中检查零电阻极限及能量去向}\par\nobreak
-当 $R\to0$，直接在微分方程中取极限得 $i=I_0-V_ct/L$、$t_c=LI_0/V_c$、$Q_e=LI_0^2/(2V_c)$。此时全部磁能由限压支路吸收，电阻热趋零。对有限 $R$，提高限压值会缩短续流时间，但也提高开关承受的端电压。\end{solution}
+当 $R\to0$，先在导通阶段的原方程中取极限，$L\dot i=-V_c$。从初态积分，
+\[
+ L\int_{I_0}^{i(t)}\dd z=-V_c\int_0^t\dd s,
+ \qquad L[z]_{I_0}^{i(t)}=-V_c[s]_0^t.
+\]
+所以 $i=I_0-V_ct/L$，令它为零得 $t_c=LI_0/V_c$。再积分有效电流，
+\[
+ Q_e=\int_0^{t_c}\left(I_0-\frac{V_ct}{L}\right)\dd t
+ =\left[I_0t-\frac{V_ct^2}{2L}\right]_0^{t_c}
+ =\frac{LI_0^2}{2V_c}.
+\]
+此时全部磁能由限压支路吸收，电阻热趋零。对有限 $R$，提高限压值会缩短续流时间，但也提高开关承受的端电压。\end{solution}
 \begin{question}\begin{example}[正弦电源接通相位决定的暂态电流]\label{em5:example:9}
 串联 $R,L$ 接电压 $e=E_m\sin(\omega t+\beta)$，$t=0$ 接通前电流为零。求完整电流，找出不产生指数暂态的接通相位，并讨论 $R\to0$ 时从电压过零点接通的最大电流。
 \end{example}
@@ -425,7 +464,7 @@ i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
 \end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{由原振荡求快切换前的两项状态}\par\nobreak
-在图\ref{fig:em5:example:10:s}中，上端对下端电压为 $u$，电感电流从上端经电感流向下端，故原回路满足 $C_1\dot u=-i$、$L\dot i=u$。消元后 $\ddot u+\omega_1^2u=0$ 的特征根为 $\pm\mathrm j\omega_1$，写 $u=A\cos\omega_1t+D\sin\omega_1t$；$u(0)=U_0$、$\dot u(0)=0$ 给出 $A=U_0,D=0$。再用 $i=-C_1\dot u=C_1U_0\omega_1\sin\omega_1t$，得接入前 $u_-=U_0\cos\omega_1t_s$，$i_-=U_0\sqrt{C_1/L}\sin\omega_1t_s$，其中 $\omega_1=1/\sqrt{LC_1}$。
+在图\ref{fig:em5:example:10:s}中，上端对下端电压为 $u$，电感电流从上端经电感流向下端，故原回路满足 $C_1\dot u=-i$、$L\dot i=u$。消元得 $\ddot u+\omega_1^2u=0$，其中 $\omega_1=1/\sqrt{LC_1}$。试取 $u=\e^{st}$，其导数为 $s\e^{st},s^2\e^{st}$，代入得 $s^2+\omega_1^2=0$。由根 $\pm\mathrm j\omega_1$ 写 $u=A\cos\omega_1t+D\sin\omega_1t$，求导为 $\dot u=-A\omega_1\sin\omega_1t+D\omega_1\cos\omega_1t$。$u(0)=U_0$、$\dot u(0)=0$ 给出 $A=U_0,D=0$。再用 $i=-C_1\dot u=C_1U_0\omega_1\sin\omega_1t$，得接入前 $u_-=U_0\cos\omega_1t_s$，$i_-=U_0\sqrt{C_1/L}\sin\omega_1t_s$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用总电荷守恒和电感电流连续连接快过程}\par\nobreak
 快过程中上导体总电荷守恒，$(C_1+C_2)u_+=C_1u_-$；电感电流来不及改变，$i_+=i_-$。
@@ -443,11 +482,18 @@ i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由快过程前后电能差求热量}\par\nobreak
 图\ref{fig:em5:example:10:p}中两个电容并联以后共同电压 $u_+=C_1u_-/(C_1+C_2)$，快过程热量为前后电能差：
-\[Q_J=\frac12C_1u_-^2-\frac12(C_1+C_2)u_+^2=\frac{C_1C_2}{2(C_1+C_2)}u_-^2.\]
+\[
+ \begin{aligned}
+ Q_J&=\frac12C_1u_-^2
+ -\frac12(C_1+C_2)\left(\frac{C_1u_-}{C_1+C_2}\right)^2\\
+ &=\frac12C_1u_-^2\left(1-\frac{C_1}{C_1+C_2}\right)
+ =\frac{C_1C_2}{2(C_1+C_2)}u_-^2.
+ \end{aligned}
+\]
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用快过程末态求新振荡及其振幅}\par\nobreak
-令 $C_\Sigma=C_1+C_2$、$\omega_2=1/\sqrt{LC_\Sigma}$，以接入后时间 $s$ 计，$C_\Sigma\dot u=-i$，与 $L\dot i=u$ 联立得 $\ddot u+\omega_2^2u=0$。写 $u=A\cos\omega_2s+D\sin\omega_2s$，则 $A=u_+$、$\omega_2D=\dot u(0)=-i_-/C_\Sigma$，所以 $u(s)=u_+\cos\omega_2s-i_-\sin\omega_2s/(C_\Sigma\omega_2)$。振幅 $U_2=\sqrt{u_+^2+Li_-^2/C_\Sigma}$，直接由剩余总能也能得到同一结果。
+令 $C_\Sigma=C_1+C_2$、$\omega_2=1/\sqrt{LC_\Sigma}$，以接入后时间 $s$ 计，$C_\Sigma\dot u=-i$，与 $L\dot i=u$ 联立得 $\ddot u+\omega_2^2u=0$。试取 $u=\e^{ps}$，两次导数为 $p\e^{ps},p^2\e^{ps}$，代回得 $p^2+\omega_2^2=0$。写实通解 $u=A\cos\omega_2s+D\sin\omega_2s$，求导为 $\dot u=-A\omega_2\sin\omega_2s+D\omega_2\cos\omega_2s$。初态给 $A=u_+$、$\omega_2D=\dot u(0)=-i_-/C_\Sigma$，所以 $u(s)=u_+\cos\omega_2s-i_-\sin\omega_2s/(C_\Sigma\omega_2)$。振幅 $U_2=\sqrt{u_+^2+Li_-^2/C_\Sigma}$，直接由剩余总能也能得到同一结果。
 
 
 
@@ -473,7 +519,7 @@ i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分离两个独立组合并分别使用初态}\par\nobreak
 相加和相减，令 $q_\pm=q_1\pm q_2$，得
 \[(L+M)\ddot q_++q_+/C=0,\qquad(L-M)\ddot q_-+q_-/C=0.\]
-因此 $\omega_\pm=1/\sqrt{(L\pm M)C}$。每个方程试取 $\e^{st}$，得到 $s^2+\omega_\pm^2=0$，所以 $q_\pm=A_\pm\cos\omega_\pm t+B_\pm\sin\omega_\pm t$。两个初电荷组合都为 $Q_0$、导数都为零，分别给出 $A_\pm=Q_0$、$\omega_\pm B_\pm=0$，故 $q_\pm=Q_0\cos\omega_\pm t$。
+因此 $\omega_\pm=1/\sqrt{(L\pm M)C}$。每个方程试取 $q_\pm=\e^{st}$，两次导数为 $s\e^{st},s^2\e^{st}$，代入并除以非零指数，得到 $s^2+\omega_\pm^2=0$，所以 $q_\pm=A_\pm\cos\omega_\pm t+B_\pm\sin\omega_\pm t$。其导数为 $\dot q_\pm=-A_\pm\omega_\pm\sin\omega_\pm t+B_\pm\omega_\pm\cos\omega_\pm t$。两个初电荷组合都为 $Q_0$、导数都为零，分别给出 $A_\pm=Q_0$、$\omega_\pm B_\pm=0$，故 $q_\pm=Q_0\cos\omega_\pm t$。
 \fig{fig:em5:example:11:p}{精确频率下的两电荷及慢包络，示例取 $M/L=0.1$；包络须与磁能共同解释}{\begin{tikzpicture}
 
 \pgfmathsetmacro{\wp}{1/sqrt(1.1)}\pgfmathsetmacro{\wm}{1/sqrt(.9)}\pgfmathsetmacro{\av}{(\wp+\wm)/2}\pgfmathsetmacro{\de}{(\wm-\wp)/2}
@@ -493,7 +539,18 @@ i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原两电荷并化成快振荡乘慢包络}\par\nobreak
 按图\ref{fig:em5:example:11:p}重新相加和相减，
 \[q_1=\frac{Q_0}{2}(\cos\omega_+t+\cos\omega_-t),\qquad q_2=\frac{Q_0}{2}(\cos\omega_+t-\cos\omega_-t).\]
-设 $\bar\omega=(\omega_++\omega_-)/2$、$\delta=(\omega_--\omega_+)/2>0$，则 $q_1=Q_0\cos\bar\omega t\cos\delta t$，$q_2=Q_0\sin\bar\omega t\sin\delta t$。弱耦合 $M/L\ll1$ 时 $\delta\simeq\omega_0M/(2L)$，慢包络在约 $\pi/(2\delta)$ 内由第一回路转向第二回路。
+设 $\bar\omega=(\omega_++\omega_-)/2$、$\delta=(\omega_--\omega_+)/2>0$，则 $q_1=Q_0\cos\bar\omega t\cos\delta t$，$q_2=Q_0\sin\bar\omega t\sin\delta t$。为求弱耦合的频差，令 $\epsilon=M/L\ll1$、$\omega_0=1/\sqrt{LC}$。函数 $f(x)=(1+x)^{-1/2}$ 满足
+\[
+ f(0)=1,\qquad f'(x)=-\frac12(1+x)^{-3/2},\qquad f'(0)=-\frac12.
+\]
+所以 $\omega_\pm=\omega_0f(\pm\epsilon)
+=\omega_0[1\mp\epsilon/2+O(\epsilon^2)]$，相减再除以2，
+\[
+ \delta=\frac{\omega_- -\omega_+}{2}
+ =\frac{\omega_0}{2}[\epsilon+O(\epsilon^2)]
+ \simeq\frac{\omega_0M}{2L}.
+\]
+慢包络在约 $\pi/(2\delta)$ 内由第一回路转向第二回路。
 
 
 
@@ -538,7 +595,7 @@ i(t)-i(0)=\frac{E_m}{L}\int_0^t\sin\omega s\,\dd s
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用初速度和初加速度确定欠阻尼解的两项系数}\par\nobreak
-图\ref{fig:em5:example:12:p}中磁能与动能可相互交换。设 $\alpha=R/(2L)$、$\omega_d=\sqrt{k^2/(mL)-\alpha^2}>0$，令 $y=v-v_\infty$，得到 $\ddot y+2\alpha\dot y+k^2y/(mL)=0$。试取 $y=\e^{st}$，特征方程 $(s+\alpha)^2+\omega_d^2=0$，根为 $-\alpha\pm\mathrm j\omega_d$，因此自然解为指数乘正弦、余弦。令 $v=v_\infty+\e^{-\alpha t}(A\cos\omega_dt+D\sin\omega_dt)$，初速给出 $A=-v_\infty$；用乘积法则，
+图\ref{fig:em5:example:12:p}中磁能与动能可相互交换。设 $\alpha=R/(2L)$、$\omega_d=\sqrt{k^2/(mL)-\alpha^2}>0$，令 $y=v-v_\infty$，得到 $\ddot y+2\alpha\dot y+k^2y/(mL)=0$。试取 $y=\e^{st}$，两次求导为 $s\e^{st},s^2\e^{st}$，代入得 $s^2+2\alpha s+k^2/(mL)=0$；配方为 $(s+\alpha)^2+\omega_d^2=0$，根为 $-\alpha\pm\mathrm j\omega_d$，因此自然解为指数乘正弦、余弦。令 $v=v_\infty+\e^{-\alpha t}(A\cos\omega_dt+D\sin\omega_dt)$，初速给出 $A=-v_\infty$；用乘积法则，
 \[
 \dot v=\e^{-\alpha t}
 [(-\alpha A+\omega_dD)\cos\omega_dt
@@ -551,7 +608,18 @@ $\alpha v_\infty+\omega_dD=F/m$，即 $D=(F/m-\alpha v_\infty)/\omega_d$。因�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{还原电流并检查两条一阶方程的初值}\par\nobreak
-由 $i=(F-m\dot v)/k$ 还原电流，亦可写成
+先把两系数代回速度导数。余弦系数已经由初值给定为 $F/m$；正弦系数为
+\[
+ \begin{aligned}
+ -\alpha D-\omega_dA
+ &=\frac{-\alpha F/m+(\alpha^2+\omega_d^2)v_\infty}{\omega_d}\\
+ &=\frac{-\alpha F/m+RF/(mL)}{\omega_d}
+ =\frac{\alpha F}{m\omega_d},
+ \end{aligned}
+\]
+最后用了 $R/L=2\alpha$。所以
+$\dot v=(F/m)\e^{-\alpha t}[\cos\omega_dt+(\alpha/\omega_d)\sin\omega_dt]$。
+再由 $i=(F-m\dot v)/k$ 还原电流，得到
 \[i(t)=\frac Fk\left[1-\e^{-\alpha t}\left(\cos\omega_dt+\frac\alpha{\omega_d}\sin\omega_dt\right)\right].\]
 代回可检验 $i(0)=0,\dot i(0)=0$，且 $\dot v(0)=F/m$。这些条件分别来自原来的两个一阶方程。
 

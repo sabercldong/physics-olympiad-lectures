@@ -315,9 +315,13 @@ $N$ 个节点两两由电阻 $r$ 连接。任选两节点作为端口。求等�
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{计算第三端悬空时的两端电阻}\par\nobreak
 因此
 \[
- R_{AB}=\left(\frac{9r}{10}+\frac{18r}{11}\right)\parallel\frac{9r}{4}
- =\frac{279r}{110}\parallel\frac{9r}{4}
- =\frac{31r}{26}.
+ \begin{aligned}
+ R_{AB}&=\left(\frac{9r}{10}+\frac{18r}{11}\right)\parallel\frac{9r}{4}
+ =\frac{279r}{110}\parallel\frac{9r}{4}\\
+ &=\frac{(279r/110)(9r/4)}{279r/110+9r/4}
+ =\frac{2511r^2/440}{(1116+990)r/440}\\
+ &=\frac{2511r}{2106}=\frac{31r}{26}.
+ \end{aligned}
 \]
 
 
@@ -444,7 +448,11 @@ $N$ 个节点两两由电阻 $r$ 连接。任选两节点作为端口。求等�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{消元求四类电势}\par\nobreak
-按图\ref{fig:c3:example:14:p}，角点各有两条邻边，边中点各有三条；同一类节点的电势相等，并不把一个节点的方程额外乘上该类点数。先消去 $x=y/2$。由后两式得 $u=(U+y)/2$、$z=(U+3y)/4$。代入第二式，
+按图\ref{fig:c3:example:14:p}，角点各有两条邻边，边中点各有三条；同一类节点的电势相等，并不把一个节点的方程额外乘上该类点数。先消去 $x=y/2$。后两式中用 $2z=y+u$ 代入 $3u=U+2z$，有
+\[
+ 3u=U+y+u,\qquad 2u=U+y,\qquad u=\frac{U+y}{2}.
+\]
+再回代 $z=(y+u)/2=[y+(U+y)/2]/2=(U+3y)/4$。代入第二式，
 \[
  3y=U+\frac y2+\frac{U+3y}{4}
  \ \Longrightarrow\ 12y=5U+5y
@@ -489,11 +497,40 @@ $N$ 个节点两两由电阻 $r$ 连接。任选两节点作为端口。求等�
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{依照简化网络消元求内部电势}\par\nobreak
-图\ref{fig:c3:example:15:p} 保留中心四条 $r$ 辐条与外围串联边。先用第一、四式表示 $x=(2y+z)/5,w=(U+z+2y)/4$，代入第二、三式并去分母：
+图\ref{fig:c3:example:15:p} 保留中心四条 $r$ 辐条与外围串联边。先用第一、四式表示 $x=(2y+z)/5,w=(U+z+2y)/4$。代入第二、三式，分别得到
+\[
+ \begin{aligned}
+ 4y&=U+\frac{2y+z}{5}+z+\frac{U+z+2y}{4},\\
+ 4z&=\frac{2y+z}{5}+\frac{U+z+2y}{4}+2y.
+ \end{aligned}
+\]
+两式都乘 $20$，逐项展开为
+\[
+ \begin{aligned}
+ 80y&=20U+8y+4z+20z+5U+5z+10y,\\
+ 80z&=8y+4z+5U+5z+10y+40y.
+ \end{aligned}
+\]
+把未知量移到左侧并收集同类项：
 \[
  62y=25U+29z,\qquad71z=58y+5U.
 \]
-用第一式的 $y$ 代入第二式，得到 $2720z=1760U$，所以 $z=11U/17$；回代得 $y=12U/17,x=7U/17,w=13U/17$。
+用第一式的 $y=(25U+29z)/62$ 代入第二式，再乘 $62$：
+\[
+ \begin{aligned}
+ 4402z&=58(25U+29z)+310U\\
+ &=1450U+1682z+310U,\\
+ (4402-1682)z&=(1450+310)U.
+ \end{aligned}
+\]
+所以 $2720z=1760U$，约分得 $z=11U/17$。回代得到
+\[
+ \begin{aligned}
+ y&=\frac{25U+29(11U/17)}{62}=\frac{12U}{17},\\
+ x&=\frac{2(12U/17)+11U/17}{5}=\frac{7U}{17},\\
+ w&=\frac{U+11U/17+2(12U/17)}4=\frac{13U}{17}.
+ \end{aligned}
+\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{按端口实际相接的三条通道求电流}\par\nobreak
 从 $M$ 流出的电流为

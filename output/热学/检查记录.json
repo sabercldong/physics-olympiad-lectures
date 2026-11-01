@@ -1,13 +1,13 @@
 {
   "日期": "2026-11-01",
-  "状态": "全套逐题审查后的当前交付",
+  "状态": "61讲数学过程逐题复修、编译及重点页面检查完成",
   "各讲": [
     {
       "专题": "热学",
       "工程": "01_物质的热性质",
       "名称": "物质的热性质",
       "PDF": "热学/pdf/热学_第1讲_物质的热性质.pdf",
-      "页数": 34,
+      "页数": 35,
       "例题": 9,
       "练习": 4,
       "题数": 13,
@@ -17,13 +17,33 @@
       "题设图": 13,
       "有过程图并引用的解答": 13,
       "已逐题复核": 13,
-      "PDFsha256": "e7921f68f0ad558ee20909b2b308f1f949b731e47adc46cd99895a398d1974b2",
-      "TeXsha256": "c64807321ac6152d34966fb9351c814f797b436ca43a01feef865d43e6121b3b",
+      "PDFsha256": "60f19d654288a9269ed0dc3dbb8af59f89752b5b6899660fc70b40ea39cbddf6",
+      "TeXsha256": "00d9e02a344d4ce6590d05295fd5a9cbacfeb1c8a37ed76e4c6f675a32211014",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/热学/01_物质的热性质/main.pdf"
+      "本次重点页面复核PDF页序": [
+        4,
+        5,
+        15,
+        16,
+        32,
+        33
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/热学/01_物质的热性质/main.pdf",
+      "本轮数学过程全文复核题数": 13,
+      "本轮数学过程修改题数": 2,
+      "源码各文件SHA256": {
+        "examples.tex": "10412454a37d944e9a2edf6f07830d82a5a42f63ea70c3e40e66f5da0e42e8d8",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "knowledge-thermal-expansion.tex": "5cef67d7c0cabf833485e884f327f5946f27d1b3b101964fa4e9ef23c18144d4",
+        "main.tex": "ad1b4e6d7fb543a099b88c3e985ac9c3fc8d6f08e6dfe9cff719f462467f66fe",
+        "theory.tex": "a4f4950ce936e78add9efaf3c33e81696765c1f8808377827aaf34b5f96fb902",
+        "practice.tex": "707423be2e6b1e53889f088487022318535680a9f003076d583a46ccb7bfa776",
+        "corecard.tex": "88bfcfc0d24cb396e4908782e62cf3f1729ea405d54abd0384500e5cc03f51a2",
+        "answers.tex": "324aa985d6234ca6f65aa8a4590abfbc371944187151f633729baacb5ba86b39",
+        "contact_angle.tex": "576c043a7d1e43b8d6395a94b2ba538e668d0c7ad6e520428c1ec6b3a335684b"
+      }
     },
     {
       "专题": "热学",
@@ -40,13 +60,33 @@
       "题设图": 14,
       "有过程图并引用的解答": 14,
       "已逐题复核": 14,
-      "PDFsha256": "1ea7e9c277cf4a1dba14873ebd41857591cbd3e26c74d9c9b2537ce8cef08efc",
-      "TeXsha256": "4f8d9e7eecad442a86a4a008bfbfb3cdf0882e652f032289c1798adc417ccfa7",
+      "PDFsha256": "38ca1f5244bc29e19229c3d3e64703d4bda27e6427b6bc12fa9e40c97a7d5a4b",
+      "TeXsha256": "714da30907ea0b4b78b38d7798cb1fd8450917f1cada13041dea7d7050b831c0",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/热学/02_理想气体的内能/main.pdf"
+      "本次重点页面复核PDF页序": [
+        5,
+        6,
+        12,
+        13,
+        16,
+        17
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/热学/02_理想气体的内能/main.pdf",
+      "本轮数学过程全文复核题数": 14,
+      "本轮数学过程修改题数": 1,
+      "源码各文件SHA256": {
+        "examples.tex": "0510eebdd44e86c38577af3c854d35f06f5d032e9bf6932550275967d88354f7",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "130cef302dd31eaef90b21e3bfaa7d2f1072a98dbdf7796a455a8eba3d68c1f2",
+        "theory.tex": "2efe3f15bba8d95786fa3370537e2aa4ddccf0f7f9a6579ed638f65bedaf0ca5",
+        "knowledge-heat-capacity.tex": "24ff5ead6d8a25a8f36c20f87b2e97248ff4d47f87b49a735a9267bc0c2b9a6d",
+        "practice.tex": "96d17aa4703cb2997c44747609a2b8837f6b860963d4bcd132979e4d567daa3a",
+        "random_motion.tex": "79db5e4d81108c25de9b3669d44c6d2c13578c5669b105a4510491fa8f7d19f7",
+        "corecard.tex": "30066855aee3a628d65fd3742447e26b4e1c0e86678e01b2e9664e625108b34f",
+        "answers.tex": "97a98c65ea4263766ed6d20065e568f40ae38eb886447e15cfc84f5c8079b35b"
+      }
     },
     {
       "专题": "热学",
@@ -63,23 +103,41 @@
       "题设图": 13,
       "有过程图并引用的解答": 13,
       "已逐题复核": 13,
-      "PDFsha256": "d5f89038c3ee56f966b883310f9e4c3a74ae91c8ff1fe64e03044bb473efc86b",
-      "TeXsha256": "2a35fd464db4de98f493c0906187d2aa13b7a011a1385530a751a34debbfc014",
+      "PDFsha256": "9cc0a3ef22044c748602d233f1e5f9d15fcb2e0be044c397967967938e3955e6",
+      "TeXsha256": "9924c2f3c2e5739542480ecd21142a5019ce2de27ee33695972f9bc22d77326b",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
       "本次重点页面复核PDF页序": [
-        13,
+        5,
+        6,
+        7,
+        8,
+        9,
+        26,
+        27,
         36
       ],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/热学/03_热力学过程与循环/main.pdf"
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/热学/03_热力学过程与循环/main.pdf",
+      "本轮数学过程全文复核题数": 13,
+      "本轮数学过程修改题数": 2,
+      "源码各文件SHA256": {
+        "examples.tex": "bbaa118010cd6fafbd7cf00c26cbceca78450aabfcc1f28d537200c3817a468f",
+        "knowledge-polytropic.tex": "7ea1a16737fe165e9c17660f6ddbb9475b1fff2f2fb9f3cfc7b8e4dd5df181a9",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "8d4b9ef73c1f1a6b050b8836755e24eddb0ec12dcc8d34425b70fd3753e48979",
+        "theory.tex": "cf5e20877d948001197d1a1bb9f6632010137429ae093a6e66c40896a17193a7",
+        "practice.tex": "415423cb849c474de0c78b1100b1a8f3dfe44fd85ac097d18b8566f0d1e3ed7b",
+        "corecard.tex": "ecfde9d204f19ed5e936e3ddf48a4b0a6bc5e1f50a36da69ee028d67880513d4",
+        "answers.tex": "e44b4e4b7906ffc3acc797c006b64ad98252bd1730eecb1591e15b5b85731684"
+      }
     },
     {
       "专题": "热学",
       "工程": "04_相变与饱和蒸汽",
       "名称": "相变与饱和蒸汽",
       "PDF": "热学/pdf/热学_第4讲_相变与饱和蒸汽.pdf",
-      "页数": 38,
+      "页数": 39,
       "例题": 9,
       "练习": 4,
       "题数": 13,
@@ -89,13 +147,35 @@
       "题设图": 13,
       "有过程图并引用的解答": 13,
       "已逐题复核": 13,
-      "PDFsha256": "9739d55f44631c30530e38e467653fb1013cb470fd71aa4d8ee551f2e570e3df",
-      "TeXsha256": "7d78270531ab6a1424c0913103251416256a4935dd175016e66b98e13b993b79",
+      "PDFsha256": "d47137406a5b9ebadd553796aaf13925913e7eeaf98a56c6dea6b003e11eba5c",
+      "TeXsha256": "6f1a73978733202f32a85c72f67f7c7935b79b2e27be2a8df8258c210d175635",
       "编译诊断": [],
       "空白页": [],
       "本次重新编译": true,
-      "本次重点页面复核PDF页序": [],
-      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/逐题审查完善_20261031/build/热学/04_相变与饱和蒸汽/main.pdf"
+      "本次重点页面复核PDF页序": [
+        9,
+        10,
+        21,
+        22,
+        25,
+        26,
+        30,
+        31
+      ],
+      "构建PDF": "/Users/dongxingxi/Documents/物理竞赛模拟题整理/tmp/pdfs/数学过程逐题复修_20261101/build/热学/04_相变与饱和蒸汽/main.pdf",
+      "本轮数学过程全文复核题数": 13,
+      "本轮数学过程修改题数": 3,
+      "源码各文件SHA256": {
+        "phase_amounts.tex": "e9eb951f1e50d803a5895a5ef862a73f170e653d06375fbe2b87571873aef9e7",
+        "examples.tex": "bc0d5e82e073feb212bd18786686b3d8ec85b21bc06f9c5e52da77e61fcd1ab4",
+        "lecture-style.tex": "dc6f1f127f1e2ced7fa1673996bc339ebbb6424ea05cc245560698c966c356c0",
+        "main.tex": "f3db53a34014d1abde3fcb0a7de94516cd07f0946bb4c2a095e1c39840eb45f2",
+        "theory.tex": "ec9ab127d8caba3c09d221e3dcaf4c05e95efb9020af0925c24bec5e9bd0da11",
+        "practice.tex": "fa20d8d46745c61eb31e8858c101c7165b7db4f5a70c734cb293ce745feb1a1b",
+        "corecard.tex": "71d0482aaa9ecf40296a8a8148f3fa0058569d2aa56c98ab1f84f71c05579721",
+        "answers.tex": "7f1c47468cf0df8db3e9609e12d2a5fc7606046afd7165999b001ee1d3a952da",
+        "knowledge-boiling.tex": "ba4f175b20021ea9ba3d45a1cc31577f5f9cb031a64e02008d4b689a44d0efed"
+      }
     }
   ]
 }

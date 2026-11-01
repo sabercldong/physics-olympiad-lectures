@@ -91,6 +91,7 @@ A^2=x_0^2+\frac{v_0^2}{\omega^2},\quad
 作换元$x=A\sin u$，取$-\pi/2\le u\le\pi/2$，则$\dd x=A\cos u\,\dd u$且根号为$A\cos u$；上下限相应变为$u_i=\arcsin(x_i/A)$。因此
 \[
 \Delta t=\frac1\omega\int_{u_2}^{u_1}\dd u
+=\frac1\omega[u]_{u_2}^{u_1}
 =\frac1\omega\left[\arcsin\frac{x_1}{A}-\arcsin\frac{x_2}{A}\right].
 \]
 再用$\arcsin z=\pi/2-\arccos z$便恢复前面的相位式。根号来自能量式，负号来自向左支路；端点处分母为零，但换元后的积分仍有限。这种方法与参考圆结果一致，参考圆还可帮助核对转向前后的支路。
@@ -122,7 +123,14 @@ m\int_{v_0}^{v}w\,\dd w=-K\int_{x_0}^{x}\xi\,\dd\xi,
 K=\frac12\Bigl(\sum_i m_ib_i^2\Bigr)\dot q^2,
 \quad U=\frac12\Bigl(\sum_j k_ja_j^2\Bigr)q^2.
 \]
-于是$M_{\rm eff}=\sum m_ib_i^2$、$K_{\rm eff}=\sum k_ja_j^2$。转动物体还要加$I_i\dot\theta_i^2/2$。几何传动比进入的是平方，不能仅数绳段便断定质量或劲度翻倍。由$\dd(K+U)/\dd t=0$可得$\dot q(M_{\rm eff}\ddot q+K_{\rm eff}q)=0$，在运动区间约去$\dot q$后，再由连续性延伸到转向瞬间，得到完整运动方程。
+于是$M_{\rm eff}=\sum m_ib_i^2$、$K_{\rm eff}=\sum k_ja_j^2$。转动物体还要加$I_i\dot\theta_i^2/2$。几何传动比进入的是平方，不能仅数绳段便断定质量或劲度翻倍。在上述传动比为常量的近似中，对能量逐项求导，
+\[
+0=\frac{\dd(K+U)}{\dd t}
+=\frac{M_{\rm eff}}2(2\dot q\ddot q)
++\frac{K_{\rm eff}}2(2q\dot q)
+=\dot q(M_{\rm eff}\ddot q+K_{\rm eff}q).
+\]
+在运动区间约去$\dot q$后，再由连续性延伸到转向瞬间，得到完整运动方程。
 
 \fig{fig:w1:movable-pulley}{以负载下移q为坐标，动滑轮使弹簧伸长增量为2q}{\begin{tikzpicture}
 

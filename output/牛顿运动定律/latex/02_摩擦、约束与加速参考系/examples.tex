@@ -101,14 +101,18 @@ q'(A)&=\frac{-\cos\theta\,D-(g\sin\theta-A\cos\theta)\sin\theta}{D^2}\\
 \[
  T\cos\theta-N\sin\theta=ma,\quad T\sin\theta+N\cos\theta=mg.
 \]
-解得 $T=m(a\cos\theta+g\sin\theta)$、$N=m(g\cos\theta-a\sin\theta)$。所以接触要求 $a\le g\cot\theta=4g/3$。
+将水平式乘 $\cos\theta$、竖直式乘 $\sin\theta$后相加，含 $N$的项抵消，得 $T=m(a\cos\theta+g\sin\theta)$。用竖直式乘 $\cos\theta$减去水平式乘 $\sin\theta$，含 $T$的项抵消，得 $N=m(g\cos\theta-a\sin\theta)$。所以接触要求 $N\ge0$，即 $a\le g\cot\theta=4g/3$。
 \fig{n2e5s}{先检查法向力，负值要求改换构形}{\begin{tikzpicture}
 \fill(-1.5,0)circle(2pt);\draw[force,blue](-1.5,0)--(-.3,.9)node[above]{$T$};\draw[force](-1.5,0)--(-2.2,.95)node[above]{$N$};\draw[force,red](-1.5,0)--(-1.5,-1.2)node[below]{$mg$};\fill(2,0)circle(2pt);\draw[force,blue](2,0)--(3.5,.87)node[above]{$T_2$};\draw[force,red](2,0)--(2,-1.2)node[below]{$mg$};\node at(2.7,-1.7){脱离后 $N=0$};
 \end{tikzpicture}}
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入第一种加速度检查接触}\par\nobreak
-$a_1<4g/3$，代入得到 $T_1=100\,\mathrm N$、$N_1=50\,\mathrm N$。
+$a_1<4g/3$，仍可保持接触。代入 $m=10$kg、$g=10\,\mathrm{m/s^2}$和 $\sin37^\circ=0.6$、$\cos37^\circ=0.8$：
+\[
+ T_1=mg(0.5\times0.8+0.6)=100\,\mathrm N,
+ \qquad N_1=mg(0.8-0.5\times0.6)=50\,\mathrm N.
+\]
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{舍弃负支持力，求脱离后的相对平衡构形}\par\nobreak
 $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n2e5s}右图取 $N_2=0$，相对平衡须 $T_{2x}=ma_2$、$T_{2y}=mg$，故 $T_2=m\sqrt{a_2^2+g^2}=200\,\mathrm N$，绳与水平夹角 $30^\circ$。这描述新的相对平衡状态；突然改变加速度后的实际过渡运动，还取决于初态和摆动过程。
@@ -128,7 +132,13 @@ $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{将沿面距离代入相对运动方程求时间}\par\nobreak
-当 $a_0=g$，图\ref{n2e6s}给出 $b=0.2g$、$N=1.4mg$。到顶沿面距离为 $H/0.6=5H/3$，由 $s=bt^2/2$ 得 $t=\sqrt{50H/(3g)}$。法向力保持正值，且相对加速度恒定，所以这段匀加速公式可以使用。
+当 $a_0=g$，图\ref{n2e6s}给出 $b=g(0.8-0.6)=0.2g$、$N=mg(0.8+0.6)=1.4mg$。以释放时刻为零，相对初速度和相对位移均为零。先后积分恒定相对加速度，
+\begin{align*}
+ v_{\rm rel}(t)&=\int_0^t b\dd\tau=[b\tau]_0^t=bt,\\
+ s(t)&=\int_0^t b\tau\dd\tau
+ =\left[\frac b2\tau^2\right]_0^t=\frac12bt^2.
+\end{align*}
+到顶沿面距离为 $H/0.6=5H/3$，故 $t^2=2(5H/3)/(0.2g)=50H/(3g)$，取正根得 $t=\sqrt{50H/(3g)}$。法向力保持正值，且相对加速度恒定，所以这一积分过程在到顶以前有效。
 \end{solution}
 
 \begin{question}\begin{example}[斜杆圆环与竖直悬球]\label{n2e7}
@@ -145,7 +155,11 @@ $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{代入动力学消元求张力}\par\nobreak
-用图\ref{n2e7s}的投影关系代入：$Mg-T=M(g+T/m)\sin^2\theta$，整理得
+用图\ref{n2e7s}的投影关系代入：$Mg-T=M(g+T/m)\sin^2\theta$。先展开右边，再将含 $T$的项移到同一侧，
+\[
+ Mg(1-\sin^2\theta)=T\left(1+\frac Mm\sin^2\theta\right).
+\]
+左边为 $Mg\cos^2\theta$，右边括号为 $(m+M\sin^2\theta)/m>0$，所以
 \[T=\frac{mMg\cos^2\theta}{m+M\sin^2\theta}.\]
 
 
@@ -234,12 +248,23 @@ $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{取整体求斜面加速度并恢复滑块运动}\par\nobreak
-图\ref{n2e11s}右侧先把平移加速度与沿面相对加速度首尾相接，得到 $a_{m,x}=A-b\cos\theta$。左侧整体边界的水平外力只有墙端张力，因此 $T=MA+m(A-b\cos\theta)$。代入 $b=A$，整体水平式给 $T=[M+m(1-\cos\theta)]A$。联立得
+图\ref{n2e11s}右侧先把平移加速度与沿面相对加速度首尾相接，得到 $a_{m,x}=A-b\cos\theta$。左侧整体边界的水平外力只有墙端张力，因此 $T=MA+m(A-b\cos\theta)$。代入 $b=A$，整体水平式给 $T=[M+m(1-\cos\theta)]A$。将它与沿面方程的张力式相等，
+\[
+ [M+m(1-\cos\theta)]A=mg\sin\theta-mA(1-\cos\theta).
+\]
+含 $A$的项移到左边，得 $[M+2m(1-\cos\theta)]A=mg\sin\theta$。求出 $A$后回代整体式，联立得
 \[
  A=b=\frac{mg\sin\theta}{M+2m(1-\cos\theta)},\qquad
  T=\frac{mg\sin\theta[M+m(1-\cos\theta)]}{M+2m(1-\cos\theta)}.
 \]
-物块完整加速度为 $(A(1-\cos\theta),-A\sin\theta)$，支持力 $N=m(g\cos\theta-A\sin\theta)$。因此接触分支要求 $m(1-\cos\theta)^2\le M\cos\theta$。
+物块完整加速度为 $(A(1-\cos\theta),-A\sin\theta)$，支持力 $N=m(g\cos\theta-A\sin\theta)$。把求出的 $A$代回，记 $D=M+2m(1-\cos\theta)>0$，
+\begin{align*}
+ N&=mg\frac{D\cos\theta-m\sin^2\theta}{D},\\
+ D\cos\theta-m\sin^2\theta
+ &=M\cos\theta+2m\cos\theta(1-\cos\theta)-m(1-\cos^2\theta)\\
+ &=M\cos\theta-m(1-\cos\theta)^2.
+\end{align*}
+因此 $N\ge0$恰给出接触条件 $m(1-\cos\theta)^2\le M\cos\theta$。
 
 
 
@@ -269,7 +294,13 @@ $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n
 按图\ref{n2e12s}绕 $B$ 取矩，$N_A l\cos\theta=(Mg\,l\sin\theta+Ma\,l\cos\theta)/2$，故 $N_A=M(a+g\tan\theta)/2$，$f=M(a-g\tan\theta)/2$。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用摩擦上限与角度范围筛选可行姿态}\par\nobreak
-由 $|f|\le\mu_sN_B$，得到
+将 $f=M(a-g\tan\theta)/2$、$N_B=Mg$代入 $|f|\le\mu_sN_B$，先约去 $M/2$，
+\[
+ |a-g\tan\theta|\le2\mu_sg
+ \quad\Longleftrightarrow\quad
+ -2\mu_sg\le a-g\tan\theta\le2\mu_sg.
+\]
+分别解左右两个线性不等式，得到 $a/g-2\mu_s\le\tan\theta\le a/g+2\mu_s$。再同锐角条件 $\tan\theta>0$取交集，得到
 \[
  \max\{0,a/g-2\mu_s\}\le\tan\theta\le a/g+2\mu_s,
  \qquad 0<\theta<\pi/2.
@@ -308,7 +339,14 @@ $a_2>4g/3$ 时旧构形算出负支持力，不能取其绝对值；按图\ref{n
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求初始转动方向并保留接触条件}\par\nobreak
-先由竖直式求$N_B=M(g-lb\sin\theta_0/2)$，由水平式求$N_A=Ma+Mlb\cos\theta_0/2-\mu N_B$。将二者代入力矩式，除以$Ml/2$并收集$b$项，得到
+先由竖直式求 $N_B=M(g-lb\sin\theta_0/2)$，由水平式求 $N_A=Ma+Mlb\cos\theta_0/2-\mu N_B$。为展开代入过程，暂记 $s=\sin\theta_0$、$c=\cos\theta_0$。将二者代入力矩式并除以 $Ml/2$，
+\begin{align*}
+ \frac{lb}{6}
+ &=\frac{N_B}{M}s+\left(\mu\frac{N_B}{M}-\frac{N_A}{M}\right)c\\
+ &=\left(g-\frac{lb s}{2}\right)(s+2\mu c)-ac-\frac{lb c^2}{2}\\
+ &=g(s+2\mu c)-ac-\frac{lb}{2}(s^2+c^2+2\mu sc).
+\end{align*}
+用 $s^2+c^2=1$，将全部含 $b$的项移到左侧，系数为 $1/6+1/2+\mu sc=2/3+\mu sc$。恢复角度记号，得到
 \[
 lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 =g(\sin\theta_0+2\mu\cos\theta_0)-a\cos\theta_0.
@@ -343,7 +381,12 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{层间滑动、下块仍静止时求悬块加速度}\par\nobreak
-现在取层间确实相对滑动的情形 $0\le\mu_2<\min\{\mu_1,1\}$，图\ref{n2e17s}中 $A$ 相对 $B$ 向右。若 $B$ 仍静止，$a_A=2a_C$，由 $T-\mu_2mg=2ma_C$、$2mg-2T=2ma_C$ 得
+现在取层间确实相对滑动的情形 $0\le\mu_2<\min\{\mu_1,1\}$，图\ref{n2e17s}中 $A$相对 $B$向右。若 $B$仍静止，$a_A=2a_C$，由 $T-\mu_2mg=2ma_C$、$2mg-2T=2ma_C$，先从后式解出 $T=m(g-a_C)$。代回前式，
+\[
+ m(g-a_C)-\mu_2mg=2ma_C
+ \quad\Longrightarrow\quad 3ma_C=(1-\mu_2)mg.
+\]
+所以
 \[
  a_C=\frac{1-\mu_2}{3}g,\qquad T=\frac{2+\mu_2}{3}mg.
 \]
@@ -359,7 +402,12 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 \[
  2ma_C=2mg-2T,\qquad a_A+a_B=2a_C.
 \]
-相加消元得到 $T=(1+\mu_1)mg/2$，从而
+先将前两条物块方程相加，得到 $m(a_A+a_B)=2T-2\mu_1mg$。用绳长式把左边改为 $2ma_C$，再与悬块方程的左边相同，故
+\[
+ 2T-2\mu_1mg=2mg-2T
+ \quad\Longrightarrow\quad 4T=2(1+\mu_1)mg.
+\]
+所以 $T=(1+\mu_1)mg/2$，依次回代三个物体方程，得到
 \[
  a_C=\frac{1-\mu_1}{2}g,\quad
  a_A=\frac{1+\mu_1-2\mu_2}{2}g,\quad
@@ -412,7 +460,12 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{联立受力方程求带符号的运动}\par\nobreak
-消去图\ref{n2e19s}中的 $N$，得到
+由竖直式得 $N\cos\theta=m(g+A\tan\theta)$。将它乘 $\tan\theta$，就得到水平式所需的 $N\sin\theta=m(g+A\tan\theta)\tan\theta$。代入图\ref{n2e19s}中斜面的水平式，
+\[
+ F-mg\tan\theta-mA\tan^2\theta=MA,
+ \qquad (M+m\tan^2\theta)A=F-mg\tan\theta.
+\]
+系数为正，解出 $A$后再用 $b=A\tan\theta$，得到
 \[
  A=\frac{F-mg\tan\theta}{M+m\tan^2\theta},\qquad
  b=\frac{(F-mg\tan\theta)\tan\theta}{M+m\tan^2\theta}.
@@ -462,8 +515,13 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把不同张力代入三个物体方程}\par\nobreak
 由图\ref{n2e21s}，以质量的千克数代入，各物体方程为 $a_A=g-T/(1\,\mathrm{kg})$、$a_B=g-T/(2\,\mathrm{kg})$、$a_C=g-2T/(3\,\mathrm{kg})$。代入约束：
 \[
- 2g-\frac{3T}{2\,\mathrm{kg}}=-2g+\frac{4T}{3\,\mathrm{kg}},\qquad
- T=\frac{24}{17}(1\,\mathrm{kg})g.
+ 2g-\frac{3T}{2\,\mathrm{kg}}=-2g+\frac{4T}{3\,\mathrm{kg}}.
+\]
+将含张力的项移到同一侧，先通分系数：
+\[
+ 4g=\left(\frac32+\frac43\right)\frac{T}{1\,\mathrm{kg}}
+ =\frac{17}{6}\frac{T}{1\,\mathrm{kg}},
+ \qquad T=\frac{24}{17}(1\,\mathrm{kg})g.
 \]
 
 
@@ -515,7 +573,17 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{为两块各设运动时钟并列总力矩边界}\par\nobreak
 两块进入板时均有 $v_0=3\,\mathrm{m/s}$。令第二块上板后时间为 $t$，在两块均向右滑动的阶段，
 \[s_A=3(t+0.2)-(t+0.2)^2,\qquad s_B=3t-t^2,\]
-各长度以米、时间以秒计。翻转边界为 $mg(2L-s_A-s_B)=2\mu mgR$，即 $s_A+s_B=1.6\,\mathrm m$。代入得到 $2t^2-5.6t+1.04=0$，两根为 $0.2\,\mathrm s$、$2.6\,\mathrm s$。
+各长度以米、时间以秒计。翻转边界为 $mg(2L-s_A-s_B)=2\mu mgR$，即 $s_A+s_B=1.6\,\mathrm m$。先展开两位置之和：
+\[
+ s_A+s_B=6t+0.6-(2t^2+0.4t+0.04)
+ =-2t^2+5.6t+0.56.
+\]
+令其等于1.6并移项，得到 $2t^2-5.6t+1.04=0$。除以2后配方，
+\[
+ (t-1.4)^2=1.4^2-0.52=1.44,
+ \qquad t=1.4\pm1.2.
+\]
+因此两根为 $0.2\,\mathrm s$、$2.6\,\mathrm s$。
 
 
 
@@ -541,7 +609,17 @@ lb\left(\frac23+\mu\sin\theta_0\cos\theta_0\right)
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{隔离吊篮求悬角}\par\nobreak
-吊篮沿索方程为 $ma=mg\sin\theta-T\sin(\theta-\alpha)-kmg$。用图\ref{n2e24s}的法向式消去 $T$，有
+吊篮沿索方程为 $ma=mg\sin\theta-T\sin(\theta-\alpha)-kmg$。用图\ref{n2e24s}的法向式 $T\cos(\theta-\alpha)=mg\cos\theta$消去张力，先写
+\[
+ T\sin(\theta-\alpha)=mg\sin\theta-ma-kmg.
+\]
+将两式相除，并代入整体加速度，
+\begin{align*}
+ \tan(\theta-\alpha)
+ &=\frac{g\sin\theta-a-kg}{g\cos\theta}\\
+ &=\frac{\mu g\cos\theta+kgm/(M+m)-kg}{g\cos\theta}.
+\end{align*}
+最后合并两个含 $k$的项，$km/(M+m)-k=-kM/(M+m)$，于是
 \[
  \tan(\theta-\alpha)=\mu-\frac{kM}{(M+m)\cos\theta},
 \]

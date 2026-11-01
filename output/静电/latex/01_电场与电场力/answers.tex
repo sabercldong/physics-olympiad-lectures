@@ -25,12 +25,23 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求正负两侧最大场的位置与大小}\par\nobreak
-图\ref{fig:e1:drill:1:p} 的大小曲线在 $y=a/\sqrt2$ 取得最大值 $4kq/(3\sqrt3a^2)$。中垂线负侧有对称位置 $y=-a/\sqrt2$，场方向向下、大小相同。
+导数的分母为正，令$a^2-2y^2=0$，正侧得$y=a/\sqrt2$；两侧导数由正变负，符合图\ref{fig:e1:drill:1:p}的峰值。代回合场，
+\[
+E_{\max}=\frac{2kq(a/\sqrt2)}{(a^2+a^2/2)^{3/2}}
+=\frac{2kq}{a^2}\frac{1/\sqrt2}{(3/2)^{3/2}}
+=\frac{4kq}{3\sqrt3a^2}.
+\]
+中垂线负侧有对称位置$y=-a/\sqrt2$，场方向向下、大小相同。
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查中点与远处的极限}\par\nobreak
 $y\to0$ 时对称抵消，$|y|\to\infty$ 时回到总电荷 $2q$ 的远场，均可核对曲线两端。\end{drillsolution}
 \begin{drillsolution}{e1:drill:2}\textbf{展开环心附近的场并确定电荷符号}\par\nobreak
-图\ref{fig:e1:drill:2:s} 的轴向场为 $E_x=kQx/(R^2+x^2)^{3/2}$。在 $|x|\ll R$ 时，展开分母首项得到 $E_x\simeq kQx/R^3$。力为 $F_x=qE_x$，要成为指向原点的回复力，需 $q<0$。
+图\ref{fig:e1:drill:2:s}的轴向场为$E_x=kQx/(R^2+x^2)^{3/2}$。先提出$R^3$，令$z=x^2/R^2$，得到$E_x=(kQx/R^3)(1+z)^{-3/2}$。对$F(z)=(1+z)^{-3/2}$求导为$F'(z)=-\tfrac32(1+z)^{-5/2}$，所以$F(0)=1$、$F'(0)=-3/2$，从而
+\[
+E_x=\frac{kQx}{R^3}\left[1-\frac{3x^2}{2R^2}
++O\!\left(\frac{x^4}{R^4}\right)\right].
+\]
+当$|x|\ll R$时，仅保留关于$x$的一次项，才有$E_x\simeq kQx/R^3$。力为$F_x=qE_x$，要成为指向原点的回复力，需$q<0$。
 \typeout{ECFIG:fig:e1:drill:2:p}\fig{fig:e1:drill:2:p}{解答过程：绝缘球环中的轴向小振动}{\begin{tikzpicture}[scale=.88]
 \draw[axis](-2,0)--(2,0)node[right]{$x$};\fill(1,0)circle(2pt)node[above]{$q<0$};\draw[force](1,0)--(.1,0)node[midway,below]{$F_x$};\node[below]at(0,0){$O$};\node at(0,1){$F_x\simeq-kQ|q|x/R^3$};
 \end{tikzpicture}}
@@ -39,9 +50,13 @@ $y\to0$ 时对称抵消，$|y|\to\infty$ 时回到总电荷 $2q$ 的远场，均
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{建立简谐运动方程并求周期}\par\nobreak
 图\ref{fig:e1:drill:2:p} 对小位移写出 $m\ddot x=-(kQ|q|/R^3)x$，令 $\omega^2=kQ|q|/(mR^3)$，方程写成 $\ddot x+\omega^2x=0$。
-代入试解 $e^{st}$ 得特征方程 $s^2+\omega^2=0$，根为 $\pm i\omega$。
-因此 $x=C\cos\omega t+D\sin\omega t$；
-若初始位置、速度为 $x_0,v_0$，则 $C=x_0$、$D=v_0/\omega$。
+试取$x=e^{st}$，两次求导为$\dot x=se^{st}$、$\ddot x=s^2e^{st}$；代回得到$(s^2+\omega^2)e^{st}=0$。指数不为零，故特征方程为$s^2+\omega^2=0$，根为$\pm i\omega$。
+因此实通解及速度为
+\[
+x=C\cos\omega t+D\sin\omega t,\qquad
+\dot x=-C\omega\sin\omega t+D\omega\cos\omega t.
+\]
+若初始位置、速度为$x_0,v_0$，代入$t=0$得$C=x_0$、$D\omega=v_0$，所以$D=v_0/\omega$。
 两项都在相位增加 $2\pi$ 后恢复，故
 \[
  \omega=\sqrt{\frac{kQ|q|}{mR^3}},\qquad
@@ -50,7 +65,7 @@ $y\to0$ 时对称抵消，$|y|\to\infty$ 时回到总电荷 $2q$ 的远场，均
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{核对小振幅与轴向约束}\par\nobreak
-振幅 $A\ll R$ 是近似成立条件。题中有明确轴向约束，不能把轴向稳定外推为三维自由运动中的稳定；若允许偏离轴线，还需另查横向场和受力。\end{drillsolution}
+将通解写为$x=A\cos(\omega t-\varphi)$并展开余弦，比较系数得$A\cos\varphi=C$、$A\sin\varphi=D$；平方相加，$A^2=C^2+D^2=x_0^2+(v_0/\omega)^2$。因此小振动条件应落实为$\sqrt{x_0^2+(v_0/\omega)^2}\ll R$。题中有明确轴向约束，不能把轴向稳定外推为三维自由运动中的稳定；若允许偏离轴线，还需另查横向场和受力。\end{drillsolution}
 \begin{drillsolution}{e1:drill:3}\textbf{对两非零电荷分别写外场抵消条件}\par\nobreak
 令 图\ref{fig:e1:drill:3:s} 中另一位置为 $x\ne r$。环在正轴上的场为 $E(s)=kQs/(R^2+s^2)^{3/2}>0$。对两点电荷分别除以非零的受力电荷，外场抵消条件为
 \[
@@ -105,7 +120,11 @@ $y\to0$ 时对称抵消，$|y|\to\infty$ 时回到总电荷 $2q$ 的远场，均
          {x(r-x)(R^2+x^2)}\\
  &=\frac{rR^2-3R^2x-2rx^2}{x(r-x)(R^2+x^2)}.
 \end{align*}
-分母在 $0<x<r$ 为正。分子关于 $x$ 严格递减，在区间内只通过一次零点，
+分母在$0<x<r$为正。记分子为$N(x)=rR^2-3R^2x-2rx^2$，其导数$N'(x)=-3R^2-4rx<0$；又$N(0)=rR^2>0$、$N(r)=-2r(R^2+r^2)<0$，故区间内恰有一次变号。解$N(x)=0$，即$2rx^2+3R^2x-rR^2=0$，二次公式给
+\[
+x=\frac{-3R^2\pm\sqrt{9R^4+8r^2R^2}}{4r}.
+\]
+负号根小于零；正号根由上述变号判断确在$(0,r)$内，故唯一极大点为
 \[
  x_*=\frac{R\sqrt{9R^2+8r^2}-3R^2}{4r}.
 \]

@@ -54,7 +54,19 @@ B=\frac{\mu mg}{Il(\cos\alpha+\mu\sin\alpha)}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{优化两分量的共同作用并核对接触与场方向}\par\nobreak
-按图\ref{fig:mg2:example:2:p}，分母最大为 $\sqrt{1+\mu^2}$，在 $\tan\alpha=\mu$ 时达到，故 $B_{\min}=\mu mg/[Il\sqrt{1+\mu^2}]=1.12\,\mathrm T$。此时 $\sin\alpha=\mu/\sqrt{1+\mu^2}$，代回得 $N=mg/(1+\mu^2)=0.80\,\mathrm N>0$，接触条件满足。图中电流垂直纸面向内，所需 $\bm B$ 与电流垂直、相对竖直方向朝左倾斜 $\alpha=\arctan\mu\simeq26.6^\circ$，由叉乘正好产生图示斜向上的磁力。若只允许竖直磁场，磁力只能水平，需 $B=\mu mg/(Il)=1.25\,\mathrm T$；两种数值对应不同的方向约束，不能混作同一问题的答案。\end{solution}
+令 $\phi=\arctan\mu$，则 $\cos\phi=1/\sqrt{1+\mu^2}$、$\sin\phi=\mu/\sqrt{1+\mu^2}$。按图\ref{fig:mg2:example:2:p}的两分力关系，
+\[
+ \cos\alpha+\mu\sin\alpha
+ =\sqrt{1+\mu^2}(\cos\alpha\cos\phi+\sin\alpha\sin\phi)
+ =\sqrt{1+\mu^2}\cos(\alpha-\phi).
+\]
+因此分母在 $\alpha=\phi$ 时最大，$B_{\min}=\mu mg/[Il\sqrt{1+\mu^2}]=1.12\,\mathrm T$。用 $\sin\alpha=\mu/\sqrt{1+\mu^2}$ 回代支持力，
+\[
+ N=mg-IlB_{\min}\sin\alpha
+ =mg-\frac{\mu^2mg}{1+\mu^2}
+ =\frac{mg}{1+\mu^2}=0.80\,\mathrm N>0.
+\]
+接触条件满足。图中电流垂直纸面向内，所需 $\bm B$ 与电流垂直、相对竖直方向朝左倾斜 $\alpha=\arctan\mu\simeq26.6^\circ$，由叉乘正好产生图示斜向上的磁力。若只允许竖直磁场，磁力只能水平，需 $B=\mu mg/(Il)=1.25\,\mathrm T$；两种数值对应不同的方向约束，不能混作同一问题的答案。\end{solution}
 \begin{question}\begin{example}[输电线电荷力与磁力的平衡]\label{mg2:example:3}
 两条细长平行输电线分别带有单位长度电荷 $\pm\lambda$，通过大小相等、方向相反的电流 $I$。已知单位长度电容 $c'=10^{-11}\,\mathrm{F/m}$、线间电压 $U=33\,\mathrm{kV}$。在细线近似下两线无横向相互作用，求电流与输送功率，取光速 $c_0=3.0\times10^8\,\mathrm{m/s}$。
 \end{example}
@@ -112,14 +124,14 @@ $\tfrac12J\dot\theta^2=m_BB(\cos\theta-\cos\theta_0)$。在首次向同向位置
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{线性化转动方程并区分大幅运动的周期}\par\nobreak
-小角度时 $\sin\theta\simeq\theta$，运动方程化为 $\ddot\theta+(m_BB/J)\theta=0$，记 $\omega_0=\sqrt{m_BB/J}$，特征方程为
+小角度时 $\sin\theta\simeq\theta$，运动方程化为 $\ddot\theta+(m_BB/J)\theta=0$，记 $\omega_0=\sqrt{m_BB/J}$。试取 $\theta=\e^{st}$，两次求导为 $\dot\theta=s\e^{st}$、$\ddot\theta=s^2\e^{st}$，代入并约去非零指数后，特征方程为
 $s^2+\omega_0^2=0$，实通解
 $\theta=A\cos\omega_0t+D\sin\omega_0t$。
 初始静止给 $A=\theta_0$、$\omega_0D=0$，故
 $\theta=\theta_0\cos\omega_0t$，每增加 $2\pi/\omega_0$ 重复一次，
 所以 $T=2\pi\sqrt{J/(m_BB)}$。$\theta=\pi$ 虽力矩也为零，却处于势能极大点，是不稳定平衡。给定较大初角时，上述最大角速度仍成立，但小振动周期不能当作完整大幅转动的周期。
 
-上述能量式可直接由转动方程乘 $\dot\theta$ 后积分得到：$J\ddot\theta\dot\theta=-m_BB\sin\theta\dot\theta$，两端分别是转动动能导数和 $m_BB\cos\theta$ 的导数。这样可确认势能符号与力矩方向相符。\end{solution}
+初始角为零时力矩和初速都为零，线圈保持平衡；非零小初角才发生上述周期振动。\end{solution}
 \begin{question}\begin{example}[长直电流对斜置方形线圈的力矩]\label{mg2:example:5}
 长直导线沿 $+z$ 通电流 $I_0$，其场 $B=kI_0/\rho$。边长 $2L$ 的方形线圈中轴平行 $z$，轴距直线 $D>L$。线圈水平边方向 $\bm u=(\cos\varphi,\sin\varphi,0)$，两竖边位置为 $(D,0)\pm L\bm u$；负号一侧电流向上，另一侧向下。求绕中轴的力矩。若两边距直线都为 $2L$，求对应数值表达式。
 \end{example}
@@ -146,7 +158,7 @@ $\theta=\theta_0\cos\omega_0t$，每增加 $2\pi/\omega_0$ 重复一次，
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{从中轴取力臂，计算两边的有向力矩}\par\nobreak
-图\ref{fig:mg2:example:5:p}中的力臂是相对中轴的 $\pm L\bm u$。两水平边的微元力沿 $z$，对 $z$ 轴不贡献力矩，所以
+图\ref{fig:mg2:example:5:p}中的力臂是相对中轴的 $\pm L\bm u$。先计算叉积中的几何项：$[\bm u\times(D,0,0)]_z=-D\sin\varphi$，而 $\bm u\times\bm u=0$。因此每一边的位置沿 $\bm u$ 的部分不贡献绕中轴力矩，两边都留下同号的负转矩。两水平边的微元力沿 $z$，对 $z$ 轴不贡献力矩，所以
 \[
 \tau_z=[(-L\bm u)\times\bm F_-+(L\bm u)\times\bm F_+]_z
 =-2DL^2kI_0I\sin\varphi
@@ -157,7 +169,7 @@ $\theta=\theta_0\cos\omega_0t$，每增加 $2\pi/\omega_0$ 重复一次，
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{把双距离条件代入，并检查几何信息是否充分}\par\nobreak
 若两边距离同时为 $2L$，相减两距离平方式得到 $\cos\varphi=0$；取 $\varphi=\pi/2$，再由 $D^2+L^2=4L^2$ 得 $D=\sqrt3L$。代入力矩为 $\tau_z=-\sqrt3kI_0IL$。只给单边距离 $\rho_-=2L$ 而不指定轴距或角度时，一条方程不能唯一确定两项几何参数，应保留一般式。
 
-力矩交叉乘积中，$\bm u\times(D,0)$ 的 $z$ 分量为 $-D\sin\varphi$，而 $\bm u\times\bm u=0$。因此每一边的位置沿 $\bm u$ 的部分不产生关于中轴的额外项，两边都留下同号的负转矩。对 $\varphi\to0$，两力作用线均穿过中轴，结果自然趋零。\end{solution}
+对 $\varphi\to0$，两力作用线均穿过中轴，结果自然趋零。\end{solution}
 \begin{question}\begin{example}[旋转带电圆环的张力增量]\label{mg2:example:6}
 质量 $m$、半径 $R$ 的均匀细圆环带正电 $q$，以固定角速度 $\omega$ 逆时针转动。外磁场 $B$ 垂直环面向外。环的半径与电荷分布保持不变，求与无磁场、相同角速度相比的张力增量。
 \end{example}
@@ -361,10 +373,10 @@ F=\frac{\mu_0I_0Il}{2\pi}\left(\frac1a-\frac1{a+w}\right).
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{在平衡点附近列回复力矩，求断电后周期}\par\nobreak
-图\ref{fig:mg2:example:12:p}中若电流固定，平衡偏角附近的小扰动 $\eta=\theta-\theta_{\rm eq}$ 满足 $J\ddot\eta+\kappa\eta=0$；记 $\omega_0=\sqrt{\kappa/J}$，将 $\eta\propto\e^{st}$ 代入得
+图\ref{fig:mg2:example:12:p}中若电流固定，平衡偏角附近的小扰动 $\eta=\theta-\theta_{\rm eq}$ 满足 $J\ddot\eta+\kappa\eta=0$；记 $\omega_0=\sqrt{\kappa/J}$。试取 $\eta=\e^{st}$，两次求导为 $\dot\eta=s\e^{st}$、$\ddot\eta=s^2\e^{st}$。代入并约去非零指数，得
 $s^2+\omega_0^2=0$，故
 $\eta=A\cos\omega_0t+D\sin\omega_0t$。
-给定 $\eta(0)=\eta_0,\dot\eta(0)=\Omega_0$ 时，
+通解求导为 $\dot\eta=-A\omega_0\sin\omega_0t+D\omega_0\cos\omega_0t$。给定 $\eta(0)=\eta_0,\dot\eta(0)=\Omega_0$ 时，
 $A=\eta_0,D=\Omega_0/\omega_0$。
 断电后用 $\theta$ 替代 $\eta$，平衡点回到零位；若从静态偏角处断电，
 $\theta(0)=NBSI/\kappa,\dot\theta(0)=0$，故
@@ -415,8 +427,8 @@ $\theta=(NBSI/\kappa)\cos\omega_0t$。
 图\ref{fig:mg2:example:14:p}的 $\bm L$ 端点绕场轴作匀速圆周运动，$\bm\Omega_p=-Q\bm B/(2M)$，周期 $4\pi M/(QB)$。为确定运动函数，取 $\bm B=B\bm e_z$，
 令 $\gamma=QB/(2M)$，并选择初始横向角动量沿 $+x$。
 运动方程成为 $\dot L_x=\gamma L_y,\dot L_y=-\gamma L_x,\dot L_z=0$；
-再求导得 $\ddot L_x+\gamma^2L_x=0$，其特征根为 $\pm\mathrm i\gamma$。
-由初值 $L_x(0)=L\sin\theta,\dot L_x(0)=0,L_z(0)=L\cos\theta$，
+对第一式再求导，$\ddot L_x=\gamma\dot L_y=-\gamma^2L_x$。试取 $L_x=\e^{st}$，其两次导数为 $s\e^{st},s^2\e^{st}$，代入得 $(s^2+\gamma^2)\e^{st}=0$，特征根为 $\pm\mathrm i\gamma$。因此 $L_x=A\cos\gamma t+D\sin\gamma t$。
+由初值 $L_x(0)=L\sin\theta$ 得 $A=L\sin\theta$；求导后 $\dot L_x(0)=\gamma D=0$，故 $D=0$。再由 $L_y=\dot L_x/\gamma=-L\sin\theta\sin\gamma t$、$L_z(0)=L\cos\theta$，得到
 \[
  \bm L(t)=L\sin\theta\cos\gamma t\,\bm e_x
  -L\sin\theta\sin\gamma t\,\bm e_y+L\cos\theta\,\bm e_z.

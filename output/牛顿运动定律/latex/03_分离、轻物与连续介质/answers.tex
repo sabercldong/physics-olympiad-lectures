@@ -13,7 +13,9 @@
 \Delta L&=\frac{g+a_0}{kL_0}\int_0^{L_0}
 \left[M+m_0-\frac{m_0u}{L_0}\right]\dd u\\
 &=\frac{g+a_0}{kL_0}
-\left[(M+m_0)u-\frac{m_0u^2}{2L_0}\right]_0^{L_0}
+\left[(M+m_0)u-\frac{m_0u^2}{2L_0}\right]_0^{L_0}\\
+&=\frac{g+a_0}{kL_0}
+ \left[(M+m_0)L_0-\frac{m_0L_0}{2}\right]
 =\frac{(M+m_0/2)(g+a_0)}k.
 \end{align*}
 上端力为 $(M+m_0)(g+a_0)$，下端轴力为 $M(g+a_0)$。若电梯向下加速度恰为 $g$，有效重力为零，原来已相对静止且无振动的极限状态可无拉伸；从有伸长状态突然自由落体则会发生弹性振动，不能直接假设形变瞬间归零。
@@ -34,8 +36,14 @@ p(r_2)-p(r_1)=\rho\omega^2\int_{r_1}^{r_2}r\,\dd r
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{用等体积交换确定各液面}\par\nobreak
 图\ref{n3d2s}中 $S_1h_1+S_2h_2=(S_1+S_2)h$，代入 $h_2=h_1+\delta h$，解得 $h_1=h-S_2\delta h/(S_1+S_2)$、$h_2=h+S_1\delta h/(S_1+S_2)$。从轴积分到内侧支管底部，$p(r_1)-p(0)=\rho\omega^2[r^2/2]_0^{r_1}$，故轴处压强为
-\[p=p_0+\rho gh_1-\tfrac12\rho\omega^2r_1^2
-=p_0+\rho gh-\frac{\rho\omega^2}{2}\frac{S_1r_1^2+S_2r_2^2}{S_1+S_2}.\]
+\begin{align*}
+ p&=p_0+\rho gh_1-\tfrac12\rho\omega^2r_1^2\\
+ &=p_0+\rho gh-\frac{\rho\omega^2}{2}
+ \left[\frac{S_2(r_2^2-r_1^2)}{S_1+S_2}+r_1^2\right]\\
+ &=p_0+\rho gh-\frac{\rho\omega^2}{2}
+ \frac{S_1r_1^2+S_2r_2^2}{S_1+S_2}.
+\end{align*}
+最后一步将括号内通分，$-S_2r_1^2$与 $(S_1+S_2)r_1^2$中的 $S_2r_1^2$相消。
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{筛选首先到达的边界}\par\nobreak
@@ -43,7 +51,17 @@ p(r_2)-p(r_1)=\rho\omega^2\int_{r_1}^{r_2}r\,\dd r
 \end{drillsolution}
 
 \begin{drillsolution}{n3d3}\textbf{用离口时间表示水滴位置}\par\nobreak
-图\ref{n3d3q}随桶平移系中，水滴初速度为 $(0,-v_e)$、相对加速度为 $(-a,-g)$。离口年龄 $\tau$ 后，$x'=-a\tau^2/2$、$z'=-v_e\tau-g\tau^2/2$。令 $h=-z'$，正根为 $\tau=[\sqrt{v_e^2+2gh}-v_e]/g$。
+图\ref{n3d3q}随桶平移系中，以离口为当地时间零点，水滴初速度为 $(0,-v_e)$、相对加速度为 $(-a,-g)$。逐分量积分得到
+\begin{align*}
+ v_x'(\tau)&=0+\int_0^\tau(-a)\dd s=-a\tau,\\
+ v_z'(\tau)&=-v_e+\int_0^\tau(-g)\dd s=-v_e-g\tau,\\
+ x'(\tau)&=\int_0^\tau(-as)\dd s
+ =[-as^2/2]_0^\tau=-a\tau^2/2,\\
+ z'(\tau)&=\int_0^\tau(-v_e-gs)\dd s
+ =[-v_es-gs^2/2]_0^\tau=-v_e\tau-g\tau^2/2.
+\end{align*}
+令 $h=-z'$，整理为 $g\tau^2+2v_e\tau-2h=0$，配方得到 $(g\tau+v_e)^2=v_e^2+2gh$。由于 $\tau\ge0$，取正号分支，
+\[\tau=\frac{\sqrt{v_e^2+2gh}-v_e}{g}.\]
 \fig{n3d3s}{水流切向速度随离口时间改变，坐标仍取竖直向上}{\begin{tikzpicture}
 \draw[axis](0,0)--(1.6,0)node[right]{$x'$};\draw[axis](0,-.2)--(0,1.3)node[above]{$z'$};\fill(0,0)circle(2pt)node[above left]{出口};\draw[world,domain=0:1.8,samples=45]plot({-.5*(\x)^2},{-.7*\x-.5*(\x)^2});\draw[flow,blue](0,0)--(0,-.65)node[right]{$v_e$};\fill(-.5,-1.2)circle(2pt);\draw[flow,blue](-.5,-1.2)--(-1,-2.05)node[left]{$\bm v_{\rm rel}$};\draw[flow,red](2,-1.2)--(1.5,-1.7)node[right]{$(-a,-g)$};\draw[guide](-1.62,-2.88)--(.5,-2.88);\draw[dim](.45,0)--(.45,-2.88)node[midway,right]{$h$};
 \end{tikzpicture}}
@@ -57,8 +75,8 @@ p(r_2)-p(r_1)=\rho\omega^2\int_{r_1}^{r_2}r\,\dd r
 图\ref{n3d4q}取自然坐标 $u$，微元质量为 $(m_0/L_0)\dd u$，向外为正时
 $T'(u)=-(m_0/L_0)\omega^2r$。把 $T=kL_0(r'-1)$ 求导得 $T'=kL_0r''$，所以
 $r''+(\beta/L_0)^2r=0$，其中 $\beta=\omega\sqrt{m_0/k}$。
-对 $\beta>0$ 试解 $e^{\lambda u}$，特征方程
-$\lambda^2+(\beta/L_0)^2=0$ 的两根为 $\pm i\beta/L_0$，故实数通解为
+对 $\beta>0$试解 $r=e^{\lambda u}$，逐次求导为 $r'=\lambda e^{\lambda u}$、$r''=\lambda^2e^{\lambda u}$。代入微分方程并约去指数因子，得到特征方程
+$\lambda^2+(\beta/L_0)^2=0$；先移项为 $\lambda^2=-\beta^2/L_0^2$，两根为 $\pm i\beta/L_0$，故实数通解为
 \[
 r=C\sin(\beta u/L_0)+D\cos(\beta u/L_0).
 \]
@@ -79,5 +97,16 @@ C\left[k\beta\cos\beta-M\omega^2\sin\beta\right]=kL_0.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{检查正拉伸分支与质量极限}\par\nobreak
-取分母首次变零之前的正拉伸分支。$M\to0$ 时化为 $\tan\beta/\beta$。$m_0\to0$ 时 $\beta\to0$，但 $(M/m_0)\beta^2=M\omega^2/k$ 不趋零，展开后得到 $L/L_0=1/(1-M\omega^2/k)$，恰与轻弹簧端球方程 $k(L-L_0)=M\omega^2L$ 相符，要求 $M\omega^2<k$。
+取分母首次变零之前的正拉伸分支。$M\to0$时，分母的含 $M$项消失，$L/L_0=\sin\beta/(\beta\cos\beta)=\tan\beta/\beta$。
+
+$m_0\to0$时 $\beta\to0$，但 $(M/m_0)\beta^2=M\omega^2/k$不趋零。先将分子、分母同时除以 $\beta$，再取极限：
+\[
+ \frac L{L_0}
+ =\frac{\sin\beta/\beta}
+ {\cos\beta-(M\omega^2/k)(\sin\beta/\beta)}
+ \longrightarrow\frac1{1-M\omega^2/k}.
+\]
+这里分别使用 $\sin\beta/\beta\to1$、$\cos\beta\to1$，要求 $M\omega^2<k$。轻弹簧端球方程 $k(L-L_0)=M\omega^2L$也给 $(k-M\omega^2)L=kL_0$，恢复同一结果。
+
+若 $\omega=0$，应直接解 $r''=0$。积分得 $r'(u)-r'(0)=\int_0^u0\dd s=0$，故 $r'=C$；再积分 $r(u)-r(0)=\int_0^u C\dd s=Cu$。固定端给 $r(0)=0$，末端零轴力给 $kL_0(C-1)=0$，所以 $C=1$、$L=L_0$，与零角速度的连续极限一致。
 \end{drillsolution}

@@ -227,7 +227,14 @@ u(t_2-T)=D+v_Dt_2-v_ST.
 f_r=\frac{u}{u+V}f_m
 =f\frac{u-V}{u+V}.
 \]
-板远离时两次作用均使频率降低，板靠近时令$V<0$便得到升频。$V=0$恢复$f_r=f$；$|V|\ll u$时，展开得$(f_r-f)/f\simeq-2V/u$。这里的二倍来自两段传播都受运动板影响，不是任何回声都应乘二；静止墙不会在每次反射时新增频移。
+板远离时两次作用均使频率降低，板靠近时令$V<0$便得到升频。$V=0$恢复$f_r=f$。求低速近似时，先减去原频率，令$\varepsilon=V/u$，有
+\[
+\frac{f_r-f}{f}
+=\frac{u-V-(u+V)}{u+V}
+=-\frac{2\varepsilon}{1+\varepsilon}
+=-2\varepsilon+\frac{2\varepsilon^2}{1+\varepsilon}.
+\]
+当$|\varepsilon|\ll1$时，最后一项为二阶小量，保留一阶得到$(f_r-f)/f\simeq-2V/u$。这里的二倍来自两段传播都受运动板影响，不是任何回声都应乘二；静止墙不会在每次反射时新增频移。
 
 \fig{fig:w3:movingmirror}{运动板先接收、再反射；回程须重新规定传播方向}{\begin{tikzpicture}
 

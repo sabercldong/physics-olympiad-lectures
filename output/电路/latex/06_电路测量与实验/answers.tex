@@ -189,10 +189,16 @@ U=E-(r+R_A)I,\qquad a_{\text{乙}}=E,\quad b_{\text{乙}}=r+R_A>r.
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由拟合参数反求真实值并检查理想极限}\par\nobreak
 
-乙接法修正为 $E=a_{\text{乙}}$、$r=b_{\text{乙}}-R_A$。甲接法则为
+乙接法修正为 $E=a_{\text{乙}}$、$r=b_{\text{乙}}-R_A$。甲接法从斜率关系开始反解，
+\[
+ b_{\text{甲}}(R_V+r)=rR_V,\qquad
+ b_{\text{甲}}R_V=r(R_V-b_{\text{甲}}).
+\]
+由于 $b_{\text{甲}}<R_V$，可除以正分母求 $r$；再由 $a_{\text{甲}}=ER_V/(R_V+r)$ 求 $E$：
 \[
 r=\frac{b_{\text{甲}}R_V}{R_V-b_{\text{甲}}},\qquad
 E=\frac{a_{\text{甲}}R_V}{R_V-b_{\text{甲}}}.
 \]
+第二式用到 $R_V+r=R_V+b_{\text{甲}}R_V/(R_V-b_{\text{甲}})=R_V^2/(R_V-b_{\text{甲}})$，代入 $E=a_{\text{甲}}(R_V+r)/R_V$ 即得。
 $R_V\to\infty$ 时甲的加载消失，$R_A\to0$ 时乙的压降误差消失。两接法都必须按图中电压端点与电流分支推导，不能仅凭接法简称判断误差。
 \end{drillsolution}

@@ -75,7 +75,17 @@ m\ddot x=mg-B=\rho gSd_0-\rho gS(d_0+x)=-\rho gSx.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{由平动方程确定振动规律和可实现条件}\par\nobreak
-再单独对物体沿$AB$列$m\ddot x=f_x$，得到$\ddot x+(g/h)x=0$。因此$x=A\cos(\sqrt{g/h}\,t+\varphi)$，$T=2\pi\sqrt{h/g}$。振幅须满足$A\le l/2$，使物体不越过杆端。此处先用框架转动平衡确定水平相互作用，再用物体平动方程确定运动；“框架始终静止”是题目给定的约束，这给出驱动必须实现的运动规律，普通光滑底杆不能自行提供所需水平力，恒定动摩擦也不能在全程代替这个主动作用。\end{solution}
+再单独对物体沿$AB$列$m\ddot x=f_x$，得到$\ddot x+(g/h)x=0$。令$\omega^2=g/h$，试取$x=\e^{\lambda t}$，两次求导为$\lambda\e^{\lambda t}$、$\lambda^2\e^{\lambda t}$。代入方程并约去指数，得$\lambda^2+\omega^2=0$，根为$\pm\mathrm i\omega$，故实通解为
+\[
+x=C\cos\omega t+D\sin\omega t,\qquad
+\dot x=-C\omega\sin\omega t+D\omega\cos\omega t.
+\]
+题目未指定初态，记$x(0)=x_0$、$\dot x(0)=v_0$，则$C=x_0$、$D=v_0/\omega$，完整运动为
+\[
+x(t)=x_0\cos\omega t+\frac{v_0}{\omega}\sin\omega t,
+\qquad T=\frac{2\pi}{\omega}=2\pi\sqrt{\frac hg}.
+\]
+振幅$A=\sqrt{x_0^2+v_0^2/\omega^2}$须满足$A\le l/2$，使物体不越过杆端。此处先用框架转动平衡确定水平相互作用，再用物体平动方程确定运动；“框架始终静止”是题目给定的约束，这给出驱动必须实现的运动规律，普通光滑底杆不能自行提供所需水平力，恒定动摩擦也不能在全程代替这个主动作用。\end{solution}
 \begin{question}\begin{example}[弹簧和动滑轮的等效劲度]\label{w1:example:4}
 两竖直轻弹簧劲度为$k_1,k_2$，下端由跨过轻动滑轮的不可伸长轻绳连接。滑轮轴悬质量$m$的物体。求竖直振动周期。
 \end{example}
@@ -117,7 +127,11 @@ $k_2\to\infty$时$x_1=2x$，得到$K_{\rm eff}=4k_1$，同时核对了受力和�
 \fig{fig:w1:example:5:s}{题设：落球与弹簧的接触时间}{\begin{tikzpicture}[scale=.88]\draw[world](.7,0)--(3.3,0);\draw[spring](2,0)--(2,1.7);\draw[guide](1,1.7)--(3,1.7)node[right]{原长顶端};\fill(2,3.6)circle(3pt)node[right]{$m$};\draw[dim](.8,1.7)--(.8,3.6)node[midway,left]{$h$};\end{tikzpicture}}
 \end{question}
 \begin{solution}\textbf{用自由落体初速确定接触振动的振幅}\par\nobreak
-从图\ref{fig:w1:example:5:s}释放点到原长顶端作自由落体，由$v_0^2=2gh$得接触初速度$v_0=\sqrt{2gh}$，向下。接触后以压缩量$z$为坐标，$m\ddot z=mg-kz$。令$d=mg/k$、$x=z-d$，方程变为$\ddot x+\omega^2x=0$，其中$\omega=\sqrt{k/m}$。接触瞬间$x=-d$、$\dot x=v_0$，所以
+从图\ref{fig:w1:example:5:s}释放点到原长顶端作自由落体，由$v_0^2=2gh$得接触初速度$v_0=\sqrt{2gh}$，向下。接触后以压缩量$z$为坐标，$m\ddot z=mg-kz$。令$d=mg/k$、$x=z-d$，方程变为$\ddot x+\omega^2x=0$，其中$\omega=\sqrt{k/m}$。由简谐方程的通解$x=C\cos\omega t+D\sin\omega t$，求导有$\dot x=-C\omega\sin\omega t+D\omega\cos\omega t$。以首次接触为$t=0$，初态$x(0)=-d$、$\dot x(0)=v_0$给$C=-d$、$D=v_0/\omega$，因此
+\[
+x=-d\cos\omega t+\frac{v_0}{\omega}\sin\omega t.
+\]
+与$A\cos(\omega t+\varphi)$比较，$A\cos\varphi=-d$、$-A\sin\varphi=v_0/\omega$。两式平方相加，得到
 \[
 A^2=x^2+\frac{\dot x^2}{\omega^2}=d^2+\frac{2gh}{\omega^2}.
 \]

@@ -331,7 +331,12 @@ R_mC\frac{\dd u}{\dd t}=E-u,\qquad u(0)=0.
 \int_E^{w(t)}\frac{\dd \xi}{\xi}
 =-\int_0^t\frac{\dd s}{R_mC}.
 \]
-左右分别积分为$\ln[w(t)/E]=-t/(R_mC)$，取指数后
+两边的原函数和端点分别为
+\[
+ [\ln\xi]_E^{w(t)}=-\frac1{R_mC}[s]_0^t,\qquad
+ \ln\frac{w(t)}E=-\frac{t}{R_mC}.
+\]
+初值 $E>0$，偏差 $w$ 保持正号，取指数后
 \[
 w(t)=Ee^{-t/(R_mC)},\qquad
 u(t)=E\bigl[1-e^{-t/(R_mC)}\bigr].
@@ -375,10 +380,11 @@ u_\infty=\frac{ER_\ell}{R_m+R_\ell},\qquad
 \]
 方程化为$\dd u/\dd t=(u_\infty-u)/\tau$。令$z=u_\infty-u$，则$\dd z/z=-\dd t/\tau$。初始未带电，$z(0)=u_\infty$，积分得
 \[
-\int_{u_\infty}^{z(t)}\frac{\dd \xi}{\xi}
-=-\int_0^t\frac{\dd s}{\tau},
-\qquad
-\ln\frac{z(t)}{u_\infty}=-\frac t\tau.
+\begin{aligned}
+\int_{u_\infty}^{z(t)}\frac{\dd \xi}{\xi}&=-\int_0^t\frac{\dd s}{\tau},\\
+[\ln\xi]_{u_\infty}^{z(t)}&=-\frac1\tau[s]_0^t,\\
+\ln\frac{z(t)}{u_\infty}&=-\frac t\tau.
+\end{aligned}
 \]
 于是$u(t)=u_\infty[1-e^{-t/\tau}]$，仪表读到的总电流为
 \begin{align*}
@@ -472,14 +478,25 @@ U_R=6.0-0.40\times1.0-4.0=1.6\,\mathrm V,
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{直接计算相邻点斜率并区分割线与切线}\par\nobreak
 
-相邻采样点给出
+按横坐标为 $I^2$ 的四段分别计算，
 \[
 \begin{aligned}
-\frac{\Delta P_L}{\Delta I^2}&\simeq8.62,13.44,22.48,32.29\,\Omega,\\
-\frac{\Delta P_L}{\Delta U^2}&\simeq0.1267,0.0850,0.0580,0.0443\,\Omega^{-1}.
+\frac{0.58-0.20}{0.29^2-0.20^2}&=\frac{0.38}{0.0441}\simeq8.62\,\Omega,\\
+\frac{1.60-0.58}{0.40^2-0.29^2}&=\frac{1.02}{0.0759}\simeq13.44\,\Omega,\\
+\frac{2.76-1.60}{0.46^2-0.40^2}&=\frac{1.16}{0.0516}\simeq22.48\,\Omega,\\
+\frac{4.00-2.76}{0.50^2-0.46^2}&=\frac{1.24}{0.0384}\simeq32.29\,\Omega.
 \end{aligned}
 \]
-例如第一段分别为 $(0.58-0.20)/(0.29^2-0.20^2)$ 与 $(0.58-0.20)/(2^2-1^2)$，因此前者逐渐增大，后者逐渐减小。$P_L/I^2=U/I$ 和 $P_L/U^2=I/U$ 只是过原点割线的比值；仅凭它们增减，不能直接断言任意位置切线斜率的变化。所给离散点支持的是上述采样范围内的趋势。
+换成横坐标 $U^2$，功率差不变，分母改为电压平方差：
+\[
+ \begin{aligned}
+ \frac{0.38}{2^2-1^2}&=\frac{0.38}{3}\simeq0.1267\,\Omega^{-1},\\
+ \frac{1.02}{4^2-2^2}&=\frac{1.02}{12}=0.0850\,\Omega^{-1},\\
+ \frac{1.16}{6^2-4^2}&=\frac{1.16}{20}=0.0580\,\Omega^{-1},\\
+ \frac{1.24}{8^2-6^2}&=\frac{1.24}{28}\simeq0.0443\,\Omega^{-1}.
+ \end{aligned}
+\]
+因此前者逐渐增大，后者逐渐减小。$P_L/I^2=U/I$ 和 $P_L/U^2=I/U$ 只是过原点割线的比值；仅凭它们增减，不能直接断言任意位置切线斜率的变化。所给离散点支持的是上述采样范围内的趋势。
 \end{solution}
 \begin{question}\begin{example}[水果电池的仪表改装与拟合]\label{c6:example:12}
 表头 $R_g=15\,\Omega,I_g=2\,\mathrm{mA}$，改装为 $4\,\mathrm V$ 表，另有内阻 $2\,\Omega$ 的电流表。水果电池约 $E=4\,\mathrm V,r=200\,\Omega$。数据 $I/\mathrm{mA}=4,5,8,10,12,14$，$U/\mathrm V=3.04,2.85,2.30,1.90,1.50,1.14$。求改装电阻、拟合参数，并选择较小系统误差接法。
@@ -552,7 +569,17 @@ B=-\frac{97.77-53\times12.73/6}{545-53^2/6}
 =0.191041,\qquad
 A=\frac{12.73}{6}+B\frac{53}{6}=3.80920.
 \]
-图\ref{fig:c6:example:12:p}的斜率为$-0.191041\,\mathrm{V/mA}$。将电流换成安培，关系变为$U\simeq3.80920-191.041I$，于是 $E\simeq3.81\,\mathrm V$、$r=b-R_A\simeq189\,\Omega$。横轴若用毫安，斜率数值为 $0.191041\,\mathrm{V/mA}$，须乘1000才得到欧姆。计算中间位保留较多，最终精度仍受给定读数限制。
+图\ref{fig:c6:example:12:p}的带符号斜率为 $-0.191041\,\mathrm{V/mA}$。因为 $x=1000I/(1\,\mathrm A)$，恢复电压、电流单位后，
+\[
+ U\simeq3.80920\,\mathrm V-(1000B\,\Omega)I
+ =3.80920\,\mathrm V-(191.041\,\Omega)I.
+\]
+与乙接法的 $U=E-(r+R_A)I$ 比较，
+\[
+ E=A\,\mathrm V\simeq3.81\,\mathrm V,\qquad
+ r=1000B\,\Omega-R_A=(191.041-2)\,\Omega\simeq189\,\Omega.
+\]
+横轴若用毫安，斜率绝对值须乘1000才得到欧姆。计算中间位保留较多，最终精度仍受给定读数限制。
 \end{solution}
 \begin{question}\begin{example}[不拆表头的测阻与量程标定]\label{c6:example:13}
 表头满偏电流 $I_g$ 已知、内阻 $R_g$ 待测，拟加串联电阻箱 $R_s$ 改电压表。标准电压表跨分压器输出与回路公共端，双掷开关挡1使输出直接接表头，挡2使输出经 $R_s$ 后接表头。说明怎样在不拆表头的条件下测 $R_g$ 并标定新量程。

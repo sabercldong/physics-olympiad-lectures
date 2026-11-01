@@ -45,17 +45,25 @@
  \frac{ke^2}{r_n^2}=\frac{m_ev_n^2}{r_n},\qquad
  v_n=\frac{n\hbar}{m_er_n}.
 \]
-消去 \(v_n\)，再代回得
+先把量子化条件给出的 $v_n$ 代入向心力方程，
+\[
+ \frac{ke^2}{r_n^2}=\frac{m_e}{r_n}
+ \frac{n^2\hbar^2}{m_e^2r_n^2}
+ =\frac{n^2\hbar^2}{m_er_n^3}.
+\]
+两边乘以 $m_er_n^3$，得到 $m_eke^2r_n=n^2\hbar^2$，再除以正量 $m_eke^2$ 求出半径；将它代回速度式，得
 \[
  \boxed{r_n=n^2a_0},\quad a_0=\frac{\hbar^2}{m_eke^2}\approx5.29\times10^{-11}\,\mathrm m,
  \qquad v_n=\frac{ke^2}{n\hbar}.
 \]
 以无穷远为势能零点，径向向外取正，库仑力的径向分量为
-$F_r=-ke^2/r^2$。由 $U(r)-U(\infty)=-\int_\infty^rF_r(s)\dd s$，
-\[
- U(r)=ke^2\int_\infty^r s^{-2}\dd s
- =ke^2[-s^{-1}]_\infty^r=-\frac{ke^2}{r}.
-\]
+$F_r=-ke^2/r^2$。由 $U(r)-U(\infty)=-\int_\infty^rF_r(s)\dd s$，将无穷远端点先用有限 $b>r$ 代替，求原函数并代端点后再取极限，
+\begin{align*}
+ U(r)&=ke^2\lim_{b\to\infty}\int_b^r s^{-2}\dd s
+ =ke^2\lim_{b\to\infty}[-s^{-1}]_b^r\\
+ &=ke^2\lim_{b\to\infty}\left(-\frac1r+\frac1b\right)
+ =-\frac{ke^2}{r}.
+\end{align*}
 再由圆周运动方程乘以 $r_n/2$ 得
 \(K_n=m_ev_n^2/2=ke^2/(2r_n)\)。将动能与势能相加，故
 \[
@@ -164,11 +172,13 @@ $F_r=-ke^2/r^2$。由 $U(r)-U(\infty)=-\int_\infty^rF_r(s)\dd s$，
 \end{tikzpicture}}
 图\ref{fig:m3relative-coordinate}示意质心分配关系；为显示核的运动，距离不按真实比例绘制。由 $M_Nr_N=m_er_e$ 与 $r=r_N+r_e$，得
 $r_e=M_Nr/(M_N+m_e)$、$r_N=m_er/(M_N+m_e)$。二者同角速度转动，设角速度为 $\omega$，两部分动能之和为
-\[
- T_{\rm int}=\frac12m_e\omega^2r_e^2+\frac12M_N\omega^2r_N^2
- =\frac12\frac{m_eM_N}{m_e+M_N}\omega^2r^2
+\begin{align*}
+ T_{\rm int}&=\frac12m_e\omega^2r_e^2+\frac12M_N\omega^2r_N^2\\
+ &=\frac{\omega^2r^2}{2}
+ \frac{m_eM_N^2+M_Nm_e^2}{(m_e+M_N)^2}\\
+ &=\frac{\omega^2r^2}{2}\frac{m_eM_N(m_e+M_N)}{(m_e+M_N)^2}
  =\frac12\mu v_{\rm rel}^2.
-\]
+\end{align*}
 因此内部运动的惯量由约化质量承担。对一般核电荷数 $Z$，还应把库仑因子 $ke^2$ 换成 $kZe^2$，能级相应含 $Z^2$。
 
 当 $M_N\to\infty$，质心趋向核，$\mu\to m_e$，恢复固定核近似；有限核质量使 $\mu<m_e$，能级结合能的绝对值略减小，波长相应改变。这种改变在跃迁之前就已包含在内部能级中，不能再把同一效应重复算成发射光子的整体反冲。

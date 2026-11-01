@@ -12,8 +12,12 @@
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对各块实际位移取质量加权平均}\par\nobreak
 图\ref{fig:s1:drill:1:p}按位移加权，$\Delta x_C=[0+l+\cdots+(N-1)l]/N=(N-1)l/2$，方向向右。若$l$被理解成质心间距而不是端面空隙，此结果一般不成立，题设必须区分。\end{drillsolution}
 \begin{drillsolution}{s1:drill:2}\textbf{分别写出高度序列与质量序列}\par\nobreak
-图\ref{fig:s1:drill:2:s}第$n$块从$n=0$编号，质量$m_n=m_0/8^n$，底面高度$2l(1-2^{-n})$，质心高度$z_n=2l-\frac32l\,2^{-n}$。
-第$n$块以下各块总高为$l\sum_{j=0}^{n-1}2^{-j}=2l(1-2^{-n})$，再加本块半高$l/2^{n+1}$，即得$z_n=2l-\tfrac32l\,2^{-n}$。质量依体积缩小，$m_n/m_0=(2^{-n})^3=8^{-n}$；因此高度与质量使用的是不同公比。
+图\ref{fig:s1:drill:2:s}第 $n$块从 $n=0$编号，边长为 $l/2^n$。第 $n$块以下各块的总高为有限等比和
+\[
+ l\sum_{j=0}^{n-1}2^{-j}
+ =l\frac{1-(1/2)^n}{1-1/2}=2l(1-2^{-n}).
+\]
+再加本块半高 $l/2^{n+1}$，得到 $z_n=2l-\tfrac32l\,2^{-n}$。质量依体积缩小，$m_n/m_0=(2^{-n})^3=8^{-n}$；因此高度与质量使用的是不同公比。
 \fig{fig:s1:drill:2:p}{逐层高度与立方体积质量分别进入一阶矩}{\begin{tikzpicture}
 \foreach \z/\b in {0/2,2/1,3/.5,3.5/.25}{\draw[fill=blue!8]({-\b/2},\z)rectangle({\b/2},{\z+\b});\draw[world]({-\b/2},{\z+\b})--++({.2*\b},{.1*\b})--++(\b,0)--++({-.2*\b},{-.1*\b});\fill(0,{\z+\b/2})circle(2pt);}\draw[axis](-2,0)--(-2,4.4)node[above]{$z$};\foreach \z/\txt in {1/{l/2},2.5/{5l/4},3.25/{13l/8}}{\draw[guide](-2,\z)--(0,\z);\node[left]at(-2,\z){$\txt$};}\node[right]at(1,1){$m_0$};\node[right]at(.5,2.5){$m_0/8$};\node[right]at(.25,3.25){$m_0/64$};\fill[red](-2,1.2)circle(2pt);\draw[guide](-2,1.2)--(-3,1.6)node[left]{$z_C=3l/5$};\node at(.5,4.4){上端趋于 $2l$};
 \end{tikzpicture}}
@@ -21,12 +25,16 @@
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{对两个收敛级数分别求和}\par\nobreak
-图\ref{fig:s1:drill:2:p}同时求总质量与一阶矩：
-\[
-M=\frac{8m_0}7,\quad
-\sum m_nz_n=2lM-\frac{3m_0l}{2}\frac1{1-1/16}.
-\]
-所以$z_C=2l-\frac32l(16/15)(7/8)=3l/5$。质心稍高于底块中心$l/2$，且远低于总高度$2l$，符合上层质量迅速减小的特点。\end{drillsolution}
+图\ref{fig:s1:drill:2:p}中，先对前 $K$块求和再取极限。记 $S_K(q)=1+q+\cdots+q^{K-1}$，两边乘以 $1-q$后中间项抵消，得到 $S_K(q)=(1-q^K)/(1-q)$。这里的两个公比分别为 $1/8,1/16$，均在零与一之间，故 $q^K\to0$。因此
+\begin{align*}
+ M&=m_0\lim_{K\to\infty}S_K(1/8)
+ =\frac{m_0}{1-1/8}=\frac{8m_0}{7},\\
+ J_z&=\sum_{n=0}^\infty\frac{m_0}{8^n}
+ \left(2l-\frac{3l}{2\cdot2^n}\right)\\
+ &=2lM-\frac{3m_0l}{2}\lim_{K\to\infty}S_K(1/16)
+ =2lM-\frac{3m_0l}{2}\frac{16}{15}.
+\end{align*}
+最后用一阶矩除以质量：$z_C=J_z/M=2l-\frac32l(16/15)(7/8)=2l-7l/5=3l/5$。质心稍高于底块中心 $l/2$，且远低于总高度 $2l$，符合上层质量迅速减小的特点。\end{drillsolution}
 \begin{drillsolution}{s1:drill:3}\textbf{划定整体边界并数清绳力}\par\nobreak
 图\ref{fig:s1:drill:3:s}动滑轮给平台$2T$向上，人手受绳$T$向上。将人与平台整体选为对象，外部总向上力为$3T$。
 选人和平台整体时，人脚与平台间的作用力互相抵消；跨边界的向上绳力包含动滑轮两侧各$T$以及人手处$T$。因此整体方程不是$2T=90g$，而是$3T=90g$。求出$T$后，人单独的受力只含$N,T,60g$，平台的两股绳力不能再次加到人的方程中。
@@ -77,17 +85,15 @@ M=\frac{8m_0}7,\quad
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{展开位置与奇数质量的乘积再求和}\par\nobreak
-在图\ref{fig:s1:drill:6:p}的一阶矩中，
-\[
-\sum(2i-1)(i-1)=2\sum i^2-3\sum i+N
-=\frac{N(N-1)(4N+1)}6.
-\]
-把$\sum i=N(N+1)/2$和$\sum i^2=N(N+1)(2N+1)/6$代入上式，得
-\[
-\sum(2i-1)(i-1)=
-\frac{N(N+1)(2N+1)}3-\frac{3N(N+1)}2+N
-=\frac{N(N-1)(4N+1)}6.
-\]
+在图\ref{fig:s1:drill:6:p}的一阶矩中，先展开 $(2i-1)(i-1)=2i^2-3i+1$。把 $\sum i=N(N+1)/2$和 $\sum i^2=N(N+1)(2N+1)/6$代入，
+\begin{align*}
+ \sum_{i=1}^N(2i-1)(i-1)
+ &=2\sum_{i=1}^Ni^2-3\sum_{i=1}^Ni+N\\
+ &=\frac{N(N+1)(2N+1)}3-\frac{3N(N+1)}2+N\\
+ &=\frac N6[2(N+1)(2N+1)-9(N+1)+6]\\
+ &=\frac N6(4N^2-3N-1)
+ =\frac{N(N-1)(4N+1)}6.
+\end{align*}
 分子还须乘$md$，分母为$N^2m$，约去$mN$，因此$x_C=d(N-1)(4N+1)/(6N)$。给定数值为$998.499\,\mathrm{cm}$。若从第一个球左表面量起，则应再加$d/2$，不能把参考点混淆。\end{drillsolution}
 \begin{drillsolution}{s1:drill:7}\textbf{列出三部分的带符号面积和质心}\par\nobreak
 图\ref{fig:s1:drill:7:s}中大半圆面积$2\pi r^2$，质心$(0,-8r/(3\pi))$；挖去小半圆面积$\pi r^2/2$，质心$(-r,-4r/(3\pi))$；补上小半圆面积相同，质心$(r,4r/(3\pi))$。
@@ -98,19 +104,20 @@ M=\frac{8m_0}7,\quad
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{分别累加横纵一阶矩并检查方向}\par\nobreak
-图\ref{fig:s1:drill:7:p}对面积一阶矩加减，总面积仍为$2\pi r^2$，因此
+图\ref{fig:s1:drill:7:p}对面积一阶矩加减，总面积为 $S=2\pi r^2-\pi r^2/2+\pi r^2/2=2\pi r^2$。先分别计算两个一阶矩：
+\begin{align*}
+ J_x&=0-\frac{\pi r^2}{2}(-r)+\frac{\pi r^2}{2}r=\pi r^3,\\
+ J_y&=2\pi r^2\left(-\frac{8r}{3\pi}\right)
+ -\frac{\pi r^2}{2}\left(-\frac{4r}{3\pi}\right)
+ +\frac{\pi r^2}{2}\frac{4r}{3\pi}\\
+ &=-\frac{16r^3}{3}+\frac{2r^3}{3}+\frac{2r^3}{3}=-4r^3.
+\end{align*}
+再除以总面积，得到
 \[
-x_C=\frac{(\pi r^2/2)r-(\pi r^2/2)(-r)}{2\pi r^2}=\frac r2,
-\quad
-y_C=-\frac{2r}{\pi}.
+ x_C=\frac{J_x}{S}=\frac{\pi r^3}{2\pi r^2}=\frac r2,
+ \qquad y_C=\frac{J_y}{S}=\frac{-4r^3}{2\pi r^2}=-\frac{2r}{\pi}.
 \]
-纵向计算中的分子为
-\[
-2\pi r^2\!\left(-\frac{8r}{3\pi}\right)
--\frac{\pi r^2}{2}\!\left(-\frac{4r}{3\pi}\right)
-+\frac{\pi r^2}{2}\frac{4r}{3\pi}=-4r^3.
-\]
-除以总面积$2\pi r^2$即为$-2r/\pi$。横向结果向补入侧偏移。上下小半圆对纵向矩的贡献相加，不能因面积相等就相互抵消。\end{drillsolution}
+横向结果向补入侧偏移。上下小半圆对纵向矩的贡献相加，不能因面积相等就相互抵消。\end{drillsolution}
 \begin{drillsolution}{s1:drill:8}\textbf{从共同切点确定各级圆心与面积符号}\par\nobreak
 图\ref{fig:s1:drill:8:s}第$n$个圆盘半径$R/2^n$，圆心$x_n=R(1-2^{-n})$，带符号面积$\pi R^2(-1/4)^n$。这里同材质薄板质量按面积缩小，不能按半径缩小。
 从$n=0$的完整大圆开始，奇数级挖去、偶数级补回，所以符号为$(-1)^n$。每级圆心到右端公共切点$x=R$的距离等于本级半径，故$x_n=R-R/2^n$。乘上一阶矩时，一个因子来自面积$4^{-n}$，另一个来自坐标中的$2^{-n}$，这正是第二个公比$-1/8$的原因。
@@ -121,9 +128,14 @@ y_C=-\frac{2r}{\pi}.
 
 
 \par\medskip\Needspace{4\baselineskip}\noindent\textbf{求两个等比级数并除以剩余面积}\par\nobreak
-图\ref{fig:s1:drill:8:p}总面积$S=\pi R^2/(1+1/4)=4\pi R^2/5$。一阶矩为
+图\ref{fig:s1:drill:8:p}中，对 $0<q<1$先计算前 $K+1$项，
+\[
+ \sum_{n=0}^K(-q)^n=\frac{1-(-q)^{K+1}}{1+q}
+ \longrightarrow\frac1{1+q}.
+\]
+取 $q=1/4$，总面积为 $S=\pi R^2/(1+1/4)=4\pi R^2/5$。面积与坐标相乘产生的两个公比为 $-1/4,-1/8$，分别使用同一极限公式，一阶矩为
 \[
 J=\pi R^3\left[\sum_{n=0}^\infty(-1/4)^n-\sum_{n=0}^\infty(-1/8)^n\right]
 =\pi R^3\left(\frac45-\frac89\right).
 \]
-故$x_C=J/S=-R/9$，$y_C=0$。挖去区域主要在右侧，负的偏移方向合理；两级数均绝对收敛。\end{drillsolution}
+括号内通分为 $4/5-8/9=-4/45$，故 $x_C=J/S=R(-4/45)/(4/5)=-R/9$，$y_C=0$。挖去区域主要在右侧，负的偏移方向合理；两级数均绝对收敛。\end{drillsolution}
